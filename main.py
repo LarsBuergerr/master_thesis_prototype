@@ -1,0 +1,14 @@
+import hydra
+from omegaconf import DictConfig, OmegaConf
+
+from src.analyser import Analyser
+
+@hydra.main(version_base=None, config_path="conf")
+def my_app(cfg : DictConfig) -> None:
+    print(OmegaConf.to_yaml(cfg))
+
+
+if __name__ == "__main__":
+    
+
+    my_app()
