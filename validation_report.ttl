@@ -1,0 +1,252 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcatde: <http://dcat-ap.de/def/dcatde/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode "Deutsch" ;
+            sh:resultMessage "dcat:Distribution: dct:language MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-languages"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24445 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://ckan.govdata.de/dataset/57df0dfa-2a77-42f4-b52b-2469de320bc5> ;
+            sh:resultMessage "dcat:Dataset: dct:creator MUSS auf einen foaf:Agent verweisen."@de ;
+            sh:resultPath dcterms:creator ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape dcatde:Dataset_dct_creator_v_Class ;
+            sh:value [ a rdfs:Resource,
+                        foaf:Organization ;
+                    foaf:homepage <https://www.bka.de/DE/KontaktAufnehmen/kontaktaufnehmen_node.html%3Bjsessionid=C63C6058CB420C4306C2864B4B956AAF.live0601> ;
+                    foaf:name "Bundeskriminalamt" ] ],
+        [ a sh:ValidationResult ;
+            sh:focusNode "CSV" ;
+            sh:resultMessage "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24446 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode "PDF" ;
+            sh:resultMessage "K32: dcat:Distribution: dct:format MUSS eine IRI aus dem  EU Vokabular 'File Type' verwenden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#konvention-32 "@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24443 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode "CSV" ;
+            sh:resultMessage "K32: dcat:Distribution: dct:format MUSS eine IRI aus dem  EU Vokabular 'File Type' verwenden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#konvention-32 "@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24443 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode "PDF" ;
+            sh:resultMessage "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24446 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode "Deutsch" ;
+            sh:resultMessage "dcat:Distribution: dct:language MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-languages"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24445 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://ckan.govdata.de/dataset/57df0dfa-2a77-42f4-b52b-2469de320bc5> ;
+            sh:resultMessage "dcat:Dataset: dcatde:originator MUSS auf einen foaf:Agent verweisen."@de ;
+            sh:resultPath dcatde:originator ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape dcatde:Dataset_dcatde_originator_v_Class ;
+            sh:value [ a rdfs:Resource,
+                        foaf:Organization ;
+                    foaf:homepage <https://www.bka.de/DE/KontaktAufnehmen/kontaktaufnehmen_node.html%3Bjsessionid=C63C6058CB420C4306C2864B4B956AAF.live0601> ;
+                    foaf:name "Bundeskriminalamt" ] ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://ckan.govdata.de/dataset/57df0dfa-2a77-42f4-b52b-2469de320bc5/resource/97732a55-f970-4845-a7d6-7a61d9d3bbfb> ;
+            sh:resultMessage "K31: dcat:Distribution: dct:license MUSS eine IRI aus http://dcat-ap.de/def/licenses/ verwenden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#konvention-31 "@de ;
+            sh:resultPath dcterms:license ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:QualifiedMinCountConstraintComponent ;
+            sh:sourceShape dcatde:Konv31_dct_license_v_List ],
+        [ a sh:ValidationResult ;
+            sh:focusNode "PDF" ;
+            sh:resultMessage "K32: dcat:Distribution: dct:format MUSS eine IRI aus dem  EU Vokabular 'File Type' verwenden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#konvention-32 "@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24443 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://dcat-ap.de/def/licenses/dl-by-de/2.0> ;
+            sh:resultMessage "dcat:Distribution: dct:license SOLL folgendes Vokabular benutzten: https://www.dcat-ap.de/def/licenses/"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24449 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode "Deutsch" ;
+            sh:resultMessage "dcat:Distribution: dct:language MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-languages"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24445 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://dcat-ap.de/def/licenses/dl-by-de/2.0> ;
+            sh:resultMessage "dcat:Distribution: dct:license SOLL folgendes Vokabular benutzten: https://www.dcat-ap.de/def/licenses/"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24449 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode "PDF" ;
+            sh:resultMessage "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24446 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://dcat-ap.de/def/licenses/dl-by-de/2.0> ;
+            sh:resultMessage "dcat:Distribution: dct:license SOLL folgendes Vokabular benutzten: https://www.dcat-ap.de/def/licenses/"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24449 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode "PDF" ;
+            sh:resultMessage "K32: dcat:Distribution: dct:format MUSS eine IRI aus dem  EU Vokabular 'File Type' verwenden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#konvention-32 "@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24443 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://ckan.govdata.de/dataset/57df0dfa-2a77-42f4-b52b-2469de320bc5/resource/635eafb2-7572-4050-9914-09f1da53c660> ;
+            sh:resultMessage "K31: dcat:Distribution: dct:license MUSS eine IRI aus http://dcat-ap.de/def/licenses/ verwenden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#konvention-31 "@de ;
+            sh:resultPath dcterms:license ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:QualifiedMinCountConstraintComponent ;
+            sh:sourceShape dcatde:Konv31_dct_license_v_List ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://ckan.govdata.de/dataset/57df0dfa-2a77-42f4-b52b-2469de320bc5/resource/5262cfab-9fe3-48bb-a97f-123381bb3336> ;
+            sh:resultMessage "K31: dcat:Distribution: dct:license MUSS eine IRI aus http://dcat-ap.de/def/licenses/ verwenden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#konvention-31 "@de ;
+            sh:resultPath dcterms:license ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:QualifiedMinCountConstraintComponent ;
+            sh:sourceShape dcatde:Konv31_dct_license_v_List ],
+        [ a sh:ValidationResult ;
+            sh:focusNode [ a dcterms:Location,
+                        rdfs:Resource ] ;
+            sh:resultMessage "dct:Location: SOLL eine der folgenden Eigenschaften nutzen: dcat:bbox, dcat:centroid, locn:geometry. Wenn Sie eine davon abweichende Eigenschaften nutzen, können Sie den Fehler ignorieren."@de ;
+            sh:resultPath [ sh:alternativePath ( dcat:bbox dcat:centroid locn:geometry ) ] ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape dcatde:Location_locations_v_Min ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://ckan.govdata.de/dataset/57df0dfa-2a77-42f4-b52b-2469de320bc5> ;
+            sh:resultMessage "dcat:Dataset: dcat:contactPoint MUSS auf einen vcard:Kind verweisen."@de ;
+            sh:resultPath dcat:contactPoint ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape dcatde:Dataset_dcat_contactPoint_v_Class ;
+            sh:value _:n0b236458fc5d4ded9fc4d349775cb122b7 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://ckan.govdata.de/dataset/57df0dfa-2a77-42f4-b52b-2469de320bc5> ;
+            sh:resultMessage "dcat:Dataset: dcatde:maintainer MUSS auf einen foaf:Agent verweisen."@de ;
+            sh:resultPath dcatde:maintainer ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape dcatde:Dataset_dcatde_maintainer_v_Class ;
+            sh:value [ a rdfs:Resource,
+                        foaf:Organization ;
+                    foaf:homepage <https://www.bka.de/DE/KontaktAufnehmen/kontaktaufnehmen_node.html%3Bjsessionid=C63C6058CB420C4306C2864B4B956AAF.live0601> ;
+                    foaf:name "Bundeskriminalamt KI12" ] ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
+            sh:resultMessage "dcat:Dataset: dcat:theme MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-data-theme"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape [ sh:hasValue <http://publications.europa.eu/resource/authority/data-theme> ;
+                    sh:message "dcat:Dataset: dcat:theme MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-data-theme"@de ;
+                    sh:path skos:inScheme ;
+                    sh:severity sh:Violation ] ],
+        [ a sh:ValidationResult ;
+            sh:focusNode _:n0b236458fc5d4ded9fc4d349775cb122b7 ;
+            sh:resultMessage "K01: Kontaktinformationen (dcat:contactPoint) MÜSSEN mindestens Angaben zur Email (vcard:hasEmail) oder einen Link zum Kontaktformular oder Chatbot (vcard:hasURL) enthalten. "@de ;
+            sh:resultPath [ sh:alternativePath ( vcard:hasURL vcard:hasEmail ) ] ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape dcatde:Konv01_hasEmail_hasURL_v_Min ],
+        [ a sh:ValidationResult ;
+            sh:focusNode "Deutsch" ;
+            sh:resultMessage "dcat:Distribution: dct:language MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-languages"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24445 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://ckan.govdata.de/dataset/57df0dfa-2a77-42f4-b52b-2469de320bc5> ;
+            sh:resultMessage "K12&13: dcat:Dataset: dcatde:contributorID MUSS verwendet werden und DARF nur genau einmal eine IRI aus http://dcat-ap.de/def/contributors/ verwenden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#konvention-12 "@de ;
+            sh:resultPath dcatde:contributorID ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:QualifiedMinCountConstraintComponent ;
+            sh:sourceShape dcatde:Konv12_13_contributorID_v_List ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://ckan.govdata.de/dataset/57df0dfa-2a77-42f4-b52b-2469de320bc5/resource/f4b55c3d-67ce-438a-8936-9ef610e15aa0> ;
+            sh:resultMessage "K31: dcat:Distribution: dct:license MUSS eine IRI aus http://dcat-ap.de/def/licenses/ verwenden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#konvention-31 "@de ;
+            sh:resultPath dcterms:license ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:QualifiedMinCountConstraintComponent ;
+            sh:sourceShape dcatde:Konv31_dct_license_v_List ],
+        [ a sh:ValidationResult ;
+            sh:focusNode "PDF" ;
+            sh:resultMessage "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24446 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://dcat-ap.de/def/licenses/dl-by-de/2.0> ;
+            sh:resultMessage "dcat:Distribution: dct:license SOLL folgendes Vokabular benutzten: https://www.dcat-ap.de/def/licenses/"@de ;
+            sh:resultPath skos:inScheme ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n742729bd2b6144418f34a2a74a177ffbb24449 ] .
+
+_:n0b236458fc5d4ded9fc4d349775cb122b7 a rdfs:Resource,
+        vcard:Organization ;
+    vcard:fn "Bundeskriminalamt KI12" .
+
+_:n742729bd2b6144418f34a2a74a177ffbb24443 sh:hasValue <http://publications.europa.eu/resource/authority/file-type> ;
+    sh:message "K32: dcat:Distribution: dct:format MUSS eine IRI aus dem  EU Vokabular 'File Type' verwenden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#konvention-32 "@de ;
+    sh:path skos:inScheme ;
+    sh:severity sh:Violation .
+
+_:n742729bd2b6144418f34a2a74a177ffbb24445 sh:hasValue <http://publications.europa.eu/resource/authority/language> ;
+    sh:message "dcat:Distribution: dct:language MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-languages"@de ;
+    sh:path skos:inScheme ;
+    sh:severity sh:Violation .
+
+_:n742729bd2b6144418f34a2a74a177ffbb24446 sh:hasValue <http://publications.europa.eu/resource/authority/file-type> ;
+    sh:message "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type"@de ;
+    sh:path skos:inScheme ;
+    sh:severity sh:Violation .
+
+_:n742729bd2b6144418f34a2a74a177ffbb24449 sh:hasValue <http://dcat-ap.de/def/licenses> ;
+    sh:message "dcat:Distribution: dct:license SOLL folgendes Vokabular benutzten: https://www.dcat-ap.de/def/licenses/"@de ;
+    sh:path skos:inScheme ;
+    sh:severity sh:Warning .
+
