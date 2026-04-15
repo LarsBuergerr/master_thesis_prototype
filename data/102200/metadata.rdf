@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <dcat:Dataset rdf:about="https://opendata.schleswig-holstein.de/dataset/c9394b1d-0f11-45ad-898d-db98b82ce455">
+    <dct:title>Haushalt 2020</dct:title>
+    <dct:description>Bitte bedenken Sie: Ein Haushaltsplan unterscheidet sich stark von Bilanzen und Konten, die viele aus der doppelten Buchführung gewohnt sind. Es erfordert eine gewisse Übung, die verwendete Systematik zu lesen</dct:description>
+    <dct:identifier>c9394b1d-0f11-45ad-898d-db98b82ce455</dct:identifier>
+    <dcat:keyword>haushalt</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-02-11T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-09-23T13:39:36.509038</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dct:isVersionOf rdf:resource="https://opendata.schleswig-holstein.de/dataset/29aab7b3-243e-41b0-b0ce-3beebf131197"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.schleswig-holstein.de/organization/finanzministerium">
+        <foaf:name>Finanzministerium</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N5551800de37e463ebc23ed79c1569513">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-01-01T00:00:00</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-12-31T00:00:00</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/01">
+        <skos:prefLabel>Bundesland Schleswig-Holstein</skos:prefLabel>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/c9394b1d-0f11-45ad-898d-db98b82ce455/resource/eba4b675-a668-47dc-a7cd-6bc8f8f0ac95">
+        <dct:title>Haushalt_2020.csv</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/officialWork"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/data/fm/Haushalt_2020.csv"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/data/fm/Haushalt_2020.csv"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/officialWork"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-09-23T13:37:52.733781</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-09-23T13:37:52.733781</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/c9394b1d-0f11-45ad-898d-db98b82ce455/resource/49325caa-e6f1-4c27-a3bb-ccc877c0a80a">
+        <dct:title>Haushalt_2020.txt</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/officialWork"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/data/fm/Haushalt_2020.txt"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/data/fm/Haushalt_2020.txt"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/officialWork"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/plain"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/TXT"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-09-23T13:38:11.733481</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-09-23T13:38:11.733481</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/c9394b1d-0f11-45ad-898d-db98b82ce455/resource/5a6ee583-81ef-4f64-a956-42d5104111cc">
+        <dct:title>Haushalt_2020.xlsx</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/officialWork"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/data/fm/Haushalt_2020.xlsx"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/data/fm/Haushalt_2020.xlsx"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/officialWork"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-09-23T13:38:27.557698</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-09-23T13:38:27.557698</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/schleswigHolstein"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/data/fm/Haushalt_2020.txt"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/data/fm/Haushalt_2020.csv"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/TXT"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/officialWork">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/text/csv"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/text/plain"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/data/fm/Haushalt_2020.xlsx"/>
+</rdf:RDF>

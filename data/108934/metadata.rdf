@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <dcat:Dataset rdf:about="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f">
+    <dct:title>Denkmalliste Stadt Flensburg</dct:title>
+    <dct:description>Kulturdenkmale sind gesetzlich geschützt und nachrichtlich in ein Verzeichnis, die sog. Denkmalliste, einzutragen. Von der Aufnahme in die Denkmalliste werden die betroffenen Eigentümerinnen und Eigentümer benachrichtigt. Gleichzeitig wird die Denkmalliste hier veröffentlicht und wöchentlich aktualisiert. Die Denkmalliste ist nicht abschließend, sondern wird ständig überprüft, ergänzt und bereinigt.&#13;
+&#13;
+Alle bisher nach dem Denkmalschutzgesetz von vor 2015 in das alte „Denkmalbuch“ eingetragenen „Kulturdenkmale von besonderer Bedeutung“ sind automatisch in die neue Denkmalliste übernommen worden, ihre Darstellungen konnten aber noch nicht abschließend aktualisiert werden (Beschreibung, Schutzumfang).&#13;
+&#13;
+Die Listen der Kreise gliedern sich in alphabetischer Reihe ihrer Gemeinden und innerhalb der Gemeinden (und kreisfreien Städten) nach&#13;
+- Denkmalbereiche&#13;
+- Sachgesamtheiten&#13;
+- Mehrheiten von baulichen Anlagen&#13;
+- Bauliche Anlagen (Einzeldenkmale)&#13;
+- Teile von baulichen Anlagen&#13;
+- Gründenkmale&#13;
+- Bewegliche Kulturdenkmale&#13;
+- Sonstige Kulturdenkmale&#13;
+</dct:description>
+    <dct:identifier>bf860644-41f0-4c63-a6c0-d9539c0c8a1f</dct:identifier>
+    <dcat:keyword>denkmal</dcat:keyword>
+    <dcat:keyword>denkmalliste</dcat:keyword>
+    <dcat:keyword>kulturdenkmal</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-06T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-13T07:56:40.531909</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/EDUC"/>
+    <dct:isVersionOf rdf:resource="https://opendata.schleswig-holstein.de/dataset/aa5a49a9-c90b-449b-a4ad-676a3323f5ed"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Nfc7791bc6d34454987ab291adfa665a9">
+        <vcard:fn>Landesamt für Denkmalpflege Schleswig-Holstein</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:denkmalamt@ld.landsh.de"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.schleswig-holstein.de/organization/landesamt-fur-denkmalpflege">
+        <foaf:name>Landesamt für Denkmalpflege</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="Ne656c86fabaf4444a7c273486f1f5757">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-22T00:00:00</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-13T09:56:18.566849</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:about="http://dcat-ap.de/def/politicalGeocoding/districtKey/01001">
+        <skos:prefLabel>Stadt Flensburg</skos:prefLabel>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2f08b820-0a8f-4add-8f67-3128d45c9469">
+        <dct:title>Stadt Flensburg.pdf</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2f08b820-0a8f-4add-8f67-3128d45c9469/download/stadt-flensburg.pdf"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2f08b820-0a8f-4add-8f67-3128d45c9469/download/stadt-flensburg.pdf"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/pdf"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-06T11:07:56.899751</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-06T11:07:56.847384</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1018983</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N663d98567f5a425c99a9e45bce078068">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">360fd054f19b12c33b781644db04fec7</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Landesamt für Denkmalpflege Schleswig-Holstein</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2828f03c-5b8e-4994-9f38-d28bfb91b778">
+        <dct:title>Stadt Flensburg.csv</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2828f03c-5b8e-4994-9f38-d28bfb91b778/download/stadt-flensburg.csv"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2828f03c-5b8e-4994-9f38-d28bfb91b778/download/stadt-flensburg.csv"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-06T11:07:39.538562</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-06T11:07:39.484493</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">351906</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nc78104ccd05c4b02935c9554cde507fc">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">35d8fbfe4e9efd9025a304984651b7d0</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Landesamt für Denkmalpflege Schleswig-Holstein</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/d3d9c515-7865-4857-ac65-21fadb7b26e8">
+        <dct:title>Stadt Flensburg-latin1.csv</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/d3d9c515-7865-4857-ac65-21fadb7b26e8/download/stadt-flensburg-latin1.csv"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/d3d9c515-7865-4857-ac65-21fadb7b26e8/download/stadt-flensburg-latin1.csv"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-06T11:07:43.702267</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-06T11:07:43.652426</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">345662</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nda3e98ba9df441789b0479e0cb6f669f">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">fb2bd21b3d01e4bac17d590eec00f648</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Landesamt für Denkmalpflege Schleswig-Holstein</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2227f6f4-162f-4603-9008-9e3816555938">
+        <dct:title>Stadt Flensburg.json</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2227f6f4-162f-4603-9008-9e3816555938/download/stadt-flensburg.json"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2227f6f4-162f-4603-9008-9e3816555938/download/stadt-flensburg.json"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/json"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-06T11:07:48.219559</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-06T11:07:48.168923</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">479693</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N188dd700ec004f6b979f522347d1beb9">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">27d317e44b9903eafa30e985deb3ef8f</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Landesamt für Denkmalpflege Schleswig-Holstein</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/schleswigHolstein"/>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="N1f959de4e11641e3b4d63e8b50234e36">
+        <foaf:name>Landesamt für Denkmalpflege Schleswig-Holstein</foaf:name>
+        <foaf:mbox>denkmalamt@ld.landsh.de</foaf:mbox>
+      </foaf:Organization>
+    </dcatde:maintainer>
+  </dcat:Dataset>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/json"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/cc-by/4.0">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2f08b820-0a8f-4add-8f67-3128d45c9469/download/stadt-flensburg.pdf"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/d3d9c515-7865-4857-ac65-21fadb7b26e8/download/stadt-flensburg-latin1.csv"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/text/csv"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/pdf"/>
+  <spdx:ChecksumAlgorithm rdf:about="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2227f6f4-162f-4603-9008-9e3816555938/download/stadt-flensburg.json"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/bf860644-41f0-4c63-a6c0-d9539c0c8a1f/resource/2828f03c-5b8e-4994-9f38-d28bfb91b778/download/stadt-flensburg.csv"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+</rdf:RDF>
