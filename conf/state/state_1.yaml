@@ -1,0 +1,26 @@
+# AgentState configuration
+# This file defines the initial state for the agent pipeline
+
+defaults:
+  - _self_
+
+# Directory paths
+directory_path: "../../data/13315"
+metadata_path: "metadata.rdf"
+dataset_path: "dataset.csv"
+
+# Language configuration
+language: "de"  # Options: "de", "en"
+
+# LLM Model configuration
+
+llm:
+  model: "anthropic/claude-sonnet-4.5"  # Options from LLMModel enum
+  temperature: 0.0
+  max_tokens: 2048
+
+
+# Logging configuration
+logging:
+  level: "INFO"
+  verbose: false
