@@ -25,9 +25,10 @@ def create_llm(cfg: DictConfig) -> ChatOpenAI:
     Returns:
         Configured ChatOpenAI instance for OpenRouter
     """
-    model = cfg.llm.model
-    temperature = cfg.llm.get("temperature", 0.0) if cfg.llm else 0.0
-    max_tokens = cfg.llm.get("max_tokens", 4096) if cfg.llm else 4096
+    print(cfg)
+    model = cfg.state.llm.model
+    temperature = cfg.state.llm.get("temperature", 0.0) if cfg.state.llm else 0.0
+    max_tokens = cfg.state.llm.get("max_tokens", 4096) if cfg.state.llm else 4096
     base_url = "https://openrouter.ai/api/v1"
 
     api_key = os.environ.get("OPENROUTER_API_KEY")
@@ -61,14 +62,14 @@ def create_agent(cfg: DictConfig, llm: ChatOpenAI) -> AgentState:
     language = Language.DE if lang == "de" else Language.EN
 
     # Parse LLM model from config
-    model_name = cfg.get("llm.model", "anthropic/claude-sonnet-4.5")
+    model_name = cfg.state.llm.get("model", "anthropic/claude-sonnet-4.5")
     llm_model = LLMModel(model_name)
 
     return AgentState(
         messages=[],
-        directory_path=cfg.get("directory_path", ""),
-        metadata_path=cfg.get("metadata_path", ""),
-        dataset_path=cfg.get("dataset_path", None),
+        directory_path=cfg.state.get("directory_path", ""),
+        metadata_path=cfg.state.get("metadata_path", ""),
+        dataset_path=cfg.state.get("dataset_path", None),
         dataset_df=None,
         metadata=[],
         language=language,

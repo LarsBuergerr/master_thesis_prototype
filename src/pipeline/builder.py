@@ -8,7 +8,6 @@ dsl =
 from typing import Sequence
 
 from langgraph.graph import StateGraph, END, START
-from langgraph.pregel import CompiledGraph
 
 from agent.state import AgentState
 from pipeline.states import (
@@ -29,4 +28,4 @@ def create_pipeline():
     graph.add_edge(static_analysis, semantic_analysis)
     graph.add_edge(semantic_analysis, END)
 
-    return CompiledGraph(graph)
+    return graph.compile()

@@ -3,3 +3,4 @@ outputs
 .env
 
 **/**/catalog_distributions.csv
+__pycache__/
