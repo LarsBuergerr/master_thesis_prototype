@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+>
+  <dcat:Dataset rdf:about="https://opendata.schleswig-holstein.de/dataset/0b904d9a-c135-4aad-887d-51b6f171ab84">
+    <dct:title>Automatische Zählstelle Eckernf. (Kochendorf) 2007</dct:title>
+    <dct:description>Auf Deutschlands Autobahnen und außerörtlichen Bundesstraßen werden an automatischen Zählstellen alle Fahrzeuge permanent gezählt. Je nach eingesetztem Gerätetyp können bis zu neun Fahrzeugarten unterschieden werden.
+
+Die Daten werden von den Bundesländern erhoben und der BASt quartalsweise übermittelt. Auf dieser Basis werden Jahresfahrleistungen und durchschnittliche tägliche Verkehrsstärken (DTV) berechnet. Die Daten bilden eine wichtige Grundlage für verkehrs- oder bautechnische Entscheidungen und Maßnahmen
+
+
+Informationen zu den verwendeten Erfassungsarten und Abkürzungen:
+
+ -   [Erfassungsarten nach TLS (PDF)](https://www.bast.de/BASt_2017/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/pdf-dateien/erfassungsarten.pdf?__blob=publicationFile)
+ -   [Abkürzungen und CSV-Datensatzbeschreibung (PDF)](https://www.bast.de/BASt_2017/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/pdf-dateien/abkuerzungen.pdf?__blob=publicationFile)
+
+[Informationsseite zur Zählstelle](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/Aktuell/zaehl_aktuell_node.html?nn=1819516&amp;cms_detail=1179&amp;cms_map=0)</dct:description>
+    <dct:identifier rdf:resource="https://opendata.schleswig-holstein.de/dataset/automatische-zahlstelle-eckernf-kochendorf-2007"/>
+    <dcat:keyword>b76</dcat:keyword>
+    <dcat:keyword>bundesstraße</dcat:keyword>
+    <dcat:keyword>lkw</dcat:keyword>
+    <dcat:keyword>pkw</dcat:keyword>
+    <dcat:keyword>verkehrszählung</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-12-02T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-12-02T00:00:00</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TRAN"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.schleswig-holstein.de/organization/bast">
+        <foaf:name>Bundesanstalt für Straßenwesen (BASt) </foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="Ndaa9bcdd83164cc08f28debdcbc8a52b">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2007-01-01T00:00:00</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2007-12-31T00:00:00</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Nc84225467b2941f485facc0e436767a0">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT (9.8097 54.4852)</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.bast.de/videos/2007/zst1179.zip">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <dct:title>zst1179.zip</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.bast.de/videos/2007/zst1179.zip"/>
+        <dcat:downloadURL rdf:resource="https://www.bast.de/videos/2007/zst1179.zip"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-04-11T11:21:18.857292</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-04-11T11:21:18.857292</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">313311</dcat:byteSize>
+        <dcatde:licenseAttributionByText>Bundesanstalt für Straßenwesen (BASt)</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/schleswigHolstein"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+</rdf:RDF>

@@ -1,3 +1,5 @@
 .venv
 outputs
 .env
+
+**/**/catalog_distributions.csv

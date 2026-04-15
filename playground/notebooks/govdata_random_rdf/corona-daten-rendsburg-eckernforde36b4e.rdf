@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <dcat:Dataset rdf:about="https://opendata.schleswig-holstein.de/dataset/71eadeb6-224c-4902-a2e6-4d305d18b499">
+    <dct:title>Corona-Daten Rendsburg-Eckernförde</dct:title>
+    <dct:description>CORONA - Aktuelle Situation im Kreis Rendsburg-Eckernförde&#13;
+&#13;
+Pro Gemeinde sind folgende Daten verzeichnet:&#13;
+&#13;
+- Positiv Getestete gesamt 	&#13;
+- Aktuell Infizierte &#13;
+- Aktuell Infizierte pro 1.000 Einwohner&#13;
+- Genesene &#13;
+- Verstorbene&#13;
+&#13;
+Der Eintrag für eine Gemeinde sieht folgendermaßen aus:&#13;
+&#13;
+`'010585833054': { amount_pt: 2.699698269017, amount_t: 149, amount_i: 17, amount_d: 1, amount_h: 131 },`&#13;
+&#13;
+Als Schlüssel wird der [Regionalschlüssel](https://www.dcat-ap.de/def/politicalGeocoding/regionalKey/) verwendet. Die Properties enthalten folgende Daten:&#13;
+&#13;
+- `amount_pt` - Aktuell Infizierte pro 1.000 Einwohner&#13;
+- `amount_t` - Positiv Getestete gesamt&#13;
+- `amount_i` - Aktuell Infizierte &#13;
+- `amount_d` - Verstorbene&#13;
+- `amount_h` - Genesene&#13;
+&#13;
+Interaktiv und grafisch sind die Daten auf dem [Corona-Dashboard des Kreises](https://covid19dashboardrdeck.aco/) zu sehen.</dct:description>
+    <dct:identifier>43956273-ccb1-48e1-a22e-244b143021b0</dct:identifier>
+    <dcat:keyword>corona</dcat:keyword>
+    <dcat:keyword>covid-19</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-01-10T04:03:05.364597</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-01-10T04:03:05.364597</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/HEAL"/>
+    <dct:isVersionOf rdf:resource="https://opendata.schleswig-holstein.de/dataset/f1bfb6ac-6ca9-426d-880c-e7a1257bb0d1"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.schleswig-holstein.de/organization/rendsburg-eckernforde">
+        <foaf:name>Kreis Rendsburg-Eckernförde</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="Nf4df425cd5f9485fbc6f3910006cc602">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-01-09T04:03:05.633032</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-01-10T04:03:05.364597</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:about="http://dcat-ap.de/def/politicalGeocoding/districtKey/01058">
+        <skos:prefLabel>Kreis Rendsburg-Eckernförde</skos:prefLabel>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/71eadeb6-224c-4902-a2e6-4d305d18b499/resource/971e94d9-3348-4352-b29c-82812d540acd">
+        <dct:title>daten.json</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/71eadeb6-224c-4902-a2e6-4d305d18b499/resource/971e94d9-3348-4352-b29c-82812d540acd/download/daten.json"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/71eadeb6-224c-4902-a2e6-4d305d18b499/resource/971e94d9-3348-4352-b29c-82812d540acd/download/daten.json"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/json"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-01-10T03:03:06.221000</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-01-10T03:03:06.175568</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">18167</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N9d066a812ce24ccc895c37f2ceae84ad">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">642f382cb788c71a068bbd68614d72ea</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Kreis Rendsburg-Eckernförde</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/schleswigHolstein"/>
+  </dcat:Dataset>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/json"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/cc-by/4.0">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/71eadeb6-224c-4902-a2e6-4d305d18b499/resource/971e94d9-3348-4352-b29c-82812d540acd/download/daten.json"/>
+  <spdx:ChecksumAlgorithm rdf:about="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+</rdf:RDF>

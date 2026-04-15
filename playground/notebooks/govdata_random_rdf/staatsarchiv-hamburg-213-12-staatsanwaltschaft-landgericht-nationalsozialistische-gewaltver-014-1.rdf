@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+>
+  <dcat:Dataset rdf:about="http://suche.transparenz.hamburg.de/dataset/3a9c0830-efae-43a8-a9a0-3bd1135607d0">
+    <dct:title>Staatsarchiv Hamburg, 213-12 Staatsanwaltschaft Landgericht – Nationalsozialistische Gewaltverbrechen (NSG), Nr. 0071 Band 014</dct:title>
+    <dct:description>213-12 Nr. 0071 Band 014: Hauptakte, Band 14: Hahn, Ludwig Hermann Karl, Dr. iur., u.a., wegen Befehl und Weitergabe zur Erschießung von mindestens 2000 polnischen Zivilpersonen, 1944-1977</dct:description>
+    <dct:identifier>ELDORADO_:4b08aef7-c6e3-4f84-892c-8739a8d8b8cb</dct:identifier>
+    <owl:versionInfo>1.0</owl:versionInfo>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/NEVER"/>
+    </dct:accrualPeriodicity>
+    <dcat:keyword>213-12</dcat:keyword>
+    <dcat:keyword>213-12_0071-band-014</dcat:keyword>
+    <dcat:keyword>nr.-0071-band-014</dcat:keyword>
+    <dcat:keyword>staatsarchiv-hamburg</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-19T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-16T17:27:13.955422</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/EDUC"/>
+    <dct:conformsTo>
+      <dct:Standard rdf:about="http://dcat-ap.de/def/dcatde/1.0/"/>
+    </dct:conformsTo>
+    <foaf:page>
+      <foaf:Document rdf:about="http://suche.transparenz.hamburg.de/dataset/staatsarchiv-hamburg-213-12-staatsanwaltschaft-landgericht-nationalsozialistische-gewaltver-0147"/>
+    </foaf:page>
+    <dct:source rdf:resource="https://transparenz.hamburg.de"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Nc9177c76d9054cccaafaada6c7398324">
+        <vcard:fn>Fachliche Leitstelle Transparenzportal</vcard:fn>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N05cad571c39a4a769aa9538f2542eb03">
+        <foaf:name>Behörde für Kultur und Medien</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:creator>
+      <foaf:Agent rdf:nodeID="N31a68744aa8f4daaa08e17f35a5dcf1f">
+        <foaf:name>Behörde für Kultur und Medien</foaf:name>
+      </foaf:Agent>
+    </dct:creator>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="Nb1005e4348054829a567ba685a8a66f0">
+        <foaf:name>Behörde für Kultur und Medien</foaf:name>
+      </foaf:Organization>
+    </dct:creator>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://www.govdata.de/dl-de/by-2-0"/>
+    </dct:accessRights>
+    <dct:provenance>
+      <dct:ProvenanceStatement rdf:nodeID="N8ea2774e267e4c67bfd4eeca24be5c09">
+        <rdfs:label>Der Datensatz wurde geharvestet. Ursprung: Dokumente, Datensätze und Anwendungen aus dem Veröffentlichungsworkflow der öffentlichen Verwaltung</rdfs:label>
+      </dct:ProvenanceStatement>
+    </dct:provenance>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/3a9c0830-efae-43a8-a9a0-3bd1135607d0/resource/3caddf8e-cbdf-419a-bdfb-cdfae2e0f104">
+        <dct:title>Upload: 213-12_0071_Band 014</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://daten.transparenz.hamburg.de/Dataport.HmbTG.ZS.Webservice.GetRessource100/GetRessource100.svc/e965c7b6-9393-48d8-8ca9-c6d9e1225973/Upload__213-12_0071_Band_014.zip"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format>ZIP</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-19T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-08-16T17:27:13.955422</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">33585575</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N0bd639b58d414c1aa233ac1b793ba959">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">33585575</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Namensnennung: Freie und Hansestadt Hamburg</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/level/state"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/transparenzportalHamburg"/>
+    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+    <dcatde:legalBasis>Hamburgisches Transparenzgesetz (HmbTG). URL: http://transparenz.hamburg.de/das-hmbtg/ Gesetzestext: http://transparenz.hamburg.de/contentblob/4318588/c8600b2b27ea31a5de6a92dacc138894/data/gesetzestext-hmbtg.pdf</dcatde:legalBasis>
+    <dcatde:geocodingDescription>Freie und Hansestadt Hamburg</dcatde:geocodingDescription>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N1cb2f1e6bc7745d4ab77cab0ba610940">
+        <locn:adminUnitL2 rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+      </dct:Location>
+    </dct:spatial>
+    <dcatde:originator>
+      <foaf:Organization rdf:nodeID="N19f5b54589d949c294e7f30e6f5cb6ff">
+        <foaf:name>Behörde für Kultur und Medien</foaf:name>
+      </foaf:Organization>
+    </dcatde:originator>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="N76a89799672f48ca9f305a1c88e88a00">
+        <foaf:name>Fachliche Leitstelle Transparenzportal</foaf:name>
+      </foaf:Organization>
+    </dcatde:maintainer>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://daten.transparenz.hamburg.de/Dataport.HmbTG.ZS.Webservice.GetRessource100/GetRessource100.svc/e965c7b6-9393-48d8-8ca9-c6d9e1225973/Upload__213-12_0071_Band_014.zip"/>
+</rdf:RDF>
