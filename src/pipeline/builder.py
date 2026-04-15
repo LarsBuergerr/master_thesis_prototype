@@ -21,11 +21,11 @@ def create_pipeline():
     graph = StateGraph(AgentState)
 
     graph.add_node(load_data, name="load_data")
-    graph.add_edge(START, load_data)
+    graph.add_edge(START, "load_data")
     graph.add_node(static_analysis, name="static_analysis")
-    graph.add_edge(load_data, static_analysis)
+    graph.add_edge("load_data", "static_analysis")
     graph.add_node(semantic_analysis, name="semantic_analysis")
-    graph.add_edge(static_analysis, semantic_analysis)
-    graph.add_edge(semantic_analysis, END)
+    graph.add_edge("static_analysis", "semantic_analysis")
+    graph.add_edge("semantic_analysis", END)
 
     return graph.compile()

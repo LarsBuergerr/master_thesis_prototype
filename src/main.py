@@ -1,5 +1,9 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 import hydra
 from omegaconf import DictConfig, OmegaConf
@@ -33,7 +37,10 @@ def create_llm(cfg: DictConfig) -> ChatOpenAI:
 
     api_key = os.environ.get("OPENROUTER_API_KEY")
     if not api_key:
-        raise ValueError("OPENROUTER_API_KEY environment variable must be set")
+        raise ValueError(
+            "OPENROUTER_API_KEY environment variable must be set. "
+            "Create a .env file in the project root with: OPENROUTER_API_KEY=your-key"
+        )
 
     return ChatOpenAI(
         model=model,
