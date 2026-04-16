@@ -1,0 +1,257 @@
+{
+  "@context": {
+    "adms": "http://www.w3.org/ns/adms#",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "cnt": "http://www.w3.org/2011/content#",
+    "cr": "http://mlcommons.org/croissant/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcatap": "http://data.europa.eu/r5r/",
+    "dcatde": "http://dcat-ap.de/def/dcatde/",
+    "dcatus": "http://resources.data.gov/ontology/dcat-us#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dct": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "gsp": "http://www.opengis.net/ont/geosparql#",
+    "locn": "http://www.w3.org/ns/locn#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "schema1": "http://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "spdx": "http://spdx.org/rdf/terms#",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "time1": "http://www.w3.org/2006/time",
+    "vann": "http://purl.org/vocab/vann/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://ckan.open.nrw.de/dataset/09da449e-bfa0-458c-9a2f-819d8c0d380b/resource/d15cd1b2-342f-4b77-8960-253f3dd3c9cc",
+      "@type": "dcat:Distribution",
+      "dcat:accessURL": {
+        "@id": "https://offenedaten.aachen.de/dataset/d09d1a37-551c-45de-a9e4-f0c1cca2c7d2/resource/d15cd1b2-342f-4b77-8960-253f3dd3c9cc/download/2022_november.xlsx"
+      },
+      "dcat:byteSize": {
+        "@type": "xsd:decimal",
+        "@value": "15310"
+      },
+      "dcat:mediaType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "dct:description": "-",
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/XLSX"
+      },
+      "dct:issued": {
+        "@type": "xsd:dateTime",
+        "@value": "2023-01-27T11:27:48.500374"
+      },
+      "dct:license": {
+        "@id": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      },
+      "dct:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2023-01-27T11:27:48.432412"
+      },
+      "dct:title": "November 2022"
+    },
+    {
+      "@id": "https://ckan.open.nrw.de/dataset/09da449e-bfa0-458c-9a2f-819d8c0d380b/resource/2808af54-b8d4-481e-a6b9-277076c9bda5",
+      "@type": "dcat:Distribution",
+      "dcat:accessURL": {
+        "@id": "https://offenedaten.aachen.de/dataset/d09d1a37-551c-45de-a9e4-f0c1cca2c7d2/resource/2808af54-b8d4-481e-a6b9-277076c9bda5/download/2022_dezember.xlsx"
+      },
+      "dcat:byteSize": {
+        "@type": "xsd:decimal",
+        "@value": "13402"
+      },
+      "dcat:mediaType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "dct:description": "-",
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/XLSX"
+      },
+      "dct:issued": {
+        "@type": "xsd:dateTime",
+        "@value": "2023-01-27T11:28:19.133025"
+      },
+      "dct:license": {
+        "@id": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      },
+      "dct:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2023-01-27T11:28:19.095143"
+      },
+      "dct:title": "Dezember 2022"
+    },
+    {
+      "@id": "http://dcat-ap.de/def/licenses/dl-by-de/2.0",
+      "@type": "dct:LicenseDocument",
+      "dct:type": {
+        "@id": "http://purl.org/adms/licencetype/UnknownIPR"
+      }
+    },
+    {
+      "@id": "https://offenedaten.aachen.de/dataset/d09d1a37-551c-45de-a9e4-f0c1cca2c7d2/resource/2808af54-b8d4-481e-a6b9-277076c9bda5/download/2022_dezember.xlsx",
+      "@type": "rdfs:Resource"
+    },
+    {
+      "@id": "https://offenedaten.aachen.de/dataset/d09d1a37-551c-45de-a9e4-f0c1cca2c7d2/resource/da12e832-7352-477b-b1c8-d0c93a2ddaa0/download/2022_oktober.xlsx",
+      "@type": "rdfs:Resource"
+    },
+    {
+      "@id": "https://offenedaten.aachen.de/dataset/d09d1a37-551c-45de-a9e4-f0c1cca2c7d2/resource/d15cd1b2-342f-4b77-8960-253f3dd3c9cc/download/2022_november.xlsx",
+      "@type": "rdfs:Resource"
+    },
+    {
+      "@id": "http://publications.europa.eu/resource/authority/file-type/XLSX",
+      "@type": "dct:MediaTypeOrExtent"
+    },
+    {
+      "@id": "https://ckan.open.nrw.de/organization/81f54baa-27e6-4efa-be13-b75bf7279c68",
+      "@type": "foaf:Agent"
+    },
+    {
+      "@id": "https://ckan.open.nrw.de/dataset/09da449e-bfa0-458c-9a2f-819d8c0d380b",
+      "@type": "dcat:Dataset",
+      "adms:identifier": [
+        "d09d1a37-551c-45de-a9e4-f0c1cca2c7d2",
+        "N31e21ba9905b4f7d9dfdff08d7b15948",
+        "Nd6d1d03de87f4fadba9aea622e40cd72"
+      ],
+      "dcat:contactPoint": {
+        "@id": "_:N60f2fbba5f05404db7a358ea860bdc90"
+      },
+      "dcat:distribution": [
+        {
+          "@id": "https://ckan.open.nrw.de/dataset/09da449e-bfa0-458c-9a2f-819d8c0d380b/resource/2808af54-b8d4-481e-a6b9-277076c9bda5"
+        },
+        {
+          "@id": "https://ckan.open.nrw.de/dataset/09da449e-bfa0-458c-9a2f-819d8c0d380b/resource/da12e832-7352-477b-b1c8-d0c93a2ddaa0"
+        },
+        {
+          "@id": "https://ckan.open.nrw.de/dataset/09da449e-bfa0-458c-9a2f-819d8c0d380b/resource/d15cd1b2-342f-4b77-8960-253f3dd3c9cc"
+        }
+      ],
+      "dcat:keyword": [
+        "ordnung",
+        "knöllchen",
+        "sicherheit",
+        "geschwindigkeitskontrollen",
+        "geschwindigkeitsmessungen",
+        "straßenverkehr"
+      ],
+      "dcat:theme": [
+        {
+          "@id": "http://publications.europa.eu/resource/authority/data-theme/TRAN"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+        }
+      ],
+      "dcatde:contributorID": [
+        {
+          "@id": "http://dcat-ap.de/def/contributors/openNRW"
+        },
+        {
+          "@id": "http://dcat-ap.de/def/contributors/mobilithek"
+        },
+        {
+          "@id": "http://offenedaten.aachen.de"
+        }
+      ],
+      "dcatde:maintainer": {
+        "@id": "_:Nff237cb296b147aa8e3db8fa661eb6d8"
+      },
+      "dct:creator": [
+        {
+          "@id": "_:Nb97b50633d9848be9607d778b842d58a"
+        },
+        {
+          "@id": "_:N7204bb0628604b0f9cff306fdfca1e92"
+        }
+      ],
+      "dct:description": "Zu hohe Geschwindigkeit ist sehr häufig die Ursache für Unfälle auf Aachens Straßen. Daher ist der Fachbereich Sicherheit und Ordnung regelmäßig mit zwei mobilen Messgeräten unterwegs, um an besonderen Gefahrenstellen die Geschwindigkeit zu kontrollieren. Die städtische Verkehrsüberwachung des fließenden Verkehrs unterliegt anders als die Überwachung durch die Polizei strengen gesetzlichen Anforderungen aus § 48 des Ordnungsbehördengesetzes, die im wesentlichen eine Überwachung nur an \"Gefahrenstellen\" zulassen. Die Stadt führt aufgrund dieser Vorgaben und im engen Benehmen mit der Polizei im Rahmen der Verkehrsunfallprävention derzeit an ca. 130 Stellen im Stadtgebiet Geschwindigkeitskontrollen durch. In den vergangenen drei Monaten wurden auf folgenden Straßen Geschwindigkeitskontrollen durchgeführt:",
+      "dct:identifier": "d09d1a37-551c-45de-a9e4-f0c1cca2c7d2",
+      "dct:issued": {
+        "@type": "xsd:dateTime",
+        "@value": "2022-02-09T09:15:18+02:00"
+      },
+      "dct:modified": "2022-02-09T+09:15:35+02:00",
+      "dct:publisher": {
+        "@id": "https://ckan.open.nrw.de/organization/81f54baa-27e6-4efa-be13-b75bf7279c68"
+      },
+      "dct:title": "Geschwindigkeitskontrollen der Stadt Aachen 2022"
+    },
+    {
+      "@id": "_:Nb97b50633d9848be9607d778b842d58a",
+      "@type": "foaf:Agent",
+      "foaf:mbox": "ordnungsamt@mail.aachen.de",
+      "foaf:name": "Fachbereich Sicherheit und Ordnung (FB32)"
+    },
+    {
+      "@id": "_:N7204bb0628604b0f9cff306fdfca1e92",
+      "@type": "foaf:Organization",
+      "foaf:mbox": "ordnungsamt@mail.aachen.de",
+      "foaf:name": "Fachbereich Sicherheit und Ordnung (FB32)"
+    },
+    {
+      "@id": "_:Nff237cb296b147aa8e3db8fa661eb6d8",
+      "@type": "foaf:Organization",
+      "foaf:mbox": "offenedaten@mail.aachen.de",
+      "foaf:name": "IUK"
+    },
+    {
+      "@id": "_:N60f2fbba5f05404db7a358ea860bdc90",
+      "@type": "vcard:Organization",
+      "vcard:fn": "IUK",
+      "vcard:hasEmail": {
+        "@id": "mailto:offenedaten@mail.aachen.de"
+      }
+    },
+    {
+      "@id": "https://ckan.open.nrw.de/dataset/09da449e-bfa0-458c-9a2f-819d8c0d380b/resource/da12e832-7352-477b-b1c8-d0c93a2ddaa0",
+      "@type": "dcat:Distribution",
+      "dcat:accessURL": {
+        "@id": "https://offenedaten.aachen.de/dataset/d09d1a37-551c-45de-a9e4-f0c1cca2c7d2/resource/da12e832-7352-477b-b1c8-d0c93a2ddaa0/download/2022_oktober.xlsx"
+      },
+      "dcat:byteSize": {
+        "@type": "xsd:decimal",
+        "@value": "14230"
+      },
+      "dcat:mediaType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "dct:description": "-",
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/XLSX"
+      },
+      "dct:issued": {
+        "@type": "xsd:dateTime",
+        "@value": "2022-11-21T14:43:06.110466"
+      },
+      "dct:license": {
+        "@id": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      },
+      "dct:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2022-11-21T14:43:06.044656"
+      },
+      "dct:title": "Oktober 2022"
+    }
+  ]
+}

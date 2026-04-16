@@ -12,8 +12,13 @@ dataset_path: "dataset.csv"
 # Language configuration
 language: "de" # Options: "de", "en"
 
-# LLM Model configuration
+# Pipeline configuration
+pipeline:
+  load_data: true
+  static_analysis: true
+  semantic_analysis: false
 
+# LLM Model configuration
 llm:
   model: "anthropic/claude-sonnet-4.5" # Options from LLMModel enum
   temperature: 0.0

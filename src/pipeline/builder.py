@@ -2,30 +2,48 @@
 
 This module creates a LangGraph state machine that orchestrates the
 pipeline states (load_data, normalize_data, static_analysis, semantic_analysis).
-dsl = 
+dsl =
 """
 
-from typing import Sequence
-
-from langgraph.graph import StateGraph, END, START
+from langgraph.graph import END, START, StateGraph
+from omegaconf import DictConfig
 
 from agent.state import AgentState
 from pipeline.states import (
     load_data,
-    static_analysis,
     semantic_analysis,
+    static_analysis,
 )
 
 
-def create_pipeline():
+def create_pipeline(cfg: DictConfig):
     graph = StateGraph(AgentState)
 
-    graph.add_node(load_data, name="load_data")
-    graph.add_edge(START, "load_data")
-    graph.add_node(static_analysis, name="static_analysis")
-    graph.add_edge("load_data", "static_analysis")
-    graph.add_node(semantic_analysis, name="semantic_analysis")
-    graph.add_edge("static_analysis", "semantic_analysis")
-    graph.add_edge("semantic_analysis", END)
+    steps = [
+        ("load_data", load_data, cfg.state.pipeline.get("load_data", True)),
+        (
+            "static_analysis",
+            static_analysis,
+            cfg.state.pipeline.get("static_analysis", True),
+        ),
+        (
+            "semantic_analysis",
+            semantic_analysis,
+            cfg.state.pipeline.get("semantic_analysis", True),
+        ),
+    ]
+
+    enabled_steps = [(name, fn) for name, fn, enabled in steps if enabled]
+
+    if not enabled_steps:
+        raise ValueError("At least one pipeline step must be enabled.")
+
+    previous = START
+    for name, fn in enabled_steps:
+        graph.add_node(name, fn)
+        graph.add_edge(previous, name)
+        previous = name
+
+    graph.add_edge(previous, END)
 
     return graph.compile()

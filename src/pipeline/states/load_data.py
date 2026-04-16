@@ -28,6 +28,21 @@ def load_data(state: AgentState) -> AgentState:
         - metadata: loaded metadata (rdflib Graph or similar)
         - current_step: "load_data"
     """
-    logger.info("Loading data...")
+    metadata_path = state.get("metadata_path")
+    dataset_path = state.get("dataset_path")
+
+    if metadata_path:
+        try:
+            g = rdflib.Graph()
+            g.parse(metadata_path, format=rdflib.util.guess_format(metadata_path))
+            state["metadata"] = g
+            logger.info(f"Loaded metadata from {metadata_path}")
+        except Exception as e:
+            error_msg = f"Failed to load metadata from {metadata_path}: {e}"
+            logger.error(error_msg)
+            state["errors"].append(error_msg)
+
+    for triple in state.get("metadata"):
+        print(triple)
 
     return state

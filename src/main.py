@@ -148,7 +148,7 @@ def main(cfg: DictConfig) -> None:
 
     llm = create_llm(cfg)
     base_state = create_agent_state(cfg, llm)
-    pipeline = create_pipeline()
+    pipeline = create_pipeline(cfg)
 
     logger.info(f"Data directory: {base_state.get('directory_path')}")
 
