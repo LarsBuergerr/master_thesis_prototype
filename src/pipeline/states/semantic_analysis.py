@@ -4,10 +4,29 @@ This state performs semantic analysis on the dataset and metadata using LLM.
 """
 
 from typing import TYPE_CHECKING, Optional
+from pydantic import BaseModel, Field
+from langchain.agents import create_agent
+from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from utils.logger import get_logger
 from agent.prompt import Prompt
 
 logger = get_logger(__name__)
+
+
+class SemanticAnalysisResult(BaseModel):
+    """Pydantic DTO for semantic analysis results."""
+
+    summary: str = Field(description="Brief summary of the dataset and its purpose")
+    key_columns: list[str] = Field(
+        description="List of important columns and their meaning"
+    )
+    potential_issues: list[str] = Field(
+        description="Potential data quality issues identified"
+    )
+    recommendations: list[str] = Field(
+        description="Recommendations for improving data quality"
+    )
+
 
 if TYPE_CHECKING:
     from agent.state import AgentState
@@ -36,7 +55,7 @@ prompt: Prompt = Prompt(
 )
 
 
-def semantic_analysis(state: AgentState, llm=None) -> AgentState:
+def semantic_analysis(state: AgentState) -> AgentState:
     """Perform semantic analysis on the dataset and metadata.
 
     This uses an optional LLM to provide deeper semantic insights about the data.
@@ -57,7 +76,19 @@ def semantic_analysis(state: AgentState, llm=None) -> AgentState:
         metadata_path=state.get("metadata_path"),
     )
 
-    logger.debug(f"Semantic analysis prompt: {semantic_analysis_user_prompt}")
+    semantic_analysis_user_message = HumanMessage(content=semantic_analysis_user_prompt)
+
+    llm_agent = create_agent(
+        model=state.get("llm"),
+        response_format=SemanticAnalysisResult,
+        system_prompt="Du bist ein Experte im Bereich Open Data und Datenanalyse. Du bist ein Experte darin, die Qualität von Datensätzen zu bewerten und Verbesserungsvorschläge zu machen.",
+    )
+
+    llm_response = llm_agent.invoke({"messages": [semantic_analysis_user_message]})
+
+    state["result"]["semantic_analysis_results"] = llm_response
+
+    logger.debug(f"Semantic analysis response: {state.get('result')}")
 
     logger.info("Performing semantic analysis...")
     return state
