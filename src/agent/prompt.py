@@ -1,4 +1,4 @@
-from src.utils.enums import Language
+from utils.enums.language import Language
 
 
 class Prompt:

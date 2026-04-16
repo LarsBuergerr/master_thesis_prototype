@@ -6,6 +6,9 @@ This state handles loading the metadata RDF file and the dataset CSV file.
 import rdflib
 from pathlib import Path
 from typing import TYPE_CHECKING
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 if TYPE_CHECKING:
     from agent.state import AgentState
@@ -25,8 +28,6 @@ def load_data(state: AgentState) -> AgentState:
         - metadata: loaded metadata (rdflib Graph or similar)
         - current_step: "load_data"
     """
-    
-
-    print("Loading data...")
+    logger.info("Loading data...")
 
     return state

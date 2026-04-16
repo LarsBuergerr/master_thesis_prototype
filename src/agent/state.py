@@ -40,9 +40,8 @@ class AgentState(TypedDict):
         self.result = {}
         self.errors = []
 
-
     def __getitem__(self, key):
         return super().__getitem__(key)
-    
+
     def __setitem__(self, key, value):
         super().__setitem__(key, value)

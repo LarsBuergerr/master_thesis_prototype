@@ -4,6 +4,9 @@ This state performs static analysis on the dataset and metadata.
 """
 
 from typing import TYPE_CHECKING
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 if TYPE_CHECKING:
     from agent.state import AgentState
@@ -22,5 +25,5 @@ def static_analysis(state: AgentState) -> AgentState:
         - static_analysis_results: dict with analysis results
         - current_step: "static_analysis"
     """
-    print("Performing static analysis...")
+    logger.info("Performing static analysis...")
     return state
