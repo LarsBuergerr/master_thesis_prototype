@@ -16,13 +16,13 @@ language: "de" # Options: "de", "en"
 pipeline:
   load_data: true
   static_analysis: true
-  semantic_analysis: false
+  semantic_analysis: true
 
 # LLM Model configuration
 llm:
   model: "anthropic/claude-sonnet-4.5" # Options from LLMModel enum
   temperature: 0.0
-  max_tokens: 2048
+  max_tokens: 50000
 
 # Logging configuration
 logging:

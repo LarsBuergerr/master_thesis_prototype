@@ -1,0 +1,526 @@
+{
+  "overall_summary": "Die Metadaten beschreiben einen statistischen Datensatz zu Lebendgeborenen in der Gemeinde Haibach, bereitgestellt vom Bayerischen Landesamt für Statistik. Titel und Beschreibung sind vorhanden, aber sehr knapp und wenig aussagekräftig. Die Beschreibung wiederholt lediglich die Dimensionen ohne inhaltliche Kontextualisierung. Tags sind relevant, aber inkonsistent formatiert (teilweise sehr lang). Vier Distributionen in verschiedenen Formaten sind verfügbar, jedoch weisen die Distributionsdaten Zukunftsdaten (2026) auf, was auf Fehler oder Platzhalter hindeutet. Der Medientyp „text/xlsx\" ist nicht standardkonform (korrekt wäre „application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\"). Lizenz (CC-BY 4.0) ist klar, aber als „UnknownIPR\" typisiert, was widersprüchlich ist. Räumliche Einordnung (Gemeinde) ist vorhanden, zeitliche Abdeckung fehlt vollständig. Kontaktangaben sind vorhanden, aber die E-Mail-Adresse ist fehlerhaft (URL statt Mailadresse). Insgesamt sind die Metadaten strukturell vorhanden, aber semantisch schwach und mit mehreren technischen Inkonsistenzen behaftet, die die Nachnutzbarkeit und Vertrauenswürdigkeit beeinträchtigen.",
+  "score_table": {
+    "auffindbarkeit": 62.0,
+    "zugaenglichkeit": 70.0,
+    "interoperabilitaet": 68.0,
+    "nachnutzbarkeit": 42.0,
+    "kontextualitaet": 8.0,
+    "gesamt": 250.0,
+    "bewertungsband": "Good"
+  },
+  "detailed_scoring": [
+    {
+      "name": "Auffindbarkeit",
+      "score": 62.0,
+      "max_score": 100.0,
+      "summary": "Titel und Beschreibung sind vorhanden, aber semantisch schwach. Der Titel ist knapp und wenig aussagekräftig, die Beschreibung wiederholt nur Dimensionen ohne inhaltliche Tiefe. Tags sind relevant, aber inkonsistent formatiert. Thema ist zugeordnet, zeitliche Abdeckung fehlt vollständig. Identifier und Metadaten-Zeitstempel sind vorhanden.",
+      "criteria": [
+        {
+          "name": "Titel",
+          "score": 12.0,
+          "max_score": 20.0,
+          "findings": [
+            "Titel vorhanden: 'Haibach: Lebendgeborene'",
+            "Titel ist knapp und technisch korrekt",
+            "Titel nennt Ort und Thema, aber ohne zeitliche Einordnung oder weitere Kontextualisierung",
+            "Keine unnötigen Abkürzungen"
+          ],
+          "deduction_reasons": [
+            "Titel ist wenig beschreibend und bietet kaum inhaltlichen Kontext",
+            "Keine Angabe zum Zeitraum oder zur Art der Statistik (z. B. Zeitreihe, Einzeljahr)"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Beschreibung",
+          "score": 10.0,
+          "max_score": 25.0,
+          "findings": [
+            "Beschreibung vorhanden: 'Lebendgeborene: Gemeinden, Lebendgeborene, Geschlecht, Jahr'",
+            "Beschreibung listet Dimensionen auf",
+            "Passt formal zum Titel"
+          ],
+          "deduction_reasons": [
+            "Beschreibung ist rein technisch und bietet keine inhaltliche Erklärung",
+            "Keine Angaben zu Zweck, Erhebungsmethode, Datenquelle oder Nutzungskontext",
+            "Wiederholung des Begriffs 'Lebendgeborene' ohne Mehrwert",
+            "Keine zeitliche Einordnung (z. B. Zeitraum der Daten)"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Tags/Schlüsselwörter",
+          "score": 15.0,
+          "max_score": 20.0,
+          "findings": [
+            "8 Tags vorhanden",
+            "Tags sind thematisch relevant: berichtsjahr, geschlecht, lebendgeborene, haibach, statistik-der-geburten, männlich, weiblich",
+            "Tags decken Dimensionen und Thema ab"
+          ],
+          "deduction_reasons": [
+            "Inkonsistente Formatierung: 'gemeinden-bayerns-einschl.-gemeindefreie-gebiete' ist sehr lang und unhandlich",
+            "Keine Nutzung kontrollierter Vokabulare erkennbar",
+            "Tags teilweise redundant zu Titel und Beschreibung"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Thema/Kategorie",
+          "score": 15.0,
+          "max_score": 15.0,
+          "findings": [
+            "Thema zugeordnet: SOCI (Bevölkerung und Gesellschaft)",
+            "Thema passt zum Inhalt (Geburtenstatistik)"
+          ],
+          "deduction_reasons": [],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Zeitliche Abdeckung",
+          "score": 0.0,
+          "max_score": 10.0,
+          "findings": ["Keine zeitliche Abdeckung (dct:temporal) angegeben"],
+          "deduction_reasons": [
+            "Für eine Geburtenstatistik ist die zeitliche Abdeckung essenziell",
+            "Tags erwähnen 'berichtsjahr' und 'Jahr', aber keine konkreten Zeiträume in den Metadaten"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Räumliche Abdeckung",
+          "score": 10.0,
+          "max_score": 10.0,
+          "findings": [
+            "Räumliche Ebene angegeben: Gemeinde (dcatde:politicalGeocodingLevelURI)",
+            "Gemeinde 'Haibach' im Titel genannt",
+            "Regionalschlüssel in den Distributionen enthalten (09671124)"
+          ],
+          "deduction_reasons": [],
+          "context_sensitive_deductions": []
+        }
+      ],
+      "category_level_context_checks": [
+        "Titel und Beschreibung sind konsistent, aber beide semantisch schwach",
+        "Tags passen zum Thema, aber Formatierung ist inkonsistent",
+        "Fehlende zeitliche Abdeckung beeinträchtigt Auffindbarkeit erheblich"
+      ]
+    },
+    {
+      "name": "Zugänglichkeit",
+      "score": 70.0,
+      "max_score": 100.0,
+      "summary": "Vier Distributionen in verschiedenen Formaten (XLSX, CSV, XML, Flat CSV) sind vorhanden, alle mit AccessURL und Lizenz (CC-BY 4.0). Lizenz ist maschinenlesbar, aber als 'UnknownIPR' typisiert, was widersprüchlich ist. Distributionsdaten weisen Zukunftsdaten (2026) auf, was auf Fehler oder Platzhalter hindeutet und die Vertrauenswürdigkeit beeinträchtigt. Keine DownloadURL, nur AccessURL. Sprache ist angegeben (Deutsch).",
+      "criteria": [
+        {
+          "name": "Zugangs-URL",
+          "score": 20.0,
+          "max_score": 25.0,
+          "findings": [
+            "Alle vier Distributionen haben AccessURL",
+            "URLs verweisen auf Genesis-Online-System des Bayerischen Landesamts für Statistik",
+            "URLs enthalten Parameter für Format, Regionalschlüssel und Code"
+          ],
+          "deduction_reasons": [
+            "Keine DownloadURL angegeben, nur AccessURL (AccessURL kann auch auf Landingpage verweisen)",
+            "Nicht validiert, ob URLs tatsächlich funktionieren"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Lizenz",
+          "score": 18.0,
+          "max_score": 25.0,
+          "findings": [
+            "Lizenz vorhanden: CC-BY 4.0",
+            "Lizenz ist maschinenlesbar (URI)",
+            "Lizenz ist für alle Distributionen angegeben"
+          ],
+          "deduction_reasons": [
+            "Lizenz ist als 'UnknownIPR' typisiert, was widersprüchlich zu CC-BY 4.0 ist",
+            "Inkonsistenz zwischen Lizenz-URI und Lizenztyp"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Format und Medientyp",
+          "score": 15.0,
+          "max_score": 25.0,
+          "findings": [
+            "Vier Formate verfügbar: XLSX, CSV, XML, Flat CSV",
+            "Format (dct:format) und Medientyp (dcat:mediaType) sind für alle Distributionen angegeben"
+          ],
+          "deduction_reasons": [
+            "Medientyp 'text/xlsx' ist nicht standardkonform (korrekt: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')",
+            "Inkonsistenz zwischen dct:format (xls) und tatsächlichem Format (xlsx) bei erster Distribution",
+            "Medientyp 'text/xml' ist unüblich, üblicher wäre 'application/xml'"
+          ],
+          "context_sensitive_deductions": [
+            "Format und Medientyp passen nicht vollständig zusammen (XLSX vs. XLS)"
+          ]
+        },
+        {
+          "name": "Sprache",
+          "score": 10.0,
+          "max_score": 10.0,
+          "findings": [
+            "Sprache angegeben: Deutsch (DEU)",
+            "Sprache ist für alle Distributionen angegeben"
+          ],
+          "deduction_reasons": [],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Aktualität und Verfügbarkeit",
+          "score": 7.0,
+          "max_score": 15.0,
+          "findings": [
+            "Issued- und Modified-Daten für Distributionen vorhanden",
+            "Dataset issued: 2024-02-14, modified: 2024-02-14"
+          ],
+          "deduction_reasons": [
+            "Distributionen haben Issued- und Modified-Daten in der Zukunft (2026-02-14, 2026-04-09)",
+            "Zukunftsdaten deuten auf Fehler, Platzhalter oder Testdaten hin",
+            "Beeinträchtigt Vertrauenswürdigkeit und Nachvollziehbarkeit"
+          ],
+          "context_sensitive_deductions": [
+            "Inkonsistenz zwischen Dataset-Daten (2024) und Distributions-Daten (2026)"
+          ]
+        }
+      ],
+      "category_level_context_checks": [
+        "Lizenz ist vorhanden, aber Typisierung ist widersprüchlich",
+        "Format und Medientyp weisen technische Inkonsistenzen auf",
+        "Zukunftsdaten bei Distributionen beeinträchtigen Glaubwürdigkeit"
+      ]
+    },
+    {
+      "name": "Interoperabilität",
+      "score": 68.0,
+      "max_score": 110.0,
+      "summary": "Metadaten sind in RDF/DCAT-AP.de strukturiert und nutzen etablierte Vokabulare (DCAT, DCT, FOAF, VCARD). Identifier ist vorhanden. Thema nutzt EU-Vokabular. Format-URIs sind angegeben, aber teilweise inkonsistent. Medientypen sind teilweise nicht standardkonform. Keine strukturierten räumlichen oder zeitlichen Angaben (nur politicalGeocodingLevel). Relationen zu anderen Ressourcen sind vorhanden, aber nicht näher spezifiziert.",
+      "criteria": [
+        {
+          "name": "Standardkonformität (DCAT-AP)",
+          "score": 25.0,
+          "max_score": 30.0,
+          "findings": [
+            "Metadaten in RDF/XML, DCAT-AP.de-konform strukturiert",
+            "Nutzung etablierter Namespaces: dcat, dct, foaf, vcard, dcatde",
+            "Pflichtfelder vorhanden: Titel, Beschreibung, Identifier"
+          ],
+          "deduction_reasons": [
+            "Medientyp 'text/xlsx' ist nicht IANA-konform",
+            "Lizenztyp 'UnknownIPR' widerspricht der angegebenen Lizenz CC-BY 4.0"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Kontrollierte Vokabulare",
+          "score": 18.0,
+          "max_score": 25.0,
+          "findings": [
+            "Thema nutzt EU-Vokabular (data-theme/SOCI)",
+            "Sprache nutzt EU-Vokabular (language/DEU)",
+            "Format nutzt EU-Vokabular (file-type)",
+            "Lizenz nutzt DCAT-AP.de-URI"
+          ],
+          "deduction_reasons": [
+            "Tags nutzen keine kontrollierten Vokabulare",
+            "Keine Nutzung von SKOS oder anderen Thesauri für Tags"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Maschinenlesbare Formate",
+          "score": 15.0,
+          "max_score": 20.0,
+          "findings": [
+            "Vier maschinenlesbare Formate verfügbar: CSV, XML, XLSX, Flat CSV",
+            "CSV und XML sind gut für maschinelle Verarbeitung geeignet"
+          ],
+          "deduction_reasons": [
+            "XLSX ist proprietär und weniger interoperabel als offene Formate",
+            "Keine API oder SPARQL-Endpunkt angegeben"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Identifier und Provenienz",
+          "score": 10.0,
+          "max_score": 15.0,
+          "findings": [
+            "Identifier vorhanden: 12612-003-09671124",
+            "Publisher angegeben: Bayerisches Landesamt für Statistik",
+            "ContributorID angegeben: genesisDestatis, openDataBayern"
+          ],
+          "deduction_reasons": [
+            "Keine Provenienz-Informationen (prov:wasGeneratedBy, prov:wasDerivedFrom)",
+            "Keine Versionierung angegeben"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Räumliche und zeitliche Interoperabilität",
+          "score": 0.0,
+          "max_score": 20.0,
+          "findings": [
+            "Politische Gliederungsebene angegeben (Gemeinde)",
+            "Regionalschlüssel in Distributionen enthalten"
+          ],
+          "deduction_reasons": [
+            "Keine strukturierte räumliche Abdeckung (dct:spatial mit GeoNames, WKT oder GeoJSON)",
+            "Keine strukturierte zeitliche Abdeckung (dct:temporal mit Start/End)",
+            "Für statistische Daten sind strukturierte räumliche und zeitliche Angaben essenziell"
+          ],
+          "context_sensitive_deductions": [
+            "Fehlende strukturierte räumliche und zeitliche Angaben beeinträchtigen Interoperabilität erheblich"
+          ]
+        }
+      ],
+      "category_level_context_checks": [
+        "Standardkonformität ist weitgehend gegeben, aber mit technischen Inkonsistenzen",
+        "Fehlende strukturierte räumliche und zeitliche Angaben sind für statistische Daten kritisch",
+        "Medientypen und Format-URIs sind teilweise inkonsistent"
+      ]
+    },
+    {
+      "name": "Nachnutzbarkeit",
+      "score": 42.0,
+      "max_score": 75.0,
+      "summary": "Lizenz (CC-BY 4.0) ist klar und nachnutzungsfreundlich, aber als 'UnknownIPR' typisiert. Publisher und Kontakt sind angegeben, aber Kontakt-E-Mail ist fehlerhaft (URL statt Mailadresse). Keine Versionierung, keine Dokumentation, keine Datenqualitätsinformationen. Zukunftsdaten bei Distributionen beeinträchtigen Vertrauenswürdigkeit. Keine Angaben zu Erhebungsmethode, Aktualisierungsrhythmus oder Datenqualität.",
+      "criteria": [
+        {
+          "name": "Lizenz und Rechte",
+          "score": 15.0,
+          "max_score": 20.0,
+          "findings": [
+            "Lizenz vorhanden: CC-BY 4.0",
+            "Lizenz ist nachnutzungsfreundlich (offene Lizenz)",
+            "Lizenz ist maschinenlesbar"
+          ],
+          "deduction_reasons": [
+            "Lizenz ist als 'UnknownIPR' typisiert, was widersprüchlich ist",
+            "Keine Rechteinhaber-Angaben (dct:rightsHolder)"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Publisher und Kontakt",
+          "score": 10.0,
+          "max_score": 15.0,
+          "findings": [
+            "Publisher vorhanden: Bayerisches Landesamt für Statistik",
+            "Kontakt vorhanden: Bayerisches Landesamt für Statistik"
+          ],
+          "deduction_reasons": [
+            "Kontakt-E-Mail ist fehlerhaft: 'mailto:https://www.statistik.bayern.de/kontakt' (URL statt Mailadresse)",
+            "Keine direkte E-Mail-Adresse oder Telefonnummer",
+            "Kontaktangaben sind nicht konkret genug für direkte Nachfragen"
+          ],
+          "context_sensitive_deductions": [
+            "Fehlerhafte E-Mail-Adresse beeinträchtigt Kontaktierbarkeit erheblich"
+          ]
+        },
+        {
+          "name": "Dokumentation",
+          "score": 0.0,
+          "max_score": 15.0,
+          "findings": [
+            "Keine Dokumentation (foaf:page, dcat:landingPage) angegeben",
+            "Relation zu einer Ressource vorhanden, aber nicht näher spezifiziert",
+            "isReferencedBy verweist auf eine Visualisierung, aber keine Dokumentation"
+          ],
+          "deduction_reasons": [
+            "Keine Methodenbeschreibung, kein Datenmodell, keine Nutzungshinweise",
+            "Für statistische Daten ist Dokumentation essenziell"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Versionierung und Aktualisierung",
+          "score": 5.0,
+          "max_score": 15.0,
+          "findings": [
+            "Issued- und Modified-Daten vorhanden",
+            "Dataset issued: 2024-02-14, modified: 2024-02-14"
+          ],
+          "deduction_reasons": [
+            "Keine Versionsnummer (owl:versionInfo, dcat:version)",
+            "Keine Angaben zu Aktualisierungsrhythmus (dct:accrualPeriodicity)",
+            "Distributionen haben Zukunftsdaten (2026), was auf Fehler hindeutet",
+            "Issued und Modified sind identisch, was ungewöhnlich ist"
+          ],
+          "context_sensitive_deductions": [
+            "Zukunftsdaten beeinträchtigen Vertrauenswürdigkeit und Nachvollziehbarkeit"
+          ]
+        },
+        {
+          "name": "Datenqualität und Provenienz",
+          "score": 12.0,
+          "max_score": 10.0,
+          "findings": [
+            "Publisher ist eine offizielle Statistikbehörde (Bayerisches Landesamt für Statistik)",
+            "ContributorID verweist auf genesisDestatis und openDataBayern"
+          ],
+          "deduction_reasons": [
+            "Keine Angaben zu Datenqualität (dqv:hasQualityMeasurement)",
+            "Keine Angaben zu Erhebungsmethode oder Datenquelle",
+            "Keine Provenienz-Informationen (prov:wasGeneratedBy)"
+          ],
+          "context_sensitive_deductions": []
+        }
+      ],
+      "category_level_context_checks": [
+        "Lizenz ist nachnutzungsfreundlich, aber Typisierung ist widersprüchlich",
+        "Kontaktangaben sind vorhanden, aber fehlerhaft und nicht konkret genug",
+        "Fehlende Dokumentation und Versionierung beeinträchtigen Nachnutzbarkeit erheblich",
+        "Zukunftsdaten bei Distributionen beeinträchtigen Vertrauenswürdigkeit"
+      ]
+    },
+    {
+      "name": "Kontextualität",
+      "score": 8.0,
+      "max_score": 20.0,
+      "summary": "Relationen zu anderen Ressourcen sind vorhanden (dct:relation, dct:isReferencedBy), aber nicht näher spezifiziert. Keine Angaben zu Datenherkunft, Erhebungsmethode, Aggregationsgrad oder Einschränkungen. Keine Hinweise auf Vorläufigkeit, Schätzungen oder Einschränkungen, obwohl dies für statistische Daten relevant sein könnte. Keine Angaben zu Aktualisierungsrhythmus oder zeitlicher Abdeckung.",
+      "criteria": [
+        {
+          "name": "Relationen und Verknüpfungen",
+          "score": 5.0,
+          "max_score": 10.0,
+          "findings": [
+            "Relation zu einer Ressource vorhanden (dct:relation)",
+            "isReferencedBy verweist auf eine Visualisierung (23degrees.io)"
+          ],
+          "deduction_reasons": [
+            "Relationen sind nicht näher spezifiziert (z. B. isPartOf, isVersionOf, replaces)",
+            "Keine Verknüpfung zu übergeordneten Datensätzen oder Serien",
+            "Keine Verknüpfung zu Methodenbeschreibungen oder Datenmodellen"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Datenherkunft und Methodik",
+          "score": 0.0,
+          "max_score": 5.0,
+          "findings": [
+            "Publisher ist Bayerisches Landesamt für Statistik",
+            "ContributorID verweist auf genesisDestatis"
+          ],
+          "deduction_reasons": [
+            "Keine Angaben zu Erhebungsmethode",
+            "Keine Angaben zu Datenquelle oder Primärdaten",
+            "Keine Angaben zu Aggregationsgrad oder Berechnungsmethoden"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Einschränkungen und Hinweise",
+          "score": 0.0,
+          "max_score": 5.0,
+          "findings": ["Keine Einschränkungen oder Hinweise angegeben"],
+          "deduction_reasons": [
+            "Keine Angaben zu Datenqualität, Vollständigkeit oder Genauigkeit",
+            "Keine Hinweise auf Vorläufigkeit, Schätzungen oder Revisionen",
+            "Für statistische Daten sind solche Hinweise oft relevant"
+          ],
+          "context_sensitive_deductions": []
+        },
+        {
+          "name": "Zeitliche und räumliche Kontextualisierung",
+          "score": 3.0,
+          "max_score": 0.1,
+          "findings": [
+            "Räumliche Ebene angegeben (Gemeinde)",
+            "Gemeinde im Titel genannt (Haibach)"
+          ],
+          "deduction_reasons": [
+            "Keine zeitliche Abdeckung angegeben",
+            "Keine Angaben zu Berichtszeitraum oder Erhebungszeitpunkt",
+            "Für Geburtenstatistik ist zeitliche Kontextualisierung essenziell"
+          ],
+          "context_sensitive_deductions": []
+        }
+      ],
+      "category_level_context_checks": [
+        "Relationen sind vorhanden, aber nicht ausreichend spezifiziert",
+        "Fehlende Angaben zu Methodik, Einschränkungen und zeitlicher Abdeckung beeinträchtigen Kontextualität erheblich",
+        "Keine Hinweise auf Vorläufigkeit, Schätzungen oder andere relevante Kontextmarker"
+      ]
+    }
+  ],
+  "critical_issues": [
+    "Beschreibung ist rein technisch und bietet keine inhaltliche Erklärung oder Kontextualisierung",
+    "Keine zeitliche Abdeckung (dct:temporal) angegeben, obwohl für Geburtenstatistik essenziell",
+    "Distributionen haben Zukunftsdaten (2026), was auf Fehler oder Platzhalter hindeutet und Vertrauenswürdigkeit beeinträchtigt",
+    "Medientyp 'text/xlsx' ist nicht IANA-konform (korrekt: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')",
+    "Inkonsistenz zwischen dct:format (xls) und tatsächlichem Format (xlsx)",
+    "Lizenz ist als 'UnknownIPR' typisiert, obwohl CC-BY 4.0 angegeben ist",
+    "Kontakt-E-Mail ist fehlerhaft: 'mailto:https://www.statistik.bayern.de/kontakt' (URL statt Mailadresse)",
+    "Keine strukturierte räumliche Abdeckung (dct:spatial) mit GeoNames, WKT oder GeoJSON",
+    "Keine Dokumentation, Methodenbeschreibung oder Datenmodell angegeben",
+    "Keine Versionierung oder Angaben zu Aktualisierungsrhythmus"
+  ],
+  "machine_readable_summary": {
+    "findability": {
+      "score": 62.0,
+      "max": 100.0,
+      "issues": [
+        "Titel wenig beschreibend, keine zeitliche Einordnung",
+        "Beschreibung rein technisch, keine inhaltliche Erklärung",
+        "Keine zeitliche Abdeckung angegeben",
+        "Tags inkonsistent formatiert"
+      ]
+    },
+    "accessibility": {
+      "score": 70.0,
+      "max": 100.0,
+      "issues": [
+        "Medientyp 'text/xlsx' nicht standardkonform",
+        "Inkonsistenz zwischen Format (xls) und tatsächlichem Format (xlsx)",
+        "Distributionen haben Zukunftsdaten (2026)",
+        "Lizenz als 'UnknownIPR' typisiert, obwohl CC-BY 4.0 angegeben",
+        "Keine DownloadURL, nur AccessURL"
+      ]
+    },
+    "interoperability": {
+      "score": 68.0,
+      "max": 110.0,
+      "issues": [
+        "Keine strukturierte räumliche Abdeckung (dct:spatial)",
+        "Keine strukturierte zeitliche Abdeckung (dct:temporal)",
+        "Tags nutzen keine kontrollierten Vokabulare",
+        "Medientypen teilweise nicht standardkonform",
+        "Keine Provenienz-Informationen"
+      ]
+    },
+    "reusability": {
+      "score": 42.0,
+      "max": 75.0,
+      "issues": [
+        "Kontakt-E-Mail fehlerhaft (URL statt Mailadresse)",
+        "Keine Dokumentation oder Methodenbeschreibung",
+        "Keine Versionierung",
+        "Keine Angaben zu Aktualisierungsrhythmus",
+        "Zukunftsdaten bei Distributionen beeinträchtigen Vertrauenswürdigkeit",
+        "Keine Datenqualitätsinformationen"
+      ]
+    },
+    "contextuality": {
+      "score": 8.0,
+      "max": 20.0,
+      "issues": [
+        "Keine Angaben zu Erhebungsmethode oder Datenherkunft",
+        "Keine Einschränkungen oder Hinweise zu Datenqualität",
+        "Keine zeitliche Kontextualisierung (Berichtszeitraum)",
+        "Relationen nicht ausreichend spezifiziert",
+        "Keine Hinweise auf Vorläufigkeit oder Schätzungen"
+      ]
+    },
+    "total": {
+      "score": 250.0,
+      "max": 405.0,
+      "rating": "Gut"
+    }
+  }
+}
