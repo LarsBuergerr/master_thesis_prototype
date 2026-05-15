@@ -4,3 +4,4 @@ outputs
 
 **/**/catalog_distributions.csv
 __pycache__/
+**/**/**/**/govdata_ckan_snapshot*.jsonl
