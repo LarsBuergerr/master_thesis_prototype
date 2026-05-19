@@ -19,13 +19,24 @@ logger = get_logger(__name__)
 class QualityMetricsService:
     """Simple service to validate metadata quality."""
 
-    def __init__(self, max_workers: int = 4):
+    def __init__(
+        self,
+        max_workers: int = 4,
+        dimension_weights: Optional[Dict[str, float]] = None,
+        indicator_weights: Optional[Dict[str, float]] = None,
+    ):
         """Initialize the service.
 
         Args:
             max_workers: Number of parallel workers for dimension processing
+            dimension_weights: Optional weights per dimension key
+                (for example {"expressiveness": 0.3, "findability": 0.1})
+            indicator_weights: Optional weights per indicator id
+                (for example {"find_keywords_count": 2.0})
         """
         self.max_workers = max_workers
+        self.dimension_weights = dimension_weights or {}
+        self.indicator_weights = indicator_weights or {}
 
         # Ensure all indicators are loaded and registered
         self._load_indicators()
@@ -158,6 +169,10 @@ class QualityMetricsService:
             "by_dimension": {},
             "summary": {},
             "errors": [],
+            "weights": {
+                "dimension_weights": self.dimension_weights,
+                "indicator_weights": self.indicator_weights,
+            },
         }
 
         # Get indicators for each dimension
@@ -213,14 +228,24 @@ class QualityMetricsService:
         """
         indicator_results = []
         total_score = 0.0
+        total_indicator_weight = 0.0
         pass_count = 0
 
         for indicator_id, indicator in indicators.items():
             try:
                 result = indicator.validate(metadata)
-                indicator_results.append(result.to_dict())
 
-                total_score += result.score * indicator.weight
+                effective_weight = self.indicator_weights.get(
+                    indicator_id, indicator.weight
+                )
+                total_score += result.score * effective_weight
+                total_indicator_weight += effective_weight
+
+                result_dict = result.to_dict()
+                result_dict["default_weight"] = indicator.weight
+                result_dict["effective_weight"] = effective_weight
+                indicator_results.append(result_dict)
+
                 if result.status == IndicatorStatus.PASS:
                     pass_count += 1
 
@@ -231,15 +256,24 @@ class QualityMetricsService:
                         "indicator_id": indicator_id,
                         "status": IndicatorStatus.ERROR.value,
                         "error": str(e),
+                        "default_weight": indicator.weight,
+                        "effective_weight": self.indicator_weights.get(
+                            indicator_id, indicator.weight
+                        ),
                     }
                 )
 
-        avg_score = total_score / len(indicators) if indicators else 0.0
+        avg_score = (
+            total_score / total_indicator_weight if total_indicator_weight > 0 else 0.0
+        )
+        dimension_weight = self.dimension_weights.get(dimension.value, 1.0)
 
         return {
             "dimension": dimension.value,
             "indicators": indicator_results,
             "score": avg_score,
+            "dimension_weight": dimension_weight,
+            "total_indicator_weight": total_indicator_weight,
             "indicator_count": len(indicators),
             "pass_count": pass_count,
             "pass_rate": pass_count / len(indicators) if indicators else 0.0,
@@ -263,9 +297,17 @@ class QualityMetricsService:
             total_indicators += dim_results.get("indicator_count", 0)
             total_pass += dim_results.get("pass_count", 0)
 
+        weighted_score_sum = 0.0
+        total_dimension_weight = 0.0
+
+        for dim_value, dim_score in dimension_scores.items():
+            dim_weight = self.dimension_weights.get(dim_value, 1.0)
+            weighted_score_sum += dim_score * dim_weight
+            total_dimension_weight += dim_weight
+
         overall_score = (
-            sum(dimension_scores.values()) / len(dimension_scores)
-            if dimension_scores
+            weighted_score_sum / total_dimension_weight
+            if total_dimension_weight > 0
             else 0.0
         )
 
@@ -277,6 +319,11 @@ class QualityMetricsService:
             "overall_score": overall_score,
             "overall_pass_rate": overall_pass_rate,
             "dimension_scores": dimension_scores,
+            "dimension_weights": {
+                dim: self.dimension_weights.get(dim, 1.0)
+                for dim in dimension_scores.keys()
+            },
+            "total_dimension_weight": total_dimension_weight,
             "total_indicators": total_indicators,
             "total_pass": total_pass,
             "total_fail": total_indicators - total_pass,

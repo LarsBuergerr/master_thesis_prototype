@@ -39,7 +39,9 @@ class DownloadURLIndicator(Indicator):
             IndicatorResult with score based on URL presence
         """
         try:
+            self.logger.debug("Running indicator validation")
             if not isinstance(metadata, Graph):
+                self.logger.warning("Invalid metadata format: expected rdflib Graph")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -83,6 +85,7 @@ class DownloadURLIndicator(Indicator):
             )
 
         except Exception as e:
+            self.logger.exception("Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -130,7 +133,9 @@ class FormatIndicator(Indicator):
             IndicatorResult with score based on format specification
         """
         try:
+            self.logger.debug("Running indicator validation")
             if not isinstance(metadata, Graph):
+                self.logger.warning("Invalid metadata format: expected rdflib Graph")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -174,6 +179,7 @@ class FormatIndicator(Indicator):
             )
 
         except Exception as e:
+            self.logger.exception("Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,

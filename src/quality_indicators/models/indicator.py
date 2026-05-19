@@ -7,6 +7,7 @@ from typing import Any, Dict, Optional
 from datetime import datetime
 
 from quality_indicators.models.dimension import QualityDimension
+from utils.logger import get_logger
 
 
 class IndicatorStatus(Enum):
@@ -94,6 +95,7 @@ class Indicator(ABC):
         self.description_de = description_de
         self.description_en = description_en
         self.weight = weight
+        self.logger = get_logger(f"quality_indicators.indicator.{self.indicator_id}")
 
         # Auto-register the indicator
         self._register()

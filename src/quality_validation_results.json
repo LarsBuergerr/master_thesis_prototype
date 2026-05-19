@@ -2,18 +2,25 @@
   {
     "directory": "../data/sample_2026-05-18",
     "summary": {
-      "overall_score": 0.7125,
+      "overall_score": 0.787,
       "overall_pass_rate": 0.625,
       "dimension_scores": {
-        "accessibility": 1.0,
-        "reusability": 0.0,
-        "findability": 0.85,
-        "expressiveness": 1.0
+        "accessibility": 0.5,
+        "findability": 0.82,
+        "reusability": 1.0,
+        "expressiveness": 0.85
       },
+      "dimension_weights": {
+        "accessibility": 0.3,
+        "findability": 0.1,
+        "reusability": 0.3,
+        "expressiveness": 0.3
+      },
+      "total_dimension_weight": 1.0,
       "total_indicators": 8,
       "total_pass": 5,
       "total_fail": 3,
-      "quality_grade": "C"
+      "quality_grade": "B"
     },
     "errors": [],
     "by_dimension": {
@@ -25,18 +32,17 @@
             "name_de": "Download-URL angegeben",
             "name_en": "Download URL specified",
             "dimension": "accessibility",
-            "status": "pass",
-            "score": 1.0,
-            "message_de": "Download-URL vorhanden: 1 URL(s)",
-            "message_en": "Download URL present: 1 URL(s)",
+            "status": "fail",
+            "score": 0.0,
+            "message_de": "Keine Download-URL angegeben",
+            "message_en": "No download URL specified",
             "details": {
-              "url_count": 1,
-              "urls": [
-                "https://region.statistik-nord.de/detail_timelineexport/19/1502/10/1/346/585/"
-              ]
+              "url_count": 0
             },
             "error": null,
-            "timestamp": "2026-05-19T11:04:23.791505"
+            "timestamp": "2026-05-19T14:06:15.794475",
+            "default_weight": 1.0,
+            "effective_weight": 1.0
           },
           {
             "indicator_id": "acc_format",
@@ -45,59 +51,29 @@
             "dimension": "accessibility",
             "status": "pass",
             "score": 1.0,
-            "message_de": "Format(e) angegeben: 1",
-            "message_en": "Format(s) specified: 1",
+            "message_de": "Format(e) angegeben: 4",
+            "message_en": "Format(s) specified: 4",
             "details": {
-              "format_count": 1,
+              "format_count": 4,
               "formats": [
+                "http://publications.europa.eu/resource/authority/file-type/XML",
+                "http://publications.europa.eu/resource/authority/file-type/XLS",
+                "http://publications.europa.eu/resource/authority/file-type/CSV",
                 "http://publications.europa.eu/resource/authority/file-type/CSV"
               ]
             },
             "error": null,
-            "timestamp": "2026-05-19T11:04:23.791526"
+            "timestamp": "2026-05-19T14:06:15.796219",
+            "default_weight": 1.0,
+            "effective_weight": 1.0
           }
         ],
-        "score": 1.0,
+        "score": 0.5,
+        "dimension_weight": 0.3,
+        "total_indicator_weight": 2.0,
         "indicator_count": 2,
-        "pass_count": 2,
-        "pass_rate": 1.0
-      },
-      "reusability": {
-        "dimension": "reusability",
-        "indicators": [
-          {
-            "indicator_id": "reus_license",
-            "name_de": "Lizenz angegeben",
-            "name_en": "License specified",
-            "dimension": "reusability",
-            "status": "fail",
-            "score": 0.0,
-            "message_de": "Keine Lizenz angegeben",
-            "message_en": "No license specified",
-            "details": {
-              "license_count": 0
-            },
-            "error": null,
-            "timestamp": "2026-05-19T11:04:23.791652"
-          },
-          {
-            "indicator_id": "reus_contact",
-            "name_de": "Kontaktpunkt angegeben",
-            "name_en": "Contact point specified",
-            "dimension": "reusability",
-            "status": "error",
-            "score": 0.0,
-            "message_de": "Fehler bei der Validierung",
-            "message_en": "Validation error",
-            "details": {},
-            "error": "term 'contactPoint' not in namespace 'http://purl.org/dc/terms/'",
-            "timestamp": "2026-05-19T11:04:23.791669"
-          }
-        ],
-        "score": 0.0,
-        "indicator_count": 2,
-        "pass_count": 0,
-        "pass_rate": 0.0
+        "pass_count": 1,
+        "pass_rate": 0.5
       },
       "findability": {
         "dimension": "findability",
@@ -109,23 +85,24 @@
             "dimension": "findability",
             "status": "partial",
             "score": 0.7,
-            "message_de": "Suboptimale Anzahl Keywords: 7",
-            "message_en": "Suboptimal number of keywords: 7",
+            "message_de": "Suboptimale Anzahl Keywords: 6",
+            "message_en": "Suboptimal number of keywords: 6",
             "details": {
-              "keyword_count": 7,
+              "keyword_count": 6,
               "keywords": [
-                "anzahl-der-genehmigten-wohnungen-insgesamt---neubau-und-baumaßnahmen",
-                "anzahl-der-genehmigten-wohnungen-insgesamt-neubau",
-                "baugenehmigungen",
-                "baumaßnahmen",
-                "bautätigkeit",
-                "schönberg",
-                "wohnen"
+                "betreute-kinder",
+                "gemeinden-einschl.-gemeindefreie-gebiete",
+                "genehmigte-plätze-in-kindertageseinrichtungen",
+                "münchen-lkr",
+                "statistik-d.kinder-und-tät.personen-in-tageseinri.",
+                "stichtag"
               ],
               "expected_range": "2 < k < 6"
             },
             "error": null,
-            "timestamp": "2026-05-19T11:04:23.791355"
+            "timestamp": "2026-05-19T14:06:15.794104",
+            "default_weight": 1.0,
+            "effective_weight": 1.5
           },
           {
             "indicator_id": "find_theme_valid",
@@ -145,13 +122,74 @@
               "total_count": 1
             },
             "error": null,
-            "timestamp": "2026-05-19T11:04:23.791392"
+            "timestamp": "2026-05-19T14:06:15.795715",
+            "default_weight": 1.0,
+            "effective_weight": 1.0
           }
         ],
-        "score": 0.85,
+        "score": 0.82,
+        "dimension_weight": 0.1,
+        "total_indicator_weight": 2.5,
         "indicator_count": 2,
         "pass_count": 1,
         "pass_rate": 0.5
+      },
+      "reusability": {
+        "dimension": "reusability",
+        "indicators": [
+          {
+            "indicator_id": "reuse_license",
+            "name_de": "Lizenz angegeben",
+            "name_en": "License specified",
+            "dimension": "reusability",
+            "status": "pass",
+            "score": 1.0,
+            "message_de": "Open-Source Lizenz gefunden",
+            "message_en": "Open-source license found",
+            "details": {
+              "license_count": 4,
+              "open_licenses": [
+                "http://dcat-ap.de/def/licenses/cc-by/4.0",
+                "http://dcat-ap.de/def/licenses/cc-by/4.0",
+                "http://dcat-ap.de/def/licenses/cc-by/4.0",
+                "http://dcat-ap.de/def/licenses/cc-by/4.0"
+              ],
+              "licenses": [
+                "http://dcat-ap.de/def/licenses/cc-by/4.0",
+                "http://dcat-ap.de/def/licenses/cc-by/4.0",
+                "http://dcat-ap.de/def/licenses/cc-by/4.0",
+                "http://dcat-ap.de/def/licenses/cc-by/4.0"
+              ]
+            },
+            "error": null,
+            "timestamp": "2026-05-19T14:06:15.796730",
+            "default_weight": 1.0,
+            "effective_weight": 1.0
+          },
+          {
+            "indicator_id": "reuse_contact",
+            "name_de": "Kontaktpunkt angegeben",
+            "name_en": "Contact point specified",
+            "dimension": "reusability",
+            "status": "pass",
+            "score": 1.0,
+            "message_de": "Kontaktpunkt vorhanden: 1",
+            "message_en": "Contact point present: 1",
+            "details": {
+              "contact_count": 1
+            },
+            "error": null,
+            "timestamp": "2026-05-19T14:06:15.797435",
+            "default_weight": 0.5,
+            "effective_weight": 0.5
+          }
+        ],
+        "score": 1.0,
+        "dimension_weight": 0.3,
+        "total_indicator_weight": 1.5,
+        "indicator_count": 2,
+        "pass_count": 2,
+        "pass_rate": 1.0
       },
       "expressiveness": {
         "dimension": "expressiveness",
@@ -163,40 +201,46 @@
             "dimension": "expressiveness",
             "status": "pass",
             "score": 1.0,
-            "message_de": "Guter Titel (81 Zeichen)",
-            "message_en": "Good title (81 characters)",
+            "message_de": "Guter Titel (44 Zeichen)",
+            "message_en": "Good title (44 characters)",
             "details": {
-              "title": "Anzahl der genehmigten Wohnungen insgesamt (Neubau und Baumaßnahmen) in Schönberg",
-              "title_length": 81,
+              "title": "München (Lkr): Tageseinrichtungen für Kinder",
+              "title_length": 44,
               "min_length": 5,
               "recommended_length": 15
             },
             "error": null,
-            "timestamp": "2026-05-19T11:04:23.791872"
+            "timestamp": "2026-05-19T14:06:15.797064",
+            "default_weight": 1.0,
+            "effective_weight": 1.0
           },
           {
             "indicator_id": "expr_description_quality",
             "name_de": "Beschreibungs-Qualität",
             "name_en": "Description quality",
             "dimension": "expressiveness",
-            "status": "pass",
-            "score": 1.0,
-            "message_de": "Gute Beschreibung (377 Zeichen)",
-            "message_en": "Good description (377 characters)",
+            "status": "partial",
+            "score": 0.7,
+            "message_de": "Kurze Beschreibung (65 Zeichen)",
+            "message_en": "Short description (65 characters)",
             "details": {
-              "description": "\nBautätigkeit, Wohnen - Baugenehmigungen - Anzahl der genehmigten Wohnungen insgesamt (Neubau und Ba...",
-              "description_length": 377,
+              "description": "Tageseinrichtungen für Kinder: Gemeinden,Plätze, Kinder,Stichtage",
+              "description_length": 65,
               "min_length": 20,
               "recommended_length": 100
             },
             "error": null,
-            "timestamp": "2026-05-19T11:04:23.791894"
+            "timestamp": "2026-05-19T14:06:15.797607",
+            "default_weight": 1.0,
+            "effective_weight": 1.0
           }
         ],
-        "score": 1.0,
+        "score": 0.85,
+        "dimension_weight": 0.3,
+        "total_indicator_weight": 2.0,
         "indicator_count": 2,
-        "pass_count": 2,
-        "pass_rate": 1.0
+        "pass_count": 1,
+        "pass_rate": 0.5
       }
     }
   }

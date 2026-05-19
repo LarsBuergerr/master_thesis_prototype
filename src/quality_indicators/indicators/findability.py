@@ -13,6 +13,7 @@ from quality_indicators.models.indicator import (
     IndicatorStatus,
 )
 from quality_indicators.models.dimension import QualityDimension
+from quality_indicators.vocabularies import VALID_THEME_URIS
 
 
 class KeywordsCountIndicator(Indicator):
@@ -39,7 +40,9 @@ class KeywordsCountIndicator(Indicator):
             IndicatorResult with score based on keyword count
         """
         try:
+            self.logger.debug("Running indicator validation")
             if not isinstance(metadata, Graph):
+                self.logger.warning("Invalid metadata format: expected rdflib Graph")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -97,6 +100,7 @@ class KeywordsCountIndicator(Indicator):
             )
 
         except Exception as e:
+            self.logger.exception("Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -112,21 +116,6 @@ class KeywordsCountIndicator(Indicator):
 
 class ThemeIndicator(Indicator):
     """Validates if dcat:theme is set and from controlled vocabulary."""
-
-    VALID_THEMES = {
-        "http://publications.europa.eu/resource/authority/data-theme/AGRI",
-        "http://publications.europa.eu/resource/authority/data-theme/ECON",
-        "http://publications.europa.eu/resource/authority/data-theme/EDUC",
-        "http://publications.europa.eu/resource/authority/data-theme/ENVI",
-        "http://publications.europa.eu/resource/authority/data-theme/GOVE",
-        "http://publications.europa.eu/resource/authority/data-theme/HEAL",
-        "http://publications.europa.eu/resource/authority/data-theme/INTR",
-        "http://publications.europa.eu/resource/authority/data-theme/JUST",
-        "http://publications.europa.eu/resource/authority/data-theme/REGI",
-        "http://publications.europa.eu/resource/authority/data-theme/SOCI",
-        "http://publications.europa.eu/resource/authority/data-theme/TECH",
-        "http://publications.europa.eu/resource/authority/data-theme/TRAN",
-    }
 
     def __init__(self):
         super().__init__(
@@ -149,7 +138,9 @@ class ThemeIndicator(Indicator):
             IndicatorResult with score based on theme validity
         """
         try:
+            self.logger.debug("Running indicator validation")
             if not isinstance(metadata, Graph):
+                self.logger.warning("Invalid metadata format: expected rdflib Graph")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -177,8 +168,8 @@ class ThemeIndicator(Indicator):
                     details={"theme_count": 0},
                 )
 
-            valid_themes = [str(t) for t in themes if str(t) in self.VALID_THEMES]
-            invalid_themes = [str(t) for t in themes if str(t) not in self.VALID_THEMES]
+            valid_themes = [str(t) for t in themes if str(t) in VALID_THEME_URIS]
+            invalid_themes = [str(t) for t in themes if str(t) not in VALID_THEME_URIS]
 
             if invalid_themes:
                 status = IndicatorStatus.PARTIAL
@@ -211,6 +202,7 @@ class ThemeIndicator(Indicator):
             )
 
         except Exception as e:
+            self.logger.exception("Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,

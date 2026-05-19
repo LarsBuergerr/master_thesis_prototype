@@ -43,7 +43,9 @@ class TitleQualityIndicator(Indicator):
             IndicatorResult with score based on title quality
         """
         try:
+            self.logger.debug("Running indicator validation")
             if not isinstance(metadata, Graph):
+                self.logger.warning("Invalid metadata format: expected rdflib Graph")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -108,6 +110,7 @@ class TitleQualityIndicator(Indicator):
             )
 
         except Exception as e:
+            self.logger.exception("Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -148,7 +151,9 @@ class DescriptionQualityIndicator(Indicator):
             IndicatorResult with score based on description quality
         """
         try:
+            self.logger.debug("Running indicator validation")
             if not isinstance(metadata, Graph):
+                self.logger.warning("Invalid metadata format: expected rdflib Graph")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -217,6 +222,7 @@ class DescriptionQualityIndicator(Indicator):
             )
 
         except Exception as e:
+            self.logger.exception("Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,

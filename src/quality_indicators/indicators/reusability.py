@@ -13,21 +13,15 @@ from quality_indicators.models.indicator import (
     IndicatorStatus,
 )
 from quality_indicators.models.dimension import QualityDimension
+from quality_indicators.vocabularies import OPEN_LICENSE_URIS
 
 
 class LicenseIndicator(Indicator):
     """Validates if dcat:license is set."""
 
-    OPEN_LICENSES = {
-        "http://dcat-ap.de/def/licenses/cc-by/4.0",
-        "http://dcat-ap.de/def/licenses/cc-by-sa/4.0",
-        "http://dcat-ap.de/def/licenses/cc0/1.0",
-        "http://dcat-ap.de/def/licenses/odc-odbl",
-    }
-
     def __init__(self):
         super().__init__(
-            indicator_id="reus_license",
+            indicator_id="reuse_license",
             name_de="Lizenz angegeben",
             name_en="License specified",
             dimension=QualityDimension.REUSABILITY,
@@ -46,7 +40,9 @@ class LicenseIndicator(Indicator):
             IndicatorResult with score based on license specification
         """
         try:
+            self.logger.debug("Running indicator validation")
             if not isinstance(metadata, Graph):
+                self.logger.warning("Invalid metadata format: expected rdflib Graph")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -59,7 +55,7 @@ class LicenseIndicator(Indicator):
                     error="Invalid metadata format",
                 )
 
-            licenses = list(metadata.objects(predicate=DCAT.license))
+            licenses = list(metadata.objects(predicate=DCTERMS.license))
 
             if not licenses:
                 return IndicatorResult(
@@ -75,7 +71,7 @@ class LicenseIndicator(Indicator):
                 )
 
             open_licenses = [
-                str(lic) for lic in licenses if str(lic) in self.OPEN_LICENSES
+                str(lic) for lic in licenses if str(lic) in OPEN_LICENSE_URIS
             ]
 
             if open_licenses:
@@ -106,6 +102,7 @@ class LicenseIndicator(Indicator):
             )
 
         except Exception as e:
+            self.logger.exception("Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -124,7 +121,7 @@ class ContactPointIndicator(Indicator):
 
     def __init__(self):
         super().__init__(
-            indicator_id="reus_contact",
+            indicator_id="reuse_contact",
             name_de="Kontaktpunkt angegeben",
             name_en="Contact point specified",
             dimension=QualityDimension.REUSABILITY,
@@ -143,7 +140,9 @@ class ContactPointIndicator(Indicator):
             IndicatorResult with score based on contact point presence
         """
         try:
+            self.logger.debug("Running indicator validation")
             if not isinstance(metadata, Graph):
+                self.logger.warning("Invalid metadata format: expected rdflib Graph")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -156,7 +155,7 @@ class ContactPointIndicator(Indicator):
                     error="Invalid metadata format",
                 )
 
-            contact_points = list(metadata.objects(predicate=DCTERMS.contactPoint))
+            contact_points = list(metadata.objects(predicate=DCAT.contactPoint))
 
             if not contact_points:
                 return IndicatorResult(
@@ -186,6 +185,7 @@ class ContactPointIndicator(Indicator):
             )
 
         except Exception as e:
+            self.logger.exception("Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,

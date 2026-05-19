@@ -6,7 +6,7 @@ defaults:
 
 # Directory paths
 directory_path: "../data/sample_2026-05-18/"
-metadata_path: "non_geo_land-schleswig-holstein.rdf"
+metadata_path: "non_geo_open-data-bayern_02.rdf"
 dataset_path: "dataset.csv"
 
 # Language configuration
@@ -29,3 +29,19 @@ llm:
 logging:
   level: "DEBUG" # Options: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
   verbose: true
+
+# Quality scoring configuration
+quality:
+  max_workers: 4
+  # Optional custom weights per dimension (default for all: 1.0)
+  # Example: expressiveness=30%, findability=10%
+  dimension_weights:
+    findability: 0.1
+    accessibility: 0.3
+    reusability: 0.3
+    expressiveness: 0.3
+
+  # Optional custom weights per indicator id (default: indicator.weight)
+  indicator_weights:
+    find_keywords_count: 1.5
+    find_theme_valid: 1.0

@@ -88,8 +88,11 @@ def main(cfg: DictConfig) -> None:
         logger.error(f"Data directory does not exist: {data_dir}")
         return
 
+    quality_cfg = cfg.state.get("quality", {})
     service = QualityMetricsService(
-        max_workers=cfg.state.get("quality", {}).get("max_workers", 4)
+        max_workers=quality_cfg.get("max_workers", 4),
+        dimension_weights=quality_cfg.get("dimension_weights", {}),
+        indicator_weights=quality_cfg.get("indicator_weights", {}),
     )
 
     has_subdirs = any(d.is_dir() for d in data_dir.iterdir())
