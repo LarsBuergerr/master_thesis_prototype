@@ -40,7 +40,7 @@
               "url_count": 0
             },
             "error": null,
-            "timestamp": "2026-05-19T14:06:15.794475",
+            "timestamp": "2026-05-19T14:58:05.765873",
             "default_weight": 1.0,
             "effective_weight": 1.0
           },
@@ -63,7 +63,7 @@
               ]
             },
             "error": null,
-            "timestamp": "2026-05-19T14:06:15.796219",
+            "timestamp": "2026-05-19T14:58:05.766264",
             "default_weight": 1.0,
             "effective_weight": 1.0
           }
@@ -100,7 +100,7 @@
               "expected_range": "2 < k < 6"
             },
             "error": null,
-            "timestamp": "2026-05-19T14:06:15.794104",
+            "timestamp": "2026-05-19T14:58:05.765495",
             "default_weight": 1.0,
             "effective_weight": 1.5
           },
@@ -122,7 +122,7 @@
               "total_count": 1
             },
             "error": null,
-            "timestamp": "2026-05-19T14:06:15.795715",
+            "timestamp": "2026-05-19T14:58:05.765591",
             "default_weight": 1.0,
             "effective_weight": 1.0
           }
@@ -162,7 +162,7 @@
               ]
             },
             "error": null,
-            "timestamp": "2026-05-19T14:06:15.796730",
+            "timestamp": "2026-05-19T14:58:05.766783",
             "default_weight": 1.0,
             "effective_weight": 1.0
           },
@@ -179,7 +179,7 @@
               "contact_count": 1
             },
             "error": null,
-            "timestamp": "2026-05-19T14:06:15.797435",
+            "timestamp": "2026-05-19T14:58:05.767213",
             "default_weight": 0.5,
             "effective_weight": 0.5
           }
@@ -210,7 +210,7 @@
               "recommended_length": 15
             },
             "error": null,
-            "timestamp": "2026-05-19T14:06:15.797064",
+            "timestamp": "2026-05-19T14:58:05.767064",
             "default_weight": 1.0,
             "effective_weight": 1.0
           },
@@ -230,7 +230,7 @@
               "recommended_length": 100
             },
             "error": null,
-            "timestamp": "2026-05-19T14:06:15.797607",
+            "timestamp": "2026-05-19T14:58:05.767499",
             "default_weight": 1.0,
             "effective_weight": 1.0
           }

@@ -9,9 +9,14 @@ class LanguageUri(str, Enum):
 
 
 class PoliticalGeocodingLevelUri(str, Enum):
-    MUNICIPALITY = "http://dcat-ap.de/def/politicalGeocoding/Level/municipality"
-    DISTRICT = "http://dcat-ap.de/def/politicalGeocoding/Level/district"
+    INTERNATIONAL = "http://dcat-ap.de/def/politicalGeocoding/Level/international"
+    EUROPEAN = "http://dcat-ap.de/def/politicalGeocoding/Level/european"
+    FEDERAL = "http://dcat-ap.de/def/politicalGeocoding/Level/federal"
     STATE = "http://dcat-ap.de/def/politicalGeocoding/Level/state"
+    ADMINISTRATIVE_DISTRICT = (
+        "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict"
+    )
+    MUNICIPALITY = "http://dcat-ap.de/def/politicalGeocoding/Level/municipality"
 
 
 class ContributorIdUri(str, Enum):

@@ -154,6 +154,7 @@ class ThemeIndicator(Indicator):
                 )
 
             themes = list(metadata.objects(predicate=DCAT.theme))
+            print(themes)
 
             if not themes:
                 return IndicatorResult(
