@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/https-service-brandenburg-de-service-de-adressen-weitere-verzeichnisse-verzeichnisliste-fischereibehoerden-untere">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <dct:title>Untere Fischereibehörden des Landes Brandenburg</dct:title>
+    <dct:description>Die Adresssammlung beinhaltet den Namen, die Anschrift (Straße, Postleitzahl, Ort), Telefon, Telefax, E-Mail und Website.</dct:description>
+    <dct:identifier rdf:resource="https://service.brandenburg.de/service/de/adressen/weitere-verzeichnisse/verzeichnisliste/~fischereibehoerden-untere"/>
+    <dcat:keyword>adresse</dcat:keyword>
+    <dcat:keyword>ansprechpartner</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-29T01:32:11.610053</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-17T02:47:32.882852</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://datenadler.de/publisher/mleuv"/>
+    </dct:publisher>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/8d84acfb-90dc-42a6-b28c-884dc694208d">
+        <dct:title>Untere Fischereibehörden des Landes Brandenburg</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-zero-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/https-service-brandenburg-de-service-de-adressen-weitere-verzeichnisse-verzeichnisliste-fischereibehoerden-untere"/>
+        <dcat:downloadURL rdf:resource="https://service.brandenburg.de/service/de/adressen/kommunalverzeichnis/fischereibehoerden_untere.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-29T01:32:11.611249</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-31T00:38:10.949765</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openDataBrandenburg"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://service.brandenburg.de/service/de/adressen/kommunalverzeichnis/fischereibehoerden_untere.csv"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-zero-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+</rdf:RDF>

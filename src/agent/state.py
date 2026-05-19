@@ -26,6 +26,9 @@ class AgentState(TypedDict):
     llm_model: LLMModel
     result: dict[str, Any]
     errors: list[str]
+    quality_metadata: Optional[Any]
+    quality_results: Optional[dict[str, Any]]
+    quality_summary: Optional[dict[str, Any]]
 
     def __init__(self):
         self.messages = []
@@ -39,6 +42,9 @@ class AgentState(TypedDict):
         self.llm_model = None
         self.result = {}
         self.errors = []
+        self.quality_metadata = None
+        self.quality_results = None
+        self.quality_summary = None
 
     def __getitem__(self, key):
         return super().__getitem__(key)

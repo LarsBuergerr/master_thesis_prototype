@@ -1,0 +1,305 @@
+"""Quality Metrics Service - Standalone module for metadata validation.
+
+No pipeline, no framework - just a simple utility to validate metadata
+and calculate quality scores for DCAT-AP-DE datasets.
+"""
+
+from typing import Any, Dict, Optional
+from rdflib import Graph
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+from quality_indicators.models.indicator import Indicator, IndicatorStatus
+from quality_indicators.models.dimension import QualityDimension
+from quality_indicators.validators.rdf_parser import RDFMetadataParser
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
+
+class QualityMetricsService:
+    """Simple service to validate metadata quality."""
+
+    def __init__(self, max_workers: int = 4):
+        """Initialize the service.
+
+        Args:
+            max_workers: Number of parallel workers for dimension processing
+        """
+        self.max_workers = max_workers
+
+        # Ensure all indicators are loaded and registered
+        self._load_indicators()
+
+    def _load_indicators(self) -> None:
+        """Load all indicator modules to trigger auto-registration."""
+        try:
+            # Import all indicator modules - this triggers __init__() and registration
+            from quality_indicators import indicators  # noqa: F401
+
+            logger.debug("Indicators loaded and registered")
+        except Exception as e:
+            logger.error(f"Failed to load indicators: {e}")
+            raise
+
+    def validate_metadata(self, metadata_path: str) -> Dict[str, Any]:
+        """Validate metadata file against all quality dimensions.
+
+        This is the main entry point - validates everything at once.
+
+        Args:
+            metadata_path: Path to RDF metadata file
+
+        Returns:
+            Dictionary with validation results for all dimensions
+        """
+        logger.info(f"Validating metadata: {metadata_path}")
+
+        try:
+            # Step 1: Parse metadata
+            metadata = RDFMetadataParser.parse_file(metadata_path)
+            logger.info(f"Parsed {len(metadata)} triples")
+
+            # Step 2: Validate all dimensions
+            results = self._validate_all_dimensions(metadata)
+
+            return results
+
+        except Exception as e:
+            logger.error(f"Validation failed: {e}", exc_info=True)
+            return {
+                "error": str(e),
+                "by_dimension": {},
+                "summary": {},
+            }
+
+    def validate_metadata_graph(self, metadata: Graph) -> Dict[str, Any]:
+        """Validate a metadata Graph object.
+
+        Args:
+            metadata: rdflib Graph with DCAT metadata
+
+        Returns:
+            Dictionary with validation results
+        """
+        return self._validate_all_dimensions(metadata)
+
+    def validate_dimension(
+        self, metadata: Graph, dimension: QualityDimension
+    ) -> Dict[str, Any]:
+        """Validate a single quality dimension.
+
+        Args:
+            metadata: rdflib Graph with DCAT metadata
+            dimension: The dimension to validate
+
+        Returns:
+            Dictionary with dimension results
+        """
+        logger.info(f"Validating dimension: {dimension.value}")
+
+        # Get indicators for this dimension
+        indicators = Indicator.by_dimension(dimension)
+
+        if not indicators:
+            logger.warning(f"No indicators registered for {dimension.value}")
+            return {
+                "dimension": dimension.value,
+                "indicators": [],
+                "score": 0.0,
+                "error": "No indicators found",
+            }
+
+        return self._process_dimension(dimension, indicators, metadata)
+
+    def validate_indicator(self, metadata: Graph, indicator_id: str) -> Dict[str, Any]:
+        """Validate a single indicator.
+
+        Args:
+            metadata: rdflib Graph with DCAT metadata
+            indicator_id: ID of the indicator to validate
+
+        Returns:
+            Validation result
+        """
+        indicator = Indicator.get(indicator_id)
+
+        if not indicator:
+            return {
+                "error": f"Indicator '{indicator_id}' not found",
+                "indicator_id": indicator_id,
+            }
+
+        logger.debug(f"Validating indicator: {indicator_id}")
+
+        try:
+            result = indicator.validate(metadata)
+            return result.to_dict()
+
+        except Exception as e:
+            logger.error(f"Indicator validation failed: {e}")
+            return {
+                "indicator_id": indicator_id,
+                "status": IndicatorStatus.ERROR.value,
+                "error": str(e),
+            }
+
+    # ─────────────────────────────────────────────────────────────────
+
+    def _validate_all_dimensions(self, metadata: Graph) -> Dict[str, Any]:
+        """Internal: Validate all dimensions in parallel.
+
+        Args:
+            metadata: rdflib Graph with DCAT metadata
+
+        Returns:
+            Results from all dimensions
+        """
+        results = {
+            "by_dimension": {},
+            "summary": {},
+            "errors": [],
+        }
+
+        # Get indicators for each dimension
+        dimensions_indicators = {
+            dim: Indicator.by_dimension(dim) for dim in QualityDimension
+        }
+
+        # Process dimensions in parallel
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+            future_to_dimension = {
+                executor.submit(
+                    self._process_dimension,
+                    dim,
+                    indicators,
+                    metadata,
+                ): dim
+                for dim, indicators in dimensions_indicators.items()
+            }
+
+            for future in as_completed(future_to_dimension):
+                dimension = future_to_dimension[future]
+                try:
+                    dim_results = future.result()
+                    results["by_dimension"][dimension.value] = dim_results
+                    logger.info(
+                        f"✓ {dimension.value}: {len(dim_results['indicators'])} indicators"
+                    )
+                except Exception as e:
+                    error_msg = f"Error processing {dimension.value}: {e}"
+                    logger.error(error_msg)
+                    results["errors"].append(error_msg)
+
+        # Calculate summary
+        results["summary"] = self._calculate_summary(results)
+
+        return results
+
+    def _process_dimension(
+        self,
+        dimension: QualityDimension,
+        indicators: Dict[str, Indicator],
+        metadata: Graph,
+    ) -> Dict[str, Any]:
+        """Internal: Process a single dimension.
+
+        Args:
+            dimension: The dimension
+            indicators: Indicators for this dimension
+            metadata: RDF metadata graph
+
+        Returns:
+            Dimension results
+        """
+        indicator_results = []
+        total_score = 0.0
+        pass_count = 0
+
+        for indicator_id, indicator in indicators.items():
+            try:
+                result = indicator.validate(metadata)
+                indicator_results.append(result.to_dict())
+
+                total_score += result.score * indicator.weight
+                if result.status == IndicatorStatus.PASS:
+                    pass_count += 1
+
+            except Exception as e:
+                logger.error(f"Indicator {indicator_id} failed: {e}")
+                indicator_results.append(
+                    {
+                        "indicator_id": indicator_id,
+                        "status": IndicatorStatus.ERROR.value,
+                        "error": str(e),
+                    }
+                )
+
+        avg_score = total_score / len(indicators) if indicators else 0.0
+
+        return {
+            "dimension": dimension.value,
+            "indicators": indicator_results,
+            "score": avg_score,
+            "indicator_count": len(indicators),
+            "pass_count": pass_count,
+            "pass_rate": pass_count / len(indicators) if indicators else 0.0,
+        }
+
+    def _calculate_summary(self, results: Dict[str, Any]) -> Dict[str, Any]:
+        """Internal: Calculate overall quality summary.
+
+        Args:
+            results: Results from all dimensions
+
+        Returns:
+            Summary statistics
+        """
+        dimension_scores = {}
+        total_indicators = 0
+        total_pass = 0
+
+        for dim_value, dim_results in results.get("by_dimension", {}).items():
+            dimension_scores[dim_value] = dim_results.get("score", 0.0)
+            total_indicators += dim_results.get("indicator_count", 0)
+            total_pass += dim_results.get("pass_count", 0)
+
+        overall_score = (
+            sum(dimension_scores.values()) / len(dimension_scores)
+            if dimension_scores
+            else 0.0
+        )
+
+        overall_pass_rate = (
+            total_pass / total_indicators if total_indicators > 0 else 0.0
+        )
+
+        return {
+            "overall_score": overall_score,
+            "overall_pass_rate": overall_pass_rate,
+            "dimension_scores": dimension_scores,
+            "total_indicators": total_indicators,
+            "total_pass": total_pass,
+            "total_fail": total_indicators - total_pass,
+            "quality_grade": self._score_to_grade(overall_score),
+        }
+
+    @staticmethod
+    def _score_to_grade(score: float) -> str:
+        """Convert score to grade.
+
+        Args:
+            score: Score between 0.0 and 1.0
+
+        Returns:
+            Grade (A, B, C, D, F)
+        """
+        if score >= 0.9:
+            return "A"
+        elif score >= 0.75:
+            return "B"
+        elif score >= 0.6:
+            return "C"
+        elif score >= 0.4:
+            return "D"
+        else:
+            return "F"

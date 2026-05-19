@@ -5,8 +5,8 @@ defaults:
   - _self_
 
 # Directory paths
-directory_path: "../data/13315"
-metadata_path: "metadata.rdf"
+directory_path: "../data/sample_2026-05-18/"
+metadata_path: "non_geo_land-schleswig-holstein.rdf"
 dataset_path: "dataset.csv"
 
 # Language configuration
@@ -16,6 +16,7 @@ language: "de" # Options: "de", "en"
 pipeline:
   load_data: true
   static_analysis: true
+  quality_validation: true
   semantic_analysis: true
 
 # LLM Model configuration

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:ns1="http://data.europa.eu/eli/ontology#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://registry.gdi-de.org/id/de.bw/bdcf4b31-4087-e7f6-3fd6-f9e66b404203">
+    <dct:title>ALKIS NOrA Verwaltungs- und Katasterbezirksgrenzen</dct:title>
+    <dct:description>Grundlage ist das Liegenschaftskataster (Automatisierte Liegenschaftskarte). Die Aktualität ist bezogen auf den Fortführungsstand, der jeweils als Metainformation dem Datenbestand beigefügt wird. Die ALKIS NORA Verwaltungs- und Katasterbezirksgrenzen sind Vektordaten (Flächen- und Linienobjekte) und werden in der Regel im Format Shape erzeugt.</dct:description>
+    <dct:identifier>bdcf4b31-4087-e7f6-3fd6-f9e66b404203</dct:identifier>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/IRREG"/>
+    </dct:accrualPeriodicity>
+    <dct:type rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset"/>
+    <dcat:keyword>geobasisdaten</dcat:keyword>
+    <dcat:keyword>georaum</dcat:keyword>
+    <dcat:keyword>ngdb-gdi-de</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-12T12:59:54.415000+00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-12T12:59:54.415000+00:00</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N343658e4466b40a98677e1bed751f814">
+        <vcard:fn>LGL Baden-Württemberg</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:benutzerservice@lgl.bwl.de"/>
+        <vcard:hasURL rdf:resource="http://www.lgl-bw.de"/>
+        <vcard:hasTelephone rdf:resource="tel:+49-7154---9598-310"/>
+        <vcard:hasStreetAddress>Büchsenstrasse 54</vcard:hasStreetAddress>
+        <vcard:hasLocality>Stuttgart</vcard:hasLocality>
+        <vcard:hasPostalCode>70174</vcard:hasPostalCode>
+        <vcard:hasCountryName>Deutschland</vcard:hasCountryName>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N8a3e9d3ab1e44dc1bc87fa6ac0298c17">
+        <foaf:name>LGL Baden-Württemberg</foaf:name>
+        <foaf:mbox>benutzerservice@lgl.bwl.de</foaf:mbox>
+        <foaf:homepage rdf:resource="http://www.lgl-bw.de"/>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N7c18eac6dda14c99b39cab30e37a83c1">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((7.5000 50.0000, 10.5000 50.0000, 10.5000 47.5000, 7.5000 47.5000, 7.5000 50.0000))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E?REQUEST=GetCapabilities&amp;SERVICE=WMS">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <dct:title>WMS LGL-BW ALKIS Verwaltungs- und Katasterbezirksgrenzen</dct:title>
+        <dct:description>ALKIS Verwaltungs- und Katasterbezirksgrenzen Baden-Württemberg aus der NORA-Datenhaltung. Der Dienst liefert die Flurgrenzen, Gemarkungsgrenzen, Gemeindegrenzen, Kreisgrenzen, Regierungsbezirksgrenzen, Regionsgrenzen sowie Landesgrenze als Einzelebenen in den Ausprägungen linienhafte und flächenhafte Darstellung sowie Beschriftung.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ALKIS_VGr_KatGr_E?REQUEST=GetCapabilities&amp;SERVICE=WMS"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-31T05:41:23.335411</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-07T08:54:39.689186</dct:modified>
+        <dcatde:licenseAttributionByText>Datengrundlage: LGL, www.lgl-bw.de</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://owsproxy.lgl-bw.de/owsproxy/wfs/WFS_LGL-BW_ALKIS_VGr_KatGr_E?REQUEST=GetCapabilities&amp;SERVICE=WFS">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <dct:title>WFS LGL-BW ALKIS Verwaltungs- und Katasterbezirksgrenzen</dct:title>
+        <dct:description>Der WFS-Dienst liefert aktuelle, vektorbasierte ALKIS Daten zu Verwaltungsgrenzen in der NOrA Datenstruktur. Der WFS-Dienst stellt keinen amtlichen Nachweis dar. Der Dienst liefert Flurgrenzen, Gemarkungsgrenzen, Gemeindegrenzen, Kreisgrenzen, Regierungsbezirksgrenzen, Regionsgrenzen sowie Landesgrenze jeweils als FeatureType.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://owsproxy.lgl-bw.de/owsproxy/wfs/WFS_LGL-BW_ALKIS_VGr_KatGr_E?REQUEST=GetCapabilities&amp;SERVICE=WFS"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-31T05:41:23.335406</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-07T08:54:39.689251</dct:modified>
+        <dcatde:licenseAttributionByText>Datengrundlage: LGL, www.lgl-bw.de</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatap:applicableLegislation>
+      <ns1:LegalResource rdf:about="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+    </dcatap:applicableLegislation>
+    <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_ac64a52d"/>
+    <adms:identifier>bdcf4b31-4087-e7f6-3fd6-f9e66b404203</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/datenBW"/>
+  </dcat:Dataset>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+</rdf:RDF>

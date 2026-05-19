@@ -1,5 +1,6 @@
 import os
 import logging
+import json
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -14,10 +15,7 @@ from langchain_openai import ChatOpenAI
 
 # Import logger after logging is configured
 from utils.logger import get_logger
-from agent.state import AgentState
-from utils.enums.language import Language
-from utils.enums.llm_model import LLMModel
-from pipeline.builder import create_pipeline
+from quality_indicators.service import QualityMetricsService
 
 # Set up logging early - this will be read from config in main()
 # Default to INFO, will be overridden in main()
@@ -64,73 +62,12 @@ def create_llm(cfg: DictConfig) -> ChatOpenAI:
     )
 
 
-def create_agent_state(cfg: DictConfig, llm: ChatOpenAI) -> AgentState:
-    """Create an AgentState from the state config.
-
-    Args:
-        cfg: Hydra configuration
-        llm: Initialized ChatOpenAI instance
-
-    Returns:
-        Initialized AgentState
-    """
-    # Parse language from config
-    lang = cfg.get("language", "de")
-    language = Language.DE if lang == "de" else Language.EN
-
-    # Parse LLM model from config
-    model_name = cfg.state.llm.get("model", "anthropic/claude-sonnet-4.5")
-    llm_model = LLMModel(model_name)
-
-    return AgentState(
-        messages=[],
-        directory_path=cfg.state.get("directory_path", ""),
-        metadata_path=cfg.state.get("metadata_path", ""),
-        dataset_path=cfg.state.get("dataset_path", None),
-        dataset_df=None,
-        metadata=[],
-        language=language,
-        llm=llm,
-        llm_model=llm_model,
-        result={},
-        errors=[],
-    )
-
-
-def create_agent_state_for_directory(
-    cfg: DictConfig, llm: ChatOpenAI, directory: Path
-) -> AgentState:
-    """Create an AgentState for a specific data directory.
-
-    Args:
-        cfg: Hydra configuration
-        llm: Initialized ChatOpenAI instance
-        directory: Directory to process
-
-    Returns:
-        AgentState configured for the given directory
-    """
-    state = create_agent_state(cfg, llm)
-
-    metadata_relative_path = cfg.state.get("metadata_path", "")
-    dataset_relative_path = cfg.state.get("dataset_path", None)
-
-    state["directory_path"] = str(directory)
-    state["metadata_path"] = str(directory / metadata_relative_path)
-    state["dataset_path"] = (
-        str(directory / dataset_relative_path) if dataset_relative_path else None
-    )
-
-    return state
-
-
 @hydra.main(version_base=None, config_path="../conf", config_name="state/state_1")
 def main(cfg: DictConfig) -> None:
-    """Main entry point for the pipeline.
+    """Main entry point for quality validation.
 
     Uses all configurable parameters from the Hydra config file.
-    The config file (state_1.yaml) contains all agent state variables
-    and pipeline configuration.
+    The config file (state_1.yaml) contains directory and validation configuration.
     """
     # Set log level from config
     log_level_str = (
@@ -143,19 +80,17 @@ def main(cfg: DictConfig) -> None:
     root_logger = logging.getLogger()
     root_logger.setLevel(log_level)
 
-    logger.info("Starting pipeline...")
+    logger.info("Starting quality validation run...")
     logger.info(OmegaConf.to_yaml(cfg))
 
-    llm = create_llm(cfg)
-    base_state = create_agent_state(cfg, llm)
-    pipeline = create_pipeline(cfg)
-
-    logger.info(f"Data directory: {base_state.get('directory_path')}")
-
-    data_dir = Path(base_state.get("directory_path"))
+    data_dir = Path(cfg.state.get("directory_path", ""))
     if not data_dir.exists():
         logger.error(f"Data directory does not exist: {data_dir}")
         return
+
+    service = QualityMetricsService(
+        max_workers=cfg.state.get("quality", {}).get("max_workers", 4)
+    )
 
     has_subdirs = any(d.is_dir() for d in data_dir.iterdir())
 
@@ -167,7 +102,8 @@ def main(cfg: DictConfig) -> None:
         directories = [data_dir]
 
     metadata_relative_path = cfg.state.get("metadata_path", "")
-    dataset_relative_path = cfg.state.get("dataset_path", None)
+
+    print(metadata_relative_path)
 
     for directory in directories:
         if not directory.is_dir():
@@ -177,26 +113,30 @@ def main(cfg: DictConfig) -> None:
             bool(metadata_relative_path)
             and (directory / metadata_relative_path).exists()
         )
-        has_dataset = (
-            bool(dataset_relative_path) and (directory / dataset_relative_path).exists()
-        )
 
-        if not has_metadata or not has_dataset:
+        if not has_metadata:
             logger.debug(f"Skipping invalid directory: {directory}")
             continue
 
         logger.info(f"Processing directory: {directory}")
 
         try:
-            initial_state = create_agent_state_for_directory(cfg, llm, directory)
-
-            result = pipeline.invoke(initial_state)
+            metadata_path = directory / metadata_relative_path
+            result = service.validate_metadata(str(metadata_path))
 
             results.append(
                 {
                     "directory": str(directory),
-                    "state": result,
+                    "result": result,
                 }
+            )
+
+            summary = result.get("summary", {})
+            logger.info(
+                "Completed %s | score=%.2f grade=%s",
+                directory.name,
+                summary.get("overall_score", 0.0),
+                summary.get("quality_grade", "N/A"),
             )
 
             logger.info(f"Completed: {directory}")
@@ -209,11 +149,28 @@ def main(cfg: DictConfig) -> None:
     # Summary of results
     for r in results:
         dir_path = r["directory"]
-        state = r["state"]
+        state = r["result"]
         errors = state.get("errors", [])
         logger.info(
             f"  {Path(dir_path).name}: {'OK' if not errors else f'Errors: {errors}'}"
         )
+
+    output_path = Path("quality_validation_results.json")
+    serializable_results = []
+    for item in results:
+        serializable_results.append(
+            {
+                "directory": item["directory"],
+                "summary": item["result"].get("summary", {}),
+                "errors": item["result"].get("errors", []),
+                "by_dimension": item["result"].get("by_dimension", {}),
+            }
+        )
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(serializable_results, f, indent=2, ensure_ascii=False)
+
+    logger.info(f"Wrote validation results to {output_path}")
 
 
 if __name__ == "__main__":

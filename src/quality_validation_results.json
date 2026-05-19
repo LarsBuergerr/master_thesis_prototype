@@ -1,0 +1,203 @@
+[
+  {
+    "directory": "../data/sample_2026-05-18",
+    "summary": {
+      "overall_score": 0.7125,
+      "overall_pass_rate": 0.625,
+      "dimension_scores": {
+        "accessibility": 1.0,
+        "reusability": 0.0,
+        "findability": 0.85,
+        "expressiveness": 1.0
+      },
+      "total_indicators": 8,
+      "total_pass": 5,
+      "total_fail": 3,
+      "quality_grade": "C"
+    },
+    "errors": [],
+    "by_dimension": {
+      "accessibility": {
+        "dimension": "accessibility",
+        "indicators": [
+          {
+            "indicator_id": "acc_download_url",
+            "name_de": "Download-URL angegeben",
+            "name_en": "Download URL specified",
+            "dimension": "accessibility",
+            "status": "pass",
+            "score": 1.0,
+            "message_de": "Download-URL vorhanden: 1 URL(s)",
+            "message_en": "Download URL present: 1 URL(s)",
+            "details": {
+              "url_count": 1,
+              "urls": [
+                "https://region.statistik-nord.de/detail_timelineexport/19/1502/10/1/346/585/"
+              ]
+            },
+            "error": null,
+            "timestamp": "2026-05-19T11:04:23.791505"
+          },
+          {
+            "indicator_id": "acc_format",
+            "name_de": "Format angegeben",
+            "name_en": "Format specified",
+            "dimension": "accessibility",
+            "status": "pass",
+            "score": 1.0,
+            "message_de": "Format(e) angegeben: 1",
+            "message_en": "Format(s) specified: 1",
+            "details": {
+              "format_count": 1,
+              "formats": [
+                "http://publications.europa.eu/resource/authority/file-type/CSV"
+              ]
+            },
+            "error": null,
+            "timestamp": "2026-05-19T11:04:23.791526"
+          }
+        ],
+        "score": 1.0,
+        "indicator_count": 2,
+        "pass_count": 2,
+        "pass_rate": 1.0
+      },
+      "reusability": {
+        "dimension": "reusability",
+        "indicators": [
+          {
+            "indicator_id": "reus_license",
+            "name_de": "Lizenz angegeben",
+            "name_en": "License specified",
+            "dimension": "reusability",
+            "status": "fail",
+            "score": 0.0,
+            "message_de": "Keine Lizenz angegeben",
+            "message_en": "No license specified",
+            "details": {
+              "license_count": 0
+            },
+            "error": null,
+            "timestamp": "2026-05-19T11:04:23.791652"
+          },
+          {
+            "indicator_id": "reus_contact",
+            "name_de": "Kontaktpunkt angegeben",
+            "name_en": "Contact point specified",
+            "dimension": "reusability",
+            "status": "error",
+            "score": 0.0,
+            "message_de": "Fehler bei der Validierung",
+            "message_en": "Validation error",
+            "details": {},
+            "error": "term 'contactPoint' not in namespace 'http://purl.org/dc/terms/'",
+            "timestamp": "2026-05-19T11:04:23.791669"
+          }
+        ],
+        "score": 0.0,
+        "indicator_count": 2,
+        "pass_count": 0,
+        "pass_rate": 0.0
+      },
+      "findability": {
+        "dimension": "findability",
+        "indicators": [
+          {
+            "indicator_id": "find_keywords_count",
+            "name_de": "Angemessene Anzahl Schlagwörter",
+            "name_en": "Appropriate number of keywords",
+            "dimension": "findability",
+            "status": "partial",
+            "score": 0.7,
+            "message_de": "Suboptimale Anzahl Keywords: 7",
+            "message_en": "Suboptimal number of keywords: 7",
+            "details": {
+              "keyword_count": 7,
+              "keywords": [
+                "anzahl-der-genehmigten-wohnungen-insgesamt---neubau-und-baumaßnahmen",
+                "anzahl-der-genehmigten-wohnungen-insgesamt-neubau",
+                "baugenehmigungen",
+                "baumaßnahmen",
+                "bautätigkeit",
+                "schönberg",
+                "wohnen"
+              ],
+              "expected_range": "2 < k < 6"
+            },
+            "error": null,
+            "timestamp": "2026-05-19T11:04:23.791355"
+          },
+          {
+            "indicator_id": "find_theme_valid",
+            "name_de": "Theme aus kontrolliertem Vokabular",
+            "name_en": "Theme from controlled vocabulary",
+            "dimension": "findability",
+            "status": "pass",
+            "score": 1.0,
+            "message_de": "Alle Themes sind aus dem kontrollierten Vokabular",
+            "message_en": "All themes are from controlled vocabulary",
+            "details": {
+              "valid_themes": [
+                "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+              ],
+              "invalid_themes": [],
+              "valid_count": 1,
+              "total_count": 1
+            },
+            "error": null,
+            "timestamp": "2026-05-19T11:04:23.791392"
+          }
+        ],
+        "score": 0.85,
+        "indicator_count": 2,
+        "pass_count": 1,
+        "pass_rate": 0.5
+      },
+      "expressiveness": {
+        "dimension": "expressiveness",
+        "indicators": [
+          {
+            "indicator_id": "expr_title_quality",
+            "name_de": "Titel-Qualität",
+            "name_en": "Title quality",
+            "dimension": "expressiveness",
+            "status": "pass",
+            "score": 1.0,
+            "message_de": "Guter Titel (81 Zeichen)",
+            "message_en": "Good title (81 characters)",
+            "details": {
+              "title": "Anzahl der genehmigten Wohnungen insgesamt (Neubau und Baumaßnahmen) in Schönberg",
+              "title_length": 81,
+              "min_length": 5,
+              "recommended_length": 15
+            },
+            "error": null,
+            "timestamp": "2026-05-19T11:04:23.791872"
+          },
+          {
+            "indicator_id": "expr_description_quality",
+            "name_de": "Beschreibungs-Qualität",
+            "name_en": "Description quality",
+            "dimension": "expressiveness",
+            "status": "pass",
+            "score": 1.0,
+            "message_de": "Gute Beschreibung (377 Zeichen)",
+            "message_en": "Good description (377 characters)",
+            "details": {
+              "description": "\nBautätigkeit, Wohnen - Baugenehmigungen - Anzahl der genehmigten Wohnungen insgesamt (Neubau und Ba...",
+              "description_length": 377,
+              "min_length": 20,
+              "recommended_length": 100
+            },
+            "error": null,
+            "timestamp": "2026-05-19T11:04:23.791894"
+          }
+        ],
+        "score": 1.0,
+        "indicator_count": 2,
+        "pass_count": 2,
+        "pass_rate": 1.0
+      }
+    }
+  }
+]
