@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://ckan.open.nrw.de/dataset/f6c29426-16fa-4cbc-9800-27865b85f3c2">
+    <dct:title>Kreistagsmitglieder/innen &amp; Sachkundigebürger/innen (mit Angabe der Fraktionszugehörigkeit)</dct:title>
+    <dct:description>CSV-Datei mit den Mitgliedern des Kreistages, sowie Sachkundige Bürger/innen aus der Wahlperiode 2014 - 2020. Aufgeschlüsselt nach der Parteizugehörigkeit</dct:description>
+    <dct:identifier>68e87cba-5c19-49e9-a873-3e50d085050d</dct:identifier>
+    <owl:versionInfo>2018-3</owl:versionInfo>
+    <dcat:keyword>kreistagsmitglieder</dcat:keyword>
+    <dcat:keyword>politik</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-06T13:20:23.011397</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-06T13:20:23.011403</dct:modified>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Ncc4844eda9524712be325188a01edf61">
+        <vcard:fn>Kreisverwaltung Kleve</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:opendata@kreis-kleve.de"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://ckan.open.nrw.de/organization/23e91bf6-9968-4a0f-bafe-6bad1a0f5be8">
+        <foaf:name>Offenesdatenportal</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:creator>
+      <foaf:Agent rdf:nodeID="N87e78b23d4b6465abbb33c96f06fe8fa">
+        <foaf:name>Kreisverwaltung Kleve</foaf:name>
+        <foaf:mbox>opendata@kreis-kleve.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:creator>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="N4122230bb20d49818d27658ad5c3c875">
+        <foaf:name>Kreisverwaltung Kleve</foaf:name>
+        <foaf:mbox>opendata@kreis-kleve.de</foaf:mbox>
+      </foaf:Organization>
+    </dct:creator>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://ckan.open.nrw.de/dataset/f6c29426-16fa-4cbc-9800-27865b85f3c2/resource/c792858f-0006-4876-9315-ceefc34137ea">
+        <dct:title>Kreistagsmitglieder/innen &amp; Sachkundige Bürger/innen mit Parteizugehörigkeit WP14-20</dct:title>
+        <dct:description>* Spalte1 = Partei/Art der Zugehörigkeit&#13;
+* Spalte2 = Name des Kreistagsmitglied / Sachkundigen Bürger/in</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-zero-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.offenesdatenportal.de/dataset/68e87cba-5c19-49e9-a873-3e50d085050d/resource/c792858f-0006-4876-9315-ceefc34137ea/download/kreistagsmitglieder-nachpartei-2014-2020.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-03-07T08:57:44.856426</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-10-08T13:27:24.737751</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>N2c75f7736d4943a29e5f785a303a7bb8</adms:identifier>
+    <adms:identifier>68e87cba-5c19-49e9-a873-3e50d085050d</adms:identifier>
+    <adms:identifier>N802575553f7f4c91aff188dda3ce4247</adms:identifier>
+    <dcatde:contributorID rdf:resource="https://www.offenesdatenportal.de"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openNRW"/>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="N499ef069d5884b47bdd8b12966507b75">
+        <foaf:name>Kreisverwaltung Kleve</foaf:name>
+      </foaf:Organization>
+    </dcatde:maintainer>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://www.offenesdatenportal.de/dataset/68e87cba-5c19-49e9-a873-3e50d085050d/resource/c792858f-0006-4876-9315-ceefc34137ea/download/kreistagsmitglieder-nachpartei-2014-2020.csv"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-zero-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+</rdf:RDF>

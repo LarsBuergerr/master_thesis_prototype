@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:ns1="http://data.europa.eu/eli/ontology#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/461354ae-df7b-44da-b591-e1199c3f215e">
+    <dct:title>Klarstellungssatzung Fangschleuse - Gemeinde Grünheide (Mark) OT Grünheide</dct:title>
+    <dct:description>Die Klarstellungssatzung legt die Grenzen für im Zusammenhang bebaute Ortsteile fest. Damit wird ein Innenbereich bestimmt, der grundsätzlich unter Beachtung gesetzlicher Vorgaben auch ohne Aufstellung eines Bebauungsplanes bebaubar ist.</dct:description>
+    <dct:identifier>461354ae-df7b-44da-b591-e1199c3f215e</dct:identifier>
+    <dct:type rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset"/>
+    <dcat:keyword>bauleitplanung</dcat:keyword>
+    <dcat:keyword>erdbeobachtung-und-umwelt</dcat:keyword>
+    <dcat:keyword>land-use</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>ressource</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1997-07-27T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-23T11:52:20</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N23e08901798649b786dad1cb60865c86">
+        <vcard:fn>Grünheide (Mark)</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:K.Welkisch@gemeinde-gruenheide.de"/>
+        <vcard:hasURL rdf:resource="https://www.gruenheide-mark.de"/>
+        <vcard:hasTelephone rdf:resource="tel:+033625088-410"/>
+        <vcard:hasStreetAddress>Am Marktplatz 1</vcard:hasStreetAddress>
+        <vcard:hasLocality>Grünheide (Mark)</vcard:hasLocality>
+        <vcard:hasPostalCode>15537</vcard:hasPostalCode>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="Nc761b75ba71a4a5096e5747ee067822f">
+        <foaf:name>Gemeinde Grünheide (Mark)</foaf:name>
+        <foaf:mbox>K.Welkisch@gemeinde-gruenheide.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Ncd338dd9da98495bad4b1ca5cfd3d988">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((13.7871 52.4255, 13.8154 52.4255, 13.8154 52.4145, 13.7871 52.4145, 13.7871 52.4255))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:nodeID="N2cadea52dc7e409eb6336d3d3892b197">
+        <rdfs:label>Keine Zugriffsbeschränkungen. Bereitgestellte Daten dienen ausschließlich der Information und besitzen keine Rechtsverbindlichkeit.
+  	  	</rdfs:label>
+      </dct:RightsStatement>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/e1d6a52b-2ebb-4fbd-a17f-334310d94300">
+        <dct:title>Klarstellungssatzung Grünheide - Gemeinde Grünheide (Mark) OT Grünheide (WFS)</dct:title>
+        <dct:description>Die Klarstellungssatzung legt die Grenzen für im Zusammenhang bebaute Ortsteile fest. Damit wird ein Innenbereich bestimmt, der grundsätzlich unter Beachtung gesetzlicher Vorgaben auch ohne Aufstellung eines Bebauungsplanes bebaubar ist.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal-gruenheide.de/isk/grue_bp03?REQUEST=GetCapabilities&amp;SERVICE=WFS"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-26T04:05:17.506898</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-23T11:54:49</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © Gemeinde Grünheide (Mark), dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/f30f4296-788b-4a4b-9f9b-7a97f3c9551f">
+        <dct:title>Geoportal der Gemeinde Grünheide (Mark)</dct:title>
+        <dct:description>Geoportal der Gemeinde Grünheide (Mark)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal-gruenheide.de/"/>
+        <dcat:downloadURL rdf:resource="https://www.geoportal-gruenheide.de/"/>
+        <foaf:page rdf:resource="https://www.geoportal-gruenheide.de/"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-04-18T06:37:25.408985</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-04-18T06:37:25.383456</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © Gemeinde Grünheide (Mark), dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/d939a94f-65b2-4e67-b650-a6f8a5c28971">
+        <dct:title>Klarstellungssatzung Fangschleuse - Gemeinde Grünheide (Mark) OT Grünheide (WMS)</dct:title>
+        <dct:description>Die Klarstellungssatzung legt die Grenzen für im Zusammenhang bebaute Ortsteile fest. Damit wird ein Innenbereich bestimmt, der grundsätzlich unter Beachtung gesetzlicher Vorgaben auch ohne Aufstellung eines Bebauungsplanes bebaubar ist.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal-gruenheide.de/isk/grue_bp02?REQUEST=GetCapabilities&amp;SERVICE=WMS"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-26T04:05:17.506903</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-23T11:57:14</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © Gemeinde Grünheide (Mark), dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/4f64d731-4dc1-49ed-a34a-3b18f991539c">
+        <dct:title>Klarstellungssatzung Fangschleuse - Gemeinde Grünheide (Mark) OT Grünheide (WFS)</dct:title>
+        <dct:description>Die Klarstellungssatzung legt die Grenzen für im Zusammenhang bebaute Ortsteile fest. Damit wird ein Innenbereich bestimmt, der grundsätzlich unter Beachtung gesetzlicher Vorgaben auch ohne Aufstellung eines Bebauungsplanes bebaubar ist.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal-gruenheide.de/isk/grue_bp02?REQUEST=GetCapabilities&amp;SERVICE=WFS"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-26T04:05:17.506908</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-23T11:54:48</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © Gemeinde Grünheide (Mark), dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatap:applicableLegislation>
+      <ns1:LegalResource rdf:about="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+    </dcatap:applicableLegislation>
+    <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_dd313021"/>
+    <adms:identifier>461354ae-df7b-44da-b591-e1199c3f215e</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openDataBrandenburg"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://www.geoportal-gruenheide.de/isk/grue_bp02?REQUEST=GetCapabilities&amp;SERVICE=WMS"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://www.geoportal-gruenheide.de/">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+  </rdfs:Resource>
+  <rdfs:Resource rdf:about="https://www.geoportal-gruenheide.de/isk/grue_bp03?REQUEST=GetCapabilities&amp;SERVICE=WFS"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+  <rdfs:Resource rdf:about="https://www.geoportal-gruenheide.de/isk/grue_bp02?REQUEST=GetCapabilities&amp;SERVICE=WFS"/>
+</rdf:RDF>
