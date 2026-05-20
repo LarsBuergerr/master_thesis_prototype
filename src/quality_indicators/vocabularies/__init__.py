@@ -13,12 +13,14 @@ from quality_indicators.vocabularies.metadata_authorities import (
     PoliticalGeocodingLevelUri,
 )
 from quality_indicators.vocabularies.themes import EUDataTheme
+from quality_indicators.vocabularies.frequency import EUFrequency
 
 VALID_THEME_URIS = enum_values(EUDataTheme)
 OPEN_LICENSE_URIS = enum_values(DcatApDeLicense)
 MACHINE_READABLE_TOKENS = enum_values(MachineReadableToken)
 VALID_FILE_TYPE_URIS = enum_values(FileTypeUri)
 VALID_MEDIA_TYPE_URIS = enum_values(IanaMediaTypeUri)
+VALID_FREQUENCY_URIS = enum_values(EUFrequency)
 
 __all__ = [
     "contains_uri",
@@ -32,6 +34,8 @@ __all__ = [
     "LanguageUri",
     "PoliticalGeocodingLevelUri",
     "ContributorIdUri",
+    "EUFrequency",
+    "VALID_FREQUENCY_URIS",
     "VALID_THEME_URIS",
     "OPEN_LICENSE_URIS",
     "MACHINE_READABLE_TOKENS",

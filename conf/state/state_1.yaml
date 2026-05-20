@@ -6,7 +6,7 @@ defaults:
 
 # Directory paths
 directory_path: "../data/sample_2026-05-18/"
-metadata_path: "non_geo_open-data-bayern_02.rdf"
+metadata_path: "non_geo_land-schleswig-holstein.rdf"
 dataset_path: "dataset.csv"
 
 # Language configuration
