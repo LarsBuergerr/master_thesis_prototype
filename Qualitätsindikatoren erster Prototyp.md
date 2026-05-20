@@ -2,18 +2,19 @@
 
 ### Auffindbarkeit
 
-| Index                                                | Key                      | Beschreibung                                                                                                                                    |
-| ---------------------------------------------------- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| Schlagwörter angegeben                               | `dcat:keyword`           | Sind Keywords als `dcat:keyword` gesetzt. Ist die Anzahl der Keywords k  2 < k < 6                                                              |
-| Theme angegeben                                      | `dcat:theme`             | Ist `dcat:theme` gesetzt und nicht leer                                                                                                         |
-| Theme aus kontrolliertem Vokabular                   | `dcat:theme`             | Ist `dcat:theme` aus einem der folgenden kontrollierten Vokabular<br>- http://publications.europa.eu/resource/authority/data-theme/             |
-| Räumliche Suchangabe angegeben                       | `dct:spatial`            | Ist `dct:spatial` gesetzt und nicht leer                                                                                                        |
-| Räumliche Suchangabe aus kontrolliertem Vokabular    | `dct:spatial`            | Ist `dct:spatial` aus einem der folgenden kontrollierten Vokabular<br>- https://www.dcat-ap.de/def/politicalGeocoding/                          |
-| Zeitliche Abdeckung angegeben                        | `dct:temporal`           | Ist `dct:temporal` durch  `dcat:startDate` oder `dcat:endDate` gesetzt                                                                          |
-| Änderungsdatum angegeben                             | `dcat:modified`          | Ist `dcat:modified` mit korrekter Syntax gesetzt.                                                                                               |
-| Aktualisierungsfrequenz aus kontrolliertem Vokabular | `dct:accrualPeriodicity` | Ist `dct:accrualPeriodicity` angegeben                                                                                                          |
-| Aktualisierungsfreqenz aus kontrolliertem Vokabular  | `dct:accrualPeriodicity` | Ist `dct:accrualPeriodicity` aus einem der folgenden kontrollierten Vokabular:<br>- http://publications.europa.eu/resource/authority/frequency/ |
-| Angemessene Menge an Keywords angegeben              | `dct:keyword`            | Keyword Anzahl zwischen 5 - 10                                                                                                                  |
+| Index                                                | Key                                         | Beschreibung                                                                                                                           |
+| ---------------------------------------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Schlagwörter angegeben                               | `dcat:keyword`                              | Sind Keywords als `dcat:keyword` gesetzt. Ist die Anzahl der Keywords k  3 < k < 10                                                    |
+| Theme angegeben                                      | `dcat:theme`                                | Ist `dcat:theme` gesetzt und nicht leer                                                                                                |
+| Theme aus kontrolliertem Vokabular                   | `dcat:theme`                                | Ist `dcat:theme` aus einem der folgenden kontrollierten Vokabular<br>- http://publications.europa.eu/resource/authority/data-theme/    |
+| Räumliche Suchangabe angegeben                       | `locn:geometry`                             | Ist `locn:geometry` gesetzt und korrekt ausgefüllt                                                                                     |
+| Räumliche Suchangabe aus kontrolliertem Vokabular    | `locn:adminUnitL2`                          | Ist eine korrekte Referenz auf eine Verwaltungseinheit gesetzt über:<br>- http://dcat-ap.de/def/politicalGeocoding/                    |
+| Zeitliche Abdeckung angegeben                        | `dct:temporal`                              | Ist `dct:temporal` durch  `dcat:startDate` oder `dcat:endDate` gesetzt                                                                 |
+| Änderungsdatum angegeben                             | `dcat:modified`                             | Ist `dcat:modified` mit korrekter Syntax gesetzt.                                                                                      |
+| Issued angegeben                                     | `dcat:modified`                             | Ist `dct:issued` mit korrekter Syntax gesetzt.                                                                                         |
+| Aktualisierungsfrequenz aus kontrolliertem Vokabular | `dct:accrualPeriodicity`                    | Ist `dct:accrualPeriodicity` angegeben                                                                                                 |
+| Aktualisierungsfreqenz aus kontrolliertem Vokabular  | `dct:accrualPeriodicity`<br>`dct:Frequency` | Ist `dct:Frequency` aus einem der folgenden kontrollierten Vokabular:<br>- http://publications.europa.eu/resource/authority/frequency/ |
+
 
 ### Zugänglichkeit
 
