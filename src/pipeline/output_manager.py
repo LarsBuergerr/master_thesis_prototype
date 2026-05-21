@@ -102,8 +102,6 @@ class OutputManager:
         result_path = file_dir / "result.json"
         self._save_json(result_path, result)
 
-        logger.info(f"Saved results for {filename} to {file_dir}")
-
     def save_run_summary(
         self, config: Dict[str, Any], input_info: Dict[str, Any]
     ) -> None:
@@ -121,8 +119,6 @@ class OutputManager:
 
         metadata_path = self.run_dir / "metadata.json"
         self._save_json(metadata_path, metadata)
-
-        logger.info(f"Saved run metadata to {self.run_dir}")
 
     @staticmethod
     def _convert_to_serializable(obj: Any) -> Any:
