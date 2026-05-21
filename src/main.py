@@ -2,6 +2,7 @@ import os
 import logging
 import json
 from pathlib import Path
+from typing import List
 
 from dotenv import load_dotenv
 
@@ -16,6 +17,7 @@ from langchain_openai import ChatOpenAI
 # Import logger after logging is configured
 from utils.logger import get_logger
 from quality_indicators.service import QualityMetricsService
+from pipeline.output_manager import OutputManager
 
 # Set up logging early - this will be read from config in main()
 # Default to INFO, will be overridden in main()
@@ -62,12 +64,63 @@ def create_llm(cfg: DictConfig) -> ChatOpenAI:
     )
 
 
+def resolve_files_to_process(cfg: DictConfig) -> List[Path]:
+    """Resolve which files to process based on config.
+
+    If files list is provided, use those specific files.
+    Otherwise, find all files in directory_path matching patterns.
+    """
+    files_list = cfg.state.get("files", [])
+    directory_path = Path(cfg.state.get("directory_path", ""))
+
+    if not directory_path.exists():
+        raise FileNotFoundError(f"Directory does not exist: {directory_path}")
+
+    # Specific files provided
+    if files_list:
+        files = []
+        for filename in files_list:
+            file_path = directory_path / filename
+            if file_path.exists():
+                files.append(file_path)
+            else:
+                logger.warning(f"File not found, skipping: {file_path}")
+        return sorted(files)
+
+    # No files specified - scan directory with patterns
+    file_filter = cfg.state.get("file_filter", {})
+    extensions = file_filter.get("extensions", [".rdf"])
+    include_patterns = file_filter.get("include_patterns", [])
+    exclude_patterns = file_filter.get("exclude_patterns", [])
+
+    # Find all matching files
+    all_files = []
+    for ext in extensions:
+        all_files.extend(directory_path.glob(f"*{ext}"))
+
+    # Apply include patterns
+    if include_patterns:
+        all_files = [
+            f for f in all_files if any(f.name.startswith(p) for p in include_patterns)
+        ]
+
+    # Apply exclude patterns
+    if exclude_patterns:
+        all_files = [
+            f
+            for f in all_files
+            if not any(f.name.startswith(p) for p in exclude_patterns)
+        ]
+
+    return sorted(all_files)
+
+
 @hydra.main(version_base=None, config_path="../conf", config_name="state/state_1")
 def main(cfg: DictConfig) -> None:
     """Main entry point for quality validation.
 
     Uses all configurable parameters from the Hydra config file.
-    The config file (state_1.yaml) contains directory and validation configuration.
+    Processes either specific files or all files in directory with filtering.
     """
     # Set log level from config
     log_level_str = (
@@ -76,18 +129,27 @@ def main(cfg: DictConfig) -> None:
     log_level = getattr(logging, log_level_str.upper(), logging.INFO)
     logging.getLogger().setLevel(log_level)
 
-    # Also update all existing loggers
-    root_logger = logging.getLogger()
-    root_logger.setLevel(log_level)
-
     logger.info("Starting quality validation run...")
     logger.info(OmegaConf.to_yaml(cfg))
 
-    data_dir = Path(cfg.state.get("directory_path", ""))
-    if not data_dir.exists():
-        logger.error(f"Data directory does not exist: {data_dir}")
+    # Resolve files to process
+    try:
+        files_to_process = resolve_files_to_process(cfg)
+    except FileNotFoundError as e:
+        logger.error(str(e))
         return
 
+    if not files_to_process:
+        logger.error("No files to process")
+        return
+
+    logger.info(f"Found {len(files_to_process)} file(s) to process")
+
+    # Initialize output manager
+    output_dir = cfg.state.get("output_dir", "outputs/")
+    output_mgr = OutputManager(root_dir=output_dir)
+
+    # Create quality service
     quality_cfg = cfg.state.get("quality", {})
     service = QualityMetricsService(
         max_workers=quality_cfg.get("max_workers", 4),
@@ -95,85 +157,59 @@ def main(cfg: DictConfig) -> None:
         indicator_weights=quality_cfg.get("indicator_weights", {}),
     )
 
-    has_subdirs = any(d.is_dir() for d in data_dir.iterdir())
+    # Process each file
+    processed_count = 0
+    failed_count = 0
+    failed_files = []
 
-    results = []
-
-    if has_subdirs:
-        directories = sorted(data_dir.iterdir())
-    else:
-        directories = [data_dir]
-
-    metadata_relative_path = cfg.state.get("metadata_path", "")
-
-    print(metadata_relative_path)
-
-    for directory in directories:
-        if not directory.is_dir():
-            continue
-
-        has_metadata = (
-            bool(metadata_relative_path)
-            and (directory / metadata_relative_path).exists()
+    for file_idx, file_path in enumerate(files_to_process, 1):
+        logger.info(
+            f"[{file_idx}/{len(files_to_process)}] Processing: {file_path.name}"
         )
 
-        if not has_metadata:
-            logger.debug(f"Skipping invalid directory: {directory}")
-            continue
-
-        logger.info(f"Processing directory: {directory}")
-
         try:
-            metadata_path = directory / metadata_relative_path
-            result = service.validate_metadata(str(metadata_path))
+            result = service.validate_metadata(str(file_path))
 
-            results.append(
-                {
-                    "directory": str(directory),
-                    "result": result,
-                }
+            # Save results
+            output_mgr.save_file_result(
+                filename=file_path.name,
+                result=result,
+                save_intermediate=True,
             )
 
             summary = result.get("summary", {})
             logger.info(
-                "Completed %s | score=%.2f grade=%s",
-                directory.name,
+                "  ✓ Completed | score=%.2f grade=%s",
                 summary.get("overall_score", 0.0),
                 summary.get("quality_grade", "N/A"),
             )
 
-            logger.info(f"Completed: {directory}")
+            processed_count += 1
 
         except Exception as e:
-            logger.error(f"Error processing {directory}: {e}")
+            logger.error(f"  ✗ Error processing {file_path.name}: {e}")
+            failed_files.append(file_path.name)
+            failed_count += 1
 
-    logger.info(f"Processed {len(results)} directories successfully")
+    # Save run summary
+    input_info = {
+        "directory": str(cfg.state.get("directory_path", "")),
+        "files_specified": len(cfg.state.get("files", [])),
+        "files_found": len(files_to_process),
+        "files_processed": processed_count,
+        "files_failed": failed_count,
+        "failed_files": failed_files,
+    }
 
-    # Summary of results
-    for r in results:
-        dir_path = r["directory"]
-        state = r["result"]
-        errors = state.get("errors", [])
-        logger.info(
-            f"  {Path(dir_path).name}: {'OK' if not errors else f'Errors: {errors}'}"
-        )
+    output_mgr.save_run_summary(
+        config=OmegaConf.to_container(cfg.state),
+        input_info=input_info,
+    )
 
-    output_path = Path("quality_validation_results.json")
-    serializable_results = []
-    for item in results:
-        serializable_results.append(
-            {
-                "directory": item["directory"],
-                "summary": item["result"].get("summary", {}),
-                "errors": item["result"].get("errors", []),
-                "by_dimension": item["result"].get("by_dimension", {}),
-            }
-        )
-
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(serializable_results, f, indent=2, ensure_ascii=False)
-
-    logger.info(f"Wrote validation results to {output_path}")
+    logger.info(
+        f"Processed {processed_count}/{len(files_to_process)} files successfully"
+    )
+    logger.info(f"Output: {output_mgr.get_output_path()}")
 
 
 if __name__ == "__main__":

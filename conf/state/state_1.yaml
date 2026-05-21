@@ -5,8 +5,35 @@ defaults:
   - _self_
 
 # Directory paths
-directory_path: "../data/sample_2026-05-18_09-12/"
-metadata_path: "non_geo_land-schleswig-holstein.rdf"
+directory_path: "../data/sample_2026-05-21_08-57"
+
+# Files to process
+# If empty: process all files matching extensions in directory_path
+# If filled: process only these specific files
+files: []
+  # Examples:
+  # - "geo_open-data-brandenburg.rdf"
+  # - "non_geo_land-schleswig-holstein.rdf"
+
+# File filtering (only used if files list is empty)
+file_filter:
+  # File extensions to include
+  extensions: [".rdf"]
+
+  # Include patterns: process only files matching these (filename starts with)
+  # Leave empty to include all
+  include_patterns: []
+    # - "geo_"
+    # - "non_geo_"
+
+  # Exclude patterns: skip files matching these (filename starts with)
+  exclude_patterns: []
+    # - "test_"
+
+# Output directory for results
+output_dir: "outputs/"
+
+# Legacy field (unused, kept for compatibility)
 dataset_path: "dataset.csv"
 
 # Language configuration

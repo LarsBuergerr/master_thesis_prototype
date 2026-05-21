@@ -14,7 +14,6 @@ from pipeline.states import (
     semantic_analysis,
     static_analysis,
 )
-from pipeline.states import quality_validation
 
 
 def create_pipeline(cfg: DictConfig):
@@ -26,11 +25,6 @@ def create_pipeline(cfg: DictConfig):
             "static_analysis",
             static_analysis,
             cfg.state.pipeline.get("static_analysis", True),
-        ),
-        (
-            "quality_validation",
-            quality_validation,
-            cfg.state.pipeline.get("quality_validation", True),
         ),
         (
             "semantic_analysis",
