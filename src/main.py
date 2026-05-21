@@ -129,6 +129,8 @@ def main(cfg: DictConfig) -> None:
     log_level = getattr(logging, log_level_str.upper(), logging.INFO)
     logging.getLogger().setLevel(log_level)
 
+    session_handler = None
+
     logger.info("Starting quality validation run...")
     logger.info(OmegaConf.to_yaml(cfg))
 
@@ -147,6 +149,18 @@ def main(cfg: DictConfig) -> None:
 
     # Initialize output manager
     output_mgr = OutputManager(cfg=cfg)
+
+    # Set up session-wide log file in run directory
+    session_log_path = output_mgr.run_dir / "session.log"
+    session_handler = logging.FileHandler(session_log_path, encoding="utf-8", mode="w")
+    session_handler.setFormatter(
+        logging.Formatter(
+            "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S",
+        )
+    )
+    session_handler.setLevel(logging.DEBUG)
+    logging.getLogger().addHandler(session_handler)
 
     # Create quality service
     quality_cfg = cfg.state.get("quality", {})
@@ -216,6 +230,11 @@ def main(cfg: DictConfig) -> None:
         f"Processed {processed_count}/{len(files_to_process)} files successfully"
     )
     logger.info(f"Output: {output_mgr.get_output_path()}")
+
+    # Cleanup session log handler
+    if session_handler:
+        logging.getLogger().removeHandler(session_handler)
+        session_handler.close()
 
 
 if __name__ == "__main__":

@@ -4,6 +4,12 @@
 defaults:
   - _self_
 
+# Disable Hydra output subdirectory (.hydra folder)
+hydra:
+  output_subdir: null
+  job:
+    chdir: false
+
 # Directory paths
 directory_path: "data/sample_2026-05-21_08-57"
 

@@ -57,7 +57,7 @@ class OutputManager:
         file_dir = self.create_file_directory(filename)
 
         # Create handler for this file's logs
-        log_path = file_dir / "logs.txt"
+        log_path = file_dir / "logs.log"
         handler = logging.FileHandler(log_path, encoding="utf-8", mode="w")
         handler.setFormatter(
             logging.Formatter(
