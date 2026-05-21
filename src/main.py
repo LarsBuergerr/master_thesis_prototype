@@ -146,8 +146,7 @@ def main(cfg: DictConfig) -> None:
     logger.info(f"Found {len(files_to_process)} file(s) to process")
 
     # Initialize output manager
-    output_dir = cfg.state.get("output_dir", "outputs/")
-    output_mgr = OutputManager(root_dir=output_dir)
+    output_mgr = OutputManager(cfg=cfg)
 
     # Create quality service
     quality_cfg = cfg.state.get("quality", {})
@@ -167,7 +166,11 @@ def main(cfg: DictConfig) -> None:
             f"[{file_idx}/{len(files_to_process)}] Processing: {file_path.name}"
         )
 
+        # Set up dedicated log file for this file
+        output_mgr.setup_file_logger(file_path.name)
+
         try:
+            logger.info(f"Started processing: {file_path.name}")
             result = service.validate_metadata(str(file_path))
 
             # Save results
@@ -187,9 +190,12 @@ def main(cfg: DictConfig) -> None:
             processed_count += 1
 
         except Exception as e:
-            logger.error(f"  ✗ Error processing {file_path.name}: {e}")
+            logger.error(f"  ✗ Error processing {file_path.name}: {e}", exc_info=True)
             failed_files.append(file_path.name)
             failed_count += 1
+
+        finally:
+            output_mgr.close_file_logger(file_path.name)
 
     # Save run summary
     input_info = {
