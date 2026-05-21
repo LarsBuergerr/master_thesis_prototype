@@ -38,7 +38,7 @@ file_filter:
     # - "test_"
 
 # Output directory for results
-output_dir: "outputs/"
+output_dir: "run_outputs/"
 run_output_dir_suffix: ""
 
 # Legacy field (unused, kept for compatibility)
@@ -68,15 +68,24 @@ logging:
 # Quality scoring configuration
 quality:
   max_workers: 4
+
+  # Optional dimension whitelist (default: all dimensions)
+  # If specified, only these dimensions will be validated
+  dimension_whitelist: ["findability"]
+
+  # Optional indicator blacklist (default: no indicators excluded)
+  # If specified, these indicators will be skipped
+  # indicator_blacklist: ["find_keywords_count"]
+
   # Optional custom weights per dimension (default for all: 1.0)
   # Example: expressiveness=30%, findability=10%
   dimension_weights:
-    findability: 0.1
+    findability: 1
     accessibility: 0.3
     reusability: 0.3
     expressiveness: 0.3
 
   # Optional custom weights per indicator id (default: indicator.weight)
-  indicator_weights:
-    find_keywords_count: 1.5
-    find_theme_valid: 1.0
+  # indicator_weights:
+  #   find_keywords_count: 1.5
+  #   find_theme_valid: 1.0

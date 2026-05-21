@@ -43,9 +43,11 @@ class TitleQualityIndicator(Indicator):
             IndicatorResult with score based on title quality
         """
         try:
-            self.logger.debug("Running indicator validation")
+            self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if not isinstance(metadata, Graph):
-                self.logger.warning("Invalid metadata format: expected rdflib Graph")
+                self.logger.warning(
+                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -59,8 +61,12 @@ class TitleQualityIndicator(Indicator):
                 )
 
             titles = list(metadata.objects(predicate=DCTERMS.title))
+            self.logger.debug(f"[{self.indicator_id}] Found {len(titles)} title(s)")
 
             if not titles:
+                self.logger.info(
+                    f"[{self.indicator_id}] Result: FAIL | No title specified"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -75,22 +81,38 @@ class TitleQualityIndicator(Indicator):
 
             title = str(titles[0])
             title_length = len(title)
+            self.logger.debug(
+                f"[{self.indicator_id}] Title length: {title_length} chars | Thresholds: MIN={self.MIN_LENGTH}, RECOMMENDED={self.RECOMMENDED_LENGTH}"
+            )
 
             if title_length >= self.RECOMMENDED_LENGTH:
                 status = IndicatorStatus.PASS
                 score = 1.0
                 message_de = f"Guter Titel ({title_length} Zeichen)"
                 message_en = f"Good title ({title_length} characters)"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Score calculation: PASS (length >= {self.RECOMMENDED_LENGTH})"
+                )
             elif title_length >= self.MIN_LENGTH:
                 status = IndicatorStatus.PARTIAL
                 score = 0.7
                 message_de = f"Kurzer Titel ({title_length} Zeichen)"
                 message_en = f"Short title ({title_length} characters)"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Score calculation: PARTIAL (length >= {self.MIN_LENGTH} but < {self.RECOMMENDED_LENGTH})"
+                )
             else:
                 status = IndicatorStatus.FAIL
                 score = 0.0
                 message_de = f"Sehr kurzer Titel ({title_length} Zeichen)"
                 message_en = f"Very short title ({title_length} characters)"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Score calculation: FAIL (length < {self.MIN_LENGTH})"
+                )
+
+            self.logger.info(
+                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
+            )
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -110,7 +132,9 @@ class TitleQualityIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -151,9 +175,11 @@ class DescriptionQualityIndicator(Indicator):
             IndicatorResult with score based on description quality
         """
         try:
-            self.logger.debug("Running indicator validation")
+            self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if not isinstance(metadata, Graph):
-                self.logger.warning("Invalid metadata format: expected rdflib Graph")
+                self.logger.warning(
+                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -167,8 +193,14 @@ class DescriptionQualityIndicator(Indicator):
                 )
 
             descriptions = list(metadata.objects(predicate=DCTERMS.description))
+            self.logger.debug(
+                f"[{self.indicator_id}] Found {len(descriptions)} description(s)"
+            )
 
             if not descriptions:
+                self.logger.info(
+                    f"[{self.indicator_id}] Result: FAIL | No description specified"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -183,22 +215,38 @@ class DescriptionQualityIndicator(Indicator):
 
             description = str(descriptions[0])
             desc_length = len(description)
+            self.logger.debug(
+                f"[{self.indicator_id}] Description length: {desc_length} chars | Thresholds: MIN={self.MIN_LENGTH}, RECOMMENDED={self.RECOMMENDED_LENGTH}"
+            )
 
             if desc_length >= self.RECOMMENDED_LENGTH:
                 status = IndicatorStatus.PASS
                 score = 1.0
                 message_de = f"Gute Beschreibung ({desc_length} Zeichen)"
                 message_en = f"Good description ({desc_length} characters)"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Score calculation: PASS (length >= {self.RECOMMENDED_LENGTH})"
+                )
             elif desc_length >= self.MIN_LENGTH:
                 status = IndicatorStatus.PARTIAL
                 score = 0.7
                 message_de = f"Kurze Beschreibung ({desc_length} Zeichen)"
                 message_en = f"Short description ({desc_length} characters)"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Score calculation: PARTIAL (length >= {self.MIN_LENGTH} but < {self.RECOMMENDED_LENGTH})"
+                )
             else:
                 status = IndicatorStatus.FAIL
                 score = 0.0
                 message_de = f"Sehr kurze Beschreibung ({desc_length} Zeichen)"
                 message_en = f"Very short description ({desc_length} characters)"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Score calculation: FAIL (length < {self.MIN_LENGTH})"
+                )
+
+            self.logger.info(
+                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
+            )
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -222,7 +270,9 @@ class DescriptionQualityIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,

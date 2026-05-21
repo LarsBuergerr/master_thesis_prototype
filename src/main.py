@@ -115,7 +115,7 @@ def resolve_files_to_process(cfg: DictConfig) -> List[Path]:
     return sorted(all_files)
 
 
-@hydra.main(version_base=None, config_path="../conf", config_name="state/state_1")
+@hydra.main(version_base=None, config_path="../conf", config_name="state/state_default")
 def main(cfg: DictConfig) -> None:
     """Main entry point for quality validation.
 
@@ -168,6 +168,8 @@ def main(cfg: DictConfig) -> None:
         max_workers=quality_cfg.get("max_workers", 4),
         dimension_weights=quality_cfg.get("dimension_weights", {}),
         indicator_weights=quality_cfg.get("indicator_weights", {}),
+        dimension_whitelist=quality_cfg.get("dimension_whitelist"),
+        indicator_blacklist=quality_cfg.get("indicator_blacklist"),
     )
 
     # Process each file

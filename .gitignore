@@ -1,5 +1,6 @@
 .venv
 outputs
+run_outputs
 .env
 
 **/**/catalog_distributions.csv

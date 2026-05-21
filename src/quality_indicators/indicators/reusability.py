@@ -40,9 +40,11 @@ class LicenseIndicator(Indicator):
             IndicatorResult with score based on license specification
         """
         try:
-            self.logger.debug("Running indicator validation")
+            self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if not isinstance(metadata, Graph):
-                self.logger.warning("Invalid metadata format: expected rdflib Graph")
+                self.logger.warning(
+                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -56,8 +58,14 @@ class LicenseIndicator(Indicator):
                 )
 
             licenses = list(metadata.objects(predicate=DCTERMS.license))
+            self.logger.debug(
+                f"[{self.indicator_id}] Found {len(licenses)} license(s): {[str(lic) for lic in licenses]}"
+            )
 
             if not licenses:
+                self.logger.info(
+                    f"[{self.indicator_id}] Result: FAIL | No licenses specified"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -73,17 +81,30 @@ class LicenseIndicator(Indicator):
             open_licenses = [
                 str(lic) for lic in licenses if str(lic) in OPEN_LICENSE_URIS
             ]
+            self.logger.debug(
+                f"[{self.indicator_id}] License validation: {len(open_licenses)} open-source, {len(licenses) - len(open_licenses)} proprietary"
+            )
 
             if open_licenses:
                 status = IndicatorStatus.PASS
                 score = 1.0
                 message_de = "Open-Source Lizenz gefunden"
                 message_en = "Open-source license found"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Score calculation: PASS (open-source licenses found)"
+                )
             else:
                 status = IndicatorStatus.PARTIAL
                 score = 0.5
                 message_de = "Lizenz vorhanden, aber nicht offen"
                 message_en = "License specified but not open-source"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Score calculation: PARTIAL (non-open licenses)"
+                )
+
+            self.logger.info(
+                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
+            )
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -102,7 +123,9 @@ class LicenseIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -140,9 +163,11 @@ class ContactPointIndicator(Indicator):
             IndicatorResult with score based on contact point presence
         """
         try:
-            self.logger.debug("Running indicator validation")
+            self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if not isinstance(metadata, Graph):
-                self.logger.warning("Invalid metadata format: expected rdflib Graph")
+                self.logger.warning(
+                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -156,8 +181,14 @@ class ContactPointIndicator(Indicator):
                 )
 
             contact_points = list(metadata.objects(predicate=DCAT.contactPoint))
+            self.logger.debug(
+                f"[{self.indicator_id}] Found {len(contact_points)} contact point(s)"
+            )
 
             if not contact_points:
+                self.logger.info(
+                    f"[{self.indicator_id}] Result: FAIL | No contact points"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -169,6 +200,13 @@ class ContactPointIndicator(Indicator):
                     message_en="No contact point specified",
                     details={"contact_count": 0},
                 )
+
+            self.logger.debug(
+                f"[{self.indicator_id}] Score calculation: PASS (contact points found)"
+            )
+            self.logger.info(
+                f"[{self.indicator_id}] Result: PASS | Score: 1.00 | {len(contact_points)} contact point(s) found"
+            )
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -185,7 +223,9 @@ class ContactPointIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,

@@ -24,6 +24,8 @@ class QualityMetricsService:
         max_workers: int = 4,
         dimension_weights: Optional[Dict[str, float]] = None,
         indicator_weights: Optional[Dict[str, float]] = None,
+        dimension_whitelist: Optional[list] = None,
+        indicator_blacklist: Optional[list] = None,
     ):
         """Initialize the service.
 
@@ -33,10 +35,20 @@ class QualityMetricsService:
                 (for example {"expressiveness": 0.3, "findability": 0.1})
             indicator_weights: Optional weights per indicator id
                 (for example {"find_keywords_count": 2.0})
+            dimension_whitelist: Optional list of dimension names to include
+                (if empty/None, all dimensions are included)
+            indicator_blacklist: Optional list of indicator IDs to exclude
+                (if empty/None, no indicators are excluded)
         """
         self.max_workers = max_workers
         self.dimension_weights = dimension_weights or {}
         self.indicator_weights = indicator_weights or {}
+        self.dimension_whitelist = (
+            set(dimension_whitelist) if dimension_whitelist else None
+        )
+        self.indicator_blacklist = (
+            set(indicator_blacklist) if indicator_blacklist else set()
+        )
 
         # Ensure all indicators are loaded and registered
         self._load_indicators()
@@ -175,9 +187,20 @@ class QualityMetricsService:
             },
         }
 
+        # Filter dimensions based on whitelist
+        dimensions_to_process = []
+        for dim in QualityDimension:
+            if (
+                self.dimension_whitelist is None
+                or dim.value in self.dimension_whitelist
+            ):
+                dimensions_to_process.append(dim)
+            else:
+                logger.debug(f"Skipping dimension (not in whitelist): {dim.value}")
+
         # Get indicators for each dimension
         dimensions_indicators = {
-            dim: Indicator.by_dimension(dim) for dim in QualityDimension
+            dim: Indicator.by_dimension(dim) for dim in dimensions_to_process
         }
 
         # Process dimensions in parallel
@@ -232,6 +255,11 @@ class QualityMetricsService:
         pass_count = 0
 
         for indicator_id, indicator in indicators.items():
+            # Skip blacklisted indicators
+            if indicator_id in self.indicator_blacklist:
+                logger.debug(f"Skipping indicator (blacklisted): {indicator_id}")
+                continue
+
             try:
                 result = indicator.validate(metadata)
 
@@ -274,9 +302,11 @@ class QualityMetricsService:
             "score": avg_score,
             "dimension_weight": dimension_weight,
             "total_indicator_weight": total_indicator_weight,
-            "indicator_count": len(indicators),
+            "indicator_count": len(indicator_results),
             "pass_count": pass_count,
-            "pass_rate": pass_count / len(indicators) if indicators else 0.0,
+            "pass_rate": (
+                pass_count / len(indicator_results) if indicator_results else 0.0
+            ),
         }
 
     def _calculate_summary(self, results: Dict[str, Any]) -> Dict[str, Any]:

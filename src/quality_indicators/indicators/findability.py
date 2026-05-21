@@ -47,9 +47,11 @@ class KeywordsCountIndicator(Indicator):
             IndicatorResult with score based on keyword count
         """
         try:
-            self.logger.debug("Running indicator validation")
+            self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if not isinstance(metadata, Graph):
-                self.logger.warning("Invalid metadata format: expected rdflib Graph")
+                self.logger.warning(
+                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -62,33 +64,43 @@ class KeywordsCountIndicator(Indicator):
                     error="Invalid metadata format",
                 )
 
-            # Query for all keywords in the dataset
             keywords = list(metadata.objects(predicate=DCAT.keyword))
-
             keyword_count = len(keywords)
 
-            # Score calculation:
-            # Pass: 2 < k < 6 (k = 3, 4, 5)
-            # Partial: k == 2 or k == 6 or 6 < k < 10
-            # Fail: k == 1 or k > 10
+            self.logger.debug(
+                f"[{self.indicator_id}] Found {keyword_count} keyword(s): {[str(kw) for kw in keywords]}"
+            )
 
             if 2 < keyword_count < 6:
                 status = IndicatorStatus.PASS
                 score = 1.0
                 message_de = f"Optimale Anzahl Keywords: {keyword_count}"
                 message_en = f"Optimal number of keywords: {keyword_count}"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Score calculation: PASS (optimal range 2 < k < 6)"
+                )
 
             elif keyword_count in [2, 6] or (6 <= keyword_count < 10):
                 status = IndicatorStatus.PARTIAL
                 score = 0.7
                 message_de = f"Suboptimale Anzahl Keywords: {keyword_count}"
                 message_en = f"Suboptimal number of keywords: {keyword_count}"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Score calculation: PARTIAL (boundary or 6-10 range)"
+                )
 
             else:
                 status = IndicatorStatus.FAIL
                 score = 0.0
                 message_de = f"Ungeeignete Anzahl Keywords: {keyword_count}"
                 message_en = f"Inappropriate number of keywords: {keyword_count}"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Score calculation: FAIL (< 2 or > 10)"
+                )
+
+            self.logger.info(
+                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
+            )
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -107,7 +119,9 @@ class KeywordsCountIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -145,9 +159,11 @@ class ThemeIndicator(Indicator):
             IndicatorResult with score based on theme validity
         """
         try:
-            self.logger.debug("Running indicator validation")
+            self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if not isinstance(metadata, Graph):
-                self.logger.warning("Invalid metadata format: expected rdflib Graph")
+                self.logger.warning(
+                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -161,9 +177,14 @@ class ThemeIndicator(Indicator):
                 )
 
             themes = list(metadata.objects(predicate=DCAT.theme))
-            print(themes)
+            self.logger.debug(
+                f"[{self.indicator_id}] Found {len(themes)} theme(s): {[str(t) for t in themes]}"
+            )
 
             if not themes:
+                self.logger.info(
+                    f"[{self.indicator_id}] Result: FAIL | No themes specified"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -179,6 +200,10 @@ class ThemeIndicator(Indicator):
             valid_themes = [str(t) for t in themes if str(t) in VALID_THEME_URIS]
             invalid_themes = [str(t) for t in themes if str(t) not in VALID_THEME_URIS]
 
+            self.logger.debug(
+                f"[{self.indicator_id}] Validation: {len(valid_themes)} valid, {len(invalid_themes)} invalid"
+            )
+
             if invalid_themes:
                 status = IndicatorStatus.PARTIAL
                 score = 0.5
@@ -186,11 +211,19 @@ class ThemeIndicator(Indicator):
                     f"Einige Themes sind nicht aus dem kontrollierten Vokabular"
                 )
                 message_en = f"Some themes are not from controlled vocabulary"
+                self.logger.debug(
+                    f"[{self.indicator_id}] Invalid themes found: {invalid_themes}"
+                )
             else:
                 status = IndicatorStatus.PASS
                 score = 1.0
                 message_de = f"Alle Themes sind aus dem kontrollierten Vokabular"
                 message_en = f"All themes are from controlled vocabulary"
+                self.logger.debug(f"[{self.indicator_id}] All themes are valid")
+
+            self.logger.info(
+                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
+            )
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -210,7 +243,9 @@ class ThemeIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -245,7 +280,11 @@ class ThemePresenceIndicator(Indicator):
 
     def validate(self, metadata: Any) -> IndicatorResult:
         try:
+            self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if not isinstance(metadata, Graph):
+                self.logger.warning(
+                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -259,8 +298,14 @@ class ThemePresenceIndicator(Indicator):
                 )
 
             themes = list(metadata.objects(predicate=DCAT.theme))
+            self.logger.debug(
+                f"[{self.indicator_id}] Found {len(themes)} theme(s): {[str(t) for t in themes]}"
+            )
 
             if not themes:
+                self.logger.info(
+                    f"[{self.indicator_id}] Result: FAIL | No themes specified"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -272,6 +317,13 @@ class ThemePresenceIndicator(Indicator):
                     message_en="No theme specified",
                     details={"theme_count": 0},
                 )
+
+            self.logger.debug(
+                f"[{self.indicator_id}] Score calculation: PASS (themes present)"
+            )
+            self.logger.info(
+                f"[{self.indicator_id}] Result: PASS | Score: 1.00 | {len(themes)} theme(s) present"
+            )
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -286,7 +338,9 @@ class ThemePresenceIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,

@@ -39,9 +39,11 @@ class DownloadURLIndicator(Indicator):
             IndicatorResult with score based on URL presence
         """
         try:
-            self.logger.debug("Running indicator validation")
+            self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if not isinstance(metadata, Graph):
-                self.logger.warning("Invalid metadata format: expected rdflib Graph")
+                self.logger.warning(
+                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -55,8 +57,14 @@ class DownloadURLIndicator(Indicator):
                 )
 
             download_urls = list(metadata.objects(predicate=DCAT.downloadURL))
+            self.logger.debug(
+                f"[{self.indicator_id}] Found {len(download_urls)} download URL(s): {[str(url) for url in download_urls]}"
+            )
 
             if not download_urls:
+                self.logger.info(
+                    f"[{self.indicator_id}] Result: FAIL | No download URLs"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -68,6 +76,13 @@ class DownloadURLIndicator(Indicator):
                     message_en="No download URL specified",
                     details={"url_count": 0},
                 )
+
+            self.logger.debug(
+                f"[{self.indicator_id}] Score calculation: PASS (download URLs found)"
+            )
+            self.logger.info(
+                f"[{self.indicator_id}] Result: PASS | Score: 1.00 | {len(download_urls)} URL(s) found"
+            )
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -85,7 +100,9 @@ class DownloadURLIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -133,9 +150,11 @@ class FormatIndicator(Indicator):
             IndicatorResult with score based on format specification
         """
         try:
-            self.logger.debug("Running indicator validation")
+            self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if not isinstance(metadata, Graph):
-                self.logger.warning("Invalid metadata format: expected rdflib Graph")
+                self.logger.warning(
+                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -149,8 +168,14 @@ class FormatIndicator(Indicator):
                 )
 
             formats = list(metadata.objects(predicate=DCTERMS.format))
+            self.logger.debug(
+                f"[{self.indicator_id}] Found {len(formats)} format(s): {[str(fmt) for fmt in formats]}"
+            )
 
             if not formats:
+                self.logger.info(
+                    f"[{self.indicator_id}] Result: FAIL | No formats specified"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -162,6 +187,13 @@ class FormatIndicator(Indicator):
                     message_en="No format specified",
                     details={"format_count": 0},
                 )
+
+            self.logger.debug(
+                f"[{self.indicator_id}] Score calculation: PASS (formats found)"
+            )
+            self.logger.info(
+                f"[{self.indicator_id}] Result: PASS | Score: 1.00 | {len(formats)} format(s) found"
+            )
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -179,7 +211,9 @@ class FormatIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
