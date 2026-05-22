@@ -67,7 +67,7 @@ logging:
 
 # Quality scoring configuration
 quality:
-  max_workers: 4
+  max_workers: 1
 
   # Optional dimension whitelist (default: all dimensions)
   # If specified, only these dimensions will be validated

@@ -1,0 +1,575 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"
+         xml:base="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcat="http://www.w3.org/ns/dcat#" 
+         xmlns:dct="http://purl.org/dc/terms/" 
+         xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+         xmlns:owl="http://www.w3.org/2002/07/owl#" 
+         xmlns:org="http://www.w3.org/ns/org#" 
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:skos-xl="http://www.w3.org/2008/05/skos-xl#" 
+         xmlns:void="http://rdfs.org/ns/void#" 
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         >
+  <owl:Ontology rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey">
+    <owl:versionInfo>20190731</owl:versionInfo>
+    <owl:versionIRI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/20190731/"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Die Bezirke bzw. Regierungsbezirke der deutschen Bundesländer nach dem Gemeindeverzeichnis des Statistischen Bundesamtes. Basierend auf: https://www.xrepository.de/details/urn:de:bund:destatis:bevoelkerungsstatistik:schluessel:bezirk</rdfs:comment>
+  </owl:Ontology>
+  <skos:ConceptScheme rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey">
+    <rdfs:label xml:lang="de">Bezirk</rdfs:label>
+    <skos:prefLabel xml:lang="de">Bezirk</skos:prefLabel>
+    <dct:identifier>http://www.dcat-ap.de/def/politicalGeocoding/governmentDistrictKey</dct:identifier>
+  </skos:ConceptScheme>
+
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/021">
+    <dc:identifier>021</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">021</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">021</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">021</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/021"/>
+    <skos:altLabel xml:lang="de">Bezirk Hamburg-Mitte</skos:altLabel>
+    <skos:note>Stadt-/Ortsteil bzw. Stadtbezirk</skos:note>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/022">
+    <dc:identifier>022</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">022</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">022</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">022</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/022"/>
+    <skos:altLabel xml:lang="de">Bezirk Altona</skos:altLabel>
+    <skos:note>Stadt-/Ortsteil bzw. Stadtbezirk</skos:note>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/023">
+    <dc:identifier>023</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">023</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">023</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">023</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/023"/>
+    <skos:altLabel xml:lang="de">Bezirk Eimsbüttel</skos:altLabel>
+    <skos:note>Stadt-/Ortsteil bzw. Stadtbezirk</skos:note>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/024">
+    <dc:identifier>024</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">024</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">024</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">024</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/024"/>
+    <skos:altLabel xml:lang="de">Bezirk Hamburg-Nord</skos:altLabel>
+    <skos:note>Stadt-/Ortsteil bzw. Stadtbezirk</skos:note>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/025">
+    <dc:identifier>025</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">025</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">025</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">025</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/025"/>
+    <skos:altLabel xml:lang="de">Bezirk Wandsbek</skos:altLabel>
+    <skos:note>Stadt-/Ortsteil bzw. Stadtbezirk</skos:note>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/026">
+    <dc:identifier>026</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">026</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">026</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">026</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/026"/>
+    <skos:altLabel xml:lang="de">Bezirk Bergedorf</skos:altLabel>
+    <skos:note>Stadt-/Ortsteil bzw. Stadtbezirk</skos:note>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/027">
+    <dc:identifier>027</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">027</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">027</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">027</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/027"/>
+    <skos:altLabel xml:lang="de">Bezirk Harburg</skos:altLabel>
+    <skos:note>Stadt-/Ortsteil bzw. Stadtbezirk</skos:note>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/031">
+    <dc:identifier>031</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">031</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">031</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">031</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/031"/>
+    <skos:altLabel xml:lang="de">Statistische Region Braunschweig</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/032">
+    <dc:identifier>032</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">032</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">032</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">032</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/032"/>
+    <skos:altLabel xml:lang="de">Statistische Region Hannover</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/033">
+    <dc:identifier>033</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">033</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">033</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">033</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/033"/>
+    <skos:altLabel xml:lang="de">Statistische Region Lüneburg</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/034">
+    <dc:identifier>034</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">034</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">034</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">034</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/034"/>
+    <skos:altLabel xml:lang="de">Statistische Region Weser-Ems</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/051">
+    <dc:identifier>051</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">051</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">051</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">051</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/051"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Düsseldorf</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/053">
+    <dc:identifier>053</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">053</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">053</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">053</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/053"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Köln</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/055">
+    <dc:identifier>055</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">055</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">055</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">055</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/055"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Münster</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/057">
+    <dc:identifier>057</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">057</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">057</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">057</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/057"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Detmold</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/059">
+    <dc:identifier>059</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">059</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">059</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">059</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/059"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Arnsberg</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/064">
+    <dc:identifier>064</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">064</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">064</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">064</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/064"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Darmstadt</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/065">
+    <dc:identifier>065</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">065</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">065</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">065</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/065"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Gießen</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/066">
+    <dc:identifier>066</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">066</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">066</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">066</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/066"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Kassel</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/071">
+    <dc:identifier>071</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">071</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">071</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">071</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/071"/>
+    <skos:altLabel xml:lang="de">früher: Reg.-Bez. Koblenz</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/072">
+    <dc:identifier>072</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">072</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">072</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">072</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/072"/>
+    <skos:altLabel xml:lang="de">früher: Reg.-Bez. Trier</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/073">
+    <dc:identifier>073</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">073</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">073</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">073</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/073"/>
+    <skos:altLabel xml:lang="de">früher: Reg.-Bez. Rheinhessen-Pfalz</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/081">
+    <dc:identifier>081</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">081</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">081</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">081</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/081"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Stuttgart</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/082">
+    <dc:identifier>082</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">082</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">082</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">082</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/082"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Karlsruhe</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/083">
+    <dc:identifier>083</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">083</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">083</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">083</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/083"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Freiburg</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/084">
+    <dc:identifier>084</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">084</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">084</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">084</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/084"/>
+    <skos:altLabel xml:lang="de">Reg.-Bez. Tübingen</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/091">
+    <dc:identifier>091</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">091</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">091</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">091</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/091"/>
+    <skos:altLabel xml:lang="de">Oberbayern</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/092">
+    <dc:identifier>092</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">092</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">092</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">092</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/092"/>
+    <skos:altLabel xml:lang="de">Niederbayern</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/093">
+    <dc:identifier>093</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">093</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">093</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">093</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/093"/>
+    <skos:altLabel xml:lang="de">Oberpfalz</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/094">
+    <dc:identifier>094</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">094</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">094</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">094</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/094"/>
+    <skos:altLabel xml:lang="de">Oberfranken</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/095">
+    <dc:identifier>095</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">095</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">095</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">095</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/095"/>
+    <skos:altLabel xml:lang="de">Mittelfranken</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/096">
+    <dc:identifier>096</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">096</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">096</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">096</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/096"/>
+    <skos:altLabel xml:lang="de">Unterfranken</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/097">
+    <dc:identifier>097</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">097</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">097</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">097</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/097"/>
+    <skos:altLabel xml:lang="de">Schwaben</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/145">
+    <dc:identifier>145</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">145</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">145</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">145</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/145"/>
+    <skos:altLabel xml:lang="de">früher: Direktionsbezirk Chemnitz</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/146">
+    <dc:identifier>146</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">146</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">146</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">146</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/146"/>
+    <skos:altLabel xml:lang="de">früher: Direktionsbezirk Dresden</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/147">
+    <dc:identifier>147</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey"/>
+    <skos:prefLabel xml:lang="de">147</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">147</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">147</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/governmentDistrictKey/147"/>
+    <skos:altLabel xml:lang="de">früher: Direktionsbezirk Leipzig</skos:altLabel>
+  </skos:Concept>
+</rdf:RDF>

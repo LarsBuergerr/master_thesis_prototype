@@ -1,44 +1,30 @@
-"""Centralized controlled vocabulary definitions for quality indicators."""
+"""Controlled vocabularies loaded from RDF/XML and CSV files."""
 
-from quality_indicators.vocabularies.base import contains_uri, enum_values, merge_values
-from quality_indicators.vocabularies.formats import (
-    FileTypeUri,
-    IanaMediaTypeUri,
-    MachineReadableToken,
+from quality_indicators.vocabularies.loader import (
+    get_geocoding_vocabulary_for_uri,
+    get_political_geocoding_segment,
+    load_iana_media_type_uris,
+    load_open_license_uris,
+    load_skos_concept_uris,
 )
-from quality_indicators.vocabularies.licenses import DcatApDeLicense
-from quality_indicators.vocabularies.metadata_authorities import (
-    ContributorIdUri,
-    LanguageUri,
-    PoliticalGeocodingLevelUri,
-)
-from quality_indicators.vocabularies.themes import EUDataTheme
-from quality_indicators.vocabularies.frequency import EUFrequency
 
-VALID_THEME_URIS = enum_values(EUDataTheme)
-OPEN_LICENSE_URIS = enum_values(DcatApDeLicense)
-MACHINE_READABLE_TOKENS = enum_values(MachineReadableToken)
-VALID_FILE_TYPE_URIS = enum_values(FileTypeUri)
-VALID_MEDIA_TYPE_URIS = enum_values(IanaMediaTypeUri)
-VALID_FREQUENCY_URIS = enum_values(EUFrequency)
+VALID_THEME_URIS = load_skos_concept_uris("data_theme.rdf")
+VALID_FREQUENCY_URIS = load_skos_concept_uris("frequency.rdf")
+VALID_FILE_TYPE_URIS = load_skos_concept_uris("file_type.rdf")
+VALID_POLITICAL_GEOCODING_LEVEL_URIS = load_skos_concept_uris(
+    "political_geocoding_level.rdf"
+)
+OPEN_LICENSE_URIS = load_open_license_uris()
+VALID_MEDIA_TYPE_URIS = load_iana_media_type_uris()
 
 __all__ = [
-    "contains_uri",
-    "enum_values",
-    "merge_values",
-    "EUDataTheme",
-    "DcatApDeLicense",
-    "MachineReadableToken",
-    "FileTypeUri",
-    "IanaMediaTypeUri",
-    "LanguageUri",
-    "PoliticalGeocodingLevelUri",
-    "ContributorIdUri",
-    "EUFrequency",
-    "VALID_FREQUENCY_URIS",
     "VALID_THEME_URIS",
-    "OPEN_LICENSE_URIS",
-    "MACHINE_READABLE_TOKENS",
+    "VALID_FREQUENCY_URIS",
     "VALID_FILE_TYPE_URIS",
+    "VALID_POLITICAL_GEOCODING_LEVEL_URIS",
+    "OPEN_LICENSE_URIS",
     "VALID_MEDIA_TYPE_URIS",
+    "get_geocoding_vocabulary_for_uri",
+    "get_political_geocoding_segment",
+    "load_skos_concept_uris",
 ]

@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://dcat-ap.de/def/politicalGeocoding/stateKey"
+         xml:base="http://dcat-ap.de/def/politicalGeocoding/stateKey"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcat="http://www.w3.org/ns/dcat#" 
+         xmlns:dct="http://purl.org/dc/terms/" 
+         xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+         xmlns:owl="http://www.w3.org/2002/07/owl#" 
+         xmlns:org="http://www.w3.org/ns/org#" 
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:skos-xl="http://www.w3.org/2008/05/skos-xl#" 
+         xmlns:void="http://rdfs.org/ns/void#" 
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         >
+  <owl:Ontology rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey">
+    <owl:versionInfo>20100401</owl:versionInfo>
+    <owl:versionIRI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/20100401/"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Die deutschen Bundesländer nach dem Gemeindeverzeichnis des Statistischen Bundesamtes. Basierend auf: https://www.xrepository.de/details/urn:de:bund:destatis:bevoelkerungsstatistik:schluessel:bundesland</rdfs:comment>
+  </owl:Ontology>
+  <skos:ConceptScheme rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey">
+    <rdfs:label xml:lang="de">Bundesland</rdfs:label>
+    <skos:prefLabel xml:lang="de">Bundesland</skos:prefLabel>
+    <dct:identifier>http://www.dcat-ap.de/def/politicalGeocoding/stateKey</dct:identifier>
+  </skos:ConceptScheme>
+
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/01">
+    <dc:identifier>01</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">01</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">01</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">01</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/01"/>
+    <skos:altLabel xml:lang="de">Schleswig-Holstein</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/02">
+    <dc:identifier>02</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">02</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">02</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">02</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/02"/>
+    <skos:altLabel xml:lang="de">Hamburg</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/03">
+    <dc:identifier>03</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">03</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">03</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">03</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/03"/>
+    <skos:altLabel xml:lang="de">Niedersachsen</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/04">
+    <dc:identifier>04</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">04</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">04</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">04</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/04"/>
+    <skos:altLabel xml:lang="de">Bremen</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/05">
+    <dc:identifier>05</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">05</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">05</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">05</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/05"/>
+    <skos:altLabel xml:lang="de">Nordrhein-Westfalen</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/06">
+    <dc:identifier>06</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">06</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">06</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">06</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/06"/>
+    <skos:altLabel xml:lang="de">Hessen</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/07">
+    <dc:identifier>07</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">07</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">07</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">07</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/07"/>
+    <skos:altLabel xml:lang="de">Rheinland-Pfalz</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/08">
+    <dc:identifier>08</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">08</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">08</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">08</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/08"/>
+    <skos:altLabel xml:lang="de">Baden-Württemberg</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/09">
+    <dc:identifier>09</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">09</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">09</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">09</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/09"/>
+    <skos:altLabel xml:lang="de">Bayern</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/10">
+    <dc:identifier>10</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">10</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">10</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">10</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/10"/>
+    <skos:altLabel xml:lang="de">Saarland</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/11">
+    <dc:identifier>11</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">11</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">11</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">11</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/11"/>
+    <skos:altLabel xml:lang="de">Berlin</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/12">
+    <dc:identifier>12</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">12</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">12</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">12</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/12"/>
+    <skos:altLabel xml:lang="de">Brandenburg</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/13">
+    <dc:identifier>13</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">13</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">13</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">13</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/13"/>
+    <skos:altLabel xml:lang="de">Mecklenburg-Vorpommern</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/14">
+    <dc:identifier>14</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">14</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">14</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">14</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/14"/>
+    <skos:altLabel xml:lang="de">Sachsen</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/15">
+    <dc:identifier>15</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">15</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">15</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">15</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/15"/>
+    <skos:altLabel xml:lang="de">Sachsen-Anhalt</skos:altLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/16">
+    <dc:identifier>16</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey"/>
+    <skos:prefLabel xml:lang="de">16</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">16</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">16</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/16"/>
+    <skos:altLabel xml:lang="de">Thüringen</skos:altLabel>
+  </skos:Concept>
+</rdf:RDF>

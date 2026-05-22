@@ -16,6 +16,7 @@ from quality_indicators.models.dimension import QualityDimension
 from quality_indicators.vocabularies import (
     VALID_THEME_URIS,
     VALID_FREQUENCY_URIS,
+    get_geocoding_vocabulary_for_uri,
 )
 from utils.datetime_utils import is_valid_xs_datetime
 
@@ -369,8 +370,12 @@ class LocnGeometryIndicator(Indicator):
         )
 
     def validate(self, metadata: Any) -> IndicatorResult:
+        self.logger.debug(f"[{self.indicator_id}] Starting validation")
         try:
             if not isinstance(metadata, Graph):
+                self.logger.debug(
+                    f"[{self.indicator_id}] Metadata is not an rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -386,6 +391,7 @@ class LocnGeometryIndicator(Indicator):
             geometries = list(metadata.objects(predicate=LOCN.geometry))
 
             if not geometries:
+                self.logger.debug(f"[{self.indicator_id}] No geometries found")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -411,7 +417,7 @@ class LocnGeometryIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(f"[{self.indicator_id}] Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -440,8 +446,12 @@ class AdminUnitL2Indicator(Indicator):
         )
 
     def validate(self, metadata: Any) -> IndicatorResult:
+        self.logger.debug(f"[{self.indicator_id}] Starting validation")
         try:
             if not isinstance(metadata, Graph):
+                self.logger.debug(
+                    f"[{self.indicator_id}] Metadata is not an rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -457,6 +467,7 @@ class AdminUnitL2Indicator(Indicator):
             admin_units = list(metadata.objects(predicate=LOCN.adminUnitL2))
 
             if not admin_units:
+                self.logger.debug(f"[{self.indicator_id}] No adminUnitL2 found")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -505,7 +516,7 @@ class AdminUnitL2Indicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(f"[{self.indicator_id}] Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -534,8 +545,12 @@ class TemporalCoverageIndicator(Indicator):
         )
 
     def validate(self, metadata: Any) -> IndicatorResult:
+        self.logger.debug(f"[{self.indicator_id}] Starting validation")
         try:
             if not isinstance(metadata, Graph):
+                self.logger.debug(
+                    f"[{self.indicator_id}] Metadata is not an rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -582,7 +597,7 @@ class TemporalCoverageIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(f"[{self.indicator_id}] Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -614,8 +629,12 @@ class DateTimeFieldIndicator(Indicator):
         self.field_uri = field_uri
 
     def validate(self, metadata: Any) -> IndicatorResult:
+        self.logger.debug(f"[{self.indicator_id}] Starting validation")
         try:
             if not isinstance(metadata, Graph):
+                self.logger.debug(
+                    f"[{self.indicator_id}] Metadata is not an rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -631,6 +650,9 @@ class DateTimeFieldIndicator(Indicator):
             values = list(metadata.objects(predicate=self.field_uri))
 
             if not values:
+                self.logger.debug(
+                    f"[{self.indicator_id}] No values found for {self.field_uri}"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -676,7 +698,7 @@ class DateTimeFieldIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(f"[{self.indicator_id}] Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -706,7 +728,11 @@ class AccrualPeriodicityIndicator(Indicator):
 
     def validate(self, metadata: Any) -> IndicatorResult:
         try:
+            self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if not isinstance(metadata, Graph):
+                self.logger.debug(
+                    f"[{self.indicator_id}] Metadata is not an rdflib Graph"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -722,6 +748,9 @@ class AccrualPeriodicityIndicator(Indicator):
             values = list(metadata.objects(predicate=DCTERMS.accrualPeriodicity))
 
             if not values:
+                self.logger.debug(
+                    f"[{self.indicator_id}] No values found for dct:accrualPeriodicity"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -761,7 +790,7 @@ class AccrualPeriodicityIndicator(Indicator):
             )
 
         except Exception as e:
-            self.logger.exception("Indicator validation failed")
+            self.logger.exception(f"[{self.indicator_id}] Indicator validation failed")
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,

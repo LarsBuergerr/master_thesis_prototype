@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://dcat-ap.de/def/politicalGeocoding/Level"
+         xml:base="http://dcat-ap.de/def/politicalGeocoding/Level"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcat="http://www.w3.org/ns/dcat#" 
+         xmlns:dct="http://purl.org/dc/terms/" 
+         xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+         xmlns:owl="http://www.w3.org/2002/07/owl#" 
+         xmlns:org="http://www.w3.org/ns/org#" 
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:skos-xl="http://www.w3.org/2008/05/skos-xl#" 
+         xmlns:void="http://rdfs.org/ns/void#" 
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         >
+  <owl:Ontology rdf:about="http://dcat-ap.de/def/politicalGeocoding/Level">
+    <owl:versionInfo>1.0</owl:versionInfo>
+    <owl:versionIRI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/1.0/"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Zur kodierten Angabe der jeweiligen prinzipiellen Verwaltungsebene, von der die Datenstruktur erhoben und eingestellt wurde, sind folgende sechs Optionen mit Mehrfachauswahl möglich:</rdfs:comment>
+  </owl:Ontology>
+  <skos:ConceptScheme rdf:about="http://dcat-ap.de/def/politicalGeocoding/Level">
+    <rdfs:label xml:lang="de">Liste der geopolitischen Verwaltungscodierung</rdfs:label>
+    <skos:prefLabel xml:lang="de">Liste der geopolitischen Verwaltungscodierung</skos:prefLabel>
+    <dct:identifier>http://www.dcat-ap.de/def/politicalGeocoding/Level</dct:identifier>
+  </skos:ConceptScheme>
+
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/Level/international">
+    <dc:identifier>international</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:prefLabel xml:lang="de">internationale Ebene</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">internationale Ebene</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">internationale Ebene</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/international"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/Level/european">
+    <dc:identifier>european</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:prefLabel xml:lang="de">EU-Ebene</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">EU-Ebene</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">EU-Ebene</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/european"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/Level/federal">
+    <dc:identifier>federal</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:prefLabel xml:lang="de">Bundesebene</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">Bundesebene</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">Bundesebene</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/federal"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/Level/state">
+    <dc:identifier>state</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:prefLabel xml:lang="de">Ebene der Bundesländer</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">Ebene der Bundesländer</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">Ebene der Bundesländer</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/state"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict">
+    <dc:identifier>administrativeDistrict</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:prefLabel xml:lang="de">Ebene der Landkreise und Regierungsbezirke</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">Ebene der Landkreise und Regierungsbezirke</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">Ebene der Landkreise und Regierungsbezirke</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://dcat-ap.de/def/politicalGeocoding/Level/municipality">
+    <dc:identifier>municipality</dc:identifier>
+    <skos:topConceptOf rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:inScheme rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level"/>
+    <skos:prefLabel xml:lang="de">kommunale Ebene</skos:prefLabel>
+    <skos-xl:prefLabel>
+      <skos-xl:Label>
+        <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+        <skos-xl:literalForm xml:lang="de">kommunale Ebene</skos-xl:literalForm>
+        <rdfs:label xml:lang="de">kommunale Ebene</rdfs:label>
+      </skos-xl:Label>
+    </skos-xl:prefLabel>
+    <skos:exactMatch rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/municipality"/>
+  </skos:Concept>
+</rdf:RDF>

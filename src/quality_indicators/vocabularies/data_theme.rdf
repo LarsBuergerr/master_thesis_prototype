@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://publications.europa.eu/ontology/euvoc#" xmlns:ns6="http://www.w3.org/2008/05/skos-xl#" xmlns:ns7="http://publications.europa.eu/ontology/authority/">
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:imports rdf:resource="http://publications.europa.eu/ontology/euvoc"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Data theme</rdfs:comment>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <skos:prefLabel xml:lang="en">Data theme</skos:prefLabel>
+    <rdfs:label xml:lang="en">Data theme</rdfs:label>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-07</dcterms:created>
+    <owl:versionIRI rdf:resource="http://publications.europa.eu/resource/authority/data-theme/20241211-0"/>
+    <ns5:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-07</ns5:startDate>
+    <ns6:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/data-theme/d4e2017"/>
+    <dcterms:identifier>http://publications.europa.eu/resource/authority/data-theme</dcterms:identifier>
+    <dcterms:title xml:lang="en">Data theme</dcterms:title>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TRAN"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/JUST"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/OP_DATPRO"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/SOCI"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/HEAL"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/INTR"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/AGRI"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/EDUC"/>
+    <skos:hasTopConcept rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENER"/>
+    <ns7:prefLabel xml:lang="en">Data theme</ns7:prefLabel>
+    <ns7:table.id>data-theme</ns7:table.id>
+    <ns7:table.version.number>20241211-0</ns7:table.version.number>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/AGRI">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/ECON">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/EDUC">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/ENER">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/ENVI">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/GOVE">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/HEAL">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/INTR">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/JUST">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/OP_DATPRO">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/REGI">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/SOCI">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/TECH">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/TRAN">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+</rdf:RDF>
