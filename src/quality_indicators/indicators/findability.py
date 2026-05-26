@@ -365,15 +365,20 @@ class TemporalCoverageIndicator(Indicator):
 
     def validate(self, metadata: Graph) -> IndicatorResult:
         try:
-            temporal = list(metadata.objects(predicate=DCTERMS.temporal))
             start = list(metadata.objects(predicate=URIRef(str(DCAT) + "startDate")))
             end = list(metadata.objects(predicate=URIRef(str(DCAT) + "endDate")))
 
-            if temporal or start or end:
+            self.logger.debug(
+                f"[{self.indicator_id}] Found startDate: {[str(s) for s in start]}, endDate: {[str(e) for e in end]}"
+            )
+
+            if (start and is_valid_xs_datetime(str(start[0]))) or (
+                end and is_valid_xs_datetime(str(end[0]))
+            ):
                 self.logger.info(
-                    f"[{self.indicator_id}] PASS score=1.00 "
-                    f"temporal={len(temporal)} start={len(start)} end={len(end)}"
+                    f"[{self.indicator_id}] PASS score=1.00 temporal coverage present and of valid xs:dateTime format"
                 )
+
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -384,14 +389,13 @@ class TemporalCoverageIndicator(Indicator):
                     message_de="Zeitliche Abdeckung vorhanden",
                     message_en="Temporal coverage present",
                     details={
-                        "temporal_count": len(temporal),
                         "start_count": len(start),
                         "end_count": len(end),
                     },
                 )
 
             self.logger.info(
-                f"[{self.indicator_id}] FAIL score=0.00 no temporal coverage"
+                f"[{self.indicator_id}] FAIL score=0.00 no temporal coverage found or invalid date format"
             )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -400,9 +404,9 @@ class TemporalCoverageIndicator(Indicator):
                 dimension=self.dimension,
                 status=IndicatorStatus.FAIL,
                 score=0.0,
-                message_de="Keine zeitliche Abdeckung gefunden",
-                message_en="No temporal coverage found",
-                details={"temporal_count": 0, "start_count": 0, "end_count": 0},
+                message_de="Keine zeitliche Abdeckung gefunden oder ungültiges Datumsformat",
+                message_en="No temporal coverage found or invalid date format",
+                details={"start_count": 0, "end_count": 0},
             )
 
         except Exception as e:
