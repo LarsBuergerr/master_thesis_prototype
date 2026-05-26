@@ -6,7 +6,7 @@ This dimension often requires NLP/LLM analysis for deeper insights.
 
 from typing import Any
 from rdflib import Graph
-from rdflib.namespace import DCTERMS
+from rdflib.namespace import DCAT, DCTERMS, RDF, Namespace
 
 from quality_indicators.models.indicator import (
     Indicator,
@@ -14,6 +14,8 @@ from quality_indicators.models.indicator import (
     IndicatorStatus,
 )
 from quality_indicators.models.dimension import QualityDimension
+
+DCT = Namespace("http://purl.org/dc/terms/")
 
 
 class TitleQualityIndicator(Indicator):
@@ -34,6 +36,8 @@ class TitleQualityIndicator(Indicator):
         )
 
     def validate(self, metadata: Any) -> IndicatorResult:
+        for triple in metadata:
+            print(triple)
         """Validate title quality.
 
         Args:
@@ -60,8 +64,12 @@ class TitleQualityIndicator(Indicator):
                     error="Invalid metadata format",
                 )
 
-            titles = list(metadata.objects(predicate=DCTERMS.title))
+            dataset_subjects = list(metadata.subjects(RDF.type, DCAT.Dataset))
+            titles = []
+            for ds in dataset_subjects:
+                titles.extend(metadata.objects(subject=ds, predicate=DCT.title))
             self.logger.debug(f"[{self.indicator_id}] Found {len(titles)} title(s)")
+            self.logger.debug(titles)
 
             if not titles:
                 self.logger.info(

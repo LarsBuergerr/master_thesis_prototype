@@ -3,8 +3,7 @@
 Validates aspects like keywords, theme, spatial/temporal coverage, etc.
 """
 
-from typing import Any, Dict, List
-from rdflib import Graph, URIRef, Literal, Namespace
+from rdflib import Graph, URIRef, Namespace
 from rdflib.namespace import DCAT, DCTERMS, XSD
 
 from quality_indicators.models.indicator import (
@@ -38,69 +37,32 @@ class KeywordsCountIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
-        """Validate keyword count.
-
-        Args:
-            metadata: rdflib Graph with DCAT metadata
-
-        Returns:
-            IndicatorResult with score based on keyword count
-        """
+    def validate(self, metadata: Graph) -> IndicatorResult:
         try:
-            self.logger.debug(f"[{self.indicator_id}] Starting validation")
-            if not isinstance(metadata, Graph):
-                self.logger.warning(
-                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
-
             keywords = list(metadata.objects(predicate=DCAT.keyword))
             keyword_count = len(keywords)
-
-            self.logger.debug(
-                f"[{self.indicator_id}] Found {keyword_count} keyword(s): {[str(kw) for kw in keywords]}"
-            )
 
             if 2 < keyword_count < 6:
                 status = IndicatorStatus.PASS
                 score = 1.0
                 message_de = f"Optimale Anzahl Keywords: {keyword_count}"
                 message_en = f"Optimal number of keywords: {keyword_count}"
-                self.logger.debug(
-                    f"[{self.indicator_id}] Score calculation: PASS (optimal range 2 < k < 6)"
-                )
-
             elif keyword_count in [2, 6] or (6 <= keyword_count < 10):
                 status = IndicatorStatus.PARTIAL
                 score = 0.7
                 message_de = f"Suboptimale Anzahl Keywords: {keyword_count}"
                 message_en = f"Suboptimal number of keywords: {keyword_count}"
-                self.logger.debug(
-                    f"[{self.indicator_id}] Score calculation: PARTIAL (boundary or 6-10 range)"
-                )
-
             else:
                 status = IndicatorStatus.FAIL
                 score = 0.0
                 message_de = f"Ungeeignete Anzahl Keywords: {keyword_count}"
                 message_en = f"Inappropriate number of keywords: {keyword_count}"
-                self.logger.debug(
-                    f"[{self.indicator_id}] Score calculation: FAIL (< 2 or > 10)"
-                )
 
             self.logger.info(
-                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
+                f"[{self.indicator_id}] {status.value} score={score:.2f} keywords={keyword_count}"
+            )
+            self.logger.debug(
+                f"[{self.indicator_id}] values={[str(kw) for kw in keywords]}"
             )
 
             return IndicatorResult(
@@ -150,42 +112,12 @@ class ThemeIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
-        """Validate theme against controlled vocabulary.
-
-        Args:
-            metadata: rdflib Graph with DCAT metadata
-
-        Returns:
-            IndicatorResult with score based on theme validity
-        """
+    def validate(self, metadata: Graph) -> IndicatorResult:
         try:
-            self.logger.debug(f"[{self.indicator_id}] Starting validation")
-            if not isinstance(metadata, Graph):
-                self.logger.warning(
-                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
-
             themes = list(metadata.objects(predicate=DCAT.theme))
-            self.logger.debug(
-                f"[{self.indicator_id}] Found {len(themes)} theme(s): {[str(t) for t in themes]}"
-            )
 
             if not themes:
-                self.logger.info(
-                    f"[{self.indicator_id}] Result: FAIL | No themes specified"
-                )
+                self.logger.info(f"[{self.indicator_id}] FAIL score=0.00 no themes")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -201,10 +133,6 @@ class ThemeIndicator(Indicator):
             valid_themes = [str(t) for t in themes if str(t) in VALID_THEME_URIS]
             invalid_themes = [str(t) for t in themes if str(t) not in VALID_THEME_URIS]
 
-            self.logger.debug(
-                f"[{self.indicator_id}] Validation: {len(valid_themes)} valid, {len(invalid_themes)} invalid"
-            )
-
             if invalid_themes:
                 status = IndicatorStatus.PARTIAL
                 score = 0.5
@@ -212,19 +140,20 @@ class ThemeIndicator(Indicator):
                     f"Einige Themes sind nicht aus dem kontrollierten Vokabular"
                 )
                 message_en = f"Some themes are not from controlled vocabulary"
-                self.logger.debug(
-                    f"[{self.indicator_id}] Invalid themes found: {invalid_themes}"
-                )
             else:
                 status = IndicatorStatus.PASS
                 score = 1.0
                 message_de = f"Alle Themes sind aus dem kontrollierten Vokabular"
                 message_en = f"All themes are from controlled vocabulary"
-                self.logger.debug(f"[{self.indicator_id}] All themes are valid")
 
             self.logger.info(
-                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"valid={len(valid_themes)}/{len(themes)}"
             )
+            if invalid_themes:
+                self.logger.debug(
+                    f"[{self.indicator_id}] invalid_themes={invalid_themes}"
+                )
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -279,34 +208,12 @@ class ThemePresenceIndicator(Indicator):
             weight=0.8,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
+    def validate(self, metadata: Graph) -> IndicatorResult:
         try:
-            self.logger.debug(f"[{self.indicator_id}] Starting validation")
-            if not isinstance(metadata, Graph):
-                self.logger.warning(
-                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
-
             themes = list(metadata.objects(predicate=DCAT.theme))
-            self.logger.debug(
-                f"[{self.indicator_id}] Found {len(themes)} theme(s): {[str(t) for t in themes]}"
-            )
 
             if not themes:
-                self.logger.info(
-                    f"[{self.indicator_id}] Result: FAIL | No themes specified"
-                )
+                self.logger.info(f"[{self.indicator_id}] FAIL score=0.00 no themes")
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -319,11 +226,8 @@ class ThemePresenceIndicator(Indicator):
                     details={"theme_count": 0},
                 )
 
-            self.logger.debug(
-                f"[{self.indicator_id}] Score calculation: PASS (themes present)"
-            )
             self.logger.info(
-                f"[{self.indicator_id}] Result: PASS | Score: 1.00 | {len(themes)} theme(s) present"
+                f"[{self.indicator_id}] PASS score=1.00 themes={len(themes)}"
             )
 
             return IndicatorResult(
@@ -369,29 +273,14 @@ class LocnGeometryIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
-        self.logger.debug(f"[{self.indicator_id}] Starting validation")
+    def validate(self, metadata: Graph) -> IndicatorResult:
         try:
-            if not isinstance(metadata, Graph):
-                self.logger.debug(
-                    f"[{self.indicator_id}] Metadata is not an rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
-
             geometries = list(metadata.objects(predicate=LOCN.geometry))
 
             if not geometries:
-                self.logger.debug(f"[{self.indicator_id}] No geometries found")
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 no locn:geometry"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -404,6 +293,9 @@ class LocnGeometryIndicator(Indicator):
                     details={"geometry_count": 0},
                 )
 
+            self.logger.info(
+                f"[{self.indicator_id}] PASS score=1.00 geometries={len(geometries)}"
+            )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -445,29 +337,14 @@ class AdminUnitL2Indicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
-        self.logger.debug(f"[{self.indicator_id}] Starting validation")
+    def validate(self, metadata: Graph) -> IndicatorResult:
         try:
-            if not isinstance(metadata, Graph):
-                self.logger.debug(
-                    f"[{self.indicator_id}] Metadata is not an rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
-
             admin_units = list(metadata.objects(predicate=LOCN.adminUnitL2))
 
             if not admin_units:
-                self.logger.debug(f"[{self.indicator_id}] No adminUnitL2 found")
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 no locn:adminUnitL2"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -480,7 +357,6 @@ class AdminUnitL2Indicator(Indicator):
                     details={"admin_unit_count": 0},
                 )
 
-            # Plausibility: should start with dcat-ap politicalGeocoding base
             valid = [
                 str(a)
                 for a in admin_units
@@ -494,6 +370,13 @@ class AdminUnitL2Indicator(Indicator):
 
             status = IndicatorStatus.PASS if invalid == [] else IndicatorStatus.PARTIAL
             score = 1.0 if invalid == [] else 0.5
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"valid={len(valid)}/{len(admin_units)}"
+            )
+            if invalid:
+                self.logger.debug(f"[{self.indicator_id}] invalid_uris={invalid}")
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -544,30 +427,17 @@ class TemporalCoverageIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
-        self.logger.debug(f"[{self.indicator_id}] Starting validation")
+    def validate(self, metadata: Graph) -> IndicatorResult:
         try:
-            if not isinstance(metadata, Graph):
-                self.logger.debug(
-                    f"[{self.indicator_id}] Metadata is not an rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
-
             temporal = list(metadata.objects(predicate=DCTERMS.temporal))
             start = list(metadata.objects(predicate=URIRef(str(DCAT) + "startDate")))
             end = list(metadata.objects(predicate=URIRef(str(DCAT) + "endDate")))
 
             if temporal or start or end:
+                self.logger.info(
+                    f"[{self.indicator_id}] PASS score=1.00 "
+                    f"temporal={len(temporal)} start={len(start)} end={len(end)}"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -584,6 +454,9 @@ class TemporalCoverageIndicator(Indicator):
                     },
                 )
 
+            self.logger.info(
+                f"[{self.indicator_id}] FAIL score=0.00 no temporal coverage"
+            )
             return IndicatorResult(
                 indicator_id=self.indicator_id,
                 name_de=self.name_de,
@@ -628,30 +501,13 @@ class DateTimeFieldIndicator(Indicator):
         )
         self.field_uri = field_uri
 
-    def validate(self, metadata: Any) -> IndicatorResult:
-        self.logger.debug(f"[{self.indicator_id}] Starting validation")
+    def validate(self, metadata: Graph) -> IndicatorResult:
         try:
-            if not isinstance(metadata, Graph):
-                self.logger.debug(
-                    f"[{self.indicator_id}] Metadata is not an rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
-
             values = list(metadata.objects(predicate=self.field_uri))
 
             if not values:
-                self.logger.debug(
-                    f"[{self.indicator_id}] No values found for {self.field_uri}"
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 field {self.field_uri} not set"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -676,6 +532,13 @@ class DateTimeFieldIndicator(Indicator):
 
             status = IndicatorStatus.PASS if not invalid else IndicatorStatus.PARTIAL
             score = 1.0 if not invalid else 0.5
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"valid={len(valid)}/{len(values)} field={self.field_uri}"
+            )
+            if invalid:
+                self.logger.debug(f"[{self.indicator_id}] invalid_values={invalid}")
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -726,30 +589,13 @@ class AccrualPeriodicityIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
+    def validate(self, metadata: Graph) -> IndicatorResult:
         try:
-            self.logger.debug(f"[{self.indicator_id}] Starting validation")
-            if not isinstance(metadata, Graph):
-                self.logger.debug(
-                    f"[{self.indicator_id}] Metadata is not an rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
-
             values = list(metadata.objects(predicate=DCTERMS.accrualPeriodicity))
 
             if not values:
-                self.logger.debug(
-                    f"[{self.indicator_id}] No values found for dct:accrualPeriodicity"
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 dct:accrualPeriodicity not set"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -768,6 +614,13 @@ class AccrualPeriodicityIndicator(Indicator):
 
             status = IndicatorStatus.PASS if not invalid else IndicatorStatus.PARTIAL
             score = 1.0 if not invalid else 0.5
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"valid={len(valid)}/{len(values)}"
+            )
+            if invalid:
+                self.logger.debug(f"[{self.indicator_id}] invalid_values={invalid}")
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,

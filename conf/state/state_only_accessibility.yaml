@@ -71,7 +71,7 @@ quality:
 
   # Optional dimension whitelist (default: all dimensions)
   # If specified, only these dimensions will be validated
-  dimension_whitelist: ["findability"]
+  dimension_whitelist: ["accessibility"]
 
   # Optional indicator blacklist (default: no indicators excluded)
   # If specified, these indicators will be skipped
