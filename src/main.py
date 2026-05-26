@@ -18,6 +18,7 @@ from langchain_openai import ChatOpenAI
 from utils.logger import get_logger
 from quality_indicators.service import QualityMetricsService
 from pipeline.output_manager import OutputManager
+from pipeline.run_visualizer import generate_run_charts_from_file
 
 # Set up logging early - this will be read from config in main()
 # Default to INFO, will be overridden in main()
@@ -237,6 +238,12 @@ def main(cfg: DictConfig) -> None:
             config=OmegaConf.to_container(cfg.state),
             input_info=input_info,
         )
+        aggregate_path = output_mgr.save_run_aggregate()
+        if aggregate_path is not None:
+            try:
+                generate_run_charts_from_file(aggregate_path)
+            except Exception:
+                logger.exception("Failed to generate run summary chart")
 
     logger.info(
         f"Processed {processed_count}/{len(files_to_process)} files successfully"

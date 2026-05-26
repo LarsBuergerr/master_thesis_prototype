@@ -120,6 +120,86 @@ class OutputManager:
         metadata_path = self.run_dir / "metadata.json"
         self._save_json(metadata_path, metadata)
 
+    def save_run_aggregate(self) -> Optional[Path]:
+        """Save a compact per-file summary plus run-level aggregates.
+
+        Writes ``run_aggregate.json`` at the run root with one entry per
+        processed file plus aggregate statistics. Returns the path written,
+        or ``None`` if there are no file results.
+        """
+        if not self.file_results:
+            return None
+
+        files_summary: Dict[str, Dict[str, Any]] = {}
+        dim_score_buckets: Dict[str, list] = {}
+        overall_scores: list = []
+        indicator_counts: Dict[str, Dict[str, int]] = {}
+
+        for filename, result in self.file_results.items():
+            summary = result.get("summary", {}) or {}
+            dim_scores = summary.get("dimension_scores", {}) or {}
+            overall_score = summary.get("overall_score")
+
+            files_summary[filename] = {
+                "overall_score": overall_score,
+                "overall_pass_rate": summary.get("overall_pass_rate"),
+                "quality_grade": summary.get("quality_grade"),
+                "dimension_scores": dim_scores,
+                "total_indicators": summary.get("total_indicators"),
+                "total_pass": summary.get("total_pass"),
+                "total_fail": summary.get("total_fail"),
+            }
+
+            if isinstance(overall_score, (int, float)):
+                overall_scores.append(float(overall_score))
+
+            for dim, score in dim_scores.items():
+                if isinstance(score, (int, float)):
+                    dim_score_buckets.setdefault(dim, []).append(float(score))
+
+            for dim_data in (result.get("by_dimension", {}) or {}).values():
+                for ind in dim_data.get("indicators", []) or []:
+                    ind_id = ind.get("indicator_id")
+                    if not ind_id:
+                        continue
+                    status = (ind.get("status") or "unknown").lower()
+                    bucket = indicator_counts.setdefault(
+                        ind_id,
+                        {
+                            "dimension": ind.get("dimension"),
+                            "pass": 0,
+                            "partial": 0,
+                            "fail": 0,
+                            "error": 0,
+                        },
+                    )
+                    bucket[status] = bucket.get(status, 0) + 1
+
+        def _mean(xs: list) -> Optional[float]:
+            return round(sum(xs) / len(xs), 4) if xs else None
+
+        aggregate = {
+            "file_count": len(files_summary),
+            "overall_score_mean": _mean(overall_scores),
+            "overall_score_min": min(overall_scores) if overall_scores else None,
+            "overall_score_max": max(overall_scores) if overall_scores else None,
+            "dimension_score_means": {
+                dim: _mean(scores) for dim, scores in dim_score_buckets.items()
+            },
+            "indicator_status_counts": indicator_counts,
+        }
+
+        aggregate_payload = {
+            "timestamp": self.timestamp,
+            "run_directory": str(self.run_dir),
+            "files": files_summary,
+            "aggregate": aggregate,
+        }
+
+        aggregate_path = self.run_dir / "run_aggregate.json"
+        self._save_json(aggregate_path, aggregate_payload)
+        return aggregate_path
+
     @staticmethod
     def _convert_to_serializable(obj: Any) -> Any:
         """Recursively convert DictConfig objects to regular dicts."""
