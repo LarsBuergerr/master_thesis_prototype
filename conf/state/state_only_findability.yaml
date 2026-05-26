@@ -16,7 +16,7 @@ directory_path: "data/sample_2026-05-21_08-57"
 # Files to process
 # If empty: process all files matching extensions in directory_path
 # If filled: process only these specific files
-files: ["non_geo_rest_05.rdf"]
+# files: ["non_geo_rest_05.rdf"]
 
 # files: []
 # Examples:
@@ -40,7 +40,7 @@ file_filter:
 # Output directory for results
 output_dir: "run_outputs/"
 run_output_dir_suffix: ""
-run_output_enabled: false
+run_output_enabled: true
 
 # Legacy field (unused, kept for compatibility)
 dataset_path: "dataset.csv"

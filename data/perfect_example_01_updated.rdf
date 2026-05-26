@@ -52,8 +52,8 @@
     </dct:publisher>
     <dct:temporal>
       <dct:PeriodOfTime rdf:nodeID="Naefff3aa91eb4f7ba988b2004550f960">
-        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1970-12-31T00:00:00</dcat:startDate>
-        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1980-12-31T00:00:00</dcat:endDate>
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1970-12-31</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1980-12-31</dcat:endDate>
       </dct:PeriodOfTime>
     </dct:temporal>
     <dct:spatial>

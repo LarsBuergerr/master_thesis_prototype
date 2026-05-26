@@ -40,7 +40,7 @@ file_filter:
 # Output directory for results
 output_dir: "run_outputs/"
 run_output_dir_suffix: "perfect_example_01_updated"
-run_output_enabled: true
+run_output_enabled: false
 
 # Legacy field (unused, kept for compatibility)
 dataset_path: "dataset.csv"

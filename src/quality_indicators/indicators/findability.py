@@ -17,7 +17,7 @@ from quality_indicators.vocabularies import (
     VALID_FREQUENCY_URIS,
     get_geocoding_vocabulary_for_uri,
 )
-from utils.datetime_utils import is_valid_xs_datetime
+from utils.datetime_utils import validate_temporal_value
 
 # locn namespace
 LOCN = Namespace("http://www.w3.org/ns/locn#")
@@ -350,7 +350,7 @@ class AdminUnitL2Indicator(Indicator):
 
 
 class TemporalCoverageIndicator(Indicator):
-    """Checks for temporal coverage via dct:temporal or dcat:startDate/endDate."""
+    """Checks for temporal coverage via dcat:startDate/endDate (xs:date or xs:dateTime)."""
 
     def __init__(self):
         super().__init__(
@@ -358,8 +358,8 @@ class TemporalCoverageIndicator(Indicator):
             name_de="Zeitliche Abdeckung angegeben",
             name_en="Temporal coverage specified",
             dimension=QualityDimension.FINDABILITY,
-            description_de="Prüft ob dct:temporal / dcat:startDate|endDate gesetzt sind",
-            description_en="Checks if dct:temporal or dcat:startDate/endDate are set",
+            description_de="Prüft ob dcat:startDate/endDate gesetzt und als xs:date oder xs:dateTime gültig sind",
+            description_en="Checks if dcat:startDate/endDate are set and valid as xs:date or xs:dateTime",
             weight=1.0,
         )
 
@@ -372,13 +372,18 @@ class TemporalCoverageIndicator(Indicator):
                 f"[{self.indicator_id}] Found startDate: {[str(s) for s in start]}, endDate: {[str(e) for e in end]}"
             )
 
-            if (start and is_valid_xs_datetime(str(start[0]))) or (
-                end and is_valid_xs_datetime(str(end[0]))
-            ):
-                self.logger.info(
-                    f"[{self.indicator_id}] PASS score=1.00 temporal coverage present and of valid xs:dateTime format"
-                )
+            start_format, start_valid = (
+                validate_temporal_value(start[0]) if start else (None, False)
+            )
+            end_format, end_valid = (
+                validate_temporal_value(end[0]) if end else (None, False)
+            )
 
+            if start_valid or end_valid:
+                self.logger.info(
+                    f"[{self.indicator_id}] PASS score=1.00 "
+                    f"start={start_format}/{start_valid} end={end_format}/{end_valid}"
+                )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
                     name_de=self.name_de,
@@ -391,6 +396,10 @@ class TemporalCoverageIndicator(Indicator):
                     details={
                         "start_count": len(start),
                         "end_count": len(end),
+                        "start_format": start_format,
+                        "end_format": end_format,
+                        "start_valid": start_valid,
+                        "end_valid": end_valid,
                     },
                 )
 
@@ -406,7 +415,14 @@ class TemporalCoverageIndicator(Indicator):
                 score=0.0,
                 message_de="Keine zeitliche Abdeckung gefunden oder ungültiges Datumsformat",
                 message_en="No temporal coverage found or invalid date format",
-                details={"start_count": 0, "end_count": 0},
+                details={
+                    "start_count": len(start),
+                    "end_count": len(end),
+                    "start_format": start_format,
+                    "end_format": end_format,
+                    "start_valid": start_valid,
+                    "end_valid": end_valid,
+                },
             )
 
         except Exception as e:
@@ -425,7 +441,7 @@ class TemporalCoverageIndicator(Indicator):
 
 
 class DateTimeFieldIndicator(Indicator):
-    """Generic validator for issued/modified dateTime fields (xs:dateTime)."""
+    """Generic validator for issued/modified date fields (xs:date or xs:dateTime)."""
 
     def __init__(
         self, field_uri: URIRef, indicator_id: str, name_de: str, name_en: str
@@ -435,8 +451,8 @@ class DateTimeFieldIndicator(Indicator):
             name_de=name_de,
             name_en=name_en,
             dimension=QualityDimension.FINDABILITY,
-            description_de=f"Prüft ob {field_uri} als xs:dateTime vorliegt",
-            description_en=f"Checks if {field_uri} is a xs:dateTime",
+            description_de=f"Prüft ob {field_uri} als xs:date oder xs:dateTime vorliegt",
+            description_en=f"Checks if {field_uri} is a valid xs:date or xs:dateTime",
             weight=1.0,
         )
         self.field_uri = field_uri
@@ -461,14 +477,12 @@ class DateTimeFieldIndicator(Indicator):
                     details={"count": 0},
                 )
 
-            valid = []
-            invalid = []
+            valid: list[dict] = []
+            invalid: list[dict] = []
             for v in values:
-                text = str(v)
-                if is_valid_xs_datetime(text):
-                    valid.append(text)
-                else:
-                    invalid.append(text)
+                fmt, ok = validate_temporal_value(v)
+                entry = {"value": str(v), "format": fmt}
+                (valid if ok else invalid).append(entry)
 
             status = IndicatorStatus.PASS if not invalid else IndicatorStatus.PARTIAL
             score = 1.0 if not invalid else 0.5
@@ -488,14 +502,14 @@ class DateTimeFieldIndicator(Indicator):
                 status=status,
                 score=score,
                 message_de=(
-                    "Alle Werte sind gültige xs:dateTime"
+                    "Alle Werte sind gültige xs:date oder xs:dateTime"
                     if not invalid
-                    else "Einige Werte sind keine gültigen xs:dateTime"
+                    else "Einige Werte sind keine gültigen xs:date / xs:dateTime"
                 ),
                 message_en=(
-                    "All values are valid xs:dateTime"
+                    "All values are valid xs:date or xs:dateTime"
                     if not invalid
-                    else "Some values are not valid xs:dateTime"
+                    else "Some values are not valid xs:date / xs:dateTime"
                 ),
                 details={"valid": valid, "invalid": invalid, "total": len(values)},
             )

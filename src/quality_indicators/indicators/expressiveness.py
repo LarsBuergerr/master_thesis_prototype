@@ -36,8 +36,6 @@ class TitleQualityIndicator(Indicator):
         )
 
     def validate(self, metadata: Any) -> IndicatorResult:
-        for triple in metadata:
-            print(triple)
         """Validate title quality.
 
         Args:
