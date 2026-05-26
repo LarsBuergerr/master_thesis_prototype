@@ -134,6 +134,8 @@ def main(cfg: DictConfig) -> None:
     logger.info("Starting quality validation run...")
     logger.info(OmegaConf.to_yaml(cfg))
 
+    run_output_enabled = cfg.state.get("run_output_enabled", False)
+
     # Resolve files to process
     try:
         files_to_process = resolve_files_to_process(cfg)
@@ -147,20 +149,24 @@ def main(cfg: DictConfig) -> None:
 
     logger.info(f"Found {len(files_to_process)} file(s) to process")
 
-    # Initialize output manager
-    output_mgr = OutputManager(cfg=cfg)
+    output_mgr = None
+    if run_output_enabled:
+        # Initialize output manager only when run output is enabled.
+        output_mgr = OutputManager(cfg=cfg)
 
-    # Set up session-wide log file in run directory
-    session_log_path = output_mgr.run_dir / "session.log"
-    session_handler = logging.FileHandler(session_log_path, encoding="utf-8", mode="w")
-    session_handler.setFormatter(
-        logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-            datefmt="%Y-%m-%d %H:%M:%S",
+        # Set up session-wide log file in run directory
+        session_log_path = output_mgr.run_dir / "session.log"
+        session_handler = logging.FileHandler(
+            session_log_path, encoding="utf-8", mode="w"
         )
-    )
-    session_handler.setLevel(logging.DEBUG)
-    logging.getLogger().addHandler(session_handler)
+        session_handler.setFormatter(
+            logging.Formatter(
+                "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+                datefmt="%Y-%m-%d %H:%M:%S",
+            )
+        )
+        session_handler.setLevel(logging.DEBUG)
+        logging.getLogger().addHandler(session_handler)
 
     # Create quality service
     quality_cfg = cfg.state.get("quality", {})
@@ -182,19 +188,21 @@ def main(cfg: DictConfig) -> None:
             f"[{file_idx}/{len(files_to_process)}] Processing: {file_path.name}"
         )
 
-        # Set up dedicated log file for this file
-        output_mgr.setup_file_logger(file_path.name)
+        if output_mgr is not None:
+            # Set up dedicated log file for this file
+            output_mgr.setup_file_logger(file_path.name)
 
         try:
             logger.info(f"Started processing: {file_path.name}")
             result = service.validate_metadata(str(file_path))
 
             # Save results
-            output_mgr.save_file_result(
-                filename=file_path.name,
-                result=result,
-                save_intermediate=True,
-            )
+            if output_mgr is not None:
+                output_mgr.save_file_result(
+                    filename=file_path.name,
+                    result=result,
+                    save_intermediate=True,
+                )
 
             summary = result.get("summary", {})
             logger.info(
@@ -211,7 +219,8 @@ def main(cfg: DictConfig) -> None:
             failed_count += 1
 
         finally:
-            output_mgr.close_file_logger(file_path.name)
+            if output_mgr is not None:
+                output_mgr.close_file_logger(file_path.name)
 
     # Save run summary
     input_info = {
@@ -223,18 +232,20 @@ def main(cfg: DictConfig) -> None:
         "failed_files": failed_files,
     }
 
-    output_mgr.save_run_summary(
-        config=OmegaConf.to_container(cfg.state),
-        input_info=input_info,
-    )
+    if output_mgr is not None:
+        output_mgr.save_run_summary(
+            config=OmegaConf.to_container(cfg.state),
+            input_info=input_info,
+        )
 
     logger.info(
         f"Processed {processed_count}/{len(files_to_process)} files successfully"
     )
-    logger.info(f"Output: {output_mgr.get_output_path()}")
+    if output_mgr is not None:
+        logger.info(f"Output: {output_mgr.get_output_path()}")
 
     # Cleanup session log handler
-    if session_handler:
+    if output_mgr is not None and session_handler:
         logging.getLogger().removeHandler(session_handler)
         session_handler.close()
 

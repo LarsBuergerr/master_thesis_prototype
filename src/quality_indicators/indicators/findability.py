@@ -26,6 +26,9 @@ LOCN = Namespace("http://www.w3.org/ns/locn#")
 class KeywordsCountIndicator(Indicator):
     """Validates if dataset has appropriate number of keywords (2 < k < 6)."""
 
+    MIN_KEYWORDS = 3
+    MAX_KEYWORDS = 10
+
     def __init__(self):
         super().__init__(
             indicator_id="find_keywords_count",
@@ -42,12 +45,15 @@ class KeywordsCountIndicator(Indicator):
             keywords = list(metadata.objects(predicate=DCAT.keyword))
             keyword_count = len(keywords)
 
-            if 2 < keyword_count < 6:
+            if self.MIN_KEYWORDS < keyword_count <= self.MAX_KEYWORDS:
                 status = IndicatorStatus.PASS
                 score = 1.0
                 message_de = f"Optimale Anzahl Keywords: {keyword_count}"
                 message_en = f"Optimal number of keywords: {keyword_count}"
-            elif keyword_count in [2, 6] or (6 <= keyword_count < 10):
+            elif (
+                keyword_count in [self.MIN_KEYWORDS - 1, self.MAX_KEYWORDS - 2]
+                or self.MAX_KEYWORDS < keyword_count <= self.MAX_KEYWORDS + 5
+            ):
                 status = IndicatorStatus.PARTIAL
                 score = 0.7
                 message_de = f"Suboptimale Anzahl Keywords: {keyword_count}"
@@ -77,7 +83,7 @@ class KeywordsCountIndicator(Indicator):
                 details={
                     "keyword_count": keyword_count,
                     "keywords": [str(kw) for kw in keywords],
-                    "expected_range": "2 < k < 6",
+                    "expected_range": f"{self.MIN_KEYWORDS}-{self.MAX_KEYWORDS} keywords",
                 },
             )
 
@@ -115,6 +121,9 @@ class ThemeIndicator(Indicator):
     def validate(self, metadata: Graph) -> IndicatorResult:
         try:
             themes = list(metadata.objects(predicate=DCAT.theme))
+            self.logger.debug(
+                f"[{self.indicator_id}] Found themes: {[str(t) for t in themes]}"
+            )
 
             if not themes:
                 self.logger.info(f"[{self.indicator_id}] FAIL score=0.00 no themes")
@@ -189,76 +198,6 @@ class ThemeIndicator(Indicator):
             )
 
 
-# Auto-register indicators when imported
-_keywords_indicator = KeywordsCountIndicator()
-_theme_indicator = ThemeIndicator()
-
-
-class ThemePresenceIndicator(Indicator):
-    """Validates presence of dcat:theme (non-empty)."""
-
-    def __init__(self):
-        super().__init__(
-            indicator_id="find_theme_present",
-            name_de="Theme angegeben",
-            name_en="Theme present",
-            dimension=QualityDimension.FINDABILITY,
-            description_de="dcat:theme sollte gesetzt und nicht leer sein",
-            description_en="dcat:theme should be set and not empty",
-            weight=0.8,
-        )
-
-    def validate(self, metadata: Graph) -> IndicatorResult:
-        try:
-            themes = list(metadata.objects(predicate=DCAT.theme))
-
-            if not themes:
-                self.logger.info(f"[{self.indicator_id}] FAIL score=0.00 no themes")
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.FAIL,
-                    score=0.0,
-                    message_de="Kein Theme angegeben",
-                    message_en="No theme specified",
-                    details={"theme_count": 0},
-                )
-
-            self.logger.info(
-                f"[{self.indicator_id}] PASS score=1.00 themes={len(themes)}"
-            )
-
-            return IndicatorResult(
-                indicator_id=self.indicator_id,
-                name_de=self.name_de,
-                name_en=self.name_en,
-                dimension=self.dimension,
-                status=IndicatorStatus.PASS,
-                score=1.0,
-                message_de=f"{len(themes)} Theme(s) angegeben",
-                message_en=f"{len(themes)} theme(s) present",
-                details={"theme_count": len(themes)},
-            )
-
-        except Exception as e:
-            self.logger.exception(
-                f"[{self.indicator_id}] Validation failed with exception"
-            )
-            return IndicatorResult(
-                indicator_id=self.indicator_id,
-                name_de=self.name_de,
-                name_en=self.name_en,
-                dimension=self.dimension,
-                status=IndicatorStatus.ERROR,
-                score=0.0,
-                message_de="Fehler bei der Validierung",
-                message_en="Validation error",
-                error=str(e),
-            )
-
-
 class LocnGeometryIndicator(Indicator):
     """Checks presence of locn:geometry and non-empty value."""
 
@@ -276,6 +215,7 @@ class LocnGeometryIndicator(Indicator):
     def validate(self, metadata: Graph) -> IndicatorResult:
         try:
             geometries = list(metadata.objects(predicate=LOCN.geometry))
+            print(geometries)
 
             if not geometries:
                 self.logger.info(
@@ -357,26 +297,17 @@ class AdminUnitL2Indicator(Indicator):
                     details={"admin_unit_count": 0},
                 )
 
-            valid = [
-                str(a)
-                for a in admin_units
-                if str(a).startswith("http://dcat-ap.de/def/politicalGeocoding/")
-            ]
-            invalid = [
-                str(a)
-                for a in admin_units
-                if not str(a).startswith("http://dcat-ap.de/def/politicalGeocoding/")
-            ]
+            admin_unit_uri = str(admin_units[0])
+            segment, valid_uris = get_geocoding_vocabulary_for_uri(admin_unit_uri)
+            is_valid = valid_uris is not None and admin_unit_uri in valid_uris
 
-            status = IndicatorStatus.PASS if invalid == [] else IndicatorStatus.PARTIAL
-            score = 1.0 if invalid == [] else 0.5
+            status = IndicatorStatus.PASS if is_valid else IndicatorStatus.PARTIAL
+            score = 1.0 if is_valid else 0.5
 
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={score:.2f} "
-                f"valid={len(valid)}/{len(admin_units)}"
+                f"uri={admin_unit_uri} segment={segment}"
             )
-            if invalid:
-                self.logger.debug(f"[{self.indicator_id}] invalid_uris={invalid}")
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -386,16 +317,21 @@ class AdminUnitL2Indicator(Indicator):
                 status=status,
                 score=score,
                 message_de=(
-                    "Alle adminUnitL2 verweisen auf dcat-ap"
-                    if invalid == []
-                    else "Einige adminUnitL2 sind nicht aus dcat-ap"
+                    "adminUnitL2 verweist auf dcat-ap"
+                    if is_valid
+                    else "adminUnitL2 ist nicht aus dcat-ap"
                 ),
                 message_en=(
-                    "All adminUnitL2 reference dcat-ap"
-                    if invalid == []
-                    else "Some adminUnitL2 are not from dcat-ap"
+                    "adminUnitL2 references dcat-ap"
+                    if is_valid
+                    else "adminUnitL2 is not from dcat-ap"
                 ),
-                details={"valid": valid, "invalid": invalid, "total": len(admin_units)},
+                details={
+                    "uri": admin_unit_uri,
+                    "segment": segment,
+                    "vocabulary_loaded": valid_uris is not None,
+                    "is_valid": is_valid,
+                },
             )
 
         except Exception as e:
@@ -657,8 +593,9 @@ class AccrualPeriodicityIndicator(Indicator):
             )
 
 
-# Register new indicators
-_theme_presence = ThemePresenceIndicator()
+# Instantiate indicators
+_keywords_indicator = KeywordsCountIndicator()
+_theme_indicator = ThemeIndicator()
 _locn_geometry = LocnGeometryIndicator()
 _admin_unit = AdminUnitL2Indicator()
 _temporal = TemporalCoverageIndicator()

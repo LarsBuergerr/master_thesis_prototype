@@ -58,7 +58,7 @@
     <dct:spatial>
       <dct:Location rdf:nodeID="location-fictional-germany">
         <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.8663 47.2701, 15.0419 47.2701, 15.0419 55.0581, 5.8663 55.0581, 5.8663 47.2701))</locn:geometry>
-        <locn:adminUnitL2 rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/000000000000"/>
+        <locn:adminUnitL2 rdf:resource="http://dcat-ap.de/def/politicalGeocoding/municipalityKey/08435005"/>
       </dct:Location>
     </dct:spatial>
     <dct:accessRights>
@@ -99,7 +99,7 @@
       </dcat:Distribution>
     </dcat:distribution>
     <dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/level/federal"/>
-    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/000000000000"/>
+    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/municipalityKey/08435005"/>
     <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/genesisDestatis"/>
   </dcat:Dataset>
 </rdf:RDF>
