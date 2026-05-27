@@ -3,6 +3,7 @@
 Validates aspects like downloadURL, format, mediaType, etc.
 """
 
+from concurrent.futures import ThreadPoolExecutor
 from typing import Any
 from rdflib import Graph
 from rdflib.namespace import DCAT, DCTERMS
@@ -16,6 +17,10 @@ from quality_indicators.models.dimension import QualityDimension
 from quality_indicators.vocabularies import (
     VALID_FILE_TYPE_URIS,
     VALID_MEDIA_TYPE_URIS,
+)
+from quality_indicators.validators.distribution_type_validation import (
+    DistributionReport,
+    DistributionTypeValidator,
 )
 
 
@@ -44,21 +49,6 @@ class DownloadURLIndicator(Indicator):
         """
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
-            if not isinstance(metadata, Graph):
-                self.logger.warning(
-                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
 
             download_urls = list(metadata.objects(predicate=DCAT.downloadURL))
             self.logger.debug(
@@ -138,21 +128,6 @@ class FormatIndicator(Indicator):
         """Validate format specification against the EU file-type vocabulary."""
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
-            if not isinstance(metadata, Graph):
-                self.logger.warning(
-                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
 
             formats = list(metadata.objects(predicate=DCTERMS.format))
             self.logger.debug(
@@ -243,23 +218,9 @@ class MediaTypeIndicator(Indicator):
     def validate(self, metadata: Any) -> IndicatorResult:
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
-            if not isinstance(metadata, Graph):
-                self.logger.warning(
-                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
 
             media_types = list(metadata.objects(predicate=DCAT.mediaType))
+
             self.logger.debug(
                 f"[{self.indicator_id}] Found {len(media_types)} mediaType(s): {[str(m) for m in media_types]}"
             )
@@ -333,7 +294,212 @@ class MediaTypeIndicator(Indicator):
             )
 
 
+class FormatCongruenceIndicator(Indicator):
+    """Validates that each distribution's declared format / mediaType matches
+    the actual download content.
+
+    For each ``dcat:Distribution`` we collect up to five MIME-type signals
+    (``dct:format``, ``dcat:mediaType``, URL extension, HTTP ``Content-Type``,
+    magic-byte sniff) and coalesce them. When the signals conflict the
+    distribution scores 0; full congruence scores 1.0; consistent but with
+    warnings (e.g. an unknown MIME mapping or an HTTP error) scores 0.7.
+
+    To keep the indicator bounded we sample at most ``MAX_DISTRIBUTIONS`` per
+    dataset (dedup by URL, deterministic sort, cap). Each probe runs in its
+    own thread.
+    """
+
+    MAX_DISTRIBUTIONS = 20
+    PARALLEL_WORKERS = 4
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
+    HTTP_TIMEOUT = (5.0, 10.0)
+
+    def __init__(self):
+        super().__init__(
+            indicator_id="acc_format_congruence",
+            name_de="Format-Kongruenz der Distributionen",
+            name_en="Format congruence of distributions",
+            dimension=QualityDimension.ACCESSIBILITY,
+            description_de=(
+                "Prüft pro Distribution, ob dct:format, dcat:mediaType, URL-Endung, "
+                "HTTP Content-Type und Magic-Bytes übereinstimmen "
+                f"(Stichprobe von max. {self.MAX_DISTRIBUTIONS} Distributionen)"
+            ),
+            description_en=(
+                "Checks per distribution that dct:format, dcat:mediaType, URL extension, "
+                "HTTP Content-Type and magic-byte sniffing agree "
+                f"(sample of up to {self.MAX_DISTRIBUTIONS} distributions)"
+            ),
+            weight=1.0,
+        )
+        self._validator = DistributionTypeValidator(timeout=self.HTTP_TIMEOUT)
+
+    def validate(self, metadata: Any) -> IndicatorResult:
+        try:
+            distributions = self._collect_distributions(metadata)
+            total = len(distributions)
+
+            if total == 0:
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions to check"
+                )
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=IndicatorStatus.FAIL,
+                    score=0.0,
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"distribution_count": 0},
+                )
+
+            sampled = distributions[: self.MAX_DISTRIBUTIONS]
+            self.logger.debug(
+                f"[{self.indicator_id}] checking {len(sampled)}/{total} distribution(s)"
+            )
+
+            reports = self._probe_in_parallel(metadata, sampled)
+
+            per_scores: list[float] = []
+            inconsistent: list[dict[str, Any]] = []
+            warning_only: list[dict[str, Any]] = []
+            for report in reports:
+                score = self._score_report(report)
+                per_scores.append(score)
+                summary = {
+                    "uri": report.distribution_uri,
+                    "download_url": report.download_url,
+                    "coalesced": report.coalesced_mime,
+                    "issues": report.issues,
+                    "warnings": report.warnings,
+                }
+                if not report.is_consistent:
+                    inconsistent.append(summary)
+                elif report.warnings:
+                    warning_only.append(summary)
+
+            overall = sum(per_scores) / len(per_scores) if per_scores else 0.0
+
+            if inconsistent:
+                if overall >= self.PARTIAL_THRESHOLD:
+                    status = IndicatorStatus.PARTIAL
+                else:
+                    status = IndicatorStatus.FAIL
+            elif warning_only:
+                status = (
+                    IndicatorStatus.PASS
+                    if overall >= self.PASS_THRESHOLD
+                    else IndicatorStatus.PARTIAL
+                )
+            else:
+                status = IndicatorStatus.PASS
+
+            sampled_count = len(sampled)
+            message_de = (
+                f"{sampled_count - len(inconsistent)}/{sampled_count} "
+                "Distributionen format-kongruent"
+            )
+            message_en = (
+                f"{sampled_count - len(inconsistent)}/{sampled_count} "
+                "distributions format-congruent"
+            )
+            if total > sampled_count:
+                message_de += f" (Stichprobe aus {total})"
+                message_en += f" (sample from {total})"
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={overall:.2f} "
+                f"sampled={sampled_count}/{total} "
+                f"inconsistent={len(inconsistent)} warnings={len(warning_only)}"
+            )
+
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=status,
+                score=round(overall, 4),
+                message_de=message_de,
+                message_en=message_en,
+                details={
+                    "total_distributions": total,
+                    "sampled_distributions": sampled_count,
+                    "consistent_count": sampled_count - len(inconsistent),
+                    "inconsistent_count": len(inconsistent),
+                    "warning_only_count": len(warning_only),
+                    "inconsistent": inconsistent,
+                    "warning_only": warning_only,
+                    "max_distributions": self.MAX_DISTRIBUTIONS,
+                },
+            )
+
+        except Exception as e:
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.ERROR,
+                score=0.0,
+                message_de="Fehler bei der Validierung",
+                message_en="Validation error",
+                error=str(e),
+            )
+
+    def _collect_distributions(self, graph: Graph) -> list:
+        """Return a deterministic, deduplicated list of distribution nodes.
+
+        Dedup key prefers the downloadURL (since two distribution nodes with
+        the same download URL produce identical probes); falls back to the
+        distribution URI when no downloadURL is set.
+        """
+        seen_keys: set = set()
+        ordered: list = []
+        for distribution in self._validator._iter_distributions(graph):
+            download_url = self._validator._first_uri(
+                graph, distribution, DCAT.downloadURL
+            )
+            key = download_url or str(distribution)
+            if key in seen_keys:
+                continue
+            seen_keys.add(key)
+            ordered.append((key, distribution))
+        ordered.sort(key=lambda item: item[0])
+        return [dist for _, dist in ordered]
+
+    def _probe_in_parallel(
+        self, graph: Graph, distributions: list
+    ) -> list[DistributionReport]:
+        if len(distributions) <= 1:
+            return [
+                self._validator.validate_distribution(graph, dist)
+                for dist in distributions
+            ]
+        with ThreadPoolExecutor(max_workers=self.PARALLEL_WORKERS) as pool:
+            return list(
+                pool.map(
+                    lambda dist: self._validator.validate_distribution(graph, dist),
+                    distributions,
+                )
+            )
+
+    def _score_report(self, report: DistributionReport) -> float:
+        if not report.is_consistent:
+            return 0.0
+        if report.warnings:
+            return 0.7
+        return 1.0
+
+
 # Auto-register indicators when imported
 _download_url_indicator = DownloadURLIndicator()
 _format_indicator = FormatIndicator()
 _media_type_indicator = MediaTypeIndicator()
+_format_congruence_indicator = FormatCongruenceIndicator()

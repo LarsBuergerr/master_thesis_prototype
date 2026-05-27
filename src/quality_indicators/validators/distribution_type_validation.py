@@ -55,7 +55,30 @@ EQUAL_TYPES: list[list[str]] = [
     ["text/json", "application/json"],
     ["application/x-pdf", "application/pdf"],
     ["application/vnd.ms-excel", "application/excel"],
-    ["application/geopackage+sqlite3", "application/x-gpkg"],
+    ["application/geopackage+sqlite3", "application/x-gpkg", "application/x-sqlite3", "application/vnd.sqlite3"],
+    ["text/rtf", "text/richtext", "application/rtf", "application/x-rtf"],
+    ["application/x-cdf", "application/x-netcdf"],
+    [
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ],
+    [
+        "application/vnd.ms-excel",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ],
+    [
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        "application/vnd.ms-powerpoint",
+    ],
+    [
+        "application/msaccess",
+        "application/x-msaccess",
+        "application/vnd.msaccess",
+        "application/vnd.ms-access",
+        "application/mdb",
+        "application/x-mdb",
+    ],
+    ["application/CDFV2", "application/CDFV2-unknown"],
 ]
 
 # generic types that can be "promoted" to a more specific type
@@ -69,12 +92,37 @@ ALLOWED_OVERRIDES: dict[str, list[str]] = {
         "application/rdf+xml",
         "application/geo+json",
         "application/gml+xml",
+        "application/sparql-query",
+        "application/x-ascii-grid",
+        "application/csv",
+        "application/vnd.google-earth.kml+xml",
+        "model/mtl",
+        "text/*",
     ],
     "application/octet-stream": ["*"],
     "application/xml": [
         "application/rdf+xml",
         "application/gml+xml",
         "application/vnd.google-earth.kml+xml",
+    ],
+    "application/x-ole-storage": [
+        "application/msword",
+        "application/vnd.ms-powerpoint",
+        "application/vnd.ms-excel",
+    ],
+    "text/csv": ["application/csv"],
+    "text/x-fortran": ["text/csv"],
+    "application/zip": [
+        "application/vnd.google-earth.kmz",
+        "application/x-filegdb",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ],
+    "application/CDFV2": [
+        "application/vnd.ms-excel",
+        "application/msword",
+        "application/vnd.ms-powerpoint",
     ],
 }
 
@@ -85,7 +133,15 @@ ARCHIVE_MIMETYPES: list[str] = [
     "application/x-tar",
 ]
 
-GENERIC_MIMETYPES: list[str] = list(ALLOWED_OVERRIDES.keys())
+# Types treated as "generic" — a declared generic MIME may be refined to a
+# more specific one without triggering a conflict. Per CKAN's
+# resource_types.json this is intentionally narrow.
+GENERIC_MIMETYPES: list[str] = ["application/octet-stream", "text/plain"]
+
+# OGC / service types whose URLs return XML (GetCapabilities etc.). Treating
+# them as application/xml lets the declared format agree with the actual
+# response without special-casing.
+SERVICE_XML_MIMETYPE = "application/xml"
 
 # EU file-type vocab URI → MIME (so dct:format can be compared with the rest).
 EU_FILE_TYPE_TO_MIME: dict[str, str] = {
@@ -114,6 +170,21 @@ EU_FILE_TYPE_TO_MIME: dict[str, str] = {
     "http://publications.europa.eu/resource/authority/file-type/SHP": "application/x-esri-shape",
     "http://publications.europa.eu/resource/authority/file-type/ATOM": "application/atom+xml",
     "http://publications.europa.eu/resource/authority/file-type/GPX": "application/gpx+xml",
+    "http://publications.europa.eu/resource/authority/file-type/N3": "text/n3",
+    "http://publications.europa.eu/resource/authority/file-type/NETCDF": "application/x-netcdf",
+    "http://publications.europa.eu/resource/authority/file-type/SPARQLQ": "application/sparql-query",
+    "http://publications.europa.eu/resource/authority/file-type/SHP": "x-gis/x-shapefile",
+    # OGC service formats — the endpoint typically returns XML
+    # (e.g. ?REQUEST=GetCapabilities), so map them to application/xml.
+    "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC": SERVICE_XML_MIMETYPE,
+    "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC": SERVICE_XML_MIMETYPE,
+    "http://publications.europa.eu/resource/authority/file-type/WCS_SRVC": SERVICE_XML_MIMETYPE,
+    "http://publications.europa.eu/resource/authority/file-type/WMTS_SRVC": SERVICE_XML_MIMETYPE,
+    "http://publications.europa.eu/resource/authority/file-type/SOS_SRVC": SERVICE_XML_MIMETYPE,
+    "http://publications.europa.eu/resource/authority/file-type/OGC_WFS": SERVICE_XML_MIMETYPE,
+    "http://publications.europa.eu/resource/authority/file-type/OGC_WMS": SERVICE_XML_MIMETYPE,
+    "http://publications.europa.eu/resource/authority/file-type/OGC_WCS": SERVICE_XML_MIMETYPE,
+    "http://publications.europa.eu/resource/authority/file-type/OGC_WMTS": SERVICE_XML_MIMETYPE,
 }
 
 IANA_MEDIA_PREFIX = "https://www.iana.org/assignments/media-types/"
@@ -129,6 +200,25 @@ for ext, mime in {
     ".rdf": "application/rdf+xml",
     ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     ".parquet": "application/vnd.apache.parquet",
+    # additions from CKAN's resource_types.json
+    ".accdb": "application/msaccess",
+    ".asc": "application/x-ascii-grid",
+    ".ecw": "application/octet-stream",
+    ".esri": "x-gis/x-shapefile",
+    ".fgdb": "application/x-filegdb",
+    ".gdb": "application/x-filegdb",
+    ".geotiff": "image/tiff",
+    ".mtl": "model/mtl",
+    ".n3": "text/n3",
+    ".obj": "text/plain",
+    ".pqt": "application/vnd.apache.parquet",
+    ".shp": "x-gis/x-shapefile",
+    ".sparql": "application/sparql-query",
+    ".tab": "text/plain",
+    ".topojson": "application/json",
+    ".ttf": "text/plain",
+    ".wfs": "application/xml",
+    ".wmts": "application/xml",
 }.items():
     mimetypes.add_type(mime, ext)
 
@@ -264,10 +354,14 @@ class DistributionTypeValidator:
 
         # ---- declared signals from the RDF
         report.title = self._first_literal(graph, distribution, DCTERMS.title)
-        report.download_url = self._first_uri(
-            graph, distribution, DCAT.downloadURL
-        ) or self._first_uri(graph, distribution, DCAT.accessURL)
+        report.download_url = self._first_uri(graph, distribution, DCAT.downloadURL)
         report.access_url = self._first_uri(graph, distribution, DCAT.accessURL)
+
+        # Prefer downloadURL for fetching; fall back to accessURL when the
+        # distribution only declares an access endpoint (common for OGC
+        # services, landing pages, ...).
+        fetch_url = report.download_url or report.access_url
+        fetch_source = "downloadURL" if report.download_url else "accessURL"
 
         format_signal = self._signal_from_format(graph, distribution)
         media_signal = self._signal_from_media_type(graph, distribution)
@@ -283,14 +377,11 @@ class DistributionTypeValidator:
             )
 
         # ---- URL extension
-        url_for_extension = report.download_url or report.access_url
-        report.signals.append(self._signal_from_url(url_for_extension))
+        report.signals.append(self._signal_from_url(fetch_url))
 
         # ---- HTTP + sniff
-        if self.fetch_enabled and report.download_url:
-            content_type, sniffed, sample, status, fetch_error = self._probe(
-                report.download_url
-            )
+        if self.fetch_enabled and fetch_url:
+            content_type, sniffed, sample, status, fetch_error = self._probe(fetch_url)
             report.status_code = status
             report.fetch_error = fetch_error
             report.fetched = status is not None and fetch_error is None
@@ -302,12 +393,17 @@ class DistributionTypeValidator:
             report.signals.append(TypeSignal("sniff", _hex_preview(sample), sniffed))
             if status is not None and status >= 400:
                 report.warnings.append(
-                    f"downloadURL returned HTTP {status}; remaining checks rely on declared metadata only"
+                    f"{fetch_source} returned HTTP {status}; remaining checks rely on declared metadata only"
+                )
+            elif fetch_error or not report.fetched:
+                report.warnings.append(
+                    f"{fetch_source} could not be fetched ({fetch_error or 'no response'}); "
+                    "content-based checks skipped"
                 )
         else:
-            if not report.download_url:
+            if not fetch_url:
                 report.warnings.append(
-                    "no dcat:downloadURL — content-based checks skipped"
+                    "no dcat:downloadURL or dcat:accessURL — content-based checks skipped"
                 )
             report.signals.append(TypeSignal("http_content_type", None, None))
             report.signals.append(TypeSignal("sniff", None, None))
