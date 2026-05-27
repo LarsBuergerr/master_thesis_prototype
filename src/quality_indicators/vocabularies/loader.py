@@ -18,6 +18,8 @@ _NS = {
 
 _RDF_ABOUT = f'{{{_NS["rdf"]}}}about'
 
+IANA_MEDIA_TYPE_PREFIX = "https://www.iana.org/assignments/media-types/"
+
 _POLITICAL_GEOCODING_PREFIX = "http://dcat-ap.de/def/politicalGeocoding/"
 
 _GEOCODING_FILE_MAP = {
@@ -66,17 +68,31 @@ def load_open_license_uris(filename: str = "licenses.rdf") -> frozenset[str]:
 
 
 @lru_cache(maxsize=None)
-def load_iana_media_type_uris(filename: str = "media_types.csv") -> frozenset[str]:
-    """Return IANA media type URIs derived from the IANA media-types CSV."""
-    base = "https://www.iana.org/assignments/media-types/"
-    uris: set[str] = set()
+def load_iana_media_type_templates(
+    filename: str = "media_types.csv",
+) -> frozenset[str]:
+    """Return the bare IANA media-type templates (e.g. ``application/gml+xml``).
+
+    The CSV ships only the templates without a URI prefix; consumers that need
+    a full URI should combine these with :data:`IANA_MEDIA_TYPE_PREFIX`.
+    """
+    templates: set[str] = set()
     with (VOCAB_DIR / filename).open(newline="", encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
         for row in reader:
             template = (row.get("Template") or "").strip()
             if template:
-                uris.add(f"{base}{template}")
-    return frozenset(uris)
+                templates.add(template)
+    return frozenset(templates)
+
+
+@lru_cache(maxsize=None)
+def load_iana_media_type_uris(filename: str = "media_types.csv") -> frozenset[str]:
+    """Return IANA media-type URIs (prefix + template) from the IANA media-types CSV."""
+    return frozenset(
+        IANA_MEDIA_TYPE_PREFIX + template
+        for template in load_iana_media_type_templates(filename)
+    )
 
 
 def get_political_geocoding_segment(uri: str) -> Optional[str]:

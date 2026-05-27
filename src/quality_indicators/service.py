@@ -4,12 +4,14 @@ No pipeline, no framework - just a simple utility to validate metadata
 and calculate quality scores for DCAT-AP-DE datasets.
 """
 
+import inspect
 from typing import Any, Dict, Optional
 from rdflib import Graph
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from quality_indicators.models.indicator import Indicator, IndicatorStatus
 from quality_indicators.models.dimension import QualityDimension
+from quality_indicators.validators.dataset_context import DatasetContext
 from quality_indicators.validators.rdf_parser import RDFMetadataParser
 from utils.logger import get_logger
 
@@ -132,7 +134,8 @@ class QualityMetricsService:
                 "error": "No indicators found",
             }
 
-        return self._process_dimension(dimension, indicators, metadata)
+        context = DatasetContext.from_graph(metadata)
+        return self._process_dimension(dimension, indicators, metadata, context)
 
     def validate_indicator(self, metadata: Graph, indicator_id: str) -> Dict[str, Any]:
         """Validate a single indicator.
@@ -155,7 +158,8 @@ class QualityMetricsService:
         logger.debug(f"Validating indicator: {indicator_id}")
 
         try:
-            result = indicator.validate(metadata)
+            context = DatasetContext.from_graph(metadata)
+            result = self._invoke_indicator(indicator, metadata, context)
             return result.to_dict()
 
         except Exception as e:
@@ -177,6 +181,14 @@ class QualityMetricsService:
         Returns:
             Results from all dimensions
         """
+        # Build per-dataset facts once. Indicators that need
+        # distribution-level data (URLs, formats, media-types) can read it
+        # from here instead of re-querying the graph.
+        context = DatasetContext.from_graph(metadata)
+        logger.debug(
+            f"DatasetContext built: {context.distribution_count} distribution(s)"
+        )
+
         results = {
             "by_dimension": {},
             "summary": {},
@@ -211,6 +223,7 @@ class QualityMetricsService:
                     dim,
                     indicators,
                     metadata,
+                    context,
                 ): dim
                 for dim, indicators in dimensions_indicators.items()
             }
@@ -238,6 +251,7 @@ class QualityMetricsService:
         dimension: QualityDimension,
         indicators: Dict[str, Indicator],
         metadata: Graph,
+        context: Optional[DatasetContext] = None,
     ) -> Dict[str, Any]:
         """Internal: Process a single dimension.
 
@@ -245,6 +259,8 @@ class QualityMetricsService:
             dimension: The dimension
             indicators: Indicators for this dimension
             metadata: RDF metadata graph
+            context: Optional pre-computed dataset facts shared across
+                indicators.
 
         Returns:
             Dimension results
@@ -261,7 +277,7 @@ class QualityMetricsService:
                 continue
 
             try:
-                result = indicator.validate(metadata)
+                result = self._invoke_indicator(indicator, metadata, context)
 
                 effective_weight = self.indicator_weights.get(
                     indicator_id, indicator.weight
@@ -359,6 +375,25 @@ class QualityMetricsService:
             "total_fail": total_indicators - total_pass,
             "quality_grade": self._score_to_grade(overall_score),
         }
+
+    @staticmethod
+    def _invoke_indicator(
+        indicator: Indicator,
+        metadata: Graph,
+        context: Optional[DatasetContext],
+    ):
+        """Call ``indicator.validate``, passing ``context`` only when the
+        indicator's signature accepts it. Indicators opt in by declaring a
+        ``context`` keyword argument.
+        """
+        if context is not None:
+            try:
+                sig = inspect.signature(indicator.validate)
+                if "context" in sig.parameters:
+                    return indicator.validate(metadata, context=context)
+            except (TypeError, ValueError):
+                pass
+        return indicator.validate(metadata)
 
     @staticmethod
     def _score_to_grade(score: float) -> str:

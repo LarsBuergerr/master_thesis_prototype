@@ -4,9 +4,8 @@ Validates aspects like downloadURL, format, mediaType, etc.
 """
 
 from concurrent.futures import ThreadPoolExecutor
-from typing import Any
+from typing import Any, Optional
 from rdflib import Graph
-from rdflib.namespace import DCAT, DCTERMS
 
 from quality_indicators.models.indicator import (
     Indicator,
@@ -15,9 +14,11 @@ from quality_indicators.models.indicator import (
 )
 from quality_indicators.models.dimension import QualityDimension
 from quality_indicators.vocabularies import (
+    IANA_MEDIA_TYPE_PREFIX,
     VALID_FILE_TYPE_URIS,
-    VALID_MEDIA_TYPE_URIS,
+    VALID_MEDIA_TYPE_TEMPLATES,
 )
+from quality_indicators.validators.dataset_context import DatasetContext
 from quality_indicators.validators.distribution_type_validation import (
     DistributionReport,
     DistributionTypeValidator,
@@ -38,21 +39,33 @@ class DownloadURLIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         """Validate download URL presence.
+
+        Per-distribution coverage is reported in ``details`` so downstream
+        consumers can tell ``"at least one"`` from ``"all of them"``.
 
         Args:
             metadata: rdflib Graph with DCAT metadata
+            context: Optional pre-computed dataset facts shared across
+                indicators.
 
         Returns:
             IndicatorResult with score based on URL presence
         """
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
 
-            download_urls = list(metadata.objects(predicate=DCAT.downloadURL))
+            download_urls = context.all_download_urls
+            total_distributions = context.distribution_count
+            with_download = context.distributions_with_download_url
             self.logger.debug(
-                f"[{self.indicator_id}] Found {len(download_urls)} download URL(s): {[str(url) for url in download_urls]}"
+                f"[{self.indicator_id}] {with_download}/{total_distributions} "
+                f"distribution(s) have a downloadURL"
             )
 
             if not download_urls:
@@ -68,14 +81,16 @@ class DownloadURLIndicator(Indicator):
                     score=0.0,
                     message_de="Keine Download-URL angegeben",
                     message_en="No download URL specified",
-                    details={"url_count": 0},
+                    details={
+                        "url_count": 0,
+                        "distributions_with_download_url": 0,
+                        "total_distributions": total_distributions,
+                    },
                 )
 
-            self.logger.debug(
-                f"[{self.indicator_id}] Score calculation: PASS (download URLs found)"
-            )
             self.logger.info(
-                f"[{self.indicator_id}] Result: PASS | Score: 1.00 | {len(download_urls)} URL(s) found"
+                f"[{self.indicator_id}] Result: PASS | Score: 1.00 | "
+                f"{len(download_urls)} URL(s), {with_download}/{total_distributions} distribution(s) covered"
             )
 
             return IndicatorResult(
@@ -89,7 +104,9 @@ class DownloadURLIndicator(Indicator):
                 message_en=f"Download URL present: {len(download_urls)} URL(s)",
                 details={
                     "url_count": len(download_urls),
-                    "urls": [str(url) for url in download_urls],
+                    "urls": download_urls,
+                    "distributions_with_download_url": with_download,
+                    "total_distributions": total_distributions,
                 },
             )
 
@@ -124,14 +141,18 @@ class FormatIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         """Validate format specification against the EU file-type vocabulary."""
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
 
-            formats = list(metadata.objects(predicate=DCTERMS.format))
+            formats = context.all_format_values
             self.logger.debug(
-                f"[{self.indicator_id}] Found {len(formats)} format(s): {[str(fmt) for fmt in formats]}"
+                f"[{self.indicator_id}] Found {len(formats)} format(s): {formats}"
             )
 
             if not formats:
@@ -150,8 +171,8 @@ class FormatIndicator(Indicator):
                     details={"format_count": 0},
                 )
 
-            valid = [str(f) for f in formats if str(f) in VALID_FILE_TYPE_URIS]
-            invalid = [str(f) for f in formats if str(f) not in VALID_FILE_TYPE_URIS]
+            valid = [f for f in formats if f in VALID_FILE_TYPE_URIS]
+            invalid = [f for f in formats if f not in VALID_FILE_TYPE_URIS]
 
             if invalid:
                 status = IndicatorStatus.PARTIAL if valid else IndicatorStatus.FAIL
@@ -215,14 +236,18 @@ class MediaTypeIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
 
-            media_types = list(metadata.objects(predicate=DCAT.mediaType))
+            media_types = context.all_media_type_values
 
             self.logger.debug(
-                f"[{self.indicator_id}] Found {len(media_types)} mediaType(s): {[str(m) for m in media_types]}"
+                f"[{self.indicator_id}] Found {len(media_types)} mediaType(s): {media_types}"
             )
 
             if not media_types:
@@ -241,21 +266,47 @@ class MediaTypeIndicator(Indicator):
                     details={"media_type_count": 0},
                 )
 
-            valid = [str(m) for m in media_types if str(m) in VALID_MEDIA_TYPE_URIS]
-            invalid = [
-                str(m) for m in media_types if str(m) not in VALID_MEDIA_TYPE_URIS
-            ]
+            # Two-step check per DCAT-AP-DE:
+            #   1) form — the value must be an IANA URI
+            #      (starts with https://www.iana.org/assignments/media-types/)
+            #   2) vocab — the suffix after the prefix must be a known
+            #      IANA media-type template (e.g. application/gml+xml)
+            valid: list[str] = []
+            invalid_form: list[str] = []
+            invalid_vocab: list[str] = []
+            for value in media_types:
+                if not value.startswith(IANA_MEDIA_TYPE_PREFIX):
+                    invalid_form.append(value)
+                    continue
+                template = value[len(IANA_MEDIA_TYPE_PREFIX) :]
+                if template in VALID_MEDIA_TYPE_TEMPLATES:
+                    valid.append(value)
+                else:
+                    invalid_vocab.append(value)
 
-            if invalid:
+            invalid_total = len(invalid_form) + len(invalid_vocab)
+            if invalid_total:
                 status = IndicatorStatus.PARTIAL if valid else IndicatorStatus.FAIL
                 score = 0.5 if valid else 0.0
-                message_de = "Nicht alle Media Types aus dem IANA-Vokabular"
-                message_en = "Not all media types are from the IANA vocabulary"
+                parts_de: list[str] = []
+                parts_en: list[str] = []
+                if invalid_form:
+                    parts_de.append(f"{len(invalid_form)} ohne IANA-URI-Form")
+                    parts_en.append(f"{len(invalid_form)} not in IANA URI form")
+                if invalid_vocab:
+                    parts_de.append(
+                        f"{len(invalid_vocab)} nicht im IANA-Vokabular"
+                    )
+                    parts_en.append(
+                        f"{len(invalid_vocab)} not in IANA vocabulary"
+                    )
+                message_de = ", ".join(parts_de)
+                message_en = ", ".join(parts_en)
             else:
                 status = IndicatorStatus.PASS
                 score = 1.0
-                message_de = "Alle Media Types aus dem IANA-Vokabular"
-                message_en = "All media types are from the IANA vocabulary"
+                message_de = "Alle Media Types als IANA-URI und im Vokabular"
+                message_en = "All media types are valid IANA URIs and in the vocabulary"
 
             self.logger.info(
                 f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
@@ -272,7 +323,8 @@ class MediaTypeIndicator(Indicator):
                 message_en=message_en,
                 details={
                     "valid": valid,
-                    "invalid": invalid,
+                    "invalid_form": invalid_form,
+                    "invalid_vocab": invalid_vocab,
                     "total": len(media_types),
                 },
             )
@@ -337,9 +389,13 @@ class FormatCongruenceIndicator(Indicator):
             timeout=self.HTTP_TIMEOUT, logger=self.logger
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         try:
-            distributions = self._collect_distributions(metadata)
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+            distributions = self._collect_distributions(metadata, context)
             total = len(distributions)
 
             if total == 0:
@@ -455,19 +511,24 @@ class FormatCongruenceIndicator(Indicator):
                 error=str(e),
             )
 
-    def _collect_distributions(self, graph: Graph) -> list:
+    def _collect_distributions(self, graph: Graph, context: DatasetContext) -> list:
         """Return a deterministic, deduplicated list of distribution nodes.
+
+        Uses pre-computed ``DistributionFacts`` from the shared context for
+        the per-distribution URLs (avoiding redundant graph queries) and the
+        graph itself for the ``URIRef`` objects needed by the HTTP-probing
+        validator.
 
         Dedup key prefers the downloadURL (since two distribution nodes with
         the same download URL produce identical probes); falls back to the
         distribution URI when no downloadURL is set.
         """
+        facts_by_uri = {f.distribution_uri: f for f in context.distributions}
         seen_keys: set = set()
         ordered: list = []
         for distribution in self._validator._iter_distributions(graph):
-            download_url = self._validator._first_uri(
-                graph, distribution, DCAT.downloadURL
-            )
+            facts = facts_by_uri.get(str(distribution))
+            download_url = facts.download_url if facts else None
             key = download_url or str(distribution)
             if key in seen_keys:
                 continue

@@ -18,7 +18,7 @@ directory_path: "data/sample_2026-05-21_08-57"
 # If filled: process only these specific files
 # files: ["non_geo_rest_05.rdf"]
 
-# files: []
+files: []
 # Examples:
 # - "geo_open-data-brandenburg.rdf"
 

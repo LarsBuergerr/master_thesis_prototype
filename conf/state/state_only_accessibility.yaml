@@ -17,8 +17,8 @@ directory_path: "data/sample_2026-05-21_08-57"
 # If empty: process all files matching extensions in directory_path
 # If filled: process only these specific files
 # files: ["non_geo_land-schleswig-holstein_03.rdf"]
-files: ["geo_transparenzportal-hamburg_03.rdf"]
-# files: []
+# files: ["geo_transparenzportal-hamburg_03.rdf"]
+files: []
 # Examples:
 # - "geo_open-data-brandenburg.rdf"
 
