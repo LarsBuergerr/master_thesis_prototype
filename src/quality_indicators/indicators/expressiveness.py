@@ -4,9 +4,8 @@ Validates semantic quality aspects like title quality, description quality, etc.
 This dimension often requires NLP/LLM analysis for deeper insights.
 """
 
-from typing import Any
+from typing import Any, Optional
 from rdflib import Graph
-from rdflib.namespace import DCAT, DCTERMS, RDF, Namespace
 
 from quality_indicators.models.indicator import (
     Indicator,
@@ -14,8 +13,7 @@ from quality_indicators.models.indicator import (
     IndicatorStatus,
 )
 from quality_indicators.models.dimension import QualityDimension
-
-DCT = Namespace("http://purl.org/dc/terms/")
+from quality_indicators.validators.dataset_context import DatasetContext
 
 
 class TitleQualityIndicator(Indicator):
@@ -35,39 +33,43 @@ class TitleQualityIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         """Validate title quality.
 
         Args:
             metadata: rdflib Graph with DCAT metadata
+            context: Optional pre-computed dataset facts shared across
+                indicators.
 
         Returns:
             IndicatorResult with score based on title quality
         """
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
-            if not isinstance(metadata, Graph):
-                self.logger.warning(
-                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
+            if context is None:
+                if not isinstance(metadata, Graph):
+                    self.logger.warning(
+                        f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
+                    )
+                    return IndicatorResult(
+                        indicator_id=self.indicator_id,
+                        name_de=self.name_de,
+                        name_en=self.name_en,
+                        dimension=self.dimension,
+                        status=IndicatorStatus.ERROR,
+                        score=0.0,
+                        message_de="Metadaten sind kein rdflib Graph",
+                        message_en="Metadata is not an rdflib Graph",
+                        error="Invalid metadata format",
+                    )
+                context = DatasetContext.from_graph(metadata)
 
-            dataset_subjects = list(metadata.subjects(RDF.type, DCAT.Dataset))
-            titles = []
-            for ds in dataset_subjects:
-                titles.extend(metadata.objects(subject=ds, predicate=DCT.title))
-            self.logger.debug(f"[{self.indicator_id}] Found {len(titles)} title(s)")
-            self.logger.debug(titles)
+            titles = context.titles
+            self.logger.debug(
+                f"[{self.indicator_id}] Found {len(titles)} title(s) on dcat:Dataset"
+            )
 
             if not titles:
                 self.logger.info(
@@ -85,7 +87,7 @@ class TitleQualityIndicator(Indicator):
                     details={"title_count": 0},
                 )
 
-            title = str(titles[0])
+            title = titles[0]
             title_length = len(title)
             self.logger.debug(
                 f"[{self.indicator_id}] Title length: {title_length} chars | Thresholds: MIN={self.MIN_LENGTH}, RECOMMENDED={self.RECOMMENDED_LENGTH}"
@@ -171,34 +173,40 @@ class DescriptionQualityIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Any) -> IndicatorResult:
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         """Validate description quality.
 
         Args:
             metadata: rdflib Graph with DCAT metadata
+            context: Optional pre-computed dataset facts shared across
+                indicators.
 
         Returns:
             IndicatorResult with score based on description quality
         """
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
-            if not isinstance(metadata, Graph):
-                self.logger.warning(
-                    f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.ERROR,
-                    score=0.0,
-                    message_de="Metadaten sind kein rdflib Graph",
-                    message_en="Metadata is not an rdflib Graph",
-                    error="Invalid metadata format",
-                )
+            if context is None:
+                if not isinstance(metadata, Graph):
+                    self.logger.warning(
+                        f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
+                    )
+                    return IndicatorResult(
+                        indicator_id=self.indicator_id,
+                        name_de=self.name_de,
+                        name_en=self.name_en,
+                        dimension=self.dimension,
+                        status=IndicatorStatus.ERROR,
+                        score=0.0,
+                        message_de="Metadaten sind kein rdflib Graph",
+                        message_en="Metadata is not an rdflib Graph",
+                        error="Invalid metadata format",
+                    )
+                context = DatasetContext.from_graph(metadata)
 
-            descriptions = list(metadata.objects(predicate=DCTERMS.description))
+            descriptions = context.descriptions
             self.logger.debug(
                 f"[{self.indicator_id}] Found {len(descriptions)} description(s)"
             )
@@ -219,7 +227,7 @@ class DescriptionQualityIndicator(Indicator):
                     details={"description_count": 0},
                 )
 
-            description = str(descriptions[0])
+            description = descriptions[0]
             desc_length = len(description)
             self.logger.debug(
                 f"[{self.indicator_id}] Description length: {desc_length} chars | Thresholds: MIN={self.MIN_LENGTH}, RECOMMENDED={self.RECOMMENDED_LENGTH}"

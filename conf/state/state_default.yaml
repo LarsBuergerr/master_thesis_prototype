@@ -24,11 +24,9 @@ files: []
 
 # File filtering (only used if files list is empty)
 file_filter:
-  # File extensions to include
   extensions: [".rdf"]
 
   # Include patterns: process only files matching these (filename starts with)
-  # Leave empty to include all
   include_patterns: []
     # - "geo_"
     # - "non_geo_"

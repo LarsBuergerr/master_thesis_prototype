@@ -3,8 +3,9 @@
 Validates aspects like keywords, theme, spatial/temporal coverage, etc.
 """
 
-from rdflib import Graph, URIRef, Namespace
-from rdflib.namespace import DCAT, DCTERMS, XSD
+from typing import Optional
+from rdflib import Graph, URIRef
+from rdflib.namespace import DCTERMS
 
 from quality_indicators.models.indicator import (
     Indicator,
@@ -12,15 +13,8 @@ from quality_indicators.models.indicator import (
     IndicatorStatus,
 )
 from quality_indicators.models.dimension import QualityDimension
-from quality_indicators.vocabularies import (
-    VALID_THEME_URIS,
-    VALID_FREQUENCY_URIS,
-    get_geocoding_vocabulary_for_uri,
-)
+from quality_indicators.validators.dataset_context import DatasetContext
 from utils.datetime_utils import validate_temporal_value
-
-# locn namespace
-LOCN = Namespace("http://www.w3.org/ns/locn#")
 
 
 class KeywordsCountIndicator(Indicator):
@@ -40,9 +34,13 @@ class KeywordsCountIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Graph) -> IndicatorResult:
+    def validate(
+        self, metadata: Graph, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         try:
-            keywords = list(metadata.objects(predicate=DCAT.keyword))
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+            keywords = context.keywords
             keyword_count = len(keywords)
 
             if self.MIN_KEYWORDS < keyword_count <= self.MAX_KEYWORDS:
@@ -67,9 +65,7 @@ class KeywordsCountIndicator(Indicator):
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={score:.2f} keywords={keyword_count}"
             )
-            self.logger.debug(
-                f"[{self.indicator_id}] values={[str(kw) for kw in keywords]}"
-            )
+            self.logger.debug(f"[{self.indicator_id}] values={keywords}")
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -82,7 +78,7 @@ class KeywordsCountIndicator(Indicator):
                 message_en=message_en,
                 details={
                     "keyword_count": keyword_count,
-                    "keywords": [str(kw) for kw in keywords],
+                    "keywords": keywords,
                     "expected_range": f"{self.MIN_KEYWORDS}-{self.MAX_KEYWORDS} keywords",
                 },
             )
@@ -118,12 +114,15 @@ class ThemeIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Graph) -> IndicatorResult:
+    def validate(
+        self, metadata: Graph, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         try:
-            themes = list(metadata.objects(predicate=DCAT.theme))
-            self.logger.debug(
-                f"[{self.indicator_id}] Found themes: {[str(t) for t in themes]}"
-            )
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+            themes = context.themes
+            in_vocab = context.themes_in_vocab
+            self.logger.debug(f"[{self.indicator_id}] Found themes: {themes}")
 
             if not themes:
                 self.logger.info(f"[{self.indicator_id}] FAIL score=0.00 no themes")
@@ -139,8 +138,8 @@ class ThemeIndicator(Indicator):
                     details={"theme_count": 0},
                 )
 
-            valid_themes = [str(t) for t in themes if str(t) in VALID_THEME_URIS]
-            invalid_themes = [str(t) for t in themes if str(t) not in VALID_THEME_URIS]
+            valid_themes = [t for t, ok in zip(themes, in_vocab) if ok]
+            invalid_themes = [t for t, ok in zip(themes, in_vocab) if not ok]
 
             if invalid_themes:
                 status = IndicatorStatus.PARTIAL
@@ -212,10 +211,13 @@ class LocnGeometryIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Graph) -> IndicatorResult:
+    def validate(
+        self, metadata: Graph, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         try:
-            geometries = list(metadata.objects(predicate=LOCN.geometry))
-            print(geometries)
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+            geometries = context.geometries
 
             if not geometries:
                 self.logger.info(
@@ -245,7 +247,7 @@ class LocnGeometryIndicator(Indicator):
                 score=1.0,
                 message_de=f"{len(geometries)} geometrische Angabe(n) gefunden",
                 message_en=f"{len(geometries)} geometry value(s) found",
-                details={"geometries": [str(g) for g in geometries]},
+                details={"geometries": geometries},
             )
 
         except Exception as e:
@@ -277,9 +279,13 @@ class AdminUnitL2Indicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Graph) -> IndicatorResult:
+    def validate(
+        self, metadata: Graph, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         try:
-            admin_units = list(metadata.objects(predicate=LOCN.adminUnitL2))
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+            admin_units = context.admin_units
 
             if not admin_units:
                 self.logger.info(
@@ -297,16 +303,14 @@ class AdminUnitL2Indicator(Indicator):
                     details={"admin_unit_count": 0},
                 )
 
-            admin_unit_uri = str(admin_units[0])
-            segment, valid_uris = get_geocoding_vocabulary_for_uri(admin_unit_uri)
-            is_valid = valid_uris is not None and admin_unit_uri in valid_uris
-
+            first = admin_units[0]
+            is_valid = first.is_in_vocab
             status = IndicatorStatus.PASS if is_valid else IndicatorStatus.PARTIAL
             score = 1.0 if is_valid else 0.5
 
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={score:.2f} "
-                f"uri={admin_unit_uri} segment={segment}"
+                f"uri={first.uri} segment={first.segment}"
             )
 
             return IndicatorResult(
@@ -327,10 +331,10 @@ class AdminUnitL2Indicator(Indicator):
                     else "adminUnitL2 is not from dcat-ap"
                 ),
                 details={
-                    "uri": admin_unit_uri,
-                    "segment": segment,
-                    "vocabulary_loaded": valid_uris is not None,
+                    "uri": first.uri,
+                    "segment": first.segment,
                     "is_valid": is_valid,
+                    "admin_unit_count": len(admin_units),
                 },
             )
 
@@ -363,13 +367,17 @@ class TemporalCoverageIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Graph) -> IndicatorResult:
+    def validate(
+        self, metadata: Graph, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         try:
-            start = list(metadata.objects(predicate=URIRef(str(DCAT) + "startDate")))
-            end = list(metadata.objects(predicate=URIRef(str(DCAT) + "endDate")))
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+            start = context.start_dates
+            end = context.end_dates
 
             self.logger.debug(
-                f"[{self.indicator_id}] Found startDate: {[str(s) for s in start]}, endDate: {[str(e) for e in end]}"
+                f"[{self.indicator_id}] Found startDate: {start}, endDate: {end}"
             )
 
             start_format, start_valid = (
@@ -457,11 +465,37 @@ class DateTimeFieldIndicator(Indicator):
         )
         self.field_uri = field_uri
 
-    def validate(self, metadata: Graph) -> IndicatorResult:
-        try:
-            values = list(metadata.objects(predicate=self.field_uri))
+    def _collect_sourced(self, context: DatasetContext):
+        """Collect (source_kind, source_uri, value) tuples for this field
+        across both the Dataset and all Distributions.
 
-            if not values:
+        ``dct:modified`` and ``dct:issued`` are valid on both subject types
+        in DCAT-AP-DE — datasets typically have one each, distributions
+        often have their own. The indicator checks all of them and shows
+        which subject each value came from.
+        """
+        if self.field_uri == DCTERMS.modified:
+            return context.collect_modified()
+        if self.field_uri == DCTERMS.issued:
+            return context.collect_issued()
+        # Unknown field — fall back to a flat graph scan. Source is unknown
+        # so we record it as ``"unknown"`` to keep the log shape consistent.
+        from quality_indicators.validators.dataset_context import SourcedValue
+
+        return [
+            SourcedValue("unknown", None, str(o))
+            for o in context.graph.objects(predicate=self.field_uri)
+        ]
+
+    def validate(
+        self, metadata: Graph, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+            sourced = self._collect_sourced(context)
+
+            if not sourced:
                 self.logger.info(
                     f"[{self.indicator_id}] FAIL score=0.00 field {self.field_uri} not set"
                 )
@@ -474,23 +508,37 @@ class DateTimeFieldIndicator(Indicator):
                     score=0.0,
                     message_de="Feld nicht gesetzt",
                     message_en="Field not set",
-                    details={"count": 0},
+                    details={"count": 0, "dataset_count": 0, "distribution_count": 0},
                 )
 
             valid: list[dict] = []
             invalid: list[dict] = []
-            for v in values:
-                fmt, ok = validate_temporal_value(v)
-                entry = {"value": str(v), "format": fmt}
+            for sv in sourced:
+                fmt, ok = validate_temporal_value(sv.value)
+                entry = {
+                    "value": sv.value,
+                    "format": fmt,
+                    "source_kind": sv.source_kind,
+                    "source_uri": sv.source_uri,
+                }
                 (valid if ok else invalid).append(entry)
 
             status = IndicatorStatus.PASS if not invalid else IndicatorStatus.PARTIAL
             score = 1.0 if not invalid else 0.5
 
+            dataset_count = sum(1 for s in sourced if s.source_kind == "dataset")
+            dist_count = sum(1 for s in sourced if s.source_kind == "distribution")
+
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={score:.2f} "
-                f"valid={len(valid)}/{len(values)} field={self.field_uri}"
+                f"valid={len(valid)}/{len(sourced)} "
+                f"dataset={dataset_count} distribution={dist_count} "
+                f"field={self.field_uri}"
             )
+            for sv in sourced:
+                self.logger.debug(
+                    f"[{self.indicator_id}]   [{sv.source_kind}] {sv.source_uri} = {sv.value}"
+                )
             if invalid:
                 self.logger.debug(f"[{self.indicator_id}] invalid_values={invalid}")
 
@@ -502,16 +550,26 @@ class DateTimeFieldIndicator(Indicator):
                 status=status,
                 score=score,
                 message_de=(
-                    "Alle Werte sind gültige xs:date oder xs:dateTime"
+                    f"Alle {len(valid)} Werte gültig (Dataset: {dataset_count}, "
+                    f"Distribution: {dist_count})"
                     if not invalid
-                    else "Einige Werte sind keine gültigen xs:date / xs:dateTime"
+                    else f"{len(invalid)} ungültige(r) Wert(e) "
+                    f"(Dataset: {dataset_count}, Distribution: {dist_count})"
                 ),
                 message_en=(
-                    "All values are valid xs:date or xs:dateTime"
+                    f"All {len(valid)} values valid (Dataset: {dataset_count}, "
+                    f"Distribution: {dist_count})"
                     if not invalid
-                    else "Some values are not valid xs:date / xs:dateTime"
+                    else f"{len(invalid)} invalid value(s) "
+                    f"(Dataset: {dataset_count}, Distribution: {dist_count})"
                 ),
-                details={"valid": valid, "invalid": invalid, "total": len(values)},
+                details={
+                    "valid": valid,
+                    "invalid": invalid,
+                    "total": len(sourced),
+                    "dataset_count": dataset_count,
+                    "distribution_count": dist_count,
+                },
             )
 
         except Exception as e:
@@ -543,9 +601,14 @@ class AccrualPeriodicityIndicator(Indicator):
             weight=1.0,
         )
 
-    def validate(self, metadata: Graph) -> IndicatorResult:
+    def validate(
+        self, metadata: Graph, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
         try:
-            values = list(metadata.objects(predicate=DCTERMS.accrualPeriodicity))
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+            values = context.accrual_periodicity
+            in_vocab = context.accrual_periodicity_in_vocab
 
             if not values:
                 self.logger.info(
@@ -563,8 +626,8 @@ class AccrualPeriodicityIndicator(Indicator):
                     details={"count": 0},
                 )
 
-            valid = [str(v) for v in values if str(v) in VALID_FREQUENCY_URIS]
-            invalid = [str(v) for v in values if str(v) not in VALID_FREQUENCY_URIS]
+            valid = [v for v, ok in zip(values, in_vocab) if ok]
+            invalid = [v for v, ok in zip(values, in_vocab) if not ok]
 
             status = IndicatorStatus.PASS if not invalid else IndicatorStatus.PARTIAL
             score = 1.0 if not invalid else 0.5

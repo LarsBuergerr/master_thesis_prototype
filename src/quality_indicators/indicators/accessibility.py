@@ -150,7 +150,7 @@ class FormatIndicator(Indicator):
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            formats = context.all_format_values
+            formats = context.all_distribution_formats
             self.logger.debug(
                 f"[{self.indicator_id}] Found {len(formats)} format(s): {formats}"
             )
@@ -244,7 +244,7 @@ class MediaTypeIndicator(Indicator):
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            media_types = context.all_media_type_values
+            media_types = context.all_distribution_media_types
 
             self.logger.debug(
                 f"[{self.indicator_id}] Found {len(media_types)} mediaType(s): {media_types}"
@@ -514,7 +514,7 @@ class FormatCongruenceIndicator(Indicator):
     def _collect_distributions(self, graph: Graph, context: DatasetContext) -> list:
         """Return a deterministic, deduplicated list of distribution nodes.
 
-        Uses pre-computed ``DistributionFacts`` from the shared context for
+        Uses pre-computed ``DistributionContext`` from the shared context for
         the per-distribution URLs (avoiding redundant graph queries) and the
         graph itself for the ``URIRef`` objects needed by the HTTP-probing
         validator.

@@ -130,6 +130,20 @@ def main(cfg: DictConfig) -> None:
     log_level = getattr(logging, log_level_str.upper(), logging.INFO)
     logging.getLogger().setLevel(log_level)
 
+    # Even at root DEBUG, keep third-party libraries quiet. Without this
+    # matplotlib's font_manager / PIL / urllib3 / rdflib dump thousands of
+    # lines per run (font cache scans, PNG chunk decoding, RDF parsing).
+    for noisy in (
+        "matplotlib",
+        "PIL",
+        "urllib3",
+        "requests",
+        "rdflib",
+        "httpx",
+        "httpcore",
+    ):
+        logging.getLogger(noisy).setLevel(logging.WARNING)
+
     session_handler = None
 
     logger.info("Starting quality validation run...")
