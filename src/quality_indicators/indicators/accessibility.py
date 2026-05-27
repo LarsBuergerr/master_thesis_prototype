@@ -333,7 +333,9 @@ class FormatCongruenceIndicator(Indicator):
             ),
             weight=1.0,
         )
-        self._validator = DistributionTypeValidator(timeout=self.HTTP_TIMEOUT)
+        self._validator = DistributionTypeValidator(
+            timeout=self.HTTP_TIMEOUT, logger=self.logger
+        )
 
     def validate(self, metadata: Any) -> IndicatorResult:
         try:

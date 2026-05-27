@@ -28,7 +28,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import logging
+from logging import Logger
 import mimetypes
 import os
 import re
@@ -42,8 +42,6 @@ import requests
 from rdflib import Graph, Namespace, URIRef
 from rdflib.namespace import DCAT, DCTERMS
 
-LOG = logging.getLogger(__name__)
-
 # ---------------------------------------------------------------------------
 # Configuration — inline replacement for CKAN's resources/resource_types.json
 # ---------------------------------------------------------------------------
@@ -55,7 +53,12 @@ EQUAL_TYPES: list[list[str]] = [
     ["text/json", "application/json"],
     ["application/x-pdf", "application/pdf"],
     ["application/vnd.ms-excel", "application/excel"],
-    ["application/geopackage+sqlite3", "application/x-gpkg", "application/x-sqlite3", "application/vnd.sqlite3"],
+    [
+        "application/geopackage+sqlite3",
+        "application/x-gpkg",
+        "application/x-sqlite3",
+        "application/vnd.sqlite3",
+    ],
     ["text/rtf", "text/richtext", "application/rtf", "application/x-rtf"],
     ["application/x-cdf", "application/x-netcdf"],
     [
@@ -104,6 +107,7 @@ ALLOWED_OVERRIDES: dict[str, list[str]] = {
         "application/rdf+xml",
         "application/gml+xml",
         "application/vnd.google-earth.kml+xml",
+        "application/xhtml+xml",
     ],
     "application/x-ole-storage": [
         "application/msword",
@@ -318,6 +322,7 @@ class DistributionTypeValidator:
         archive_mimetypes: Optional[list[str]] = None,
         generic_mimetypes: Optional[list[str]] = None,
         fetch_enabled: bool = True,
+        logger: Logger,
     ) -> None:
         self.timeout = timeout
         self.sample_bytes = sample_bytes
@@ -332,6 +337,7 @@ class DistributionTypeValidator:
             generic_mimetypes if generic_mimetypes is not None else GENERIC_MIMETYPES
         )
         self.fetch_enabled = fetch_enabled
+        self.logger = logger
 
     # ---- public entry points --------------------------------------------------
 
@@ -419,6 +425,8 @@ class DistributionTypeValidator:
                 report.warnings.append(
                     "underlying file is an archive — declared format describes archive contents"
                 )
+
+        self.logger.debug(_format_report(report))
 
         return report
 
@@ -573,9 +581,19 @@ class DistributionTypeValidator:
             if self._type_equals(mime, best):
                 continue
             valid, more_specific = self._is_valid_override(best, mime)
-            if valid and allow_override:
-                best = more_specific
-                continue
+            if valid:
+                # Two override directions:
+                #   * downward: new signal is a less specific superset of
+                #     ``best`` (e.g. best=application/gml+xml, new=application/xml).
+                #     This is always compatible — keep ``best``, no upgrade.
+                #   * upward: new signal would promote ``best`` to something more
+                #     specific. Only do this when ``allow_override`` says the
+                #     declared metadata was generic / unspecified to begin with.
+                if more_specific == best:
+                    continue
+                if allow_override:
+                    best = more_specific
+                    continue
             issues.append(
                 f"{sig.source}={mime!r} conflicts with previously coalesced {best!r}"
             )
@@ -714,8 +732,6 @@ def main(argv: Optional[list[str]] = None) -> int:
         help="HTTP timeout (seconds, applied to connect and read).",
     )
     args = parser.parse_args(argv)
-
-    logging.basicConfig(level=os.environ.get("LOGLEVEL", "WARNING"))
 
     validator = DistributionTypeValidator(
         timeout=(args.timeout, args.timeout),
