@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 from logging import Logger
 import mimetypes
 import os
@@ -52,7 +53,7 @@ EQUAL_TYPES: list[list[str]] = [
     ["application/csv", "text/csv"],
     ["text/json", "application/json"],
     ["application/x-pdf", "application/pdf"],
-    ["application/vnd.ms-excel", "application/excel"],
+    ["application/vnd.ms-excel", "application/excel", "text/xlsx"],
     [
         "application/geopackage+sqlite3",
         "application/x-gpkg",
@@ -108,6 +109,18 @@ ALLOWED_OVERRIDES: dict[str, list[str]] = {
         "application/gml+xml",
         "application/vnd.google-earth.kml+xml",
         "application/xhtml+xml",
+    ],
+    # ``application/json`` is the parent of the ``*+json`` family. Servers
+    # often serve a more specific type as plain ``application/json``
+    # (especially OGC WFS GetFeature with outputFormat=application/json
+    # returns GeoJSON), and ``mimetypes`` resolves ``.json`` filenames the
+    # same way.
+    "application/json": [
+        "application/geo+json",
+        "application/ld+json",
+        "application/hal+json",
+        "application/vnd.api+json",
+        "application/topojson",
     ],
     "application/x-ole-storage": [
         "application/msword",
@@ -289,6 +302,20 @@ class TypeSignal:
 
 
 @dataclass
+class _ProbeResult:
+    """Everything we extract from one HTTP probe."""
+
+    content_type: Optional[str]
+    content_disposition: Optional[str]
+    attachment_filename: Optional[str]
+    final_url: Optional[str]
+    sniffed: Optional[str]
+    sample: bytes
+    status: Optional[int]
+    error: Optional[str]
+
+
+@dataclass
 class DistributionReport:
     distribution_uri: str
     title: Optional[str] = None
@@ -297,6 +324,9 @@ class DistributionReport:
     fetched: bool = False
     status_code: Optional[int] = None
     fetch_error: Optional[str] = None
+    final_url: Optional[str] = None
+    content_disposition: Optional[str] = None
+    attachment_filename: Optional[str] = None
     signals: list[TypeSignal] = field(default_factory=list)
     coalesced_mime: Optional[str] = None
     is_consistent: bool = True
@@ -387,23 +417,35 @@ class DistributionTypeValidator:
 
         # ---- HTTP + sniff
         if self.fetch_enabled and fetch_url:
-            content_type, sniffed, sample, status, fetch_error = self._probe(fetch_url)
-            report.status_code = status
-            report.fetch_error = fetch_error
-            report.fetched = status is not None and fetch_error is None
+            probe = self._probe(fetch_url)
+            report.status_code = probe.status
+            report.fetch_error = probe.error
+            report.fetched = probe.status is not None and probe.error is None
+            report.final_url = probe.final_url
+            report.content_disposition = probe.content_disposition
+            report.attachment_filename = probe.attachment_filename
             report.signals.append(
                 TypeSignal(
-                    "http_content_type", content_type, _strip_charset(content_type)
+                    "http_content_type",
+                    probe.content_type,
+                    _strip_charset(probe.content_type),
                 )
             )
-            report.signals.append(TypeSignal("sniff", _hex_preview(sample), sniffed))
-            if status is not None and status >= 400:
-                report.warnings.append(
-                    f"{fetch_source} returned HTTP {status}; remaining checks rely on declared metadata only"
+            report.signals.append(
+                self._signal_from_attachment(
+                    probe.attachment_filename, probe.content_disposition
                 )
-            elif fetch_error or not report.fetched:
+            )
+            report.signals.append(
+                TypeSignal("sniff", _hex_preview(probe.sample), probe.sniffed)
+            )
+            if probe.status is not None and probe.status >= 400:
                 report.warnings.append(
-                    f"{fetch_source} could not be fetched ({fetch_error or 'no response'}); "
+                    f"{fetch_source} returned HTTP {probe.status}; remaining checks rely on declared metadata only"
+                )
+            elif probe.error or not report.fetched:
+                report.warnings.append(
+                    f"{fetch_source} could not be fetched ({probe.error or 'no response'}); "
                     "content-based checks skipped"
                 )
         else:
@@ -412,6 +454,7 @@ class DistributionTypeValidator:
                     "no dcat:downloadURL or dcat:accessURL — content-based checks skipped"
                 )
             report.signals.append(TypeSignal("http_content_type", None, None))
+            report.signals.append(TypeSignal("attachment_filename", None, None))
             report.signals.append(TypeSignal("sniff", None, None))
 
         # ---- coalesce
@@ -425,6 +468,24 @@ class DistributionTypeValidator:
                 report.warnings.append(
                     "underlying file is an archive — declared format describes archive contents"
                 )
+
+        # Make the attachment-based demotion (in ``_coalesce``) visible in the
+        # report: if ``http_content_type`` disagreed with the coalesced MIME
+        # but the attachment filename agreed, surface that as a warning.
+        attachment_mime = self._signal_value(report.signals, "attachment_filename")
+        http_mime = self._signal_value(report.signals, "http_content_type")
+        if (
+            report.coalesced_mime
+            and attachment_mime
+            and http_mime
+            and self._type_equals(attachment_mime, report.coalesced_mime)
+            and not self._type_equals(http_mime, report.coalesced_mime)
+        ):
+            report.warnings.append(
+                f"HTTP Content-Type {http_mime!r} disagrees with attachment "
+                f"filename ({report.attachment_filename!r} → {attachment_mime!r}); "
+                "treating Content-Type as advisory"
+            )
 
         self.logger.debug(_format_report(report))
 
@@ -478,10 +539,35 @@ class DistributionTypeValidator:
         guess, _ = mimetypes.guess_type(path, strict=False)
         return TypeSignal("url_extension", os.path.basename(path) or None, guess)
 
-    def _probe(
-        self, url: str
-    ) -> tuple[Optional[str], Optional[str], bytes, Optional[int], Optional[str]]:
+    def _signal_from_attachment(
+        self,
+        attachment_filename: Optional[str],
+        content_disposition: Optional[str],
+    ) -> TypeSignal:
+        """Signal from an ``attachment`` filename.
+
+        Reflects what the server claims it is *actually* delivering — the
+        body of an HTTP response that says ``Content-Disposition: attachment;
+        filename=foo.csv`` IS the CSV file, even if the ``Content-Type`` header
+        is misconfigured (e.g. ``text/html`` from a download portal wrapper).
+        The raw value stays useful for diagnostics; the ``mime_type`` is
+        derived from the filename's extension via ``mimetypes``.
+        """
+        if not attachment_filename:
+            return TypeSignal("attachment_filename", None, None)
+        guess, _ = mimetypes.guess_type(attachment_filename, strict=False)
+        # Keep a hint about *why* this signal exists — disposition vs.
+        # final-URL fallback — in the raw value, useful when reading the
+        # report manually.
+        raw = attachment_filename
+        if not content_disposition:
+            raw = f"{attachment_filename} (from final URL)"
+        return TypeSignal("attachment_filename", raw, guess)
+
+    def _probe(self, url: str) -> "_ProbeResult":
         content_type: Optional[str] = None
+        content_disposition: Optional[str] = None
+        final_url: Optional[str] = None
         sample = b""
         status: Optional[int] = None
         error: Optional[str] = None
@@ -491,6 +577,8 @@ class DistributionTypeValidator:
             head = requests.head(url, allow_redirects=True, timeout=self.timeout)
             status = head.status_code
             content_type = head.headers.get("Content-Type")
+            content_disposition = head.headers.get("Content-Disposition")
+            final_url = head.url
         except requests.RequestException as exc:
             error = f"HEAD failed: {exc.__class__.__name__}"
 
@@ -499,8 +587,14 @@ class DistributionTypeValidator:
                 url, stream=True, allow_redirects=True, timeout=self.timeout
             ) as resp:
                 status = resp.status_code
-                if not content_type:
+                final_url = resp.url
+                # Prefer the GET response headers — some servers omit
+                # Content-Disposition / Content-Type on HEAD or compute them
+                # differently from the actual GET body.
+                if resp.headers.get("Content-Type"):
                     content_type = resp.headers.get("Content-Type")
+                if resp.headers.get("Content-Disposition"):
+                    content_disposition = resp.headers.get("Content-Disposition")
                 chunks: list[bytes] = []
                 received = 0
                 for chunk in resp.iter_content(chunk_size=self.sample_bytes):
@@ -519,9 +613,43 @@ class DistributionTypeValidator:
             error = (error + " | " if error else "") + f"GET failed: {exc}"
 
         sniffed = _sniff_mime(sample)
-        return content_type, sniffed, sample, status, error
+        attachment_filename = _filename_from_content_disposition(content_disposition)
+        # Fallback: derive a filename from the final URL's path when the
+        # server didn't set Content-Disposition. This catches CDN-style
+        # downloads that redirect to ``…/file.csv`` with a generic
+        # Content-Type.
+        if not attachment_filename and final_url:
+            path = urlparse(final_url).path
+            basename = os.path.basename(path)
+            if basename and "." in basename:
+                attachment_filename = basename
+        return _ProbeResult(
+            content_type=content_type,
+            content_disposition=content_disposition,
+            attachment_filename=attachment_filename,
+            final_url=final_url,
+            sniffed=sniffed,
+            sample=sample,
+            status=status,
+            error=error,
+        )
 
     # ---- coalesce + equality, ported from CKAN's ResourceTypeValidator -------
+
+    # Priority order used for both coalescing iteration and message
+    # stability. ``attachment_filename`` sits ahead of ``http_content_type``
+    # because the server's ``Content-Disposition: attachment; filename=...``
+    # is a stronger assertion about what's in the body than the
+    # ``Content-Type`` header (which servers often leave generic / wrong on
+    # download endpoints).
+    _SIGNAL_PRIORITY = (
+        "dct:format",
+        "dcat:mediaType",
+        "url_extension",
+        "attachment_filename",
+        "http_content_type",
+        "sniff",
+    )
 
     def _coalesce(self, signals: list[TypeSignal]) -> tuple[Optional[str], list[str]]:
         """Pick the most specific MIME that is consistent with every signal.
@@ -549,29 +677,21 @@ class DistributionTypeValidator:
             or not declared_mimes
         )
 
+        # Pre-compute attachment evidence — used to demote a misleading
+        # ``http_content_type`` when ``Content-Disposition`` told us the
+        # filename and ``mimetypes`` knows its MIME.
+        attachment_mime = next(
+            (s.mime_type for s in signals if s.source == "attachment_filename"),
+            None,
+        )
+
         best: Optional[str] = None
         issues: list[str] = []
         # produce stable order for the message
+        priority = self._SIGNAL_PRIORITY
         ordered_signals = sorted(
             (s for s in signals if s.mime_type),
-            key=lambda s: (
-                [
-                    "dct:format",
-                    "dcat:mediaType",
-                    "url_extension",
-                    "http_content_type",
-                    "sniff",
-                ].index(s.source)
-                if s.source
-                in {
-                    "dct:format",
-                    "dcat:mediaType",
-                    "url_extension",
-                    "http_content_type",
-                    "sniff",
-                }
-                else 99
-            ),
+            key=lambda s: (priority.index(s.source) if s.source in priority else 99),
         )
         for sig in ordered_signals:
             mime = sig.mime_type
@@ -594,6 +714,17 @@ class DistributionTypeValidator:
                 if allow_override:
                     best = more_specific
                     continue
+            # Demotion: when ``http_content_type`` disagrees with ``best`` but
+            # the attachment evidence (Content-Disposition / final-URL
+            # filename) agrees with ``best``, the server's Content-Type is
+            # misleading download-portal noise — drop the conflict. The
+            # caller still has the raw signal in the report for diagnostics.
+            if (
+                sig.source == "http_content_type"
+                and attachment_mime is not None
+                and self._type_equals(attachment_mime, best)
+            ):
+                continue
             issues.append(
                 f"{sig.source}={mime!r} conflicts with previously coalesced {best!r}"
             )
@@ -644,6 +775,28 @@ class DistributionTypeValidator:
 # ---------------------------------------------------------------------------
 
 
+_CONTENT_DISPOSITION_FILENAME_RE = re.compile(
+    r'filename\*?=(?:UTF-8\'\')?"?([^";]+)"?',
+    flags=re.IGNORECASE,
+)
+
+
+def _filename_from_content_disposition(value: Optional[str]) -> Optional[str]:
+    """Extract the ``filename=`` (or ``filename*=``) parameter from a
+    ``Content-Disposition`` header value.
+
+    The regex covers the common forms — quoted, unquoted, and the RFC 5987
+    ``filename*=UTF-8''…`` extension. Returns ``None`` for headers without a
+    parseable filename (including missing headers).
+    """
+    if not value:
+        return None
+    match = _CONTENT_DISPOSITION_FILENAME_RE.search(value)
+    if not match:
+        return None
+    return match.group(1).strip() or None
+
+
 def _normalize_media_type(raw: Optional[str]) -> Optional[str]:
     if not raw:
         return None
@@ -689,6 +842,12 @@ def _format_report(report: DistributionReport) -> str:
         lines.append(f"  HTTP        : {report.status_code}")
     elif report.fetch_error:
         lines.append(f"  HTTP error  : {report.fetch_error}")
+    if report.final_url and report.final_url != (
+        report.download_url or report.access_url
+    ):
+        lines.append(f"  final URL   : {report.final_url}")
+    if report.attachment_filename:
+        lines.append(f"  attachment  : {report.attachment_filename}")
     lines.append("  signals     :")
     for sig in report.signals:
         lines.append(
@@ -736,6 +895,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     validator = DistributionTypeValidator(
         timeout=(args.timeout, args.timeout),
         fetch_enabled=not args.no_fetch,
+        logger=logging.getLogger(__name__),
     )
 
     all_reports: dict[str, list[dict[str, Any]]] = {}
