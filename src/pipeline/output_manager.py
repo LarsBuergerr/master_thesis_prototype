@@ -6,7 +6,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+import git
 from omegaconf import DictConfig, OmegaConf
+from hydra.core.hydra_config import HydraConfig
 
 logger = logging.getLogger(__name__)
 
@@ -26,12 +28,15 @@ class OutputManager:
 
         # Create run directory with timestamp
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        hydra_cfg = HydraConfig.get()
+        config_name = (hydra_cfg.job.config_name).split("/")[-1].replace("_", "-")
+
         suffix = (
             cfg.state.get("run_output_dir_suffix", "")
             if cfg.state.get("run_output_dir_suffix")
             else cfg.state.get("directory_path").split("/")[-1]
         )
-        self.run_dir = self.root_dir / f"run_{timestamp}_{suffix}"
+        self.run_dir = self.root_dir / f"run_{timestamp}_{config_name}_{suffix}"
         self.run_dir.mkdir(parents=True, exist_ok=True)
 
         self.timestamp = timestamp
@@ -110,9 +115,14 @@ class OutputManager:
         if isinstance(config, DictConfig):
             config = OmegaConf.to_container(config, resolve=True)
 
+        repo = git.Repo(search_parent_directories=True)
+        commit_hash = repo.head.commit.hexsha
+
         metadata = {
             "timestamp": self.timestamp,
             "run_directory": str(self.run_dir),
+            "config_name": HydraConfig.get().job.config_name,
+            "commit_hash": commit_hash,
             "config": config,
             "input": input_info,
         }

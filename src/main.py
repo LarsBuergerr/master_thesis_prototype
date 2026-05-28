@@ -1,6 +1,7 @@
 import os
 import logging
 import json
+import git
 from pathlib import Path
 from typing import List
 
@@ -124,6 +125,7 @@ def main(cfg: DictConfig) -> None:
     Processes either specific files or all files in directory with filtering.
     """
     # Set log level from config
+
     log_level_str = (
         cfg.state.logging.get("level", "INFO") if cfg.state.logging else "INFO"
     )

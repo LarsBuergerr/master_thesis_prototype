@@ -231,8 +231,7 @@ class DatasetContext:
         dataset_subjects = list(graph.subjects(RDF.type, DCAT.Dataset))
         dataset_uri = str(dataset_subjects[0]) if dataset_subjects else None
         distributions = [
-            _distribution_from_graph(graph, dist)
-            for dist in _iter_distributions(graph)
+            _distribution_from_graph(graph, dist) for dist in _iter_distributions(graph)
         ]
         themes = _multi(graph, dataset_subjects, DCAT.theme)
         accrual = _multi(graph, dataset_subjects, DCTERMS.accrualPeriodicity)
@@ -241,8 +240,7 @@ class DatasetContext:
         # ``dct:spatial``, not directly on the dataset — collect globally
         # (same robustness reason as for geometries / start_dates).
         admin_units = [
-            _admin_unit_fact(str(o))
-            for o in graph.objects(predicate=LOCN.adminUnitL2)
+            _admin_unit_fact(str(o)) for o in graph.objects(predicate=LOCN.adminUnitL2)
         ]
         return cls(
             graph=graph,
