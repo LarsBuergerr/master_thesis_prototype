@@ -31,11 +31,15 @@ class OutputManager:
         hydra_cfg = HydraConfig.get()
         config_name = (hydra_cfg.job.config_name).split("/")[-1].replace("_", "-")
 
-        suffix = (
-            cfg.state.get("run_output_dir_suffix", "")
-            if cfg.state.get("run_output_dir_suffix")
-            else cfg.state.get("directory_path").split("/")[-1]
-        )
+        suffix = ""
+
+        if cfg.state.get("run_output_dir_suffix"):
+            suffix = cfg.state.get("run_output_dir_suffix")
+        elif len(list(cfg.state.get("files"))) == 1:
+            suffix = list(cfg.state.get("files"))[0].split(".")[0]
+        else:
+            suffix = cfg.state.get("directory_path").split("/")[-1]
+
         self.run_dir = self.root_dir / f"run_{timestamp}_{config_name}_{suffix}"
         self.run_dir.mkdir(parents=True, exist_ok=True)
 

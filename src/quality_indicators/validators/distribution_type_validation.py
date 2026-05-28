@@ -1,24 +1,33 @@
 # encoding: utf-8
-"""Validate that a DCAT-AP-DE distribution's declared format / mediaType is
-consistent with the actual file behind its ``dcat:downloadURL``.
+"""Probe a DCAT-AP-DE distribution and check that its declared format /
+mediaType is consistent with the actual file behind its ``dcat:downloadURL``.
 
 This is an adaptation of CKAN's ``ckanext-resource-validation``
-(``resource_type_validation.py``) for **RDF-based** input. Instead of an
-uploaded ``FlaskFileStorage`` we work off an ``rdflib.Graph`` and fetch the
-distribution URL over HTTP. We compare up to five MIME-type signals:
+(``resource_type_validation.py``) for **RDF-based** input. Declared signals
+are read from the pre-computed :class:`DistributionContext`; probe signals
+are obtained by HTTPing the distribution URL. The validator coalesces up to
+six MIME-type signals:
 
 1. ``dct:format`` — EU file-type vocabulary URI, normalised to a MIME type
 2. ``dcat:mediaType`` — IANA media-type URI (or literal) → MIME type
 3. URL filename extension → MIME via ``mimetypes``
 4. HTTP ``Content-Type`` response header
-5. Magic-byte sniff of the first ~2 KB of the response body
+5. ``Content-Disposition`` attachment filename → MIME via ``mimetypes``
+6. Magic-byte sniff of the first ~2 KB of the response body
 
 The coalescing / override / equality logic is ported from the CKAN module.
-Output is a structured report per distribution rather than a raised
-``ValidationError`` — this tool is for *auditing* DCAT records, not for
-blocking uploads.
+Output is attached to the context as :class:`DistributionProbe` — this tool
+is for *auditing* DCAT records, not for blocking uploads.
 
-Usage as a script::
+Usage::
+
+    context = DatasetContext.from_graph(graph)
+    attach_probes(context, max_probes=20, parallel=4)
+    for dist in context.distributions:
+        if dist.probe and dist.probe.is_consistent:
+            ...
+
+CLI::
 
     python -m quality_indicators.validators.distribution_type_validation \\
         data/perfect_example_01_updated.rdf
@@ -29,19 +38,26 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+from concurrent.futures import ThreadPoolExecutor
+from dataclasses import asdict, dataclass
 from logging import Logger
 import mimetypes
 import os
 import re
 import sys
-from dataclasses import asdict, dataclass, field
 from pathlib import Path
-from typing import Any, Iterable, Optional
+from typing import Any, Optional
 from urllib.parse import urlparse
 
 import requests
-from rdflib import Graph, Namespace, URIRef
-from rdflib.namespace import DCAT, DCTERMS
+from rdflib import Graph
+
+from quality_indicators.validators.dataset_context import (
+    DatasetContext,
+    DistributionContext,
+    DistributionProbe,
+    TypeSignal,
+)
 
 # ---------------------------------------------------------------------------
 # Configuration — inline replacement for CKAN's resources/resource_types.json
@@ -85,7 +101,6 @@ EQUAL_TYPES: list[list[str]] = [
     ["application/CDFV2", "application/CDFV2-unknown"],
 ]
 
-# generic types that can be "promoted" to a more specific type
 ALLOWED_OVERRIDES: dict[str, list[str]] = {
     "text/plain": [
         "text/csv",
@@ -150,9 +165,9 @@ ARCHIVE_MIMETYPES: list[str] = [
     "application/x-tar",
 ]
 
-# Types treated as "generic" — a declared generic MIME may be refined to a
-# more specific one without triggering a conflict. Per CKAN's
-# resource_types.json this is intentionally narrow.
+# Per CKAN's resource_types.json this list is intentionally narrow — a
+# declared generic MIME may be refined to a more specific one without
+# triggering a conflict.
 GENERIC_MIMETYPES: list[str] = ["application/octet-stream", "text/plain"]
 
 # OGC / service types whose URLs return XML (GetCapabilities etc.). Treating
@@ -160,7 +175,6 @@ GENERIC_MIMETYPES: list[str] = ["application/octet-stream", "text/plain"]
 # response without special-casing.
 SERVICE_XML_MIMETYPE = "application/xml"
 
-# EU file-type vocab URI → MIME (so dct:format can be compared with the rest).
 EU_FILE_TYPE_TO_MIME: dict[str, str] = {
     "http://publications.europa.eu/resource/authority/file-type/CSV": "text/csv",
     "http://publications.europa.eu/resource/authority/file-type/JSON": "application/json",
@@ -253,7 +267,6 @@ _MAGIC_SIGNATURES: list[tuple[bytes, str]] = [
     (b"<html", "text/html"),
 ]
 
-# Try python-magic if available, otherwise fall back to the table above.
 try:
     import magic as _magic_lib  # type: ignore
 
@@ -275,7 +288,6 @@ except ImportError:  # pragma: no cover - optional dep
         for prefix, mime in _MAGIC_SIGNATURES:
             if head.startswith(prefix) or stripped.startswith(prefix):
                 return mime
-        # crude text/csv hint: ascii + commas + newline
         try:
             text = sample[:512].decode("utf-8")
         except UnicodeDecodeError:
@@ -285,20 +297,9 @@ except ImportError:  # pragma: no cover - optional dep
         return None
 
 
-DCATDE = Namespace("http://dcat-ap.de/def/dcatde/")
-
 # ---------------------------------------------------------------------------
-# Data structures
+# Internal probe payload
 # ---------------------------------------------------------------------------
-
-
-@dataclass
-class TypeSignal:
-    """One source of MIME-type information for a distribution."""
-
-    source: str
-    raw_value: Optional[str]
-    mime_type: Optional[str]
 
 
 @dataclass
@@ -315,32 +316,19 @@ class _ProbeResult:
     error: Optional[str]
 
 
-@dataclass
-class DistributionReport:
-    distribution_uri: str
-    title: Optional[str] = None
-    download_url: Optional[str] = None
-    access_url: Optional[str] = None
-    fetched: bool = False
-    status_code: Optional[int] = None
-    fetch_error: Optional[str] = None
-    final_url: Optional[str] = None
-    content_disposition: Optional[str] = None
-    attachment_filename: Optional[str] = None
-    signals: list[TypeSignal] = field(default_factory=list)
-    coalesced_mime: Optional[str] = None
-    is_consistent: bool = True
-    issues: list[str] = field(default_factory=list)
-    warnings: list[str] = field(default_factory=list)
-
-
 # ---------------------------------------------------------------------------
 # Validator
 # ---------------------------------------------------------------------------
 
 
 class DistributionTypeValidator:
-    """Adapts ``ResourceTypeValidator`` to RDF-based DCAT distributions."""
+    """Probe a single distribution and coalesce its MIME-type signals.
+
+    Adapted from CKAN's ``ResourceTypeValidator`` for RDF-based DCAT input.
+    Declared signals (``dct:format``, ``dcat:mediaType``, URL extension) are
+    read directly from the :class:`DistributionContext`; probe signals are
+    obtained by HTTPing :attr:`DistributionContext.fetch_url`.
+    """
 
     def __init__(
         self,
@@ -369,168 +357,131 @@ class DistributionTypeValidator:
         self.fetch_enabled = fetch_enabled
         self.logger = logger
 
-    # ---- public entry points --------------------------------------------------
+    # ---- public entry point ---------------------------------------------------
 
-    def validate_file(self, rdf_path: str | Path) -> list[DistributionReport]:
-        """Parse the given RDF file and validate all of its distributions."""
-        graph = Graph()
-        graph.parse(str(rdf_path))
-        return self.validate_graph(graph)
+    def probe_distribution(self, dist: DistributionContext) -> DistributionProbe:
+        """Build a :class:`DistributionProbe` for one distribution.
 
-    def validate_graph(self, graph: Graph) -> list[DistributionReport]:
-        reports: list[DistributionReport] = []
-        for dist in self._iter_distributions(graph):
-            reports.append(self.validate_distribution(graph, dist))
-        return reports
+        Reads declared signals from ``dist`` (no graph traversal), HTTP-probes
+        ``dist.fetch_url`` when enabled, and coalesces everything into a
+        single MIME verdict.
+        """
+        probe = DistributionProbe()
+        fetch_url = dist.fetch_url
+        fetch_source = (
+            "downloadURL" if dist.download_url else "accessURL" if dist.access_url else None
+        )
 
-    def validate_distribution(
-        self, graph: Graph, distribution: URIRef
-    ) -> DistributionReport:
-        report = DistributionReport(distribution_uri=str(distribution))
-
-        # ---- declared signals from the RDF
-        report.title = self._first_literal(graph, distribution, DCTERMS.title)
-        report.download_url = self._first_uri(graph, distribution, DCAT.downloadURL)
-        report.access_url = self._first_uri(graph, distribution, DCAT.accessURL)
-
-        # Prefer downloadURL for fetching; fall back to accessURL when the
-        # distribution only declares an access endpoint (common for OGC
-        # services, landing pages, ...).
-        fetch_url = report.download_url or report.access_url
-        fetch_source = "downloadURL" if report.download_url else "accessURL"
-
-        format_signal = self._signal_from_format(graph, distribution)
-        media_signal = self._signal_from_media_type(graph, distribution)
-        report.signals.append(format_signal)
-        report.signals.append(media_signal)
+        # ---- declared signals (cheap, from context)
+        format_signal = self._signal_from_declared_format(dist)
+        media_signal = self._signal_from_declared_media_type(dist)
+        probe.signals.append(format_signal)
+        probe.signals.append(media_signal)
         if format_signal.raw_value and not format_signal.mime_type:
-            report.warnings.append(
+            probe.warnings.append(
                 f"dct:format={format_signal.raw_value!r} has no known MIME mapping; not comparable"
             )
         if media_signal.raw_value and not media_signal.mime_type:
-            report.warnings.append(
+            probe.warnings.append(
                 f"dcat:mediaType={media_signal.raw_value!r} is not a recognised IANA media type"
             )
 
-        # ---- URL extension
-        report.signals.append(self._signal_from_url(fetch_url))
+        probe.signals.append(self._signal_from_url(fetch_url))
 
         # ---- HTTP + sniff
         if self.fetch_enabled and fetch_url:
-            probe = self._probe(fetch_url)
-            report.status_code = probe.status
-            report.fetch_error = probe.error
-            report.fetched = probe.status is not None and probe.error is None
-            report.final_url = probe.final_url
-            report.content_disposition = probe.content_disposition
-            report.attachment_filename = probe.attachment_filename
-            report.signals.append(
+            result = self._probe(fetch_url)
+            probe.status_code = result.status
+            probe.fetch_error = result.error
+            probe.fetched = result.status is not None and result.error is None
+            probe.final_url = result.final_url
+            probe.content_disposition = result.content_disposition
+            probe.attachment_filename = result.attachment_filename
+            probe.sniffed_mime = result.sniffed
+            probe.signals.append(
                 TypeSignal(
                     "http_content_type",
-                    probe.content_type,
-                    _strip_charset(probe.content_type),
+                    result.content_type,
+                    _strip_charset(result.content_type),
                 )
             )
-            report.signals.append(
+            probe.signals.append(
                 self._signal_from_attachment(
-                    probe.attachment_filename, probe.content_disposition
+                    result.attachment_filename, result.content_disposition
                 )
             )
-            report.signals.append(
-                TypeSignal("sniff", _hex_preview(probe.sample), probe.sniffed)
+            probe.signals.append(
+                TypeSignal("sniff", _hex_preview(result.sample), result.sniffed)
             )
-            if probe.status is not None and probe.status >= 400:
-                report.warnings.append(
-                    f"{fetch_source} returned HTTP {probe.status}; remaining checks rely on declared metadata only"
+            if result.status is not None and result.status >= 400:
+                probe.warnings.append(
+                    f"{fetch_source} returned HTTP {result.status}; "
+                    "remaining checks rely on declared metadata only"
                 )
-            elif probe.error or not report.fetched:
-                report.warnings.append(
-                    f"{fetch_source} could not be fetched ({probe.error or 'no response'}); "
+            elif result.error or not probe.fetched:
+                probe.warnings.append(
+                    f"{fetch_source} could not be fetched "
+                    f"({result.error or 'no response'}); "
                     "content-based checks skipped"
                 )
         else:
             if not fetch_url:
-                report.warnings.append(
+                probe.warnings.append(
                     "no dcat:downloadURL or dcat:accessURL — content-based checks skipped"
                 )
-            report.signals.append(TypeSignal("http_content_type", None, None))
-            report.signals.append(TypeSignal("attachment_filename", None, None))
-            report.signals.append(TypeSignal("sniff", None, None))
+            probe.signals.append(TypeSignal("http_content_type", None, None))
+            probe.signals.append(TypeSignal("attachment_filename", None, None))
+            probe.signals.append(TypeSignal("sniff", None, None))
 
         # ---- coalesce
-        report.coalesced_mime, report.issues = self._coalesce(report.signals)
-        report.is_consistent = not report.issues
+        probe.coalesced_mime, probe.issues = self._coalesce(probe.signals)
 
         # archive-vs-format relaxation, mirroring CKAN's archive branch
-        if report.is_consistent:
-            sniffed_mime = self._signal_value(report.signals, "sniff")
+        if probe.is_consistent:
+            sniffed_mime = _signal_value(probe.signals, "sniff")
             if sniffed_mime in self.archive_mimetypes:
-                report.warnings.append(
+                probe.warnings.append(
                     "underlying file is an archive — declared format describes archive contents"
                 )
 
-        # Make the attachment-based demotion (in ``_coalesce``) visible in the
-        # report: if ``http_content_type`` disagreed with the coalesced MIME
-        # but the attachment filename agreed, surface that as a warning.
-        attachment_mime = self._signal_value(report.signals, "attachment_filename")
-        http_mime = self._signal_value(report.signals, "http_content_type")
+        # Surface the attachment-based demotion (in ``_coalesce``) as a
+        # warning so it's visible in the probe.
+        attachment_mime = _signal_value(probe.signals, "attachment_filename")
+        http_mime = _signal_value(probe.signals, "http_content_type")
         if (
-            report.coalesced_mime
+            probe.coalesced_mime
             and attachment_mime
             and http_mime
-            and self._type_equals(attachment_mime, report.coalesced_mime)
-            and not self._type_equals(http_mime, report.coalesced_mime)
+            and self._type_equals(attachment_mime, probe.coalesced_mime)
+            and not self._type_equals(http_mime, probe.coalesced_mime)
         ):
-            report.warnings.append(
+            probe.warnings.append(
                 f"HTTP Content-Type {http_mime!r} disagrees with attachment "
-                f"filename ({report.attachment_filename!r} → {attachment_mime!r}); "
+                f"filename ({probe.attachment_filename!r} → {attachment_mime!r}); "
                 "treating Content-Type as advisory"
             )
 
-        self.logger.debug(_format_report(report))
+        self.logger.debug(_format_probe(dist, probe))
+        return probe
 
-        return report
+    # ---- declared-signal helpers ---------------------------------------------
 
-    # ---- helpers --------------------------------------------------------------
+    def _signal_from_declared_format(self, dist: DistributionContext) -> TypeSignal:
+        if not dist.formats:
+            return TypeSignal("dct:format", None, None)
+        raw = dist.formats[0]
+        mime = EU_FILE_TYPE_TO_MIME.get(raw)
+        if mime is None and not raw.startswith("http"):
+            mime = mimetypes.guess_type(f"example.{raw.lower()}")[0]
+        return TypeSignal("dct:format", raw, mime)
 
-    def _iter_distributions(self, graph: Graph) -> Iterable[URIRef]:
-        seen: set = set()
-        for _, _, dist in graph.triples((None, DCAT.distribution, None)):
-            if isinstance(dist, URIRef) and dist not in seen:
-                seen.add(dist)
-                yield dist
-        # fall back: anything typed as dcat:Distribution
-        for s, _, _ in graph.triples((None, None, DCAT.Distribution)):
-            if isinstance(s, URIRef) and s not in seen:
-                seen.add(s)
-                yield s
-
-    def _first_uri(self, graph: Graph, subject: URIRef, predicate) -> Optional[str]:
-        for obj in graph.objects(subject, predicate):
-            return str(obj)
-        return None
-
-    def _first_literal(self, graph: Graph, subject: URIRef, predicate) -> Optional[str]:
-        for obj in graph.objects(subject, predicate):
-            return str(obj)
-        return None
-
-    def _signal_from_format(self, graph: Graph, subject: URIRef) -> TypeSignal:
-        for obj in graph.objects(subject, DCTERMS.format):
-            raw = str(obj)
-            mime = EU_FILE_TYPE_TO_MIME.get(raw)
-            if mime is None and not raw.startswith("http"):
-                # plain string like "CSV" → guess MIME from a fake filename
-                mime = mimetypes.guess_type(f"example.{raw.lower()}")[0]
-            return TypeSignal("dct:format", raw, mime)
-        return TypeSignal("dct:format", None, None)
-
-    def _signal_from_media_type(self, graph: Graph, subject: URIRef) -> TypeSignal:
-        for obj in graph.objects(subject, DCAT.mediaType):
-            raw = str(obj)
-            mime = _normalize_media_type(raw)
-            return TypeSignal("dcat:mediaType", raw, mime)
-        return TypeSignal("dcat:mediaType", None, None)
+    def _signal_from_declared_media_type(
+        self, dist: DistributionContext
+    ) -> TypeSignal:
+        if not dist.media_types:
+            return TypeSignal("dcat:mediaType", None, None)
+        raw = dist.media_types[0]
+        return TypeSignal("dcat:mediaType", raw, _normalize_media_type(raw))
 
     def _signal_from_url(self, url: Optional[str]) -> TypeSignal:
         if not url:
@@ -550,19 +501,16 @@ class DistributionTypeValidator:
         body of an HTTP response that says ``Content-Disposition: attachment;
         filename=foo.csv`` IS the CSV file, even if the ``Content-Type`` header
         is misconfigured (e.g. ``text/html`` from a download portal wrapper).
-        The raw value stays useful for diagnostics; the ``mime_type`` is
-        derived from the filename's extension via ``mimetypes``.
         """
         if not attachment_filename:
             return TypeSignal("attachment_filename", None, None)
         guess, _ = mimetypes.guess_type(attachment_filename, strict=False)
-        # Keep a hint about *why* this signal exists — disposition vs.
-        # final-URL fallback — in the raw value, useful when reading the
-        # report manually.
         raw = attachment_filename
         if not content_disposition:
             raw = f"{attachment_filename} (from final URL)"
         return TypeSignal("attachment_filename", raw, guess)
+
+    # ---- HTTP probe -----------------------------------------------------------
 
     def _probe(self, url: str) -> "_ProbeResult":
         content_type: Optional[str] = None
@@ -573,7 +521,6 @@ class DistributionTypeValidator:
         error: Optional[str] = None
 
         try:
-            # HEAD first for size/type without downloading the body.
             head = requests.head(url, allow_redirects=True, timeout=self.timeout)
             status = head.status_code
             content_type = head.headers.get("Content-Type")
@@ -588,9 +535,9 @@ class DistributionTypeValidator:
             ) as resp:
                 status = resp.status_code
                 final_url = resp.url
-                # Prefer the GET response headers — some servers omit
-                # Content-Disposition / Content-Type on HEAD or compute them
-                # differently from the actual GET body.
+                # Prefer GET headers — some servers omit Content-Disposition
+                # / Content-Type on HEAD or compute them differently from
+                # the actual GET body.
                 if resp.headers.get("Content-Type"):
                     content_type = resp.headers.get("Content-Type")
                 if resp.headers.get("Content-Disposition"):
@@ -605,9 +552,9 @@ class DistributionTypeValidator:
                     if received >= self.sample_bytes:
                         break
                 sample = b"".join(chunks)[: self.sample_bytes]
-                # CKAN trick: some old libmagic outputs need more data
+                # CKAN trick: some old libmagic outputs need the full body
+                # for OLE compound documents.
                 if sample and sample[:5] == b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1"[:5]:
-                    # OLE compound document → read the full body once
                     sample = resp.content
         except requests.RequestException as exc:
             error = (error + " | " if error else "") + f"GET failed: {exc}"
@@ -615,9 +562,8 @@ class DistributionTypeValidator:
         sniffed = _sniff_mime(sample)
         attachment_filename = _filename_from_content_disposition(content_disposition)
         # Fallback: derive a filename from the final URL's path when the
-        # server didn't set Content-Disposition. This catches CDN-style
-        # downloads that redirect to ``…/file.csv`` with a generic
-        # Content-Type.
+        # server didn't set Content-Disposition. Catches CDN-style downloads
+        # that redirect to ``…/file.csv`` with a generic Content-Type.
         if not attachment_filename and final_url:
             path = urlparse(final_url).path
             basename = os.path.basename(path)
@@ -634,14 +580,12 @@ class DistributionTypeValidator:
             error=error,
         )
 
-    # ---- coalesce + equality, ported from CKAN's ResourceTypeValidator -------
+    # ---- coalesce + equality (ported from CKAN's ResourceTypeValidator) ------
 
-    # Priority order used for both coalescing iteration and message
-    # stability. ``attachment_filename`` sits ahead of ``http_content_type``
-    # because the server's ``Content-Disposition: attachment; filename=...``
-    # is a stronger assertion about what's in the body than the
-    # ``Content-Type`` header (which servers often leave generic / wrong on
-    # download endpoints).
+    # ``attachment_filename`` sits ahead of ``http_content_type`` because the
+    # server's ``Content-Disposition: attachment; filename=...`` is a stronger
+    # assertion about the body than the ``Content-Type`` header (which servers
+    # often leave generic / wrong on download endpoints).
     _SIGNAL_PRIORITY = (
         "dct:format",
         "dcat:mediaType",
@@ -652,7 +596,7 @@ class DistributionTypeValidator:
     )
 
     def _coalesce(self, signals: list[TypeSignal]) -> tuple[Optional[str], list[str]]:
-        """Pick the most specific MIME that is consistent with every signal.
+        """Pick the most specific MIME consistent with every signal.
 
         Returns ``(best_mime, issues)``. ``issues`` is empty when all non-None
         signals agree under the equality / override rules.
@@ -661,8 +605,8 @@ class DistributionTypeValidator:
         if not mime_types:
             return None, []
 
-        # In CKAN, ``allow_override`` is gated on whether the *upload* signals
-        # are generic. We replicate that here from the dct:format /
+        # In CKAN, ``allow_override`` is gated on whether the *upload*
+        # signals are generic. We replicate that here from the dct:format /
         # dcat:mediaType / url_extension signals.
         declared_mimes = [
             s.mime_type
@@ -687,7 +631,6 @@ class DistributionTypeValidator:
 
         best: Optional[str] = None
         issues: list[str] = []
-        # produce stable order for the message
         priority = self._SIGNAL_PRIORITY
         ordered_signals = sorted(
             (s for s in signals if s.mime_type),
@@ -702,23 +645,21 @@ class DistributionTypeValidator:
                 continue
             valid, more_specific = self._is_valid_override(best, mime)
             if valid:
-                # Two override directions:
-                #   * downward: new signal is a less specific superset of
-                #     ``best`` (e.g. best=application/gml+xml, new=application/xml).
-                #     This is always compatible — keep ``best``, no upgrade.
-                #   * upward: new signal would promote ``best`` to something more
-                #     specific. Only do this when ``allow_override`` says the
-                #     declared metadata was generic / unspecified to begin with.
+                # downward: new signal is a less specific superset of
+                # ``best`` (e.g. best=application/gml+xml, new=application/xml).
+                # Always compatible — keep ``best``.
+                # upward: new signal would promote ``best`` to something
+                # more specific. Only do this when ``allow_override`` says
+                # the declared metadata was generic / unspecified to begin with.
                 if more_specific == best:
                     continue
                 if allow_override:
                     best = more_specific
                     continue
-            # Demotion: when ``http_content_type`` disagrees with ``best`` but
-            # the attachment evidence (Content-Disposition / final-URL
+            # Demotion: when ``http_content_type`` disagrees with ``best``
+            # but the attachment evidence (Content-Disposition / final-URL
             # filename) agrees with ``best``, the server's Content-Type is
-            # misleading download-portal noise — drop the conflict. The
-            # caller still has the raw signal in the report for diagnostics.
+            # misleading download-portal noise.
             if (
                 sig.source == "http_content_type"
                 and attachment_mime is not None
@@ -762,12 +703,78 @@ class DistributionTypeValidator:
                 return True, mime1
         return False, None
 
-    @staticmethod
-    def _signal_value(signals: list[TypeSignal], source: str) -> Optional[str]:
-        for sig in signals:
-            if sig.source == source:
-                return sig.mime_type
-        return None
+
+# ---------------------------------------------------------------------------
+# Orchestration: attach probes to a DatasetContext
+# ---------------------------------------------------------------------------
+
+
+def attach_probes(
+    context: DatasetContext,
+    *,
+    validator: Optional[DistributionTypeValidator] = None,
+    max_probes: Optional[int] = None,
+    parallel: int = 4,
+    dedup_by_url: bool = True,
+    logger: Optional[Logger] = None,
+) -> None:
+    """Populate ``context.distributions[i].probe`` in parallel.
+
+    Selection rules:
+
+    * Distributions are sorted deterministically by fetch URL (falling back
+      to distribution URI). This gives stable sampling when ``max_probes``
+      is set.
+    * With ``dedup_by_url=True`` (default), distributions that share a
+      fetch URL produce a single probe; the same :class:`DistributionProbe`
+      object is attached to all of them.
+    * ``max_probes`` caps how many *unique probes* are run. Distributions
+      beyond the cap (or with no fetch URL when probing requires one) keep
+      ``probe = None`` — the indicator can tell apart "not attempted" from
+      "attempted, failed".
+    """
+    log = logger or logging.getLogger(__name__)
+    if validator is None:
+        validator = DistributionTypeValidator(logger=log)
+
+    # Order distributions by a stable key so capping is deterministic.
+    keyed = [
+        ((dist.fetch_url or dist.distribution_uri), dist)
+        for dist in context.distributions
+    ]
+    keyed.sort(key=lambda item: item[0])
+
+    # Group by dedup key so shared-URL distributions get one probe.
+    groups: dict[str, list[DistributionContext]] = {}
+    group_order: list[str] = []
+    for key, dist in keyed:
+        bucket_key = key if dedup_by_url else dist.distribution_uri
+        if bucket_key not in groups:
+            groups[bucket_key] = []
+            group_order.append(bucket_key)
+        groups[bucket_key].append(dist)
+
+    selected_keys = group_order if max_probes is None else group_order[:max_probes]
+    log.debug(
+        f"attach_probes: {len(selected_keys)}/{len(group_order)} unique fetch keys, "
+        f"{sum(len(groups[k]) for k in selected_keys)} distribution(s) covered"
+    )
+
+    def _probe_first_of(key: str) -> tuple[str, DistributionProbe]:
+        # Probe using the first distribution in the group — its declared
+        # signals are representative (siblings sharing the same URL should
+        # have the same declared signals, but if not, the first is fine).
+        return key, validator.probe_distribution(groups[key][0])
+
+    if len(selected_keys) <= 1:
+        results = [_probe_first_of(k) for k in selected_keys]
+    else:
+        with ThreadPoolExecutor(max_workers=parallel) as pool:
+            results = list(pool.map(_probe_first_of, selected_keys))
+
+    for key, probe in results:
+        for dist in groups[key]:
+            dist.probe = probe
 
 
 # ---------------------------------------------------------------------------
@@ -784,10 +791,6 @@ _CONTENT_DISPOSITION_FILENAME_RE = re.compile(
 def _filename_from_content_disposition(value: Optional[str]) -> Optional[str]:
     """Extract the ``filename=`` (or ``filename*=``) parameter from a
     ``Content-Disposition`` header value.
-
-    The regex covers the common forms — quoted, unquoted, and the RFC 5987
-    ``filename*=UTF-8''…`` extension. Returns ``None`` for headers without a
-    parseable filename (including missing headers).
     """
     if not value:
         return None
@@ -824,39 +827,44 @@ def _hex_preview(sample: bytes, limit: int = 32) -> Optional[str]:
         return head.hex()
 
 
+def _signal_value(signals: list[TypeSignal], source: str) -> Optional[str]:
+    for sig in signals:
+        if sig.source == source:
+            return sig.mime_type
+    return None
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
 
-def _format_report(report: DistributionReport) -> str:
+def _format_probe(dist: DistributionContext, probe: DistributionProbe) -> str:
     lines: list[str] = []
-    status = "OK   " if report.is_consistent else "ERROR"
-    title_part = f" — {report.title}" if report.title else ""
-    lines.append(f"[{status}] {report.distribution_uri}{title_part}")
-    if report.download_url:
-        lines.append(f"  downloadURL : {report.download_url}")
-    if report.access_url and report.access_url != report.download_url:
-        lines.append(f"  accessURL   : {report.access_url}")
-    if report.fetched:
-        lines.append(f"  HTTP        : {report.status_code}")
-    elif report.fetch_error:
-        lines.append(f"  HTTP error  : {report.fetch_error}")
-    if report.final_url and report.final_url != (
-        report.download_url or report.access_url
-    ):
-        lines.append(f"  final URL   : {report.final_url}")
-    if report.attachment_filename:
-        lines.append(f"  attachment  : {report.attachment_filename}")
+    status = "OK   " if probe.is_consistent else "ERROR"
+    title_part = f" — {dist.title}" if dist.title else ""
+    lines.append(f"[{status}] {dist.distribution_uri}{title_part}")
+    if dist.download_url:
+        lines.append(f"  downloadURL : {dist.download_url}")
+    if dist.access_url and dist.access_url != dist.download_url:
+        lines.append(f"  accessURL   : {dist.access_url}")
+    if probe.fetched:
+        lines.append(f"  HTTP        : {probe.status_code}")
+    elif probe.fetch_error:
+        lines.append(f"  HTTP error  : {probe.fetch_error}")
+    if probe.final_url and probe.final_url != (dist.download_url or dist.access_url):
+        lines.append(f"  final URL   : {probe.final_url}")
+    if probe.attachment_filename:
+        lines.append(f"  attachment  : {probe.attachment_filename}")
     lines.append("  signals     :")
-    for sig in report.signals:
+    for sig in probe.signals:
         lines.append(
             f"    {sig.source:20s} raw={_short(sig.raw_value):40s} mime={sig.mime_type or '-'}"
         )
-    lines.append(f"  coalesced   : {report.coalesced_mime or '-'}")
-    for warn in report.warnings:
+    lines.append(f"  coalesced   : {probe.coalesced_mime or '-'}")
+    for warn in probe.warnings:
         lines.append(f"  warning     : {warn}")
-    for issue in report.issues:
+    for issue in probe.issues:
         lines.append(f"  issue       : {issue}")
     return "\n".join(lines)
 
@@ -869,6 +877,17 @@ def _short(value: Optional[str], width: int = 40) -> str:
     return value[: width - 1] + "…"
 
 
+def _probe_to_dict(dist: DistributionContext, probe: DistributionProbe) -> dict[str, Any]:
+    data = {
+        "distribution_uri": dist.distribution_uri,
+        "title": dist.title,
+        "download_url": dist.download_url,
+        "access_url": dist.access_url,
+    }
+    data.update(asdict(probe))
+    return data
+
+
 def main(argv: Optional[list[str]] = None) -> int:
     parser = argparse.ArgumentParser(
         description="Validate DCAT distribution type signals in RDF files."
@@ -877,7 +896,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     parser.add_argument(
         "--no-fetch",
         action="store_true",
-        help="Skip HTTP fetching; only compare declared signals (dct:format, dcat:mediaType, URL extension).",
+        help="Skip HTTP fetching; only compare declared signals.",
     )
     parser.add_argument(
         "--json",
@@ -901,15 +920,25 @@ def main(argv: Optional[list[str]] = None) -> int:
     all_reports: dict[str, list[dict[str, Any]]] = {}
     exit_code = 0
     for rdf_file in args.rdf_files:
-        reports = validator.validate_file(rdf_file)
+        graph = Graph()
+        graph.parse(str(Path(rdf_file)))
+        context = DatasetContext.from_graph(graph)
+        attach_probes(context, validator=validator)
         if args.json:
-            all_reports[rdf_file] = [_report_to_dict(r) for r in reports]
+            all_reports[rdf_file] = [
+                _probe_to_dict(d, d.probe) for d in context.distributions if d.probe
+            ]
         else:
-            print(f"=== {rdf_file} — {len(reports)} distribution(s) ===")
-            for report in reports:
-                print(_format_report(report))
+            print(
+                f"=== {rdf_file} — {len(context.distributions)} distribution(s) ==="
+            )
+            for dist in context.distributions:
+                if dist.probe is None:
+                    print(f"[SKIP ] {dist.distribution_uri} (not probed)")
+                    continue
+                print(_format_probe(dist, dist.probe))
                 print()
-        if any(not r.is_consistent for r in reports):
+        if any(d.probe and not d.probe.is_consistent for d in context.distributions):
             exit_code = 1
 
     if args.json:
@@ -917,12 +946,6 @@ def main(argv: Optional[list[str]] = None) -> int:
         sys.stdout.write("\n")
 
     return exit_code
-
-
-def _report_to_dict(report: DistributionReport) -> dict[str, Any]:
-    data = asdict(report)
-    data["signals"] = [asdict(s) for s in report.signals]
-    return data
 
 
 if __name__ == "__main__":  # pragma: no cover

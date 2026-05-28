@@ -3,9 +3,7 @@
 Validates aspects like downloadURL, format, mediaType, etc.
 """
 
-from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Optional
-from rdflib import Graph
 
 from quality_indicators.models.indicator import (
     Indicator,
@@ -18,11 +16,11 @@ from quality_indicators.vocabularies import (
     VALID_FILE_TYPE_URIS,
     VALID_MEDIA_TYPE_TEMPLATES,
 )
-from quality_indicators.validators.dataset_context import DatasetContext
-from quality_indicators.validators.distribution_type_validation import (
-    DistributionReport,
-    DistributionTypeValidator,
+from quality_indicators.validators.dataset_context import (
+    DatasetContext,
+    DistributionProbe,
 )
+from quality_indicators.validators.distribution_type_validation import attach_probes
 
 
 class DownloadURLIndicator(Indicator):
@@ -294,12 +292,8 @@ class MediaTypeIndicator(Indicator):
                     parts_de.append(f"{len(invalid_form)} ohne IANA-URI-Form")
                     parts_en.append(f"{len(invalid_form)} not in IANA URI form")
                 if invalid_vocab:
-                    parts_de.append(
-                        f"{len(invalid_vocab)} nicht im IANA-Vokabular"
-                    )
-                    parts_en.append(
-                        f"{len(invalid_vocab)} not in IANA vocabulary"
-                    )
+                    parts_de.append(f"{len(invalid_vocab)} nicht im IANA-Vokabular")
+                    parts_en.append(f"{len(invalid_vocab)} not in IANA vocabulary")
                 message_de = ", ".join(parts_de)
                 message_en = ", ".join(parts_en)
             else:
@@ -347,18 +341,21 @@ class MediaTypeIndicator(Indicator):
 
 
 class FormatCongruenceIndicator(Indicator):
-    """Validates that each distribution's declared format / mediaType matches
-    the actual download content.
+    """Score per-distribution format/MIME congruence from pre-attached probes.
 
-    For each ``dcat:Distribution`` we collect up to five MIME-type signals
-    (``dct:format``, ``dcat:mediaType``, URL extension, HTTP ``Content-Type``,
-    magic-byte sniff) and coalesce them. When the signals conflict the
-    distribution scores 0; full congruence scores 1.0; consistent but with
-    warnings (e.g. an unknown MIME mapping or an HTTP error) scores 0.7.
+    Reads ``DistributionContext.probe`` — populated by ``attach_probes`` —
+    rather than running its own HTTP probing. When the orchestrator has not
+    yet attached probes, this indicator attaches them itself so it remains
+    usable standalone.
 
-    To keep the indicator bounded we sample at most ``MAX_DISTRIBUTIONS`` per
-    dataset (dedup by URL, deterministic sort, cap). Each probe runs in its
-    own thread.
+    Each probed distribution contributes one score:
+
+    * 0.0 — declared and observed MIME types conflict
+    * 0.7 — consistent but with warnings (unknown MIME mapping, HTTP error, …)
+    * 1.0 — full congruence
+
+    Distributions whose ``probe is None`` (skipped by the per-dataset cap,
+    or no fetchable URL) are not counted.
     """
 
     MAX_DISTRIBUTIONS = 20
@@ -385,9 +382,6 @@ class FormatCongruenceIndicator(Indicator):
             ),
             weight=1.0,
         )
-        self._validator = DistributionTypeValidator(
-            timeout=self.HTTP_TIMEOUT, logger=self.logger
-        )
 
     def validate(
         self, metadata: Any, context: Optional[DatasetContext] = None
@@ -395,9 +389,8 @@ class FormatCongruenceIndicator(Indicator):
         try:
             if context is None:
                 context = DatasetContext.from_graph(metadata)
-            distributions = self._collect_distributions(metadata, context)
-            total = len(distributions)
 
+            total = context.distribution_count
             if total == 0:
                 self.logger.info(
                     f"[{self.indicator_id}] FAIL score=0.00 no distributions to check"
@@ -414,38 +407,48 @@ class FormatCongruenceIndicator(Indicator):
                     details={"distribution_count": 0},
                 )
 
-            sampled = distributions[: self.MAX_DISTRIBUTIONS]
-            self.logger.debug(
-                f"[{self.indicator_id}] checking {len(sampled)}/{total} distribution(s)"
-            )
+            # Standalone-friendly: if the orchestrator hasn't probed yet, do
+            # it here. The shared-context path skips this entirely.
+            if all(d.probe is None for d in context.distributions):
+                attach_probes(
+                    context,
+                    max_probes=self.MAX_DISTRIBUTIONS,
+                    parallel=self.PARALLEL_WORKERS,
+                    logger=self.logger,
+                )
 
-            reports = self._probe_in_parallel(metadata, sampled)
+            probed = [d for d in context.distributions if d.probe is not None]
+            sampled_count = len(probed)
+            self.logger.debug(
+                f"[{self.indicator_id}] scoring {sampled_count}/{total} probed distribution(s)"
+            )
 
             per_scores: list[float] = []
             inconsistent: list[dict[str, Any]] = []
             warning_only: list[dict[str, Any]] = []
-            for report in reports:
-                score = self._score_report(report)
-                per_scores.append(score)
+            for dist in probed:
+                probe = dist.probe
+                per_scores.append(self._score_probe(probe))
                 summary = {
-                    "uri": report.distribution_uri,
-                    "download_url": report.download_url,
-                    "coalesced": report.coalesced_mime,
-                    "issues": report.issues,
-                    "warnings": report.warnings,
+                    "uri": dist.distribution_uri,
+                    "download_url": dist.download_url,
+                    "coalesced": probe.coalesced_mime,
+                    "issues": probe.issues,
+                    "warnings": probe.warnings,
                 }
-                if not report.is_consistent:
+                if not probe.is_consistent:
                     inconsistent.append(summary)
-                elif report.warnings:
+                elif probe.warnings:
                     warning_only.append(summary)
 
             overall = sum(per_scores) / len(per_scores) if per_scores else 0.0
 
             if inconsistent:
-                if overall >= self.PARTIAL_THRESHOLD:
-                    status = IndicatorStatus.PARTIAL
-                else:
-                    status = IndicatorStatus.FAIL
+                status = (
+                    IndicatorStatus.PARTIAL
+                    if overall >= self.PARTIAL_THRESHOLD
+                    else IndicatorStatus.FAIL
+                )
             elif warning_only:
                 status = (
                     IndicatorStatus.PASS
@@ -455,7 +458,6 @@ class FormatCongruenceIndicator(Indicator):
             else:
                 status = IndicatorStatus.PASS
 
-            sampled_count = len(sampled)
             message_de = (
                 f"{sampled_count - len(inconsistent)}/{sampled_count} "
                 "Distributionen format-kongruent"
@@ -511,52 +513,11 @@ class FormatCongruenceIndicator(Indicator):
                 error=str(e),
             )
 
-    def _collect_distributions(self, graph: Graph, context: DatasetContext) -> list:
-        """Return a deterministic, deduplicated list of distribution nodes.
-
-        Uses pre-computed ``DistributionContext`` from the shared context for
-        the per-distribution URLs (avoiding redundant graph queries) and the
-        graph itself for the ``URIRef`` objects needed by the HTTP-probing
-        validator.
-
-        Dedup key prefers the downloadURL (since two distribution nodes with
-        the same download URL produce identical probes); falls back to the
-        distribution URI when no downloadURL is set.
-        """
-        facts_by_uri = {f.distribution_uri: f for f in context.distributions}
-        seen_keys: set = set()
-        ordered: list = []
-        for distribution in self._validator._iter_distributions(graph):
-            facts = facts_by_uri.get(str(distribution))
-            download_url = facts.download_url if facts else None
-            key = download_url or str(distribution)
-            if key in seen_keys:
-                continue
-            seen_keys.add(key)
-            ordered.append((key, distribution))
-        ordered.sort(key=lambda item: item[0])
-        return [dist for _, dist in ordered]
-
-    def _probe_in_parallel(
-        self, graph: Graph, distributions: list
-    ) -> list[DistributionReport]:
-        if len(distributions) <= 1:
-            return [
-                self._validator.validate_distribution(graph, dist)
-                for dist in distributions
-            ]
-        with ThreadPoolExecutor(max_workers=self.PARALLEL_WORKERS) as pool:
-            return list(
-                pool.map(
-                    lambda dist: self._validator.validate_distribution(graph, dist),
-                    distributions,
-                )
-            )
-
-    def _score_report(self, report: DistributionReport) -> float:
-        if not report.is_consistent:
+    @staticmethod
+    def _score_probe(probe: DistributionProbe) -> float:
+        if not probe.is_consistent:
             return 0.0
-        if report.warnings:
+        if probe.warnings:
             return 0.7
         return 1.0
 

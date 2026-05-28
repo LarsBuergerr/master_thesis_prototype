@@ -198,23 +198,9 @@ class ContactPointIndicator(Indicator):
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if context is None:
-                if not isinstance(metadata, Graph):
-                    self.logger.warning(
-                        f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
-                    )
-                    return IndicatorResult(
-                        indicator_id=self.indicator_id,
-                        name_de=self.name_de,
-                        name_en=self.name_en,
-                        dimension=self.dimension,
-                        status=IndicatorStatus.ERROR,
-                        score=0.0,
-                        message_de="Metadaten sind kein rdflib Graph",
-                        message_en="Metadata is not an rdflib Graph",
-                        error="Invalid metadata format",
-                    )
                 context = DatasetContext.from_graph(metadata)
 
+            print(context)
             contact_points = context.contact_points
             self.logger.debug(
                 f"[{self.indicator_id}] Found {len(contact_points)} contact point(s)"

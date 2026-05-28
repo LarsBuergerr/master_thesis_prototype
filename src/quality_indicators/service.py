@@ -12,6 +12,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from quality_indicators.models.indicator import Indicator, IndicatorStatus
 from quality_indicators.models.dimension import QualityDimension
 from quality_indicators.validators.dataset_context import DatasetContext
+from quality_indicators.validators.distribution_type_validation import attach_probes
 from quality_indicators.validators.rdf_parser import RDFMetadataParser
 from utils.logger import get_logger
 
@@ -135,6 +136,7 @@ class QualityMetricsService:
             }
 
         context = DatasetContext.from_graph(metadata)
+        self._maybe_attach_probes(context, {dimension: indicators})
         return self._process_dimension(dimension, indicators, metadata, context)
 
     def validate_indicator(self, metadata: Graph, indicator_id: str) -> Dict[str, Any]:
@@ -159,6 +161,7 @@ class QualityMetricsService:
 
         try:
             context = DatasetContext.from_graph(metadata)
+            self._maybe_attach_probes(context, {indicator.dimension: {indicator_id: indicator}})
             result = self._invoke_indicator(indicator, metadata, context)
             return result.to_dict()
 
@@ -214,6 +217,12 @@ class QualityMetricsService:
         dimensions_indicators = {
             dim: Indicator.by_dimension(dim) for dim in dimensions_to_process
         }
+
+        # Attach distribution probes once up-front when the accessibility
+        # dimension will run. Indicators that consume ``dist.probe`` (e.g.
+        # FormatCongruenceIndicator) then read pre-computed data instead of
+        # each one HTTP-probing on its own.
+        self._maybe_attach_probes(context, dimensions_indicators)
 
         # Process dimensions in parallel
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
@@ -375,6 +384,44 @@ class QualityMetricsService:
             "total_fail": total_indicators - total_pass,
             "quality_grade": self._score_to_grade(overall_score),
         }
+
+    def _maybe_attach_probes(
+        self,
+        context: DatasetContext,
+        dimensions_indicators: Dict[QualityDimension, Dict[str, Indicator]],
+    ) -> None:
+        """Attach distribution probes if any indicator about to run consumes them.
+
+        Currently only ``acc_format_congruence`` needs probes. Looking up the
+        indicator IDs (rather than the dimension) keeps the trigger precise:
+        a blacklist on that indicator skips the HTTP work entirely.
+        """
+        probe_consumers = {"acc_format_congruence"}
+        will_run_consumer = any(
+            ind_id in probe_consumers and ind_id not in self.indicator_blacklist
+            for inds in dimensions_indicators.values()
+            for ind_id in inds.keys()
+        )
+        if not will_run_consumer:
+            return
+        if context.distribution_count == 0:
+            return
+
+        # Import lazily to keep the indicator's tuned defaults in one place.
+        from quality_indicators.indicators.accessibility import (
+            FormatCongruenceIndicator,
+        )
+
+        attach_probes(
+            context,
+            max_probes=FormatCongruenceIndicator.MAX_DISTRIBUTIONS,
+            parallel=FormatCongruenceIndicator.PARALLEL_WORKERS,
+            logger=logger,
+        )
+        attached = sum(1 for d in context.distributions if d.probe is not None)
+        logger.debug(
+            f"Attached probes to {attached}/{context.distribution_count} distribution(s)"
+        )
 
     @staticmethod
     def _invoke_indicator(

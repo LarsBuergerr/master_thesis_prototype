@@ -75,6 +75,53 @@ class SourcedValue:
     value: str
 
 
+@dataclass
+class TypeSignal:
+    """One source of MIME-type information for a distribution.
+
+    Declared signals (``dct:format``, ``dcat:mediaType``, URL extension) come
+    from the RDF context; probe signals (``http_content_type``,
+    ``attachment_filename``, ``sniff``) are populated by the HTTP probe.
+    """
+
+    source: str
+    raw_value: Optional[str]
+    mime_type: Optional[str]
+
+
+@dataclass
+class DistributionProbe:
+    """Everything the format/MIME probing pass learned about one distribution.
+
+    Attached to ``DistributionContext.probe`` after
+    ``attach_probes(context)`` runs. ``probe is None`` means probing was not
+    attempted (e.g. distribution skipped by the per-dataset cap, or no
+    fetchable URL); ``probe.fetched is False`` with ``fetch_error`` /
+    ``status_code`` set means probing was attempted but the HTTP call did
+    not succeed.
+
+    The full ``signals`` list is preserved so downstream consumers (agents,
+    reports, debug tooling) can see *every* MIME hint we collected — not just
+    the coalesced winner.
+    """
+
+    signals: list[TypeSignal] = field(default_factory=list)
+    coalesced_mime: Optional[str] = None
+    issues: list[str] = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)
+    fetched: bool = False
+    status_code: Optional[int] = None
+    fetch_error: Optional[str] = None
+    final_url: Optional[str] = None
+    content_disposition: Optional[str] = None
+    attachment_filename: Optional[str] = None
+    sniffed_mime: Optional[str] = None
+
+    @property
+    def is_consistent(self) -> bool:
+        return not self.issues
+
+
 # ---------------------------------------------------------------------------
 # Distribution
 # ---------------------------------------------------------------------------
@@ -102,6 +149,9 @@ class DistributionContext:
     licenses: list[str] = field(default_factory=list)
     licenses_open: list[bool] = field(default_factory=list)
     byte_size: Optional[str] = None
+    # Populated by ``attach_probes(context)`` (see
+    # ``distribution_type_validation``). ``None`` = not attempted.
+    probe: Optional[DistributionProbe] = None
 
     @property
     def title(self) -> Optional[str]:
