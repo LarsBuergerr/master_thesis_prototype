@@ -531,6 +531,208 @@ class FormatCongruenceIndicator(Indicator):
         return 1.0
 
 
+class ResponseCodeIndicator(Indicator):
+    """Generic per-URL HTTP response-code validator.
+
+    Reads ``probe.download_status_code`` / ``probe.access_status_code``
+    (populated by ``attach_probes``) and scores the fraction of probed
+    distributions whose URL returned ``HTTP < 400``. Falls back to
+    attaching probes itself when run standalone, mirroring
+    ``FormatCongruenceIndicator``.
+
+    Instantiated once per URL kind (``download`` and ``access``); the
+    ``url_kind`` argument selects which probe field to evaluate.
+    Distributions that don't declare the relevant URL are excluded — they
+    contribute nothing to the score either way.
+    """
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
+
+    def __init__(
+        self, url_kind: str, indicator_id: str, name_de: str, name_en: str
+    ):
+        url_label_de = "Download-URL" if url_kind == "download" else "Access-URL"
+        url_label_en = "download URL" if url_kind == "download" else "access URL"
+        super().__init__(
+            indicator_id=indicator_id,
+            name_de=name_de,
+            name_en=name_en,
+            dimension=QualityDimension.ACCESSIBILITY,
+            description_de=(
+                f"Prüft, ob die {url_label_de} jeder Distribution einen "
+                "gültigen HTTP-Statuscode (< 400) zurückgibt"
+            ),
+            description_en=(
+                f"Checks that each distribution's {url_label_en} returns "
+                "a valid HTTP status code (< 400)"
+            ),
+            weight=1.0,
+        )
+        self.url_kind = url_kind
+
+    def _url_of(self, dist) -> Optional[str]:
+        return dist.download_url if self.url_kind == "download" else dist.access_url
+
+    def _status_of(self, probe: DistributionProbe) -> Optional[int]:
+        return (
+            probe.download_status_code
+            if self.url_kind == "download"
+            else probe.access_status_code
+        )
+
+    def _error_of(self, probe: DistributionProbe) -> Optional[str]:
+        return (
+            probe.download_fetch_error
+            if self.url_kind == "download"
+            else probe.access_fetch_error
+        )
+
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+
+            total = context.distribution_count
+            relevant = [d for d in context.distributions if self._url_of(d)]
+
+            if not relevant:
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 "
+                    f"no distribution declares a {self.url_kind} URL"
+                )
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=IndicatorStatus.FAIL,
+                    score=0.0,
+                    message_de="Keine Distribution mit entsprechender URL",
+                    message_en="No distribution declares the relevant URL",
+                    details={
+                        "total_distributions": total,
+                        "relevant_distributions": 0,
+                    },
+                )
+
+            # Standalone-friendly: probe if nothing has been attached yet.
+            if all(d.probe is None for d in relevant):
+                attach_probes(
+                    context,
+                    max_probes=FormatCongruenceIndicator.MAX_DISTRIBUTIONS,
+                    parallel=FormatCongruenceIndicator.PARALLEL_WORKERS,
+                    logger=self.logger,
+                )
+
+            probed = [d for d in relevant if d.probe is not None]
+            sampled_count = len(probed)
+
+            if not probed:
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 no probes attempted"
+                )
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=IndicatorStatus.FAIL,
+                    score=0.0,
+                    message_de="Keine Probe durchgeführt",
+                    message_en="No probe attempted",
+                    details={
+                        "total_distributions": total,
+                        "relevant_distributions": len(relevant),
+                        "sampled_distributions": 0,
+                    },
+                )
+
+            valid: list[dict[str, Any]] = []
+            invalid: list[dict[str, Any]] = []
+            for dist in probed:
+                status_code = self._status_of(dist.probe)
+                error = self._error_of(dist.probe)
+                entry = {
+                    "uri": dist.distribution_uri,
+                    "url": self._url_of(dist),
+                    "status_code": status_code,
+                    "fetch_error": error,
+                }
+                if status_code is not None and status_code < 400:
+                    valid.append(entry)
+                else:
+                    invalid.append(entry)
+
+            overall = len(valid) / sampled_count
+
+            if overall >= self.PASS_THRESHOLD:
+                status = IndicatorStatus.PASS
+            elif overall >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
+            else:
+                status = IndicatorStatus.FAIL
+
+            url_label_de = (
+                "Download-URL" if self.url_kind == "download" else "Access-URL"
+            )
+            url_label_en = (
+                "download URL" if self.url_kind == "download" else "access URL"
+            )
+            message_de = (
+                f"{len(valid)}/{sampled_count} {url_label_de}(s) "
+                "mit gültigem HTTP-Statuscode"
+            )
+            message_en = (
+                f"{len(valid)}/{sampled_count} {url_label_en}(s) "
+                "with valid HTTP status code"
+            )
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={overall:.2f} "
+                f"valid={len(valid)}/{sampled_count} "
+                f"relevant={len(relevant)}/{total}"
+            )
+
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=status,
+                score=round(overall, 4),
+                message_de=message_de,
+                message_en=message_en,
+                details={
+                    "total_distributions": total,
+                    "relevant_distributions": len(relevant),
+                    "sampled_distributions": sampled_count,
+                    "valid_count": len(valid),
+                    "invalid_count": len(invalid),
+                    "valid": valid,
+                    "invalid": invalid,
+                },
+            )
+
+        except Exception as e:
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.ERROR,
+                score=0.0,
+                message_de="Fehler bei der Validierung",
+                message_en="Validation error",
+                error=str(e),
+            )
+
+
 class DistributionModelIndicator(Indicator):
     """Detect whether the dataset's distributions follow DCAT's
     "same content, different formats" pattern.
@@ -744,4 +946,16 @@ _download_url_indicator = DownloadURLIndicator()
 _format_indicator = FormatIndicator()
 _media_type_indicator = MediaTypeIndicator()
 _format_congruence_indicator = FormatCongruenceIndicator()
+_download_url_response = ResponseCodeIndicator(
+    "download",
+    "acc_download_url_response",
+    "Download-URL Antwortcode",
+    "Download URL response code",
+)
+_access_url_response = ResponseCodeIndicator(
+    "access",
+    "acc_access_url_response",
+    "Access-URL Antwortcode",
+    "Access URL response code",
+)
 _distribution_model_indicator = DistributionModelIndicator()

@@ -405,11 +405,15 @@ class QualityMetricsService:
     ) -> None:
         """Attach distribution probes if any indicator about to run consumes them.
 
-        Currently only ``acc_format_congruence`` needs probes. Looking up the
-        indicator IDs (rather than the dimension) keeps the trigger precise:
-        a blacklist on that indicator skips the HTTP work entirely.
+        Looking up the indicator IDs (rather than the dimension) keeps the
+        trigger precise: blacklisting every consumer skips the HTTP work
+        entirely.
         """
-        probe_consumers = {"acc_format_congruence"}
+        probe_consumers = {
+            "acc_format_congruence",
+            "acc_download_url_response",
+            "acc_access_url_response",
+        }
         will_run_consumer = any(
             ind_id in probe_consumers and ind_id not in self.indicator_blacklist
             for inds in dimensions_indicators.values()

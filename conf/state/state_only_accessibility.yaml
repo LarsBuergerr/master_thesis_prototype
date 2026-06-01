@@ -26,7 +26,7 @@ file_filter:
 
 output_dir: "run_outputs/"
 run_output_dir_suffix: ""
-run_output_enabled: false
+run_output_enabled: true
 
 dataset_path: "dataset.csv"
 
@@ -54,7 +54,7 @@ quality:
 
   # indicator_blacklist: ["find_keywords_count"]
 
-  indicator_whitelist: []
+  indicator_whitelist: ["acc_download_url_response", "acc_access_url_response"]
 
   # indicator_whitelist: ["acc_url_reachable"]
 
