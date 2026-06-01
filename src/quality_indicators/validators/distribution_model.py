@@ -49,8 +49,6 @@ from quality_indicators.validators.dataset_context import (
 )
 from quality_indicators.validators.distribution_type_validation import (
     ARCHIVE_MIMETYPES,
-    EU_FILE_TYPE_TO_MIME,
-    SERVICE_XML_MIMETYPE,
     effective_mime,
 )
 
@@ -74,11 +72,25 @@ class DistributionRole(str, Enum):
     UNKNOWN = "unknown"
 
 
-# EU file-type URIs that denote OGC service endpoints rather than data files.
-# Derived from ``EU_FILE_TYPE_TO_MIME`` so a new service-type mapping there
-# is automatically picked up here.
+# EU file-type URIs that denote OGC service endpoints rather than data
+# files. Hardcoded explicitly (not derived from ``EU_FILE_TYPE_TO_MIME``)
+# because services and plain XML both map to ``application/xml`` — deriving
+# from the MIME would also catch ``dct:format = XML`` as a "service" and
+# misclassify every XML-output distribution.
+_EU_FILE_TYPE_PREFIX = "http://publications.europa.eu/resource/authority/file-type/"
+_OGC_SERVICE_SUFFIXES: tuple[str, ...] = (
+    "WFS_SRVC",
+    "WMS_SRVC",
+    "WCS_SRVC",
+    "WMTS_SRVC",
+    "SOS_SRVC",
+    "OGC_WFS",
+    "OGC_WMS",
+    "OGC_WCS",
+    "OGC_WMTS",
+)
 SERVICE_FILE_TYPE_URIS: frozenset[str] = frozenset(
-    uri for uri, mime in EU_FILE_TYPE_TO_MIME.items() if mime == SERVICE_XML_MIMETYPE
+    _EU_FILE_TYPE_PREFIX + suffix for suffix in _OGC_SERVICE_SUFFIXES
 )
 
 # URL-pattern fallbacks for OGC service endpoints — catches publishers who

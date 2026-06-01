@@ -193,6 +193,7 @@ def main(cfg: DictConfig) -> None:
         indicator_weights=quality_cfg.get("indicator_weights", {}),
         dimension_whitelist=quality_cfg.get("dimension_whitelist"),
         indicator_blacklist=quality_cfg.get("indicator_blacklist"),
+        indicator_whitelist=quality_cfg.get("indicator_whitelist"),
     )
 
     # Process each file

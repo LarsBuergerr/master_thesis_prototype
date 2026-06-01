@@ -13,6 +13,8 @@ directory_path: "data/sample_2026-05-21_08-57"
 #     "non_geo_land-schleswig-holstein.rdf",
 #     "non_geo_land-schleswig-holstein_02.rdf",
 #   ]
+# files: ["non_geo_land-schleswig-holstein_02.rdf"]
+
 files: []
 
 file_filter:
@@ -49,6 +51,12 @@ quality:
   max_workers: 1
 
   dimension_whitelist: ["accessibility"]
+
+  # indicator_blacklist: ["find_keywords_count"]
+
+  indicator_whitelist: []
+
+  # indicator_whitelist: ["acc_url_reachable"]
 
   dimension_weights:
     findability: 1

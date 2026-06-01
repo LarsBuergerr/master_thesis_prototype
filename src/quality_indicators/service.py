@@ -29,6 +29,7 @@ class QualityMetricsService:
         indicator_weights: Optional[Dict[str, float]] = None,
         dimension_whitelist: Optional[list] = None,
         indicator_blacklist: Optional[list] = None,
+        indicator_whitelist: Optional[list] = None,
     ):
         """Initialize the service.
 
@@ -51,6 +52,9 @@ class QualityMetricsService:
         )
         self.indicator_blacklist = (
             set(indicator_blacklist) if indicator_blacklist else set()
+        )
+        self.indicator_whitelist = (
+            set(indicator_whitelist) if indicator_whitelist else None
         )
 
         # Ensure all indicators are loaded and registered
@@ -161,7 +165,9 @@ class QualityMetricsService:
 
         try:
             context = DatasetContext.from_graph(metadata)
-            self._maybe_attach_probes(context, {indicator.dimension: {indicator_id: indicator}})
+            self._maybe_attach_probes(
+                context, {indicator.dimension: {indicator_id: indicator}}
+            )
             result = self._invoke_indicator(indicator, metadata, context)
             return result.to_dict()
 
@@ -283,6 +289,13 @@ class QualityMetricsService:
             # Skip blacklisted indicators
             if indicator_id in self.indicator_blacklist:
                 logger.debug(f"Skipping indicator (blacklisted): {indicator_id}")
+                continue
+
+            if (
+                self.indicator_whitelist
+                and indicator_id not in self.indicator_whitelist
+            ):
+                logger.debug(f"Skipping indicator (not in whitelist): {indicator_id}")
                 continue
 
             try:

@@ -369,7 +369,9 @@ class DistributionTypeValidator:
         probe = DistributionProbe()
         fetch_url = dist.fetch_url
         fetch_source = (
-            "downloadURL" if dist.download_url else "accessURL" if dist.access_url else None
+            "downloadURL"
+            if dist.download_url
+            else "accessURL" if dist.access_url else None
         )
 
         # ---- declared signals (cheap, from context)
@@ -444,22 +446,28 @@ class DistributionTypeValidator:
                     "underlying file is an archive — declared format describes archive contents"
                 )
 
-        # Surface the attachment-based demotion (in ``_coalesce``) as a
-        # warning so it's visible in the probe.
+        # Surface the attachment-based body-signal demotion (in
+        # ``_coalesce``) as warnings so they remain visible in the report
+        # even though they don't count as hard conflicts. Applies to both
+        # body-derived signals; the sniff branch typically fires when the
+        # response was an HTTP error page or a download-portal HTML wrapper.
         attachment_mime = _signal_value(probe.signals, "attachment_filename")
-        http_mime = _signal_value(probe.signals, "http_content_type")
         if (
             probe.coalesced_mime
             and attachment_mime
-            and http_mime
             and self._type_equals(attachment_mime, probe.coalesced_mime)
-            and not self._type_equals(http_mime, probe.coalesced_mime)
         ):
-            probe.warnings.append(
-                f"HTTP Content-Type {http_mime!r} disagrees with attachment "
-                f"filename ({probe.attachment_filename!r} → {attachment_mime!r}); "
-                "treating Content-Type as advisory"
-            )
+            for body_source, label in (
+                ("http_content_type", "HTTP Content-Type"),
+                ("sniff", "sniffed body MIME"),
+            ):
+                body_mime = _signal_value(probe.signals, body_source)
+                if body_mime and not self._type_equals(body_mime, probe.coalesced_mime):
+                    probe.warnings.append(
+                        f"{label} {body_mime!r} disagrees with attachment "
+                        f"filename ({probe.attachment_filename!r} → "
+                        f"{attachment_mime!r}); treating as advisory"
+                    )
 
         self.logger.debug(_format_probe(dist, probe))
         return probe
@@ -475,9 +483,7 @@ class DistributionTypeValidator:
             mime = mimetypes.guess_type(f"example.{raw.lower()}")[0]
         return TypeSignal("dct:format", raw, mime)
 
-    def _signal_from_declared_media_type(
-        self, dist: DistributionContext
-    ) -> TypeSignal:
+    def _signal_from_declared_media_type(self, dist: DistributionContext) -> TypeSignal:
         if not dist.media_types:
             return TypeSignal("dcat:mediaType", None, None)
         raw = dist.media_types[0]
@@ -656,12 +662,17 @@ class DistributionTypeValidator:
                 if allow_override:
                     best = more_specific
                     continue
-            # Demotion: when ``http_content_type`` disagrees with ``best``
-            # but the attachment evidence (Content-Disposition / final-URL
-            # filename) agrees with ``best``, the server's Content-Type is
-            # misleading download-portal noise.
+            # Demotion: body-based signals (``http_content_type`` and
+            # ``sniff``) describe the HTTP response body. When the
+            # attachment evidence (Content-Disposition / final-URL
+            # filename) agrees with ``best``, the body is misleading —
+            # typically an HTTP error page (404/5xx), a download-portal
+            # HTML wrapper, or a server with a wrong default Content-Type.
+            # Demote both so the conflict doesn't poison the score; the
+            # caller surfaces the demotion as a warning so the
+            # disagreement remains visible.
             if (
-                sig.source == "http_content_type"
+                sig.source in {"http_content_type", "sniff"}
                 and attachment_mime is not None
                 and self._type_equals(attachment_mime, best)
             ):
@@ -917,7 +928,9 @@ def _short(value: Optional[str], width: int = 40) -> str:
     return value[: width - 1] + "…"
 
 
-def _probe_to_dict(dist: DistributionContext, probe: DistributionProbe) -> dict[str, Any]:
+def _probe_to_dict(
+    dist: DistributionContext, probe: DistributionProbe
+) -> dict[str, Any]:
     data = {
         "distribution_uri": dist.distribution_uri,
         "title": dist.title,
@@ -969,9 +982,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 _probe_to_dict(d, d.probe) for d in context.distributions if d.probe
             ]
         else:
-            print(
-                f"=== {rdf_file} — {len(context.distributions)} distribution(s) ==="
-            )
+            print(f"=== {rdf_file} — {len(context.distributions)} distribution(s) ===")
             for dist in context.distributions:
                 if dist.probe is None:
                     print(f"[SKIP ] {dist.distribution_uri} (not probed)")
