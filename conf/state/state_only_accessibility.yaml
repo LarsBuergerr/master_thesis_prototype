@@ -26,7 +26,7 @@ file_filter:
 
 output_dir: "run_outputs/"
 run_output_dir_suffix: ""
-run_output_enabled: true
+run_output_enabled: false
 
 dataset_path: "dataset.csv"
 

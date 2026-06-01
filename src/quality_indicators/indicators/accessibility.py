@@ -436,7 +436,12 @@ class FormatCongruenceIndicator(Indicator):
                 summary = {
                     "uri": dist.distribution_uri,
                     "download_url": dist.download_url,
+                    "access_url": dist.access_url,
                     "coalesced": probe.coalesced_mime,
+                    "download_status_code": probe.download_status_code,
+                    "download_fetch_error": probe.download_fetch_error,
+                    "access_status_code": probe.access_status_code,
+                    "access_fetch_error": probe.access_fetch_error,
                     "issues": probe.issues,
                     "warnings": probe.warnings,
                 }

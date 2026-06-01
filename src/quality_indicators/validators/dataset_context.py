@@ -112,6 +112,13 @@ class DistributionProbe:
     fetched: bool = False
     status_code: Optional[int] = None
     fetch_error: Optional[str] = None
+    # Per-URL reachability — populated independently for downloadURL and
+    # accessURL when both are present. ``status_code`` / ``fetch_error``
+    # above mirror whichever URL was used for MIME coalescing.
+    download_status_code: Optional[int] = None
+    download_fetch_error: Optional[str] = None
+    access_status_code: Optional[int] = None
+    access_fetch_error: Optional[str] = None
     final_url: Optional[str] = None
     content_disposition: Optional[str] = None
     attachment_filename: Optional[str] = None

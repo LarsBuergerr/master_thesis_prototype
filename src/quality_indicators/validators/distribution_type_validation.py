@@ -333,7 +333,7 @@ class DistributionTypeValidator:
     def __init__(
         self,
         *,
-        timeout: tuple[float, float] = (5.0, 15.0),
+        timeout: tuple[float, float] = (5.0, 8.0),
         sample_bytes: int = 2048,
         equal_types: Optional[list[list[str]]] = None,
         allowed_overrides: Optional[dict[str, list[str]]] = None,
@@ -391,8 +391,28 @@ class DistributionTypeValidator:
         probe.signals.append(self._signal_from_url(fetch_url))
 
         # ---- HTTP + sniff
-        if self.fetch_enabled and fetch_url:
-            result = self._probe(fetch_url)
+        # Probe downloadURL and accessURL independently so the report can
+        # show reachability for each. The MIME coalescing below still uses
+        # whichever URL ``fetch_url`` points at (downloadURL preferred).
+        download_result: Optional[_ProbeResult] = None
+        access_result: Optional[_ProbeResult] = None
+        if self.fetch_enabled:
+            if dist.download_url:
+                download_result = self._probe(dist.download_url)
+                probe.download_status_code = download_result.status
+                probe.download_fetch_error = download_result.error
+            if dist.access_url:
+                if dist.access_url == dist.download_url and download_result is not None:
+                    access_result = download_result
+                else:
+                    access_result = self._probe(dist.access_url)
+                probe.access_status_code = access_result.status
+                probe.access_fetch_error = access_result.error
+
+        primary_result = download_result if dist.download_url else access_result
+
+        if self.fetch_enabled and fetch_url and primary_result is not None:
+            result = primary_result
             probe.status_code = result.status
             probe.fetch_error = result.error
             probe.fetched = result.status is not None and result.error is None
