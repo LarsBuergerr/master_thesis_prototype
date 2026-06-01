@@ -76,6 +76,8 @@ quality:
   # If specified, these indicators will be skipped
   # indicator_blacklist: ["find_keywords_count"]
 
+  indicator_whitelist: []
+
   # Optional custom weights per dimension (default for all: 1.0)
   # Example: expressiveness=30%, findability=10%
   dimension_weights:

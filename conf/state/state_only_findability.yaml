@@ -45,6 +45,11 @@ quality:
 
   dimension_whitelist: ["findability"]
 
+  # Optional indicator blacklist (default: no indicators excluded)
+  # indicator_blacklist: []
+
+  indicator_whitelist: []
+
   dimension_weights:
     findability: 1
     accessibility: 1

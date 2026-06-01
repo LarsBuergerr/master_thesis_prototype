@@ -54,7 +54,7 @@ quality:
 
   # indicator_blacklist: ["find_keywords_count"]
 
-  indicator_whitelist: ["acc_download_url_response", "acc_access_url_response"]
+  indicator_whitelist: ["acc_machine_readable_access"]
 
   # indicator_whitelist: ["acc_url_reachable"]
 

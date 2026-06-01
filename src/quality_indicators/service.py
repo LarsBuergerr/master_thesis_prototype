@@ -413,6 +413,7 @@ class QualityMetricsService:
             "acc_format_congruence",
             "acc_download_url_response",
             "acc_access_url_response",
+            "acc_machine_readable_access",
         }
         will_run_consumer = any(
             ind_id in probe_consumers and ind_id not in self.indicator_blacklist
