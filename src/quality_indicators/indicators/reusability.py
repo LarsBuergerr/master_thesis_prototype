@@ -200,7 +200,6 @@ class ContactPointIndicator(Indicator):
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            print(context)
             contact_points = context.contact_points
             self.logger.debug(
                 f"[{self.indicator_id}] Found {len(contact_points)} contact point(s)"
