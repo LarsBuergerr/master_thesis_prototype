@@ -8,12 +8,12 @@ hydra:
 
 directory_path: "data/sample_2026-05-21_08-57"
 
-files:
-  [
-    "non_geo_land-schleswig-holstein.rdf",
-    "non_geo_land-schleswig-holstein_02.rdf",
-  ]
-# files: []
+# files:
+#   [
+#     "non_geo_land-schleswig-holstein.rdf",
+#     "non_geo_land-schleswig-holstein_02.rdf",
+#   ]
+files: []
 
 file_filter:
   extensions: [".rdf"]

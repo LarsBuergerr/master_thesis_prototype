@@ -20,6 +20,10 @@ from quality_indicators.validators.dataset_context import (
     DatasetContext,
     DistributionProbe,
 )
+from quality_indicators.validators.distribution_model import (
+    DistributionModelReport,
+    analyze_distribution_model,
+)
 from quality_indicators.validators.distribution_type_validation import attach_probes
 
 
@@ -522,8 +526,217 @@ class FormatCongruenceIndicator(Indicator):
         return 1.0
 
 
+class DistributionModelIndicator(Indicator):
+    """Detect whether the dataset's distributions follow DCAT's
+    "same content, different formats" pattern.
+
+    Classifies each distribution into a structural role (data file, service
+    endpoint, landing page, archive, unknown) and then asks of the
+    data-file subset whether they look like format variants of the same
+    content or like split data spread across distributions.
+
+    The composite is a mean over two cheap, independent signals:
+
+    * Format diversity across the data-file subset
+    * Filename-stem identity across the data-file subset URLs
+
+    Service endpoints and landing pages are counted but **excluded** from
+    the variant analysis — they're complementary access modes, not format
+    variants, so a WMS + GeoJSON dataset isn't falsely penalised.
+
+    Score mapping:
+
+    * 1.0 — ``format-variants``, ``single``, or ``service-only``
+    * 0.6 — ``mixed-or-ambiguous``
+    * 0.4 — ``split-data`` (anti-pattern; should be a dataset series)
+    * 0.0 — ``no-data`` (no recognisable data distributions)
+    """
+
+    SCORES: dict[str, float] = {
+        "format-variants": 1.0,
+        "single": 1.0,
+        "service-only": 1.0,
+        "mixed-or-ambiguous": 0.6,
+        "split-data": 0.4,
+        "no-data": 0.0,
+    }
+
+    def __init__(self):
+        super().__init__(
+            indicator_id="acc_distribution_model",
+            name_de="Distributionsmodell",
+            name_en="Distribution model coherence",
+            dimension=QualityDimension.ACCESSIBILITY,
+            description_de=(
+                "Prüft ob die Distributionen das gleiche Dataset in "
+                "verschiedenen Formaten abbilden (DCAT-konform) oder eher "
+                "eine Aufteilung der Daten darstellen. Service-Endpunkte "
+                "(WMS/WFS) und Landing-Pages werden separat ausgewiesen "
+                "und nicht in die Varianten-Analyse einbezogen."
+            ),
+            description_en=(
+                "Detects whether the distributions follow DCAT's "
+                "same-dataset-different-formats pattern, or whether the "
+                "publisher split the data across distributions. Service "
+                "endpoints (WMS/WFS) and landing pages are reported but "
+                "excluded from the variant analysis."
+            ),
+            weight=1.0,
+        )
+
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+
+            if context.distribution_count == 0:
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
+                )
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=IndicatorStatus.FAIL,
+                    score=0.0,
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"distribution_count": 0},
+                )
+
+            report = analyze_distribution_model(context)
+            score = self.SCORES.get(report.classification, 0.0)
+            status = self._status_for_score(score)
+            message_de, message_en = self._messages_for(report)
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"class={report.classification} "
+                f"data={report.data_file_count} "
+                f"service={report.service_endpoint_count} "
+                f"landing={report.landing_page_count} "
+                f"archive={report.archive_count} "
+                f"unknown={report.unknown_count} "
+                f"signals={report.signals_evaluated}/{report.signals_total}"
+            )
+
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=status,
+                score=score,
+                message_de=message_de,
+                message_en=message_en,
+                details=self._details_for(report),
+            )
+
+        except Exception as e:
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.ERROR,
+                score=0.0,
+                message_de="Fehler bei der Validierung",
+                message_en="Validation error",
+                error=str(e),
+            )
+
+    @staticmethod
+    def _status_for_score(score: float) -> IndicatorStatus:
+        if score >= 0.9:
+            return IndicatorStatus.PASS
+        if score >= 0.5:
+            return IndicatorStatus.PARTIAL
+        return IndicatorStatus.FAIL
+
+    @staticmethod
+    def _messages_for(report: DistributionModelReport) -> tuple[str, str]:
+        suffix_de = (
+            " (zusätzlich Service-Endpunkt vorhanden)"
+            if report.has_service_with_data
+            else ""
+        )
+        suffix_en = (
+            " (additional service endpoint present)"
+            if report.has_service_with_data
+            else ""
+        )
+        match report.classification:
+            case "format-variants":
+                return (
+                    f"Distributionen wirken wie Format-Varianten desselben Datensatzes{suffix_de}",
+                    f"Distributions look like format variants of the same dataset{suffix_en}",
+                )
+            case "split-data":
+                return (
+                    "Distributionen scheinen eine Aufteilung der Daten zu sein (eher dataset-series)",
+                    "Distributions look like split data (would be better as a dataset series)",
+                )
+            case "mixed-or-ambiguous":
+                return (
+                    f"Distributionsmodell uneindeutig{suffix_de}",
+                    f"Distribution model is ambiguous{suffix_en}",
+                )
+            case "single":
+                return (
+                    "Nur eine Distribution — keine Modellierungsfrage",
+                    "Only one distribution — no modelling question to answer",
+                )
+            case "service-only":
+                return (
+                    "Nur Service-Endpunkte (z.B. WMS/WFS), keine direkten Datendateien",
+                    "Service endpoints only (e.g. WMS/WFS), no direct data files",
+                )
+            case "no-data":
+                return (
+                    "Keine erkennbaren Datendateien",
+                    "No recognisable data distributions",
+                )
+            case _:
+                return ("Unbekannte Klassifikation", "Unknown classification")
+
+    @staticmethod
+    def _details_for(report: DistributionModelReport) -> dict[str, Any]:
+        return {
+            "classification": report.classification,
+            "composite_score": report.composite_score,
+            "has_service_with_data": report.has_service_with_data,
+            "role_counts": {
+                "data_file": report.data_file_count,
+                "service_endpoint": report.service_endpoint_count,
+                "landing_page": report.landing_page_count,
+                "archive": report.archive_count,
+                "unknown": report.unknown_count,
+            },
+            "roles": {uri: role.value for uri, role in report.roles.items()},
+            "signals": {
+                "format_diversity": {
+                    "score": report.format_diversity_score,
+                    "unique_formats": report.unique_formats,
+                },
+                "filename_stem": {
+                    "score": report.filename_stem_score,
+                    "stems": report.filename_stems,
+                },
+            },
+            "signals_evaluated": report.signals_evaluated,
+            "signals_total": report.signals_total,
+        }
+
+
 # Auto-register indicators when imported
 _download_url_indicator = DownloadURLIndicator()
 _format_indicator = FormatIndicator()
 _media_type_indicator = MediaTypeIndicator()
 _format_congruence_indicator = FormatCongruenceIndicator()
+_distribution_model_indicator = DistributionModelIndicator()

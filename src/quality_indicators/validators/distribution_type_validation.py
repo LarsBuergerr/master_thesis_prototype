@@ -834,6 +834,46 @@ def _signal_value(signals: list[TypeSignal], source: str) -> Optional[str]:
     return None
 
 
+def declared_mime(dist: DistributionContext) -> Optional[str]:
+    """MIME derivable from declared signals alone (no HTTP).
+
+    Resolution order: ``dct:format`` via EU file-type vocab → ``dct:format``
+    as a string suffix → ``dcat:mediaType`` (IANA URI or literal) → URL
+    extension. Returns ``None`` when no signal yields a recognised MIME.
+    """
+    if dist.formats:
+        raw = dist.formats[0]
+        mime = EU_FILE_TYPE_TO_MIME.get(raw)
+        if mime is not None:
+            return mime
+        if not raw.startswith("http"):
+            guess = mimetypes.guess_type(f"example.{raw.lower()}")[0]
+            if guess is not None:
+                return guess
+    if dist.media_types:
+        normalised = _normalize_media_type(dist.media_types[0])
+        if normalised is not None:
+            return normalised
+    if dist.fetch_url:
+        guess, _ = mimetypes.guess_type(urlparse(dist.fetch_url).path, strict=False)
+        if guess is not None:
+            return guess
+    return None
+
+
+def effective_mime(dist: DistributionContext) -> Optional[str]:
+    """Best-known MIME: ``probe.coalesced_mime`` if attached, declared otherwise.
+
+    Use this whenever an indicator needs to know "what is this distribution".
+    It transparently uses the verified probe result when available and falls
+    back to declared signals when not — so indicators work both with and
+    without ``attach_probes`` having been called.
+    """
+    if dist.probe and dist.probe.coalesced_mime:
+        return dist.probe.coalesced_mime
+    return declared_mime(dist)
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
