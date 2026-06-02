@@ -81,7 +81,7 @@ class TypeSignal:
 
     Declared signals (``dct:format``, ``dcat:mediaType``, URL extension) come
     from the RDF context; probe signals (``http_content_type``,
-    ``attachment_filename``, ``sniff``) are populated by the HTTP probe.
+    ``attachment_filename``) are populated by the HTTP probe.
     """
 
     source: str
@@ -122,7 +122,6 @@ class DistributionProbe:
     final_url: Optional[str] = None
     content_disposition: Optional[str] = None
     attachment_filename: Optional[str] = None
-    sniffed_mime: Optional[str] = None
 
     @property
     def is_consistent(self) -> bool:

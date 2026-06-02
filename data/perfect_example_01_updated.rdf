@@ -70,8 +70,8 @@
         <dct:title xml:lang="de">Bevölkerung: Deutschland, Stichtag - CSV</dct:title>
         <dct:description xml:lang="de">Maschinenlesbare CSV-Distribution der Tabelle 12411-0001 zum Bevölkerungsstand in Deutschland nach Stichtagen.</dct:description>
         <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
-        <dcat:accessURL rdf:resource="https://example.govdata.test/downloads/bevoelkerung-deutschland-stichtag.csv"/>
-        <dcat:downloadURL rdf:resource="https://example.govdata.test/downloads/bevoelkerung-deutschland-stichtag.csv"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/5fa4a88c-15fe-4561-be40-7a13aca8f8b9/resource/56e7a187-6dd1-49a5-ba5c-6202dc171f5c/download/kreis-hzgt.-lauenburg.csv"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/5fa4a88c-15fe-4561-be40-7a13aca8f8b9/resource/56e7a187-6dd1-49a5-ba5c-6202dc171f5c/download/kreis-hzgt.-lauenburg.csv"/>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
         <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
         <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
@@ -87,11 +87,11 @@
         <dct:title xml:lang="de">Bevölkerung: Deutschland, Stichtag - XLSX</dct:title>
         <dct:description xml:lang="de">XLSX-Distribution der Tabelle 12411-0001 zum Bevölkerungsstand in Deutschland nach Stichtagen.</dct:description>
         <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
-        <dcat:accessURL rdf:resource="https://example.govdata.test/downloads/bevoelkerung-deutschland-stichtag.xlsx"/>
-        <dcat:downloadURL rdf:resource="https://example.govdata.test/downloads/bevoelkerung-deutschland-stichtag.xlsx"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/5fa4a88c-15fe-4561-be40-7a13aca8f8b9/resource/f45a5eea-275f-46a1-b634-9a79b966dee3/download/kreis-hzgt.-lauenburg.json"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/5fa4a88c-15fe-4561-be40-7a13aca8f8b9/resource/f45a5eea-275f-46a1-b634-9a79b966dee3/download/kreis-hzgt.-lauenburg.json"/>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
-        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
-        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/json"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON"/>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-20T00:00:00</dct:issued>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-20T00:00:00</dct:modified>
         <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">786432</dcat:byteSize>

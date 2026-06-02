@@ -19,7 +19,7 @@ file_filter:
 
 output_dir: "run_outputs/"
 run_output_dir_suffix: "perfect_example_01_updated"
-run_output_enabled: false
+run_output_enabled: true
 
 dataset_path: "dataset.csv"
 
@@ -43,7 +43,7 @@ logging:
 quality:
   max_workers: 1
 
-  dimension_whitelist: ["findability"]
+  dimension_whitelist: []
 
   # Optional indicator blacklist (default: no indicators excluded)
   # indicator_blacklist: []

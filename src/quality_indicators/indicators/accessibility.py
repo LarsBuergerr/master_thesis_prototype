@@ -382,13 +382,13 @@ class FormatCongruenceIndicator(Indicator):
             name_en="Format congruence of distributions",
             dimension=QualityDimension.ACCESSIBILITY,
             description_de=(
-                "Prüft pro Distribution, ob dct:format, dcat:mediaType, URL-Endung, "
-                "HTTP Content-Type und Magic-Bytes übereinstimmen "
+                "Prüft pro Distribution, ob dct:format, dcat:mediaType, URL-Endung "
+                "und HTTP Content-Type übereinstimmen "
                 f"(Stichprobe von max. {self.MAX_DISTRIBUTIONS} Distributionen)"
             ),
             description_en=(
-                "Checks per distribution that dct:format, dcat:mediaType, URL extension, "
-                "HTTP Content-Type and magic-byte sniffing agree "
+                "Checks per distribution that dct:format, dcat:mediaType, URL extension "
+                "and HTTP Content-Type agree "
                 f"(sample of up to {self.MAX_DISTRIBUTIONS} distributions)"
             ),
             weight=1.0,

@@ -6,14 +6,13 @@ This is an adaptation of CKAN's ``ckanext-resource-validation``
 (``resource_type_validation.py``) for **RDF-based** input. Declared signals
 are read from the pre-computed :class:`DistributionContext`; probe signals
 are obtained by HTTPing the distribution URL. The validator coalesces up to
-six MIME-type signals:
+five MIME-type signals:
 
 1. ``dct:format`` — EU file-type vocabulary URI, normalised to a MIME type
 2. ``dcat:mediaType`` — IANA media-type URI (or literal) → MIME type
 3. URL filename extension → MIME via ``mimetypes``
 4. HTTP ``Content-Type`` response header
 5. ``Content-Disposition`` attachment filename → MIME via ``mimetypes``
-6. Magic-byte sniff of the first ~2 KB of the response body
 
 The coalescing / override / equality logic is ported from the CKAN module.
 Output is attached to the context as :class:`DistributionProbe` — this tool
@@ -253,50 +252,6 @@ for ext, mime in {
 }.items():
     mimetypes.add_type(mime, ext)
 
-# Minimal magic-byte table, used when python-magic isn't installed.
-_MAGIC_SIGNATURES: list[tuple[bytes, str]] = [
-    (b"%PDF-", "application/pdf"),
-    (b"PK\x03\x04", "application/zip"),  # also xlsx/docx
-    (b"SQLite format 3\x00", "application/x-gpkg"),  # could also be plain SQLite
-    (b"\x89PNG\r\n\x1a\n", "image/png"),
-    (b"\xff\xd8\xff", "image/jpeg"),
-    (b"II*\x00", "image/tiff"),
-    (b"MM\x00*", "image/tiff"),
-    (b"<?xml", "application/xml"),
-    (b"<!DOCTYPE html", "text/html"),
-    (b"<html", "text/html"),
-]
-
-try:
-    import magic as _magic_lib  # type: ignore
-
-    _MAGIC = _magic_lib.Magic(mime=True)
-
-    def _sniff_mime(sample: bytes) -> Optional[str]:
-        if not sample:
-            return None
-        return _MAGIC.from_buffer(sample) or None
-
-except ImportError:  # pragma: no cover - optional dep
-    _MAGIC = None
-
-    def _sniff_mime(sample: bytes) -> Optional[str]:
-        if not sample:
-            return None
-        head = sample[:32]
-        stripped = head.lstrip()
-        for prefix, mime in _MAGIC_SIGNATURES:
-            if head.startswith(prefix) or stripped.startswith(prefix):
-                return mime
-        try:
-            text = sample[:512].decode("utf-8")
-        except UnicodeDecodeError:
-            return None
-        if "," in text and "\n" in text and text.isprintable() is False:
-            return None
-        return None
-
-
 # ---------------------------------------------------------------------------
 # Internal probe payload
 # ---------------------------------------------------------------------------
@@ -310,8 +265,6 @@ class _ProbeResult:
     content_disposition: Optional[str]
     attachment_filename: Optional[str]
     final_url: Optional[str]
-    sniffed: Optional[str]
-    sample: bytes
     status: Optional[int]
     error: Optional[str]
 
@@ -334,7 +287,6 @@ class DistributionTypeValidator:
         self,
         *,
         timeout: tuple[float, float] = (5.0, 8.0),
-        sample_bytes: int = 2048,
         equal_types: Optional[list[list[str]]] = None,
         allowed_overrides: Optional[dict[str, list[str]]] = None,
         archive_mimetypes: Optional[list[str]] = None,
@@ -343,7 +295,6 @@ class DistributionTypeValidator:
         logger: Logger,
     ) -> None:
         self.timeout = timeout
-        self.sample_bytes = sample_bytes
         self.equal_types = equal_types if equal_types is not None else EQUAL_TYPES
         self.allowed_overrides = (
             allowed_overrides if allowed_overrides is not None else ALLOWED_OVERRIDES
@@ -390,7 +341,7 @@ class DistributionTypeValidator:
 
         probe.signals.append(self._signal_from_url(fetch_url))
 
-        # ---- HTTP + sniff
+        # ---- HTTP
         # Probe downloadURL and accessURL independently so the report can
         # show reachability for each. The MIME coalescing below still uses
         # whichever URL ``fetch_url`` points at (downloadURL preferred).
@@ -419,7 +370,6 @@ class DistributionTypeValidator:
             probe.final_url = result.final_url
             probe.content_disposition = result.content_disposition
             probe.attachment_filename = result.attachment_filename
-            probe.sniffed_mime = result.sniffed
             probe.signals.append(
                 TypeSignal(
                     "http_content_type",
@@ -431,9 +381,6 @@ class DistributionTypeValidator:
                 self._signal_from_attachment(
                     result.attachment_filename, result.content_disposition
                 )
-            )
-            probe.signals.append(
-                TypeSignal("sniff", _hex_preview(result.sample), result.sniffed)
             )
             if result.status is not None and result.status >= 400:
                 probe.warnings.append(
@@ -453,34 +400,22 @@ class DistributionTypeValidator:
                 )
             probe.signals.append(TypeSignal("http_content_type", None, None))
             probe.signals.append(TypeSignal("attachment_filename", None, None))
-            probe.signals.append(TypeSignal("sniff", None, None))
 
         # ---- coalesce
         probe.coalesced_mime, probe.issues = self._coalesce(probe.signals)
 
-        # archive-vs-format relaxation, mirroring CKAN's archive branch
-        if probe.is_consistent:
-            sniffed_mime = _signal_value(probe.signals, "sniff")
-            if sniffed_mime in self.archive_mimetypes:
-                probe.warnings.append(
-                    "underlying file is an archive — declared format describes archive contents"
-                )
-
         # Surface the attachment-based body-signal demotion (in
-        # ``_coalesce``) as warnings so they remain visible in the report
-        # even though they don't count as hard conflicts. Applies to both
-        # body-derived signals; the sniff branch typically fires when the
-        # response was an HTTP error page or a download-portal HTML wrapper.
+        # ``_coalesce``) as a warning so it remains visible in the report
+        # even though it doesn't count as a hard conflict. The
+        # ``http_content_type`` branch typically fires when the response was
+        # an HTTP error page or a download-portal HTML wrapper.
         attachment_mime = _signal_value(probe.signals, "attachment_filename")
         if (
             probe.coalesced_mime
             and attachment_mime
             and self._type_equals(attachment_mime, probe.coalesced_mime)
         ):
-            for body_source, label in (
-                ("http_content_type", "HTTP Content-Type"),
-                ("sniff", "sniffed body MIME"),
-            ):
+            for body_source, label in (("http_content_type", "HTTP Content-Type"),):
                 body_mime = _signal_value(probe.signals, body_source)
                 if body_mime and not self._type_equals(body_mime, probe.coalesced_mime):
                     probe.warnings.append(
@@ -542,7 +477,6 @@ class DistributionTypeValidator:
         content_type: Optional[str] = None
         content_disposition: Optional[str] = None
         final_url: Optional[str] = None
-        sample = b""
         status: Optional[int] = None
         error: Optional[str] = None
 
@@ -563,29 +497,14 @@ class DistributionTypeValidator:
                 final_url = resp.url
                 # Prefer GET headers — some servers omit Content-Disposition
                 # / Content-Type on HEAD or compute them differently from
-                # the actual GET body.
+                # the actual GET response.
                 if resp.headers.get("Content-Type"):
                     content_type = resp.headers.get("Content-Type")
                 if resp.headers.get("Content-Disposition"):
                     content_disposition = resp.headers.get("Content-Disposition")
-                chunks: list[bytes] = []
-                received = 0
-                for chunk in resp.iter_content(chunk_size=self.sample_bytes):
-                    if not chunk:
-                        continue
-                    chunks.append(chunk)
-                    received += len(chunk)
-                    if received >= self.sample_bytes:
-                        break
-                sample = b"".join(chunks)[: self.sample_bytes]
-                # CKAN trick: some old libmagic outputs need the full body
-                # for OLE compound documents.
-                if sample and sample[:5] == b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1"[:5]:
-                    sample = resp.content
         except requests.RequestException as exc:
             error = (error + " | " if error else "") + f"GET failed: {exc}"
 
-        sniffed = _sniff_mime(sample)
         attachment_filename = _filename_from_content_disposition(content_disposition)
         # Fallback: derive a filename from the final URL's path when the
         # server didn't set Content-Disposition. Catches CDN-style downloads
@@ -600,8 +519,6 @@ class DistributionTypeValidator:
             content_disposition=content_disposition,
             attachment_filename=attachment_filename,
             final_url=final_url,
-            sniffed=sniffed,
-            sample=sample,
             status=status,
             error=error,
         )
@@ -618,7 +535,6 @@ class DistributionTypeValidator:
         "url_extension",
         "attachment_filename",
         "http_content_type",
-        "sniff",
     )
 
     def _coalesce(self, signals: list[TypeSignal]) -> tuple[Optional[str], list[str]]:
@@ -682,17 +598,16 @@ class DistributionTypeValidator:
                 if allow_override:
                     best = more_specific
                     continue
-            # Demotion: body-based signals (``http_content_type`` and
-            # ``sniff``) describe the HTTP response body. When the
-            # attachment evidence (Content-Disposition / final-URL
-            # filename) agrees with ``best``, the body is misleading —
-            # typically an HTTP error page (404/5xx), a download-portal
-            # HTML wrapper, or a server with a wrong default Content-Type.
-            # Demote both so the conflict doesn't poison the score; the
-            # caller surfaces the demotion as a warning so the
+            # Demotion: the body-based ``http_content_type`` signal describes
+            # the HTTP response body. When the attachment evidence
+            # (Content-Disposition / final-URL filename) agrees with ``best``,
+            # the body is misleading — typically an HTTP error page (404/5xx),
+            # a download-portal HTML wrapper, or a server with a wrong default
+            # Content-Type. Demote it so the conflict doesn't poison the
+            # score; the caller surfaces the demotion as a warning so the
             # disagreement remains visible.
             if (
-                sig.source in {"http_content_type", "sniff"}
+                sig.source == "http_content_type"
                 and attachment_mime is not None
                 and self._type_equals(attachment_mime, best)
             ):
@@ -846,16 +761,6 @@ def _strip_charset(content_type: Optional[str]) -> Optional[str]:
     if not content_type:
         return None
     return content_type.split(";", 1)[0].strip().lower() or None
-
-
-def _hex_preview(sample: bytes, limit: int = 32) -> Optional[str]:
-    if not sample:
-        return None
-    head = sample[:limit]
-    try:
-        return head.decode("utf-8")
-    except UnicodeDecodeError:
-        return head.hex()
 
 
 def _signal_value(signals: list[TypeSignal], source: str) -> Optional[str]:
