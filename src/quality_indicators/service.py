@@ -259,6 +259,8 @@ class QualityMetricsService:
         # Calculate summary
         results["summary"] = self._calculate_summary(results)
 
+        logger.debug(context.to_json())
+
         return results
 
     def _process_dimension(

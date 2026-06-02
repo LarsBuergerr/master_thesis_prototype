@@ -1,8 +1,10 @@
 """Render PNG chart summaries from a run's aggregate JSON.
 
-Produces three images at the run root:
+Produces four images at the run root:
 
 - ``run_summary.png`` — overall-score histogram + average score per dimension.
+- ``run_overall_by_file.png`` — overall score (Gesamtscore) per file, side by
+  side in a single bar chart.
 - ``run_scores_by_file.png`` — per-file scores, one subplot per active dimension.
 - ``run_indicator_outcomes.png`` — stacked pass/partial/fail/error counts per
   indicator, one subplot per active dimension.
@@ -52,6 +54,10 @@ def generate_run_charts(
     _render_overview(aggregate, summary_path)
     written.append(summary_path)
 
+    overall_path = output_dir / "run_overall_by_file.png"
+    if _render_overall_by_file(aggregate, overall_path):
+        written.append(overall_path)
+
     scores_path = output_dir / "run_scores_by_file.png"
     if _render_scores_by_dimension(aggregate, scores_path):
         written.append(scores_path)
@@ -87,6 +93,61 @@ def _render_overview(aggregate: Dict[str, Any], output_path: Path) -> None:
     fig.savefig(output_path, dpi=150)
     plt.close(fig)
     logger.info(f"Saved overview chart to {output_path}")
+
+
+def _render_overall_by_file(aggregate: Dict[str, Any], output_path: Path) -> bool:
+    files = aggregate.get("files") or {}
+    scored = {
+        name: entry.get("overall_score")
+        for name, entry in files.items()
+        if isinstance(entry.get("overall_score"), (int, float))
+    }
+    if not scored:
+        logger.warning("No overall scores present; skipping overall-by-file chart")
+        return False
+
+    file_names = sorted(scored.keys())
+    scores = [float(scored[name]) for name in file_names]
+
+    # Widen the figure with the file count so bars/labels stay legible.
+    width = max(8.0, 0.6 * len(file_names) + 2.0)
+    fig, ax = plt.subplots(figsize=(width, 5))
+    fig.suptitle("Overall score per file", fontsize=14, fontweight="bold")
+
+    x = np.arange(len(file_names))
+    bars = ax.bar(x, scores, color="#4c72b0")
+    for bar, value in zip(bars, scores):
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            bar.get_height() + 0.01,
+            f"{value:.2f}",
+            ha="center",
+            va="bottom",
+            fontsize=8,
+        )
+
+    mean = float(np.mean(scores))
+    ax.axhline(
+        mean,
+        color="#c0504d",
+        linestyle="--",
+        linewidth=1.2,
+        label=f"mean={mean:.2f}",
+    )
+    ax.set_ylabel("Overall score")
+    ax.set_ylim(0, 1.05)
+    ax.set_xticks(x)
+    ax.set_xticklabels(
+        [_shorten(name) for name in file_names], rotation=45, ha="right", fontsize=7
+    )
+    ax.legend(loc="upper right", fontsize=8)
+    ax.grid(axis="y", linestyle="--", alpha=0.4)
+
+    fig.tight_layout(rect=(0, 0, 1, 0.94))
+    fig.savefig(output_path, dpi=150)
+    plt.close(fig)
+    logger.info(f"Saved overall-by-file chart to {output_path}")
+    return True
 
 
 def _render_scores_by_dimension(aggregate: Dict[str, Any], output_path: Path) -> bool:

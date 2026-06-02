@@ -22,8 +22,9 @@ any indicator that needs network access does its own probing on top.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from typing import Iterable, Optional
+import json
+from dataclasses import dataclass, field, fields as dataclass_fields, is_dataclass
+from typing import Any, Iterable, Optional
 
 from rdflib import Graph, URIRef, Namespace
 from rdflib.namespace import DCAT, DCTERMS, RDF
@@ -280,6 +281,31 @@ class DatasetContext:
             )
         return out
 
+    # ------- serialisation ----------------------------------------------
+
+    def to_dict(self) -> dict[str, Any]:
+        """JSON-serialisable view of every fact in this context.
+
+        Walks the nested dataclasses (``DistributionContext``,
+        ``DistributionProbe``, ``TypeSignal``, ``AdminUnitFact``) recursively.
+        The ``graph`` field is excluded — it is the raw rdflib graph and is
+        neither JSON-serialisable nor useful as a flat depiction. A handful of
+        derived aggregates (e.g. ``distribution_count``) are added so the dump
+        is self-describing for debugging and for the agent that evaluates the
+        remaining dimension.
+        """
+        data = {
+            f.name: _to_jsonable(getattr(self, f.name))
+            for f in dataclass_fields(self)
+            if f.name != "graph"
+        }
+        data["distribution_count"] = self.distribution_count
+        return data
+
+    def to_json(self, *, indent: Optional[int] = 2) -> str:
+        """Serialise :meth:`to_dict` to a JSON string (UTF-8, non-ASCII kept)."""
+        return json.dumps(self.to_dict(), indent=indent, ensure_ascii=False)
+
     # ------- factory ----------------------------------------------------
 
     @classmethod
@@ -332,6 +358,26 @@ class DatasetContext:
 # ---------------------------------------------------------------------------
 # Helpers (internal)
 # ---------------------------------------------------------------------------
+
+
+def _to_jsonable(value: Any) -> Any:
+    """Recursively convert dataclasses / containers into JSON-friendly values.
+
+    Dataclass *instances* become plain dicts (properties are not included —
+    only declared fields); lists/tuples and dicts are walked element-wise;
+    every other value is returned unchanged (the context only ever holds
+    ``str`` / ``bool`` / ``int`` / ``None`` leaves).
+    """
+    if is_dataclass(value) and not isinstance(value, type):
+        return {
+            f.name: _to_jsonable(getattr(value, f.name))
+            for f in dataclass_fields(value)
+        }
+    if isinstance(value, (list, tuple)):
+        return [_to_jsonable(item) for item in value]
+    if isinstance(value, dict):
+        return {key: _to_jsonable(item) for key, item in value.items()}
+    return value
 
 
 def _iter_distributions(graph: Graph) -> Iterable[URIRef]:
