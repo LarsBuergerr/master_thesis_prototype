@@ -52,19 +52,56 @@ def load_skos_concept_uris(filename: str) -> frozenset[str]:
     return frozenset(uris)
 
 
+_SKOS_EXACT_MATCH = f'{{{_NS["skos"]}}}exactMatch'
+_RDF_RESOURCE = f'{{{_NS["rdf"]}}}resource'
+
+
+@lru_cache(maxsize=None)
+def load_license_exact_match_by_type(
+    filename: str = "licenses.rdf",
+) -> dict[str, str]:
+    """Map every ``skos:exactMatch`` URI in the DCAT-AP-DE licenses vocab to
+    its ``dct:type`` classification (``"Freie Nutzung"`` or
+    ``"Eingeschränkte Nutzung"``).
+
+    A license consumer (e.g. ``dct:license`` in a dataset) is "in vocab" iff
+    its URI is a key in this dict. The associated value distinguishes
+    open-use from restricted-use licenses.
+    """
+    tree = ET.parse(VOCAB_DIR / filename)
+    out: dict[str, str] = {}
+    for element in tree.getroot():
+        type_el = element.find("dct:type", _NS)
+        if type_el is None:
+            continue
+        license_type = (type_el.text or "").strip()
+        if not license_type:
+            continue
+        for match_el in element.findall("skos:exactMatch", _NS):
+            uri = match_el.get(_RDF_RESOURCE)
+            if uri:
+                out[uri] = license_type
+    return out
+
+
 @lru_cache(maxsize=None)
 def load_open_license_uris(filename: str = "licenses.rdf") -> frozenset[str]:
     """Return DCAT-AP-DE license URIs categorised as ``Freie Nutzung``."""
-    tree = ET.parse(VOCAB_DIR / filename)
-    uris: set[str] = set()
-    for element in tree.getroot():
-        type_el = element.find("dct:type", _NS)
-        if type_el is None or (type_el.text or "").strip() != "Freie Nutzung":
-            continue
-        about = element.get(_RDF_ABOUT)
-        if about:
-            uris.add(about)
-    return frozenset(uris)
+    return frozenset(
+        uri
+        for uri, license_type in load_license_exact_match_by_type(filename).items()
+        if license_type == "Freie Nutzung"
+    )
+
+
+@lru_cache(maxsize=None)
+def load_restricted_license_uris(filename: str = "licenses.rdf") -> frozenset[str]:
+    """Return DCAT-AP-DE license URIs categorised as ``Eingeschränkte Nutzung``."""
+    return frozenset(
+        uri
+        for uri, license_type in load_license_exact_match_by_type(filename).items()
+        if license_type == "Eingeschränkte Nutzung"
+    )
 
 
 @lru_cache(maxsize=None)

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:dcat="http://www.w3.org/ns/dcat#">
+
+  <!-- Concept Scheme -->
+  <skos:ConceptScheme rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess">
+    <dct:title xml:lang="en">Limitations on public access</dct:title>
+    <skos:prefLabel xml:lang="en">Limitations on public access</skos:prefLabel>
+  </skos:ConceptScheme>
+
+  <!-- Concepts -->
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1a">
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:prefLabel xml:lang="de">Öffentlicher Zugriff beschränkt entsprechend Artikel 13(1)(a) der INSPIRE-Richtlinie</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1b">
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:prefLabel xml:lang="de">Öffentlicher Zugriff beschränkt entsprechend Artikel 13(1)(b) der INSPIRE-Richtlinie</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1c">
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:prefLabel xml:lang="de">Öffentlicher Zugriff beschränkt entsprechend Artikel 13(1)(c) der INSPIRE-Richtlinie</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1d">
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:prefLabel xml:lang="de">Öffentlicher Zugriff beschränkt entsprechend Artikel 13(1)(d) der INSPIRE-Richtlinie</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1e">
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:prefLabel xml:lang="de">Öffentlicher Zugriff beschränkt entsprechend Artikel 13(1)(e) der INSPIRE-Richtlinie</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1f">
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:prefLabel xml:lang="de">Öffentlicher Zugriff beschränkt entsprechend Artikel 13(1)(f) der INSPIRE-Richtlinie</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1g">
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:prefLabel xml:lang="de">Öffentlicher Zugriff beschränkt entsprechend Artikel 13(1)(g) der INSPIRE-Richtlinie</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1h">
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:prefLabel xml:lang="de">Öffentlicher Zugriff beschränkt entsprechend Artikel 13(1)(h) der INSPIRE-Richtlinie</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess"/>
+    <skos:prefLabel xml:lang="de">Es gelten keine Zugriffsbeschränkungen</skos:prefLabel>
+  </skos:Concept>
+
+</rdf:RDF>

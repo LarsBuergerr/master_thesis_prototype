@@ -1,20 +1,17 @@
-
-
 ### Auffindbarkeit
 
 | Index                                                | Key                                         | Beschreibung                                                                                                                           |
 | ---------------------------------------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Schlagwörter angegeben                               | `dcat:keyword`                              | Sind Keywords als `dcat:keyword` gesetzt. Ist die Anzahl der Keywords k  3 < k < 10                                                    |
+| Schlagwörter angegeben                               | `dcat:keyword`                              | Sind Keywords als `dcat:keyword` gesetzt. Ist die Anzahl der Keywords k 3 < k < 10                                                     |
 | Theme angegeben                                      | `dcat:theme`                                | Ist `dcat:theme` gesetzt und nicht leer                                                                                                |
 | Theme aus kontrolliertem Vokabular                   | `dcat:theme`                                | Ist `dcat:theme` aus einem der folgenden kontrollierten Vokabular<br>- http://publications.europa.eu/resource/authority/data-theme/    |
 | Räumliche Suchangabe angegeben                       | `locn:geometry`                             | Ist `locn:geometry` gesetzt und korrekt ausgefüllt                                                                                     |
 | Räumliche Suchangabe aus kontrolliertem Vokabular    | `locn:adminUnitL2`                          | Ist eine korrekte Referenz auf eine Verwaltungseinheit gesetzt über:<br>- http://dcat-ap.de/def/politicalGeocoding/                    |
-| Zeitliche Abdeckung angegeben                        | `dct:temporal`                              | Ist `dct:temporal` durch  `dcat:startDate` oder `dcat:endDate` gesetzt                                                                 |
+| Zeitliche Abdeckung angegeben                        | `dct:temporal`                              | Ist `dct:temporal` durch `dcat:startDate` oder `dcat:endDate` gesetzt                                                                  |
 | Änderungsdatum angegeben                             | `dcat:modified`                             | Ist `dcat:modified` mit korrekter Syntax gesetzt.                                                                                      |
 | Issued angegeben                                     | `dcat:modified`                             | Ist `dct:issued` mit korrekter Syntax gesetzt.                                                                                         |
 | Aktualisierungsfrequenz aus kontrolliertem Vokabular | `dct:accrualPeriodicity`                    | Ist `dct:accrualPeriodicity` angegeben                                                                                                 |
 | Aktualisierungsfreqenz aus kontrolliertem Vokabular  | `dct:accrualPeriodicity`<br>`dct:Frequency` | Ist `dct:Frequency` aus einem der folgenden kontrollierten Vokabular:<br>- http://publications.europa.eu/resource/authority/frequency/ |
-
 
 ### Zugänglichkeit
 
@@ -35,16 +32,14 @@
 
 ### Nachnutzbarkeit
 
-| Index                                                                  | Key                                                                                                                                  | Beschreibung                                                                                                   |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| Lizenz aus kontrolliertem Vokabular und als Frei Nutzbar klassifiziert | `dcat:license`                                                                                                                       | Linzenz aus dem folgenden kontrolliertem Vokabluar:<br>- https://www.dcat-ap.de/def/licenses/                  |
-| Zugriffsbeschränkungen angegeben                                       | `dct:accessRights`                                                                                                                   | accessRights gesetzt                                                                                           |
-| Zugriffsbeschränkungen aus kontrolliertem Vokabular                    | `dct:acessRights`                                                                                                                    | accessRights aus kontrolliertem Vokabular:<br>- http://publications.europa.eu/resource/authority/access-right/ |
-| Herausgeber als strukturierter Agent modelliert                        | `dct:publisher`                                                                                                                      | TODO                                                                                                           |
-| Kontaktpunkt angegeben                                                 | `dct:contactPoint`                                                                                                                   | Angegeben und nicht leer                                                                                       |
-| Kontaktpunkt enthält nutzbare Email oder URL                           | `dct:contactPoint`                                                                                                                   | contactPoint hat korrekt formatierte Email oder erreichbare Email                                              |
-| Kontrolliertes Vokabluar in geeigneten Feldern angegeben               | `dct:theme`<br>`dct:spatial`<br>`dct:language`<br>`dct:accrualPeriodicity`<br>`dct:format`<br>`dcat:mediaType`<br>`dct:accessRights` | aus kontrolliertem Vokabluar:<br>- http://publications.europa.eu/resource/authority/<br>                       |
-
+| Index                                                                  | Key                | Beschreibung                                                                                                   |
+| ---------------------------------------------------------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------- |
+| Lizenz aus kontrolliertem Vokabular und als Frei Nutzbar klassifiziert | `dcat:license`     | Linzenz aus dem folgenden kontrolliertem Vokabluar:<br>- https://www.dcat-ap.de/def/licenses/                  |
+| Zugriffsbeschränkungen angegeben                                       | `dct:accessRights` | accessRights gesetzt                                                                                           |
+| Zugriffsbeschränkungen aus kontrolliertem Vokabular                    | `dct:acessRights`  | accessRights aus kontrolliertem Vokabular:<br>- http://publications.europa.eu/resource/authority/access-right/ |
+| Herausgeber als strukturierter Agent modelliert                        | `dct:publisher`    | TODO                                                                                                           |
+| Kontaktpunkt angegeben                                                 | `dct:contactPoint` | Angegeben und nicht leer                                                                                       |
+| Kontaktpunkt enthält nutzbare Email oder URL                           | `dct:contactPoint` | contactPoint hat korrekt formatierte Email oder erreichbare Email                                              |
 
 ### Aussagekraft
 
@@ -61,22 +56,18 @@
 | Widerspruchsfreiheit zentraler Metadatenfelder          |                                    |                                                                                                   |
 | Grobe Metadaten-Daten Kongruenz                         |                                    | Falls die Rohdaten erhältlich sind check ob der Inhalt grob zu den beschreibenden Metadaten passt |
 
-
-
 ### 28.05
-
 
 **Aktueller Stand der Metrik**
 
 **Findability**
 Keywords Count Indikator und Existenz Check Zusammen geführt zu einem Indikator
 Theme Indikator prüft Existenz und korrektes Vokabular
-Für Location wird keywort *geometry* und *adminUnitL2* gecheckt. geometry nur auf Existenz adminUnitL2 noch auf korrekte schreibweise und ob die ID existiert
+Für Location wird keywort _geometry_ und _adminUnitL2_ gecheckt. geometry nur auf Existenz adminUnitL2 noch auf korrekte schreibweise und ob die ID existiert
 Temporal coverage wird auf startDate und endDate gecheckt. Eins muss existieren. Existierende werden auf korrektes dateTime / date Vokabular geprüft über regex
 
-Zudem werden *issued* und *modified* auf existenz geprüft und ebenfalls auf korrektes dateTime / date Vokabular geprüft über regex
+Zudem werden _issued_ und _modified_ auf existenz geprüft und ebenfalls auf korrektes dateTime / date Vokabular geprüft über regex
 Und accrualPeriodicity wird auf existenz und auf korrektes vokabular geprüft
-
 
 **Accessibility**
 
@@ -85,8 +76,3 @@ format wird auf existenz und auf das korrekte Vokabular geprüft
 mediaType wird auf Existenz geprüft und gegen iana media type vokabular geprüft
 
 formatCongruence check NEW prüft ob mediaType format accessURL und downloadURL das gleiche Format haben konsistent sind und keine Abweichungen bestehen
-
-
-
-
-

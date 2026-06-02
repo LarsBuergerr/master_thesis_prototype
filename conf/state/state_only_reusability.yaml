@@ -8,7 +8,9 @@ hydra:
 
 directory_path: "data/sample_2026-05-21_08-57"
 
-files: ["non_geo_land-schleswig-holstein.rdf"]
+# files: ["non_geo_land-schleswig-holstein.rdf"]
+
+files: []
 
 file_filter:
   extensions: [".rdf"]
@@ -19,7 +21,7 @@ file_filter:
 
 output_dir: "run_outputs/"
 run_output_dir_suffix: ""
-run_output_enabled: false
+run_output_enabled: true
 
 dataset_path: "dataset.csv"
 
