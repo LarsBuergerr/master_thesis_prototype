@@ -6,16 +6,16 @@ hydra:
   job:
     chdir: false
 
-directory_path: "data/sample_2026-05-21_08-57"
+directory_path: "data/sample_2026-05-18_09-12"
 
 # files:
 #   [
 #     "non_geo_land-schleswig-holstein.rdf",
 #     "non_geo_land-schleswig-holstein_02.rdf",
 #   ]
-# files: ["non_geo_land-schleswig-holstein_02.rdf"]
+files: ["non_geo_land-schleswig-holstein_03.rdf"]
 
-files: []
+# files: []
 
 file_filter:
   extensions: [".rdf"]
@@ -54,7 +54,7 @@ quality:
 
   # indicator_blacklist: ["find_keywords_count"]
 
-  indicator_whitelist: ["acc_machine_readable_access"]
+  indicator_whitelist: []
 
   # indicator_whitelist: ["acc_url_reachable"]
 

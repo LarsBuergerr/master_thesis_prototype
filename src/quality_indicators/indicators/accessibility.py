@@ -287,6 +287,7 @@ class MediaTypeIndicator(Indicator):
                     invalid_form.append(value)
                     continue
                 template = value[len(IANA_MEDIA_TYPE_PREFIX) :]
+                print(template)
                 if template in VALID_MEDIA_TYPE_TEMPLATES:
                     valid.append(value)
                 else:
@@ -555,9 +556,7 @@ class ResponseCodeIndicator(Indicator):
     PASS_THRESHOLD = 0.9
     PARTIAL_THRESHOLD = 0.5
 
-    def __init__(
-        self, url_kind: str, indicator_id: str, name_de: str, name_en: str
-    ):
+    def __init__(self, url_kind: str, indicator_id: str, name_de: str, name_en: str):
         url_label_de = "Download-URL" if url_kind == "download" else "Access-URL"
         url_label_en = "download URL" if url_kind == "download" else "access URL"
         super().__init__(
@@ -921,15 +920,9 @@ class MachineReadableAccessIndicator(Indicator):
                         "base_tier": base_tier,
                         "base_tier_label": self._tier_label(base_tier),
                         "effective_tier": effective_tier,
-                        "status_code": (
-                            dist.probe.status_code if dist.probe else None
-                        ),
-                        "fetch_error": (
-                            dist.probe.fetch_error if dist.probe else None
-                        ),
-                        "issues_count": (
-                            len(dist.probe.issues) if dist.probe else 0
-                        ),
+                        "status_code": (dist.probe.status_code if dist.probe else None),
+                        "fetch_error": (dist.probe.fetch_error if dist.probe else None),
+                        "issues_count": (len(dist.probe.issues) if dist.probe else 0),
                         "warnings_count": (
                             len(dist.probe.warnings) if dist.probe else 0
                         ),
@@ -953,9 +946,7 @@ class MachineReadableAccessIndicator(Indicator):
                 status = IndicatorStatus.FAIL
 
             penalty_suffix = (
-                f" [{'; '.join(winner['penalties'])}]"
-                if winner["penalties"]
-                else ""
+                f" [{'; '.join(winner['penalties'])}]" if winner["penalties"] else ""
             )
             message_de = (
                 f"Bester Zugang: {tier_label} (Score {best_tier:.2f}) "
