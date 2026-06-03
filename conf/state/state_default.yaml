@@ -18,7 +18,6 @@ directory_path: "data/sample_2026-05-18_09-12"
 # If filled: process only these specific files
 # files: ["non_geo_land-schleswig-holstein.rdf"]
 
-files: []
 # Examples:
 # - "geo_open-data-brandenburg.rdf"
 
@@ -63,21 +62,21 @@ quality:
 
   # Optional dimension whitelist (default: all dimensions)
   # If specified, only these dimensions will be validated
-  # dimension_whitelist: ["findability", "accessibility"]
+  dimension_whitelist: ["findability", "accessibility", "reusability"]
 
   # Optional indicator blacklist (default: no indicators excluded)
   # If specified, these indicators will be skipped
   # indicator_blacklist: ["find_keywords_count"]
 
-  indicator_whitelist: []
+  # indicator_whitelist: []
 
   # Optional custom weights per dimension (default for all: 1.0)
   # Example: expressiveness=30%, findability=10%
   dimension_weights:
-    findability: 0.1
-    accessibility: 0.3
-    reusability: 0.3
-    expressiveness: 0.3
+    findability: 1
+    accessibility: 1
+    reusability: 1
+    expressiveness: 1
 
   # Optional custom weights per indicator id (default: indicator.weight)
   # indicator_weights:

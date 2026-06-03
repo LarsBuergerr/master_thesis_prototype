@@ -11,14 +11,14 @@ hydra:
     chdir: false
 
 # Directory paths
-directory_path: "data/extrem_cases"
+directory_path: "data/extreme_cases"
 
 # Files to process
 # If empty: process all files matching extensions in directory_path
 # If filled: process only these specific files
 # files: ["non_geo_land-schleswig-holstein.rdf"]
 
-files: []
+# files: []
 # Examples:
 # - "geo_open-data-brandenburg.rdf"
 
@@ -74,10 +74,10 @@ quality:
   # Optional custom weights per dimension (default for all: 1.0)
   # Example: expressiveness=30%, findability=10%
   dimension_weights:
-    findability: 0.1
-    accessibility: 0.3
-    reusability: 0.3
-    expressiveness: 0.3
+    findability: 1
+    accessibility: 1
+    reusability: 1
+    expressiveness: 1
 
   # Optional custom weights per indicator id (default: indicator.weight)
   # indicator_weights:

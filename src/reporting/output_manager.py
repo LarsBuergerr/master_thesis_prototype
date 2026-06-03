@@ -40,7 +40,7 @@ class OutputManager:
 
         if cfg.state.get("run_output_dir_suffix"):
             suffix = cfg.state.get("run_output_dir_suffix")
-        elif len(list(cfg.state.get("files"))) == 1:
+        elif cfg.state.get("files") and len(list(cfg.state.get("files"))) == 1:
             suffix = list(cfg.state.get("files"))[0].split(".")[0]
         else:
             suffix = cfg.state.get("directory_path").split("/")[-1]
