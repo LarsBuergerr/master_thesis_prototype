@@ -1,62 +1,85 @@
+# AgentState configuration
+# This file defines the initial state for the agent pipeline
+
 defaults:
   - _self_
 
+# Disable Hydra output subdirectory (.hydra folder)
 hydra:
   output_subdir: null
   job:
     chdir: false
 
+# Directory paths
 directory_path: "data/sample_2026-05-21_08-57"
 
+# Files to process
+# If empty: process all files matching extensions in directory_path
+# If filled: process only these specific files
 # files: ["non_geo_land-schleswig-holstein.rdf"]
 
 files: []
+# Examples:
+# - "geo_open-data-brandenburg.rdf"
 
+# File filtering (only used if files list is empty)
 file_filter:
   extensions: [".rdf"]
 
+  # Include patterns: process only files matching these (filename starts with)
   include_patterns: []
+    # - "geo_"
+    # - "non_geo_"
 
+  # Exclude patterns: skip files matching these (filename starts with)
   exclude_patterns: []
+    # - "test_"
 
+# Output directory for results
 output_dir: "run_outputs/"
 run_output_dir_suffix: ""
 run_output_enabled: true
 
-dataset_path: "dataset.csv"
+# Language configuration
+language: "de" # Options: "de", "en"
 
-language: "de"
-
-pipeline:
-  load_data: true
-  static_analysis: true
-  quality_validation: true
-  semantic_analysis: true
-
+# LLM Model configuration
 llm:
   # Master switch for the expressiveness LLM agent. Must be true to spend
   # tokens; when false, expressiveness indicators report NOT_APPLICABLE.
   enabled: false
-  model: "anthropic/claude-sonnet-4.5"
+  model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id
   temperature: 0.0
   max_tokens: 50000
 
+# Logging configuration
 logging:
-  level: "DEBUG"
+  level: "DEBUG" # Options: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
   verbose: true
 
+# Quality scoring configuration
 quality:
   max_workers: 1
 
+  # Optional dimension whitelist (default: all dimensions)
+  # If specified, only these dimensions will be validated
   dimension_whitelist: ["reusability"]
 
   # Optional indicator blacklist (default: no indicators excluded)
-  # indicator_blacklist: []
+  # If specified, these indicators will be skipped
+  # indicator_blacklist: ["find_keywords_count"]
 
   indicator_whitelist: []
 
+  # Optional custom weights per dimension (default for all: 1.0)
+  # Example: expressiveness=30%, findability=10%
   dimension_weights:
     findability: 1
     accessibility: 1
     reusability: 1
     expressiveness: 1
+
+  # Optional custom weights per indicator id (default: indicator.weight)
+  # indicator_weights:
+  #   find_keywords_count: 1.5
+  #   find_theme_valid: 1.0

@@ -40,25 +40,15 @@ output_dir: "run_outputs/"
 run_output_dir_suffix: ""
 run_output_enabled: true
 
-# Legacy field (unused, kept for compatibility)
-dataset_path: "dataset.csv"
-
 # Language configuration
 language: "de" # Options: "de", "en"
-
-# Pipeline configuration
-pipeline:
-  load_data: true
-  static_analysis: true
-  quality_validation: true
-  semantic_analysis: true
 
 # LLM Model configuration
 llm:
   # Master switch for the expressiveness LLM agent. Must be true to spend
   # tokens; when false, expressiveness indicators report NOT_APPLICABLE.
   enabled: false
-  model: "anthropic/claude-sonnet-4.5" # Options from LLMModel enum
+  model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id
   temperature: 0.0
   max_tokens: 10000
 
