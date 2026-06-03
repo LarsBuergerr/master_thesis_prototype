@@ -1,0 +1,117 @@
+# AgentState configuration — Gewichtungs-Tuning
+# ---------------------------------------------------------------------------
+# Zweck: Testruns zur Verbesserung der Trennschärfe (gute Datensätze sollen
+# besser, schlechte schlechter bewertet werden). Läuft über data/extreme_cases
+# (bad_01..05 / good_01..05) mit aktivierter LLM-Expressiveness und custom
+# Gewichten für ALLE Indikatoren und alle 4 Dimensionen.
+#
+# Gewichtungslogik (Score = gewichteter Mittelwert, siehe service.py):
+#   - Indikatoren, an denen schlechte Datensätze typischerweise scheitern und
+#     die fundamental für Nutzbarkeit sind (Download-URL, Maschinenlesbarkeit,
+#     Lizenz), bekommen hohe Gewichte -> spreizen gut vs. schlecht.
+#   - "Hygiene"-Indikatoren, die in beiden Klassen oft gleich (vorhanden) sind
+#     (issued/modified-Datum, mediaType), bekommen niedrigere Gewichte.
+#   - Grobe Orientierung: data.europa.eu MQA-Punkteverteilung
+#     (Lizenz/Download/Keywords/Kategorien hoch gewichtet).
+# ---------------------------------------------------------------------------
+
+defaults:
+  - _self_
+
+# Disable Hydra output subdirectory (.hydra folder)
+hydra:
+  output_subdir: null
+  job:
+    chdir: false
+
+# Directory paths
+directory_path: "data/extreme_cases_02"
+
+# Files to process
+# If empty: process all files matching extensions in directory_path
+# (hier leer -> alle bad_*/good_* werden verarbeitet)
+
+# File filtering (only used if files list is empty)
+file_filter:
+  extensions: [".rdf"]
+  include_patterns: []
+  exclude_patterns: []
+
+# Output directory for results
+output_dir: "run_outputs/"
+run_output_dir_suffix: ""
+run_output_enabled: true
+
+# Language configuration
+language: "de" # Options: "de", "en"
+
+# LLM Model configuration
+llm:
+  # Aktiviert für die expressiveness-Dimension (semantische Bewertung).
+  # Kostet OpenRouter-Tokens pro Datensatz.
+  enabled: true
+  model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id
+  temperature: 0.0
+  max_tokens: 10000
+
+# Logging configuration
+logging:
+  level: "INFO" # Options: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
+  verbose: true
+
+# Quality scoring configuration
+quality:
+  max_workers: 1
+
+  # Alle Dimensionen aktiv (leer = keine Einschränkung)
+  dimension_whitelist:
+    ["findability", "accessibility", "reusability", "expressiveness"]
+
+  # indicator_blacklist: []
+  indicator_whitelist: []
+
+  # Custom Gewichte pro Dimension
+  # accessibility/reusability höher: hier scheitern schlechte Datensätze am
+  # klarsten (kein Zugang / keine Lizenz). expressiveness als starker
+  # semantischer Trenner darüber gewichtet als findability (strukturelle Basis).
+  dimension_weights:
+    accessibility: 2
+    reusability: 1.4
+    expressiveness: 2
+    findability: 1.0
+
+  # Custom Gewichte pro Indikator
+  indicator_weights:
+    # --- Findability ---------------------------------------------------------
+    find_keywords_count: 1.5 # Schlagwörter: zentral für Auffindbarkeit (MQA hoch)
+    find_theme_valid: 1.5 # Kategorie/Theme: zentral für Auffindbarkeit (MQA hoch)
+    find_temporal_coverage: 1.0 # Zeitliche Abdeckung
+    find_locn_geometry: 1.0 # Räumliche Geometrie
+    find_adminunitl2: 1.0 # Räumliche Einheit aus Vokabular
+    find_accrual_periodicity: 0.75 # Aktualisierungsfrequenz: nice-to-have
+    find_issued_datetime: 0.5 # Hygiene: in gut/schlecht oft gleich vorhanden
+    find_modified_datetime: 0.5 # Hygiene: in gut/schlecht oft gleich vorhanden
+
+    # --- Accessibility -------------------------------------------------------
+    acc_download_url: 2.0 # Ohne Download-URL ist der Datensatz wertlos
+    acc_machine_readable_access: 2.0 # Maschinenlesbarkeit: Kern-Qualitätstrenner (FAIR)
+    acc_download_url_response: 1.5 # Löst die URL tatsächlich auf (HTTP<400)?
+    acc_format: 1.0 # Format aus kontrolliertem Vokabular
+    acc_format_congruence: 1.0 # Format/MIME-Kongruenz
+    acc_access_url_response: 1.0 # Access-URL erreichbar
+    acc_media_type: 0.75 # MediaType aus Vokabular: feiner, weniger trennscharf
+    acc_distribution_model: 0.5 # Modellierungs-Kohärenz: fortgeschritten/nuanciert
+
+    # --- Reusability ---------------------------------------------------------
+    reuse_license: 2.0 # Lizenz: make-or-break für Nachnutzung (MQA hoch)
+    reuse_contact: 1.25 # Kontaktpunkt: Vertrauen/Support (MQA mittel-hoch)
+    reuse_publisher: 1.0 # Herausgeber/Provenienz
+    reuse_access_rights: 1.0 # Zugriffsrechte
+
+    # --- Expressiveness (LLM) ------------------------------------------------
+    expr_description_quality: 1.5 # Beschreibung: informationsreichstes Feld
+    expr_title_quality: 1.5 # Titel: erstes Qualitätssignal
+    expr_title_description_coherence: 1.0 # Kohärenz Titel/Beschreibung
+    expr_keyword_quality: 1.0 # Schlagwort-Qualität (semantisch)
+    expr_thematic_consistency: 1.0 # Thematische Konsistenz
+    expr_contextual_qualifiers: 0.75 # Kontext-Qualifizierer: situativ

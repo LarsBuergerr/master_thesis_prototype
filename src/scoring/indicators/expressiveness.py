@@ -26,7 +26,6 @@ from core.dimension import QualityDimension
 from extraction.dataset_context import DatasetContext
 from extraction.semantic_assessment import ExpressivenessCriterion
 
-
 _STATUS_MAP = {
     "pass": IndicatorStatus.PASS,
     "partial": IndicatorStatus.PARTIAL,
@@ -51,8 +50,6 @@ class LLMBackedExpressivenessIndicator(Indicator):
     ) -> IndicatorResult:
         try:
             if context is None:
-                if not isinstance(metadata, Graph):
-                    return self._error("Metadata is not an rdflib Graph")
                 context = DatasetContext.from_graph(metadata)
 
             assessment = context.semantic_assessment
