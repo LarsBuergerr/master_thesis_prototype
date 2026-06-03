@@ -3,8 +3,8 @@
 No pipeline, no framework - just straightforward validation.
 """
 
-from quality_indicators.service import QualityMetricsService
-from quality_indicators.models.dimension import QualityDimension
+from scoring.service import QualityMetricsService
+from core.dimension import QualityDimension
 import json
 from pathlib import Path
 

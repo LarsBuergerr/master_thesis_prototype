@@ -1,6 +1,6 @@
 """Controlled vocabularies loaded from RDF/XML and CSV files."""
 
-from quality_indicators.vocabularies.loader import (
+from extraction.vocabularies.loader import (
     IANA_MEDIA_TYPE_PREFIX,
     get_geocoding_vocabulary_for_uri,
     get_political_geocoding_segment,

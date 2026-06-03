@@ -8,7 +8,7 @@ call produces the whole dimension's assessment up front and the individual
 expressiveness indicators each read their own slice from it.
 
 This mirrors the ``attach_probes`` pattern in
-``distribution_type_validation``: one expensive shared resource is computed
+``distribution_probes``: one expensive shared resource is computed
 once per dataset and stashed on the :class:`DatasetContext`; the indicators
 that consume it stay pure functions of the context and never touch the LLM.
 
@@ -30,7 +30,7 @@ from typing import TYPE_CHECKING, Any, Literal, Optional
 from pydantic import BaseModel, Field
 
 if TYPE_CHECKING:  # avoid an import cycle with dataset_context
-    from quality_indicators.validators.dataset_context import DatasetContext
+    from extraction.dataset_context import DatasetContext
 
 
 # ---------------------------------------------------------------------------

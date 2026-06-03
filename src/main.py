@@ -18,9 +18,9 @@ from langchain_openai import ChatOpenAI
 # Import logger after logging is configured
 from utils.logger import get_logger
 from utils.enums.language import Language
-from quality_indicators.service import QualityMetricsService
-from pipeline.output_manager import OutputManager
-from pipeline.run_visualizer import generate_run_charts_from_file
+from scoring.service import QualityMetricsService
+from reporting.output_manager import OutputManager
+from reporting.run_visualizer import generate_run_charts_from_file
 
 # Set up logging early - this will be read from config in main()
 # Default to INFO, will be overridden in main()

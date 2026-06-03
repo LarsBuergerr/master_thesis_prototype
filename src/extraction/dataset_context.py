@@ -31,11 +31,11 @@ from rdflib import Graph, URIRef, Namespace
 from rdflib.namespace import DCAT, DCTERMS, RDF
 
 if TYPE_CHECKING:  # avoid an import cycle with semantic_assessment
-    from quality_indicators.validators.semantic_assessment import (
+    from extraction.semantic_assessment import (
         ExpressivenessAssessment,
     )
 
-from quality_indicators.vocabularies import (
+from extraction.vocabularies import (
     IANA_MEDIA_TYPE_PREFIX,
     OPEN_LICENSE_URIS,
     VALID_FILE_TYPE_URIS,
@@ -163,7 +163,7 @@ class DistributionContext:
     licenses_open: list[bool] = field(default_factory=list)
     byte_size: Optional[str] = None
     # Populated by ``attach_probes(context)`` (see
-    # ``distribution_type_validation``). ``None`` = not attempted.
+    # ``distribution_probes``). ``None`` = not attempted.
     probe: Optional[DistributionProbe] = None
 
     @property

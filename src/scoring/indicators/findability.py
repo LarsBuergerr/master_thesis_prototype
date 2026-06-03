@@ -7,13 +7,13 @@ from typing import Optional
 from rdflib import Graph, URIRef
 from rdflib.namespace import DCTERMS
 
-from quality_indicators.models.indicator import (
+from core.indicator import (
     Indicator,
     IndicatorResult,
     IndicatorStatus,
 )
-from quality_indicators.models.dimension import QualityDimension
-from quality_indicators.validators.dataset_context import DatasetContext
+from core.dimension import QualityDimension
+from extraction.dataset_context import DatasetContext
 from utils.datetime_utils import validate_temporal_value
 
 
@@ -480,7 +480,7 @@ class DateTimeFieldIndicator(Indicator):
             return context.collect_issued()
         # Unknown field — fall back to a flat graph scan. Source is unknown
         # so we record it as ``"unknown"`` to keep the log shape consistent.
-        from quality_indicators.validators.dataset_context import SourcedValue
+        from extraction.dataset_context import SourcedValue
 
         return [
             SourcedValue("unknown", None, str(o))

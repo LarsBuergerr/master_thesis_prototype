@@ -17,14 +17,14 @@ from typing import Any, Optional
 
 from rdflib import Graph
 
-from quality_indicators.models.indicator import (
+from core.indicator import (
     Indicator,
     IndicatorResult,
     IndicatorStatus,
 )
-from quality_indicators.models.dimension import QualityDimension
-from quality_indicators.validators.dataset_context import DatasetContext
-from quality_indicators.validators.semantic_assessment import ExpressivenessCriterion
+from core.dimension import QualityDimension
+from extraction.dataset_context import DatasetContext
+from extraction.semantic_assessment import ExpressivenessCriterion
 
 
 _STATUS_MAP = {

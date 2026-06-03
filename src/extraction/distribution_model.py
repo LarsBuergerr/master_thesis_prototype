@@ -43,11 +43,11 @@ from logging import Logger
 from typing import Optional
 from urllib.parse import urlparse
 
-from quality_indicators.validators.dataset_context import (
+from extraction.dataset_context import (
     DatasetContext,
     DistributionContext,
 )
-from quality_indicators.validators.distribution_type_validation import (
+from extraction.distribution_probes import (
     ARCHIVE_MIMETYPES,
     effective_mime,
 )
@@ -190,7 +190,7 @@ def analyze_distribution_model(
 
     A multi-line debug log is emitted at the end showing per-distribution
     role assignments, signal scores, and the final classification — mirroring
-    the format produced by ``distribution_type_validation`` so the two layers
+    the format produced by ``distribution_probes`` so the two layers
     read consistently in a single log stream.
     """
     log = logger or _logger
@@ -337,7 +337,7 @@ def _format_report(
 ) -> str:
     """Multi-line human-readable summary of an analysis result.
 
-    Format mirrors ``distribution_type_validation._format_probe`` so that a
+    Format mirrors ``distribution_probes._format_probe`` so that a
     log stream containing both reads consistently.
     """
     lines: list[str] = []

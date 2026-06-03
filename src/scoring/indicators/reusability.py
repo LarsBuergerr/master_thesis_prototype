@@ -10,14 +10,14 @@ from urllib.parse import urlparse
 from rdflib import Graph, Namespace, URIRef
 from rdflib.namespace import DCAT, DCTERMS, FOAF, RDF
 
-from quality_indicators.models.indicator import (
+from core.indicator import (
     Indicator,
     IndicatorResult,
     IndicatorStatus,
 )
-from quality_indicators.models.dimension import QualityDimension
-from quality_indicators.validators.dataset_context import DatasetContext
-from quality_indicators.vocabularies import (
+from core.dimension import QualityDimension
+from extraction.dataset_context import DatasetContext
+from extraction.vocabularies import (
     OPEN_LICENSE_URIS,
     RESTRICTED_LICENSE_URIS,
     VALID_ACCESS_RIGHT_URIS,

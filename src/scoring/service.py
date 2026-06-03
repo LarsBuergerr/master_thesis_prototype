@@ -9,14 +9,14 @@ from typing import Any, Dict, Optional
 from rdflib import Graph
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from quality_indicators.models.indicator import Indicator, IndicatorStatus
-from quality_indicators.models.dimension import QualityDimension
-from quality_indicators.validators.dataset_context import DatasetContext
-from quality_indicators.validators.distribution_type_validation import attach_probes
-from quality_indicators.validators.semantic_assessment import (
+from core.indicator import Indicator, IndicatorStatus
+from core.dimension import QualityDimension
+from extraction.dataset_context import DatasetContext
+from extraction.distribution_probes import attach_probes
+from extraction.semantic_assessment import (
     attach_semantic_assessment,
 )
-from quality_indicators.validators.rdf_parser import RDFMetadataParser
+from extraction.rdf_parser import RDFMetadataParser
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -76,7 +76,7 @@ class QualityMetricsService:
         """Load all indicator modules to trigger auto-registration."""
         try:
             # Import all indicator modules - this triggers __init__() and registration
-            from quality_indicators import indicators  # noqa: F401
+            from scoring import indicators  # noqa: F401
 
             logger.debug("Indicators loaded and registered")
         except Exception as e:
@@ -452,7 +452,7 @@ class QualityMetricsService:
             return
 
         # Import lazily to keep the indicator's tuned defaults in one place.
-        from quality_indicators.indicators.accessibility import (
+        from scoring.indicators.accessibility import (
             FormatCongruenceIndicator,
         )
 

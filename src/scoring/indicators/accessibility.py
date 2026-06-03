@@ -5,29 +5,29 @@ Validates aspects like downloadURL, format, mediaType, etc.
 
 from typing import Any, Optional
 
-from quality_indicators.models.indicator import (
+from core.indicator import (
     Indicator,
     IndicatorResult,
     IndicatorStatus,
 )
-from quality_indicators.models.dimension import QualityDimension
-from quality_indicators.vocabularies import (
+from core.dimension import QualityDimension
+from extraction.vocabularies import (
     IANA_MEDIA_TYPE_PREFIX,
     VALID_FILE_TYPE_URIS,
     VALID_MEDIA_TYPE_TEMPLATES,
 )
-from quality_indicators.validators.dataset_context import (
+from extraction.dataset_context import (
     DatasetContext,
     DistributionContext,
     DistributionProbe,
 )
-from quality_indicators.validators.distribution_model import (
+from extraction.distribution_model import (
     DistributionModelReport,
     DistributionRole,
     analyze_distribution_model,
     classify_distribution_role,
 )
-from quality_indicators.validators.distribution_type_validation import (
+from extraction.distribution_probes import (
     attach_probes,
     effective_mime,
 )

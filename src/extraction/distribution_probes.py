@@ -28,7 +28,7 @@ Usage::
 
 CLI::
 
-    python -m quality_indicators.validators.distribution_type_validation \\
+    python -m extraction.distribution_probes \\
         data/perfect_example_01_updated.rdf
 """
 
@@ -51,7 +51,7 @@ from urllib.parse import urlparse
 import requests
 from rdflib import Graph
 
-from quality_indicators.validators.dataset_context import (
+from extraction.dataset_context import (
     DatasetContext,
     DistributionContext,
     DistributionProbe,
