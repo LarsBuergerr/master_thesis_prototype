@@ -6,9 +6,9 @@ hydra:
   job:
     chdir: false
 
-directory_path: "data/sample_2026-05-21_08-57"
+directory_path: "data/extrem_cases"
 
-files: ["non_geo_land-schleswig-holstein.rdf"]
+files: ["bad_01.rdf"]
 
 file_filter:
   extensions: [".rdf"]
@@ -19,7 +19,7 @@ file_filter:
 
 output_dir: "run_outputs/"
 run_output_dir_suffix: ""
-run_output_enabled: false
+run_output_enabled: true
 
 dataset_path: "dataset.csv"
 
@@ -32,9 +32,12 @@ pipeline:
   semantic_analysis: true
 
 llm:
-  model: "anthropic/claude-sonnet-4.5"
+  # Master switch for the expressiveness LLM agent. Must be true to spend
+  # tokens; when false, expressiveness indicators report NOT_APPLICABLE.
+  enabled: true
+  model: "anthropic/claude-opus-4.8"
   temperature: 0.0
-  max_tokens: 50000
+  max_tokens: 10000
 
 logging:
   level: "DEBUG"

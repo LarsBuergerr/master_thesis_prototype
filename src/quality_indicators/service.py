@@ -13,6 +13,9 @@ from quality_indicators.models.indicator import Indicator, IndicatorStatus
 from quality_indicators.models.dimension import QualityDimension
 from quality_indicators.validators.dataset_context import DatasetContext
 from quality_indicators.validators.distribution_type_validation import attach_probes
+from quality_indicators.validators.semantic_assessment import (
+    attach_semantic_assessment,
+)
 from quality_indicators.validators.rdf_parser import RDFMetadataParser
 from utils.logger import get_logger
 
@@ -30,6 +33,8 @@ class QualityMetricsService:
         dimension_whitelist: Optional[list] = None,
         indicator_blacklist: Optional[list] = None,
         indicator_whitelist: Optional[list] = None,
+        llm: Optional[Any] = None,
+        language: str = "de",
     ):
         """Initialize the service.
 
@@ -43,8 +48,15 @@ class QualityMetricsService:
                 (if empty/None, all dimensions are included)
             indicator_blacklist: Optional list of indicator IDs to exclude
                 (if empty/None, no indicators are excluded)
+            llm: Optional LangChain chat model. Required for the expressiveness
+                dimension — its indicators read a single per-dataset LLM
+                assessment. When ``None``, expressiveness indicators report
+                NOT_APPLICABLE and no LLM call is made.
+            language: Output language for the LLM assessment ("de" | "en").
         """
         self.max_workers = max_workers
+        self.llm = llm
+        self.language = language
         self.dimension_weights = dimension_weights or {}
         self.indicator_weights = indicator_weights or {}
         self.dimension_whitelist = (
@@ -141,6 +153,7 @@ class QualityMetricsService:
 
         context = DatasetContext.from_graph(metadata)
         self._maybe_attach_probes(context, {dimension: indicators})
+        self._maybe_attach_semantic_assessment(context, {dimension: indicators})
         return self._process_dimension(dimension, indicators, metadata, context)
 
     def validate_indicator(self, metadata: Graph, indicator_id: str) -> Dict[str, Any]:
@@ -166,6 +179,9 @@ class QualityMetricsService:
         try:
             context = DatasetContext.from_graph(metadata)
             self._maybe_attach_probes(
+                context, {indicator.dimension: {indicator_id: indicator}}
+            )
+            self._maybe_attach_semantic_assessment(
                 context, {indicator.dimension: {indicator_id: indicator}}
             )
             result = self._invoke_indicator(indicator, metadata, context)
@@ -230,6 +246,10 @@ class QualityMetricsService:
         # each one HTTP-probing on its own.
         self._maybe_attach_probes(context, dimensions_indicators)
 
+        # Likewise, run the single expressiveness LLM call up-front (before the
+        # parallel fan-out) so the expr_* indicators just read their slice.
+        self._maybe_attach_semantic_assessment(context, dimensions_indicators)
+
         # Process dimensions in parallel
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             future_to_dimension = {
@@ -259,11 +279,11 @@ class QualityMetricsService:
         # Calculate summary
         results["summary"] = self._calculate_summary(results)
 
+        # Surface per-dataset LLM usage (tokens/cost/latency) so the caller can
+        # persist it and aggregate run-level cost.
+        results["llm_usage"] = context.llm_usage
+
         logger.debug(context.to_json())
-
-        logger.debug(context.to_agent_json())
-
-        logger.debug(context.to_agent_dict())
 
         return results
 
@@ -445,6 +465,45 @@ class QualityMetricsService:
         attached = sum(1 for d in context.distributions if d.probe is not None)
         logger.debug(
             f"Attached probes to {attached}/{context.distribution_count} distribution(s)"
+        )
+
+    def _maybe_attach_semantic_assessment(
+        self,
+        context: DatasetContext,
+        dimensions_indicators: Dict[QualityDimension, Dict[str, Indicator]],
+    ) -> None:
+        """Run the one-shot expressiveness LLM call if it will actually be read.
+
+        Mirrors :meth:`_maybe_attach_probes`: an all-or-nothing guard. The call
+        is skipped entirely when no LLM is configured or when every
+        expressiveness indicator about to run is filtered out — the LLM scores
+        the whole dimension holistically, so the blacklist can't make it
+        cheaper per-criterion, only skip the call when the dimension is off.
+        """
+        if self.llm is None:
+            return
+
+        expr_indicators = dimensions_indicators.get(QualityDimension.EXPRESSIVENESS)
+        if not expr_indicators:
+            return
+
+        will_run = any(
+            ind_id not in self.indicator_blacklist
+            and (
+                self.indicator_whitelist is None
+                or ind_id in self.indicator_whitelist
+            )
+            for ind_id in expr_indicators.keys()
+        )
+        if not will_run:
+            return
+
+        attach_semantic_assessment(
+            context, self.llm, language=self.language, logger=logger
+        )
+        logger.debug(
+            "Expressiveness assessment "
+            f"{'attached' if context.semantic_assessment is not None else 'unavailable'}"
         )
 
     @staticmethod

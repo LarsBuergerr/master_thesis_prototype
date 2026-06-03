@@ -1,10 +1,20 @@
 """Expressiveness indicators for DCAT-AP-DE metadata.
 
-Validates semantic quality aspects like title quality, description quality, etc.
-This dimension often requires NLP/LLM analysis for deeper insights.
+Expressiveness — is the metadata *meaningful and self-consistent*? — can't be
+judged by field presence or regexes, so this whole dimension is scored by a
+single LLM call per dataset. ``attach_semantic_assessment`` (run up-front by
+``QualityMetricsService``) stores one validated
+:class:`ExpressivenessAssessment` on the ``DatasetContext``; each indicator
+below is just a *view* onto one criterion of that shared result.
+
+The indicators never call the LLM themselves — they're pure functions of the
+context, exactly like the accessibility indicators that read ``dist.probe``.
+When no assessment is attached (no LLM configured, or the call failed), they
+report NOT_APPLICABLE instead of crashing.
 """
 
 from typing import Any, Optional
+
 from rdflib import Graph
 
 from quality_indicators.models.indicator import (
@@ -14,13 +24,101 @@ from quality_indicators.models.indicator import (
 )
 from quality_indicators.models.dimension import QualityDimension
 from quality_indicators.validators.dataset_context import DatasetContext
+from quality_indicators.validators.semantic_assessment import ExpressivenessCriterion
 
 
-class TitleQualityIndicator(Indicator):
-    """Validates if dct:title is set and has minimum length."""
+_STATUS_MAP = {
+    "pass": IndicatorStatus.PASS,
+    "partial": IndicatorStatus.PARTIAL,
+    "fail": IndicatorStatus.FAIL,
+}
 
-    MIN_LENGTH = 5
-    RECOMMENDED_LENGTH = 15
+
+class LLMBackedExpressivenessIndicator(Indicator):
+    """Base for expressiveness indicators backed by the shared LLM assessment.
+
+    A subclass only declares its identity and which criterion field it reads
+    (``criterion``); this base handles fetching the assessment from the
+    context, the not-attached fallback, and mapping the criterion to an
+    :class:`IndicatorResult`.
+    """
+
+    #: Field name on ``ExpressivenessAssessment`` this indicator surfaces.
+    criterion: str = ""
+
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            if context is None:
+                if not isinstance(metadata, Graph):
+                    return self._error("Metadata is not an rdflib Graph")
+                context = DatasetContext.from_graph(metadata)
+
+            assessment = context.semantic_assessment
+            if assessment is None:
+                # No LLM configured or the one-shot call failed. Distinct from
+                # a genuine low score — surfaced as NOT_APPLICABLE.
+                self.logger.info(
+                    f"[{self.indicator_id}] NOT_APPLICABLE | no LLM assessment attached"
+                )
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=IndicatorStatus.NOT_APPLICABLE,
+                    score=0.0,
+                    message_de="Keine LLM-Bewertung verfügbar",
+                    message_en="No LLM assessment available",
+                    details={"criterion": self.criterion},
+                )
+
+            crit: ExpressivenessCriterion = getattr(assessment, self.criterion)
+            status = _STATUS_MAP.get(crit.status, IndicatorStatus.PARTIAL)
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} | score={crit.score:.2f} | "
+                f"{crit.reasoning[:120]}"
+            )
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=status,
+                score=crit.score,
+                message_de=crit.reasoning,
+                message_en=crit.reasoning,
+                details={
+                    "criterion": self.criterion,
+                    "llm_status": crit.status,
+                    "findings": crit.findings,
+                    "overall_summary": assessment.overall_summary,
+                },
+            )
+
+        except Exception as e:
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
+            return self._error(str(e))
+
+    def _error(self, error: str) -> IndicatorResult:
+        return IndicatorResult(
+            indicator_id=self.indicator_id,
+            name_de=self.name_de,
+            name_en=self.name_en,
+            dimension=self.dimension,
+            status=IndicatorStatus.ERROR,
+            score=0.0,
+            message_de="Fehler bei der Validierung",
+            message_en="Validation error",
+            error=error,
+        )
+
+
+class TitleQualityIndicator(LLMBackedExpressivenessIndicator):
+    criterion = "title_quality"
 
     def __init__(self):
         super().__init__(
@@ -28,139 +126,14 @@ class TitleQualityIndicator(Indicator):
             name_de="Titel-Qualität",
             name_en="Title quality",
             dimension=QualityDimension.EXPRESSIVENESS,
-            description_de="Prüft ob Titel aussagekräftig ist (Mindestlänge)",
-            description_en="Checks if title is expressive (minimum length)",
+            description_de="Ist der Titel aussagekräftig, spezifisch und ohne kryptische Abkürzungen?",
+            description_en="Is the title descriptive, specific and free of cryptic abbreviations?",
             weight=1.0,
         )
 
-    def validate(
-        self, metadata: Any, context: Optional[DatasetContext] = None
-    ) -> IndicatorResult:
-        """Validate title quality.
 
-        Args:
-            metadata: rdflib Graph with DCAT metadata
-            context: Optional pre-computed dataset facts shared across
-                indicators.
-
-        Returns:
-            IndicatorResult with score based on title quality
-        """
-        try:
-            self.logger.debug(f"[{self.indicator_id}] Starting validation")
-            if context is None:
-                if not isinstance(metadata, Graph):
-                    self.logger.warning(
-                        f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
-                    )
-                    return IndicatorResult(
-                        indicator_id=self.indicator_id,
-                        name_de=self.name_de,
-                        name_en=self.name_en,
-                        dimension=self.dimension,
-                        status=IndicatorStatus.ERROR,
-                        score=0.0,
-                        message_de="Metadaten sind kein rdflib Graph",
-                        message_en="Metadata is not an rdflib Graph",
-                        error="Invalid metadata format",
-                    )
-                context = DatasetContext.from_graph(metadata)
-
-            titles = context.titles
-            self.logger.debug(
-                f"[{self.indicator_id}] Found {len(titles)} title(s) on dcat:Dataset"
-            )
-
-            if not titles:
-                self.logger.info(
-                    f"[{self.indicator_id}] Result: FAIL | No title specified"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.FAIL,
-                    score=0.0,
-                    message_de="Kein Titel angegeben",
-                    message_en="No title specified",
-                    details={"title_count": 0},
-                )
-
-            title = titles[0]
-            title_length = len(title)
-            self.logger.debug(
-                f"[{self.indicator_id}] Title length: {title_length} chars | Thresholds: MIN={self.MIN_LENGTH}, RECOMMENDED={self.RECOMMENDED_LENGTH}"
-            )
-
-            if title_length >= self.RECOMMENDED_LENGTH:
-                status = IndicatorStatus.PASS
-                score = 1.0
-                message_de = f"Guter Titel ({title_length} Zeichen)"
-                message_en = f"Good title ({title_length} characters)"
-                self.logger.debug(
-                    f"[{self.indicator_id}] Score calculation: PASS (length >= {self.RECOMMENDED_LENGTH})"
-                )
-            elif title_length >= self.MIN_LENGTH:
-                status = IndicatorStatus.PARTIAL
-                score = 0.7
-                message_de = f"Kurzer Titel ({title_length} Zeichen)"
-                message_en = f"Short title ({title_length} characters)"
-                self.logger.debug(
-                    f"[{self.indicator_id}] Score calculation: PARTIAL (length >= {self.MIN_LENGTH} but < {self.RECOMMENDED_LENGTH})"
-                )
-            else:
-                status = IndicatorStatus.FAIL
-                score = 0.0
-                message_de = f"Sehr kurzer Titel ({title_length} Zeichen)"
-                message_en = f"Very short title ({title_length} characters)"
-                self.logger.debug(
-                    f"[{self.indicator_id}] Score calculation: FAIL (length < {self.MIN_LENGTH})"
-                )
-
-            self.logger.info(
-                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
-            )
-
-            return IndicatorResult(
-                indicator_id=self.indicator_id,
-                name_de=self.name_de,
-                name_en=self.name_en,
-                dimension=self.dimension,
-                status=status,
-                score=score,
-                message_de=message_de,
-                message_en=message_en,
-                details={
-                    "title": title,
-                    "title_length": title_length,
-                    "min_length": self.MIN_LENGTH,
-                    "recommended_length": self.RECOMMENDED_LENGTH,
-                },
-            )
-
-        except Exception as e:
-            self.logger.exception(
-                f"[{self.indicator_id}] Validation failed with exception"
-            )
-            return IndicatorResult(
-                indicator_id=self.indicator_id,
-                name_de=self.name_de,
-                name_en=self.name_en,
-                dimension=self.dimension,
-                status=IndicatorStatus.ERROR,
-                score=0.0,
-                message_de="Fehler bei der Validierung",
-                message_en="Validation error",
-                error=str(e),
-            )
-
-
-class DescriptionQualityIndicator(Indicator):
-    """Validates if dct:description is set and has minimum length."""
-
-    MIN_LENGTH = 20
-    RECOMMENDED_LENGTH = 100
+class DescriptionQualityIndicator(LLMBackedExpressivenessIndicator):
+    criterion = "description_quality"
 
     def __init__(self):
         super().__init__(
@@ -168,138 +141,82 @@ class DescriptionQualityIndicator(Indicator):
             name_de="Beschreibungs-Qualität",
             name_en="Description quality",
             dimension=QualityDimension.EXPRESSIVENESS,
-            description_de="Prüft ob Beschreibung aussagekräftig ist",
-            description_en="Checks if description is expressive",
+            description_de="Ist die Beschreibung inhaltlich substanziell und informativ?",
+            description_en="Is the description substantive and informative?",
             weight=1.0,
         )
 
-    def validate(
-        self, metadata: Any, context: Optional[DatasetContext] = None
-    ) -> IndicatorResult:
-        """Validate description quality.
 
-        Args:
-            metadata: rdflib Graph with DCAT metadata
-            context: Optional pre-computed dataset facts shared across
-                indicators.
+class TitleDescriptionCoherenceIndicator(LLMBackedExpressivenessIndicator):
+    criterion = "title_description_coherence"
 
-        Returns:
-            IndicatorResult with score based on description quality
-        """
-        try:
-            self.logger.debug(f"[{self.indicator_id}] Starting validation")
-            if context is None:
-                if not isinstance(metadata, Graph):
-                    self.logger.warning(
-                        f"[{self.indicator_id}] Invalid metadata format: expected rdflib Graph"
-                    )
-                    return IndicatorResult(
-                        indicator_id=self.indicator_id,
-                        name_de=self.name_de,
-                        name_en=self.name_en,
-                        dimension=self.dimension,
-                        status=IndicatorStatus.ERROR,
-                        score=0.0,
-                        message_de="Metadaten sind kein rdflib Graph",
-                        message_en="Metadata is not an rdflib Graph",
-                        error="Invalid metadata format",
-                    )
-                context = DatasetContext.from_graph(metadata)
+    def __init__(self):
+        super().__init__(
+            indicator_id="expr_title_description_coherence",
+            name_de="Kohärenz von Titel und Beschreibung",
+            name_en="Title–description coherence",
+            dimension=QualityDimension.EXPRESSIVENESS,
+            description_de="Passen Titel und Beschreibung inhaltlich zusammen?",
+            description_en="Do the title and description agree with each other?",
+            weight=1.0,
+        )
 
-            descriptions = context.descriptions
-            self.logger.debug(
-                f"[{self.indicator_id}] Found {len(descriptions)} description(s)"
-            )
 
-            if not descriptions:
-                self.logger.info(
-                    f"[{self.indicator_id}] Result: FAIL | No description specified"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.FAIL,
-                    score=0.0,
-                    message_de="Keine Beschreibung angegeben",
-                    message_en="No description specified",
-                    details={"description_count": 0},
-                )
+class KeywordQualityIndicator(LLMBackedExpressivenessIndicator):
+    criterion = "keyword_quality"
 
-            description = descriptions[0]
-            desc_length = len(description)
-            self.logger.debug(
-                f"[{self.indicator_id}] Description length: {desc_length} chars | Thresholds: MIN={self.MIN_LENGTH}, RECOMMENDED={self.RECOMMENDED_LENGTH}"
-            )
+    def __init__(self):
+        super().__init__(
+            indicator_id="expr_keyword_quality",
+            name_de="Schlagwort-Qualität",
+            name_en="Keyword quality",
+            dimension=QualityDimension.EXPRESSIVENESS,
+            description_de="Sind die Schlagwörter relevant, spezifisch und konsistent formatiert?",
+            description_en="Are keywords relevant, specific and consistently formatted?",
+            weight=1.0,
+        )
 
-            if desc_length >= self.RECOMMENDED_LENGTH:
-                status = IndicatorStatus.PASS
-                score = 1.0
-                message_de = f"Gute Beschreibung ({desc_length} Zeichen)"
-                message_en = f"Good description ({desc_length} characters)"
-                self.logger.debug(
-                    f"[{self.indicator_id}] Score calculation: PASS (length >= {self.RECOMMENDED_LENGTH})"
-                )
-            elif desc_length >= self.MIN_LENGTH:
-                status = IndicatorStatus.PARTIAL
-                score = 0.7
-                message_de = f"Kurze Beschreibung ({desc_length} Zeichen)"
-                message_en = f"Short description ({desc_length} characters)"
-                self.logger.debug(
-                    f"[{self.indicator_id}] Score calculation: PARTIAL (length >= {self.MIN_LENGTH} but < {self.RECOMMENDED_LENGTH})"
-                )
-            else:
-                status = IndicatorStatus.FAIL
-                score = 0.0
-                message_de = f"Sehr kurze Beschreibung ({desc_length} Zeichen)"
-                message_en = f"Very short description ({desc_length} characters)"
-                self.logger.debug(
-                    f"[{self.indicator_id}] Score calculation: FAIL (length < {self.MIN_LENGTH})"
-                )
 
-            self.logger.info(
-                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
-            )
+class ThematicConsistencyIndicator(LLMBackedExpressivenessIndicator):
+    criterion = "thematic_consistency"
 
-            return IndicatorResult(
-                indicator_id=self.indicator_id,
-                name_de=self.name_de,
-                name_en=self.name_en,
-                dimension=self.dimension,
-                status=status,
-                score=score,
-                message_de=message_de,
-                message_en=message_en,
-                details={
-                    "description": (
-                        description[:100] + "..."
-                        if len(description) > 100
-                        else description
-                    ),
-                    "description_length": desc_length,
-                    "min_length": self.MIN_LENGTH,
-                    "recommended_length": self.RECOMMENDED_LENGTH,
-                },
-            )
+    def __init__(self):
+        super().__init__(
+            indicator_id="expr_thematic_consistency",
+            name_de="Thematische Konsistenz",
+            name_en="Thematic consistency",
+            dimension=QualityDimension.EXPRESSIVENESS,
+            description_de="Sind Themen, Schlagwörter, Titel und Beschreibung widerspruchsfrei?",
+            description_en="Are themes, keywords, title and description mutually consistent?",
+            weight=1.0,
+        )
 
-        except Exception as e:
-            self.logger.exception(
-                f"[{self.indicator_id}] Validation failed with exception"
-            )
-            return IndicatorResult(
-                indicator_id=self.indicator_id,
-                name_de=self.name_de,
-                name_en=self.name_en,
-                dimension=self.dimension,
-                status=IndicatorStatus.ERROR,
-                score=0.0,
-                message_de="Fehler bei der Validierung",
-                message_en="Validation error",
-                error=str(e),
-            )
+
+class ContextualQualifiersIndicator(LLMBackedExpressivenessIndicator):
+    criterion = "contextual_qualifiers"
+
+    def __init__(self):
+        super().__init__(
+            indicator_id="expr_contextual_qualifiers",
+            name_de="Kontextuelle Qualifizierer",
+            name_en="Contextual qualifiers",
+            dimension=QualityDimension.EXPRESSIVENESS,
+            description_de=(
+                "Sind nötige Kontextangaben (Version, Bezugszeitraum, vorläufig/"
+                "geschätzt/aggregiert/Entwurf) vorhanden, wo der Inhalt sie erfordert?"
+            ),
+            description_en=(
+                "Are needed contextual qualifiers (version, reference period, "
+                "provisional/estimated/aggregated/draft) present where the content requires them?"
+            ),
+            weight=1.0,
+        )
 
 
 # Auto-register indicators when imported
 _title_quality_indicator = TitleQualityIndicator()
 _description_quality_indicator = DescriptionQualityIndicator()
+_title_description_coherence_indicator = TitleDescriptionCoherenceIndicator()
+_keyword_quality_indicator = KeywordQualityIndicator()
+_thematic_consistency_indicator = ThematicConsistencyIndicator()
+_contextual_qualifiers_indicator = ContextualQualifiersIndicator()

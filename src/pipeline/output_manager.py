@@ -12,6 +12,11 @@ from hydra.core.hydra_config import HydraConfig
 
 logger = logging.getLogger(__name__)
 
+# Logger names whose records (request/response bodies, token usage) are
+# mirrored into each file's dedicated ``openai.log``. The OpenAI SDK logs the
+# full request options and raw response under the ``openai`` logger at DEBUG.
+OPENAI_LOG_SOURCES = ("openai", "httpx", "httpcore")
+
 
 class OutputManager:
     """Manages structured output for quality validation runs."""
@@ -46,6 +51,7 @@ class OutputManager:
         self.timestamp = timestamp
         self.file_results: Dict[str, Dict[str, Any]] = {}
         self.file_loggers: Dict[str, logging.Logger] = {}
+        self.openai_loggers: Dict[str, logging.Handler] = {}
 
         logger.info(f"Created output directory: {self.run_dir}")
 
@@ -83,6 +89,31 @@ class OutputManager:
         # Store for later cleanup
         self.file_loggers[filename] = handler
 
+        # Dedicated openai.log: full LLM request/response bodies + HTTP traffic
+        # for this file. We temporarily route the OpenAI/HTTP loggers here only
+        # (level=DEBUG, propagate=False) so their verbose output lands in this
+        # focused file instead of flooding logs.log / session.log, then restore
+        # their prior state in close_file_logger(). Files loop sequentially, so
+        # this never mixes calls between files.
+        openai_handler = logging.FileHandler(
+            file_dir / "openai.log", encoding="utf-8", mode="w"
+        )
+        openai_handler.setFormatter(
+            logging.Formatter(
+                "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+                datefmt="%Y-%m-%d %H:%M:%S",
+            )
+        )
+        openai_handler.setLevel(logging.DEBUG)
+        saved_state = {}
+        for source in OPENAI_LOG_SOURCES:
+            src_logger = logging.getLogger(source)
+            saved_state[source] = (src_logger.level, src_logger.propagate)
+            src_logger.setLevel(logging.DEBUG)
+            src_logger.propagate = False
+            src_logger.addHandler(openai_handler)
+        self.openai_loggers[filename] = (openai_handler, saved_state)
+
         logger.info(f"Created file log handler for {filename} at {log_path}")
         return handler
 
@@ -94,6 +125,17 @@ class OutputManager:
             root_logger.removeHandler(handler)
             handler.close()
             del self.file_loggers[filename]
+
+        if filename in self.openai_loggers:
+            openai_handler, saved_state = self.openai_loggers[filename]
+            for source in OPENAI_LOG_SOURCES:
+                src_logger = logging.getLogger(source)
+                src_logger.removeHandler(openai_handler)
+                level, propagate = saved_state[source]
+                src_logger.setLevel(level)
+                src_logger.propagate = propagate
+            openai_handler.close()
+            del self.openai_loggers[filename]
 
     def save_file_result(
         self, filename: str, result: Dict[str, Any], save_intermediate: bool = True
@@ -213,6 +255,91 @@ class OutputManager:
         aggregate_path = self.run_dir / "run_aggregate.json"
         self._save_json(aggregate_path, aggregate_payload)
         return aggregate_path
+
+    def save_run_cost_summary(self) -> Optional[Path]:
+        """Write ``run_cost_summary.json`` at the run root.
+
+        Aggregates the per-file ``llm_usage`` records (one per LLM call) into
+        run-level token and cost totals plus a per-file breakdown. Always
+        written when there are file results, even with zero LLM calls (an
+        explicit "no LLM was used / cost 0" record is itself a useful fact).
+        """
+        if not self.file_results:
+            return None
+
+        per_file: Dict[str, Dict[str, Any]] = {}
+        models: set = set()
+        total_calls = 0
+        sum_input = sum_output = sum_total = 0
+        sum_cost = 0.0
+        cost_complete = True  # any call missing cost → totals are a lower bound
+
+        for filename, result in self.file_results.items():
+            usages = result.get("llm_usage") or []
+            f_in = sum(u.get("input_tokens") or 0 for u in usages)
+            f_out = sum(u.get("output_tokens") or 0 for u in usages)
+            f_total = sum(
+                (u.get("total_tokens") or 0)
+                or ((u.get("input_tokens") or 0) + (u.get("output_tokens") or 0))
+                for u in usages
+            )
+            f_cost = 0.0
+            f_cost_known = True
+            for u in usages:
+                models.add(u.get("model"))
+                if u.get("cost_usd") is None:
+                    f_cost_known = False
+                else:
+                    f_cost += float(u["cost_usd"])
+            f_latency = round(sum(u.get("latency_seconds") or 0.0 for u in usages), 3)
+
+            per_file[filename] = {
+                "calls": len(usages),
+                "input_tokens": f_in,
+                "output_tokens": f_out,
+                "total_tokens": f_total,
+                "cost_usd": round(f_cost, 6) if f_cost_known else None,
+                "latency_seconds": f_latency,
+            }
+
+            total_calls += len(usages)
+            sum_input += f_in
+            sum_output += f_out
+            sum_total += f_total
+            sum_cost += f_cost
+            if usages and not f_cost_known:
+                cost_complete = False
+
+        files_with_llm = sum(1 for v in per_file.values() if v["calls"] > 0)
+        summary = {
+            "timestamp": self.timestamp,
+            "run_directory": str(self.run_dir),
+            "models": sorted(m for m in models if m),
+            "files_processed": len(per_file),
+            "files_with_llm_call": files_with_llm,
+            "total_llm_calls": total_calls,
+            "total_input_tokens": sum_input,
+            "total_output_tokens": sum_output,
+            "total_tokens": sum_total,
+            "total_cost_usd": round(sum_cost, 6),
+            "cost_is_complete": cost_complete,
+            "avg_cost_per_file_usd": (
+                round(sum_cost / files_with_llm, 6) if files_with_llm else 0.0
+            ),
+            "avg_tokens_per_call": (
+                round(sum_total / total_calls, 1) if total_calls else 0
+            ),
+            "per_file": per_file,
+        }
+        if not cost_complete:
+            summary["note"] = (
+                "Some LLM calls reported no cost (OpenRouter usage accounting "
+                "disabled or unavailable); total_cost_usd is a lower bound."
+            )
+
+        cost_path = self.run_dir / "run_cost_summary.json"
+        self._save_json(cost_path, summary)
+        return cost_path
 
     @staticmethod
     def _convert_to_serializable(obj: Any) -> Any:

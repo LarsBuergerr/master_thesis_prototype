@@ -24,10 +24,16 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field, fields as dataclass_fields, is_dataclass
-from typing import Any, Iterable, Optional
+from typing import TYPE_CHECKING, Any, Iterable, Optional
 
+from pydantic import BaseModel
 from rdflib import Graph, URIRef, Namespace
 from rdflib.namespace import DCAT, DCTERMS, RDF
+
+if TYPE_CHECKING:  # avoid an import cycle with semantic_assessment
+    from quality_indicators.validators.semantic_assessment import (
+        ExpressivenessAssessment,
+    )
 
 from quality_indicators.vocabularies import (
     IANA_MEDIA_TYPE_PREFIX,
@@ -216,6 +222,14 @@ class DatasetContext:
     publishers: list[str] = field(default_factory=list)
     contact_points: list[str] = field(default_factory=list)
     distributions: list[DistributionContext] = field(default_factory=list)
+    # Populated by ``attach_semantic_assessment(context, llm)`` (see
+    # ``semantic_assessment``). ``None`` = the one-shot LLM expressiveness call
+    # was not run (no LLM configured) or failed.
+    semantic_assessment: Optional["ExpressivenessAssessment"] = None
+    # One entry per LLM call made while building this context (tokens, cost,
+    # latency). Empty when no LLM call was made. Aggregated into the run-level
+    # cost summary.
+    llm_usage: list[dict] = field(default_factory=list)
 
     # ------- distribution-level aggregates (cheap derived properties) ---
 
@@ -424,6 +438,10 @@ def _to_jsonable(value: Any) -> Any:
             f.name: _to_jsonable(getattr(value, f.name))
             for f in dataclass_fields(value)
         }
+    if isinstance(value, BaseModel):
+        # pydantic models (e.g. the attached ExpressivenessAssessment) carry
+        # their own recursive, JSON-safe serialisation.
+        return value.model_dump(mode="json")
     if isinstance(value, (list, tuple)):
         return [_to_jsonable(item) for item in value]
     if isinstance(value, dict):

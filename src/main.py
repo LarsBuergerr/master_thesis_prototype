@@ -17,6 +17,7 @@ from langchain_openai import ChatOpenAI
 
 # Import logger after logging is configured
 from utils.logger import get_logger
+from utils.enums.language import Language
 from quality_indicators.service import QualityMetricsService
 from pipeline.output_manager import OutputManager
 from pipeline.run_visualizer import generate_run_charts_from_file
@@ -63,6 +64,9 @@ def create_llm(cfg: DictConfig) -> ChatOpenAI:
             "HTTP-Referer": "https://github.com/lbuerger/master_thesis_prototype",
             "X-Title": "Master Thesis Prototype",
         },
+        # Ask OpenRouter to include real cost accounting in each response's
+        # usage block so the run cost summary reports actual USD spend.
+        extra_body={"usage": {"include": True}},
     )
 
 
@@ -187,13 +191,42 @@ def main(cfg: DictConfig) -> None:
 
     # Create quality service
     quality_cfg = cfg.state.get("quality", {})
+    language = Language(cfg.state.get("language", "de"))
+
+    # The expressiveness dimension is scored by a single LLM call per dataset.
+    # Build the LLM only when (a) the operator explicitly opted in via
+    # ``llm.enabled`` and (b) that dimension will actually run — otherwise we
+    # never spend tokens. If the key is missing we degrade gracefully:
+    # expressiveness indicators then report NOT_APPLICABLE instead of aborting.
+    dimension_whitelist = quality_cfg.get("dimension_whitelist")
+    expressiveness_active = (
+        not dimension_whitelist or "expressiveness" in dimension_whitelist
+    )
+    llm_enabled = bool(cfg.state.llm.get("enabled", False)) if cfg.state.llm else False
+    llm = None
+    if llm_enabled and expressiveness_active:
+        try:
+            llm = create_llm(cfg)
+        except ValueError as e:
+            logger.warning(
+                f"Expressiveness enabled but LLM unavailable ({e}); "
+                "expressiveness indicators will report NOT_APPLICABLE"
+            )
+    elif expressiveness_active and not llm_enabled:
+        logger.info(
+            "Expressiveness dimension active but llm.enabled=false; "
+            "skipping the LLM call (indicators report NOT_APPLICABLE)"
+        )
+
     service = QualityMetricsService(
         max_workers=quality_cfg.get("max_workers", 4),
         dimension_weights=quality_cfg.get("dimension_weights", {}),
         indicator_weights=quality_cfg.get("indicator_weights", {}),
-        dimension_whitelist=quality_cfg.get("dimension_whitelist"),
+        dimension_whitelist=dimension_whitelist,
         indicator_blacklist=quality_cfg.get("indicator_blacklist"),
         indicator_whitelist=quality_cfg.get("indicator_whitelist"),
+        llm=llm,
+        language=language,
     )
 
     # Process each file
@@ -261,6 +294,10 @@ def main(cfg: DictConfig) -> None:
                 generate_run_charts_from_file(aggregate_path)
             except Exception:
                 logger.exception("Failed to generate run summary chart")
+
+        cost_path = output_mgr.save_run_cost_summary()
+        if cost_path is not None:
+            logger.info(f"Saved run cost summary to {cost_path}")
 
     logger.info(
         f"Processed {processed_count}/{len(files_to_process)} files successfully"

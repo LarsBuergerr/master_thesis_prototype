@@ -34,6 +34,9 @@ pipeline:
   semantic_analysis: true
 
 llm:
+  # Master switch for the expressiveness LLM agent. Must be true to spend
+  # tokens; when false, expressiveness indicators report NOT_APPLICABLE.
+  enabled: false
   model: "anthropic/claude-sonnet-4.5"
   temperature: 0.0
   max_tokens: 50000
