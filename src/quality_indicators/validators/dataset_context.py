@@ -306,6 +306,57 @@ class DatasetContext:
         """Serialise :meth:`to_dict` to a JSON string (UTF-8, non-ASCII kept)."""
         return json.dumps(self.to_dict(), indent=indent, ensure_ascii=False)
 
+    def to_agent_dict(self) -> dict[str, Any]:
+        """Token-lean view for the semantic-evaluation agent.
+
+        :meth:`to_dict` dumps *everything*, including deterministic-validation
+        plumbing (the full ``probe.signals`` list, both per-URL status/error
+        pairs, the parallel ``*_in_vocab`` / ``*_form_valid`` boolean arrays).
+        The semantic auditor doesn't reason over any of that — it judges the
+        human-readable metadata and needs only a compact accessibility/format
+        verdict per distribution. This method keeps the fields that feed the
+        auditor's checks (title/description quality, tag–theme–title coherence,
+        format ↔ mediaType ↔ distribution agreement, licence/rights ↔
+        reachability consistency, spatial/temporal plausibility, publisher /
+        contact specificity) and drops the rest.
+
+        Empty lists / ``None`` are kept on purpose: "field is absent" is itself
+        signal the auditor scores on (missing metadata → deductions).
+        """
+        return {
+            "dataset": {
+                "uri": self.dataset_uri,
+                "titles": list(self.titles),
+                "descriptions": list(self.descriptions),
+                "keywords": list(self.keywords),
+                "themes": list(self.themes),
+                "languages": list(self.languages),
+                "modified": list(self.modified),
+                "issued": list(self.issued),
+                "accrual_periodicity": list(self.accrual_periodicity),
+                "temporal": {
+                    "start_dates": list(self.start_dates),
+                    "end_dates": list(self.end_dates),
+                },
+                "spatial": {
+                    "resources": list(self.spatial_resources),
+                    "geometries": list(self.geometries),
+                    "admin_units": [a.uri for a in self.admin_units],
+                },
+                "licenses": list(self.licenses),
+                "access_rights": list(self.access_rights),
+                "publishers": list(self.publishers),
+                "contact_points": list(self.contact_points),
+            },
+            "distributions": [
+                _distribution_agent_view(dist) for dist in self.distributions
+            ],
+        }
+
+    def to_agent_json(self, *, indent: Optional[int] = 2) -> str:
+        """Serialise :meth:`to_agent_dict` to JSON (UTF-8, non-ASCII kept)."""
+        return json.dumps(self.to_agent_dict(), indent=indent, ensure_ascii=False)
+
     # ------- factory ----------------------------------------------------
 
     @classmethod
@@ -378,6 +429,51 @@ def _to_jsonable(value: Any) -> Any:
     if isinstance(value, dict):
         return {key: _to_jsonable(item) for key, item in value.items()}
     return value
+
+
+def _distribution_agent_view(dist: "DistributionContext") -> dict[str, Any]:
+    """Compact, agent-facing view of one distribution.
+
+    Declared metadata is passed through; the verbose :class:`DistributionProbe`
+    is collapsed to three derived facts the auditor can actually use:
+    ``effective_mime`` (the coalesced MIME, i.e. what the file *really* is),
+    ``format_congruent`` (do the declared and observed types agree?), and
+    ``reachable`` (did a declared URL answer with HTTP < 400?). ``None`` on the
+    probe-derived fields means "not probed", distinct from a ``False`` verdict.
+    """
+    probe = dist.probe
+    return {
+        "uri": dist.distribution_uri,
+        "titles": list(dist.titles),
+        "descriptions": list(dist.descriptions),
+        "download_url": dist.download_url,
+        "access_url": dist.access_url,
+        "formats": list(dist.formats),
+        "media_types": list(dist.media_types),
+        "licenses": list(dist.licenses),
+        "byte_size": dist.byte_size,
+        "effective_mime": probe.coalesced_mime if probe else None,
+        "format_congruent": probe.is_consistent if probe else None,
+        "reachable": _probe_reachable(probe),
+    }
+
+
+def _probe_reachable(probe: Optional["DistributionProbe"]) -> Optional[bool]:
+    """``True``/``False`` if any declared URL was fetched (HTTP < 400), else None.
+
+    ``None`` distinguishes "not probed" (no network attempt, e.g. sampling cap
+    or no fetchable URL) from a genuine "unreachable" verdict.
+    """
+    if probe is None:
+        return None
+    codes = [
+        code
+        for code in (probe.download_status_code, probe.access_status_code)
+        if code is not None
+    ]
+    if not codes:
+        return None
+    return any(200 <= code < 400 for code in codes)
 
 
 def _iter_distributions(graph: Graph) -> Iterable[URIRef]:

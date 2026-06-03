@@ -261,6 +261,10 @@ class QualityMetricsService:
 
         logger.debug(context.to_json())
 
+        logger.debug(context.to_agent_json())
+
+        logger.debug(context.to_agent_dict())
+
         return results
 
     def _process_dimension(
