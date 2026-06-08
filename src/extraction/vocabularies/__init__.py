@@ -22,6 +22,7 @@ VALID_ACCESS_RIGHT_URIS = load_skos_concept_uris("access-right.rdf")
 VALID_LIMITATIONS_ON_PUBLIC_ACCESS_URIS = load_skos_concept_uris(
     "LimitationsOnPublicAccess.de.rdf"
 )
+VALID_CONTRIBUTOR_ID_URIS = load_skos_concept_uris("contributor_id.rdf")
 OPEN_LICENSE_URIS = load_open_license_uris()
 RESTRICTED_LICENSE_URIS = load_restricted_license_uris()
 LICENSE_URIS_BY_TYPE = load_license_exact_match_by_type()
@@ -36,6 +37,7 @@ __all__ = [
     "VALID_POLITICAL_GEOCODING_LEVEL_URIS",
     "VALID_ACCESS_RIGHT_URIS",
     "VALID_LIMITATIONS_ON_PUBLIC_ACCESS_URIS",
+    "VALID_CONTRIBUTOR_ID_URIS",
     "OPEN_LICENSE_URIS",
     "RESTRICTED_LICENSE_URIS",
     "LICENSE_URIS_BY_TYPE",

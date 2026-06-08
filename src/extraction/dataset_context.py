@@ -38,6 +38,7 @@ if TYPE_CHECKING:  # avoid an import cycle with semantic_assessment
 from extraction.vocabularies import (
     IANA_MEDIA_TYPE_PREFIX,
     OPEN_LICENSE_URIS,
+    VALID_CONTRIBUTOR_ID_URIS,
     VALID_FILE_TYPE_URIS,
     VALID_FREQUENCY_URIS,
     VALID_MEDIA_TYPE_TEMPLATES,
@@ -46,6 +47,7 @@ from extraction.vocabularies import (
 )
 
 LOCN = Namespace("http://www.w3.org/ns/locn#")
+DCATDE = Namespace("http://dcat-ap.de/def/dcatde/")
 _LANGUAGE = DCTERMS.language
 _ACCESS_RIGHTS = DCTERMS.accessRights
 _PUBLISHER = DCTERMS.publisher
@@ -221,6 +223,8 @@ class DatasetContext:
     access_rights: list[str] = field(default_factory=list)
     publishers: list[str] = field(default_factory=list)
     contact_points: list[str] = field(default_factory=list)
+    contributor_ids: list[str] = field(default_factory=list)
+    contributor_ids_in_vocab: list[bool] = field(default_factory=list)
     distributions: list[DistributionContext] = field(default_factory=list)
     # Populated by ``attach_semantic_assessment(context, llm)`` (see
     # ``semantic_assessment``). ``None`` = the one-shot LLM expressiveness call
@@ -383,6 +387,7 @@ class DatasetContext:
         themes = _multi(graph, dataset_subjects, DCAT.theme)
         accrual = _multi(graph, dataset_subjects, DCTERMS.accrualPeriodicity)
         licenses = _multi(graph, dataset_subjects, DCTERMS.license)
+        contributor_ids = _multi(graph, dataset_subjects, DCATDE.contributorID)
         # adminUnitL2 sits on the nested ``dct:Location`` blank node inside
         # ``dct:spatial``, not directly on the dataset — collect globally
         # (same robustness reason as for geometries / start_dates).
@@ -416,6 +421,10 @@ class DatasetContext:
             access_rights=_multi(graph, dataset_subjects, _ACCESS_RIGHTS),
             publishers=_multi(graph, dataset_subjects, _PUBLISHER),
             contact_points=_multi(graph, dataset_subjects, DCAT.contactPoint),
+            contributor_ids=contributor_ids,
+            contributor_ids_in_vocab=[
+                c in VALID_CONTRIBUTOR_ID_URIS for c in contributor_ids
+            ],
             distributions=distributions,
         )
 

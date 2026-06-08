@@ -21,6 +21,7 @@ from extraction.vocabularies import (
     OPEN_LICENSE_URIS,
     RESTRICTED_LICENSE_URIS,
     VALID_ACCESS_RIGHT_URIS,
+    VALID_CONTRIBUTOR_ID_URIS,
     VALID_LIMITATIONS_ON_PUBLIC_ACCESS_URIS,
 )
 
@@ -183,9 +184,7 @@ class LicenseIndicator(Indicator):
                 message_en = "Free-use license from the vocabulary found"
             elif best >= 0.5:
                 status = IndicatorStatus.PARTIAL
-                message_de = (
-                    "Lizenz aus dem Vokabular, aber Nutzung eingeschränkt"
-                )
+                message_de = "Lizenz aus dem Vokabular, aber Nutzung eingeschränkt"
                 message_en = "License from the vocabulary but use is restricted"
             else:
                 status = IndicatorStatus.FAIL
@@ -579,9 +578,7 @@ class ContactPointIndicator(Indicator):
                     score += self.BASE_EMAIL
                 if valid_urls:
                     score += self.BASE_URL
-                bonus = min(
-                    self.BONUS_CAP, self.BONUS_PER_FIELD * len(bonus_fields)
-                )
+                bonus = min(self.BONUS_CAP, self.BONUS_PER_FIELD * len(bonus_fields))
                 score = min(1.0, score + bonus)
 
                 entries.append(
@@ -668,8 +665,168 @@ class ContactPointIndicator(Indicator):
             )
 
 
+class ContributorIDIndicator(Indicator):
+    """Validates ``dcatde:contributorID`` per DCAT-AP-DE rules K12 & K13.
+
+    The rule is twofold:
+
+    * ``dcatde:contributorID`` **MUST** be present on the ``dcat:Dataset``.
+    * It **MAY only** carry exactly one IRI, and that IRI must come from the
+      controlled contributors vocabulary
+      (``http://dcat-ap.de/def/contributors/``).
+
+    Two independent requirements — cardinality (exactly one) and vocabulary
+    membership — so the score reflects which of them is met:
+
+    * 1.0 — exactly one contributorID and it is in the vocabulary
+    * 0.5 — set, but only one requirement met: either a single value that is
+      not in the vocabulary, or several values that are all in the vocabulary
+      (cardinality violated)
+    * 0.25 — several values **and** not all of them are in the vocabulary
+    * 0.0 — no contributorID at all (MUST violated)
+    """
+
+    def __init__(self):
+        super().__init__(
+            indicator_id="reuse_contributor_id",
+            name_de="contributorID aus kontrolliertem Vokabular",
+            name_en="contributorID from controlled vocabulary",
+            dimension=QualityDimension.REUSABILITY,
+            description_de=(
+                "Prüft ob dcatde:contributorID gesetzt ist und genau eine IRI "
+                "aus http://dcat-ap.de/def/contributors/ verwendet (DCAT-AP-DE K12/K13)"
+            ),
+            description_en=(
+                "Checks that dcatde:contributorID is set and uses exactly one IRI "
+                "from http://dcat-ap.de/def/contributors/ (DCAT-AP-DE K12/K13)"
+            ),
+            weight=1.0,
+        )
+
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+
+            values = context.contributor_ids
+            in_vocab_flags = context.contributor_ids_in_vocab
+            count = len(values)
+
+            if count == 0:
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 no contributorID set"
+                )
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=IndicatorStatus.FAIL,
+                    score=0.0,
+                    message_de="Keine contributorID angegeben (MUSS-Anforderung)",
+                    message_en="No contributorID specified (mandatory requirement)",
+                    details={"contributor_id_count": 0},
+                )
+
+            valid = [v for v, ok in zip(values, in_vocab_flags) if ok]
+            invalid = [v for v, ok in zip(values, in_vocab_flags) if not ok]
+
+            if count == 1:
+                if in_vocab_flags[0]:
+                    status = IndicatorStatus.PASS
+                    score = 1.0
+                    message_de = "Genau eine contributorID aus dem Vokabular"
+                    message_en = "Exactly one contributorID from the vocabulary"
+                else:
+                    status = IndicatorStatus.FAIL
+                    score = 0.0
+                    message_de = (
+                        "contributorID angegeben, aber IRI nicht aus dem "
+                        "kontrollierten Vokabular"
+                    )
+                    message_en = (
+                        "contributorID specified but IRI is not from the "
+                        "controlled vocabulary"
+                    )
+            else:
+                # count > 1 — Kardinalität verletzt ("DARF nur genau einmal").
+                status = IndicatorStatus.FAIL
+                score = 0.0
+
+                self.logger.debug(
+                    f"[{self.indicator_id}] contributorID cardinality violated: "
+                    f"{count} values found"
+                )
+
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=status,
+                    score=score,
+                    message_de=(
+                        f"Mehrere contributorIDs angegeben ({count}), "
+                        "Kardinalität verletzt (DARF nur genau einmal)"
+                    ),
+                    message_en=(
+                        f"Multiple contributorIDs specified ({count}), "
+                        "cardinality violated (MUST only be exactly one)"
+                    ),
+                    details={
+                        "contributor_id_count": count,
+                        "valid": valid,
+                        "invalid": invalid,
+                        "values": values,
+                    },
+                )
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"count={count} valid={len(valid)}/{count}"
+            )
+            if invalid:
+                self.logger.debug(f"[{self.indicator_id}] invalid_values={invalid}")
+
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=status,
+                score=score,
+                message_de=message_de,
+                message_en=message_en,
+                details={
+                    "contributor_id_count": count,
+                    "valid": valid,
+                    "invalid": invalid,
+                    "values": values,
+                },
+            )
+
+        except Exception as e:
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.ERROR,
+                score=0.0,
+                message_de="Fehler bei der Validierung",
+                message_en="Validation error",
+                error=str(e),
+            )
+
+
 # Auto-register indicators when imported
 _license_indicator = LicenseIndicator()
 _access_rights_indicator = AccessRightsIndicator()
 _publisher_indicator = PublisherIndicator()
 _contact_point_indicator = ContactPointIndicator()
+_contributor_id_indicator = ContributorIDIndicator()

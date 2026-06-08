@@ -105,6 +105,7 @@ quality:
     # --- Reusability ---------------------------------------------------------
     reuse_license: 2.0 # Lizenz: make-or-break für Nachnutzung (MQA hoch)
     reuse_contact: 1.25 # Kontaktpunkt: Vertrauen/Support (MQA mittel-hoch)
+    reuse_contributor_id: 1.25 # contributorID: MUSS-Anforderung (DCAT-AP-DE K12/K13)
     reuse_publisher: 1.0 # Herausgeber/Provenienz
     reuse_access_rights: 1.0 # Zugriffsrechte
 
