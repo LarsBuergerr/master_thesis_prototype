@@ -67,7 +67,7 @@ quality:
 
   # Optional indicator blacklist (default: no indicators excluded)
   # If specified, these indicators will be skipped
-  # indicator_blacklist: ["find_keywords_count"]
+  indicator_blacklist: ["reuse_contributor_id"]
 
   indicator_whitelist: []
 
