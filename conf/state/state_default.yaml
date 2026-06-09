@@ -60,6 +60,28 @@ logging:
 quality:
   max_workers: 1
 
+  # Status -> Punkte-Abbildung (optional). Fehlt dieser Block, werden die
+  # Roh-Scores der Indikatoren unverändert verwendet (rückwärtskompatibel).
+  #   - pass_score / partial_score / fail_score: Punkte je Status
+  #   - fail_score DARF negativ sein (aktive Bestrafung von Fehlschlägen)
+  #   - allow_partial: false -> jeder PARTIAL wird als FAIL gewertet (streng)
+  # Gilt voll nur für ternäre Indikatoren (PASS/PARTIAL/FAIL). Gestufte/
+  # kontinuierliche Indikatoren (GRADED=True: expr_*, acc_machine_readable_access,
+  # acc_format_congruence, acc_*_url_response, acc_distribution_model,
+  # reuse_contact) behalten ihren Roh-Score für PASS/PARTIAL; fail_score greift
+  # bei ihnen nur bei Status FAIL.
+  scoring:
+    pass_score: 1.0
+    partial_score: 0.0
+    fail_score: 0.0
+    allow_partial: true
+    # Pro-Indikator-Overrides (überschreiben die globalen Werte oben)
+    overrides:
+      # find_keywords_count nutzt im Code 0.7 als partial — hier explizit halten:
+      # find_keywords_count: { partial_score: 0.7 }
+      # Beispiel: fehlende Lizenz aktiv bestrafen:
+      # reuse_license: { fail_score: -0.5 }
+
   # Optional dimension whitelist (default: all dimensions)
   # If specified, only these dimensions will be validated
   dimension_whitelist: ["findability", "accessibility", "reusability"]

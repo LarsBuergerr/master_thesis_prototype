@@ -17,6 +17,7 @@ from extraction.semantic_assessment import (
     attach_semantic_assessment,
 )
 from extraction.rdf_parser import RDFMetadataParser
+from scoring.score_policy import ScorePolicy
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -35,6 +36,7 @@ class QualityMetricsService:
         indicator_whitelist: Optional[list] = None,
         llm: Optional[Any] = None,
         language: str = "de",
+        score_policy: Optional[ScorePolicy] = None,
     ):
         """Initialize the service.
 
@@ -53,10 +55,15 @@ class QualityMetricsService:
                 assessment. When ``None``, expressiveness indicators report
                 NOT_APPLICABLE and no LLM call is made.
             language: Output language for the LLM assessment ("de" | "en").
+            score_policy: Optional :class:`ScorePolicy` remapping each
+                indicator's status to a configurable score (tunable PASS /
+                PARTIAL / FAIL points, optional negative fails). When ``None``
+                the indicators' raw scores are used unchanged.
         """
         self.max_workers = max_workers
         self.llm = llm
         self.language = language
+        self.score_policy = score_policy
         self.dimension_weights = dimension_weights or {}
         self.indicator_weights = indicator_weights or {}
         self.dimension_whitelist = (
@@ -330,15 +337,51 @@ class QualityMetricsService:
                 effective_weight = self.indicator_weights.get(
                     indicator_id, indicator.weight
                 )
-                total_score += result.score * effective_weight
+                # Remap the raw status+score through the configured policy
+                # (tunable PASS/PARTIAL/FAIL points; strict mode turns PARTIAL
+                # into FAIL). Without a policy the raw values are used unchanged.
+                if self.score_policy is not None:
+                    eff_status, effective_score = self.score_policy.evaluate(
+                        indicator_id=indicator_id,
+                        status=result.status,
+                        raw_score=result.score,
+                        graded=type(indicator).GRADED,
+                    )
+                else:
+                    eff_status, effective_score = result.status, result.score
+
+                total_score += effective_score * effective_weight
                 total_indicator_weight += effective_weight
 
                 result_dict = result.to_dict()
                 result_dict["default_weight"] = indicator.weight
                 result_dict["effective_weight"] = effective_weight
+                # The output shows the *effective* (policy-applied) status and
+                # score; the indicator's untouched values are preserved as
+                # ``raw_status`` / ``raw_score`` for transparency.
+                result_dict["raw_status"] = result.status.value
+                result_dict["raw_score"] = result.score
+                result_dict["status"] = eff_status.value
+                result_dict["score"] = effective_score
+                result_dict["effective_score"] = effective_score
+
+                if (
+                    self.score_policy is not None
+                    and (eff_status != result.status or effective_score != result.score)
+                ):
+                    logger.info(
+                        "[%s] policy remap: %s/%.2f -> %s/%.2f (weight %.2f)",
+                        indicator_id,
+                        result.status.value,
+                        result.score,
+                        eff_status.value,
+                        effective_score,
+                        effective_weight,
+                    )
+
                 indicator_results.append(result_dict)
 
-                if result.status == IndicatorStatus.PASS:
+                if eff_status == IndicatorStatus.PASS:
                     pass_count += 1
 
             except Exception as e:

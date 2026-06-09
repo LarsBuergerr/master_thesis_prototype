@@ -67,6 +67,13 @@ class Indicator(ABC):
     # Registry to store all indicators
     _registry: Dict[str, "Indicator"] = {}
 
+    #: Whether this indicator emits continuous / multi-tier scores (as opposed
+    #: to a ternary PASS=1.0 / PARTIAL / FAIL=0.0 pattern). Graded indicators
+    #: keep their raw score for PASS / PARTIAL under a ``ScorePolicy`` so their
+    #: fine gradation is preserved; only ``fail_score`` is applied to them on a
+    #: FAIL status. Override to ``True`` in graded subclasses.
+    GRADED: bool = False
+
     def __init__(
         self,
         indicator_id: str,

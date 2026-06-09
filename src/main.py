@@ -19,6 +19,7 @@ from langchain_openai import ChatOpenAI
 from utils.logger import get_logger
 from utils.enums.language import Language
 from scoring.service import QualityMetricsService
+from scoring.score_policy import ScorePolicy
 from reporting.output_manager import OutputManager
 from reporting.run_visualizer import generate_run_charts_from_file
 
@@ -218,6 +219,24 @@ def main(cfg: DictConfig) -> None:
             "skipping the LLM call (indicators report NOT_APPLICABLE)"
         )
 
+    # Optional configurable status→score mapping (tunable PASS/PARTIAL/FAIL
+    # points, optional negative fails). Absent ``quality.scoring`` block →
+    # None → indicators' raw scores are used unchanged.
+    scoring_cfg = quality_cfg.get("scoring")
+    if scoring_cfg is not None:
+        scoring_cfg = OmegaConf.to_container(scoring_cfg, resolve=True)
+    score_policy = ScorePolicy.from_config(scoring_cfg)
+    if score_policy is not None:
+        logger.info(
+            "Score policy active: pass=%.2f partial=%.2f fail=%.2f "
+            "allow_partial=%s overrides=%d",
+            score_policy.pass_score,
+            score_policy.partial_score,
+            score_policy.fail_score,
+            score_policy.allow_partial,
+            len(score_policy.overrides),
+        )
+
     service = QualityMetricsService(
         max_workers=quality_cfg.get("max_workers", 4),
         dimension_weights=quality_cfg.get("dimension_weights", {}),
@@ -227,6 +246,7 @@ def main(cfg: DictConfig) -> None:
         indicator_whitelist=quality_cfg.get("indicator_whitelist"),
         llm=llm,
         language=language,
+        score_policy=score_policy,
     )
 
     # Process each file

@@ -42,6 +42,9 @@ class LLMBackedExpressivenessIndicator(Indicator):
     :class:`IndicatorResult`.
     """
 
+    # LLM criteria return continuous scores — keep them under a ScorePolicy.
+    GRADED = True
+
     #: Field name on ``ExpressivenessAssessment`` this indicator surfaces.
     criterion: str = ""
 

@@ -369,6 +369,8 @@ class FormatCongruenceIndicator(Indicator):
     or no fetchable URL) are not counted.
     """
 
+    GRADED = True  # per-distribution scores averaged into a continuous value
+
     MAX_DISTRIBUTIONS = 20
     PARALLEL_WORKERS = 4
     PASS_THRESHOLD = 0.9
@@ -552,6 +554,8 @@ class ResponseCodeIndicator(Indicator):
     Distributions that don't declare the relevant URL are excluded — they
     contribute nothing to the score either way.
     """
+
+    GRADED = True  # fraction of reachable URLs — continuous
 
     PASS_THRESHOLD = 0.9
     PARTIAL_THRESHOLD = 0.5
@@ -841,6 +845,8 @@ class MachineReadableAccessIndicator(Indicator):
     * 0.0 — no distributions, unknown role, or MIME not in any tier table
     """
 
+    GRADED = True  # multi-tier (1.0/0.8/0.67/0.5/0.33/0.0)
+
     TIER_RATING_3 = 1.0
     TIER_SERVICE = 0.8
     TIER_RATING_2 = 0.67
@@ -1089,6 +1095,8 @@ class DistributionModelIndicator(Indicator):
     * 0.4 — ``split-data`` (anti-pattern; should be a dataset series)
     * 0.0 — ``no-data`` (no recognisable data distributions)
     """
+
+    GRADED = True  # multi-tier (1.0/0.6/0.4/0.0)
 
     SCORES: dict[str, float] = {
         "format-variants": 1.0,

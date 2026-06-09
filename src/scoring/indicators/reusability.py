@@ -519,6 +519,8 @@ class ContactPointIndicator(Indicator):
     Best contact point across all declarations wins.
     """
 
+    GRADED = True  # composite of base credits + bonus fields — continuous
+
     BASE_TYPE = 0.25
     BASE_EMAIL = 0.25
     BASE_URL = 0.25
