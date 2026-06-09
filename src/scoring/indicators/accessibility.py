@@ -287,7 +287,6 @@ class MediaTypeIndicator(Indicator):
                     invalid_form.append(value)
                     continue
                 template = value[len(IANA_MEDIA_TYPE_PREFIX) :]
-                print(template)
                 if template in VALID_MEDIA_TYPE_TEMPLATES:
                     valid.append(value)
                 else:
