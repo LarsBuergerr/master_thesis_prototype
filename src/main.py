@@ -71,6 +71,60 @@ def create_llm(cfg: DictConfig) -> ChatOpenAI:
     )
 
 
+def create_local_llm(cfg: DictConfig) -> ChatOpenAI:
+    """Create an LLM client for a local llama.cpp server.
+
+    llama.cpp's ``server`` exposes an OpenAI-compatible API (``/v1``), so the
+    same ``ChatOpenAI`` client works — only the ``base_url`` changes and no real
+    API key is needed (llama.cpp ignores it, but the client requires a
+    non-empty string). The OpenRouter-specific headers and the ``usage`` cost
+    accounting are dropped since they don't apply locally.
+
+    Config keys (all optional, under ``llm``):
+        base_url: server endpoint, default ``http://localhost:8080/v1``
+        model:    model name to send; llama.cpp serves whatever is loaded, so
+                  this is mostly a label, default ``"qwen3.5"``
+
+    Args:
+        cfg: Hydra configuration
+
+    Returns:
+        Configured ChatOpenAI instance pointed at the local server
+    """
+    model = cfg.state.llm.get("model", "qwen3.5") if cfg.state.llm else "qwen3.5"
+    temperature = cfg.state.llm.get("temperature", 0.0) if cfg.state.llm else 0.0
+    max_tokens = cfg.state.llm.get("max_tokens", 4096) if cfg.state.llm else 4096
+    base_url = (
+        cfg.state.llm.get("base_url", "http://localhost:8080/v1")
+        if cfg.state.llm
+        else "http://localhost:8080/v1"
+    )
+
+    return ChatOpenAI(
+        model=model,
+        temperature=temperature,
+        max_tokens=max_tokens,
+        # llama.cpp doesn't validate the key, but the OpenAI client refuses an
+        # empty one.
+        api_key="sk-no-key-required",
+        base_url=base_url,
+    )
+
+
+def build_llm(cfg: DictConfig) -> ChatOpenAI:
+    """Build the LLM client selected by ``llm.provider``.
+
+    ``provider: "local"`` → local llama.cpp server (:func:`create_local_llm`);
+    anything else (default ``"openrouter"``) → OpenRouter (:func:`create_llm`).
+    """
+    provider = (
+        cfg.state.llm.get("provider", "openrouter") if cfg.state.llm else "openrouter"
+    )
+    if str(provider).lower() == "local":
+        return create_local_llm(cfg)
+    return create_llm(cfg)
+
+
 def resolve_files_to_process(cfg: DictConfig) -> List[Path]:
     """Resolve which files to process based on config.
 
@@ -207,7 +261,7 @@ def main(cfg: DictConfig) -> None:
     llm = None
     if llm_enabled and expressiveness_active:
         try:
-            llm = create_llm(cfg)
+            llm = build_llm(cfg)
         except ValueError as e:
             logger.warning(
                 f"Expressiveness enabled but LLM unavailable ({e}); "

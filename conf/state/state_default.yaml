@@ -46,8 +46,9 @@ language: "de" # Options: "de", "en"
 llm:
   # Master switch for the expressiveness LLM agent. Must be true to spend
   # tokens; when false, expressiveness indicators report NOT_APPLICABLE.
-  enabled: false
-  model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id
+  enabled: true
+  provider: "local" # Options: "local", "openrouter"
+  model: "qwen3.5" # Any OpenRouter model id "anthropic/claude-sonnet-4.5"
   temperature: 0.0
   max_tokens: 10000
 
@@ -84,7 +85,8 @@ quality:
 
   # Optional dimension whitelist (default: all dimensions)
   # If specified, only these dimensions will be validated
-  dimension_whitelist: ["findability", "accessibility", "reusability"]
+  dimension_whitelist:
+    ["findability", "accessibility", "reusability", "expressiveness"]
 
   # Optional indicator blacklist (default: no indicators excluded)
   # If specified, these indicators will be skipped
