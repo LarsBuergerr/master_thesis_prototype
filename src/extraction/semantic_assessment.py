@@ -11,13 +11,6 @@ This mirrors the ``attach_probes`` pattern in
 ``distribution_probes``: one expensive shared resource is computed
 once per dataset and stashed on the :class:`DatasetContext`; the indicators
 that consume it stay pure functions of the context and never touch the LLM.
-
-Flow::
-
-    context = DatasetContext.from_graph(graph)
-    attach_semantic_assessment(context, llm, language="de")
-    # → context.semantic_assessment : ExpressivenessAssessment | None
-    # each expr_* indicator reads context.semantic_assessment.<criterion>
 """
 
 from __future__ import annotations
@@ -31,11 +24,6 @@ from pydantic import BaseModel, Field
 
 if TYPE_CHECKING:  # avoid an import cycle with dataset_context
     from extraction.dataset_context import DatasetContext
-
-
-# ---------------------------------------------------------------------------
-# Response schema (the pydantic DTO the LLM is forced to return)
-# ---------------------------------------------------------------------------
 
 
 class ExpressivenessCriterion(BaseModel):
@@ -188,11 +176,6 @@ def _build_messages(context: "DatasetContext", language: str) -> list[tuple[str,
     ]
 
 
-# ---------------------------------------------------------------------------
-# Orchestration
-# ---------------------------------------------------------------------------
-
-
 def attach_semantic_assessment(
     context: "DatasetContext",
     llm,
@@ -209,11 +192,6 @@ def attach_semantic_assessment(
     """
     log = logger or logging.getLogger(__name__)
     try:
-        # Use tool/function calling rather than the default ``json_schema``
-        # response_format: Anthropic models routed via OpenRouter (e.g. Amazon
-        # Bedrock) reject the response_format payload, whereas tool calling is
-        # supported across providers. ``include_raw`` keeps the raw response so
-        # we can read token usage / cost off it.
         structured = llm.with_structured_output(
             ExpressivenessAssessment, method="function_calling", include_raw=True
         )
@@ -224,7 +202,9 @@ def attach_semantic_assessment(
         assessment = result.get("parsed") if isinstance(result, dict) else result
         raw = result.get("raw") if isinstance(result, dict) else None
         context.semantic_assessment = assessment
-        context.llm_usage.append(_extract_usage(raw, latency, fallback_model=_model_name(llm)))
+        context.llm_usage.append(
+            _extract_usage(raw, latency, fallback_model=_model_name(llm))
+        )
         log.debug(
             "Attached expressiveness assessment "
             f"(summary: {assessment.overall_summary[:120]!r})"

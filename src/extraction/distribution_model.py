@@ -52,26 +52,6 @@ from extraction.distribution_probes import (
     effective_mime,
 )
 
-
-# ---------------------------------------------------------------------------
-# Roles
-# ---------------------------------------------------------------------------
-
-
-class DistributionRole(str, Enum):
-    """Structural role a distribution plays for the dataset.
-
-    Inheriting from ``str`` so the role serialises cleanly in JSON reports
-    and ``.value`` round-trips with downstream consumers.
-    """
-
-    DATA_FILE = "data_file"
-    SERVICE_ENDPOINT = "service_endpoint"
-    LANDING_PAGE = "landing_page"
-    ARCHIVE = "archive"
-    UNKNOWN = "unknown"
-
-
 # EU file-type URIs that denote OGC service endpoints rather than data
 # files. Hardcoded explicitly (not derived from ``EU_FILE_TYPE_TO_MIME``)
 # because services and plain XML both map to ``application/xml`` — deriving
@@ -100,6 +80,26 @@ _SERVICE_URL_PATTERNS: tuple[re.Pattern, ...] = (
     re.compile(r"[?&]request=getcapabilities\b", re.IGNORECASE),
     re.compile(r"/(?:wms|wfs|wcs|wmts|sos)(?:[/?]|$)", re.IGNORECASE),
 )
+
+# Score thresholds for the composite → classification mapping.
+_VARIANTS_THRESHOLD = 0.75
+_SPLIT_THRESHOLD = 0.30
+
+_logger = logging.getLogger(__name__)
+
+
+class DistributionRole(str, Enum):
+    """Structural role a distribution plays for the dataset.
+
+    Inheriting from ``str`` so the role serialises cleanly in JSON reports
+    and ``.value`` round-trips with downstream consumers.
+    """
+
+    DATA_FILE = "data_file"
+    SERVICE_ENDPOINT = "service_endpoint"
+    LANDING_PAGE = "landing_page"
+    ARCHIVE = "archive"
+    UNKNOWN = "unknown"
 
 
 def classify_distribution_role(dist: DistributionContext) -> DistributionRole:
@@ -130,11 +130,6 @@ def classify_distribution_role(dist: DistributionContext) -> DistributionRole:
     return DistributionRole.UNKNOWN
 
 
-# ---------------------------------------------------------------------------
-# Report
-# ---------------------------------------------------------------------------
-
-
 @dataclass
 class DistributionModelReport:
     """Per-dataset analysis output. Returned by ``analyze_distribution_model``."""
@@ -147,8 +142,7 @@ class DistributionModelReport:
     unknown_count: int = 0
 
     # Per-signal scores in [0, 1] — ``None`` when the signal could not be
-    # computed (e.g. <2 data files, or no parseable filenames). Downstream
-    # consumers should treat ``None`` distinctly from 0.0.
+    # computed
     format_diversity_score: Optional[float] = None
     filename_stem_score: Optional[float] = None
 
@@ -161,20 +155,7 @@ class DistributionModelReport:
     has_service_with_data: bool = False
 
     signals_evaluated: int = 0
-    signals_total: int = 2  # bump when adding C/D/E
-
-
-# ---------------------------------------------------------------------------
-# Analysis
-# ---------------------------------------------------------------------------
-
-# Score thresholds for the composite → classification mapping. Tuned so a
-# clean 2-format-variants case (A=1.0, B=1.0 → 1.0) lands in "variants" and
-# a clean N-CSVs-by-year case (A=0.0, B=0.0 → 0.0) lands in "split-data".
-_VARIANTS_THRESHOLD = 0.75
-_SPLIT_THRESHOLD = 0.30
-
-_logger = logging.getLogger(__name__)
+    signals_total: int = 2
 
 
 def analyze_distribution_model(
@@ -218,7 +199,6 @@ def analyze_distribution_model(
 
     n = report.data_file_count
 
-    # Edge cases — no variant analysis possible.
     if n == 0:
         report.classification = (
             "service-only" if report.service_endpoint_count > 0 else "no-data"
@@ -239,7 +219,6 @@ def analyze_distribution_model(
             report.filename_stems = stem[1]
             report.signals_evaluated += 1
 
-        # Composite — equal-weight mean over the available signals.
         available = [
             s
             for s in (report.format_diversity_score, report.filename_stem_score)
@@ -255,16 +234,11 @@ def analyze_distribution_model(
                 report.classification = "mixed-or-ambiguous"
         else:
             # n >= 2 but neither signal applied — both formats unknown AND
-            # no parseable filenames. Honest answer: we can't tell.
+            # no parseable filenames.
             report.classification = "mixed-or-ambiguous"
 
     log.debug(_format_report(report, context))
     return report
-
-
-# ---------------------------------------------------------------------------
-# Signal helpers
-# ---------------------------------------------------------------------------
 
 
 def _signal_format_diversity(
@@ -281,8 +255,6 @@ def _signal_format_diversity(
     if len(known) < 2:
         return None
     unique = sorted(set(known))
-    # Linear map: 1 unique → 0.0 (looks like split); ``len(known)`` unique
-    # → 1.0 (looks like variants).
     score = (len(unique) - 1) / (len(known) - 1)
     return score, unique
 
@@ -304,7 +276,6 @@ def _signal_filename_stem(
     if len(parsed) < 2:
         return None
     unique = set(parsed)
-    # All stems identical → variants (1.0); all distinct → split (0.0).
     score = 1.0 - (len(unique) - 1) / (len(parsed) - 1)
     return score, stems
 
@@ -326,20 +297,11 @@ def _extract_stem(url: Optional[str]) -> Optional[str]:
     return stem.lower() or None
 
 
-# ---------------------------------------------------------------------------
-# Debug formatting
-# ---------------------------------------------------------------------------
-
-
 def _format_report(
     report: DistributionModelReport,
     context: DatasetContext,
 ) -> str:
-    """Multi-line human-readable summary of an analysis result.
-
-    Format mirrors ``distribution_probes._format_probe`` so that a
-    log stream containing both reads consistently.
-    """
+    """Multi-line human-readable summary of an analysis result."""
     lines: list[str] = []
     lines.append(
         f"[distribution_model] {context.distribution_count} distribution(s) "
@@ -350,9 +312,7 @@ def _format_report(
         role = report.roles.get(dist.distribution_uri, DistributionRole.UNKNOWN)
         fmt_short = _short_format(dist.formats[0]) if dist.formats else "-"
         url_short = _short(dist.fetch_url, 70)
-        lines.append(
-            f"    {role.value:18s} fmt={fmt_short:12s} url={url_short}"
-        )
+        lines.append(f"    {role.value:18s} fmt={fmt_short:12s} url={url_short}")
     lines.append(
         f"  role_counts : data={report.data_file_count} "
         f"service={report.service_endpoint_count} "
@@ -392,10 +352,7 @@ def _format_signal_b(report: DistributionModelReport) -> str:
     stems = [s for s in report.filename_stems.values() if s]
     unparsed = sum(1 for s in report.filename_stems.values() if not s)
     suffix = f" (+{unparsed} unparsed)" if unparsed else ""
-    return (
-        f"score={report.filename_stem_score:.3f} "
-        f"stems={stems}{suffix}"
-    )
+    return f"score={report.filename_stem_score:.3f} " f"stems={stems}{suffix}"
 
 
 def _short(value: Optional[str], width: int = 70) -> str:

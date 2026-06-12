@@ -30,7 +30,7 @@ from pydantic import BaseModel
 from rdflib import Graph, URIRef, Namespace
 from rdflib.namespace import DCAT, DCTERMS, RDF
 
-if TYPE_CHECKING:  # avoid an import cycle with semantic_assessment
+if TYPE_CHECKING:
     from extraction.semantic_assessment import (
         ExpressivenessAssessment,
     )
@@ -54,11 +54,6 @@ _PUBLISHER = DCTERMS.publisher
 _DCAT_START_DATE = URIRef(str(DCAT) + "startDate")
 _DCAT_END_DATE = URIRef(str(DCAT) + "endDate")
 _DCAT_BYTE_SIZE = URIRef(str(DCAT) + "byteSize")
-
-
-# ---------------------------------------------------------------------------
-# Small value types
-# ---------------------------------------------------------------------------
 
 
 @dataclass
@@ -121,9 +116,6 @@ class DistributionProbe:
     fetched: bool = False
     status_code: Optional[int] = None
     fetch_error: Optional[str] = None
-    # Per-URL reachability — populated independently for downloadURL and
-    # accessURL when both are present. ``status_code`` / ``fetch_error``
-    # above mirror whichever URL was used for MIME coalescing.
     download_status_code: Optional[int] = None
     download_fetch_error: Optional[str] = None
     access_status_code: Optional[int] = None
@@ -137,11 +129,6 @@ class DistributionProbe:
         return not self.issues
 
 
-# ---------------------------------------------------------------------------
-# Distribution
-# ---------------------------------------------------------------------------
-
-
 @dataclass
 class DistributionContext:
     """All facts for a single ``dcat:Distribution``."""
@@ -151,9 +138,6 @@ class DistributionContext:
     descriptions: list[str] = field(default_factory=list)
     download_url: Optional[str] = None
     access_url: Optional[str] = None
-    # Vocabulary-driven lists are stored alongside parallel-indexed
-    # ``_in_vocab`` / ``_form_valid`` boolean lists so consumers don't have
-    # to re-import the vocab modules.
     formats: list[str] = field(default_factory=list)
     formats_in_vocab: list[bool] = field(default_factory=list)
     media_types: list[str] = field(default_factory=list)
@@ -164,13 +148,10 @@ class DistributionContext:
     licenses: list[str] = field(default_factory=list)
     licenses_open: list[bool] = field(default_factory=list)
     byte_size: Optional[str] = None
-    # Populated by ``attach_probes(context)`` (see
-    # ``distribution_probes``). ``None`` = not attempted.
-    probe: Optional[DistributionProbe] = None
+    probe: Optional[DistributionProbe] = None  # Populated by attach_probes(context)
 
     @property
     def title(self) -> Optional[str]:
-        """First title (compatibility helper)."""
         return self.titles[0] if self.titles else None
 
     @property
@@ -183,23 +164,12 @@ class DistributionContext:
 
     @property
     def fetch_url(self) -> Optional[str]:
-        """Preferred URL for fetching the underlying resource."""
         return self.download_url or self.access_url
-
-
-# ---------------------------------------------------------------------------
-# Dataset
-# ---------------------------------------------------------------------------
 
 
 @dataclass
 class DatasetContext:
-    """All facts for a ``dcat:Dataset`` + its distributions.
-
-    If the graph contains multiple ``dcat:Dataset`` subjects, dataset-level
-    fields are aggregated across all of them (the existing semantics) and
-    ``dataset_uri`` exposes the first one.
-    """
+    """All facts for a ``dcat:Dataset`` + its distributions."""
 
     graph: Graph
     dataset_uri: Optional[str] = None
@@ -226,16 +196,8 @@ class DatasetContext:
     contributor_ids: list[str] = field(default_factory=list)
     contributor_ids_in_vocab: list[bool] = field(default_factory=list)
     distributions: list[DistributionContext] = field(default_factory=list)
-    # Populated by ``attach_semantic_assessment(context, llm)`` (see
-    # ``semantic_assessment``). ``None`` = the one-shot LLM expressiveness call
-    # was not run (no LLM configured) or failed.
     semantic_assessment: Optional["ExpressivenessAssessment"] = None
-    # One entry per LLM call made while building this context (tokens, cost,
-    # latency). Empty when no LLM call was made. Aggregated into the run-level
-    # cost summary.
     llm_usage: list[dict] = field(default_factory=list)
-
-    # ------- distribution-level aggregates (cheap derived properties) ---
 
     @property
     def distribution_count(self) -> int:
@@ -260,8 +222,6 @@ class DatasetContext:
     @property
     def distributions_with_download_url(self) -> int:
         return sum(1 for d in self.distributions if d.has_download_url)
-
-    # ------- cross-level aggregates (for indicators that check both) ----
 
     def collect_modified(self) -> list[SourcedValue]:
         """All ``dct:modified`` values, tagged with their source subject."""
@@ -299,19 +259,8 @@ class DatasetContext:
             )
         return out
 
-    # ------- serialisation ----------------------------------------------
-
     def to_dict(self) -> dict[str, Any]:
-        """JSON-serialisable view of every fact in this context.
-
-        Walks the nested dataclasses (``DistributionContext``,
-        ``DistributionProbe``, ``TypeSignal``, ``AdminUnitFact``) recursively.
-        The ``graph`` field is excluded — it is the raw rdflib graph and is
-        neither JSON-serialisable nor useful as a flat depiction. A handful of
-        derived aggregates (e.g. ``distribution_count``) are added so the dump
-        is self-describing for debugging and for the agent that evaluates the
-        remaining dimension.
-        """
+        """JSON-serialisable view of every fact in this context."""
         data = {
             f.name: _to_jsonable(getattr(self, f.name))
             for f in dataclass_fields(self)
@@ -325,22 +274,7 @@ class DatasetContext:
         return json.dumps(self.to_dict(), indent=indent, ensure_ascii=False)
 
     def to_agent_dict(self) -> dict[str, Any]:
-        """Token-lean view for the semantic-evaluation agent.
-
-        :meth:`to_dict` dumps *everything*, including deterministic-validation
-        plumbing (the full ``probe.signals`` list, both per-URL status/error
-        pairs, the parallel ``*_in_vocab`` / ``*_form_valid`` boolean arrays).
-        The semantic auditor doesn't reason over any of that — it judges the
-        human-readable metadata and needs only a compact accessibility/format
-        verdict per distribution. This method keeps the fields that feed the
-        auditor's checks (title/description quality, tag–theme–title coherence,
-        format ↔ mediaType ↔ distribution agreement, licence/rights ↔
-        reachability consistency, spatial/temporal plausibility, publisher /
-        contact specificity) and drops the rest.
-
-        Empty lists / ``None`` are kept on purpose: "field is absent" is itself
-        signal the auditor scores on (missing metadata → deductions).
-        """
+        """Token-lean view for the semantic-evaluation agent."""
         return {
             "dataset": {
                 "uri": self.dataset_uri,
@@ -375,8 +309,6 @@ class DatasetContext:
         """Serialise :meth:`to_agent_dict` to JSON (UTF-8, non-ASCII kept)."""
         return json.dumps(self.to_agent_dict(), indent=indent, ensure_ascii=False)
 
-    # ------- factory ----------------------------------------------------
-
     @classmethod
     def from_graph(cls, graph: Graph) -> "DatasetContext":
         dataset_subjects = list(graph.subjects(RDF.type, DCAT.Dataset))
@@ -407,12 +339,8 @@ class DatasetContext:
             issued=_multi(graph, dataset_subjects, DCTERMS.issued),
             accrual_periodicity=accrual,
             accrual_periodicity_in_vocab=[v in VALID_FREQUENCY_URIS for v in accrual],
-            # startDate / endDate are nested under dct:temporal — collect
-            # them globally to remain robust against blank-node nesting.
             start_dates=[str(o) for o in graph.objects(predicate=_DCAT_START_DATE)],
             end_dates=[str(o) for o in graph.objects(predicate=_DCAT_END_DATE)],
-            # geometries / adminUnits are nested under dct:spatial — also
-            # collect them globally (same robustness reason).
             geometries=[str(o) for o in graph.objects(predicate=LOCN.geometry)],
             spatial_resources=_multi(graph, dataset_subjects, DCTERMS.spatial),
             admin_units=admin_units,
@@ -429,11 +357,6 @@ class DatasetContext:
         )
 
 
-# ---------------------------------------------------------------------------
-# Helpers (internal)
-# ---------------------------------------------------------------------------
-
-
 def _to_jsonable(value: Any) -> Any:
     """Recursively convert dataclasses / containers into JSON-friendly values.
 
@@ -448,8 +371,6 @@ def _to_jsonable(value: Any) -> Any:
             for f in dataclass_fields(value)
         }
     if isinstance(value, BaseModel):
-        # pydantic models (e.g. the attached ExpressivenessAssessment) carry
-        # their own recursive, JSON-safe serialisation.
         return value.model_dump(mode="json")
     if isinstance(value, (list, tuple)):
         return [_to_jsonable(item) for item in value]
@@ -459,15 +380,7 @@ def _to_jsonable(value: Any) -> Any:
 
 
 def _distribution_agent_view(dist: "DistributionContext") -> dict[str, Any]:
-    """Compact, agent-facing view of one distribution.
-
-    Declared metadata is passed through; the verbose :class:`DistributionProbe`
-    is collapsed to three derived facts the auditor can actually use:
-    ``effective_mime`` (the coalesced MIME, i.e. what the file *really* is),
-    ``format_congruent`` (do the declared and observed types agree?), and
-    ``reachable`` (did a declared URL answer with HTTP < 400?). ``None`` on the
-    probe-derived fields means "not probed", distinct from a ``False`` verdict.
-    """
+    """Compact, agent-facing view of one distribution."""
     probe = dist.probe
     return {
         "uri": dist.distribution_uri,
@@ -525,12 +438,14 @@ def _multi(graph: Graph, subjects: Iterable[URIRef], predicate) -> list[str]:
 
 
 def _first_value(graph: Graph, subject: URIRef, predicate) -> Optional[str]:
+    """Return the first object value for the given subject and predicate, or None."""
     for obj in graph.objects(subject, predicate):
         return str(obj)
     return None
 
 
 def _admin_unit_fact(uri: str) -> AdminUnitFact:
+    """Get the geocoding vocabulary classification for one ``locn:adminUnitL2`` URI."""
     segment, valid_uris = get_geocoding_vocabulary_for_uri(uri)
     return AdminUnitFact(
         uri=uri,

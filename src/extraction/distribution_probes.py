@@ -3,10 +3,11 @@
 mediaType is consistent with the actual file behind its ``dcat:downloadURL``.
 
 This is an adaptation of CKAN's ``ckanext-resource-validation``
-(``resource_type_validation.py``) for **RDF-based** input. Declared signals
-are read from the pre-computed :class:`DistributionContext`; probe signals
-are obtained by HTTPing the distribution URL. The validator coalesces up to
-five MIME-type signals:
+(``resource_type_validation.py``) for **RDF-based** input.
+Source: https://github.com/qld-gov-au/ckanext-resource-type-validation/tree/main
+Declared signals are read from the pre-computed :class:`DistributionContext`;
+probe signals are obtained by HTTPing the distribution URL. The validator
+coalesces up to five MIME-type signals:
 
 1. ``dct:format`` — EU file-type vocabulary URI, normalised to a MIME type
 2. ``dcat:mediaType`` — IANA media-type URI (or literal) → MIME type
@@ -17,19 +18,6 @@ five MIME-type signals:
 The coalescing / override / equality logic is ported from the CKAN module.
 Output is attached to the context as :class:`DistributionProbe` — this tool
 is for *auditing* DCAT records, not for blocking uploads.
-
-Usage::
-
-    context = DatasetContext.from_graph(graph)
-    attach_probes(context, max_probes=20, parallel=4)
-    for dist in context.distributions:
-        if dist.probe and dist.probe.is_consistent:
-            ...
-
-CLI::
-
-    python -m extraction.distribution_probes \\
-        data/perfect_example_01_updated.rdf
 """
 
 from __future__ import annotations
@@ -57,10 +45,6 @@ from extraction.dataset_context import (
     DistributionProbe,
     TypeSignal,
 )
-
-# ---------------------------------------------------------------------------
-# Configuration — inline replacement for CKAN's resources/resource_types.json
-# ---------------------------------------------------------------------------
 
 EQUAL_TYPES: list[list[str]] = [
     ["text/xml", "application/xml"],
@@ -124,11 +108,6 @@ ALLOWED_OVERRIDES: dict[str, list[str]] = {
         "application/vnd.google-earth.kml+xml",
         "application/xhtml+xml",
     ],
-    # ``application/json`` is the parent of the ``*+json`` family. Servers
-    # often serve a more specific type as plain ``application/json``
-    # (especially OGC WFS GetFeature with outputFormat=application/json
-    # returns GeoJSON), and ``mimetypes`` resolves ``.json`` filenames the
-    # same way.
     "application/json": [
         "application/geo+json",
         "application/ld+json",
@@ -204,8 +183,6 @@ EU_FILE_TYPE_TO_MIME: dict[str, str] = {
     "http://publications.europa.eu/resource/authority/file-type/NETCDF": "application/x-netcdf",
     "http://publications.europa.eu/resource/authority/file-type/SPARQLQ": "application/sparql-query",
     "http://publications.europa.eu/resource/authority/file-type/SHP": "x-gis/x-shapefile",
-    # OGC service formats — the endpoint typically returns XML
-    # (e.g. ?REQUEST=GetCapabilities), so map them to application/xml.
     "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC": SERVICE_XML_MIMETYPE,
     "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC": SERVICE_XML_MIMETYPE,
     "http://publications.europa.eu/resource/authority/file-type/WCS_SRVC": SERVICE_XML_MIMETYPE,
@@ -230,7 +207,6 @@ for ext, mime in {
     ".rdf": "application/rdf+xml",
     ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     ".parquet": "application/vnd.apache.parquet",
-    # additions from CKAN's resource_types.json
     ".accdb": "application/msaccess",
     ".asc": "application/x-ascii-grid",
     ".ecw": "application/octet-stream",
@@ -252,14 +228,10 @@ for ext, mime in {
 }.items():
     mimetypes.add_type(mime, ext)
 
-# ---------------------------------------------------------------------------
-# Internal probe payload
-# ---------------------------------------------------------------------------
-
 
 @dataclass
 class _ProbeResult:
-    """Everything we extract from one HTTP probe."""
+    """Everything to extract from one HTTP probe."""
 
     content_type: Optional[str]
     content_disposition: Optional[str]
@@ -267,11 +239,6 @@ class _ProbeResult:
     final_url: Optional[str]
     status: Optional[int]
     error: Optional[str]
-
-
-# ---------------------------------------------------------------------------
-# Validator
-# ---------------------------------------------------------------------------
 
 
 class DistributionTypeValidator:
@@ -308,8 +275,6 @@ class DistributionTypeValidator:
         self.fetch_enabled = fetch_enabled
         self.logger = logger
 
-    # ---- public entry point ---------------------------------------------------
-
     def probe_distribution(self, dist: DistributionContext) -> DistributionProbe:
         """Build a :class:`DistributionProbe` for one distribution.
 
@@ -325,7 +290,6 @@ class DistributionTypeValidator:
             else "accessURL" if dist.access_url else None
         )
 
-        # ---- declared signals (cheap, from context)
         format_signal = self._signal_from_declared_format(dist)
         media_signal = self._signal_from_declared_media_type(dist)
         probe.signals.append(format_signal)
@@ -341,10 +305,6 @@ class DistributionTypeValidator:
 
         probe.signals.append(self._signal_from_url(fetch_url))
 
-        # ---- HTTP
-        # Probe downloadURL and accessURL independently so the report can
-        # show reachability for each. The MIME coalescing below still uses
-        # whichever URL ``fetch_url`` points at (downloadURL preferred).
         download_result: Optional[_ProbeResult] = None
         access_result: Optional[_ProbeResult] = None
         if self.fetch_enabled:
@@ -401,14 +361,8 @@ class DistributionTypeValidator:
             probe.signals.append(TypeSignal("http_content_type", None, None))
             probe.signals.append(TypeSignal("attachment_filename", None, None))
 
-        # ---- coalesce
         probe.coalesced_mime, probe.issues = self._coalesce(probe.signals)
 
-        # Surface the attachment-based body-signal demotion (in
-        # ``_coalesce``) as a warning so it remains visible in the report
-        # even though it doesn't count as a hard conflict. The
-        # ``http_content_type`` branch typically fires when the response was
-        # an HTTP error page or a download-portal HTML wrapper.
         attachment_mime = _signal_value(probe.signals, "attachment_filename")
         if (
             probe.coalesced_mime
@@ -426,8 +380,6 @@ class DistributionTypeValidator:
 
         self.logger.debug(_format_probe(dist, probe))
         return probe
-
-    # ---- declared-signal helpers ---------------------------------------------
 
     def _signal_from_declared_format(self, dist: DistributionContext) -> TypeSignal:
         if not dist.formats:
@@ -471,8 +423,6 @@ class DistributionTypeValidator:
             raw = f"{attachment_filename} (from final URL)"
         return TypeSignal("attachment_filename", raw, guess)
 
-    # ---- HTTP probe -----------------------------------------------------------
-
     def _probe(self, url: str) -> "_ProbeResult":
         content_type: Optional[str] = None
         content_disposition: Optional[str] = None
@@ -495,9 +445,6 @@ class DistributionTypeValidator:
             ) as resp:
                 status = resp.status_code
                 final_url = resp.url
-                # Prefer GET headers — some servers omit Content-Disposition
-                # / Content-Type on HEAD or compute them differently from
-                # the actual GET response.
                 if resp.headers.get("Content-Type"):
                     content_type = resp.headers.get("Content-Type")
                 if resp.headers.get("Content-Disposition"):
@@ -523,17 +470,11 @@ class DistributionTypeValidator:
             error=error,
         )
 
-    # ---- coalesce + equality (ported from CKAN's ResourceTypeValidator) ------
-
-    # ``attachment_filename`` sits ahead of ``http_content_type`` because the
-    # server's ``Content-Disposition: attachment; filename=...`` is a stronger
-    # assertion about the body than the ``Content-Type`` header (which servers
-    # often leave generic / wrong on download endpoints).
     _SIGNAL_PRIORITY = (
         "dct:format",
         "dcat:mediaType",
-        "url_extension",
         "attachment_filename",
+        "url_extension",
         "http_content_type",
     )
 
@@ -650,11 +591,6 @@ class DistributionTypeValidator:
         return False, None
 
 
-# ---------------------------------------------------------------------------
-# Orchestration: attach probes to a DatasetContext
-# ---------------------------------------------------------------------------
-
-
 def attach_probes(
     context: DatasetContext,
     *,
@@ -721,11 +657,6 @@ def attach_probes(
     for key, probe in results:
         for dist in groups[key]:
             dist.probe = probe
-
-
-# ---------------------------------------------------------------------------
-# Module-level helpers
-# ---------------------------------------------------------------------------
 
 
 _CONTENT_DISPOSITION_FILENAME_RE = re.compile(
@@ -810,11 +741,6 @@ def effective_mime(dist: DistributionContext) -> Optional[str]:
     return declared_mime(dist)
 
 
-# ---------------------------------------------------------------------------
-# CLI
-# ---------------------------------------------------------------------------
-
-
 def _format_probe(dist: DistributionContext, probe: DistributionProbe) -> str:
     lines: list[str] = []
     status = "OK   " if probe.is_consistent else "ERROR"
@@ -851,78 +777,3 @@ def _short(value: Optional[str], width: int = 40) -> str:
     if len(value) <= width:
         return value
     return value[: width - 1] + "…"
-
-
-def _probe_to_dict(
-    dist: DistributionContext, probe: DistributionProbe
-) -> dict[str, Any]:
-    data = {
-        "distribution_uri": dist.distribution_uri,
-        "title": dist.title,
-        "download_url": dist.download_url,
-        "access_url": dist.access_url,
-    }
-    data.update(asdict(probe))
-    return data
-
-
-def main(argv: Optional[list[str]] = None) -> int:
-    parser = argparse.ArgumentParser(
-        description="Validate DCAT distribution type signals in RDF files."
-    )
-    parser.add_argument("rdf_files", nargs="+", help="One or more RDF/XML files.")
-    parser.add_argument(
-        "--no-fetch",
-        action="store_true",
-        help="Skip HTTP fetching; only compare declared signals.",
-    )
-    parser.add_argument(
-        "--json",
-        action="store_true",
-        help="Output a JSON report instead of the human-readable one.",
-    )
-    parser.add_argument(
-        "--timeout",
-        type=float,
-        default=10.0,
-        help="HTTP timeout (seconds, applied to connect and read).",
-    )
-    args = parser.parse_args(argv)
-
-    validator = DistributionTypeValidator(
-        timeout=(args.timeout, args.timeout),
-        fetch_enabled=not args.no_fetch,
-        logger=logging.getLogger(__name__),
-    )
-
-    all_reports: dict[str, list[dict[str, Any]]] = {}
-    exit_code = 0
-    for rdf_file in args.rdf_files:
-        graph = Graph()
-        graph.parse(str(Path(rdf_file)))
-        context = DatasetContext.from_graph(graph)
-        attach_probes(context, validator=validator)
-        if args.json:
-            all_reports[rdf_file] = [
-                _probe_to_dict(d, d.probe) for d in context.distributions if d.probe
-            ]
-        else:
-            print(f"=== {rdf_file} — {len(context.distributions)} distribution(s) ===")
-            for dist in context.distributions:
-                if dist.probe is None:
-                    print(f"[SKIP ] {dist.distribution_uri} (not probed)")
-                    continue
-                print(_format_probe(dist, dist.probe))
-                print()
-        if any(d.probe and not d.probe.is_consistent for d in context.distributions):
-            exit_code = 1
-
-    if args.json:
-        json.dump(all_reports, sys.stdout, indent=2, ensure_ascii=False)
-        sys.stdout.write("\n")
-
-    return exit_code
-
-
-if __name__ == "__main__":  # pragma: no cover
-    sys.exit(main())
