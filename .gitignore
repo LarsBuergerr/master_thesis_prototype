@@ -3,6 +3,8 @@ outputs
 run_outputs
 .env
 
+models/
+
 **/**/catalog_distributions.csv
 __pycache__/
 **/**/**/**/govdata_ckan_snapshot*.jsonl

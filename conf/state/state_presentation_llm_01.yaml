@@ -1,4 +1,4 @@
-# AgentState configuration - default
+# AgentState configuration - weighting tuning
 # This file defines the initial state for the prototype
 
 defaults:
@@ -11,7 +11,7 @@ hydra:
     chdir: false
 
 # Directory path for input data
-directory_path: "data/sample_2026-06-03_13-33"
+directory_path: "data/sample_2026-05-18_09-12"
 # If empty: process all files matching extensions in directory_path
 files: []
 
@@ -27,7 +27,7 @@ file_filter:
 # Output directory for results
 output_dir: "run_outputs/"
 # Optional custom suffix for the run output directory (overrides default naming based on directorypath or filename if only one file is processed)
-run_output_dir_suffix: ""
+run_output_dir_suffix: "sonnet4-5"
 # Master switch for creating run output directory and saving results there. If false no output is generated
 run_output_enabled: true
 # Language configuration. Options: "de", "en"
@@ -37,9 +37,9 @@ llm:
   # Master switch for the expressiveness LLM agent. Must be true to spend tokens; when false, expressiveness indicators report NOT_APPLICABLE.
   enabled: true
   # LLM provider. Options: "local", "openrouter" (for local make sure to have the required model downloaded and running)
-  provider: "local"
+  provider: "openrouter"
   # model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id, for local use a supported model name e.g. qwen3.5
-  model: "qwen3.5"
+  model: "anthropic/claude-sonnet-4.5"
   # LLM response randomness (0.0 = deterministic, higher values = more random) default 0.0
   temperature: 0.0
   # Maximum tokens for LLM responses (adjust based on expected response length and model limits) default 10000
@@ -68,7 +68,7 @@ quality:
   scoring:
     pass_score: 1.0
     partial_score: 0.5
-    fail_score: 0.0
+    fail_score: 0
     allow_partial: true
     # Per-indicator overrides (override the global values above)
     overrides:
@@ -76,20 +76,23 @@ quality:
       # reuse_license: { fail_score: -0.5 }
 
   # Optional dimension whitelist (default: all dimensions if list is empty or missing)
-  dimension_whitelist: ["findability", "accessibility", "reusability"]
+  dimension_whitelist: ["expressiveness"]
   # If specified, these indicators will be skipped
   indicator_blacklist: []
   # If specified, only these indicators will be processed (overrides blacklist)
   indicator_whitelist: []
 
   # Optional custom weights per dimension (default for all: 1.0)
+  # accessibility/reusability higher: this is where bad datasets fail most
+  # clearly (no access / no license). expressiveness as a strong semantic
+  # differentiator weighted above findability (structural basis).
   dimension_weights:
-    findability: 1
-    accessibility: 1
-    reusability: 1
-    expressiveness: 1
+    accessibility: 1.0
+    reusability: 1.0
+    expressiveness: 1.0
+    findability: 1.0
 
-  # Optional custom weights per indicator id (default: indicator.weight)
+  # # Optional custom weights per indicator id (default: indicator.weight)
   # indicator_weights:
   #   find_keywords_count: 1.5 # Keywords: central for findability (MQA high)
   #   find_theme_valid: 1.5 # Category/theme: central for findability (MQA high)
