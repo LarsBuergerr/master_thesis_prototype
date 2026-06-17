@@ -1,6 +1,7 @@
 .venv
 outputs
 run_outputs
+mqa_output
 .env
 
 models/
