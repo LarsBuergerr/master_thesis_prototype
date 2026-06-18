@@ -1,0 +1,8283 @@
+[
+  {
+    "total": 310,
+    "max": 405,
+    "normalized": 0.7654,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 60,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_gdi-de.rdf"
+  },
+  {
+    "total": 310,
+    "max": 405,
+    "normalized": 0.7654,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 60,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_gdi-de_02.rdf"
+  },
+  {
+    "total": 310,
+    "max": 405,
+    "normalized": 0.7654,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 60,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_gdi-de_03.rdf"
+  },
+  {
+    "total": 330,
+    "max": 405,
+    "normalized": 0.8148,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 60,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_gdi-de_04.rdf"
+  },
+  {
+    "total": 310,
+    "max": 405,
+    "normalized": 0.7654,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 60,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_gdi-de_05.rdf"
+  },
+  {
+    "total": 350,
+    "max": 405,
+    "normalized": 0.8642,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 80,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_open-data-brandenburg.rdf"
+  },
+  {
+    "total": 320,
+    "max": 405,
+    "normalized": 0.7901,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 70,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 100,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_open-data-brandenburg_02.rdf"
+  },
+  {
+    "total": 330,
+    "max": 405,
+    "normalized": 0.8148,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 80,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_open-data-brandenburg_03.rdf"
+  },
+  {
+    "total": 330,
+    "max": 405,
+    "normalized": 0.8148,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 80,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_open-data-brandenburg_04.rdf"
+  },
+  {
+    "total": 330,
+    "max": 405,
+    "normalized": 0.8148,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 80,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_open-data-brandenburg_05.rdf"
+  },
+  {
+    "total": 250,
+    "max": 405,
+    "normalized": 0.6173,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 80,
+        "max": 110
+      },
+      "reusability": {
+        "score": 30,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_open-data-portal-rheinland-pfalz.rdf"
+  },
+  {
+    "total": 250,
+    "max": 405,
+    "normalized": 0.6173,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 80,
+        "max": 110
+      },
+      "reusability": {
+        "score": 30,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_open-data-portal-rheinland-pfalz_02.rdf"
+  },
+  {
+    "total": 250,
+    "max": 405,
+    "normalized": 0.6173,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 80,
+        "max": 110
+      },
+      "reusability": {
+        "score": 30,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_open-data-portal-rheinland-pfalz_03.rdf"
+  },
+  {
+    "total": 250,
+    "max": 405,
+    "normalized": 0.6173,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 80,
+        "max": 110
+      },
+      "reusability": {
+        "score": 30,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_open-data-portal-rheinland-pfalz_04.rdf"
+  },
+  {
+    "total": 250,
+    "max": 405,
+    "normalized": 0.6173,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 80,
+        "max": 110
+      },
+      "reusability": {
+        "score": 30,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_open-data-portal-rheinland-pfalz_05.rdf"
+  },
+  {
+    "total": 365,
+    "max": 405,
+    "normalized": 0.9012,
+    "rating": "excellent",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 90,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_rest.rdf"
+  },
+  {
+    "total": 355,
+    "max": 405,
+    "normalized": 0.8765,
+    "rating": "excellent",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 80,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_rest_03.rdf"
+  },
+  {
+    "total": 270,
+    "max": 405,
+    "normalized": 0.6667,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 50,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 40,
+        "max": 110
+      },
+      "reusability": {
+        "score": 65,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_rest_04.rdf"
+  },
+  {
+    "total": 225,
+    "max": 405,
+    "normalized": 0.5556,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 60,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 50,
+        "max": 110
+      },
+      "reusability": {
+        "score": 50,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_rest_05.rdf"
+  },
+  {
+    "total": 285,
+    "max": 405,
+    "normalized": 0.7037,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 60,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_transparenzportal-hamburg.rdf"
+  },
+  {
+    "total": 285,
+    "max": 405,
+    "normalized": 0.7037,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 60,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_transparenzportal-hamburg_02.rdf"
+  },
+  {
+    "total": 255,
+    "max": 405,
+    "normalized": 0.6296,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 50,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_transparenzportal-hamburg_03.rdf"
+  },
+  {
+    "total": 285,
+    "max": 405,
+    "normalized": 0.7037,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 60,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_transparenzportal-hamburg_04.rdf"
+  },
+  {
+    "total": 285,
+    "max": 405,
+    "normalized": 0.7037,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 60,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "geo_transparenzportal-hamburg_05.rdf"
+  },
+  {
+    "total": 300,
+    "max": 405,
+    "normalized": 0.7407,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 50,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_gdi-de.rdf"
+  },
+  {
+    "total": 300,
+    "max": 405,
+    "normalized": 0.7407,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 50,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_gdi-de_02.rdf"
+  },
+  {
+    "total": 300,
+    "max": 405,
+    "normalized": 0.7407,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 50,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_gdi-de_03.rdf"
+  },
+  {
+    "total": 300,
+    "max": 405,
+    "normalized": 0.7407,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 50,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_gdi-de_04.rdf"
+  },
+  {
+    "total": 300,
+    "max": 405,
+    "normalized": 0.7407,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 50,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_gdi-de_05.rdf"
+  },
+  {
+    "total": 360,
+    "max": 405,
+    "normalized": 0.8889,
+    "rating": "excellent",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 100,
+        "max": 110
+      },
+      "reusability": {
+        "score": 45,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_land-schleswig-holstein.rdf"
+  },
+  {
+    "total": 375,
+    "max": 405,
+    "normalized": 0.9259,
+    "rating": "excellent",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 110,
+        "max": 110
+      },
+      "reusability": {
+        "score": 45,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 20,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_land-schleswig-holstein_02.rdf"
+  },
+  {
+    "total": 375,
+    "max": 405,
+    "normalized": 0.9259,
+    "rating": "excellent",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 110,
+        "max": 110
+      },
+      "reusability": {
+        "score": 45,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 20,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_land-schleswig-holstein_03.rdf"
+  },
+  {
+    "total": 360,
+    "max": 405,
+    "normalized": 0.8889,
+    "rating": "excellent",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 100,
+        "max": 110
+      },
+      "reusability": {
+        "score": 45,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_land-schleswig-holstein_04.rdf"
+  },
+  {
+    "total": 370,
+    "max": 405,
+    "normalized": 0.9136,
+    "rating": "excellent",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 110,
+        "max": 110
+      },
+      "reusability": {
+        "score": 45,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_land-schleswig-holstein_05.rdf"
+  },
+  {
+    "total": 280,
+    "max": 405,
+    "normalized": 0.6914,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 60,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 110,
+        "max": 110
+      },
+      "reusability": {
+        "score": 50,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_open-data-bayern.rdf"
+  },
+  {
+    "total": 280,
+    "max": 405,
+    "normalized": 0.6914,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 60,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 110,
+        "max": 110
+      },
+      "reusability": {
+        "score": 50,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_open-data-bayern_02.rdf"
+  },
+  {
+    "total": 290,
+    "max": 405,
+    "normalized": 0.716,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 100,
+        "max": 110
+      },
+      "reusability": {
+        "score": 30,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_open-data-bayern_03.rdf"
+  },
+  {
+    "total": 280,
+    "max": 405,
+    "normalized": 0.6914,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 60,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 110,
+        "max": 110
+      },
+      "reusability": {
+        "score": 50,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_open-data-bayern_04.rdf"
+  },
+  {
+    "total": 280,
+    "max": 405,
+    "normalized": 0.6914,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 60,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 110,
+        "max": 110
+      },
+      "reusability": {
+        "score": 50,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_open-data-bayern_05.rdf"
+  },
+  {
+    "total": 340,
+    "max": 405,
+    "normalized": 0.8395,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 90,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_open-data-brandenburg.rdf"
+  },
+  {
+    "total": 340,
+    "max": 405,
+    "normalized": 0.8395,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 90,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_open-data-brandenburg_02.rdf"
+  },
+  {
+    "total": 340,
+    "max": 405,
+    "normalized": 0.8395,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 90,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_open-data-brandenburg_03.rdf"
+  },
+  {
+    "total": 340,
+    "max": 405,
+    "normalized": 0.8395,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 90,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_open-data-brandenburg_04.rdf"
+  },
+  {
+    "total": 330,
+    "max": 405,
+    "normalized": 0.8148,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 80,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_open-data-brandenburg_05.rdf"
+  },
+  {
+    "total": 370,
+    "max": 405,
+    "normalized": 0.9136,
+    "rating": "excellent",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 100,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 110,
+        "max": 110
+      },
+      "reusability": {
+        "score": 50,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_rest.rdf"
+  },
+  {
+    "total": 170,
+    "max": 405,
+    "normalized": 0.4198,
+    "rating": "sufficient",
+    "by_dimension": {
+      "findability": {
+        "score": 60,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 0,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 50,
+        "max": 110
+      },
+      "reusability": {
+        "score": 50,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 50,
+        "passed": false
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_rest_02.rdf"
+  },
+  {
+    "total": 270,
+    "max": 405,
+    "normalized": 0.6667,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 80,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 60,
+        "max": 110
+      },
+      "reusability": {
+        "score": 65,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_rest_03.rdf"
+  },
+  {
+    "total": 260,
+    "max": 405,
+    "normalized": 0.642,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 50,
+        "max": 110
+      },
+      "reusability": {
+        "score": 50,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 10,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_rest_04.rdf"
+  },
+  {
+    "total": 285,
+    "max": 405,
+    "normalized": 0.7037,
+    "rating": "good",
+    "by_dimension": {
+      "findability": {
+        "score": 100,
+        "max": 100
+      },
+      "accessibility": {
+        "score": 50,
+        "max": 100
+      },
+      "interoperability": {
+        "score": 60,
+        "max": 110
+      },
+      "reusability": {
+        "score": 60,
+        "max": 75
+      },
+      "contextuality": {
+        "score": 15,
+        "max": 20
+      }
+    },
+    "metrics": {
+      "keyword_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "category_availability": {
+        "dimension": "findability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "spatial_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "temporal_availability": {
+        "dimension": "findability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "access_url_status_code": {
+        "dimension": "accessibility",
+        "points": 50,
+        "max": 50,
+        "passed": true
+      },
+      "download_url_availability": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "download_url_status_code": {
+        "dimension": "accessibility",
+        "points": 0,
+        "max": 30,
+        "passed": false
+      },
+      "format_availability": {
+        "dimension": "interoperability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "media_type_availability": {
+        "dimension": "interoperability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "format_media_type_vocabulary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "format_non_proprietary": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "format_machine_readable": {
+        "dimension": "interoperability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
+      "license_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "known_license": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "rights_availability": {
+        "dimension": "contextuality",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "byte_size_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_issued_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "date_modified_availability": {
+        "dimension": "contextuality",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      }
+    },
+    "file": "non_geo_rest_05.rdf"
+  }
+]

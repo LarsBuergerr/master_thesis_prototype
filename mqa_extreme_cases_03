@@ -51,36 +51,6 @@
         "max": 20,
         "passed": false
       },
-      "dcat_ap_compliance": {
-        "dimension": "interoperability",
-        "points": 30,
-        "max": 30,
-        "passed": true
-      },
-      "access_rights_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
-      "access_rights_vocabulary": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 5,
-        "passed": false
-      },
-      "contact_point_availability": {
-        "dimension": "reusability",
-        "points": 20,
-        "max": 20,
-        "passed": true
-      },
-      "publisher_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
       "access_url_status_code": {
         "dimension": "accessibility",
         "points": 50,
@@ -129,6 +99,12 @@
         "max": 20,
         "passed": false
       },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
       "license_availability": {
         "dimension": "reusability",
         "points": 20,
@@ -140,6 +116,30 @@
         "points": 0,
         "max": 10,
         "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
       },
       "rights_availability": {
         "dimension": "contextuality",
@@ -220,36 +220,6 @@
         "max": 20,
         "passed": false
       },
-      "dcat_ap_compliance": {
-        "dimension": "interoperability",
-        "points": 30,
-        "max": 30,
-        "passed": true
-      },
-      "access_rights_availability": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 10,
-        "passed": false
-      },
-      "access_rights_vocabulary": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 5,
-        "passed": false
-      },
-      "contact_point_availability": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 20,
-        "passed": false
-      },
-      "publisher_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
       "access_url_status_code": {
         "dimension": "accessibility",
         "points": 50,
@@ -298,6 +268,12 @@
         "max": 20,
         "passed": false
       },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
       "license_availability": {
         "dimension": "reusability",
         "points": 20,
@@ -309,6 +285,30 @@
         "points": 0,
         "max": 10,
         "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
       },
       "rights_availability": {
         "dimension": "contextuality",
@@ -389,36 +389,6 @@
         "max": 20,
         "passed": false
       },
-      "dcat_ap_compliance": {
-        "dimension": "interoperability",
-        "points": 30,
-        "max": 30,
-        "passed": true
-      },
-      "access_rights_availability": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 10,
-        "passed": false
-      },
-      "access_rights_vocabulary": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 5,
-        "passed": false
-      },
-      "contact_point_availability": {
-        "dimension": "reusability",
-        "points": 20,
-        "max": 20,
-        "passed": true
-      },
-      "publisher_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
       "access_url_status_code": {
         "dimension": "accessibility",
         "points": 50,
@@ -467,6 +437,12 @@
         "max": 20,
         "passed": false
       },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
       "license_availability": {
         "dimension": "reusability",
         "points": 20,
@@ -478,6 +454,30 @@
         "points": 0,
         "max": 10,
         "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
       },
       "rights_availability": {
         "dimension": "contextuality",
@@ -558,36 +558,6 @@
         "max": 20,
         "passed": false
       },
-      "dcat_ap_compliance": {
-        "dimension": "interoperability",
-        "points": 30,
-        "max": 30,
-        "passed": true
-      },
-      "access_rights_availability": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 10,
-        "passed": false
-      },
-      "access_rights_vocabulary": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 5,
-        "passed": false
-      },
-      "contact_point_availability": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 20,
-        "passed": false
-      },
-      "publisher_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
       "access_url_status_code": {
         "dimension": "accessibility",
         "points": 50,
@@ -636,6 +606,12 @@
         "max": 20,
         "passed": false
       },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
       "license_availability": {
         "dimension": "reusability",
         "points": 20,
@@ -647,6 +623,30 @@
         "points": 0,
         "max": 10,
         "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 10,
+        "passed": false
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
       },
       "rights_availability": {
         "dimension": "contextuality",
@@ -727,36 +727,6 @@
         "max": 20,
         "passed": false
       },
-      "dcat_ap_compliance": {
-        "dimension": "interoperability",
-        "points": 30,
-        "max": 30,
-        "passed": true
-      },
-      "access_rights_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
-      "access_rights_vocabulary": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 5,
-        "passed": false
-      },
-      "contact_point_availability": {
-        "dimension": "reusability",
-        "points": 20,
-        "max": 20,
-        "passed": true
-      },
-      "publisher_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
       "access_url_status_code": {
         "dimension": "accessibility",
         "points": 50,
@@ -805,6 +775,12 @@
         "max": 20,
         "passed": false
       },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
       "license_availability": {
         "dimension": "reusability",
         "points": 20,
@@ -816,6 +792,30 @@
         "points": 0,
         "max": 10,
         "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 5,
+        "passed": false
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 20,
+        "max": 20,
+        "passed": true
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
       },
       "rights_availability": {
         "dimension": "contextuality",
@@ -896,36 +896,6 @@
         "max": 20,
         "passed": true
       },
-      "dcat_ap_compliance": {
-        "dimension": "interoperability",
-        "points": 30,
-        "max": 30,
-        "passed": true
-      },
-      "access_rights_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
-      "access_rights_vocabulary": {
-        "dimension": "reusability",
-        "points": 5,
-        "max": 5,
-        "passed": true
-      },
-      "contact_point_availability": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 20,
-        "passed": false
-      },
-      "publisher_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
       "access_url_status_code": {
         "dimension": "accessibility",
         "points": 50,
@@ -974,6 +944,12 @@
         "max": 20,
         "passed": true
       },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
       "license_availability": {
         "dimension": "reusability",
         "points": 20,
@@ -985,6 +961,30 @@
         "points": 0,
         "max": 10,
         "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
       },
       "rights_availability": {
         "dimension": "contextuality",
@@ -1065,36 +1065,6 @@
         "max": 20,
         "passed": true
       },
-      "dcat_ap_compliance": {
-        "dimension": "interoperability",
-        "points": 30,
-        "max": 30,
-        "passed": true
-      },
-      "access_rights_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
-      "access_rights_vocabulary": {
-        "dimension": "reusability",
-        "points": 5,
-        "max": 5,
-        "passed": true
-      },
-      "contact_point_availability": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 20,
-        "passed": false
-      },
-      "publisher_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
       "access_url_status_code": {
         "dimension": "accessibility",
         "points": 50,
@@ -1143,6 +1113,12 @@
         "max": 20,
         "passed": true
       },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
       "license_availability": {
         "dimension": "reusability",
         "points": 20,
@@ -1154,6 +1130,30 @@
         "points": 0,
         "max": 10,
         "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
       },
       "rights_availability": {
         "dimension": "contextuality",
@@ -1234,36 +1234,6 @@
         "max": 20,
         "passed": true
       },
-      "dcat_ap_compliance": {
-        "dimension": "interoperability",
-        "points": 30,
-        "max": 30,
-        "passed": true
-      },
-      "access_rights_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
-      "access_rights_vocabulary": {
-        "dimension": "reusability",
-        "points": 5,
-        "max": 5,
-        "passed": true
-      },
-      "contact_point_availability": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 20,
-        "passed": false
-      },
-      "publisher_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
       "access_url_status_code": {
         "dimension": "accessibility",
         "points": 50,
@@ -1312,6 +1282,12 @@
         "max": 20,
         "passed": true
       },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
       "license_availability": {
         "dimension": "reusability",
         "points": 20,
@@ -1323,6 +1299,30 @@
         "points": 0,
         "max": 10,
         "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
       },
       "rights_availability": {
         "dimension": "contextuality",
@@ -1403,36 +1403,6 @@
         "max": 20,
         "passed": true
       },
-      "dcat_ap_compliance": {
-        "dimension": "interoperability",
-        "points": 30,
-        "max": 30,
-        "passed": true
-      },
-      "access_rights_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
-      "access_rights_vocabulary": {
-        "dimension": "reusability",
-        "points": 5,
-        "max": 5,
-        "passed": true
-      },
-      "contact_point_availability": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 20,
-        "passed": false
-      },
-      "publisher_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
       "access_url_status_code": {
         "dimension": "accessibility",
         "points": 50,
@@ -1481,6 +1451,12 @@
         "max": 20,
         "passed": true
       },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
       "license_availability": {
         "dimension": "reusability",
         "points": 20,
@@ -1492,6 +1468,30 @@
         "points": 0,
         "max": 10,
         "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
       },
       "rights_availability": {
         "dimension": "contextuality",
@@ -1572,36 +1572,6 @@
         "max": 20,
         "passed": true
       },
-      "dcat_ap_compliance": {
-        "dimension": "interoperability",
-        "points": 30,
-        "max": 30,
-        "passed": true
-      },
-      "access_rights_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
-      "access_rights_vocabulary": {
-        "dimension": "reusability",
-        "points": 5,
-        "max": 5,
-        "passed": true
-      },
-      "contact_point_availability": {
-        "dimension": "reusability",
-        "points": 0,
-        "max": 20,
-        "passed": false
-      },
-      "publisher_availability": {
-        "dimension": "reusability",
-        "points": 10,
-        "max": 10,
-        "passed": true
-      },
       "access_url_status_code": {
         "dimension": "accessibility",
         "points": 50,
@@ -1650,6 +1620,12 @@
         "max": 20,
         "passed": true
       },
+      "dcat_ap_compliance": {
+        "dimension": "interoperability",
+        "points": 30,
+        "max": 30,
+        "passed": true
+      },
       "license_availability": {
         "dimension": "reusability",
         "points": 20,
@@ -1661,6 +1637,30 @@
         "points": 0,
         "max": 10,
         "passed": false
+      },
+      "access_rights_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
+      },
+      "access_rights_vocabulary": {
+        "dimension": "reusability",
+        "points": 5,
+        "max": 5,
+        "passed": true
+      },
+      "contact_point_availability": {
+        "dimension": "reusability",
+        "points": 0,
+        "max": 20,
+        "passed": false
+      },
+      "publisher_availability": {
+        "dimension": "reusability",
+        "points": 10,
+        "max": 10,
+        "passed": true
       },
       "rights_availability": {
         "dimension": "contextuality",
