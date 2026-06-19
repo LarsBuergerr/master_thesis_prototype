@@ -53,7 +53,9 @@ def _context_with_probes(path: Path, probe: bool):
     return ctx
 
 
-def run_mqa_metrics(sample_dir, *, probe: bool = True, dcat_ap_compliant: bool = True) -> pd.DataFrame:
+def run_mqa_metrics(
+    sample_dir, *, probe: bool = True, dcat_ap_compliant: bool = True
+) -> pd.DataFrame:
     """Long MQA table: one row per (file, mqa_metric) with ``mqa_passed``."""
     from mqa.scorer import MqaOptions, score_dataset
 
@@ -64,19 +66,23 @@ def run_mqa_metrics(sample_dir, *, probe: bool = True, dcat_ap_compliant: bool =
         ctx = _context_with_probes(path, probe)
         res = score_dataset(ctx, opts)
         for key, m in res["metrics"].items():
-            rows.append({
-                "file": path.name,
-                "mqa_metric": key,
-                "mqa_dimension": m["dimension"],
-                "mqa_passed": bool(m["passed"]),
-                "mqa_points": m["points"],
-                "mqa_max": m["max"],
-            })
+            rows.append(
+                {
+                    "file": path.name,
+                    "mqa_metric": key,
+                    "mqa_dimension": m["dimension"],
+                    "mqa_passed": bool(m["passed"]),
+                    "mqa_points": m["points"],
+                    "mqa_max": m["max"],
+                }
+            )
         print(f"[MQA {i:2d}/{len(files)}] {path.name}")
     return pd.DataFrame(rows)
 
 
-def run_model_indicators(sample_dir, llm=None, *, probe: bool = True, **service_kwargs) -> pd.DataFrame:
+def run_model_indicators(
+    sample_dir, llm=None, *, probe: bool = True, **service_kwargs
+) -> pd.DataFrame:
     """Long prototype table: one row per (file, indicator) with status & score.
 
     ``model_pass`` is the binarised "full pass" (status==pass), with NaN for
@@ -96,14 +102,16 @@ def run_model_indicators(sample_dir, llm=None, *, probe: bool = True, **service_
                     model_pass = np.nan
                 else:
                     model_pass = float(status == _PASS)
-                rows.append({
-                    "file": path.name,
-                    "indicator": ind.get("indicator_id"),
-                    "model_dimension": dim,
-                    "model_status": status,
-                    "model_score": ind.get("score"),
-                    "model_pass": model_pass,
-                })
+                rows.append(
+                    {
+                        "file": path.name,
+                        "indicator": ind.get("indicator_id"),
+                        "model_dimension": dim,
+                        "model_status": status,
+                        "model_score": ind.get("score"),
+                        "model_pass": model_pass,
+                    }
+                )
         print(f"[model {i:2d}/{len(files)}] {path.name}")
     return pd.DataFrame(rows)
 
@@ -138,24 +146,34 @@ def build_join(model_long: pd.DataFrame, mqa_long: pd.DataFrame) -> pd.DataFrame
         spec = by_ind.get(ind)
         metrics_for_file = mqa_by_file.get(file, {})
         if spec is None:
-            abc, mqa_keys, agg, review, rationale = "?", [], "any", False, "UNMAPPED — add to indicator_map"
+            abc, mqa_keys, agg, review, rationale = (
+                "?",
+                [],
+                "any",
+                False,
+                "UNMAPPED — add to indicator_map",
+            )
         else:
             abc, mqa_keys, agg = spec["abc"], spec["mqa"], spec["mqa_agg"]
             review, rationale = spec["review"], spec["rationale"]
-        mqa_flags = [bool(metrics_for_file[k]) for k in mqa_keys if k in metrics_for_file]
-        out.append({
-            "file": file,
-            "indicator": ind,
-            "abc": abc,
-            "dimension": r["model_dimension"],
-            "model_status": r["model_status"],
-            "model_score": r["model_score"],
-            "model_pass": r["model_pass"],
-            "mqa_metrics": ";".join(mqa_keys),
-            "mqa_pass": _agg_mqa(mqa_flags, agg),
-            "review": review,
-            "rationale": rationale,
-        })
+        mqa_flags = [
+            bool(metrics_for_file[k]) for k in mqa_keys if k in metrics_for_file
+        ]
+        out.append(
+            {
+                "file": file,
+                "indicator": ind,
+                "abc": abc,
+                "dimension": r["model_dimension"],
+                "model_status": r["model_status"],
+                "model_score": r["model_score"],
+                "model_pass": r["model_pass"],
+                "mqa_metrics": ";".join(mqa_keys),
+                "mqa_pass": _agg_mqa(mqa_flags, agg),
+                "review": review,
+                "rationale": rationale,
+            }
+        )
     return pd.DataFrame(out)
 
 
@@ -166,7 +184,9 @@ def build_join(model_long: pd.DataFrame, mqa_long: pd.DataFrame) -> pd.DataFrame
 
 def class_a_agreement(join: pd.DataFrame) -> dict:
     """H1: on shared (A) checks, how often do MQA and prototype agree?"""
-    a = join[(join["abc"] == "A") & join["model_pass"].notna() & join["mqa_pass"].notna()]
+    a = join[
+        (join["abc"] == "A") & join["model_pass"].notna() & join["mqa_pass"].notna()
+    ]
     if a.empty:
         return {"n": 0, "agreement": float("nan")}
     agree = (a["model_pass"] == a["mqa_pass"]).mean()
@@ -174,28 +194,39 @@ def class_a_agreement(join: pd.DataFrame) -> dict:
     neither = int(((a["model_pass"] == 0) & (a["mqa_pass"] == 0)).sum())
     mqa_only = int(((a["model_pass"] == 0) & (a["mqa_pass"] == 1)).sum())
     model_only = int(((a["model_pass"] == 1) & (a["mqa_pass"] == 0)).sum())
-    return {"n": int(len(a)), "agreement": float(agree),
-            "both_pass": both, "both_fail": neither,
-            "mqa_pass_model_fail": mqa_only, "model_pass_mqa_fail": model_only}
+    return {
+        "n": int(len(a)),
+        "agreement": float(agree),
+        "both_pass": both,
+        "both_fail": neither,
+        "mqa_pass_model_fail": mqa_only,
+        "model_pass_mqa_fail": model_only,
+    }
 
 
 def class_b_overestimation(join: pd.DataFrame) -> pd.DataFrame:
     """H2: per B-indicator contingency. ``mqa_pass_model_fail`` = the count of
     datasets where MQA awards points but the prototype rejects (overestimation).
     """
-    b = join[(join["abc"] == "B") & join["model_pass"].notna() & join["mqa_pass"].notna()]
+    b = join[
+        (join["abc"] == "B") & join["model_pass"].notna() & join["mqa_pass"].notna()
+    ]
     rows = []
     for ind, g in b.groupby("indicator"):
         mp, qp = g["model_pass"], g["mqa_pass"]
-        rows.append({
-            "indicator": ind,
-            "n": int(len(g)),
-            "mqa_pass_model_fail": int(((qp == 1) & (mp == 0)).sum()),  # overestimation
-            "both_pass": int(((qp == 1) & (mp == 1)).sum()),
-            "both_fail": int(((qp == 0) & (mp == 0)).sum()),
-            "model_pass_mqa_fail": int(((qp == 0) & (mp == 1)).sum()),
-            "review": bool(g["review"].iloc[0]),
-        })
+        rows.append(
+            {
+                "indicator": ind,
+                "n": int(len(g)),
+                "mqa_pass_model_fail": int(
+                    ((qp == 1) & (mp == 0)).sum()
+                ),  # overestimation
+                "both_pass": int(((qp == 1) & (mp == 1)).sum()),
+                "both_fail": int(((qp == 0) & (mp == 0)).sum()),
+                "model_pass_mqa_fail": int(((qp == 0) & (mp == 1)).sum()),
+                "review": bool(g["review"].iloc[0]),
+            }
+        )
     df = pd.DataFrame(rows)
     if not df.empty:
         df["overestimation_rate"] = df["mqa_pass_model_fail"] / df["n"]
@@ -213,17 +244,23 @@ def class_c_blindness(join: pd.DataFrame) -> pd.DataFrame:
         s = pd.to_numeric(g["model_score"], errors="coerce").dropna()
         if s.empty:
             continue
-        rows.append({
-            "indicator": ind,
-            "n": int(len(s)),
-            "model_score_mean": float(s.mean()),
-            "model_score_std": float(s.std(ddof=0)),
-            "model_score_min": float(s.min()),
-            "model_score_max": float(s.max()),
-            "n_below_0_5": int((s < 0.5).sum()),
-            "mqa_metric": "—",
-        })
-    return pd.DataFrame(rows).sort_values("model_score_mean", ignore_index=True) if rows else pd.DataFrame()
+        rows.append(
+            {
+                "indicator": ind,
+                "n": int(len(s)),
+                "model_score_mean": float(s.mean()),
+                "model_score_std": float(s.std(ddof=0)),
+                "model_score_min": float(s.min()),
+                "model_score_max": float(s.max()),
+                "n_below_0_5": int((s < 0.5).sum()),
+                "mqa_metric": "—",
+            }
+        )
+    return (
+        pd.DataFrame(rows).sort_values("model_score_mean", ignore_index=True)
+        if rows
+        else pd.DataFrame()
+    )
 
 
 def summarise(join: pd.DataFrame) -> dict:
@@ -233,8 +270,12 @@ def summarise(join: pd.DataFrame) -> dict:
         "class_b": class_b_overestimation(join),
         "class_c": class_c_blindness(join),
         "mqa_only_metrics": mqa_only_metrics(),
-        "unmapped_indicators": sorted(join.loc[join["abc"] == "?", "indicator"].unique().tolist()),
-        "class_counts": join.drop_duplicates("indicator")["abc"].value_counts().to_dict(),
+        "unmapped_indicators": sorted(
+            join.loc[join["abc"] == "?", "indicator"].unique().tolist()
+        ),
+        "class_counts": join.drop_duplicates("indicator")["abc"]
+        .value_counts()
+        .to_dict(),
     }
 
 
@@ -243,8 +284,14 @@ def summarise(join: pd.DataFrame) -> dict:
 # ---------------------------------------------------------------------------
 
 
-def build_all(sample_dir, llm=None, *, probe: bool = True, recompute: bool = False,
-              **service_kwargs) -> dict:
+def build_all(
+    sample_dir,
+    llm=None,
+    *,
+    probe: bool = True,
+    recompute: bool = False,
+    **service_kwargs,
+) -> dict:
     """Score both models (cached), join, and compute the evidence tables.
 
     Caches ``model_indicators.csv`` / ``mqa_metrics.csv`` / ``indicator_join.csv``
@@ -258,7 +305,9 @@ def build_all(sample_dir, llm=None, *, probe: bool = True, recompute: bool = Fal
         model_long = pd.read_csv(model_csv)
         print(f"cache: {model_csv.name}")
     else:
-        model_long = run_model_indicators(sample_dir, llm=llm, probe=probe, **service_kwargs)
+        model_long = run_model_indicators(
+            sample_dir, llm=llm, probe=probe, **service_kwargs
+        )
         model_long.to_csv(model_csv, index=False)
 
     if mqa_csv.exists() and not recompute:

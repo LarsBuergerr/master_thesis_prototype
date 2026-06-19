@@ -50,7 +50,11 @@ def derive_verdict(dims: list[float]) -> Optional[str]:
       * mittel   = sonst
     Returns ``None`` if any dimension is missing (incomplete rating).
     """
-    vals = [d for d in dims if d is not None and not (isinstance(d, float) and math.isnan(d))]
+    vals = [
+        d
+        for d in dims
+        if d is not None and not (isinstance(d, float) and math.isnan(d))
+    ]
     if len(vals) < len(dims):
         return None
     avg = sum(vals) / len(vals)
@@ -115,10 +119,14 @@ def confusion_matrix(true_labels, pred_labels, labels=VERDICTS) -> pd.DataFrame:
     for t, p in zip(true_labels, pred_labels):
         if t in idx and p in idx:
             m[idx[t], idx[p]] += 1
-    return pd.DataFrame(m, index=[f"GT:{l}" for l in labels], columns=[f"M:{l}" for l in labels])
+    return pd.DataFrame(
+        m, index=[f"GT:{l}" for l in labels], columns=[f"M:{l}" for l in labels]
+    )
 
 
-def cohen_kappa(true_labels, pred_labels, labels=VERDICTS, weights: Optional[str] = None) -> float:
+def cohen_kappa(
+    true_labels, pred_labels, labels=VERDICTS, weights: Optional[str] = None
+) -> float:
     """Cohen's kappa. ``weights='linear'`` gives the ordinal weighted kappa."""
     cm = confusion_matrix(true_labels, pred_labels, labels).to_numpy(float)
     n = cm.sum()
@@ -188,7 +196,9 @@ def run_model_scores(sample_dir, llm=None, **service_kwargs) -> pd.DataFrame:
         rows.append(row)
         print(f"[{i:2d}/{len(files)}] scored {path.name}")
     df = pd.DataFrame(rows)
-    df["model_overall"] = df[[f"model_{d}" for d in MODEL_DIMS]].mean(axis=1, skipna=True)
+    df["model_overall"] = df[[f"model_{d}" for d in MODEL_DIMS]].mean(
+        axis=1, skipna=True
+    )
     return df
 
 
@@ -206,7 +216,9 @@ def load_ground_truth(csv_path) -> pd.DataFrame:
             df[col] = np.nan
         df[col] = pd.to_numeric(df[col], errors="coerce")
     df["gt_overall"] = df[GT_COLS].mean(axis=1, skipna=False)
-    df["gt_verdict"] = df[GT_COLS].apply(lambda r: derive_verdict(list(r.values)), axis=1)
+    df["gt_verdict"] = df[GT_COLS].apply(
+        lambda r: derive_verdict(list(r.values)), axis=1
+    )
     df["gt_rated"] = df[GT_COLS].notna().all(axis=1)
     return df
 
@@ -217,7 +229,9 @@ def merge_scores(gt_df: pd.DataFrame, model_df: pd.DataFrame) -> pd.DataFrame:
     merged = gt_df.merge(model_df, on="file", how="inner")
     for dim in MODEL_DIMS:
         merged[f"model_{dim}_0_3"] = merged[f"model_{dim}"] * 3
-    merged["model_overall_0_3"] = merged[[f"model_{d}_0_3" for d in MODEL_DIMS]].mean(axis=1, skipna=True)
+    merged["model_overall_0_3"] = merged[[f"model_{d}_0_3" for d in MODEL_DIMS]].mean(
+        axis=1, skipna=True
+    )
     merged["model_verdict"] = merged[[f"model_{d}_0_3" for d in MODEL_DIMS]].apply(
         lambda r: derive_verdict(list(r.values)), axis=1
     )
@@ -234,15 +248,30 @@ def compare(merged: pd.DataFrame) -> dict:
     per_dim = {}
     for gt_col, dim in DIM_MAP.items():
         x, y = merged[f"model_{dim}"], merged[gt_col]
-        n = int((pd.to_numeric(x, errors="coerce").notna() & pd.to_numeric(y, errors="coerce").notna()).sum())
-        per_dim[dim] = {"spearman": spearman(x, y), "kendall_tau": kendall_tau(x, y), "n": n}
+        n = int(
+            (
+                pd.to_numeric(x, errors="coerce").notna()
+                & pd.to_numeric(y, errors="coerce").notna()
+            ).sum()
+        )
+        per_dim[dim] = {
+            "spearman": spearman(x, y),
+            "kendall_tau": kendall_tau(x, y),
+            "n": n,
+        }
 
     graded = merged[merged["gt_verdict"].notna() & merged["model_verdict"].notna()]
     overall = {
         "n_graded": int(len(graded)),
-        "accuracy": float((graded["gt_verdict"] == graded["model_verdict"]).mean()) if len(graded) else float("nan"),
+        "accuracy": (
+            float((graded["gt_verdict"] == graded["model_verdict"]).mean())
+            if len(graded)
+            else float("nan")
+        ),
         "cohen_kappa": cohen_kappa(graded["gt_verdict"], graded["model_verdict"]),
-        "weighted_kappa": cohen_kappa(graded["gt_verdict"], graded["model_verdict"], weights="linear"),
+        "weighted_kappa": cohen_kappa(
+            graded["gt_verdict"], graded["model_verdict"], weights="linear"
+        ),
         "spearman_overall": spearman(merged["model_overall"], merged["gt_overall"]),
     }
     return {
@@ -261,10 +290,17 @@ def summary_table(result: dict) -> pd.DataFrame:
 # Figures (matplotlib only)
 # ----------------------------------------------------------------------------
 
-_VERDICT_COLOR = {"gut": "#2ca02c", "mittel": "#ff7f0e", "schlecht": "#d62728", None: "#999999"}
+_VERDICT_COLOR = {
+    "gut": "#2ca02c",
+    "mittel": "#ff7f0e",
+    "schlecht": "#d62728",
+    None: "#999999",
+}
 
 
-def make_figures(merged: pd.DataFrame, result: dict, outdir, stratum: str = "") -> list[Path]:
+def make_figures(
+    merged: pd.DataFrame, result: dict, outdir, stratum: str = ""
+) -> list[Path]:
     """Write thesis-ready PNGs to ``outdir``; returns the saved paths."""
     import matplotlib
 
@@ -286,7 +322,14 @@ def make_figures(merged: pd.DataFrame, result: dict, outdir, stratum: str = "") 
     fig, ax = plt.subplots(figsize=(6, 6))
     for v in VERDICTS:
         sub = merged[merged["gt_verdict"] == v]
-        ax.scatter(sub["model_overall_0_3"], sub["gt_overall"], label=v, color=_VERDICT_COLOR[v], s=45, alpha=0.8)
+        ax.scatter(
+            sub["model_overall_0_3"],
+            sub["gt_overall"],
+            label=v,
+            color=_VERDICT_COLOR[v],
+            s=45,
+            alpha=0.8,
+        )
     ax.plot([0, 3], [0, 3], "k--", lw=1, alpha=0.5)
     ax.set_xlabel("Modell-Gesamtscore (0-3, reskaliert)")
     ax.set_ylabel("Ground-Truth Gesamt (0-3)")
@@ -297,7 +340,9 @@ def make_figures(merged: pd.DataFrame, result: dict, outdir, stratum: str = "") 
     # 2. Per-dimension scatter (model 0-1 vs GT 0-3).
     fig, axes = plt.subplots(2, 2, figsize=(11, 9))
     for ax, (gt_col, dim) in zip(axes.flat, DIM_MAP.items()):
-        ax.scatter(merged[f"model_{dim}"], merged[gt_col], s=35, alpha=0.7, color="#1f77b4")
+        ax.scatter(
+            merged[f"model_{dim}"], merged[gt_col], s=35, alpha=0.7, color="#1f77b4"
+        )
         rho = result["per_dimension"].loc[dim, "spearman"]
         ax.set_title(f"{dim}  (Spearman ρ={rho:.2f})")
         ax.set_xlabel("Modell-Score (0-1)")
@@ -310,7 +355,10 @@ def make_figures(merged: pd.DataFrame, result: dict, outdir, stratum: str = "") 
 
     # 3. Boxplots of model overall score grouped by GT verdict (separation).
     fig, ax = plt.subplots(figsize=(7, 5))
-    groups = [merged.loc[merged["gt_verdict"] == v, "model_overall"].dropna().to_numpy() for v in VERDICTS]
+    groups = [
+        merged.loc[merged["gt_verdict"] == v, "model_overall"].dropna().to_numpy()
+        for v in VERDICTS
+    ]
     if any(len(g) for g in groups):
         bp = ax.boxplot(groups, labels=VERDICTS, patch_artist=True)
         for patch, v in zip(bp["boxes"], VERDICTS):
@@ -329,8 +377,14 @@ def make_figures(merged: pd.DataFrame, result: dict, outdir, stratum: str = "") 
     ax.set_yticks(range(len(cm.index)), cm.index)
     for i in range(cm.shape[0]):
         for j in range(cm.shape[1]):
-            ax.text(j, i, int(cm.iloc[i, j]), ha="center", va="center",
-                    color="white" if cm.iloc[i, j] > cm.to_numpy().max() / 2 else "black")
+            ax.text(
+                j,
+                i,
+                int(cm.iloc[i, j]),
+                ha="center",
+                va="center",
+                color="white" if cm.iloc[i, j] > cm.to_numpy().max() / 2 else "black",
+            )
     ax.set_title("Konfusionsmatrix (Urteil)")
     fig.colorbar(im, fraction=0.046, pad=0.04)
     save(fig, "confusion_matrix")
