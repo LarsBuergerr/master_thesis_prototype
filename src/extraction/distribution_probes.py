@@ -196,6 +196,174 @@ EU_FILE_TYPE_TO_MIME: dict[str, str] = {
 
 IANA_MEDIA_PREFIX = "https://www.iana.org/assignments/media-types/"
 
+# ---------------------------------------------------------------------------
+# Format-quality classification sets
+# ---------------------------------------------------------------------------
+
+_FT = "http://publications.europa.eu/resource/authority/file-type/"
+
+#: EU file-type URIs for OGC / INSPIRE service endpoints.
+_SERVICE_FORMAT_URIS: frozenset[str] = frozenset(
+    _FT + code
+    for code in (
+        "WFS_SRVC",
+        "WMS_SRVC",
+        "WCS_SRVC",
+        "WMTS_SRVC",
+        "SOS_SRVC",
+        "OGC_WFS",
+        "OGC_WMS",
+        "OGC_WCS",
+        "OGC_WMTS",
+    )
+)
+
+#: Non-proprietary EU file-type URIs — open standard or de-facto open format.
+NON_PROPRIETARY_FORMAT_URIS: frozenset[str] = frozenset(
+    _FT + code
+    for code in (
+        "BMP",
+        "CSV",
+        "DBF",
+        "GEOJSON",
+        "GML",
+        "GPKG",
+        "GPX",
+        "GZIP",
+        "HTML",
+        "ICS",
+        "JSON",
+        "KML",
+        "KMZ",
+        "NETCDF",
+        "N3",
+        "ODS",
+        "PNG",
+        "RDF_N_QUADS",
+        "RDF_N_TRIPLES",
+        "RDF_TRIG",
+        "RDF_TURTLE",
+        "RDF_XML",
+        "RSS",
+        "RTF",
+        "SPARQLQ",
+        "TAR",
+        "TIFF",
+        "TSV",
+        "TXT",
+        "XML",
+        "ZIP",
+        "WFS_SRVC",
+        "WMS_SRVC",
+        "WCS_SRVC",
+        "WMTS_SRVC",
+        "SOS_SRVC",
+        "OGC_WFS",
+        "OGC_WMS",
+        "OGC_WCS",
+        "OGC_WMTS",
+        "ATOM",
+    )
+)
+
+#: Machine-readable AND open (tier high = 1.0).
+_HIGH_MIMES: frozenset[str] = frozenset(
+    {
+        "application/xml",
+        "text/xml",
+        "application/json",
+        "application/ld+json",
+        "application/hal+json",
+        "application/vnd.api+json",
+        "text/csv",
+        "application/csv",
+        "text/tab-separated-values",
+        "application/vnd.oasis.opendocument.spreadsheet",  # ODS
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",  # XLSX
+        "application/rdf+xml",
+        "text/turtle",
+        "text/n3",
+        "application/sparql-query",
+        "application/vnd.apache.parquet",
+        # Geo open standards
+        "application/geo+json",
+        "application/gml+xml",
+        "application/vnd.google-earth.kml+xml",
+        "application/vnd.google-earth.kmz",
+        "application/x-gpkg",
+        "application/geopackage+sqlite3",
+        "application/x-netcdf",
+        "application/x-cdf",
+        "application/gpx+xml",
+        "application/atom+xml",
+        "application/topojson",
+    }
+)
+
+#: Partially ok — machine-readable but proprietary, or open but limited (tier mid = 0.5).
+_MID_MIMES: frozenset[str] = frozenset(
+    {
+        "application/vnd.ms-excel",
+        "application/excel",  # XLS
+        "x-gis/x-shapefile",
+        "application/x-esri-shape",
+        "application/x-filegdb",
+    }
+)
+
+#: Not usefully machine-readable (tier none = 0.0). Not used but reserved for completeness and potential future use.
+_LOW_MIMES: frozenset[str] = frozenset(
+    {
+        "text/plain",
+        "text/html",
+        "application/xhtml+xml",
+        "application/pdf",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "application/vnd.oasis.opendocument.text",
+        "application/msword",
+        "image/png",
+        "image/gif",
+        "image/jpeg",
+        "image/tiff",
+    }
+)
+
+
+def _classify_machine_readable_tier(mime: Optional[str], formats: list[str]) -> str:
+    """Return 'high' / 'mid' / 'none' for a distribution's format quality."""
+    if any(f in _SERVICE_FORMAT_URIS for f in formats):
+        return "high"
+    if mime in ARCHIVE_MIMETYPES:
+        return "mid"
+    if mime in _HIGH_MIMES:
+        return "high"
+    if mime in _MID_MIMES:
+        return "mid"
+    return "none"
+
+
+def format_tier_for_dist(dist: "DistributionContext") -> str:
+    """Machine-readable tier for a distribution — probe-first, declared fallback.
+
+    Returns ``'high'`` / ``'mid'`` / ``'none'``.  Uses ``dist.probe`` when
+    available (populated by :func:`attach_probes`), otherwise classifies from
+    declared signals via :func:`declared_mime`.
+    """
+    if dist.probe is not None:
+        return dist.probe.machine_readable_tier
+    return _classify_machine_readable_tier(declared_mime(dist), dist.formats)
+
+
+def is_non_proprietary_for_dist(dist: "DistributionContext") -> bool:
+    """Return True when the distribution declares a non-proprietary format URI.
+
+    Uses ``dist.probe`` when available; falls back to ``dist.formats``.
+    """
+    if dist.probe is not None:
+        return dist.probe.is_non_proprietary
+    return any(f in NON_PROPRIETARY_FORMAT_URIS for f in dist.formats)
+
+
 # Make sure mimetypes knows about the formats we care about even on minimal systems.
 for ext, mime in {
     ".geojson": "application/geo+json",
@@ -362,6 +530,12 @@ class DistributionTypeValidator:
             probe.signals.append(TypeSignal("attachment_filename", None, None))
 
         probe.coalesced_mime, probe.issues = self._coalesce(probe.signals)
+        probe.machine_readable_tier = _classify_machine_readable_tier(
+            probe.coalesced_mime, dist.formats
+        )
+        probe.is_non_proprietary = any(
+            f in NON_PROPRIETARY_FORMAT_URIS for f in dist.formats
+        )
 
         attachment_mime = _signal_value(probe.signals, "attachment_filename")
         if (

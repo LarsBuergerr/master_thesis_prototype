@@ -112,11 +112,25 @@ EU_LICENCE_AUTHORITY_PREFIX = "http://publications.europa.eu/resource/authority/
 class MqaOptions:
     """Tunable bits of the MQA baseline."""
 
-    #: Awarded for ``dcatApCompliance`` (30 pts) when no real SHACL run is done.
+    #: Fallback value when ``shacl_validation=False`` or the API call fails.
     dcat_ap_compliant: bool = True
+    #: When True, calls the ITB SHACL API (same logic as the prototype indicator)
+    #: instead of using the ``dcat_ap_compliant`` default.
+    shacl_validation: bool = False
 
 
 # --- Metric helpers --------------------------------------------------------
+
+
+def _dcat_ap_compliance(c: "DatasetContext", o: MqaOptions) -> bool:
+    """Check DCAT-AP.de compliance — calls the ITB SHACL API when enabled."""
+    if not o.shacl_validation:
+        return o.dcat_ap_compliant
+    try:
+        from utils.shacl_client import validate_graph
+        return validate_graph(c.graph)["conforms"]
+    except Exception:
+        return o.dcat_ap_compliant  # fall back to the static default on errors
 
 
 def _http_ok(code) -> bool:
@@ -151,7 +165,7 @@ DATASET_METRICS: list[_DatasetMetric] = [
                    lambda c, o: bool(c.spatial_resources or c.geometries or c.admin_units)),
     _DatasetMetric("temporal_availability", FINDABILITY, 20,
                    lambda c, o: bool(c.start_dates or c.end_dates)),
-    _DatasetMetric("dcat_ap_compliance", INTEROPERABILITY, 30, lambda c, o: o.dcat_ap_compliant),
+    _DatasetMetric("dcat_ap_compliance", INTEROPERABILITY, 30, _dcat_ap_compliance),
     _DatasetMetric("access_rights_availability", REUSABILITY, 10, lambda c, o: bool(c.access_rights)),
     _DatasetMetric("access_rights_vocabulary", REUSABILITY, 5,
                    lambda c, o: any(a in VALID_ACCESS_RIGHT_URIS for a in c.access_rights)),

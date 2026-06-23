@@ -826,9 +826,92 @@ class ContributorIDIndicator(Indicator):
             )
 
 
+class DcatApDeValidationIndicator(Indicator):
+    """Validates metadata against DCAT-AP.de SHACL rules via the ITB API.
+
+    Binary scoring only — no partial:
+      PASS  — sh:conforms true  (zero violations of any severity)
+      FAIL  — at least one sh:ValidationResult
+    """
+
+    def __init__(self):
+        super().__init__(
+            indicator_id="reuse_dcat_ap_de_compliance",
+            name_de="DCAT-AP.de Schema-Konformität (SHACL)",
+            name_en="DCAT-AP.de schema compliance (SHACL)",
+            dimension=QualityDimension.REUSABILITY,
+            description_de=(
+                "Validiert die Metadaten via ITB SHACL-API gegen DCAT-AP.de v2.0; "
+                "PASS bei null Verletzungen, FAIL bei mindestens einer"
+            ),
+            description_en=(
+                "Validates metadata via ITB SHACL API against DCAT-AP.de v2.0; "
+                "PASS for zero violations, FAIL for at least one"
+            ),
+            weight=1.0,
+        )
+
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            from utils.shacl_client import validate_graph
+
+            result = validate_graph(metadata)
+            conforms = result["conforms"]
+            violations = result["violations"]
+
+            if conforms:
+                status = IndicatorStatus.PASS
+                score = 1.0
+                message_de = "Keine SHACL-Verletzungen — DCAT-AP.de konform"
+                message_en = "No SHACL violations — DCAT-AP.de compliant"
+            else:
+                status = IndicatorStatus.FAIL
+                score = 0.0
+                message_de = f"{len(violations)} SHACL-Verletzung(en) gefunden"
+                message_en = f"{len(violations)} SHACL violation(s) found"
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"conforms={conforms} violations={len(violations)}"
+            )
+
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=status,
+                score=score,
+                message_de=message_de,
+                message_en=message_en,
+                details={
+                    "conforms": conforms,
+                    "violation_count": len(violations),
+                    "violations": violations[:20],
+                },
+            )
+
+        except Exception as e:
+            self.logger.exception(f"[{self.indicator_id}] SHACL validation failed")
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.ERROR,
+                score=0.0,
+                message_de="Fehler bei der SHACL-Validierung",
+                message_en="SHACL validation error",
+                error=str(e),
+            )
+
+
 # Auto-register indicators when imported
 _license_indicator = LicenseIndicator()
 _access_rights_indicator = AccessRightsIndicator()
 _publisher_indicator = PublisherIndicator()
 _contact_point_indicator = ContactPointIndicator()
 _contributor_id_indicator = ContributorIDIndicator()
+_dcat_ap_de_validation = DcatApDeValidationIndicator()

@@ -54,12 +54,15 @@ def _context_with_probes(path: Path, probe: bool):
 
 
 def run_mqa_metrics(
-    sample_dir, *, probe: bool = True, dcat_ap_compliant: bool = True
+    sample_dir, *, probe: bool = True, dcat_ap_compliant: bool = True, mqa_options=None
 ) -> pd.DataFrame:
     """Long MQA table: one row per (file, mqa_metric) with ``mqa_passed``."""
     from mqa.scorer import MqaOptions, score_dataset
 
-    opts = MqaOptions(dcat_ap_compliant=dcat_ap_compliant)
+    if mqa_options is not None:
+        opts = mqa_options
+    else:
+        opts = MqaOptions(dcat_ap_compliant=dcat_ap_compliant)
     files = sorted(Path(sample_dir).glob("*.rdf"))
     rows = []
     for i, path in enumerate(files, 1):
@@ -290,20 +293,25 @@ def build_all(
     *,
     probe: bool = True,
     recompute: bool = False,
+    output_dir=None,
+    mqa_options=None,
     **service_kwargs,
 ) -> dict:
     """Score both models (cached), join, and compute the evidence tables.
 
-    Caches ``model_indicators.csv`` / ``mqa_metrics.csv`` / ``indicator_join.csv``
-    in ``sample_dir``. Returns ``{"join": df, **summarise(join)}``.
+    Caches and writes all CSVs to ``output_dir`` (defaults to ``sample_dir``).
+    Returns ``{"join": df, **summarise(join)}``.
     """
     sample_dir = Path(sample_dir)
-    model_csv = sample_dir / "model_indicators.csv"
-    mqa_csv = sample_dir / "mqa_metrics.csv"
+    out = Path(output_dir) if output_dir is not None else sample_dir
+    out.mkdir(parents=True, exist_ok=True)
+
+    model_csv = out / "model_indicators.csv"
+    mqa_csv = out / "mqa_metrics.csv"
 
     if model_csv.exists() and not recompute:
         model_long = pd.read_csv(model_csv)
-        print(f"cache: {model_csv.name}")
+        print(f"cache: {model_csv}")
     else:
         model_long = run_model_indicators(
             sample_dir, llm=llm, probe=probe, **service_kwargs
@@ -312,11 +320,11 @@ def build_all(
 
     if mqa_csv.exists() and not recompute:
         mqa_long = pd.read_csv(mqa_csv)
-        print(f"cache: {mqa_csv.name}")
+        print(f"cache: {mqa_csv}")
     else:
-        mqa_long = run_mqa_metrics(sample_dir, probe=probe)
+        mqa_long = run_mqa_metrics(sample_dir, probe=probe, mqa_options=mqa_options)
         mqa_long.to_csv(mqa_csv, index=False)
 
     join = build_join(model_long, mqa_long)
-    join.to_csv(sample_dir / "indicator_join.csv", index=False)
+    join.to_csv(out / "indicator_join.csv", index=False)
     return {"join": join, **summarise(join)}

@@ -123,6 +123,9 @@ class DistributionProbe:
     final_url: Optional[str] = None
     content_disposition: Optional[str] = None
     attachment_filename: Optional[str] = None
+    # Format-quality classifications — set by distribution_probes after coalescing.
+    machine_readable_tier: str = "none"  # "high" | "mid" | "none"
+    is_non_proprietary: bool = False
 
     @property
     def is_consistent(self) -> bool:
