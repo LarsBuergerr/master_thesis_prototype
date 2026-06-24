@@ -289,7 +289,6 @@ class MediaTypeIndicator(Indicator):
                     invalid_form.append(value)
                     continue
                 template = value[len(IANA_MEDIA_TYPE_PREFIX) :]
-                print(template)
                 if template in VALID_MEDIA_TYPE_TEMPLATES:
                     valid.append(value)
                 else:
@@ -744,8 +743,6 @@ class ResponseCodeIndicator(Indicator):
             )
 
 
-
-
 class MachineReadableAccessIndicator(Indicator):
     """Score machine-readable access across ALL distributions (mean tier).
 
@@ -818,8 +815,10 @@ class MachineReadableAccessIndicator(Indicator):
             per_distribution: list[dict[str, Any]] = []
             for dist in context.distributions:
                 tier_label = format_tier_for_dist(dist)
-                tier = self.TIER_HIGH if tier_label == "high" else (
-                    self.TIER_MID if tier_label == "mid" else self.TIER_NONE
+                tier = (
+                    self.TIER_HIGH
+                    if tier_label == "high"
+                    else (self.TIER_MID if tier_label == "mid" else self.TIER_NONE)
                 )
                 per_distribution.append(
                     {
@@ -889,6 +888,7 @@ class MachineReadableAccessIndicator(Indicator):
                 message_en="Validation error",
                 error=str(e),
             )
+
 
 class DistributionModelIndicator(Indicator):
     """Detect whether the dataset's distributions follow DCAT's

@@ -2,6 +2,7 @@
 outputs
 run_outputs
 mqa_output
+comparison_output
 .env
 
 models/

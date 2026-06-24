@@ -85,19 +85,61 @@ _FT = "http://publications.europa.eu/resource/authority/file-type/"
 NON_PROPRIETARY_FORMAT_URIS = frozenset(
     _FT + code
     for code in (
-        "BMP", "CSV", "DBF", "GEOJSON", "GZIP", "HTML", "ICS", "JPEG2000",
-        "JSON", "JSON_LD", "KML", "KMZ", "NETCDF", "ODS", "PNG", "RDF_N_QUADS",
-        "RDF_N_TRIPLES", "RDF_TRIG", "RDF_TURTLE", "RDF_XML", "RSS", "RTF",
-        "TAR", "TIFF", "TSV", "TXT", "WMS_SRVC", "XML", "ZIP",
+        "BMP",
+        "CSV",
+        "DBF",
+        "GEOJSON",
+        "GZIP",
+        "HTML",
+        "ICS",
+        "JPEG2000",
+        "JSON",
+        "JSON_LD",
+        "KML",
+        "KMZ",
+        "NETCDF",
+        "ODS",
+        "PNG",
+        "RDF_N_QUADS",
+        "RDF_N_TRIPLES",
+        "RDF_TRIG",
+        "RDF_TURTLE",
+        "RDF_XML",
+        "RSS",
+        "RTF",
+        "TAR",
+        "TIFF",
+        "TSV",
+        "TXT",
+        "WMS_SRVC",
+        "XML",
+        "ZIP",
     )
 )
 
 MACHINE_READABLE_FORMAT_URIS = frozenset(
     _FT + code
     for code in (
-        "CSV", "GEOJSON", "ICS", "JSON", "JSON_LD", "KML", "KMZ", "NETCDF",
-        "ODS", "RDFA", "RDF_N_QUADS", "RDF_N_TRIPLES", "RDF_TRIG", "RDF_TURTLE",
-        "RDF_XML", "RSS", "SHP", "XLS", "XLSX", "XML",
+        "CSV",
+        "GEOJSON",
+        "ICS",
+        "JSON",
+        "JSON_LD",
+        "KML",
+        "KMZ",
+        "NETCDF",
+        "ODS",
+        "RDFA",
+        "RDF_N_QUADS",
+        "RDF_N_TRIPLES",
+        "RDF_TRIG",
+        "RDF_TURTLE",
+        "RDF_XML",
+        "RSS",
+        "SHP",
+        "XLS",
+        "XLSX",
+        "XML",
     )
 )
 
@@ -105,7 +147,9 @@ MACHINE_READABLE_FORMAT_URIS = frozenset(
 #: authority — this mirrors the official MQA ``knownLicence``. National licences
 #: (e.g. ``http://dcat-ap.de/def/licenses/...``) are NOT in this authority, so
 #: they count as "unknown" here exactly as data.europa.eu reports them.
-EU_LICENCE_AUTHORITY_PREFIX = "http://publications.europa.eu/resource/authority/licence/"
+EU_LICENCE_AUTHORITY_PREFIX = (
+    "http://publications.europa.eu/resource/authority/licence/"
+)
 
 
 @dataclass(frozen=True)
@@ -116,7 +160,7 @@ class MqaOptions:
     dcat_ap_compliant: bool = True
     #: When True, calls the ITB SHACL API (same logic as the prototype indicator)
     #: instead of using the ``dcat_ap_compliant`` default.
-    shacl_validation: bool = False
+    shacl_validation: bool = True
 
 
 # --- Metric helpers --------------------------------------------------------
@@ -128,6 +172,7 @@ def _dcat_ap_compliance(c: "DatasetContext", o: MqaOptions) -> bool:
         return o.dcat_ap_compliant
     try:
         from utils.shacl_client import validate_graph
+
         return validate_graph(c.graph)["conforms"]
     except Exception:
         return o.dcat_ap_compliant  # fall back to the static default on errors
@@ -159,43 +204,123 @@ class _DistMetric:
 
 #: Metrics measured on the dataset (property noted in the comment).
 DATASET_METRICS: list[_DatasetMetric] = [
-    _DatasetMetric("keyword_availability", FINDABILITY, 30, lambda c, o: bool(c.keywords)),
-    _DatasetMetric("category_availability", FINDABILITY, 30, lambda c, o: bool(c.themes)),
-    _DatasetMetric("spatial_availability", FINDABILITY, 20,
-                   lambda c, o: bool(c.spatial_resources or c.geometries or c.admin_units)),
-    _DatasetMetric("temporal_availability", FINDABILITY, 20,
-                   lambda c, o: bool(c.start_dates or c.end_dates)),
+    _DatasetMetric(
+        "keyword_availability", FINDABILITY, 30, lambda c, o: bool(c.keywords)
+    ),
+    _DatasetMetric(
+        "category_availability", FINDABILITY, 30, lambda c, o: bool(c.themes)
+    ),
+    _DatasetMetric(
+        "spatial_availability",
+        FINDABILITY,
+        20,
+        lambda c, o: bool(c.spatial_resources or c.geometries or c.admin_units),
+    ),
+    _DatasetMetric(
+        "temporal_availability",
+        FINDABILITY,
+        20,
+        lambda c, o: bool(c.start_dates or c.end_dates),
+    ),
     _DatasetMetric("dcat_ap_compliance", INTEROPERABILITY, 30, _dcat_ap_compliance),
-    _DatasetMetric("access_rights_availability", REUSABILITY, 10, lambda c, o: bool(c.access_rights)),
-    _DatasetMetric("access_rights_vocabulary", REUSABILITY, 5,
-                   lambda c, o: any(a in VALID_ACCESS_RIGHT_URIS for a in c.access_rights)),
-    _DatasetMetric("contact_point_availability", REUSABILITY, 20, lambda c, o: bool(c.contact_points)),
-    _DatasetMetric("publisher_availability", REUSABILITY, 10, lambda c, o: bool(c.publishers)),
+    _DatasetMetric(
+        "access_rights_availability",
+        REUSABILITY,
+        10,
+        lambda c, o: bool(c.access_rights),
+    ),
+    _DatasetMetric(
+        "access_rights_vocabulary",
+        REUSABILITY,
+        5,
+        lambda c, o: any(a in VALID_ACCESS_RIGHT_URIS for a in c.access_rights),
+    ),
+    _DatasetMetric(
+        "contact_point_availability",
+        REUSABILITY,
+        20,
+        lambda c, o: bool(c.contact_points),
+    ),
+    _DatasetMetric(
+        "publisher_availability", REUSABILITY, 10, lambda c, o: bool(c.publishers)
+    ),
 ]
 
 #: Metrics measured per distribution; scored from the single best distribution.
 DISTRIBUTION_METRICS: list[_DistMetric] = [
-    _DistMetric("access_url_status_code", ACCESSIBILITY, 50,
-                lambda d, c, o: bool(d.probe) and _http_ok(d.probe.access_status_code)),
-    _DistMetric("download_url_availability", ACCESSIBILITY, 20, lambda d, c, o: d.has_download_url),
-    _DistMetric("download_url_status_code", ACCESSIBILITY, 30,
-                lambda d, c, o: bool(d.probe) and _http_ok(d.probe.download_status_code)),
-    _DistMetric("format_availability", INTEROPERABILITY, 20, lambda d, c, o: bool(d.formats)),
-    _DistMetric("media_type_availability", INTEROPERABILITY, 10, lambda d, c, o: bool(d.media_types)),
-    _DistMetric("format_media_type_vocabulary", INTEROPERABILITY, 10,
-                lambda d, c, o: any(d.formats_in_vocab) or any(d.media_types_in_vocab)),
-    _DistMetric("format_non_proprietary", INTEROPERABILITY, 20,
-                lambda d, c, o: _format_in(NON_PROPRIETARY_FORMAT_URIS, d)),
-    _DistMetric("format_machine_readable", INTEROPERABILITY, 20,
-                lambda d, c, o: _format_in(MACHINE_READABLE_FORMAT_URIS, d)),
-    _DistMetric("license_availability", REUSABILITY, 20, lambda d, c, o: bool(d.licenses)),
-    _DistMetric("known_license", REUSABILITY, 10,
-                lambda d, c, o: any(lic.startswith(EU_LICENCE_AUTHORITY_PREFIX) for lic in d.licenses)),
-    _DistMetric("rights_availability", CONTEXTUALITY, 5,
-                lambda d, c, o: bool(list(c.graph.triples((URIRef(d.distribution_uri), DCTERMS.rights, None))))),
-    _DistMetric("byte_size_availability", CONTEXTUALITY, 5, lambda d, c, o: bool(d.byte_size)),
-    _DistMetric("date_issued_availability", CONTEXTUALITY, 5, lambda d, c, o: bool(d.issued)),
-    _DistMetric("date_modified_availability", CONTEXTUALITY, 5, lambda d, c, o: bool(d.modified)),
+    _DistMetric(
+        "access_url_status_code",
+        ACCESSIBILITY,
+        50,
+        lambda d, c, o: bool(d.probe) and _http_ok(d.probe.access_status_code),
+    ),
+    _DistMetric(
+        "download_url_availability",
+        ACCESSIBILITY,
+        20,
+        lambda d, c, o: d.has_download_url,
+    ),
+    _DistMetric(
+        "download_url_status_code",
+        ACCESSIBILITY,
+        30,
+        lambda d, c, o: bool(d.probe) and _http_ok(d.probe.download_status_code),
+    ),
+    _DistMetric(
+        "format_availability", INTEROPERABILITY, 20, lambda d, c, o: bool(d.formats)
+    ),
+    _DistMetric(
+        "media_type_availability",
+        INTEROPERABILITY,
+        10,
+        lambda d, c, o: bool(d.media_types),
+    ),
+    _DistMetric(
+        "format_media_type_vocabulary",
+        INTEROPERABILITY,
+        10,
+        lambda d, c, o: any(d.formats_in_vocab) or any(d.media_types_in_vocab),
+    ),
+    _DistMetric(
+        "format_non_proprietary",
+        INTEROPERABILITY,
+        20,
+        lambda d, c, o: _format_in(NON_PROPRIETARY_FORMAT_URIS, d),
+    ),
+    _DistMetric(
+        "format_machine_readable",
+        INTEROPERABILITY,
+        20,
+        lambda d, c, o: _format_in(MACHINE_READABLE_FORMAT_URIS, d),
+    ),
+    _DistMetric(
+        "license_availability", REUSABILITY, 20, lambda d, c, o: bool(d.licenses)
+    ),
+    _DistMetric(
+        "known_license",
+        REUSABILITY,
+        10,
+        lambda d, c, o: any(
+            lic.startswith(EU_LICENCE_AUTHORITY_PREFIX) for lic in d.licenses
+        ),
+    ),
+    _DistMetric(
+        "rights_availability",
+        CONTEXTUALITY,
+        5,
+        lambda d, c, o: bool(
+            list(c.graph.triples((URIRef(d.distribution_uri), DCTERMS.rights, None)))
+        ),
+    ),
+    _DistMetric(
+        "byte_size_availability", CONTEXTUALITY, 5, lambda d, c, o: bool(d.byte_size)
+    ),
+    _DistMetric(
+        "date_issued_availability", CONTEXTUALITY, 5, lambda d, c, o: bool(d.issued)
+    ),
+    _DistMetric(
+        "date_modified_availability", CONTEXTUALITY, 5, lambda d, c, o: bool(d.modified)
+    ),
 ]
 
 #: Distribution metrics that fall back to the dataset value when the best
@@ -226,7 +351,9 @@ def _best_distribution(context: DatasetContext, opts: MqaOptions) -> dict[str, b
     best_flags: dict[str, bool] | None = None
     best_total = -1
     for dist in context.distributions:
-        flags = {m.key: bool(m.check(dist, context, opts)) for m in DISTRIBUTION_METRICS}
+        flags = {
+            m.key: bool(m.check(dist, context, opts)) for m in DISTRIBUTION_METRICS
+        }
         total = sum(m.points for m in DISTRIBUTION_METRICS if flags[m.key])
         if total > best_total:
             best_total, best_flags = total, flags
@@ -254,7 +381,12 @@ def score_dataset(context: DatasetContext, options: MqaOptions | None = None) ->
     def record(key: str, dimension: str, points: int, passed: bool) -> None:
         awarded = points if passed else 0
         by_dimension[dimension] += awarded
-        metrics[key] = {"dimension": dimension, "points": awarded, "max": points, "passed": passed}
+        metrics[key] = {
+            "dimension": dimension,
+            "points": awarded,
+            "max": points,
+            "passed": passed,
+        }
 
     for m in DATASET_METRICS:
         record(m.key, m.dimension, m.points, bool(m.check(context, opts)))
