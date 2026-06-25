@@ -4,15 +4,20 @@ Pipeline (used by ``playground/notebooks/10_ground_truth_evaluation.ipynb``):
 
 1. ``run_model_scores(sample_dir, llm)`` — score every RDF with the prototype,
    returning the four dimension scores (0-1) per dataset.
-2. ``load_ground_truth(csv)`` — read the filled rating template (0-3 per
+2. ``load_ground_truth(csv)`` — read the filled rating template (0-5 per
    dimension), derive the overall verdict via :func:`derive_verdict`.
-3. ``merge_scores(...)`` — join, rescale model scores to 0-3 and derive the
+3. ``merge_scores(...)`` — join, rescale model scores to 0-5 and derive the
    model's verdict with the *same* rule (principled mapping).
 4. ``compare(...)`` — per-dimension rank correlation (Spearman, Kendall τ-b) and
    overall-grade agreement (accuracy, Cohen's κ, weighted κ, confusion matrix).
+   Primary metric: weighted Cohen's κ on overall verdict (gut/mittel/schlecht).
+   Secondary metric: Spearman ρ per dimension.
 5. ``make_figures(...)`` — thesis-ready PNGs.
 
 Stats are implemented in pure numpy/pandas (no scipy/sklearn dependency).
+
+Scale: 0–5 per dimension (6 levels, forced-choice, anchored rubric).
+See ``docs/methodik_evaluation_ground_truth_v3.md`` for full methodology.
 """
 
 from __future__ import annotations
@@ -42,11 +47,12 @@ VERDICTS = ["schlecht", "mittel", "gut"]  # ordinal order (low -> high)
 
 
 def derive_verdict(dims: list[float]) -> Optional[str]:
-    """Map four 0-3 dimension values to gut / mittel / schlecht.
+    """Map four 0-5 dimension values to gut / mittel / schlecht.
 
-    Rules (see docs/methodik_evaluation_ground_truth):
-      * gut      = Durchschnitt >= 2.25 und keine Dimension unter 2
-      * schlecht = Durchschnitt <= 1.25 oder mindestens zwei Dimensionen unter 1.5
+    Rules (see docs/methodik_evaluation_ground_truth_v3.md):
+      * gut      = Durchschnitt >= 4.0 und keine Dimension unter 3
+      * schlecht = Durchschnitt <= 2.0 oder (Durchschnitt < 3.5 und
+                   mindestens zwei Dimensionen unter 2)
       * mittel   = sonst
     Returns ``None`` if any dimension is missing (incomplete rating).
     """
@@ -58,11 +64,11 @@ def derive_verdict(dims: list[float]) -> Optional[str]:
     if len(vals) < len(dims):
         return None
     avg = sum(vals) / len(vals)
+    below_3 = sum(1 for d in vals if d < 3)
     below_2 = sum(1 for d in vals if d < 2)
-    below_15 = sum(1 for d in vals if d < 1.5)
-    if avg >= 2.25 and below_2 == 0:
+    if avg >= 4.0 and below_3 == 0:
         return "gut"
-    if avg <= 1.25 or below_15 >= 2:
+    if avg <= 2.0 or (avg < 3.5 and below_2 >= 2):
         return "schlecht"
     return "mittel"
 
@@ -208,13 +214,18 @@ def run_model_scores(sample_dir, llm=None, **service_kwargs) -> pd.DataFrame:
 
 
 def load_ground_truth(csv_path) -> pd.DataFrame:
-    """Read the filled rating template; derive ``gt_overall`` (0-3 mean) and
-    ``gt_verdict``. Rows with incomplete ratings get ``gt_verdict = None``."""
+    """Read the filled rating template; derive ``gt_overall`` (0-5 mean) and
+    ``gt_verdict``. Rows with incomplete ratings get ``gt_verdict = None``.
+    Validates that all GT values are in [0, 5]; warns on out-of-range entries.
+    """
     df = pd.read_csv(csv_path)
     for col in GT_COLS:
         if col not in df.columns:
             df[col] = np.nan
         df[col] = pd.to_numeric(df[col], errors="coerce")
+        out_of_range = df[col].dropna().between(0, 5, inclusive="both") == False  # noqa: E712
+        if out_of_range.any():
+            print(f"WARNING: {col} has {out_of_range.sum()} values outside [0, 5]")
     df["gt_overall"] = df[GT_COLS].mean(axis=1, skipna=False)
     df["gt_verdict"] = df[GT_COLS].apply(
         lambda r: derive_verdict(list(r.values)), axis=1
@@ -224,15 +235,15 @@ def load_ground_truth(csv_path) -> pd.DataFrame:
 
 
 def merge_scores(gt_df: pd.DataFrame, model_df: pd.DataFrame) -> pd.DataFrame:
-    """Join GT and model by ``file``; rescale model dims to 0-3 and derive the
-    model verdict with the same rule."""
+    """Join GT and model by ``file``; rescale model dims to 0-5 and derive the
+    model verdict with the same rule as the manual GT (principled mapping)."""
     merged = gt_df.merge(model_df, on="file", how="inner")
     for dim in MODEL_DIMS:
-        merged[f"model_{dim}_0_3"] = merged[f"model_{dim}"] * 3
-    merged["model_overall_0_3"] = merged[[f"model_{d}_0_3" for d in MODEL_DIMS]].mean(
+        merged[f"model_{dim}_0_5"] = merged[f"model_{dim}"] * 5
+    merged["model_overall_0_5"] = merged[[f"model_{d}_0_5" for d in MODEL_DIMS]].mean(
         axis=1, skipna=True
     )
-    merged["model_verdict"] = merged[[f"model_{d}_0_3" for d in MODEL_DIMS]].apply(
+    merged["model_verdict"] = merged[[f"model_{d}_0_5" for d in MODEL_DIMS]].apply(
         lambda r: derive_verdict(list(r.values)), axis=1
     )
     return merged
@@ -244,7 +255,12 @@ def merge_scores(gt_df: pd.DataFrame, model_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def compare(merged: pd.DataFrame) -> dict:
-    """Per-dimension rank correlations + overall-grade agreement."""
+    """Per-dimension rank correlations + overall-grade agreement.
+
+    Primary metric: weighted Cohen's κ on verdict (gut/mittel/schlecht).
+    Secondary metrics: Spearman ρ / Kendall τ per dimension (0-1 model vs 0-5 GT).
+    See docs/methodik_evaluation_ground_truth_v3.md §5 for rationale.
+    """
     per_dim = {}
     for gt_col, dim in DIM_MAP.items():
         x, y = merged[f"model_{dim}"], merged[gt_col]
@@ -268,11 +284,16 @@ def compare(merged: pd.DataFrame) -> dict:
             if len(graded)
             else float("nan")
         ),
-        "cohen_kappa": cohen_kappa(graded["gt_verdict"], graded["model_verdict"]),
+        # Primary metric (robust to tied ranks on dimension level)
         "weighted_kappa": cohen_kappa(
             graded["gt_verdict"], graded["model_verdict"], weights="linear"
         ),
-        "spearman_overall": spearman(merged["model_overall"], merged["gt_overall"]),
+        # Unweighted kappa for reference
+        "cohen_kappa": cohen_kappa(graded["gt_verdict"], graded["model_verdict"]),
+        # Secondary: overall rank correlation (rescaled model 0-5 vs GT 0-5 mean)
+        "spearman_overall": spearman(
+            merged["model_overall_0_5"], merged["gt_overall"]
+        ),
     }
     return {
         "per_dimension": pd.DataFrame(per_dim).T,
@@ -318,37 +339,39 @@ def make_figures(
         plt.close(fig)
         paths.append(p)
 
-    # 1. Overall scatter (both on 0-3), coloured by GT verdict.
+    # 1. Overall scatter (both on 0-5), coloured by GT verdict.
     fig, ax = plt.subplots(figsize=(6, 6))
     for v in VERDICTS:
         sub = merged[merged["gt_verdict"] == v]
         ax.scatter(
-            sub["model_overall_0_3"],
+            sub["model_overall_0_5"],
             sub["gt_overall"],
             label=v,
             color=_VERDICT_COLOR[v],
             s=45,
             alpha=0.8,
         )
-    ax.plot([0, 3], [0, 3], "k--", lw=1, alpha=0.5)
-    ax.set_xlabel("Modell-Gesamtscore (0-3, reskaliert)")
-    ax.set_ylabel("Ground-Truth Gesamt (0-3)")
+    ax.plot([0, 5], [0, 5], "k--", lw=1, alpha=0.5)
+    ax.set_xlabel("Modell-Gesamtscore (0–5, reskaliert)")
+    ax.set_ylabel("Ground-Truth Gesamt (0–5)")
+    ax.set_xlim(-0.1, 5.1)
+    ax.set_ylim(-0.1, 5.1)
     ax.set_title("Modell vs. Ground Truth (gesamt)")
     ax.legend(title="GT-Urteil")
     save(fig, "overall_scatter")
 
-    # 2. Per-dimension scatter (model 0-1 vs GT 0-3).
+    # 2. Per-dimension scatter (model 0-1 vs GT 0-5).
     fig, axes = plt.subplots(2, 2, figsize=(11, 9))
     for ax, (gt_col, dim) in zip(axes.flat, DIM_MAP.items()):
         ax.scatter(
             merged[f"model_{dim}"], merged[gt_col], s=35, alpha=0.7, color="#1f77b4"
         )
         rho = result["per_dimension"].loc[dim, "spearman"]
-        ax.set_title(f"{dim}  (Spearman ρ={rho:.2f})")
-        ax.set_xlabel("Modell-Score (0-1)")
-        ax.set_ylabel("GT-Bewertung (0-3)")
+        ax.set_title(f"{dim}  (Spearman ρ = {rho:.2f})")
+        ax.set_xlabel("Modell-Score (0–1)")
+        ax.set_ylabel("GT-Bewertung (0–5)")
         ax.set_xlim(-0.05, 1.05)
-        ax.set_ylim(-0.2, 3.2)
+        ax.set_ylim(-0.2, 5.2)
     fig.suptitle("Pro Dimension: Modell-Score vs. manuelle Bewertung")
     fig.tight_layout()
     save(fig, "per_dimension_scatter")

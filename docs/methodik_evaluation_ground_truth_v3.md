@@ -107,6 +107,26 @@ Die zweite „schlecht"-Bedingung ist durch `Durchschnitt < 3.5` abgesichert, da
 Datensatz mit hohem Gesamtschnitt nicht allein durch zwei schwache Einzeldimensionen als
 „schlecht" klassifiziert werden kann.
 
+**Methodische Begründung der Klassifikationslogik:**
+
+Die Schwellenwerte folgen einem **kriteriumsorientierten Ansatz** [glaser1963; popham1969]:
+Die Grenzen repräsentieren inhaltlich definierte Qualitätsniveaus — ein Datensatz mit
+Durchschnitt ≥ 4.0 erfüllt alle wesentlichen Qualitätsanforderungen, unabhängig davon
+wo er relativ zur Stichprobenverteilung liegt. Das Maximum (5.0) ist aspirational, nicht
+Schwelle — konsistent mit der Rubric-Design-Praxis [brookhart2013] und dem MQA-Bändermodell,
+das ebenfalls keinen Perfektscore für "Excellent" verlangt [dataeuropa2024mqa].
+
+Das Kollabieren der 0–5-Ordinalskala in drei inhaltlich bedeutsame Kategorien
+(gut / mittel / schlecht) ist methodisch valide, wenn — wie hier — die Kategorien
+an substantiellen Unterschieden im Konstrukt orientiert sind und nicht willkürlich
+gezogen werden [agresti2010].
+
+Die Aggregationslogik ist **hybrid**: primär kompensatorisch (Durchschnitt über alle
+Dimensionen), abgesichert durch einen konjunktiven Floor (keine Dimension < 3 für "gut",
+≥ 2 Dimensionen < 2 können zu "schlecht" führen). Dieser Hybridansatz verhindert, dass
+ein Extremwert in einer Dimension katastrophale Lücken in anderen wegkompensiert
+[einhorn1971] — ein bekanntes Problem rein kompensatorischer Aggregationsmodelle.
+
 ---
 
 ## 3. Blinde Bewertung (gegen Anchoring-Bias)
@@ -259,5 +279,58 @@ Implementiert in `src/evaluation/ground_truth.py` und
   pages   = {61--77},
   year    = {2008},
   doi     = {10.1177/147078530805000106}
+}
+
+@article{glaser1963,
+  title   = {Instructional Technology and the Measurement of Learning Outcomes:
+             Some Questions},
+  author  = {Glaser, Robert},
+  journal = {American Psychologist},
+  volume  = {18},
+  number  = {8},
+  pages   = {519--521},
+  year    = {1963},
+  doi     = {10.1037/h0049294}
+}
+
+@article{popham1969,
+  title   = {Implications of Criterion-Referenced Measurement},
+  author  = {Popham, W. James and Husek, T. R.},
+  journal = {Journal of Educational Measurement},
+  volume  = {6},
+  number  = {1},
+  pages   = {1--9},
+  year    = {1969},
+  doi     = {10.1111/j.1745-3984.1969.tb00654.x}
+}
+
+@book{brookhart2013,
+  title     = {How to Create and Use Rubrics for Formative Assessment and Grading},
+  author    = {Brookhart, Susan M.},
+  year      = {2013},
+  publisher = {ASCD},
+  address   = {Alexandria, VA}
+}
+
+@book{agresti2010,
+  title     = {Analysis of Ordinal Categorical Data},
+  author    = {Agresti, Alan},
+  year      = {2010},
+  edition   = {2nd},
+  publisher = {Wiley},
+  address   = {Hoboken, NJ},
+  doi       = {10.1002/9780470594001}
+}
+
+@article{einhorn1971,
+  title   = {Use of Nonlinear, Noncompensatory Models as a Function of Task and
+             Amount of Information},
+  author  = {Einhorn, Hillel J.},
+  journal = {Organizational Behavior and Human Performance},
+  volume  = {6},
+  number  = {1},
+  pages   = {1--27},
+  year    = {1971},
+  doi     = {10.1016/0030-5073(71)90031-6}
 }
 ```
