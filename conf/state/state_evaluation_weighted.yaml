@@ -11,7 +11,7 @@ hydra:
     chdir: false
 
 # Directory path for input data
-directory_path: "data/sample_2026-06-18_13-45"
+directory_path: "data/sample_2026-06-25_09-57"
 # If empty: process all files matching extensions in directory_path
 files: []
 
@@ -20,7 +20,7 @@ file_filter:
   # Only process files with these extensions
   extensions: [".rdf"]
   # Include patterns: process only files matching these (filename starts with) e.g. "geo_", "non_geo_"
-  include_patterns: ["geo_gdi-de"]
+  include_patterns: []
   # Exclude patterns: skip files matching these (filename starts with)
   exclude_patterns: []
 
@@ -47,7 +47,7 @@ llm:
 
 logging:
   # Logging level: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
-  level: "INFO"
+  level: "DEBUG"
   # If true, log full details of processing; if false, log only summaries and key events
   verbose: true
 
@@ -77,8 +77,7 @@ quality:
       reuse_license: { fail_score: -0.5 }
 
   # Optional dimension whitelist (default: all dimensions if list is empty or missing)
-  dimension_whitelist:
-    ["accessibility", "reusability", "findability", "expressiveness"]
+  dimension_whitelist: ["accessibility", "reusability", "findability"]
   # If specified, these indicators will be skipped
   indicator_blacklist: []
   # If specified, only these indicators will be processed (overrides blacklist)

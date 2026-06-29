@@ -11,7 +11,7 @@ hydra:
     chdir: false
 
 # Directory path for input data
-directory_path: "data/extreme_cases"
+directory_path: "data/extreme_cases_04"
 # If empty: process all files matching extensions in directory_path
 files: []
 
@@ -76,7 +76,8 @@ quality:
       # reuse_license: { fail_score: -0.5 }
 
   # Optional dimension whitelist (default: all dimensions if list is empty or missing)
-  dimension_whitelist: ["findability", "accessibility", "reusability"]
+  dimension_whitelist:
+    ["findability", "accessibility", "reusability", "expressiveness"]
   # If specified, these indicators will be skipped
   indicator_blacklist: []
   # If specified, only these indicators will be processed (overrides blacklist)

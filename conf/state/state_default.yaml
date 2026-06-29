@@ -11,7 +11,7 @@ hydra:
     chdir: false
 
 # Directory path for input data
-directory_path: "data/sample_2026-06-03_13-33"
+directory_path: "data/sample_2026-06-25_09-57"
 # If empty: process all files matching extensions in directory_path
 files: []
 

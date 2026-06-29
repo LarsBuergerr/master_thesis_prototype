@@ -7,9 +7,9 @@ indicators grouped into four dimensions, and writes structured JSON reports and
 charts per run.
 
 Most indicators are **deterministic** (structural checks, controlled-vocabulary
-lookups, HTTP reachability probes). The *expressiveness* dimension is scored by a
+lookups, HTTP reachability probes). The _expressiveness_ dimension is scored by a
 single **LLM call** per dataset, because judging whether a title or description is
-*meaningful* cannot be done with rules alone.
+_meaningful_ cannot be done with rules alone.
 
 ---
 
@@ -33,43 +33,43 @@ single **LLM call** per dataset, because judging whether a title or description 
 Quality is decomposed into four dimensions (German term in parentheses — the
 dimension keys used in config are the English values):
 
-| Key | Dimension | Question it answers |
-| --- | --- | --- |
-| `findability` | Auffindbarkeit | Can the dataset be found through relevant metadata (keywords, themes, spatial/temporal coverage, dates)? |
-| `accessibility` | Zugänglichkeit | Are the data accessible in usable formats and technically reachable (URLs, formats, media types, HTTP probes)? |
-| `reusability` | Nachnutzbarkeit | Can the data be reused under clear terms (license, access rights, structured publisher & contact)? |
-| `expressiveness` | Aussagekraft | Are the metadata meaningful and self-consistent (title/description quality, coherence)? — **LLM-scored** |
+| Key              | Dimension       | Question it answers                                                                                            |
+| ---------------- | --------------- | -------------------------------------------------------------------------------------------------------------- |
+| `findability`    | Auffindbarkeit  | Can the dataset be found through relevant metadata (keywords, themes, spatial/temporal coverage, dates)?       |
+| `accessibility`  | Zugänglichkeit  | Are the data accessible in usable formats and technically reachable (URLs, formats, media types, HTTP probes)? |
+| `reusability`    | Nachnutzbarkeit | Can the data be reused under clear terms (license, access rights, structured publisher & contact)?             |
+| `expressiveness` | Aussagekraft    | Are the metadata meaningful and self-consistent (title/description quality, coherence)? — **LLM-scored**       |
 
 ### Scoring
 
 Each indicator returns a **status** and a **score in `[0.0, 1.0]`**:
 
-| Status | Meaning |
-| --- | --- |
-| `pass` | All requirements met |
-| `partial` | Some requirements met / mixed results |
-| `fail` | Requirements not met or field missing |
+| Status           | Meaning                                                          |
+| ---------------- | ---------------------------------------------------------------- |
+| `pass`           | All requirements met                                             |
+| `partial`        | Some requirements met / mixed results                            |
+| `fail`           | Requirements not met or field missing                            |
 | `not_applicable` | Cannot be evaluated (e.g. expressiveness with no LLM configured) |
-| `error` | Exception during validation |
+| `error`          | Exception during validation                                      |
 
 Scores aggregate bottom-up:
 
 1. **Dimension score** = weighted average of its indicator scores, using each
-   indicator's *effective weight* (`indicator_weights[id]` if set, else the
+   indicator's _effective weight_ (`indicator_weights[id]` if set, else the
    indicator's default weight of `1.0`).
 2. **Overall score** = weighted average of the dimension scores, using
    `dimension_weights[dim]` (default `1.0` each).
 3. **Grade** is derived from the overall score:
 
    | Score ≥ | Grade |
-   | --- | --- |
-   | 0.90 | A |
-   | 0.75 | B |
-   | 0.60 | C |
-   | 0.40 | D |
-   | else | F |
+   | ------- | ----- |
+   | 0.90    | A     |
+   | 0.75    | B     |
+   | 0.60    | C     |
+   | 0.40    | D     |
+   | else    | F     |
 
-> Note: an indicator's *score* (continuous) and its *pass count* are tracked
+> Note: an indicator's _score_ (continuous) and its _pass count_ are tracked
 > separately — `pass_rate` counts only `pass` statuses, while the dimension
 > score uses the continuous score of every indicator including `partial`.
 
@@ -82,38 +82,38 @@ Scores aggregate bottom-up:
 
 ### Findability (8)
 
-| ID | Checks | RDF field(s) | Net/LLM |
-| --- | --- | --- | --- |
-| `find_keywords_count` | Keyword count in a healthy range (≈3–10) | `dcat:keyword` | — |
-| `find_theme_valid` | Theme present **and** from the EU data-theme vocabulary | `dcat:theme` | — |
-| `find_locn_geometry` | Spatial geometry present | `locn:geometry` | — |
-| `find_adminunitl2` | Admin unit references the DCAT-AP-DE political-geocoding vocabulary | `locn:adminUnitL2` | — |
-| `find_temporal_coverage` | Temporal coverage present with a valid `xsd:date`/`dateTime` | `dcat:startDate`, `dcat:endDate` | — |
-| `find_issued_datetime` | `issued` is a valid date/dateTime (dataset + distributions) | `dct:issued` | — |
-| `find_modified_datetime` | `modified` is a valid date/dateTime (dataset + distributions) | `dct:modified` | — |
-| `find_accrual_periodicity` | Update frequency present and (where possible) from controlled vocabulary | `dct:accrualPeriodicity` | — |
+| ID                         | Checks                                                                   | RDF field(s)                     | Net/LLM |
+| -------------------------- | ------------------------------------------------------------------------ | -------------------------------- | ------- |
+| `find_keywords_count`      | Keyword count in a healthy range (≈3–10)                                 | `dcat:keyword`                   | —       |
+| `find_theme_valid`         | Theme present **and** from the EU data-theme vocabulary                  | `dcat:theme`                     | —       |
+| `find_locn_geometry`       | Spatial geometry present                                                 | `locn:geometry`                  | —       |
+| `find_adminunitl2`         | Admin unit references the DCAT-AP-DE political-geocoding vocabulary      | `locn:adminUnitL2`               | —       |
+| `find_temporal_coverage`   | Temporal coverage present with a valid `xsd:date`/`dateTime`             | `dcat:startDate`, `dcat:endDate` | —       |
+| `find_issued_datetime`     | `issued` is a valid date/dateTime (dataset + distributions)              | `dct:issued`                     | —       |
+| `find_modified_datetime`   | `modified` is a valid date/dateTime (dataset + distributions)            | `dct:modified`                   | —       |
+| `find_accrual_periodicity` | Update frequency present and (where possible) from controlled vocabulary | `dct:accrualPeriodicity`         | —       |
 
 ### Accessibility (8)
 
-| ID | Checks | RDF field(s) | Net/LLM |
-| --- | --- | --- | --- |
-| `acc_download_url` | At least one download URL present | `dcat:downloadURL` | — |
-| `acc_format` | Format present and from the EU file-type vocabulary | `dct:format` | — |
-| `acc_media_type` | Media type matches the IANA media-types vocabulary | `dcat:mediaType` | — |
-| `acc_format_congruence` | Declared format/media-type agree with the actual HTTP `Content-Type` and URL extension | `dct:format`, `dcat:mediaType` + HTTP | **HTTP** |
-| `acc_download_url_response` | Fraction of download URLs returning HTTP `< 400` | `dcat:downloadURL` | **HTTP** |
-| `acc_access_url_response` | Fraction of access URLs returning HTTP `< 400` | `dcat:accessURL` | **HTTP** |
+| ID                            | Checks                                                                                               | RDF field(s)                                                         | Net/LLM         |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | --------------- |
+| `acc_download_url`            | At least one download URL present                                                                    | `dcat:downloadURL`                                                   | —               |
+| `acc_format`                  | Format present and from the EU file-type vocabulary                                                  | `dct:format`                                                         | —               |
+| `acc_media_type`              | Media type matches the IANA media-types vocabulary                                                   | `dcat:mediaType`                                                     | —               |
+| `acc_format_congruence`       | Declared format/media-type agree with the actual HTTP `Content-Type` and URL extension               | `dct:format`, `dcat:mediaType` + HTTP                                | **HTTP**        |
+| `acc_download_url_response`   | Fraction of download URLs returning HTTP `< 400`                                                     | `dcat:downloadURL`                                                   | **HTTP**        |
+| `acc_access_url_response`     | Fraction of access URLs returning HTTP `< 400`                                                       | `dcat:accessURL`                                                     | **HTTP**        |
 | `acc_machine_readable_access` | Best available tier of direct, machine-readable access (CSV/JSON/XML > service > archive > HTML/PDF) | `dcat:accessURL`, `dcat:downloadURL`, `dct:format`, `dcat:mediaType` | HTTP (optional) |
-| `acc_distribution_model` | Distributions follow the DCAT pattern (one dataset, multiple formats) vs. a split-data anti-pattern | distribution properties | — |
+| `acc_distribution_model`      | Distributions follow the DCAT pattern (one dataset, multiple formats) vs. a split-data anti-pattern  | distribution properties                                              | —               |
 
 ### Reusability (4)
 
-| ID | Checks | RDF field(s) | Net/LLM |
-| --- | --- | --- | --- |
-| `reuse_license` | License from the DCAT-AP-DE vocabulary; tiered (free-use > restricted > unknown) | `dct:license` | — |
-| `reuse_access_rights` | `accessRights` references a `RightsStatement` URI from the controlled vocabulary | `dct:accessRights` | — |
-| `reuse_publisher` | Publisher typed as `foaf:Agent` **and** carries an `foaf:name` | `dct:publisher` | — |
-| `reuse_contact` | Contact point modelled as `vcard:Organization` with a valid email and URL | `dcat:contactPoint` | — |
+| ID                    | Checks                                                                           | RDF field(s)        | Net/LLM |
+| --------------------- | -------------------------------------------------------------------------------- | ------------------- | ------- |
+| `reuse_license`       | License from the DCAT-AP-DE vocabulary; tiered (free-use > restricted > unknown) | `dct:license`       | —       |
+| `reuse_access_rights` | `accessRights` references a `RightsStatement` URI from the controlled vocabulary | `dct:accessRights`  | —       |
+| `reuse_publisher`     | Publisher typed as `foaf:Agent` **and** carries an `foaf:name`                   | `dct:publisher`     | —       |
+| `reuse_contact`       | Contact point modelled as `vcard:Organization` with a valid email and URL        | `dcat:contactPoint` | —       |
 
 ### Expressiveness (6) — LLM-scored
 
@@ -121,20 +121,20 @@ All six read their slice from **one** `ExpressivenessAssessment` produced per
 dataset by a single LLM call. With no LLM configured they all report
 `not_applicable` (no tokens spent).
 
-| ID | Checks | RDF field(s) |
-| --- | --- | --- |
-| `expr_title_quality` | Title is descriptive, specific, not cryptic | `dct:title` |
-| `expr_description_quality` | Description is substantive and informative | `dct:description` |
-| `expr_title_description_coherence` | Title and description agree | `dct:title`, `dct:description` |
-| `expr_keyword_quality` | Keywords are relevant, specific, consistently formatted | `dcat:keyword` |
-| `expr_thematic_consistency` | Themes, keywords, title and description are mutually consistent | `dcat:theme`, `dcat:keyword`, `dct:title`, `dct:description` |
-| `expr_contextual_qualifiers` | Needed qualifiers (version, reference period, provisional/estimated/draft …) are present where the content requires them | `dct:issued`, `dct:modified`, `dct:description` |
+| ID                                 | Checks                                                                                                                   | RDF field(s)                                                 |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| `expr_title_quality`               | Title is descriptive, specific, not cryptic                                                                              | `dct:title`                                                  |
+| `expr_description_quality`         | Description is substantive and informative                                                                               | `dct:description`                                            |
+| `expr_title_description_coherence` | Title and description agree                                                                                              | `dct:title`, `dct:description`                               |
+| `expr_keyword_quality`             | Keywords are relevant, specific, consistently formatted                                                                  | `dcat:keyword`                                               |
+| `expr_thematic_consistency`        | Themes, keywords, title and description are mutually consistent                                                          | `dcat:theme`, `dcat:keyword`, `dct:title`, `dct:description` |
+| `expr_contextual_qualifiers`       | Needed qualifiers (version, reference period, provisional/estimated/draft …) are present where the content requires them | `dct:issued`, `dct:modified`, `dct:description`              |
 
 ### Planned / not yet implemented
 
 Captured from the original thesis indicator drafts; **not** registered yet:
 
-- **Accessibility** — *Dateigröße plausibel*: `dcat:byteSize` consistent with the
+- **Accessibility** — _Dateigröße plausibel_: `dcat:byteSize` consistent with the
   actual download size.
 - **Expressiveness** — plausibility of spatial/temporal statements vs. the
   description; plausibility of modified vs. issued dates; contradiction-freeness
@@ -180,7 +180,7 @@ data/                        # Sample RDF/XML records + extrem_cases/
 run_outputs/                 # Generated run reports (timestamped)
 ```
 
-**Dependency direction** is one-way: everything points *down* into `core`, which
+**Dependency direction** is one-way: everything points _down_ into `core`, which
 imports nothing internal. `extraction` builds the `DatasetContext` that every
 indicator reads; `scoring` runs the indicators; `reporting` only consumes
 results. `main.py` is the only place that knows about Hydra and the LLM client.
@@ -197,11 +197,11 @@ performs:
 2. **Build `DatasetContext` once** — all dataset- and distribution-level facts
    derived from the graph, so indicators don't re-query it
    ([dataset_context.py](src/extraction/dataset_context.py)).
-3. **Attach HTTP probes** *only if* an accessibility indicator that consumes them
+3. **Attach HTTP probes** _only if_ an accessibility indicator that consumes them
    will actually run and the dataset has distributions
    ([distribution_probes.py](src/extraction/distribution_probes.py)). Probing is
    shared and capped, so URLs are fetched at most once per run.
-4. **Attach the LLM assessment** *only if* the LLM is configured and at least one
+4. **Attach the LLM assessment** _only if_ the LLM is configured and at least one
    expressiveness indicator will run — a single call scores the whole dimension
    ([semantic_assessment.py](src/extraction/semantic_assessment.py)).
 5. **Run dimensions in parallel** (`ThreadPoolExecutor`, `quality.max_workers`),
@@ -305,44 +305,44 @@ hydra:
     chdir: false
 
 # --- Input ---------------------------------------------------------------
-directory_path: "data/sample_2026-05-18_09-12"   # folder containing the RDF files
+directory_path: "data/sample_2026-05-18_09-12" # folder containing the RDF files
 
-files: []                # explicit file list; if empty, scan the directory
+files: [] # explicit file list; if empty, scan the directory
   # - "geo_open-data-brandenburg.rdf"
 
-file_filter:             # only used when `files` is empty
+file_filter: # only used when `files` is empty
   extensions: [".rdf"]
-  include_patterns: []   # filename prefixes to include (empty = all)
-  exclude_patterns: []   # filename prefixes to skip
+  include_patterns: [] # filename prefixes to include (empty = all)
+  exclude_patterns: [] # filename prefixes to skip
 
 # --- Output --------------------------------------------------------------
-output_dir: "run_outputs/"     # root for all run directories
-run_output_dir_suffix: ""      # optional explicit suffix for the run folder name
-run_output_enabled: true       # false = run in-memory, write nothing to disk
+output_dir: "run_outputs/" # root for all run directories
+run_output_dir_suffix: "" # optional explicit suffix for the run folder name
+run_output_enabled: true # false = run in-memory, write nothing to disk
 
-language: "de"                 # "de" | "en" — language of LLM output & messages
+language: "de" # "de" | "en" — language of LLM output & messages
 
 # --- LLM (expressiveness only) ------------------------------------------
 llm:
-  enabled: false               # master switch; false → expressiveness = not_applicable
-  model: "anthropic/claude-sonnet-4.5"   # any OpenRouter model id
+  enabled: false # master switch; false → expressiveness = not_applicable
+  model: "anthropic/claude-sonnet-4.5" # any OpenRouter model id
   temperature: 0.0
   max_tokens: 10000
 
 # --- Logging -------------------------------------------------------------
 logging:
-  level: "DEBUG"               # DEBUG | INFO | WARNING | ERROR | CRITICAL
+  level: "DEBUG" # DEBUG | INFO | WARNING | ERROR | CRITICAL
   verbose: true
 
 # --- Quality scoring -----------------------------------------------------
 quality:
-  max_workers: 1               # parallel dimension workers
+  max_workers: 1 # parallel dimension workers
 
   # dimension_whitelist: ["findability", "accessibility"]   # default: all
   # indicator_blacklist: ["find_keywords_count"]            # default: none
-  indicator_whitelist: []                                   # default: all
+  indicator_whitelist: [] # default: all
 
-  dimension_weights:           # default 1.0 each
+  dimension_weights: # default 1.0 each
     findability: 0.1
     accessibility: 0.3
     reusability: 0.3
@@ -495,12 +495,15 @@ entry.
 
 ## Troubleshooting
 
-| Symptom | Fix |
-| --- | --- |
-| `Directory does not exist` | Check `state.directory_path` (relative to the repo root). |
-| `No files to process` | Verify the `files` list, or the `include_/exclude_patterns`. Run with `state.logging.level=DEBUG` to see which files matched. |
-| Expressiveness all `not_applicable` | `llm.enabled` is false or `OPENROUTER_API_KEY` is missing — see [Setup](#setup). |
-| `OPENROUTER_API_KEY ... must be set` | Create `.env` from `.env.example` with your key. |
-| `total_cost_usd` looks like a lower bound | Some OpenRouter responses omitted cost accounting; see the `note` in `run_cost_summary.json`. |
-| No output written | `run_output_enabled` is false. |
+| Symptom                                   | Fix                                                                                                                           |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `Directory does not exist`                | Check `state.directory_path` (relative to the repo root).                                                                     |
+| `No files to process`                     | Verify the `files` list, or the `include_/exclude_patterns`. Run with `state.logging.level=DEBUG` to see which files matched. |
+| Expressiveness all `not_applicable`       | `llm.enabled` is false or `OPENROUTER_API_KEY` is missing — see [Setup](#setup).                                              |
+| `OPENROUTER_API_KEY ... must be set`      | Create `.env` from `.env.example` with your key.                                                                              |
+| `total_cost_usd` looks like a lower bound | Some OpenRouter responses omitted cost accounting; see the `note` in `run_cost_summary.json`.                                 |
+| No output written                         | `run_output_enabled` is false.                                                                                                |
+
+```
+
 ```
