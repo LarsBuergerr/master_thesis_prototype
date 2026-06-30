@@ -77,7 +77,7 @@ Scores aggregate bottom-up:
 
 ## Indicator catalogue
 
-26 indicators are registered. IDs are the keys you use in
+29 indicators are registered. IDs are the keys you use in
 `indicator_whitelist` / `indicator_blacklist` / `indicator_weights`.
 
 ### Findability (8)
@@ -93,7 +93,7 @@ Scores aggregate bottom-up:
 | `find_modified_datetime`   | `modified` is a valid date/dateTime (dataset + distributions)            | `dct:modified`                   | —       |
 | `find_accrual_periodicity` | Update frequency present and (where possible) from controlled vocabulary | `dct:accrualPeriodicity`         | —       |
 
-### Accessibility (8)
+### Accessibility (9)
 
 | ID                            | Checks                                                                                               | RDF field(s)                                                         | Net/LLM         |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | --------------- |
@@ -101,19 +101,22 @@ Scores aggregate bottom-up:
 | `acc_format`                  | Format present and from the EU file-type vocabulary                                                  | `dct:format`                                                         | —               |
 | `acc_media_type`              | Media type matches the IANA media-types vocabulary                                                   | `dcat:mediaType`                                                     | —               |
 | `acc_format_congruence`       | Declared format/media-type agree with the actual HTTP `Content-Type` and URL extension               | `dct:format`, `dcat:mediaType` + HTTP                                | **HTTP**        |
+| `acc_format_non_proprietary`  | Fraction of distributions declaring a non-proprietary format URI (EU file-type vocabulary); PASS ≥ 90 %, PARTIAL ≥ 50 % | `dct:format`                                      | —               |
 | `acc_download_url_response`   | Fraction of download URLs returning HTTP `< 400`                                                     | `dcat:downloadURL`                                                   | **HTTP**        |
 | `acc_access_url_response`     | Fraction of access URLs returning HTTP `< 400`                                                       | `dcat:accessURL`                                                     | **HTTP**        |
 | `acc_machine_readable_access` | Best available tier of direct, machine-readable access (CSV/JSON/XML > service > archive > HTML/PDF) | `dcat:accessURL`, `dcat:downloadURL`, `dct:format`, `dcat:mediaType` | HTTP (optional) |
 | `acc_distribution_model`      | Distributions follow the DCAT pattern (one dataset, multiple formats) vs. a split-data anti-pattern  | distribution properties                                              | —               |
 
-### Reusability (4)
+### Reusability (6)
 
-| ID                    | Checks                                                                           | RDF field(s)        | Net/LLM |
-| --------------------- | -------------------------------------------------------------------------------- | ------------------- | ------- |
-| `reuse_license`       | License from the DCAT-AP-DE vocabulary; tiered (free-use > restricted > unknown) | `dct:license`       | —       |
-| `reuse_access_rights` | `accessRights` references a `RightsStatement` URI from the controlled vocabulary | `dct:accessRights`  | —       |
-| `reuse_publisher`     | Publisher typed as `foaf:Agent` **and** carries an `foaf:name`                   | `dct:publisher`     | —       |
-| `reuse_contact`       | Contact point modelled as `vcard:Organization` with a valid email and URL        | `dcat:contactPoint` | —       |
+| ID                          | Checks                                                                                                                         | RDF field(s)              | Net/LLM  |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------- | -------- |
+| `reuse_license`             | License from the DCAT-AP-DE vocabulary; tiered (free-use > restricted > unknown)                                               | `dct:license`             | —        |
+| `reuse_access_rights`       | `accessRights` references a `RightsStatement` URI from the controlled vocabulary                                               | `dct:accessRights`        | —        |
+| `reuse_publisher`           | Publisher typed as `foaf:Agent` **and** carries an `foaf:name`                                                                 | `dct:publisher`           | —        |
+| `reuse_contact`             | Contact point modelled as `vcard:Organization` with a valid email and URL                                                      | `dcat:contactPoint`       | —        |
+| `reuse_contributor_id`      | `dcatde:contributorID` present, exactly one IRI from the contributors vocabulary (DCAT-AP-DE K12/K13); graded 0 / 0.25 / 0.5 / 1.0 | `dcatde:contributorID` | —        |
+| `reuse_dcat_ap_de_compliance` | Zero SHACL violations against DCAT-AP.de v2.0 rules via ITB API; binary PASS/FAIL                                           | all fields                | **HTTP** |
 
 ### Expressiveness (6) — LLM-scored
 
@@ -437,9 +440,9 @@ directory name.
     "overall_pass_rate": 0.62,
     "dimension_scores": { "findability": 0.83, "accessibility": 0.70, ... },
     "dimension_weights": { ... },
-    "total_indicators": 26,
+    "total_indicators": 29,
     "total_pass": 16,
-    "total_fail": 10,
+    "total_fail": 13,
     "quality_grade": "C"
   },
   "errors": [],

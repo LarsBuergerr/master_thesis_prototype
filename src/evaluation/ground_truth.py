@@ -254,11 +254,34 @@ def merge_scores(gt_df: pd.DataFrame, model_df: pd.DataFrame) -> pd.DataFrame:
 # ----------------------------------------------------------------------------
 
 
+def auc_binary(scores, labels, pos_label: str) -> float:
+    """AUC (Wilcoxon-Mann-Whitney) for a binary split of a 3-class verdict.
+
+    Works without scipy: counts concordant pairs between the positive class
+    and all other cases, with ties counted as 0.5.
+    """
+    s = pd.to_numeric(pd.Series(scores).reset_index(drop=True), errors="coerce")
+    l = pd.Series(labels).reset_index(drop=True)
+    mask = s.notna() & l.notna()
+    s, l = s[mask].to_numpy(float), l[mask].to_numpy()
+    pos = s[l == pos_label]
+    neg = s[l != pos_label]
+    if len(pos) == 0 or len(neg) == 0:
+        return float("nan")
+    u = sum(
+        float(p > n) + 0.5 * float(p == n)
+        for p in pos
+        for n in neg
+    )
+    return float(u / (len(pos) * len(neg)))
+
+
 def compare(merged: pd.DataFrame) -> dict:
     """Per-dimension rank correlations + overall-grade agreement.
 
     Primary metric: weighted Cohen's κ on verdict (gut/mittel/schlecht).
     Secondary metrics: Spearman ρ / Kendall τ per dimension (0-1 model vs 0-5 GT).
+    Additional: MAE, RMSE, Bias (0-5 scale), AUC gut-vs-rest, mean Spearman.
     See docs/methodik_evaluation_ground_truth_v3.md §5 for rationale.
     """
     per_dim = {}
@@ -277,23 +300,52 @@ def compare(merged: pd.DataFrame) -> dict:
         }
 
     graded = merged[merged["gt_verdict"].notna() & merged["model_verdict"].notna()]
+
+    # ── Continuous agreement on 0-5 scale ───────────────────────────────────
+    cont = merged[
+        merged["model_overall_0_5"].notna() & merged["gt_overall"].notna()
+    ]
+    diffs = cont["model_overall_0_5"].to_numpy(float) - cont["gt_overall"].to_numpy(float)
+    mae  = float(np.abs(diffs).mean())  if len(diffs) else float("nan")
+    rmse = float(np.sqrt((diffs ** 2).mean())) if len(diffs) else float("nan")
+    bias = float(diffs.mean())          if len(diffs) else float("nan")
+
+    # ── Summary across dimensions ────────────────────────────────────────────
+    dim_spearmans = [
+        v["spearman"] for v in per_dim.values()
+        if not math.isnan(v["spearman"])
+    ]
+    mean_spearman_dims = float(np.mean(dim_spearmans)) if dim_spearmans else float("nan")
+
     overall = {
+        "n_total": int(len(merged)),
         "n_graded": int(len(graded)),
+        # ── Verdict-level (classification) ───────────────────────────────────
         "accuracy": (
             float((graded["gt_verdict"] == graded["model_verdict"]).mean())
-            if len(graded)
-            else float("nan")
+            if len(graded) else float("nan")
         ),
-        # Primary metric (robust to tied ranks on dimension level)
-        "weighted_kappa": cohen_kappa(
+        "weighted_kappa": cohen_kappa(          # primary metric
             graded["gt_verdict"], graded["model_verdict"], weights="linear"
         ),
-        # Unweighted kappa for reference
-        "cohen_kappa": cohen_kappa(graded["gt_verdict"], graded["model_verdict"]),
-        # Secondary: overall rank correlation (rescaled model 0-5 vs GT 0-5 mean)
+        "cohen_kappa": cohen_kappa(             # unweighted for reference
+            graded["gt_verdict"], graded["model_verdict"]
+        ),
+        "auc_gut_vs_rest": auc_binary(          # binary: gut vs. mittel+schlecht
+            graded["model_overall_0_5"], graded["gt_verdict"], pos_label="gut"
+        ),
+        # ── Rank correlation on continuous overall score ──────────────────────
         "spearman_overall": spearman(
             merged["model_overall_0_5"], merged["gt_overall"]
         ),
+        "kendall_overall": kendall_tau(
+            merged["model_overall_0_5"], merged["gt_overall"]
+        ),
+        "mean_spearman_dims": mean_spearman_dims,
+        # ── Continuous error on 0-5 scale ────────────────────────────────────
+        "mae":  mae,   # Ø Abweichung in Skalenpunkten
+        "rmse": rmse,
+        "bias": bias,  # positiv = Modell überschätzt systematisch
     }
     return {
         "per_dimension": pd.DataFrame(per_dim).T,

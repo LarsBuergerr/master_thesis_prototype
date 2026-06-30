@@ -21,7 +21,7 @@ gegen die MQA-Spezifikation belegt werden müssen.
 
 | Indikator | A/B/C | MQA-Metrik(en) | Agg. | Review | Begründung |
 |-----------|-------|----------------|------|--------|------------|
-| `find_keywords_count` | **B** | `keyword_availability` | any | ⚠ | MQA: Presence `dcat:keyword`; Prototyp: Anzahl im Band 2 < k < 6. |
+| `find_keywords_count` | **B** | `keyword_availability` | any | ⚠ | MQA: Presence `dcat:keyword`; Prototyp: Anzahl im Band 3 ≤ k ≤ 10 (Handreichung: min. 3). |
 | `find_theme_valid` | **B** | `category_availability` | any | | MQA: Presence `dcat:theme`; Prototyp: Wert aus kontrolliertem Vokabular. |
 | `find_temporal_coverage` | **A** | `temporal_availability` | any | ⚠ | Beide: zeitliche Abdeckung (start/end). Prototyp prüft zusätzlich `xs:date`/`dateTime`-Typ. |
 | `find_locn_geometry` | **B** | `spatial_availability` | any | | MQA: `dct:spatial` Presence; Prototyp: tatsächliche `locn:geometry` (nicht leer). |

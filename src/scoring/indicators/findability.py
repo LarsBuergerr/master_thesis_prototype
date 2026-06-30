@@ -18,10 +18,16 @@ from utils.datetime_utils import validate_temporal_value
 
 
 class KeywordsCountIndicator(Indicator):
-    """Validates if dataset has appropriate number of keywords (2 < k < 6)."""
+    """Validates if dataset has appropriate number of keywords (3 ≤ k ≤ 10).
+
+    Per Handreichung zur Metadatenqualität (oc.bydata 12/2025): min 3 keywords,
+    max ~15 before quality signal degrades. PASS: 3-10, PARTIAL: 1-2 or 11-15,
+    FAIL: 0 or >15.
+    """
 
     MIN_KEYWORDS = 3
     MAX_KEYWORDS = 10
+    OVER_MAX_PARTIAL = 15
 
     def __init__(self):
         super().__init__(
@@ -29,8 +35,8 @@ class KeywordsCountIndicator(Indicator):
             name_de="Angemessene Anzahl Schlagwörter",
             name_en="Appropriate number of keywords",
             dimension=QualityDimension.FINDABILITY,
-            description_de="Schlagwörter sollten zwischen 2 und 6 vorhanden sein",
-            description_en="Keywords should be between 2 and 6",
+            description_de="Mindestens 3 Schlagwörter (Handreichung); optimal 3–10, PARTIAL bei 1–2 oder 11–15",
+            description_en="At least 3 keywords (Handreichung); optimal 3–10, PARTIAL for 1–2 or 11–15",
             weight=1.0,
         )
 
@@ -43,17 +49,14 @@ class KeywordsCountIndicator(Indicator):
             keywords = context.keywords
             keyword_count = len(keywords)
 
-            if self.MIN_KEYWORDS < keyword_count <= self.MAX_KEYWORDS:
+            if self.MIN_KEYWORDS <= keyword_count <= self.MAX_KEYWORDS:
                 status = IndicatorStatus.PASS
                 score = 1.0
                 message_de = f"Optimale Anzahl Keywords: {keyword_count}"
                 message_en = f"Optimal number of keywords: {keyword_count}"
-            elif (
-                keyword_count in [self.MIN_KEYWORDS - 1, self.MAX_KEYWORDS - 2]
-                or self.MAX_KEYWORDS < keyword_count <= self.MAX_KEYWORDS + 5
-            ):
+            elif 0 < keyword_count < self.MIN_KEYWORDS or self.MAX_KEYWORDS < keyword_count <= self.OVER_MAX_PARTIAL:
                 status = IndicatorStatus.PARTIAL
-                score = 0.7
+                score = 0.5
                 message_de = f"Suboptimale Anzahl Keywords: {keyword_count}"
                 message_en = f"Suboptimal number of keywords: {keyword_count}"
             else:
@@ -79,7 +82,7 @@ class KeywordsCountIndicator(Indicator):
                 details={
                     "keyword_count": keyword_count,
                     "keywords": keywords,
-                    "expected_range": f"{self.MIN_KEYWORDS}-{self.MAX_KEYWORDS} keywords",
+                    "expected_range": f"{self.MIN_KEYWORDS}–{self.MAX_KEYWORDS} keywords (PASS), 1–{self.MIN_KEYWORDS-1} or {self.MAX_KEYWORDS+1}–{self.OVER_MAX_PARTIAL} (PARTIAL)",
                 },
             )
 
