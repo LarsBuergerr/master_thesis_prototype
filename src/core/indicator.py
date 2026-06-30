@@ -68,10 +68,12 @@ class Indicator(ABC):
     _registry: Dict[str, "Indicator"] = {}
 
     #: Whether this indicator emits continuous / multi-tier scores (as opposed
-    #: to a ternary PASS=1.0 / PARTIAL / FAIL=0.0 pattern). Graded indicators
-    #: keep their raw score for PASS / PARTIAL under a ``ScorePolicy`` so their
-    #: fine gradation is preserved; only ``fail_score`` is applied to them on a
-    #: FAIL status. Override to ``True`` in graded subclasses.
+    #: to a ternary PASS=1.0 / PARTIAL / FAIL=0.0 pattern). Under a
+    #: ``ScorePolicy`` graded indicators always contribute their raw continuous
+    #: score regardless of status (the PASS / PARTIAL / FAIL label is
+    #: presentational), so the aggregate score stays cliff-free; only an
+    #: explicit per-indicator ``fail_score`` override can penalise a FAIL.
+    #: Override to ``True`` in graded subclasses.
     GRADED: bool = False
 
     def __init__(

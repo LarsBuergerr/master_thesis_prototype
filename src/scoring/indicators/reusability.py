@@ -34,20 +34,6 @@ DCT_RIGHTS_STATEMENT = DCTERMS.RightsStatement
 _EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 _MAILTO_PREFIX = "mailto:"
 
-# vcard properties that aren't part of the core "must-have" set — each
-# present property adds a small bonus to the contact-point score so richer
-# metadata is rewarded.
-_VCARD_BONUS_PROPERTIES = (
-    VCARD.fn,
-    VCARD["organization-name"],
-    VCARD.hasTelephone,
-    VCARD.hasAddress,
-    VCARD.hasUID,
-    VCARD.role,
-    VCARD.title,
-    VCARD.note,
-)
-
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -504,46 +490,34 @@ class PublisherIndicator(Indicator):
 
 
 class ContactPointIndicator(Indicator):
-    """Validates ``dcat:contactPoint`` is a structured ``vcard:Organization``
-    with a valid ``vcard:hasEmail`` (``mailto:``) and ``vcard:hasURL``.
+    """Validates ``dcat:contactPoint`` carries at least one usable contact
+    channel — ``vcard:hasEmail`` or ``vcard:hasURL`` — per DCAT-AP.de
+    Konvention 01 (contactPoint MUST contain hasEmail OR hasURL).
 
-    Score composition per contact point:
+    Ternary scoring:
 
-    * 0.25 — typed as ``vcard:Organization`` (or any ``vcard:Kind`` subclass)
-    * 0.25 — at least one ``vcard:hasEmail`` is a valid ``mailto:`` address
-    * 0.25 — at least one ``vcard:hasURL`` is a valid http(s) URL
-    * up to +0.25 — bonus 0.05 per additional vcard property present
-      (``fn``, ``organization-name``, ``hasTelephone``, ``hasAddress``,
-      ``hasUID``, ``role``, ``title``, ``note``)
+    * PASS    — a contactPoint is present and carries at least one valid
+      ``vcard:hasEmail`` (``mailto:``) or ``vcard:hasURL`` (http/https)
+    * PARTIAL — a contactPoint is present but carries neither a valid email
+      nor a valid URL
+    * FAIL    — no contactPoint at all
 
     Best contact point across all declarations wins.
     """
 
-    GRADED = True  # composite of base credits + bonus fields — continuous
-
-    BASE_TYPE = 0.25
-    BASE_EMAIL = 0.25
-    BASE_URL = 0.25
-    BONUS_PER_FIELD = 0.05
-    BONUS_CAP = 0.25
-    PASS_THRESHOLD = 0.85
-    PARTIAL_THRESHOLD = 0.5
-
     def __init__(self):
         super().__init__(
             indicator_id="reuse_contact",
-            name_de="Kontaktpunkt als vcard:Organization",
-            name_en="Contact point as vcard:Organization",
+            name_de="Kontaktpunkt mit E-Mail oder URL",
+            name_en="Contact point with email or URL",
             dimension=QualityDimension.REUSABILITY,
             description_de=(
-                "Prüft ob dcat:contactPoint als vcard:Organization mit "
-                "vcard:hasEmail (mailto:) und vcard:hasURL modelliert ist; "
-                "zusätzliche vcard-Felder erhöhen den Score"
+                "Prüft ob dcat:contactPoint mindestens eine vcard:hasEmail "
+                "(mailto:) oder vcard:hasURL trägt (DCAT-AP.de Konvention 01)"
             ),
             description_en=(
-                "Checks that dcat:contactPoint is modelled as a vcard:Organization "
-                "with vcard:hasEmail (mailto:) and vcard:hasURL; extra vcard "
-                "properties increase the score"
+                "Checks that dcat:contactPoint carries at least one "
+                "vcard:hasEmail (mailto:) or vcard:hasURL (DCAT-AP.de Konvention 01)"
             ),
             weight=1.0,
         )
@@ -558,41 +532,18 @@ class ContactPointIndicator(Indicator):
             graph = context.graph
             entries: list[dict[str, Any]] = []
             for obj in _objects(graph, DCAT.contactPoint):
-                typed = (obj, RDF.type, VCARD.Organization) in graph or (
-                    obj,
-                    RDF.type,
-                    VCARD.Kind,
-                ) in graph
                 emails = [str(e) for e in graph.objects(obj, VCARD.hasEmail)]
                 urls = [str(u) for u in graph.objects(obj, VCARD.hasURL)]
                 valid_emails = [e for e in emails if _is_valid_email(e)]
                 valid_urls = [u for u in urls if _is_valid_url(u)]
-                bonus_fields = [
-                    str(prop).rsplit("#", 1)[-1]
-                    for prop in _VCARD_BONUS_PROPERTIES
-                    if (obj, prop, None) in graph
-                ]
-
-                score = 0.0
-                if typed:
-                    score += self.BASE_TYPE
-                if valid_emails:
-                    score += self.BASE_EMAIL
-                if valid_urls:
-                    score += self.BASE_URL
-                bonus = min(self.BONUS_CAP, self.BONUS_PER_FIELD * len(bonus_fields))
-                score = min(1.0, score + bonus)
-
                 entries.append(
                     {
                         "value": str(obj),
-                        "typed_as_vcard": typed,
                         "emails": emails,
                         "valid_emails": valid_emails,
                         "urls": urls,
                         "valid_urls": valid_urls,
-                        "bonus_fields": bonus_fields,
-                        "score": round(score, 4),
+                        "has_channel": bool(valid_emails or valid_urls),
                     }
                 )
 
@@ -612,27 +563,26 @@ class ContactPointIndicator(Indicator):
                     details={"contact_count": 0},
                 )
 
-            best = max(e["score"] for e in entries)
+            with_channel = sum(1 for e in entries if e["has_channel"])
 
-            if best >= self.PASS_THRESHOLD:
+            if with_channel:
                 status = IndicatorStatus.PASS
-            elif best >= self.PARTIAL_THRESHOLD:
-                status = IndicatorStatus.PARTIAL
+                score = 1.0
+                message_de = "Kontaktpunkt mit E-Mail oder URL vorhanden"
+                message_en = "Contact point with email or URL present"
             else:
-                status = IndicatorStatus.FAIL
-
-            message_de = (
-                f"Bester Kontaktpunkt: Score {best:.2f} "
-                f"über {len(entries)} Kontakt(e)"
-            )
-            message_en = (
-                f"Best contact point: score {best:.2f} "
-                f"across {len(entries)} contact(s)"
-            )
+                status = IndicatorStatus.PARTIAL
+                score = 0.5
+                message_de = (
+                    "Kontaktpunkt vorhanden, aber ohne valide E-Mail oder URL"
+                )
+                message_en = (
+                    "Contact point present but without a valid email or URL"
+                )
 
             self.logger.info(
-                f"[{self.indicator_id}] {status.value} score={best:.2f} "
-                f"contacts={len(entries)}"
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"contacts={len(entries)} with_channel={with_channel}"
             )
 
             return IndicatorResult(
@@ -641,11 +591,12 @@ class ContactPointIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=best,
+                score=score,
                 message_de=message_de,
                 message_en=message_en,
                 details={
                     "contact_count": len(entries),
+                    "contacts_with_channel": with_channel,
                     "contacts": entries,
                 },
             )

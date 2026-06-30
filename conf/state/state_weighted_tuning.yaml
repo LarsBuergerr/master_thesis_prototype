@@ -59,12 +59,13 @@ quality:
   # indicator scores are used unchanged (backwards compatible).
   #   - pass_score / partial_score / fail_score: points per status
   #   - fail_score MAY be negative (active penalty for failures)
-  #   - allow_partial: false -> every PARTIAL is counted as FAIL (strict)
-  # Applies fully only to ternary indicators (PASS/PARTIAL/FAIL). Graded/
-  # continuous indicators (GRADED=True: expr_*, acc_machine_readable_access,
-  # acc_format_congruence, acc_*_url_response, acc_distribution_model,
-  # reuse_contact) keep their raw score for PASS/PARTIAL; fail_score applies
-  # to them only on status FAIL.
+  #   - allow_partial: false -> every PARTIAL is counted as FAIL (strict),
+  #     ternary indicators only
+  # Applies to ternary indicators (PASS/PARTIAL/FAIL). Graded/continuous
+  # indicators (GRADED=True: expr_*, acc_machine_readable_access,
+  # acc_format_non_proprietary, acc_*_url_response) always contribute their raw
+  # continuous score regardless of status (the label is presentational); only
+  # an explicit per-indicator fail_score override penalises a graded FAIL.
   scoring:
     pass_score: 1.0
     partial_score: 0.5
@@ -78,8 +79,11 @@ quality:
   # Optional dimension whitelist (default: all dimensions if list is empty or missing)
   dimension_whitelist:
     ["findability", "accessibility", "reusability", "expressiveness"]
-  # If specified, these indicators will be skipped
-  indicator_blacklist: []
+  # If specified, these indicators will be skipped.
+  # acc_format_congruence and acc_distribution_model are excluded from the
+  # model: both are hard to justify and their misjudgement rate is too high to
+  # be defensible (see docs/model_improvement_plan.md §6).
+  indicator_blacklist: ["acc_format_congruence", "acc_distribution_model"]
   # If specified, only these indicators will be processed (overrides blacklist)
   indicator_whitelist: []
 
@@ -108,10 +112,8 @@ quality:
     acc_machine_readable_access: 2.0 # Machine readability: core quality differentiator (FAIR)
     acc_download_url_response: 1.5 # Does the URL actually resolve (HTTP<400)?
     acc_format: 1.0 # Format from controlled vocabulary
-    acc_format_congruence: 1.0 # Format/MIME congruence
     acc_access_url_response: 1.0 # Access URL reachable
     acc_media_type: 0.75 # MediaType from vocabulary: finer, less discriminating
-    acc_distribution_model: 0.5 # Modelling coherence: advanced/nuanced
 
     reuse_license: 2.0 # License: make-or-break for reuse (MQA high)
     reuse_contact: 1.25 # Contact point: trust/support (MQA medium-high)

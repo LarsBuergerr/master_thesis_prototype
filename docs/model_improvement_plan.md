@@ -328,6 +328,12 @@ nachvollziehbares Argument ist — aber nur wenn sie tatsächlich im Code wirkt.
 Dies ist der substanziell wichtigste Punkt für die Aussagekraft des Modells.
 Grundlage: Lektüre von `score_policy.py` und allen GRADED-Indikatoren.
 
+> **Status: umgesetzt.** Die Ebenen 1–3 unten sind im Code implementiert
+> (`score_policy.py`, `reusability.py`, alle drei State-Configs). Die
+> Sensitivitätsanalyse (6.4) bleibt offen. Zusätzlich wurden
+> `acc_format_congruence` und `acc_distribution_model` aus dem Modell entfernt
+> (siehe 6.5).
+
 ### 6.1 Mechanik (verifiziert in `score_policy.py:105-114`)
 
 Für GRADED-Indikatoren (`Indicator.GRADED = True`) gilt:
@@ -367,42 +373,64 @@ Das ist das stärkste Konstrukt: "Anteil der Distributionen, die X erfüllen"
 ist eine direkte, interpretierbare Messung ohne Threshold-Bedarf. Der
 Nutzer-Wunsch, diese Per-Distribution-Logik zu erhalten, ist genau richtig.
 
-**Ebene 2 — FAIL-Klippe für GRADED entfernen.** In `score_policy.py` bei
-`graded and status == FAIL` den `raw_score` durchreichen statt `fail_score`
-(sofern kein expliziter Penalty-Override gesetzt ist). Effekt:
+**Ebene 2 — FAIL-Klippe für GRADED entfernt (umgesetzt).** In
+`score_policy.py:evaluate()` liefern GRADED-Indikatoren ihren `raw_score` jetzt
+bei **jedem** Status (PASS/PARTIAL/FAIL). Effekt:
 
-- Dataset-Score wird eine **stetige, monotone** Funktion der Messung.
-- PASS/PARTIAL/FAIL werden **vollständig präsentational** — keine Cutoffs mehr
+- Dataset-Score ist eine **stetige, monotone** Funktion der Messung.
+- PASS/PARTIAL/FAIL sind **vollständig präsentational** — keine Cutoffs mehr
   zu verteidigen.
-- Der `fail_score`-Penalty-Pfad bleibt für **ternäre** Indikatoren erhalten,
-  wo er sinnvoll ist.
+- Der `fail_score`-Penalty-Pfad bleibt erhalten als **expliziter
+  Per-Indikator-Override** (z. B. `acc_machine_readable_access: {fail_score:
+  -0.5}` in `state_presentation_tuned.yaml`) — nur dann wird ein graded FAIL
+  bestraft, sonst zählt der rohe Score. Für ternäre Indikatoren gilt der
+  `fail_score`-Pfad uneingeschränkt.
 
 Damit reduziert sich die gesamte Verteidigungslast auf zwei Sätze: (1) wie der
 kontinuierliche Score konstruiert wird und (2) dass die Statuslabels rein
 präsentational sind.
 
-**Ebene 3 — Interne Per-Item-Gewichte anchorn oder binarisieren.** Das sind die
-echten Magic Numbers, die den Mittelwert bilden (nicht die Status-Cutoffs):
+**Ebene 3 — Interne Per-Item-Gewichte (umgesetzt, soweit nötig).** Stand nach
+Entfernung der zwei nicht-vertretbaren Indikatoren (6.5):
 
-| Indikator | interner Wert | Empfehlung |
-|-----------|---------------|------------|
-| `acc_machine_readable_access` | Tiers 1.0/0.5/0.0 | **Behalten** — bereits an data.europa.eu-Format-Rating-Tabelle (1–3) gebunden; nur in der Thesis als Quelle nennen |
+| Indikator | interner Wert | Status |
+|-----------|---------------|--------|
+| `acc_machine_readable_access` | Tiers 1.0/0.5/0.0 | **Behalten** — an data.europa.eu-Format-Rating-Tabelle (1–3) gebunden; in der Thesis als Quelle nennen |
 | `acc_format_non_proprietary`, `acc_*_url_response` | binär pro Item | **Behalten** — sauberer Anteil, kein Magic |
-| `acc_format_congruence` | 0.7 für "konsistent mit Warnung" | **Binarisieren**: konsistent=1.0 / inkonsistent=0.0, Warnungen nur in `details`; die 0.7 ist unbelegt |
-| `acc_distribution_model` | 0.6 / 0.4 | Als **ordinale Design-Heuristik** deklarieren — oder auf 1.0/0.0 kollabieren *(Entscheidung nötig)* |
-| `reuse_contact` | 0.25×3 + 0.05-Bonus | Als **gewichtete Checkliste** deklarieren (gleichgewichtig type/email/url, kleiner Reichtums-Bonus) |
+| `reuse_contact` | ~~0.25×3 + 0.05-Bonus~~ | **Umgebaut auf ternär** — PASS (E-Mail oder URL vorhanden) / PARTIAL (Kontakt ohne valide E-Mail/URL) / FAIL (kein Kontakt), gemäß Konvention 01; kein GRADED mehr |
+| `acc_format_congruence`, `acc_distribution_model` | 0.7 bzw. 0.6/0.4 | **Aus dem Modell entfernt** (6.5) |
 
 **Ternäre Indikatoren:** ein einziger globaler `partial_score = 0.5` mit einer
 Semantik ("Eigenschaft vorhanden, aber nicht vollständig valide"). Die
-hartcodierten Per-Indikator-Scores (z. B. das alte Keyword-0.7) sind durch die
-Policy ohnehin tot — entfernen, damit es eine einzige Quelle der Wahrheit gibt.
+hartcodierten Per-Indikator-Scores werden durch die Policy ohnehin überschrieben
+— sie sind konsistent als Vielfache von 0.5 gehalten.
 
 ### 6.4 Optional: Sensitivitätsanalyse als stärkstes Argument
 
 Statt Cutoffs *quellenbasiert* zu belegen (unmöglich), zeigen dass das
 End-Ranking robust gegen ±0.1-Verschiebung der Schwellen ist. Passt direkt zu
 Notebook 10 und ist methodisch das überzeugendste Argument für die Wahl der
-Schwellen.
+verbleibenden Schwellen. **Offen.**
+
+### 6.5 Entfernte Indikatoren: `acc_format_congruence` & `acc_distribution_model`
+
+Beide wurden per `indicator_blacklist` in allen drei State-Configs aus dem
+Modell genommen. Begründung:
+
+- **Schwer zu begründen:** Für beide gibt es kein MQA-Pendant und keine
+  normative Quelle (beide sind Klasse C). `acc_format_congruence` mischt vier
+  heterogene Signale (dct:format, dcat:mediaType, URL-Endung, HTTP
+  Content-Type); `acc_distribution_model` interpretiert die Modellierungsabsicht
+  des Publishers heuristisch.
+- **Hohe Fehleinschätzungsrate:** Beide erzeugen viele False Positives/Negatives
+  (z. B. legitime Format-Varianten als "split-data" fehlklassifiziert,
+  HTTP-Content-Type-Abweichungen bei korrekten Daten). Die Unsicherheit der
+  Messung übersteigt ihren Informationswert und schadet der Gesamtaussage des
+  Modells.
+
+Das aktive Modell umfasst damit **27 Indikatoren** (29 registriert, 2
+geblacklistet). Der Code beider Indikatoren bleibt erhalten (reversibel über die
+Config), läuft aber nicht.
 
 ---
 

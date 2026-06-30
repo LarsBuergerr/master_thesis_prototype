@@ -52,6 +52,21 @@ Each indicator returns a **status** and a **score in `[0.0, 1.0]`**:
 | `not_applicable` | Cannot be evaluated (e.g. expressiveness with no LLM configured) |
 | `error`          | Exception during validation                                      |
 
+**How the status maps to the numeric score** (under a `ScorePolicy`, the default):
+
+- **Ternary indicators** (most): `pass` → `pass_score` (default `1.0`),
+  `partial` → `partial_score` (`0.5`), `fail` → `fail_score` (`0.0`). All three
+  are tunable globally and per indicator.
+- **Graded indicators** (`expr_*`, `acc_machine_readable_access`,
+  `acc_format_non_proprietary`, `acc_*_url_response`) contribute their **raw
+  continuous score regardless of status** — the `pass`/`partial`/`fail` label is
+  presentational, so the aggregate stays a smooth function of the measurement.
+  Only an explicit per-indicator `fail_score` override penalises a graded
+  `fail`.
+
+The **Scoring** column in each catalogue table below states the per-indicator
+rule.
+
 Scores aggregate bottom-up:
 
 1. **Dimension score** = weighted average of its indicator scores, using each
@@ -77,46 +92,53 @@ Scores aggregate bottom-up:
 
 ## Indicator catalogue
 
-29 indicators are registered. IDs are the keys you use in
+29 indicators are registered; **27 are active** — `acc_format_congruence` and
+`acc_distribution_model` are disabled by default via `indicator_blacklist` (hard
+to justify, high misjudgement rate). IDs are the keys you use in
 `indicator_whitelist` / `indicator_blacklist` / `indicator_weights`.
+
+All Findability indicators are **ternary** (status maps to `pass`/`partial`/`fail`
+points per the `ScorePolicy`).
 
 ### Findability (8)
 
-| ID                         | Checks                                                                   | RDF field(s)                     | Net/LLM |
-| -------------------------- | ------------------------------------------------------------------------ | -------------------------------- | ------- |
-| `find_keywords_count`      | Keyword count in a healthy range (≈3–10)                                 | `dcat:keyword`                   | —       |
-| `find_theme_valid`         | Theme present **and** from the EU data-theme vocabulary                  | `dcat:theme`                     | —       |
-| `find_locn_geometry`       | Spatial geometry present                                                 | `locn:geometry`                  | —       |
-| `find_adminunitl2`         | Admin unit references the DCAT-AP-DE political-geocoding vocabulary      | `locn:adminUnitL2`               | —       |
-| `find_temporal_coverage`   | Temporal coverage present with a valid `xsd:date`/`dateTime`             | `dcat:startDate`, `dcat:endDate` | —       |
-| `find_issued_datetime`     | `issued` is a valid date/dateTime (dataset + distributions)              | `dct:issued`                     | —       |
-| `find_modified_datetime`   | `modified` is a valid date/dateTime (dataset + distributions)            | `dct:modified`                   | —       |
-| `find_accrual_periodicity` | Update frequency present and (where possible) from controlled vocabulary | `dct:accrualPeriodicity`         | —       |
+| ID                         | Checks                                                                   | Scoring                                                            | RDF field(s)                     | Net/LLM |
+| -------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------- | -------------------------------- | ------- |
+| `find_keywords_count`      | Keyword count in a healthy range (≈3–10)                                 | PASS 3–10 · PARTIAL 1–2 or 11–15 · FAIL 0 or >15                   | `dcat:keyword`                   | —       |
+| `find_theme_valid`         | Theme present **and** from the EU data-theme vocabulary                  | PASS all themes in vocab · PARTIAL some not in vocab · FAIL none   | `dcat:theme`                     | —       |
+| `find_locn_geometry`       | Spatial geometry present                                                 | PASS present · FAIL absent                                         | `locn:geometry`                  | —       |
+| `find_adminunitl2`         | Admin unit references the DCAT-AP-DE political-geocoding vocabulary      | PASS in vocab · PARTIAL present but not in vocab · FAIL absent     | `locn:adminUnitL2`               | —       |
+| `find_temporal_coverage`   | Temporal coverage present with a valid `xsd:date`/`dateTime`             | PASS valid start or end date · FAIL absent/invalid                | `dcat:startDate`, `dcat:endDate` | —       |
+| `find_issued_datetime`     | `issued` is a valid date/dateTime (dataset + distributions)              | PASS all values valid · PARTIAL some invalid · FAIL absent         | `dct:issued`                     | —       |
+| `find_modified_datetime`   | `modified` is a valid date/dateTime (dataset + distributions)            | PASS all values valid · PARTIAL some invalid · FAIL absent         | `dct:modified`                   | —       |
+| `find_accrual_periodicity` | Update frequency present and (where possible) from controlled vocabulary | PASS present & in vocab · PARTIAL present not in vocab · FAIL absent | `dct:accrualPeriodicity`       | —       |
 
-### Accessibility (9)
+### Accessibility (7 active + 2 disabled)
 
-| ID                            | Checks                                                                                               | RDF field(s)                                                         | Net/LLM         |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | --------------- |
-| `acc_download_url`            | At least one download URL present                                                                    | `dcat:downloadURL`                                                   | —               |
-| `acc_format`                  | Format present and from the EU file-type vocabulary                                                  | `dct:format`                                                         | —               |
-| `acc_media_type`              | Media type matches the IANA media-types vocabulary                                                   | `dcat:mediaType`                                                     | —               |
-| `acc_format_congruence`       | Declared format/media-type agree with the actual HTTP `Content-Type` and URL extension               | `dct:format`, `dcat:mediaType` + HTTP                                | **HTTP**        |
-| `acc_format_non_proprietary`  | Fraction of distributions declaring a non-proprietary format URI (EU file-type vocabulary); PASS ≥ 90 %, PARTIAL ≥ 50 % | `dct:format`                                      | —               |
-| `acc_download_url_response`   | Fraction of download URLs returning HTTP `< 400`                                                     | `dcat:downloadURL`                                                   | **HTTP**        |
-| `acc_access_url_response`     | Fraction of access URLs returning HTTP `< 400`                                                       | `dcat:accessURL`                                                     | **HTTP**        |
-| `acc_machine_readable_access` | Best available tier of direct, machine-readable access (CSV/JSON/XML > service > archive > HTML/PDF) | `dcat:accessURL`, `dcat:downloadURL`, `dct:format`, `dcat:mediaType` | HTTP (optional) |
-| `acc_distribution_model`      | Distributions follow the DCAT pattern (one dataset, multiple formats) vs. a split-data anti-pattern  | distribution properties                                              | —               |
+| ID                            | Checks                                                                                               | Scoring                                                                              | RDF field(s)                                                         | Net/LLM         |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------- | --------------- |
+| `acc_download_url`            | At least one download URL present                                                                    | PASS present · FAIL absent                                                            | `dcat:downloadURL`                                                   | —               |
+| `acc_format`                  | Format present and from the EU file-type vocabulary                                                  | PASS all in vocab · PARTIAL some in vocab · FAIL none                                 | `dct:format`                                                         | —               |
+| `acc_media_type`              | Media type matches the IANA media-types vocabulary                                                   | PASS all IANA-URI & in vocab · PARTIAL some valid · FAIL none                         | `dcat:mediaType`                                                     | —               |
+| `acc_format_non_proprietary`  | Fraction of distributions declaring a non-proprietary format URI (EU file-type vocabulary)           | **Graded** = fraction non-proprietary (raw score); label PASS ≥ 0.9 · PARTIAL ≥ 0.5  | `dct:format`                                                         | —               |
+| `acc_download_url_response`   | Fraction of download URLs returning HTTP `< 400`                                                     | **Graded** = fraction HTTP < 400 (raw score); label PASS ≥ 0.9 · PARTIAL ≥ 0.5       | `dcat:downloadURL`                                                   | **HTTP**        |
+| `acc_access_url_response`     | Fraction of access URLs returning HTTP `< 400`                                                       | **Graded** = fraction HTTP < 400 (raw score); label PASS ≥ 0.9 · PARTIAL ≥ 0.5       | `dcat:accessURL`                                                     | **HTTP**        |
+| `acc_machine_readable_access` | Best available tier of direct, machine-readable access (CSV/JSON/XML > service > archive > HTML/PDF) | **Graded** = mean tier (high 1.0 / mid 0.5 / none 0.0) over all dists; label PASS ≥ 0.8 · PARTIAL ≥ 0.4 | `dcat:accessURL`, `dcat:downloadURL`, `dct:format`, `dcat:mediaType` | HTTP (optional) |
+| ~~`acc_format_congruence`~~   | Declared format/media-type agree with the actual HTTP `Content-Type` and URL extension               | 🚫 **Disabled** (blacklisted by default — see catalogue note)                         | `dct:format`, `dcat:mediaType` + HTTP                                | **HTTP**        |
+| ~~`acc_distribution_model`~~  | Distributions follow the DCAT pattern (one dataset, multiple formats) vs. a split-data anti-pattern  | 🚫 **Disabled** (blacklisted by default — see catalogue note)                         | distribution properties                                              | —               |
 
 ### Reusability (6)
 
-| ID                          | Checks                                                                                                                         | RDF field(s)              | Net/LLM  |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------- | -------- |
-| `reuse_license`             | License from the DCAT-AP-DE vocabulary; tiered (free-use > restricted > unknown)                                               | `dct:license`             | —        |
-| `reuse_access_rights`       | `accessRights` references a `RightsStatement` URI from the controlled vocabulary                                               | `dct:accessRights`        | —        |
-| `reuse_publisher`           | Publisher typed as `foaf:Agent` **and** carries an `foaf:name`                                                                 | `dct:publisher`           | —        |
-| `reuse_contact`             | Contact point modelled as `vcard:Organization` with a valid email and URL                                                      | `dcat:contactPoint`       | —        |
-| `reuse_contributor_id`      | `dcatde:contributorID` present, exactly one IRI from the contributors vocabulary (DCAT-AP-DE K12/K13); graded 0 / 0.25 / 0.5 / 1.0 | `dcatde:contributorID` | —        |
-| `reuse_dcat_ap_de_compliance` | Zero SHACL violations against DCAT-AP.de v2.0 rules via ITB API; binary PASS/FAIL                                           | all fields                | **HTTP** |
+All Reusability indicators are **ternary**.
+
+| ID                          | Checks                                                                                             | Scoring                                                                  | RDF field(s)              | Net/LLM  |
+| --------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------- | -------- |
+| `reuse_license`             | License from the DCAT-AP-DE vocabulary; tiered (free-use > restricted > unknown)                   | PASS free-use license · PARTIAL restricted license · FAIL not in vocab / absent | `dct:license`     | —        |
+| `reuse_access_rights`       | `accessRights` references a `RightsStatement` URI from the controlled vocabulary                   | PASS URI in vocab · PARTIAL set but not in vocab · FAIL absent           | `dct:accessRights`        | —        |
+| `reuse_publisher`           | Publisher typed as `foaf:Agent` **and** carries an `foaf:name`                                     | PASS Agent + name · PARTIAL one of the two · FAIL neither / absent       | `dct:publisher`           | —        |
+| `reuse_contact`             | Contact point carries a valid email **or** URL (DCAT-AP-DE Konvention 01)                          | PASS valid email or URL · PARTIAL contact but neither · FAIL no contact  | `dcat:contactPoint`       | —        |
+| `reuse_contributor_id`      | `dcatde:contributorID` present, exactly one IRI from the contributors vocabulary (DCAT-AP-DE K12/K13) | PASS exactly one IRI in vocab · FAIL absent / not in vocab / multiple    | `dcatde:contributorID`    | —        |
+| `reuse_dcat_ap_de_compliance` | Zero SHACL violations against DCAT-AP.de v2.0 rules via ITB API                                   | PASS 0 violations · FAIL ≥ 1 violation (binary)                          | all fields                | **HTTP** |
 
 ### Expressiveness (6) — LLM-scored
 
@@ -124,14 +146,19 @@ All six read their slice from **one** `ExpressivenessAssessment` produced per
 dataset by a single LLM call. With no LLM configured they all report
 `not_applicable` (no tokens spent).
 
-| ID                                 | Checks                                                                                                                   | RDF field(s)                                                 |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
-| `expr_title_quality`               | Title is descriptive, specific, not cryptic                                                                              | `dct:title`                                                  |
-| `expr_description_quality`         | Description is substantive and informative                                                                               | `dct:description`                                            |
-| `expr_title_description_coherence` | Title and description agree                                                                                              | `dct:title`, `dct:description`                               |
-| `expr_keyword_quality`             | Keywords are relevant, specific, consistently formatted                                                                  | `dcat:keyword`                                               |
-| `expr_thematic_consistency`        | Themes, keywords, title and description are mutually consistent                                                          | `dcat:theme`, `dcat:keyword`, `dct:title`, `dct:description` |
-| `expr_contextual_qualifiers`       | Needed qualifiers (version, reference period, provisional/estimated/draft …) are present where the content requires them | `dct:issued`, `dct:modified`, `dct:description`              |
+All six are **graded**: the score is the LLM's continuous criterion score in
+`[0, 1]` (used directly in the aggregate), and the `pass`/`partial`/`fail` label
+is the LLM's own per-criterion verdict — presentational only. Without an LLM →
+`not_applicable`.
+
+| ID                                 | Checks                                                                                                                   | Scoring                                  | RDF field(s)                                                 |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- | ------------------------------------------------------------ |
+| `expr_title_quality`               | Title is descriptive, specific, not cryptic                                                                              | Graded 0–1 (LLM); NA without LLM         | `dct:title`                                                  |
+| `expr_description_quality`         | Description is substantive and informative                                                                               | Graded 0–1 (LLM); NA without LLM         | `dct:description`                                            |
+| `expr_title_description_coherence` | Title and description agree                                                                                              | Graded 0–1 (LLM); NA without LLM         | `dct:title`, `dct:description`                               |
+| `expr_keyword_quality`             | Keywords are relevant, specific, consistently formatted                                                                  | Graded 0–1 (LLM); NA without LLM         | `dcat:keyword`                                               |
+| `expr_thematic_consistency`        | Themes, keywords, title and description are mutually consistent                                                          | Graded 0–1 (LLM); NA without LLM         | `dcat:theme`, `dcat:keyword`, `dct:title`, `dct:description` |
+| `expr_contextual_qualifiers`       | Needed qualifiers (version, reference period, provisional/estimated/draft …) are present where the content requires them | Graded 0–1 (LLM); NA without LLM         | `dct:issued`, `dct:modified`, `dct:description`              |
 
 ### Planned / not yet implemented
 

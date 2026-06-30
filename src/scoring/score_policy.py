@@ -13,12 +13,16 @@ Design (agreed with the thesis author):
   PARTIAL → ``partial_score``, FAIL → ``fail_score``.
 * **Graded indicators** (``Indicator.GRADED = True`` — continuous or multi-tier
   scores such as the LLM expressiveness criteria, ``acc_machine_readable_access``
-  tiers, ``acc_format_congruence``, ``reuse_contributor_id``) keep their *raw*
-  score for PASS / PARTIAL so their fine gradation is preserved. ``fail_score``
-  still applies to them when the status is FAIL, so a negative-penalty policy
-  works uniformly.
+  tiers and the per-distribution fraction metrics) **always contribute their
+  *raw* continuous score, regardless of status**. The PASS / PARTIAL / FAIL
+  label is presentational only, so the dataset score stays a smooth, cliff-free
+  function of the underlying measurement — there is no discontinuity at a status
+  boundary. The single exception is an *explicit* per-indicator ``fail_score``
+  override, which an operator may opt into to actively penalise a FAIL on one
+  specific graded metric.
 * ``allow_partial = False`` collapses every PARTIAL to FAIL (strict mode: only a
-  full PASS earns credit).
+  full PASS earns credit). This applies to **ternary** indicators only; graded
+  indicators are outside the point-mapping system entirely.
 * ``fail_score`` may be **negative** to actively penalise failures.
 * NOT_APPLICABLE / ERROR results are never remapped — they keep their raw score.
 
@@ -89,13 +93,25 @@ class ScorePolicy:
             status: the indicator's emitted status
             raw_score: the indicator's own computed score
             graded: ``True`` if the indicator emits continuous / multi-tier
-                scores (``Indicator.GRADED``); such indicators keep their raw
-                score for PASS / PARTIAL.
+                scores (``Indicator.GRADED``); such indicators always contribute
+                their raw score, the status label being presentational only.
         """
         if status not in _REMAPPABLE:
             # NOT_APPLICABLE / ERROR — leave as the indicator reported it.
             return status, raw_score
 
+        # Graded indicators contribute their raw continuous score; the status
+        # label is presentational, keeping the dataset score cliff-free. The
+        # only exception is an *explicit* per-indicator fail_score override,
+        # which an operator may opt into to penalise a FAIL on a graded metric.
+        if graded:
+            if status == IndicatorStatus.FAIL:
+                override = self.overrides.get(indicator_id)
+                if override is not None and "fail_score" in override:
+                    return status, float(override["fail_score"])
+            return status, raw_score
+
+        # --- Ternary indicators: fully governed by the policy ---
         allow_partial = self._param(indicator_id, "allow_partial")
 
         # Strict mode: a partial result counts as a failure (status + score).
@@ -106,12 +122,10 @@ class ScorePolicy:
             return status, self._param(indicator_id, "fail_score")
 
         if status == IndicatorStatus.PASS:
-            score = raw_score if graded else self._param(indicator_id, "pass_score")
-            return status, score
+            return status, self._param(indicator_id, "pass_score")
 
         # PARTIAL (and allow_partial is True)
-        score = raw_score if graded else self._param(indicator_id, "partial_score")
-        return status, score
+        return status, self._param(indicator_id, "partial_score")
 
     def score_for(
         self,

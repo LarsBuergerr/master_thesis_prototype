@@ -11,7 +11,7 @@ hydra:
     chdir: false
 
 # Directory path for input data
-directory_path: "data/sample_2026-06-25_09-57"
+directory_path: "data/extreme_cases_03"
 # If empty: process all files matching extensions in directory_path
 files: []
 
@@ -79,7 +79,7 @@ quality:
   # Optional dimension whitelist (default: all dimensions if list is empty or missing)
   dimension_whitelist: ["accessibility", "reusability", "findability"]
   # If specified, these indicators will be skipped
-  indicator_blacklist: []
+  indicator_blacklist: [acc_distribution_model, acc_format_congruence]
   # If specified, only these indicators will be processed (overrides blacklist)
   indicator_whitelist: []
 
