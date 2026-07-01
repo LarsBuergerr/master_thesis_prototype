@@ -401,6 +401,9 @@ class QualityMetricsService:
         avg_score = (
             total_score / total_indicator_weight if total_indicator_weight > 0 else 0.0
         )
+        # Negative fail_score penalties can push a dimension below zero. Floor it
+        # at 0 so no dimension — and therefore no overall score — can go negative.
+        avg_score = max(0.0, avg_score)
         dimension_weight = self.dimension_weights.get(dimension.value, 1.0)
 
         return {

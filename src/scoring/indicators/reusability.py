@@ -23,6 +23,7 @@ from extraction.vocabularies import (
     VALID_ACCESS_RIGHT_URIS,
     VALID_CONTRIBUTOR_ID_URIS,
     VALID_LIMITATIONS_ON_PUBLIC_ACCESS_URIS,
+    VALID_PLANNED_AVAILABILITY_URIS,
 )
 
 VCARD = Namespace("http://www.w3.org/2006/vcard/ns#")
@@ -81,13 +82,13 @@ class LicenseIndicator(Indicator):
 
     * 1.0 — at least one license URI is in the vocab AND classified as
       ``Freie Nutzung`` (free use)
-    * 0.5 — at least one license URI is in the vocab but only as
-      ``Eingeschränkte Nutzung`` (restricted use)
-    * 0.0 — license set but no URI matches the vocab, or no license at all
+    * 0.0 — otherwise: only ``Eingeschränkte Nutzung`` (restricted use), a URI
+      not in the vocab, or no license at all
 
-    Match is against ``skos:exactMatch`` URIs from ``licenses.rdf``. Best
-    license across all dataset / distribution declarations wins (the
-    indicator is "at least one acceptable license").
+    A restricted-use license is treated as a FAIL — only free-use licenses earn
+    credit. Match is against ``skos:exactMatch`` URIs from ``licenses.rdf``.
+    Best license across all distribution declarations wins (the indicator is
+    "at least one free-use license").
     """
 
     def __init__(self):
@@ -116,13 +117,16 @@ class LicenseIndicator(Indicator):
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            sourced = context.collect_licenses()
-            dataset_count = sum(1 for sv in sourced if sv.source_kind == "dataset")
-            dist_count = sum(1 for sv in sourced if sv.source_kind == "distribution")
+            sourced = [
+                sv
+                for sv in context.collect_licenses()
+                if sv.source_kind == "distribution"
+            ]
+            dist_count = len(sourced)
 
             if not sourced:
                 self.logger.info(
-                    f"[{self.indicator_id}] FAIL score=0.00 no license set"
+                    f"[{self.indicator_id}] FAIL score=0.00 no distribution license set"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -131,11 +135,10 @@ class LicenseIndicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Keine Lizenz angegeben",
-                    message_en="No license specified",
+                    message_de="Keine Lizenz auf Distributionsebene angegeben",
+                    message_en="No license specified at distribution level",
                     details={
                         "license_count": 0,
-                        "dataset_count": 0,
                         "distribution_count": 0,
                     },
                 )
@@ -146,8 +149,9 @@ class LicenseIndicator(Indicator):
                     tier = "free"
                     score = 1.0
                 elif sv.value in RESTRICTED_LICENSE_URIS:
+                    # Restricted use is not accepted — treated as FAIL.
                     tier = "restricted"
-                    score = 0.5
+                    score = 0.0
                 else:
                     tier = "unknown"
                     score = 0.0
@@ -162,18 +166,22 @@ class LicenseIndicator(Indicator):
                 )
 
             best = max(c["score"] for c in classified)
-            best_tier = next(c["tier"] for c in classified if c["score"] == best)
+            has_free = any(c["tier"] == "free" for c in classified)
+            has_restricted = any(c["tier"] == "restricted" for c in classified)
 
-            if best >= 1.0:
+            if has_free:
                 status = IndicatorStatus.PASS
+                best_tier = "free"
                 message_de = "Freie Lizenz aus dem Vokabular gefunden"
                 message_en = "Free-use license from the vocabulary found"
-            elif best >= 0.5:
-                status = IndicatorStatus.PARTIAL
-                message_de = "Lizenz aus dem Vokabular, aber Nutzung eingeschränkt"
-                message_en = "License from the vocabulary but use is restricted"
+            elif has_restricted:
+                status = IndicatorStatus.FAIL
+                best_tier = "restricted"
+                message_de = "Nur eingeschränkte Lizenz — nicht akzeptiert"
+                message_en = "Only a restricted-use license — not accepted"
             else:
                 status = IndicatorStatus.FAIL
+                best_tier = "unknown"
                 message_de = (
                     "Lizenz angegeben, aber URI nicht im kontrollierten Vokabular"
                 )
@@ -183,8 +191,7 @@ class LicenseIndicator(Indicator):
 
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={best:.2f} "
-                f"best_tier={best_tier} licenses={len(sourced)} "
-                f"(dataset={dataset_count} distribution={dist_count})"
+                f"best_tier={best_tier} distribution_licenses={len(sourced)}"
             )
 
             return IndicatorResult(
@@ -198,7 +205,6 @@ class LicenseIndicator(Indicator):
                 message_en=message_en,
                 details={
                     "license_count": len(sourced),
-                    "dataset_count": dataset_count,
                     "distribution_count": dist_count,
                     "best_tier": best_tier,
                     "licenses": classified,
@@ -573,12 +579,8 @@ class ContactPointIndicator(Indicator):
             else:
                 status = IndicatorStatus.PARTIAL
                 score = 0.5
-                message_de = (
-                    "Kontaktpunkt vorhanden, aber ohne valide E-Mail oder URL"
-                )
-                message_en = (
-                    "Contact point present but without a valid email or URL"
-                )
+                message_de = "Kontaktpunkt vorhanden, aber ohne valide E-Mail oder URL"
+                message_en = "Contact point present but without a valid email or URL"
 
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={score:.2f} "
@@ -859,6 +861,126 @@ class DcatApDeValidationIndicator(Indicator):
             )
 
 
+class AvailabilityIndicator(Indicator):
+    """Validates ``dcatap:availability`` against the DCAT-AP Planned Availability
+    vocabulary (``planned-availability.rdf``).
+
+    The field is collected from the ``dcat:Dataset`` **and** every
+    ``dcat:Distribution`` and evaluated together in a single indicator.
+
+    * PASS    — availability present and every value is in the vocabulary
+    * PARTIAL — availability present but at least one value is not in the vocabulary
+    * FAIL    — no availability set anywhere
+    """
+
+    def __init__(self):
+        super().__init__(
+            indicator_id="reuse_availability",
+            name_de="Verfügbarkeit aus kontrolliertem Vokabular",
+            name_en="Availability from controlled vocabulary",
+            dimension=QualityDimension.REUSABILITY,
+            description_de=(
+                "Prüft ob dcatap:availability (Dataset und Distributionen) aus dem "
+                "Planned-Availability-Vokabular stammt"
+            ),
+            description_en=(
+                "Checks that dcatap:availability (dataset and distributions) is from "
+                "the Planned Availability vocabulary"
+            ),
+            weight=1.0,
+        )
+
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+
+            entries: list[dict[str, Any]] = []
+            for value in context.availability:
+                entries.append({"value": value, "source": "dataset"})
+            for dist in context.distributions:
+                for value in dist.availability:
+                    entries.append(
+                        {
+                            "value": value,
+                            "source": "distribution",
+                            "distribution_uri": dist.distribution_uri,
+                        }
+                    )
+
+            if not entries:
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 no dcatap:availability"
+                )
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=IndicatorStatus.FAIL,
+                    score=0.0,
+                    message_de="Keine dcatap:availability angegeben",
+                    message_en="No dcatap:availability specified",
+                    details={"availability_count": 0},
+                )
+
+            for e in entries:
+                e["in_vocab"] = e["value"] in VALID_PLANNED_AVAILABILITY_URIS
+            valid = [e for e in entries if e["in_vocab"]]
+            invalid = [e for e in entries if not e["in_vocab"]]
+
+            if not invalid:
+                status = IndicatorStatus.PASS
+                score = 1.0
+                message_de = "Alle Verfügbarkeitswerte aus dem Vokabular"
+                message_en = "All availability values from the vocabulary"
+            else:
+                status = IndicatorStatus.PARTIAL
+                score = 0.5
+                message_de = "Nicht alle Verfügbarkeitswerte aus dem Vokabular"
+                message_en = "Not all availability values from the vocabulary"
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"valid={len(valid)}/{len(entries)}"
+            )
+
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=status,
+                score=score,
+                message_de=message_de,
+                message_en=message_en,
+                details={
+                    "availability_count": len(entries),
+                    "valid_count": len(valid),
+                    "invalid_count": len(invalid),
+                    "entries": entries,
+                },
+            )
+
+        except Exception as e:
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.ERROR,
+                score=0.0,
+                message_de="Fehler bei der Validierung",
+                message_en="Validation error",
+                error=str(e),
+            )
+
+
 # Auto-register indicators when imported
 _license_indicator = LicenseIndicator()
 _access_rights_indicator = AccessRightsIndicator()
@@ -866,3 +988,4 @@ _publisher_indicator = PublisherIndicator()
 _contact_point_indicator = ContactPointIndicator()
 _contributor_id_indicator = ContributorIDIndicator()
 _dcat_ap_de_validation = DcatApDeValidationIndicator()
+_availability_indicator = AvailabilityIndicator()

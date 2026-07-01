@@ -18,6 +18,7 @@ VALID_FILE_TYPE_URIS = load_skos_concept_uris("file_type.rdf")
 VALID_POLITICAL_GEOCODING_LEVEL_URIS = load_skos_concept_uris(
     "political_geocoding_level.rdf"
 )
+VALID_PLANNED_AVAILABILITY_URIS = load_skos_concept_uris("planned-availability.rdf")
 VALID_ACCESS_RIGHT_URIS = load_skos_concept_uris("access-right.rdf")
 VALID_LIMITATIONS_ON_PUBLIC_ACCESS_URIS = load_skos_concept_uris(
     "LimitationsOnPublicAccess.de.rdf"
@@ -35,6 +36,7 @@ __all__ = [
     "VALID_FREQUENCY_URIS",
     "VALID_FILE_TYPE_URIS",
     "VALID_POLITICAL_GEOCODING_LEVEL_URIS",
+    "VALID_PLANNED_AVAILABILITY_URIS",
     "VALID_ACCESS_RIGHT_URIS",
     "VALID_LIMITATIONS_ON_PUBLIC_ACCESS_URIS",
     "VALID_CONTRIBUTOR_ID_URIS",

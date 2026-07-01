@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF
   xmlns:dct="http://purl.org/dc/terms/"
-  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-  xmlns:dcat="http://www.w3.org/ns/dcat#"
   xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
   xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
   xmlns:foaf="http://xmlns.com/foaf/0.1/"
-  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 >
   <dcat:Dataset rdf:about="https://www-genesis.destatis.de/datenbank/online/statistic/12411/table/12411-0001">
     <dct:title>Bevölkerung: Deutschland, Stichtag</dct:title>
@@ -26,15 +27,22 @@
     <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-20T00:00:00</dct:issued>
     <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-20T00:00:00</dct:modified>
     <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/SOCI"/>
-    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
     <dct:relation>
       <rdfs:Resource rdf:about="https://www-genesis.destatis.de/genesis/online?operation=table&amp;code=12411-0001"/>
     </dct:relation>
     <dcat:contactPoint>
-      <vcard:Organization rdf:nodeID="contact-destatis-genesis">
+      <vcard:Organization rdf:nodeID="contact-destatis-perfect">
         <vcard:fn>Statistisches Bundesamt (Destatis)</vcard:fn>
         <vcard:hasEmail rdf:resource="mailto:post@destatis.de"/>
         <vcard:hasURL rdf:resource="https://www.destatis.de/DE/Service/Impressum/_inhalt.html"/>
+        <vcard:hasTelephone rdf:resource="tel:+49611750"/>
+        <vcard:hasStreetAddress>Gustav-Stresemann-Ring 11</vcard:hasStreetAddress>
+        <vcard:hasLocality>Wiesbaden</vcard:hasLocality>
+        <vcard:hasPostalCode>65189</vcard:hasPostalCode>
+        <vcard:hasCountryName>Deutschland</vcard:hasCountryName>
       </vcard:Organization>
     </dcat:contactPoint>
     <dct:publisher>
@@ -44,54 +52,58 @@
       </foaf:Agent>
     </dct:publisher>
     <dct:temporal>
-      <dct:PeriodOfTime rdf:nodeID="period-12411-0001">
-        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1970-12-31T00:00:00</dcat:startDate>
+      <dct:PeriodOfTime rdf:nodeID="Naefff3aa91eb4f7ba988b2004550f960">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1970-12-31</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1980-12-31</dcat:endDate>
       </dct:PeriodOfTime>
     </dct:temporal>
     <dct:spatial>
-      <dct:Location rdf:about="http://dcat-ap.de/def/politicalGeocoding/Level/federal">
-        <skos:prefLabel>Deutschland</skos:prefLabel>
+      <dct:Location rdf:nodeID="location-fictional-germany">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((5.8663 47.2701, 15.0419 47.2701, 15.0419 55.0581, 5.8663 55.0581, 5.8663 47.2701))</locn:geometry>
+        <locn:adminUnitL2 rdf:resource="http://dcat-ap.de/def/politicalGeocoding/municipalityKey/08435005"/>
       </dct:Location>
     </dct:spatial>
     <dct:accessRights>
       <dct:RightsStatement rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
     </dct:accessRights>
     <dcat:distribution>
-      <dcat:Distribution rdf:about="https://www-genesis.destatis.de/genesis/online?operation=download&amp;code=12411-0001&amp;option=ffcsv">
-        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-        <dct:title>Bevölkerung: Deutschland, Stichtag - Flat CSV</dct:title>
-        <dct:description>Maschinenlesbare Flat-File-CSV-Distribution der GENESIS-Tabelle 12411-0001 zum Bevölkerungsstand in Deutschland nach Stichtagen.</dct:description>
+      <dcat:Distribution rdf:about="https://example.govdata.test/downloads/bevoelkerung-deutschland-stichtag.csv">
+        <dct:title xml:lang="de">Bevölkerung: Deutschland, Stichtag - CSV</dct:title>
+        <dct:description xml:lang="de">Maschinenlesbare CSV-Distribution der Tabelle 12411-0001 zum Bevölkerungsstand in Deutschland nach Stichtagen.</dct:description>
         <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
-        <dcat:accessURL rdf:resource="https://www-genesis.destatis.de/genesis/online?operation=download&amp;code=12411-0001&amp;option=ffcsv"/>
-        <dcat:downloadURL rdf:resource="https://www-genesis.destatis.de/genesis/online?operation=download&amp;code=12411-0001&amp;option=ffcsv"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/5fa4a88c-15fe-4561-be40-7a13aca8f8b9/resource/56e7a187-6dd1-49a5-ba5c-6202dc171f5c/download/kreis-hzgt.-lauenburg.csv"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/5fa4a88c-15fe-4561-be40-7a13aca8f8b9/resource/56e7a187-6dd1-49a5-ba5c-6202dc171f5c/download/kreis-hzgt.-lauenburg.csv"/>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
         <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
         <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-20T00:00:00</dct:issued>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-20T00:00:00</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">524288</dcat:byteSize>
         <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
         <dcatde:licenseAttributionByText>Statistisches Bundesamt (Destatis)</dcatde:licenseAttributionByText>
       </dcat:Distribution>
     </dcat:distribution>
     <dcat:distribution>
-      <dcat:Distribution rdf:about="https://www-genesis.destatis.de/genesis/online?operation=download&amp;code=12411-0001&amp;option=xlsx">
-        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-        <dct:title>Bevölkerung: Deutschland, Stichtag - XLSX</dct:title>
-        <dct:description>XLSX-Distribution der GENESIS-Tabelle 12411-0001 zum Bevölkerungsstand in Deutschland nach Stichtagen.</dct:description>
+      <dcat:Distribution rdf:about="https://example.govdata.test/downloads/bevoelkerung-deutschland-stichtag.xlsx">
+        <dct:title xml:lang="de">Bevölkerung: Deutschland, Stichtag - XLSX</dct:title>
+        <dct:description xml:lang="de">XLSX-Distribution der Tabelle 12411-0001 zum Bevölkerungsstand in Deutschland nach Stichtagen.</dct:description>
         <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
-        <dcat:accessURL rdf:resource="https://www-genesis.destatis.de/genesis/online?operation=download&amp;code=12411-0001&amp;option=xlsx"/>
-        <dcat:downloadURL rdf:resource="https://www-genesis.destatis.de/genesis/online?operation=download&amp;code=12411-0001&amp;option=xlsx"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/5fa4a88c-15fe-4561-be40-7a13aca8f8b9/resource/f45a5eea-275f-46a1-b634-9a79b966dee3/download/kreis-hzgt.-lauenburg.json"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/5fa4a88c-15fe-4561-be40-7a13aca8f8b9/resource/f45a5eea-275f-46a1-b634-9a79b966dee3/download/kreis-hzgt.-lauenburg.json"/>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
-        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
-        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/json"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-20T00:00:00</dct:issued>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-20T00:00:00</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">786432</dcat:byteSize>
         <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
         <dcatde:licenseAttributionByText>Statistisches Bundesamt (Destatis)</dcatde:licenseAttributionByText>
       </dcat:Distribution>
     </dcat:distribution>
     <dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/federal"/>
-    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/federal"/>
+    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/municipalityKey/08435005"/>
     <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/genesisDestatis"/>
   </dcat:Dataset>
 </rdf:RDF>
