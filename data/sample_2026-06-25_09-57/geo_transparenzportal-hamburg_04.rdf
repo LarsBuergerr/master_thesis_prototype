@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+>
+  <dcat:Dataset rdf:about="http://suche.transparenz.hamburg.de/dataset/cc205fd2-5a46-40fb-9f04-d78132716357">
+    <dct:title>Bebauungsplan Neuenfelde 11-Francop 6-Cranz 4 Hamburg</dct:title>
+    <dct:description>Der Bebauungsplan Neuenfelde 11/Francop 6/Cranz 4 für die in der Anlage mit durchgehenden schwarzen Linien umgrenzten Geltungsbereiche zwischen der Landesgrenze Niedersachsen und der östlichen Stadtteilgrenze Francop (Bezirk Harburg, Ortsteile 720, 719, 721) wird festgestellt.
+Das Gebiet wird wie folgt begrenzt:
+Bereiche in Cranz und Neuenfelde (Blätter 1 und 2 der Anlage), und zwar Flächen südlich Cranzer Elbdeich, beiderseits Estedeich, südlich und östlich Neuenfelder Fährdeich, östlich Urenfleet, beiderseits Nincoper Straße, beiderseits Marschkamper Deich, südlich und westlich Hasselwerder Straße, beiderseits Nincoper Deich. Bereich in Francop (Blatt 3 der Anlage), und zwar Flächen südlich Vierzigstücken, westlich und südlich Hohenwischer Straße.</dct:description>
+    <dcat:landingPage>
+      <foaf:Document rdf:about="http://www.hamburg.de/bebauungsplaene-online.de"/>
+    </dcat:landingPage>
+    <dct:identifier>4F5232A1-A1C0-46F0-B5B4-2939DB7E0538</dct:identifier>
+    <owl:versionInfo>18.0</owl:versionInfo>
+    <adms:versionNotes>Änderungen innerhalb einer Ressource</adms:versionNotes>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/NEVER"/>
+    </dct:accrualPeriodicity>
+    <dcat:keyword>baugesetzbuch--baugb</dcat:keyword>
+    <dcat:keyword>baunutzungsverordnung--baunvo</dcat:keyword>
+    <dcat:keyword>plis</dcat:keyword>
+    <dcat:keyword>öffentliche-pläne</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-26T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T21:32:23.794658</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dct:conformsTo>
+      <dct:Standard rdf:about="http://dcat-ap.de/def/dcatde/1.0/"/>
+    </dct:conformsTo>
+    <foaf:page>
+      <foaf:Document rdf:about="http://suche.transparenz.hamburg.de/dataset/bebauungsplan-neuenfelde-11-francop-6-cranz-4-hamburg17"/>
+    </foaf:page>
+    <dct:isVersionOf rdf:resource="http://suche.transparenz.hamburg.de/dataset/bebauungsplan-neuenfelde-11-francop-6-cranz-4-hamburg16"/>
+    <dct:source rdf:resource="https://metaver.de/cswhh"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N825e4249f86e44408537c7a6b0e2129b">
+        <vcard:fn>Bezirksämter</vcard:fn>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N45e37bc674264eef975ff1c03589c39c">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:creator>
+      <foaf:Agent rdf:nodeID="Nabf4377d22074801ad003629813fef7f">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Agent>
+    </dct:creator>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="Nb1b30557568b4f0cb052be0316da7ea7">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Organization>
+    </dct:creator>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N97cb1f7a2d314c068de95cfa5b0efd94">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1997-12-02T00:00:00</dcat:startDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N23cca96beb0944a683dd6db64840058e">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((10.3263 53.3950, 10.3263 53.9642, 8.4206 53.9642, 8.4206 53.3950, 10.3263 53.3950))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N65f8d2dd942240d5b36e3360c7325c79">
+        <locn:adminUnitL2 rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="https://www.govdata.de/dl-de/by-2-0"/>
+    </dct:accessRights>
+    <dct:provenance>
+      <dct:ProvenanceStatement rdf:nodeID="N8c84b00debbe445cbcb70e7410240402">
+        <rdfs:label>Der Datensatz wurde geharvestet. Ursprung: Metaverbund Katalog</rdfs:label>
+      </dct:ProvenanceStatement>
+    </dct:provenance>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/cc205fd2-5a46-40fb-9f04-d78132716357/resource/c95ff8ed-531a-462e-b8d3-1c6fba8c4b3a">
+        <dct:title>Download WFS Bebauungsplan (XPlanGML)</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&amp;request=GetFeature&amp;version=2.0.0&amp;resolvedepth=%252A&amp;StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&amp;planName=Neuenfelde11-Francop6-Cranz4"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dct:format>GML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-26T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T21:32:23.794658</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1076</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N1f11081a9bd8489286c0f5d1cd589c3b">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">c3aabb6b62acd6735263259f9a41828c4bf8f67346365a470e7156fcad34ee0d</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Harburg, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/cc205fd2-5a46-40fb-9f04-d78132716357/resource/d9e09d6d-797c-4699-9f93-7cbc5bf33d00">
+        <dct:title>Plangrafik des Bebauungsplans inkl. Verordnungstext als PDF Datei</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/neuenfelde11-francop6-cranz4.pdf"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format>PDF</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-26T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T21:32:23.794658</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">43730359</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nb8eff49cfd3b41a4886f572452f11364">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">43730359</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Harburg, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/cc205fd2-5a46-40fb-9f04-d78132716357/resource/7f5f192d-1289-4921-9cb8-b517c0b6cba5">
+        <dct:title>Begründung des Bebauungsplans als PDF Datei</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/neuenfelde11-francop6-cranz4.pdf"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format>PDF</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-26T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T21:32:23.794658</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">82162</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N9b3c6a1a3b2945a2a153100558c57681">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">5884e5518d57e08f2fc7afe95ecbc24eeaa5ced9537fe35732d348b056229817</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Harburg, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/cc205fd2-5a46-40fb-9f04-d78132716357/resource/dbb5dbf8-f83e-45fc-a1d4-9187870f8577">
+        <dct:title>Metadatenbeschreibung aus dem MetaVer</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="http://metaver.de/trefferanzeige?docuuid=4F5232A1-A1C0-46F0-B5B4-2939DB7E0538"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dct:format>HTML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-26T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T21:32:23.794658</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">107224</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Ne64b28b2fc634b979722e1d3ec9f9bc7">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">cb04ad6a4b7f64cca17746c7071b63b7d0827115e6ab3a00cb90a47c32040b90</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Harburg, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/level/state"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/transparenzportalHamburg"/>
+    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+    <dcatde:legalBasis>Hamburgisches Transparenzgesetz (HmbTG). URL: http://transparenz.hamburg.de/das-hmbtg/ Gesetzestext: http://transparenz.hamburg.de/contentblob/4318588/c8600b2b27ea31a5de6a92dacc138894/data/gesetzestext-hmbtg.pdf</dcatde:legalBasis>
+    <dcatde:geocodingDescription>Freie und Hansestadt Hamburg</dcatde:geocodingDescription>
+    <dcatde:originator>
+      <foaf:Organization rdf:nodeID="Nc547bdab9a2a485a8775b6acf121c0c1">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Organization>
+    </dcatde:originator>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="N4142a06a7212430dbddfdb8019513159">
+        <foaf:name>Bezirksämter</foaf:name>
+      </foaf:Organization>
+    </dcatde:maintainer>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&amp;request=GetFeature&amp;version=2.0.0&amp;resolvedepth=%252A&amp;StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&amp;planName=Neuenfelde11-Francop6-Cranz4"/>
+  <rdfs:Resource rdf:about="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/neuenfelde11-francop6-cranz4.pdf"/>
+  <rdfs:Resource rdf:about="http://metaver.de/trefferanzeige?docuuid=4F5232A1-A1C0-46F0-B5B4-2939DB7E0538"/>
+  <rdfs:Resource rdf:about="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/neuenfelde11-francop6-cranz4.pdf"/>
+</rdf:RDF>

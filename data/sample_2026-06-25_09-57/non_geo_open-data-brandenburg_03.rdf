@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/b73790eb-e823-4916-b22d-c3cde7d6a9df">
+    <dct:title>Topographische Karte 1 : 10 000 - 3251-SO Neulewin (2009)</dct:title>
+    <dct:description>Die Topographische Karte im Maßstab 1:10.000 ist der Grundmaßstab der Topographischen Landeskartenwerke Brandenburgs. Die Erdoberfläche wird relativ vollständig (nur geringfügig generalisiert) und maßstabsbezogen geometrisch exakt dargestellt. Sie ist die kartographische Umsetzung einer umfassenden topographischen Landesaufnahme (photogrammetrische Luftbildauswertung, Einarbeitung topographischer Zusatzinformationen, topographischer Feldvergleich). Die historischen Ausgaben der TK10 stehen aus verschiedenen Jahren ab 1992 (Grundaktualität einzelner Blätter älter) zur Verfügung. Ab dem Jahr 2002 entstand die TK10 (ATKIS) durch Ableitung aus dem Basis-Landschaftsmodell (Basis-DLM). In unterschiedlichen Kartenlayouts und -darstellungen bilden die historischen Kartenblätter ein Stück Zeitgeschichte Brandenburgs ab. Sie sind in analoger Plot-Ausgabe (Papier) verfügbar und stehen kostenfrei als Download zur Verfügung. Bei Nutzung der Daten sind die Lizenzbedingungen zu beachten.</dct:description>
+    <dct:identifier>b73790eb-e823-4916-b22d-c3cde7d6a9df</dct:identifier>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/OTHER"/>
+    </dct:accrualPeriodicity>
+    <dcat:keyword>110.000</dcat:keyword>
+    <dcat:keyword>historische-karte</dcat:keyword>
+    <dcat:keyword>karte</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>vermessung</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2007-12-31T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-24T16:36:38</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/AGRI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N806f2db3ec424d64b793efda7908a4a2">
+        <vcard:fn>Landesvermessung und Geobasisinformation Brandenburg (LGB)</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:kundenservice@geobasis-bb.de"/>
+        <vcard:hasURL rdf:resource="https://geobasis-bb.de"/>
+        <vcard:hasTelephone rdf:resource="tel:+49-331-8844-123"/>
+        <vcard:hasStreetAddress>Heinrich-Mann-Allee 104 B</vcard:hasStreetAddress>
+        <vcard:hasLocality>Potsdam</vcard:hasLocality>
+        <vcard:hasPostalCode>14473</vcard:hasPostalCode>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="Nf52e55b469ae48809a13ebdb362b3db8">
+        <foaf:name>Landesvermessung und Geobasisinformation Brandenburg (LGB)</foaf:name>
+        <foaf:mbox>kundenservice@geobasis-bb.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N0cda3e8cecb74758829468f8e1e370eb">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((14.2481 52.7486, 14.3314 52.7486, 14.3314 52.6986, 14.2481 52.6986, 14.2481 52.7486))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:nodeID="Na103698882d945aabeb0a8857509b302">
+        <rdfs:label>Die Daten können gemäß der „Datenlizenz Deutschland - Namensnennung - Version 2.0“ (https://www.govdata.de/dl-de/by-2-0) genutzt werden. Namensnennung: "GeoBasis-DE/LGB", Beispiel: „© GeoBasis-DE/LGB, dl-de/by-2-0, (Daten geändert)“, (Klammer = optional). Hinweis: bei Kartendarstellungen außerhalb des Landes Brandenburg sind die Lizenzbedingungen der betreffenden Länder zu beachten.</rdfs:label>
+      </dct:RightsStatement>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/55246de0-dd37-4250-a2b0-18d361f8b408">
+        <dct:title>Downloadseite</dct:title>
+        <dct:description>Downloadseite</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://data.geobasis-bb.de/geobasis/karten/topographische-karten/tk10/historisch/tk10_3251-so_2009.pdf"/>
+        <dcat:downloadURL rdf:resource="https://data.geobasis-bb.de/geobasis/karten/topographische-karten/tk10/historisch/tk10_3251-so_2009.pdf"/>
+        <foaf:page rdf:resource="https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-11T19:23:22.291083</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-02-23T02:27:51.089214</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © GeoBasis-DE/LGB, dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/9d98e74c-b4d8-4be8-9656-e521049dc2ad">
+        <dct:title>statische Informationsseite</dct:title>
+        <dct:description>statische Informationsseite</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/"/>
+        <dcat:downloadURL rdf:resource="https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/"/>
+        <foaf:page rdf:resource="https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-21T03:45:46.898806</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-21T03:45:46.870352</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © GeoBasis-DE/LGB, dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/c1ee4769-3278-4401-b162-6d32a360b928">
+        <dct:title>Internetshop der LGB</dct:title>
+        <dct:description>Internetshop der LGB</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&amp;PRODUCTID=74435757-fcf7-4c92-87ac-04dbf01bc338"/>
+        <dcat:downloadURL rdf:resource="https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&amp;PRODUCTID=74435757-fcf7-4c92-87ac-04dbf01bc338"/>
+        <foaf:page rdf:resource="https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-21T03:45:46.898814</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-21T03:45:46.870531</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © GeoBasis-DE/LGB, dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>b73790eb-e823-4916-b22d-c3cde7d6a9df</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openDataBrandenburg"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&amp;PRODUCTID=74435757-fcf7-4c92-87ac-04dbf01bc338"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+  <foaf:Document rdf:about="https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </foaf:Document>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+  <rdfs:Resource rdf:about="https://data.geobasis-bb.de/geobasis/karten/topographische-karten/tk10/historisch/tk10_3251-so_2009.pdf"/>
+</rdf:RDF>

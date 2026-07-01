@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://registry.gdi-de.org/id/de.bw/c9065fec-ab9c-44b5-bdef-14194b9626ae">
+    <dct:title>LGRB-BW HW_HYD: Uran</dct:title>
+    <dct:description>Die vorliegende Auswertung zeigt für Baden-Württemberg die geogenen Hintergrundkonzentrationen einer Vielzahl von Grundwasserinhaltsstoffen in Abhängigkeit von den durchflossenen Gesteinen. Sie liefert damit die Grundlage für die Definition von Warnwerten, Grenzwerten und Sanierungszielen in Regelwerken, in der Gesetzgebung und für die Praxis. Die Auswertung basiert auf Proben von oberflächennahen Grundwasseraufschlüssen mit extensiv genutzten, überwiegend bewaldeten oder als Weideland bewirtschafteten Einzugsgebieten. Die Methodik sowie die Ergebnisse der Auswertung sind in den LGRB-Informationen 23 (https://produkte.lgrb-bw.de/docPool/c621_data.pdf) ausführlich beschrieben.</dct:description>
+    <dct:identifier>c9065fec-ab9c-44b5-bdef-14194b9626ae</dct:identifier>
+    <dcat:keyword>beschaffenheit</dcat:keyword>
+    <dcat:keyword>geodaten</dcat:keyword>
+    <dcat:keyword>geologie</dcat:keyword>
+    <dcat:keyword>grundwasser</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-12-19T08:15:13</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-12-19T08:15:13</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <foaf:page>
+      <foaf:Document rdf:about="https://services.lgrb-bw.de/ms/lgrb_hw_hyd?REQUEST=GetCapabilities&amp;SERVICE=WMS&amp;VERSION=1.3.0">
+        <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <dct:title>WMS LGRB-BW HW_HYD: Natürliche Geogene Grundwasserbeschaffenheit in den hydrogeochemischen Einheiten von Baden-Württemberg 1 : 300.000</dct:title>
+        <dct:description>Die Darstellung zeigt für Baden-Württemberg die geogenen Hintergrundkonzentrationen einer Vielzahl von Grundwasserinhaltsstoffen in Abhängigkeit von den durchflossenen Gesteinen (hydrogeochemische Einheiten). Sie liefert damit die Grundlage für die Definition von Warnwerten, Grenzwerten und Sanierungszielen in Regelwerken, in der Gesetzgebung und für die Praxis. Die Auswertung basiert auf Proben von oberflächennahen Grundwasseraufschlüssen mit extensiv genutzten, überwiegend bewaldeten oder als Weideland bewirtschafteten Einzugsgebieten. Die Methodik sowie die Ergebnisse der Auswertung sind in den LGRB-Informationen 23 (https://produkte.lgrb-bw.de/docPool/c621_data.pdf) ausführlich beschrieben.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://services.lgrb-bw.de/ms/lgrb_hw_hyd?REQUEST=GetCapabilities&amp;SERVICE=WMS&amp;VERSION=1.3.0"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-12-20T02:10:57.959639</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-12-20T02:10:57.950570</dct:modified>
+      </foaf:Document>
+    </foaf:page>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N8eac02b60dd7439189e3be1f0e4963c2">
+        <vcard:fn>Regierungspräsidium Freiburg - Abteilung 9 Landesamt für Geologie, Rohstoffe und Bergbau, Ref. 94 Landeshydrogeologie und -geothermie</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:abteilung9@rpf.bwl.de"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N1b7c68de85d94c6f86ff40ee1a64b0f8">
+        <foaf:name>Regierungspräsidium Freiburg - Abteilung 9 Landesamt für Geologie, Rohstoffe und Bergbau, Ref. 94 Landeshydrogeologie und -geothermie</foaf:name>
+        <foaf:mbox>abteilung9@rpf.bwl.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N0b35b0425e5649059e34a8ec6005861e">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((7.2000 50.0000, 10.7000 50.0000, 10.7000 47.4000, 7.2000 47.4000, 7.2000 50.0000))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dcat:distribution rdf:resource="https://services.lgrb-bw.de/ms/lgrb_hw_hyd?REQUEST=GetCapabilities&amp;SERVICE=WMS&amp;VERSION=1.3.0"/>
+    <adms:identifier>c9065fec-ab9c-44b5-bdef-14194b9626ae</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/datenBW"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+</rdf:RDF>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd">
+    <dct:title>Mündliche Berichte</dct:title>
+    <dct:description>Der Ministerrat nimmt die mündlichen Berichte zur Kenntnis.</dct:description>
+    <dct:identifier>65838316-b695-4400-8fdc-6b088b45f141</dct:identifier>
+    <dcat:keyword>landtag</dcat:keyword>
+    <dcat:keyword>ministerrat</dcat:keyword>
+    <dcat:keyword>plenum</dcat:keyword>
+    <dcat:keyword>staatsvertrag</dcat:keyword>
+    <dcat:keyword>swr</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-29T14:42:59+01:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-29T14:43:00+01:00</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/SOCI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="Nca3eefbd5472443a89b22eb871e9f7eb">
+        <foaf:name>Staatskanzlei</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72">
+        <dct:title>TOP_08_Mündliche_Berichte_05.11.2024.pdf</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://upload.open.rlp.de/eakte/65838316-b695-4400-8fdc-6b088b45f141/resource/c06b7319-c198-4bb4-8388-14345f6e5569/download/top-08-mundliche-berichte-05.11.2024.pdf"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/pdf"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-23T06:03:54.514330</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-29T14:43:00+01:00</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">87322</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>
+      <adms:Identifier rdf:about="https://eakte.rlp.de/coo-2298-102-5-2416634"/>
+    </adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"/>
+    <dcatde:legalBasis>§ 7 Abs. 1 Nr. 1 Landestransparenzgesetz
+Ministerratsbeschlüsse</dcatde:legalBasis>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/pdf"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+  <rdfs:Resource rdf:about="https://upload.open.rlp.de/eakte/65838316-b695-4400-8fdc-6b088b45f141/resource/c06b7319-c198-4bb4-8388-14345f6e5569/download/top-08-mundliche-berichte-05.11.2024.pdf"/>
+</rdf:RDF>

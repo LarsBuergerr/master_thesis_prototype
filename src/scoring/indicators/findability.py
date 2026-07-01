@@ -18,16 +18,15 @@ from utils.datetime_utils import validate_temporal_value
 
 
 class KeywordsCountIndicator(Indicator):
-    """Validates if dataset has appropriate number of keywords (3 ≤ k ≤ 10).
+    """Validates if dataset has appropriate number of keywords (3 ≤ k ≤ 15).
 
-    Per Handreichung zur Metadatenqualität (oc.bydata 12/2025): min 3 keywords,
-    max ~15 before quality signal degrades. PASS: 3-10, PARTIAL: 1-2 or 11-15,
-    FAIL: 0 or >15.
+    Per Handreichung zur Metadatenqualität (oc.bydata 12/2025): min 3 keywords.
+    PASS: 3-15, PARTIAL: 1-2 or 16-25, FAIL: 0 or >25.
     """
 
     MIN_KEYWORDS = 3
-    MAX_KEYWORDS = 10
-    OVER_MAX_PARTIAL = 15
+    MAX_KEYWORDS = 15
+    OVER_MAX_PARTIAL = 25
 
     def __init__(self):
         super().__init__(
@@ -35,8 +34,8 @@ class KeywordsCountIndicator(Indicator):
             name_de="Angemessene Anzahl Schlagwörter",
             name_en="Appropriate number of keywords",
             dimension=QualityDimension.FINDABILITY,
-            description_de="Mindestens 3 Schlagwörter (Handreichung); optimal 3–10, PARTIAL bei 1–2 oder 11–15",
-            description_en="At least 3 keywords (Handreichung); optimal 3–10, PARTIAL for 1–2 or 11–15",
+            description_de="Mindestens 3 Schlagwörter (Handreichung); optimal 3–15, PARTIAL bei 1–2 oder 16–25",
+            description_en="At least 3 keywords (Handreichung); optimal 3–15, PARTIAL for 1–2 or 16–25",
             weight=1.0,
         )
 
@@ -269,16 +268,30 @@ class LocnGeometryIndicator(Indicator):
 
 
 class AdminUnitL2Indicator(Indicator):
-    """Checks locn:adminUnitL2 references are present and plausible."""
+    """Checks political/administrative coverage against the DCAT-AP-DE geocoding
+    vocabulary.
+
+    DCAT-AP.de's normative field is ``dcatde:politicalGeocodingURI``
+    (Konvention 08, MUSS where a geographic reference applies); this indicator
+    reads it **primarily** and only falls back to the generic
+    ``locn:adminUnitL2`` when no dcatde field is present — so a dataset that
+    correctly uses the dcatde field is no longer false-FAILed.
+    """
 
     def __init__(self):
         super().__init__(
             indicator_id="find_adminunitl2",
-            name_de="Räumliche Suche aus kontrolliertem Vokabular",
-            name_en="Spatial search from controlled vocabulary",
+            name_de="Politische Geokodierung aus kontrolliertem Vokabular",
+            name_en="Political geocoding from controlled vocabulary",
             dimension=QualityDimension.FINDABILITY,
-            description_de="Prüft ob locn:adminUnitL2 auf dcat-ap politische Kodierung verweist",
-            description_en="Checks if locn:adminUnitL2 references dcat-ap political geocoding",
+            description_de=(
+                "Prüft primär ob dcatde:politicalGeocodingURI auf das dcat-ap.de "
+                "Geocoding-Vokabular verweist; ersatzweise locn:adminUnitL2"
+            ),
+            description_en=(
+                "Checks primarily that dcatde:politicalGeocodingURI references the "
+                "dcat-ap.de geocoding vocabulary; falls back to locn:adminUnitL2"
+            ),
             weight=1.0,
         )
 
@@ -288,11 +301,19 @@ class AdminUnitL2Indicator(Indicator):
         try:
             if context is None:
                 context = DatasetContext.from_graph(metadata)
-            admin_units = context.admin_units
 
-            if not admin_units:
+            # Prefer the DCAT-AP.de field; fall back to the generic locn field.
+            units = context.political_geocoding or context.admin_units
+            source = (
+                "dcatde:politicalGeocodingURI"
+                if context.political_geocoding
+                else "locn:adminUnitL2"
+            )
+
+            if not units:
                 self.logger.info(
-                    f"[{self.indicator_id}] FAIL score=0.00 no locn:adminUnitL2"
+                    f"[{self.indicator_id}] FAIL score=0.00 "
+                    "no politicalGeocodingURI / adminUnitL2"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -301,19 +322,19 @@ class AdminUnitL2Indicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Kein locn:adminUnitL2 angegeben",
-                    message_en="No locn:adminUnitL2 specified",
-                    details={"admin_unit_count": 0},
+                    message_de="Keine politische Geokodierung angegeben",
+                    message_en="No political geocoding specified",
+                    details={"geocoding_count": 0},
                 )
 
-            first = admin_units[0]
+            first = units[0]
             is_valid = first.is_in_vocab
             status = IndicatorStatus.PASS if is_valid else IndicatorStatus.PARTIAL
             score = 1.0 if is_valid else 0.5
 
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={score:.2f} "
-                f"uri={first.uri} segment={first.segment}"
+                f"source={source} uri={first.uri} segment={first.segment}"
             )
 
             return IndicatorResult(
@@ -324,20 +345,21 @@ class AdminUnitL2Indicator(Indicator):
                 status=status,
                 score=score,
                 message_de=(
-                    "adminUnitL2 verweist auf dcat-ap"
+                    f"Geokodierung ({source}) verweist auf dcat-ap.de"
                     if is_valid
-                    else "adminUnitL2 ist nicht aus dcat-ap"
+                    else f"Geokodierung ({source}) ist nicht aus dcat-ap.de"
                 ),
                 message_en=(
-                    "adminUnitL2 references dcat-ap"
+                    f"Geocoding ({source}) references dcat-ap.de"
                     if is_valid
-                    else "adminUnitL2 is not from dcat-ap"
+                    else f"Geocoding ({source}) is not from dcat-ap.de"
                 ),
                 details={
+                    "source": source,
                     "uri": first.uri,
                     "segment": first.segment,
                     "is_valid": is_valid,
-                    "admin_unit_count": len(admin_units),
+                    "geocoding_count": len(units),
                 },
             )
 
@@ -677,6 +699,91 @@ class AccrualPeriodicityIndicator(Indicator):
             )
 
 
+class IdentifierIndicator(Indicator):
+    """Checks presence of ``dct:identifier`` on the dataset.
+
+    ``dct:identifier`` is a mandatory field (Handreichung zur
+    Metadatenqualität) and the central key for duplicate detection in the
+    GovData federation. For now this is a pure presence check (binary
+    PASS/FAIL).
+    """
+
+    def __init__(self):
+        super().__init__(
+            indicator_id="find_identifier",
+            name_de="Identifier vorhanden",
+            name_en="Identifier present",
+            dimension=QualityDimension.FINDABILITY,
+            description_de="Prüft ob dct:identifier auf dem Datensatz gesetzt ist",
+            description_en="Checks if dct:identifier is set on the dataset",
+            weight=1.0,
+        )
+
+    def validate(
+        self, metadata: Graph, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+            identifiers = context.identifiers
+
+            # NOTE: Duplicate detection — whether this identifier also occurs in
+            # *other* datasets across the portal — cannot be done here, because a
+            # single-dataset scoring pass has no cross-dataset view. Best place to
+            # add it: a portal-level post-processing step over all scored datasets
+            # (build an identifier -> [dataset_uris] index and flag collisions),
+            # or pass a shared identifier registry into DatasetContext and check
+            # membership at THIS point before deciding PASS/FAIL.
+
+            if not identifiers:
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 no dct:identifier"
+                )
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=IndicatorStatus.FAIL,
+                    score=0.0,
+                    message_de="Kein dct:identifier angegeben",
+                    message_en="No dct:identifier specified",
+                    details={"identifier_count": 0},
+                )
+
+            self.logger.info(
+                f"[{self.indicator_id}] PASS score=1.00 identifiers={len(identifiers)}"
+            )
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.PASS,
+                score=1.0,
+                message_de="dct:identifier vorhanden",
+                message_en="dct:identifier present",
+                details={
+                    "identifier_count": len(identifiers),
+                    "identifiers": identifiers,
+                },
+            )
+
+        except Exception as e:
+            self.logger.exception(f"[{self.indicator_id}] Indicator validation failed")
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.ERROR,
+                score=0.0,
+                message_de="Fehler bei der Validierung",
+                message_en="Validation error",
+                error=str(e),
+            )
+
+
 # Instantiate indicators
 _keywords_indicator = KeywordsCountIndicator()
 _theme_indicator = ThemeIndicator()
@@ -696,3 +803,4 @@ _modified = DateTimeFieldIndicator(
     "Modified date (xs:dateTime)",
 )
 _accrual = AccrualPeriodicityIndicator()
+_identifier = IdentifierIndicator()

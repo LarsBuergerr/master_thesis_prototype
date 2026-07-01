@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+>
+  <dcat:Dataset rdf:about="http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0">
+    <dct:title>Bebauungsplan Eimsbüttel 27 Hamburg</dct:title>
+    <dct:description>Der Bebauungsplan Eimsbüttel 27 für den Geltungsbereich Kieler Straße-Alter Weg-Högenstraße-Rellinger Straße- Armbruststraße (Bezirk Eimsbüttel, Ortsteil 304) wird festgestellt.</dct:description>
+    <dcat:landingPage>
+      <foaf:Document rdf:about="http://www.hamburg.de/bebauungsplaene-online.de"/>
+    </dcat:landingPage>
+    <dct:identifier>91B5E336-A816-476E-BE9C-EE08371D72B0</dct:identifier>
+    <owl:versionInfo>18.0</owl:versionInfo>
+    <adms:versionNotes>Änderungen innerhalb einer Ressource</adms:versionNotes>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/NEVER"/>
+    </dct:accrualPeriodicity>
+    <dcat:keyword>baugesetzbuch--baugb</dcat:keyword>
+    <dcat:keyword>baunutzungsverordnung--baunvo</dcat:keyword>
+    <dcat:keyword>plis</dcat:keyword>
+    <dcat:keyword>öffentliche-pläne</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-28T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T22:25:43.815275</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dct:conformsTo>
+      <dct:Standard rdf:about="http://dcat-ap.de/def/dcatde/1.0/"/>
+    </dct:conformsTo>
+    <foaf:page>
+      <foaf:Document rdf:about="http://suche.transparenz.hamburg.de/dataset/bebauungsplan-eimsbuettel-27-hamburg9"/>
+    </foaf:page>
+    <dct:isVersionOf rdf:resource="http://suche.transparenz.hamburg.de/dataset/bebauungsplan-eimsbuettel-27-hamburg8"/>
+    <dct:source rdf:resource="https://metaver.de/cswhh"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Nceee8a4dbe4449d59bb0b4572815db89">
+        <vcard:fn>Bezirksämter</vcard:fn>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N346d7cffb2de4e4e915564e94d314836">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:creator>
+      <foaf:Agent rdf:nodeID="Nc23b31ed345c4e71aed9519994f80ac5">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Agent>
+    </dct:creator>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="N36b7f4c88aec453a9e2183af0bb504c0">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Organization>
+    </dct:creator>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="Nfd2804ad121f420e8fcc93cd6f65a7e2">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1973-06-24T00:00:00</dcat:startDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Nf53bfe897b5741859e41cbd2347e2997">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((10.3263 53.3950, 10.3263 53.9642, 8.4206 53.9642, 8.4206 53.3950, 10.3263 53.3950))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Nc71573ff782c41da93bd99c2f9ba8434">
+        <locn:adminUnitL2 rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="https://www.govdata.de/dl-de/by-2-0"/>
+    </dct:accessRights>
+    <dct:provenance>
+      <dct:ProvenanceStatement rdf:nodeID="N30a5d86d044845ec8138f3eafef2b22c">
+        <rdfs:label>Der Datensatz wurde geharvestet. Ursprung: Metaverbund Katalog</rdfs:label>
+      </dct:ProvenanceStatement>
+    </dct:provenance>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/02e7dad2-456e-4aac-9ea0-a19f0e82132a">
+        <dct:title>Download WFS Bebauungsplan (XPlanGML)</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&amp;request=GetFeature&amp;version=2.0.0&amp;resolvedepth=%252A&amp;StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&amp;planName=Eimsbuettel27"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dct:format>GML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-28T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T22:25:43.815275</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1076</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nb0f00c3ce50e4aadad6b3fe40d725262">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">91f9505ed1fdefed14ab49c930f3e45f52c278225076f5484781a211e7e64b86</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Eimsbüttel, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/34224408-ab86-47f0-a044-82e265ca7c5d">
+        <dct:title>Festsetzungen (Planzeichnung / Verordnung) als PDF Datei</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/eimsbuettel27.pdf"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format>PDF</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-28T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T22:25:43.815275</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">698249</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nf5bc98b592504d7e83fa5f512e31028a">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">c4713fe711269b822dd8570346a4eb4d1e1d6ca988ee357bbc4206fd28d7925c</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Eimsbüttel, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/f9883bd7-5d77-4ae5-a208-b0c6ad2f6506">
+        <dct:title>Begründung des Bebauungsplans als PDF Datei</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/eimsbuettel27.pdf"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format>PDF</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-28T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T22:25:43.815275</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">206495</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Na3f094464802499db665d6e23ab24b11">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">a4d3e7b76f3c72b0e189f81476937a9a2b07b233ddce08fe2f57cf5885840d23</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Eimsbüttel, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/7e3b6ab8-31f8-469d-ae88-61cfca3594c6">
+        <dct:title>Metadatenbeschreibung aus dem MetaVer</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="http://metaver.de/trefferanzeige?docuuid=91B5E336-A816-476E-BE9C-EE08371D72B0"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dct:format>HTML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-28T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T22:25:43.815275</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">105699</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nf6b7bc94060d41fc83d2bf0f0c0fdab6">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">c0a8ac216aa340661940961b9bd4845c94ede751a5ff72a2f474d3001dd8e265</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Eimsbüttel, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/level/state"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/transparenzportalHamburg"/>
+    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+    <dcatde:legalBasis>Hamburgisches Transparenzgesetz (HmbTG). URL: http://transparenz.hamburg.de/das-hmbtg/ Gesetzestext: http://transparenz.hamburg.de/contentblob/4318588/c8600b2b27ea31a5de6a92dacc138894/data/gesetzestext-hmbtg.pdf</dcatde:legalBasis>
+    <dcatde:geocodingDescription>Freie und Hansestadt Hamburg</dcatde:geocodingDescription>
+    <dcatde:originator>
+      <foaf:Organization rdf:nodeID="N36eeb44259794971b112f47ec02cb8aa">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Organization>
+    </dcatde:originator>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="Nb1fe31b146be4bce8aa8a490c37eeb43">
+        <foaf:name>Bezirksämter</foaf:name>
+      </foaf:Organization>
+    </dcatde:maintainer>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="http://metaver.de/trefferanzeige?docuuid=91B5E336-A816-476E-BE9C-EE08371D72B0"/>
+  <rdfs:Resource rdf:about="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/eimsbuettel27.pdf"/>
+  <rdfs:Resource rdf:about="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/eimsbuettel27.pdf"/>
+  <rdfs:Resource rdf:about="https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&amp;request=GetFeature&amp;version=2.0.0&amp;resolvedepth=%252A&amp;StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&amp;planName=Eimsbuettel27"/>
+</rdf:RDF>

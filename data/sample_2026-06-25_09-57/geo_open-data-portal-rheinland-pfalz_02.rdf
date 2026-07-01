@@ -1,0 +1,1450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:ns1="http://data.europa.eu/eli/ontology#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf">
+    <dct:title>ATKIS Basis-DLM RP</dct:title>
+    <dct:description>Digitale Landschaftsmodelle (DLM) beschreiben die Landschaft und das Relief der Erdoberfläche in Form von topographischen Objekten. In den DLM wird die Landschaft systematisch strukturiert und beschrieben (Fachobjekte, Attribute und Wertearten). Der Inhalt des Basis-DLM ist im Objektartenkatalog ATKIS®-Rheinland-Pfalz (ATKIS®-OK RP) festgelegt.</dct:description>
+    <dct:identifier rdf:resource="https://registry.gdi-de.org/id/de.rp.vermkv/9ab1d827-ec73-93ff-9863-e4b2f47caeaf"/>
+    <dcat:keyword>19.854</dcat:keyword>
+    <dcat:keyword>2f23ed6e-0186-4c2b-8380-748389036509</dcat:keyword>
+    <dcat:keyword>bodenbedeckung</dcat:keyword>
+    <dcat:keyword>digitale-landschaftsmodelle</dcat:keyword>
+    <dcat:keyword>dlmnas</dcat:keyword>
+    <dcat:keyword>inspireidentifiziert</dcat:keyword>
+    <dcat:keyword>land-cover</dcat:keyword>
+    <dcat:keyword>novafactory</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>regierung-und-öffentlicher-sektor</dcat:keyword>
+    <dcat:keyword>rp</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-06-05</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-06-05</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TRAN"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://www.geoportal.rlp.de/organization/50b3bdde-1157-2d4b-9c3d-346ec71a7202">
+        <foaf:name>Landesamt für Vermessung und Geobasisinformationen </foaf:name>
+        <foaf:mbox>vertrieb-geodienste@vermkv.rlp.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N92352c6725c64e42b83892909e057123">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-01-01</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-19</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/html_metadata_9ab1d827-ec73-93ff-9863-e4b2f47caeaf">
+        <dct:title>Original Metadaten HTML</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D9ab1d827-ec73-93ff-9863-e4b2f47caeaf"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.736458</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.714607</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_mapviewer_layer_38925">
+        <dct:title>Online Karte</dct:title>
+        <dct:description>Karte RP - Vorschau im integrierten Kartenviewer</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=38925"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.736461</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.714723</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_geoportal_layer_38925">
+        <dct:title>GeoPortal.rlp</dct:title>
+        <dct:description>Karte RP - Anzeige im GeoPortal.rlp</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&amp;LAYER%5Bid%5D=38925"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.736463</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.714811</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_layer_metadata_38925">
+        <dct:title>Originäre Metadaten für Kartenebene</dct:title>
+        <dct:description>Kartenebene: Karte RP - Anzeige der originären Metadaten</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&amp;resource=layer&amp;layout=tabs&amp;id=38925"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.736464</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.714897</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wms_interface_38925">
+        <dct:title>WMS Schnittstelle</dct:title>
+        <dct:description>Ebene: Karte RP</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=38925&amp;REQUEST=GetCapabilities&amp;VERSION=1.1.1&amp;SERVICE=WMS"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.736465</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.714991</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Siedlungen_SIE03_P_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE03_P - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3597&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285023</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.046739</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Vegetation_VEG01_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG01_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3601&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285028</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.046836</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Relief_REL01_P_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Relief_REL01_P - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3592&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285030</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.046941</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Vegetation_VEG03_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG03_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3603&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285031</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047022</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gewaesser_GEW03_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW03_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3627&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285032</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047101</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER05_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER05_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3614&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285034</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047178</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gebiete_GEB03_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB03_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3581&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285035</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047256</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Siedlungen_SIE05_P_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE05_P - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3600&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285036</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047331</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gebiete_GEB03_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB03_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3582&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285037</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047407</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER06_P_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER06_P - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3617&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285038</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047483</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER03_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER03_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3611&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285039</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047558</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Siedlungen_SIE05_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE05_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3599&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285041</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047633</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gebiete_GEB02_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB02_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3579&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285042</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047715</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER01_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER01_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3608&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285043</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047812</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER05_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER05_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3613&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285044</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047900</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Referenzen_HDU01_B_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Referenzen_HDU01_B - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3620&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285045</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.047997</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gewaesser_GEW02_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW02_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3624&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285047</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048074</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER03_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER03_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3610&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285048</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048150</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gebiete_GEB01_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB01_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3578&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285049</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048226</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gebiete_GEB03_P_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB03_P - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3583&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285050</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048301</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Relief_REL01_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Relief_REL01_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3591&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285051</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048376</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Referenzen_FDV01_B_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Referenzen_FDV01_B - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3621&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285052</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048450</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER01_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER01_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3607&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285053</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048527</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER04_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER04_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3612&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285055</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048602</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gebiete_GEB01_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB01_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3577&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285056</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048677</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Vegetation_VEG04_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG04_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3605&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285057</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048752</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Siedlungen_SIE01_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE01_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3593&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285058</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048825</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER06_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER06_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3616&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285059</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048910</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Relief_REL01_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Relief_REL01_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3590&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285060</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.048986</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gebiete_GEB02_P_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB02_P - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3580&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285061</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049062</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gewaesser_GEW02_P_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW02_P - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3626&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285063</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049138</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Vegetation_VEG02_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG02_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3602&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285064</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049214</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Siedlungen_SIE02_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE02_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3594&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285065</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049296</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Siedlungen_SIE04_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE04_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3598&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285066</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049372</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER02_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER02_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3609&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285067</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049449</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Vegetation_VEG04_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG04_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3604&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285068</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049557</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gewaesser_GEW02_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW02_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3625&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285069</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049635</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER07_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER07_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3618&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285070</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049711</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Siedlungen_SIE03_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE03_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3595&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285071</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049786</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER06_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER06_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3615&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285073</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049870</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Verkehr_VER07_P_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER07_P - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3619&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285074</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.049946</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Vegetation_VEG04_P_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG04_P - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3606&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285075</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.050049</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Siedlungen_SIE03_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE03_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3596&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285076</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.050166</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gewaesser_GEW01_L_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW01_L - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3623&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285077</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.050251</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_wfs_interface_vermkv__colon__Gewaesser_GEW01_F_606">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW01_F - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3622&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285079</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.050328</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_other_distribution_cbb348263eebf09826671ded773492cf">
+        <dct:title>Sonstiger Zugriff</dct:title>
+        <dct:description>Massendownload Basis-DLM im GeoShop.rlp</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://geoshop.rlp.de/files/anpassungen/hvd/index.html?config=./products/basisdlm.json"/>
+        <dcat:mediaType>application/json</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.736485</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-04T19:31:59.291843</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, http://www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_other_distribution_d1be0ce8fcef7b50ddd526c0cc2ff3da">
+        <dct:title>Sonstiger Zugriff</dct:title>
+        <dct:description>GeoShop.rlp Produktbestellung Basis-DLM</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://geoshop.rlp.de/digitale_landschaftsmodelle/digitales_basis-landschaftsmodell.html"/>
+        <dcat:mediaType>text/html</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.736484</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-04T19:31:59.291787</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, http://www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gebiete_GEB03_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB03_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB03_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285080</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.050545</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gewaesser_GEW02_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW02_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW02_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285081</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.050624</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER07_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER07_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER07_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285082</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.050702</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Vegetation_VEG04_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG04_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG04_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285083</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.050777</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER07_P_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER07_P - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER07_P"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285084</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.050863</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gebiete_GEB01_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB01_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB01_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285085</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.050941</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Relief_REL01_P_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Relief_REL01_P - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Relief_REL01_P"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285086</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.051017</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Referenzen_HDU01_B_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Referenzen_HDU01_B - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Referenzen_HDU01_B"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285087</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.051093</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Siedlungen_SIE03_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE03_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE03_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285088</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.051167</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gebiete_GEB02_P_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB02_P - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB02_P"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285090</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.051243</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER06_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER06_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER06_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285091</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.051317</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Siedlungen_SIE05_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE05_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE05_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285092</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.051391</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Relief_REL01_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Relief_REL01_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Relief_REL01_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285093</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.051465</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gebiete_GEB03_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB03_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB03_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285094</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.051540</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gewaesser_GEW02_P_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW02_P - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW02_P"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285095</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.051616</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gewaesser_GEW02_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW02_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW02_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285096</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.051987</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER05_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER05_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER05_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285097</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052072</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Vegetation_VEG03_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG03_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG03_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285098</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052149</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Relief_REL01_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Relief_REL01_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Relief_REL01_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285099</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052226</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER01_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER01_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER01_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285100</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052302</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gebiete_GEB03_P_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB03_P - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB03_P"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285101</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052377</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER06_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER06_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER06_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285102</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052451</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Vegetation_VEG04_P_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG04_P - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG04_P"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285103</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052526</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER03_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER03_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER03_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285105</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052601</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Siedlungen_SIE04_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE04_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE04_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285106</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052676</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gewaesser_GEW01_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW01_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW01_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285107</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052750</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gewaesser_GEW03_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW03_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW03_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285108</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052825</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Referenzen_FDV01_B_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Referenzen_FDV01_B - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Referenzen_FDV01_B"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285109</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052922</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Siedlungen_SIE03_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE03_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE03_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285110</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.052998</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER05_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER05_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER05_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285111</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053073</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Vegetation_VEG02_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG02_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG02_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285112</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053146</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gebiete_GEB01_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB01_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB01_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285113</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053222</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Siedlungen_SIE05_P_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE05_P - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE05_P"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285115</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053296</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER06_P_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER06_P - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER06_P"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285116</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053369</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER03_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER03_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER03_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285117</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053443</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER02_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER02_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER02_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285118</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053517</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER04_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER04_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER04_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285119</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053593</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Verkehr_VER01_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Verkehr_VER01_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER01_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285120</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053668</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Vegetation_VEG01_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG01_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG01_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285121</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053781</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gewaesser_GEW01_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gewaesser_GEW01_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW01_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285122</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053880</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Siedlungen_SIE03_P_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE03_P - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE03_P"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285123</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.053958</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Gebiete_GEB02_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Gebiete_GEB02_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB02_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285124</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.054036</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Vegetation_VEG04_L_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Vegetation_VEG04_L - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG04_L"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285125</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.054112</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Siedlungen_SIE02_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE02_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE02_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285126</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.054187</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_ogc_api_interface_vermkv__colon__Siedlungen_SIE01_F_606">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: vermkv:Siedlungen_SIE01_F - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE01_F"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.285127</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:42.054260</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_atom_feed_remotelist_">
+        <dct:title>Download nach EU-Standard</dct:title>
+        <dct:description>INSPIRE Downloaddienst (predefined ATOM) für Datensatz: ATKIS Basis-DLM RP - based on remote links</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D9ab1d827-ec73-93ff-9863-e4b2f47caeaf%26type%3DSERVICE%26generateFrom%3Dremotelist"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.736483</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.716204</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText><![CDATA[©GeoBasis-DE / LVermGeoRP<Jahr des Datenbezugs>, dl-de/by-2-0, http://www.lvermgeo.rlp.de [Daten bearbeitet]]]></dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/9ab1d827-ec73-93ff-9863-e4b2f47caeaf/resource/9ab1d827-ec73-93ff-9863-e4b2f47caeaf_atom_feed_wms_38925">
+        <dct:title>Rasterdownload nach EU-Standard</dct:title>
+        <dct:description>INSPIRE Downloaddienst (predefined ATOM) für Datensatz: ATKIS Basis-DLM RP - basierend auf WMS Datenquelle</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D9ab1d827-ec73-93ff-9863-e4b2f47caeaf%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D38925"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.736486</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:50:18.716440</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText>©GeoBasis-DE / LVermGeoRP (Jahr des Datenbezugs), dl-de/by-2-0, http://www.lvermgeo.rlp.de [Daten bearbeitet]</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatap:applicableLegislation>
+      <ns1:LegalResource rdf:about="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+    </dcatap:applicableLegislation>
+    <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_dd313021"/>
+    <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_ac64a52d"/>
+    <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_b79e35eb"/>
+    <adms:identifier>Nc305c49daff7437595066caa52726ba8</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"/>
+    <dcatde:legalBasis>§ 7 Abs. 1 Nr. 9 Landestransparenzgesetz
+Geodaten</dcatde:legalBasis>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB03_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3596&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3626&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&amp;LAYER%5Bid%5D=38925"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3618&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER01_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER02_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3602&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3625&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE01_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB03_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3612&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3607&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Referenzen_FDV01_B"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D9ab1d827-ec73-93ff-9863-e4b2f47caeaf"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3608&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3621&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3582&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3599&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3622&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://geoshop.rlp.de/digitale_landschaftsmodelle/digitales_basis-landschaftsmodell.html"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3609&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE02_F"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3603&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE05_P"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=38925"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3627&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW02_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3594&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3624&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3616&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE03_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB01_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG04_P"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3590&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB02_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG03_F"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/cc-zero">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3577&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER06_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE03_P"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3595&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER05_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=38925&amp;REQUEST=GetCapabilities&amp;VERSION=1.1.1&amp;SERVICE=WMS"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Relief_REL01_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER03_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3600&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3583&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW03_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER04_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Relief_REL01_P"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG01_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3606&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3619&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3614&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER05_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB03_P"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Relief_REL01_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW01_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3611&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://geoshop.rlp.de/files/anpassungen/hvd/index.html?config=./products/basisdlm.json"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&amp;resource=layer&amp;layout=tabs&amp;id=38925"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE03_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3604&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3598&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3580&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE04_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG02_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW02_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3623&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW02_P"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D9ab1d827-ec73-93ff-9863-e4b2f47caeaf%26type%3DSERVICE%26generateFrom%3Dremotelist"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Referenzen_HDU01_B"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D9ab1d827-ec73-93ff-9863-e4b2f47caeaf%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D38925"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3578&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3601&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER07_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3620&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3593&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3597&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Siedlungen_SIE05_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3591&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3592&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB02_P"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3615&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER06_P"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3617&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3610&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3613&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gewaesser_GEW01_F"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER03_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER06_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Gebiete_GEB01_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG04_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3581&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER01_L"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3605&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Verkehr_VER07_P"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=3579&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/606/collections/vermkv:Vegetation_VEG04_F"/>
+</rdf:RDF>

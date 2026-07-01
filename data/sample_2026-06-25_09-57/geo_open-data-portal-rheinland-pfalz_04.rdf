@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:ns1="http://data.europa.eu/eli/ontology#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67">
+    <dct:title>Dorf- und Festplatz</dct:title>
+    <dct:description>Bebauungsplan "Dorf- und Festplatz" der Ortsgemeinde Ediger-Eller, Ortsteil Eller</dct:description>
+    <dct:identifier rdf:resource="https://komserv4gdi.service24.rlp.de/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67"/>
+    <dcat:keyword>inspireidentifiziert</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-18</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-18</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://www.geoportal.rlp.de/organization/9f7872a0-187b-6314-8f37-6452a911b51c">
+        <foaf:name>Verbandsgemeinde Cochem</foaf:name>
+        <foaf:mbox>briefkasten@vgcochem.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N709d2022774d433ea86cf9f7f2a92a9a">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1986-12-17</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1987-08-14</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/html_metadata_6b71fc2b-b0a0-4379-8506-30a0c1ae7a67">
+        <dct:title>Original Metadaten HTML</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D6b71fc2b-b0a0-4379-8506-30a0c1ae7a67"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:44:33.373690</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:44:33.369177</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_mapviewer_layer_41880">
+        <dct:title>Online Karte</dct:title>
+        <dct:description>Dorf- und Festplatz - Vorschau im integrierten Kartenviewer</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=41880"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:44:33.373693</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-11T21:16:08.938560</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_geoportal_layer_41880">
+        <dct:title>GeoPortal.rlp</dct:title>
+        <dct:description>Dorf- und Festplatz - Anzeige im GeoPortal.rlp</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&amp;LAYER%5Bid%5D=41880"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:44:33.373694</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-11T21:16:08.938623</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_layer_metadata_41880">
+        <dct:title>Originäre Metadaten für Kartenebene</dct:title>
+        <dct:description>Kartenebene: Dorf- und Festplatz - Anzeige der originären Metadaten</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&amp;resource=layer&amp;layout=tabs&amp;id=41880"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:44:33.373695</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-11T21:16:08.938680</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_wms_interface_41880">
+        <dct:title>WMS Schnittstelle</dct:title>
+        <dct:description>Ebene: Dorf- und Festplatz</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=41880&amp;REQUEST=GetCapabilities&amp;VERSION=1.1.1&amp;SERVICE=WMS"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-09-02T22:44:33.373697</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-11T21:16:08.938734</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_atom_feed_wms_41880">
+        <dct:title>Rasterdownload nach EU-Standard</dct:title>
+        <dct:description>INSPIRE Downloaddienst (predefined ATOM) für Datensatz: Dorf- und Festplatz - basierend auf WMS Datenquelle</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D6b71fc2b-b0a0-4379-8506-30a0c1ae7a67%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D41880"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-11T21:16:08.952349</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-11T21:16:08.938874</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatap:applicableLegislation>
+      <ns1:LegalResource rdf:about="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+    </dcatap:applicableLegislation>
+    <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_dd313021"/>
+    <adms:identifier>Nf4568f564a3e49c99e3d0863676f6208</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"/>
+    <dcatde:legalBasis>§ 7 Abs. 1 Nr. 9 Landestransparenzgesetz
+Geodaten</dcatde:legalBasis>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&amp;LAYER%5Bid%5D=41880"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/cc-zero">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&amp;resource=layer&amp;layout=tabs&amp;id=41880"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D6b71fc2b-b0a0-4379-8506-30a0c1ae7a67%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D41880"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=41880"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D6b71fc2b-b0a0-4379-8506-30a0c1ae7a67"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=41880&amp;REQUEST=GetCapabilities&amp;VERSION=1.1.1&amp;SERVICE=WMS"/>
+</rdf:RDF>

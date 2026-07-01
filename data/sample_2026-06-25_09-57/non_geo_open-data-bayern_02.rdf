@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://open.bydata.de/api/hub/repo/datasets/dbs-wb-2017-15geowissenschaftenbergbau">
+    <dct:title>Wissenschaftliche Bibliotheken: 15: Geowissenschaften, Bergbau in 2017</dct:title>
+    <dct:description>Die deutsche Bibliotheksstatistik (DBS) stellt die nationale Statistik des deutschen Bibliothekswesens dar und beinhaltet statistische Kennzahlen. Sie umfasst öffentliche Bibliotheken, wissenschaftliche Bibliotheken, sowie wissenschaftliche Spezialbibliotheken. Mehr Informationen dazu gibt es bei der [DBS](https://www.bibliotheksstatistik.de/).
+ Dieser Datensatz beinhaltet folgende Informationen zu wissenschaftlichen Bibliotheken in Bayern 2017: 
+             Ausgaben insgesamt, Ausgaben insgesamt, darunter: Ausgaben für gedruckte Bücher, Ausgaben insgesamt, darunter: Ausgaben für laufend gehaltene, gedruckte Zeitschriften und Zeitungen, Zugang: gedruckte Bücher, Bestand: gekaufte, laufend gehaltene, gedruckte Zeitschriften und Zeitungen 
+</dct:description>
+    <dct:identifier>dbs-WB-2017-15GeowissenschaftenBergbau</dct:identifier>
+    <dcat:keyword>ausgaben-insgesamt</dcat:keyword>
+    <dcat:keyword>bestand-gekaufte</dcat:keyword>
+    <dcat:keyword>bibliotheken</dcat:keyword>
+    <dcat:keyword>bibliotheksstatistik</dcat:keyword>
+    <dcat:keyword>darunter-ausgaben-für-gedruckte-bücher</dcat:keyword>
+    <dcat:keyword>darunter-ausgaben-für-laufend-gehaltene</dcat:keyword>
+    <dcat:keyword>dbs</dcat:keyword>
+    <dcat:keyword>gedruckte-zeitschriften-und-zeitungen</dcat:keyword>
+    <dcat:keyword>laufend-gehaltene</dcat:keyword>
+    <dcat:keyword>zugang-gedruckte-bücher</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-09T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-09T00:00:00</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/EDUC"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Nf2d22e24ff5547a9b8350c0d8a47a12d">
+        <vcard:fn>Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:info-hbz@hbz-nrw.de"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N00f24e7f9bff40729defa1949d5ccc78">
+        <foaf:name>Deutsche Bibliotheksstatistik</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N91bc95103c6640c7b091cfc29a7697c6">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-01-01T00:00:00</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-12-31T00:00:00</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.bydata.de/api/hub/repo/distributions/3e746da3-e6dc-40f2-8197-eaac56f780f9">
+        <dct:title>Wissenschaftliche Bibliotheken: 15: Geowissenschaften, Bergbau in 2017 - XLSX</dct:title>
+        <dct:description>Felder: Ausgaben insgesamt, Ausgaben insgesamt, darunter: Ausgaben für gedruckte Bücher, Ausgaben insgesamt, darunter: Ausgaben für laufend gehaltene, gedruckte Zeitschriften und Zeitungen, Zugang: gedruckte Bücher, Bestand: gekaufte, laufend gehaltene, gedruckte Zeitschriften und Zeitungen</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&amp;year=2017&amp;format=xlsx&amp;attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo"/>
+        <dcat:downloadURL rdf:resource="https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&amp;year=2017&amp;format=xlsx&amp;attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-09T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-09T00:00:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.bydata.de/api/hub/repo/distributions/498923d8-3f57-4936-ba74-918b857f593e">
+        <dct:title>Wissenschaftliche Bibliotheken: 15: Geowissenschaften, Bergbau in 2017 - CSV</dct:title>
+        <dct:description>Felder: Ausgaben insgesamt, Ausgaben insgesamt, darunter: Ausgaben für gedruckte Bücher, Ausgaben insgesamt, darunter: Ausgaben für laufend gehaltene, gedruckte Zeitschriften und Zeitungen, Zugang: gedruckte Bücher, Bestand: gekaufte, laufend gehaltene, gedruckte Zeitschriften und Zeitungen</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&amp;year=2017&amp;format=csv&amp;attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo"/>
+        <dcat:downloadURL rdf:resource="https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&amp;year=2017&amp;format=csv&amp;attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-09T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-09T00:00:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openDataBayern"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/cc-zero">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&amp;year=2017&amp;format=csv&amp;attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo"/>
+  <rdfs:Resource rdf:about="https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&amp;year=2017&amp;format=xlsx&amp;attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+</rdf:RDF>

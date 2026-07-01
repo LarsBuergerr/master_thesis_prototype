@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:ns1="http://data.europa.eu/eli/ontology#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd">
+    <dct:title>Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung</dct:title>
+    <dct:description>Allgemeines Wohngebiet</dct:description>
+    <dct:identifier rdf:resource="https://komserv4gdi.service24.rlp.de/b32300e9-42a5-dbe1-2e28-c76f2b754edd"/>
+    <dcat:keyword>inspireidentifiziert</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-19</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-19</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://www.geoportal.rlp.de/organization/f2aff40e-d2e4-23a5-3fe5-54f93c5debfe">
+        <foaf:name>Ortsgemeinde Haßloch</foaf:name>
+        <foaf:mbox>gv-hassloch@poststelle.rlp.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N011a3f1aec6641d7a64694c56fb79929">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1983-02-02</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1984-01-19</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/html_metadata_b32300e9-42a5-dbe1-2e28-c76f2b754edd">
+        <dct:title>Original Metadaten HTML</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3Db32300e9-42a5-dbe1-2e28-c76f2b754edd"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.089410</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.071565</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_mapviewer_layer_81037">
+        <dct:title>Online Karte</dct:title>
+        <dct:description>Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung - Vorschau im integrierten Kartenviewer</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=81037"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.089413</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.071692</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_geoportal_layer_81037">
+        <dct:title>GeoPortal.rlp</dct:title>
+        <dct:description>Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung - Anzeige im GeoPortal.rlp</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&amp;LAYER%5Bid%5D=81037"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.089415</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.071781</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_layer_metadata_81037">
+        <dct:title>Originäre Metadaten für Kartenebene</dct:title>
+        <dct:description>Kartenebene: Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung - Anzeige der originären Metadaten</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&amp;resource=layer&amp;layout=tabs&amp;id=81037"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.089416</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.071894</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_wms_interface_81037">
+        <dct:title>WMS Schnittstelle</dct:title>
+        <dct:description>Ebene: Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=81037&amp;REQUEST=GetCapabilities&amp;VERSION=1.1.1&amp;SERVICE=WMS"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.089417</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.071984</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_atom_feed_wms_81037">
+        <dct:title>Rasterdownload nach EU-Standard</dct:title>
+        <dct:description>INSPIRE Downloaddienst (predefined ATOM) für Datensatz: Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung - basierend auf WMS Datenquelle</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3Db32300e9-42a5-dbe1-2e28-c76f2b754edd%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D81037"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.089418</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-05T21:56:54.072068</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatde:licenseAttributionByText>Gemeinde Haßloch</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatap:applicableLegislation>
+      <ns1:LegalResource rdf:about="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+    </dcatap:applicableLegislation>
+    <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_dd313021"/>
+    <adms:identifier>Ndf5b3f0d409f4a20b28c297f572bf39e</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"/>
+    <dcatde:legalBasis>§ 7 Abs. 1 Nr. 9 Landestransparenzgesetz
+Geodaten</dcatde:legalBasis>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3Db32300e9-42a5-dbe1-2e28-c76f2b754edd"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&amp;LAYER%5Bid%5D=81037"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3Db32300e9-42a5-dbe1-2e28-c76f2b754edd%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D81037"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/cc-zero">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=81037&amp;REQUEST=GetCapabilities&amp;VERSION=1.1.1&amp;SERVICE=WMS"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&amp;resource=layer&amp;layout=tabs&amp;id=81037"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=81037"/>
+</rdf:RDF>

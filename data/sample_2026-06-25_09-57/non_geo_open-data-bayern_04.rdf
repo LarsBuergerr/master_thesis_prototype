@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://open.bydata.de/api/hub/repo/datasets/zaehlstellen-b85-2019">
+    <dct:title>Automatische Zählstellen auf der Bundesstraße B85 - 2019</dct:title>
+    <dct:description>Auf Deutschlands Autobahnen und außerörtlichen Bundesstraßen werden an automatischen Zählstellen alle Fahrzeuge permanent gezählt. Je nach eingesetztem Gerätetyp können bis zu neun Fahrzeugarten unterschieden werden. Die Daten werden von der Autobahn GmbH des Bundes (AdB) sowie den Bundesländern erhoben und der BASt monatlich übermittelt. Auf dieser Basis werden Jahresfahrleistungen und durchschnittliche tägliche Verkehrsstärken (DTV) berechnet. Die Daten bilden eine wichtige Grundlage für verkehrs- oder bautechnische Entscheidungen und Maßnahmen.
+Dieser Datensatz enthält alle Werte sämtlicher Zählstellen an der Bundesstraße B85 im Jahr 2019.
+
+[Quelle BASt](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/zaehl_node.html) - Stand 14.01.2026
+
+Informationen der BASt zu den verwendeten Erfassungsarten und Abkürzungen:
+-   [Erfassungsarten nach TLS (PDF)](https://www.bast.de/BASt_2017/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/pdf-dateien/erfassungsarten.pdf?__blob=publicationFile)
+-   [Abkürzungen und Datensatzbeschreibungen](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/abkuerzungen-daten.html)</dct:description>
+    <dct:identifier>zaehlstellen-B85-2019</dct:identifier>
+    <dcat:keyword>2019</dcat:keyword>
+    <dcat:keyword>b85</dcat:keyword>
+    <dcat:keyword>bundesstraße</dcat:keyword>
+    <dcat:keyword>lkw</dcat:keyword>
+    <dcat:keyword>pkw</dcat:keyword>
+    <dcat:keyword>verkehrszählung</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-14T15:09:32</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-14T15:09:32</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TRAN"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Nc2c042cf9e6048adb6837bdce2332ff6">
+        <vcard:fn>Bundesanstalt für Straßen- und Verkehrswesen (BASt)</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:info@bast.de"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N8acb0d5c4411421da18403b93401932e">
+        <foaf:name>Bundesanstalt für Straßen- und Verkehrswesen (BASt)</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N2c723efe54d7481785735cf3054a43ba">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-01-01T00:00:00</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-12-31T00:00:00</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.bydata.de/api/hub/repo/distributions/ecf58671-15fc-4016-b097-0a646f374250">
+        <dct:title>Zählstelle Stockheim-Haßlach (n)</dct:title>
+        <dct:description>Zählstellen-Nummer: 9210
+[Informationsseite zur Zählstelle](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/Daten/2019_1/Jawe2019.html?cms_detail=9210&amp;cms_map=0)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://www.bast.de/videos/2019/zst9210.zip"/>
+        <dcat:downloadURL rdf:resource="https://www.bast.de/videos/2019/zst9210.zip"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-14T15:09:32</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-14T15:09:32</dct:modified>
+        <dcatde:licenseAttributionByText>Bundesanstalt für Straßen- und Verkehrswesen (BASt)</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.bydata.de/api/hub/repo/distributions/6dffb83c-c327-41ee-80a0-32e78fea3bc5">
+        <dct:title>Zählstelle Roding</dct:title>
+        <dct:description>Zählstellen-Nummer: 9290
+[Informationsseite zur Zählstelle](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/Daten/2019_1/Jawe2019.html?cms_detail=9290&amp;cms_map=0)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://www.bast.de/videos/2019/zst9290.zip"/>
+        <dcat:downloadURL rdf:resource="https://www.bast.de/videos/2019/zst9290.zip"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-14T15:09:32</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-14T15:09:32</dct:modified>
+        <dcatde:licenseAttributionByText>Bundesanstalt für Straßen- und Verkehrswesen (BASt)</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.bydata.de/api/hub/repo/distributions/1020531f-a017-4257-858b-28b643fc504b">
+        <dct:title>Zählstelle Amberg (w)</dct:title>
+        <dct:description>Zählstellen-Nummer: 9289
+[Informationsseite zur Zählstelle](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/Daten/2019_1/Jawe2019.html?cms_detail=9289&amp;cms_map=0)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://www.bast.de/videos/2019/zst9289.zip"/>
+        <dcat:downloadURL rdf:resource="https://www.bast.de/videos/2019/zst9289.zip"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-14T15:09:32</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-14T15:09:32</dct:modified>
+        <dcatde:licenseAttributionByText>Bundesanstalt für Straßen- und Verkehrswesen (BASt)</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.bydata.de/api/hub/repo/distributions/0ff933ce-0d6a-4fda-90ba-74d74396f995">
+        <dct:title>Zählstelle Stockheim-Haßlach (s)</dct:title>
+        <dct:description>Zählstellen-Nummer: 9209
+[Informationsseite zur Zählstelle](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/Daten/2019_1/Jawe2019.html?cms_detail=9209&amp;cms_map=0)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://www.bast.de/videos/2019/zst9209.zip"/>
+        <dcat:downloadURL rdf:resource="https://www.bast.de/videos/2019/zst9209.zip"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-14T15:09:32</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-14T15:09:32</dct:modified>
+        <dcatde:licenseAttributionByText>Bundesanstalt für Straßen- und Verkehrswesen (BASt)</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openDataBayern"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://www.bast.de/videos/2019/zst9209.zip"/>
+  <rdfs:Resource rdf:about="https://www.bast.de/videos/2019/zst9289.zip"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/cc-by/4.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://www.bast.de/videos/2019/zst9290.zip"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+  <rdfs:Resource rdf:about="https://www.bast.de/videos/2019/zst9210.zip"/>
+</rdf:RDF>

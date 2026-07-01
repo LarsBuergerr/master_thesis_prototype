@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=98a2fd34-b2bc-4e12-be69-6272c5200788">
+    <dct:title>Wasserschutzgebiete (Landkreis Holzminden)</dct:title>
+    <dct:description>festgesetzte Wasserschutzgebiete im Landkreis Holzminden</dct:description>
+    <dct:identifier>98a2fd34-b2bc-4e12-be69-6272c5200788</dct:identifier>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded"/>
+    </dct:accrualPeriodicity>
+    <dct:type rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset"/>
+    <dcat:keyword>inspireidentifiziert</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>schutzgebiete</dcat:keyword>
+    <dcat:keyword>wasserschutz</dcat:keyword>
+    <dcat:keyword>wasserschutzgebiet</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2007-10-09</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-10-14T10:12:51.246000+00:00</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N4c67d5cd79cd4320abd106d1c604ff00">
+        <vcard:fn>Landkreis Holzminden</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:info@landkreis-holzminden.de"/>
+        <vcard:hasURL rdf:resource="http://www.landkreis-holzminden.de"/>
+        <vcard:hasTelephone rdf:resource="tel:+05531/707-0"/>
+        <vcard:hasStreetAddress>Bgm.-Schrader-Str. 24</vcard:hasStreetAddress>
+        <vcard:hasLocality>Holzminden</vcard:hasLocality>
+        <vcard:hasPostalCode>37603</vcard:hasPostalCode>
+        <vcard:hasCountryName>Deutschland</vcard:hasCountryName>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N02a6c4c14d1b442d996904d4b57c65bc">
+        <foaf:name>Landkreis Holzminden</foaf:name>
+        <foaf:mbox>info@landkreis-holzminden.de</foaf:mbox>
+        <foaf:homepage rdf:resource="http://www.landkreis-holzminden.de"/>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N0acf5e2bdde14083913b31ede83fc7c1">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2007-10-09</dcat:startDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Nb1186421815c48bcb379c23883c1f7dd">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((9.3319 52.0356, 9.8627 52.0356, 9.8627 51.6445, 9.3319 51.6445, 9.3319 52.0356))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:nodeID="N2c440056416b479390592ee92208a5fc">
+        <rdfs:label>Es gelten die Lizenzbedingungen „Datenlizenz Deutschland – Zero – Version 2.0“ bzw. „dl-zero-de/2.0” (https://www.govdata.de/dl-de/zero-2-0).</rdfs:label>
+      </dct:RightsStatement>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip#distribution">
+        <dct:title>Schutzgebiete als Shape-Dateien (zip)</dct:title>
+        <dct:description>Schutzgebiete als Shape-Dateien (zip)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-zero-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip"/>
+        <dcat:downloadURL rdf:resource="https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format>shape</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-23T14:30:08.823653</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-26T11:02:23.072295</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip#distribution">
+        <dct:title>Schutzgebiete als Geo-Datenbank (zip)</dct:title>
+        <dct:description>Schutzgebiete als Geo-Datenbank (zip)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-zero-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip"/>
+        <dcat:downloadURL rdf:resource="https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format>shape</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-23T14:30:08.823658</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-26T11:02:23.072466</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0#distribution">
+        <dct:title>Karte der Schutzgebiete im Landkreis Holzminden (pdf)</dct:title>
+        <dct:description>Karte der Schutzgebiete im Landkreis Holzminden (pdf)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-zero-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0"/>
+        <dcat:downloadURL rdf:resource="https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0"/>
+        <dct:format>shape</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-23T14:30:08.823661</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-23T14:30:08.811053</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>98a2fd34-b2bc-4e12-be69-6272c5200788</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/gdiDE"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-zero-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip"/>
+  <rdfs:Resource rdf:about="https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0"/>
+</rdf:RDF>

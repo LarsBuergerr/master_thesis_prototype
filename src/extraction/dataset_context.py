@@ -48,6 +48,7 @@ from extraction.vocabularies import (
 
 LOCN = Namespace("http://www.w3.org/ns/locn#")
 DCATDE = Namespace("http://dcat-ap.de/def/dcatde/")
+ADMS = Namespace("http://www.w3.org/ns/adms#")
 _LANGUAGE = DCTERMS.language
 _ACCESS_RIGHTS = DCTERMS.accessRights
 _PUBLISHER = DCTERMS.publisher
@@ -151,6 +152,7 @@ class DistributionContext:
     licenses: list[str] = field(default_factory=list)
     licenses_open: list[bool] = field(default_factory=list)
     byte_size: Optional[str] = None
+    adms_status: list[str] = field(default_factory=list)
     probe: Optional[DistributionProbe] = None  # Populated by attach_probes(context)
 
     @property
@@ -191,6 +193,8 @@ class DatasetContext:
     geometries: list[str] = field(default_factory=list)
     spatial_resources: list[str] = field(default_factory=list)
     admin_units: list[AdminUnitFact] = field(default_factory=list)
+    political_geocoding: list[AdminUnitFact] = field(default_factory=list)
+    identifiers: list[str] = field(default_factory=list)
     licenses: list[str] = field(default_factory=list)
     licenses_open: list[bool] = field(default_factory=list)
     access_rights: list[str] = field(default_factory=list)
@@ -329,6 +333,14 @@ class DatasetContext:
         admin_units = [
             _admin_unit_fact(str(o)) for o in graph.objects(predicate=LOCN.adminUnitL2)
         ]
+        # DCAT-AP.de's normative field for political/administrative coverage is
+        # ``dcatde:politicalGeocodingURI`` (Konvention 08, MUSS where applicable);
+        # ``locn:adminUnitL2`` is the generic DCAT-AP fallback.
+        political_geocoding = [
+            _admin_unit_fact(str(o))
+            for s in dataset_subjects
+            for o in graph.objects(s, DCATDE.politicalGeocodingURI)
+        ]
         return cls(
             graph=graph,
             dataset_uri=dataset_uri,
@@ -347,6 +359,8 @@ class DatasetContext:
             geometries=[str(o) for o in graph.objects(predicate=LOCN.geometry)],
             spatial_resources=_multi(graph, dataset_subjects, DCTERMS.spatial),
             admin_units=admin_units,
+            political_geocoding=political_geocoding,
+            identifiers=_multi(graph, dataset_subjects, DCTERMS.identifier),
             licenses=licenses,
             licenses_open=[lic in OPEN_LICENSE_URIS for lic in licenses],
             access_rights=_multi(graph, dataset_subjects, _ACCESS_RIGHTS),
@@ -465,6 +479,7 @@ def _distribution_from_graph(graph: Graph, distribution: URIRef) -> Distribution
     modified = [str(o) for o in graph.objects(distribution, DCTERMS.modified)]
     issued = [str(o) for o in graph.objects(distribution, DCTERMS.issued)]
     licenses = [str(o) for o in graph.objects(distribution, DCTERMS.license)]
+    adms_status = [str(o) for o in graph.objects(distribution, ADMS.status)]
     return DistributionContext(
         distribution_uri=str(distribution),
         titles=titles,
@@ -487,4 +502,5 @@ def _distribution_from_graph(graph: Graph, distribution: URIRef) -> Distribution
         licenses=licenses,
         licenses_open=[lic in OPEN_LICENSE_URIS for lic in licenses],
         byte_size=_first_value(graph, distribution, _DCAT_BYTE_SIZE),
+        adms_status=adms_status,
     )

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=9813e428-b51f-4177-bd36-e1dc8060ce33">
+    <dct:title>1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021</dct:title>
+    <dct:description>Im Rahmen des gemeinsamen Bund/Länder-Messprogramms für die Nord- und Ostsee und weiterer Überwachungsprogramme wurde der Parameter "1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment" im Sediment bestimmt.</dct:description>
+    <dct:identifier>9813e428-b51f-4177-bd36-e1dc8060ce33</dct:identifier>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded"/>
+    </dct:accrualPeriodicity>
+    <dct:type rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset"/>
+    <dcat:keyword>2021</dcat:keyword>
+    <dcat:keyword>baltic-sea</dcat:keyword>
+    <dcat:keyword>bsh</dcat:keyword>
+    <dcat:keyword>bundesamt-für-seeschifffahrt-und-hydrographie</dcat:keyword>
+    <dcat:keyword>dbalp</dcat:keyword>
+    <dcat:keyword>federal-maritime-and-hydrographic-agency</dcat:keyword>
+    <dcat:keyword>monitoring</dcat:keyword>
+    <dcat:keyword>national</dcat:keyword>
+    <dcat:keyword>nordsee</dcat:keyword>
+    <dcat:keyword>north-sea</dcat:keyword>
+    <dcat:keyword>open-data</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>ostsee</dcat:keyword>
+    <dcat:keyword>pyrene</dcat:keyword>
+    <dcat:keyword>sediment</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-11-26</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-18T18:06:11.667310</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/AGRI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TRAN"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N8e32bf4a872d4d2fbbc133f402779ab2">
+        <vcard:fn>Bundesamt für Seeschifffahrt und Hydrographie (BSH)</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:dod@bsh.de"/>
+        <vcard:hasStreetAddress>Bernhard-Nocht-Str. 78</vcard:hasStreetAddress>
+        <vcard:hasLocality>Hamburg</vcard:hasLocality>
+        <vcard:hasPostalCode>20359</vcard:hasPostalCode>
+        <vcard:hasCountryName>Deutschland</vcard:hasCountryName>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N9e4085d1b89b476c8f368813a00342f5">
+        <foaf:name>Bundesamt für Seeschifffahrt und Hydrographie (BSH)</foaf:name>
+        <foaf:mbox>dod@bsh.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N3e93d75bc4754b93b2e37dcc6ea45d2f">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-13</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-04-20</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N9657df3deeb64c1ca84b51bf9d567797">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((4.2522 55.7665, 8.3903 55.7665, 8.3903 53.6745, 4.2522 53.6745, 4.2522 55.7665))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:nodeID="Ndee248e00b874f219d0daa6042d71d45">
+        <rdfs:label>Dieser Datensatz kann gemäß der "Datenlizenz Deutschland – Namensnennung – Version 2.0" (www.govdata.de/dl-de/by-2-0) genutzt werden.</rdfs:label>
+      </dct:RightsStatement>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml#distribution">
+        <dct:title>1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021</dct:title>
+        <dct:description>1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml"/>
+        <dcat:downloadURL rdf:resource="https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml"/>
+        <dcat:mediaType>application/xml</dcat:mediaType>
+        <dct:format>XML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-09T00:58:43.830048</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-03-21T12:57:12.479283</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: Bundesamt für Seeschifffahrt und Hydrographie</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://gdi.bsh.de/de/data/dibenzo-a-l-pyrene-in-dry-sediment-2021.txt#distribution">
+        <dct:title>1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021</dct:title>
+        <dct:description>1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://gdi.bsh.de/de/data/dibenzo-a-l-pyrene-in-dry-sediment-2021.txt"/>
+        <dcat:downloadURL rdf:resource="https://gdi.bsh.de/de/data/dibenzo-a-l-pyrene-in-dry-sediment-2021.txt"/>
+        <dcat:mediaType>text/plain</dcat:mediaType>
+        <dct:format>TXT</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-09T00:58:43.830053</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-03-21T12:57:12.479419</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: Bundesamt für Seeschifffahrt und Hydrographie</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>9813e428-b51f-4177-bd36-e1dc8060ce33</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/gdiDE"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://gdi.bsh.de/de/data/dibenzo-a-l-pyrene-in-dry-sediment-2021.txt"/>
+</rdf:RDF>
