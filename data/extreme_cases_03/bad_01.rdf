@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://registry.gdi-de.org/id/de.nw/6d2ded82-6be7-4a3b-a394-bff1487e8b2a">
+    <dct:title>Bebauungspläne Stadt Münster</dct:title>
+    <dct:description>Umringsgrenzen rechtskräftiger oder im Aufstellungsverfahren befindlicher Bebauungspläne</dct:description>
+    <dct:identifier>2c440a46-0a3a-41c6-8586-a19e607078bc</dct:identifier>
+    <dct:type rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset"/>
+    <dcat:keyword>bodennutzung</dcat:keyword>
+    <dcat:keyword>inspireidentifiziert</dcat:keyword>
+    <dcat:keyword>lokal</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-01</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-11</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/AGRI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TRAN"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N717c361c62dd48e5a0b12a01b9d91ae5">
+        <vcard:fn>Stadt Münster</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:stadtplanung@stadt-muenster.de"/>
+        <vcard:hasURL rdf:resource="https://www.stadt-muenster.de/stadtplanung/startseite"/>
+        <vcard:hasStreetAddress>Albersloher Weg 33</vcard:hasStreetAddress>
+        <vcard:hasLocality>Münster</vcard:hasLocality>
+        <vcard:hasPostalCode>48155</vcard:hasPostalCode>
+        <vcard:hasCountryName>Germany</vcard:hasCountryName>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N7bde53c0a9ac4d5fa8827bc3fcf8c22d">
+        <foaf:name>Stadt Münster</foaf:name>
+        <foaf:mbox>stadtplanung@stadt-muenster.de</foaf:mbox>
+        <foaf:homepage rdf:resource="https://www.stadt-muenster.de/stadtplanung/startseite"/>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N5e2705b5ef6f424ab8dc65e50e51a6d0">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((7.4800 52.0200, 7.7500 52.0200, 7.7500 51.8500, 7.4800 51.8500, 7.4800 52.0200))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations"/>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://geo.stadt-muenster.de/mapserv/bplan_serv#distribution">
+        <dct:title>GetCapabilities</dct:title>
+        <dct:description>GetCapabilities</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://geo.stadt-muenster.de/mapserv/bplan_serv"/>
+        <dcat:downloadURL rdf:resource="https://geo.stadt-muenster.de/mapserv/bplan_serv"/>
+        <dct:format>missing</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-27T10:37:29.441540</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-11</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>Nd6acfb6f7eea47cd97327b47b3fc408a</adms:identifier>
+    <adms:identifier>2c440a46-0a3a-41c6-8586-a19e607078bc</adms:identifier>
+    <adms:identifier>Na2028bcab8274ea0a0c4afe3a06927b3</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/gdiDE"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openNRW"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://geo.stadt-muenster.de/mapserv/bplan_serv"/>
+</rdf:RDF>

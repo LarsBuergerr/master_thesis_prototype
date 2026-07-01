@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://opendata.schleswig-holstein.de/dataset/39054cb0-a82a-4cfe-99d7-63c2b365b111">
+    <dct:title>Feinstaub (PM2,5) Lübeck, Moislinger Allee Tagesmittel 2023</dct:title>
+    <dct:description>Um die Gesundheit der Menschen und die Vegetation vor den Einflüssen zu hoher Luftschadstoffbelastungen zu schützen, wird die Luftqualität laufend untersucht und nach gesetzlichen Vorschriften beurteilt.
+
+Dafür betreibt das Landesamt für Umwelt (LfU) in Schleswig-Holstein ein Netz aus Messstationen, an denen mit unterschiedlichen Methoden Luftschadstoffe gemessen werden.
+
+Die Messdaten aus Schleswig-Holstein und viele zusätzliche Informationen zu den Messungen werden an das Umweltbundesamt weiter geleitet und von dort gemeinsam mit den Daten aller Bundesländer an die Europäische Kommission gemeldet.
+
+Alle aktuell veröffentlichten Daten sind als ***vorläufig*** einzustufen, da sie zu Ihrer schnellen Information zunächst automatisch auf Gültigkeit geprüft werden. Vor der abschließenden Bewertung und Beurteilung der Luftqualität findet später eine mehrstufige Prüfung nach gesetzlichen Vorgaben statt.
+
+Bei den CSV-Dateien „fehlt“ am Tag der Umstellung von Normalzeit (MEZ) auf Sommerzeit (MESZ) die 3-Uhr-Messung, am Tag der Umstellung von Sommer- auf Normalzeit gibt es hingegen zwei 3-Uhr-Messungen. Die JSON-Dateien sind von dieser Problematik nicht betroffen, hier wird durchgängig Normalzeit verwendet.
+
+[Informationen zur Messstation](https://www.schleswig-holstein.de/DE/Fachinhalte/L/luftqualitaet/Messstationen/LuebeckMoislAl.html)</dct:description>
+    <dct:identifier rdf:resource="http://lfu.landsh.de/DESH053_PM25_1TMW_2023"/>
+    <dcat:keyword>5_</dcat:keyword>
+    <dcat:keyword>feinstaub-pm2</dcat:keyword>
+    <dcat:keyword>luft</dcat:keyword>
+    <dcat:keyword>lufthygiene</dcat:keyword>
+    <dcat:keyword>luftqualität</dcat:keyword>
+    <dcat:keyword>luftverschmutzung</dcat:keyword>
+    <dcat:keyword>lübeck</dcat:keyword>
+    <dcat:keyword>moislinger-allee</dcat:keyword>
+    <dcat:keyword>pm25</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-16T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-16T00:00:00</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.schleswig-holstein.de/organization/lfu">
+        <foaf:name>Landesamt für Umwelt (LfU)</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="Nc2191cf9661a457d8f5dbc8f373bc53e">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-01-01T00:00:00</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-31T00:00:00</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N8e04dacb920a42bea7890852996b5506">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT (10.6733 53.8622)</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://lfu.landsh.de/DESH053_PM25_1TMW_2023/data.json">
+        <dct:title>DESH053_PM25_1TMW_2023.json</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.umweltbundesamt.de/api/air_data/v2/measures/json?station=1580&amp;component=9&amp;scope=1&amp;date_from=2023-01-01&amp;time_from=1&amp;date_to=2023-12-31&amp;time_to=24&amp;lang=de"/>
+        <dcat:downloadURL rdf:resource="https://www.umweltbundesamt.de/api/air_data/v2/measures/json?station=1580&amp;component=9&amp;scope=1&amp;date_from=2023-01-01&amp;time_from=1&amp;date_to=2023-12-31&amp;time_to=24&amp;lang=de"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-05-15T10:22:48.033900</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-05-15T10:22:48.012166</dct:modified>
+        <dcatde:licenseAttributionByText>LfU-SH</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://lfu.landsh.de/DESH053_PM25_1TMW_2023/data">
+        <dct:title>DESH053_PM25_1TMW_2023.csv</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.umweltbundesamt.de/api/air_data/v2/measures/csv?data%5B0%5D%5Bst%5D=1580&amp;data%5B0%5D%5Bco%5D=9&amp;data%5B0%5D%5Bsc%5D=1&amp;date_from=2023-01-01&amp;time_from=1&amp;date_to=2023-12-31&amp;time_to=24&amp;lang=de"/>
+        <dcat:downloadURL rdf:resource="https://www.umweltbundesamt.de/api/air_data/v2/measures/csv?data%5B0%5D%5Bst%5D=1580&amp;data%5B0%5D%5Bco%5D=9&amp;data%5B0%5D%5Bsc%5D=1&amp;date_from=2023-01-01&amp;time_from=1&amp;date_to=2023-12-31&amp;time_to=24&amp;lang=de"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-05-15T10:22:48.033896</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-05-15T10:22:48.012031</dct:modified>
+        <dcatde:licenseAttributionByText>LfU-SH</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/schleswigHolstein"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://www.umweltbundesamt.de/api/air_data/v2/measures/csv?data%5B0%5D%5Bst%5D=1580&amp;data%5B0%5D%5Bco%5D=9&amp;data%5B0%5D%5Bsc%5D=1&amp;date_from=2023-01-01&amp;time_from=1&amp;date_to=2023-12-31&amp;time_to=24&amp;lang=de"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+  <rdfs:Resource rdf:about="https://www.umweltbundesamt.de/api/air_data/v2/measures/json?station=1580&amp;component=9&amp;scope=1&amp;date_from=2023-01-01&amp;time_from=1&amp;date_to=2023-12-31&amp;time_to=24&amp;lang=de"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+</rdf:RDF>

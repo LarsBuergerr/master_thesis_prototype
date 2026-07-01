@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://open.rlp.de/dataset/48ced916-628f-4985-8596-bc3167da5960">
+    <dct:title>Verschiedenes 05.05.2026</dct:title>
+    <dct:description>Kein Hinweis</dct:description>
+    <dct:identifier>d692eb50-cc5b-4464-8dae-f7bcdfa93a7e</dct:identifier>
+    <dcat:keyword>verschiedenes</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T09:51:17+02:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T09:51:18+02:00</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/SOCI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="Nfcbb3d8d282d4a8cb0db07cbb189c6aa">
+        <foaf:name>Staatskanzlei</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.rlp.de/dataset/48ced916-628f-4985-8596-bc3167da5960/resource/bf9e5f4c-a0c8-4e23-aec0-82b034013f32">
+        <dct:title>TOP_07_Verschiedenes_05.05.2026.pdf</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://upload.open.rlp.de/eakte/d692eb50-cc5b-4464-8dae-f7bcdfa93a7e/resource/feb46bb5-729b-42ae-b23d-2e31948414ba/download/top-07-verschiedenes_05.05.2026.pdf"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/pdf"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T09:51:18+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T09:51:18+02:00</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">433160</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>
+      <adms:Identifier rdf:about="https://eakte.rlp.de/coo-2298-102-5-2796694"/>
+    </adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"/>
+    <dcatde:legalBasis>§ 7 Abs. 1 Nr. 1 Landestransparenzgesetz
+Ministerratsbeschlüsse</dcatde:legalBasis>
+  </dcat:Dataset>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://upload.open.rlp.de/eakte/d692eb50-cc5b-4464-8dae-f7bcdfa93a7e/resource/feb46bb5-729b-42ae-b23d-2e31948414ba/download/top-07-verschiedenes_05.05.2026.pdf"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/pdf"/>
+</rdf:RDF>

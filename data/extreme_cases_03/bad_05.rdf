@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://geodatenkatalog-niederrhein.de/csw?REQUEST=GetRecordById&amp;SERVICE=CSW&amp;VERSION=2.0.2&amp;id=2406ba11-6930-4b0c-90ba-d06fa7d7d62a&amp;elementSetName=full">
+    <dct:title>Haushalte mit vielen Kindern Bottrop</dct:title>
+    <dct:description>Gesamtanzahl der kinderreichen Haushalte, in denen mindestens drei Kinder oder Jugendliche leben.</dct:description>
+    <dct:identifier>2406ba11-6930-4b0c-90ba-d06fa7d7d62a</dct:identifier>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/ANNUAL"/>
+    </dct:accrualPeriodicity>
+    <dcat:keyword>familie</dcat:keyword>
+    <dcat:keyword>haushalt</dcat:keyword>
+    <dcat:keyword>haushalte</dcat:keyword>
+    <dcat:keyword>jugendliche</dcat:keyword>
+    <dcat:keyword>kinder</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>soci</dcat:keyword>
+    <dcat:keyword>stadtteile</dcat:keyword>
+    <dcat:keyword>statistik</dcat:keyword>
+    <dcat:keyword>statistische-bezirke</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-31T00:00:00+01:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-02-24</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/EDUC"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/SOCI"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Na059f1c102914d91acc739e1223705bd">
+        <vcard:fn>Stadt Bottrop - Amt für Informationsverarbeitung (12)</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:statistik@bottrop.de"/>
+        <vcard:hasURL rdf:resource="https://www.bottrop.de/"/>
+        <vcard:hasStreetAddress>Böckenhoffstraße 44-46</vcard:hasStreetAddress>
+        <vcard:hasLocality>Bottrop</vcard:hasLocality>
+        <vcard:hasPostalCode>46236</vcard:hasPostalCode>
+        <vcard:hasCountryName>DEU</vcard:hasCountryName>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N90e5366c2d84465aa25bfe652a6a5393">
+        <foaf:name>Stadt Bottrop - Amt für Informationsverarbeitung (12)</foaf:name>
+        <foaf:mbox>statistik@bottrop.de</foaf:mbox>
+        <foaf:homepage rdf:resource="https://www.bottrop.de/"/>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Na295b177a0b44ba8a7462d5079e13808">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((6.9949 51.6460, 6.9949 51.4952, 6.8362 51.4952, 6.8362 51.6460, 6.9949 51.6460))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:nodeID="N18aebcae51ca49ceb2ef6c90c4060f7a">
+        <rdfs:label>Datenlizenz Deutschland – Zero – Version 2.0</rdfs:label>
+      </dct:RightsStatement>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://geodatenkatalog-niederrhein.de/csw?REQUEST=GetRecordById&amp;SERVICE=CSW&amp;VERSION=2.0.2&amp;id=2406ba11-6930-4b0c-90ba-d06fa7d7d62a&amp;elementSetName=full#distribution-1">
+        <dct:title>Haushalte mit vielen Kindern (Statistische Bezirke)</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://gis.bottrop.de/public/Statistik/OpenData/Demografie_Sozialatlas/StatBez/Haushalte/Haushalte_mit_vielen_Kindern.txt"/>
+        <dcat:downloadURL rdf:resource="https://gis.bottrop.de/public/Statistik/OpenData/Demografie_Sozialatlas/StatBez/Haushalte/Haushalte_mit_vielen_Kindern.txt"/>
+        <dcat:mediaType>text/plain</dcat:mediaType>
+        <dct:format>TXT</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-18T11:58:34.593417</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-31T00:00:00+01:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://geodatenkatalog-niederrhein.de/csw?REQUEST=GetRecordById&amp;SERVICE=CSW&amp;VERSION=2.0.2&amp;id=2406ba11-6930-4b0c-90ba-d06fa7d7d62a&amp;elementSetName=full#distribution-2">
+        <dct:title>Haushalte mit vielen Kindern (Stadtteile)</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://gis.bottrop.de/public/Statistik/OpenData/Demografie_Sozialatlas/StatBez/Haushalte/Haushalte_mit_vielen_Kindern.txt"/>
+        <dcat:downloadURL rdf:resource="https://gis.bottrop.de/public/Statistik/OpenData/Demografie_Sozialatlas/StatBez/Haushalte/Haushalte_mit_vielen_Kindern.txt"/>
+        <dcat:mediaType>text/plain</dcat:mediaType>
+        <dct:format>TXT</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-18T11:58:34.593422</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-31T00:00:00+01:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID></dcatde:contributorID>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openNRW"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://gis.bottrop.de/public/Statistik/OpenData/Demografie_Sozialatlas/StatBez/Haushalte/Haushalte_mit_vielen_Kindern.txt"/>
+</rdf:RDF>
