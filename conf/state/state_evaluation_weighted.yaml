@@ -11,9 +11,10 @@ hydra:
     chdir: false
 
 # Directory path for input data
-directory_path: "data/"
+# directory_path: "data/sample_2026-06-25_09-57"
+directory_path: "data/extreme_cases_03"
 # If empty: process all files matching extensions in directory_path
-files: ["perfect_example_01.rdf"]
+# files: ["perfect_example_01.rdf"]
 
 # File filtering (only used if files list is empty)
 file_filter:
@@ -95,9 +96,9 @@ quality:
   # differentiator weighted above findability (structural basis).
   dimension_weights:
     accessibility: 2
-    reusability: 1.4
+    reusability: 1.5
     expressiveness: 2
-    findability: 1.0
+    findability: 1
 
   # Optional custom weights per indicator id (default: indicator.weight)
   indicator_weights:

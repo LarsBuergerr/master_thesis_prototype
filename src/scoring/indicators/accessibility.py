@@ -545,21 +545,31 @@ class ResponseCodeIndicator(Indicator):
     """Generic per-URL HTTP response-code validator.
 
     Reads ``probe.download_status_code`` / ``probe.access_status_code``
-    (populated by ``attach_probes``) and scores the fraction of probed
-    distributions whose URL returned ``HTTP < 400``. Falls back to
-    attaching probes itself when run standalone, mirroring
-    ``FormatCongruenceIndicator``.
+    (populated by ``attach_probes``) and scores per probed distribution:
+    a reachable URL (``HTTP < 400``) contributes ``+1.0``, a dead one
+    (``>= 400`` or fetch error) contributes ``DEAD_URL_MALUS`` (a negative
+    penalty). The indicator score is the mean over all probed distributions,
+    so a dead link actively drags the score down proportionally instead of
+    just scoring low. Falls back to attaching probes itself when run
+    standalone, mirroring ``FormatCongruenceIndicator``.
 
     Instantiated once per URL kind (``download`` and ``access``); the
     ``url_kind`` argument selects which probe field to evaluate.
     Distributions that don't declare the relevant URL are excluded — they
     contribute nothing to the score either way.
+
+    Note: the malus lives here (pre-``/dist_count``) rather than in the
+    ``ScorePolicy`` because the policy only sees the aggregated result — a
+    proportional per-distribution penalty must be applied before averaging.
     """
 
-    GRADED = True  # fraction of reachable URLs — continuous
+    GRADED = True  # per-distribution +1 / malus, averaged — continuous
 
     PASS_THRESHOLD = 0.9
     PARTIAL_THRESHOLD = 0.5
+    #: Penalty per dead URL (HTTP >= 400 or unreachable), applied per
+    #: distribution before averaging. Reachable URLs score +1.0.
+    DEAD_URL_MALUS = -0.5
 
     def __init__(self, url_kind: str, indicator_id: str, name_de: str, name_en: str):
         url_label_de = "Download-URL" if url_kind == "download" else "Access-URL"
@@ -676,7 +686,11 @@ class ResponseCodeIndicator(Indicator):
                 else:
                     invalid.append(entry)
 
-            overall = len(valid) / sampled_count
+            # Reachable URLs score +1.0, dead ones the (negative) malus, then
+            # average — so dead links pull the score below 0 proportionally.
+            overall = (
+                len(valid) * 1.0 + len(invalid) * self.DEAD_URL_MALUS
+            ) / sampled_count
 
             if overall >= self.PASS_THRESHOLD:
                 status = IndicatorStatus.PASS
@@ -721,6 +735,7 @@ class ResponseCodeIndicator(Indicator):
                     "sampled_distributions": sampled_count,
                     "valid_count": len(valid),
                     "invalid_count": len(invalid),
+                    "dead_url_malus": self.DEAD_URL_MALUS,
                     "valid": valid,
                     "invalid": invalid,
                 },

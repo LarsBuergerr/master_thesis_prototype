@@ -98,14 +98,14 @@ class LicenseIndicator(Indicator):
             name_en="License from controlled vocabulary",
             dimension=QualityDimension.REUSABILITY,
             description_de=(
-                "Prüft ob dct:license eine URI aus dem DCAT-AP-DE-Lizenz-Vokabular "
-                "(skos:exactMatch) ist; volle Punkte bei freier Nutzung, halbe bei "
-                "eingeschränkter Nutzung"
+                "Prüft ob dct:license (auf Distributionsebene) eine URI aus dem "
+                "DCAT-AP-DE-Lizenz-Vokabular ist; volle Punkte nur bei freier "
+                "Nutzung, eingeschränkte Nutzung zählt als FAIL"
             ),
             description_en=(
-                "Checks that dct:license is a URI from the DCAT-AP-DE licenses vocab "
-                "(via skos:exactMatch); full credit for free use, half credit for "
-                "restricted use"
+                "Checks that dct:license (at distribution level) is a URI from the "
+                "DCAT-AP-DE licenses vocab; credit only for free-use licenses, "
+                "restricted use counts as FAIL"
             ),
             weight=1.0,
         )

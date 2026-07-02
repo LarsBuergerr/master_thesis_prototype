@@ -25,7 +25,8 @@ gegen die MQA-Spezifikation belegt werden müssen.
 | `find_theme_valid` | **B** | `category_availability` | any | | MQA: Presence `dcat:theme`; Prototyp: Wert aus kontrolliertem Vokabular. |
 | `find_temporal_coverage` | **A** | `temporal_availability` | any | ⚠ | Beide: zeitliche Abdeckung (start/end). Prototyp prüft zusätzlich `xs:date`/`dateTime`-Typ. |
 | `find_locn_geometry` | **B** | `spatial_availability` | any | | MQA: `dct:spatial` Presence; Prototyp: tatsächliche `locn:geometry` (nicht leer). |
-| `find_adminunitl2` | **B** | `spatial_availability` | any | | MQA: `dct:spatial` Presence; Prototyp: `locn:adminUnitL2` plausibel. |
+| `find_political_geocoding` | **B** | `spatial_availability` | any | | MQA: `dct:spatial` Presence; Prototyp: `dcatde:politicalGeocodingURI` aus Vokabular (Fallback `locn:adminUnitL2` → nur PARTIAL). |
+| `find_geocoding_level` | **C** | — | — | | MQA: keine Metrik für die administrative Ebene (`dcatde:politicalGeocodingLevelURI`, Konvention 09). |
 | `find_accrual_periodicity` | **C** | — | — | | MQA: keine Metrik für Aktualisierungsfrequenz. |
 | `find_issued_datetime` | **A** | `date_issued_availability` | any | ⚠ | Beide: Vorhandensein `dct:issued`. Prototyp prüft zusätzlich `xs:date`/`dateTime`-Typ. |
 | `find_modified_datetime` | **A** | `date_modified_availability` | any | ⚠ | Beide: Vorhandensein `dct:modified`. Prototyp prüft zusätzlich `xs:date`/`dateTime`-Typ. |
@@ -53,10 +54,11 @@ gegen die MQA-Spezifikation belegt werden müssen.
 | Indikator | A/B/C | MQA-Metrik(en) | Agg. | Review | Begründung |
 |-----------|-------|----------------|------|--------|------------|
 | `reuse_dcat_ap_de_compliance` | **A** | `dcat_ap_compliance` | any | | Beide: DCAT-AP SHACL-Konformität via ITB-API. FAIL bei mindestens einer Verletzung. |
-| `reuse_license` | **B** | `license_availability`, `known_license` | any | ⚠ | MQA: Lizenz vorhanden + EU-Autoritäts-URI. Prototyp: DCAT-AP-DE-Vokabular (andere Autorität) — gegenseitig strenger in unterschiedlichen Aspekten. |
+| `reuse_license` | **B** | `license_availability`, `known_license` | any | ⚠ | MQA: Lizenz vorhanden + EU-Autoritäts-URI. Prototyp: DCAT-AP-DE-Vokabular auf **Distributionsebene**, nur freie Nutzung = PASS (eingeschränkt/unbekannt = FAIL) — strenger. |
 | `reuse_access_rights` | **A** | `access_rights_availability`, `access_rights_vocabulary` | all | ⚠ | Beide: `accessRights` vorhanden + Vokabular. |
 | `reuse_publisher` | **B** | `publisher_availability` | any | | MQA: Presence `dct:publisher`; Prototyp: strukturierter `foaf:Agent`. |
 | `reuse_contact` | **B** | `contact_point_availability` | any | | MQA: Presence `dcat:contactPoint`; Prototyp: valide `vcard:hasEmail` oder `vcard:hasURL` (Konvention 01). PARTIAL wenn Kontakt ohne Kanal. |
+| `reuse_availability` | **C** | — | — | | MQA: keine Verfügbarkeits-Metrik; Prototyp: `dcatap:availability` (Dataset + Distributionen) gegen Planned-Availability-Vokabular. |
 | `reuse_contributor_id` | **C** | — | — | | MQA: keine Metrik (DCAT-AP-DE `dcatde:contributorID`). |
 
 ---
@@ -92,7 +94,7 @@ Diese MQA-Metriken haben kein Prototyp-Gegenstück (balance §4.3 aus `docs/eval
 | Klasse | Anzahl | Indikatoren |
 |--------|--------|-------------|
 | **A** | 9 | `acc_download_url`, `acc_download_url_response`, `acc_access_url_response`, `acc_format_non_proprietary`, `find_temporal_coverage`, `find_issued_datetime`, `find_modified_datetime`, `reuse_dcat_ap_de_compliance`, `reuse_access_rights` |
-| **B** | 10 | `find_keywords_count`, `find_theme_valid`, `find_locn_geometry`, `find_adminunitl2`, `acc_format`, `acc_media_type`, `acc_machine_readable_access`, `reuse_license`, `reuse_publisher`, `reuse_contact` |
-| **C** | 8 | `find_accrual_periodicity`, `reuse_contributor_id`, `expr_title_quality`, `expr_description_quality`, `expr_keyword_quality`, `expr_title_description_coherence`, `expr_thematic_consistency`, `expr_contextual_qualifiers` |
-| **Aktiv gesamt** | **27** | |
+| **B** | 10 | `find_keywords_count`, `find_theme_valid`, `find_locn_geometry`, `find_political_geocoding`, `acc_format`, `acc_media_type`, `acc_machine_readable_access`, `reuse_license`, `reuse_publisher`, `reuse_contact` |
+| **C** | 10 | `find_accrual_periodicity`, `find_geocoding_level`, `reuse_availability`, `reuse_contributor_id`, `expr_title_quality`, `expr_description_quality`, `expr_keyword_quality`, `expr_title_description_coherence`, `expr_thematic_consistency`, `expr_contextual_qualifiers` |
+| **Aktiv gesamt** | **29** | |
 | 🚫 Entfernt | 2 | `acc_format_congruence`, `acc_distribution_model` (geblacklistet, Code bleibt) |

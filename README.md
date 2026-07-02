@@ -72,8 +72,14 @@ Scores aggregate bottom-up:
 1. **Dimension score** = weighted average of its indicator scores, using each
    indicator's _effective weight_ (`indicator_weights[id]` if set, else the
    indicator's default weight of `1.0`).
-2. **Overall score** = weighted average of the dimension scores, using
-   `dimension_weights[dim]` (default `1.0` each).
+2. **Overall score** = weighted average of the dimension scores. If no custom
+   `dimension_weights` are set (block omitted, or every value left at `1.0`),
+   each dimension is weighted by the **total weight of its indicators** — so the
+   overall score is exactly the weighted mean over _all_ indicators and the
+   dimension level needs no separate weighting rationale. Setting any dimension
+   weight ≠ `1.0` switches to explicit per-dimension weighting
+   (`dimension_weights[dim]`). The summary reports which mode was used via
+   `dimension_weight_mode`.
 3. **Grade** is derived from the overall score:
 
    | Score ≥ | Grade |
@@ -92,7 +98,7 @@ Scores aggregate bottom-up:
 
 ## Indicator catalogue
 
-29 indicators are registered; **27 are active** — `acc_format_congruence` and
+31 indicators are registered; **29 are active** — `acc_format_congruence` and
 `acc_distribution_model` are disabled by default via `indicator_blacklist` (hard
 to justify, high misjudgement rate). IDs are the keys you use in
 `indicator_whitelist` / `indicator_blacklist` / `indicator_weights`.
@@ -100,14 +106,15 @@ to justify, high misjudgement rate). IDs are the keys you use in
 All Findability indicators are **ternary** (status maps to `pass`/`partial`/`fail`
 points per the `ScorePolicy`).
 
-### Findability (8)
+### Findability (9)
 
 | ID                         | Checks                                                                   | Scoring                                                            | RDF field(s)                     | Net/LLM |
 | -------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------- | -------------------------------- | ------- |
-| `find_keywords_count`      | Keyword count in a healthy range (≈3–10)                                 | PASS 3–10 · PARTIAL 1–2 or 11–15 · FAIL 0 or >15                   | `dcat:keyword`                   | —       |
+| `find_keywords_count`      | Keyword count in a healthy range (≈3–15)                                 | PASS 3–15 · PARTIAL 1–2 or 16–25 · FAIL 0 or >25                   | `dcat:keyword`                   | —       |
 | `find_theme_valid`         | Theme present **and** from the EU data-theme vocabulary                  | PASS all themes in vocab · PARTIAL some not in vocab · FAIL none   | `dcat:theme`                     | —       |
 | `find_locn_geometry`       | Spatial geometry present                                                 | PASS present · FAIL absent                                         | `locn:geometry`                  | —       |
-| `find_adminunitl2`         | Admin unit references the DCAT-AP-DE political-geocoding vocabulary      | PASS in vocab · PARTIAL present but not in vocab · FAIL absent     | `locn:adminUnitL2`               | —       |
+| `find_political_geocoding` | Political geocoding references the DCAT-AP-DE vocabulary (primary `dcatde:politicalGeocodingURI`, fallback `locn:adminUnitL2`) | PASS URI in vocab · PARTIAL present-not-vocab or only adminUnitL2 fallback · FAIL absent | `dcatde:politicalGeocodingURI`, `locn:adminUnitL2` | —       |
+| `find_geocoding_level`     | Political geocoding **level** from the DCAT-AP-DE level vocabulary (Konvention 09) | PASS in vocab · PARTIAL present but not in vocab · FAIL absent     | `dcatde:politicalGeocodingLevelURI` | —       |
 | `find_temporal_coverage`   | Temporal coverage present with a valid `xsd:date`/`dateTime`             | PASS valid start or end date · FAIL absent/invalid                | `dcat:startDate`, `dcat:endDate` | —       |
 | `find_issued_datetime`     | `issued` is a valid date/dateTime (dataset + distributions)              | PASS all values valid · PARTIAL some invalid · FAIL absent         | `dct:issued`                     | —       |
 | `find_modified_datetime`   | `modified` is a valid date/dateTime (dataset + distributions)            | PASS all values valid · PARTIAL some invalid · FAIL absent         | `dct:modified`                   | —       |
@@ -127,16 +134,17 @@ points per the `ScorePolicy`).
 | ~~`acc_format_congruence`~~   | Declared format/media-type agree with the actual HTTP `Content-Type` and URL extension               | 🚫 **Disabled** (blacklisted by default — see catalogue note)                         | `dct:format`, `dcat:mediaType` + HTTP                                | **HTTP**        |
 | ~~`acc_distribution_model`~~  | Distributions follow the DCAT pattern (one dataset, multiple formats) vs. a split-data anti-pattern  | 🚫 **Disabled** (blacklisted by default — see catalogue note)                         | distribution properties                                              | —               |
 
-### Reusability (6)
+### Reusability (7)
 
 All Reusability indicators are **ternary**.
 
 | ID                          | Checks                                                                                             | Scoring                                                                  | RDF field(s)              | Net/LLM  |
 | --------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------- | -------- |
-| `reuse_license`             | License from the DCAT-AP-DE vocabulary; tiered (free-use > restricted > unknown)                   | PASS free-use license · PARTIAL restricted license · FAIL not in vocab / absent | `dct:license`     | —        |
+| `reuse_license`             | Free-use license from the DCAT-AP-DE vocabulary, at **distribution** level (Konvention 32)         | PASS free-use license · FAIL restricted / not in vocab / absent          | `dct:license`             | —        |
 | `reuse_access_rights`       | `accessRights` references a `RightsStatement` URI from the controlled vocabulary                   | PASS URI in vocab · PARTIAL set but not in vocab · FAIL absent           | `dct:accessRights`        | —        |
 | `reuse_publisher`           | Publisher typed as `foaf:Agent` **and** carries an `foaf:name`                                     | PASS Agent + name · PARTIAL one of the two · FAIL neither / absent       | `dct:publisher`           | —        |
 | `reuse_contact`             | Contact point carries a valid email **or** URL (DCAT-AP-DE Konvention 01)                          | PASS valid email or URL · PARTIAL contact but neither · FAIL no contact  | `dcat:contactPoint`       | —        |
+| `reuse_availability`        | `dcatap:availability` (dataset **and** distributions) from the Planned Availability vocabulary      | PASS all values in vocab · PARTIAL some not in vocab · FAIL absent       | `dcatap:availability`     | —        |
 | `reuse_contributor_id`      | `dcatde:contributorID` present, exactly one IRI from the contributors vocabulary (DCAT-AP-DE K12/K13) | PASS exactly one IRI in vocab · FAIL absent / not in vocab / multiple    | `dcatde:contributorID`    | —        |
 | `reuse_dcat_ap_de_compliance` | Zero SHACL violations against DCAT-AP.de v2.0 rules via ITB API                                   | PASS 0 violations · FAIL ≥ 1 violation (binary)                          | all fields                | **HTTP** |
 

@@ -72,13 +72,13 @@ MAPPING: list[dict] = [
         rationale="MQA: dct:spatial Presence; Prototyp: tatsächliche locn:geometry (nicht leer).",
     ),
     dict(
-        indicator="find_adminunitl2",
+        indicator="find_political_geocoding",
         dimension="findability",
         abc="B",
         mqa=["spatial_availability"],
         mqa_agg="any",
         review=False,
-        rationale="MQA: dct:spatial Presence; Prototyp: locn:adminUnitL2 plausibel.",
+        rationale="MQA: dct:spatial Presence; Prototyp: dcatde:politicalGeocodingURI aus Vokabular (Fallback locn:adminUnitL2).",
     ),
     dict(
         indicator="find_accrual_periodicity",

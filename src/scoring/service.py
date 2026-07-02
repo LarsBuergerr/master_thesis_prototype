@@ -428,22 +428,41 @@ class QualityMetricsService:
         Returns:
             Summary statistics
         """
+        by_dimension = results.get("by_dimension", {})
         dimension_scores = {}
+        dimension_indicator_weights = {}
         total_indicators = 0
         total_pass = 0
 
-        for dim_value, dim_results in results.get("by_dimension", {}).items():
+        for dim_value, dim_results in by_dimension.items():
             dimension_scores[dim_value] = dim_results.get("score", 0.0)
+            dimension_indicator_weights[dim_value] = dim_results.get(
+                "total_indicator_weight", 0.0
+            )
             total_indicators += dim_results.get("indicator_count", 0)
             total_pass += dim_results.get("pass_count", 0)
 
-        weighted_score_sum = 0.0
-        total_dimension_weight = 0.0
+        # Effective dimension weights. When no *custom* dimension weights are set
+        # (block missing, or every value left at the default 1.0), each dimension
+        # is weighted by the total weight of its own indicators. The overall score
+        # then reduces to a single weighted mean over ALL indicators, so the
+        # dimension level needs no separate justification. Any non-default
+        # dimension weight switches back to explicit dimension weighting.
+        auto_dim_weight = not self.dimension_weights or all(
+            float(w) == 1.0 for w in self.dimension_weights.values()
+        )
+        if auto_dim_weight:
+            effective_dim_weights = dict(dimension_indicator_weights)
+        else:
+            effective_dim_weights = {
+                dim: self.dimension_weights.get(dim, 1.0) for dim in dimension_scores
+            }
 
-        for dim_value, dim_score in dimension_scores.items():
-            dim_weight = self.dimension_weights.get(dim_value, 1.0)
-            weighted_score_sum += dim_score * dim_weight
-            total_dimension_weight += dim_weight
+        weighted_score_sum = sum(
+            dimension_scores[dim] * effective_dim_weights[dim]
+            for dim in dimension_scores
+        )
+        total_dimension_weight = sum(effective_dim_weights.values())
 
         overall_score = (
             weighted_score_sum / total_dimension_weight
@@ -463,6 +482,10 @@ class QualityMetricsService:
                 dim: self.dimension_weights.get(dim, 1.0)
                 for dim in dimension_scores.keys()
             },
+            "effective_dimension_weights": effective_dim_weights,
+            "dimension_weight_mode": (
+                "auto_indicator_weight" if auto_dim_weight else "explicit"
+            ),
             "total_dimension_weight": total_dimension_weight,
             "total_indicators": total_indicators,
             "total_pass": total_pass,

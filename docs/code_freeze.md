@@ -22,11 +22,12 @@ Entwicklungsartefakte und kommen nicht in die Thesis.
       Empfohlen→PARTIAL, Optional→neutral. Die große strukturelle Änderung.
 - [ ] **`acc_access_url` Präsenz-Indikator** (einziges Pflichtfeld der Distribution,
       fehlt aktuell).
-- [ ] **Reconciliation der optionalen Felder**: `find_identifier`,
-      `reuse_contributor_id`, `acc_distribution_status` dürfen Abwesenheit nicht
-      als FAIL werten (optional laut Spec). Entscheidung: neutral vs. droppen.
+- [ ] **Optionales Feld `reuse_contributor_id`**: laut Spec optional, feuert aber
+      FAIL bei Abwesenheit — Entscheidung: neutral werten oder so lassen.
+      (`find_identifier` und `acc_distribution_status` wurden bereits entfernt;
+      `dcatap:availability` ist als `reuse_availability` umgesetzt.)
 - [ ] **Restliche Indikator-Logik**, die schon feststeht: keywords (3–15/16–25),
-      `reuse_contact` (ternär), `find_adminunitl2` (dcatde primär).
+      `reuse_contact` (ternär), `find_political_geocoding` (dcatde primär).
 - [ ] **`score_policy` GRADED-Verhalten** (roher Score, keine FAIL-Klippe) — bereits umgesetzt.
 - [ ] **Blacklist festzurren**: `acc_format_congruence`, `acc_distribution_model` raus.
 - [ ] **Expressiveness-Prompt** — nur falls die verbesserte LLM-Bewertung Teil der

@@ -95,7 +95,7 @@ quality:
   #   find_theme_valid: 1.5 # Category/theme: central for findability (MQA high)
   #   find_temporal_coverage: 1.0 # Temporal coverage
   #   find_locn_geometry: 1.0 # Spatial geometry
-  #   find_adminunitl2: 1.0 # Spatial unit from vocabulary
+  #   find_political_geocoding: 1.0 # Political geocoding URI from vocabulary
   #   find_accrual_periodicity: 0.75 # Update frequency: nice-to-have
   #   find_issued_datetime: 0.5 # Hygiene: often equally present in good/bad
   #   find_modified_datetime: 0.5 # Hygiene: often equally present in good/bad

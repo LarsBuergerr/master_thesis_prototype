@@ -456,10 +456,12 @@ Diese Punkte wurden identifiziert aber bewusst ausgeklammert:
 | Punkt | Begründung für Ausschluss |
 |-------|--------------------------|
 | `acc_conforms_to` (`dct:conformsTo`) | MQA-Äquivalent fehlt auch; das SHACL-Compliance-Indikator deckt Konformität bereits ab |
-| `find_political_geocoding_level` (`dcatde:politicalGeocodingLevelURI`) | Bereits teilweise durch `find_adminunitl2` abgedeckt; Aufwand vs. Nutzen niedrig |
 | `reuse_license_attribution` (`dcatde:licenseAttributionByText`) | Nur bei BY-Lizenzen relevant; Lizenz-parsing komplex, limitierter Mehrwert im Gesamtkontext |
-| `acc_distribution_availability` (`dcatap:availability`) | Prüft Stabilitätsversprechen der URL, nicht aktuelle Qualität; schwer operationalisierbar |
 | `expr_description_completeness` als separates LLM-Kriterium | Wird in `expr_description_quality` subsumiert durch Prompt-Update |
+
+> Hinweis: `dcatde:politicalGeocodingLevelURI` (jetzt `find_geocoding_level`) und
+> `dcatap:availability` (jetzt `reuse_availability`) wurden inzwischen umgesetzt
+> und sind daher aus der Ausschlussliste entfernt.
 | Indicator-Mapping-Tabelle erweitern für neue Indikatoren | Kann nach Implementierung ergänzt werden |
 
 ---

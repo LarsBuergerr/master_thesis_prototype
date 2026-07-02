@@ -107,7 +107,7 @@ Nachweis-Muster: **MQA = PASS, Prototyp = FAIL/PARTIAL** → belegt, dass Presen
 | Indikator | MQA-Prüfung | Prototyp-Prüfung |
 |-----------|-------------|------------------|
 | `find_theme_valid` | `dcat:theme` vorhanden | Wert aus kontrolliertem Vokabular |
-| `find_locn_geometry`, `find_adminunitl2` | `dct:spatial` vorhanden | echte `locn:geometry`/Admin-Einheit |
+| `find_locn_geometry`, `find_political_geocoding` | `dct:spatial` vorhanden | echte `locn:geometry`/Admin-Einheit |
 | `acc_media_type` | `dcat:mediaType` vorhanden | IANA-Vokabular-Mitgliedschaft |
 | `acc_machine_readable_access` | Format im MR-Lookup | abgestufte echte Maschinenlesbarkeit |
 | `reuse_publisher`, `reuse_contact` | Property vorhanden | strukturierter `foaf:Agent`/`vcard:Organization` |

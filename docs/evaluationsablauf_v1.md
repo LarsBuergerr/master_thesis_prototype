@@ -34,7 +34,7 @@ stärker — das ist keine Annahme, sondern aus den Disagreement-Daten abgeleite
 
 | Indikator | MQA-Überschätzung | Gewichtungs-Rationale |
 |-----------|-------------------|-----------------------|
-| `find_adminunitl2` | 58 % | MQA akzeptiert beliebige `dct:spatial`-URIs → Gewicht erhöht |
+| `find_political_geocoding` | 58 % | MQA akzeptiert beliebige `dct:spatial`-URIs → Gewicht erhöht |
 | `find_keywords_count` | 40 % | MQA = 1 Keyword reicht → Gewicht erhöht |
 | `reuse_contact` | 29 % | MQA = Presence genügt → Gewicht erhöht |
 | `acc_machine_readable_access` | 4 % | Niedriger Disagreement → Gewicht bleibt moderat |
