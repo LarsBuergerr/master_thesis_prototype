@@ -15,10 +15,10 @@ hydra:
 
 # Directory path for input data
 # directory_path: "data/sample_2026-06-25_09-57"
-directory_path: "data/"
-# directory_path: "data/extreme_cases_03"
+# directory_path: "data/"
+directory_path: "data/extreme_cases_03"
 # If empty: process all files matching extensions in directory_path
-files: ["perfect_example_01.rdf"]
+# files: ["perfect_example_01.rdf"]
 
 # File filtering (only used if files list is empty)
 file_filter:
@@ -40,7 +40,7 @@ language: "de"
 
 llm:
   # Master switch for the expressiveness LLM agent. Must be true to spend tokens; when false, expressiveness indicators report NOT_APPLICABLE.
-  enabled: false
+  enabled: true
   # LLM provider. Options: "local", "openrouter" (for local make sure to have the required model downloaded and running)
   provider: "openrouter"
   # model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id, for local use a supported model name e.g. qwen3.5
@@ -80,10 +80,10 @@ quality:
     overrides:
       # reuse_license & acc_machine_readable_access now carry a per-distribution
       # malus in the indicator itself — no fail_score override needed here.
-      acc_download_url: { fail_score: -0.5 }
 
   # Optional dimension whitelist (default: all dimensions if list is empty or missing)
-  dimension_whitelist: ["accessibility", "reusability", "findability"]
+  dimension_whitelist:
+    ["accessibility", "reusability", "findability", "expressiveness"]
   # If specified, these indicators will be skipped
   indicator_blacklist:
     [
@@ -100,9 +100,9 @@ quality:
   # clearly (no access / no license). expressiveness as a strong semantic
   # differentiator weighted above findability (structural basis).
   dimension_weights:
-    accessibility: 1
-    reusability: 1
-    expressiveness: 1
+    accessibility: 2
+    reusability: 1.5
+    expressiveness: 2
     findability: 1
 
   # Optional custom weights per indicator id (default: indicator.weight = 1.0).
@@ -122,11 +122,11 @@ quality:
     find_modified_datetime: 1.0
 
     # --- Accessibility: the core data-breaking blockers live here ---
-    acc_download_url: 2.0 # DATA-BREAKING: no download URL = no data
+    acc_download_url: 1.0 # DATA-BREAKING: no download URL = no data
     acc_machine_readable_access: 2.0 # DATA-BREAKING: not machine-processable = unusable
-    acc_download_url_response: 1.5 # DATA-BREAKING: dead download link
-    acc_access_url_response: 1.5 # DATA-BREAKING: dead access link (accessURL = MUSS)
-    acc_format: 1.5 # DATA-BREAKING: unknown format = cannot interpret data
+    acc_download_url_response: 2.0 # DATA-BREAKING: dead download link
+    acc_access_url_response: 2.0 # DATA-BREAKING: dead access link (accessURL = MUSS)
+    acc_format: 1.0 # DATA-BREAKING: unknown format = cannot interpret data
     acc_media_type: 1.0 # secondary/optional -> standard
 
     # --- Reusability: license is the data-breaking (legal) blocker ---

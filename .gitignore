@@ -1,6 +1,7 @@
 .venv
 outputs
 run_outputs
+run_outputs_old
 mqa_output
 comparison_output
 .env

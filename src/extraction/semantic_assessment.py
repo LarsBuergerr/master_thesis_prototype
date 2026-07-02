@@ -20,6 +20,7 @@ import time
 from logging import Logger
 from typing import TYPE_CHECKING, Any, Literal, Optional
 
+
 from pydantic import BaseModel, Field
 
 if TYPE_CHECKING:  # avoid an import cycle with dataset_context
@@ -36,20 +37,20 @@ class ExpressivenessCriterion(BaseModel):
     """
 
     status: Literal["pass", "partial", "fail"] = Field(
-        ..., description="Discrete verdict for this criterion."
+        ..., description="Diskretes Urteil für dieses Kriterium (pass/partial/fail)."
     )
     score: float = Field(
         ...,
         ge=0.0,
         le=1.0,
-        description="Normalised quality score, 0.0 (worst) to 1.0 (full).",
+        description="Normalisierter Qualitätswert, 0.0 (schlechtest) bis 1.0 (voll).",
     )
     reasoning: str = Field(
-        ..., description="Short, factual justification for the score."
+        ..., description="Kurze, sachliche Begründung des Scores (auf Deutsch)."
     )
     findings: list[str] = Field(
         default_factory=list,
-        description="Concrete strengths/weaknesses observed for this criterion.",
+        description="Konkrete beobachtete Stärken/Schwächen für dieses Kriterium.",
     )
 
 
@@ -64,45 +65,79 @@ class ExpressivenessAssessment(BaseModel):
     title_quality: ExpressivenessCriterion = Field(
         ...,
         description=(
-            "Is the title descriptive and specific, free of unexplained "
-            "abbreviations or cryptic codes?"
+            "Titel-Qualität. GUT: spezifisch, prägnant, von ähnlichen Datensätzen "
+            "anderer Stellen unterscheidbar; Zeit-/Ortsbezug im Titel ist erlaubt "
+            "und oft hilfreich (z. B. Datenreihen), wenn er dem Verständnis dient "
+            "(Konvention 1.7). ABWERTEN: zu generisch ohne Orts-/Zeitkontext; "
+            "Methodik/Erklärungen im Titel (gehören in die Beschreibung); "
+            "unerklärte Abkürzungen oder Codes als Hauptkennzeichnung; reine "
+            "Wiederholung des Herausgebernamens (wird separat angezeigt)."
         ),
     )
     description_quality: ExpressivenessCriterion = Field(
         ...,
         description=(
-            "Is the description substantive and informative — does it explain "
-            "what the data actually contains, not just restate the title?"
+            "Beschreibungs-Qualität. Eine gute Beschreibung beantwortet: "
+            "1) Was ist enthalten? 2) Wie ist es strukturiert (Format, "
+            "Tabellenaufbau, Kategorien, Kodierung)? 3) Wie und warum wurden die "
+            "Daten erhoben (Methode, Quelle, Stichprobengröße)? 4) Wozu / welcher "
+            "Zweck? 5) Besonderheiten (Stichtag, vorläufige/geschätzte Daten, "
+            "Qualitäts-Disclaimer, KI-Unterstützung, Links zur Dokumentation)? "
+            "Bei CSV zusätzlich Trennzeichen und Zeichenkodierung. ABWERTEN: "
+            "wiederholt nur den Titel; sehr kurz ohne strukturelle Information; "
+            "enthält HTML-/Markdown-Formatierung (GovData zeigt Beschreibungen als "
+            "Rohtext an)."
         ),
     )
     title_description_coherence: ExpressivenessCriterion = Field(
         ...,
-        description="Do the title and the description agree and reinforce each other?",
+        description=(
+            "Kohärenz von Titel und Beschreibung: müssen inhaltlich zusammenpassen "
+            "und sich gegenseitig stützen; Widersprüche (anderes Thema, anderer "
+            "Ort/Zeitraum) abwerten."
+        ),
     )
     keyword_quality: ExpressivenessCriterion = Field(
         ...,
         description=(
-            "Are the keywords/tags relevant, specific, consistently formatted, "
-            "and non-redundant?"
+            "Schlagwort-Qualität. GUT: kurze, "
+            "singularische, laienverständliche Begriffe ('Museum', 'Kultur', nicht "
+            "'Museumskulturangebot'); inhaltlich spezifisch; mehrsprachige Varianten "
+            "sind ein Plus. ABWERTEN: Komposita statt "
+            "atomarer Begriffe; Pluralformen ('Veranstaltungen' → 'Veranstaltung'); "
+            "reiner Jargon/Abkürzungen ('BauGB' statt 'Baugesetzbuch'); Redundanz "
+            "mit dem Titel; formale/offensichtliche Tags ('Gemeinde', Jahreszahl, "
+            "Herausgebername — stehen bereits in eigenen Feldern); übermäßig viele "
+            "(>15, meist Füllwerk)."
         ),
     )
     thematic_consistency: ExpressivenessCriterion = Field(
         ...,
         description=(
-            "Are themes, keywords, title and description mutually consistent "
-            "(no off-topic or contradictory signals)?"
+            "Thematische Konsistenz: Thema (dcat:theme), Schlagwörter, Titel und "
+            "Beschreibung müssen ein kohärentes Themenbild ergeben. "
+            "Beispiel-Inkonsistenz: als ECON (Wirtschaft/Finanzen) kategorisiert, "
+            "aber die Schlagwörter sind rein geografisch ohne Wirtschaftsbezug. "
+            "Off-topic-Signale in irgendeinem Feld senken den Score."
         ),
     )
     contextual_qualifiers: ExpressivenessCriterion = Field(
         ...,
         description=(
-            "Are needed contextual qualifiers (version, reference period, "
-            "provisional/estimated/aggregated/draft/archived, coverage) present "
-            "where the content clearly calls for them?"
+            "Kontextuelle Qualifizierer — nur bewerten, wenn der Inhalt sie "
+            "erfordert: Zeitreihen/Statistiken → Jahr oder Bezugszeitraum; Geodaten "
+            "→ räumliche Abdeckung, wo nicht offensichtlich; Erhebungs-/"
+            "Verwaltungsdaten → Stichtag; geschätzte/vorläufige Daten → "
+            "'vorläufig'/'geschätzt'/'hochgerechnet'; Entwurfsdaten → 'Entwurf' "
+            "gekennzeichnet; regelmäßig aktualisierte Daten → Aktualisierungszyklus; "
+            "abgeleitete/aggregierte Daten → Aggregationsmethode. Ein einmaliger, "
+            "statischer Datensatz braucht keinen Stichtag — Fehlen nur abwerten, "
+            "wenn der Datentyp den Qualifizierer klar verlangt."
         ),
     )
     overall_summary: str = Field(
-        ..., description="One- or two-sentence overall verdict on expressiveness."
+        ...,
+        description="Ein- bis zweisätziges Gesamturteil zur Aussagekraft (auf Deutsch).",
     )
 
 
@@ -120,59 +155,41 @@ CRITERION_KEYS: tuple[str, ...] = (
 
 
 # ---------------------------------------------------------------------------
-# Prompt (localised; expressiveness-only, not the full 5-category audit)
+# Prompt (German only; expressiveness-only). The concrete per-criterion rubric
+# lives in the ``ExpressivenessAssessment`` field descriptions above, which the
+# structured-output (function-calling) schema passes to the model — so the
+# system prompt only carries the role and the general rules.
 # ---------------------------------------------------------------------------
 
-_SYSTEM_PROMPT = {
-    "de": (
-        "Du bist ein strenger Auditor für die *Aussagekraft* von "
-        "DCAT-AP-DE-Metadaten. Du bewertest ausschließlich, ob die Metadaten "
-        "inhaltlich aussagekräftig, verständlich und in sich widerspruchsfrei "
-        "sind — nicht ihre technische Zugänglichkeit, Lizenzierung oder "
-        "Auffindbarkeit.\n\n"
-        "Regeln:\n"
-        "- Feldpräsenz allein genügt nicht; vorhandene, aber generische, "
-        "kryptische oder widersprüchliche Angaben werden abgewertet.\n"
-        "- Begründe jede Abwertung kurz und sachlich.\n"
-        "- Erfinde keine Informationen; bewerte nur die beobachtbare Evidenz.\n"
-        "- Verfasse `reasoning` und `findings` auf Deutsch.\n"
-        "- score: 1.0 = vollständig aussagekräftig, 0.0 = unbrauchbar; "
-        "status entsprechend pass/partial/fail."
-    ),
-    "en": (
-        "You are a strict auditor for the *expressiveness* of DCAT-AP-DE "
-        "metadata. You judge only whether the metadata is meaningful, "
-        "understandable and internally consistent — not its technical "
-        "accessibility, licensing or findability.\n\n"
-        "Rules:\n"
-        "- Field presence alone is not enough; present-but-generic, cryptic or "
-        "contradictory values must be marked down.\n"
-        "- Justify every deduction briefly and factually.\n"
-        "- Do not invent information; assess only observable evidence.\n"
-        "- Write `reasoning` and `findings` in English.\n"
-        "- score: 1.0 = fully expressive, 0.0 = unusable; set status "
-        "accordingly to pass/partial/fail."
-    ),
-}
+_SYSTEM_PROMPT = (
+    "Du bist ein strenger Auditor für die *Aussagekraft* von "
+    "DCAT-AP-DE-Metadaten. Du bewertest ausschließlich, ob die Metadaten "
+    "inhaltlich aussagekräftig, verständlich und in sich widerspruchsfrei sind "
+    "— nicht ihre technische Zugänglichkeit, Lizenzierung oder Auffindbarkeit.\n\n"
+    "Regeln:\n"
+    "- Wende für jedes Kriterium die Bewertungsregeln aus dessen Feldbeschreibung "
+    "an (belegt durch DCAT-AP.de Konventionenhandbuch v2.0 Kap. 1.7/3.4 und die "
+    "Handreichung zur Metadatenqualität).\n"
+    "- Feldpräsenz allein genügt nicht; vorhandene, aber generische, kryptische "
+    "oder widersprüchliche Angaben werden abgewertet.\n"
+    "- Begründe jede Abwertung kurz und sachlich; erfinde keine Informationen, "
+    "bewerte nur die beobachtbare Evidenz.\n"
+    "- Verfasse `reasoning`, `findings` und `overall_summary` auf Deutsch.\n"
+    "- score: 1.0 = vollständig aussagekräftig, 0.0 = unbrauchbar; status "
+    "entsprechend pass/partial/fail."
+)
 
-_USER_PROMPT = {
-    "de": (
-        "Bewerte die Aussagekraft der folgenden Metadaten und gib das Ergebnis "
-        "als `ExpressivenessAssessment` zurück.\n\nMetadaten (JSON):\n{context}"
-    ),
-    "en": (
-        "Assess the expressiveness of the following metadata and return the "
-        "result as `ExpressivenessAssessment`.\n\nMetadata (JSON):\n{context}"
-    ),
-}
+_USER_PROMPT = (
+    "Bewerte die Aussagekraft der folgenden Metadaten und gib das Ergebnis als "
+    "`ExpressivenessAssessment` zurück.\n\nMetadaten (JSON):\n{context}"
+)
 
 
-def _build_messages(context: "DatasetContext", language: str) -> list[tuple[str, str]]:
-    lang = language if language in _SYSTEM_PROMPT else "de"
+def _build_messages(context: "DatasetContext") -> list[tuple[str, str]]:
     payload = context.to_agent_json()
     return [
-        ("system", _SYSTEM_PROMPT[lang]),
-        ("human", _USER_PROMPT[lang].format(context=payload)),
+        ("system", _SYSTEM_PROMPT),
+        ("human", _USER_PROMPT.format(context=payload)),
     ]
 
 
@@ -196,7 +213,7 @@ def attach_semantic_assessment(
             ExpressivenessAssessment, method="function_calling", include_raw=True
         )
         started = time.perf_counter()
-        result = structured.invoke(_build_messages(context, language))
+        result = structured.invoke(_build_messages(context))
         latency = time.perf_counter() - started
 
         assessment = result.get("parsed") if isinstance(result, dict) else result
