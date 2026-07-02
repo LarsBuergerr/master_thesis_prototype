@@ -11,11 +11,6 @@ from core.indicator import (
     IndicatorStatus,
 )
 from core.dimension import QualityDimension
-from extraction.vocabularies import (
-    IANA_MEDIA_TYPE_PREFIX,
-    VALID_FILE_TYPE_URIS,
-    VALID_MEDIA_TYPE_TEMPLATES,
-)
 from extraction.dataset_context import (
     DatasetContext,
     DistributionContext,
@@ -36,51 +31,41 @@ from extraction.distribution_probes import (
 
 
 class DownloadURLIndicator(Indicator):
-    """Validates if dcat:downloadURL is set and not empty."""
+    """Fraction of distributions that declare a ``dcat:downloadURL``.
+
+    Per distribution: has a downloadURL → +1.0, else 0.0 (no malus). Score is
+    the mean over all distributions — consistent with the other per-distribution
+    indicators. PASS ≥ 0.9, PARTIAL ≥ 0.5, FAIL below.
+    """
+
+    GRADED = True
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
 
     def __init__(self):
         super().__init__(
             indicator_id="acc_download_url",
-            name_de="Download-URL angegeben",
-            name_en="Download URL specified",
+            name_de="Download-URL je Distribution",
+            name_en="Download URL per distribution",
             dimension=QualityDimension.ACCESSIBILITY,
-            description_de="Prüft ob dcat:downloadURL gesetzt und nicht leer ist",
-            description_en="Checks if dcat:downloadURL is set and not empty",
+            description_de="Anteil der Distributionen mit dcat:downloadURL",
+            description_en="Fraction of distributions declaring a dcat:downloadURL",
             weight=1.0,
         )
 
     def validate(
         self, metadata: Any, context: Optional[DatasetContext] = None
     ) -> IndicatorResult:
-        """Validate download URL presence.
-
-        Per-distribution coverage is reported in ``details`` so downstream
-        consumers can tell ``"at least one"`` from ``"all of them"``.
-
-        Args:
-            metadata: rdflib Graph with DCAT metadata
-            context: Optional pre-computed dataset facts shared across
-                indicators.
-
-        Returns:
-            IndicatorResult with score based on URL presence
-        """
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            download_urls = context.all_download_urls
-            total_distributions = context.distribution_count
-            with_download = context.distributions_with_download_url
-            self.logger.debug(
-                f"[{self.indicator_id}] {with_download}/{total_distributions} "
-                f"distribution(s) have a downloadURL"
-            )
-
-            if not download_urls:
+            total = context.distribution_count
+            if total == 0:
                 self.logger.info(
-                    f"[{self.indicator_id}] Result: FAIL | No download URLs"
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -89,18 +74,27 @@ class DownloadURLIndicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Keine Download-URL angegeben",
-                    message_en="No download URL specified",
-                    details={
-                        "url_count": 0,
-                        "distributions_with_download_url": 0,
-                        "total_distributions": total_distributions,
-                    },
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"total_distributions": 0},
                 )
 
+            with_download = context.distributions_with_download_url
+            score = with_download / total
+
+            if score >= self.PASS_THRESHOLD:
+                status = IndicatorStatus.PASS
+            elif score >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
+            else:
+                status = IndicatorStatus.FAIL
+
+            message_de = f"{with_download}/{total} Distribution(en) mit Download-URL"
+            message_en = f"{with_download}/{total} distribution(s) with a download URL"
+
             self.logger.info(
-                f"[{self.indicator_id}] Result: PASS | Score: 1.00 | "
-                f"{len(download_urls)} URL(s), {with_download}/{total_distributions} distribution(s) covered"
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"with_download={with_download}/{total}"
             )
 
             return IndicatorResult(
@@ -108,15 +102,13 @@ class DownloadURLIndicator(Indicator):
                 name_de=self.name_de,
                 name_en=self.name_en,
                 dimension=self.dimension,
-                status=IndicatorStatus.PASS,
-                score=1.0,
-                message_de=f"Download-URL vorhanden: {len(download_urls)} URL(s)",
-                message_en=f"Download URL present: {len(download_urls)} URL(s)",
+                status=status,
+                score=round(score, 4),
+                message_de=message_de,
+                message_en=message_en,
                 details={
-                    "url_count": len(download_urls),
-                    "urls": download_urls,
+                    "total_distributions": total,
                     "distributions_with_download_url": with_download,
-                    "total_distributions": total_distributions,
                 },
             )
 
@@ -138,36 +130,41 @@ class DownloadURLIndicator(Indicator):
 
 
 class FormatIndicator(Indicator):
-    """Validates dct:format presence and membership in the EU file-type vocabulary."""
+    """Fraction of distributions with a ``dct:format`` from the EU file-type vocab.
+
+    Per distribution: has ≥1 format URI in the EU file-type vocabulary → +1.0,
+    else 0.0 (no malus). Score is the mean over all distributions — consistent
+    with the other per-distribution indicators. PASS ≥ 0.9, PARTIAL ≥ 0.5.
+    """
+
+    GRADED = True
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
 
     def __init__(self):
         super().__init__(
             indicator_id="acc_format",
-            name_de="Format aus kontrolliertem Vokabular",
-            name_en="Format from controlled vocabulary",
+            name_de="Format aus kontrolliertem Vokabular (je Distribution)",
+            name_en="Format from controlled vocabulary (per distribution)",
             dimension=QualityDimension.ACCESSIBILITY,
-            description_de="Prüft ob dct:format gesetzt und aus dem EU-File-Type-Vokabular ist",
-            description_en="Checks if dct:format is set and from the EU file-type vocabulary",
+            description_de="Anteil der Distributionen mit dct:format aus dem EU-File-Type-Vokabular",
+            description_en="Fraction of distributions with a dct:format from the EU file-type vocabulary",
             weight=1.0,
         )
 
     def validate(
         self, metadata: Any, context: Optional[DatasetContext] = None
     ) -> IndicatorResult:
-        """Validate format specification against the EU file-type vocabulary."""
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            formats = context.all_distribution_formats
-            self.logger.debug(
-                f"[{self.indicator_id}] Found {len(formats)} format(s): {formats}"
-            )
-
-            if not formats:
+            total = context.distribution_count
+            if total == 0:
                 self.logger.info(
-                    f"[{self.indicator_id}] Result: FAIL | No formats specified"
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -176,27 +173,42 @@ class FormatIndicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Kein Format angegeben",
-                    message_en="No format specified",
-                    details={"format_count": 0},
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"total_distributions": 0},
                 )
 
-            valid = [f for f in formats if f in VALID_FILE_TYPE_URIS]
-            invalid = [f for f in formats if f not in VALID_FILE_TYPE_URIS]
+            per_distribution: list[dict[str, Any]] = []
+            for dist in context.distributions:
+                passes = any(dist.formats_in_vocab)
+                per_distribution.append(
+                    {
+                        "uri": dist.distribution_uri,
+                        "formats": list(dist.formats),
+                        "passes": passes,
+                    }
+                )
 
-            if invalid:
-                status = IndicatorStatus.PARTIAL if valid else IndicatorStatus.FAIL
-                score = 0.5 if valid else 0.0
-                message_de = "Nicht alle Formate aus dem kontrollierten Vokabular"
-                message_en = "Not all formats are from the controlled vocabulary"
-            else:
+            passing = sum(1 for d in per_distribution if d["passes"])
+            score = passing / total
+
+            if score >= self.PASS_THRESHOLD:
                 status = IndicatorStatus.PASS
-                score = 1.0
-                message_de = "Alle Formate aus dem kontrollierten Vokabular"
-                message_en = "All formats are from the controlled vocabulary"
+            elif score >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
+            else:
+                status = IndicatorStatus.FAIL
+
+            message_de = (
+                f"{passing}/{total} Distribution(en) mit Format aus dem Vokabular"
+            )
+            message_en = (
+                f"{passing}/{total} distribution(s) with a format from the vocabulary"
+            )
 
             self.logger.info(
-                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"passing={passing}/{total}"
             )
 
             return IndicatorResult(
@@ -205,13 +217,13 @@ class FormatIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=score,
+                score=round(score, 4),
                 message_de=message_de,
                 message_en=message_en,
                 details={
-                    "valid": valid,
-                    "invalid": invalid,
-                    "total": len(formats),
+                    "total_distributions": total,
+                    "passing_count": passing,
+                    "per_distribution": per_distribution,
                 },
             )
 
@@ -233,16 +245,27 @@ class FormatIndicator(Indicator):
 
 
 class MediaTypeIndicator(Indicator):
-    """Validates dcat:mediaType against the IANA media-types vocabulary."""
+    """Fraction of distributions with a valid ``dcat:mediaType`` (IANA URI + vocab).
+
+    Per distribution: has ≥1 mediaType that is an IANA URI *and* in the IANA
+    media-types vocabulary → +1.0, else 0.0 (no malus). Score is the mean over
+    all distributions — consistent with the other per-distribution indicators.
+    PASS ≥ 0.9, PARTIAL ≥ 0.5.
+    """
+
+    GRADED = True
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
 
     def __init__(self):
         super().__init__(
             indicator_id="acc_media_type",
-            name_de="Media Type aus kontrolliertem Vokabular",
-            name_en="Media type from controlled vocabulary",
+            name_de="Media Type aus kontrolliertem Vokabular (je Distribution)",
+            name_en="Media type from controlled vocabulary (per distribution)",
             dimension=QualityDimension.ACCESSIBILITY,
-            description_de="Prüft ob dcat:mediaType aus dem IANA Media-Types-Vokabular ist",
-            description_en="Checks if dcat:mediaType is from the IANA media-types vocabulary",
+            description_de="Anteil der Distributionen mit dcat:mediaType als IANA-URI aus dem Vokabular",
+            description_en="Fraction of distributions with a dcat:mediaType as an IANA URI from the vocabulary",
             weight=1.0,
         )
 
@@ -254,15 +277,10 @@ class MediaTypeIndicator(Indicator):
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            media_types = context.all_distribution_media_types
-
-            self.logger.debug(
-                f"[{self.indicator_id}] Found {len(media_types)} mediaType(s): {media_types}"
-            )
-
-            if not media_types:
+            total = context.distribution_count
+            if total == 0:
                 self.logger.info(
-                    f"[{self.indicator_id}] Result: FAIL | No mediaType specified"
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -271,51 +289,45 @@ class MediaTypeIndicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Kein Media Type angegeben",
-                    message_en="No media type specified",
-                    details={"media_type_count": 0},
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"total_distributions": 0},
                 )
 
-            # Two-step check per DCAT-AP-DE:
-            #   1) form — the value must be an IANA URI
-            #      (starts with https://www.iana.org/assignments/media-types/)
-            #   2) vocab — the suffix after the prefix must be a known
-            #      IANA media-type template (e.g. application/gml+xml)
-            valid: list[str] = []
-            invalid_form: list[str] = []
-            invalid_vocab: list[str] = []
-            for value in media_types:
-                if not value.startswith(IANA_MEDIA_TYPE_PREFIX):
-                    invalid_form.append(value)
-                    continue
-                template = value[len(IANA_MEDIA_TYPE_PREFIX) :]
-                if template in VALID_MEDIA_TYPE_TEMPLATES:
-                    valid.append(value)
-                else:
-                    invalid_vocab.append(value)
+            # A distribution passes if any of its mediaTypes is an IANA URI AND
+            # in the IANA media-type vocabulary (DistributionContext precomputes
+            # ``media_types_in_vocab`` with exactly this two-step check).
+            per_distribution: list[dict[str, Any]] = []
+            for dist in context.distributions:
+                passes = any(dist.media_types_in_vocab)
+                per_distribution.append(
+                    {
+                        "uri": dist.distribution_uri,
+                        "media_types": list(dist.media_types),
+                        "passes": passes,
+                    }
+                )
 
-            invalid_total = len(invalid_form) + len(invalid_vocab)
-            if invalid_total:
-                status = IndicatorStatus.PARTIAL if valid else IndicatorStatus.FAIL
-                score = 0.5 if valid else 0.0
-                parts_de: list[str] = []
-                parts_en: list[str] = []
-                if invalid_form:
-                    parts_de.append(f"{len(invalid_form)} ohne IANA-URI-Form")
-                    parts_en.append(f"{len(invalid_form)} not in IANA URI form")
-                if invalid_vocab:
-                    parts_de.append(f"{len(invalid_vocab)} nicht im IANA-Vokabular")
-                    parts_en.append(f"{len(invalid_vocab)} not in IANA vocabulary")
-                message_de = ", ".join(parts_de)
-                message_en = ", ".join(parts_en)
-            else:
+            passing = sum(1 for d in per_distribution if d["passes"])
+            score = passing / total
+
+            if score >= self.PASS_THRESHOLD:
                 status = IndicatorStatus.PASS
-                score = 1.0
-                message_de = "Alle Media Types als IANA-URI und im Vokabular"
-                message_en = "All media types are valid IANA URIs and in the vocabulary"
+            elif score >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
+            else:
+                status = IndicatorStatus.FAIL
+
+            message_de = (
+                f"{passing}/{total} Distribution(en) mit gültigem Media Type"
+            )
+            message_en = (
+                f"{passing}/{total} distribution(s) with a valid media type"
+            )
 
             self.logger.info(
-                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"passing={passing}/{total}"
             )
 
             return IndicatorResult(
@@ -324,14 +336,13 @@ class MediaTypeIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=score,
+                score=round(score, 4),
                 message_de=message_de,
                 message_en=message_en,
                 details={
-                    "valid": valid,
-                    "invalid_form": invalid_form,
-                    "invalid_vocab": invalid_vocab,
-                    "total": len(media_types),
+                    "total_distributions": total,
+                    "passing_count": passing,
+                    "per_distribution": per_distribution,
                 },
             )
 
@@ -765,23 +776,25 @@ class MachineReadableAccessIndicator(Indicator):
     effective MIME type, then the indicator score is the mean over all
     distributions — every distribution counts, not just the best one.
 
-    Tiers (anchored on the data.europa.eu format-rating table 1–3):
+    Tiers (anchored on the data.europa.eu format-rating table 1–3, with a malus
+    for non-machine-readable distributions so they drag the mean down — like the
+    other per-distribution indicators):
 
-    * 1.0 (high) — machine-readable AND open: XML/JSON/CSV/ODS/XLSX, RDF,
+    * +1.0 (high) — machine-readable AND open: XML/JSON/CSV/ODS/XLSX, RDF,
       Parquet, GeoJSON/GML/KML/KMZ/GPKG/NetCDF/GPX/TopoJSON,
       OGC service endpoints (WFS/WMS/WCS/…)
-    * 0.5 (mid)  — partially ok: XLS, SHP/Esri family, archives (ZIP/TAR/…)
-    * 0.0 (none) — HTML, PDF, images, TIFF/GeoTIFF, unknown MIME
+    * +0.5 (mid)  — partially ok: XLS, SHP/Esri family, archives (ZIP/TAR/…)
+    * −0.5 (none) — HTML, PDF, images, TIFF/GeoTIFF, unknown MIME (malus)
 
     Score = mean(tier_i for all distributions).
-    PASS ≥ 0.8, PARTIAL ≥ 0.4, FAIL < 0.4.
+    PASS ≥ 0.8, PARTIAL ≥ 0.4, FAIL below.
     """
 
     GRADED = True
 
     TIER_HIGH = 1.0
     TIER_MID = 0.5
-    TIER_NONE = 0.0
+    TIER_NONE = -0.5  # malus: a non-machine-readable distribution pulls the mean down
 
     PASS_THRESHOLD = 0.8
     PARTIAL_THRESHOLD = 0.4

@@ -57,12 +57,21 @@ Each indicator returns a **status** and a **score in `[0.0, 1.0]`**:
 - **Ternary indicators** (most): `pass` → `pass_score` (default `1.0`),
   `partial` → `partial_score` (`0.5`), `fail` → `fail_score` (`0.0`). All three
   are tunable globally and per indicator.
-- **Graded indicators** (`expr_*`, `acc_machine_readable_access`,
-  `acc_format_non_proprietary`, `acc_*_url_response`) contribute their **raw
-  continuous score regardless of status** — the `pass`/`partial`/`fail` label is
-  presentational, so the aggregate stays a smooth function of the measurement.
-  Only an explicit per-indicator `fail_score` override penalises a graded
-  `fail`.
+- **Graded indicators** contribute their **raw continuous score regardless of
+  status** — the `pass`/`partial`/`fail` label is presentational, so the
+  aggregate stays a smooth function of the measurement. This covers `expr_*` and
+  every per-distribution indicator: `acc_download_url`, `acc_format`,
+  `acc_media_type`, `acc_format_non_proprietary`, `acc_download_url_response`,
+  `acc_access_url_response`, `acc_machine_readable_access`, `reuse_license`,
+  `reuse_availability`, `find_issued_datetime`, `find_modified_datetime`. Each
+  scores per distribution (+1 / 0 or a tier) and averages over all distributions.
+- **Per-distribution malus:** some graded indicators score a *negative* value
+  for a failing distribution (dead URL, non-machine-readable format, restricted/
+  missing license), so a bad distribution actively drags the mean down instead
+  of just scoring low: `acc_download_url_response`, `acc_access_url_response`
+  (−0.5 per dead URL), `acc_machine_readable_access` (−0.5 for a
+  non-machine-readable dist), `reuse_license` (−0.5 per non-free distribution).
+  A dimension score is floored at 0, so the overall score never goes negative.
 
 The **Scoring** column in each catalogue table below states the per-indicator
 rule.
@@ -103,8 +112,9 @@ Scores aggregate bottom-up:
 to justify, high misjudgement rate). IDs are the keys you use in
 `indicator_whitelist` / `indicator_blacklist` / `indicator_weights`.
 
-All Findability indicators are **ternary** (status maps to `pass`/`partial`/`fail`
-points per the `ScorePolicy`).
+Most Findability indicators are **ternary**; `find_issued_datetime` and
+`find_modified_datetime` are **graded** (fraction of present date values that
+are validly typed).
 
 ### Findability (9)
 
@@ -116,35 +126,36 @@ points per the `ScorePolicy`).
 | `find_political_geocoding` | Political geocoding references the DCAT-AP-DE vocabulary (primary `dcatde:politicalGeocodingURI`, fallback `locn:adminUnitL2`) | PASS URI in vocab · PARTIAL present-not-vocab or only adminUnitL2 fallback · FAIL absent | `dcatde:politicalGeocodingURI`, `locn:adminUnitL2` | —       |
 | `find_geocoding_level`     | Political geocoding **level** from the DCAT-AP-DE level vocabulary (Konvention 09) | PASS in vocab · PARTIAL present but not in vocab · FAIL absent     | `dcatde:politicalGeocodingLevelURI` | —       |
 | `find_temporal_coverage`   | Temporal coverage present with a valid `xsd:date`/`dateTime`             | PASS valid start or end date · FAIL absent/invalid                | `dcat:startDate`, `dcat:endDate` | —       |
-| `find_issued_datetime`     | `issued` is a valid date/dateTime (dataset + distributions)              | PASS all values valid · PARTIAL some invalid · FAIL absent         | `dct:issued`                     | —       |
-| `find_modified_datetime`   | `modified` is a valid date/dateTime (dataset + distributions)            | PASS all values valid · PARTIAL some invalid · FAIL absent         | `dct:modified`                   | —       |
+| `find_issued_datetime`     | `issued` is a valid date/dateTime (dataset + distributions)              | **Graded** = fraction of present values validly typed; FAIL if absent | `dct:issued`                     | —       |
+| `find_modified_datetime`   | `modified` is a valid date/dateTime (dataset + distributions)            | **Graded** = fraction of present values validly typed; FAIL if absent | `dct:modified`                   | —       |
 | `find_accrual_periodicity` | Update frequency present and (where possible) from controlled vocabulary | PASS present & in vocab · PARTIAL present not in vocab · FAIL absent | `dct:accrualPeriodicity`       | —       |
 
 ### Accessibility (7 active + 2 disabled)
 
 | ID                            | Checks                                                                                               | Scoring                                                                              | RDF field(s)                                                         | Net/LLM         |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------- | --------------- |
-| `acc_download_url`            | At least one download URL present                                                                    | PASS present · FAIL absent                                                            | `dcat:downloadURL`                                                   | —               |
-| `acc_format`                  | Format present and from the EU file-type vocabulary                                                  | PASS all in vocab · PARTIAL some in vocab · FAIL none                                 | `dct:format`                                                         | —               |
-| `acc_media_type`              | Media type matches the IANA media-types vocabulary                                                   | PASS all IANA-URI & in vocab · PARTIAL some valid · FAIL none                         | `dcat:mediaType`                                                     | —               |
-| `acc_format_non_proprietary`  | Fraction of distributions declaring a non-proprietary format URI (EU file-type vocabulary)           | **Graded** = fraction non-proprietary (raw score); label PASS ≥ 0.9 · PARTIAL ≥ 0.5  | `dct:format`                                                         | —               |
-| `acc_download_url_response`   | Fraction of download URLs returning HTTP `< 400`                                                     | **Graded** = fraction HTTP < 400 (raw score); label PASS ≥ 0.9 · PARTIAL ≥ 0.5       | `dcat:downloadURL`                                                   | **HTTP**        |
-| `acc_access_url_response`     | Fraction of access URLs returning HTTP `< 400`                                                       | **Graded** = fraction HTTP < 400 (raw score); label PASS ≥ 0.9 · PARTIAL ≥ 0.5       | `dcat:accessURL`                                                     | **HTTP**        |
-| `acc_machine_readable_access` | Best available tier of direct, machine-readable access (CSV/JSON/XML > service > archive > HTML/PDF) | **Graded** = mean tier (high 1.0 / mid 0.5 / none 0.0) over all dists; label PASS ≥ 0.8 · PARTIAL ≥ 0.4 | `dcat:accessURL`, `dcat:downloadURL`, `dct:format`, `dcat:mediaType` | HTTP (optional) |
+| `acc_download_url`            | Fraction of distributions declaring a download URL                                                   | **Graded** = fraction with a downloadURL (per dist +1/0, no malus); label PASS ≥ 0.9 · PARTIAL ≥ 0.5 | `dcat:downloadURL`                                                   | —               |
+| `acc_format`                  | Fraction of distributions with a format from the EU file-type vocabulary                             | **Graded** = fraction with valid format (per dist +1/0, no malus); label PASS ≥ 0.9 · PARTIAL ≥ 0.5 | `dct:format`                                                         | —               |
+| `acc_media_type`              | Fraction of distributions with a mediaType as IANA URI from the vocabulary                           | **Graded** = fraction with valid mediaType (per dist +1/0, no malus); label PASS ≥ 0.9 · PARTIAL ≥ 0.5 | `dcat:mediaType`                                                     | —               |
+| `acc_format_non_proprietary`  | Fraction of distributions declaring a non-proprietary format URI (EU file-type vocabulary)           | **Graded** = fraction non-proprietary (per dist +1/0, no malus); label PASS ≥ 0.9 · PARTIAL ≥ 0.5  | `dct:format`                                                         | —               |
+| `acc_download_url_response`   | Reachability of each distribution's download URL (HTTP `< 400`)                                      | **Graded** = mean of per-dist +1 (reachable) / **−0.5 (dead, malus)**; label PASS ≥ 0.9 · PARTIAL ≥ 0.5 | `dcat:downloadURL`                                                   | **HTTP**        |
+| `acc_access_url_response`     | Reachability of each distribution's access URL (HTTP `< 400`)                                        | **Graded** = mean of per-dist +1 (reachable) / **−0.5 (dead, malus)**; label PASS ≥ 0.9 · PARTIAL ≥ 0.5 | `dcat:accessURL`                                                     | **HTTP**        |
+| `acc_machine_readable_access` | Machine-readable access per distribution (CSV/JSON/XML > service > archive > HTML/PDF)               | **Graded** = mean per-dist tier high +1 / mid +0.5 / **none −0.5 (malus)**; label PASS ≥ 0.8 · PARTIAL ≥ 0.4 | `dcat:accessURL`, `dcat:downloadURL`, `dct:format`, `dcat:mediaType` | HTTP (optional) |
 | ~~`acc_format_congruence`~~   | Declared format/media-type agree with the actual HTTP `Content-Type` and URL extension               | 🚫 **Disabled** (blacklisted by default — see catalogue note)                         | `dct:format`, `dcat:mediaType` + HTTP                                | **HTTP**        |
 | ~~`acc_distribution_model`~~  | Distributions follow the DCAT pattern (one dataset, multiple formats) vs. a split-data anti-pattern  | 🚫 **Disabled** (blacklisted by default — see catalogue note)                         | distribution properties                                              | —               |
 
 ### Reusability (7)
 
-All Reusability indicators are **ternary**.
+`reuse_license` and `reuse_availability` are **graded** (per-distribution mean);
+the rest are **ternary**.
 
 | ID                          | Checks                                                                                             | Scoring                                                                  | RDF field(s)              | Net/LLM  |
 | --------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------- | -------- |
-| `reuse_license`             | Free-use license from the DCAT-AP-DE vocabulary, at **distribution** level (Konvention 32)         | PASS free-use license · FAIL restricted / not in vocab / absent          | `dct:license`             | —        |
+| `reuse_license`             | Free-use license per distribution from the DCAT-AP-DE vocabulary (Konvention 32)                   | **Graded** = mean per-dist free +1 / **restricted·unknown·missing −0.5 (malus)**; label PASS ≥ 0.9 · PARTIAL ≥ 0.5 | `dct:license`             | —        |
 | `reuse_access_rights`       | `accessRights` references a `RightsStatement` URI from the controlled vocabulary                   | PASS URI in vocab · PARTIAL set but not in vocab · FAIL absent           | `dct:accessRights`        | —        |
 | `reuse_publisher`           | Publisher typed as `foaf:Agent` **and** carries an `foaf:name`                                     | PASS Agent + name · PARTIAL one of the two · FAIL neither / absent       | `dct:publisher`           | —        |
 | `reuse_contact`             | Contact point carries a valid email **or** URL (DCAT-AP-DE Konvention 01)                          | PASS valid email or URL · PARTIAL contact but neither · FAIL no contact  | `dcat:contactPoint`       | —        |
-| `reuse_availability`        | `dcatap:availability` (dataset **and** distributions) from the Planned Availability vocabulary      | PASS all values in vocab · PARTIAL some not in vocab · FAIL absent       | `dcatap:availability`     | —        |
+| `reuse_availability`        | Fraction of distributions with a `dcatap:availability` value from the Planned Availability vocab    | **Graded** = fraction valid (per dist +1/0, no malus); label PASS ≥ 0.9 · PARTIAL ≥ 0.5 | `dcatap:availability`     | —        |
 | `reuse_contributor_id`      | `dcatde:contributorID` present, exactly one IRI from the contributors vocabulary (DCAT-AP-DE K12/K13) | PASS exactly one IRI in vocab · FAIL absent / not in vocab / multiple    | `dcatde:contributorID`    | —        |
 | `reuse_dcat_ap_de_compliance` | Zero SHACL violations against DCAT-AP.de v2.0 rules via ITB API                                   | PASS 0 violations · FAIL ≥ 1 violation (binary)                          | all fields                | **HTTP** |
 

@@ -11,8 +11,8 @@ hydra:
     chdir: false
 
 # Directory path for input data
-# directory_path: "data/sample_2026-06-25_09-57"
-directory_path: "data/extreme_cases_03"
+directory_path: "data/sample_2026-06-25_09-57"
+# directory_path: "data/extreme_cases_03"
 # If empty: process all files matching extensions in directory_path
 # files: ["perfect_example_01.rdf"]
 
@@ -73,9 +73,9 @@ quality:
     allow_partial: true
     # Per-indicator overrides (override the global values above)
     overrides:
-      acc_machine_readable_access: { fail_score: -0.5 }
+      # reuse_license & acc_machine_readable_access now carry a per-distribution
+      # malus in the indicator itself — no fail_score override needed here.
       acc_download_url: { fail_score: -0.5 }
-      reuse_license: { fail_score: -0.5 }
 
   # Optional dimension whitelist (default: all dimensions if list is empty or missing)
   dimension_whitelist: ["accessibility", "reusability", "findability"]

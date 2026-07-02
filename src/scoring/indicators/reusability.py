@@ -76,36 +76,44 @@ def _objects(graph: Graph, predicate: URIRef) -> Iterable:
 
 
 class LicenseIndicator(Indicator):
-    """Validates ``dct:license`` against the DCAT-AP-DE controlled vocabulary.
+    """Scores ``dct:license`` **per distribution** against the DCAT-AP-DE vocab.
 
-    Scores:
+    DCAT-AP-DE (Konvention 32) requires every distribution to carry a license,
+    and only free-use licenses earn credit. Each distribution scores:
 
-    * 1.0 — at least one license URI is in the vocab AND classified as
-      ``Freie Nutzung`` (free use)
-    * 0.0 — otherwise: only ``Eingeschränkte Nutzung`` (restricted use), a URI
-      not in the vocab, or no license at all
+    * +1.0 — has a free-use (``Freie Nutzung``) license URI from the vocabulary
+    * ``NO_FREE_LICENSE_MALUS`` (−0.5) — has a restricted / unknown license, or
+      no license at all
 
-    A restricted-use license is treated as a FAIL — only free-use licenses earn
-    credit. Match is against ``skos:exactMatch`` URIs from ``licenses.rdf``.
-    Best license across all distribution declarations wins (the indicator is
-    "at least one free-use license").
+    The indicator score is the mean over all distributions, so a restricted or
+    unlicensed distribution drags the score down proportionally — consistent
+    with the other per-distribution indicators (no "best-wins" leniency).
+    PASS ≥ 0.9, PARTIAL ≥ 0.5, FAIL below.
     """
+
+    GRADED = True  # per-distribution +1 / malus, averaged — continuous
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
+    #: Penalty per distribution without a free-use license (restricted /
+    #: unknown / missing), applied before averaging.
+    NO_FREE_LICENSE_MALUS = -0.5
 
     def __init__(self):
         super().__init__(
             indicator_id="reuse_license",
-            name_de="Lizenz aus kontrolliertem Vokabular",
-            name_en="License from controlled vocabulary",
+            name_de="Freie Lizenz je Distribution",
+            name_en="Free-use license per distribution",
             dimension=QualityDimension.REUSABILITY,
             description_de=(
-                "Prüft ob dct:license (auf Distributionsebene) eine URI aus dem "
-                "DCAT-AP-DE-Lizenz-Vokabular ist; volle Punkte nur bei freier "
-                "Nutzung, eingeschränkte Nutzung zählt als FAIL"
+                "Bewertet je Distribution ob dct:license eine freie Lizenz aus dem "
+                "DCAT-AP-DE-Vokabular ist (frei = +1.0; eingeschränkt/unbekannt/fehlt "
+                "= Malus) und mittelt über alle Distributionen (Konvention 32)"
             ),
             description_en=(
-                "Checks that dct:license (at distribution level) is a URI from the "
-                "DCAT-AP-DE licenses vocab; credit only for free-use licenses, "
-                "restricted use counts as FAIL"
+                "Scores each distribution on whether dct:license is a free-use "
+                "license from the DCAT-AP-DE vocab (free = +1.0; restricted/unknown/"
+                "missing = malus) and averages over all distributions (Konvention 32)"
             ),
             weight=1.0,
         )
@@ -117,16 +125,10 @@ class LicenseIndicator(Indicator):
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            sourced = [
-                sv
-                for sv in context.collect_licenses()
-                if sv.source_kind == "distribution"
-            ]
-            dist_count = len(sourced)
-
-            if not sourced:
+            total = context.distribution_count
+            if total == 0:
                 self.logger.info(
-                    f"[{self.indicator_id}] FAIL score=0.00 no distribution license set"
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -135,63 +137,56 @@ class LicenseIndicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Keine Lizenz auf Distributionsebene angegeben",
-                    message_en="No license specified at distribution level",
-                    details={
-                        "license_count": 0,
-                        "distribution_count": 0,
-                    },
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"total_distributions": 0},
                 )
 
-            classified = []
-            for sv in sourced:
-                if sv.value in OPEN_LICENSE_URIS:
-                    tier = "free"
-                    score = 1.0
-                elif sv.value in RESTRICTED_LICENSE_URIS:
-                    # Restricted use is not accepted — treated as FAIL.
-                    tier = "restricted"
-                    score = 0.0
+            per_distribution: list[dict[str, Any]] = []
+            for dist in context.distributions:
+                free = any(lic in OPEN_LICENSE_URIS for lic in dist.licenses)
+                restricted = any(
+                    lic in RESTRICTED_LICENSE_URIS for lic in dist.licenses
+                )
+                if free:
+                    score, tier = 1.0, "free"
+                elif not dist.licenses:
+                    score, tier = self.NO_FREE_LICENSE_MALUS, "missing"
+                elif restricted:
+                    score, tier = self.NO_FREE_LICENSE_MALUS, "restricted"
                 else:
-                    tier = "unknown"
-                    score = 0.0
-                classified.append(
+                    score, tier = self.NO_FREE_LICENSE_MALUS, "unknown"
+                per_distribution.append(
                     {
-                        "value": sv.value,
-                        "source_kind": sv.source_kind,
-                        "source_uri": sv.source_uri,
+                        "uri": dist.distribution_uri,
+                        "licenses": list(dist.licenses),
                         "tier": tier,
                         "score": score,
                     }
                 )
 
-            best = max(c["score"] for c in classified)
-            has_free = any(c["tier"] == "free" for c in classified)
-            has_restricted = any(c["tier"] == "restricted" for c in classified)
+            overall = sum(d["score"] for d in per_distribution) / total
+            free_count = sum(1 for d in per_distribution if d["tier"] == "free")
 
-            if has_free:
+            if overall >= self.PASS_THRESHOLD:
                 status = IndicatorStatus.PASS
-                best_tier = "free"
-                message_de = "Freie Lizenz aus dem Vokabular gefunden"
-                message_en = "Free-use license from the vocabulary found"
-            elif has_restricted:
-                status = IndicatorStatus.FAIL
-                best_tier = "restricted"
-                message_de = "Nur eingeschränkte Lizenz — nicht akzeptiert"
-                message_en = "Only a restricted-use license — not accepted"
+            elif overall >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
             else:
                 status = IndicatorStatus.FAIL
-                best_tier = "unknown"
-                message_de = (
-                    "Lizenz angegeben, aber URI nicht im kontrollierten Vokabular"
-                )
-                message_en = (
-                    "License specified but URI is not in the controlled vocabulary"
-                )
+
+            message_de = (
+                f"{free_count}/{total} Distribution(en) mit freier Lizenz "
+                f"(Score {overall:.2f})"
+            )
+            message_en = (
+                f"{free_count}/{total} distribution(s) with a free-use license "
+                f"(score {overall:.2f})"
+            )
 
             self.logger.info(
-                f"[{self.indicator_id}] {status.value} score={best:.2f} "
-                f"best_tier={best_tier} distribution_licenses={len(sourced)}"
+                f"[{self.indicator_id}] {status.value} score={overall:.2f} "
+                f"free={free_count}/{total}"
             )
 
             return IndicatorResult(
@@ -200,14 +195,14 @@ class LicenseIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=best,
+                score=round(overall, 4),
                 message_de=message_de,
                 message_en=message_en,
                 details={
-                    "license_count": len(sourced),
-                    "distribution_count": dist_count,
-                    "best_tier": best_tier,
-                    "licenses": classified,
+                    "total_distributions": total,
+                    "free_count": free_count,
+                    "no_free_license_malus": self.NO_FREE_LICENSE_MALUS,
+                    "per_distribution": per_distribution,
                 },
             )
 
@@ -862,29 +857,31 @@ class DcatApDeValidationIndicator(Indicator):
 
 
 class AvailabilityIndicator(Indicator):
-    """Validates ``dcatap:availability`` against the DCAT-AP Planned Availability
-    vocabulary (``planned-availability.rdf``).
+    """Fraction of distributions with a valid ``dcatap:availability`` value.
 
-    The field is collected from the ``dcat:Dataset`` **and** every
-    ``dcat:Distribution`` and evaluated together in a single indicator.
-
-    * PASS    — availability present and every value is in the vocabulary
-    * PARTIAL — availability present but at least one value is not in the vocabulary
-    * FAIL    — no availability set anywhere
+    Per distribution: has ≥1 ``dcatap:availability`` value from the DCAT-AP
+    Planned Availability vocabulary (``planned-availability.rdf``) → +1.0, else
+    0.0 (no malus). Score is the mean over all distributions — consistent with
+    the other per-distribution indicators. PASS ≥ 0.9, PARTIAL ≥ 0.5.
     """
+
+    GRADED = True
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
 
     def __init__(self):
         super().__init__(
             indicator_id="reuse_availability",
-            name_de="Verfügbarkeit aus kontrolliertem Vokabular",
-            name_en="Availability from controlled vocabulary",
+            name_de="Verfügbarkeit aus kontrolliertem Vokabular (je Distribution)",
+            name_en="Availability from controlled vocabulary (per distribution)",
             dimension=QualityDimension.REUSABILITY,
             description_de=(
-                "Prüft ob dcatap:availability (Dataset und Distributionen) aus dem "
-                "Planned-Availability-Vokabular stammt"
+                "Anteil der Distributionen mit dcatap:availability aus dem "
+                "Planned-Availability-Vokabular"
             ),
             description_en=(
-                "Checks that dcatap:availability (dataset and distributions) is from "
+                "Fraction of distributions with a dcatap:availability value from "
                 "the Planned Availability vocabulary"
             ),
             weight=1.0,
@@ -897,22 +894,10 @@ class AvailabilityIndicator(Indicator):
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            entries: list[dict[str, Any]] = []
-            for value in context.availability:
-                entries.append({"value": value, "source": "dataset"})
-            for dist in context.distributions:
-                for value in dist.availability:
-                    entries.append(
-                        {
-                            "value": value,
-                            "source": "distribution",
-                            "distribution_uri": dist.distribution_uri,
-                        }
-                    )
-
-            if not entries:
+            total = context.distribution_count
+            if total == 0:
                 self.logger.info(
-                    f"[{self.indicator_id}] FAIL score=0.00 no dcatap:availability"
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -921,30 +906,44 @@ class AvailabilityIndicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Keine dcatap:availability angegeben",
-                    message_en="No dcatap:availability specified",
-                    details={"availability_count": 0},
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"total_distributions": 0},
                 )
 
-            for e in entries:
-                e["in_vocab"] = e["value"] in VALID_PLANNED_AVAILABILITY_URIS
-            valid = [e for e in entries if e["in_vocab"]]
-            invalid = [e for e in entries if not e["in_vocab"]]
+            per_distribution: list[dict[str, Any]] = []
+            for dist in context.distributions:
+                passes = any(
+                    v in VALID_PLANNED_AVAILABILITY_URIS for v in dist.availability
+                )
+                per_distribution.append(
+                    {
+                        "uri": dist.distribution_uri,
+                        "availability": list(dist.availability),
+                        "passes": passes,
+                    }
+                )
 
-            if not invalid:
+            passing = sum(1 for d in per_distribution if d["passes"])
+            score = passing / total
+
+            if score >= self.PASS_THRESHOLD:
                 status = IndicatorStatus.PASS
-                score = 1.0
-                message_de = "Alle Verfügbarkeitswerte aus dem Vokabular"
-                message_en = "All availability values from the vocabulary"
-            else:
+            elif score >= self.PARTIAL_THRESHOLD:
                 status = IndicatorStatus.PARTIAL
-                score = 0.5
-                message_de = "Nicht alle Verfügbarkeitswerte aus dem Vokabular"
-                message_en = "Not all availability values from the vocabulary"
+            else:
+                status = IndicatorStatus.FAIL
+
+            message_de = (
+                f"{passing}/{total} Distribution(en) mit gültiger Verfügbarkeit"
+            )
+            message_en = (
+                f"{passing}/{total} distribution(s) with a valid availability value"
+            )
 
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={score:.2f} "
-                f"valid={len(valid)}/{len(entries)}"
+                f"passing={passing}/{total}"
             )
 
             return IndicatorResult(
@@ -953,14 +952,13 @@ class AvailabilityIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=score,
+                score=round(score, 4),
                 message_de=message_de,
                 message_en=message_en,
                 details={
-                    "availability_count": len(entries),
-                    "valid_count": len(valid),
-                    "invalid_count": len(invalid),
-                    "entries": entries,
+                    "total_distributions": total,
+                    "passing_count": passing,
+                    "per_distribution": per_distribution,
                 },
             )
 

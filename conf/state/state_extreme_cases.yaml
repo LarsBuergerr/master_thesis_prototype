@@ -73,8 +73,8 @@ quality:
     # Per-indicator overrides (override the global values above)
     overrides:
       find_keywords_count: { partial_score: 0.7 }
-      reuse_license: { fail_score: -1.0 }
-      acc_machine_readable_access: { fail_score: -0.5 }
+      # reuse_license & acc_machine_readable_access now carry a per-distribution
+      # malus in the indicator itself — no fail_score override needed here.
       acc_download_url: { fail_score: -0.5 }
       find_theme_valid: { fail_score: -0.5 }
       reuse_contributor_id: { fail_score: -0.5 }

@@ -587,7 +587,18 @@ class TemporalCoverageIndicator(Indicator):
 
 
 class DateTimeFieldIndicator(Indicator):
-    """Generic validator for issued/modified date fields (xs:date or xs:dateTime)."""
+    """Generic validator for issued/modified date fields (xs:date or xs:dateTime).
+
+    GRADED: score = fraction of the present date values (dataset + distributions)
+    that are validly typed as xs:date / xs:dateTime, meaned over all present
+    values. No malus — an untyped value contributes 0, not negative. FAIL only
+    when the field is absent entirely. PASS ≥ 0.9, PARTIAL ≥ 0.5.
+    """
+
+    GRADED = True
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
 
     def __init__(
         self, field_uri: URIRef, indicator_id: str, name_de: str, name_en: str
@@ -661,8 +672,13 @@ class DateTimeFieldIndicator(Indicator):
                 }
                 (valid if ok else invalid).append(entry)
 
-            status = IndicatorStatus.PASS if not invalid else IndicatorStatus.PARTIAL
-            score = 1.0 if not invalid else 0.5
+            score = len(valid) / len(sourced)
+            if score >= self.PASS_THRESHOLD:
+                status = IndicatorStatus.PASS
+            elif score >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
+            else:
+                status = IndicatorStatus.FAIL
 
             dataset_count = sum(1 for s in sourced if s.source_kind == "dataset")
             dist_count = sum(1 for s in sourced if s.source_kind == "distribution")
@@ -686,7 +702,7 @@ class DateTimeFieldIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=score,
+                score=round(score, 4),
                 message_de=(
                     f"Alle {len(valid)} Werte gültig (Dataset: {dataset_count}, "
                     f"Distribution: {dist_count})"
