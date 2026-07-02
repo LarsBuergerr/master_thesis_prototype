@@ -3,7 +3,9 @@
 Pipeline (used by ``playground/notebooks/10_ground_truth_evaluation.ipynb``):
 
 1. ``run_model_scores(sample_dir, llm)`` — score every RDF with the prototype,
-   returning the four dimension scores (0-1) per dataset.
+   returning the four dimension scores (0-1) per dataset. Alternatively
+   ``load_model_scores(run_path)`` reuses an already-completed run's output
+   (run directory or ``run_aggregate.json``) instead of re-scoring.
 2. ``load_ground_truth(csv)`` — read the filled rating template (0-5 per
    dimension), derive the overall verdict via :func:`derive_verdict`.
 3. ``merge_scores(...)`` — join, rescale model scores to 0-5 and derive the
@@ -172,6 +174,38 @@ def make_llm():
     )
 
 
+def _dimension_row(filename: str, result: dict) -> dict:
+    """Extract ``model_<dimension>`` values (0-1) from one validation result.
+
+    Shared by live scoring (:func:`run_model_scores`) and run-file loading
+    (:func:`load_model_scores`) so both paths apply identical semantics: a
+    dimension whose indicators are all NOT_APPLICABLE (e.g. expressiveness
+    without an LLM) is NaN — not measured — rather than a genuine low score.
+    """
+    by_dim = result.get("by_dimension", {}) or {}
+    row = {"file": filename}
+    for dim in MODEL_DIMS:
+        d = by_dim.get(dim)
+        if not d:
+            row[f"model_{dim}"] = np.nan
+            continue
+        inds = d.get("indicators", [])
+        statuses = [i.get("status") for i in inds]
+        if inds and all(s == "not_applicable" for s in statuses):
+            row[f"model_{dim}"] = np.nan  # dimension not measured (no LLM)
+        else:
+            row[f"model_{dim}"] = d.get("score")
+    return row
+
+
+def _finalise_model_df(rows: list[dict]) -> pd.DataFrame:
+    df = pd.DataFrame(rows)
+    df["model_overall"] = df[[f"model_{d}" for d in MODEL_DIMS]].mean(
+        axis=1, skipna=True
+    )
+    return df
+
+
 def run_model_scores(sample_dir, llm=None, **service_kwargs) -> pd.DataFrame:
     """Score every ``*.rdf`` in ``sample_dir`` with the prototype.
 
@@ -186,26 +220,70 @@ def run_model_scores(sample_dir, llm=None, **service_kwargs) -> pd.DataFrame:
     files = sorted(Path(sample_dir).glob("*.rdf"))
     for i, path in enumerate(files, 1):
         result = service.validate_metadata(str(path))
-        by_dim = result.get("by_dimension", {})
-        row = {"file": path.name}
-        for dim in MODEL_DIMS:
-            d = by_dim.get(dim)
-            if not d:
-                row[f"model_{dim}"] = np.nan
-                continue
-            inds = d.get("indicators", [])
-            statuses = [i.get("status") for i in inds]
-            if inds and all(s == "not_applicable" for s in statuses):
-                row[f"model_{dim}"] = np.nan  # dimension not measured (no LLM)
-            else:
-                row[f"model_{dim}"] = d.get("score")
-        rows.append(row)
+        rows.append(_dimension_row(path.name, result))
         print(f"[{i:2d}/{len(files)}] scored {path.name}")
-    df = pd.DataFrame(rows)
-    df["model_overall"] = df[[f"model_{d}" for d in MODEL_DIMS]].mean(
-        axis=1, skipna=True
-    )
-    return df
+    return _finalise_model_df(rows)
+
+
+def load_model_scores(run_path) -> pd.DataFrame:
+    """Reuse an already-completed run's output instead of re-scoring.
+
+    ``run_path`` is either a run directory (``run_<timestamp>_.../``) or a
+    direct path to its ``run_aggregate.json``. Per-file ``result.json`` files
+    are preferred because they carry indicator statuses, so the
+    NOT_APPLICABLE→NaN semantics match :func:`run_model_scores` exactly; files
+    without one fall back to the aggregate's ``dimension_scores`` (which can't
+    distinguish "not measured" from a genuine score).
+
+    Returns the same frame shape as :func:`run_model_scores` (``file`` +
+    ``model_<dimension>`` in 0-1 + ``model_overall``), so it drops straight
+    into :func:`merge_scores`.
+    """
+    import json
+
+    run_path = Path(run_path)
+    if run_path.is_file():
+        aggregate_path, run_dir = run_path, run_path.parent
+    else:
+        aggregate_path, run_dir = run_path / "run_aggregate.json", run_path
+
+    # Canonical filenames (incl. ".rdf") come from the aggregate; per-file
+    # subdirectories are named by stem only.
+    aggregate_files: dict = {}
+    if aggregate_path.is_file():
+        with open(aggregate_path, encoding="utf-8") as f:
+            aggregate_files = json.load(f).get("files", {}) or {}
+
+    if aggregate_files:
+        names = list(aggregate_files)
+    else:  # no aggregate — discover per-file result.json subdirs instead
+        names = sorted(
+            f"{p.parent.name}.rdf" for p in run_dir.glob("*/result.json")
+        )
+    if not names:
+        raise FileNotFoundError(
+            f"No run_aggregate.json or */result.json found under {run_dir}"
+        )
+
+    rows = []
+    for name in names:
+        result_path = run_dir / Path(name).stem / "result.json"
+        if result_path.is_file():
+            with open(result_path, encoding="utf-8") as f:
+                rows.append(_dimension_row(name, json.load(f)))
+            continue
+        # Fallback: aggregate summary only (no indicator statuses available).
+        dim_scores = (aggregate_files.get(name) or {}).get(
+            "dimension_scores", {}
+        ) or {}
+        row = {"file": name}
+        for dim in MODEL_DIMS:
+            row[f"model_{dim}"] = (
+                dim_scores[dim] if dim_scores.get(dim) is not None else np.nan
+            )
+        rows.append(row)
+    print(f"loaded {len(rows)} scored files from {run_dir}")
+    return _finalise_model_df(rows)
 
 
 # ----------------------------------------------------------------------------
