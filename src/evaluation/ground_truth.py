@@ -120,6 +120,62 @@ def kendall_tau(x, y) -> float:
     return (nc - nd) / denom if denom > 0 else float("nan")
 
 
+def ceiling_spearman(model_scores, gt_scores) -> float:
+    """Maximum achievable Spearman ρ given the observed GT value distribution.
+
+    The GT scale is coarse (0-5 integers, often only 2-3 levels actually used)
+    and the sample contains near-duplicate datasets, so even a *perfectly*
+    monotone model cannot reach ρ = 1: ties and coarse binning attenuate the
+    rank correlation. This computes that ceiling by assigning the observed GT
+    value multiset to the datasets in perfect model-score order (best possible
+    monotone alignment) and measuring the resulting Spearman.
+
+    Reporting observed ρ against this ceiling separates "model disagrees with
+    the human" from "the scale cannot express finer agreement". Within model-
+    score ties the assignment is arbitrary, but Spearman is invariant to it
+    (tied ranks are averaged), so the result is deterministic.
+    """
+    x, y = _clean_pair(model_scores, gt_scores)
+    if len(x) < 3 or len(np.unique(x)) < 2 or len(np.unique(y)) < 2:
+        return float("nan")
+    order = np.argsort(x, kind="stable")
+    y_best = np.empty_like(y)
+    y_best[order] = np.sort(y)  # observed GT values, monotone in model score
+    return spearman(x, y_best)
+
+
+def cronbach_alpha(items: pd.DataFrame) -> float:
+    """Cronbach's α over item columns (internal consistency of a composite).
+
+    Used as the reliability estimate of ``gt_overall`` / ``model_overall``
+    (mean of the four dimension values) for the classical disattenuation
+    formula. Entirely-empty items (e.g. expressiveness scored without an LLM)
+    are ignored; remaining rows with any missing item are dropped; needs
+    >= 2 items.
+    """
+    items = items.dropna(axis=1, how="all").dropna()
+    k = items.shape[1]
+    if k < 2 or len(items) < 3:
+        return float("nan")
+    item_var = items.var(axis=0, ddof=1).sum()
+    total_var = items.sum(axis=1).var(ddof=1)
+    if total_var <= 0:
+        return float("nan")
+    return float(k / (k - 1) * (1 - item_var / total_var))
+
+
+def disattenuated_correlation(r: float, rel_x: float, rel_y: float) -> float:
+    """Spearman's classical correction for attenuation: r / sqrt(rel_x*rel_y).
+
+    Estimates the correlation between the *latent* qualities given the
+    unreliability of both measurements. Capped at 1.0 (the correction can
+    overshoot with noisy reliability estimates).
+    """
+    if any(math.isnan(v) for v in (r, rel_x, rel_y)) or rel_x <= 0 or rel_y <= 0:
+        return float("nan")
+    return float(min(1.0, r / math.sqrt(rel_x * rel_y)))
+
+
 def confusion_matrix(true_labels, pred_labels, labels=VERDICTS) -> pd.DataFrame:
     """Counts with rows=ground truth, cols=model. Fixed label order."""
     idx = {l: i for i, l in enumerate(labels)}
