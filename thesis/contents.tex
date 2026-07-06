@@ -1,0 +1,1769 @@
+\chapter{Einleitung}
+
+\section{Problemstellung und Motivation}
+
+
+In den vergangenen Jahren hat die Bereitstellung offener Verwaltungsdaten im Rahmen von Open Government Data (OGD) zunehmend an Bedeutung gewonnen. Durch die Veröffentlichung öffentlich finanzierter Daten sollen Transparenz, Innovation und wissenschaftliche Nutzung gefördert werden. Offene Daten können dabei neue wirtschaftliche und gesellschaftliche Mehrwerte schaffen, indem sie Forschung, datenbasierte Anwendungen und evidenzbasierte Entscheidungsprozesse unterstützen \cite{lnenicka2023}.
+
+In Deutschland erfolgt die zentrale Bereitstellung von Metadaten zu offenen Verwaltungsdaten über das nationale Datenportal GovData. GovData fungiert als übergreifender Metadatenkatalog, über den Bund, Länder und Kommunen ihre offenen Datensätze auffindbar machen und einen zentralen Zugang zu Verwaltungsdaten bereitstellen \cite{govdata_portal, FitkoGovdata}. Die eigentlichen Datensätze werden dabei weiterhin von den jeweiligen Datenbereitstellern dezentral verwaltet, während das Portal die zugehörigen Metadaten aggregiert und über standardisierte Schnittstellen zugänglich macht.
+
+Für die Auffindbarkeit und Nachnutzbarkeit dieser Daten spielt die Qualität der Metadaten eine zentrale Rolle. Unvollständige, inkonsistente oder fehlerhafte Metadaten können die Nutzung offener Daten erheblich erschweren und damit den Nutzen von Open-Data-Initiativen reduzieren. Vor diesem Hintergrund gewinnt die systematische Bewertung und Verbesserung der Metadatenqualität in Open-Data-Portalen zunehmend an Bedeutung.
+
+\section{Zielsetzung der Arbeit}
+
+Ziel dieser Masterthesis ist die Entwicklung und Evaluation eines strukturierten Verfahrens zur Bewertung und zum Reporting der Qualität von Metadaten im Kontext von GovData auf Basis des \acrfull{DCATAPDE} Standarts. Ausgangspunkt bilden Validierungsergebnisse, die mithilfe eines bestehenden RDF-/SHACL-Validators erzeugt wurden. Diese liefern formale Aussagen über strukturelle und syntaktische Eigenschaften der Metadaten, erlauben jedoch keine aggregierte oder kontextualisierte Qualitätsbewertung.
+Die Thesis verfolgt daher das Ziel, aus vorhandenen Validierungsmetriken ein transparentes und praxisrelevantes Bewertungsmodell abzuleiten. Hierzu wird zunächst der Forschungsstand zu Datenqualität, Metadatenqualität sowie Bewertungsansätzen im Bereich Linked Data und Open Government Data analysiert, um geeignete Qualitätsdimen- sionen und Metriken zu identifizieren.
+Dabei wird insbesondere untersucht, ob bestehende Ranking- oder Scoring-Modelle für \acrfull{DCAT}, DCAT-AP und DCAT-AP.de existieren und inwiefern diese auf den deutschen Metadatenkatalog (GovData) übertragbar sind.
+Darauf aufbauend wird ein konzeptionelles Bewertungsverfahren entwickelt, das Validierungsergebnisse zu interpretierbaren Qualitätsindikatoren aggregiert. Ergänzend wird untersucht, inwiefern KI-gestützte Verfahren eingesetzt werden können, um Validierungsergebnisse zu interpretieren, zusätzliche Kontextinformationen aus Metadaten zu berücksichtigen und daraus verbesserte Qualitätsbewertungen abzuleiten. Ein möglicher Ansatz besteht dabei in der Nutzung agentenbasierter Architekturen, in denen spezialisierte KI-Agenten unterschiedliche Analyseaufgaben, etwa die Interpretation von Validierungsverletzungen oder die semantische Analyse von Metadatenfeldern, übernehmen.
+Die entwickelten Metriken und Analyseverfahren werden prototypisch umgesetzt, auf repräsentative Metadatensätze angewendet und hinsichtlich ihrer Aussagekraft und praktischen Anwendbarkeit evaluiert. Ziel ist es, die rein formale RDF-Validierung um ein kontextsensitives und nachvollziehbares Qualitätsbewertungs- und Reportingsystem zu erweitern, das regelbasierte Validierung mit KI-gestützten Analyseverfahren kombiniert.
+
+\section{Forschungsfragen}
+
+Ausgehend vom dargestellten Forschungsstand zeigt sich, dass zwar zahlreiche Modelle und technische Verfahren zur Bewertung von Daten- und Metadatenqualität existieren, deren Übertragbarkeit auf den spezifischen Kontext von DCAT-AP.de und GovData jedoch gesondert untersucht werden muss. Insbesondere stellt sich die Frage, wie formale Prüfergebnisse um kontext- und semantikbezogene Qualitätsindikatoren ergänzt werden können, ohne die Nachvollziehbarkeit des Bewertungsmodells zu beeinträchtigen. Vor diesem Hintergrund lautet die zentrale Forschungsfrage dieser Arbeit:
+
+\begin{quote}
+\enquote{Wie kann ein Bewertungsmodell für die Qualität von DCAT-AP.de-Metadaten im GovData-Kontext entwickelt werden, das formale Prüfverfahren mit ergänzenden kontext- und semantikbezogenen Qualitätsindikatoren verbindet?}
+\end{quote}
+
+Zur Beantwortung dieser Leitfrage werden folgende Teilfragen untersucht:
+
+\begin{enumerate}
+    \item Inwiefern sind bestehende Ansätze zur Bewertung von Metadaten auf den Kontext von DCAT-AP.de und GovData übertragbar?
+
+    \item Welche Qualitätsdimensionen und Indikatoren sind für die Bewertung von DCAT-AP.de-Metadaten im GovData-Kontext relevant?
+
+    \item Welche ergänzenden kontext- und semantikbezogenen Prüfungen können das formale Qualitätsmodell sinnvoll erweitern, ohne die Nachvollziehbarkeit und Verlässlichkeit des Scorings zu gefährden?
+
+    \item Wie kann ein mehrdimensionales Bewertungsmodell konzeptionell entwickelt und prototypisch operationalisiert werden?
+
+    \item Wie kann ein menschenlesbares Qualitätsreporting prototypisch umgesetzt werden, das Bewertungsergebnisse und betroffene Qualitätsdimensionen nachvollziehbar darstellt?
+\end{enumerate}
+
+\section{Aufbau der Arbeit}
+
+Es werden theoretische und konzeptionelle Grundlagen beleuchtet. In diesem Kontext werden grundlegende Konzepte wie Open Governement Data und das GovData.de Portal erklärt. Metadaten im Open-Data-Kontext sowie RDF, LinkedData und SHACL ausgearbeitet.
+Aufbauend auf die theoretischen Grundlagen wird das methodische Vorgehen dieser Arbeit beleuchtet.
+Im Anschluss wird das Konzept und die Operationalisierung des Metadatenqualitätsmodell definiert und ausgearbeitet.
+Es wird die Zielsetzung und Anforderungen basierend auf der Literaturrecherche, Informationen aus Experteninterviews und analysierten fehlender Dimensionen definiert.
+Im Anschluss wird das evaluierte Konzept prototypisch in Python implementiert.
+Die Ergebnisse des Prototyps werden im letzten Kapitel evaluiert und überprüft in wiefern sich das evaluierte Konzept und damit der Prototyp eignet.
+
+\pagebreak
+\chapter{Theoretische und konzeptionelle Grundlagen}
+\label{sec:chapter_02}
+
+\section{Open Government Data und das GovData-Portal}
+
+Open Data bezeichnet Daten, die frei genutzt, weiterverwendet, und weiterverbreitet werden können. \acrfull{OGD} ist die öffentliche Ausprägung dieses Konzepts und umfasst Daten und Informationen, die von staatlichen Stellen erzeugt, erhoben, oder beauftragt und unter offenen Bedingungen bereitgestellt werden. Im Zentrum stehen dabei nicht nur der Zugang zu Daten, sondern auch ihre tatsächliche Nutzbarkeit. Damit Daten als offen gelten können, müssen sie möglichst in maschinenlesbaren, nicht-proprietären Formaten, ohne diskriminierende Zugangsbeschränkungen, und unter Bedingungen bereitgestellt werden, die ihre Wiederverwendung erlauben. OGD ist damit mehr als die bloße Veröffentlichung staatlicher Informationen im Internet; gemeint ist die proaktive Bereitstellung wiederverwendbarer Datenbestände des öffentlichen Sektors. \cite{Ubaldi2013OGD, OECD2020OURdata}
+
+Die Relevanz von OGD begründet sich vor allem mit seinem Beitrag zu Transparenz, Partizipation, Innovation, und öffentlicher Wertschöpfung. Durch die Veröffentlichung staatlicher Daten können Bürger, Medien, Wissenschaft, Zivilgesellschaft, und Unternehmen staatliches Handeln besser nachvollziehen, kontrollieren, und analysieren. OGD kann damit Transparenz und Rechenschaft stärken und zugleich neue Formen gesellschaftlicher Beteiligung unterstützen. Darüber hinaus eröffnet es die Möglichkeit, aus vorhandenen staatlichen Daten neue Anwendungen, Dienstleistungen, und Informationsangebote zu entwickeln. Offene Regierungsdaten werden daher nicht nur als Mittel demokratischer Kontrolle verstanden, sondern auch als Ressource für wirtschaftliche und soziale Innovation. \cite{Ubaldi2013OGD}
+
+Datenpolitik ist demnach dann wirksam, wenn sie sich nicht nur auf die Angebotsseite fokussiert, sondern auch Nutzungsbedürftnisse, Datenqualität, Metadaten, und Wiederverwendungsbedingungen berücksichtigt. OGD ist deshalb ein zentrales Element moderner datengetriebener Verwaltung: Es unterstützt Transparenz und gute Regierungsführung, kann innovative und bürgerzentrierte Dienste fördern, und bildet zugleich eine wichtige Grundlage für datenbasierte Entscheidungen im öffentlichen Sektor. Seine Relevanz ergibt sich damit aus der Verbindung von politischer Offenheit, technischer Nachnutzbarkeit, und gesellschaftlicher Wertschöpfung. \cite{OECD2020OURdata}
+
+In Deutschland bildet GovData das nationale Metadatenportal für offene Verwaltungsdaten. Das Portal fungiert als zentraler Zugangspunkt zu Datenangeboten von Bund, Ländern, und Kommunen, verwaltet jedoch nicht die physischen Datensätze selbst. Vielmehr werden Metadaten gebündelt, über die auf die dezentral in verschiedenen Fach- und Verwaltungsportalen veröffentlichten Daten verwiesen wird. GovData übernimmt damit vor allem eine Aggregations- und Sichtbarkeitsfunktion, indem verteilte Datenbestände über einen gemeinsamen Metadatenzugang auffindbar gemacht werden. \cite{BmdsOpenData}
+
+Im institutionellen Rahmen wird GovData von der Förderalen IT-Kooperation (FITKO) im Produktmanagement betreut.
+Die FITKO ordnet das Portal ihrem einheitlichen Produktmanagement-Modell für Produkte des IT-Planungsrats zu und verweist für GovData auf ein eigenes föderal besetztes Produktboard \cite{FitkoGovdata}.
+
+\section{Metadaten im Open-Data-Kontext}
+
+Metadaten lassen sich in Anlehnung an die \acrfull{NISO} als Informationen verstehen, die erstellt, gespeichert, und geteilt werden, um Informationsressourcen zu beschreiben und dadurch ihren Gebrauch zu ermöglichen. Die klassische Kurzformel „data about data“ greift dabei nur verkürzt. Entscheidend ist der funktionale Aspekt: Metadaten machen eine Ressource identifizierbar, beschreibbar, auffindbar, und in einem bestimmten Nutzungskontext verständlich. NISO betont zudem, dass Metadaten typischerweise strukturiert sind, also in bekannten Kategorien erfasst werden, damit Menschen und Systeme mit ihnen arbeiten können. Für Datensätze im Open-Data-Kontext bedeutet dies, dass Metadaten nicht bloß Begleitinformationen sind, sondern die Beschreibungsschicht, über die Datensätze gefunden, eingeordnet, und verwendet werden können. \cite{Riley2017MetadataPrimer}
+
+NISO unterscheidet grundlegend zwischen deskriptiven, administrativen, strukturellen und Markup Metaden.
+Diese sind zur orientierung in Tabelle \ref{tab:metadaten_typen} aufgelistet.
+
+\begin{table}[ht]
+    \rowcolors{1}{white}{white}
+    \centering
+        \begin{tabular}{p{4cm}p{9.5cm}}
+        \hline
+        \textbf{Metadatentyp} & \textbf{Beschreibung} \\
+        \hline
+        Deskriptive Metadaten & Dienen der inhaltlichen Beschreibung einer Ressource und unterstützen deren Identifikation und Auffindbarkeit. \\
+        Administrative Metadaten & Unterstützen die Verwaltung einer Ressource, etwa durch Angaben zu Rechten, technischen Eigenschaften, Provenienz oder Erhaltung. \\
+        Strukturelle Metadaten & Beschreiben den Aufbau einer Ressource sowie die Beziehungen zwischen ihren Bestandteilen. \\
+        Markup-Metadaten & Kennzeichnen die logische oder semantische Struktur innerhalb eines digitalen Objekts. \\
+        \hline
+        \end{tabular}
+        \captionsetup{justification=centering}
+        \caption[Metadatentypen in Anlehnung an NISO, eigene Übersetzung und Paraphrase]{Metadatentypen in Anlehnung an NISO, eigene Übersetzung und Paraphrase \cite{Riley2017MetadataPrimer}}
+    \label{tab:metadaten_typen}
+\end{table}
+
+Im Open-Data-Kontext kommt Metadaten eine besondere Bedeutung zu, da offene Datensätze nur dann praktisch nutzbar sind, wenn sie standardisiert beschrieben und dadurch auffindbar, verständlich, und zwischen verschiedenen Katalogen interoperabel gemacht werden.
+DCAT ist hierfür das zentrale W3C-Vokabular, das die interoperable Beschreibung von Datenkatalogen, Datensätzen, und Datendiensten im Web ermöglichen soll. \cite{W3CDCAT3}
+
+In funktionaler Hinsicht lassen sich die im GovData-Kontext verwendeten Metadaten vor allem als deskriptive und administrative Metadaten einordnen, da sie einerseits der Beschreibung und Auffindbarkeit von Verwaltungsdaten dienen und andererseits Informationen zur Bereitstellung, zu Formaten, zu offenen Lizenzen, und zur Nachnutzbarkeit enthalten \cite{Riley2017MetadataPrimer,FitkoGovdata}.
+Da GovData selbst als nationales Metadatenportal fungiert, einen Metadatenkatalog bereitstellt, und die beschriebenen Verwaltungsdaten weiterhin dezentral bei den bereitstellenden Stellen verbleiben, kommt dieser Beschreibungsschicht eine zentrale infrastrukturelle Funktion zu \cite{FitkoGovdata}.
+
+\section{DCAT-AP.de als Metadatenstandard} % @TODO ggf. noch etwas expliziter erleutern wie DCAT-AP.de aufgebaut ist
+
+Für den Austausch offener Verwaltungsdaten im deutschen Open-Data-Kontext kommt DCAT-AP.de eine zentrale Rolle zu. Der Standard definiert ein gemeinsames deutsches Metadatenmodell, mit dem Metadaten aus unterschiedlichen Open-Data-Portalen interoperabel bereitgestellt und über GovData zentral auffindbar gemacht werden können. \cite{DCATAPDEStart, DCATAPDESpec2, DCATAPDESpec3}
+
+
+Für den Austausch offener Verwaltungsdaten im deutschen Open-Data-Kontext kommt dem Standard DCAT-AP.de eine zentrale Rolle zu. DCAT-AP.de ist das gemeinsame deutsche Metadatenmodell für den Austausch offener Verwaltungsdaten und dient dazu, Metadaten aus unterschiedlichen Portalen in einer einheitlichen Struktur bereitzustellen \cite{DCATAPDEStart}. Sein Zweck liegt insbesondere darin, Metadaten offener Verwaltungsdaten zwischen deutschen Open-Data-Portalen interoperabel auszutauschen und diese Daten über GovData zentral auffindbar zu machen \cite{DCATAPDESpec3,DCATAPDESpec2}. 
+
+DCAT-AP.de ist keine isolierte nationale Eigenentwicklung, sondern eine deutsche Ableitung des europäischen Standards DCAT-AP, der wiederum auf dem W3C-Vokabular DCAT aufbaut. Damit steht der Standard in einem mehrstufigen Interoperabilitätszusammenhang: vom allgemeinen Modell für Datenkataloge im Web über das europäische Anwendungsprofil bis hin zur deutschen Spezifikation für offene Verwaltungsdaten \cite{DCATAPDEStart,DCATAPDESpec3}. Diese Einbettung ist insbesondere deshalb relevant, weil Metadaten im GovData-Kontext nicht nur innerhalb Deutschlands ausgetauscht, sondern zugleich an europäische Entwicklungen anschlussfähig bleiben sollen \cite{FitkoGovdata}. 
+
+Die Qualität und Standartkonformität der Metadaten ist damit eine zentrale Voraussetzung dafür, dass Datensätze protalübergreifend auffindbar, maschinell verarbeitbar und interoperable nachnutzbar werden \cite{FitkoGovdata, FITKOGovDataDocs}.
+
+Zugleich zeigt sich an DCAT-AP.de, dass Metadaten im Open-Data-Kontext nicht nur eine dokumentierende, sondern auch eine strukturierende Funktion haben. Der Standard legt fest, welche Informationen in welcher Form beschrieben werden sollen, und schafft so die Grundlage für einheitliche semantische Beschreibungen, föderierte Suche, und die Weiterverarbeitung von Metadaten über Schnittstellen und Portale hinweg \cite{DCATAPDESpec3,DCATAPDEImplRules2}. Für die vorliegende Arbeit ist DCAT-AP.de damit der maßgebliche Referenzrahmen, innerhalb dessen sich die Frage nach der Qualität von Metadaten im GovData-Kontext konkretisiert.
+
+\section{RDF, Linked Data und SHACL}
+
+RDF bildet die technische Grundlage für die Beschreibung von Metadaten im Semantic-Web-Kontext. Nach der W3C-Spezifikation ist RDF ein Modell zur Repräsentation von Informationen im Web, dessen Kernstruktur aus Subjekt-Prädikat-Objekt-Tripeln besteht, die gemeinsam als RDF-Graph modelliert werden. RDF ist damit nicht primär als konkretes Dateiformat zu verstehen, sondern als abstraktes Datenmodell, auf dem unterschiedliche RDF-basierte Sprachen und Serialisierungen aufbauen. \cite{W3CRDF11Concepts}
+
+Für GovData ist RDF unmittelbar relevant, da die zuliefernden Stellen ihre Datenkataloge im RDF-Format und konform zum geltenden Metadatenstandard DCAT-AP.de für den Import in das Portal bereitstellen.
+Die Original-Metadaten können dabei über den Endpunkt eines Triple Stores mittels SPARQL-Abfragen durchsucht und kombiniert werden.
+Ein Triple Store ist eine auf RDF-Daten spezialisierte Datenbank, in der Informationen als RDF-Tripel beziehungsweise RDF-Graphen gespeichert und abgefragt werden können.
+SPARQL ist die standardisierte Abfragesprache für RDF-Daten und ermöglicht es, RDF-Graphen beziehungsweise RDF-Datenbestände über Graphmuster zu durchsuchen und auszuwerten \cite{w3c_rdf11_concepts,w3c_sparql11_query}.
+RDF fungiert in diesem Kontext somit als gemeinsames Modell, in dem Metadaten standardisiert beschrieben, gespeichert, und verarbeitet werden.
+
+
+Die Bedeutung von RDF hängt eng mit den Prinzipien von Linked Data zusammen. Linked Data zielt darauf, Daten im Internet so zu veröffentlichen, dass sie maschinell verarbeitbar, referenzierbar, und mit anderen Datenbeständen verknüpfbar sind. Für Datenkataloge ist dies insbesondere deshalb relevant, weil Metadaten nicht nur innerhalb einzelner Portale genutzt, sondern auch katalogübergreifend aggregiert und durchsucht werden sollen. Das W3C-Vokabular DCAT ist genau für diesen Zweck konzipiert: Es soll die Interoperabilität zwischen im Web veröffentlichten Datenkatalogen erleichtern, die Aggregation von Metadaten aus mehreren Katalogen unterstützen, die Auffindbarkeit von Datensätzen erhöhen, und föderierte Suche über verschiedene Kataloge hinweg ermöglichen. \cite{W3CDCAT3}
+
+Zur formalen Validierung von RDF-basierten Metadaten dient SHACL.
+Die W3C beschreibt SHACL als eine Sprache zur Validierung von RDF-Graphen gegen eine Menge von Bedingungen, die in Form sogenannter Shapes ausgedrückt werden.
+Auf diese Weise lassen sich etwa Kardinalitäten, Datentypen, Klassenzugehörigkeiten, oder Wertebereiche prüfen.
+SHACL ermöglicht somit die formale Überprüfung, ob ein RDF-Datenbestand vorgegebene strukturelle und syntaktische Anforderungen erfüllt. \cite{W3CSHACL}
+
+Gleichzeitig ist formale Validierung nicht mit umfassender Qualitätsbewertung gleichzusetzen. 
+SHACL dient der Prüfung von RDF-Graphen gegen formal definierte Constraints und erlaubt damit insbesondere Aussagen über strukturelle und syntaktische Konformität \cite{W3CSHACL}.
+In der Literatur zu Linked Data und Metadatenqualität wird Validierung zwar als zentraler Bestandteil der Qualitätsprüfung betrachtet, zugleich aber betont, dass darüber hinaus weitere Qualitätsdimensionen wie Vollständigkeit, Auffindbarkeit, Genauigkeit, oder Nachnutzbarkeit relevant sind \cite{Gayo2015LinkedDataValidationQuality,Neumaier2016MetadataQuality,Zaveri2016LinkedDataQuality}.
+SHACL kann folglich wichtige Aussagen über Regelkonformität liefern, erfasst jedoch nicht automatisch alle Aspekte, die für die praktische Qualität von Metadaten entscheidend sind.
+Dies gilt insbesondere im GovData-Kontext, in dem Metadaten nicht nur formal korrekt, sondern auch für die zentrale Auffindbarkeit und Nachnutzung dezentral bereitgestellter Verwaltungsdaten geeignet sein müssen \cite{FitkoGovdata}.
+
+\section{Datenqualität}
+
+Datenqualität wird in der Forschung nicht als eindimensionale Eigenschaft verstanden, sondern als mehrdimensionales Konzept, das sich erst im Verhältnis zu einem konkreten Nutzungskontext bestimmen lässt.
+
+\subsection{Definition nach Wang and Strong 1996}
+
+Einen zentralen Referenzpunkt bildet die Arbeit von Wang und Strong, die Datenqualität als \enquote{fitness for use} definieren und damit die Perspektive der Datennutzenden in den Mittelpunkt stellen \cite{wang1996beyond}. Ausgehend von einer empirischen Untersuchung von Datenkonsumentinnen und -konsumenten entwickeln sie ein hierarchisches Rahmenmodell, in dem Datenqualitätsmerkmale nicht allein aus theoretischen Vorannahmen oder aus Sicht von Systementwickelnden abgeleitet werden, sondern aus den Anforderungen tatsächlicher Nutzungssituationen hervorgehen \cite{wang1996beyond}. Damit verschiebt sich der Fokus von einem engen Verständnis von Datenqualität als bloßer Fehlerfreiheit zu einem breiteren Verständnis, das auch Relevanz, Verständlichkeit, Zugänglichkeit, und Nutzungseignung umfasst.
+
+Wang und Strong unterscheiden vier übergeordnete Kategorien von Datenqualität: intrinsische, kontextuelle, repräsentationale, und zugangsbezogene Qualität \cite{wang1996beyond}. Diese Kategorien bündeln insgesamt 15 untergeordnete Dimensionen und beschreiben unterschiedliche Perspektiven auf Datenqualität.
+
+\begin{itemize}
+    \item \textbf{Intrinsische Qualität} betrifft Eigenschaften, die den Daten selbst zugeschrieben werden können. Darunter befinden sich die Dimensionen \textit{Genauigkeit}, \textit{Objektivität}, \textit{Glaubwürdigkeit} und \textit{Reputation}.
+    \item \textbf{Kontextuelle Qualität} verweist darauf, dass Daten nur in Relation zu einem bestimmten Verwendungszweck bewertet werden können und umfasst daher insbesondere \textit{Relevanz}, \textit{Mehrwert}, \textit{Aktualität}, \textit{Vollständigkeit} und eine \textit{angemessene Datenmenge}.
+    \item \textbf{Repräsentationale Qualität} betrifft die Form der Darstellung, also \textit{Interpretierbarkeit}, \textit{Verständlichkeit}, \textit{prägnante Repräsentation} und \textit{konsistente Darstellung}.
+    \item \textbf{Zugangsbezogene Qualität} beschreibt, ob Daten für ihre Nutzung überhaupt verfügbar und unter angemessenen Sicherheitsbedingungen zugänglich sind.
+\end{itemize}
+
+Qualität ist in diesem Verständnis weder vollständig inhärent noch allein technisch gegeben. Vielmehr hängt sie davon ab, ob Daten in einem bestimmten Arbeits- oder Entscheidungskontext brauchbar sind \cite{wang1996beyond}. Diese Perspektive wurde von Strong, Lee, und Wang weiter ausgebaut, die betonen, dass Datenqualitätsprobleme nicht nur in gespeicherten Daten selbst entstehen, sondern im weiteren Kontext von Informationssystemen, also auch in Produktions-, Speicher-, und Nutzungskontexten \cite{StrongLeeWang1997}.
+
+Ergänzend zu diesem nutzungsbezogenen Rahmen schlagen Wand und Wang eine ontologische Fundierung von Datenqualität vor \cite{wand1996anchoring}. Ausgangspunkt ihres Ansatzes ist die Annahme, dass Informationssysteme reale Sachverhalte repräsentieren. Datenqualitätsprobleme lassen sich dann als Repräsentationsdefizite zwischen der beobachtbaren realen Welt und ihrer Abbildung im Informationssystem beschreiben \cite{wand1996anchoring}. Auf dieser Grundlage unterscheiden sie insbesondere Defizite wie Unvollständigkeit, Mehrdeutigkeit, Bedeutungslosigkeit, und Fehlerhaftigkeit. Der Beitrag dieses Ansatzes liegt weniger in einer nutzungsbezogenen Typologie als vielmehr in einer begrifflich präziseren theoretischen Herleitung von Qualitätsdimensionen. Während Wang und Strong den empirisch wahrgenommenen Qualitätsbedarf von Datennutzenden systematisieren, zeigen Wand und Wang, dass Datenqualität auch als Frage adäquater Repräsentation modelliert werden kann. Beide Perspektiven ergänzen sich daher: Die eine macht die Anwendungs- und Nutzerseite 
+sichtbar, die andere präzisiert die begriffliche und modelltheoretische Grundlage von Qualitätsdefiziten.
+
+\subsection{Qualitätsmodell der ISO-Norm 25012}
+
+Ergänzend zur Definition von Wang und Strong bietet der Standard ISO/IEC 25012 einen normativen Bezugsrahmen.
+Der Standard ist weiterhin aktuell und die Ausgabe von 2008 wurde von ISO im Jahr 2025 bestätigt.
+Er definiert ein allgemeines Datenqualitätsmodell für strukturiert in Computersystemen gehaltene Daten.
+Datenqualitätsmerkmale werden den Perspektiven inhärenter und systemabhänger Qualität zugeordnet. \cite{iso25012}
+
+Figur \ref{fig:iso25012_quality_model_de} veranschaulicht den definierten Standard.
+Das Modell umfasst 15 Qualitätsmerkmale und betont ausdrücklich, dass deren Relevanz je nach Stakeholdern und Anwendungskontext variiert.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[x=0.85cm,y=0.85cm, font=\sffamily]
+
+    % Grautöne
+    \definecolor{headergray}{RGB}{220,220,220}
+    \definecolor{leftgray}{RGB}{245,245,245}
+    \definecolor{rightgray}{RGB}{190,190,190}
+    \definecolor{boxfill}{RGB}{230,230,230}
+
+    % Maße
+    \def\W{18}
+    \def\H{12}
+    \def\HH{1.6}
+
+    % Außenrahmen
+    \draw[line width=1.2pt] (0,0) rectangle (\W,\H);
+
+    % Kopfzeile
+    \fill[headergray] (0,\H-\HH) rectangle (\W,\H);
+    \draw[line width=1.2pt] (0,\H-\HH) -- (\W,\H-\HH);
+
+    % Hauptfläche mit grauem Verlauf
+    \shade[left color=leftgray, right color=rightgray]
+        (0,0) rectangle (\W,\H-\HH);
+
+    % Vertikale Trennlinien
+    \draw[line width=1pt] (4.4,0) -- (4.4,\H-\HH);
+    \draw[line width=1pt] (13.4,0) -- (13.4,\H-\HH);
+
+    % Titel
+    \node[font=\bfseries\fontsize{22}{24}\selectfont] at (\W/2,\H-0.8)
+        {Qualität des Datenprodukts};
+
+    % Bereichsüberschriften
+    \node[anchor=west,font=\fontsize{15}{17}\selectfont] at (0.4,9.75)
+        {Inhärente Datenqualität};
+
+    \node[font=\fontsize{15}{17}\selectfont] at (11.6,0.5)
+        {Systemabhängige Datenqualität};
+
+    % Box-Makro: breiter und mit Zeilenumbruch
+    \newcommand{\ibox}[3]{%
+        \draw[fill=boxfill, line width=0.7pt] (#1,#2) rectangle ++(3.9,0.95);
+        \node[font=\fontsize{11}{11}\selectfont, align=center, text width=3.40cm]
+            at (#1+1.95,#2+0.475) {#3};
+    }
+
+    % Linke Gruppe
+    \ibox{0.25}{7.1}{Genauigkeit}
+    \ibox{0.25}{5.8}{Vollständigkeit}
+    \ibox{0.25}{4.5}{Konsistenz}
+    \ibox{0.25}{3.2}{Glaubwürdigkeit}
+    \ibox{0.25}{1.9}{Aktualität}
+
+    % Mittlere Gruppe links
+    \ibox{4.8}{6.5}{Zugänglichkeit}
+    \ibox{4.8}{5.2}{Konformität}
+    \ibox{4.8}{3.9}{Vertraulichkeit}
+    \ibox{4.8}{2.6}{Effizienz}
+
+    % Mittlere Gruppe rechts
+    \ibox{9.2}{5.85}{Präzision}
+    \ibox{9.2}{4.55}{Nachvollziehbar- \ keit}
+    \ibox{9.2}{3.25}{Verständlichkeit}
+
+    % Rechte Gruppe
+    \ibox{13.6}{5.85}{Verfügbarkeit}
+    \ibox{13.6}{4.55}{Portabilität}
+    \ibox{13.6}{3.25}{Wiederherstell- \ barkeit}
+
+\end{tikzpicture}
+\caption[Schematische Darstellung inhärenter und systemabhängiger Datenqualitätsmerkmale in Anlehnung an ISO/IEC 25012.]{Schematische Darstellung inhärenter und systemabhängiger Datenqualitätsmerkmale in Anlehnung an ISO/IEC 25012. \cite{iso25012}}
+\label{fig:iso25012_quality_model_de}
+\end{figure}
+
+Inhärente Datenqualität beschreibt den Grad, zu dem Daten das ihnen inhärente Potenzial besitzen, festgelegte Anforderungen bei ihrer Nutzung unter bestimmten Bedingungen zu erfüllen. Aus dieser Perspektive bezieht sich Datenqualität auf Eigenschaften, die den Daten selbst zugeschrieben werden können. Dazu zählen insbesondere:
+
+\begin{itemize}
+    \item die Wertebereiche von Daten sowie mögliche Einschränkungen,
+    \item die Beziehungen zwischen einzelnen Datenwerten,
+    \item sowie die zugehörigen Metadaten.
+\end{itemize}
+
+Systemabhängige Datenqualität bezeichnet demgegenüber den Grad, zu dem Datenqualität innerhalb eines Computersystems erreicht und aufrechterhalten wird, wenn die Daten unter festgelegten Bedingungen verwendet werden.
+
+Im Vergleich zu Wang und Strong fällt auf, dass ISO/IEC 25012 stärker normativ und modellorientiert vorgeht, während Wang und Strong die Qualitätswahrnehmung empirisch aus Sicht von Datennutzenden rekonstruieren. Gleichwohl bestehen deutliche Überschneidungen. Merkmale wie Genauigkeit, Vollständigkeit, Zugänglichkeit, Verständlichkeit, und Aktualität erscheinen in beiden Ansätzen als zentrale Komponenten von Datenqualität. Die Unterschiede liegen vor allem im jeweiligen Erkenntnisinteresse: Wang und Strong strukturieren Datenqualität aus der Perspektive der Nutzung, Wand und Wang fundieren Datenqualität über die Angemessenheit der Repräsentation realweltlicher Sachverhalte, und ISO/IEC 25012 stellt ein standardisiertes Qualitätsmodell für Daten in Computersystemen bereit.
+
+Diese Datenqualitätsmodelle liefern eine notwendige Grundlage, reichen für die Bewertung von Metadaten im Open-Data-Kontext jedoch nicht aus. Metadaten dienen nicht primär der unmittelbaren Abbildung realweltlicher Sachverhalte, sondern der strukturierten Beschreibung, Auffindbarkeit, Zugänglichkeit, Interoperabilität, und Wiederverwendbarkeit von Datenressourcen. Damit verschiebt sich der Bewertungsfokus von einzelnen Datenwerten hin zu der Frage, ob Metadaten die Nutzung und Nachnutzung der beschriebenen Ressourcen ermöglichen.
+
+\subsection{FAIR-Prinzipien}
+
+Eine weitere zentrale Referenz bilden die FAIR-Prinzipien von Wilkinson et al. \cite{wilkinson2016fair}. Die im Jahr 2016 veröffentlichten FAIR Guiding Principles formulieren einen domänenunabhängigen Orientierungsrahmen für gutes Datenmanagement und Data Stewardship. Ziel ist es, die Nachnutzbarkeit digitaler Ressourcen zu verbessern, indem Daten und Metadaten so beschrieben, bereitgestellt, und strukturiert werden, dass sie von Menschen und Maschinen gefunden, abgerufen, integriert, und wiederverwendet werden können. 
+
+Ein zentrales Merkmal der FAIR-Prinzipien ist ihr Fokus auf Maschinenlesbarkeit und maschinelle Handlungsfähigkeit. Wilkinson et al. betonen, dass die Prinzipien nicht nur die Nachnutzung durch menschliche Forschende unterstützen sollen, sondern ausdrücklich auch die Fähigkeit von Maschinen verbessern, Daten automatisch zu finden und zu nutzen \cite{wilkinson2016fair}. FAIR adressiert damit nicht nur die formale Existenz von Daten, sondern auch die Qualität der umgebenden Metadaten, Identifikatoren, Zugriffspfade, Vokabulare, Lizenzen, Provenienzangaben, und Standards.
+
+Die FAIR-Prinzipien gliedern sich in vier Kategorien:
+
+\begin{itemize}
+    \item \textbf{F}indable (Auffindbarkeit),
+    \item \textbf{A}ccessible (Zugänglichkeit),
+    \item \textbf{I}nteroperable (Interoperabilität),
+    \item \textbf{R}eusable (Wiederverwendbarkeit).
+\end{itemize}
+
+Diese vier Kategorien werden durch 15 Teilprinzipien konkretisiert, die in Tabelle~\ref{tab:fair_principles} dargestellt sind. Die Prinzipien sind dabei bewusst als hochlevelige Leitlinien formuliert. Ihre Umsetzung kann daher inkrementell erfolgen und hängt vom jeweiligen Datenbestand, Fachkontext, und technischen Ökosystem ab.\cite{wilkinson2016fair}
+
+Im Kontext von DCAT-AP.de sind die FAIR-Prinzipien insbesondere deshalb relevant, weil die Metadaten viele FAIR-Anforderungen direkt adressieren können. FAIR eignet sich damit nicht als alleinige Bewertungsmetrik, wohl aber als konzeptionelle Grundlage zur Ableitung metadatenspezifischer Qualitätsdimensionen und Einzelindikatoren.
+
+\begin{table}[h!]
+    \centering
+    \tiny
+    \addtolength{\leftskip}{-6cm}
+    \addtolength{\rightskip}{-6cm}
+    \rowcolors{1}{white}{white}
+    \begin{tabular}{|l|p{13cm}|}
+        \hline
+
+        \multicolumn{2}{|l|}{\textbf{Auffindbar (Findable)}} \\ \hline
+        F1 & (Meta-)Daten erhalten einen global eindeutigen und persistenten Identifikator. \\ \hline
+        F2 & Daten werden mit reichhaltigen Metadaten beschrieben, wie in R1 definiert. \\ \hline
+        F3 & Metadaten enthalten den Identifikator der beschriebenen Daten klar und explizit. \\ \hline
+        F4 & (Meta-)Daten sind in einer durchsuchbaren Ressource registriert oder indexiert. \\ \hline
+
+        \multicolumn{2}{|l|}{\textbf{Zugänglich (Accessible)}} \\ \hline
+        A1 & (Meta-)Daten sind über ihren Identifikator mithilfe eines standardisierten Kommunikationsprotokolls abrufbar. \\ \hline
+        A1.1 & Das Protokoll ist offen, kostenlos und universell implementierbar. \\ \hline
+        A1.2 & Das Protokoll ermöglicht, falls erforderlich, Authentifizierungs- und Autorisierungsverfahren. \\ \hline
+        A2 & Metadaten bleiben zugänglich, auch wenn die Daten selbst nicht mehr verfügbar sind. \\ \hline
+
+        \multicolumn{2}{|l|}{\textbf{Interoperabel (Interoperable)}} \\ \hline
+        I1 & (Meta-)Daten verwenden eine formale, zugängliche, gemeinsame und breit anwendbare Sprache zur Wissensrepräsentation. \\ \hline
+        I2 & (Meta-)Daten verwenden Vokabulare, die selbst den FAIR-Prinzipien folgen. \\ \hline
+        I3 & (Meta-)Daten enthalten qualifizierte Verweise auf andere (Meta-)Daten. \\ \hline
+
+        \multicolumn{2}{|l|}{\textbf{Wiederverwendbar (Reusable)}} \\ \hline
+        R1 & Meta(daten) werden mit einer Vielzahl genauer und relevanter Attribute reichhaltig beschrieben. \\ \hline
+        R1.1 & (Meta-)Daten werden mit einer klaren und zugänglichen Nutzungslizenz veröffentlicht. \\ \hline
+        R1.2 & (Meta-)Daten sind mit detaillierter Provenienz verknüpft. \\ \hline
+        R1.3 & (Meta-)Daten erfüllen domänenspezifische Community-Standards. \\ \hline
+    \end{tabular}
+    \captionsetup{justification=centering}
+    \caption[FAIR-Prinzipien nach Wilkinson et al.]{FAIR-Prinzipien nach Wilkinson et al. \cite{wilkinson2016fair}}
+    \label{tab:fair_principles}
+\end{table}
+
+\pagebreak
+
+\section{Metadatenqualität und Qualitätsbewertung von Linked Data} % @TODO ggf. umbenennen
+
+Im Kontext von Metadaten und Linked Data wird sichtbar dass oben genannte Konzepte nur bedingt greifen.
+Neben regulären Dimensionen wie Vollständigkeit, Auffindbarkeit oder Wiederverwendbarkeit wurden im Bereich Linked Data spezifische Qualitätsanforderungen entwickelt die über die klassischen Konzepte hinausgehen.
+
+\subsection{Linked-Data-Qualität nach Zaveri et al.}
+
+Einen zentralen Referenzpunkt für die systematische Einordnung von Metadatenqualität im Semantic-Web- und Linked-Data-Kontext bildet die Arbeit von Zaveri et al. \cite{Zaveri2016LinkedDataQuality}. In ihrem Survey konsolidieren die Autorinnen und Autoren den Forschungsstand zur Qualitätsbewertung von Linked Data. Grundlage ist eine systematische Literaturauswertung, in der 118 potenziell relevante Arbeiten identifiziert, 73 Arbeiten näher geprüft, und schließlich 30 Kernansätze sowie 12 Werkzeuge zur Linked-Data-Qualitätsbewertung vergleichend analysiert werden \cite{Zaveri2016LinkedDataQuality}. Der Beitrag ist deshalb besonders geeignet als Ausgangspunkt, weil er zuvor isoliert betrachtete Qualitätsprobleme, Bewertungsansätze, Metriken, und Werkzeuge in einem gemeinsamen konzeptionellen Rahmen zusammenführt.
+
+Ausgangspunkt der Arbeit ist die Beobachtung, dass die bloße Veröffentlichung von Daten im RDF-Format oder unter Verwendung dereferenzierbarer URIs noch keine hohe Datenqualität garantiert. Linked Data kann formal korrekt publiziert sein und zugleich unvollständig, inkonsistent, veraltet, schwer interpretierbar, oder unzureichend mit anderen Datenquellen verknüpft sein \cite{Zaveri2016LinkedDataQuality}. 
+
+Zaveri et al. strukturieren diese Anforderungen in einem umfassenden Qualitätsrahmen mit insgesamt 18 Dimensionen und 69 Metriken \cite{Zaveri2016LinkedDataQuality}. Die Dimensionen werden vier übergeordneten Kategorien zugeordnet: Zugänglichkeit, intrinsische Qualität, kontextuelle Qualität und repräsentationale Qualität. 
+Die zusammengefasste Metrik wird als Orientierung in Tabelle \ref{tab:zaveri_quality_metrics} dargestellt.
+
+Die Metriken werden bei Zaveri et al. zusätzlich danach unterschieden, ob sie quantitativ oder qualitativ bewertbar sind. Quantitative Metriken (QN) sind Metriken, für die ein konkreter numerischer Wert berechnet werden kann. Häufig handelt es sich dabei um Verhältniswerte, bei denen die Anzahl beobachteter oder erfüllter Entitäten ins Verhältnis zu einer erwarteten Gesamtmenge gesetzt wird, etwa bei Schema- oder Property-Vollständigkeit. Qualitative Metriken (QL) sind dagegen nicht unmittelbar objektiv berechenbar, sondern hängen von Einschätzungen, Wahrnehmungen, Expert:innenurteilen, Umfragen, oder externen Vertrauensbewertungen ab. Dies betrifft insbesondere Metriken der Vertrauenswürdigkeit, etwa die Einschätzung eines Datenanbieters oder einer Datenquelle \cite{Zaveri2016LinkedDataQuality}.
+
+% Damit ist der Survey weniger als direkt ausführbares Bewertungswerkzeug zu verstehen, sondern als systematisierende Taxonomie von Qualitätsdimensionen und möglichen Operationalisierungen.
+
+% Der Ansatz liefert damit einen breiten Referenzrahmen für die systematische Einordnung von Linked-Data-Qualität und eignet sich insbesondere zur theoretischen Herleitung relevanter Qualitätsdimensionen.
+
+
+\captionsetup[table]{justification=centering}
+
+{
+\renewcommand{\arraystretch}{0.9}
+\rowcolors{1}{white}{white}
+\centering
+\tiny
+\begin{table}[h!]
+\tiny
+\centering
+\begin{tabular}{|p{3.8cm}|p{2.1cm}|p{7cm}|}
+\hline
+\textbf{Unterdimension} & \textbf{Metrik} & \textbf{Beschreibung} \\
+\hline
+
+\multicolumn{3}{|l|}{\textbf{Zugänglichkeit}} \\ \hline
+Verfügbarkeit & A1 & Zugänglichkeit des SPARQL-Endpunkts und Servers. \\ \cline{2-3}
+ & A2 & Zugänglichkeit von RDF-Dumps. \\ \cline{2-3}
+ & A3 & Dereferenzierbarkeit von URIs. \\ \cline{2-3}
+ & A4 & Keine falsch gemeldeten Content Types. \\ \cline{2-3}
+ & A5 & Dereferenzierbarkeit ausgehender Links. \\ \hline
+Lizenzierung & L1 & Maschinenlesbare Lizenzangabe. \\ \cline{2-3}
+ & L2 & Menschenlesbare Lizenzangabe. \\ \cline{2-3}
+ & L3 & Korrekte Lizenz angegeben. \\ \hline
+Interlinking & I1 & Qualitativ hochwertige externe Links. \\ \cline{2-3}
+ & I2 & Existenz externer Verlinkungen. \\ \cline{2-3}
+ & I3 & Dereferenzierbarkeit eingehender Links. \\ \hline
+Sicherheit & S1 & Verwendung digitaler Signaturen. \\ \cline{2-3}
+ & S2 & Authentizität des Datensatzes. \\ \hline
+Performanz & P1 & Geeignete URI-Strategie. \\ \cline{2-3}
+ & P2 & Niedrige Latenz. \\ \cline{2-3}
+ & P3 & Hoher Durchsatz. \\ \cline{2-3}
+ & P4 & Skalierbarkeit. \\ \hline
+
+\multicolumn{3}{|l|}{\textbf{Intrinsische Qualität}} \\ \hline
+Syntaktische Validität & SV1 & Keine Syntaxfehler. \\ \cline{2-3}
+ & SV2 & Korrekte Werteformate. \\ \cline{2-3}
+ & SV3 & Gültige Datentypliterale. \\ \hline
+Semantische Genauigkeit & SA1 & Keine Ausreißer. \\ \cline{2-3}
+ & SA2 & Keine ungenauen Werte. \\ \cline{2-3}
+ & SA3 & Korrekte Annotationen und Klassifikationen. \\ \cline{2-3}
+ & SA4 & Kein Missbrauch von Properties. \\ \cline{2-3}
+ & SA5 & Gültige Regeln erkannt. \\ \hline
+Konsistenz & CN1 & Keine disjunkten Klassenverletzungen. \\ \cline{2-3}
+ & CN2 & Keine falsch platzierten Klassen oder Properties. \\ \cline{2-3}
+ & CN3 & Korrekte Property-Typisierung. \\ \cline{2-3}
+ & CN4 & Keine veralteten Klassen oder Properties genutzt. \\ \cline{2-3}
+ & CN5 & Korrekte inverse funktionale Properties. \\ \cline{2-3}
+ & CN6 & Kein Ontologie-Hijacking. \\ \cline{2-3}
+ & CN7 & Keine negativen Abhängigkeiten. \\ \cline{2-3}
+ & CN8 & Keine räumlichen Inkonsistenzen. \\ \cline{2-3}
+ & CN9 & Korrekte Domain- und Range-Definitionen. \\ \cline{2-3}
+ & CN10 & Keine widersprüchlichen Werte. \\ \hline
+Prägnanz & CS1 & Hohe intensionale Prägnanz. \\ \cline{2-3}
+ & CS2 & Hohe extensionale Prägnanz. \\ \cline{2-3}
+ & CS3 & Eindeutige Labels. \\ \hline
+Vollständigkeit & CP1 & Schemakomplettheit. \\ \cline{2-3}
+ & CP2 & Property-Komplettheit. \\ \cline{2-3}
+ & CP3 & Populationskomplettheit. \\ \cline{2-3}
+ & CP4 & Interlinking-Komplettheit. \\ \hline
+
+\multicolumn{3}{|l|}{\textbf{Kontextuelle Qualität}} \\ \hline
+Relevanz & R1 & Relevante Begriffe in Metadaten. \\ \cline{2-3}
+ & R2 & Abdeckung. \\ \hline
+Vertrauenswürdigkeit & TW1 & Vertrauenswürdigkeit von Aussagen. \\ \cline{2-3}
+ & TW2 & Vertrauenswürdigkeit durch Reasoning. \\ \cline{2-3}
+ & TW3 & Vertrauenswürdigkeit von Datensatz und Regeln. \\ \cline{2-3}
+ & TW4 & Vertrauenswürdigkeit der Ressource. \\ \cline{2-3}
+ & TW5 & Vertrauenswürdigkeit des Anbieters. \\ \cline{2-3}
+ & TW6 & Vertrauenswürdigkeit der Information. \\ \cline{2-3}
+ & TW7 & Reputation des Datensatzes. \\ \hline
+Verständlichkeit & U1 & Menschenlesbare Labels. \\ \cline{2-3}
+ & U2 & Beispielhafte URIs vorhanden. \\ \cline{2-3}
+ & U3 & URI-Muster dokumentiert. \\ \cline{2-3}
+ & U4 & Beispielhafte SPARQL-Query vorhanden. \\ \cline{2-3}
+ & U5 & Verwendete Vokabulare angegeben. \\ \cline{2-3}
+ & U6 & Supportkanäle vorhanden. \\ \hline
+Aktualität & T1 & Frische auf Basis von Currency und Volatility. \\ \cline{2-3}
+ & T2 & Frische auf Basis der Datenquelle. \\ \hline
+
+\multicolumn{3}{|l|}{\textbf{Repräsentationale Qualität}} \\ \hline
+Repräsentationsprägnanz & RC1 & Kurze URIs. \\ \cline{2-3}
+ & RC2 & Keine unnötig komplexen RDF-Features. \\ \hline
+Interoperabilität & ITO1 & Wiederverwendung existierender Terme. \\ \cline{2-3}
+ & ITO2 & Wiederverwendung etablierter Vokabulare. \\ \hline
+Vielseitigkeit & V1 & Mehrere Serialisierungsformate verfügbar. \\ \cline{2-3}
+ & V2 & Mehrsprachigkeit. \\ \hline
+Interpretierbarkeit & ITP1 & Selbstbeschreibende Formate. \\ \cline{2-3}
+ & ITP2 & Gute Interpretierbarkeit. \\ \cline{2-3}
+ & ITP3 & Keine undefinierten Klassen oder Properties. \\ \cline{2-3}
+ & ITP4 & Keine Fehlinterpretation fehlender Werte. \\ \hline
+
+\end{tabular}
+\caption[Qualitätsdimensionen und Metriken für Linked Data nach Zaveri et al.]{Qualitätsdimensionen und Metriken für Linked Data nach Zaveri et al. \cite{Zaveri2016LinkedDataQuality}}
+\label{tab:zaveri_quality_metrics}
+\end{table}
+\normalsize
+} % zaveri et al metriken
+
+Die Prüfung der Metriken erfolgt nicht über ein einheitliches technisches Verfahren, sondern hängt vom jeweiligen Qualitätsaspekt ab. Zaveri et al. beschreiben unterschiedliche Prüflogiken, darunter Verhältnisberechnungen, Syntax- und Datentypprüfungen, URI-Analysen, Link- und Dereferenzierbarkeitsprüfungen, Lizenz- und Vokabularprüfungen, Konsistenzanalysen, Provenienz- und Vertrauensbewertungen, sowie nutzer- oder expert:innenbasierte Einschätzungen. Bewertet werden können dabei unterschiedliche Ebenen von Linked Data, insbesondere einzelne RDF-Tripel, RDF-Graphen, Entitäten, oder ganze Datensätze \cite{Zaveri2016LinkedDataQuality}. 
+
+\subsection{Automatisierte Metadatenbewertung in Open-Data-Portalen nach Neumaier et al.}
+\label{sec:neumaier}
+
+Während Zaveri et al. die Qualität von Linked Data domänenübergreifend systematisieren, weisen Neumaier et al. einen deutlich stärkeren Praxisbezug für Open-Data-Portale auf. In ihrer Arbeit entwickeln sie einen automatisierten Ansatz zur Bewertung von Metadatenqualität über unterschiedliche Datenportale hinweg \cite{Neumaier2016MetadataQuality}. Ausgangspunkt ist die Beobachtung, dass Open-Data-Portale zwar zunehmend Datensätze veröffentlichen, deren tatsächliche Auffindbarkeit, Zugänglichkeit, und Nachnutzbarkeit jedoch maßgeblich von der Qualität der zugehörigen Metadaten abhängt. Fehlende, fehlerhafte, oder inkonsistente Metadaten reduzieren damit den praktischen Wert veröffentlichter Datenbestände erheblich.
+
+Methodisch besteht der Ansatz aus drei zentralen Bausteinen.
+Erstens modellieren die Autorinnen und Autoren Open-Data-Portale formal als Webportale, die Funktionen zum Listen, Abrufen, Anzeigen, und Verarbeiten von Datensätzen und Ressourcen bereitstellen.
+Zweitens werden die heterogenen Metadatenmodelle verschiedener Portalsoftware-Systeme auf ein gemeinsames semantisches Referenzmodell überführt.
+Berücksichtigt werden dabei \acrfull{CKAN}, Socrata und OpenDataSoft.
+Als Harmonisierungsschicht dient dabei DCAT, wodurch portalübergreifende Vergleiche überhaupt erst möglich werden. 
+Drittens definieren die Autoren konkrete Qualitätsmetriken auf Basis zentraler DCAT-Eigenschaften, die automatisiert, skalierbar, und effizient berechnet werden können \cite{Neumaier2016MetadataQuality}.
+
+Die Ableitung der Metriken erfolgt dabei nicht beliebig, sondern orientiert sich an zwei Anforderungen: Einerseits sollen die Qualitätskriterien für die Nutzbarkeit von Open Data relevant sein, andererseits müssen sie technisch automatisiert überprüfbar sein. Berücksichtigt werden daher vor allem Eigenschaften, die direkt aus Portalmetadaten oder durch maschinelle Prüfungen von Ressourcen-URLs ableitbar sind.
+Ergänzend werden externe Prüfungen eingesetzt, etwa HTTP-Requests zur Erreichbarkeit von Ressourcen oder Validierungen von Datums-, URL-, und E-Mail-Formaten. Der Fokus liegt somit auf objektiv messbaren und reproduzierbaren Kriterien.
+
+Aus diesen Überlegungen leiten Neumaier et al. fünf Qualitätsdimensionen ab, die unterschiedliche Aspekte von Metadatenqualität adressieren.
+Die Dimensionen und zugehörigen Metriken sind in Tabelle \ref{tab:neumaier_metrics} dargestellt.
+
+\begin{table}[h!]
+\tiny
+\centering
+\addtolength{\leftskip}{-6cm}
+\addtolength{\rightskip}{-6cm}
+\renewcommand{\arraystretch}{0.95}
+\rowcolors{1}{white}{white}
+\begin{tabular}{|p{2cm}|p{5.8cm}|p{3.1cm}|p{3.1cm}|}
+\hline
+\textbf{Metrik} & \textbf{Beschreibung} & \textbf{\texttt{dcat:Dataset}} & \textbf{\texttt{dcat:Distribution}} \\
+\hline
+
+\multicolumn{4}{|l|}{\textbf{Existence}} \\ \hline
+Access* & Existieren Zugriffsinformationen für Ressourcen? 
+& -- 
+& \texttt{dcat:accessURL}, \texttt{dcat:downloadURL} \\ \hline
+
+Discovery & Sind Informationen vorhanden, die das Auffinden oder Suchen von Datensätzen unterstützen? 
+& \texttt{dct:title}, \texttt{dct:description}, \texttt{dcat:keyword} 
+& -- \\ \hline
+
+Contact* & Existieren Informationen, die eine Kontaktaufnahme mit dem Datenanbieter ermöglichen? 
+& \texttt{dcat:contactPoint}, \texttt{dct:publisher} 
+& -- \\ \hline
+
+Rights & Existieren Informationen zur Lizenz des Datensatzes oder der Ressource? 
+& \texttt{dct:license} 
+& -- \\ \hline
+
+Preservation & Existieren Informationen zu Format, Größe, oder Aktualisierungsfrequenz der Ressourcen? 
+& \texttt{dct:accrualPeriodicity} 
+& \texttt{dct:format}, \texttt{dcat:mediaType}, \texttt{dcat:byteSize} \\ \hline
+
+Date & Existieren Informationen zu Erstellungs- und Änderungsdatum von Metadaten beziehungsweise Ressourcen? 
+& \texttt{dct:issued}, \texttt{dcat:modified} 
+& \texttt{dct:issued}, \texttt{dcat:modified} \\ \hline
+
+\multicolumn{4}{|l|}{\textbf{Conformance}} \\ \hline
+AccessURL* & Sind die Werte der Zugriffseigenschaften gültige HTTP-URLs? 
+& -- 
+& \texttt{dcat:accessURL}, \texttt{dcat:downloadURL} \\ \hline
+
+ContactEmail* & Sind die Werte der Kontakteigenschaften gültige E-Mail-Adressen? 
+& \texttt{dcat:contactPoint}, \texttt{dct:publisher} 
+& -- \\ \hline
+
+ContactURL* & Sind die Werte der Kontakteigenschaften gültige HTTP-URLs? 
+& \texttt{dcat:contactPoint}, \texttt{dct:publisher} 
+& -- \\ \hline
+
+DateFormat & Sind Datumsinformationen in einem gültigen Datumsformat angegeben? 
+& \texttt{dct:issued}, \texttt{dcat:modified} 
+& \texttt{dct:issued}, \texttt{dcat:modified} \\ \hline
+
+License & Kann die Lizenz auf die von \texttt{opendefinition.org} geprüfte Lizenzliste abgebildet werden? 
+& \texttt{dct:license} 
+& -- \\ \hline
+
+FileFormat & Ist das angegebene Dateiformat oder der Medientyp bei IANA registriert? 
+& -- 
+& \texttt{dct:format}, \texttt{dcat:mediaType} \\ \hline
+
+\multicolumn{4}{|l|}{\textbf{Retrievability}} \\ \hline
+Retrievable & Können die beschriebenen Ressourcen von einem Agenten abgerufen werden? 
+& -- 
+& \texttt{dcat:accessURL}, \texttt{dcat:downloadURL} \\ \hline
+
+\multicolumn{4}{|l|}{\textbf{Accuracy}} \\ \hline
+FormatAccr & Ist das angegebene Dateiformat korrekt? 
+& -- 
+& \texttt{dct:format}, \texttt{dcat:mediaType} \\ \hline
+
+SizeAccr & Ist die angegebene Dateigröße korrekt? 
+& -- 
+& \texttt{dcat:byteSize} \\ \hline
+
+\multicolumn{4}{|l|}{\textbf{Open Data}} \\ \hline
+OpenFormat & Basiert das Dateiformat auf einem offenen Standard? 
+& -- 
+& \texttt{dct:format}, \texttt{dcat:mediaType} \\ \hline
+
+MachineRead & Kann das Dateiformat als maschinenlesbar gelten? 
+& -- 
+& \texttt{dct:format} \\ \hline
+
+OpenLicense & Entspricht die verwendete Lizenz der Open Definition? 
+& \texttt{dct:license} 
+& -- \\ \hline
+
+\end{tabular}
+\captionsetup{justification=centering}
+\caption[Qualitätsdimensionen auf DCAT-Schlüsseln nach Neumaier et al.]{Qualitätsdimensionen auf DCAT-Schlüsseln nach Neumaier et al. \cite{Neumaier2016MetadataQuality}}
+\label{tab:neumaier_metrics}
+\end{table}
+
+Der empirische Mehrwert des Ansatzes liegt in seiner großskaligen Anwendung. Neumaier et al. implementieren das Modell in der Plattform \textit{Open Data Portal Watch} und wenden es auf eine große Zahl internationaler Portale an. Dadurch zeigen sie, dass automatisierte Qualitätsbewertung nicht nur konzeptionell möglich, sondern auch im produktiven Monitoring größerer Portalökosysteme praktikabel ist. Gleichzeitig werden typische Qualitätsprobleme sichtbar, etwa fehlende Lizenzen, nicht erreichbare Ressourcen, unvollständige Beschreibungen, oder mangelnde Standardisierung bestimmter Felder.
+
+\subsection{Gewichtung und Ranking von Open-Data-Portalen nach Kubler et al.}
+
+Am im Abschnitt \ref{sec:neumaier} beschriebenen Ansatz setzen Kubler et al. unmittelbar bei der Frage an, wie solche heterogenen Einzelmetriken zu einer vergleichenden Gesamtbewertung aggregiert werden können.
+
+Kubler et al. beschreiben die Bewertung von Open-Data-Portalen als Multi-Criteria Decision Making Problem und entwickeln mit dem Open Data Portal Quality Framework einen Ansatz, der automatisiert berechnete Qualitätsindikatoren mit nutzerspezifischen Präferenzen verbindet \cite{kubler2018comparison}.
+
+Die zugrunde liegenden Qualitätsdimensionen schließen an die von Neumaier et al. entwickelte Metrikstruktur an und umfassen \textit{Existence}, \textit{Conformance}, \textit{Retrievability}, \textit{Accuracy}, and \textit{Open Data}. Diese Dimensionen wurden bereits in Tabelle~\ref{tab:neumaier_metrics} zusammengefasst.
+Der wesentliche Beitrag von Kubler et al. liegt in der nachgelagerten Gewichtungs- und Rankinglogik.
+Hierfür verwenden sie den \acrfull{AHP}, da dieser unterschiedliche Qualitätsdimensionen, Subdimensionen, und Alternativen hierarchisch strukturieren und Nutzerpräferenzen in Gewichtungen überführen kann. 
+Die Hierarchie besteht aus einem Zielniveau, das die Bewertung und Rangordnung der überwachten Open-Data-Portale nach Metadatenqualität beschreibt, einem Kriterien- und Subkriterienniveau, das den Qualitätsdimensionen und Metriken entspricht, sowie einem Alternativenniveau, das durch die verglichenen Portale gebildet wird.
+Die technische Operationalisierung trennt die Erhebung der Qualitätsindikatoren von der nutzerspezifischen Präferenz- und Rankingberechnung.
+Open Data Portal Watch übernimmt die Sammlung und Speicherung der Portaldaten, die Abbildung der Metadaten auf DCAT sowie die Berechnung der Qualitätsmetriken.
+Das ODPQ-Dashboard nutzt diese berechneten Qualitätswerte, stellt sie für den Vergleich von Portalen bereit, speichert Nutzerpräferenzen und berechnet daraus ein Ranking für einen bestimmten Zeitpunkt oder eine Entwicklung der Rangordnung über mehrere Zeitpunkte hinweg.
+In dieser Architektur können Nutzer einzelne Qualitätsdimensionen oder Subdimensionen priorisieren. Die Rangordnung der Portale ergibt sich anschließend aus der Kombination der verfügbaren Qualitätswerte mit den gesetzten Präferenzen. \cite{kubler2018comparison}
+
+Der Ansatz zeigt, dass eine Qualitätsbewertung von Metadaten nicht bei der Erhebung einzelner Validierungs- oder Qualitätswerte stehen bleiben sollte, sondern eine explizite Aggregationslogik benötigt. 
+
+% Für ein Bewertungsmodell im GovData-Kontext kann daraus abgeleitet werden, dass formale SHACL-Prüfergebnisse, Feldverfügbarkeiten, Erreichbarkeitsprüfungen, Lizenz- und Formatindikatoren, sowie gegebenenfalls semantische Qualitätsindikatoren nicht unverbunden nebeneinanderstehen sollten, sondern in ein transparentes, gewichtetes Bewertungsmodell überführt werden müssen.
+% Für die vorliegende Arbeit ist der Ansatz insbesondere deshalb relevant, weil er zeigt, dass Qualitätsindikatoren nicht isoliert nebeneinanderstehen sollten, sondern durch eine transparente Aggregations- und Gewichtungslogik in ein interpretierbares Bewertungsverfahren überführt werden müssen.
+
+\subsection{Operationalisierung der Metadatenqualitätsbewertung durch MQA/Piveau}
+
+Das MQA-Framework von Wentzel et al. stellt eine praxisnahe Operationalisierung der automatisierten Qualitätsbewertung von DCAT-AP-Metadaten dar. 
+% Ausgangspunkt ist die Beobachtung, dass DCAT-AP zwar ein harmonisiertes, RDF-basiertes Metadatenmodell für europäische Open-Data-Portale bereitstellt, seine praktische Umsetzung durch Datenbereitsteller jedoch häufig Qualitätsprobleme aufweist. Dazu zählen eine geringe Nutzung qualitätsrelevanter Properties, fehlende oder falsch verwendete kontrollierte Vokabulare, inkorrekte Datentypen und nicht verfügbare Datenressourcen. 
+Wentzel et al. definieren die \textit{DCAT-AP Quality Metrics}, die auf den FAIR-Prinzipien und den 5-star Linked Open Data Principles aufbauen. Die Metriken sind den fünf Dimensionen \textit{Findability}, \textit{Accessibility}, \textit{Interoperability}, \textit{Reusability} and \textit{Contextuality} zugeordnet. Die in Tabelle~\ref{tab:mqa_metrics_weights} dargestellten Metriken zeigen, dass der Ansatz nicht nur verpflichtende DCAT-AP-Angaben berücksichtigt, sondern auch empfohlene und optionale Eigenschaften bewertet, die für Auffindbarkeit, Zugriff, Interoperabilität und Wiederverwendung praktisch relevant sind.
+
+{
+\renewcommand{\arraystretch}{1.2}
+\rowcolors{1}{white}{white}
+\centering
+\tiny
+\begin{table}[ht!]
+\tiny
+\centering
+\begin{tabular}{|p{2.5cm}|p{3.4cm}|p{5.8cm}|p{1.2cm}|}
+\hline
+\textbf{Dimension} & \textbf{Indikator} & \textbf{Beschreibung} & \textbf{Gewicht} \\
+\hline
+
+Auffindbarkeit 
+& Schlagwörter 
+& Prüft, ob \texttt{dcat:keyword} gesetzt ist. 
+& 30 \\ \cline{2-4}
+& Kategorien 
+& Prüft, ob \texttt{dcat:theme} gesetzt ist. 
+& 30 \\ \cline{2-4}
+& Geographische Suche 
+& Prüft, ob \texttt{dct:spatial} gesetzt ist. 
+& 20 \\ \cline{2-4}
+& Zeitbasierte Suche 
+& Prüft, ob \texttt{dct:temporal} gesetzt ist. 
+& 20 \\
+\hline
+
+Zugänglichkeit 
+& Erreichbarkeit der Access-URL 
+& Prüft, ob \texttt{dcat:accessURL} technisch erreichbar ist. 
+& 50 \\ \cline{2-4}
+& Download-URL 
+& Prüft, ob \texttt{dcat:downloadURL} gesetzt ist. 
+& 20 \\ \cline{2-4}
+& Erreichbarkeit der Download-URL 
+& Prüft, ob \texttt{dcat:downloadURL} technisch erreichbar ist. 
+& 30 \\
+\hline
+
+Interoperabilität 
+& Format 
+& Prüft, ob \texttt{dct:format} gesetzt ist. 
+& 50 \\ \cline{2-4}
+& Medientyp 
+& Prüft, ob \texttt{dcat:mediaType} gesetzt ist. 
+& 10 \\ \cline{2-4}
+& Format-/Medientypvokabular 
+& Prüft, ob Format oder Medientyp einem kontrollierten Vokabular zugeordnet werden kann. 
+& 10 \\ \cline{2-4}
+& Nicht-proprietäres Format 
+& Prüft, ob das angegebene Format nicht proprietär ist. 
+& 20 \\ \cline{2-4}
+& Maschinenlesbarkeit 
+& Prüft, ob das angegebene Format maschinenlesbar ist. 
+& 20 \\ \cline{2-4}
+& DCAT-AP-Konformität 
+& Prüft die Metadaten über SHACL gegen DCAT-AP. 
+& 30 \\
+\hline
+
+Wiederverwendbarkeit 
+& Lizenzinformation 
+& Prüft, ob \texttt{dct:license} gesetzt ist. 
+& 20 \\ \cline{2-4}
+& Lizenzvokabular 
+& Prüft, ob die Lizenz einem kontrollierten Vokabular zugeordnet werden kann. 
+& 10 \\ \cline{2-4}
+& Zugriffsbeschränkungen 
+& Prüft, ob \texttt{dct:accessRights} gesetzt ist. 
+& 10 \\ \cline{2-4}
+& Vokabular für Zugriffsbeschränkungen 
+& Prüft, ob \texttt{dct:accessRights} ein kontrolliertes Vokabular verwendet. 
+& 5 \\ \cline{2-4}
+& Kontaktpunkt 
+& Prüft, ob \texttt{dcat:contactPoint} gesetzt ist. 
+& 20 \\ \cline{2-4}
+& Herausgeber 
+& Prüft, ob \texttt{dct:publisher} gesetzt ist. 
+& 10 \\
+\hline
+
+Kontextualität 
+& Rechteangaben 
+& Prüft, ob \texttt{dct:rights} gesetzt ist. 
+& 5 \\ \cline{2-4}
+& Dateigröße 
+& Prüft, ob \texttt{dcat:byteSize} gesetzt ist. 
+& 5 \\ \cline{2-4}
+& Veröffentlichungsdatum 
+& Prüft, ob \texttt{dct:issued} gesetzt ist. 
+& 5 \\ \cline{2-4}
+& Änderungsdatum 
+& Prüft, ob \texttt{dct:modified} gesetzt ist. 
+& 5 \\
+\hline
+
+\end{tabular}
+\caption[MQA-Qualitätsmetriken und Gewichtungen nach Wentzel et al.]{MQA-Qualitätsmetriken und Gewichtungen nach Wentzel et al. \cite{data_europa, wentzel2023extensive}}
+\label{tab:mqa_metrics_weights}
+\end{table}
+\normalsize
+} % wentzel piveau metriken
+
+
+Die Gewichtung erfolgt über ein Punktesystem mit maximal 405 Punkten. Die höchsten Gewichte entfallen auf Auffindbarkeit, Zugänglichkeit und Interoperabilität, während Kontextualität deutlich geringer gewichtet wird. Dadurch operationalisiert MQA/Piveau Metadatenqualität primär über praktische Nutzbarkeit, technische Zugänglichkeit, strukturelle Interoperabilität und rechtliche Wiederverwendbarkeit. \cite{data_europa, wentzel2023extensive}
+
+Ein methodisch wichtiger Bestandteil des Ansatzes ist die Repräsentation der Messergebnisse mithilfe der \acrfull{DQV}. DQV erweitert DCAT um ein Vokabular zur maschinenlesbaren Beschreibung von Qualitätsinformationen. Dadurch können Qualitätsdimensionen, Metriken, Messwerte, geprüfte Ressourcen und Bewertungszeitpunkte explizit miteinander verknüpft werden. Einzelne Messergebnisse werden als \texttt{dqv:QualityMeasurement} modelliert, während SHACL-basierte Validierungsergebnisse zur DCAT-AP-Konformität als Qualitätsannotation eingebunden werden können. \cite{wentzel2023extensive}
+Beide Modellierungsformen sind in Tabelle~\ref{tab:piveau_dqv_model} dargestellt.
+\begin{table}[h!]
+\centering
+\tiny
+\renewcommand{\arraystretch}{1.2}
+\rowcolors{1}{white}{white}
+
+\begin{subtable}[t]{0.46\textwidth}
+\
+\centering
+\caption{Quality Measurement}
+\label{tab:piveau_quality_measurement}
+\begin{tabular}{ll}
+\toprule
+\textbf{DQV Quality Measurement} \\
+\midrule
+\texttt{rdf:type  dqv:QualityMeasurement} \\
+\texttt{dqv:isMeasurementOf} \\
+\texttt{dqv:value} \\
+\texttt{dqv:computedOn} \\
+\texttt{prov:generatedAtTime} \\
+\bottomrule
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}[t]{0.46\textwidth}
+\centering
+\caption{Quality Annotation}
+\label{tab:piveau_quality_annotation}
+\begin{tabular}{ll}
+\toprule
+\textbf{DQV Quality Annotation} \\
+\midrule
+\texttt{rdf:type  dqv:QualityAnnotation} \\
+\texttt{oa:hasBody} \\
+\texttt{dqv:inDimension} \\
+\texttt{oa:motivatedBy} \\
+\texttt{dc:isVersionOf} \\
+\texttt{oa:hasTarget} \\
+\texttt{prov:generatedAtTime} \\
+\bottomrule
+\end{tabular}
+\end{subtable}
+\caption[Modellierung von Quality Measurements und Quality Annotations nach Wentzel et al.]{Modellierung von Quality Measurements und Quality Annotations nach Wentzel et al. \cite{wentzel2023extensive}}
+\label{tab:piveau_dqv_model}
+\end{table}
+
+Diese Modellierung trennt geprüfte Ressource, angewandte Metrik, berechneten Wert, Qualitätsdimension und Evidenz voneinander und macht Qualitätsinformationen damit nachvollziehbar sowie maschinenlesbar weiterverarbeitbar. MQA/Piveau zeigt damit, wie formale Validierungsergebnisse, technische Verfügbarkeitsprüfungen und feldbezogene Qualitätsmetriken in ein einheitliches Qualitätsmodell überführt und für Reportingzwecke nutzbar gemacht werden können. 
+
+\subsection{ISO 19157 als Qualitätsinstrument}
+
+Der ISO-19157-basierte Ansatz von Nogueras-Iso et al. erweitert eine ursprünglich für geografische Metadaten entwickelte Qualitätsbewertungsmethode auf DCAT-basierte Open-Data-Metadaten. 
+% Ausgangspunkt ist die Annahme, dass Metadatenqualität nicht allein über die Verfügbarkeit einzelner Felder oder über ein punktbasiertes Dashboardmodell erfasst werden kann, sondern eine systematische Beschreibung von Qualitätskategorien, Metriken, Evaluationsmethoden und Ergebnistypen erfordert. 
+ISO 19157 bietet einen normativen Rahmen, in dem sogenannte \textit{Quality Elements} jeweils durch eine \textit{Measure}, eine \textit{Evaluation Method} und ein oder mehrere \textit{Results} beschrieben werden. Diese Struktur erlaubt es, verschiedene Fehlerarten präziser voneinander zu unterscheiden und Qualitätsmessungen nicht nur als einfache Punktwerte, sondern als methodisch nachvollziehbare Prüfergebnisse zu modellieren. \cite{noguerasiso_quality_metadata}
+
+Für Open-Data-Metadaten übertragen Nogueras-Iso et al. insbesondere Qualitätskategorien wie \textit{Completeness}, \textit{Logical Consistency}, \textit{Temporal Quality}, \textit{Thematic Accuracy}, \textit{Positional Correctness} und \textit{Quality of Free Text}. Tabelle~\ref{tab:nogueras_iso_quality_elements} fasst die Qualitätselemente, ihre jeweiligen Scopes und Evaluationsarten zusammen. 
+
+\captionsetup[table]{justification=centering}
+
+{
+\renewcommand{\arraystretch}{0.9}
+\rowcolors{1}{white}{white}
+\centering
+\begin{table}[h!]
+\tiny
+\centering
+\begin{tabular}{|p{3.4cm}|p{5.5cm}|p{2.1cm}|p{1.4cm}|}
+\hline
+\textbf{Qualitätselement} & \textbf{Scope} & \textbf{Measure} & \textbf{Evaluation} \\
+\hline
+
+DQ\_ThematicClassificationCorrectness
+& Dataset (\texttt{theme})
+& D.63 (ISO 19157)
+& SI / AD \\
+\hline
+
+DQ\_NonQuantitativeAttributeCorrectness
+& Dataset (\texttt{references})
+& D.68 (ISO 19157)
+& SI / AD \\ \cline{2-4}
+& Dataset (\texttt{conformsTo})
+& D.68 (ISO 19157)
+& SI / AD \\ \cline{2-4}
+& Distribution (\texttt{accessURL})
+& D.68 (ISO 19157)
+& SI / AD \\ \cline{2-4}
+& Distribution (\texttt{license})
+& D.68 (ISO 19157)
+& SI / AD \\
+\hline
+
+DQ\_QualityOfFreeText
+& Dataset (\texttt{title})
+& Overall quality of free text
+& SI / AD \\ \cline{2-4}
+& Dataset (\texttt{description})
+& Overall quality of free text
+& SI / AD \\
+\hline
+
+DQ\_CompletenessCommission
+& Dataset (\texttt{identifier}, \texttt{modified}, \texttt{issued}, \texttt{accrualPeriodicity}, \texttt{license}, \texttt{valid}, \texttt{publisher})
+& D.3 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution (\texttt{identifier}, \texttt{accessURL}, \texttt{mediaType}, \texttt{byteSize})
+& D.3 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_CompletenessOmission
+& Dataset (\texttt{title}, \texttt{publisher}, \texttt{description}, \texttt{theme}, \texttt{distribution})
+& D.7 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution (\texttt{accessURL}, \texttt{mediaType})
+& D.7 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_ConceptualConsistency
+& Dataset
+& D.13 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution
+& D.13 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution (\texttt{format} gegenüber \texttt{accessURL})
+& D.13 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_DomainConsistency
+& Dataset.\texttt{title} (string domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{description} (string domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{theme} (\texttt{skos:Concept} domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{keyword} (string domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{identifier} (URI domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{issued} (date-time domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{modified} (date-time domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{accrualPeriodicity} (frequency domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{language} (linguistic system domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{publisher} (\texttt{foaf:Agent} domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{spatial} (resource URI from predefined province list)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{temporal} (period of time domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{valid} (date-time domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{references} (URI domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{conformsTo} (URI domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{distribution} (Distribution domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{identifier} (URI domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{title} (string domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{accessURL} (URL domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{format} (IMT domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{byteSize} (decimal number domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{license} (URI domain)
+& D.17 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_TemporalConsistency
+& Dataset (\texttt{issued}, \texttt{modified}, \texttt{valid})
+& Similar to D.62 using a rate
+& FI / AD \\
+\hline
+
+DQ\_TemporalValidity
+& Dataset (harvest date gegenüber \texttt{issued}, \texttt{modified}, \texttt{valid})
+& D.18 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_NonQuantitativeAttributeCorrectness
+& Dataset.\texttt{references}
+& D.69 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{conformsTo}
+& D.69 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{accessURL}
+& D.69 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{license}
+& D.69 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_PositionalCorrectness
+& Dataset (\texttt{spatial})
+& Similar to D.33 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_QualityOfFreeText
+& Dataset (\texttt{title} gegenüber \texttt{language})
+& Readability of free text
+& FI / AD \\ \cline{2-4}
+& Dataset (\texttt{description} gegenüber \texttt{language})
+& Readability of free text
+& FI / AD \\
+\hline
+
+\end{tabular}
+\caption[Kombinierte Übersicht der ISO-19157-Qualitätselemente, Scopes, Measures und Evaluationsarten nach Nogueras-Iso et al. ]{Kombinierte Übersicht der ISO-19157-Qualitätselemente, Scopes, Measures und Evaluationsarten nach Nogueras-Iso et al. \cite{noguerasiso_quality_metadata}}
+\label{tab:nogueras_iso_quality_elements}
+\end{table}
+\normalsize
+}
+
+\noindent\footnotesize{\textit{Anmerkung:} SI = \texttt{DQ\_SampleBasedInspection}; FI = \texttt{DQ\_FullInspection}; AD = \texttt{DQ\_AggregationDerivation}.}
+\normalsize
+
+\pagebreak
+
+Dabei wird deutlich, dass der Ansatz nicht nur prüft, ob bestimmte Metadatenelemente vorhanden sind, sondern unterschiedliche Arten von Qualitätsproblemen systematisch trennt. Fehlende Elemente werden als \textit{Completeness Omission} erfasst, während überzählige oder unzulässig wiederholte Elemente unter \textit{Completeness Commission} fallen. Widersprüche zur konzeptuellen Modellstruktur werden als \textit{Conceptual Consistency} bewertet, während fehlerhafte Wertebereiche, Datentypen oder kontrollierte Vokabulare unter \textit{Domain Consistency} fallen. Zeitliche Inkonsistenzen werden über \textit{Temporal Consistency} und \textit{Temporal Validity} adressiert. Darüber hinaus berücksichtigt der Ansatz auch nicht-quantitative Attributkorrektheit, räumliche Korrektheit, thematische Klassifikation und die Qualität von Freitextfeldern wie Titel und Beschreibung.
+
+Ein wichtiger Unterschied zu einfacheren Scoringmodellen besteht darin, dass Nogueras-Iso et al. zwischen quantitativen Messergebnissen, stichprobenbasierten Bewertungen und abgeleiteten Konformitätsergebnissen unterscheiden. Automatisierbare Prüfungen werden als \texttt{DQ\_FullInspection} auf die vollständige betrachtete Grundgesamtheit angewendet. Semantisch oder fachlich stärker interpretationsbedürftige Aspekte können dagegen als \texttt{DQ\_SampleBasedInspection} geprüft werden. Aus den quantitativen oder stichprobenbasierten Ergebnissen können anschließend über \texttt{DQ\_AggregationDerivation} Konformitätsergebnisse abgeleitet werden. Dadurch entsteht eine zweistufige Bewertungslogik, die Rohmessung, Prüfverfahren und Qualitätsurteil voneinander trennt. \cite{noguerasiso_quality_metadata}
+
+\subsection{Vergleich bestehender Ansätze und offene Bewertungslücken}
+
+Die in den vorangegangenen Abschnitten dargestellten Ansätze unterscheiden sich vor allem in zwei Hinsichten: in ihrer Nähe zum konkreten Anwendungskontext von DCAT-AP.de-Metadaten im GovData-Umfeld und in ihrer praktischen Operationalisierbarkeit. Daraus ergibt sich ein Spannungsverhältnis, das für die vorliegende Arbeit zentral ist. Allgemeine Qualitätsmodelle erfassen Datenqualität breit, bleiben aber für den konkreten Anwendungskontext zu unspezifisch. Linked-Data- und Metadatenqualitätsmodelle beschreiben relevantere Qualitätsprobleme RDF-basierter Metadaten, sind jedoch in ihrer vollständigen Breite nur begrenzt automatisiert prüfbar. Portalnahe Bewertungsansätze sind dagegen technisch gut umsetzbar, vereinfachen Metadatenqualität aber häufig auf Kriterien, die besonders leicht messbar sind.
+
+Der Vergleich bestehender Ansätze wird daher nicht autorenweise vorgenommen, sondern entlang ihres Beitrags zur Modellbildung. Im Mittelpunkt steht nicht die vollständige Wiederholung der einzelnen Qualitätsdimensionen, sondern die Frage, welche Rolle die Ansätze für ein Bewertungsmodell im GovData- und DCAT-AP.de-Kontext übernehmen können.
+
+\subsubsection{Abstrakte Qualitätskonzepte als begriffliche Grundlage}
+
+Eine erste Gruppe bilden abstrake Qualitätskonzepte wie Wang and Strong, ISO/IEC 25012 und FAIR. Diese Ansätze für ein grundlegendes Verständnis von Datenqualität relevant, weil sie diese als mehrdimensionales und nutzungsabhängiges Konzept begründen. Wang and Strong verstehen Datenqualität als \emph{fitness for use} und rücken damit die Eignung von Daten für konkrete Nutzungssituationen in den Mittelpunkt \cite{wang1996beyond}. ISO/IEC 25012 ergänzt diese Perspektive durch ein normatives Qualitätsmodell für in Computersystemen gehaltene Daten \cite{iso25012}. Die FAIR-Prinzipien betonen insbesondere die Anforderungen an Auffindbarkeit, Zugänglichkeit, Interoperabilität und Wiederverwendbarkeit \cite{wilkinson2016fair}.
+
+Der Beitrag dieser Modelle liegt damit vor allem in der theoretischen Rahmung. Sie zeigen, dass Qualität nicht auf syntaktische Korrektheit oder Fehlerfreiheit reduziert werden kann. Für die konkrete Bewertung von DCAT-AP.de-Metadaten bleiben sie jedoch zu abstrakt. Sie legen nicht fest, welche Metadatenelemente, RDF-Strukturen, Vokabulare oder Zugriffspfade geprüft werden sollen und wie daraus ein operationalisierbares Bewertungsverfahren entsteht.
+
+\subsubsection{Linked-Data- und Metadatenqualitätsmodelle als Erweiterung des Qualitätsbegriffs}
+
+Eine zweite Gruppe bilden Ansätze, die stärker auf RDF, Linked Data und Metadatenqualität ausgerichtet sind. Dazu zählen insbesondere Zaveri et al. sowie der ISO-19157-basierte Ansatz von Nogueras-Iso et al. Diese Modelle sind näher am Gegenstand der vorliegenden Arbeit, weil sie Qualitätsprobleme berücksichtigen, die bei verknüpften, RDF-basierten und maschineninterpretierbaren Daten auftreten.
+
+Zaveri et al. machen deutlich, dass Linked-Data-Qualität über formale Validität hinausgeht und auch Aspekte wie Verknüpfbarkeit, Konsistenz, Verständlichkeit, Aktualität und semantische Genauigkeit umfasst \cite{Zaveri2016LinkedDataQuality}. Nogueras-Iso et al. ergänzen diese Perspektive durch eine methodisch genauere Unterscheidung von Qualitätsdimensionen, Metriken, Evaluationsmethoden und Ergebnistypen \cite{noguerasiso_quality_metadata}. Beide Ansätze sind deshalb wichtig, weil sie Qualitätsaspekte sichtbar machen, die in rein feld- oder syntaxbezogenen Prüfungen nicht ausreichend erfasst werden.
+
+Ihre Grenze liegt jedoch in der praktischen Umsetzbarkeit. Viele der vorgeschlagenen Prüfungen setzen Kontextwissen, externe Referenzdaten, semantische Vergleichsverfahren, fachliche Plausibilitätsprüfungen oder manuelle Bewertungen voraus. Damit liefern diese Ansätze eine differenzierte Qualitätslogik, aber kein ohne Weiteres skalierbares Bewertungsverfahren für DCAT-AP.de-Metadaten im GovData-Kontext.
+
+\subsubsection{Portalnahe Bewertungsmodelle als operationalisierte Vereinfachung}
+
+Eine dritte Gruppe bilden stärker operationalisierte Ansätze zur Bewertung von Metadaten in Open-Data-Portalen. Dazu zählen insbesondere Neumaier et al. und MQA/Piveau. Diese Ansätze sind dem Anwendungskontext der vorliegenden Arbeit am nächsten, weil sie Metadatenqualität im Umfeld von Open-Data-Portalen beziehungsweise DCAT-AP bewerten.
+
+Neumaier et al. zeigen, dass Metadatenqualität automatisiert über portalübergreifend verfügbare Indikatoren bewertet werden kann \cite{Neumaier2016MetadataQuality}. MQA/Piveau führt diese Richtung im DCAT-AP-Kontext weiter und verbindet DCAT-AP-nahe Qualitätsmetriken mit FAIR, 5-Star-Linked-Open-Data-Prinzipien, technischer Erreichbarkeitsprüfung, Scoring und Reporting \cite{wentzel2023extensive}. Die Stärke dieser Modelle liegt in ihrer technischen Anschlussfähigkeit.
+Sie definieren Kriterien, die automatisiert prüfbar, vergleichbar und für Datenbereitsteller kommunizierbar sind.
+
+Gleichzeitig zeigt sich an diesen Ansätzen die zentrale Reduktionsproblematik operationalisierter Modelle. Die theoretisch breiten Qualitätskonzepte werden in der praktischen Umsetzung auf Kriterien konzentriert, die zuverlässig maschinell prüfbar sind. Dadurch entstehen robuste und skalierbare Bewertungsverfahren, deren Aussagekraft jedoch vor allem auf formalen, feldbezogenen und technischen Prüfungen beruht. Weitergehende semantische und kontextuelle Qualitätsaspekte werden dadurch nur eingeschränkt abgebildet.
+
+% \subsubsection{Nachgelagerte Aggregation und Qualitätsrepräsentation}
+
+% Ansätze wie Kubler et al. und DQV adressieren weniger die Auswahl relevanter Qualitätsdimensionen, sondern vor allem die Weiterverarbeitung bereits erhobener Qualitätsmessungen. Kubler et al. zeigen, wie unterschiedliche Qualitätsmetriken gewichtet und in vergleichende Rankings überführt werden können \cite{kubler_2018}. DQV stellt ein Vokabular bereit, um Qualitätsdimensionen, Metriken, Messwerte und geprüfte Ressourcen maschinenlesbar zu beschreiben \cite{albertoni_isaac_2016}.
+
+% Diese Ansätze sind für ein vollständiges Bewertungsverfahren hilfreich, weil Qualitätsbefunde dokumentiert, aggregiert und kommuniziert werden müssen. Für die inhaltliche Bewertungslücke sind sie jedoch nur nachgelagert relevant. Sie verändern nicht, welche Qualitätsaspekte ursprünglich gemessen werden, sondern strukturieren, gewichten oder repräsentieren die Ergebnisse dieser Messungen.
+
+\subsubsection{Bewertungslücke im DCAT-AP.de- und GovData-Kontext}
+
+Aus dem Vergleich der Literatur werden bereits unterschiedliche Bausteine bereitgestellt: allgemeine Qualitätsdimensionen, Linked-Data-spezifische Qualitätslogiken, portalnahe Indikatoren sowie Verfahren zur Aggregation und Repräsentation von Qualitätsmessungen. Die zentrale Lücke liegt in der Verbindung dieser Bausteine zu einem Bewertungsmodell, das zugleich anwendungsspezifisch, operationalisierbar und inhaltlich hinreichend aussagekräftig ist.
+
+Ein geeignetes Modell muss die technische Umsetzbarkeit portalnaher Ansätze beibehalten, darf Metadatenqualität aber nicht auf leicht messbare Mindestkriterien verengen. Feldexistenz, Formatvalidität, Erreichbarkeit, Lizenzinformationen, Konformität und Maschinenlesbarkeit sind notwendige Bestandteile einer Qualitätsbewertung. Sie reichen jedoch nicht aus, um die praktische Nutzbarkeit und Aussagekraft von Metadaten vollständig zu erfassen.
+
+Besonders unterrepräsentiert bleiben in bestehenden operationalisierten Modellen solche Qualitätsaspekte, die über die bloße formale oder technische Prüfbarkeit hinausgehen. Dazu gehören insbesondere die semantische Aussagekraft von Titeln und Beschreibungen, die Verständlichkeit für Nutzende, die kontextabhängige Relevanz einzelner Felder, die Plausibilität zwischen Metadatenangaben und die Kongruenz zwischen Metadaten und der tatsächlich beschriebenen Ressource. Diese Aspekte sind schwieriger zu prüfen, aber für die Bewertung von Metadatenqualität im Open-Data-Kontext zentral.
+
+Die vorliegende Arbeit setzt an dieser Stelle an. Ziel ist es ein domänenspezifisches Bewertungsmodell für DCAT-AP.de-Metadaten im GovData-Kontext zu entwickeln, das formal und technisch gut prüfbare Indikatoren mit ausgewählten semantischen und kontextbezogenen Qualitätsaspekten verbindet.
+
+\pagebreak
+
+\chapter[Konzeption eines Metadatenqualitätsmodells]{Konzeption eines Metadatenqualitäts- \\ modells}
+
+@TODO hier sagen was gemacht wird
+
+\section{Experteninterviews: Ziel, Auswahl und Durchführung}
+
+Ergänzend zur Literaturanalyse wurden qualitative, leitfadengestützte Experteninterviews durchgeführt. Ziel der Interviews war es, die in Kapitel~2 dargestellten theoretischen und konzeptionellen Ansätze durch praxisbezogene Einschätzungen aus dem Open-Data- und Metadatenkontext zu ergänzen. Die Interviews dienten damit nicht der statistischen Generalisierung, sondern der fachlichen Vertiefung und Plausibilisierung der Modellbildung. Sie sollten insbesondere dazu beitragen, praxisrelevante Anforderungen an ein Bewertungsmodell für DCAT-AP.de-Metadaten zu identifizieren, bestehende Ansätze der Metadatenqualitätsmessung kritisch einzuordnen und mögliche Erweiterungen durch kontextbezogene oder KI-gestützte Analyseverfahren zu bewerten.
+
+Im Mittelpunkt standen drei Zielsetzungen. Erstens sollten die Interviews klären, welche Merkmale Expertinnen und Experten als konstitutiv für hochwertige Metadaten im GovData- und DCAT-AP.de-Kontext ansehen. Zweitens sollten aktuelle Schwächen bestehender Quality-Score-Ansätze, insbesondere im Hinblick auf formale Validierung, semantische Qualität und praktische Nutzbarkeit, herausgearbeitet werden. Drittens sollten Potenziale und Grenzen KI-gestützter Verfahren eingeordnet werden, insbesondere mit Blick auf Freitextanalyse, Kontextprüfung, Rohdatenbezug und agentenbasierte Unterstützungsformen.
+
+Es wurden drei Experteninterviews im Zeitraum vom 16. April 2026 bis zum 24. April 2026 geführt. Die Auswahl der Interviewpartner erfolgte gezielt nach fachlicher Expertise im Bereich Open Data, Metadatenqualität, GovData, DCAT-AP.de und praktischer Datenbereitstellung. Die interviewten Personen stammen aus dem Umfeld der FITKO beziehungsweise aus dem Open Data Competence Center Bayern. Damit decken die Interviews sowohl die Perspektive des GovData-Produktmanagements und der DCAT-AP.de-Standardisierung als auch die Perspektive der praktischen Qualitätsberatung und Datenbereitstellung ab.
+
+Die Interviews dauerten zwischen 24 und 41 Minuten. Sie wurden aufgezeichnet, anschließend transkribiert und für die Auswertung sprachlich bereinigt. Die Transkription orientierte sich an einem inhaltlich-semantischen Transkriptionsverständnis nach Dresing und Pehl \parencite{DresingPehl2018}. Ziel war daher nicht die lautsprachlich exakte Wiedergabe gesprochener Sprache, sondern die nachvollziehbare Sicherung der fachlichen Aussagen. Die folgenden Transkriptions- und Bereinigungsregeln wurden angewendet:
+
+\begin{itemize}
+    \item Fülllaute, nicht sinntragende Wiederholungen und abgebrochene Satzanfänge wurden entfernt.
+    \item Grammatik und Satzstellung wurden behutsam geglättet, sofern der Aussagegehalt unverändert blieb.
+    \item Fachbegriffe, Beispiele, Einschränkungen, Bewertungen und inhaltliche Unsicherheiten wurden beibehalten.
+    \item Personenbezogene Angaben wurden pseudonymisiert, soweit sie für die Auswertung nicht erforderlich waren.
+    \item Konkrete Funktionsbezeichnungen wurden in den Transkripten nicht ausgewiesen, sofern sie zur Re-Identifikation der befragten Personen beitragen könnten. Stattdessen wurden institutioneller Kontext und Expertisebereich angegeben.
+    \item Die Sprecher wurden einheitlich als \texttt{INT} für den Interviewer und \texttt{EXP} für die interviewte Person gekennzeichnet.
+    \item Die Transkripte wurden absatzweise nummeriert, um eine eindeutige Referenzierung der Interviewstellen zu ermöglichen.
+    \item Einleitende Fragen zur Person sowie abschließende organisatorische Gesprächsteile wurden für die Auswertung entfernt, sofern sie keinen inhaltlichen Beitrag zur Forschungsfrage leisteten.
+    \item Die Transkripte wurden nach den thematischen Hauptteilen des Interviewleitfadens gegliedert.
+\end{itemize}
+
+Direkte und indirekte Bezüge auf Interviewaussagen erfolgen im weiteren Verlauf über Interview-ID und Absatznummer, zum Beispiel \texttt{I1\_024}. Die bereinigten Interviewtranskripte sind im Anhang dokumentiert (Anhang~\ref{app:transkript_i1} bis Anhang~\ref{app:transkript_i3}).
+
+Die Interviews wurden anhand eines halbstrukturierten Leitfadens geführt. Der Leitfaden enthielt neben einer kurzen Einleitung und einem Abschluss vier thematische Hauptblöcke:
+
+\begin{itemize}
+    \item die perfekten Metadaten,
+    \item bestehende Quality Scores und SHACL,
+    \item Relevanz des eigentlichen Datensatzes,
+    \item Potenziale von AI Agents und KI-gestützten Verfahren.
+\end{itemize}
+
+Die Hauptblöcke des Leitfadens wurden aus den Forschungsfragen und der literaturbasierten Vorarbeit abgeleitet. Sie waren so angelegt, dass sie die für die Modellbildung zentralen Themenfelder systematisch adressieren: Qualitätsverständnis, formale Validierung, semantische und kontextbezogene Qualität, Rohdatenbezug sowie KI-gestützte Erweiterungsmöglichkeiten. Der vollständige Interviewleitfaden befindet sich in Anhang~\ref{app:interviewleitfaden}.
+
+\section{Auswertungsverfahren der Interviews}
+
+Die Auswertung der Experteninterviews erfolgte mithilfe einer qualitativen Inhaltsanalyse in Anlehnung an Mayring \cite{Mayring2014, Mayring2015}. Gewählt wurde eine inhaltlich strukturierende Vorgehensweise mit kombinierter deduktiv-induktiver Kategorienbildung. Dieses Vorgehen eignet sich für die vorliegende Arbeit, da bereits ein theoretischer Bezugsrahmen aus der Literatur, den Forschungsfragen und dem Interviewleitfaden vorlag, die Interviews jedoch zugleich genutzt wurden, um praxisbezogene Anforderungen und zusätzliche Qualitätsaspekte aus dem Material herauszuarbeiten.
+
+Im ersten Schritt wurden deduktive Hauptkategorien aus den Forschungsfragen, dem Interviewleitfaden und den in Kapitel~2 dargestellten Qualitätsansätzen abgeleitet. Die Hauptkategorien bilden die analytische Grundstruktur der Interviewauswertung und stellen zugleich die Verbindung zwischen den empirischen Aussagen und dem zu entwickelnden Bewertungsmodell her. Insgesamt wurden zehn Hauptkategorien identifiziert, die im weiteren Verlauf mit den Codes \texttt{K1} bis \texttt{K10} gekennzeichnet werden. Tabelle~\ref{tab:hauptkategorien} zeigt die Hauptkategorien, ihre deduktive Herleitung und ihre jeweilige Funktion im Bewertungsmodell.
+
+\begin{table}[H]
+\rowcolors{1}{white}{white}
+\centering
+\renewcommand{\arraystretch}{1}
+
+\tiny
+\begin{tabularx}{\textwidth}{p{1.2cm} p{3.6cm} X X}
+\toprule
+\textbf{Code} & \textbf{Hauptkategorie} & \textbf{Deduktive Herleitung} & \textbf{Funktion im Bewertungsmodell} \\
+\midrule
+
+K1 & Qualitätsverständnis und ideale Metadaten & Forschungsfrage zur Entwicklung eines praxisrelevanten Bewertungsmodells; Leitfadenblock „perfekte Metadaten“; Datenqualitätsverständnis nach \cite{wang1996beyond}. & Ableitung übergeordneter Anforderungen an ein gutes DCAT-AP.de-Metadatenmodell. \\ \hline
+
+K2 & Vollständigkeit, Reichhaltigkeit und Feldrelevanz & Leitfadenfrage zu Qualitätsmerkmalen; Literatur zu Vollständigkeit nach \cite{wentzel2023extensive, wilkinson2016fair, DCATAPDESpec2, DCATAPDESpec3}. & Bestimmung, welche Metadatenfelder für einen Score geprüft und wie Pflicht-, empfohlene und optionale Angaben gewichtet werden. \\ \hline
+
+K3 & Formale und syntaktische Qualität & Forschungsfrage zur Integration von RDF-/SHACL-Prüfungen; Literatur zu Conformance, syntaktischer Validität und DCAT-AP.de-Konformität nach \cite{W3CRDF11Concepts, W3CSHACL, DCATAPDESpec2, DCATAPDESpec3, DCATAPDEImplRules2, Gayo2015LinkedDataValidationQuality}. & Erfassung regelbasierter, automatisierbarer Fehler über SHACL, XML/RDF, URI-, Vokabular- und Datentypprüfungen. \\\hline
+
+K4 & Semantische und inhaltliche Qualität & Forschungsfrage zu KI-gestützten Analyseverfahren; Literatur zu Verständlichkeit, Accuracy, semantischer Konsistenz und Qualität von Freitextfeldern nach \cite{wang1996beyond, wand1996anchoring, StrongLeeWang1997, Zaveri2016LinkedDataQuality, noguerasiso_quality_metadata}. & Ergänzung formaler Prüfungen um Aussagekraft, Verständlichkeit, Plausibilität und inhaltliche Passung. \\ \hline
+
+K5 & Technische Zugänglichkeit, Aktualität und Nutzbarkeit & Literatur zu Accessibility, Retrievability, Open Data Fitness und MQA/Piveau nach \cite{wilkinson2016fair, data_europa, Neumaier2016MetadataQuality, kubler2018comparison, wentzel2023extensive}. & Bewertung, ob Ressourcen erreichbar, technisch nutzbar, aktuell genug und praktisch weiterverarbeitbar sind. \\ \hline
+
+K6 & Interoperabilität und Linked-Data-Qualität & Literatur zu FAIR, Linked Data, RDF-Grundlagen, DCAT und Linked-Data-Qualität nach \cite{wilkinson2016fair, W3CRDF11Concepts, W3CDCAT3, Zaveri2016LinkedDataQuality, Gayo2015LinkedDataValidationQuality}. & Bewertung, ob Metadaten über URIs, Normdaten, kontrollierte Vokabulare und Graphbezüge interoperabel und verknüpfbar sind. \\ \hline
+
+K7 & Kontextsensitivität und Fit for Purpose & Forschungsfrage zur praxisrelevanten Bewertung; Literatur zu Fit for Purpose, Kontextualität, FAIR-Nachnutzung und domänenspezifischer Datenqualität nach \cite{wang1996beyond, StrongLeeWang1997, wand1996anchoring, wilkinson2016fair, Ubaldi2013OGD}. & Anpassung von Bewertung, Gewichtung und Interpretation an Nutzungskontext, Domäne und Stakeholderperspektive. \\ \hline
+
+K8 & Rohdatenbezug und Metadaten-Daten-Kongruenz & Forschungsfrage zur Kombination formaler Validierung mit kontextbezogenen Prüfverfahren; Leitfadenblock „Relevanz des eigentlichen Datensatzes“; Literatur zu Accuracy und Daten-Metadaten-Konsistenz nach \cite{wang1996beyond, wand1996anchoring, StrongLeeWang1997, noguerasiso_quality_metadata}. & Prüfung, ob Metadaten mit der tatsächlichen Ressource übereinstimmen und ob Rohdaten zur Plausibilisierung herangezogen werden können. \\ \hline
+
+K9 & Scoring, Gewichtung, Reporting und Verbesserungshinweise & Forschungsfrage zu aggregiertem Qualitätsindikator; Literatur zu MQA/Piveau, AHP-basierter Gewichtung, DQV-nahen Qualitätsdimensionen und ISO-orientierten Qualitätsmodellen nach \cite{data_europa, kubler2018comparison, Neumaier2016MetadataQuality, wentzel2023extensive, iso25012, W3CDQV, ISO19157}. & Überführung von Einzelindikatoren in Teilscores, Gesamtscore und handlungsorientiertes Qualitätsreporting. \\ \hline
+
+K10 & KI-gestützte Analyseverfahren und Automatisierungsgrenzen & Forschungsfrage zu KI-basierter Unterstützung und agentenbasierten Ansätzen; Leitfadenblock „KI-gestützte Ansätze und AI Agents“; Literatur zu automatisierter Metadatenqualitätsbewertung, SHACL-gestützter Qualitätsprüfung und Grenzen regelbasierter beziehungsweise automatisierter Verfahren nach \cite{Neumaier2016MetadataQuality, wentzel2023extensive, corteslasalle_shacl_dqa, Gayo2015LinkedDataValidationQuality, Zaveri2016LinkedDataQuality, BernersLee2006LinkedData}. & Einordnung, welche Qualitätsaspekte durch KI unterstützt werden können und wo regelbasierte oder menschliche Bewertung notwendig bleibt. \\
+\bottomrule
+\end{tabularx}
+\caption{Deduktiv abgeleitete Hauptkategorien der Interviewauswertung}
+\label{tab:hauptkategorien}
+\end{table}
+
+Ergänzend zu den deduktiven Hauptkategorien wurden in einem zweiten Schritt induktive Unterkategorien aus dem Interviewmaterial gebildet. Diese Unterkategorien konkretisieren die Hauptkategorien anhand wiederkehrender oder für das Bewertungsmodell besonders relevanter Aussagen der Expertinnen und Experten. Insgesamt wurden 52 Unterkategorien identifiziert und den zehn Hauptkategorien zugeordnet.
+Ein exemlarischer Auszug der Unterkategorien ist in Tabelle \ref{tab:unterkategorien_auszug} dargestellt.
+Die vollständige Übersicht ist in Anhang \ref{app:unterkategorien} dokumentiert.
+Die Belegstellen verweisen auf die jeweiligen Interviewabsätze, in denen die Kategorien empirisch begründet oder besonders deutlich sichtbar werden.
+
+\pagebreak
+
+\begin{table}[H]
+\rowcolors{1}{white}{white}
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\textwidth}{p{1.4cm} p{4.2cm} X p{3cm}}
+\toprule
+\textbf{Code} & \textbf{Hauptkategorie} & \textbf{induktive Unterkategorie} & \textbf{Belegstellen} \\
+\midrule
+
+K3.2 & Formale und syntaktische Qualität 
+& SHACL-Konformität als Basisdimension 
+& I1\_027--I1\_029; I3\_015 \\ \hline
+
+K4.1 & Semantische und inhaltliche Qualität 
+& nichtssagende oder zu kurze Titel 
+& I2\_008 \\ \hline
+
+K4.2 & Semantische und inhaltliche Qualität 
+& Titel-Beschreibung-Redundanz 
+& I2\_008 \\ \hline
+
+K5.1 & Technische Zugänglichkeit, Aktualität und Nutzbarkeit 
+& Dead Links und Linkrot 
+& I1\_015; I2\_011 \\ \hline
+
+K6.1 & Interoperabilität und Linked-Data-Qualität 
+& URI statt Literal 
+& I1\_020--I1\_022 \\ \hline
+
+K8.1 & Rohdatenbezug und Metadaten-Daten-Kongruenz 
+& Formatkongruenz zwischen Metadaten und Ressource 
+& I2\_045; I3\_020 \\ \hline
+
+K9.2 & Scoring, Gewichtung, Reporting und Verbesserungshinweise 
+& SHACL als Teildimension statt Gesamtscore 
+& I1\_028--I1\_029 \\ \hline
+
+K9.5 & Scoring, Gewichtung, Reporting und Verbesserungshinweise 
+& verständliche Fehlermeldungen und Handlungshinweise 
+& I2\_040--I2\_041; I3\_017 \\ \hline
+
+K10.2 & KI-gestützte Analyseverfahren und Automatisierungsgrenzen 
+& Freitextprüfung und Beschreibungsgüte 
+& I1\_035; I1\_043--I1\_044 \\ \hline
+
+K10.8 & KI-gestützte Analyseverfahren und Automatisierungsgrenzen 
+& Halluzination, stochastische Ausreißer und fachliche Fehlinterpretation 
+& I1\_037; I1\_046; I2\_052 \\
+
+\bottomrule
+\end{tabularx}
+\caption{Auszug aus den induktiv entwickelten Unterkategorien}
+\label{tab:unterkategorien_auszug}
+\end{table}
+
+
+Für die Codierung wurden die Analyseeinheiten vorab festgelegt. Als Kodiereinheit wurde die kleinste sinntragende Aussage definiert, die sich auf eine Qualitätsanforderung, ein Qualitätsproblem, einen Prüfindikator, eine Grenze oder eine mögliche Modellfolge bezieht. Als Kontexteinheit diente jeweils der zusammenhängende Antwortabschnitt innerhalb einer Leitfadenfrage. Auswertungseinheit war jeweils ein vollständiges Interviewtranskript. Die Interviewstellen werden über Interview-ID und Absatznummer referenziert, zum Beispiel \texttt{I1\_024}.
+
+Aus dem deduktiv-induktiv entwickelten Kategoriensystem wurde anschließend ein Kodierleitfaden erstellt. Während die Kategorientabelle dokumentiert, welche Haupt- und Unterkategorien gebildet wurden, operationalisiert der Kodierleitfaden die Anwendung dieser Kategorien im Codierprozess. Er enthält für jede codierrelevante Unterkategorie eine Definition, eine Kodierregel sowie ein Ankerbeispiel mit Bezug zum Bewertungsmodell. Dadurch wurde festgelegt, wann eine Textstelle einer bestimmten Kategorie zugeordnet wird und welche analytische Funktion diese Kategorie für die weitere Modellbildung erfüllt.
+
+Tabelle~\ref{tab:auszug_kodierleitfaden} zeigt exemplarisch den Aufbau des Kodierleitfadens. Der vollständige Kodierleitfaden befindet sich im Anhang~\ref{app:kodierleitfaden}.
+
+\begin{table}[H]
+\rowcolors{1}{white}{white}
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\textwidth}{p{1.3cm} p{3.2cm} X X X}
+\toprule
+\textbf{Code} & \textbf{Kategorie} & \textbf{Definition} & \textbf{Kodierregel} & \textbf{Ankerbeispiel / Modellbezug} \\
+\midrule
+
+K4.1 & Nichtssagende oder zu kurze Titel
+& Aussagen zu Titeln, die vorhanden sind, aber den Datensatz nicht ausreichend beschreiben.
+& Codieren, wenn Titel als zu kurz, generisch, mehrdeutig oder unverständlich beschrieben werden.
+& „Los 1“ als Titel ohne erkennbare Aussage. Modellbezug: semantischer Titelindikator. \\ \hline
+
+K8.1 & Formatkongruenz zwischen Metadaten und Ressource
+& Aussagen zum Abgleich zwischen angegebenem Format und tatsächlicher Ressource.
+& Codieren, wenn geprüft werden soll, ob das in den Metadaten angegebene Format mit Datei, Service oder Inhalt übereinstimmt.
+& Metadaten geben CSV an, aber der Inhalt ist kein CSV. Modellbezug: Kongruenzindikator. \\ \hline
+
+K9.2 & SHACL als Teildimension statt Gesamtscore
+& Aussagen, die SHACL- oder DCAT-AP.de-Konformität als Teil, aber nicht als vollständiges Qualitätsurteil verstehen.
+& Codieren, wenn formale Validierung als eigene Dimension im Gesamtscore beschrieben wird.
+& DCAT-AP.de-Qualität sollte als eine Dimension im Gesamtscoring angezeigt werden. Modellbezug: separater formaler Teilschritt. \\
+
+\bottomrule
+\end{tabularx}
+\caption{Auszug aus dem Kodierleitfaden}
+\label{tab:auszug_kodierleitfaden}
+\end{table}
+
+Der Kodierleitfaden wurde anschließend auf alle drei Interviewtranskripte angewendet. Die Codierung erfolgte absatzweise in einer Auswertungsmatrix. Für jede relevante Textstelle wurden Fundstelle, paraphrasierte Aussage, Primärcode, gegebenenfalls Sekundärcode und eine analytische Notiz zur möglichen Modellfolge dokumentiert. Mehrfachcodierungen waren möglich, wenn eine Aussage mehrere Qualitätsaspekte berührte. In diesen Fällen wurde ein Primärcode vergeben, der den dominierenden analytischen Bezug der Aussage markiert; ein Sekundärcode wurde ergänzt, wenn ein weiterer relevanter Qualitätsaspekt erkennbar war.
+
+Die codierte Auswertungsmatrix bildet die Grundlage für die anschließende Ergebnisdarstellung. Sie dient dazu, die Interviewaussagen nicht interviewweise nachzuerzählen, sondern thematisch entlang der Haupt- und Unterkategorien zu verdichten. Auf dieser Grundlage werden in den folgenden Abschnitten zentrale Interviewbefunde herausgearbeitet und anschließend in Anforderungen an das Bewertungsmodell überführt. Die vollständige codierte Auswertungsmatrix befindet sich im Anhang~\ref{app:kodierte_auswertungsmatrix}.
+
+\section{Zentrale Ergebnisse der Interviews}
+
+Die Ergebnisse der Interviewauswertung werden nicht entlang der einzelnen Interviews, sondern thematisch entlang der zentralen Analysebereiche dargestellt. Diese Darstellungsform ist für die vorliegende Arbeit zweckmäßig, da die Interviews nicht der Rekonstruktion einzelner Fallperspektiven dienen, sondern der Ableitung fachlicher Anforderungen an ein Bewertungsmodell für DCAT-AP.de-Metadaten. Im Zentrum stehen daher wiederkehrende Befunde, fachliche Ergänzungen zur Literatur und konkrete Konsequenzen für die Modellbildung.
+
+Tabelle~\ref{tab:zentrale_interviewergebnisse} fasst die zentralen Interviewbefunde entlang der deduktiv-induktiv entwickelten Kategorien zusammen. Die Tabelle verdichtet die codierten Aussagen aus der Auswertungsmatrix und übersetzt sie in Anforderungen an das Bewertungsmodell. Die Belegstellen verweisen auf die jeweiligen Interviewabsätze.
+
+\begin{table}[H]
+\rowcolors{1}{white}{white}
+\centering
+\tiny
+\renewcommand{\arraystretch}{0.9}
+\begin{tabularx}{\textwidth}{p{0.6cm} p{2.2cm} X X p{2cm}}
+\toprule
+\textbf{Code} & \textbf{Analysebereich} & \textbf{zentraler Interviewbefund} & \textbf{Konsequenz für das Bewertungsmodell} & \textbf{Belegstellen} \\
+\midrule
+
+K1 & Qualitätsverständnis und ideale Metadaten
+& Metadatenqualität wird nicht mit bloßer Mindestvalidität gleichgesetzt. Hochwertige Metadaten erfüllen zwar DCAT-AP.de-Mindestanforderungen, gehen aber durch Best-Practice-Empfehlungen, relevante Zusatzinformationen, semantische Modellierung und Nachnutzbarkeit darüber hinaus.
+& Das Modell muss zwischen Basiskonformität, Best-Practice-Erfüllung und zusätzlicher Qualitätsanreicherung unterscheiden. Eine reine Feldzählung reicht nicht aus.
+& I1\_002--I1\_004; I2\_003--I2\_006; I3\_002--I3\_005 \\ \hline
+
+K2 & Vollständigkeit, Reichhaltigkeit und Feldrelevanz
+& Vollständigkeit wird als relative und kontextabhängige Vollständigkeit verstanden. Entscheidend ist nicht, ob alle möglichen DCAT-Felder gefüllt sind, sondern ob die für den jeweiligen Datensatz relevanten Informationen vorhanden sind.
+& Pflichtfelder, empfohlene Felder und optionale beziehungsweise kontextspezifische Felder sollten unterschiedlich bewertet werden. Feldrelevanz muss in die Gewichtung einfließen.
+& I1\_007--I1\_010; I2\_026; I3\_002--I3\_003; I3\_013 \\ \hline
+
+K3 & Formale und syntaktische Qualität
+& SHACL- und DCAT-AP.de-Validierung werden als notwendige Grundlage der Qualitätsbewertung angesehen. Sie prüfen unter anderem Feldvorhandensein, Syntax, URI-Korrektheit, Vokabulare, Datentypen und XML-/RDF-Strukturen.
+& Formale Validierung wird als eigene Qualitätsdimension abgebildet. Fehlerarten wie fehlende Felder, falsche Datentypen oder syntaktische Verstöße sollten getrennt ausgewiesen werden.
+& I1\_027--I1\_029; I3\_015; I3\_017--I3\_018 \\ \hline
+
+K4 & Semantische und inhaltliche Qualität
+& Feldexistenz und syntaktische Korrektheit garantieren keine inhaltliche Qualität. Titel, Beschreibungen, Keywords und Kategorien können vorhanden sein, aber nichtssagend, redundant, fachsprachlich unverständlich oder widersprüchlich sein.
+& Das Modell benötigt semantische Indikatoren für Aussagekraft, Verständlichkeit, Redundanz, Plausibilität und thematische Passung von Freitext- und Klassifikationsfeldern.
+& I2\_008--I2\_011; I2\_027; I3\_010; I3\_028--I3\_029 \\ \hline
+
+K5 & Technische Zugänglichkeit, Aktualität und Nutzbarkeit
+& Defekte Links, nicht erreichbare Downloads, nicht funktionierende Services, Linkrot und fehlende Aktualitätsinformationen werden als zentrale praktische Qualitätsprobleme beschrieben.
+& Technische Verfügbarkeit, Service-Erreichbarkeit, Download-Funktionalität, Aktualität und Harvesting-Zeitpunkt sollten als eigene messbare Qualitätsindikatoren aufgenommen werden.
+& I1\_015; I1\_019; I1\_024--I1\_025; I2\_011; I2\_028 \\ \hline
+
+K6 & Interoperabilität und Linked-Data-Qualität
+& Hochwertige Metadaten sollten nicht nur Freitext enthalten, sondern maschineninterpretierbare Verknüpfungen nutzen. URIs, Normdaten, kontrollierte Vokabulare, Wikidata, GND, Thesauri und Graphbezüge werden als Qualitätsmerkmale hervorgehoben.
+& Das Modell sollte Linked-Data-Reife erfassen, insbesondere die Nutzung stabiler URIs, externer Referenzsysteme, kontrollierter Vokabulare und semantischer Querverbindungen.
+& I1\_020--I1\_022; I2\_003--I2\_006; I2\_055--I2\_056; I3\_018 \\ \hline
+
+K7 & Kontextsensitivität und Fit for Purpose
+& Qualität hängt von Zweck, Domäne und Stakeholderperspektive ab. Bestimmte Felder sind etwa bei Geodaten relevant, bei Statistikdaten aber weniger. Auch föderale Vergleichbarkeit ist kontextabhängig.
+& Das Modell sollte allgemeine und kontextspezifische Indikatoren unterscheiden. Gewichtung und Interpretation sollten abhängig von Datentyp, Domäne, föderalem Kontext und Zielgruppe begründbar sein.
+& I1\_006; I1\_009--I1\_010; I1\_031--I1\_033; I1\_040; I1\_047--I1\_049 \\ \hline
+
+K8 & Rohdatenbezug und Metadaten-Daten-Kongruenz
+& Metadatenqualität kann teilweise nur durch Bezug auf die beschriebene Ressource geprüft werden. Beispiele sind Formatkongruenz, Serviceverhalten, Bounding Boxes und die Passung zwischen Titel, Beschreibung und tatsächlichem Dateninhalt.
+& Das Modell sollte einen begrenzten Rohdatenabgleich vorsehen, etwa für Format, Dateigröße, Erreichbarkeit, Serviceverhalten und offensichtliche Inhaltskongruenz. Es sollte aber keine vollständige fachliche Rohdatenbewertung beanspruchen.
+& I2\_013; I2\_045--I2\_047; I2\_059; I3\_020--I3\_022 \\ \hline
+
+K9 & Scoring, Gewichtung, Reporting und Verbesserungshinweise
+& Bestehende Scores werden kritisiert, wenn ihre Kriterien nicht fachlich begründet sind. Zugleich werden Teil-Scores, regelmäßige Prüfungen und Rankings als nützlich beschrieben, sofern sie verständlich erklärt und auf Verbesserung ausgerichtet sind.
+& Das Modell benötigt eine transparente Indikatorbegründung, nachvollziehbare Gewichtung, getrennte Teilscores und ein handlungsorientiertes Reporting mit verständlichen Fehlermeldungen.
+& I1\_028--I1\_029; I2\_021--I2\_024; I2\_034--I2\_041; I3\_017 \\ \hline
+
+K10 & KI-gestützte Analyseverfahren und Automatisierungsgrenzen
+& KI wird als unterstützendes Werkzeug für Freitextprüfung, Keyword-Mapping, SPARQL-Unterstützung, Rohdatenanalyse und Kontextprüfung gesehen. Eine autonome generative Bewertung wird wegen Halluzinationen, stochastischer Ausreißer, Datenhoheit und Ressourcenaufwand kritisch bewertet.
+& KI sollte nur als ergänzende Analyse- und Empfehlungskomponente eingesetzt werden. Die eigentliche Scoringlogik sollte transparent, regelbasiert und nachvollziehbar bleiben.
+& I1\_035--I1\_049; I2\_049--I2\_063; I3\_024--I3\_031 \\
+
+\bottomrule
+\end{tabularx}
+\caption{Zentrale Ergebnisse der Interviewauswertung und Konsequenzen für das Bewertungsmodell}
+\label{tab:zentrale_interviewergebnisse}
+\end{table}
+
+\subsubsection{Formale Validierung als notwendige, aber nicht hinreichende Grundlage}
+
+Ein zentrales Ergebnis der Interviews ist die klare Einordnung formaler Validierung als Basisanforderung. Die Expertinnen und Experten beschreiben DCAT-AP.de-Konformität und SHACL-Validierung als notwendige Grundlage einer Qualitätsbewertung. Ein Metadatensatz, der die Mindestanforderungen des Standards nicht erfüllt, kann demnach nicht als hochwertig gelten. Formale Prüfungen erfassen insbesondere Pflichtfelder, Kardinalitäten, Datentypen, URI-Strukturen, kontrollierte Vokabulare sowie RDF- beziehungsweise XML-bezogene Strukturfehler.
+
+Gleichzeitig wird formale Validität nicht als hinreichendes Qualitätsurteil verstanden. Ein Metadatensatz kann formal valide sein und dennoch aus Nutzendensicht unzureichend bleiben, wenn etwa Titel und Beschreibung wenig aussagekräftig sind, eine Ressource nicht erreichbar ist oder relevante Kontextinformationen fehlen. Für das Bewertungsmodell folgt daraus, dass SHACL-Ergebnisse nicht als Gesamtscore interpretiert werden dürfen. Sie bilden vielmehr eine eigene Qualitätsdimension, die strukturelle und syntaktische Konformität abbildet. Diese Dimension ist grundlegend, muss aber durch weitere Qualitätsdimensionen ergänzt werden.
+
+Methodisch ergibt sich daraus eine Trennung zwischen Basiskonformität und weitergehender Metadatenqualität. Basiskonformität beschreibt, ob ein Metadatensatz die formalen Mindestanforderungen erfüllt. Weitergehende Qualität beschreibt dagegen, ob der Metadatensatz auffindbar, verständlich, zugänglich, interoperabel und praktisch nachnutzbar ist.
+
+\subsubsection{Vollständigkeit als relative Feldrelevanz}
+
+Die Interviews zeigen außerdem, dass Vollständigkeit nicht als maximale Befüllung aller verfügbaren DCAT-AP.de-Felder verstanden werden sollte. Entscheidend ist nicht, ob möglichst viele Felder ausgefüllt sind, sondern ob die für den jeweiligen Datensatz relevanten Informationen vorhanden sind. Damit wird Vollständigkeit als relative und kontextabhängige Eigenschaft gefasst.
+
+Diese Perspektive ist für das Bewertungsmodell wesentlich. Eine reine Feldzählung würde Datensätze begünstigen, die viele Angaben enthalten, auch wenn diese für die konkrete Ressource nur geringen Nutzen haben. Umgekehrt könnten Datensätze abgewertet werden, obwohl sie die für ihren Nutzungskontext relevanten Informationen vollständig und präzise bereitstellen. Deshalb muss das Modell zwischen Pflichtfeldern, empfohlenen Feldern und kontextspezifisch relevanten Feldern unterscheiden.
+
+Pflichtfelder bilden die Mindestanforderung. Empfohlene Felder erhöhen die praktische Nutzbarkeit, etwa durch bessere Auffindbarkeit, Kontaktierbarkeit oder Wiederverwendbarkeit. Kontextspezifische Felder sind nur für bestimmte Datentypen oder Domänen besonders relevant, beispielsweise räumliche Angaben bei Geodaten oder Aktualisierungsfrequenzen bei regelmäßig fortgeschriebenen Datenbeständen. Vollständigkeit wird somit nicht absolut, sondern bezogen auf den jeweiligen Bewertungsgegenstand operationalisiert.
+
+\subsubsection{Semantische Qualität als zentrale Bewertungslücke}
+
+Besonders deutlich wird in den Interviews die Grenze feldbezogener und syntaktischer Prüfungen. Mehrere Aussagen verweisen darauf, dass Metadatenfelder zwar vorhanden sein können, aber dennoch keinen ausreichenden Informationswert besitzen. Beispiele hierfür sind sehr kurze oder generische Titel, Beschreibungen ohne zusätzlichen Mehrwert, identische Titel- und Beschreibungstexte, unverständliche Fachbegriffe, regionale Sonderbegriffe oder nicht passende Keywords und Kategorien.
+
+Damit wird semantische Qualität zu einer zentralen Erweiterung gegenüber bestehenden, vor allem regel- und feldbasierten Bewertungsansätzen. Während formale Prüfungen feststellen können, ob ein Feld vorhanden ist und einem erwarteten Datentyp entspricht, erfassen sie nicht, ob der Feldinhalt für Nutzende verständlich, aussagekräftig und plausibel ist. Für ein praxisrelevantes Bewertungsmodell ist diese Unterscheidung entscheidend, da Auffindbarkeit und Nachnutzbarkeit wesentlich von der inhaltlichen Qualität der beschreibenden Felder abhängen.
+
+Aus den Interviews lassen sich daher mehrere semantische Prüfaspekte ableiten. Erstens sollte geprüft werden, ob Titel und Beschreibung einen erkennbaren Informationswert besitzen. Zweitens sollte Redundanz zwischen Titel und Beschreibung erkannt werden. Drittens sollten Keywords, Kategorien und Themenfelder hinsichtlich ihrer Passung zum beschriebenen Datensatz bewertet werden. Viertens sollten offensichtliche Widersprüche zwischen Metadatenfeldern berücksichtigt werden, etwa wenn räumliche Angaben, Herausgeber, Titel und Beschreibung nicht plausibel zusammenpassen.
+
+\subsubsection{Technische Nutzbarkeit und Metadaten-Daten-Kongruenz}
+
+Neben formaler und semantischer Qualität wurde die technische Nutzbarkeit als wiederkehrendes Problemfeld identifiziert. Defekte Links, nicht erreichbare Download-URLs, nicht funktionierende Services, veraltete Verweise und unklare Aktualitätsangaben beeinträchtigen die praktische Nutzbarkeit eines Metadatensatzes erheblich. Ein Metadatensatz kann formal korrekt beschrieben sein, ist für Nutzende aber nur eingeschränkt wertvoll, wenn die referenzierte Ressource nicht abrufbar oder nicht weiterverarbeitbar ist.
+
+Daraus folgt, dass das Bewertungsmodell technische Zugänglichkeit als eigene Qualitätsdimension erfassen sollte. Dazu gehören insbesondere die Erreichbarkeit von \texttt{dcat:accessURL} und \texttt{dcat:downloadURL}, die Prüfung von HTTP-Statuscodes, das Verhalten von Datenservices, die Plausibilität von Formatangaben und die Aktualität der Metadaten. Diese Prüfungen sind weitgehend automatisierbar und können konkrete Verbesserungshinweise erzeugen.
+
+Darüber hinaus zeigen die Interviews, dass einige Qualitätsprobleme erst durch einen begrenzten Abgleich zwischen Metadaten und beschriebener Ressource sichtbar werden. Beispiele sind abweichende Dateiformate, unplausible Dateigrößen, nicht erwartungskonformes Serviceverhalten oder räumliche Angaben, die nicht zur tatsächlichen Datenabdeckung passen. Das Bewertungsmodell sollte daher eine begrenzte Metadaten-Daten-Kongruenzprüfung vorsehen. Diese Prüfung darf jedoch nicht mit einer umfassenden fachlichen Bewertung der Rohdaten verwechselt werden. Bewertet wird nicht die inhaltliche Qualität des Datensatzes selbst, sondern die Konsistenz zwischen Metadatenbeschreibung und zugänglicher Ressource.
+
+\subsubsection{KI-gestützte Verfahren als ergänzende Analyseebene}
+
+Die Einschätzungen zu KI-gestützten Verfahren fallen differenziert aus. Einerseits sehen die Expertinnen und Experten Potenzial bei Aufgaben, die mit rein formalen Regeln nur schwer abbildbar sind. Dazu zählen insbesondere die Bewertung von Freitextqualität, die Erkennung nichtssagender Beschreibungen, das Mapping von Keywords auf kontrollierte Vokabulare, die Unterstützung bei SPARQL-Abfragen, die semantische Plausibilisierung sowie ausgewählte Rohdatenanalysen.
+
+Andererseits werden klare Grenzen benannt. Generative KI kann halluzinieren, fachliche Begriffe falsch interpretieren, stochastische Ausreißer produzieren und schwer reproduzierbare Bewertungen erzeugen. Hinzu kommen Fragen der Datenhoheit, der technischen Betriebslast und der Nachvollziehbarkeit. Aus methodischer Sicht ist daher eine autonome KI-basierte Bewertungsinstanz nicht geeignet, wenn das Ziel ein transparentes und auditierbares Qualitätsmodell ist.
+
+Für die Modellbildung folgt daraus, dass KI-gestützte Verfahren nur ergänzend eingesetzt werden sollten. Sie können Hinweise, Plausibilitätsbewertungen oder Verbesserungsvorschläge erzeugen, sollten aber nicht die alleinige Grundlage des Scores bilden. Die eigentliche Scoringlogik bleibt regelbasiert, dokumentiert und nachvollziehbar. KI-basierte Ergebnisse werden als zusätzliche Evidenzebene behandelt und müssen im Reporting entsprechend gekennzeichnet werden.
+
+\subsubsection{Zusammenfassung der empirischen Modellanforderungen}
+
+Zusammenfassend bestätigen die Interviews zentrale literaturbasierte Qualitätsdimensionen wie Vollständigkeit, Konformität, Zugänglichkeit, Interoperabilität und Wiederverwendbarkeit. Gleichzeitig konkretisieren sie mehrere Bewertungslücken, die für den GovData- und DCAT-AP.de-Kontext besonders relevant sind. Dazu gehören semantische Aussagekraft, relative Feldrelevanz, technische Nutzbarkeit, Metadaten-Daten-Kongruenz, kontextsensitive Gewichtung und verständliches Reporting.
+
+Für die weitere Modellbildung ergeben sich daraus fünf zentrale Anforderungen. Erstens muss formale Validierung als eigene Basisschicht berücksichtigt werden, ohne sie mit Gesamtqualität gleichzusetzen. Zweitens muss Vollständigkeit kontextsensitiv und feldrelevanzbezogen operationalisiert werden. Drittens müssen semantische Qualitätsaspekte ergänzt werden, insbesondere bei Titel, Beschreibung, Keywords und Kategorien. Viertens muss die technische Nutzbarkeit der referenzierten Ressourcen geprüft werden. Fünftens muss das Bewertungsmodell transparente Teilscores und konkrete Verbesserungshinweise erzeugen.
+
+Die Interviewauswertung liefert damit keine eigenständige Alternativsystematik zur Literatur, sondern eine praxisbezogene Präzisierung und Priorisierung der literaturbasierten Qualitätsdimensionen. Sie bildet die empirische Grundlage für die im folgenden Abschnitt vorgenommene Ableitung relevanter Qualitätsdimensionen.
+
+\section{Ableitung relevanter Qualitätsdimensionen}
+
+Die Qualitätsdimensionen werden nicht unmittelbar aus einem einzelnen bestehenden Modell übernommen, sondern durch eine Synthese aus Literatur, identifizierten Bewertungslücken und Interviewbefunden abgeleitet. Die Literatur liefert etablierte Qualitätskonzepte und bereits operationalisierte Metriken. Die Problemanalyse zeigt, welche Aspekte bestehender Bewertungsansätze im DCAT-AP.de- und GovData-Kontext nur unvollständig abdecken. Die Experteninterviews ergänzen diese Perspektive durch praxisbezogene Anforderungen und Hinweise auf besonders relevante Qualitätsprobleme.
+
+Im ersten Schritt werden aus den in Kapitel~2 dargestellten Ansätzen wiederkehrende Qualitätsdimensionen und Metriken extrahiert. Diese werden anschließend mit den in Abschnitt~2.7 beschriebenen Bewertungslücken sowie mit den Ergebnissen der Interviewauswertung abgeglichen. Ziel dieses Vorgehens ist nicht die vollständige Übernahme vorhandener Modelle, sondern die Bildung einer domänenspezifischen Longlist von Kandidatendimensionen für die Bewertung von DCAT-AP.de-Metadaten.
+
+Eine Dimension wird in die Longlist aufgenommen, wenn sie die folgenden Kriterien erfüllt:
+
+\begin{enumerate}
+    \item Sie ist in mindestens einem relevanten Literaturansatz verankert.
+    \item Sie wird durch Interviewbefunde gestützt oder ist für den GovData-Kontext plausibel begründbar.
+    \item Sie ist für die Bewertung von DCAT-AP.de-Metadaten fachlich relevant.
+    \item Sie lässt sich zumindest durch einen Indikator operationalisieren.
+    \item Sie wird nicht vollständig durch eine andere Dimension abgedeckt.
+\end{enumerate}
+
+Tabelle~\ref{tab:longlist-kandidatendimensionen} zeigt die auf dieser Grundlage gebildete Longlist. Sie bündelt unterschiedliche Konzepte aus der Literatur und ordnet sie den Interviewbefunden zu. Die Longlist ist dabei noch nicht als finales Bewertungsmodell zu verstehen.
+
+\begin{table}[h!]
+\centering
+\tiny
+\rowcolors{1}{white}{white}
+\renewcommand{\arraystretch}{1}
+% \hspace*{-1.5cm}
+\begin{tabularx}{\textwidth}{p{0.1cm} p{3cm} X p{4cm}}
+\hline
+\textbf{Nr.} &
+\textbf{Dimension} &
+\textbf{Bezugsquellen} &
+\textbf{Interviewbezug} \\
+\hline
+
+1 &
+Formale und syntaktische Konformität &
+\textit{Conformance} \cite{Neumaier2016MetadataQuality}; \textit{DCAT-AP conformity} \cite{wentzel2023extensive,data_europa}; \textit{syntactic validity}, \textit{consistency} \cite{Zaveri2016LinkedDataQuality}; SHACL-Constraints für Kardinalitäten, Datentypen, Klassen, Properties und Wertebereiche \cite{W3CSHACL}; \textit{conformity} \cite{iso25012} &
+K1.1; K3.1--K3.5; K9.2; (I1\_002; I1\_027--I1\_029; I3\_015; I3\_017--I3\_018) \\ \hline
+
+2 &
+Vollständigkeit und feldbezogene Reichhaltigkeit &
+\textit{Completeness}, \textit{appropriate amount of data}, \textit{value-added} \cite{wang1996beyond}; \textit{completeness} \cite{iso25012}; FAIR F2, R1 \cite{wilkinson2016fair}; \textit{schema completeness}, \textit{property completeness} \cite{Zaveri2016LinkedDataQuality}; \textit{Existence} \cite{Neumaier2016MetadataQuality}; feldbezogene MQA-Metriken \cite{wentzel2023extensive,data_europa}; \textit{completeness omission} \cite{noguerasiso_quality_metadata} &
+K1.1--K1.3; K2.1--K2.4; (I1\_007--I1\_010; I2\_026; I3\_002--I3\_003; I3\_013) \\ \hline
+
+3 &
+Auffindbarkeit und Identifizierbarkeit &
+FAIR F1--F4 \cite{wilkinson2016fair}; \textit{Findability}: keywords, categories, spatial search, temporal search \cite{wentzel2023extensive,data_europa}; \textit{Discovery}: \texttt{dct:title}, \texttt{dct:description}, \texttt{dcat:keyword} \cite{Neumaier2016MetadataQuality}; DCAT-Identifikatoren und Katalogmodell \cite{W3CDCAT3}; \textit{relevance} \cite{wang1996beyond,Zaveri2016LinkedDataQuality} &
+K1.3; K4.1; K4.4; K4.6; K6.1; (I2\_008; I2\_027; I3\_005; I3\_028--I3\_029) \\ \hline
+
+4 &
+Technische Zugänglichkeit und Abrufbarkeit &
+FAIR A1, A1.1, A2 \cite{wilkinson2016fair}; \textit{availability}, \textit{dereferenceability} \cite{Zaveri2016LinkedDataQuality}; \textit{Access}, \textit{AccessURL}, \textit{Retrievable} \cite{Neumaier2016MetadataQuality}; \textit{Accessibility}: accessURL, downloadURL, URL availability \cite{wentzel2023extensive,data_europa} &
+K5.1--K5.3; K8.2; (I1\_015; I1\_019; I1\_024--I1\_025; I2\_011; I2\_028; I2\_046) \\ \hline
+
+5 &
+Aktualität und temporale Konsistenz &
+\textit{Timeliness} \cite{wang1996beyond}; \textit{currentness} \cite{iso25012}; \textit{timeliness}, \textit{freshness}, \textit{currency} \cite{Zaveri2016LinkedDataQuality}; \textit{Date}, \textit{Preservation} \cite{Neumaier2016MetadataQuality}; \texttt{dct:issued}, \texttt{dct:modified} \cite{wentzel2023extensive,data_europa}; \textit{temporal consistency}, \textit{temporal validity} \cite{noguerasiso_quality_metadata} &
+K5.3; K7.5; (I1\_019; I1\_024--I1\_025) \\ \hline
+
+6 &
+Interoperabilität und Linked-Data-Reife &
+FAIR I1--I3 \cite{wilkinson2016fair}; \textit{interoperability}, \textit{interlinking}, \textit{reuse of existing terms}, \textit{reuse of vocabularies}, \textit{dereferenceability} \cite{Zaveri2016LinkedDataQuality}; \textit{Interoperability} \cite{wentzel2023extensive,data_europa}; RDF-/DCAT-basierte Katalogbeschreibung \cite{W3CDCAT3,W3CRDF11Concepts}; Linked-Data-Prinzipien \cite{BernersLee2006LinkedData} &
+K1.4; K6.1--K6.5; (I1\_020--I1\_022; I2\_003--I2\_006; I2\_029; I2\_055--I2\_056; I3\_018) \\ \hline
+
+7 &
+Vokabular-, Normdaten- und Klassifikationsqualität &
+FAIR I2 \cite{wilkinson2016fair}; MQA-Vokabularmetriken für Format, Lizenz, Zugriffsrechte und Kategorien \cite{wentzel2023extensive,data_europa}; \textit{vocabulary reuse}, \textit{semantic accuracy} \cite{Zaveri2016LinkedDataQuality}; \textit{thematic classification correctness}, \textit{domain consistency} \cite{noguerasiso_quality_metadata} &
+K3.3; K4.6; K6.2--K6.3; K10.3; (I1\_022; I1\_041; I2\_005; I2\_055--I2\_056; I3\_018; I3\_028) \\ \hline
+
+8 &
+Wiederverwendbarkeit und organisatorische Nutzbarkeit &
+FAIR R1, R1.1, R1.2, R1.3 \cite{wilkinson2016fair}; \textit{Reusability}: license, access rights, contact point, publisher \cite{wentzel2023extensive,data_europa}; \textit{Rights}, \textit{OpenLicense}, \textit{Contact} \cite{Neumaier2016MetadataQuality}; \textit{value-added}, \textit{relevance} \cite{wang1996beyond} &
+K1.3; K2.3; K5.4; K7.1; (I2\_030--I2\_031; I3\_021) \\ \hline
+
+9 &
+Format- und Maschinenlesbarkeitsqualität &
+\textit{FileFormat}, \textit{FormatAccr}, \textit{OpenFormat}, \textit{MachineRead} \cite{Neumaier2016MetadataQuality}; format, media type, format vocabulary, non-proprietary format, machine readability \cite{wentzel2023extensive,data_europa}; FAIR R1.3 \cite{wilkinson2016fair}; \textit{versatility}, \textit{interoperability} \cite{Zaveri2016LinkedDataQuality} &
+K5.4; K8.1; (I2\_028; I2\_045; I3\_020--I3\_021) \\ \hline
+
+10 &
+Semantische Aussagekraft und Verständlichkeit &
+\textit{interpretability}, \textit{ease of understanding}, \textit{concise representation} \cite{wang1996beyond}; \textit{understandability} \cite{iso25012}; \textit{understandability}, \textit{interpretability} \cite{Zaveri2016LinkedDataQuality}; \textit{quality of free text} \cite{noguerasiso_quality_metadata} &
+K4.1--K4.4; K10.2; (I1\_035; I1\_043--I1\_044; I2\_008--I2\_010; I2\_027; I3\_005) \\ \hline
+
+11 &
+Inhaltliche Plausibilität und semantische Konsistenz &
+\textit{semantic accuracy}, \textit{consistency}, \textit{no contradictory values}, \textit{correct annotations} \cite{Zaveri2016LinkedDataQuality}; \textit{conceptual consistency}, \textit{domain consistency}, \textit{nonquantitative attribute correctness} \cite{noguerasiso_quality_metadata}; \textit{accuracy}, \textit{consistent representation} \cite{wang1996beyond}; \textit{accuracy}, \textit{consistency} \cite{iso25012}; ontologische Repräsentationsdefizite \cite{wand1996anchoring} &
+K4.5; K4.6; K8.3; (I2\_011; I2\_047; I3\_010; I3\_028--I3\_029) \\ \hline
+
+12 &
+Metadaten-Daten-Kongruenz &
+\textit{FormatAccr}, \textit{SizeAccr}, \textit{Retrievable} \cite{Neumaier2016MetadataQuality}; \textit{nonquantitative attribute correctness}, \textit{positional correctness}, \textit{domain consistency} \cite{noguerasiso_quality_metadata}; \textit{accuracy}, \textit{consistency} \cite{Zaveri2016LinkedDataQuality}; FAIR R1: genaue und relevante Attribute \cite{wilkinson2016fair} &
+K8.1--K8.5; (I2\_013; I2\_045--I2\_047; I2\_059; I3\_020--I3\_022) \\ \hline
+
+13 &
+Räumliche und domänenspezifische Kontextqualität &
+\textit{positional correctness}, spatial domain consistency \cite{noguerasiso_quality_metadata}; geographic search, \texttt{dct:spatial} \cite{wentzel2023extensive,data_europa}; spatial information \cite{Neumaier2016MetadataQuality}; FAIR R1.3 \cite{wilkinson2016fair}; \textit{fitness for use}, \textit{relevance} \cite{wang1996beyond}; ISO 19157 als geodatenbezogener Qualitätsrahmen \cite{ISO19157} &
+K7.1--K7.3; K8.4; (I1\_006; I1\_009--I1\_010; I1\_031--I1\_033; I1\_040; I2\_013; I2\_059; I3\_022) \\ \hline
+
+14 &
+Vertrauenswürdigkeit, Provenienz und Verantwortlichkeit &
+\textit{believability}, \textit{reputation}, \textit{objectivity} \cite{wang1996beyond}; \textit{credibility}, \textit{traceability} \cite{iso25012}; \textit{trustworthiness}, \textit{reputation} \cite{Zaveri2016LinkedDataQuality}; FAIR R1.2 \cite{wilkinson2016fair}; publisher, contact point \cite{wentzel2023extensive,data_europa} &
+K2.3; K6.2; K7.5; (I2\_030--I2\_031) \\ \hline
+
+15 &
+Nutzungsrelevanz und \textit{Fit for Purpose} &
+\textit{fitness for use}, \textit{relevance}, \textit{value-added}, \textit{appropriate amount of data} \cite{wang1996beyond}; Datenqualität im Nutzungskontext \cite{StrongLeeWang1997}; kontextabhängige Relevanz von Qualitätsmerkmalen \cite{iso25012}; FAIR R1/R1.3 \cite{wilkinson2016fair}; \textit{relevance} \cite{Zaveri2016LinkedDataQuality} &
+K1.3; K7.1; K7.4--K7.5; (I1\_006; I1\_047--I1\_049) \\ \hline
+
+\end{tabularx}
+\caption{Longlist gebündelter Kandidatendimensionen}
+\label{tab:longlist-kandidatendimensionen}
+\end{table}
+
+Die Longlist enthält eine hohe Zahl potenziell relevanter Dimensionen. Für ein prototypisch operationalisierbares Bewertungsmodell ist diese Struktur jedoch zu umfangreich. Zum einen würden sich zahlreiche Indikatoren überschneiden. Zum anderen ist ein solches Modell nur eingeschränkt nachvollziehbar, schwer zu implementieren und in der Evaluation schlecht vergleichbar. Daher werden die Kandidatendimensionen im nächsten Schritt zu fünf Hauptdimensionen verdichtet.
+
+Die Verdichtung folgt zwei Prinzipien. Erstens werden Dimensionen zusammengeführt, wenn sie dieselbe Bewertungsfunktion erfüllen.
+Zweitens werden Dimensionen nicht danach gruppiert, aus welchem Literaturmodell sie stammen, sondern danach, welchen Qualitätsaspekt sie im DCAT-AP.de-Kontext prüfen.
+Tabelle \ref{tab:finale-qualitaetsdimensionen} visualisiert die finalen Dimensionen und ihre Bewertungsfunktion im Modell.
+Zu beachten ist das bestimmte Dimensionen der Longlist auf mehrere finale Dimensionen aufgeteilt wurden, da hier eine exakte Zuordnung nicht möglich ist.
+
+\begin{table}[H]
+\centering
+\caption{Verdichtung der Kandidatendimensionen zu finalen Qualitätsdimensionen}
+\label{tab:finale-qualitaetsdimensionen}
+\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{p{0.03\textwidth} p{0.16\textwidth} >{\raggedright\arraybackslash}p{0.43\textwidth} p{0.28\textwidth}}
+\hline
+\textbf{Nr.} & \textbf{Finale Dimension} & \textbf{Gebündelte Kandidatendimensionen} & \textbf{Bewertungsfunktion im Modell} \\
+\hline
+
+-- &
+Basiskonformität &
+1. Formale und syntaktische Konformität &
+Wird als vorgelagerter Validierungsstatus behandelt. Die formale DCAT-AP.de-Konformität ist Voraussetzung der Bewertung, aber keine eigenständige Qualitätsdimension im Score. \\
+\hline
+
+1 &
+Auffindbarkeit &
+2. Vollständigkeit und feldbezogene Reichhaltigkeit \newline
+3. Auffindbarkeit und Identifizierbarkeit \newline
+5. Aktualität und temporale Konsistenz &
+Bewertet, ob ein Datensatz im Metadatenportal gefunden, identifiziert und grundlegend eingeordnet werden kann. \\
+\hline
+
+2 &
+Zugänglichkeit &
+4. Technische Zugänglichkeit und Abrufbarkeit \newline
+5. Aktualität und temporale Konsistenz \newline
+9. Format- und Maschinenlesbarkeitsqualität \newline
+12. Metadaten-Daten-Kongruenz &
+Bewertet, ob die in den Metadaten beschriebene Ressource technisch erreichbar und praktisch nutzbar ist. \\
+\hline
+
+3 &
+Nachnutzbarkeit &
+6. Interoperabilität und Linked-Data-Reife \newline
+7. Vokabular-, Normdaten- und Klassifikationsqualität \newline
+8. Wiederverwendbarkeit und rechtlich-organisatorische Nutzbarkeit \newline
+14. Vertrauenswürdigkeit, Provenienz und Verantwortlichkeit &
+Bewertet, ob Metadaten und Ressourcen über den bloßen Zugriff hinaus rechtlich, organisatorisch und maschinell weiterverwendbar sind. \\
+\hline
+
+4 &
+Aussagekraft &
+10. Semantische Aussagekraft und Verständlichkeit \newline
+11. Inhaltliche Plausibilität und semantische Konsistenz \newline
+12. Metadaten-Daten-Kongruenz \newline
+13. Räumliche und domänenspezifische Kontextqualität \newline
+15. Nutzungsrelevanz und Fit for Purpose &
+Bewertet, ob vorhandene Metadaten inhaltlich verständlich, plausibel und kontextangemessen sind. \\
+\hline
+\end{tabular}
+\end{table}
+
+% \section{Ableitung formaler, technischer und semantischer Einzelindikatoren}
+
+% Die fünf Qualitätsdimensionen beschreiben zunächst abstrakte Bewertungsbereiche. Für die prototypische Operationalisierung müssen diese Bereiche in konkrete, prüfbare Einzelindikatoren überführt werden. Ein Indikator übersetzt eine Qualitätsdimension in eine messbare oder nachvollziehbar bewertbare Prüflogik. Während die Dimension festlegt, welcher Qualitätsaspekt betrachtet wird, bestimmt der Indikator, welches Metadatenfeld, welche Ressource oder welche Relation geprüft wird.
+
+% Für dieses Modell unterscheiden wir zwischen drei unterschiedlichen Qualitätsindikatoren.
+% \textbf{Formale Indikatoren} prüfen hauptsächlich Pflichtfeldkonformität größtenteils durch boolsche Prüfungen in folgender Form: hier random check einfügen.
+% In den Folgenden tabellarischen Darstellungen wird ein formaler Indikator durch \texttt{FI} abgekürzt.
+
+% Die \textbf{Technischen Indikatoren} prüfen technische Aspekte wie Beispielsweise Erreichbarkeit der \texttt{downloadURL}. Diese werden durch \texttt{TI} abgekürzt.
+
+% \textbf{Semantische Indikatoren} beschreiben die weicheren Indikatoren die durch eine bloße technische Prüfung nicht abgedeckt werden können.
+% Sie prüfen unter anderem semantische Aussagekraft, Verständlichkeit sowie inhaltliche Plausibilität.
+
+% Bezeichnung des Indikators,
+% • zugeordnete Qualit ¨atsdimension,
+% • gepr ¨uftes DCAT-AP.de-Element,
+% • Pr ¨ufgegenstand,
+% • Pr ¨ufmethode,
+% • Skalentyp,
+% • Bewertungslogik,
+% • Automatisierbarkeit,
+% • m ¨oglicher Reportinghinweis
+
+% Durch diese Struktur wird sichergestellt, dass die Indikatoren nicht nur fachlich begründet, sondern auch technisch umsetzbar und im Reporting nachvollziehbar sind. Gleichzeitig erlaubt der Steckbrief eine klare Trennung zwischen regelbasierten Prüfungen, technischen Verfügbarkeitsprüfungen, semantischen Plausibilitätsprüfungen und kontextabhängigen Bewertungen.
+
+
+
+\section{Ableitung formaler, technischer und semantischer Einzelindikatoren}
+
+Die vier Qualitätsdimensionen Auffindbarkeit, Zugänglichkeit, Nachnutzbarkeit und Aussagekraft beschreiben zunächst abstrakte Bewertungsbereiche. Für die prototypische Operationalisierung müssen diese Bereiche in konkrete, prüfbare Einzelindikatoren überführt werden. Ein Indikator übersetzt eine Qualitätsdimension in eine messbare oder nachvollziehbar bewertbare Prüflogik. Während die Dimension festlegt, welcher Qualitätsaspekt betrachtet wird, bestimmt der Indikator, welches Metadatenfeld, welche Ressource oder welche Relation geprüft wird.
+
+Die formale DCAT-AP.de-Konformität wird dabei nicht als eigene Qualitätsdimension geführt, sondern als vorgelagerter Basisindikator behandelt. Sie beschreibt, ob ein Metadatensatz die strukturellen und syntaktischen Mindestanforderungen des Standards erfüllt. Diese Mindestanforderungen werden im GovData-Kontext bereits durch SHACL-basierte Validierung adressiert. Das Bewertungsmodell soll diese Prüfung daher nicht duplizieren, sondern diejenigen Qualitätsaspekte erfassen, die über die formale Standardkonformität hinausgehen. Der eigentliche Qualitätsscore wird folglich aus den vier Dimensionen Auffindbarkeit, Zugänglichkeit, Nachnutzbarkeit und Aussagekraft gebildet.
+
+Die Ableitung der Einzelindikatoren erfolgt regelgeleitet. Ausgangspunkt bilden die vier finalen Qualitätsdimensionen. Für jede Dimension werden zunächst Qualitätskriterien formuliert, die beschreiben, welche Eigenschaft der Metadaten oder der beschriebenen Ressource bewertet werden soll. Anschließend wird geprüft, durch welche Einzelindikatoren diese Kriterien operationalisiert werden können.
+
+Die Auswahl der Indikatoren orientiert sich an sechs Kriterien:
+
+\begin{enumerate}
+    \item \textbf{Standardbezug:} Der Indikator ist aus verpflichtenden, empfohlenen oder optionalen Anforderungen des DCAT-AP.de-Standards ableitbar.
+    \item \textbf{Konventionsbezug:} Der Indikator greift eine technische, semantische oder organisatorische Konvention des DCAT-AP.de-Konventionenhandbuchs auf.
+    \item \textbf{Literaturbezug:} Der Indikator schließt an etablierte Metriken bestehender Qualitätsmodelle an.
+    \item \textbf{Interviewbezug:} Der Indikator adressiert ein in den Experteninterviews benanntes Qualitätsproblem.
+    \item \textbf{Operationalisierbarkeit:} Der Indikator ist mit den im Prototyp verfügbaren Datenquellen und Verfahren zumindest teilweise prüfbar.
+    \item \textbf{Reportingfähigkeit:} Das Prüfergebnis ist so interpretierbar, dass daraus ein verständlicher Reportinghinweis abgeleitet werden kann.
+\end{enumerate}
+
+Aufgenommen werden Indikatoren, die über die reine Pflichtfeldprüfung hinausgehen. Dazu zählen empfohlene oder optionale Angaben, technische Erreichbarkeitsprüfungen, kontrollierte Vokabularnutzung, URI-Nutzung statt Plain Literals, Format- und Lizenzqualität, semantische Aussagekraft sowie begrenzte Plausibilitäts- und Kongruenzprüfungen. Die Auswahl erhebt damit keinen Anspruch auf eine vollständige Abbildung aller theoretisch denkbaren Qualitätsaspekte von Metadaten. Priorisiert werden solche Indikatoren, die für den GovData-Kontext fachlich relevant, aus Standard oder Konventionen begründbar, prototypisch operationalisierbar und für ein menschenlesbares Reporting geeignet sind.
+Für das Bewertungsmodell werden drei Indikatortypen unterschieden. 
+
+\textbf{Formale Indikatoren} prüfen regelbasierte Eigenschaften der Metadatenstruktur. Dazu gehören insbesondere empfohlene und optionale Felder, kontrollierte Vokabulare, URI-Strukturen, Wertebereiche sowie nicht-blockierende SHACL-Warnings und SHACL-Infos. Sie werden im Folgenden mit \texttt{FI} abgekürzt.
+
+\textbf{Technische Indikatoren} prüfen technisch beobachtbare Eigenschaften der beschriebenen Ressource oder Zugriffsinfrastruktur. Dazu gehören insbesondere die Erreichbarkeit von Zugriffspfaden, die Abrufbarkeit von Dateien oder Diensten, HTTP-Statuscodes, Formatangaben, Medientypen und Maschinenlesbarkeit. Sie werden mit \texttt{TI} abgekürzt.
+
+\textbf{Semantische Indikatoren} prüfen inhaltliche, sprachliche oder kontextbezogene Eigenschaften, die nicht allein durch Feldexistenz oder syntaktische Validität erfasst werden können. Dazu gehören insbesondere Aussagekraft, Verständlichkeit, Redundanz, thematische Passung und Plausibilität von Metadatenangaben. Sie werden mit \texttt{SI} abgekürzt.
+
+Die konkrete technische Implementierung der Indikatoren wird in Kapitel~4 beschrieben. Der vorliegende Abschnitt definiert die konzeptionelle Funktion der Indikatoren, ihre Zuordnung zu den Qualitätsdimensionen und die jeweils geprüften DCAT-AP.de-Elemente.
+
+\subsection{Auffindbarkeitsindikatoren}
+
+Auffindbarkeitsindikatoren prüfen, ob ein Datensatz im Metadatenportal über zusätzliche Such-, Filter- und Identifikationsmerkmale besser gefunden und eingeordnet werden kann. Verpflichtende Basisfelder wie Titel und Beschreibung werden hier nicht als Vorhandenseinsindikatoren aufgenommen, da sie bereits durch SHACL geprüft werden. Bewertet werden stattdessen empfohlene, optionale oder qualitätssteigernde Angaben.
+
+\begin{table}[H]
+\centering
+\caption{Auffindbarkeitsindikatoren}
+\label{tab:auffindbarkeitsindikatoren}
+\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\rowcolors{1}{white}{white}
+\begin{tabular}{p{0.08\textwidth} p{0.34\textwidth} p{0.14\textwidth} p{0.20\textwidth} p{0.20\textwidth}}
+\hline
+\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Indikatortyp} & \textbf{Key of \texttt{dcat:Dataset}} & \textbf{Key of \texttt{dcat:Distribution}} \\
+\hline
+A1 & Schlagwörter angegeben & FI & \texttt{dcat:keyword} &  \\
+\hline
+A2 & Themenkategorie angegeben & FI & \texttt{dcat:theme} &  \\
+\hline
+A3 & Themenkategorie aus kontrolliertem Vokabular & FI & \texttt{dcat:theme} &  \\
+\hline
+A4 & Identifier zur stabilen Identifikation angegeben & FI & \texttt{dct:identifier}; \texttt{adms:identifier} &  \\
+\hline
+A5 & Räumliche Suchangabe angegeben & FI & \texttt{dct:spatial} &  \\
+\hline
+A6 & Räumliche Suchangabe als IRI oder strukturierte Ressource & FI & \texttt{dct:spatial} &  \\
+\hline
+ A7 & Zeitliche Abdeckung angegeben & FI & \texttt{dct:temporal} &  \\
+\hline
+A8 & Veröffentlichungsdatum angegeben & FI & \texttt{dct:issued} & \texttt{dct:issued} \\
+\hline
+A9 & Änderungsdatum angegeben & FI & \texttt{dct:modified} & \texttt{dct:modified} \\
+\hline
+A10 & Aktualisierungsfrequenz angegeben & FI & \texttt{dct:accrualPeriodicity} &  \\
+\hline
+A11 & Aktualisierungsfrequenz aus kontrolliertem Vokabular & FI & \texttt{dct:accrualPeriodicity} &  \\
+\hline
+A12 & Ursprüngliche Webseite angegeben & FI & \texttt{dcat:landingPage} &  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Zugänglichkeitsindikatoren}
+
+Zugänglichkeitsindikatoren prüfen, ob die in den Metadaten beschriebene Ressource technisch erreichbar und praktisch abrufbar ist. Das bloße Vorhandensein der verpflichtenden \texttt{dcat:accessURL} wird nicht erneut als Indikator aufgenommen. Bewertet werden stattdessen technische Erreichbarkeit, zusätzliche Download- und Serviceangaben, Formatqualität sowie grobe technische Kongruenz zwischen Metadaten und Ressource.
+
+\begin{table}[H]
+\centering
+\caption{Zugänglichkeitsindikatoren}
+\label{tab:zugaenglichkeitsindikatoren}
+\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\rowcolors{1}{white}{white}
+\begin{tabular}{p{0.08\textwidth} p{0.34\textwidth} p{0.14\textwidth} p{0.20\textwidth} p{0.20\textwidth}}
+\hline
+\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Indikatortyp} & \textbf{Key of \texttt{dcat:Dataset}} & \textbf{Key of \texttt{dcat:Distribution}} \\
+\hline
+Z1 & Access-URL technisch erreichbar & TI &  & \texttt{dcat:accessURL} \\
+\hline
+Z2 & Download-URL angegeben & FI &  & \texttt{dcat:downloadURL} \\
+\hline
+Z3 & Download-URL technisch erreichbar & TI &  & \texttt{dcat:downloadURL} \\
+\hline
+Z4 & HTTP-Statuscode erfolgreich & TI &  & \texttt{dcat:accessURL}; \texttt{dcat:downloadURL} \\
+\hline
+Z5 & Keine Timeout- oder Verbindungsfehler & TI &  & \texttt{dcat:accessURL}; \texttt{dcat:downloadURL} \\
+\hline
+Z6 & Data-Service-Verweis angegeben & FI &  & \texttt{dcat:accessService} \\
+\hline
+Z7 & Data-Service-Endpunkt erreichbar & TI &  & \texttt{dcat:accessService}; \texttt{dcat:endpointURL} \\
+\hline
+Z8 & Formatangabe angegeben & FI &  & \texttt{dct:format} \\
+\hline
+Z9 & Formatangabe aus kontrolliertem Vokabular & FI &  & \texttt{dct:format} \\
+\hline
+Z10 & Medientyp angegeben & FI &  & \texttt{dcat:mediaType} \\
+\hline
+Z11 & Medientyp als IANA-Medientyp prüfbar & FI &  & \texttt{dcat:mediaType} \\
+\hline
+Z12 & Maschinenlesbares Format & TI &  & \texttt{dct:format}; \texttt{dcat:mediaType} \\
+\hline
+Z13 & Nicht-proprietäres Format & TI &  & \texttt{dct:format}; \texttt{dcat:mediaType} \\
+\hline
+Z14 & Formatkongruenz zwischen Metadaten und Ressource & TI &  & \texttt{dct:format}; \texttt{dcat:mediaType}; \texttt{dcat:downloadURL} \\
+\hline
+Z15 & Dateigrößenangabe plausibel & TI &  & \texttt{dcat:byteSize}; \texttt{dcat:downloadURL} \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Nachnutzbarkeitsindikatoren}
+
+Nachnutzbarkeitsindikatoren prüfen, ob Metadaten und Ressourcen über den bloßen Zugriff hinaus rechtlich, organisatorisch und maschinell weiterverwendbar sind. Verpflichtende Angaben, die bereits durch SHACL-Constraints geprüft werden, werden nicht als reine Vorhandenseinsindikatoren aufgenommen. Bewertet werden stattdessen zusätzliche, empfohlene, optional vorhandene oder qualitativ weiterführende Eigenschaften.
+
+\begin{table}[H]
+\centering
+\caption{Nachnutzbarkeitsindikatoren}
+\label{tab:nachnutzbarkeitsindikatoren}
+\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\rowcolors{1}{white}{white}
+\begin{tabular}{p{0.08\textwidth} p{0.34\textwidth} p{0.14\textwidth} p{0.20\textwidth} p{0.20\textwidth}}
+\hline
+\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Indikatortyp} & \textbf{Key of \texttt{dcat:Dataset}} & \textbf{Key of \texttt{dcat:Distribution}} \\
+\hline
+N1 & Lizenz als offene Lizenz klassifizierbar & TI &  & \texttt{dct:license} \\
+\hline
+N2 & Zugriffsbeschränkungen angegeben & FI & \texttt{dct:accessRights} & \texttt{dct:accessRights} \\
+\hline
+N3 & Zugriffsbeschränkung aus kontrolliertem Vokabular & FI & \texttt{dct:accessRights} & \texttt{dct:accessRights} \\
+\hline
+N4 & Herausgeber als strukturierter Agent modelliert & FI & \texttt{dct:publisher} &  \\
+\hline
+N5 & Kontaktpunkt angegeben & FI & \texttt{dcat:contactPoint} &  \\
+\hline
+N6 & Kontaktpunkt enthält nutzbare E-Mail oder URL & FI & \texttt{dcat:contactPoint} &  \\
+\hline
+N7 & Kontakt-URL technisch erreichbar & TI & \texttt{dcat:contactPoint} &  \\
+\hline
+N8 & Provenienzinformation angegeben & FI & \texttt{dct:provenance} &  \\
+\hline
+N9 & Qualitätsprozess-URI angegeben & FI & \texttt{dcatde:qualityProcessURI} &  \\
+\hline
+N10 & Qualitätsprozess-URI technisch erreichbar & TI & \texttt{dcatde:qualityProcessURI} &  \\
+\hline
+N11 & Kontrollierte Vokabulare in geeigneten Feldern genutzt & FI & \texttt{dcat:theme}; \texttt{dct:spatial}; \texttt{dct:language}; \texttt{dct:accrualPeriodicity} & \texttt{dct:format}; \texttt{dcat:mediaType}; \texttt{dct:accessRights} \\
+\hline
+N12 & URI-Nutzung statt Plain Literal in kontrolliert-vokabularfähigen Feldern & FI & \texttt{dcat:theme}; \texttt{dct:spatial}; \texttt{dct:language}; \texttt{dct:accrualPeriodicity} & \texttt{dct:format}; \texttt{dcat:mediaType}; \texttt{dct:accessRights} \\
+\hline
+N13 & Referenz auf Standards oder Spezifikationen angegeben & FI & \texttt{dct:conformsTo}; \texttt{dct:references} & \texttt{dct:conformsTo} \\
+\hline
+N14 & Dokumentationsseite angegeben und erreichbar & TI & \texttt{foaf:page} & \texttt{foaf:page} \\
+\hline
+N15 & Versionsinformation angegeben & FI & \texttt{owl:versionInfo} &  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Aussagekraftsindikatoren}
+
+Aussagekraftsindikatoren prüfen, ob vorhandene Metadaten inhaltlich verständlich, plausibel und kontextangemessen sind. Da Titel und Beschreibung bereits verpflichtend sind, wird nicht ihr Vorhandensein, sondern ihr Informationswert bewertet. Diese Indikatoren sind nur teilweise automatisierbar und werden deshalb als semantische Prüfungen ausgewiesen.
+
+\begin{table}[H]
+\centering
+\caption{Aussagekraftsindikatoren}
+\label{tab:aussagekraftsindikatoren}
+\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\rowcolors{1}{white}{white}
+\begin{tabular}{p{0.08\textwidth} p{0.34\textwidth} p{0.14\textwidth} p{0.20\textwidth} p{0.20\textwidth}}
+\hline
+\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Indikatortyp} & \textbf{Key of \texttt{dcat:Dataset}} & \textbf{Key of \texttt{dcat:Distribution}} \\
+\hline
+S1 & Mindestinformationswert des Titels & SI & \texttt{dct:title} & \texttt{dct:title} \\
+\hline
+S2 & Mindestinformationswert der Beschreibung & SI & \texttt{dct:description} & \texttt{dct:description} \\
+\hline
+S3 & Titel-Beschreibung-Redundanz & SI & \texttt{dct:title}; \texttt{dct:description} & \texttt{dct:title}; \texttt{dct:description} \\
+\hline
+S4 & Platzhalter- oder generische Beschreibung & SI & \texttt{dct:description} & \texttt{dct:description} \\
+\hline
+S5 & Keyword-Passung zur Beschreibung & SI & \texttt{dcat:keyword}; \texttt{dct:description} &  \\
+\hline
+S6 & Themenkategorie-Passung zur Beschreibung & SI & \texttt{dcat:theme}; \texttt{dct:description} &  \\
+\hline
+S7 & Plausibilität räumlicher Angaben zur Beschreibung & SI & \texttt{dct:spatial}; \texttt{dct:description} &  \\
+\hline
+S8 & Plausibilität zeitlicher Angaben zur Beschreibung & SI & \texttt{dct:temporal}; \texttt{dct:description} &  \\
+\hline
+S9 & Plausibilität von Änderungs- und Veröffentlichungsdatum & SI & \texttt{dct:issued}; \texttt{dct:modified} & \texttt{dct:issued}; \texttt{dct:modified} \\
+\hline
+S10 & Widerspruchsfreiheit zentraler Metadatenfelder & SI & \texttt{dct:title}; \texttt{dct:description}; \texttt{dcat:keyword}; \texttt{dcat:theme}; \texttt{dct:spatial}; \texttt{dct:temporal}; \texttt{dct:publisher} & \texttt{dct:format}; \texttt{dcat:mediaType} \\
+\hline
+S11 & Grobe Metadaten-Daten-Kongruenz & SI & \texttt{dct:title}; \texttt{dct:description}; \texttt{dcat:keyword}; \texttt{dcat:theme} & \texttt{dcat:downloadURL}; \texttt{dcat:accessURL} \\
+\hline
+\end{tabular}
+\end{table}
+
+% \section{Einordnung kontext- und KI-gestützter Analyseverfahren}
+
+% \section{Gewichtung und Aggregation der Einzelnindikatoren}
+
+\section{Zusammenfassung des konzeptionellen Bewertungsmodell}
+
+
+\chapter{Prototypische Operationalisierung}
+
+\section{Zielsetzung und Funktionsumfang des Prototyps}
+
+\section{Systemarchitektur des Prototyps}
+
+\section{Verarbeitung von DCAT-AP.de-Metadaten}
+
+\section{Verarbeitung von SHACL-Validierungsreports}
+
+\section{Implementierung der Qualitätsdimensionen und Einzelindikatoren}
+
+\section{Implementierung der Gewichtungs- und Scoringlogik}
+
+\section{Implementierung des Reporting-Mechanismus}
+
+\section{Technische Grenzen des Prototyps}
+
+
+\chapter{Evaluation}
+
+\section{Evaluationsdesign und Bewertungskriterien}
+
+\section{Daten- und Vergleichsbasis}
+
+\section{Beschreibung der Evaluationsdatensätze}
+
+\section{Anwendung des Bewertungsmodells auf ausgewählte Metadatensätze}
+
+\section{Analyse und Interpretation der Bewertungsergebnisse}
+
+\section{Bewertung der Nachvollziehbarkeit des Scorings}
+
+\section{Stärken, Grenzen, und Fehlklassifikationen des Modells}
+
+\section{Vertiefende Fallanalyse ausgewählter Bewertungsergebnisse}
+
+
+\chapter{Diskussion}
+
+\section{Beitrag der Arbeit zur Metadatenqualitätsbewertung im GovData-Kontext}
+
+\section{Bedeutung kontext- und semantikbezogener Prüfungen}
+
+\section{Potenziale und Grenzen KI-gestützter Verfahren}
+
+
+\chapter{Fazit und Ausblick}
+
+\section{Zusammenfassung der zentralen Ergebnisse}
+
+\section{Beantwortung der Forschungsfragen}
+
+\section{Limitationen}
+
+\section{Weiterer Forschungs- und Entwicklungsbedarf}

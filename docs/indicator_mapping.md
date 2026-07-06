@@ -21,7 +21,7 @@ gegen die MQA-Spezifikation belegt werden müssen.
 
 | Indikator | A/B/C | MQA-Metrik(en) | Agg. | Review | Begründung |
 |-----------|-------|----------------|------|--------|------------|
-| `find_keywords_count` | **B** | `keyword_availability` | any | ⚠ | MQA: Presence `dcat:keyword`; Prototyp: Anzahl im Band 3 ≤ k ≤ 10 (Handreichung: min. 3). |
+| `find_keywords_count` | **B** | `keyword_availability` | any | ⚠ | MQA: Presence `dcat:keyword`; Prototyp: Anzahl im Band 3 ≤ k ≤ 15 (ternär, Handreichung: min. 3). |
 | `find_theme_valid` | **B** | `category_availability` | any | | MQA: Presence `dcat:theme`; Prototyp: Wert aus kontrolliertem Vokabular. |
 | `find_temporal_coverage` | **A** | `temporal_availability` | any | ⚠ | Beide: zeitliche Abdeckung (start/end). Prototyp prüft zusätzlich `xs:date`/`dateTime`-Typ. |
 | `find_locn_geometry` | **B** | `spatial_availability` | any | | MQA: `dct:spatial` Presence; Prototyp: tatsächliche `locn:geometry` (nicht leer). |
@@ -37,12 +37,12 @@ gegen die MQA-Spezifikation belegt werden müssen.
 
 | Indikator | A/B/C | MQA-Metrik(en) | Agg. | Review | Begründung |
 |-----------|-------|----------------|------|--------|------------|
-| `acc_download_url` | **A** | `download_url_availability` | any | | Beide: Presence `dcat:downloadURL`. |
+| `acc_download_url` | **B** | `download_url_availability` | any | ⚠ | MQA: Presence `dcat:downloadURL` (≥1 Distribution). Prototyp: Anteil **aller** Distributionen mit downloadURL (graded) — strenger. |
 | `acc_download_url_response` | **A** | `download_url_status_code` | any | | Beide: HTTP-Auflösbarkeit der `downloadURL` (< 400). |
 | `acc_access_url_response` | **A** | `access_url_status_code` | any | | Beide: HTTP-Auflösbarkeit der `accessURL` (< 400). |
-| `acc_format` | **B** | `format_availability`, `format_media_type_vocabulary` | all | ⚠ | MQA: Format vorhanden + Vokabular (OR-Logik mit MediaType). Prototyp: Format vorhanden UND im EU-Vokabular — strenger, da MQA via MediaType-Treffer auch ohne Format-Vocab-Mitgliedschaft PASS gibt. |
-| `acc_media_type` | **B** | `media_type_availability`, `format_media_type_vocabulary` | all | ⚠ | MQA: MediaType vorhanden + Vokabular (kombiniert). Prototyp: IANA-URI-Form + IANA-Vokabular-Mitgliedschaft — strenger, da MQA keine IANA-URI-Form prüft. |
-| `acc_machine_readable_access` | **B** | `format_machine_readable` | any | | MQA: Listen-Lookup beste Distribution; Prototyp: Mittelwert aller Distributionen, 3 Stufen. |
+| `acc_format` | **B** | `format_availability`, `format_media_type_vocabulary` | all | ⚠ | MQA: Format vorhanden + Vokabular (OR-Logik mit MediaType). Prototyp: **Anteil** der Distributionen mit Format im EU-Vokabular (graded) — strenger. |
+| `acc_media_type` | **B** | `media_type_availability`, `format_media_type_vocabulary` | all | ⚠ | MQA: MediaType vorhanden + Vokabular (kombiniert). Prototyp: **Anteil** der Distributionen mit MediaType als IANA-URI im Vokabular (graded) — strenger, da MQA keine IANA-URI-Form prüft. |
+| `acc_machine_readable_access` | **B** | `format_machine_readable` | any | | MQA: Listen-Lookup beste Distribution; Prototyp: Mittelwert aller Distributionen (high +1 / mid +0.5 / none −0.5 Malus). |
 | `acc_format_non_proprietary` | **A** | `format_non_proprietary` | any | | Beide: nicht-proprietäres Format-URI aus EU-Vokabular. Prototyp: Anteil aller Distributionen. |
 | ~~`acc_format_congruence`~~ | **C** | — | — | 🚫 | **Aus dem Modell entfernt** (geblacklistet): schwer begründbar, hohe Fehleinschätzungsrate. Siehe `model_improvement_plan.md` §6.5. |
 | ~~`acc_distribution_model`~~ | **C** | — | — | 🚫 | **Aus dem Modell entfernt** (geblacklistet): heuristische Modellierungs-Interpretation, hohe Fehleinschätzungsrate. Siehe `model_improvement_plan.md` §6.5. |
@@ -54,11 +54,11 @@ gegen die MQA-Spezifikation belegt werden müssen.
 | Indikator | A/B/C | MQA-Metrik(en) | Agg. | Review | Begründung |
 |-----------|-------|----------------|------|--------|------------|
 | `reuse_dcat_ap_de_compliance` | **A** | `dcat_ap_compliance` | any | | Beide: DCAT-AP SHACL-Konformität via ITB-API. FAIL bei mindestens einer Verletzung. |
-| `reuse_license` | **B** | `license_availability`, `known_license` | any | ⚠ | MQA: Lizenz vorhanden + EU-Autoritäts-URI. Prototyp: DCAT-AP-DE-Vokabular auf **Distributionsebene**, nur freie Nutzung = PASS (eingeschränkt/unbekannt = FAIL) — strenger. |
+| `reuse_license` | **B** | `license_availability`, `known_license` | any | ⚠ | MQA: Lizenz vorhanden + EU-Autoritäts-URI. Prototyp: je Distribution nur freie DCAT-AP-DE-Lizenz = +1, sonst −0.5 Malus, dann Mittel (graded, Distributionsebene) — strenger. |
 | `reuse_access_rights` | **A** | `access_rights_availability`, `access_rights_vocabulary` | all | ⚠ | Beide: `accessRights` vorhanden + Vokabular. |
 | `reuse_publisher` | **B** | `publisher_availability` | any | | MQA: Presence `dct:publisher`; Prototyp: strukturierter `foaf:Agent`. |
 | `reuse_contact` | **B** | `contact_point_availability` | any | | MQA: Presence `dcat:contactPoint`; Prototyp: valide `vcard:hasEmail` oder `vcard:hasURL` (Konvention 01). PARTIAL wenn Kontakt ohne Kanal. |
-| `reuse_availability` | **C** | — | — | | MQA: keine Verfügbarkeits-Metrik; Prototyp: `dcatap:availability` (Dataset + Distributionen) gegen Planned-Availability-Vokabular. |
+| `reuse_availability` | **C** | — | — | | MQA: keine Verfügbarkeits-Metrik; Prototyp: **Anteil** der Distributionen mit `dcatap:availability` aus dem Planned-Availability-Vokabular (graded). |
 | `reuse_contributor_id` | **C** | — | — | | MQA: keine Metrik (DCAT-AP-DE `dcatde:contributorID`). |
 
 ---
@@ -93,8 +93,8 @@ Diese MQA-Metriken haben kein Prototyp-Gegenstück (balance §4.3 aus `docs/eval
 
 | Klasse | Anzahl | Indikatoren |
 |--------|--------|-------------|
-| **A** | 9 | `acc_download_url`, `acc_download_url_response`, `acc_access_url_response`, `acc_format_non_proprietary`, `find_temporal_coverage`, `find_issued_datetime`, `find_modified_datetime`, `reuse_dcat_ap_de_compliance`, `reuse_access_rights` |
-| **B** | 10 | `find_keywords_count`, `find_theme_valid`, `find_locn_geometry`, `find_political_geocoding`, `acc_format`, `acc_media_type`, `acc_machine_readable_access`, `reuse_license`, `reuse_publisher`, `reuse_contact` |
+| **A** | 8 | `acc_download_url_response`, `acc_access_url_response`, `acc_format_non_proprietary`, `find_temporal_coverage`, `find_issued_datetime`, `find_modified_datetime`, `reuse_dcat_ap_de_compliance`, `reuse_access_rights` |
+| **B** | 11 | `find_keywords_count`, `find_theme_valid`, `find_locn_geometry`, `find_political_geocoding`, `acc_download_url`, `acc_format`, `acc_media_type`, `acc_machine_readable_access`, `reuse_license`, `reuse_publisher`, `reuse_contact` |
 | **C** | 10 | `find_accrual_periodicity`, `find_geocoding_level`, `reuse_availability`, `reuse_contributor_id`, `expr_title_quality`, `expr_description_quality`, `expr_keyword_quality`, `expr_title_description_coherence`, `expr_thematic_consistency`, `expr_contextual_qualifiers` |
 | **Aktiv gesamt** | **29** | |
 | 🚫 Entfernt | 2 | `acc_format_congruence`, `acc_distribution_model` (geblacklistet, Code bleibt) |

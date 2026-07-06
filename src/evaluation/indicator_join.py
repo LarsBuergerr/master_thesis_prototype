@@ -119,6 +119,48 @@ def run_model_indicators(
     return pd.DataFrame(rows)
 
 
+def load_model_indicators_from_run(run_dir, *, file_suffix: str = ".rdf") -> pd.DataFrame:
+    """Load an **already-completed** prototype run into the same long table as
+    :func:`run_model_indicators` — so the MQA comparison can reuse a finished run
+    instead of re-scoring every file.
+
+    Reads each ``<run_dir>/<dataset>/result.json`` (the per-dataset output written
+    by a normal ``main.py`` run). ``file`` is set to ``<dataset><file_suffix>`` so
+    it matches the MQA side, which keys on the RDF filename (default ``.rdf``).
+    """
+    import json
+
+    run_dir = Path(run_dir)
+    rows = []
+    for result_path in sorted(run_dir.glob("*/result.json")):
+        data = json.loads(result_path.read_text())
+        file = result_path.parent.name + file_suffix
+        for dim, d in data.get("by_dimension", {}).items():
+            for ind in d.get("indicators", []):
+                status = ind.get("status")
+                if status in _NOT_COUNTED or status is None:
+                    model_pass = np.nan
+                else:
+                    model_pass = float(status == _PASS)
+                rows.append(
+                    {
+                        "file": file,
+                        "indicator": ind.get("indicator_id"),
+                        "model_dimension": dim,
+                        "model_status": status,
+                        "model_score": ind.get("score"),
+                        "model_pass": model_pass,
+                    }
+                )
+    if not rows:
+        raise FileNotFoundError(
+            f"No <dataset>/result.json found under {run_dir} — is this a run_outputs run dir?"
+        )
+    n_files = len({r["file"] for r in rows})
+    print(f"loaded model indicators from existing run: {run_dir} ({n_files} files)")
+    return pd.DataFrame(rows)
+
+
 # ---------------------------------------------------------------------------
 # 2. Join indicator ↔ MQA via the A/B/C mapping
 # ---------------------------------------------------------------------------
@@ -295,12 +337,18 @@ def build_all(
     recompute: bool = False,
     output_dir=None,
     mqa_options=None,
+    model_run_dir=None,
     **service_kwargs,
 ) -> dict:
     """Score both models (cached), join, and compute the evidence tables.
 
     Caches and writes all CSVs to ``output_dir`` (defaults to ``sample_dir``).
     Returns ``{"join": df, **summarise(join)}``.
+
+    Only MQA is ever scored here. For the prototype side there are three sources
+    (first available wins): the ``model_indicators.csv`` cache → an already-run
+    prototype run (``model_run_dir``, no re-scoring) → a fresh in-process scoring
+    of ``sample_dir`` via :class:`QualityMetricsService`.
     """
     sample_dir = Path(sample_dir)
     out = Path(output_dir) if output_dir is not None else sample_dir
@@ -312,6 +360,9 @@ def build_all(
     if model_csv.exists() and not recompute:
         model_long = pd.read_csv(model_csv)
         print(f"cache: {model_csv}")
+    elif model_run_dir is not None:
+        model_long = load_model_indicators_from_run(model_run_dir)
+        model_long.to_csv(model_csv, index=False)
     else:
         model_long = run_model_indicators(
             sample_dir, llm=llm, probe=probe, **service_kwargs

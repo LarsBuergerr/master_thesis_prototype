@@ -1,0 +1,336 @@
+% Benötigte Pakete:
+% \usepackage{longtable}
+% \usepackage{booktabs}
+% \usepackage{pdflscape}
+% \usepackage{array}
+
+\begingroup
+\tiny
+\renewcommand{\arraystretch}{1}
+
+\setlength{\LTleft}{-1.5cm}
+\setlength{\LTright}{0pt}
+
+\begin{longtable}{p{1cm} p{2.5cm} p{3.2cm} p{4.5cm} p{4.5cm}}
+\label{tab:kodierleitfaden}\\
+
+\toprule
+\textbf{Code} & \textbf{Kategorie} & \textbf{Definition} & \textbf{Kodierregel} & \textbf{Ankerbeispiel / Modellbezug} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Code} & \textbf{Kategorie} & \textbf{Definition} & \textbf{Kodierregel} & \textbf{Ankerbeispiel / Modellbezug} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{5}{r}{\textit{Fortsetzung auf der nächsten Seite}} \\
+\midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\multicolumn{5}{l}{\textbf{K1 Qualitätsverständnis und ideale Metadaten}} \\
+\midrule
+
+K1.1 & Mindestvalidität und Best Practice
+& Aussagen, die zwischen Mindestanforderungen und höherer Qualitätsstufe unterscheiden.
+& Codieren, wenn DCAT-AP.de-Validität, Pflichtanforderungen oder Best-Practice-Empfehlungen als Qualitätsstufen beschrieben werden.
+& Valide DCAT-AP.de-Lieferung als Minimalvoraussetzung; Best Practice als höhere Qualitätsstufe. Modellbezug: Trennung von Basiskonformität und Zusatzqualität. \\
+
+K1.2 & Qualität statt Quantität
+& Aussagen, die betonen, dass nicht möglichst viele, sondern die relevanten Felder in guter Qualität ausgefüllt sein sollten.
+& Codieren, wenn ein pragmatisches Qualitätsverständnis beschrieben wird, das relevante und sorgfältig gepflegte Felder höher bewertet als maximale Feldanzahl.
+& „Lieber Qualität statt Quantität.“ Modellbezug: keine reine Feldzählung als Qualitätsmaß. \\
+
+K1.3 & Metadaten als Inhalts- und Nutzungsvorschau
+& Aussagen, nach denen Metadaten Nutzenden vor dem Öffnen des Datensatzes eine fachliche und technische Einschätzung ermöglichen sollen.
+& Codieren, wenn Metadaten als Vorschau auf Inhalt, technische Verarbeitbarkeit oder Nutzungseignung beschrieben werden.
+& Metadaten sollen zeigen, was die Daten enthalten und ob sie technisch oder inhaltlich nutzbar sind. Modellbezug: Nutzendenorientierung als Qualitätsanforderung. \\
+
+K1.4 & Semantischer Graph als Idealform
+& Aussagen, die einen semantischen Graphen oder Linked-Data-Strukturen als Ideal hochwertiger Metadaten beschreiben.
+& Codieren, wenn Graphstruktur, Erweiterbarkeit, Entitäten oder semantische Modellierung als Ideal hochwertiger Metadaten genannt werden.
+& Ein perfekter Metadatensatz basiert auf DCAT-AP.de beziehungsweise einem semantischen Graphen. Modellbezug: Graphfähigkeit als übergeordnete Qualitätsanforderung. \\
+
+\midrule
+\multicolumn{5}{l}{\textbf{K2 Vollständigkeit, Reichhaltigkeit und Feldrelevanz}} \\
+\midrule
+
+K2.1 & Relative Vollständigkeit
+& Aussagen, die Vollständigkeit nicht absolut, sondern relativ zum fachlichen Kontext und zu grundlegenden Anforderungen verstehen.
+& Codieren, wenn gefragt wird, ob grundlegende Anforderungen und thematisch relevante Informationen vorhanden sind.
+& Metadaten können in einem Graphen nie vollständig sein; sinnvoll ist relative Vollständigkeit. Modellbezug: Vollständigkeit kontextsensitiv operationalisieren. \\
+
+K2.2 & Empfohlene Felder über Pflichtfelder hinaus
+& Aussagen, die betonen, dass DCAT-AP.de-Pflichtfelder allein für gute Metadaten nicht ausreichen.
+& Codieren, wenn empfohlene Felder, Soll-Kriterien oder optionale Angaben als qualitätssteigernd beschrieben werden.
+& Die Möglichkeiten von DCAT-AP.de sollten möglichst umfassend genutzt werden. Modellbezug: empfohlene Felder im Score berücksichtigen. \\
+
+K2.3 & Fachlich vorhandene Informationen übernehmen
+& Aussagen, die fordern, dass bereits vorhandene fachliche Informationen nicht verworfen werden.
+& Codieren, wenn vorhandene Ansprechpartner, fachliche Rollen, ergänzende Informationen oder domänenspezifische Angaben in Metadaten übernommen werden sollen.
+& Fachlich vorhandene Informationen, etwa mehrere Ansprechpartner im Geobereich, sollten nicht entfernt werden. Modellbezug: Reichhaltigkeit ohne Informationsverlust. \\
+
+K2.4 & Relevante Felder statt maximale Feldanzahl
+& Aussagen, die eine gezielte Auswahl relevanter Felder gegenüber vollständiger Befüllung aller DCAT-Felder bevorzugen.
+& Codieren, wenn nicht alle möglichen Felder, sondern die wichtigen Felder korrekt und sorgfältig ausgefüllt werden sollen.
+& Nicht alle circa 70 DCAT-Felder sind für jeden Datensatz sinnvoll. Modellbezug: Gewichtung nach Relevanz statt bloßer Feldanzahl. \\
+
+\midrule
+\multicolumn{5}{l}{\textbf{K3 Formale und syntaktische Qualität}} \\
+\midrule
+
+K3.1 & DCAT-AP.de-Mindestvalidität
+& Aussagen zur Erfüllung der Mindest- oder Pflichtanforderungen des DCAT-AP.de-Standards.
+& Codieren, wenn Standardkonformität als Basiskriterium oder Mindestvoraussetzung beschrieben wird.
+& DCAT-AP.de-Validität als Minimalvoraussetzung. Modellbezug: Basiskriterium formaler Qualität. \\
+
+K3.2 & SHACL-Konformität als Basisdimension
+& Aussagen zur Bedeutung von SHACL-Validierung für formale Qualitätsprüfung.
+& Codieren, wenn SHACL als Prüfung der Standardkonformität, Fehlerfreiheit oder syntaktischen Korrektheit beschrieben wird.
+& SHACL verbindet Feldvorhandensein und syntaktisch korrekte Ausfüllung. Modellbezug: formale Validierungsdimension. \\
+
+K3.3 & URI- und Vokabularkorrektheit
+& Aussagen zur korrekten Verwendung von URIs, kontrollierten Vokabularen und standardisierten Werten.
+& Codieren, wenn richtige URIs, Vokabulare oder normierte Wertelisten als formale Qualitätsanforderung genannt werden.
+& Korrekte URIs und Vokabulare als grundlegende Prüfung. Modellbezug: syntaktisch-formaler Indikator. \\
+
+K3.4 & Trennung von fehlendem Feld und syntaktischem Fehler
+& Aussagen, die unterschiedliche formale Fehlerarten voneinander trennen.
+& Codieren, wenn gefordert wird, dass fehlende Felder und falsch ausgefüllte Felder getrennt ausgewiesen werden.
+& Es soll klar sein, ob ein Problem syntaktisch ist oder ob ein Feld fehlt. Modellbezug: differenzierte Fehlerklassen. \\
+
+K3.5 & XML/RDF-Validität und Datentypprüfung
+& Aussagen zur technischen Validität von XML, RDF, Datentypen oder strukturellen Formaten.
+& Codieren, wenn valides XML, RDF-Struktur, Datumsformate, Datentypen oder technische Formatvalidität thematisiert werden.
+& Valides XML, korrekte URIs und Vokabulare als grundlegende Prüfungen. Modellbezug: technisch-syntaktische Prüflogik. \\
+
+\midrule
+\multicolumn{5}{l}{\textbf{K4 Semantische und inhaltliche Qualität}} \\
+\midrule
+
+K4.1 & Nichtssagende oder zu kurze Titel
+& Aussagen zu Titeln, die vorhanden sind, aber den Datensatz nicht ausreichend beschreiben.
+& Codieren, wenn Titel als zu kurz, generisch, mehrdeutig oder unverständlich beschrieben werden.
+& „Los 1“ als Titel ohne erkennbare Aussage. Modellbezug: semantischer Titelindikator. \\
+
+K4.2 & Titel-Beschreibung-Redundanz
+& Aussagen, in denen die Beschreibung keinen eigenständigen Informationswert gegenüber dem Titel hat.
+& Codieren, wenn Titel und Beschreibung identisch oder nahezu identisch sind.
+& Titel und Beschreibung sind identisch; die Beschreibung liefert keinen Mehrwert. Modellbezug: Redundanzprüfung. \\
+
+K4.3 & Regionale Begriffe und Fachsprache
+& Aussagen zu sprachlichen Ausdrücken, die für Außenstehende schwer verständlich sind.
+& Codieren, wenn regionale Begriffe, Fachsprache, domänenspezifische Terminologie oder fehlende allgemeinverständliche Synonyme genannt werden.
+& „I-Dötzchen“ oder „eulitoral“ als schwer verständliche Begriffe. Modellbezug: Verständlichkeitsprüfung von Freitext. \\
+
+K4.4 & Verständliche und erklärende Beschreibung
+& Aussagen zur inhaltlichen Erklärungskraft von Beschreibungen.
+& Codieren, wenn eine Beschreibung den Inhalt der Daten verständlich erklären und Nutzenden Orientierung geben soll.
+& Beschreibung soll erklären, was die Daten enthalten und ob sie nutzbar sind. Modellbezug: semantische Beschreibungsqualität. \\
+
+K4.5 & Inhaltliche Widersprüche zwischen Metadatenfeldern
+& Aussagen zu unplausiblen oder widersprüchlichen Angaben innerhalb eines Metadatensatzes.
+& Codieren, wenn Titel, Herausgeber, Ort, Beschreibung, Kategorie oder andere Metadatenfelder inhaltlich nicht zusammenpassen.
+& Titel verweist auf Nürnberg, Herausgeber ist Köln. Modellbezug: Plausibilitätsprüfung zwischen Feldern. \\
+
+K4.6 & Keywords, Themenfeld und Kategorie als semantische Prüffelder
+& Aussagen, die Schlagwörter, Themenfelder oder Kategorien als relevante semantische Qualitätsmerkmale behandeln.
+& Codieren, wenn Keywords, Kategorien, Themenfelder oder Schlagworte hinsichtlich Passung, Mehrwert oder Mapping bewertet werden.
+& Keywords und Kategorien sollen den Inhalt passend beschreiben. Modellbezug: semantischer Indikator für thematische Passung. \\
+
+\midrule
+\multicolumn{5}{l}{\textbf{K5 Technische Zugänglichkeit, Aktualität und Nutzbarkeit}} \\
+\midrule
+
+K5.1 & Dead Links und Linkrot
+& Aussagen zu nicht mehr erreichbaren Links oder veralteten Ressourcenverweisen.
+& Codieren, wenn defekte URLs, Linkrot, nicht funktionierende Downloads oder nicht erreichbare Services genannt werden.
+& Distributionslink, Download oder Datenservice funktioniert nicht mehr. Modellbezug: Verfügbarkeitsindikator. \\
+
+K5.2 & Funktionierende Distributions-, Download- und Servicelinks
+& Aussagen zur Erreichbarkeit und Nutzbarkeit von Zugriffspfaden.
+& Codieren, wenn funktionierende Download-URLs, Access-URLs, Datenservices oder Distributionen als Qualitätsanforderung genannt werden.
+& Nutzende sollen leicht zu den beschriebenen Datensätzen gelangen. Modellbezug: technische Zugänglichkeit. \\
+
+K5.3 & Aktualität und Harvesting-Zeitpunkt
+& Aussagen zu Alter, Aktualität, Harvesting-Datum oder Katalog-Metadaten.
+& Codieren, wenn Aktualität, letzter Harvesting-Zeitpunkt, Catalog Records oder Pflegezustand als Qualitätsindikator beschrieben werden.
+& Harvesting-Datum kann zeigen, dass ein Eintrag dem letzten Stand entspricht. Modellbezug: Aktualitäts- und Pflegeindikator. \\
+
+K5.4 & Maschinenlesbarkeit und nicht-proprietäre Formate
+& Aussagen zur technischen Weiterverarbeitbarkeit von Ressourcenformaten.
+& Codieren, wenn maschinenlesbare, offene, nicht-proprietäre oder gut lesbare Formate als Nutzbarkeitsanforderung genannt werden.
+& Bereitstellende fragen nach gut lesbaren und nicht-proprietären Dateiformaten. Modellbezug: Open-Data-Fitness. \\
+
+\midrule
+\multicolumn{5}{l}{\textbf{K6 Interoperabilität und Linked-Data-Qualität}} \\
+\midrule
+
+K6.1 & URI statt Literal
+& Aussagen, die maschineninterpretierbare Identifikatoren gegenüber Freitextangaben bevorzugen.
+& Codieren, wenn ein URI-, ID- oder Entitätsverweis als verlässlicher oder hochwertiger als ein Literal beschrieben wird.
+& Eine GND-ID ist verlässlicher als ein Organisationsname als Freitext. Modellbezug: Linked-Data-Reifegrad. \\
+
+K6.2 & Externe Referenzsysteme, Wikidata und GND
+& Aussagen zu externen Normdaten und Wissenssystemen als Verknüpfungsressourcen.
+& Codieren, wenn Wikidata, GND oder andere externe Referenzsysteme zur Anreicherung oder Identifikation genannt werden.
+& Verknüpfungen zu Wikidata oder Gemeinsamer Normdatei. Modellbezug: externe semantische Referenzierung. \\
+
+K6.3 & Kontrollierte Vokabulare und Thesauri
+& Aussagen zur Verwendung kontrollierter Vokabulare, Thesauri oder standardisierter Begriffssysteme.
+& Codieren, wenn Thesauri, EU-Vokabulare, UBA-Thesaurus oder kontrollierte Schlagwortsysteme genannt werden.
+& Thesauri können Fachbegriffe beschreiben und Kontext erschließen. Modellbezug: Interoperabilität und semantische Harmonisierung. \\
+
+K6.4 & Querverbindungen zwischen vergleichbaren Datensätzen
+& Aussagen zu Verknüpfungen zwischen ähnlichen oder gleichen Datensätzen.
+& Codieren, wenn gleiche, ähnliche oder vergleichbare Datensätze über Portale, Kommunen oder Domänen hinweg verknüpft werden sollen.
+& Querverbindungen zwischen vergleichbaren Datensätzen aus Kommunen. Modellbezug: graphbasierte Vergleichbarkeit. \\
+
+K6.5 & Organisationsgraph und Vermeidung von Blank Nodes
+& Aussagen zur strukturierten Modellierung von Organisationen und zur Vermeidung schwacher RDF-Strukturen.
+& Codieren, wenn Organisationsgraph, Agentenmodellierung, Blank Nodes oder strukturelle Linked-Data-Qualität genannt werden.
+& Organisationen sollten sinnvoll über einen Organisationsgraphen abgebildet werden. Modellbezug: strukturelle RDF-Qualität. \\
+
+\midrule
+\multicolumn{5}{l}{\textbf{K7 Kontextsensitivität und Fit for Purpose}} \\
+\midrule
+
+K7.1 & Domänenspezifische Feldrelevanz
+& Aussagen, nach denen bestimmte Metadatenfelder je nach Fachdomäne unterschiedlich relevant sind.
+& Codieren, wenn Rollen, Relationen, Media Types, Geolocation oder andere Felder abhängig von Geodaten, Statistikdaten oder Fachdomänen bewertet werden.
+& Creator und Maintainer sind bei Geodaten relevanter als bei Statistikdaten. Modellbezug: kontextsensitive Gewichtung. \\
+
+K7.2 & Geodaten und Normierungsgrad
+& Aussagen zum besonderen Normierungsgrad und zur spezifischen Qualitätslogik von Geodaten.
+& Codieren, wenn Geodaten, ISO-Kontext, INSPIRE, GIS, Bounding Boxes oder normierte Fachstandards als besondere Domäne genannt werden.
+& Geodaten sind stark normiert und erleichtern hochwertige Metadaten. Modellbezug: Domänenspezifik im Modell. \\
+
+K7.3 & Föderale Vergleichbarkeit
+& Aussagen zu Qualitätsvergleichen zwischen Ländern, Kommunen oder föderalen Datenbereitstellern.
+& Codieren, wenn Schleswig-Holstein, Niedersachsen, Bayern, Länder- oder Kommunalvergleiche als Kontext für Bewertung genannt werden.
+& Abweichung zwischen Küstenländern kann Qualitätsproblem sein, zwischen Küstenland und Bayern nicht zwingend. Modellbezug: föderaler Kontext. \\
+
+K7.4 & Stakeholder-spezifische Qualitätsfragen
+& Aussagen, nach denen unterschiedliche Akteure unterschiedliche Qualitätsinteressen haben.
+& Codieren, wenn Qualitätsmetriken für Länder, Bund, Kommunen, Fachpersonen oder andere Stakeholder zugeschnitten werden sollen.
+& Mindestens 17 relevante Stakeholder haben zugeschnittene Qualitätsfragen. Modellbezug: konfigurierbare Qualitätsansichten. \\
+
+K7.5 & Unterschiedliche Perspektiven von Bereitstellenden und Nutzenden
+& Aussagen, die Unterschiede zwischen Datenbereitstellenden und Datennutzenden betonen.
+& Codieren, wenn dieselbe Metadatenqualität aus Bereitstellenden- und Nutzendenperspektive unterschiedlich bewertet wird.
+& Ein alter Datensatz kann für Bereitstellende valide sein, für Nutzende aber verdächtig wirken. Modellbezug: perspektivenabhängige Interpretation. \\
+
+\midrule
+\multicolumn{5}{l}{\textbf{K8 Rohdatenbezug und Metadaten-Daten-Kongruenz}} \\
+\midrule
+
+K8.1 & Formatkongruenz zwischen Metadaten und Ressource
+& Aussagen zum Abgleich zwischen angegebenem Format und tatsächlicher Ressource.
+& Codieren, wenn geprüft werden soll, ob das in den Metadaten angegebene Format mit Datei, Service oder Inhalt übereinstimmt.
+& Metadaten geben CSV an, aber der Inhalt ist kein CSV; oder CSV hängt an, während PDF angegeben ist. Modellbezug: Kongruenzindikator. \\
+
+K8.2 & Serviceverhalten und tatsächliche Nutzbarkeit
+& Aussagen zum Abgleich zwischen erwartetem und tatsächlichem Verhalten von Services.
+& Codieren, wenn etwa WMS-/WFS-Dienste, APIs, XML-Fehlermeldungen oder erwartete Kartenansichten als Prüfgegenstand genannt werden.
+& Mensch erwartet eine Karte, bekommt aber eine XML-Fehlermeldung. Modellbezug: praktische Ressourcenvalidierung. \\
+
+K8.3 & Dateninhalt gegen Titel und Beschreibung prüfen
+& Aussagen, nach denen tatsächliche Dateninhalte gegen Metadatenangaben geprüft werden.
+& Codieren, wenn Titel, Beschreibung oder Themenangaben mit tatsächlichem Inhalt der Datei oder Ressource verglichen werden.
+& Titel sagt „Vornamen“, Datensatz enthält hauptsächlich Zahlen. Modellbezug: semantischer Rohdatenabgleich. \\
+
+K8.4 & Bounding Box und Flächendeckung aus Daten ableiten
+& Aussagen zu geodatenbezogenen Informationen, die aus den Daten selbst berechnet oder geprüft werden können.
+& Codieren, wenn Bounding Box, Flächendeckung oder räumliche Abdeckung aus Daten statt manueller Metadateneingabe abgeleitet werden sollen.
+& Bounding Box ist menschlich eingetragen und fehleranfällig; besser wäre Berechnung aus Daten. Modellbezug: datenbasierte Kontextprüfung. \\
+
+K8.5 & Fachliche Grenzen der Rohdatenbewertung
+& Aussagen zu Grenzen einer Bewertung des eigentlichen Datensatzes durch ein Metadatenportal.
+& Codieren, wenn fachliche Zuständigkeit, domänenspezifische Standards oder begrenzte Beratungskompetenz beim Rohdateninhalt thematisiert werden.
+& Metadatenportal kann Rohdatenqualität nur eingeschränkt fachlich beurteilen. Modellbezug: Begrenzung des Prüfanspruchs. \\
+
+\midrule
+\multicolumn{5}{l}{\textbf{K9 Scoring, Gewichtung, Reporting und Verbesserungshinweise}} \\
+\midrule
+
+K9.1 & Wissenschaftlich begründete Metriken
+& Aussagen, die eine theoretische, wissenschaftliche oder methodische Begründung von Qualitätsmetriken fordern.
+& Codieren, wenn kritisiert wird, dass Scores Kriterien messen, ohne zu begründen, warum diese Kriterien relevant sind.
+& Ein Score sollte belegen, warum genau diese Kriterien verwendet werden. Modellbezug: begründete Indikatorauswahl. \\
+
+K9.2 & SHACL als Teildimension statt Gesamtscore
+& Aussagen, die SHACL- oder DCAT-AP.de-Konformität als Teil, aber nicht als vollständiges Qualitätsurteil verstehen.
+& Codieren, wenn formale Validierung als eigene Dimension im Gesamtscore beschrieben wird.
+& DCAT-AP.de-Qualität sollte als eine Dimension im Gesamtscoring angezeigt werden. Modellbezug: separater formaler Teilschritt. \\
+
+K9.3 & Teil-Scores zur Problemlokalisierung
+& Aussagen zur Aufteilung eines Scores in Dimensionen oder Teilbewertungen.
+& Codieren, wenn Teil-Scores, Kategorien oder getrennte Bewertungsbereiche zur Diagnose von Problemen gefordert werden.
+& Teilbewertungen helfen zu erkennen, wo genau ein Problem liegt. Modellbezug: multidimensionaler Report. \\
+
+K9.4 & Ranking als Verbesserungsanreiz
+& Aussagen zur Nutzung von Rankings oder regelmäßigen Prüfungen zur Qualitätsverbesserung.
+& Codieren, wenn Länder, Kommunen oder Portale sich vergleichen und daraus Verbesserungsbedarf ableiten sollen.
+& Rankings können zeigen, wo Luft nach oben besteht. Modellbezug: Benchmarking, aber mit Vorsicht. \\
+
+K9.5 & Verständliche Fehlermeldungen und Handlungshinweise
+& Aussagen zur Verständlichkeit und praktischen Nutzbarkeit von Validierungs- oder Qualitätsreports.
+& Codieren, wenn Fehler erklärt, konkret lokalisiert oder mit Verbesserungshinweisen versehen werden sollen.
+& Eine reine Fehlermeldung ist wenig hilfreich; es braucht Erklärung und Behebungshinweis. Modellbezug: handlungsorientiertes Reporting. \\
+
+\midrule
+\multicolumn{5}{l}{\textbf{K10 KI-gestützte Analyseverfahren und Automatisierungsgrenzen}} \\
+\midrule
+
+K10.1 & Metadaten-Linter
+& Aussagen zu KI- oder regelgestützten Systemen, die Metadaten prüfen und Hinweise geben.
+& Codieren, wenn ein Linter, Prüfwerkzeug oder Vorschlagssystem auf Basis von DCAT-AP.de, SHACL oder Spezifikation beschrieben wird.
+& Agentische KI als Metadaten-Linter. Modellbezug: unterstützende Qualitätsprüfung. \\
+
+K10.2 & Freitextprüfung und Beschreibungsgüte
+& Aussagen zur KI-gestützten Bewertung oder Verbesserung natürlicher Sprache in Metadaten.
+& Codieren, wenn Titel, Beschreibungen, einfache Sprache, Synonyme, Fachsprache oder Style Guides mit KI-Unterstützung geprüft werden.
+& KI kann Beschreibungstexte oder die Güte von Beschreibungstexten bewerten. Modellbezug: semantische Freitextanalyse. \\
+
+K10.3 & Keyword-Mapping und Assisted Learning
+& Aussagen zu KI- oder ML-gestützter Zuordnung von Stichworten zu Kategorien, Vokabularen oder Schlagwortsystemen.
+& Codieren, wenn einfache Freitext-Stichworte auf Kategorien, echte Schlagworte oder EU-Vokabulare gemappt werden sollen.
+& Assisted Learning kann qualitativ hochwertigere Keywords schaffen. Modellbezug: KI-gestützte Harmonisierung. \\
+
+K10.4 & SPARQL- und Analyseunterstützung
+& Aussagen zur KI-Unterstützung bei technischen Abfragen oder Analysebausteinen.
+& Codieren, wenn KI zur Erstellung spezifischer SPARQL-Queries, Filter oder Analysebausteine eingesetzt werden soll.
+& KI könnte Fachpersonen helfen, hochspezifische SPARQL-Queries zu entwickeln. Modellbezug: technische Assistenz statt Bewertungsautomat. \\
+
+K10.5 & Semantischer Graph als bessere KI-Grundlage
+& Aussagen, nach denen KI zuverlässiger arbeitet, wenn sie auf einem semantischen Graphen statt auf unstrukturierter Textbasis arbeitet.
+& Codieren, wenn Graphdaten, semantische Verknüpfungen oder externe Graphen als Grundlage für KI-Nutzung beschrieben werden.
+& Auf einem semantischen Graphen kann KI datenbasierter arbeiten und weniger halluzinieren. Modellbezug: graphbasierte Kontextgrundlage. \\
+
+K10.6 & Rohdatenanalyse durch KI
+& Aussagen zur KI-gestützten Analyse der tatsächlichen Ressourcen oder großer Datenmengen.
+& Codieren, wenn KI in die Daten selbst hineinschauen, Muster erkennen, Strukturen vergleichen oder Rohdaten gegen Metadaten prüfen soll.
+& KI kann große Datenmengen analysieren und Muster ableiten. Modellbezug: optionale kontextbezogene KI-Prüfung. \\
+
+K10.7 & Datenhoheit bei automatisierter Verbesserung
+& Aussagen zu Verantwortung, Schreibrechten oder Zuständigkeit bei automatisierter Veränderung von Metadaten.
+& Codieren, wenn gefragt wird, wer Metadaten ändern, korrigieren oder anreichern darf.
+& Wer hat die Hoheit über die Daten, wenn KI etwas verbessert oder verändert? Modellbezug: KI nur als Analyse- oder Empfehlungsebene. \\
+
+K10.8 & Halluzination, stochastische Ausreißer und fachliche Fehlinterpretation
+& Aussagen zu Unsicherheit, Fehleranfälligkeit, Halluzination oder fachlicher Fehlbewertung durch KI.
+& Codieren, wenn stochastische Ausreißer, Halluzinationen, Mehrdeutigkeiten oder falsche Vereinfachungen durch KI thematisiert werden.
+& KI kann „Watt“ nicht zuverlässig zwischen elektrischer Einheit und Wattenmeer unterscheiden. Modellbezug: keine autonome KI-Bewertungsinstanz. \\
+
+K10.9 & Ressourcenaufwand und Betriebslast
+& Aussagen zu Kosten, Rechenaufwand, Serverlast oder Betriebsvoraussetzungen KI-gestützter Verfahren.
+& Codieren, wenn KI-Bewertungen wegen Wiederholungen, Last, Betrieb oder Ressourcenaufwand problematisiert werden.
+& Wiederholte KI-Bewertungen können mehr Ressourcen kosten als sie Nutzen bringen. Modellbezug: Aufwand-Nutzen-Prüfung für KI-Komponenten. \\
+
+\end{longtable}
+
+\endgroup

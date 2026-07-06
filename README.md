@@ -49,7 +49,7 @@ Each indicator returns a **status** and a **score in `[0.0, 1.0]`**:
 | `pass`           | All requirements met                                             |
 | `partial`        | Some requirements met / mixed results                            |
 | `fail`           | Requirements not met or field missing                            |
-| `not_applicable` | Cannot be evaluated (e.g. expressiveness with no LLM configured) |
+| `not_applicable` | Cannot / need not be evaluated (no LLM configured, or a criterion the model marks not applicable to this dataset) |
 | `error`          | Exception during validation                                      |
 
 **How the status maps to the numeric score** (under a `ScorePolicy`, the default):
@@ -59,12 +59,14 @@ Each indicator returns a **status** and a **score in `[0.0, 1.0]`**:
   are tunable globally and per indicator.
 - **Graded indicators** contribute their **raw continuous score regardless of
   status** — the `pass`/`partial`/`fail` label is presentational, so the
-  aggregate stays a smooth function of the measurement. This covers `expr_*` and
-  every per-distribution indicator: `acc_download_url`, `acc_format`,
-  `acc_media_type`, `acc_format_non_proprietary`, `acc_download_url_response`,
-  `acc_access_url_response`, `acc_machine_readable_access`, `reuse_license`,
-  `reuse_availability`, `find_issued_datetime`, `find_modified_datetime`. Each
-  scores per distribution (+1 / 0 or a tier) and averages over all distributions.
+  aggregate stays a smooth function of the measurement. Two groups:
+  - `expr_*` — a continuous LLM criterion score in `[0, 1]` per dataset (the
+    label is derived from that score; see the Expressiveness section).
+  - **Per-distribution** indicators — score each distribution (+1 / 0 or a tier)
+    and average over all distributions: `acc_download_url`, `acc_format`,
+    `acc_media_type`, `acc_format_non_proprietary`, `acc_download_url_response`,
+    `acc_access_url_response`, `acc_machine_readable_access`, `reuse_license`,
+    `reuse_availability`, `find_issued_datetime`, `find_modified_datetime`.
 - **Per-distribution malus:** some graded indicators score a *negative* value
   for a failing distribution (dead URL, non-machine-readable format, restricted/
   missing license), so a bad distribution actively drags the mean down instead
@@ -163,21 +165,27 @@ the rest are **ternary**.
 
 All six read their slice from **one** `ExpressivenessAssessment` produced per
 dataset by a single LLM call. With no LLM configured they all report
-`not_applicable` (no tokens spent).
+`not_applicable` (no tokens spent). The German prompt's per-criterion rubric
+lives in the assessment schema's field descriptions (DCAT-AP.de conventions
+handbook 1.7/3.4 + the Handreichung zur Metadatenqualität).
 
-All six are **graded**: the score is the LLM's continuous criterion score in
-`[0, 1]` (used directly in the aggregate), and the `pass`/`partial`/`fail` label
-is the LLM's own per-criterion verdict — presentational only. Without an LLM →
-`not_applicable`.
+All six are **graded**. Per criterion the LLM records observable `findings` →
+`reasoning` → an `applicable` flag → a continuous `score` in `[0, 1]` (used
+directly in the aggregate). The `pass`/`partial`/`fail` **label is derived from
+the score** (pass ≥ 0.8, partial ≥ 0.5, else fail) — the model never sets the
+label, so it can't contradict the score. A criterion the model judges **not
+applicable** to the dataset (mainly contextual qualifiers on a one-off static
+dataset) reports `not_applicable` and is skipped neutrally instead of penalised.
+Without an LLM → `not_applicable`.
 
-| ID                                 | Checks                                                                                                                   | Scoring                                  | RDF field(s)                                                 |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- | ------------------------------------------------------------ |
-| `expr_title_quality`               | Title is descriptive, specific, not cryptic                                                                              | Graded 0–1 (LLM); NA without LLM         | `dct:title`                                                  |
-| `expr_description_quality`         | Description is substantive and informative                                                                               | Graded 0–1 (LLM); NA without LLM         | `dct:description`                                            |
-| `expr_title_description_coherence` | Title and description agree                                                                                              | Graded 0–1 (LLM); NA without LLM         | `dct:title`, `dct:description`                               |
-| `expr_keyword_quality`             | Keywords are relevant, specific, consistently formatted                                                                  | Graded 0–1 (LLM); NA without LLM         | `dcat:keyword`                                               |
-| `expr_thematic_consistency`        | Themes, keywords, title and description are mutually consistent                                                          | Graded 0–1 (LLM); NA without LLM         | `dcat:theme`, `dcat:keyword`, `dct:title`, `dct:description` |
-| `expr_contextual_qualifiers`       | Needed qualifiers (version, reference period, provisional/estimated/draft …) are present where the content requires them | Graded 0–1 (LLM); NA without LLM         | `dct:issued`, `dct:modified`, `dct:description`              |
+| ID                                 | Checks                                                                                                                   | Scoring                                                       | RDF field(s)                                                 |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `expr_title_quality`               | Title descriptive & specific for itself (no cryptic codes/abbreviations, no methodology, not just the publisher name)    | Graded 0–1 (LLM); label derived; NA without LLM              | `dct:title`                                                  |
+| `expr_description_quality`         | Description substantive for itself (what/how-structured/how-collected/purpose/particulars)                              | Graded 0–1 (LLM); label derived; NA without LLM              | `dct:description`                                            |
+| `expr_title_description_coherence` | Title and description agree and reinforce each other                                                                    | Graded 0–1 (LLM); label derived; NA without LLM              | `dct:title`, `dct:description`                               |
+| `expr_keyword_quality`             | Keywords relevant, specific, singular, layperson-friendly, non-redundant (count checked separately, not here)            | Graded 0–1 (LLM); label derived; NA without LLM              | `dcat:keyword`                                               |
+| `expr_thematic_consistency`        | Theme, keywords, title and description form a coherent subject picture                                                   | Graded 0–1 (LLM); label derived; NA without LLM              | `dcat:theme`, `dcat:keyword`, `dct:title`, `dct:description` |
+| `expr_contextual_qualifiers`       | Needed qualifiers (reference period, cutoff date, provisional/estimated/draft …) present **where the content requires them** | Graded 0–1 (LLM); label derived; **NA when no qualifier required** / no LLM | `dct:issued`, `dct:modified`, `dct:description`              |
 
 ### Planned / not yet implemented
 

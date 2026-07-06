@@ -42,7 +42,7 @@ MAPPING: list[dict] = [
         mqa=["keyword_availability"],
         mqa_agg="any",
         review=True,
-        rationale="MQA: Presence dcat:keyword; Prototyp: Anzahl im Band 2<k<6.",
+        rationale="MQA: Presence dcat:keyword; Prototyp: Anzahl im Band 3<=k<=15 (ternär, Handreichung).",
     ),
     dict(
         indicator="find_theme_valid",
@@ -78,7 +78,16 @@ MAPPING: list[dict] = [
         mqa=["spatial_availability"],
         mqa_agg="any",
         review=False,
-        rationale="MQA: dct:spatial Presence; Prototyp: dcatde:politicalGeocodingURI aus Vokabular (Fallback locn:adminUnitL2).",
+        rationale="MQA: dct:spatial Presence; Prototyp: dcatde:politicalGeocodingURI aus Vokabular (Fallback locn:adminUnitL2 → nur PARTIAL).",
+    ),
+    dict(
+        indicator="find_geocoding_level",
+        dimension="findability",
+        abc="C",
+        mqa=[],
+        mqa_agg="any",
+        review=False,
+        rationale="MQA: keine Metrik für die administrative Ebene (dcatde:politicalGeocodingLevelURI, Konvention 09).",
     ),
     dict(
         indicator="find_accrual_periodicity",
@@ -113,11 +122,15 @@ MAPPING: list[dict] = [
     dict(
         indicator="acc_download_url",
         dimension="accessibility",
-        abc="A",
+        abc="B",
         mqa=["download_url_availability"],
         mqa_agg="any",
-        review=False,
-        rationale="Beide: Presence dcat:downloadURL.",
+        review=True,
+        rationale=(
+            "MQA: Presence dcat:downloadURL (>=1 Distribution). Prototyp: Anteil "
+            "ALLER Distributionen mit downloadURL (graded) — strenger, PASS erst "
+            "wenn nahezu alle eine haben."
+        ),
     ),
     dict(
         indicator="acc_download_url_response",
@@ -146,8 +159,8 @@ MAPPING: list[dict] = [
         review=True,
         rationale=(
             "MQA: Format vorhanden + format_media_type_vocabulary (Format OR MediaType im Vokabular, OR-Logik). "
-            "Prototyp: Format vorhanden UND spezifisch im EU-Vokabular — strenger, da MQA via MediaType-Treffer "
-            "auch ohne Format-Vocab-Mitgliedschaft PASS gibt."
+            "Prototyp: Anteil der Distributionen mit Format im EU-Vokabular (graded) — strenger, da MQA via "
+            "MediaType-Treffer auch ohne Format-Vocab-Mitgliedschaft PASS gibt."
         ),
     ),
     dict(
@@ -159,8 +172,8 @@ MAPPING: list[dict] = [
         review=True,
         rationale=(
             "MQA: MediaType vorhanden + format_media_type_vocabulary (Format OR MediaType im Vokabular, kombiniert). "
-            "Prototyp: IANA-URI-Form + IANA-Vokabular-Mitgliedschaft — strenger, da MQA keine IANA-URI-Form prüft "
-            "und der Vocab-Check via Format-Treffer auch ohne MediaType-Eintrag PASS gibt."
+            "Prototyp: Anteil der Distributionen mit MediaType als IANA-URI im IANA-Vokabular (graded) — strenger, "
+            "da MQA keine IANA-URI-Form prüft und der Vocab-Check via Format-Treffer auch ohne MediaType-Eintrag PASS gibt."
         ),
     ),
     dict(
@@ -170,7 +183,7 @@ MAPPING: list[dict] = [
         mqa=["format_machine_readable"],
         mqa_agg="any",
         review=False,
-        rationale="MQA: Listen-Lookup beste Distribution; Prototyp: Mittelwert aller Distributionen, 3 Stufen.",
+        rationale="MQA: Listen-Lookup beste Distribution; Prototyp: Mittelwert aller Distributionen (high +1 / mid +0.5 / none -0.5 Malus).",
     ),
     dict(
         indicator="acc_format_non_proprietary",
@@ -188,7 +201,7 @@ MAPPING: list[dict] = [
         mqa=[],
         mqa_agg="any",
         review=True,
-        rationale="MQA: keine Format↔MIME-Kongruenzmetrik (B/C-Grenzfall).",
+        rationale="[STANDARDMÄSSIG GEBLACKLISTET] MQA: keine Format↔MIME-Kongruenzmetrik (B/C-Grenzfall).",
     ),
     dict(
         indicator="acc_distribution_model",
@@ -197,7 +210,7 @@ MAPPING: list[dict] = [
         mqa=[],
         mqa_agg="any",
         review=True,
-        rationale="MQA: keine Metrik für Distributions-Modellierung (dcat_ap_compliance ist SHACL).",
+        rationale="[STANDARDMÄSSIG GEBLACKLISTET] MQA: keine Metrik für Distributions-Modellierung (dcat_ap_compliance ist SHACL).",
     ),
     # ---- Reusability ----
     dict(
@@ -221,8 +234,8 @@ MAPPING: list[dict] = [
         review=True,
         rationale=(
             "MQA: Lizenz vorhanden (license_availability) + EU-Autoritäts-URI (known_license). "
-            "Prototyp: DCAT-AP-DE-Vokabular (andere Autorität) → B, da Prototyp strenger in "
-            "Vokabularwahl, MQA strenger bei EU-Autoritäts-URI."
+            "Prototyp: je Distribution nur freie DCAT-AP-DE-Lizenz = +1, eingeschränkt/unbekannt/"
+            "fehlt = -0.5 Malus, dann Mittel (graded, distributionsebene) → strenger."
         ),
     ),
     dict(
@@ -250,7 +263,16 @@ MAPPING: list[dict] = [
         mqa=["contact_point_availability"],
         mqa_agg="any",
         review=False,
-        rationale="MQA: Presence dcat:contactPoint; Prototyp: strukturierte vcard:Organization.",
+        rationale="MQA: Presence dcat:contactPoint; Prototyp: valide vcard:hasEmail ODER vcard:hasURL (Konvention 01), sonst PARTIAL.",
+    ),
+    dict(
+        indicator="reuse_availability",
+        dimension="reusability",
+        abc="C",
+        mqa=[],
+        mqa_agg="any",
+        review=False,
+        rationale="MQA: keine Verfügbarkeits-Metrik; Prototyp: Anteil der Distributionen mit dcatap:availability aus dem Planned-Availability-Vokabular.",
     ),
     dict(
         indicator="reuse_contributor_id",

@@ -20,3 +20,5 @@ data/sample_2026-06-03*
 data/sample_2026-06-18*
 
 playground/scripts/data/*
+# LaTeX build output
+thesis/build/
