@@ -1251,7 +1251,7 @@ K10 & KI-gestützte Analyseverfahren und Automatisierungsgrenzen
 
 Ein zentrales Ergebnis der Interviews ist die klare Einordnung formaler Validierung als Basisanforderung. Die Expertinnen und Experten beschreiben DCAT-AP.de-Konformität und SHACL-Validierung als notwendige Grundlage einer Qualitätsbewertung. Ein Metadatensatz, der die Mindestanforderungen des Standards nicht erfüllt, kann demnach nicht als hochwertig gelten. Formale Prüfungen erfassen insbesondere Pflichtfelder, Kardinalitäten, Datentypen, URI-Strukturen, kontrollierte Vokabulare sowie RDF- beziehungsweise XML-bezogene Strukturfehler.
 
-Gleichzeitig wird formale Validität nicht als hinreichendes Qualitätsurteil verstanden. Ein Metadatensatz kann formal valide sein und dennoch aus Nutzendensicht unzureichend bleiben, wenn etwa Titel und Beschreibung wenig aussagekräftig sind, eine Ressource nicht erreichbar ist oder relevante Kontextinformationen fehlen. Für das Bewertungsmodell folgt daraus, dass SHACL-Ergebnisse nicht als Gesamtscore interpretiert werden dürfen. Sie bilden vielmehr eine eigene Qualitätsdimension, die strukturelle und syntaktische Konformität abbildet. Diese Dimension ist grundlegend, muss aber durch weitere Qualitätsdimensionen ergänzt werden.
+Gleichzeitig wird formale Validität nicht als hinreichendes Qualitätsurteil verstanden. Ein Metadatensatz kann formal valide sein und dennoch aus Nutzendensicht unzureichend bleiben, wenn etwa Titel und Beschreibung wenig aussagekräftig sind, eine Ressource nicht erreichbar ist oder relevante Kontextinformationen fehlen. Für das Bewertungsmodell folgt daraus, dass SHACL-Ergebnisse nicht als Gesamtscore interpretiert werden dürfen. Sie bilden vielmehr die formale Basisschicht der Bewertung, die strukturelle und syntaktische Konformität abbildet. Diese Basisschicht ist grundlegend, muss aber durch weitergehende Qualitätsdimensionen ergänzt werden.
 
 Methodisch ergibt sich daraus eine Trennung zwischen Basiskonformität und weitergehender Metadatenqualität. Basiskonformität beschreibt, ob ein Metadatensatz die formalen Mindestanforderungen erfüllt. Weitergehende Qualität beschreibt dagegen, ob der Metadatensatz auffindbar, verständlich, zugänglich, interoperabel und praktisch nachnutzbar ist.
 
@@ -1407,7 +1407,7 @@ K1.3; K7.1; K7.4--K7.5; (I1\_006; I1\_047--I1\_049) \\ \hline
 \label{tab:longlist-kandidatendimensionen}
 \end{table}
 
-Die Longlist enthält eine hohe Zahl potenziell relevanter Dimensionen. Für ein prototypisch operationalisierbares Bewertungsmodell ist diese Struktur jedoch zu umfangreich. Zum einen würden sich zahlreiche Indikatoren überschneiden. Zum anderen ist ein solches Modell nur eingeschränkt nachvollziehbar, schwer zu implementieren und in der Evaluation schlecht vergleichbar. Daher werden die Kandidatendimensionen im nächsten Schritt zu fünf Hauptdimensionen verdichtet.
+Die Longlist enthält eine hohe Zahl potenziell relevanter Dimensionen. Für ein prototypisch operationalisierbares Bewertungsmodell ist diese Struktur jedoch zu umfangreich. Zum einen würden sich zahlreiche Indikatoren überschneiden. Zum anderen ist ein solches Modell nur eingeschränkt nachvollziehbar, schwer zu implementieren und in der Evaluation schlecht vergleichbar. Daher werden die Kandidatendimensionen im nächsten Schritt zu vier Hauptdimensionen verdichtet.
 
 Die Verdichtung folgt zwei Prinzipien. Erstens werden Dimensionen zusammengeführt, wenn sie dieselbe Bewertungsfunktion erfüllen.
 Zweitens werden Dimensionen nicht danach gruppiert, aus welchem Literaturmodell sie stammen, sondern danach, welchen Qualitätsaspekt sie im DCAT-AP.de-Kontext prüfen.
@@ -1423,12 +1423,6 @@ Zu beachten ist das bestimmte Dimensionen der Longlist auf mehrere finale Dimens
 \begin{tabular}{p{0.03\textwidth} p{0.16\textwidth} >{\raggedright\arraybackslash}p{0.43\textwidth} p{0.28\textwidth}}
 \hline
 \textbf{Nr.} & \textbf{Finale Dimension} & \textbf{Gebündelte Kandidatendimensionen} & \textbf{Bewertungsfunktion im Modell} \\
-\hline
-
--- &
-Basiskonformität &
-1. Formale und syntaktische Konformität &
-Wird als vorgelagerter Validierungsstatus behandelt. Die formale DCAT-AP.de-Konformität ist Voraussetzung der Bewertung, aber keine eigenständige Qualitätsdimension im Score. \\
 \hline
 
 1 &
@@ -1450,6 +1444,7 @@ Bewertet, ob die in den Metadaten beschriebene Ressource technisch erreichbar un
 
 3 &
 Nachnutzbarkeit &
+1. Formale und syntaktische Konformität \newline
 6. Interoperabilität und Linked-Data-Reife \newline
 7. Vokabular-, Normdaten- und Klassifikationsqualität \newline
 8. Wiederverwendbarkeit und rechtlich-organisatorische Nutzbarkeit \newline
@@ -1500,7 +1495,7 @@ Bewertet, ob vorhandene Metadaten inhaltlich verständlich, plausibel und kontex
 
 Die vier Qualitätsdimensionen Auffindbarkeit, Zugänglichkeit, Nachnutzbarkeit und Aussagekraft beschreiben zunächst abstrakte Bewertungsbereiche. Für die prototypische Operationalisierung müssen diese Bereiche in konkrete, prüfbare Einzelindikatoren überführt werden. Ein Indikator übersetzt eine Qualitätsdimension in eine messbare oder nachvollziehbar bewertbare Prüflogik. Während die Dimension festlegt, welcher Qualitätsaspekt betrachtet wird, bestimmt der Indikator, welches Metadatenfeld, welche Ressource oder welche Relation geprüft wird.
 
-Die formale DCAT-AP.de-Konformität wird dabei nicht als eigene Qualitätsdimension geführt, sondern als vorgelagerter Basisindikator behandelt. Sie beschreibt, ob ein Metadatensatz die strukturellen und syntaktischen Mindestanforderungen des Standards erfüllt. Diese Mindestanforderungen werden im GovData-Kontext bereits durch SHACL-basierte Validierung adressiert. Das Bewertungsmodell soll diese Prüfung daher nicht duplizieren, sondern diejenigen Qualitätsaspekte erfassen, die über die formale Standardkonformität hinausgehen. Der eigentliche Qualitätsscore wird folglich aus den vier Dimensionen Auffindbarkeit, Zugänglichkeit, Nachnutzbarkeit und Aussagekraft gebildet.
+Die formale DCAT-AP.de-Konformität wird dabei nicht als eigene Qualitätsdimension geführt. Pflichtfeldbezogene Existenz- und Strukturprüfungen werden im GovData-Kontext bereits durch die SHACL-basierte Validierung adressiert und im Bewertungsmodell nicht feldweise dupliziert. Stattdessen geht die formale Standardkonformität als ein einzelner, aggregierter Indikator in die Dimension Nachnutzbarkeit ein: Verletzungen der Mindestanforderungen des Standards beeinträchtigen die maschinelle Verarbeitbarkeit und die portalübergreifende Weiterverwendung eines Metadatensatzes unmittelbar. Dieses Vorgehen ist anschlussfähig an die MQA, die die DCAT-AP-Konformität ebenfalls als eine Metrik innerhalb ihres Dimensionsmodells führt \cite{data_europa, wentzel2023extensive}. Der Qualitätsscore wird folglich aus den vier Dimensionen Auffindbarkeit, Zugänglichkeit, Nachnutzbarkeit und Aussagekraft gebildet. Alle übrigen Indikatoren erfassen Qualitätsaspekte, die über die formale Standardkonformität hinausgehen.
 
 Die Ableitung der Einzelindikatoren erfolgt regelgeleitet. Ausgangspunkt bilden die vier finalen Qualitätsdimensionen. Für jede Dimension werden zunächst Qualitätskriterien formuliert, die beschreiben, welche Eigenschaft der Metadaten oder der beschriebenen Ressource bewertet werden soll. Anschließend wird geprüft, durch welche Einzelindikatoren diese Kriterien operationalisiert werden können.
 
@@ -1526,6 +1521,69 @@ Für das Bewertungsmodell werden drei Indikatortypen unterschieden.
 
 Die konkrete technische Implementierung der Indikatoren wird in Kapitel~4 beschrieben. Der vorliegende Abschnitt definiert die konzeptionelle Funktion der Indikatoren, ihre Zuordnung zu den Qualitätsdimensionen und die jeweils geprüften DCAT-AP.de-Elemente.
 
+\subsection{Konzeptionelles Messmodell}
+\label{sec:messmodell}
+
+Bevor die Einzelindikatoren je Dimension abgeleitet werden, werden die Messprinzipien festgelegt, die für alle Indikatoren gleichermaßen gelten. Diese Festlegungen sind Teil des Konzepts, da sie bestimmen, welche Aussagen ein Indikator überhaupt treffen kann. Die konkreten Schwellwerte, Punktwerte und Gewichte sind dagegen Operationalisierungsentscheidungen und werden erst in Kapitel~4 festgelegt.
+
+\subsubsection{Ergebnisstufen}
+
+Jeder Indikator liefert ein dreistufiges Prüfergebnis: \textit{erfüllt}, \textit{teilweise erfüllt} oder \textit{nicht erfüllt}. Die Zwischenstufe ist erforderlich, da zahlreiche Prüfungen fachlich sinnvolle Teilzustände aufweisen, die eine binäre Bewertung nicht abbilden kann. So kann ein Datensatz eine Themenkategorie angeben, die nicht aus dem vorgesehenen kontrollierten Vokabular stammt. Eine solche Angabe ist höherwertiger als eine fehlende Angabe, erfüllt jedoch nicht die Anforderungen einer standardkonformen Angabe. Eine binäre Prüfung müsste diesen Fall entweder zu streng oder zu nachsichtig bewerten. Darüber hinaus verlangt das Auswahlkriterium der Reportingfähigkeit abgestufte und handlungsorientierte Verbesserungshinweise, die erst durch die Zwischenstufe möglich werden (INT-K9, Tabelle~\ref{tab:zentrale_interviewergebnisse}). Indikatoren ohne fachlich sinnvolle Teilerfüllung, beispielsweise die Prüfung auf das Vorhandensein einer Geometrieangabe, nutzen ausschließlich die beiden äußeren Stufen.
+
+\subsubsection{Ternäre und graduelle Indikatoren}
+
+Das Modell unterscheidet zwei Messformen. \textbf{Ternäre Indikatoren} bilden ihr Prüfergebnis unmittelbar auf die drei Ergebnisstufen ab. Dies betrifft Eigenschaften mit klar abgrenzbaren Zuständen, insbesondere Vokabular- und Strukturprüfungen auf Datensatzebene. \textbf{Graduelle Indikatoren} messen dagegen einen kontinuierlichen Erfüllungsgrad zwischen 0 und 1, aus dem die Ergebnisstufe nachgelagert abgeleitet wird. Graduell gemessen werden zwei Klassen von Eigenschaften. Die erste Klasse umfasst anteilige Eigenschaften, die sich auf mehrere Teilobjekte eines Datensatzes beziehen, beispielsweise den Anteil der Distributionen mit erreichbarer Download-URL. Die zweite Klasse umfasst semantische Urteile, die naturgemäß keine scharfe Erfüllungsgrenze besitzen, beispielsweise die Aussagekraft einer Beschreibung. Diese Trennung stellt sicher, dass der kontinuierliche Erfüllungsgrad unverfälscht in die Aggregation eingeht, während die Ergebnisstufe der verständlichen Darstellung im Reporting dient.
+
+\subsubsection{Bewertungsebene und Aggregation über Distributionen}
+
+Ein DCAT-Datensatz kann mehrere Distributionen besitzen. Zahlreiche Qualitätseigenschaften, darunter Formatangaben, Medientypen, Lizenzangaben und technische Erreichbarkeit, sind Eigenschaften der einzelnen Distribution und nicht des Datensatzes. Das Bewertungsmodell prüft solche Indikatoren daher je Distribution und aggregiert die Einzelergebnisse als Mittelwert über alle Distributionen zum Datensatzergebnis.
+
+Damit grenzt sich das Modell bewusst von der MQA ab. Die MQA bewertet distributionsbezogene Metriken nach dem Best-Distribution-Prinzip. Bei mehreren Distributionen bestimmt die am besten bewertete Distribution das Ergebnis, unter der Annahme, dass alle Distributionen denselben Datensatz lediglich in unterschiedlichen Formaten repräsentieren \cite{data_europa}. % @TODO: ggf. zusätzlich Piveau-Quellcode als Beleg referenzieren (vgl. docs/nachbildung_mqa_logic.md)
+Sowohl die Literatur als auch die Interviews zeigen, dass die Qualität zwischen den Distributionen eines Datensatzes erheblich schwankt und sich Datenbereitsteller nicht durchgängig an das zugrunde liegende DCAT-Muster eines identischen Inhalts in mehreren Formaten halten. Distributionen werden in der Praxis auch genutzt, um inhaltlich unterschiedliche Teildatensätze, Zeitscheiben oder Zusatzdokumente abzulegen. Neumaier et al. prüfen die Abrufbarkeit entsprechend je Ressource und nicht je Datensatz \cite{Neumaier2016MetadataQuality}. Die Interviews benennen defekte Einzelverweise und heterogene Distributionsqualität als zentrales Praxisproblem (INT-K5, INT-K8). % @TODO: konkrete Interview-Belegstellen ergänzen
+Unter dem Best-Distribution-Prinzip bleibt eine nicht erreichbare Download-URL zudem folgenlos, solange eine einzige Distribution funktioniert. Aus Nutzendensicht wird ein solcher Datensatz systematisch überbewertet. Die Mittelwertbildung macht dagegen jede Distribution im Ergebnis sichtbar und setzt zugleich einen Anreiz, fehlerhafte Distributionen zu korrigieren oder zu entfernen, statt sie durch eine einzelne funktionierende Distribution zu maskieren.
+
+\subsubsection{Malus-Prinzip}
+
+Innerhalb der graduellen, distributionsbezogenen Messung werden ausgewählte Defekte nicht mit null, sondern mit einem negativen Beitrag bewertet. Dies betrifft Zustände, die aus Nutzendensicht schlechter sind als das Fehlen der Angabe, weil sie irreführen oder die Nachnutzung aktiv verhindern. Dazu zählen eine angegebene, aber nicht erreichbare Zugriffs- oder Download-URL, ein nicht maschinenlesbarer Zugriffsweg sowie eine eingeschränkte, unklare oder fehlende Lizenz. Eine nicht erreichbare URL täuscht Verfügbarkeit vor und verursacht vergeblichen Zugriffsaufwand (INT-K5). Eine unklare Lizenz macht die Nachnutzung rechtlich unsicher und damit faktisch unmöglich \cite{Neumaier2016MetadataQuality}. Würden solche Defekte lediglich mit null bewertet, wäre ein Datensatz mit fünf Distributionen, von denen vier defekt sind, kaum von einem Datensatz mit einer einzigen fehlenden Angabe unterscheidbar. Der negative Beitrag senkt das Datensatzergebnis aktiv, wobei der Dimensionswert konzeptionell bei null nach unten begrenzt ist. Die konkrete Höhe der Malus-Beiträge wird in Kapitel~4 festgelegt.
+
+\subsubsection{Nicht-Anwendbarkeit}
+
+Nicht jedes Qualitätskriterium trifft auf jeden Datensatz zu. Die Interviews fassen Vollständigkeit als relative Feldrelevanz auf und betonen die Kontextabhängigkeit der Bewertung (INT-K2, INT-K7). Das Messmodell sieht deshalb ergänzend die Ergebnisstufe \textit{nicht anwendbar} vor. Ein Kriterium, das auf einen Datensatz fachlich nicht zutrifft, wird neutral übersprungen und geht weder positiv noch negativ in die Aggregation ein. Ein Beispiel hierfür ist die Anforderung kontextueller Qualifizierer wie Stichtags- oder Vorläufigkeitsangaben bei einem einmaligen, statischen Datensatz. Auf diese Weise wird verhindert, dass Datensätze für Angaben abgewertet werden, die für sie nicht relevant sind. Zugleich setzt diese Ergebnisstufe die aus den Interviews abgeleitete Anforderung einer kontextsensitiven Bewertung um.
+
+\subsubsection{Herleitungsnachweis der Indikatoren}
+
+In den folgenden Indikatortabellen weist die Spalte \textit{Herleitung} je Indikator die Quellen der Anforderung aus und macht damit die eingangs definierten Auswahlkriterien nachprüfbar. Die verwendeten Kurzzeichen sind in Tabelle~\ref{tab:herleitungssignale} definiert.
+
+\begin{table}[H]
+\centering
+\caption{Kurzzeichen der Herleitungssignale in den Indikatortabellen}
+\label{tab:herleitungssignale}
+\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\rowcolors{1}{white}{white}
+\begin{tabular}{p{0.12\textwidth} p{0.55\textwidth} p{0.18\textwidth}}
+\hline
+\textbf{Kurzzeichen} & \textbf{Quelle der Anforderung} & \textbf{Referenz} \\
+\hline
+SPEC & DCAT-AP.de-Spezifikation & \cite{DCATAPDESpec3} \\
+\hline
+KONV~xx & Konvention xx des DCAT-AP.de-Konventionenhandbuchs & \cite{DCATAPDEImplRules2} \\
+\hline
+MQA & Metrik des Metadata Quality Assessment & \cite{data_europa, wentzel2023extensive} \\
+\hline
+NEU & Metrik nach Neumaier et al. & \cite{Neumaier2016MetadataQuality} \\
+\hline
+ZAV & Metrik nach Zaveri et al. & \cite{Zaveri2016LinkedDataQuality} \\
+\hline
+FAIR & FAIR-Prinzipien & \cite{wilkinson2016fair} \\
+\hline
+HMQ & Handreichung zur Verbesserung der Metadatenqualität von offenen Daten & \cite{bydata2025handreichung} \\
+\hline
+INT-Kx & Interviewkategorie Kx & Tabelle~\ref{tab:zentrale_interviewergebnisse} \\
+\hline
+\end{tabular}
+\end{table}
+
 \subsection{Auffindbarkeitsindikatoren}
 
 Auffindbarkeitsindikatoren prüfen, ob ein Datensatz im Metadatenportal über zusätzliche Such-, Filter- und Identifikationsmerkmale besser gefunden und eingeordnet werden kann. Verpflichtende Basisfelder wie Titel und Beschreibung werden hier nicht als Vorhandenseinsindikatoren aufgenommen, da sie bereits durch SHACL geprüft werden. Bewertet werden stattdessen empfohlene, optionale oder qualitätssteigernde Angaben.
@@ -1537,40 +1595,34 @@ Auffindbarkeitsindikatoren prüfen, ob ein Datensatz im Metadatenportal über zu
 \scriptsize
 \renewcommand{\arraystretch}{1.2}
 \rowcolors{1}{white}{white}
-\begin{tabular}{p{0.08\textwidth} p{0.34\textwidth} p{0.14\textwidth} p{0.20\textwidth} p{0.20\textwidth}}
+\begin{tabular}{p{0.05\textwidth} p{0.28\textwidth} p{0.04\textwidth} p{0.08\textwidth} p{0.26\textwidth} p{0.15\textwidth}}
 \hline
-\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Indikatortyp} & \textbf{Key of \texttt{dcat:Dataset}} & \textbf{Key of \texttt{dcat:Distribution}} \\
+\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Typ} & \textbf{Messung} & \textbf{Geprüfte Elemente} & \textbf{Herleitung} \\
 \hline
-A1 & Schlagwörter angegeben & FI & \texttt{dcat:keyword} &  \\
+A1 & Schlagwortumfang in angemessenem Bereich & FI & ternär & \texttt{dcat:keyword} & MQA; NEU; INT-K4 \\
 \hline
-A2 & Themenkategorie angegeben & FI & \texttt{dcat:theme} &  \\
+A2 & Themenkategorie aus kontrolliertem Vokabular & FI & ternär & \texttt{dcat:theme} & MQA; SPEC; INT-K6 \\
 \hline
-A3 & Themenkategorie aus kontrolliertem Vokabular & FI & \texttt{dcat:theme} &  \\
+A3 & Räumliche Geometrieangabe vorhanden & FI & ternär & \texttt{locn:geometry} & MQA; INT-K7 \\
 \hline
-A4 & Identifier zur stabilen Identifikation angegeben & FI & \texttt{dct:identifier}; \texttt{adms:identifier} &  \\
+A4 & Politische Geokodierung aus DCAT-AP.de-Vokabular & FI & ternär & \texttt{dcatde:politicalGeocodingURI}; \texttt{locn:adminUnitL2} & KONV; INT-K6 \\ % @TODO: Konventions-Nr. prüfen
 \hline
-A5 & Räumliche Suchangabe angegeben & FI & \texttt{dct:spatial} &  \\
+A5 & Ebene der politischen Geokodierung aus Vokabular & FI & ternär & \texttt{dcatde:politicalGeocodingLevelURI} & KONV~09 \\
 \hline
-A6 & Räumliche Suchangabe als IRI oder strukturierte Ressource & FI & \texttt{dct:spatial} &  \\
+A6 & Zeitliche Abdeckung mit valider Datumsangabe & FI & ternär & \texttt{dct:temporal} (\texttt{dcat:startDate}, \texttt{dcat:endDate}) & MQA; NEU \\
 \hline
- A7 & Zeitliche Abdeckung angegeben & FI & \texttt{dct:temporal} &  \\
+A7 & Veröffentlichungsdatum valide typisiert & FI & graduell & \texttt{dct:issued} (Dataset und Distribution) & MQA; NEU \\
 \hline
-A8 & Veröffentlichungsdatum angegeben & FI & \texttt{dct:issued} & \texttt{dct:issued} \\
+A8 & Änderungsdatum valide typisiert & FI & graduell & \texttt{dct:modified} (Dataset und Distribution) & MQA; NEU \\
 \hline
-A9 & Änderungsdatum angegeben & FI & \texttt{dct:modified} & \texttt{dct:modified} \\
-\hline
-A10 & Aktualisierungsfrequenz angegeben & FI & \texttt{dct:accrualPeriodicity} &  \\
-\hline
-A11 & Aktualisierungsfrequenz aus kontrolliertem Vokabular & FI & \texttt{dct:accrualPeriodicity} &  \\
-\hline
-A12 & Ursprüngliche Webseite angegeben & FI & \texttt{dcat:landingPage} &  \\
+A9 & Aktualisierungsfrequenz aus kontrolliertem Vokabular & FI & ternär & \texttt{dct:accrualPeriodicity} & NEU; INT-K5 \\
 \hline
 \end{tabular}
 \end{table}
 
 \subsection{Zugänglichkeitsindikatoren}
 
-Zugänglichkeitsindikatoren prüfen, ob die in den Metadaten beschriebene Ressource technisch erreichbar und praktisch abrufbar ist. Das bloße Vorhandensein der verpflichtenden \texttt{dcat:accessURL} wird nicht erneut als Indikator aufgenommen. Bewertet werden stattdessen technische Erreichbarkeit, zusätzliche Download- und Serviceangaben, Formatqualität sowie grobe technische Kongruenz zwischen Metadaten und Ressource.
+Zugänglichkeitsindikatoren prüfen, ob die in den Metadaten beschriebene Ressource technisch erreichbar, korrekt beschrieben und praktisch abrufbar ist. Das bloße Vorhandensein der verpflichtenden \texttt{dcat:accessURL} wird nicht erneut als Indikator aufgenommen. Bewertet werden stattdessen technische Erreichbarkeit, Download-Angaben, Formatqualität und Maschinenlesbarkeit. Alle Zugänglichkeitsindikatoren setzen an der einzelnen Distribution an und werden nach dem in Abschnitt~\ref{sec:messmodell} definierten Messmodell graduell über alle Distributionen aggregiert. Die Erreichbarkeitsprüfungen sowie die Prüfung der Maschinenlesbarkeit unterliegen dem Malus-Prinzip.
 
 \begin{table}[H]
 \centering
@@ -1579,46 +1631,35 @@ Zugänglichkeitsindikatoren prüfen, ob die in den Metadaten beschriebene Ressou
 \scriptsize
 \renewcommand{\arraystretch}{1.2}
 \rowcolors{1}{white}{white}
-\begin{tabular}{p{0.08\textwidth} p{0.34\textwidth} p{0.14\textwidth} p{0.20\textwidth} p{0.20\textwidth}}
+\begin{tabular}{p{0.05\textwidth} p{0.28\textwidth} p{0.04\textwidth} p{0.08\textwidth} p{0.26\textwidth} p{0.15\textwidth}}
 \hline
-\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Indikatortyp} & \textbf{Key of \texttt{dcat:Dataset}} & \textbf{Key of \texttt{dcat:Distribution}} \\
+\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Typ} & \textbf{Messung} & \textbf{Geprüfte Elemente} & \textbf{Herleitung} \\
 \hline
-Z1 & Access-URL technisch erreichbar & TI &  & \texttt{dcat:accessURL} \\
+Z1 & Download-URL angegeben & FI & graduell & \texttt{dcat:downloadURL} & MQA; NEU \\
 \hline
-Z2 & Download-URL angegeben & FI &  & \texttt{dcat:downloadURL} \\
+Z2 & Formatangabe aus kontrolliertem Vokabular & FI & graduell & \texttt{dct:format} & MQA; NEU \\
 \hline
-Z3 & Download-URL technisch erreichbar & TI &  & \texttt{dcat:downloadURL} \\
+Z3 & Medientyp als IANA-Medientyp & FI & graduell & \texttt{dcat:mediaType} & MQA; NEU \\
 \hline
-Z4 & HTTP-Statuscode erfolgreich & TI &  & \texttt{dcat:accessURL}; \texttt{dcat:downloadURL} \\
+Z4 & Nicht-proprietäres Format & FI & graduell & \texttt{dct:format} & MQA; FAIR \\
 \hline
-Z5 & Keine Timeout- oder Verbindungsfehler & TI &  & \texttt{dcat:accessURL}; \texttt{dcat:downloadURL} \\
+Z5 & Download-URL technisch erreichbar & TI & graduell & \texttt{dcat:downloadURL} & MQA; NEU; INT-K5 \\
 \hline
-Z6 & Data-Service-Verweis angegeben & FI &  & \texttt{dcat:accessService} \\
+Z6 & Access-URL technisch erreichbar & TI & graduell & \texttt{dcat:accessURL} & MQA; NEU; INT-K5 \\
 \hline
-Z7 & Data-Service-Endpunkt erreichbar & TI &  & \texttt{dcat:accessService}; \texttt{dcat:endpointURL} \\
+Z7 & Maschinenlesbarer Zugriffsweg (abgestuft) & TI & graduell & \texttt{dct:format}; \texttt{dcat:mediaType}; \texttt{dcat:accessURL}; \texttt{dcat:downloadURL} & MQA; INT-K5, INT-K6 \\
 \hline
-Z8 & Formatangabe angegeben & FI &  & \texttt{dct:format} \\
+Z8\textsuperscript{$\dagger$} & Formatkongruenz zwischen Metadaten und Ressource & TI & graduell & \texttt{dct:format}; \texttt{dcat:mediaType}; HTTP-Antwort & NEU; INT-K8 \\
 \hline
-Z9 & Formatangabe aus kontrolliertem Vokabular & FI &  & \texttt{dct:format} \\
+Z9\textsuperscript{$\dagger$} & Distributionsmodellierung nach DCAT-Muster & FI & ternär & Distributionsstruktur & SPEC; INT-K8 \\
 \hline
-Z10 & Medientyp angegeben & FI &  & \texttt{dcat:mediaType} \\
-\hline
-Z11 & Medientyp als IANA-Medientyp prüfbar & FI &  & \texttt{dcat:mediaType} \\
-\hline
-Z12 & Maschinenlesbares Format & TI &  & \texttt{dct:format}; \texttt{dcat:mediaType} \\
-\hline
-Z13 & Nicht-proprietäres Format & TI &  & \texttt{dct:format}; \texttt{dcat:mediaType} \\
-\hline
-Z14 & Formatkongruenz zwischen Metadaten und Ressource & TI &  & \texttt{dct:format}; \texttt{dcat:mediaType}; \texttt{dcat:downloadURL} \\
-\hline
-Z15 & Dateigrößenangabe plausibel & TI &  & \texttt{dcat:byteSize}; \texttt{dcat:downloadURL} \\
-\hline
+\multicolumn{6}{p{0.94\textwidth}}{\textsuperscript{$\dagger$} Konzipiert und implementiert, in der Standardkonfiguration jedoch deaktiviert.} \\
 \end{tabular}
 \end{table}
 
 \subsection{Nachnutzbarkeitsindikatoren}
 
-Nachnutzbarkeitsindikatoren prüfen, ob Metadaten und Ressourcen über den bloßen Zugriff hinaus rechtlich, organisatorisch und maschinell weiterverwendbar sind. Verpflichtende Angaben, die bereits durch SHACL-Constraints geprüft werden, werden nicht als reine Vorhandenseinsindikatoren aufgenommen. Bewertet werden stattdessen zusätzliche, empfohlene, optional vorhandene oder qualitativ weiterführende Eigenschaften.
+Nachnutzbarkeitsindikatoren prüfen, ob Metadaten und Ressourcen über den bloßen Zugriff hinaus rechtlich, organisatorisch und maschinell weiterverwendbar sind. Verpflichtende Angaben, die bereits durch SHACL-Constraints geprüft werden, werden nicht als reine Vorhandenseinsindikatoren aufgenommen. Die formale DCAT-AP.de-Konformität geht jedoch als aggregierter Indikator N7 in diese Dimension ein, da Standardverletzungen die maschinelle Weiterverwendung unmittelbar beeinträchtigen. Die Lizenzprüfung erfolgt je Distribution und unterliegt dem Malus-Prinzip, da eingeschränkte, unklare oder fehlende Lizenzen die Nachnutzung rechtlich unsicher machen und deshalb aktiv negativ bewertet werden.
 
 \begin{table}[H]
 \centering
@@ -1627,46 +1668,30 @@ Nachnutzbarkeitsindikatoren prüfen, ob Metadaten und Ressourcen über den bloß
 \scriptsize
 \renewcommand{\arraystretch}{1.2}
 \rowcolors{1}{white}{white}
-\begin{tabular}{p{0.08\textwidth} p{0.34\textwidth} p{0.14\textwidth} p{0.20\textwidth} p{0.20\textwidth}}
+\begin{tabular}{p{0.05\textwidth} p{0.28\textwidth} p{0.04\textwidth} p{0.08\textwidth} p{0.26\textwidth} p{0.15\textwidth}}
 \hline
-\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Indikatortyp} & \textbf{Key of \texttt{dcat:Dataset}} & \textbf{Key of \texttt{dcat:Distribution}} \\
+\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Typ} & \textbf{Messung} & \textbf{Geprüfte Elemente} & \textbf{Herleitung} \\
 \hline
-N1 & Lizenz als offene Lizenz klassifizierbar & TI &  & \texttt{dct:license} \\
+N1 & Freie Lizenz aus DCAT-AP.de-Lizenzliste & FI & graduell & \texttt{dct:license} & KONV~32; MQA; NEU; INT-K1 \\ % @TODO: Konventions-Nr. prüfen
 \hline
-N2 & Zugriffsbeschränkungen angegeben & FI & \texttt{dct:accessRights} & \texttt{dct:accessRights} \\
+N2 & Zugriffsrechte aus kontrolliertem Vokabular & FI & ternär & \texttt{dct:accessRights} & MQA; SPEC \\
 \hline
-N3 & Zugriffsbeschränkung aus kontrolliertem Vokabular & FI & \texttt{dct:accessRights} & \texttt{dct:accessRights} \\
+N3 & Herausgeber als strukturierter Agent mit Namen & FI & ternär & \texttt{dct:publisher} (\texttt{foaf:Agent}, \texttt{foaf:name}) & MQA; NEU; ZAV \\
 \hline
-N4 & Herausgeber als strukturierter Agent modelliert & FI & \texttt{dct:publisher} &  \\
+N4 & Kontaktpunkt mit nutzbarer E-Mail oder URL & FI & ternär & \texttt{dcat:contactPoint} & KONV~01; NEU; INT-K5 \\
 \hline
-N5 & Kontaktpunkt angegeben & FI & \texttt{dcat:contactPoint} &  \\
+N5 & Geplante Verfügbarkeit aus kontrolliertem Vokabular & FI & graduell & \texttt{dcatap:availability} & SPEC \\
 \hline
-N6 & Kontaktpunkt enthält nutzbare E-Mail oder URL & FI & \texttt{dcat:contactPoint} &  \\
+N6 & ContributorID aus Contributor-Vokabular & FI & ternär & \texttt{dcatde:contributorID} & KONV~12, KONV~13 \\
 \hline
-N7 & Kontakt-URL technisch erreichbar & TI & \texttt{dcat:contactPoint} &  \\
-\hline
-N8 & Provenienzinformation angegeben & FI & \texttt{dct:provenance} &  \\
-\hline
-N9 & Qualitätsprozess-URI angegeben & FI & \texttt{dcatde:qualityProcessURI} &  \\
-\hline
-N10 & Qualitätsprozess-URI technisch erreichbar & TI & \texttt{dcatde:qualityProcessURI} &  \\
-\hline
-N11 & Kontrollierte Vokabulare in geeigneten Feldern genutzt & FI & \texttt{dcat:theme}; \texttt{dct:spatial}; \texttt{dct:language}; \texttt{dct:accrualPeriodicity} & \texttt{dct:format}; \texttt{dcat:mediaType}; \texttt{dct:accessRights} \\
-\hline
-N12 & URI-Nutzung statt Plain Literal in kontrolliert-vokabularfähigen Feldern & FI & \texttt{dcat:theme}; \texttt{dct:spatial}; \texttt{dct:language}; \texttt{dct:accrualPeriodicity} & \texttt{dct:format}; \texttt{dcat:mediaType}; \texttt{dct:accessRights} \\
-\hline
-N13 & Referenz auf Standards oder Spezifikationen angegeben & FI & \texttt{dct:conformsTo}; \texttt{dct:references} & \texttt{dct:conformsTo} \\
-\hline
-N14 & Dokumentationsseite angegeben und erreichbar & TI & \texttt{foaf:page} & \texttt{foaf:page} \\
-\hline
-N15 & Versionsinformation angegeben & FI & \texttt{owl:versionInfo} &  \\
+N7 & DCAT-AP.de-Konformität (SHACL-Validierung) & FI & ternär & gesamter Metadatensatz & SPEC; MQA; INT-K3 \\
 \hline
 \end{tabular}
 \end{table}
 
 \subsection{Aussagekraftsindikatoren}
 
-Aussagekraftsindikatoren prüfen, ob vorhandene Metadaten inhaltlich verständlich, plausibel und kontextangemessen sind. Da Titel und Beschreibung bereits verpflichtend sind, wird nicht ihr Vorhandensein, sondern ihr Informationswert bewertet. Diese Indikatoren sind nur teilweise automatisierbar und werden deshalb als semantische Prüfungen ausgewiesen.
+Aussagekraftsindikatoren prüfen, ob vorhandene Metadaten inhaltlich verständlich, aussagekräftig und kontextangemessen sind. Da Titel und Beschreibung bereits verpflichtend sind, wird nicht ihr Vorhandensein, sondern ihr Informationswert bewertet. Diese Eigenschaften sind regelbasiert nicht prüfbar. Ob ein Titel für sich genommen verständlich ist, eine Beschreibung inhaltlichen Mehrwert liefert oder Schlagwörter zum beschriebenen Datensatz passen, lässt sich weder über Feldexistenz noch über syntaktische Muster entscheiden (INT-K4). Das Bewertungsmodell sieht daher für diese Dimension ein sprachverstehendes Verfahren als Messinstrument vor. Die technische Umsetzung wird in Kapitel~4 beschrieben. Konzeptionell gelten dabei zwei Anforderungen. Erstens werden die Bewertungskriterien nicht frei definiert, sondern aus den Qualitätsanforderungen des DCAT-AP.de-Konventionenhandbuchs sowie der Handreichung zur Verbesserung der Metadatenqualität von offenen Daten abgeleitet \cite{DCATAPDEImplRules2, bydata2025handreichung}. Zweitens muss jedes semantische Urteil nachvollziehbar sein und auf benennbare Befunde im Metadatentext gestützt sowie im Reporting begründet werden (INT-K9, INT-K10). Alle Aussagekraftsindikatoren sind graduell, da semantische Qualität keine scharfe Erfüllungsgrenze besitzt. Für kontextabhängige Kriterien ist die in Abschnitt~\ref{sec:messmodell} definierte Ergebnisstufe \textit{nicht anwendbar} vorgesehen.
 
 \begin{table}[H]
 \centering
@@ -1675,34 +1700,33 @@ Aussagekraftsindikatoren prüfen, ob vorhandene Metadaten inhaltlich verständli
 \scriptsize
 \renewcommand{\arraystretch}{1.2}
 \rowcolors{1}{white}{white}
-\begin{tabular}{p{0.08\textwidth} p{0.34\textwidth} p{0.14\textwidth} p{0.20\textwidth} p{0.20\textwidth}}
+\begin{tabular}{p{0.05\textwidth} p{0.28\textwidth} p{0.04\textwidth} p{0.08\textwidth} p{0.26\textwidth} p{0.15\textwidth}}
 \hline
-\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Indikatortyp} & \textbf{Key of \texttt{dcat:Dataset}} & \textbf{Key of \texttt{dcat:Distribution}} \\
+\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Typ} & \textbf{Messung} & \textbf{Geprüfte Elemente} & \textbf{Herleitung} \\
 \hline
-S1 & Mindestinformationswert des Titels & SI & \texttt{dct:title} & \texttt{dct:title} \\
+S1 & Aussagekraft des Titels & SI & graduell & \texttt{dct:title} & INT-K4; HMQ \\
 \hline
-S2 & Mindestinformationswert der Beschreibung & SI & \texttt{dct:description} & \texttt{dct:description} \\
+S2 & Aussagekraft der Beschreibung & SI & graduell & \texttt{dct:description} & INT-K4; HMQ \\
 \hline
-S3 & Titel-Beschreibung-Redundanz & SI & \texttt{dct:title}; \texttt{dct:description} & \texttt{dct:title}; \texttt{dct:description} \\
+S3 & Kohärenz von Titel und Beschreibung & SI & graduell & \texttt{dct:title}; \texttt{dct:description} & INT-K4 \\
 \hline
-S4 & Platzhalter- oder generische Beschreibung & SI & \texttt{dct:description} & \texttt{dct:description} \\
+S4 & Qualität der Schlagwörter & SI & graduell & \texttt{dcat:keyword} & INT-K4; HMQ \\
 \hline
-S5 & Keyword-Passung zur Beschreibung & SI & \texttt{dcat:keyword}; \texttt{dct:description} &  \\
+S5 & Thematische Konsistenz & SI & graduell & \texttt{dcat:theme}; \texttt{dcat:keyword}; \texttt{dct:title}; \texttt{dct:description} & INT-K4 \\
 \hline
-S6 & Themenkategorie-Passung zur Beschreibung & SI & \texttt{dcat:theme}; \texttt{dct:description} &  \\
-\hline
-S7 & Plausibilität räumlicher Angaben zur Beschreibung & SI & \texttt{dct:spatial}; \texttt{dct:description} &  \\
-\hline
-S8 & Plausibilität zeitlicher Angaben zur Beschreibung & SI & \texttt{dct:temporal}; \texttt{dct:description} &  \\
-\hline
-S9 & Plausibilität von Änderungs- und Veröffentlichungsdatum & SI & \texttt{dct:issued}; \texttt{dct:modified} & \texttt{dct:issued}; \texttt{dct:modified} \\
-\hline
-S10 & Widerspruchsfreiheit zentraler Metadatenfelder & SI & \texttt{dct:title}; \texttt{dct:description}; \texttt{dcat:keyword}; \texttt{dcat:theme}; \texttt{dct:spatial}; \texttt{dct:temporal}; \texttt{dct:publisher} & \texttt{dct:format}; \texttt{dcat:mediaType} \\
-\hline
-S11 & Grobe Metadaten-Daten-Kongruenz & SI & \texttt{dct:title}; \texttt{dct:description}; \texttt{dcat:keyword}; \texttt{dcat:theme} & \texttt{dcat:downloadURL}; \texttt{dcat:accessURL} \\
+S6 & Kontextuelle Qualifizierer (Stichtag, Bezugszeitraum, Vorläufigkeit) & SI & graduell & \texttt{dct:description}; \texttt{dct:issued}; \texttt{dct:modified} & INT-K2, INT-K7; HMQ \\
 \hline
 \end{tabular}
 \end{table}
+
+\subsection{Zurückgestellte und deaktivierte Prüfungen}
+\label{sec:zurueckgestellte_pruefungen}
+
+Die Indikatorauswahl erhebt keinen Vollständigkeitsanspruch. Um den Auswahlprozess transparent zu machen, werden abschließend Prüfungen dokumentiert, die konzeptionell begründbar wären, aber nicht in das finale Modell aufgenommen wurden. Sie gliedern sich in zwei Gruppen.
+
+\textbf{Zurückgestellte Prüfungen} erfüllen die Auswahlkriterien des Standard-, Literatur- oder Interviewbezugs, scheitern jedoch derzeit am Kriterium der Operationalisierbarkeit oder der Reportingfähigkeit. Dazu gehören die Plausibilität der Dateigrößenangabe \texttt{dcat:byteSize} gegenüber der tatsächlichen Downloadgröße, die Plausibilität räumlicher und zeitlicher Angaben gegenüber der Beschreibung, die Widerspruchsfreiheit zentraler Metadatenfelder sowie eine grobe Kongruenzprüfung zwischen Metadaten und abrufbaren Rohdaten (NEU; INT-K8). Diese Prüfungen erfordern entweder einen Rohdatenabgleich mit erheblichem technischem Aufwand oder semantische Urteile, deren Verlässlichkeit im Rahmen dieser Arbeit nicht abgesichert werden konnte. Sie werden im Ausblick als Erweiterungspfad wieder aufgegriffen.
+
+\textbf{Deaktivierte Prüfungen} wurden konzipiert und prototypisch implementiert, in der Standardkonfiguration des Bewertungsmodells jedoch deaktiviert. Dies betrifft die Formatkongruenz zwischen deklariertem Format und tatsächlicher HTTP-Antwort mit dem Kürzel Z8 sowie die Prüfung der Distributionsmodellierung gegen das DCAT-Muster mit dem Kürzel Z9. Beide Prüfungen erwiesen sich in der praktischen Erprobung als fehlurteilsanfällig, da die zugrunde liegenden technischen Signale in der GovData-Datenbasis zu heterogen sind, um verlässliche Aussagen abzuleiten. Die empirische Begründung der Deaktivierung wird in Kapitel~4 dargestellt. Konzeptionell bleiben beide Indikatoren gültig und im Modell als abschaltbare Prüfungen erhalten.
 
 % \section{Einordnung kontext- und KI-gestützter Analyseverfahren}
 
@@ -1713,40 +1737,135 @@ S11 & Grobe Metadaten-Daten-Kongruenz & SI & \texttt{dct:title}; \texttt{dct:des
 
 \chapter{Prototypische Operationalisierung}
 
+% Scope: Was der Prototyp leistet (RDF/XML -> Scores, Grade, Report) und was bewusst
+% nicht (kein Harvesting, kein Portalbetrieb). Brücke zu Kapitel 3: der Prototyp
+% operationalisiert das dort abgeleitete Bewertungsmodell.
 \section{Zielsetzung und Funktionsumfang des Prototyps}
 
-\section{Systemarchitektur des Prototyps}
+% Scope: Die vier Schichten (core / extraction / scoring / reporting) mit
+% Ein-Weg-Abhängigkeitsrichtung + der Ablauf pro Datei (Parse -> DatasetContext ->
+% HTTP-Probes -> LLM-Assessment -> parallele Dimensionen -> Aggregation -> Persistenz).
+% Eine Architektur-Abbildung, eine Pipeline-Abbildung.
+\section{Systemarchitektur und Verarbeitungspipeline}
 
-\section{Verarbeitung von DCAT-AP.de-Metadaten}
+% Scope: RDF-Parsing, DatasetContext als zentraler geteilter Faktenspeicher
+% (Begründung: Indikatoren fragen den Graph nicht selbst ab -> Konsistenz, Performance),
+% kontrollierte Vokabulare, HTTP-Probing (geteilt, gecapped, lazy).
+\section{Extraktion und Anreicherung der Metadaten}
 
-\section{Verarbeitung von SHACL-Validierungsreports}
+% Scope: KEINE erneute konzeptionelle Auflistung (-> Kap. 3, nur per Kürzel referenzieren).
+% Kernstück: Mapping-Tabelle Konzept-Kürzel <-> implementierte Indikator-ID <-> Status
+% (implementiert / zusammengefasst / angepasst / deaktiviert / nicht umgesetzt) mit
+% Begründung bei Abweichung. Pro Dimension: gemeinsame Prüfmechanik, Datenquelle
+% (Graph / HTTP / ITB-API), Scoring-Regel, Schwellwerte. Prosa nur für Indikatoren mit
+% echten Implementierungsentscheidungen (Malus, Per-Distribution-Mittelung, SHACL via ITB,
+% deaktivierte Indikatoren).
+\section{Implementierung der Einzelindikatoren}
 
-\section{Implementierung der Qualitätsdimensionen und Einzelindikatoren}
+\subsection{Abbildung des konzeptionellen Modells auf implementierte Indikatoren}
 
-\section{Implementierung der Gewichtungs- und Scoringlogik}
+\subsection{Auffindbarkeitsindikatoren}
 
-\section{Implementierung des Reporting-Mechanismus}
+\subsection{Zugänglichkeitsindikatoren}
 
-\section{Technische Grenzen des Prototyps}
+\subsection{Nachnutzbarkeitsindikatoren}
+
+% Scope: Eigene Section, da innovativer Kern (Forschungsfrage 3). Ein-Call-Design
+% (ein strukturiertes Assessment pro Datensatz statt sechs Calls: Kosten/Konsistenz),
+% Schema mit erzwungener Reihenfolge findings -> reasoning -> applicable -> score
+% (Evidenz vor Urteil, Nachvollziehbarkeit), Label wird aus dem Score abgeleitet
+% (Modell kann sich nicht widersprechen), not_applicable-Behandlung, Rubrik-Verankerung
+% in Konventionenhandbuch/Handreichung, Determinismus (temperature 0), Kosten.
+\section{LLM-gestützte Bewertung der Aussagekraft}
+
+% Scope: Ternäre vs. graduelle Indikatoren, Per-Distribution-Mittelung, Malus-Konzept
+% (tote URLs / unfreie Lizenzen ziehen aktiv runter -- begründungswürdige Designentscheidung),
+% effektive Gewichte, die zwei Dimension-Weight-Modi, Grade-Ableitung.
+\section{Scoring-, Gewichtungs- und Aggregationslogik}
+
+% Scope: Bezug zu Forschungsfrage 5 (menschenlesbares Reporting) explizit herstellen.
+\section{Qualitätsreporting}
+
+% Scope: JSON-Struktur (per-File result.json, Run-Aggregate), zweisprachige Messages,
+% Visualisierungen.
+\subsection{Maschinenlesbare Reports und Visualisierung}
+
+% Scope: Zielgruppe, Darstellungskonzept (Navigation über Dimensionen, Indikatoren,
+% Befunde, LLM-Reasonings), warum diese Aufbereitung Nachvollziehbarkeit herstellt.
+% Bei wachsendem Umfang zur eigenen Section hochziehen.
+\subsection{Menschenlesbare Ergebnisaufbereitung (Frontend)}
+
+% Scope: White-/Blacklists, Gewichts-Konfiguration; Grenzen: deaktivierte Indikatoren,
+% LLM-Abhängigkeit, HTTP-Flakiness, nicht umgesetzte Konzept-Indikatoren.
+\section{Konfigurierbarkeit und technische Grenzen des Prototyps}
 
 
 \chapter{Evaluation}
 
-\section{Evaluationsdesign und Bewertungskriterien}
+% Aufbau des Kapitels: zweigeteilt -- Methodik (5.1-5.5), Ergebnisse (5.6-5.9).
+% Quellen: docs/methodik_evaluation_ground_truth_v3.md, docs/evaluation_vs_mqa.md,
+% Notebooks 10 (Ground Truth) und 11 (MQA-Vergleich).
 
-\section{Daten- und Vergleichsbasis}
+% Scope: Die Klammer zuerst: zwei komplementäre Evidenzstränge auf identischem Input --
+% (a) Vergleich gegen externes menschliches Qualitätsurteil (Ground Truth): bewertet der
+% Prototyp "richtig"?; (b) Vergleich gegen MQA als etablierte Baseline: WAS sieht der
+% Prototyp mehr? Hypothesen formal einführen: H1 (Konvergenz auf äquivalenten Checks),
+% H2 (systematische Divergenz auf B/C-Indikatoren), H3 (Prototyp näher an Ground Truth
+% als MQA). Validitäts-Hinweis: ohne Ground Truth belegt der MQA-Vergleich nur Divergenz,
+% erst H3 belegt Überlegenheit.
+\section{Evaluationsdesign und Hypothesen}
 
-\section{Beschreibung der Evaluationsdatensätze}
+% Scope: Stratifizierte purposive Kernstichprobe (n=50, Seed 67) mit fünf
+% Schichtungsmerkmalen (Themen, Bereitsteller, Zugriffstypen, Formatgruppen, technische
+% Vorqualität) + kuratierte Extremfälle (n=10) als Stresstest. Begründung des
+% Zwei-Schichten-Designs: Extremfälle belegen den Mechanismus per Konstruktion,
+% Kernstichprobe kontrolliert Bias und zeigt Praxisrelevanz -> getrennte Auswertung.
+% Erhebungsdatum, Portal-Quelle, DCAT-AP-Version dokumentieren (Replikationspaket).
+\section{Datengrundlage und Stichprobe}
 
-\section{Anwendung des Bewertungsmodells auf ausgewählte Metadatensätze}
+% Scope: Bewertungsraster (0-5, verankerte Rubrik je Dimension) mit messtheoretischer
+% Begründung (Preston & Colman zur Stufenzahl, kriteriumsorientierte Schwellen, hybride
+% kompensatorisch-konjunktive Aggregation zu gut/mittel/schlecht). Hervorheben:
+% (1) Blindheit der Bewertung gegenüber Modell-Scores (Anchoring-Bias), (2) Anker
+% beschreiben die nutzerseitige Qualitätserfahrung, nicht die Indikatorlogik des
+% Prototyps (methodische Unabhängigkeit, Campbell & Fiske). Einzelbewerter-Limitation
+% offen benennen (Kalibrierung, kompakte Sessions, Zweifelsfall-Markierung).
+\section{Ground-Truth-Erhebung}
 
-\section{Analyse und Interpretation der Bewertungsergebnisse}
+% Scope: Alles MQA-Bezogene der Evaluation. Begründung der Baseline-Wahl,
+% Reimplementierung (identischer RDF-Input, offizielle Methodik, Validierung gegen
+% data.europa.eu, Methodikversion), Score-Normalisierung beider Seiten, A/B/C-Schema
+% als Herzstück (A = äquivalent -> konvergente Validität; B = Prototyp prüft tiefer,
+% Presence->Validity nach Zaveri/Neumaier; C = kein MQA-Pendant -> inkrementelle
+% Validität). Fairness-Nachweis: mqa_only_metrics ausweisen. Vollständige
+% Mapping-Tabelle in den Anhang, im Text Schema + Beispiele + Grenzfälle (review=True).
+\section{Vergleichsbaseline: MQA-Reimplementierung und A/B/C-Klassifikation}
 
-\section{Bewertung der Nachvollziehbarkeit des Scorings}
+% Scope: Pro Evidenzstrang. Ground Truth: Cohen's kappa (gewichtet) auf dem Gesamturteil
+% als Primärmetrik, Spearman/Kendall je Dimension als Sekundärmetrik, Ceiling-Analyse
+% (maximal erreichbares rho bei gegebener GT-Verteilung). MQA-Vergleich: Agreement-Rate (A),
+% Overestimation-Rate (B), Score-Varianz bei flacher MQA (C), Bland-Altman.
+\section{Auswertungsverfahren und Kennzahlen}
 
-\section{Stärken, Grenzen, und Fehlklassifikationen des Modells}
+% Scope: Kernstichprobe und Extremfälle getrennt; Konfusionsmatrix, kappa, Scatter,
+% Dimensions-Korrelationen mit Ceiling-Einordnung.
+\section{Ergebnisse: Prototyp und Ground Truth}
 
-\section{Vertiefende Fallanalyse ausgewählter Bewertungsergebnisse}
+% Scope: Entlang A/B/C, also entlang H1/H2. H3 (Korrelation Prototyp<->GT vs. MQA<->GT)
+% als Synthese beider Stränge ans Ende des quantitativen Teils.
+\section{Ergebnisse: Prototyp und MQA im Vergleich}
+
+% Scope: Top-Disagreements aus beiden Vergleichen qualitativ -- wo weicht das Modell vom
+% Menschen ab und warum, wo sieht der Prototyp Dinge, die MQA nicht sieht (konkrete
+% Datensätze). Hier auch der Screenshot-gestützte Frontend-Walkthrough eines gut/schlecht-
+% Falls (Nachvollziehbarkeit des Scorings demonstrativ zeigen).
+\section{Vertiefende Fallanalysen}
+
+% Scope: Nur Limitationen DER EVALUATION (Limitationen des Ansatzes -> Kap. 6/7):
+% Einzelbewerter, Stichprobengröße, Skalenartefakte/Attenuation (Disattenuation nur als
+% grobe Obergrenze), LLM-Stabilität (Run-zu-Run-MAE), A/B/C-Einstufung als Interpretation,
+% Frontend nur demonstrativ statt empirisch mit Nutzern evaluiert.
+\section{Limitationen der Evaluation}
 
 
 \chapter{Diskussion}
