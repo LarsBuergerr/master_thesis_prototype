@@ -1712,23 +1712,47 @@ Aussagekraftsindikatoren prüfen, ob vorhandene Metadaten inhaltlich verständli
 
 \chapter{Prototypische Operationalisierung}
 
-Mit dem konzeptionellen Bewertungsmodell ist festgelegt, welche Qualitätsaspekte geprüft werden und nach welchen Prinzipien die Prüfergebnisse zu einem Gesamturteil verdichtet werden. Der Weg von dieser Spezifikation zu einem einsatzfähigen Bewertungswerkzeug erfordert jedoch eine Reihe weiterer Entscheidungen. Jede Prüflogik muss softwaretechnisch umgesetzt, graduelle Messungen müssen mit konkreten Schwellwerten und Malus-Höhen versehen und für die semantischen Prüfungen muss ein geeignetes Messinstrument ausgewählt und abgesichert werden. Das vorliegende Kapitel dokumentiert diese Operationalisierung anhand eines in Python implementierten Prototyps. Der Fokus liegt auf den dabei getroffenen Entscheidungen, ihrer Begründung und den daraus resultierenden technischen Grenzen.
+Mit dem konzeptionellen Bewertungsmodell ist festgelegt, welche Qualitätsaspekte geprüft werden und nach welchen Prinzipien die Prüfergebnisse zu einem Gesamturteil verdichtet werden. Im folgenden Kapitel wird beschrieben, wie diese Prinzipien prototypisch operationalisiert werden.
+Die Umsetzung erfolgt in einer modularen Architektur, die die einzelnen Verarbeitungsschritte klar voneinander trennt und eine nachvollziehbare Bewertungskette von der Metadateneingabe bis zum Ergebnisreport abbildet.
 
-% Scope: Was der Prototyp leistet (RDF/XML -> Scores, Grade, Report) und was bewusst
-% nicht (kein Harvesting, kein Portalbetrieb). Brücke zu Kapitel 3: der Prototyp
-% operationalisiert das dort abgeleitete Bewertungsmodell.
 \section{Zielsetzung und Funktionsumfang des Prototyps}
 
-% Scope: Die vier Schichten (core / extraction / scoring / reporting) mit
-% Ein-Weg-Abhängigkeitsrichtung + der Ablauf pro Datei (Parse -> DatasetContext ->
-% HTTP-Probes -> LLM-Assessment -> parallele Dimensionen -> Aggregation -> Persistenz).
-% Eine Architektur-Abbildung, eine Pipeline-Abbildung.
+Der Prototyp verfolgt zwei Ziele. Erstens dient er als Machbarkeitsnachweis, dass sich das konzipierte mehrdimensionale Bewertungsmodell mit vertretbarem Aufwand automatisiert umsetzen lässt. Zweitens stellt er das Messinstrument für die Evaluation in Kapitel~5 bereit, in der die Bewertungsergebnisse gegen ein manuelles Qualitätsurteil und gegen die MQA verglichen werden. Beide Ziele setzen voraus, dass die Bewertungsergebnisse reproduzierbar sind. Der Prototyp ist daher so entworfen, dass identische Eingaben bei den regelbasierten und technischen Prüfungen zu identischen Ergebnissen führen.
+
+Aus Nutzungssicht bewertet der Prototyp einzelne DCAT-AP.de-Metadatensätze, die als RDF/XML-Dateien vorliegen. Die Verarbeitung erfolgt wahlweise für einzelne Dateien oder gebündelt für ein Verzeichnis, sodass sowohl Einzelbewertungen als auch Stichprobenläufe möglich sind. Für jeden Datensatz werden die Indikatoren des Bewertungsmodells ausgewertet und zu einem vollständigen, maschinenlesbaren Bewertungsergebnis zusammengeführt. Dieses enthält je Indikator die Ergebnisstufe, den Erfüllungsgrad, eine deutsch- und englischsprachige Ergebnismeldung sowie indikatorspezifische Detailbefunde, darüber hinaus die aggregierten Dimensionswerte, den gewichteten Gesamtscore und eine daraus abgeleitete Gesamtnote. Auf Ebene eines Bewertungslaufs werden zusätzlich aggregierte Kennzahlen und Visualisierungen über alle verarbeiteten Datensätze erzeugt. Welche Dimensionen und Indikatoren ausgewertet werden und mit welchen Gewichten sie in die Aggregation eingehen, ist konfigurierbar, ohne dass Quellcode angepasst werden muss.
+
+Ebenso bewusst ist der Funktionsumfang begrenzt. Der Prototyp harvestet keine Metadaten, sondern arbeitet auf bereits exportierten RDF-Dateien, wie sie die GovData-Infrastruktur bereitstellt. Er ist als Analysewerkzeug für Einzel- und Stichprobenbewertungen ausgelegt und nicht als dauerhaft betriebener Portaldienst mit kontinuierlichem Monitoring. Bewertet werden die Metadaten und ihre technische Einlösbarkeit, nicht die fachliche Qualität der beschriebenen Daten selbst.
+
 \section{Systemarchitektur und Verarbeitungspipeline}
 
-% Scope: RDF-Parsing, DatasetContext als zentraler geteilter Faktenspeicher
-% (Begründung: Indikatoren fragen den Graph nicht selbst ab -> Konsistenz, Performance),
-% kontrollierte Vokabulare, HTTP-Probing (geteilt, gecapped, lazy).
+Die Architektur des Prototyps folgt drei Entwurfsprinzipien. Erstens ist die Verarbeitung in Schichten mit strikt einwärts gerichteten Abhängigkeiten organisiert, sodass die Domänenlogik von Ein- und Ausgabe entkoppelt bleibt. Zweitens ist das Indikatorensystem über eine Registrierung erweiterbar, sodass neue Indikatoren hinzugefügt werden können, ohne die Verarbeitungskette anzupassen. Drittens werden alle Fakten über einen Datensatz genau einmal erhoben und anschließend von allen Indikatoren gemeinsam genutzt. Abbildung~\ref{fig:prototyp_architektur} zeigt den Aufbau des Prototyps und den Datenfluss durch die Verarbeitungskette.
+
+\begin{figure}[H]
+    \centering
+    % @TODO: vorhandenes Architekturdiagramm einfügen
+    \includegraphics[width=\textwidth]{images/architecture_prototype.png}
+    \captionsetup{justification=centering}
+    \caption{Systemarchitektur und Datenfluss des Prototyps}
+    \label{fig:prototyp_architektur}
+\end{figure}
+
+Die Schichtung umfasst drei Ebenen. Die Ebene \texttt{extraction} überführt den RDF-Graphen in eine typisierte Faktenbasis und reichert diese um technische und semantische Prüfsignale an. Die Ebene \texttt{scoring} orchestriert die Bewertung, indem sie die registrierten Indikatoren je Dimension ausführt und die Ergebnisse aggregiert. Die Ebene \texttt{reporting} persistiert und visualisiert ausschließlich fertige Ergebnisse. Indikatoren registrieren sich bei ihrer Instanziierung selbst in der zentralen Registrierung. Ein neuer Indikator besteht damit aus einer einzelnen Klasse, die eine Prüfmethode implementiert, und wird von der Verarbeitungskette automatisch berücksichtigt. Dieses Erweiterungsprinzip setzt die im Bewertungsmodell angelegte Offenheit des Indikatorenkatalogs technisch um.
+
+Die Verarbeitung eines Metadatensatzes durchläuft sieben Schritte. Zunächst wird die RDF/XML-Datei in einen RDF-Graphen eingelesen. Anschließend wird aus dem Graphen einmalig die Faktenbasis des Datensatzes aufgebaut. Darauf folgen zwei bedarfsgesteuerte Anreicherungsschritte, die technische Erreichbarkeitsprüfung der Distributionen und die semantische Bewertung der Freitextfelder. Beide werden nur ausgeführt, wenn nach der aktiven Konfiguration mindestens ein Indikator ihre Ergebnisse tatsächlich konsumiert, da Netzwerkzugriffe und Sprachmodellaufrufe die laufzeit- und kostenintensivsten Operationen der Verarbeitung darstellen. Danach werden die Qualitätsdimensionen parallel ausgewertet. Die Parallelisierung ist unproblematisch, weil alle Indikatoren ausschließlich lesend auf die gemeinsame Faktenbasis zugreifen. Abschließend werden die Indikatorergebnisse zu Dimensions- und Gesamtwerten aggregiert und zusammen mit Protokollen und Visualisierungen persistiert.
+
+Der Prototyp ist in Python implementiert und setzt Python~3.12 voraus. Die RDF-Verarbeitung erfolgt mit der Bibliothek rdflib\footnote{\url{https://rdflib.readthedocs.io/}}, die Erreichbarkeitsprüfungen nutzen requests\footnote{\url{https://requests.readthedocs.io/}}. Die strukturierte Ausgabe des Sprachmodells wird über Pydantic\footnote{\url{https://docs.pydantic.dev/}} schemavalidiert, die Anbindung des Modells erfolgt über LangChain\footnote{\url{https://www.langchain.com/}}. Die Konfiguration der Bewertungsläufe wird mit Hydra\footnote{\url{https://hydra.cc/}} verwaltet, die Visualisierungen werden mit matplotlib\footnote{\url{https://matplotlib.org/}} erzeugt. Die exakten Versionsstände aller Abhängigkeiten sind im Quellcode-Repository festgeschrieben.
+
 \section{Extraktion und Anreicherung der Metadaten}
+
+Grundlage jeder Bewertung ist die Überführung des eingelesenen RDF-Graphen in eine typisierte Faktenbasis. Diese enthält alle bewertungsrelevanten Angaben des Datensatzes, darunter Titel, Beschreibung, Schlagwörter, Themen, Datums- und Frequenzangaben, sowie für jede Distribution ein eigenes Faktenobjekt mit Format-, Medientyp-, Lizenz- und URL-Angaben. Abgeleitete Größen wie die Anzahl der Distributionen mit Download-URL werden als berechnete Eigenschaften bereitgestellt.
+
+Diese Zwischenschicht ist eine zentrale Entwurfsentscheidung des Prototyps. Sie stellt erstens Konsistenz sicher, da alle Indikatoren über dieselben, an genau einer Stelle extrahierten Fakten urteilen und Interpretationsfragen der RDF-Struktur nicht je Indikator unterschiedlich beantwortet werden können. Sie vermeidet zweitens redundante Arbeit, da der Graph nur einmal traversiert wird. Sie entkoppelt drittens die Prüflogik vom Datenmodell, denn die Indikatoren operieren auf typisierten Werten und enthalten keine RDF-spezifische Logik, was ihre Implementierung und Erweiterung wesentlich vereinfacht.
+
+Prüfungen gegen kontrollierte Vokabulare stützen sich auf lokal mitgelieferte Kopien der Referenzlisten, die einmalig beim Start geladen werden. Dazu gehören die Vokabulare des Publications Office der Europäischen Union für Themen, Dateitypen, Aktualisierungsfrequenzen und Zugriffsrechte\footnote{\url{https://op.europa.eu/en/web/eu-vocabularies}}, das Medientypregister der IANA\footnote{\url{https://www.iana.org/assignments/media-types/}} sowie die Lizenzliste und das Schlüsselverzeichnis der politischen Geokodierung aus DCAT-AP.de \cite{DCATAPDEImplRules2}. Die lokale Bündelung macht die Vokabularprüfungen deterministisch und unabhängig von der Verfügbarkeit externer Dienste. Der Stand der eingebundenen Vokabulare ist dokumentiert und wird bei Bedarf manuell aktualisiert.
+
+Die technische Anreicherung prüft die Erreichbarkeit der in den Distributionen angegebenen Zugriffs- und Download-URLs. Jede eindeutige URL wird höchstens einmal je Bewertungslauf angefragt, zunächst über eine HEAD-Anfrage und bei deren Fehlschlag über eine GET-Anfrage mit abgebrochenem Inhaltsbezug. Für Verbindungsaufbau und Antwort gelten Zeitlimits von fünf beziehungsweise acht Sekunden. Erfasst werden der HTTP-Statuscode, der zurückgelieferte Medientyp und die Fehlerklasse fehlgeschlagener Anfragen. Die Ergebnisse werden als Prüfsignale an die Faktenbasis angehängt und von allen konsumierenden Indikatoren gemeinsam genutzt. Eine konfigurierbare Obergrenze begrenzt die Anzahl der Anfragen je Datensatz, wobei die Distributionen dafür in einer stabilen Reihenfolge verarbeitet werden, damit auch begrenzte Läufe reproduzierbar bleiben. Dieses Vorgehen schont die angefragten Server und stellt zugleich sicher, dass alle Indikatoren mit identischen Netzwerksignalen arbeiten.
+
+Als dritte Anreicherungsstufe wird bei aktivierten Aussagekraftsindikatoren eine strukturierte semantische Bewertung der Freitextfelder erzeugt und ebenfalls an die Faktenbasis angehängt. Sie folgt demselben Prinzip wie die technische Anreicherung. Die Bewertung wird genau einmal je Datensatz erstellt und anschließend von allen sechs Aussagekraftsindikatoren gemeinsam ausgewertet.
 
 % Scope: KEINE erneute konzeptionelle Auflistung (-> Kap. 3, nur per Kürzel referenzieren).
 % Kernstück: Mapping-Tabelle Konzept-Kürzel <-> implementierte Indikator-ID <-> Status
