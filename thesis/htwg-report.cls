@@ -63,6 +63,7 @@
 \RequirePackage{float}
 
 \RequirePackage{minted}
+\usemintedstyle{vs}
 
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 \lstset{framextopmargin=50pt}
