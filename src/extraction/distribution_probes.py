@@ -267,6 +267,10 @@ NON_PROPRIETARY_FORMAT_URIS: frozenset[str] = frozenset(
 )
 
 #: Machine-readable AND open (tier high = 1.0).
+#: Fully machine-readable (tier high = 1.0). Base formats mirror the "Machine
+#: readable = Yes" row of the data.europa.eu Data Quality Guidelines (Table 5:
+#: RDF, XML, JSON, CSV) plus their structured-data variants; the geo formats are
+#: an addition for geospecific data types not covered by that table.
 _HIGH_MIMES: frozenset[str] = frozenset(
     {
         "application/xml",
@@ -278,14 +282,12 @@ _HIGH_MIMES: frozenset[str] = frozenset(
         "text/csv",
         "application/csv",
         "text/tab-separated-values",
-        "application/vnd.oasis.opendocument.spreadsheet",  # ODS
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",  # XLSX
         "application/rdf+xml",
         "text/turtle",
         "text/n3",
         "application/sparql-query",
         "application/vnd.apache.parquet",
-        # Geo open standards
+        # Geo open standards (addition, not in Table 5)
         "application/geo+json",
         "application/gml+xml",
         "application/vnd.google-earth.kml+xml",
@@ -300,27 +302,36 @@ _HIGH_MIMES: frozenset[str] = frozenset(
     }
 )
 
-#: Partially ok — machine-readable but proprietary, or open but limited (tier mid = 0.5).
+#: Predominantly machine-readable (tier mid = 0.5). Base formats mirror the
+#: "Machine readable = Predominantly" row of the Data Quality Guidelines (Table 5:
+#: ODS, XLSX, XLS, TXT, HTML); the geo formats are an addition for geospecific
+#: data types not covered by that table.
 _MID_MIMES: frozenset[str] = frozenset(
     {
+        "application/vnd.oasis.opendocument.spreadsheet",  # ODS
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",  # XLSX
         "application/vnd.ms-excel",
         "application/excel",  # XLS
+        "text/plain",  # TXT
+        "text/html",
+        "application/xhtml+xml",  # HTML
+        # Geo formats (addition, not in Table 5)
         "x-gis/x-shapefile",
         "application/x-esri-shape",
         "application/x-filegdb",
     }
 )
 
-#: Not usefully machine-readable (tier none = 0.0). Not used but reserved for completeness and potential future use.
+#: Not usefully machine-readable (tier none = 0.0). Mirrors the "Machine
+#: readable = No" row of the Data Quality Guidelines (Table 5: PDF, DOCX, ODT,
+#: DOC, PNG, GIF, JPG/JPEG, TIFF). Not consulted by the classifier (anything not
+#: in high/mid falls through to "none") — kept for documentation.
 _LOW_MIMES: frozenset[str] = frozenset(
     {
-        "text/plain",
-        "text/html",
-        "application/xhtml+xml",
         "application/pdf",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        "application/vnd.oasis.opendocument.text",
-        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",  # DOCX
+        "application/vnd.oasis.opendocument.text",  # ODT
+        "application/msword",  # DOC
         "image/png",
         "image/gif",
         "image/jpeg",

@@ -1524,7 +1524,7 @@ Jeder Indikator liefert ein dreistufiges Prüfergebnis: \textit{erfüllt}, \text
 
 \subsubsection{Ternäre und graduelle Indikatoren}
 
-Das Modell unterscheidet zwei Messformen. \textbf{Ternäre Indikatoren} bilden ihr Prüfergebnis unmittelbar auf die drei Ergebnisstufen ab. Dies betrifft Eigenschaften mit klar abgrenzbaren Zuständen, insbesondere Vokabular- und Strukturprüfungen auf Datensatzebene. \textbf{Graduelle Indikatoren} messen dagegen einen kontinuierlichen Erfüllungsgrad zwischen 0 und 1, aus dem die Ergebnisstufe nachgelagert abgeleitet wird. Graduell gemessen werden zwei Klassen von Eigenschaften. Die erste Klasse umfasst anteilige Eigenschaften, die sich auf mehrere Teilobjekte eines Datensatzes beziehen, beispielsweise den Anteil der Distributionen mit erreichbarer Download-URL. Die zweite Klasse umfasst semantische Urteile, die naturgemäß keine scharfe Erfüllungsgrenze besitzen, beispielsweise die Aussagekraft einer Beschreibung. Diese Trennung stellt sicher, dass der kontinuierliche Erfüllungsgrad unverfälscht in die Aggregation eingeht, während die Ergebnisstufe der verständlichen Darstellung im Reporting dient.
+Das Modell unterscheidet zwei Messformen. \textbf{Ternäre Indikatoren} bilden ihr Prüfergebnis unmittelbar auf die drei Ergebnisstufen ab. Dies betrifft Eigenschaften mit klar abgrenzbaren Zuständen, insbesondere Vokabular- und Strukturprüfungen auf Datensatzebene. \textbf{Graduelle Indikatoren} messen dagegen einen kontinuierlichen Erfüllungsgrad zwischen 0 und 1, aus dem die Ergebnisstufe nachgelagert abgeleitet wird, diese allerdings keinen Einfluss auf den Wert hat. Graduell gemessen werden zwei Klassen von Eigenschaften. Die erste Klasse umfasst anteilige Eigenschaften, die sich auf mehrere Teilobjekte eines Datensatzes beziehen, beispielsweise den Anteil der Distributionen mit erreichbarer Download-URL. Die zweite Klasse umfasst semantische Urteile, die naturgemäß keine scharfe Erfüllungsgrenze besitzen, beispielsweise die Aussagekraft einer Beschreibung. Diese Trennung stellt sicher, dass der kontinuierliche Erfüllungsgrad unverfälscht in die Aggregation eingeht, während die Ergebnisstufe der verständlichen Darstellung im Reporting dient.
 
 \subsubsection{Bewertungsebene und Aggregation über Distributionen}
 
@@ -1595,7 +1595,7 @@ Auffindbarkeitsindikatoren prüfen, ob ein Datensatz im Metadatenportal über zu
     \hline
     A3 & Räumliche Geometrieangabe vorhanden & FI & ternär & \texttt{locn:geometry} & MQA; INT-K7 \\
     \hline
-    A4 & Politische Geokodierung aus DCAT-AP.de-Vokabular & FI & ternär & \texttt{dcatde:political- \ GeocodingURI}; \texttt{locn:adminUnitL2} & KONV~8; INT-K6 \\ % @TODO: Konventions-Nr. prüfen
+    A4 & Politische Geokodierung aus DCAT-AP.de-Vokabular & FI & ternär & \texttt{dcatde:political- \ GeocodingURI}; \texttt{locn:adminUnitL2} & KONV~08; INT-K6 \\
     \hline
     A5 & Ebene der politischen Geokodierung aus Vokabular & FI & ternär & \texttt{dcatde:political- \ GeocodingLevelURI} & KONV~09 \\
     \hline
@@ -1655,7 +1655,7 @@ Nachnutzbarkeitsindikatoren prüfen, ob Metadaten und Ressourcen über den bloß
     \hline
     \textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Typ} & \textbf{Messung} & \textbf{Geprüfte Elemente} & \textbf{Herleitung} \\
     \hline
-    N1 & Freie Lizenz aus DCAT-AP.de-Lizenzliste & FI & graduell & \texttt{dct:license} & KONV~32; MQA; NEU; INT-K1 \\ % @TODO: Konventions-Nr. prüfen
+    N1 & Freie Lizenz aus DCAT-AP.de-Lizenzliste & FI & graduell & \texttt{dct:license} & KONV~32; MQA; NEU; INT-K1 \\
     \hline
     N2 & Herausgeber als strukturierter Agent mit Namen & FI & ternär & \texttt{dct:publisher} (\texttt{foaf:Agent}, \texttt{foaf:name}) & MQA; NEU; ZAV \\
     \hline
@@ -1741,7 +1741,7 @@ In der Schicht \texttt{scoring} werden anschließend die Indikatoren je Qualitä
 Die Indikatoren registrieren sich bei ihrer Instanziierung selbst in einer zentralen Registrierung, aus der die Bewertungsschicht die auszuführenden Prüfungen bezieht. Ein neuer Indikator besteht damit aus einer einzelnen Klasse, die eine Prüfmethode implementiert, und wird von der Verarbeitungskette automatisch berücksichtigt. Dieses Erweiterungsprinzip setzt die im Bewertungsmodell angelegte Offenheit des Indikatorenkatalogs technisch um.
 
 Der Prototyp ist in Python implementiert und setzt Python~3.12 voraus. Die RDF-Verarbeitung erfolgt mit der Bibliothek rdflib\footnote{\url{https://rdflib.readthedocs.io/}}, die Erreichbarkeitsprüfungen nutzen requests\footnote{\url{https://requests.readthedocs.io/}}. Die strukturierte Ausgabe des Sprachmodells wird über Pydantic\footnote{\url{https://docs.pydantic.dev/}} schemavalidiert, die Anbindung des Modells erfolgt über LangChain\footnote{\url{https://www.langchain.com/}}. Die Konfiguration der Bewertungsläufe wird mit Hydra\footnote{\url{https://hydra.cc/}} verwaltet, die Visualisierungen werden mit matplotlib\footnote{\url{https://matplotlib.org/}} erzeugt. Die exakten Versionsstände aller Abhängigkeiten sind im Quellcode-Repository\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/tree/v3_prototype_freeze}} festgeschrieben. 
-% @TODO github link am ende noch updaten falls nötig, und eventuell matplotlib entfernen da die visualisierungen ja dann im frontend erzeugt werden.
+% @TODO github link am ende noch updaten falls nötig, und eventuell matplotlib entfernen da die visualisierungen ja dann im frontend erzeugt werden. und das mit den versionständen eventuell weg machen :sob: 
 
 \section{Extraktion und Anreicherung der Metadaten}
 
@@ -1825,6 +1825,7 @@ class ThemeIndicator(Indicator):
 \captionof{listing}{Implementierungsmuster eines ternären Indikators, vereinfacht}
 \label{lst:indicator_anatomy}
 \end{wrapfigure}
+
 Alle Indikatoren folgen derselben Implementierungsstruktur. Ein Indikator ist eine Klasse mit einer einzelnen Prüfmethode, die die Faktenbasis liest und ein Ergebnisobjekt zurückgibt. Das Ergebnisobjekt enthält die Ergebnisstufe, den Erfüllungsgrad, eine deutsch- und englischsprachige Ergebnismeldung sowie ein Detailobjekt mit den geprüften Werten, aus dem sich das Urteil im Reporting nachvollziehen lässt. Listing~\ref{lst:indicator_anatomy} zeigt das Muster in vereinfachter Form am Beispiel der Themenkategorie. Da die Faktenbasis die Vokabularzugehörigkeit bereits vorberechnet bereitstellt, reduziert sich die Prüflogik der meisten formalen Indikatoren auf wenige Fallunterscheidungen.
 
 Die folgenden Abschnitte dokumentieren je Dimension die gemeinsame Prüfmechanik und die konkreten Prüfregeln einschließlich der gewählten Schwellwerte. Die konzeptionelle Herleitung der Indikatoren wird nicht wiederholt, referenziert wird ausschließlich über die Kürzel aus Kapitel~3.
@@ -1858,15 +1859,15 @@ A7 & \texttt{find\_issued\_datetime} & Z7 & \texttt{acc\_machine\_readable\_acce
 \hline
 A8 & \texttt{find\_modified\_datetime} & N1 & \texttt{reuse\_license} \\
 \hline
-S1 & \texttt{expr\_title\_quality} & N3 & \texttt{reuse\_publisher} \\
+S1 & \texttt{expr\_title\_quality} & N2 & \texttt{reuse\_publisher} \\
 \hline
-S2 & \texttt{expr\_description\_quality} & N4 & \texttt{reuse\_contact} \\
+S2 & \texttt{expr\_description\_quality} & N3 & \texttt{reuse\_contact} \\
 \hline
-S3 & \texttt{expr\_title\_description\_coherence} & N5 & \texttt{reuse\_availability} \\
+S3 & \texttt{expr\_title\_description\_coherence} & N4 & \texttt{reuse\_availability} \\
 \hline
-S4 & \texttt{expr\_keyword\_quality} & N6 & \texttt{reuse\_contributor\_id} \\
+S4 & \texttt{expr\_keyword\_quality} & N5 & \texttt{reuse\_contributor\_id} \\
 \hline
-S5 & \texttt{expr\_thematic\_consistency} & N7 & \texttt{reuse\_dcat\_ap\_de\_compliance} \\
+S5 & \texttt{expr\_thematic\_consistency} & N6 & \texttt{reuse\_dcat\_ap\_de\_compliance} \\
 \hline
 S6 & \texttt{expr\_contextual\_qualifiers} & & \\
 \hline
@@ -1874,8 +1875,6 @@ S6 & \texttt{expr\_contextual\_qualifiers} & & \\
 \caption{Zuordnung der Konzept-Kürzel zu den implementierten Indikator-Bezeichnern}
 \label{tab:impl_mapping}
 \end{table}
-
-Die beiden konzeptionell bereits als zurückgestellt ausgewiesenen Prüfungen sind standardmäßig deaktiviert. Die Formatkongruenzprüfung vergleicht das deklarierte Format und den deklarierten Medientyp mit dem tatsächlich ausgelieferten HTTP-Content-Type und der Dateiendung der Ressource, in Anlehnung an eine bestehende Validierungskomponente des CKAN-Ökosystems\footnote{\url{https://github.com/qld-gov-au/ckanext-resource-type-validation}}. Die Distributionsmodellierungsprüfung bewertet, ob die Distributionen eines Datensatzes dem DCAT-Muster inhaltsgleicher Repräsentationen folgen. Beide Prüfungen zeigten in der praktischen Erprobung eine hohe Fehlurteilsrate, da fehlerhaft konfigurierte Content-Type-Header und die heterogene Distributionspraxis der Datenbereitsteller zu häufig als Qualitätsmangel des Metadatensatzes gewertet wurden. Zusätzlich sind die Indikatoren A9 (Aktualisierungsfrequenz aus kontrolliertem Vokabular) und N2 (Zugriffsrechte aus kontrolliertem Vokabular) implementiert, in der evaluierten Konfiguration jedoch nicht aktiviert; die Begründung wird im Rahmen der Evaluationskonfiguration in Kapitel~5 dargestellt. Alle vier Indikatoren bleiben als zuschaltbare Prüfungen erhalten, gehen jedoch nicht in die Bewertung und die Evaluation ein.
 
 \subsection{Auffindbarkeitsindikatoren}
 
@@ -1911,11 +1910,12 @@ A8 & Graduell: Anteil der vorhandenen \texttt{dct:modified}-Werte mit validem Da
 \label{tab:impl_findability}
 \end{table}
 
-Zwei Schwellwertentscheidungen sind begründungsbedürftig. Die Schlagwortspanne von 3 bis 15 setzt eine Untergrenze, unterhalb derer die Suche kaum unterstützt wird, und eine Obergrenze, oberhalb derer die Verschlagwortung erfahrungsgemäß generisch wird und die Trefferpräzision verwässert. Die Abstufung bei der politischen Geokodierung folgt der Konventionstreue. Die dedizierte Eigenschaft \texttt{dcatde:politicalGeocodingURI} ist der vorgesehene Weg, der Rückfall auf \texttt{locn:adminUnitL2} transportiert dieselbe Information in schwächer standardisierter Form und wird daher nur als Teilerfüllung gewertet.
+Die Schlagwortspanne von 3 bis 15 ist direkt aus der Handreichung zur Verbesserung der Metadatenqualität des open bydata competence center übernommen, die für einen Datensatz mindestens drei relevante Schlagwörter empfiehlt und je nach Dateninhalt maximal 15 Begriffe als ausreichend ansieht \cite{bydata2025handreichung}. Werte innerhalb dieser Spanne gelten als erfüllt, ein bis zwei oder 16 bis 25 Schlagwörter als Teilerfüllung und darüber hinausgehende Werte als nicht erfüllt. Die Abstufung bei der politischen Geokodierung folgt der Konventionstreue. Die dedizierte Eigenschaft \texttt{dcatde:politicalGeocodingURI} ist gemäß Konvention 08 des DCAT-AP.de-Konventionenhandbuchs der vorgesehene Weg, den verwaltungspolitischen Geobezug als URI aus dem zugehörigen kontrollierten Vokabular auszudrücken \cite{DCATAPDEImplRules2}. Der Rückfall auf \texttt{locn:adminUnitL2} transportiert dieselbe Information in schwächer standardisierter Form und wird daher nur als Teilerfüllung gewertet.
 
 \subsection{Zugänglichkeitsindikatoren}
 
-Alle Zugänglichkeitsindikatoren messen graduell je Distribution und mitteln die Einzelbeiträge zum Datensatzergebnis. Listing~\ref{lst:graded_scoring} zeigt das gemeinsame Bewertungsmuster in vereinfachter Form. Die Indikatoren unterscheiden sich ausschließlich in der Beitragsfunktion, die einer einzelnen Distribution ihren Wert zuweist. Tabelle~\ref{tab:impl_accessibility} definiert diese Beitragsfunktionen. Die Erreichbarkeitsprüfungen stützen sich auf die zuvor erhobenen Prüfsignale und werten einen HTTP-Statuscode unter 400 als erreichbar. Aus dem gemittelten Erfüllungsgrad wird die Ergebnisstufe abgeleitet, erfüllt ab 0,9 und teilweise erfüllt ab 0,5. Für Z7 gelten die Grenzen 0,8 und 0,4, da dessen Beitragsfunktion eine Mittelstufe enthält und die Werteverteilung entsprechend flacher ausfällt.
+Alle Zugänglichkeitsindikatoren messen graduell je Distribution und mitteln die Einzelbeiträge zum Datensatzergebnis. Listing~\ref{lst:graded_scoring} zeigt das gemeinsame Bewertungsmuster in vereinfachter Form. Die Indikatoren unterscheiden sich ausschließlich in der Beitragsfunktion, die einer einzelnen Distribution ihren Wert zuweist. Tabelle~\ref{tab:impl_accessibility} definiert diese Beitragsfunktionen. Die Erreichbarkeitsprüfungen stützen sich auf die zuvor erhobenen Prüfsignale und werten einen HTTP-Statuscode unter 400 als erreichbar. 
+% @TODO eventuell noch adden dass das generierte Label / Erfüllungsgrad keinen Einfluss auf die Berechnung hat sondern nur als Reporting dient. Bei allen graduellen Indikatoren wird der Raw Score aus den Beiträgen berechnet.
 
 \begin{listing}[H]
 \begin{minted}{python}
@@ -1962,7 +1962,7 @@ Z7 & 1 bei Stufe \textit{high}, 0,5 bei Stufe \textit{mid}, $-$0,5 bei Stufe \te
 \label{tab:impl_accessibility}
 \end{table}
 
-Die Stufenzuordnung von Z7 klassifiziert direkt maschinenlesbare offene Formate wie CSV, JSON oder XML sowie deklarierte Datenservice-Endpunkte als \textit{high}, Archivformate und maschinenlesbare proprietäre Formate wie XLS oder Shapefile als \textit{mid} und nicht sinnvoll maschinenlesbare Auslieferungen wie HTML, PDF oder Bildformate als \textit{none}. Die Malus-Höhe von $-$0,5 ist so gewählt, dass zwei defekte Distributionen den positiven Beitrag einer funktionierenden vollständig aufheben. Eine fehlende Angabe wirkt damit neutral auf den Anteil, eine irreführende Angabe senkt das Ergebnis aktiv, wie es das Messmodell vorsieht.
+Die Stufenzuordnung von Z7 orientiert sich an der Klassifikation maschinenlesbarer Dateitypen der Data Quality Guidelines von data.europa.eu \cite{dataeuropa_dqguidelines}. Deren Tabelle unterscheidet drei Grade der Maschinenlesbarkeit, die unmittelbar auf die drei Stufen des Indikators abgebildet werden. Vollständig maschinenlesbare Formate wie CSV, JSON, XML oder RDF sowie deklarierte Datenservice-Endpunkte werden als \textit{high} eingestuft, überwiegend maschinenlesbare Formate wie XLSX, ODS, XLS, HTML oder reine Textdateien als \textit{mid} und nicht maschinenlesbare Auslieferungen wie PDF, Office-Dokumente oder Bildformate als \textit{none}. Da die zugrunde liegende Klassifikation geospezifische Datentypen nicht berücksichtigt, wurde sie um solche Formate ergänzt, etwa Shapefile, die entsprechend ihrer Maschinenlesbarkeit eingeordnet werden.
 
 \subsection{Nachnutzbarkeitsindikatoren}
 
@@ -1996,7 +1996,7 @@ N7 & Erfüllt bei null SHACL-Verletzungen gegen das DCAT-AP.de-Regelwerk, nicht 
 
 Der Lizenzindikator N1 wendet als einziger Indikator dieser Dimension das Malus-Prinzip an. Die Gleichbehandlung von eingeschränkten, unbekannten und fehlenden Lizenzen folgt der Nutzendenperspektive, denn in allen drei Fällen ist die Rechtslage ungeklärt und die Nachnutzung damit gleichermaßen blockiert.
 
-Die Konformitätsprüfung N7 validiert den Metadatensatz nicht mit einer lokalen Kopie der SHACL-Shapes, sondern über den öffentlich betriebenen SHACL-Validierungsdienst des Interoperability Test Bed der Europäischen Kommission\footnote{\url{https://www.itb.ec.europa.eu/shacl/dcat-ap.de/api/validate}}. Dadurch wird stets gegen das offiziell gepflegte DCAT-AP.de-Regelwerk geprüft und die Urteile bleiben deckungsgleich mit dem Referenzvalidator, ohne dass der Prototyp eine eigene Regelwerkskopie aktuell halten muss. Die Bewertung ist binär, da Standardkonformität keine sinnvolle Teilerfüllung kennt. Als einziger Indikator hängt N7 von der Verfügbarkeit eines externen Dienstes ab. Ist der Dienst nicht erreichbar, wird der Indikator als Fehler ausgewiesen.
+Die Konformitätsprüfung N7 validiert den Metadatensatz nicht mit einer lokalen Kopie der SHACL-Shapes, sondern über den öffentlich betriebenen SHACL-Validierungsdienst des Interoperability Test Bed der Europäischen Kommission\footnote{\url{https://www.itb.ec.europa.eu/shacl/dcat-ap.de/api/validate}}. Dadurch wird stets gegen das offiziell gepflegte DCAT-AP.de-Regelwerk geprüft und die Urteile bleiben deckungsgleich mit dem Referenzvalidator, ohne dass der Prototyp eine eigene Regelwerkskopie aktuell halten muss. Geprüft wird gegen das Profil in der Version~2.0. Diese Version bildet ein vollständig abgeschlossenes Profil, das neben der Spezifikation auch ein zugehöriges Konventionenhandbuch bereitstellt \cite{DCATAPDESpec2, DCATAPDEImplRules2} und damit die Grundlage des in Kapitel~3 abgeleiteten Bewertungsmodells bildet. Die im Dezember 2024 veröffentlichte Version~3.0 wird bewusst nicht verwendet, da für sie kein geschlossenes Konventionenhandbuch mehr vorgesehen ist; die Konventionen werden stattdessen in die Spezifikation überführt, in Guidelines umgewandelt oder gestrichen, wobei entsprechende Guidelines bislang nicht vorliegen \cite{DCATAPDESpec3}. Die Bewertung ist binär, da Standardkonformität keine sinnvolle Teilerfüllung kennt. Als einziger Indikator hängt N7 von der Verfügbarkeit eines externen Dienstes ab. Ist der Dienst nicht erreichbar, wird der Indikator als Fehler ausgewiesen.
 
 % Scope: Eigene Section, da innovativer Kern (Forschungsfrage 3). Ein-Call-Design
 % (ein strukturiertes Assessment pro Datensatz statt sechs Calls: Kosten/Konsistenz),
