@@ -233,7 +233,7 @@ DATASET_METRICS: list[_DatasetMetric] = [
         "access_rights_vocabulary",
         REUSABILITY,
         5,
-        lambda c, o: any(a in VALID_ACCESS_RIGHT_URIS for a in c.access_rights),
+        lambda c, o: c.access_rights in VALID_ACCESS_RIGHT_URIS,
     ),
     _DatasetMetric(
         "contact_point_availability",
@@ -242,7 +242,7 @@ DATASET_METRICS: list[_DatasetMetric] = [
         lambda c, o: bool(c.contact_points),
     ),
     _DatasetMetric(
-        "publisher_availability", REUSABILITY, 10, lambda c, o: bool(c.publishers)
+        "publisher_availability", REUSABILITY, 10, lambda c, o: bool(c.publisher)
     ),
 ]
 

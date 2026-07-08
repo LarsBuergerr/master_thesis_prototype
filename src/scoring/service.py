@@ -350,8 +350,16 @@ class QualityMetricsService:
                 else:
                     eff_status, effective_score = result.status, result.score
 
-                total_score += effective_score * effective_weight
-                total_indicator_weight += effective_weight
+                # NOT_APPLICABLE / ERROR are neutral: a criterion that does not
+                # apply (or could not be evaluated) must neither raise nor lower
+                # the dimension mean. Skip both accumulators so it drops out of
+                # the weighted average entirely instead of counting as a 0.
+                if eff_status not in (
+                    IndicatorStatus.NOT_APPLICABLE,
+                    IndicatorStatus.ERROR,
+                ):
+                    total_score += effective_score * effective_weight
+                    total_indicator_weight += effective_weight
 
                 result_dict = result.to_dict()
                 result_dict["default_weight"] = indicator.weight

@@ -761,10 +761,10 @@ class AccrualPeriodicityIndicator(Indicator):
         try:
             if context is None:
                 context = DatasetContext.from_graph(metadata)
-            values = context.accrual_periodicity
+            value = context.accrual_periodicity
             in_vocab = context.accrual_periodicity_in_vocab
 
-            if not values:
+            if value is None:
                 self.logger.info(
                     f"[{self.indicator_id}] FAIL score=0.00 dct:accrualPeriodicity not set"
                 )
@@ -780,18 +780,15 @@ class AccrualPeriodicityIndicator(Indicator):
                     details={"count": 0},
                 )
 
-            valid = [v for v, ok in zip(values, in_vocab) if ok]
-            invalid = [v for v, ok in zip(values, in_vocab) if not ok]
-
-            status = IndicatorStatus.PASS if not invalid else IndicatorStatus.PARTIAL
-            score = 1.0 if not invalid else 0.5
+            status = IndicatorStatus.PASS if in_vocab else IndicatorStatus.PARTIAL
+            score = 1.0 if in_vocab else 0.5
 
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={score:.2f} "
-                f"valid={len(valid)}/{len(values)}"
+                f"value={value} in_vocab={in_vocab}"
             )
-            if invalid:
-                self.logger.debug(f"[{self.indicator_id}] invalid_values={invalid}")
+            if not in_vocab:
+                self.logger.debug(f"[{self.indicator_id}] value not in vocab: {value}")
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -801,16 +798,16 @@ class AccrualPeriodicityIndicator(Indicator):
                 status=status,
                 score=score,
                 message_de=(
-                    "Alle Werte aus kontrolliertem Vokabular"
-                    if not invalid
-                    else "Nicht alle Werte aus kontrolliertem Vokabular"
+                    "Wert aus kontrolliertem Vokabular"
+                    if in_vocab
+                    else "Wert nicht aus kontrolliertem Vokabular"
                 ),
                 message_en=(
-                    "All values from controlled vocabulary"
-                    if not invalid
-                    else "Not all values from controlled vocabulary"
+                    "Value from controlled vocabulary"
+                    if in_vocab
+                    else "Value not from controlled vocabulary"
                 ),
-                details={"valid": valid, "invalid": invalid, "total": len(values)},
+                details={"value": value, "in_vocab": in_vocab},
             )
 
         except Exception as e:

@@ -187,8 +187,8 @@ class DatasetContext:
     languages: list[str] = field(default_factory=list)
     modified: list[str] = field(default_factory=list)
     issued: list[str] = field(default_factory=list)
-    accrual_periodicity: list[str] = field(default_factory=list)
-    accrual_periodicity_in_vocab: list[bool] = field(default_factory=list)
+    accrual_periodicity: Optional[str] = None  # dct:accrualPeriodicity is 0..1
+    accrual_periodicity_in_vocab: Optional[bool] = None
     start_dates: list[str] = field(default_factory=list)
     end_dates: list[str] = field(default_factory=list)
     geometries: list[str] = field(default_factory=list)
@@ -200,8 +200,8 @@ class DatasetContext:
     availability: list[str] = field(default_factory=list)
     licenses: list[str] = field(default_factory=list)
     licenses_open: list[bool] = field(default_factory=list)
-    access_rights: list[str] = field(default_factory=list)
-    publishers: list[str] = field(default_factory=list)
+    access_rights: Optional[str] = None  # dct:accessRights is 0..1
+    publisher: Optional[str] = None  # dct:publisher is 0..1
     contact_points: list[str] = field(default_factory=list)
     contributor_ids: list[str] = field(default_factory=list)
     contributor_ids_in_vocab: list[bool] = field(default_factory=list)
@@ -295,7 +295,7 @@ class DatasetContext:
                 "languages": list(self.languages),
                 "modified": list(self.modified),
                 "issued": list(self.issued),
-                "accrual_periodicity": list(self.accrual_periodicity),
+                "accrual_periodicity": self.accrual_periodicity,
                 "temporal": {
                     "start_dates": list(self.start_dates),
                     "end_dates": list(self.end_dates),
@@ -306,8 +306,8 @@ class DatasetContext:
                     "admin_units": [a.uri for a in self.admin_units],
                 },
                 "licenses": list(self.licenses),
-                "access_rights": list(self.access_rights),
-                "publishers": list(self.publishers),
+                "access_rights": self.access_rights,
+                "publisher": self.publisher,
                 "contact_points": list(self.contact_points),
             },
             "distributions": [
@@ -327,7 +327,7 @@ class DatasetContext:
             _distribution_from_graph(graph, dist) for dist in _iter_distributions(graph)
         ]
         themes = _multi(graph, dataset_subjects, DCAT.theme)
-        accrual = _multi(graph, dataset_subjects, DCTERMS.accrualPeriodicity)
+        accrual = _single(graph, dataset_subjects, DCTERMS.accrualPeriodicity)
         licenses = _multi(graph, dataset_subjects, DCTERMS.license)
         contributor_ids = _multi(graph, dataset_subjects, DCATDE.contributorID)
         # adminUnitL2 sits on the nested ``dct:Location`` blank node inside
@@ -359,7 +359,9 @@ class DatasetContext:
             modified=_multi(graph, dataset_subjects, DCTERMS.modified),
             issued=_multi(graph, dataset_subjects, DCTERMS.issued),
             accrual_periodicity=accrual,
-            accrual_periodicity_in_vocab=[v in VALID_FREQUENCY_URIS for v in accrual],
+            accrual_periodicity_in_vocab=(
+                accrual in VALID_FREQUENCY_URIS if accrual is not None else None
+            ),
             start_dates=[str(o) for o in graph.objects(predicate=_DCAT_START_DATE)],
             end_dates=[str(o) for o in graph.objects(predicate=_DCAT_END_DATE)],
             geometries=[str(o) for o in graph.objects(predicate=LOCN.geometry)],
@@ -373,8 +375,8 @@ class DatasetContext:
             availability=_multi(graph, dataset_subjects, DCATAP.availability),
             licenses=licenses,
             licenses_open=[lic in OPEN_LICENSE_URIS for lic in licenses],
-            access_rights=_multi(graph, dataset_subjects, _ACCESS_RIGHTS),
-            publishers=_multi(graph, dataset_subjects, _PUBLISHER),
+            access_rights=_single(graph, dataset_subjects, _ACCESS_RIGHTS),
+            publisher=_single(graph, dataset_subjects, _PUBLISHER),
             contact_points=_multi(graph, dataset_subjects, DCAT.contactPoint),
             contributor_ids=contributor_ids,
             contributor_ids_in_vocab=[
@@ -468,6 +470,20 @@ def _first_value(graph: Graph, subject: URIRef, predicate) -> Optional[str]:
     """Return the first object value for the given subject and predicate, or None."""
     for obj in graph.objects(subject, predicate):
         return str(obj)
+    return None
+
+
+def _single(graph: Graph, subjects: Iterable[URIRef], predicate) -> Optional[str]:
+    """First object value for a 0..1 predicate across the given subjects, or None.
+
+    Counterpart to :func:`_multi` for DCAT-AP.de properties with cardinality
+    ``0..1``. Should a non-conformant record illegally carry more than one
+    value, only the first is used; the cardinality violation itself is reported
+    separately by the SHACL conformance indicator (``reuse_dcat_ap_de_compliance``).
+    """
+    for subj in subjects:
+        for obj in graph.objects(subj, predicate):
+            return str(obj)
     return None
 
 
