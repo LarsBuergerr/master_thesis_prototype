@@ -1595,7 +1595,7 @@ Auffindbarkeitsindikatoren prüfen, ob ein Datensatz im Metadatenportal über zu
     \hline
     A3 & Räumliche Geometrieangabe vorhanden & FI & ternär & \texttt{locn:geometry} & MQA; INT-K7 \\
     \hline
-    A4 & Politische Geokodierung aus DCAT-AP.de-Vokabular & FI & ternär & \texttt{dcatde:political- \ GeocodingURI}; \texttt{locn:adminUnitL2} & KONV; INT-K6 \\ % @TODO: Konventions-Nr. prüfen
+    A4 & Politische Geokodierung aus DCAT-AP.de-Vokabular & FI & ternär & \texttt{dcatde:political- \ GeocodingURI}; \texttt{locn:adminUnitL2} & KONV~8; INT-K6 \\ % @TODO: Konventions-Nr. prüfen
     \hline
     A5 & Ebene der politischen Geokodierung aus Vokabular & FI & ternär & \texttt{dcatde:political- \ GeocodingLevelURI} & KONV~09 \\
     \hline
@@ -1604,8 +1604,6 @@ Auffindbarkeitsindikatoren prüfen, ob ein Datensatz im Metadatenportal über zu
     A7 & Veröffentlichungsdatum valide typisiert & FI & graduell & \texttt{dct:issued} (Dataset und Distribution) & MQA; NEU \\
     \hline
     A8 & Änderungsdatum valide typisiert & FI & graduell & \texttt{dct:modified} (Dataset und Distribution) & MQA; NEU \\
-    \hline
-    A9 & Aktualisierungsfrequenz aus kontrolliertem Vokabular & FI & ternär & \texttt{dct:accrualPeriodicity} & NEU; INT-K5 \\
     \hline
 \end{tabular}
 \caption{Auffindbarkeitsindikatoren}
@@ -1659,17 +1657,15 @@ Nachnutzbarkeitsindikatoren prüfen, ob Metadaten und Ressourcen über den bloß
     \hline
     N1 & Freie Lizenz aus DCAT-AP.de-Lizenzliste & FI & graduell & \texttt{dct:license} & KONV~32; MQA; NEU; INT-K1 \\ % @TODO: Konventions-Nr. prüfen
     \hline
-    N2 & Zugriffsrechte aus kontrolliertem Vokabular & FI & ternär & \texttt{dct:accessRights} & MQA; SPEC \\
+    N2 & Herausgeber als strukturierter Agent mit Namen & FI & ternär & \texttt{dct:publisher} (\texttt{foaf:Agent}, \texttt{foaf:name}) & MQA; NEU; ZAV \\
     \hline
-    N3 & Herausgeber als strukturierter Agent mit Namen & FI & ternär & \texttt{dct:publisher} (\texttt{foaf:Agent}, \texttt{foaf:name}) & MQA; NEU; ZAV \\
+    N3 & Kontaktpunkt mit nutzbarer E-Mail oder URL & FI & ternär & \texttt{dcat:contactPoint} & KONV~01; NEU; INT-K5 \\
     \hline
-    N4 & Kontaktpunkt mit nutzbarer E-Mail oder URL & FI & ternär & \texttt{dcat:contactPoint} & KONV~01; NEU; INT-K5 \\
+    N4 & Geplante Verfügbarkeit aus kontrolliertem Vokabular & FI & graduell & \texttt{dcatap:availability} & SPEC \\
     \hline
-    N5 & Geplante Verfügbarkeit aus kontrolliertem Vokabular & FI & graduell & \texttt{dcatap:availability} & SPEC \\
+    N5 & ContributorID aus Contributor-Vokabular & FI & ternär & \texttt{dcatde:contributorID} & KONV~12, KONV~13 \\
     \hline
-    N6 & ContributorID aus Contributor-Vokabular & FI & ternär & \texttt{dcatde:contributorID} & KONV~12, KONV~13 \\
-    \hline
-    N7 & DCAT-AP.de-Konformität (SHACL-Validierung) & FI & ternär & gesamter Metadatensatz & SPEC; MQA; INT-K3 \\
+    N6 & DCAT-AP.de-Konformität (SHACL-Validierung) & FI & ternär & gesamter Metadatensatz & SPEC; MQA; INT-K3 \\
     \hline
 \end{tabular}
 \caption{Nachnutzbarkeitsindikatoren}
@@ -1678,7 +1674,7 @@ Nachnutzbarkeitsindikatoren prüfen, ob Metadaten und Ressourcen über den bloß
 
 \subsection{Aussagekraftsindikatoren}
 
-Aussagekraftsindikatoren prüfen, ob vorhandene Metadaten inhaltlich verständlich, aussagekräftig und kontextangemessen sind. Da Titel und Beschreibung bereits verpflichtend sind, wird nicht ihr Vorhandensein, sondern ihr Informationswert bewertet. Diese Eigenschaften sind regelbasiert nicht prüfbar. Ob ein Titel für sich genommen verständlich ist, eine Beschreibung inhaltlichen Mehrwert liefert oder Schlagwörter zum beschriebenen Datensatz passen, lässt sich weder über Feldexistenz noch über syntaktische Muster entscheiden (INT-K4). Das Bewertungsmodell sieht daher für diese Dimension ein sprachverstehendes Verfahren als Messinstrument vor. Die technische Umsetzung wird in Kapitel~4 beschrieben. Konzeptionell gelten dabei zwei Anforderungen. Erstens werden die Bewertungskriterien nicht frei definiert, sondern aus den Qualitätsanforderungen des DCAT-AP.de-Konventionenhandbuchs sowie der Handreichung zur Verbesserung der Metadatenqualität von offenen Daten abgeleitet \cite{DCATAPDEImplRules2, bydata2025handreichung}. Zweitens muss jedes semantische Urteil nachvollziehbar sein und auf benennbare Befunde im Metadatentext gestützt sowie im Reporting begründet werden (INT-K9, INT-K10). Alle Aussagekraftsindikatoren sind graduell, da semantische Qualität keine scharfe Erfüllungsgrenze besitzt. Für kontextabhängige Kriterien ist die in Abschnitt~\ref{sec:messmodell} definierte Ergebnisstufe \textit{nicht anwendbar} vorgesehen.
+Aussagekraftsindikatoren prüfen, ob vorhandene Metadaten inhaltlich verständlich, aussagekräftig und kontextangemessen sind. Da Titel und Beschreibung bereits verpflichtend sind, wird nicht ihr Vorhandensein, sondern ihr Informationswert bewertet. Diese Eigenschaften sind regelbasiert nicht prüfbar. Ob ein Titel für sich genommen verständlich ist, eine Beschreibung inhaltlichen Mehrwert liefert oder Schlagwörter zum beschriebenen Datensatz passen, lässt sich weder über Feldexistenz noch über syntaktische Muster entscheiden (INT-K4). Das Bewertungsmodell sieht daher für diese Dimension ein sprachverstehendes Verfahren als Messinstrument vor. Konzeptionell gelten dabei zwei Anforderungen. Erstens werden die Bewertungskriterien nicht frei definiert, sondern aus den Qualitätsanforderungen des DCAT-AP.de-Konventionenhandbuchs sowie der Handreichung zur Verbesserung der Metadatenqualität von offenen Daten abgeleitet \cite{DCATAPDEImplRules2, bydata2025handreichung}. Zweitens muss jedes semantische Urteil nachvollziehbar sein und auf benennbare Befunde im Metadatentext gestützt sowie im Reporting begründet werden (INT-K9, INT-K10). Alle Aussagekraftsindikatoren sind graduell, da semantische Qualität keine scharfe Erfüllungsgrenze besitzt. Für kontextabhängige Kriterien ist die in Abschnitt~\ref{sec:messmodell} definierte Ergebnisstufe \textit{nicht anwendbar} vorgesehen.
 
 \begin{table}[H]
 \centering
@@ -1740,11 +1736,12 @@ Der Verarbeitungsweg eines Metadatensatzes folgt den drei Schichten der Abbildun
 In der \texttt{extraction}-Schicht wird ein RDF-Graph als RDF/XML-Datei eingelesen und in eine typisierte Faktenbasis überführt.
 Darauf folgen zwei bedarfsgesteuerte Anreicherungsschritte, die technische Erreichbarkeitsprüfung der Distributionen und die semantische Bewertung der Freitextfelder. 
 Um sich Netwerkzugriffe und Sprachmodellaufrufe zu sparen, werden diese nur ausgeführt, wenn nach der aktiven Konfiguration mindestens ein Indikator ihre Ergebnisse tatsächlich konsumiert.
-In der Schicht \texttt{scoring} werden anschließend die Indikatoren je Qualitätsdimension ausgeführt und die Einzelergebnisse zu Dimensions- und Gesamtwerten aggregiert. Die Dimensionen werden dabei parallel ausgewertet, was unproblematisch ist, weil alle Indikatoren ausschließlich lesend auf die gemeinsame Faktenbasis zugreifen. Die Schicht \texttt{reporting} persistiert und visualisiert abschließend die fertigen Ergebnisse zusammen mit den Protokollen des Bewertungslaufs.
+In der Schicht \texttt{scoring} werden anschließend die Indikatoren je Qualitätsdimension ausgeführt und die Einzelergebnisse zu Dimensions- und Gesamtwerten aggregiert. Die Schicht \texttt{reporting} persistiert und visualisiert abschließend die fertigen Ergebnisse zusammen mit den Protokollen des Bewertungslaufs.
 
 Die Indikatoren registrieren sich bei ihrer Instanziierung selbst in einer zentralen Registrierung, aus der die Bewertungsschicht die auszuführenden Prüfungen bezieht. Ein neuer Indikator besteht damit aus einer einzelnen Klasse, die eine Prüfmethode implementiert, und wird von der Verarbeitungskette automatisch berücksichtigt. Dieses Erweiterungsprinzip setzt die im Bewertungsmodell angelegte Offenheit des Indikatorenkatalogs technisch um.
 
-Der Prototyp ist in Python implementiert und setzt Python~3.12 voraus. Die RDF-Verarbeitung erfolgt mit der Bibliothek rdflib\footnote{\url{https://rdflib.readthedocs.io/}}, die Erreichbarkeitsprüfungen nutzen requests\footnote{\url{https://requests.readthedocs.io/}}. Die strukturierte Ausgabe des Sprachmodells wird über Pydantic\footnote{\url{https://docs.pydantic.dev/}} schemavalidiert, die Anbindung des Modells erfolgt über LangChain\footnote{\url{https://www.langchain.com/}}. Die Konfiguration der Bewertungsläufe wird mit Hydra\footnote{\url{https://hydra.cc/}} verwaltet, die Visualisierungen werden mit matplotlib\footnote{\url{https://matplotlib.org/}} erzeugt. Die exakten Versionsstände aller Abhängigkeiten sind im Quellcode-Repository\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/tree/v3_prototype_freeze}} festgeschrieben.
+Der Prototyp ist in Python implementiert und setzt Python~3.12 voraus. Die RDF-Verarbeitung erfolgt mit der Bibliothek rdflib\footnote{\url{https://rdflib.readthedocs.io/}}, die Erreichbarkeitsprüfungen nutzen requests\footnote{\url{https://requests.readthedocs.io/}}. Die strukturierte Ausgabe des Sprachmodells wird über Pydantic\footnote{\url{https://docs.pydantic.dev/}} schemavalidiert, die Anbindung des Modells erfolgt über LangChain\footnote{\url{https://www.langchain.com/}}. Die Konfiguration der Bewertungsläufe wird mit Hydra\footnote{\url{https://hydra.cc/}} verwaltet, die Visualisierungen werden mit matplotlib\footnote{\url{https://matplotlib.org/}} erzeugt. Die exakten Versionsstände aller Abhängigkeiten sind im Quellcode-Repository\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/tree/v3_prototype_freeze}} festgeschrieben. 
+% @TODO github link am ende noch updaten falls nötig, und eventuell matplotlib entfernen da die visualisierungen ja dann im frontend erzeugt werden.
 
 \section{Extraktion und Anreicherung der Metadaten}
 
@@ -1799,16 +1796,15 @@ Als dritte Anreicherungsstufe wird bei aktivierten Aussagekraftsindikatoren eine
 
 \section{Implementierung der Einzelindikatoren}
 
-Alle Indikatoren folgen derselben Implementierungsstruktur. Ein Indikator ist eine Klasse mit einer einzelnen Prüfmethode, die die Faktenbasis liest und ein Ergebnisobjekt zurückgibt. Das Ergebnisobjekt enthält die Ergebnisstufe, den Erfüllungsgrad, eine deutsch- und englischsprachige Ergebnismeldung sowie ein Detailobjekt mit den geprüften Werten, aus dem sich das Urteil im Reporting nachvollziehen lässt. Listing~\ref{lst:indicator_anatomy} zeigt das Muster in vereinfachter Form am Beispiel der Aktualisierungsfrequenz. Da die Faktenbasis die Vokabularzugehörigkeit bereits vorberechnet bereitstellt, reduziert sich die Prüflogik der meisten formalen Indikatoren auf wenige Fallunterscheidungen.
+Alle Indikatoren folgen derselben Implementierungsstruktur. Ein Indikator ist eine Klasse mit einer einzelnen Prüfmethode, die die Faktenbasis liest und ein Ergebnisobjekt zurückgibt. Das Ergebnisobjekt enthält die Ergebnisstufe, den Erfüllungsgrad, eine deutsch- und englischsprachige Ergebnismeldung sowie ein Detailobjekt mit den geprüften Werten, aus dem sich das Urteil im Reporting nachvollziehen lässt. Listing~\ref{lst:indicator_anatomy} zeigt das Muster in vereinfachter Form am Beispiel der Themenkategorie. Da die Faktenbasis die Vokabularzugehörigkeit bereits vorberechnet bereitstellt, reduziert sich die Prüflogik der meisten formalen Indikatoren auf wenige Fallunterscheidungen.
 
 \begin{listing}[H]
 \begin{minted}{python}
-class AccrualPeriodicityIndicator(Indicator):
+class ThemeIndicator(Indicator):
     def validate(self, context) -> IndicatorResult:
-        values = context.accrual_periodicity
-        if not values:
+        if not context.themes:
             return self.result(Status.FAIL)
-        if all(context.accrual_periodicity_in_vocab):
+        if all(context.themes_in_vocab):
             return self.result(Status.PASS)
         return self.result(Status.PARTIAL)
 \end{minted}
@@ -1820,7 +1816,7 @@ Die folgenden Abschnitte dokumentieren je Dimension die gemeinsame Prüfmechanik
 
 \subsection{Abbildung des konzeptionellen Modells auf implementierte Indikatoren}
 
-Da das konzeptionelle Modell bereits auf operationalisierbare Indikatoren zugeschnitten ist, bilden die implementierten Indikatoren die 29 Konzept-Kürzel eins zu eins ab. Tabelle~\ref{tab:impl_mapping} dokumentiert die Zuordnung der Kürzel zu den Indikator-Bezeichnern der Implementierung. Diese Bezeichner erscheinen in den Bewertungsergebnissen, den Reports und den Auswertungen der Evaluation. Die Tabelle dient damit als durchgängige Referenz zwischen Konzept, Quellcode und Ergebnisdarstellung.
+Da das konzeptionelle Modell bereits auf operationalisierbare Indikatoren zugeschnitten ist, bilden die implementierten Indikatoren die Konzept-Kürzel eins zu eins ab. Von den im Konzept abgeleiteten Indikatoren werden in der evaluierten Modellkonfiguration 27 aktiviert. Tabelle~\ref{tab:impl_mapping} dokumentiert deren Zuordnung zu den Indikator-Bezeichnern der Implementierung. Diese Bezeichner erscheinen in den Bewertungsergebnissen, den Reports und den Auswertungen der Evaluation. Die Tabelle dient damit als durchgängige Referenz zwischen Konzept, Quellcode und Ergebnisdarstellung.
 
 \begin{table}[H]
 \centering
@@ -1847,8 +1843,6 @@ A7 & \texttt{find\_issued\_datetime} & Z7 & \texttt{acc\_machine\_readable\_acce
 \hline
 A8 & \texttt{find\_modified\_datetime} & N1 & \texttt{reuse\_license} \\
 \hline
-A9 & \texttt{find\_accrual\_periodicity} & N2 & \texttt{reuse\_access\_rights} \\
-\hline
 S1 & \texttt{expr\_title\_quality} & N3 & \texttt{reuse\_publisher} \\
 \hline
 S2 & \texttt{expr\_description\_quality} & N4 & \texttt{reuse\_contact} \\
@@ -1866,7 +1860,9 @@ S6 & \texttt{expr\_contextual\_qualifiers} & & \\
 \label{tab:impl_mapping}
 \end{table}
 
-Die Aussagekraftsindikatoren S1 bis S6 nutzen ein sprachmodellbasiertes Messinstrument und werden aufgrund dieser methodischen Sonderstellung in einem eigenen Abschnitt behandelt. Über den Katalog hinaus enthält der Prototyp zwei weitere implementierte Prüfungen, die in der Standardkonfiguration deaktiviert sind. Die Formatkongruenzprüfung vergleicht das deklarierte Format und den deklarierten Medientyp mit dem tatsächlich ausgelieferten HTTP-Content-Type und der Dateiendung der Ressource, in Anlehnung an eine bestehende Validierungskomponente des CKAN-Ökosystems\footnote{\url{https://github.com/qld-gov-au/ckanext-resource-type-validation}}. Die Distributionsmodellierungsprüfung bewertet, ob die Distributionen eines Datensatzes dem DCAT-Muster inhaltsgleicher Repräsentationen folgen. Beide Prüfungen zeigten in der praktischen Erprobung eine hohe Fehlurteilsrate, da fehlerhaft konfigurierte Content-Type-Header und die heterogene Distributionspraxis der Datenbereitsteller zu häufig als Qualitätsmangel des Metadatensatzes gewertet wurden. Sie bleiben als zuschaltbare Prüfungen erhalten, gehen jedoch nicht in die Bewertung und die Evaluation ein.
+Die Aussagekraftsindikatoren S1 bis S6 nutzen ein sprachmodellbasiertes Messinstrument und werden aufgrund dieser methodischen Sonderstellung in einem eigenen Abschnitt behandelt.
+
+Gegenüber dem konzeptionellen Katalog sind in der evaluierten Modellkonfiguration vier implementierte Indikatoren nicht aktiviert. Die beiden konzeptionell bereits als zurückgestellt ausgewiesenen Prüfungen sind standardmäßig deaktiviert. Die Formatkongruenzprüfung vergleicht das deklarierte Format und den deklarierten Medientyp mit dem tatsächlich ausgelieferten HTTP-Content-Type und der Dateiendung der Ressource, in Anlehnung an eine bestehende Validierungskomponente des CKAN-Ökosystems\footnote{\url{https://github.com/qld-gov-au/ckanext-resource-type-validation}}. Die Distributionsmodellierungsprüfung bewertet, ob die Distributionen eines Datensatzes dem DCAT-Muster inhaltsgleicher Repräsentationen folgen. Beide Prüfungen zeigten in der praktischen Erprobung eine hohe Fehlurteilsrate, da fehlerhaft konfigurierte Content-Type-Header und die heterogene Distributionspraxis der Datenbereitsteller zu häufig als Qualitätsmangel des Metadatensatzes gewertet wurden. Zusätzlich sind die Indikatoren A9 (Aktualisierungsfrequenz aus kontrolliertem Vokabular) und N2 (Zugriffsrechte aus kontrolliertem Vokabular) implementiert, in der evaluierten Konfiguration jedoch nicht aktiviert; die Begründung wird im Rahmen der Evaluationskonfiguration in Kapitel~5 dargestellt. Alle vier Indikatoren bleiben als zuschaltbare Prüfungen erhalten, gehen jedoch nicht in die Bewertung und die Evaluation ein.
 
 \subsection{Auffindbarkeitsindikatoren}
 
@@ -1896,8 +1892,6 @@ A6 & Erfüllt, wenn ein valider Start- oder Endwert der zeitlichen Abdeckung vor
 A7 & Graduell: Anteil der vorhandenen \texttt{dct:issued}-Werte mit validem Datumstyp, nicht erfüllt ohne Angabe \\
 \hline
 A8 & Graduell: Anteil der vorhandenen \texttt{dct:modified}-Werte mit validem Datumstyp, nicht erfüllt ohne Angabe \\
-\hline
-A9 & Erfüllt, wenn die Frequenzangabe im EU-Vokabular liegt, teilweise erfüllt bei einer Angabe außerhalb des Vokabulars, nicht erfüllt ohne Angabe \\
 \hline
 \end{tabular}
 \caption{Prüfregeln der Auffindbarkeitsindikatoren}
@@ -1971,8 +1965,6 @@ Die Nachnutzbarkeitsindikatoren kombinieren beide Messformen. N1 und N5 messen g
 \textbf{Kürzel} & \textbf{Prüfregel} \\
 \hline
 N1 & Graduell je Distribution: 1 bei freier Lizenz aus der DCAT-AP.de-Lizenzliste, $-$0,5 bei eingeschränkter, unbekannter oder fehlender Lizenz \\
-\hline
-N2 & Erfüllt, wenn \texttt{dct:accessRights} eine URI aus dem Vokabular referenziert, teilweise erfüllt bei einer Angabe außerhalb des Vokabulars, nicht erfüllt ohne Angabe \\
 \hline
 N3 & Erfüllt, wenn der Herausgeber als \texttt{foaf:Agent} typisiert ist und einen \texttt{foaf:name} trägt, teilweise erfüllt bei nur einem der beiden Merkmale, sonst nicht erfüllt \\
 \hline

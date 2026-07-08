@@ -102,7 +102,7 @@ quality:
   dimension_weights:
     accessibility: 2
     reusability: 1.5
-    expressiveness: 2
+    expressiveness: 2.0
     findability: 1
 
   # Optional custom weights per indicator id (default: indicator.weight = 1.0).
