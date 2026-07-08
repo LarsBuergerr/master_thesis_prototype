@@ -62,6 +62,8 @@
 \RequirePackage{lscape}
 \RequirePackage{float}
 
+\RequirePackage{minted}
+
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 \lstset{framextopmargin=50pt}
 
