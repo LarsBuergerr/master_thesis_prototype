@@ -1804,6 +1804,7 @@ Die technische Anreicherung prüft die Erreichbarkeit der in den Distributionen 
 Die semantische Anreicherung erzeugt bei aktivierten Aussagekraftsindikatoren eine strukturierte Bewertung der Freitextfelder und hängt sie ebenfalls an die Faktenbasis an. Sie folgt demselben Prinzip wie die technische Anreicherung: Die Bewertung wird genau einmal je Datensatz erstellt und anschließend von allen sechs Aussagekraftsindikatoren gemeinsam ausgewertet.
 
 \section{Implementierung der Einzelindikatoren}
+\label{sec:einzelindikatoren}
 
 \begin{wrapfigure}{r}{0.45\textwidth}
 \vspace{-\baselineskip}
@@ -2091,16 +2092,78 @@ Zwei Vorkehrungen erhöhen die Robustheit der Bewertung. Zum einen wird das Mode
 
 \subsection{Determinismus und Konfiguration}
 
-Der Aufruf erfolgt mit einer Temperatur von 0. Für ein Bewertungsinstrument ist Reproduzierbarkeit wichtiger als sprachliche Variation, und eine Temperatur von 0 maximiert die Bestimmtheit der Ausgabe, sodass identische Eingaben möglichst identische Bewertungen ergeben. Das stützt unmittelbar das Nachvollziehbarkeitsziel des Prototyps und die Anforderung einer reproduzierbaren Evaluation. Eine großzügig gesetzte Obergrenze für die Ausgabelänge stellt sicher, dass die strukturierte Antwort nicht abgeschnitten wird, und begrenzt zugleich die Kosten eines einzelnen Aufrufs. Als Modell wird Claude Sonnet~4.5 verwendet, angebunden über den Dienst OpenRouter.
+Der Aufruf erfolgt mit einer Temperatur von 0. Für ein Bewertungsinstrument ist Reproduzierbarkeit wichtiger als sprachliche Variation, und eine Temperatur von 0 maximiert die Bestimmtheit der Ausgabe, sodass identische Eingaben möglichst identische Bewertungen ergeben. Das stützt unmittelbar das Nachvollziehbarkeitsziel des Prototyps und die Anforderung einer reproduzierbaren Evaluation. Die Ausgabelänge ist auf 10.000 Tokens begrenzt. Diese Grenze lässt der strukturierten Antwort ausreichend Raum, sodass sie nicht abgeschnitten wird, und deckelt zugleich die Kosten eines einzelnen Aufrufs. Als Modell wird Claude Sonnet~4.5 verwendet, angebunden über den Dienst OpenRouter. 
 
-\subsection{Modellauswahl}
+%@TODO eventuell noch ein satz verschwenden dass verglichen wurde gegen gpt4.5 und opus
 
-Die Wahl des Sprachmodells ist eine Operationalisierungsentscheidung und wurde anhand mehrerer Kriterien getroffen. Verglichen wurden das eingesetzte Claude Sonnet~4.5, GPT-4.5, Claude Opus sowie mit Qwen ein lokal betreibbares Modell. Claude Opus wurde aus Kostengründen ausgeschlossen, da die Bewertung pro Datensatz anfällt und über Stichproben skaliert. Gegenüber GPT-4.5 erzeugte Sonnet~4.5 differenziertere Bewertungen mit größerer Spannweite, was für ein Scoring-Instrument von Vorteil ist, da eine höhere Trennschärfe Datensätze besser über den Qualitätsbereich verteilt. Da die Aufgabe, Titel, Beschreibung und Schlagwörter gegen eine feste Rubrik zu beurteilen, nicht an der Fähigkeitsgrenze aktueller Modelle liegt, ist der Grenznutzen des größten verfügbaren Modells begrenzt. Das lokal betreibbare Qwen wurde einbezogen, weil die Experteninterviews die Datenhoheit als Bedenken gegenüber externen Sprachmodellen benannt haben (INT-K10) und ein lokales Modell prüft, ob das Verfahren ohne Übermittlung der Metadaten an einen externen Anbieter betrieben werden kann. Der quantitative Vergleich der Modelle hinsichtlich Übereinstimmung mit dem manuellen Qualitätsurteil, Reproduzierbarkeit über mehrere Läufe sowie Kosten und Bearbeitungszeit wird in Kapitel~5 dargestellt.
-
-% Scope: Ternäre vs. graduelle Indikatoren, Per-Distribution-Mittelung, Malus-Konzept
-% (tote URLs / unfreie Lizenzen ziehen aktiv runter -- begründungswürdige Designentscheidung),
-% effektive Gewichte, die zwei Dimension-Weight-Modi, Grade-Ableitung.
 \section{Scoring-, Gewichtungs- und Aggregationslogik}
+
+Datenqualität ist kein eindimensionales Konstrukt, sondern setzt sich aus mehreren, getrennt zu messenden Dimensionen zusammen \cite{wang1996beyond}. Das Bewertungsmodell folgt dieser Auffassung mit einer zweistufigen Aggregation. Die Indikatorergebnisse werden zunächst je Dimension zu einem Dimensionswert verdichtet, und die Dimensionswerte anschließend zu einem Gesamtscore. Beide Stufen sind gewichtete Mittelwerte, deren Gewichte konfigurierbar sind und nicht im Quellcode festgelegt werden. Die folgenden Angaben beschreiben die in der Evaluation verwendete Konfiguration.
+
+\subsection{Punktevergabe je Indikator}
+
+Ternäre Indikatoren werden über ihre Ergebnisstufe in einen Punktwert überführt. Ein erfülltes Kriterium erhält den Wert 1,0, ein teilweise erfülltes 0,5 und ein nicht erfülltes 0,0. Der Wert 0,5 für die Teilerfüllung entspricht dem Mittelpunkt der Skala und behandelt die Zwischenstufe damit als genau halb erfülltes Kriterium, ohne eine Richtung zu bevorzugen. Graduelle Indikatoren tragen unmittelbar ihren kontinuierlichen Erfüllungsgrad bei. Ihre Ergebnisstufe hat, wie in Abschnitt~\ref{sec:einzelindikatoren} beschrieben, keinen Einfluss auf die Punktevergabe. Innerhalb der graduellen Indikatoren wirkt der Malus: Eine nicht erreichbare URL, ein nicht maschinenlesbarer Zugriffsweg und eine eingeschränkte, unbekannte oder fehlende Lizenz gehen mit $-$0,5 statt mit 0 in die Distributionsmittelung ein. Als \textit{nicht anwendbar} oder als Fehler ausgewiesene Indikatoren werden neutral behandelt und gehen weder in den Zähler noch in den Nenner der Aggregation ein.
+
+Die konkreten Punktwerte sind normative Setzungen. Ein empirisch optimaler Wert existiert für solche Größen nicht, und auch etablierte Bewertungsmodelle legen ihre Punktwerte per Konvention fest, wie die Punkteverteilung der MQA zeigt (vgl. Tabelle~\ref{tab:mqa_metrics_weights}) \cite{data_europa}. Die Literatur zu zusammengesetzten Indikatoren behandelt die Gewichts- und Punktwahl entsprechend als transparent zu dokumentierende Entwurfsentscheidung, die sich auf Experten- und Konstrukteursurteile stützt \cite{nardo2008handbook}. Kubler et al. zeigen mit ihrem AHP-basierten Ansatz zudem, dass Qualitätsgewichte grundsätzlich präferenzabhängig sind und je nach Stakeholderperspektive unterschiedlich ausfallen \cite{kubler2018comparison}. Maßgeblich für das Modell sind daher weniger die Absolutwerte als die durch sie ausgedrückten Relationen: Teilerfüllung zählt halb, und ein irreführender Defekt wiegt schwerer als eine fehlende Angabe. Für die Malus-Höhe von $-$0,5 bedeutet das konkret, dass zwei defekte Distributionen den Beitrag einer funktionierenden vollständig aufheben.
+% @TODO(eigen): Begründung der Malus-Höhe ggf. um Interview-Belegstellen (data-breaking) erweitern, sobald die Argumentation für Kapitel 5 steht
+
+\subsection{Aggregation zum Gesamtscore}
+
+Der Wert einer Dimension $d$ ergibt sich als gewichteter Mittelwert über die Menge $A_d$ ihrer aktiven und anwendbaren Indikatoren, wobei $p_i$ den Punktwert und $w_i$ das Gewicht eines Indikators bezeichnet. Da der Malus einzelne Beiträge negativ werden lässt, wird der Dimensionswert bei 0 nach unten begrenzt:
+
+\begin{equation}
+s_d = \max\left(0,\ \frac{\sum_{i \in A_d} w_i \cdot p_i}{\sum_{i \in A_d} w_i}\right)
+\label{eq:dimension_score}
+\end{equation}
+
+Der Gesamtscore $S$ ist der mit den Dimensionsgewichten $W_d$ gewichtete Mittelwert der Dimensionswerte:
+
+\begin{equation}
+S = \frac{\sum_{d} W_d \cdot s_d}{\sum_{d} W_d}
+\label{eq:overall_score}
+\end{equation}
+
+Aus dem Gesamtscore wird abschließend eine Gesamtnote abgeleitet, die das Ergebnis für das Reporting verdichtet. Ab 0,9 wird die Note A vergeben, ab 0,75 die Note B, ab 0,6 die Note C, ab 0,4 die Note D und darunter die Note F.
+
+\subsection{Gewichtung der Indikatoren und Dimensionen}
+
+Tabelle~\ref{tab:impl_weights} zeigt die Gewichte der evaluierten Konfiguration auf beiden Ebenen. Auf Indikatorebene bleibt das Modell bewusst nah am Standardgewicht 1,0 und hebt ausschließlich vier Indikatoren auf das Gewicht 2,0 an.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\rowcolors{1}{white}{white}
+\begin{tabular}{p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.55\textwidth} p{0.12\textwidth}}
+\hline
+\textbf{Ebene} & \textbf{Element} & \textbf{Gewicht} \\
+\hline
+Dimension & Zugänglichkeit & 2,0 \\
+\hline
+Dimension & Aussagekraft & 2,0 \\
+\hline
+Dimension & Nachnutzbarkeit & 1,5 \\
+\hline
+Dimension & Auffindbarkeit & 1,0 \\
+\hline
+Indikator & Z5 Download-URL technisch erreichbar & 2,0 \\
+\hline
+Indikator & Z6 Access-URL technisch erreichbar & 2,0 \\
+\hline
+Indikator & Z7 Maschinenlesbarer Zugriffsweg & 2,0 \\
+\hline
+Indikator & N1 Freie Lizenz aus DCAT-AP.de-Lizenzliste & 2,0 \\
+\hline
+Indikator & alle übrigen Indikatoren & 1,0 \\
+\hline
+\end{tabular}
+\caption{Dimensions- und Indikatorgewichte der evaluierten Konfiguration}
+\label{tab:impl_weights}
+\end{table}
+
+Die vier höher gewichteten Indikatoren teilen eine Eigenschaft: Ein Defekt an ihnen macht den Datensatz faktisch unbrauchbar, unabhängig davon, wie gut die übrigen Metadaten sind. Eine nicht erreichbare Zugriffs-URL bedeutet, dass keine Daten vorliegen. Ein nicht maschinenlesbarer Zugriffsweg verhindert die automatisierte Verarbeitung. Eine fehlende oder eingeschränkte Lizenz blockiert die Nachnutzung rechtlich. Damit prüfen genau diese Indikatoren die definierenden Merkmale offener Daten, die in Kapitel~2 eingeführt wurden: maschinenlesbare, nicht-proprietäre Bereitstellung ohne Zugangsbeschränkungen unter Bedingungen, die die Wiederverwendung erlauben \cite{Ubaldi2013OGD, OECD2020OURdata}. Die Experteninterviews benennen dieselben Defekte als zentrale Praxisprobleme (INT-K5). Es sind zugleich die Indikatoren, die den Malus tragen. Die Anhebung des Gewichts verstärkt diese Kopplung gezielt: Ein Datensatz, der an einem datenbrechenden Kriterium scheitert, soll sich im Ergebnis deutlich von einem Datensatz unterscheiden, der lediglich optionale Angaben schuldig bleibt. Diese Priorisierung deckt sich in weiten Teilen mit der MQA, in der die Erreichbarkeit der Access-URL mit 50 Punkten das höchste Einzelgewicht aller Metriken trägt und die Lizenzangaben den am stärksten gewichteten Block der Wiederverwendbarkeit bilden, während die Maschinenlesbarkeit dort mit 20 Punkten im Mittelfeld liegt (vgl. Tabelle~\ref{tab:mqa_metrics_weights}) \cite{data_europa}.
+
+Die Dimensionsgewichte folgen derselben Logik auf der übergeordneten Ebene: Die Dimensionen tragen nicht gleich viel zur Nutzbarkeit eines Datensatzes bei. Zugänglichkeit und Aussagekraft erhalten das höchste Gewicht, weil ein Versagen in diesen Dimensionen den Datensatz vollständig entwertet. Sind die Daten nicht erreichbar, existiert faktisch kein nutzbares Angebot. Sind Titel, Beschreibung und Schlagwörter nichtssagend, bleibt der Datensatz für Nutzende unverständlich, worauf auch die Handreichung zur Verbesserung der Metadatenqualität ihren Schwerpunkt legt \cite{bydata2025handreichung}. Die Nachnutzbarkeit wird über der Auffindbarkeit gewichtet, da selbst vollständig vorhandene und erreichbare Daten ohne geklärte rechtliche und organisatorische Rahmenbedingungen ihren Nutzen verlieren. Die Auffindbarkeit erhält das Standardgewicht, da ihre Indikatoren überwiegend Präsenz- und Strukturprüfungen einzelner Suchmerkmale sind, deren einzelnes Fehlen die Nutzbarkeit eines bereits gefundenen Datensatzes nicht unmittelbar einschränkt. Das Modell weicht damit bewusst von der MQA ab, die die Auffindbarkeit zu den am höchsten gewichteten Dimensionen zählt, dies allerdings auf Basis reiner Präsenzmetriken (vgl. Tabelle~\ref{tab:mqa_metrics_weights}).
 
 % Scope: Bezug zu Forschungsfrage 5 (menschenlesbares Reporting) explizit herstellen.
 \section{Qualitätsreporting}
