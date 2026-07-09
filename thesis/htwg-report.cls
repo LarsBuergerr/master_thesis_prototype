@@ -30,6 +30,8 @@
 \RequirePackage{setspace}
 \onehalfspacing
 
+\setlength{\parindent}{0pt}
+
 \RequirePackage{csquotes}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -64,6 +66,8 @@
 
 \RequirePackage{minted}
 \usemintedstyle{vs}
+
+\newenvironment{code}{\captionsetup{type=listing}}{}
 
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 \lstset{framextopmargin=50pt}

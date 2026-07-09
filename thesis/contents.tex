@@ -1744,6 +1744,7 @@ Der Prototyp ist in Python implementiert und setzt Python~3.12 voraus. Die RDF-V
 % @TODO github link am ende noch updaten falls nötig, und eventuell matplotlib entfernen da die visualisierungen ja dann im frontend erzeugt werden. und das mit den versionständen eventuell weg machen :sob: 
 
 \section{Extraktion und Anreicherung der Metadaten}
+\label{sec:extraktion}
 
 Die in der Verarbeitungspipeline aufgebaute Faktenbasis hält je Datensatz alle bewertungsrelevanten Angaben, darunter Titel, Beschreibung, Schlagwörter, Themen sowie Datums- und Frequenzangaben, und für jede Distribution ein eigenes Faktenobjekt mit Format-, Medientyp-, Lizenz- und URL-Angaben. Häufig benötigte abgeleitete Größen wie die Anzahl der Distributionen mit Download-URL werden als berechnete Eigenschaften bereitgestellt.
 
@@ -1918,7 +1919,14 @@ Alle Zugänglichkeitsindikatoren messen graduell je Distribution und mitteln die
 % @TODO eventuell noch adden dass das generierte Label / Erfüllungsgrad keinen Einfluss auf die Berechnung hat sondern nur als Reporting dient. Bei allen graduellen Indikatoren wird der Raw Score aus den Beiträgen berechnet.
 
 \begin{listing}[H]
-\begin{minted}{python}
+\begin{minted}
+[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\small
+]
+{python}
 def score(distributions, contribution) -> float:
     if not distributions:
         return NOT_APPLICABLE
@@ -1998,13 +2006,96 @@ Der Lizenzindikator N1 wendet als einziger Indikator dieser Dimension das Malus-
 
 Die Konformitätsprüfung N7 validiert den Metadatensatz nicht mit einer lokalen Kopie der SHACL-Shapes, sondern über den öffentlich betriebenen SHACL-Validierungsdienst des Interoperability Test Bed der Europäischen Kommission\footnote{\url{https://www.itb.ec.europa.eu/shacl/dcat-ap.de/api/validate}}. Dadurch wird stets gegen das offiziell gepflegte DCAT-AP.de-Regelwerk geprüft und die Urteile bleiben deckungsgleich mit dem Referenzvalidator, ohne dass der Prototyp eine eigene Regelwerkskopie aktuell halten muss. Geprüft wird gegen das Profil in der Version~2.0. Diese Version bildet ein vollständig abgeschlossenes Profil, das neben der Spezifikation auch ein zugehöriges Konventionenhandbuch bereitstellt \cite{DCATAPDESpec2, DCATAPDEImplRules2} und damit die Grundlage des in Kapitel~3 abgeleiteten Bewertungsmodells bildet. Die im Dezember 2024 veröffentlichte Version~3.0 wird bewusst nicht verwendet, da für sie kein geschlossenes Konventionenhandbuch mehr vorgesehen ist; die Konventionen werden stattdessen in die Spezifikation überführt, in Guidelines umgewandelt oder gestrichen, wobei entsprechende Guidelines bislang nicht vorliegen \cite{DCATAPDESpec3}. Die Bewertung ist binär, da Standardkonformität keine sinnvolle Teilerfüllung kennt. Als einziger Indikator hängt N7 von der Verfügbarkeit eines externen Dienstes ab. Ist der Dienst nicht erreichbar, wird der Indikator als Fehler ausgewiesen.
 
-% Scope: Eigene Section, da innovativer Kern (Forschungsfrage 3). Ein-Call-Design
-% (ein strukturiertes Assessment pro Datensatz statt sechs Calls: Kosten/Konsistenz),
-% Schema mit erzwungener Reihenfolge findings -> reasoning -> applicable -> score
-% (Evidenz vor Urteil, Nachvollziehbarkeit), Label wird aus dem Score abgeleitet
-% (Modell kann sich nicht widersprechen), not_applicable-Behandlung, Rubrik-Verankerung
-% in Konventionenhandbuch/Handreichung, Determinismus (temperature 0), Kosten.
 \section{LLM-gestützte Bewertung der Aussagekraft}
+
+Die Aussagekraft ist die einzige Qualitätsdimension, die sich nicht regelbasiert bestimmen lässt. Kapitel~3 hat begründet, dass ihre Kriterien ein sprachverstehendes Verfahren als Messinstrument erfordern. Der vorliegende Abschnitt beschreibt, wie dieses Instrument im Prototyp umgesetzt ist, und behandelt damit den für Forschungsfrage~3 zentralen Baustein.
+
+\subsection{Ein-Aufruf-Architektur}
+
+Für das Sprachmodell verfolgt der Prototyp eine Ein-Aufruf-Architektur. 
+Statt die sechs Kriterien einzeln abzufragen, wird der gesamte Datensatz in einem einzigen Aufruf bewertet.
+Das Ergebnis wird an die Faktenbasis angehängt, und jeder Indikator liest daraus seinen Teil. 
+Damit folgt die semantische Anreicherung demselben Muster wie die technische Erreichbarkeitsprüfung, bei der die geteilte Ressource einmal berechnet und von allen Konsumenten gemeinsam genutzt wird. Zum einen werden durch dieses Vorgehen Kosten reduziert, da statt sechs Aufrufen nur einer je Datensatz anfällt. Zum anderen erhöht der gemeinsame Aufruf die Konsistenz der Bewertung. Alle sechs Kriterien gehen aus derselben ganzheitlichen Betrachtung des Datensatzes hervor und beruhen damit auf einem einheitlichen Verständnis der Metadaten. Widersprüche zwischen den Einzelurteilen, wie sie bei sechs voneinander unabhängigen Aufrufen entstehen könnten, werden dadurch unwahrscheinlich. Schlägt der Aufruf fehl oder ist kein Modell konfiguriert, bleibt die Bewertung leer und die Aussagekraftsindikatoren melden \textit{nicht anwendbar}, statt den Bewertungslauf abzubrechen.
+
+\subsection{Strukturierte Ausgabe}
+
+Die Ausgabe des Sprachmodells ist kein Freitext, sondern ein schemavalidiertes Objekt. Das Schema wird mit Pydantic definiert und dem Modell als verbindliche Ausgabestruktur vorgegeben, sodass die Antwort nicht nachträglich geparst werden muss, sondern typgeprüft vorliegt. Jedes der sechs Kriterien entspricht einem Feld des Schemas und ist damit eins zu eins einem Aussagekraftsindikator (S1 bis S6) zugeordnet. Ein einzelnes Kriterium besteht aus vier Feldern in fester Reihenfolge: zunächst ein bis drei beobachtbare \texttt{findings}, daraus abgeleitet eine kurze \texttt{reasoning}-Begründung, anschließend ein \texttt{applicable}-Flag und erst zuletzt ein kontinuierlicher \texttt{score} zwischen 0 und 1. Diese Reihenfolge erzwingt, dass das Modell zuerst die beobachtbare Evidenz benennt und sein Urteil daraus herleitet, bevor es einen Zahlenwert festlegt. Listing~\ref{lst:expr_schema} zeigt das Schema in vereinfachter Form.
+
+\begin{listing}[H]
+\begin{minted}
+[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\small
+]
+{python}
+class ExpressivenessCriterion(BaseModel):
+    findings: list[str] = Field(
+        default_factory=list,
+        max_length=3,
+        description=(
+            "Zuerst ausfüllen: 1-3 konkrete, beobachtbare Stärken/Schwächen für "
+            "dieses Kriterium."
+        ),
+    )
+    reasoning: str = Field(...)
+    applicable: bool = Field(...)
+    score: float = Field(...)
+
+    @property
+    def status(self) -> str:      # Label, aus score abgeleitet
+        if not self.applicable:
+            return "not_applicable"
+        if self.score >= 0.8:
+            return "pass"
+        if self.score >= 0.5:
+            return "partial"
+        return "fail"
+
+class ExpressivenessAssessment(BaseModel):
+    title_quality: ExpressivenessCriterion
+    description_quality: ExpressivenessCriterion
+    title_description_coherence: ExpressivenessCriterion
+    keyword_quality: ExpressivenessCriterion
+    thematic_consistency: ExpressivenessCriterion
+    contextual_qualifiers: ExpressivenessCriterion
+\end{minted}
+\caption{Pydantic-Schema der Aussagekraftsbewertung, vereinfacht}
+\label{lst:expr_schema}
+\end{listing}
+
+Zwei Eigenschaften des Schemas sind für die Nachvollziehbarkeit entscheidend. Erstens wird die diskrete Ergebnisstufe nicht vom Modell erfragt, sondern deterministisch aus dem \texttt{score} abgeleitet. Das Modell liefert ausschließlich den kontinuierlichen Wert samt Begründung, sodass Stufe und Wert einander nicht widersprechen können. Zweitens setzt das \texttt{applicable}-Flag die im Messmodell vorgesehene Nicht-Anwendbarkeit um: Ein Kriterium, das der Datentyp nicht erfordert, etwa ein kontextueller Qualifizierer bei einem statischen Datensatz, wird neutral übersprungen statt abgewertet. Jeder Aussagekraftswert ist damit auf benennbare Befunde und eine Begründung zurückführbar.
+
+\subsection{Eingabe und Prompt}
+
+Der Aufruf trennt Systemanweisung und Nutzereingabe. Die Systemanweisung legt die Rolle des Modells als Auditor ausschließlich für die Aussagekraft fest und grenzt technische Zugänglichkeit, Lizenzierung und Auffindbarkeit ausdrücklich aus. Sie enthält die schrittweise Vorgehensweise je Kriterium, die aus dem DCAT-AP.de-Konventionenhandbuch v2.0 (Kapitel 1.7 und 3.4) sowie der Handreichung zur Verbesserung der Metadatenqualität abgeleiteten Bewertungsregeln \cite{DCATAPDEImplRules2, bydata2025handreichung} und eine Ankerskala, die Wertebereiche verbal an Qualitätsniveaus bindet. Die Nutzereingabe enthält die zu bewertenden Metadaten. Übergeben wird dabei nicht der vollständige RDF-Graph, sondern die bereits in Abschnitt~\ref{sec:extraktion} aufgebaute, auf die bewertungsrelevanten Freitext- und Klassifikationsfelder reduzierte Sicht der Faktenbasis. Das begrenzt den Tokenverbrauch und fokussiert das Modell auf den Bewertungsgegenstand. Listing~\ref{lst:expr_call} zeigt den Aufbau des Aufrufs.
+
+\begin{listing}[H]
+\begin{minted}{python}
+def assess(context, llm) -> ExpressivenessAssessment:
+    payload = context.to_agent_json()   # gekuerzte Faktenbasis
+    messages = [
+        ("system", SYSTEM_PROMPT),       # Rolle, Rubrik, Ankerskala
+        ("human", USER_PROMPT.format(context=payload)),
+    ]
+    # Schema als verbindliche Ausgabestruktur erzwingen
+    structured = llm.with_structured_output(ExpressivenessAssessment)
+    return structured.invoke(messages)
+\end{minted}
+\caption{Aufbau des Sprachmodellaufrufs mit gekürztem Kontext und erzwungenem Schema, vereinfacht}
+\label{lst:expr_call}
+\end{listing}
+
+Zwei Vorkehrungen erhöhen die Robustheit der Bewertung. Zum einen wird das Modell angewiesen, die reine Feldpräsenz nicht als Qualität zu werten, sondern generische, kryptische oder widersprüchliche Angaben trotz Vorhandensein abzuwerten. Zum anderen wird der Metadateninhalt durch Trennmarken abgegrenzt und ausdrücklich als reiner Bewertungsgegenstand deklariert, den das Modell niemals als Anweisung behandeln darf. Damit wird verhindert, dass in Metadatenfeldern eingebetteter Text die Bewertung manipuliert. Der vollständige Wortlaut von System- und Nutzeranweisung sowie die Pydantic-Schemata sind im Anhang \ref{app:prompts_semantische_anreicherung} dokumentiert. % @TODO evenutell prompt im anhang bei potenziellen Änderungen noch einmal updaten.
+
+\subsection{Determinismus und Konfiguration}
+
+Der Aufruf erfolgt mit einer Temperatur von 0. Für ein Bewertungsinstrument ist Reproduzierbarkeit wichtiger als sprachliche Variation, und eine Temperatur von 0 maximiert die Bestimmtheit der Ausgabe, sodass identische Eingaben möglichst identische Bewertungen ergeben. Das stützt unmittelbar das Nachvollziehbarkeitsziel des Prototyps und die Anforderung einer reproduzierbaren Evaluation. Eine großzügig gesetzte Obergrenze für die Ausgabelänge stellt sicher, dass die strukturierte Antwort nicht abgeschnitten wird, und begrenzt zugleich die Kosten eines einzelnen Aufrufs. Als Modell wird Claude Sonnet~4.5 verwendet, angebunden über den Dienst OpenRouter.
+
+\subsection{Modellauswahl}
+
+Die Wahl des Sprachmodells ist eine Operationalisierungsentscheidung und wurde anhand mehrerer Kriterien getroffen. Verglichen wurden das eingesetzte Claude Sonnet~4.5, GPT-4.5, Claude Opus sowie mit Qwen ein lokal betreibbares Modell. Claude Opus wurde aus Kostengründen ausgeschlossen, da die Bewertung pro Datensatz anfällt und über Stichproben skaliert. Gegenüber GPT-4.5 erzeugte Sonnet~4.5 differenziertere Bewertungen mit größerer Spannweite, was für ein Scoring-Instrument von Vorteil ist, da eine höhere Trennschärfe Datensätze besser über den Qualitätsbereich verteilt. Da die Aufgabe, Titel, Beschreibung und Schlagwörter gegen eine feste Rubrik zu beurteilen, nicht an der Fähigkeitsgrenze aktueller Modelle liegt, ist der Grenznutzen des größten verfügbaren Modells begrenzt. Das lokal betreibbare Qwen wurde einbezogen, weil die Experteninterviews die Datenhoheit als Bedenken gegenüber externen Sprachmodellen benannt haben (INT-K10) und ein lokales Modell prüft, ob das Verfahren ohne Übermittlung der Metadaten an einen externen Anbieter betrieben werden kann. Der quantitative Vergleich der Modelle hinsichtlich Übereinstimmung mit dem manuellen Qualitätsurteil, Reproduzierbarkeit über mehrere Läufe sowie Kosten und Bearbeitungszeit wird in Kapitel~5 dargestellt.
 
 % Scope: Ternäre vs. graduelle Indikatoren, Per-Distribution-Mittelung, Malus-Konzept
 % (tote URLs / unfreie Lizenzen ziehen aktiv runter -- begründungswürdige Designentscheidung),
