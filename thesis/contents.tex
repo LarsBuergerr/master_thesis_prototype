@@ -138,6 +138,7 @@ Dies gilt insbesondere im GovData-Kontext, in dem Metadaten nicht nur formal kor
 Datenqualität wird in der Forschung nicht als eindimensionale Eigenschaft verstanden, sondern als mehrdimensionales Konzept, das sich erst im Verhältnis zu einem konkreten Nutzungskontext bestimmen lässt.
 
 \subsection{Definition nach Wang and Strong 1996}
+\label{sec:wang_strong_definition_quality}
 
 Einen zentralen Referenzpunkt bildet die Arbeit von Wang und Strong, die Datenqualität als \enquote{fitness for use} definieren und damit die Perspektive der Datennutzenden in den Mittelpunkt stellen \cite{wang1996beyond}. Ausgehend von einer empirischen Untersuchung von Datenkonsumentinnen und -konsumenten entwickeln sie ein hierarchisches Rahmenmodell, in dem Datenqualitätsmerkmale nicht allein aus theoretischen Vorannahmen oder aus Sicht von Systementwickelnden abgeleitet werden, sondern aus den Anforderungen tatsächlicher Nutzungssituationen hervorgehen \cite{wang1996beyond}. Damit verschiebt sich der Fokus von einem engen Verständnis von Datenqualität als bloßer Fehlerfreiheit zu einem breiteren Verständnis, das auch Relevanz, Verständlichkeit, Zugänglichkeit, und Nutzungseignung umfasst.
 
@@ -2098,7 +2099,7 @@ Der Aufruf erfolgt mit einer Temperatur von 0. Für ein Bewertungsinstrument ist
 
 \section{Scoring-, Gewichtungs- und Aggregationslogik}
 
-Datenqualität ist kein eindimensionales Konstrukt, sondern setzt sich aus mehreren, getrennt zu messenden Dimensionen zusammen \cite{wang1996beyond}. Das Bewertungsmodell folgt dieser Auffassung mit einer zweistufigen Aggregation. Die Indikatorergebnisse werden zunächst je Dimension zu einem Dimensionswert verdichtet, und die Dimensionswerte anschließend zu einem Gesamtscore. Beide Stufen sind gewichtete Mittelwerte, deren Gewichte konfigurierbar sind und nicht im Quellcode festgelegt werden. Die folgenden Angaben beschreiben die in der Evaluation verwendete Konfiguration.
+Wie in Sektion \ref{sec:wang_strong_definition_quality} erläutert, ist Datenqualität kein eindimensionales Konstrukt, sondern setzt sich aus mehreren, getrennt zu messenden Dimensionen zusammen \cite{wang1996beyond}. Das Bewertungsmodell folgt dieser Auffassung mit einer zweistufigen Aggregation. Die Indikatorergebnisse werden zunächst je Dimension zu einem Dimensionswert verdichtet, und die Dimensionswerte anschließend zu einem Gesamtscore. Beide Stufen sind gewichtete Mittelwerte, deren Gewichte konfigurierbar sind und nicht im Quellcode festgelegt werden. Die folgenden Angaben beschreiben die in der Evaluation verwendete Konfiguration.
 
 \subsection{Punktevergabe je Indikator}
 
@@ -2123,7 +2124,7 @@ S = \frac{\sum_{d} W_d \cdot s_d}{\sum_{d} W_d}
 \label{eq:overall_score}
 \end{equation}
 
-Aus dem Gesamtscore wird abschließend eine Gesamtnote abgeleitet, die das Ergebnis für das Reporting verdichtet. Ab 0,9 wird die Note A vergeben, ab 0,75 die Note B, ab 0,6 die Note C, ab 0,4 die Note D und darunter die Note F.
+Aus dem Gesamtscore wird abschließend eine Gesamtnote abgeleitet, die das Ergebnis für das Reporting verdichtet. Ab 0,9 wird die Note A vergeben, ab 0,75 die Note B, ab 0,6 die Note C, ab 0,4 die Note D und darunter die Note F. Die Notenstufen sind wie bei den graduellen Indikatoren rein konventionell gewählt und dienen der intuitiven Ergebnisinterpretation. Sie haben keinen Einfluss auf die Berechnung des Gesamtscores.
 
 \subsection{Gewichtung der Indikatoren und Dimensionen}
 
@@ -2131,31 +2132,28 @@ Tabelle~\ref{tab:impl_weights} zeigt die Gewichte der evaluierten Konfiguration 
 
 \begin{table}[H]
 \centering
-\scriptsize
-\renewcommand{\arraystretch}{1.2}
+\small
+\renewcommand{\arraystretch}{1.25}
 \rowcolors{1}{white}{white}
-\begin{tabular}{p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.55\textwidth} p{0.12\textwidth}}
-\hline
-\textbf{Ebene} & \textbf{Element} & \textbf{Gewicht} \\
-\hline
-Dimension & Zugänglichkeit & 2,0 \\
-\hline
-Dimension & Aussagekraft & 2,0 \\
-\hline
-Dimension & Nachnutzbarkeit & 1,5 \\
-\hline
-Dimension & Auffindbarkeit & 1,0 \\
-\hline
-Indikator & Z5 Download-URL technisch erreichbar & 2,0 \\
-\hline
-Indikator & Z6 Access-URL technisch erreichbar & 2,0 \\
-\hline
-Indikator & Z7 Maschinenlesbarer Zugriffsweg & 2,0 \\
-\hline
-Indikator & N1 Freie Lizenz aus DCAT-AP.de-Lizenzliste & 2,0 \\
-\hline
-Indikator & alle übrigen Indikatoren & 1,0 \\
-\hline
+\begin{tabular}{@{}p{0.09\textwidth} >{\raggedright\arraybackslash}p{0.55\textwidth} >{\centering\arraybackslash}p{0.13\textwidth}@{}}
+\toprule
+\multicolumn{2}{@{}l}{\textbf{Dimension / Indikator}} & \textbf{Gewicht} \\
+\midrule
+\multicolumn{2}{@{}l}{\textbf{Zugänglichkeit}} & \textbf{2,0} \\
+\quad Z5 & Download-URL technisch erreichbar & 2,0 \\
+\quad Z6 & Access-URL technisch erreichbar & 2,0 \\
+\quad Z7 & Maschinenlesbarer Zugriffsweg & 2,0 \\
+\midrule
+\multicolumn{2}{@{}l}{\textbf{Aussagekraft}} & \textbf{2,0} \\
+\midrule
+\multicolumn{2}{@{}l}{\textbf{Nachnutzbarkeit}} & \textbf{1,5} \\
+\quad N1 & Freie Lizenz aus DCAT-AP.de-Lizenzliste & 2,0 \\
+\midrule
+\multicolumn{2}{@{}l}{\textbf{Auffindbarkeit}} & \textbf{1,0} \\
+\midrule
+\midrule
+\multicolumn{2}{@{}l}{\emph{Alle übrigen Indikatoren}} & \emph{1,0} \\
+\bottomrule
 \end{tabular}
 \caption{Dimensions- und Indikatorgewichte der evaluierten Konfiguration}
 \label{tab:impl_weights}
@@ -2163,23 +2161,105 @@ Indikator & alle übrigen Indikatoren & 1,0 \\
 
 Die vier höher gewichteten Indikatoren teilen eine Eigenschaft: Ein Defekt an ihnen macht den Datensatz faktisch unbrauchbar, unabhängig davon, wie gut die übrigen Metadaten sind. Eine nicht erreichbare Zugriffs-URL bedeutet, dass keine Daten vorliegen. Ein nicht maschinenlesbarer Zugriffsweg verhindert die automatisierte Verarbeitung. Eine fehlende oder eingeschränkte Lizenz blockiert die Nachnutzung rechtlich. Damit prüfen genau diese Indikatoren die definierenden Merkmale offener Daten, die in Kapitel~2 eingeführt wurden: maschinenlesbare, nicht-proprietäre Bereitstellung ohne Zugangsbeschränkungen unter Bedingungen, die die Wiederverwendung erlauben \cite{Ubaldi2013OGD, OECD2020OURdata}. Die Experteninterviews benennen dieselben Defekte als zentrale Praxisprobleme (INT-K5). Es sind zugleich die Indikatoren, die den Malus tragen. Die Anhebung des Gewichts verstärkt diese Kopplung gezielt: Ein Datensatz, der an einem datenbrechenden Kriterium scheitert, soll sich im Ergebnis deutlich von einem Datensatz unterscheiden, der lediglich optionale Angaben schuldig bleibt. Diese Priorisierung deckt sich in weiten Teilen mit der MQA, in der die Erreichbarkeit der Access-URL mit 50 Punkten das höchste Einzelgewicht aller Metriken trägt und die Lizenzangaben den am stärksten gewichteten Block der Wiederverwendbarkeit bilden, während die Maschinenlesbarkeit dort mit 20 Punkten im Mittelfeld liegt (vgl. Tabelle~\ref{tab:mqa_metrics_weights}) \cite{data_europa}.
 
-Die Dimensionsgewichte folgen derselben Logik auf der übergeordneten Ebene: Die Dimensionen tragen nicht gleich viel zur Nutzbarkeit eines Datensatzes bei. Zugänglichkeit und Aussagekraft erhalten das höchste Gewicht, weil ein Versagen in diesen Dimensionen den Datensatz vollständig entwertet. Sind die Daten nicht erreichbar, existiert faktisch kein nutzbares Angebot. Sind Titel, Beschreibung und Schlagwörter nichtssagend, bleibt der Datensatz für Nutzende unverständlich, worauf auch die Handreichung zur Verbesserung der Metadatenqualität ihren Schwerpunkt legt \cite{bydata2025handreichung}. Die Nachnutzbarkeit wird über der Auffindbarkeit gewichtet, da selbst vollständig vorhandene und erreichbare Daten ohne geklärte rechtliche und organisatorische Rahmenbedingungen ihren Nutzen verlieren. Die Auffindbarkeit erhält das Standardgewicht, da ihre Indikatoren überwiegend Präsenz- und Strukturprüfungen einzelner Suchmerkmale sind, deren einzelnes Fehlen die Nutzbarkeit eines bereits gefundenen Datensatzes nicht unmittelbar einschränkt. Das Modell weicht damit bewusst von der MQA ab, die die Auffindbarkeit zu den am höchsten gewichteten Dimensionen zählt, dies allerdings auf Basis reiner Präsenzmetriken (vgl. Tabelle~\ref{tab:mqa_metrics_weights}).
+Die Dimensionsgewichte folgen derselben Logik auf der übergeordneten Ebene: Die Dimensionen tragen nicht gleich viel zur Nutzbarkeit eines Datensatzes bei. Zugänglichkeit und Aussagekraft erhalten das höchste Gewicht, weil ein Versagen in diesen Dimensionen den Datensatz vollständig entwertet. Sind die Daten nicht erreichbar, existiert faktisch kein nutzbares Angebot. Sind Titel, Beschreibung und Schlagwörter nichtssagend, bleibt der Datensatz für Nutzende unverständlich, auch wenn die Metadaten vollständig sind, worauf auch die Handreichung zur Verbesserung der Metadatenqualität ihren Schwerpunkt legt \cite{bydata2025handreichung}. Die Nachnutzbarkeit wird über der Auffindbarkeit gewichtet, da selbst vollständig vorhandene und erreichbare Daten ohne geklärte rechtliche und organisatorische Rahmenbedingungen ihren Nutzen verlieren. Die Auffindbarkeit erhält das Standardgewicht, da ihre Indikatoren überwiegend Präsenz- und Strukturprüfungen einzelner Suchmerkmale sind. Ihr Beitrag zur Nutzbarkeit hängt zudem stärker als bei den übrigen Dimensionen von deren Erfüllung ab, insbesondere von den datenbrechenden Indikatoren der anderen Dimensionen: Ein auffindbarer Datensatz bleibt nutzlos, wenn die Lizenz fehlt, auf die Daten nicht zugegriffen werden kann oder die Freitextfelder trotz formaler Vollständigkeit widersprüchliche oder zusammenhanglose Inhalte aufweisen. Das Modell weicht damit bewusst von der MQA ab, die die Auffindbarkeit zu den am höchsten gewichteten Dimensionen zählt, dies allerdings auf Basis reiner Präsenzmetriken (vgl. Tabelle~\ref{tab:mqa_metrics_weights}).
 
-% Scope: Bezug zu Forschungsfrage 5 (menschenlesbares Reporting) explizit herstellen.
 \section{Qualitätsreporting}
 
-% Scope: JSON-Struktur (per-File result.json, Run-Aggregate), zweisprachige Messages,
-% Visualisierungen.
-\subsection{Maschinenlesbare Reports und Visualisierung}
+Die bisherigen Abschnitte haben beschrieben, wie der Prototyp Qualitätsurteile erzeugt. Forschungsfrage~5 verlangt darüber hinaus, dass Bewertungsergebnisse und betroffene Qualitätsdimensionen nachvollziehbar dargestellt werden. Der Prototyp beantwortet diese Anforderung zweistufig: Er erzeugt für jede bewertete Metadatendatei einen vollständigen maschinenlesbaren Report, der jedes Einzelergebnis mitsamt Begründung und allen zur Berechnung verwendeten Parametern dokumentiert. Die menschenlesbare Aufbereitung dieser Reports übernimmt ein eigenständiges Frontend, das die Reports als Datengrundlage konsumiert.
 
+\subsection{Maschinenlesbare Ergebnisreports}
+
+Jeder Bewertungslauf legt ein eigenes Ausgabeverzeichnis an.
+Innerhalb dieses Verzeichnisses erhält jede bewertete Datei ein Unterverzeichnis mit drei Artefakten: dem Ergebnisreport als \texttt{json} Objekt sowie zwei Protokolldateien. Listing~\ref{lst:result_json} zeigt den Ergebnisreport in gekürzter Form.
+
+\begin{listing}[H]
+\begin{minted}
+[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize
+]
+{js}
+{
+  "by_dimension": {
+    "accessibility": {
+      "score": 0.9,
+      "dimension_weight": 2.0,
+      "total_indicator_weight": 10.0,
+      "indicators": [
+        {
+          "indicator_id": "acc_download_url",
+          "name_de": "Download-URL je Distribution",
+          "status": "pass",
+          "score": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "message_de": "1/1 Distribution(en) mit Download-URL",
+          "message_en": "1/1 distribution(s) with a download URL",
+          "details": {"total_distributions": 1, ...}
+        },
+        ...  // weitere Indikatoren der Dimension
+      ]
+    },
+    "expressiveness": {...},  // weitere Dimensionen
+    ...
+  },
+  "summary": {
+    "overall_score": 0.833,
+    "quality_grade": "B",
+    "dimension_scores": {"accessibility": 0.9, ...},
+    "effective_dimension_weights": {"accessibility": 2.0, ...},
+    "total_indicators": 27, "total_pass": 20, "total_fail": 7
+  },
+  "weights": {
+    "dimension_weights": {"accessibility": 2.0, ...},
+    "indicator_weights": {"reuse_license": 2.0, ...}
+  },
+  "errors": [],
+  "llm_usage": [{"model": "anthropic/claude-sonnet-4.5",
+                 "total_tokens": 8987, "cost_usd": 0.0505,
+                 "latency_seconds": 28.4}]
+}
+\end{minted}
+\caption{Ergebnisreport \texttt{result.json} einer einzelnen Metadatendatei, gekürzt}
+\label{lst:result_json}
+\end{listing}
+
+Der Block \texttt{by\_dimension} gruppiert die Einzelergebnisse nach Qualitätsdimension und weist je Dimension den Dimensionswert, das Dimensionsgewicht und die Summe der Indikatorgewichte aus. Jeder Indikatoreintrag enthält neben Ergebnisstufe und Punktwert die Bezeichnung und eine Ergebnismeldung in deutscher und englischer Sprache sowie im Feld \texttt{details} die indikatorspezifische Evidenz. Dazu zählen Zählwerte, Ergebnisse je Distribution und bei den semantischen Indikatoren die Befunde und die Begründung des Sprachmodells. Die Felder \texttt{raw\_status} und \texttt{raw\_score} halten das unveränderte Urteil des Indikators fest, während \texttt{status} und \texttt{score} das Ergebnis nach Anwendung der konfigurierten Punktevergabe wiedergeben. Analog dokumentiert das Paar aus \texttt{default\_weight} und \texttt{effective\_weight}, ob die Konfiguration das Standardgewicht des Indikators überschreibt. Der Einfluss der Konfiguration auf jedes Einzelergebnis bleibt damit im Report sichtbar.
+
+Der Block \texttt{summary} verdichtet das Ergebnis zu Gesamtscore, Note und Dimensionswerten, der Block \texttt{weights} gibt die vollständige Gewichtskonfiguration beider Ebenen wieder. Der Report ist dadurch in sich abgeschlossen: Sämtliche Größen, die in die Gleichungen~\ref{eq:dimension_score} und~\ref{eq:overall_score} eingehen, sind enthalten, sodass sich der Gesamtscore ohne Zugriff auf den Prototyp oder dessen Konfigurationsdateien nachträglich vollständig herleiten lässt. Ergänzend legt der Lauf auf oberster Ebene eine Metadatendatei ab, die die vollständig aufgelöste Konfiguration und den Commit-Hash des verwendeten Quellcodestands festhält. Der Block \texttt{llm\_usage} dokumentiert je Sprachmodellaufruf das verwendete Modell, die verbrauchten Tokens, die entstandenen Kosten und die Antwortzeit und macht damit den nichtdeterministischen und kostenpflichtigen Teil der Bewertung transparent.
+
+Der Report wird zusätzlich durch zwei weitere Protokollsdateien ergänzt.
+Eine \texttt{logs} Datei zeichnet alle Verarbeitungsschritte der jeweiligen Datei auf, vom RDF-Parsing über die Erreichbarkeitsprüfungen mit ihren Einzelsignalen bis zur Entscheidung jedes Indikators. Zusätzlich wird eine \texttt{llm} spezifische Datei generiert, die die vollständige Anfrage an das Sprachmodell einschließlich System-Prompt, übergebener Faktenbasis und Rohantwort enthält. Ein Bewertungslauf lässt sich damit auch nachträglich Schritt für Schritt nachvollziehen und bei Bedarf reproduzieren.
+
+Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenfassung aller Einzelergebnisse und eine Kostenübersicht der Sprachmodellaufrufe.
 % Scope: Zielgruppe, Darstellungskonzept (Navigation über Dimensionen, Indikatoren,
 % Befunde, LLM-Reasonings), warum diese Aufbereitung Nachvollziehbarkeit herstellt.
 % Bei wachsendem Umfang zur eigenen Section hochziehen.
 \subsection{Menschenlesbare Ergebnisaufbereitung (Frontend)}
 
-% Scope: White-/Blacklists, Gewichts-Konfiguration; Grenzen: deaktivierte Indikatoren,
-% LLM-Abhängigkeit, HTTP-Flakiness, nicht umgesetzte Konzept-Indikatoren.
-\section{Konfigurierbarkeit und technische Grenzen des Prototyps}
+% \section{Konfigurierbarkeit und technische Grenzen des Prototyps}
+
+% \subsection{Konfigurierbarkeit}
+
+% Sämtliche bewertungsrelevanten Parameter des Prototyps liegen außerhalb des Quellcodes in einer zentralen Konfigurationsdatei, die über das bereits eingeführte Framework Hydra geladen wird. Konfigurierbar sind die Eingabe über Verzeichnispfad und Dateifilter, das Reporting über Ausgabeverzeichnis und Berichtssprache, der Sprachmodellbaustein über Aktivierungsschalter, Anbieter, Modellwahl, Temperatur und Token-Obergrenze sowie die gesamte Bewertungslogik. Letztere umfasst die Punktwerte der drei Ergebnisstufen einschließlich indikatorspezifischer Übersteuerungen, einen strikten Modus, der Teilerfüllungen als Fehlschlag wertet, die Auswahl der aktiven Dimensionen und Indikatoren über White- und Blacklists sowie die Gewichte auf Indikator- und Dimensionsebene.
+
+% Ein Bewertungslauf ist damit vollständig durch seine Konfiguration bestimmt und lässt sich als Bewertungsprofil verstehen, das ohne Eingriff in den Quellcode an andere Qualitätsperspektiven angepasst werden kann. Der Sprachmodellbaustein lässt sich vollständig deaktivieren, die semantischen Indikatoren gehen dann neutral als nicht anwendbar in die Bewertung ein, wodurch rein regelbasierte Läufe ohne laufende Kosten möglich sind. Über die Anbieterwahl können neben OpenRouter auch lokal betriebene Modelle angebunden werden, was den Betrieb ohne Weitergabe der Metadaten an externe Dienste erlaubt. Da jeder Lauf die vollständig aufgelöste Konfiguration im Ausgabeverzeichnis ablegt, bleibt zudem jedes Ergebnis eindeutig einem Bewertungsprofil zuordenbar und unterschiedliche Profile lassen sich auf identischer Eingabe vergleichen.
+
+% \subsection{Technische Grenzen}
+
+% Die wesentliche technische Grenze des Prototyps ist die Bearbeitungszeit. Im Bewertungslauf der evaluierten Konfiguration benötigten 50 Metadatendateien rund 26 Minuten, also etwa 31 Sekunden je Datei bei sequenzieller Verarbeitung. Zwei Klassen externer Aufrufe bestimmen diese Dauer. Die Erreichbarkeitsprüfungen senden je Distribution HTTP-Anfragen mit Zeitlimits von fünf Sekunden für den Verbindungsaufbau und acht Sekunden für die Antwort, die bei nicht reagierenden Servern vollständig auflaufen. Den größten Anteil trägt jedoch der Sprachmodellaufruf mit durchschnittlich 27,2 Sekunden je Datei bei einer Spannweite von 22,4 bis 36,5 Sekunden. Die Anbindung über OpenRouter trägt dazu bei: OpenRouter ist eine Vermittlungsschicht, die Anfragen entgegennimmt und nach einer Lastverteilungsstrategie mit automatischen Ausweichmöglichkeiten an nachgelagerte Modellanbieter weiterleitet \cite{openrouter_provider_routing}. Jede Anfrage durchläuft damit einen zusätzlichen Netzwerkschritt und die Antwortzeit schwankt mit dem jeweils gewählten Anbieter. Der überwiegende Anteil der Latenz entfällt gleichwohl auf die Antwortgenerierung des Modells selbst, das je Datei eine ausführliche Bewertung mit Befunden und Begründungen zu sechs Kriterien erzeugt.
+
+% Die zweite Grenze ist der Kostenfaktor des Sprachmodells. Der genannte Lauf verursachte Kosten von rund 0,05~USD je Datei und 2,45~USD insgesamt. Die Kosten skalieren linear mit der Anzahl der bewerteten Datensätze und würden bei portalweiter Anwendung einen relevanten Betriebsposten darstellen, der bei der Modellwahl gegen die Bewertungsqualität abzuwägen ist.
+
+% Darüber hinaus hängt die Bewertung an mehreren Stellen von externen Diensten und deren Momentanzustand ab. Die Erreichbarkeitsprüfungen erfassen eine Momentaufnahme, ein vorübergehend nicht erreichbarer Server verschlechtert das Ergebnis eines ansonsten unveränderten Datensatzes. Neben dem Sprachmodell benötigt auch die Konformitätsprüfung über den SHACL-Validierungsdienst des Interoperability Test Bed eine bestehende Verbindung zu einem externen Dienst. Wiederholte Läufe auf identischer Eingabe können sich daher in einzelnen Ergebnissen unterscheiden, ohne dass sich die Metadatenqualität geändert hat.
+
+% Für die Zielsetzung dieser Arbeit sind diese Grenzen nachrangig. Der Prototyp soll die Machbarkeit des Bewertungsmodells in einer ersten Version belegen und keine produktionsreife Bewertungsinfrastruktur bereitstellen. Naheliegende Optimierungen wie die parallele Verarbeitung mehrerer Dateien, das Zwischenspeichern von Erreichbarkeitsergebnissen oder eine direkte Anbindung des Modellanbieters wurden daher bewusst nicht verfolgt.
+
+% @TODO  evenutell wieder in verkürzter Form wieder eingekommentieren (die beiden oberen Sections) aber mir gefällt das aktuell noch nicht so gut.
 
 
 \chapter{Evaluation}
