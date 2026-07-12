@@ -32,7 +32,7 @@ file_filter:
 # Output directory for results
 output_dir: "run_outputs/"
 # Optional custom suffix for the run output directory (overrides default naming based on directorypath or filename if only one file is processed)
-run_output_dir_suffix: "EVAL_SAMPLE"
+run_output_dir_suffix: "EVAL"
 # Master switch for creating run output directory and saving results there. If false no output is generated
 run_output_enabled: true
 # Language configuration. Options: "de", "en"

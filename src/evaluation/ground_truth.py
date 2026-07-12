@@ -8,12 +8,18 @@ Pipeline (used by ``playground/notebooks/10_ground_truth_evaluation.ipynb``):
    (run directory or ``run_aggregate.json``) instead of re-scoring.
 2. ``load_ground_truth(csv)`` — read the filled rating template (0-5 per
    dimension), derive the overall verdict via :func:`derive_verdict`.
-3. ``merge_scores(...)`` — join, rescale model scores to 0-5 and derive the
-   model's verdict with the *same* rule (principled mapping).
+3. ``merge_scores(...)`` — join, rescale model scores to 0-5, round them to the
+   integer GT scale and derive the model's verdict with the *same* rule
+   (principled mapping on the same discrete scale).
 4. ``compare(...)`` — per-dimension rank correlation (Spearman, Kendall τ-b) and
-   overall-grade agreement (accuracy, Cohen's κ, weighted κ, confusion matrix).
-   Primary metric: weighted Cohen's κ on overall verdict (gut/mittel/schlecht).
-   Secondary metric: Spearman ρ per dimension.
+   overall-grade agreement (accuracy, Cohen's κ, weighted κ, PABAK, bootstrap
+   CI, confusion matrix).
+   Primary metric: Spearman ρ (overall + per dimension, with ceiling analysis).
+   Secondary metric: weighted Cohen's κ on the verdict (gut/mittel/schlecht) —
+   report with PABAK and bootstrap CI: with a strongly imbalanced verdict
+   distribution (real-world sample ⇒ mostly "mittel") κ is structurally capped
+   and its point estimate carries little information (kappa paradox,
+   Feinstein & Cicchetti 1990).
 5. ``make_figures(...)`` — thesis-ready PNGs.
 
 Stats are implemented in pure numpy/pandas (no scipy/sklearn dependency).
@@ -208,6 +214,57 @@ def cohen_kappa(
     return 1 - obs / exp if exp > 0 else float("nan")
 
 
+def pabak(true_labels, pred_labels, labels=VERDICTS) -> float:
+    """Prevalence- and bias-adjusted kappa (Byrt, Bishop & Carlin 1993).
+
+    ``(k·p_o − 1) / (k − 1)`` — kappa under uniform marginals, i.e. what κ
+    would be without the prevalence problem. Reported alongside κ because a
+    dominant verdict class (here: "mittel") inflates chance agreement and
+    structurally caps κ regardless of model quality.
+    """
+    cm = confusion_matrix(true_labels, pred_labels, labels).to_numpy(float)
+    n = cm.sum()
+    if n == 0:
+        return float("nan")
+    k = len(labels)
+    p_o = np.trace(cm) / n
+    return float((k * p_o - 1) / (k - 1))
+
+
+def kappa_bootstrap_ci(
+    true_labels,
+    pred_labels,
+    labels=VERDICTS,
+    weights: Optional[str] = "linear",
+    n_boot: int = 4000,
+    ci: float = 0.95,
+    seed: int = 67,
+) -> tuple[float, float]:
+    """Percentile bootstrap CI for (weighted) Cohen's κ, resampling rated pairs.
+
+    With few cases outside the dominant class the κ point estimate is highly
+    unstable — the CI width makes that visible (rationale for demoting κ to a
+    secondary metric on homogeneous samples).
+    """
+    t = pd.Series(list(true_labels)).reset_index(drop=True)
+    p = pd.Series(list(pred_labels)).reset_index(drop=True)
+    mask = t.notna() & p.notna()
+    t, p = t[mask].to_numpy(), p[mask].to_numpy()
+    if len(t) < 2:
+        return (float("nan"), float("nan"))
+    rng = np.random.default_rng(seed)
+    stats = []
+    for _ in range(n_boot):
+        idx = rng.integers(0, len(t), len(t))
+        k = cohen_kappa(t[idx], p[idx], labels=labels, weights=weights)
+        if not math.isnan(k):
+            stats.append(k)
+    if not stats:
+        return (float("nan"), float("nan"))
+    lo, hi = (1 - ci) / 2 * 100, (1 + ci) / 2 * 100
+    return (float(np.percentile(stats, lo)), float(np.percentile(stats, hi)))
+
+
 # ----------------------------------------------------------------------------
 # Model scoring
 # ----------------------------------------------------------------------------
@@ -370,7 +427,15 @@ def load_ground_truth(csv_path) -> pd.DataFrame:
 
 def merge_scores(gt_df: pd.DataFrame, model_df: pd.DataFrame) -> pd.DataFrame:
     """Join GT and model by ``file``; rescale model dims to 0-5 and derive the
-    model verdict with the same rule as the manual GT (principled mapping)."""
+    model verdict with the same rule as the manual GT (principled mapping).
+
+    For the verdict the model dimensions are first rounded to the integer GT
+    scale: the rule's thresholds are calibrated on integer ratings, and a
+    continuous 2.86 expresses the same judgement as a manual 3 — applying the
+    conjunctive "no dimension below 3" clause to unrounded values would be
+    systematically harsher on the model (discretisation asymmetry). The
+    continuous 0-5 columns stay unrounded for the correlation/error metrics.
+    """
     merged = gt_df.merge(model_df, on="file", how="inner")
     for dim in MODEL_DIMS:
         merged[f"model_{dim}_0_5"] = merged[f"model_{dim}"] * 5
@@ -378,7 +443,7 @@ def merge_scores(gt_df: pd.DataFrame, model_df: pd.DataFrame) -> pd.DataFrame:
         axis=1, skipna=True
     )
     merged["model_verdict"] = merged[[f"model_{d}_0_5" for d in MODEL_DIMS]].apply(
-        lambda r: derive_verdict(list(r.values)), axis=1
+        lambda r: derive_verdict(list(np.round(r.values))), axis=1
     )
     return merged
 
@@ -413,9 +478,11 @@ def auc_binary(scores, labels, pos_label: str) -> float:
 def compare(merged: pd.DataFrame) -> dict:
     """Per-dimension rank correlations + overall-grade agreement.
 
-    Primary metric: weighted Cohen's κ on verdict (gut/mittel/schlecht).
-    Secondary metrics: Spearman ρ / Kendall τ per dimension (0-1 model vs 0-5 GT).
-    Additional: MAE, RMSE, Bias (0-5 scale), AUC gut-vs-rest, mean Spearman.
+    Primary metric: Spearman ρ (overall + per dimension; 0-1 model vs 0-5 GT).
+    Secondary: verdict agreement (gut/mittel/schlecht) — accuracy, weighted κ
+    with bootstrap CI, PABAK, AUC gut-vs-rest. κ is structurally capped on
+    homogeneous samples (kappa paradox), hence CI + PABAK alongside.
+    Additional: MAE, RMSE, Bias (0-5 scale), mean Spearman.
     See docs/methodik_evaluation_ground_truth_v3.md §5 for rationale.
     """
     per_dim = {}
@@ -459,9 +526,13 @@ def compare(merged: pd.DataFrame) -> dict:
             float((graded["gt_verdict"] == graded["model_verdict"]).mean())
             if len(graded) else float("nan")
         ),
-        "weighted_kappa": cohen_kappa(          # primary metric
+        "weighted_kappa": cohen_kappa(
             graded["gt_verdict"], graded["model_verdict"], weights="linear"
         ),
+        "weighted_kappa_ci": kappa_bootstrap_ci(
+            graded["gt_verdict"], graded["model_verdict"], weights="linear"
+        ),
+        "pabak": pabak(graded["gt_verdict"], graded["model_verdict"]),
         "cohen_kappa": cohen_kappa(             # unweighted for reference
             graded["gt_verdict"], graded["model_verdict"]
         ),
