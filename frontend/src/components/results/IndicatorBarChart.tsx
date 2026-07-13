@@ -63,7 +63,7 @@ export function IndicatorBarChart({ dim }: { dim: DimensionResult }) {
               position="right"
               fill="#e6e8ee"
               fontSize={11}
-              formatter={(v) => Number(v).toFixed(2)}
+              formatter={(v: unknown) => Number(v).toFixed(2)}
             />
           </Bar>
         </BarChart>
