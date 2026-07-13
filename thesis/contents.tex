@@ -2315,6 +2315,21 @@ Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenf
 % als Synthese beider Stränge ans Ende des quantitativen Teils.
 \section{Ergebnisse: Prototyp und MQA im Vergleich}
 
+
+1. Rangkorrelation ist niveau-blind. ρ vergleicht nur die Reihenfolge. Strenge, die alle Datensätze ungefähr proportional drückt, ändert ρ gar nicht — sie ändert das Niveau (und das siehst du: Ø Δ = −0.02, aber die Streuung der Differenzen ist mit 0.06 klein). Nur Umsortierung würde ρ senken. Dein Modell müsste also Datensätze, die MQA gut findet, für schlecht halten und umgekehrt — nicht einfach "alles strenger".
+
+2. Der Malus feuert oft — aber auf dieselben Dateien, die MQA auch bestraft. 19/50 Dateien haben mindestens eine tote Download-URL, 17 davon hart. Aber: MQA hat für tote Links eigene Punktabzüge (download_url_status_code = 30 Punkte, access_url_status_code = 50). Beide Systeme schlagen also bei denselben Dateien aus, deins nur härter → gleiche Richtung, kein Rangtausch. Der Lizenz-Malus feuert in deiner Stichprobe fast nie (2/50) — deutsche Portale liefern fast immer freie Lizenzen mit.
+
+3. Qualitätsdefekte clustern. Das ist der inhaltlich wichtigste Punkt: Expressiveness korreliert mit ρ = 0.45 mit deinen strukturellen Dimensionen und ρ = 0.62 mit MQA. Wer seine Metadaten pflegt, hat im Durchschnitt auch bessere Beschreibungen; wer die Pflichtfelder schlampig füllt, schreibt auch schlechte Titel. Beide Instrumente messen denselben latenten Faktor "Metadaten-Sorgfalt", der die Varianz zwischen Datensätzen dominiert. Deshalb — und das ist fast lustig — erhöht Expressiveness die MQA-Korrelation sogar: ohne Expr ρ = 0.75, mit Expr ρ = 0.84. Mehr (korrelierte) Indikatoren mitteln Messrauschen weg, beide Komposite schätzen den Generalfaktor stabiler.
+
+4. Arithmetik der Aggregation. Bei ~23 aktiven Indikatoren bewegt eine einzelne B-Differenz (MQA PASS, du FAIL) den Gesamtscore um grob 0.02–0.04. Die typische Datei hat 1–2 solcher Differenzen. Das verschiebt Punkte im Scatter um ein paar Hundertstel — sichtbar als Bias, unsichtbar in ρ.
+
+Wo dein Modell wirklich anders misst, sieht man eine Ebene tiefer — und das ist die Pointe für die Thesis: Auf Dimensionsebene korreliert dein Score mit MQA nur noch ρ = 0.26 (Reusability!) bzw. 0.41 (Findability). Der Gesamtscore versteckt die Messunterschiede durch Aggregation — genau dein Argument, warum ein einzelner MQA-Punktwert als Qualitätsaussage zu grob ist. Und die Dateien mit der größten Abweichung nach unten (non_geo_rest_02: MQA 0.63, du 0.48, Expressiveness 0.43) sind exakt deine qualitativen Fallstudien: formal okay, inhaltlich dünn — MQA kann es nicht sehen.
+
+
+Die hohe Gesamtkorrelation belegt, dass Feldpräsenz im Aggregat ein brauchbarer Qualitätsproxy ist — die Grenzen des Präsenz-Paradigmas zeigen sich nicht im Mittelwert, sondern in den identifizierbaren Fällen, in denen Präsenz und Validität/Inhalt auseinanderfallen (B-Kontingenz, C-Varianz, Fallanalysen) und in der um eine Dimension erweiterten Messung. Das ist kein enttäuschendes Ergebnis, das ist ein differenziertes — und es ist deutlich verteidigungsfester als ein Modell, das einfach überall anders rankt.
+
+
 % Scope: Top-Disagreements aus beiden Vergleichen qualitativ -- wo weicht das Modell vom
 % Menschen ab und warum, wo sieht der Prototyp Dinge, die MQA nicht sieht (konkrete
 % Datensätze). Hier auch der Screenshot-gestützte Frontend-Walkthrough eines gut/schlecht-

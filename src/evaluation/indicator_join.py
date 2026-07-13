@@ -98,6 +98,7 @@ def run_model_indicators(
     rows = []
     for i, path in enumerate(files, 1):
         result = service.validate_metadata(str(path))
+        overall = result.get("summary", {}).get("overall_score")
         for dim, d in result.get("by_dimension", {}).items():
             for ind in d.get("indicators", []):
                 status = ind.get("status")
@@ -113,6 +114,7 @@ def run_model_indicators(
                         "model_status": status,
                         "model_score": ind.get("score"),
                         "model_pass": model_pass,
+                        "model_overall": overall,
                     }
                 )
         print(f"[model {i:2d}/{len(files)}] {path.name}")
@@ -135,6 +137,7 @@ def load_model_indicators_from_run(run_dir, *, file_suffix: str = ".rdf") -> pd.
     for result_path in sorted(run_dir.glob("*/result.json")):
         data = json.loads(result_path.read_text())
         file = result_path.parent.name + file_suffix
+        overall = data.get("summary", {}).get("overall_score")
         for dim, d in data.get("by_dimension", {}).items():
             for ind in d.get("indicators", []):
                 status = ind.get("status")
@@ -150,6 +153,7 @@ def load_model_indicators_from_run(run_dir, *, file_suffix: str = ".rdf") -> pd.
                         "model_status": status,
                         "model_score": ind.get("score"),
                         "model_pass": model_pass,
+                        "model_overall": overall,
                     }
                 )
     if not rows:
@@ -360,6 +364,12 @@ def build_all(
     if model_csv.exists() and not recompute:
         model_long = pd.read_csv(model_csv)
         print(f"cache: {model_csv}")
+        # Older caches predate the model_overall column; refresh from the run
+        # dir if one is available so the overall-score comparison has data.
+        if "model_overall" not in model_long.columns and model_run_dir is not None:
+            print("cache lacks model_overall — reloading from run dir")
+            model_long = load_model_indicators_from_run(model_run_dir)
+            model_long.to_csv(model_csv, index=False)
     elif model_run_dir is not None:
         model_long = load_model_indicators_from_run(model_run_dir)
         model_long.to_csv(model_csv, index=False)

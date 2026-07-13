@@ -18,7 +18,7 @@ hydra:
 # directory_path: "data/"
 directory_path: "data/sample_2026-06-25_09-57"
 # If empty: process all files matching extensions in directory_path
-# files: ["perfect_example_01.rdf"]
+files: []
 
 # File filtering (only used if files list is empty)
 file_filter:
