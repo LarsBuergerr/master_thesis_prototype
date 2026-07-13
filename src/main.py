@@ -20,6 +20,7 @@ from utils.logger import get_logger
 from utils.enums.language import Language
 from scoring.service import QualityMetricsService
 from scoring.score_policy import ScorePolicy
+from llm_factory import build_llm_from_params
 from reporting.output_manager import OutputManager
 from reporting.run_visualizer import generate_run_charts_from_file
 
@@ -33,96 +34,23 @@ logging.basicConfig(
 logger = get_logger(__name__)
 
 
-def create_llm(cfg: DictConfig) -> ChatOpenAI:
-    """Create an LLM client from the config.
-
-    Args:
-        cfg: Hydra configuration
-
-    Returns:
-        Configured ChatOpenAI instance for OpenRouter
-    """
-    model = cfg.state.llm.model
-    temperature = cfg.state.llm.get("temperature", 0.0) if cfg.state.llm else 0.0
-    max_tokens = cfg.state.llm.get("max_tokens", 4096) if cfg.state.llm else 4096
-    base_url = "https://openrouter.ai/api/v1"
-
-    api_key = os.environ.get("OPENROUTER_API_KEY")
-    if not api_key:
-        raise ValueError(
-            "OPENROUTER_API_KEY environment variable must be set. "
-            "Create a .env file in the project root with: "
-            "OPENROUTER_API_KEY=your-key"
-        )
-
-    return ChatOpenAI(
-        model=model,
-        temperature=temperature,
-        max_tokens=max_tokens,
-        api_key=api_key,
-        base_url=base_url,
-        default_headers={
-            "HTTP-Referer": "https://github.com/lbuerger/master_thesis_prototype",
-            "X-Title": "Master Thesis Prototype",
-        },
-        # Ask OpenRouter to include real cost accounting in each response's
-        # usage block so the run cost summary reports actual USD spend.
-        extra_body={"usage": {"include": True}},
-    )
-
-
-def create_local_llm(cfg: DictConfig) -> ChatOpenAI:
-    """Create an LLM client for a local llama.cpp server.
-
-    llama.cpp's ``server`` exposes an OpenAI-compatible API (``/v1``), so the
-    same ``ChatOpenAI`` client works — only the ``base_url`` changes and no real
-    API key is needed (llama.cpp ignores it, but the client requires a
-    non-empty string). The OpenRouter-specific headers and the ``usage`` cost
-    accounting are dropped since they don't apply locally.
-
-    Config keys (all optional, under ``llm``):
-        base_url: server endpoint, default ``http://localhost:8080/v1``
-        model:    model name to send; llama.cpp serves whatever is loaded, so
-                  this is mostly a label, default ``"qwen3.5"``
-
-    Args:
-        cfg: Hydra configuration
-
-    Returns:
-        Configured ChatOpenAI instance pointed at the local server
-    """
-    model = cfg.state.llm.get("model", "qwen3.5") if cfg.state.llm else "qwen3.5"
-    temperature = cfg.state.llm.get("temperature", 0.0) if cfg.state.llm else 0.0
-    max_tokens = cfg.state.llm.get("max_tokens", 4096) if cfg.state.llm else 4096
-    base_url = (
-        cfg.state.llm.get("base_url", "http://localhost:8080/v1")
-        if cfg.state.llm
-        else "http://localhost:8080/v1"
-    )
-
-    return ChatOpenAI(
-        model=model,
-        temperature=temperature,
-        max_tokens=max_tokens,
-        # llama.cpp doesn't validate the key, but the OpenAI client refuses an
-        # empty one.
-        api_key="sk-no-key-required",
-        base_url=base_url,
-    )
-
-
 def build_llm(cfg: DictConfig) -> ChatOpenAI:
-    """Build the LLM client selected by ``llm.provider``.
+    """Build the LLM client selected by ``llm.provider`` from the Hydra config.
 
-    ``provider: "local"`` → local llama.cpp server (:func:`create_local_llm`);
-    anything else (default ``"openrouter"``) → OpenRouter (:func:`create_llm`).
+    Thin adapter over :func:`llm_factory.build_llm_from_params` — reads the
+    ``llm`` block and delegates so the CLI and the web backend share one
+    construction path. ``provider: "local"`` → local llama.cpp server; anything
+    else (default ``"openrouter"``) → OpenRouter.
     """
-    provider = (
-        cfg.state.llm.get("provider", "openrouter") if cfg.state.llm else "openrouter"
+    llm_cfg = cfg.state.llm
+    provider = llm_cfg.get("provider", "openrouter") if llm_cfg else "openrouter"
+    return build_llm_from_params(
+        provider=provider,
+        model=llm_cfg.get("model") if llm_cfg else None,
+        base_url=llm_cfg.get("base_url") if llm_cfg else None,
+        temperature=llm_cfg.get("temperature", 0.0) if llm_cfg else 0.0,
+        max_tokens=llm_cfg.get("max_tokens", 4096) if llm_cfg else 4096,
     )
-    if str(provider).lower() == "local":
-        return create_local_llm(cfg)
-    return create_llm(cfg)
 
 
 def resolve_files_to_process(cfg: DictConfig) -> List[Path]:

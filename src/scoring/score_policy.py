@@ -68,9 +68,15 @@ class ScorePolicy:
             object.__setattr__(self, "overrides", {})
 
     def _param(self, indicator_id: str, key: str) -> Any:
-        """Resolve a single parameter for ``indicator_id`` (override → global)."""
+        """Resolve a single parameter for ``indicator_id`` (override → global).
+
+        A ``None`` value in an override means "not set" (e.g. a serialised
+        ``ScoringOverride`` carries explicit ``None`` for unspecified fields),
+        so it falls through to the global value rather than overriding with
+        ``None``.
+        """
         override = self.overrides.get(indicator_id)
-        if override is not None and key in override:
+        if override is not None and override.get(key) is not None:
             return override[key]
         return getattr(self, key)
 
