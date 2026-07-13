@@ -1537,7 +1537,7 @@ Unter dem Best-Distribution-Prinzip bleibt eine nicht erreichbare Download-URL z
 
 \subsubsection{Malus-Prinzip}
 
-Innerhalb der graduellen, distributionsbezogenen Messung werden ausgewählte Defekte nicht mit null, sondern mit einem negativen Beitrag bewertet. Dies betrifft Zustände, die aus Nutzendensicht schlechter sind als das Fehlen der Angabe, weil sie irreführen oder die Nachnutzung aktiv verhindern. Dazu zählen eine angegebene, aber nicht erreichbare Zugriffs- oder Download-URL, ein nicht maschinenlesbarer Zugriffsweg sowie eine eingeschränkte, unklare oder fehlende Lizenz. Eine nicht erreichbare URL täuscht Verfügbarkeit vor und verursacht vergeblichen Zugriffsaufwand (INT-K5). Eine unklare Lizenz macht die Nachnutzung rechtlich unsicher und damit faktisch unmöglich \cite{Neumaier2016MetadataQuality}. Würden solche Defekte lediglich mit null bewertet, wäre ein Datensatz mit fünf Distributionen, von denen vier defekt sind, kaum von einem Datensatz mit einer einzigen fehlenden Angabe unterscheidbar. Der negative Beitrag senkt das Datensatzergebnis aktiv, wobei der Dimensionswert konzeptionell bei null nach unten begrenzt ist. Die konkrete Höhe der Malus-Beiträge wird in Kapitel~4 festgelegt.
+Innerhalb der graduellen, distributionsbezogenen Messung werden ausgewählte Defekte nicht mit null, sondern mit einem negativen Beitrag bewertet. Dies betrifft Zustände, die aus Nutzendensicht schlechter sind als das Fehlen der Angabe, weil sie irreführen oder die Nachnutzung aktiv verhindern. Dazu zählen eine angegebene, aber nicht erreichbare Zugriffs- oder Download-URL sowie eine eingeschränkte, unklare oder fehlende Lizenz. Eine nicht erreichbare URL täuscht Verfügbarkeit vor und verursacht vergeblichen Zugriffsaufwand (INT-K5). Eine unklare Lizenz macht die Nachnutzung rechtlich unsicher und damit faktisch unmöglich \cite{Neumaier2016MetadataQuality}. Ein nicht maschinenlesbarer Zugriffsweg fällt dagegen bewusst nicht unter das Malus-Prinzip: Eine solche Distribution täuscht keine Verfügbarkeit vor, sondern liefert, was sie ankündigt, und wird in der Bereitstellungspraxis häufig ergänzend zu einem maschinenlesbaren Zugriffsweg angeboten; sie geht deshalb lediglich mit null in die Messung ein. Würden solche Defekte lediglich mit null bewertet, wäre ein Datensatz mit fünf Distributionen, von denen vier defekt sind, kaum von einem Datensatz mit einer einzigen fehlenden Angabe unterscheidbar. Der negative Beitrag senkt das Datensatzergebnis aktiv, wobei der Dimensionswert konzeptionell bei null nach unten begrenzt ist. Die konkrete Höhe der Malus-Beiträge wird in Kapitel~4 festgelegt.
 
 \subsubsection{Nicht-Anwendbarkeit}
 
@@ -1613,7 +1613,7 @@ Auffindbarkeitsindikatoren prüfen, ob ein Datensatz im Metadatenportal über zu
 
 \subsection{Zugänglichkeitsindikatoren}
 
-Zugänglichkeitsindikatoren prüfen, ob die in den Metadaten beschriebene Ressource technisch erreichbar, korrekt beschrieben und praktisch abrufbar ist. Das bloße Vorhandensein der verpflichtenden \texttt{dcat:accessURL} wird nicht erneut als Indikator aufgenommen. Bewertet werden stattdessen technische Erreichbarkeit, Download-Angaben, Formatqualität und Maschinenlesbarkeit. Alle Zugänglichkeitsindikatoren setzen an der einzelnen Distribution an und werden nach dem in Abschnitt~\ref{sec:messmodell} definierten Messmodell graduell über alle Distributionen aggregiert. Die Erreichbarkeitsprüfungen sowie die Prüfung der Maschinenlesbarkeit unterliegen dem Malus-Prinzip.
+Zugänglichkeitsindikatoren prüfen, ob die in den Metadaten beschriebene Ressource technisch erreichbar, korrekt beschrieben und praktisch abrufbar ist. Das bloße Vorhandensein der verpflichtenden \texttt{dcat:accessURL} wird nicht erneut als Indikator aufgenommen. Bewertet werden stattdessen technische Erreichbarkeit, Download-Angaben, Formatqualität und Maschinenlesbarkeit. Alle Zugänglichkeitsindikatoren setzen an der einzelnen Distribution an und werden nach dem in Abschnitt~\ref{sec:messmodell} definierten Messmodell graduell über alle Distributionen aggregiert. Die Erreichbarkeitsprüfungen unterliegen dem Malus-Prinzip.
 
 \begin{table}[H]
 \centering
@@ -1965,14 +1965,14 @@ Z5 & 1 bei erreichbarer Download-URL, $-$0,5 bei nicht erreichbarer \\
 \hline
 Z6 & 1 bei erreichbarer Access-URL, $-$0,5 bei nicht erreichbarer \\
 \hline
-Z7 & 1 bei Stufe \textit{high}, 0,5 bei Stufe \textit{mid}, $-$0,5 bei Stufe \textit{none} \\
+Z7 & 1 bei Stufe \textit{high}, 0,5 bei Stufe \textit{mid}, 0 bei Stufe \textit{none} \\
 \hline
 \end{tabular}
 \caption{Beitragsfunktionen der Zugänglichkeitsindikatoren}
 \label{tab:impl_accessibility}
 \end{table}
 
-Die Stufenzuordnung von Z7 orientiert sich an der Klassifikation maschinenlesbarer Dateitypen der Data Quality Guidelines von data.europa.eu \cite{dataeuropa_dqguidelines}. Deren Tabelle unterscheidet drei Grade der Maschinenlesbarkeit, die unmittelbar auf die drei Stufen des Indikators abgebildet werden. Vollständig maschinenlesbare Formate wie CSV, JSON, XML oder RDF sowie deklarierte Datenservice-Endpunkte werden als \textit{high} eingestuft, überwiegend maschinenlesbare Formate wie XLSX, ODS, XLS, HTML oder reine Textdateien als \textit{mid} und nicht maschinenlesbare Auslieferungen wie PDF, Office-Dokumente oder Bildformate als \textit{none}. Da die zugrunde liegende Klassifikation geospezifische Datentypen nicht berücksichtigt, wurde sie um solche Formate ergänzt, etwa Shapefile, die entsprechend ihrer Maschinenlesbarkeit eingeordnet werden.
+Die Stufenzuordnung von Z7 orientiert sich an der Klassifikation maschinenlesbarer Dateitypen der Data Quality Guidelines von data.europa.eu \cite{dataeuropa_dqguidelines}. Deren Tabelle unterscheidet drei Grade der Maschinenlesbarkeit, die unmittelbar auf die drei Stufen des Indikators abgebildet werden. Vollständig maschinenlesbare Formate wie CSV, JSON, XML oder RDF sowie deklarierte Datenservice-Endpunkte werden als \textit{high} eingestuft, überwiegend maschinenlesbare Formate wie XLSX, ODS, XLS, HTML oder reine Textdateien als \textit{mid} und nicht maschinenlesbare Auslieferungen wie PDF, Office-Dokumente oder Bildformate als \textit{none}. Da die zugrunde liegende Klassifikation geospezifische Datentypen nicht berücksichtigt, wurde sie um solche Formate ergänzt, etwa Shapefile, die entsprechend ihrer Maschinenlesbarkeit eingeordnet werden. Anders als die Erreichbarkeitsprüfungen Z5 und Z6 wendet Z7 das Malus-Prinzip nicht an, die Stufe \textit{none} geht mit 0 in die Distributionsmittelung ein. Eine nicht maschinenlesbare Distribution täuscht, anders als eine tote URL, keine Verfügbarkeit vor, sondern liefert, was sie deklariert. Zudem ist es verbreitete Bereitstellungspraxis, neben einem maschinenlesbaren Zugriffsweg ergänzende, nicht maschinenlesbare Distributionen anzubieten, etwa begleitende PDF-Dokumente oder bei Geodaten Kartenansichten und Bildvorschauen. Ein Malus würde solche ergänzenden Angebote den Beitrag der maschinenlesbaren Distribution aktiv aufzehren lassen, obwohl ein maschinenlesbarer Zugriff auf die Daten besteht.
 
 \subsection{Nachnutzbarkeitsindikatoren}
 
@@ -2103,7 +2103,7 @@ Wie in Sektion \ref{sec:wang_strong_definition_quality} erläutert, ist Datenqua
 
 \subsection{Punktevergabe je Indikator}
 
-Ternäre Indikatoren werden über ihre Ergebnisstufe in einen Punktwert überführt. Ein erfülltes Kriterium erhält den Wert 1,0, ein teilweise erfülltes 0,5 und ein nicht erfülltes 0,0. Der Wert 0,5 für die Teilerfüllung entspricht dem Mittelpunkt der Skala und behandelt die Zwischenstufe damit als genau halb erfülltes Kriterium, ohne eine Richtung zu bevorzugen. Graduelle Indikatoren tragen unmittelbar ihren kontinuierlichen Erfüllungsgrad bei. Ihre Ergebnisstufe hat, wie in Abschnitt~\ref{sec:einzelindikatoren} beschrieben, keinen Einfluss auf die Punktevergabe. Innerhalb der graduellen Indikatoren wirkt der Malus: Eine nicht erreichbare URL, ein nicht maschinenlesbarer Zugriffsweg und eine eingeschränkte, unbekannte oder fehlende Lizenz gehen mit $-$0,5 statt mit 0 in die Distributionsmittelung ein. Als \textit{nicht anwendbar} oder als Fehler ausgewiesene Indikatoren werden neutral behandelt und gehen weder in den Zähler noch in den Nenner der Aggregation ein.
+Ternäre Indikatoren werden über ihre Ergebnisstufe in einen Punktwert überführt. Ein erfülltes Kriterium erhält den Wert 1,0, ein teilweise erfülltes 0,5 und ein nicht erfülltes 0,0. Der Wert 0,5 für die Teilerfüllung entspricht dem Mittelpunkt der Skala und behandelt die Zwischenstufe damit als genau halb erfülltes Kriterium, ohne eine Richtung zu bevorzugen. Graduelle Indikatoren tragen unmittelbar ihren kontinuierlichen Erfüllungsgrad bei. Ihre Ergebnisstufe hat, wie in Abschnitt~\ref{sec:einzelindikatoren} beschrieben, keinen Einfluss auf die Punktevergabe. Innerhalb der graduellen Indikatoren wirkt der Malus: Eine nicht erreichbare URL und eine eingeschränkte, unbekannte oder fehlende Lizenz gehen mit $-$0,5 statt mit 0 in die Distributionsmittelung ein. Als \textit{nicht anwendbar} oder als Fehler ausgewiesene Indikatoren werden neutral behandelt und gehen weder in den Zähler noch in den Nenner der Aggregation ein.
 
 Die konkreten Punktwerte sind normative Setzungen. Ein empirisch optimaler Wert existiert für solche Größen nicht, und auch etablierte Bewertungsmodelle legen ihre Punktwerte per Konvention fest, wie die Punkteverteilung der MQA zeigt (vgl. Tabelle~\ref{tab:mqa_metrics_weights}) \cite{data_europa}. Die Literatur zu zusammengesetzten Indikatoren behandelt die Gewichts- und Punktwahl entsprechend als transparent zu dokumentierende Entwurfsentscheidung, die sich auf Experten- und Konstrukteursurteile stützt \cite{nardo2008handbook}. Kubler et al. zeigen mit ihrem AHP-basierten Ansatz zudem, dass Qualitätsgewichte grundsätzlich präferenzabhängig sind und je nach Stakeholderperspektive unterschiedlich ausfallen \cite{kubler2018comparison}. Maßgeblich für das Modell sind daher weniger die Absolutwerte als die durch sie ausgedrückten Relationen: Teilerfüllung zählt halb, und ein irreführender Defekt wiegt schwerer als eine fehlende Angabe. Für die Malus-Höhe von $-$0,5 bedeutet das konkret, dass zwei defekte Distributionen den Beitrag einer funktionierenden vollständig aufheben.
 % @TODO(eigen): Begründung der Malus-Höhe ggf. um Interview-Belegstellen (data-breaking) erweitern, sobald die Argumentation für Kapitel 5 steht
@@ -2128,7 +2128,7 @@ Aus dem Gesamtscore wird abschließend eine Gesamtnote abgeleitet, die das Ergeb
 
 \subsection{Gewichtung der Indikatoren und Dimensionen}
 
-Tabelle~\ref{tab:impl_weights} zeigt die Gewichte der evaluierten Konfiguration auf beiden Ebenen. Auf Indikatorebene bleibt das Modell bewusst nah am Standardgewicht 1,0 und hebt ausschließlich vier Indikatoren auf das Gewicht 2,0 an.
+Tabelle~\ref{tab:impl_weights} zeigt die Gewichte der evaluierten Konfiguration auf beiden Ebenen. Auf Indikatorebene bleibt das Modell bewusst nah am Standardgewicht 1,0 und hebt ausschließlich vier Indikatoren an: die drei datenbrechenden Prüfungen Z5, Z6 und N1 auf das Gewicht 2,0 sowie den maschinenlesbaren Zugriffsweg Z7 auf das Gewicht 1,5.
 
 \begin{table}[H]
 \centering
@@ -2142,7 +2142,7 @@ Tabelle~\ref{tab:impl_weights} zeigt die Gewichte der evaluierten Konfiguration 
 \multicolumn{2}{@{}l}{\textbf{Zugänglichkeit}} & \textbf{2,0} \\
 \quad Z5 & Download-URL technisch erreichbar & 2,0 \\
 \quad Z6 & Access-URL technisch erreichbar & 2,0 \\
-\quad Z7 & Maschinenlesbarer Zugriffsweg & 2,0 \\
+\quad Z7 & Maschinenlesbarer Zugriffsweg & 1,5 \\
 \midrule
 \multicolumn{2}{@{}l}{\textbf{Aussagekraft}} & \textbf{2,0} \\
 \midrule
@@ -2159,13 +2159,13 @@ Tabelle~\ref{tab:impl_weights} zeigt die Gewichte der evaluierten Konfiguration 
 \label{tab:impl_weights}
 \end{table}
 
-Die vier höher gewichteten Indikatoren teilen eine Eigenschaft: Ein Defekt an ihnen macht den Datensatz faktisch unbrauchbar, unabhängig davon, wie gut die übrigen Metadaten sind. Eine nicht erreichbare Zugriffs-URL bedeutet, dass keine Daten vorliegen. Ein nicht maschinenlesbarer Zugriffsweg verhindert die automatisierte Verarbeitung. Eine fehlende oder eingeschränkte Lizenz blockiert die Nachnutzung rechtlich. Damit prüfen genau diese Indikatoren die definierenden Merkmale offener Daten, die in Kapitel~2 eingeführt wurden: maschinenlesbare, nicht-proprietäre Bereitstellung ohne Zugangsbeschränkungen unter Bedingungen, die die Wiederverwendung erlauben \cite{Ubaldi2013OGD, OECD2020OURdata}. Die Experteninterviews benennen dieselben Defekte als zentrale Praxisprobleme (INT-K5). Es sind zugleich die Indikatoren, die den Malus tragen. Die Anhebung des Gewichts verstärkt diese Kopplung gezielt: Ein Datensatz, der an einem datenbrechenden Kriterium scheitert, soll sich im Ergebnis deutlich von einem Datensatz unterscheiden, der lediglich optionale Angaben schuldig bleibt. Diese Priorisierung deckt sich in weiten Teilen mit der MQA, in der die Erreichbarkeit der Access-URL mit 50 Punkten das höchste Einzelgewicht aller Metriken trägt und die Lizenzangaben den am stärksten gewichteten Block der Wiederverwendbarkeit bilden, während die Maschinenlesbarkeit dort mit 20 Punkten im Mittelfeld liegt (vgl. Tabelle~\ref{tab:mqa_metrics_weights}) \cite{data_europa}.
+Die drei auf das Gewicht 2,0 angehobenen Indikatoren teilen eine Eigenschaft: Ein Defekt an ihnen macht den Datensatz faktisch unbrauchbar, unabhängig davon, wie gut die übrigen Metadaten sind. Eine nicht erreichbare Zugriffs-URL bedeutet, dass keine Daten vorliegen. Eine fehlende oder eingeschränkte Lizenz blockiert die Nachnutzung rechtlich. Damit prüfen genau diese Indikatoren definierende Merkmale offener Daten, die in Kapitel~2 eingeführt wurden: Bereitstellung ohne Zugangsbeschränkungen unter Bedingungen, die die Wiederverwendung erlauben \cite{Ubaldi2013OGD, OECD2020OURdata}. Die Experteninterviews benennen dieselben Defekte als zentrale Praxisprobleme (INT-K5). Es sind zugleich die Indikatoren, die den Malus tragen. Die Anhebung des Gewichts verstärkt diese Kopplung gezielt: Ein Datensatz, der an einem datenbrechenden Kriterium scheitert, soll sich im Ergebnis deutlich von einem Datensatz unterscheiden, der lediglich optionale Angaben schuldig bleibt. Der maschinenlesbare Zugriffsweg Z7 wird mit dem Gewicht 1,5 bewusst zwischen den datenbrechenden Indikatoren und dem Standardgewicht eingeordnet. Maschinenlesbarkeit zählt ebenfalls zu den definierenden Merkmalen offener Daten, und ein Datensatz ganz ohne maschinenlesbaren Zugriffsweg entzieht sich der automatisierten Verarbeitung. Anders als eine tote URL oder eine ungeklärte Lizenz wirkt eine einzelne nicht maschinenlesbare Distribution jedoch nicht zwingend datenbrechend, da sie in der Bereitstellungspraxis häufig als ergänzendes Angebot neben einem maschinenlesbaren Zugriffsweg steht. Diese Priorisierung deckt sich mit der MQA, in der die Erreichbarkeit der Access-URL mit 50 Punkten das höchste Einzelgewicht aller Metriken trägt und die Lizenzangaben den am stärksten gewichteten Block der Wiederverwendbarkeit bilden, während die Maschinenlesbarkeit dort mit 20 Punkten im Mittelfeld liegt und damit dieselbe Zwischenstellung einnimmt (vgl. Tabelle~\ref{tab:mqa_metrics_weights}) \cite{data_europa}.
 
 Die Dimensionsgewichte folgen derselben Logik auf der übergeordneten Ebene: Die Dimensionen tragen nicht gleich viel zur Nutzbarkeit eines Datensatzes bei. Zugänglichkeit und Aussagekraft erhalten das höchste Gewicht, weil ein Versagen in diesen Dimensionen den Datensatz vollständig entwertet. Sind die Daten nicht erreichbar, existiert faktisch kein nutzbares Angebot. Sind Titel, Beschreibung und Schlagwörter nichtssagend, bleibt der Datensatz für Nutzende unverständlich, auch wenn die Metadaten vollständig sind, worauf auch die Handreichung zur Verbesserung der Metadatenqualität ihren Schwerpunkt legt \cite{bydata2025handreichung}. Die Nachnutzbarkeit wird über der Auffindbarkeit gewichtet, da selbst vollständig vorhandene und erreichbare Daten ohne geklärte rechtliche und organisatorische Rahmenbedingungen ihren Nutzen verlieren. Die Auffindbarkeit erhält das Standardgewicht, da ihre Indikatoren überwiegend Präsenz- und Strukturprüfungen einzelner Suchmerkmale sind. Ihr Beitrag zur Nutzbarkeit hängt zudem stärker als bei den übrigen Dimensionen von deren Erfüllung ab, insbesondere von den datenbrechenden Indikatoren der anderen Dimensionen: Ein auffindbarer Datensatz bleibt nutzlos, wenn die Lizenz fehlt, auf die Daten nicht zugegriffen werden kann oder die Freitextfelder trotz formaler Vollständigkeit widersprüchliche oder zusammenhanglose Inhalte aufweisen. Das Modell weicht damit bewusst von der MQA ab, die die Auffindbarkeit zu den am höchsten gewichteten Dimensionen zählt, dies allerdings auf Basis reiner Präsenzmetriken (vgl. Tabelle~\ref{tab:mqa_metrics_weights}).
 
 \section{Qualitätsreporting}
 
-Die bisherigen Abschnitte haben beschrieben, wie der Prototyp Qualitätsurteile erzeugt. Forschungsfrage~5 verlangt darüber hinaus, dass Bewertungsergebnisse und betroffene Qualitätsdimensionen nachvollziehbar dargestellt werden. Der Prototyp beantwortet diese Anforderung zweistufig: Er erzeugt für jede bewertete Metadatendatei einen vollständigen maschinenlesbaren Report, der jedes Einzelergebnis mitsamt Begründung und allen zur Berechnung verwendeten Parametern dokumentiert. Die menschenlesbare Aufbereitung dieser Reports übernimmt ein eigenständiges Frontend, das die Reports als Datengrundlage konsumiert.
+Der Prototyp erzeugt für jede bewertete Metadatendatei einen vollständigen maschinenlesbaren Report, der jedes Einzelergebnis mitsamt Begründung und allen zur Berechnung verwendeten Parametern dokumentiert. Die menschenlesbare Aufbereitung dieser Reports übernimmt ein eigenständiges Frontend, das die Reports als Datengrundlage konsumiert.
 
 \subsection{Maschinenlesbare Ergebnisreports}
 
@@ -2177,7 +2177,7 @@ Innerhalb dieses Verzeichnisses erhält jede bewertete Datei ein Unterverzeichni
 [
 frame=lines,
 framesep=2mm,
-baselinestretch=1.2,
+baselinestretch=1.1,
 fontsize=\footnotesize
 ]
 {js}
@@ -2205,7 +2205,6 @@ fontsize=\footnotesize
       ]
     },
     "expressiveness": {...},  // weitere Dimensionen
-    ...
   },
   "summary": {
     "overall_score": 0.833,
@@ -2219,9 +2218,8 @@ fontsize=\footnotesize
     "indicator_weights": {"reuse_license": 2.0, ...}
   },
   "errors": [],
-  "llm_usage": [{"model": "anthropic/claude-sonnet-4.5",
-                 "total_tokens": 8987, "cost_usd": 0.0505,
-                 "latency_seconds": 28.4}]
+  "llm_usage": [{"model": "anthropic/claude-sonnet-4.5", "total_tokens": 8987, 
+                 "cost_usd": 0.0505, "latency_seconds": 28.4}]
 }
 \end{minted}
 \caption{Ergebnisreport \texttt{result.json} einer einzelnen Metadatendatei, gekürzt}

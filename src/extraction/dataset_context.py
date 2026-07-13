@@ -310,9 +310,6 @@ class DatasetContext:
                 "publisher": self.publisher,
                 "contact_points": list(self.contact_points),
             },
-            "distributions": [
-                _distribution_agent_view(dist) for dist in self.distributions
-            ],
         }
 
     def to_agent_json(self, *, indent: Optional[int] = 2) -> str:

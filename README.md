@@ -68,12 +68,14 @@ Each indicator returns a **status** and a **score in `[0.0, 1.0]`**:
     `acc_access_url_response`, `acc_machine_readable_access`, `reuse_license`,
     `reuse_availability`, `find_issued_datetime`, `find_modified_datetime`.
 - **Per-distribution malus:** some graded indicators score a *negative* value
-  for a failing distribution (dead URL, non-machine-readable format, restricted/
-  missing license), so a bad distribution actively drags the mean down instead
-  of just scoring low: `acc_download_url_response`, `acc_access_url_response`
-  (−0.5 per dead URL), `acc_machine_readable_access` (−0.5 for a
-  non-machine-readable dist), `reuse_license` (−0.5 per non-free distribution).
-  A dimension score is floored at 0, so the overall score never goes negative.
+  for a failing distribution (dead URL, restricted/missing license), so a bad
+  distribution actively drags the mean down instead of just scoring low:
+  `acc_download_url_response`, `acc_access_url_response` (−0.5 per dead URL),
+  `reuse_license` (−0.5 per non-free distribution). A dimension score is floored
+  at 0, so the overall score never goes negative. `acc_machine_readable_access`
+  deliberately carries **no** malus — non-machine-readable distributions often
+  supplement a machine-readable one (docs, map views), so a *none* tier scores 0
+  instead of pulling the mean below it.
 
 The **Scoring** column in each catalogue table below states the per-indicator
 rule.
@@ -142,7 +144,7 @@ are validly typed).
 | `acc_format_non_proprietary`  | Fraction of distributions declaring a non-proprietary format URI (EU file-type vocabulary)           | **Graded** = fraction non-proprietary (per dist +1/0, no malus); label PASS ≥ 0.9 · PARTIAL ≥ 0.5  | `dct:format`                                                         | —               |
 | `acc_download_url_response`   | Reachability of each distribution's download URL (HTTP `< 400`)                                      | **Graded** = mean of per-dist +1 (reachable) / **−0.5 (dead, malus)**; label PASS ≥ 0.9 · PARTIAL ≥ 0.5 | `dcat:downloadURL`                                                   | **HTTP**        |
 | `acc_access_url_response`     | Reachability of each distribution's access URL (HTTP `< 400`)                                        | **Graded** = mean of per-dist +1 (reachable) / **−0.5 (dead, malus)**; label PASS ≥ 0.9 · PARTIAL ≥ 0.5 | `dcat:accessURL`                                                     | **HTTP**        |
-| `acc_machine_readable_access` | Machine-readable access per distribution (CSV/JSON/XML > service > archive > HTML/PDF)               | **Graded** = mean per-dist tier high +1 / mid +0.5 / **none −0.5 (malus)**; label PASS ≥ 0.8 · PARTIAL ≥ 0.4 | `dcat:accessURL`, `dcat:downloadURL`, `dct:format`, `dcat:mediaType` | HTTP (optional) |
+| `acc_machine_readable_access` | Machine-readable access per distribution (CSV/JSON/XML > service > archive > HTML/PDF)               | **Graded** = mean per-dist tier high +1 / mid +0.5 / none 0 (no malus); label PASS ≥ 0.8 · PARTIAL ≥ 0.4 | `dcat:accessURL`, `dcat:downloadURL`, `dct:format`, `dcat:mediaType` | HTTP (optional) |
 | ~~`acc_format_congruence`~~   | Declared format/media-type agree with the actual HTTP `Content-Type` and URL extension               | 🚫 **Disabled** (blacklisted by default — see catalogue note)                         | `dct:format`, `dcat:mediaType` + HTTP                                | **HTTP**        |
 | ~~`acc_distribution_model`~~  | Distributions follow the DCAT pattern (one dataset, multiple formats) vs. a split-data anti-pattern  | 🚫 **Disabled** (blacklisted by default — see catalogue note)                         | distribution properties                                              | —               |
 

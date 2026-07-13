@@ -318,12 +318,8 @@ class MediaTypeIndicator(Indicator):
             else:
                 status = IndicatorStatus.FAIL
 
-            message_de = (
-                f"{passing}/{total} Distribution(en) mit gültigem Media Type"
-            )
-            message_en = (
-                f"{passing}/{total} distribution(s) with a valid media type"
-            )
+            message_de = f"{passing}/{total} Distribution(en) mit gültigem Media Type"
+            message_en = f"{passing}/{total} distribution(s) with a valid media type"
 
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={score:.2f} "
@@ -794,7 +790,7 @@ class MachineReadableAccessIndicator(Indicator):
 
     TIER_HIGH = 1.0
     TIER_MID = 0.5
-    TIER_NONE = -0.5  # malus: a non-machine-readable distribution pulls the mean down
+    TIER_NONE = 0
 
     PASS_THRESHOLD = 0.8
     PARTIAL_THRESHOLD = 0.4

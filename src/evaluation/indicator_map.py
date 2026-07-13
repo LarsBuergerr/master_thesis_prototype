@@ -153,14 +153,12 @@ MAPPING: list[dict] = [
     dict(
         indicator="acc_format",
         dimension="accessibility",
-        abc="B",
+        abc="A",
         mqa=["format_availability", "format_media_type_vocabulary"],
         mqa_agg="all",
         review=True,
         rationale=(
-            "MQA: Format vorhanden + format_media_type_vocabulary (Format OR MediaType im Vokabular, OR-Logik). "
-            "Prototyp: Anteil der Distributionen mit Format im EU-Vokabular (graded) — strenger, da MQA via "
-            "MediaType-Treffer auch ohne Format-Vocab-Mitgliedschaft PASS gibt."
+            "MQA: Format vorhanden + format_media_type_vocabulary (Format OR MediaType im Vokabular, kombiniert). "
         ),
     ),
     dict(
@@ -183,7 +181,7 @@ MAPPING: list[dict] = [
         mqa=["format_machine_readable"],
         mqa_agg="any",
         review=False,
-        rationale="MQA: Listen-Lookup beste Distribution; Prototyp: Mittelwert aller Distributionen (high +1 / mid +0.5 / none -0.5 Malus).",
+        rationale="MQA: Listen-Lookup beste Distribution; Prototyp: Mittelwert aller Distributionen (high +1 / mid +0.5 / none 0, kein Malus).",
     ),
     dict(
         indicator="acc_format_non_proprietary",
@@ -193,24 +191,6 @@ MAPPING: list[dict] = [
         mqa_agg="any",
         review=False,
         rationale="Beide: nicht-proprietäres Format-URI aus EU-Vokabular. Prototyp: Anteil aller Distributionen.",
-    ),
-    dict(
-        indicator="acc_format_congruence",
-        dimension="accessibility",
-        abc="C",
-        mqa=[],
-        mqa_agg="any",
-        review=True,
-        rationale="[STANDARDMÄSSIG GEBLACKLISTET] MQA: keine Format↔MIME-Kongruenzmetrik (B/C-Grenzfall).",
-    ),
-    dict(
-        indicator="acc_distribution_model",
-        dimension="accessibility",
-        abc="C",
-        mqa=[],
-        mqa_agg="any",
-        review=True,
-        rationale="[STANDARDMÄSSIG GEBLACKLISTET] MQA: keine Metrik für Distributions-Modellierung (dcat_ap_compliance ist SHACL).",
     ),
     # ---- Reusability ----
     dict(
@@ -250,11 +230,11 @@ MAPPING: list[dict] = [
     dict(
         indicator="reuse_publisher",
         dimension="reusability",
-        abc="B",
+        abc="A",
         mqa=["publisher_availability"],
         mqa_agg="any",
         review=False,
-        rationale="MQA: Presence dct:publisher; Prototyp: strukturierter foaf:Agent.",
+        rationale="Beide prüfen auf Präsenz des dct:publisher",
     ),
     dict(
         indicator="reuse_contact",

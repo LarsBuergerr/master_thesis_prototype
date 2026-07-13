@@ -42,7 +42,7 @@ gegen die MQA-Spezifikation belegt werden müssen.
 | `acc_access_url_response` | **A** | `access_url_status_code` | any | | Beide: HTTP-Auflösbarkeit der `accessURL` (< 400). |
 | `acc_format` | **B** | `format_availability`, `format_media_type_vocabulary` | all | ⚠ | MQA: Format vorhanden + Vokabular (OR-Logik mit MediaType). Prototyp: **Anteil** der Distributionen mit Format im EU-Vokabular (graded) — strenger. |
 | `acc_media_type` | **B** | `media_type_availability`, `format_media_type_vocabulary` | all | ⚠ | MQA: MediaType vorhanden + Vokabular (kombiniert). Prototyp: **Anteil** der Distributionen mit MediaType als IANA-URI im Vokabular (graded) — strenger, da MQA keine IANA-URI-Form prüft. |
-| `acc_machine_readable_access` | **B** | `format_machine_readable` | any | | MQA: Listen-Lookup beste Distribution; Prototyp: Mittelwert aller Distributionen (high +1 / mid +0.5 / none −0.5 Malus). |
+| `acc_machine_readable_access` | **B** | `format_machine_readable` | any | | MQA: Listen-Lookup beste Distribution; Prototyp: Mittelwert aller Distributionen (high +1 / mid +0.5 / none 0, kein Malus). |
 | `acc_format_non_proprietary` | **A** | `format_non_proprietary` | any | | Beide: nicht-proprietäres Format-URI aus EU-Vokabular. Prototyp: Anteil aller Distributionen. |
 | ~~`acc_format_congruence`~~ | **C** | — | — | 🚫 | **Aus dem Modell entfernt** (geblacklistet): schwer begründbar, hohe Fehleinschätzungsrate. Siehe `model_improvement_plan.md` §6.5. |
 | ~~`acc_distribution_model`~~ | **C** | — | — | 🚫 | **Aus dem Modell entfernt** (geblacklistet): heuristische Modellierungs-Interpretation, hohe Fehleinschätzungsrate. Siehe `model_improvement_plan.md` §6.5. |
