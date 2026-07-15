@@ -7,8 +7,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import type { Summary } from "../../api/types";
+import { useTheme } from "../../hooks/useTheme";
 
 export function DimensionRadar({ summary }: { summary: Summary }) {
+  const { colors } = useTheme();
   const data = Object.entries(summary.dimension_scores).map(([dim, score]) => ({
     dimension: dim,
     score: Number(score.toFixed(3)),
@@ -20,15 +22,13 @@ export function DimensionRadar({ summary }: { summary: Summary }) {
     <div style={{ width: "100%", height: 260 }}>
       <ResponsiveContainer>
         <RadarChart data={data} outerRadius="70%">
-          <PolarGrid stroke="#2c3142" />
-          <PolarAngleAxis dataKey="dimension" tick={{ fill: "#98a0b3", fontSize: 12 }} />
-          <PolarRadiusAxis domain={[0, 1]} tick={{ fill: "#6b7280", fontSize: 10 }} />
-          <Radar
-            dataKey="score"
-            stroke="#5b8def"
-            fill="#5b8def"
-            fillOpacity={0.4}
+          <PolarGrid stroke={colors.gridline} />
+          <PolarAngleAxis
+            dataKey="dimension"
+            tick={{ fill: colors.textSecondary, fontSize: 12 }}
           />
+          <PolarRadiusAxis domain={[0, 1]} tick={{ fill: colors.textSubtle, fontSize: 10 }} />
+          <Radar dataKey="score" stroke={colors.accent} fill={colors.accent} fillOpacity={0.4} />
         </RadarChart>
       </ResponsiveContainer>
     </div>

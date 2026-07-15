@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ConfigPanel } from "./components/ConfigPanel";
 import { JobProgress } from "./components/JobProgress";
 import { ResultsView } from "./components/results/ResultsView";
+import { ThemeToggle } from "./components/ThemeToggle";
 import { UploadPanel } from "./components/UploadPanel";
 import { useIndicators, useJob, useSubmitAnalysis } from "./hooks/useAnalysis";
 import type { AnalysisConfigInput } from "./api/types";
@@ -72,48 +73,60 @@ export default function App() {
     : submit.isPending;
 
   return (
-    <div className="app">
-      <aside className="sidebar">
+    <>
+      <a className="skip-link" href="#main-content">
+        Zum Hauptinhalt springen
+      </a>
+      <header className="site-header">
         <div>
           <h1>DCAT-AP-DE Quality Analyzer</h1>
-          <p className="muted">RDF hochladen, Gewichte/Policy einstellen, analysieren.</p>
+          <p className="muted tagline">
+            RDF hochladen, Gewichte/Policy einstellen, analysieren.
+          </p>
         </div>
-        <UploadPanel
-          files={files}
-          onFilesChange={setFiles}
-          onSubmit={handleSubmit}
-          submitting={isRunning}
-        />
-        {indicators.data && (
-          <ConfigPanel
-            indicators={indicators.data}
-            config={config}
-            onChange={setConfig}
-          />
-        )}
-        {indicators.isError && (
-          <div className="panel error-box">
-            Backend nicht erreichbar. Läuft uvicorn auf {import.meta.env.VITE_API_BASE ?? "http://localhost:8000"}?
-          </div>
-        )}
-      </aside>
+        <ThemeToggle />
+      </header>
 
-      <main className="main stack">
-        {submit.isError && (
-          <div className="panel error-box">
-            Analyse fehlgeschlagen: {(submit.error as Error).message}
-          </div>
-        )}
-        {jobData && jobData.status !== "done" && <JobProgress job={jobData} />}
-        {jobData && jobData.results.length > 0 && (
-          <ResultsView results={jobData.results} />
-        )}
-        {!jobData && !submit.isPending && (
-          <div className="panel muted">
-            Noch keine Analyse. Wähle links RDF-Dateien und starte die Analyse.
-          </div>
-        )}
-      </main>
-    </div>
+      <div className="app">
+        <aside className="sidebar" aria-label="Konfiguration">
+          <UploadPanel
+            files={files}
+            onFilesChange={setFiles}
+            onSubmit={handleSubmit}
+            submitting={isRunning}
+          />
+          {indicators.data && (
+            <ConfigPanel
+              indicators={indicators.data}
+              config={config}
+              onChange={setConfig}
+            />
+          )}
+          {indicators.isError && (
+            <div className="panel error-box" role="alert">
+              Backend nicht erreichbar. Läuft uvicorn auf{" "}
+              {import.meta.env.VITE_API_BASE ?? "http://localhost:8000"}?
+            </div>
+          )}
+        </aside>
+
+        <main className="main stack" id="main-content">
+          {submit.isError && (
+            <div className="panel error-box" role="alert">
+              Analyse fehlgeschlagen: {(submit.error as Error).message}
+            </div>
+          )}
+          {jobData && jobData.status !== "done" && <JobProgress job={jobData} />}
+          {jobData && jobData.results.length > 0 && (
+            <ResultsView results={jobData.results} />
+          )}
+          {!jobData && !submit.isPending && (
+            <div className="panel muted">
+              Noch keine Analyse. Wähle links RDF-Dateien und starte die Analyse.
+            </div>
+          )}
+        </main>
+      </div>
+    </>
   );
 }

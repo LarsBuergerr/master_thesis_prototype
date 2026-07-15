@@ -10,6 +10,7 @@ import {
   YAxis,
 } from "recharts";
 import type { FileResult } from "../../api/types";
+import { useTheme } from "../../hooks/useTheme";
 import { gradeColor } from "../../lib/status";
 
 /**
@@ -17,6 +18,7 @@ import { gradeColor } from "../../lib/status";
  * (do good datasets score higher than bad ones?).
  */
 export function BatchComparison({ results }: { results: FileResult[] }) {
+  const { colors } = useTheme();
   const data = results
     .filter((r) => r.result)
     .map((r) => ({
@@ -39,24 +41,25 @@ export function BatchComparison({ results }: { results: FileResult[] }) {
             layout="vertical"
             margin={{ left: 8, right: 40, top: 4, bottom: 4 }}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="#2c3142" />
+            <CartesianGrid strokeDasharray="3 3" stroke={colors.gridline} />
             <XAxis
               type="number"
               domain={[min, 1]}
-              tick={{ fill: "#6b7280", fontSize: 11 }}
+              tick={{ fill: colors.textSubtle, fontSize: 11 }}
             />
             <YAxis
               type="category"
               dataKey="file"
               width={180}
-              tick={{ fill: "#98a0b3", fontSize: 11 }}
+              tick={{ fill: colors.textSecondary, fontSize: 11 }}
             />
             <Tooltip
               contentStyle={{
-                background: "#1a1d27",
-                border: "1px solid #2c3142",
+                background: colors.panel,
+                border: `1px solid ${colors.gridline}`,
                 borderRadius: 6,
                 fontSize: 12,
+                color: colors.text,
               }}
               formatter={(v, _n, item) => [`${v} (${item?.payload?.grade})`, "overall"]}
             />

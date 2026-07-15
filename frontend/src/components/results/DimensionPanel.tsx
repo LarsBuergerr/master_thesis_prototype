@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import type { DimensionResult } from "../../api/types";
-import { fmt, statusLabel } from "../../lib/status";
+import { fmt, statusIcon, statusLabel } from "../../lib/status";
 import { IndicatorBarChart } from "./IndicatorBarChart";
 import { RemediationView } from "./RemediationView";
 
@@ -19,23 +19,29 @@ export function DimensionPanel({ dim }: { dim: DimensionResult }) {
       </div>
 
       <table style={{ marginTop: 10 }}>
+        <caption className="subtle">Indikatoren der Dimension {dim.dimension}</caption>
         <thead>
           <tr>
-            <th>Indikator</th>
-            <th>Status</th>
-            <th>Score</th>
-            <th>Roh</th>
-            <th>Gewicht</th>
-            <th>Meldung</th>
+            <th scope="col">Indikator</th>
+            <th scope="col">Status</th>
+            <th scope="col">Score</th>
+            <th scope="col">Roh</th>
+            <th scope="col">Gewicht</th>
+            <th scope="col">Meldung</th>
           </tr>
         </thead>
         <tbody>
           {dim.indicators.map((i) => (
             <Fragment key={i.indicator_id}>
               <tr>
-                <td>{i.indicator_id}</td>
+                <th scope="row" style={{ fontWeight: 400 }}>
+                  {i.indicator_id}
+                </th>
                 <td>
-                  <span className={`chip ${i.status}`}>{statusLabel(i.status)}</span>
+                  <span className={`chip ${i.status}`}>
+                    <span aria-hidden="true">{statusIcon(i.status)}</span>
+                    {statusLabel(i.status)}
+                  </span>
                 </td>
                 <td>{fmt(i.score)}</td>
                 <td className="muted">

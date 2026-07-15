@@ -9,9 +9,11 @@ import {
   YAxis,
 } from "recharts";
 import type { DimensionResult } from "../../api/types";
+import { useTheme } from "../../hooks/useTheme";
 import { statusColor } from "../../lib/status";
 
 export function IndicatorBarChart({ dim }: { dim: DimensionResult }) {
+  const { colors } = useTheme();
   const data = dim.indicators.map((i) => ({
     id: i.indicator_id,
     score: i.score ?? 0,
@@ -34,20 +36,21 @@ export function IndicatorBarChart({ dim }: { dim: DimensionResult }) {
           <XAxis
             type="number"
             domain={[min, 1]}
-            tick={{ fill: "#6b7280", fontSize: 10 }}
+            tick={{ fill: colors.textSubtle, fontSize: 10 }}
           />
           <YAxis
             type="category"
             dataKey="id"
             width={190}
-            tick={{ fill: "#98a0b3", fontSize: 11 }}
+            tick={{ fill: colors.textSecondary, fontSize: 11 }}
           />
           <Tooltip
             contentStyle={{
-              background: "#1a1d27",
-              border: "1px solid #2c3142",
+              background: colors.panel,
+              border: `1px solid ${colors.gridline}`,
               borderRadius: 6,
               fontSize: 12,
+              color: colors.text,
             }}
             formatter={(value, _name, item) => [
               `${value} (${item?.payload?.status}, w=${item?.payload?.weight})`,
@@ -61,7 +64,7 @@ export function IndicatorBarChart({ dim }: { dim: DimensionResult }) {
             <LabelList
               dataKey="score"
               position="right"
-              fill="#e6e8ee"
+              fill={colors.text}
               fontSize={11}
               formatter={(v: unknown) => Number(v).toFixed(2)}
             />
