@@ -7,5 +7,6 @@
   },
   "[bibtex]": {
     "editor.formatOnSave": false
-  }
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:system"
 }
