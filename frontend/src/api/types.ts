@@ -25,6 +25,48 @@ export interface IndicatorsResponse {
   indicators: IndicatorInfo[];
 }
 
+// Mirrors core/remediation.py. Attached to FAIL/PARTIAL results only.
+export type RdfTermKind = "uri" | "literal" | "bnode";
+
+export interface RdfTerm {
+  type: RdfTermKind;
+  value: string;
+}
+
+export interface ChangeOp {
+  op: "add" | "remove";
+  subject: string;
+  predicate: string;
+  object: RdfTerm;
+  reason: string;
+}
+
+export interface FieldSuggestion {
+  indicator_id: string;
+  subject: string;
+  predicate: string;
+  candidates: string[];
+  reason: string;
+}
+
+export interface ChangePatch {
+  kind: "change_patch";
+  ready: ChangeOp[];
+  needs_input: FieldSuggestion[];
+  summary_de: string;
+  summary_en: string;
+}
+
+export interface Recommendation {
+  kind: "recommendation";
+  message_de: string;
+  message_en: string;
+  findings: string[];
+  see_also: string[];
+}
+
+export type Remediation = ChangePatch | Recommendation;
+
 export interface IndicatorResult {
   indicator_id: string;
   name_de: string;
@@ -41,6 +83,7 @@ export interface IndicatorResult {
   message_en: string;
   details: Record<string, unknown>;
   error?: string | null;
+  remediation?: Remediation | null;
 }
 
 export interface DimensionResult {

@@ -85,6 +85,11 @@ class IndicatorResultModel(BaseModel):
     message_en: str = ""
     details: dict[str, Any] = Field(default_factory=dict)
     error: Optional[str] = None
+    # Shape mirrors core.remediation.ChangePatch / Recommendation (a
+    # ``{"kind": "change_patch" | "recommendation", ...}`` dict) -- kept as a
+    # loose dict here like ``details``, since it's relayed from
+    # QualityMetricsService rather than re-validated by the API.
+    remediation: Optional[dict[str, Any]] = None
 
 
 class DimensionResultModel(BaseModel):

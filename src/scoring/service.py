@@ -17,6 +17,7 @@ from extraction.semantic_assessment import (
     attach_semantic_assessment,
 )
 from extraction.rdf_parser import RDFMetadataParser
+from scoring.remediation import attach_remediation
 from scoring.score_policy import ScorePolicy
 from utils.logger import get_logger
 
@@ -592,15 +593,26 @@ class QualityMetricsService:
         """Call ``indicator.validate``, passing ``context`` only when the
         indicator's signature accepts it. Indicators opt in by declaring a
         ``context`` keyword argument.
+
+        FAIL/PARTIAL results additionally get a ``remediation`` attached
+        (see ``scoring.remediation``) -- requires ``context`` (subject URIs,
+        the graph, the LLM assessment), so it's skipped when no context was
+        built for this call.
         """
+        result = None
         if context is not None:
             try:
                 sig = inspect.signature(indicator.validate)
                 if "context" in sig.parameters:
-                    return indicator.validate(metadata, context=context)
+                    result = indicator.validate(metadata, context=context)
             except (TypeError, ValueError):
                 pass
-        return indicator.validate(metadata)
+        if result is None:
+            result = indicator.validate(metadata)
+
+        if context is not None:
+            attach_remediation(result, context)
+        return result
 
     @staticmethod
     def _score_to_grade(score: float) -> str:

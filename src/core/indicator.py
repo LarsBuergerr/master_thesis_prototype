@@ -7,6 +7,7 @@ from typing import Any, Dict, Optional
 from datetime import datetime
 
 from core.dimension import QualityDimension
+from core.remediation import Remediation
 from utils.logger import get_logger
 
 
@@ -35,6 +36,10 @@ class IndicatorResult:
     details: Dict[str, Any] = field(default_factory=dict)
     error: Optional[str] = None
     timestamp: datetime = field(default_factory=datetime.now)
+    #: Set (post-hoc, see scoring.remediation.attach_remediation) for FAIL /
+    #: PARTIAL results: either a concrete ChangePatch or a free-text
+    #: Recommendation — never both, never neither for a failing indicator.
+    remediation: Optional[Remediation] = None
 
     def to_dict(self) -> Dict[str, Any]:
         """Convert result to dictionary."""
@@ -50,6 +55,7 @@ class IndicatorResult:
             "details": self.details,
             "error": self.error,
             "timestamp": self.timestamp.isoformat(),
+            "remediation": self.remediation.to_dict() if self.remediation else None,
         }
 
 
