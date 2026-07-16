@@ -1,0 +1,4 @@
+,M:schlecht,M:mittel,M:gut
+GT:schlecht,1,0,0
+GT:mittel,0,42,2
+GT:gut,0,4,1
