@@ -44,7 +44,7 @@ llm:
   # LLM provider. Options: "local", "openrouter" (for local make sure to have the required model downloaded and running)
   provider: "openrouter"
   # model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id, for local use a supported model name e.g. qwen3.5
-  model: "anthropic/claude-sonnet-4.5"
+  model: "openai/gpt-5.5"
   # LLM response randomness (0.0 = deterministic, higher values = more random) default 0.0
   temperature: 0.0
   # Maximum tokens for LLM responses (adjust based on expected response length and model limits) default 10000
