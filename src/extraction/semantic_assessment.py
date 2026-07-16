@@ -15,15 +15,21 @@ that consume it stay pure functions of the context and never touch the LLM.
 
 from __future__ import annotations
 
+import json
 import logging
 import time
 from logging import Logger
 from typing import TYPE_CHECKING, Any, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ValidationError
 
 if TYPE_CHECKING:  # avoid an import cycle with dataset_context
     from extraction.dataset_context import DatasetContext
+
+
+# Upper bound on ``ExpressivenessCriterion.findings``. Named so the schema
+# constraint and the salvage repair that clips over-long lists can't drift.
+_MAX_FINDINGS = 3
 
 
 class ExpressivenessCriterion(BaseModel):
@@ -39,7 +45,7 @@ class ExpressivenessCriterion(BaseModel):
 
     findings: list[str] = Field(
         default_factory=list,
-        max_length=3,
+        max_length=_MAX_FINDINGS,
         description=(
             "Zuerst ausfüllen: 1-3 konkrete, beobachtbare Stärken/Schwächen für "
             "dieses Kriterium."
@@ -288,25 +294,205 @@ def attach_semantic_assessment(
         started = time.perf_counter()
         result = structured.invoke(_build_messages(context))
         latency = time.perf_counter() - started
-
-        assessment = result.get("parsed") if isinstance(result, dict) else result
-        raw = result.get("raw") if isinstance(result, dict) else None
-        context.semantic_assessment = assessment
-        context.llm_usage.append(
-            _extract_usage(raw, latency, fallback_model=_model_name(llm))
-        )
-        log.debug(
-            "Attached expressiveness assessment "
-            f"(summary: {assessment.overall_summary[:120]!r})"
-        )
     except Exception:
+        # Transport/config failure — there is no response to salvage or record.
         log.exception(
-            "Expressiveness LLM assessment failed; leaving context.semantic_assessment unset"
+            "Expressiveness LLM call failed; leaving context.semantic_assessment unset"
         )
+        return
+
+    if isinstance(result, dict):
+        assessment = result.get("parsed")
+        raw = result.get("raw")
+        parsing_error = result.get("parsing_error")
+    else:  # a bare model instance (no include_raw wrapper)
+        assessment, raw, parsing_error = result, None, None
+
+    context.llm_usage.append(
+        _extract_usage(raw, latency, fallback_model=_model_name(llm))
+    )
+    args = _raw_tool_args(raw)
+    context.semantic_assessment_raw = {
+        "model": _model_name(llm),
+        "tool_args": args,
+        "text_content": _text_content(raw),
+        "parsing_error": str(parsing_error) if parsing_error else None,
+        "salvaged": False,
+        "repairs": [],
+    }
+
+    if assessment is None:
+        # ``include_raw=True`` turns a schema violation into a *returned* error
+        # rather than a raised one, so this branch is the only place the real
+        # cause is visible. Log it in full before attempting a repair.
+        log.error(
+            "Expressiveness assessment did not validate; attempting salvage. "
+            f"parsing_error={parsing_error!r}"
+        )
+        if args is None:
+            log.error(
+                "No tool-call arguments in the response — nothing to salvage. "
+                f"finish_reason={_finish_reason(raw)!r} "
+                f"text_content={_text_content(raw)!r}"
+            )
+        else:
+            log.debug(f"Raw tool arguments: {args!r}")
+
+        assessment, repairs = _salvage_assessment(args, log=log)
+        context.semantic_assessment_raw["repairs"] = repairs
+        context.semantic_assessment_raw["salvaged"] = assessment is not None
+
+    if assessment is None:
+        log.error(
+            "Expressiveness assessment unsalvageable; leaving "
+            "context.semantic_assessment unset (all expr_* → NOT_APPLICABLE)"
+        )
+        return
+
+    context.semantic_assessment = assessment
+    log.debug(
+        "Attached expressiveness assessment "
+        f"(summary: {assessment.overall_summary[:120]!r})"
+    )
 
 
 def _model_name(llm) -> Optional[str]:
     return getattr(llm, "model_name", None) or getattr(llm, "model", None)
+
+
+def _text_content(raw: Any) -> Optional[str]:
+    """Any prose the model emitted alongside (or instead of) the tool call."""
+    content = getattr(raw, "content", None)
+    if isinstance(content, str):
+        return content or None
+    if isinstance(content, list):  # multimodal/reasoning block list
+        parts = [
+            b.get("text")
+            for b in content
+            if isinstance(b, dict) and isinstance(b.get("text"), str)
+        ]
+        return "\n".join(parts) or None
+    return None
+
+
+def _finish_reason(raw: Any) -> Optional[str]:
+    meta = getattr(raw, "response_metadata", None) or {}
+    return meta.get("finish_reason") or meta.get("stop_reason")
+
+
+def _raw_tool_args(raw: Any) -> Optional[dict]:
+    """The model's tool-call arguments, from a valid *or* rejected tool call.
+
+    LangChain routes a tool call whose arguments don't fit the schema into
+    ``invalid_tool_calls`` with the payload left as an unparsed string, so both
+    lists have to be checked before concluding the model returned nothing.
+    """
+    for tc in getattr(raw, "tool_calls", None) or []:
+        args = tc.get("args") if isinstance(tc, dict) else getattr(tc, "args", None)
+        if isinstance(args, dict):
+            return args
+
+    for tc in getattr(raw, "invalid_tool_calls", None) or []:
+        blob = tc.get("args") if isinstance(tc, dict) else getattr(tc, "args", None)
+        if isinstance(blob, dict):
+            return blob
+        if isinstance(blob, str):
+            try:
+                parsed = json.loads(blob)
+            except json.JSONDecodeError:
+                continue
+            if isinstance(parsed, dict):
+                return parsed
+    return None
+
+
+def _repair_criterion(payload: Any, key: str) -> tuple[Optional[dict], list[str]]:
+    """Coerce one criterion payload into something the schema will accept.
+
+    Anthropic's tool use treats JSON-Schema ``maxItems`` / ``maximum`` as
+    guidance rather than constraints, so an otherwise complete answer can be
+    rejected wholesale over a fourth ``finding`` or a ``score`` of 1.05. Those
+    two violations are unambiguous to repair (clip the list, clamp the number)
+    and repairing them preserves the model's actual judgement. Anything else —
+    a missing ``reasoning``, a non-numeric score — is left for the caller to
+    handle as an unusable criterion.
+    """
+    if not isinstance(payload, dict):
+        return None, [f"{key}: not an object ({type(payload).__name__})"]
+
+    out = dict(payload)
+    repairs: list[str] = []
+
+    findings = out.get("findings")
+    if isinstance(findings, list) and len(findings) > _MAX_FINDINGS:
+        repairs.append(f"{key}.findings: {len(findings)} → {_MAX_FINDINGS}")
+        out["findings"] = findings[:_MAX_FINDINGS]
+
+    score = out.get("score")
+    if isinstance(score, (int, float)) and not isinstance(score, bool):
+        if not 0.0 <= float(score) <= 1.0:
+            clamped = min(1.0, max(0.0, float(score)))
+            repairs.append(f"{key}.score: {score} → {clamped}")
+            out["score"] = clamped
+
+    try:
+        ExpressivenessCriterion.model_validate(out)
+    except ValidationError as exc:
+        return None, repairs + [f"{key}: {exc.error_count()} unrepairable error(s)"]
+    return out, repairs
+
+
+def _salvage_assessment(
+    args: Optional[dict], *, log: Logger
+) -> tuple[Optional[ExpressivenessAssessment], list[str]]:
+    """Rebuild an assessment from raw tool arguments, criterion by criterion.
+
+    A single bad criterion used to cost the dataset its entire expressiveness
+    dimension: the whole model rejected, ``semantic_assessment`` left ``None``,
+    all six indicators NOT_APPLICABLE. Salvaging per criterion keeps the five
+    good ones scoring and confines the loss to the criterion that actually
+    broke, which drops out neutrally as NOT_APPLICABLE (``applicable=False``).
+    """
+    if not isinstance(args, dict):
+        return None, []
+
+    fields: dict[str, ExpressivenessCriterion] = {}
+    repairs: list[str] = []
+    lost: list[str] = []
+
+    for key in CRITERION_KEYS:
+        payload, key_repairs = _repair_criterion(args.get(key), key)
+        repairs.extend(key_repairs)
+        if payload is None:
+            lost.append(key)
+            fields[key] = ExpressivenessCriterion(
+                reasoning=(
+                    "Nicht bewertbar: Die Antwort des Modells war für dieses "
+                    "Kriterium unvollständig oder ungültig."
+                ),
+                applicable=False,
+                score=0.0,
+            )
+        else:
+            fields[key] = ExpressivenessCriterion.model_validate(payload)
+
+    if len(lost) == len(CRITERION_KEYS):
+        # Nothing of substance came back — a salvage here would be fabrication.
+        return None, repairs
+
+    summary = args.get("overall_summary")
+    assessment = ExpressivenessAssessment(
+        overall_summary=summary if isinstance(summary, str) and summary else "",
+        **fields,
+    )
+    if repairs:
+        log.warning(f"Repaired expressiveness assessment: {'; '.join(repairs)}")
+    if lost:
+        log.warning(
+            f"Salvaged {len(CRITERION_KEYS) - len(lost)}/{len(CRITERION_KEYS)} "
+            f"criteria; NOT_APPLICABLE (neutral): {', '.join(lost)}"
+        )
+    return assessment, repairs
 
 
 def _extract_usage(raw: Any, latency: float, *, fallback_model: Optional[str]) -> dict:

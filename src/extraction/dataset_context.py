@@ -207,6 +207,11 @@ class DatasetContext:
     contributor_ids_in_vocab: list[bool] = field(default_factory=list)
     distributions: list[DistributionContext] = field(default_factory=list)
     semantic_assessment: Optional["ExpressivenessAssessment"] = None
+    #: Forensic record of the expressiveness LLM call: the model's raw tool-call
+    #: arguments plus any parse/repair detail. Populated on every call, not just
+    #: failures, so a run's result.json always shows what the model actually
+    #: returned — independent of whether it validated.
+    semantic_assessment_raw: Optional[dict] = None
     llm_usage: list[dict] = field(default_factory=list)
 
     @property
