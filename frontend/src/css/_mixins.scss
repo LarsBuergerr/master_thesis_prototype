@@ -1,0 +1,41 @@
+// Übernommen aus GovData-Frontend webapp/src/css/_mixins.scss (Auszug):
+// Fokus-Stil, transparente 5-px-Rahmen der Buttons, Heading-Mixin mit
+// mobilem Schriftgrad-Fallback.
+$rem-base: 16px;
+
+$focus-common-outline: 3px solid $focus-outline-color;
+$focus-common-outline-offset: 2px;
+$focus-common-box-shadow: none;
+$focus-common-z-index: 100;
+
+.focus-outline-common {
+  outline: $focus-common-outline;
+  outline-offset: $focus-common-outline-offset;
+  box-shadow: $focus-common-box-shadow;
+  z-index: $focus-common-z-index;
+}
+
+@mixin outline-base() {
+  &:focus-visible {
+    outline: $focus-common-outline;
+    outline-offset: $focus-common-outline-offset;
+    box-shadow: $focus-common-box-shadow;
+    z-index: $focus-common-z-index;
+  }
+}
+
+@mixin transparent-border() {
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+@mixin heading($fnt-size, $fnt-size-mobile, $line-height) {
+  @extend .font-bold;
+
+  font-size: $fnt-size-mobile;
+  line-height: $line-height;
+
+  @include media-breakpoint-up(md) {
+    font-size: $fnt-size;
+  }
+}

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { ConfigPanel } from "./components/ConfigPanel";
 import { JobProgress } from "./components/JobProgress";
 import { ResultsView } from "./components/results/ResultsView";
-import { ThemeToggle } from "./components/ThemeToggle";
 import { UploadPanel } from "./components/UploadPanel";
 import { useIndicators, useJob, useSubmitAnalysis } from "./hooks/useAnalysis";
 import type { AnalysisConfigInput } from "./api/types";
@@ -84,7 +83,6 @@ export default function App() {
             RDF hochladen, Gewichte/Policy einstellen, analysieren.
           </p>
         </div>
-        <ThemeToggle />
       </header>
 
       <div className="app">
@@ -103,7 +101,7 @@ export default function App() {
             />
           )}
           {indicators.isError && (
-            <div className="panel error-box" role="alert">
+            <div className="alert gd-alert-danger" role="alert">
               Backend nicht erreichbar. Läuft uvicorn auf{" "}
               {import.meta.env.VITE_API_BASE ?? "http://localhost:8000"}?
             </div>
@@ -112,7 +110,7 @@ export default function App() {
 
         <main className="main stack" id="main-content">
           {submit.isError && (
-            <div className="panel error-box" role="alert">
+            <div className="alert gd-alert-danger" role="alert">
               Analyse fehlgeschlagen: {(submit.error as Error).message}
             </div>
           )}
@@ -121,7 +119,7 @@ export default function App() {
             <ResultsView results={jobData.results} />
           )}
           {!jobData && !submit.isPending && (
-            <div className="panel muted">
+            <div className="alert alert-info">
               Noch keine Analyse. Wähle links RDF-Dateien und starte die Analyse.
             </div>
           )}

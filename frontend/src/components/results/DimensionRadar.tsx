@@ -7,10 +7,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import type { Summary } from "../../api/types";
-import { useTheme } from "../../hooks/useTheme";
+import { CHART_COLORS } from "../../lib/theme";
 
 export function DimensionRadar({ summary }: { summary: Summary }) {
-  const { colors } = useTheme();
+  const colors = CHART_COLORS;
   const data = Object.entries(summary.dimension_scores).map(([dim, score]) => ({
     dimension: dim,
     score: Number(score.toFixed(3)),
@@ -28,7 +28,8 @@ export function DimensionRadar({ summary }: { summary: Summary }) {
             tick={{ fill: colors.textSecondary, fontSize: 12 }}
           />
           <PolarRadiusAxis domain={[0, 1]} tick={{ fill: colors.textSubtle, fontSize: 10 }} />
-          <Radar dataKey="score" stroke={colors.accent} fill={colors.accent} fillOpacity={0.4} />
+          {/* Akzent: Magenta der GovData-Metadatenqualitäts-Charts */}
+          <Radar dataKey="score" stroke={colors.accent} fill={colors.accent} fillOpacity={0.35} />
         </RadarChart>
       </ResponsiveContainer>
     </div>

@@ -60,13 +60,13 @@ export function ConfigPanel({ indicators, config, onChange }: Props) {
   const scoring = config.scoring;
 
   return (
-    <div className="panel">
+    <div className="design-box design-box-padding gd-input">
       <h2>Konfiguration</h2>
 
       {/* Dimensions */}
       <div className="section-sub">Dimensionen &amp; Gewichte</div>
       {allDims.map((dim) => (
-        <div className="row between" key={dim} style={{ marginBottom: 6 }}>
+        <div className="gd-row between" key={dim} style={{ marginBottom: 6 }}>
           <label style={{ margin: 0, display: "flex", gap: 6, alignItems: "center" }}>
             <input
               type="checkbox"
@@ -78,7 +78,7 @@ export function ConfigPanel({ indicators, config, onChange }: Props) {
           <input
             type="number"
             step="0.1"
-            style={{ width: 70 }}
+            className="compact-number"
             value={config.dimension_weights[dim] ?? 1}
             onChange={(e) => setDimWeight(dim, num(e.target.value, 1))}
           />

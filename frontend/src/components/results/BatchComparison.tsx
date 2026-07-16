@@ -10,7 +10,7 @@ import {
   YAxis,
 } from "recharts";
 import type { FileResult } from "../../api/types";
-import { useTheme } from "../../hooks/useTheme";
+import { CHART_COLORS } from "../../lib/theme";
 import { gradeColor } from "../../lib/status";
 
 /**
@@ -18,7 +18,7 @@ import { gradeColor } from "../../lib/status";
  * (do good datasets score higher than bad ones?).
  */
 export function BatchComparison({ results }: { results: FileResult[] }) {
-  const { colors } = useTheme();
+  const colors = CHART_COLORS;
   const data = results
     .filter((r) => r.result)
     .map((r) => ({
@@ -32,7 +32,7 @@ export function BatchComparison({ results }: { results: FileResult[] }) {
   const min = Math.min(0, ...data.map((d) => d.overall));
 
   return (
-    <div className="panel">
+    <div className="design-box design-box-padding">
       <h2>Vergleich: Gesamtscore pro Datei</h2>
       <div style={{ width: "100%", height: Math.max(220, data.length * 36 + 40) }}>
         <ResponsiveContainer>
@@ -57,7 +57,7 @@ export function BatchComparison({ results }: { results: FileResult[] }) {
               contentStyle={{
                 background: colors.panel,
                 border: `1px solid ${colors.gridline}`,
-                borderRadius: 6,
+                borderRadius: 5,
                 fontSize: 12,
                 color: colors.text,
               }}

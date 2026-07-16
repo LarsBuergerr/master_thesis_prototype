@@ -1,0 +1,242 @@
+// Anwendungsspezifische Stile des Quality Analyzers, ausschließlich auf
+// Basis der GovData-Tokens (_color-tokens.scss/_variables.scss). Alles, was
+// hier steht, gibt es im GovData-Portal nicht als fertige Komponente
+// (Layout-Gerüst, Fortschrittsbalken, Diff-Ansicht, Score-Grade); die
+// Farb-/Typo-Entscheidungen folgen aber durchgehend dem Portal-Styleguide.
+
+// Keyboard-Skip-Link (WCAG 2.4.1 Bypass Blocks), Fokus-Stil wie GovData.
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: $clr-primary-400;
+  color: $white;
+  padding: $spacer $spacer * 2;
+  border-radius: 0 0 5px 0;
+
+  &:focus {
+    left: 0;
+  }
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacer * 2;
+  padding: $spacer * 2 $spacer * 3;
+  border-bottom: 1px solid $clr-neutral-grey-300;
+  background: $white;
+
+  h1 {
+    margin: 0;
+    color: $clr-primary-500;
+  }
+
+  .tagline {
+    margin: 2px 0 0;
+  }
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: $spacer * 2;
+  padding: $spacer * 2 $spacer * 3;
+  min-height: 100vh;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: $spacer * 2;
+}
+.main {
+  min-width: 0;
+}
+
+h2 {
+  margin: 0 0 $spacer * 1.5;
+}
+h3 {
+  margin: 0 0 $spacer;
+}
+
+.muted {
+  color: $clr-neutral-grey-600;
+  font-size: $fnt-paragraph-small;
+}
+.subtle {
+  color: $clr-neutral-grey-500;
+  font-size: $fnt-paragraph-extra-small;
+}
+
+// bewusst .gd-row statt .row: Bootstraps Grid-.row (flex-wrap + 100%-Kinder)
+// kommt über bootstrap-grid mit und darf nicht kollidieren
+.gd-row {
+  display: flex;
+  gap: $spacer;
+  align-items: center;
+}
+.gd-row.between {
+  justify-content: space-between;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacer;
+}
+
+.diff-box {
+  margin-top: 4px;
+  padding: 6px 8px;
+  background: $clr-neutral-grey-100;
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: $fnt-paragraph-extra-small;
+}
+.diff-line {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 2px 0;
+
+  &.diff-add {
+    color: $clr-success-green-500;
+  }
+  &.diff-del {
+    color: $clr-error-red-500;
+  }
+}
+.diff-sign {
+  width: 12px;
+  flex: none;
+  font-weight: 700;
+}
+.diff-pending select {
+  max-width: 320px;
+}
+.findings {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  font-size: $fnt-paragraph-small;
+
+  li {
+    font-size: $fnt-paragraph-small;
+    margin: 2px 0;
+  }
+}
+
+// Score-Grade: Textfarben auf 500er-Niveau, gegen Weiß >= 4.5:1
+// nachgerechnet (siehe docs/frontend_govdata_adoption.md).
+.grade {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+}
+.grade.A,
+.grade.B {
+  color: $clr-success-green-500;
+}
+.grade.C {
+  color: $clr-warning-yellow-500;
+}
+.grade.D,
+.grade.F {
+  color: $clr-error-red-500;
+}
+
+// Ergebnis-Karten: max. 3 Spalten, damit Charts genug Breite behalten.
+.cards {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: $spacer * 2;
+}
+@media (max-width: 1600px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1100px) {
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: $spacer * 2;
+}
+
+.progress-track {
+  height: 8px;
+  background: $clr-neutral-grey-200;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: $clr-primary-400;
+  transition: width 0.3s;
+}
+
+details {
+  border-top: 1px solid $clr-neutral-grey-300;
+  padding: $spacer 0;
+
+  summary {
+    @extend .paragraph;
+    @extend .bold;
+  }
+}
+
+.scroll {
+  max-height: 320px;
+  overflow: auto;
+}
+
+// Kompakte Gewichts-Eingaben in der Sidebar: schmaler/niedriger als die
+// GovData-Standardfeldhöhe, sonst identische Rahmen/Radius-Regeln.
+.weight-grid {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  gap: 6px;
+  align-items: center;
+
+  input {
+    height: rem-calc(32);
+    padding: $spacer * 0.5 $spacer;
+    font-size: $fnt-paragraph-small;
+  }
+}
+.weight-grid .ind-name {
+  font-size: $fnt-paragraph-extra-small;
+  color: $clr-neutral-grey-800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// schmale Zahlenfelder (Dimensionsgewichte) — überschreibt die
+// 40-px-Standardhöhe aus _gd-input.scss
+input.compact-number {
+  width: 80px;
+  height: rem-calc(32);
+  padding: $spacer * 0.5 $spacer;
+  font-size: $fnt-paragraph-small;
+}
+.section-sub {
+  font-size: $fnt-paragraph-extra-small;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $clr-neutral-grey-600;
+  margin: $spacer * 1.5 0 6px;
+  font-weight: 700;
+}

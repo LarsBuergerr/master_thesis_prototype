@@ -1,0 +1,70 @@
+// Übernommen aus GovData-Frontend webapp/src/css/components/_gd-input.scss
+// (Auszug): fette Labels, Grey-500-Rahmen mit 4-px-Radius, 40-px-Feldhöhe,
+// rote 2-px-Rahmen für invalide Eingaben.
+.gd-input {
+  label,
+  legend {
+    @extend .paragraph;
+    @extend .bold;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  input,
+  select,
+  textarea {
+    @extend .paragraph;
+    padding: $spacer * 1 $spacer * 1.5;
+
+    border-radius: $spacer * 0.5;
+    border: 1px solid $clr-neutral-grey-500;
+    background: $white;
+    color: $black;
+    width: 100%;
+    margin: 0;
+
+    &:user-invalid,
+    &.gd-input-invalid {
+      border: 2px solid;
+      border-color: $clr-error-red-500;
+    }
+  }
+
+  input {
+    height: rem-calc(40);
+
+    &:read-only {
+      background-color: $clr-neutral-grey-200;
+      color: $clr-neutral-grey-600;
+    }
+  }
+
+  select {
+    height: rem-calc(40);
+    font-size: $fnt-paragraph-small;
+  }
+
+  input[type="checkbox"] {
+    width: map-get($spacers, 3);
+    height: map-get($spacers, 3);
+    accent-color: $clr-primary-400;
+  }
+
+  .gd-input-checkbox {
+    @include transparent-border();
+    display: flex;
+    align-items: center;
+    gap: $spacer;
+
+    label {
+      margin: 0;
+      display: flex;
+      gap: $spacer;
+      align-items: center;
+    }
+
+    &:has(:focus-visible) {
+      @extend .focus-outline-common;
+    }
+  }
+}

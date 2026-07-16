@@ -1,0 +1,76 @@
+// Übernommen aus GovData-Frontend webapp/src/css/_variables.scss (Auszug):
+// Schriftgrößen, Zeilenhöhen, Breakpoints und das 8-px-Spacing-Raster
+// ($spacer: 0.5rem). Die Breakpoint-Map speist die Bootstrap-Grid-Mixins,
+// genau wie im Original.
+
+//*******************************
+// Font Sizes
+//*******************************
+$fnt-h1-size: rem-calc(32);
+$fnt-h1-size-mobile: rem-calc(24);
+
+$fnt-h2-size: rem-calc(24);
+$fnt-h2-size-mobile: rem-calc(20);
+
+$fnt-h3-size: rem-calc(20);
+$fnt-h3-size-mobile: rem-calc(18);
+
+$fnt-h4-size: rem-calc(18);
+$fnt-h4-size-mobile: rem-calc(16);
+
+$fnt-h5-size: rem-calc(16);
+$fnt-h5-size-mobile: rem-calc(14);
+
+$fnt-paragraph-large: rem-calc(20);
+$fnt-paragraph-regular: rem-calc(16);
+$fnt-paragraph-small: rem-calc(14);
+$fnt-paragraph-extra-small: rem-calc(12);
+
+$line-height-heading: 125%;
+$line-height-paragraph: 150%;
+
+//*******************************
+// Breakpoints
+//*******************************
+$small-breakpoint: 767px;
+$medium-breakpoint: 1024px;
+$large-breakpoint: 1440px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: $small-breakpoint,
+  md: $medium-breakpoint,
+  lg: $large-breakpoint,
+);
+
+//*******************************
+// Grid
+//*******************************
+$grid-columns: 12;
+$grid-gutter-width: 32px;
+
+$container-max-widths: (
+  sm: $small-breakpoint,
+  md: $medium-breakpoint,
+  lg: $large-breakpoint,
+);
+
+//*******************************
+// Spacing
+//*******************************
+$spacer: 0.5rem;
+$spacers: (
+  0: 0,
+  "0_5": $spacer * 0.5,
+  1: $spacer,
+  "1_5": $spacer * 1.5,
+  2: $spacer * 2,
+  "2_5": $spacer * 2.5,
+  3: $spacer * 3,
+  4: $spacer * 4,
+  5: $spacer * 5,
+  6: $spacer * 6,
+  7: $spacer * 7,
+  8: $spacer * 8,
+);
+$gutters: $spacers;

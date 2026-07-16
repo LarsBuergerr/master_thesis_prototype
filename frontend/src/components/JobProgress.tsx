@@ -5,8 +5,8 @@ export function JobProgress({ job }: { job: JobDetail }) {
   const pct = total > 0 ? Math.round((done / total) * 100) : 0;
 
   return (
-    <div className="panel">
-      <div className="row between">
+    <div className="design-box design-box-padding">
+      <div className="gd-row between">
         <h2 style={{ marginBottom: 0 }}>
           {job.status === "running" ? "Analyse läuft…" : `Status: ${job.status}`}
         </h2>
@@ -22,7 +22,11 @@ export function JobProgress({ job }: { job: JobDetail }) {
           Aktuell: {current_file}
         </p>
       )}
-      {job.error && <div className="error-box" style={{ marginTop: 12 }}>{job.error}</div>}
+      {job.error && (
+        <div className="alert gd-alert-danger" role="alert" style={{ marginTop: 12 }}>
+          {job.error}
+        </div>
+      )}
     </div>
   );
 }

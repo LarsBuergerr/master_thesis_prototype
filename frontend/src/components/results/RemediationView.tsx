@@ -8,9 +8,8 @@ function ChangeLine({ sign, predicate, value, title }: {
   value: string;
   title?: string;
 }) {
-  const color = sign === "+" ? "var(--pass)" : "var(--fail)";
   return (
-    <div className="diff-line" style={{ color }} title={title}>
+    <div className={`diff-line ${sign === "+" ? "diff-add" : "diff-del"}`} title={title}>
       <span className="diff-sign">{sign}</span>
       <span className="muted">{shortenUri(predicate)}</span>{" "}
       <span>{value}</span>
@@ -53,8 +52,8 @@ function NeedsInputRow({ suggestion }: { suggestion: FieldSuggestion }) {
 function ChangePatchView({ patch }: { patch: ChangePatch }) {
   return (
     <div>
-      <div className="row" style={{ gap: 6 }}>
-        <span className="chip patch">Patch</span>
+      <div className="gd-row" style={{ gap: 6 }}>
+        <span className="gd-tag patch">Patch</span>
         <span className="muted">{patch.summary_de}</span>
       </div>
       <div className="diff-box">
@@ -78,8 +77,8 @@ function ChangePatchView({ patch }: { patch: ChangePatch }) {
 function RecommendationView({ rec }: { rec: Recommendation }) {
   return (
     <div>
-      <div className="row" style={{ gap: 6 }}>
-        <span className="chip recommendation">Empfehlung</span>
+      <div className="gd-row" style={{ gap: 6 }}>
+        <span className="gd-tag recommendation">Empfehlung</span>
         <span>{rec.message_de}</span>
       </div>
       {rec.findings.length > 0 && (

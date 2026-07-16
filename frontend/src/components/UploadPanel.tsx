@@ -16,7 +16,7 @@ export function UploadPanel({ files, onFilesChange, onSubmit, submitting }: Prop
   }
 
   return (
-    <div className="panel">
+    <div className="design-box design-box-padding">
       <h2>RDF-Dateien</h2>
       <input
         ref={inputRef}
@@ -26,8 +26,8 @@ export function UploadPanel({ files, onFilesChange, onSubmit, submitting }: Prop
         onChange={handlePick}
         style={{ display: "none" }}
       />
-      <div className="row" style={{ gap: 8 }}>
-        <button className="secondary" onClick={() => inputRef.current?.click()}>
+      <div className="gd-row" style={{ gap: 8 }}>
+        <button className="gd-button gd-button-secondary" onClick={() => inputRef.current?.click()}>
           Dateien wählen
         </button>
         <span className="muted">{files.length} ausgewählt</span>
@@ -40,7 +40,11 @@ export function UploadPanel({ files, onFilesChange, onSubmit, submitting }: Prop
         </ul>
       )}
       <div style={{ marginTop: 12 }}>
-        <button onClick={onSubmit} disabled={submitting || files.length === 0}>
+        <button
+          className="gd-button gd-button-primary"
+          onClick={onSubmit}
+          disabled={submitting || files.length === 0}
+        >
           {submitting ? "Analysiere…" : "Analyse starten"}
         </button>
       </div>

@@ -7,15 +7,15 @@ import { OverallScoreCard } from "./OverallScoreCard";
 function FileResultCard({ fr }: { fr: FileResult }) {
   if (fr.error || !fr.result) {
     return (
-      <div className="panel">
+      <div className="design-box design-box-padding">
         <h3>{fr.filename}</h3>
-        <div className="error-box">{fr.error ?? "Kein Ergebnis"}</div>
+        <div className="alert gd-alert-danger">{fr.error ?? "Kein Ergebnis"}</div>
       </div>
     );
   }
   const { summary, by_dimension } = fr.result;
   return (
-    <div className="panel">
+    <div className="design-box design-box-padding">
       <h3>{fr.filename}</h3>
       <OverallScoreCard summary={summary} />
       <div style={{ marginTop: 12 }}>

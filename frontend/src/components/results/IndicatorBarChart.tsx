@@ -9,11 +9,11 @@ import {
   YAxis,
 } from "recharts";
 import type { DimensionResult } from "../../api/types";
-import { useTheme } from "../../hooks/useTheme";
+import { CHART_COLORS } from "../../lib/theme";
 import { statusColor } from "../../lib/status";
 
 export function IndicatorBarChart({ dim }: { dim: DimensionResult }) {
-  const { colors } = useTheme();
+  const colors = CHART_COLORS;
   const data = dim.indicators.map((i) => ({
     id: i.indicator_id,
     score: i.score ?? 0,
@@ -48,7 +48,7 @@ export function IndicatorBarChart({ dim }: { dim: DimensionResult }) {
             contentStyle={{
               background: colors.panel,
               border: `1px solid ${colors.gridline}`,
-              borderRadius: 6,
+              borderRadius: 5,
               fontSize: 12,
               color: colors.text,
             }}

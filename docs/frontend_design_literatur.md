@@ -1,5 +1,15 @@
 # Frontend-Redesign: Literaturgrundlage und Umsetzung
 
+> **Hinweis (2026-07-16):** Die konkrete Farb- und Typografie-Implementierung
+> wurde inzwischen auf das Corporate Design des GovData-Portals umgestellt
+> (Einbettbarkeit in GovData); die hier dokumentierten Prinzipien und
+> Prüfverfahren (WCAG-Kontraste, Statusfarben nie themenabhängig, Farbe nie
+> als alleiniger Informationsträger, Overview-first) gelten unverändert und
+> wurden für die GovData-Palette neu nachgerechnet — siehe
+> `docs/frontend_govdata_adoption.md`. Die Abschnitte 3 und 4 unten
+> beschreiben den Stand **vor** dieser Umstellung und bleiben als Herleitung
+> und Methodendokumentation erhalten.
+
 Dieses Dokument begründet das Redesign des Analyzer-Frontends
 (`frontend/`) mit publizierter Literatur zu Dashboard-/UI-Design,
 Wahrnehmung, Farbtheorie und Barrierefreiheit, sowie mit den vom Betreuer

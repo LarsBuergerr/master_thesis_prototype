@@ -15,7 +15,7 @@ export function OverallScoreCard({ summary }: { summary: Summary }) {
   const data = [{ name: "score", value: gaugeValue * 100, fill: color }];
 
   return (
-    <div className="row" style={{ gap: 16, alignItems: "center" }}>
+    <div className="gd-row" style={{ gap: 16, alignItems: "center" }}>
       <div style={{ width: 130, height: 130, position: "relative" }}>
         <ResponsiveContainer width="100%" height="100%">
           <RadialBarChart

@@ -1,0 +1,68 @@
+// Übernommen aus GovData-Frontend webapp/src/css/components/_gd-tag.scss und
+// um die fünf Analyzer-Statusvarianten erweitert. Muster wie im Original
+// (.gd-tag.green / .gd-tag.yellow): helle 200er-Füllfarbe, 500er-Textfarbe,
+// 1-px-Rahmen in Textfarbe, 5-px-Radius. Alle Text/Füllung-Paare sind gegen
+// WCAG 1.4.3 (>= 4.5:1) nachgerechnet, jeder Status trägt zusätzlich ein
+// Icon-Glyph (WCAG 1.4.1) — siehe docs/frontend_govdata_adoption.md.
+.gd-tag {
+  font-size: $fnt-paragraph-small;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 $spacer * 1;
+  border-radius: 5px;
+  text-wrap: nowrap;
+
+  &.black {
+    background-color: $clr-media-grey-500;
+    color: $clr-shades-white-0;
+  }
+
+  &.green,
+  &.pass {
+    background-color: $clr-success-green-200;
+    color: $clr-success-green-500;
+    border: 1px solid;
+  }
+
+  &.yellow,
+  &.partial {
+    background-color: $clr-warning-yellow-200;
+    color: $clr-warning-yellow-500;
+    border: 1px solid;
+  }
+
+  &.fail {
+    background-color: $clr-error-red-200;
+    color: $clr-error-red-500;
+    border: 1px solid;
+  }
+
+  // Laufzeitfehler: dunkelgrauer Tag nach dem Muster von .gd-tag.black
+  &.error {
+    background-color: $clr-media-grey-500;
+    color: $clr-shades-white-0;
+    border: 1px solid $clr-media-grey-500;
+  }
+
+  &.not_applicable {
+    background-color: $clr-neutral-grey-200;
+    color: $clr-neutral-grey-600;
+    border: 1px solid;
+  }
+
+  // Remediation-Kennzeichnungen (Patch/Empfehlung) in der
+  // Metadatenqualitäts-Farbwelt von GovData (Magenta).
+  &.patch {
+    background-color: $clr-metadaten-magenta-200;
+    color: $clr-metadaten-magenta-400;
+    border: 1px solid;
+  }
+
+  &.recommendation {
+    background-color: $clr-neutral-grey-100;
+    color: $clr-neutral-grey-600;
+    border: 1px solid;
+  }
+}
