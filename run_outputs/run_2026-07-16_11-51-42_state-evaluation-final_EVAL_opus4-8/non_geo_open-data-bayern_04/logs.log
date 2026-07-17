@@ -1,0 +1,619 @@
+2026-07-16 12:10:19 - reporting.output_manager - INFO - Created file log handler for non_geo_open-data-bayern_04.rdf at run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_open-data-bayern_04/logs.log
+2026-07-16 12:10:19 - __main__ - INFO - Started processing: non_geo_open-data-bayern_04.rdf
+2026-07-16 12:10:19 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_open-data-bayern_04.rdf
+2026-07-16 12:10:19 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_open-data-bayern_04.rdf using format: xml
+2026-07-16 12:10:19 - extraction.rdf_parser - INFO - Successfully parsed 82 triples
+2026-07-16 12:10:19 - scoring.service - INFO - Parsed 82 triples
+2026-07-16 12:10:19 - scoring.service - DEBUG - DatasetContext built: 4 distribution(s)
+2026-07-16 12:10:19 - scoring.service - DEBUG - attach_probes: 4/4 unique fetch keys, 4 distribution(s) covered
+2026-07-16 12:10:19 - scoring.service - DEBUG - [ERROR] https://open.bydata.de/api/hub/repo/distributions/1020531f-a017-4257-858b-28b643fc504b — Zählstelle Amberg (w)
+  downloadURL : https://www.bast.de/videos/2019/zst9289.zip
+  HTTP        : 200
+  attachment  : zst9289.zip
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=application/zip                          mime=application/zip
+    url_extension        raw=zst9289.zip                              mime=application/zip
+    http_content_type    raw=application/zip                          mime=application/zip
+    attachment_filename  raw=zst9289.zip (from final URL)             mime=application/zip
+  coalesced   : text/csv
+  issue       : dcat:mediaType='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : attachment_filename='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : url_extension='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : http_content_type='application/zip' conflicts with previously coalesced 'text/csv'
+2026-07-16 12:10:20 - scoring.service - DEBUG - [ERROR] https://open.bydata.de/api/hub/repo/distributions/6dffb83c-c327-41ee-80a0-32e78fea3bc5 — Zählstelle Roding
+  downloadURL : https://www.bast.de/videos/2019/zst9290.zip
+  HTTP        : 404
+  attachment  : zst9290.zip
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=application/zip                          mime=application/zip
+    url_extension        raw=zst9290.zip                              mime=application/zip
+    http_content_type    raw=text/html; charset=iso-8859-1            mime=text/html
+    attachment_filename  raw=zst9290.zip (from final URL)             mime=application/zip
+  coalesced   : text/csv
+  warning     : downloadURL returned HTTP 404; remaining checks rely on declared metadata only
+  issue       : dcat:mediaType='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : attachment_filename='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : url_extension='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : http_content_type='text/html' conflicts with previously coalesced 'text/csv'
+2026-07-16 12:10:20 - scoring.service - DEBUG - [ERROR] https://open.bydata.de/api/hub/repo/distributions/0ff933ce-0d6a-4fda-90ba-74d74396f995 — Zählstelle Stockheim-Haßlach (s)
+  downloadURL : https://www.bast.de/videos/2019/zst9209.zip
+  HTTP        : 200
+  attachment  : zst9209.zip
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=application/zip                          mime=application/zip
+    url_extension        raw=zst9209.zip                              mime=application/zip
+    http_content_type    raw=application/zip                          mime=application/zip
+    attachment_filename  raw=zst9209.zip (from final URL)             mime=application/zip
+  coalesced   : text/csv
+  issue       : dcat:mediaType='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : attachment_filename='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : url_extension='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : http_content_type='application/zip' conflicts with previously coalesced 'text/csv'
+2026-07-16 12:10:20 - scoring.service - DEBUG - [ERROR] https://open.bydata.de/api/hub/repo/distributions/ecf58671-15fc-4016-b097-0a646f374250 — Zählstelle Stockheim-Haßlach (n)
+  downloadURL : https://www.bast.de/videos/2019/zst9210.zip
+  HTTP        : 200
+  attachment  : zst9210.zip
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=application/zip                          mime=application/zip
+    url_extension        raw=zst9210.zip                              mime=application/zip
+    http_content_type    raw=application/zip                          mime=application/zip
+    attachment_filename  raw=zst9210.zip (from final URL)             mime=application/zip
+  coalesced   : text/csv
+  issue       : dcat:mediaType='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : attachment_filename='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : url_extension='application/zip' conflicts with previously coalesced 'text/csv'
+  issue       : http_content_type='application/zip' conflicts with previously coalesced 'text/csv'
+2026-07-16 12:10:20 - scoring.service - DEBUG - Attached probes to 4/4 distribution(s)
+2026-07-16 12:10:42 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Aussagekräftige, in sich stimmige Metadaten mit spezifischem Titel, informativer Beschreibung und passendem Thema; nur k')
+2026-07-16 12:10:42 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 12:10:42 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=6
+2026-07-16 12:10:42 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['2019', 'b85', 'bundesstraße', 'lkw', 'pkw', 'verkehrszählung']
+2026-07-16 12:10:42 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/TRAN']
+2026-07-16 12:10:42 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 12:10:42 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 12:10:42 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 12:10:42 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 12:10:42 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['2019-01-01T00:00:00'], endDate: ['2019-12-31T00:00:00']
+2026-07-16 12:10:42 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=dateTime/True
+2026-07-16 12:10:42 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/issued
+2026-07-16 12:10:42 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://open.bydata.de/api/hub/repo/datasets/zaehlstellen-b85-2019 = 2026-01-14T15:09:32
+2026-07-16 12:10:42 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/ecf58671-15fc-4016-b097-0a646f374250 = 2026-01-14T15:09:32
+2026-07-16 12:10:42 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/6dffb83c-c327-41ee-80a0-32e78fea3bc5 = 2026-01-14T15:09:32
+2026-07-16 12:10:42 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/1020531f-a017-4257-858b-28b643fc504b = 2026-01-14T15:09:32
+2026-07-16 12:10:42 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/0ff933ce-0d6a-4fda-90ba-74d74396f995 = 2026-01-14T15:09:32
+2026-07-16 12:10:42 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/modified
+2026-07-16 12:10:42 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://open.bydata.de/api/hub/repo/datasets/zaehlstellen-b85-2019 = 2026-01-14T15:09:32
+2026-07-16 12:10:42 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/ecf58671-15fc-4016-b097-0a646f374250 = 2026-01-14T15:09:32
+2026-07-16 12:10:42 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/6dffb83c-c327-41ee-80a0-32e78fea3bc5 = 2026-01-14T15:09:32
+2026-07-16 12:10:42 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/1020531f-a017-4257-858b-28b643fc504b = 2026-01-14T15:09:32
+2026-07-16 12:10:42 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/0ff933ce-0d6a-4fda-90ba-74d74396f995 = 2026-01-14T15:09:32
+2026-07-16 12:10:42 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 12:10:42 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 12:10:42 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=4/4
+2026-07-16 12:10:42 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 12:10:42 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 12:10:42 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=4/4
+2026-07-16 12:10:42 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 12:10:42 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/4
+2026-07-16 12:10:42 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 12:10:42 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] partial score=0.62 valid=3/4 relevant=4/4
+2026-07-16 12:10:42 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] partial score=0.62 valid=3/4 relevant=4/4
+2026-07-16 12:10:42 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=4 mid=0 none=0 total=4
+2026-07-16 12:10:42 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=4/4
+2026-07-16 12:10:42 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 12:10:42 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=4/4
+2026-07-16 12:10:42 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 12:10:42 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 12:10:42 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 12:10:42 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 12:10:42 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 12:10:44 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=4
+2026-07-16 12:10:44 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/4
+2026-07-16 12:10:44 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.95 | Der Titel benennt das Sujet spezifisch, enthält sinnvollen Orts- und Zeitbezug und ist reiner Fließtext ohne Mängel.
+2026-07-16 12:10:44 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] pass | score=0.85 | Die Beschreibung ist substanziell und beantwortet Inhalt, Methode, Quelle und Zweck; strukturelle Angaben zum konkreten 
+2026-07-16 12:10:44 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.98 | Beschreibung stützt und konkretisiert den Titel widerspruchsfrei bezüglich Objekt, Ort und Zeitraum.
+2026-07-16 12:10:44 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 12:10:44 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.70 | Die inhaltlichen Schlagwörter sind gut gewählt und ergänzen den Titel, jedoch mindern die redundanten Tags '2019' und 'b
+2026-07-16 12:10:44 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.98 | Thema, Titel, Beschreibung und Schlagwörter ergeben ein durchgängig widerspruchsfreies Themenbild rund um Verkehrszählun
+2026-07-16 12:10:44 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=0.92 | Als jahresbezogene Statistik verlangt der Datentyp einen Bezugszeitraum, der klar und mehrfach vorhanden ist; auch die A
+2026-07-16 12:10:44 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 12:10:44 - scoring.service - DEBUG - {
+  "dataset_uri": "https://open.bydata.de/api/hub/repo/datasets/zaehlstellen-b85-2019",
+  "titles": [
+    "Automatische Zählstellen auf der Bundesstraße B85 - 2019"
+  ],
+  "descriptions": [
+    "Auf Deutschlands Autobahnen und außerörtlichen Bundesstraßen werden an automatischen Zählstellen alle Fahrzeuge permanent gezählt. Je nach eingesetztem Gerätetyp können bis zu neun Fahrzeugarten unterschieden werden. Die Daten werden von der Autobahn GmbH des Bundes (AdB) sowie den Bundesländern erhoben und der BASt monatlich übermittelt. Auf dieser Basis werden Jahresfahrleistungen und durchschnittliche tägliche Verkehrsstärken (DTV) berechnet. Die Daten bilden eine wichtige Grundlage für verkehrs- oder bautechnische Entscheidungen und Maßnahmen.\nDieser Datensatz enthält alle Werte sämtlicher Zählstellen an der Bundesstraße B85 im Jahr 2019.\n\n[Quelle BASt](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/zaehl_node.html) - Stand 14.01.2026\n\nInformationen der BASt zu den verwendeten Erfassungsarten und Abkürzungen:\n-   [Erfassungsarten nach TLS (PDF)](https://www.bast.de/BASt_2017/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/pdf-dateien/erfassungsarten.pdf?__blob=publicationFile)\n-   [Abkürzungen und Datensatzbeschreibungen](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/abkuerzungen-daten.html)"
+  ],
+  "keywords": [
+    "2019",
+    "b85",
+    "bundesstraße",
+    "lkw",
+    "pkw",
+    "verkehrszählung"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/TRAN"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-01-14T15:09:32"
+  ],
+  "issued": [
+    "2026-01-14T15:09:32"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [
+    "2019-01-01T00:00:00"
+  ],
+  "end_dates": [
+    "2019-12-31T00:00:00"
+  ],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "Nc0e49fb22efd4b1bab9c0f5df478514d",
+  "contact_points": [
+    "Nf94014a96a5f4a0cac2e5cf1c863e3ac"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBayern"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/ecf58671-15fc-4016-b097-0a646f374250",
+      "titles": [
+        "Zählstelle Stockheim-Haßlach (n)"
+      ],
+      "descriptions": [
+        "Zählstellen-Nummer: 9210\n[Informationsseite zur Zählstelle](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/Daten/2019_1/Jawe2019.html?cms_detail=9210&cms_map=0)"
+      ],
+      "download_url": "https://www.bast.de/videos/2019/zst9210.zip",
+      "access_url": "https://www.bast.de/videos/2019/zst9210.zip",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "application/zip"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-01-14T15:09:32"
+      ],
+      "issued": [
+        "2026-01-14T15:09:32"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "zst9210.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "zst9210.zip (from final URL)",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [
+          "dcat:mediaType='application/zip' conflicts with previously coalesced 'text/csv'",
+          "attachment_filename='application/zip' conflicts with previously coalesced 'text/csv'",
+          "url_extension='application/zip' conflicts with previously coalesced 'text/csv'",
+          "http_content_type='application/zip' conflicts with previously coalesced 'text/csv'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.bast.de/videos/2019/zst9210.zip",
+        "content_disposition": null,
+        "attachment_filename": "zst9210.zip",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/6dffb83c-c327-41ee-80a0-32e78fea3bc5",
+      "titles": [
+        "Zählstelle Roding"
+      ],
+      "descriptions": [
+        "Zählstellen-Nummer: 9290\n[Informationsseite zur Zählstelle](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/Daten/2019_1/Jawe2019.html?cms_detail=9290&cms_map=0)"
+      ],
+      "download_url": "https://www.bast.de/videos/2019/zst9290.zip",
+      "access_url": "https://www.bast.de/videos/2019/zst9290.zip",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "application/zip"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-01-14T15:09:32"
+      ],
+      "issued": [
+        "2026-01-14T15:09:32"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "zst9290.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=iso-8859-1",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "zst9290.zip (from final URL)",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [
+          "dcat:mediaType='application/zip' conflicts with previously coalesced 'text/csv'",
+          "attachment_filename='application/zip' conflicts with previously coalesced 'text/csv'",
+          "url_extension='application/zip' conflicts with previously coalesced 'text/csv'",
+          "http_content_type='text/html' conflicts with previously coalesced 'text/csv'"
+        ],
+        "warnings": [
+          "downloadURL returned HTTP 404; remaining checks rely on declared metadata only"
+        ],
+        "fetched": true,
+        "status_code": 404,
+        "fetch_error": null,
+        "download_status_code": 404,
+        "download_fetch_error": null,
+        "access_status_code": 404,
+        "access_fetch_error": null,
+        "final_url": "https://www.bast.de/videos/2019/zst9290.zip",
+        "content_disposition": null,
+        "attachment_filename": "zst9290.zip",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/1020531f-a017-4257-858b-28b643fc504b",
+      "titles": [
+        "Zählstelle Amberg (w)"
+      ],
+      "descriptions": [
+        "Zählstellen-Nummer: 9289\n[Informationsseite zur Zählstelle](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/Daten/2019_1/Jawe2019.html?cms_detail=9289&cms_map=0)"
+      ],
+      "download_url": "https://www.bast.de/videos/2019/zst9289.zip",
+      "access_url": "https://www.bast.de/videos/2019/zst9289.zip",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "application/zip"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-01-14T15:09:32"
+      ],
+      "issued": [
+        "2026-01-14T15:09:32"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "zst9289.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "zst9289.zip (from final URL)",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [
+          "dcat:mediaType='application/zip' conflicts with previously coalesced 'text/csv'",
+          "attachment_filename='application/zip' conflicts with previously coalesced 'text/csv'",
+          "url_extension='application/zip' conflicts with previously coalesced 'text/csv'",
+          "http_content_type='application/zip' conflicts with previously coalesced 'text/csv'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.bast.de/videos/2019/zst9289.zip",
+        "content_disposition": null,
+        "attachment_filename": "zst9289.zip",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/0ff933ce-0d6a-4fda-90ba-74d74396f995",
+      "titles": [
+        "Zählstelle Stockheim-Haßlach (s)"
+      ],
+      "descriptions": [
+        "Zählstellen-Nummer: 9209\n[Informationsseite zur Zählstelle](https://www.bast.de/DE/Verkehrstechnik/Fachthemen/v2-verkehrszaehlung/Daten/2019_1/Jawe2019.html?cms_detail=9209&cms_map=0)"
+      ],
+      "download_url": "https://www.bast.de/videos/2019/zst9209.zip",
+      "access_url": "https://www.bast.de/videos/2019/zst9209.zip",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "application/zip"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-01-14T15:09:32"
+      ],
+      "issued": [
+        "2026-01-14T15:09:32"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "zst9209.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "zst9209.zip (from final URL)",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [
+          "dcat:mediaType='application/zip' conflicts with previously coalesced 'text/csv'",
+          "attachment_filename='application/zip' conflicts with previously coalesced 'text/csv'",
+          "url_extension='application/zip' conflicts with previously coalesced 'text/csv'",
+          "http_content_type='application/zip' conflicts with previously coalesced 'text/csv'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.bast.de/videos/2019/zst9209.zip",
+        "content_disposition": null,
+        "attachment_filename": "zst9209.zip",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Spezifischer Titel mit Objektbezug (B85), Datentyp (automatische Zählstellen) und Zeitbezug (2019)",
+        "Prägnant, keine Sonderzeichen oder technische Reste",
+        "Gut unterscheidbar von ähnlichen Datensätzen anderer Straßen/Jahre"
+      ],
+      "reasoning": "Der Titel benennt das Sujet spezifisch, enthält sinnvollen Orts- und Zeitbezug und ist reiner Fließtext ohne Mängel.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "description_quality": {
+      "findings": [
+        "Erklärt Was (alle Werte aller Zählstellen an der B85), Wie erhoben (Autobahn GmbH/Bundesländer, monatliche Übermittlung an BASt), und Zweck (verkehrs-/bautechnische Entscheidungen)",
+        "Nennt abgeleitete Kenngrößen (Jahresfahrleistung, DTV) und bis zu neun Fahrzeugarten",
+        "Verlinkt weiterführende Dokumentation (Erfassungsarten, Abkürzungen); Markdown-Linksyntax im Text ist leicht unsauber, aber inhaltlich hilfreich"
+      ],
+      "reasoning": "Die Beschreibung ist substanziell und beantwortet Inhalt, Methode, Quelle und Zweck; strukturelle Angaben zum konkreten Tabellenaufbau/Format fehlen jedoch. Leichter Abzug für Markdown-Reste.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung betreffen dasselbe Sujet: Zählstellen B85, Jahr 2019",
+        "Beschreibung konkretisiert den Titel (alle Werte aller Zählstellen an der B85 2019)",
+        "Keine Widersprüche bei Ort oder Zeitraum"
+      ],
+      "reasoning": "Beschreibung stützt und konkretisiert den Titel widerspruchsfrei bezüglich Objekt, Ort und Zeitraum.",
+      "applicable": true,
+      "score": 0.98
+    },
+    "keyword_quality": {
+      "findings": [
+        "Inhaltlich passende Begriffe wie 'verkehrszählung', 'bundesstraße', 'lkw', 'pkw'",
+        "'2019' und 'b85' wiederholen Titel/Zeitangabe und stehen bereits in eigenen Feldern (temporal), daher redundant",
+        "Begriffe überwiegend atomar und laienverständlich"
+      ],
+      "reasoning": "Die inhaltlichen Schlagwörter sind gut gewählt und ergänzen den Titel, jedoch mindern die redundanten Tags '2019' und 'b85' (Zeit/Titel bereits in eigenen Feldern) die Qualität leicht.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Thema TRAN (Verkehr) passt exakt zu Titel, Beschreibung und Schlagwörtern",
+        "Alle Felder zeigen dasselbe Sujet: Straßenverkehrszählung",
+        "Keine Off-topic-Signale"
+      ],
+      "reasoning": "Thema, Titel, Beschreibung und Schlagwörter ergeben ein durchgängig widerspruchsfreies Themenbild rund um Verkehrszählung.",
+      "applicable": true,
+      "score": 0.98
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Bezugszeitraum klar angegeben: Jahr 2019, zusätzlich temporal-Feld 2019-01-01 bis 2019-12-31",
+        "Quellenstand '14.01.2026' in der Beschreibung genannt",
+        "DTV als abgeleitete Kenngröße mit Berechnungsgrundlage beschrieben; accrual_periodicity ist zwar null, aber der Datensatz betrifft ein abgeschlossenes Jahr"
+      ],
+      "reasoning": "Als jahresbezogene Statistik verlangt der Datentyp einen Bezugszeitraum, der klar und mehrfach vorhanden ist; auch die Aggregationsgrundlage ist erläutert. Die Qualifizierer sind erfüllt.",
+      "applicable": true,
+      "score": 0.92
+    },
+    "overall_summary": "Aussagekräftige, in sich stimmige Metadaten mit spezifischem Titel, informativer Beschreibung und passendem Thema; nur kleinere Schwächen durch redundante Schlagwörter und fehlende Angaben zum konkreten Tabellenaufbau."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-opus-4.8",
+      "input_tokens": 7626,
+      "output_tokens": 1675,
+      "total_tokens": 9301,
+      "cost_usd": 0.080005,
+      "latency_seconds": 22.655
+    }
+  ],
+  "distribution_count": 4
+}
+2026-07-16 12:10:44 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_open-data-bayern_04/result.json
+2026-07-16 12:10:44 - __main__ - INFO -   ✓ Completed | score=0.76 grade=B

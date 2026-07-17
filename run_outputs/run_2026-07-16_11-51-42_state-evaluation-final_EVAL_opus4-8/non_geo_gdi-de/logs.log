@@ -1,0 +1,380 @@
+2026-07-16 12:03:25 - reporting.output_manager - INFO - Created file log handler for non_geo_gdi-de.rdf at run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_gdi-de/logs.log
+2026-07-16 12:03:25 - __main__ - INFO - Started processing: non_geo_gdi-de.rdf
+2026-07-16 12:03:25 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_gdi-de.rdf
+2026-07-16 12:03:25 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_gdi-de.rdf using format: xml
+2026-07-16 12:03:25 - extraction.rdf_parser - INFO - Successfully parsed 69 triples
+2026-07-16 12:03:25 - scoring.service - INFO - Parsed 69 triples
+2026-07-16 12:03:25 - scoring.service - DEBUG - DatasetContext built: 2 distribution(s)
+2026-07-16 12:03:25 - scoring.service - DEBUG - attach_probes: 2/2 unique fetch keys, 2 distribution(s) covered
+2026-07-16 12:03:25 - scoring.service - DEBUG - [OK   ] https://inspire.govconnect.de/services/bsp/org.138.27934826-35ec-498a-a558-5eb586630381/service/atom/id_predefined_dataset#distribution — Bebauungsplan Nr. G 2 (1. Änderung)
+  downloadURL : https://inspire.govconnect.de/services/bsp/org.138.27934826-35ec-498a-a558-5eb586630381/service/atom/id_predefined_dataset
+  HTTP        : 200
+  signals     :
+    dct:format           raw=onLine                                   mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=id_predefined_dataset                    mime=-
+    http_content_type    raw=application/atom+xml; charset=UTF-8      mime=application/atom+xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/atom+xml
+  warning     : dct:format='onLine' has no known MIME mapping; not comparable
+2026-07-16 12:03:26 - scoring.service - DEBUG - [OK   ] https://inspire.govconnect.de/store/data/buckets/org/138/27934826-35ec-498a-a558-5eb586630381/zip#distribution — Bebauungsplan Nr. G 2 (1. Änderung)
+  downloadURL : https://inspire.govconnect.de/store/data/buckets/org/138/27934826-35ec-498a-a558-5eb586630381/zip
+  HTTP        : 200
+  attachment  : archive.zip
+  signals     :
+    dct:format           raw=onLine                                   mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=zip                                      mime=-
+    http_content_type    raw=application/zip                          mime=application/zip
+    attachment_filename  raw=archive.zip                              mime=application/zip
+  coalesced   : application/zip
+  warning     : dct:format='onLine' has no known MIME mapping; not comparable
+2026-07-16 12:03:26 - scoring.service - DEBUG - Attached probes to 2/2 distribution(s)
+2026-07-16 12:03:54 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten kennzeichnen widerspruchsfrei einen kommunalen Bebauungsplan (Leer) im INSPIRE-PLU-Format, sind aber inhal')
+2026-07-16 12:03:54 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 12:03:54 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=6
+2026-07-16 12:03:54 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['b-plan', 'harvestlkleer', 'inspireidentifiziert', 'landkreis-leer', 'opendata', 'stadt-leer']
+2026-07-16 12:03:54 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/GOVE']
+2026-07-16 12:03:54 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 12:03:54 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 12:03:54 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 12:03:54 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 12:03:54 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 12:03:54 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 12:03:54 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/issued
+2026-07-16 12:03:54 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=3d013cc1-4d93-45cb-b8b3-79d8e0ffc936 = 2025-11-26
+2026-07-16 12:03:54 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://inspire.govconnect.de/services/bsp/org.138.27934826-35ec-498a-a558-5eb586630381/service/atom/id_predefined_dataset#distribution = 2025-12-03T00:44:52.665901
+2026-07-16 12:03:54 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://inspire.govconnect.de/store/data/buckets/org/138/27934826-35ec-498a-a558-5eb586630381/zip#distribution = 2025-12-03T00:44:52.665907
+2026-07-16 12:03:54 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/modified
+2026-07-16 12:03:54 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=3d013cc1-4d93-45cb-b8b3-79d8e0ffc936 = 2025-11-26
+2026-07-16 12:03:54 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://inspire.govconnect.de/services/bsp/org.138.27934826-35ec-498a-a558-5eb586630381/service/atom/id_predefined_dataset#distribution = 2026-04-17T02:17:16.129503
+2026-07-16 12:03:54 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://inspire.govconnect.de/store/data/buckets/org/138/27934826-35ec-498a-a558-5eb586630381/zip#distribution = 2025-12-03T00:44:52.650058
+2026-07-16 12:03:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 12:03:54 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 12:03:54 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 12:03:54 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=2/2
+2026-07-16 12:03:54 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 12:03:54 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/2
+2026-07-16 12:03:54 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 12:03:54 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/2
+2026-07-16 12:03:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 12:03:54 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 12:03:54 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 12:03:54 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.75 high=1 mid=1 none=0 total=2
+2026-07-16 12:03:54 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/2
+2026-07-16 12:03:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 12:03:54 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=2/2
+2026-07-16 12:03:54 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 12:03:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 12:03:54 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 12:03:54 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 12:03:54 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 12:03:55 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=4
+2026-07-16 12:03:55 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/2
+2026-07-16 12:03:55 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] partial | score=0.55 | Der Titel ist prägnant und reiner Fließtext ohne technische Artefakte, kennzeichnet aber ein Bauleitplandokument ohne je
+2026-07-16 12:03:55 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.30 | Die Beschreibung ist sehr knapp und im Kern eine Titelwiederholung plus Formatangabe. Sie beantwortet weder Was-genau, S
+2026-07-16 12:03:55 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.95 | Titel und Beschreibung passen inhaltlich vollständig zusammen; es gibt keinerlei Widerspruch. Die Beschreibung stützt de
+2026-07-16 12:03:55 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.30 | Die Schlagwörter sind überwiegend technisch, organisatorisch oder formal ('harvestlkleer', 'inspireidentifiziert', 'open
+2026-07-16 12:03:55 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.90 | Thema, Titel, Beschreibung und (soweit inhaltlich) Schlagwörter zeichnen widerspruchsfrei das Bild eines kommunalen Beba
+2026-07-16 12:03:55 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.50 | Als Bauleitplan wären Angaben zum Verfahrens-/Rechtsstand (Entwurf vs. rechtskräftig) wünschenswert und zählen als konte
+2026-07-16 12:03:55 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 12:03:55 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 12:03:55 - scoring.service - DEBUG - {
+  "dataset_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=3d013cc1-4d93-45cb-b8b3-79d8e0ffc936",
+  "titles": [
+    "Bebauungsplan Nr. G 2 (1. Änderung)"
+  ],
+  "descriptions": [
+    "Bebauungsplan Nr. G 2 (1. Änderung) im Datenformat INSPIRE PLU Version 4.0.1"
+  ],
+  "keywords": [
+    "b-plan",
+    "harvestlkleer",
+    "inspireidentifiziert",
+    "landkreis-leer",
+    "opendata",
+    "stadt-leer"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2025-11-26"
+  ],
+  "issued": [
+    "2025-11-26"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((7.5239 53.2580, 7.5252 53.2580, 7.5252 53.2565, 7.5239 53.2565, 7.5239 53.2580))"
+  ],
+  "spatial_resources": [
+    "Nf72990bc7049499e9acae5cdbfa66d87"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations",
+  "publisher": "Ndcdaa15a13c3412cb703223ffce23702",
+  "contact_points": [
+    "N56699e26fda546629ba29ec33b7bff2c"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/gdiDE"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://inspire.govconnect.de/services/bsp/org.138.27934826-35ec-498a-a558-5eb586630381/service/atom/id_predefined_dataset#distribution",
+      "titles": [
+        "Bebauungsplan Nr. G 2 (1. Änderung)"
+      ],
+      "descriptions": [
+        "Bebauungsplan Nr. G 2 (1. Änderung)"
+      ],
+      "download_url": "https://inspire.govconnect.de/services/bsp/org.138.27934826-35ec-498a-a558-5eb586630381/service/atom/id_predefined_dataset",
+      "access_url": "https://inspire.govconnect.de/services/bsp/org.138.27934826-35ec-498a-a558-5eb586630381/service/atom/id_predefined_dataset",
+      "formats": [
+        "onLine"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-04-17T02:17:16.129503"
+      ],
+      "issued": [
+        "2025-12-03T00:44:52.665901"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "onLine",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "id_predefined_dataset",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/atom+xml; charset=UTF-8",
+            "mime_type": "application/atom+xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/atom+xml",
+        "issues": [],
+        "warnings": [
+          "dct:format='onLine' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://inspire.govconnect.de/services/bsp/org.138.27934826-35ec-498a-a558-5eb586630381/service/atom/id_predefined_dataset",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://inspire.govconnect.de/store/data/buckets/org/138/27934826-35ec-498a-a558-5eb586630381/zip#distribution",
+      "titles": [
+        "Bebauungsplan Nr. G 2 (1. Änderung)"
+      ],
+      "descriptions": [
+        "Bebauungsplan Nr. G 2 (1. Änderung)"
+      ],
+      "download_url": "https://inspire.govconnect.de/store/data/buckets/org/138/27934826-35ec-498a-a558-5eb586630381/zip",
+      "access_url": "https://inspire.govconnect.de/store/data/buckets/org/138/27934826-35ec-498a-a558-5eb586630381/zip",
+      "formats": [
+        "onLine"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-12-03T00:44:52.650058"
+      ],
+      "issued": [
+        "2025-12-03T00:44:52.665907"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "onLine",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "zip",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "archive.zip",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "application/zip",
+        "issues": [],
+        "warnings": [
+          "dct:format='onLine' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://inspire.govconnect.de/store/data/buckets/org/138/27934826-35ec-498a-a558-5eb586630381/zip",
+        "content_disposition": "inline; filename=\"archive.zip\"; filename*=utf-8''archive.zip",
+        "attachment_filename": "archive.zip",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Titel 'Bebauungsplan Nr. G 2 (1. Änderung)' nennt Dokumenttyp und Plankennung",
+        "Kein Orts-/Gebietsbezug im Titel selbst (Stadt/Landkreis fehlt)",
+        "Plankürzel 'G 2' ist ohne Ortsbezug wenig unterscheidbar von gleichnamigen Plänen anderer Kommunen"
+      ],
+      "reasoning": "Der Titel ist prägnant und reiner Fließtext ohne technische Artefakte, kennzeichnet aber ein Bauleitplandokument ohne jeden Ortsbezug. Für einen von zahllosen kommunalen B-Plänen ist 'Nr. G 2' allein wenig unterscheidbar; ein Ortsbezug (Leer) im Titel wäre hilfreich. Kern erkennbar, aber Spezifik eingeschränkt.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "description_quality": {
+      "findings": [
+        "Beschreibung wiederholt im Wesentlichen den Titel und ergänzt nur das Datenformat 'INSPIRE PLU Version 4.0.1'",
+        "Keine Angaben zu Inhalt, Struktur, Zweck, räumlicher Lage oder Planstand",
+        "Kein Hinweis auf Art der Änderung, Geltungsbereich oder Rechtswirkung"
+      ],
+      "reasoning": "Die Beschreibung ist sehr knapp und im Kern eine Titelwiederholung plus Formatangabe. Sie beantwortet weder Was-genau, Struktur, Erhebungsweise noch Zweck substanziell. Kern (INSPIRE-PLU-Bauleitplan) ist erkennbar, aber die Informationstiefe ist deutlich unzureichend.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Beschreibung nimmt den Titel wörtlich auf und ergänzt widerspruchsfrei das Datenformat",
+        "Gleiches Thema, keine abweichenden Orts-/Zeitangaben"
+      ],
+      "reasoning": "Titel und Beschreibung passen inhaltlich vollständig zusammen; es gibt keinerlei Widerspruch. Die Beschreibung stützt den Titel, auch wenn sie inhaltlich dünn bleibt (was hier nicht bewertet wird).",
+      "applicable": true,
+      "score": 0.95
+    },
+    "keyword_quality": {
+      "findings": [
+        "'b-plan' als Abkürzung statt ausgeschriebenem 'Bebauungsplan'",
+        "Technische/organisatorische Tags 'harvestlkleer', 'inspireidentifiziert' ohne inhaltlichen Nutzerwert",
+        "'stadt-leer' und 'landkreis-leer' sind eher Herkunfts-/Ortsangaben; 'opendata' ist ein formaler Tag"
+      ],
+      "reasoning": "Die Schlagwörter sind überwiegend technisch, organisatorisch oder formal ('harvestlkleer', 'inspireidentifiziert', 'opendata') und tragen kaum zur inhaltlichen Erschließung bei. Das einzige fachliche Tag ist als Abkürzung 'b-plan' statt laienverständlichem 'Bebauungsplan' formuliert. Nur bedingt brauchbar.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Themen REGI (Regionen/Städte) und GOVE (Regierung/öffentl. Sektor) passen zu einem kommunalen Bebauungsplan",
+        "Titel, Beschreibung und Ortstags (Leer) zeigen einheitlich Bauleitplanung",
+        "Keine Off-topic-Signale erkennbar"
+      ],
+      "reasoning": "Thema, Titel, Beschreibung und (soweit inhaltlich) Schlagwörter zeichnen widerspruchsfrei das Bild eines kommunalen Bebauungsplans in der Stadt/dem Landkreis Leer. Die Zuordnung zu REGI und GOVE ist stimmig.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Änderungsstand '(1. Änderung)' ist im Titel gekennzeichnet",
+        "issued/modified mit 2025-11-26 vorhanden, aber kein Planstand/Rechtsstand (z. B. rechtskräftig, Entwurf) genannt",
+        "Räumliche Abdeckung über Bounding-Box-Geometrie vorhanden"
+      ],
+      "reasoning": "Als Bauleitplan wären Angaben zum Verfahrens-/Rechtsstand (Entwurf vs. rechtskräftig) wünschenswert und zählen als kontextueller Qualifizierer; dieser fehlt. Immerhin sind Änderungsstand, Erstellungs-/Änderungsdatum und eine räumliche Geometrie vorhanden. Insgesamt teilweise erfüllt, ein klar sinnvoller Qualifizierer fehlt.",
+      "applicable": true,
+      "score": 0.5
+    },
+    "overall_summary": "Die Metadaten kennzeichnen widerspruchsfrei einen kommunalen Bebauungsplan (Leer) im INSPIRE-PLU-Format, sind aber inhaltlich dünn: Die Beschreibung wiederholt nur den Titel plus Format, und die Schlagwörter sind überwiegend technisch/formal statt fachlich aussagekräftig."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-opus-4.8",
+      "input_tokens": 7213,
+      "output_tokens": 2015,
+      "total_tokens": 9228,
+      "cost_usd": 0.08644,
+      "latency_seconds": 27.987
+    }
+  ],
+  "distribution_count": 2
+}
+2026-07-16 12:03:55 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_gdi-de/result.json
+2026-07-16 12:03:55 - __main__ - INFO -   ✓ Completed | score=0.64 grade=C

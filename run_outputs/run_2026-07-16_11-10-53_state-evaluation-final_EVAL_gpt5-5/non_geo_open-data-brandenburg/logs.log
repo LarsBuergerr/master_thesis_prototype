@@ -1,0 +1,385 @@
+2026-07-16 11:25:16 - reporting.output_manager - INFO - Created file log handler for non_geo_open-data-brandenburg.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_open-data-brandenburg/logs.log
+2026-07-16 11:25:16 - __main__ - INFO - Started processing: non_geo_open-data-brandenburg.rdf
+2026-07-16 11:25:16 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_open-data-brandenburg.rdf
+2026-07-16 11:25:16 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_open-data-brandenburg.rdf using format: xml
+2026-07-16 11:25:16 - extraction.rdf_parser - INFO - Successfully parsed 76 triples
+2026-07-16 11:25:16 - scoring.service - INFO - Parsed 76 triples
+2026-07-16 11:25:16 - scoring.service - DEBUG - DatasetContext built: 2 distribution(s)
+2026-07-16 11:25:16 - scoring.service - DEBUG - attach_probes: 2/2 unique fetch keys, 2 distribution(s) covered
+2026-07-16 11:25:16 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/9fb9e7ac-8936-4e8e-8680-11e44676c7f7 — statische Informationsseite
+  downloadURL : https://geobasis-bb.de/lgb/de/geodaten/landschaftsmodelle/basis-dlm/
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=-                                        mime=-
+    http_content_type    raw=text/html; charset=utf-8                 mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-16 11:25:17 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/10d941bc-70a0-4072-8dd0-f7ada6d4cf69 — Internetshop der LGB
+  downloadURL : https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=d2eaa212-f68d-4e2d-a7e7-8e8063d1b855
+  HTTP        : 200
+  attachment  : gbss.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=gbss.php                                 mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=gbss.php (from final URL)                mime=-
+  coalesced   : text/html
+2026-07-16 11:25:17 - scoring.service - DEBUG - Attached probes to 2/2 distribution(s)
+2026-07-16 11:25:36 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind insgesamt aussagekräftig: Titel, Beschreibung und Themen verweisen konsistent auf eine konkrete ATKIS')
+2026-07-16 11:25:36 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:25:36 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=10
+2026-07-16 11:25:36 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['110.000', '125.000', '150.000', 'basis-dlm', 'bodenbedeckung', 'karte', 'opendata', 'vektordaten', 'verkehr', 'vermessung']
+2026-07-16 11:25:36 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/GOVE', 'http://publications.europa.eu/resource/authority/data-theme/ENVI', 'http://publications.europa.eu/resource/authority/data-theme/AGRI', 'http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/TECH']
+2026-07-16 11:25:36 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=5/5
+2026-07-16 11:25:36 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:25:36 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:25:36 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:25:36 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:25:36 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:25:36 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/issued
+2026-07-16 11:25:36 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/de224abd-2394-4076-b1ad-b37fba0e93bf = 2025-05-26T00:00:00
+2026-07-16 11:25:36 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/10d941bc-70a0-4072-8dd0-f7ada6d4cf69 = 2026-02-14T03:35:34.330646
+2026-07-16 11:25:36 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/9fb9e7ac-8936-4e8e-8680-11e44676c7f7 = 2026-02-14T03:35:34.330640
+2026-07-16 11:25:36 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/modified
+2026-07-16 11:25:36 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/de224abd-2394-4076-b1ad-b37fba0e93bf = 2026-06-08T22:00:21
+2026-07-16 11:25:36 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/10d941bc-70a0-4072-8dd0-f7ada6d4cf69 = 2026-02-14T03:35:34.292396
+2026-07-16 11:25:36 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/9fb9e7ac-8936-4e8e-8680-11e44676c7f7 = 2026-02-14T03:35:34.292190
+2026-07-16 11:25:36 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:25:36 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:25:36 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=2/2
+2026-07-16 11:25:36 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:25:36 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=2/2
+2026-07-16 11:25:36 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:25:36 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/2
+2026-07-16 11:25:36 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:25:36 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:25:36 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 11:25:36 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 11:25:36 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.50 high=0 mid=2 none=0 total=2
+2026-07-16 11:25:36 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=2/2
+2026-07-16 11:25:36 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:25:36 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=2/2
+2026-07-16 11:25:36 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:25:36 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:25:36 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:25:36 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:25:36 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:25:38 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=1
+2026-07-16 11:25:38 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/2
+2026-07-16 11:25:38 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.90 | Der Titel ist spezifisch und unterscheidbar, weil er Datenprodukt und räumliche Kachel nennt. Die Abkürzung ist durch de
+2026-07-16 11:25:38 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] pass | score=0.80 | Die Beschreibung ist inhaltlich sehr substanziell und erklärt Zweck, Inhalt, Modellierungsgrundlage und Qualitätsmerkmal
+2026-07-16 11:25:38 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.85 | Titel und Beschreibung behandeln klar denselben Datensatztyp und sind nicht widersprüchlich. Die Kohärenz ist hoch, auch
+2026-07-16 11:25:38 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.55 | Ein Teil der Schlagwörter beschreibt Thema und Datentyp sinnvoll. Die Qualität wird jedoch durch mehrere unklare numeris
+2026-07-16 11:25:38 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.85 | Die Metadaten ergeben insgesamt ein stimmiges Themenbild rund um amtliche topographische Geobasisdaten. Einzelne Themenz
+2026-07-16 11:25:38 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.70 | Bei Geodaten und regelmäßig aktualisierten Verwaltungs-/Geobasisdaten sind räumlicher Bezug und Aktualisierungszyklus re
+2026-07-16 11:25:38 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:25:38 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:25:38 - scoring.service - DEBUG - {
+  "dataset_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/de224abd-2394-4076-b1ad-b37fba0e93bf",
+  "titles": [
+    "ATKIS - Digitales Basis-Landschaftsmodell - 3248-SW Grüntal"
+  ],
+  "descriptions": [
+    "Das Digitale Basis-Landschaftsmodell (ATKIS-Basis-DLM) ist ein digitaler, objektstrukturierter Vektordatenbestand. Er bestimmt die topographischen Objekte der realen Welt nach Lage und Form, nach Namen und Eigenschaften. Des Weiteren sind objektbezogene Sachdaten so verknüpft, dass der Datenbestand in einer GIS-Anwendung genutzt werden kann. Um eine bundesweite inhaltliche Einheitlichkeit der Daten zu erreichen, wird das Basis-DLM mit Hilfe eines aus dem AAA-Anwendungsschema abgeleiteten Objektartenkataloges (ATKIS-OK Basis-DLM), der Vorschriften zum Inhalt und zur Modellierung der topographischen Informationen für den AdV-Grunddatenbestand und die Länderlösungen enthält, definiert. Zum Inhalt gehören neben den Objekten der Objektartengruppen 'Siedlung', 'Verkehr', 'Vegetation', 'Gewässer', 'Administrative Gebietseinheiten' auch Bauwerke und Einrichtungen auf Siedlungsflächen und für den Verkehr sowie besondere Angaben zum Gewässer. Die Lagegenauigkeit beträgt für die wesentlichen linearen Objekte (Straßenachsen, Fahrbahnachsen, Bahnstrecken und Gewässerachsen) +/- 3m. Die Daten werden über automatisierte Verfahren oder durch Selbstentnahme kostenfrei bereitgestellt. Bei Nutzung der Daten sind die Lizenzbedingungen zu beachten."
+  ],
+  "keywords": [
+    "110.000",
+    "125.000",
+    "150.000",
+    "basis-dlm",
+    "bodenbedeckung",
+    "karte",
+    "opendata",
+    "vektordaten",
+    "verkehr",
+    "vermessung"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "http://publications.europa.eu/resource/authority/data-theme/ENVI",
+    "http://publications.europa.eu/resource/authority/data-theme/AGRI",
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/TECH"
+  ],
+  "themes_in_vocab": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-06-08T22:00:21"
+  ],
+  "issued": [
+    "2025-05-26T00:00:00"
+  ],
+  "accrual_periodicity": "http://publications.europa.eu/resource/authority/frequency/DAILY",
+  "accrual_periodicity_in_vocab": true,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((13.6649 52.7486, 13.7482 52.7486, 13.7482 52.6986, 13.6649 52.6986, 13.6649 52.7486))"
+  ],
+  "spatial_resources": [
+    "Na8048015de764ebe848a7a577bf78216"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "Na980a2d0d12044bf9c627b2ead9e1a67",
+  "publisher": "Nb1c6f407530f42889befd2b77c8a7be8",
+  "contact_points": [
+    "N1b9183bce80d44f1b62963ac02ca5700"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/10d941bc-70a0-4072-8dd0-f7ada6d4cf69",
+      "titles": [
+        "Internetshop der LGB"
+      ],
+      "descriptions": [
+        "Internetshop der LGB"
+      ],
+      "download_url": "https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=d2eaa212-f68d-4e2d-a7e7-8e8063d1b855",
+      "access_url": "https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=d2eaa212-f68d-4e2d-a7e7-8e8063d1b855",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-02-14T03:35:34.292396"
+      ],
+      "issued": [
+        "2026-02-14T03:35:34.330646"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "gbss.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "gbss.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=d2eaa212-f68d-4e2d-a7e7-8e8063d1b855",
+        "content_disposition": null,
+        "attachment_filename": "gbss.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/9fb9e7ac-8936-4e8e-8680-11e44676c7f7",
+      "titles": [
+        "statische Informationsseite"
+      ],
+      "descriptions": [
+        "statische Informationsseite"
+      ],
+      "download_url": "https://geobasis-bb.de/lgb/de/geodaten/landschaftsmodelle/basis-dlm/",
+      "access_url": "https://geobasis-bb.de/lgb/de/geodaten/landschaftsmodelle/basis-dlm/",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-02-14T03:35:34.292190"
+      ],
+      "issued": [
+        "2026-02-14T03:35:34.330640"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=utf-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://geobasis-bb.de/lgb/de/geodaten/landschaftsmodelle/basis-dlm/",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel benennt spezifisch das Produkt „ATKIS - Digitales Basis-Landschaftsmodell“ und die Kachel/Blattbezeichnung „3248-SW Grüntal“.",
+        "Die Abkürzung „ATKIS“ wird im Titel nicht ausgeschrieben, aber direkt durch „Digitales Basis-Landschaftsmodell“ kontextualisiert.",
+        "Der Titel enthält Bindestriche als normale Gliederung, keine störenden technischen Zeichen oder Formatierungsreste."
+      ],
+      "reasoning": "Der Titel ist spezifisch und unterscheidbar, weil er Datenprodukt und räumliche Kachel nennt. Die Abkürzung ist durch den anschließenden Klartext ausreichend verständlich; kleinere Einschränkungen bestehen nur durch die für Laien nicht vollständig selbsterklärende Blattnummer „3248-SW“.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt Inhalt und Datenart: digitaler, objektstrukturierter Vektordatenbestand mit topographischen Objekten, Sachdaten und Objektartengruppen.",
+        "Sie nennt Strukturierungs-/Modellierungsgrundlagen wie AAA-Anwendungsschema und Objektartenkatalog sowie eine Lagegenauigkeit von +/- 3 m für wesentliche lineare Objekte.",
+        "Sie beschreibt nicht konkret die spezielle Kachel „3248-SW Grüntal“ und nennt keine konkreten Dateiformate oder Attribut-/Tabellenstruktur der bereitgestellten Distributionen."
+      ],
+      "reasoning": "Die Beschreibung ist inhaltlich sehr substanziell und erklärt Zweck, Inhalt, Modellierungsgrundlage und Qualitätsmerkmal des ATKIS-Basis-DLM. Für volle Aussagekraft fehlen jedoch spezifische Angaben zur konkreten Teilfläche/Kachel sowie genauere Struktur- oder Formatinformationen der bereitgestellten Daten.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf das ATKIS Digitale Basis-Landschaftsmodell/Basis-DLM.",
+        "Die Beschreibung konkretisiert den im Titel genannten Datentyp durch Inhalt, Modellierung und Nutzung in GIS-Anwendungen.",
+        "Der im Titel genannte Raum-/Blattbezug „3248-SW Grüntal“ wird in der Beschreibung nicht ausdrücklich aufgegriffen, widerspricht ihr aber auch nicht."
+      ],
+      "reasoning": "Titel und Beschreibung behandeln klar denselben Datensatztyp und sind nicht widersprüchlich. Die Kohärenz ist hoch, auch wenn die Beschreibung den spezifischen Kachelbezug aus dem Titel nicht nochmals bestätigt.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "keyword_quality": {
+      "findings": [
+        "Mehrere Schlagwörter sind inhaltlich passend und kurz, z. B. „bodenbedeckung“, „karte“, „vektordaten“, „verkehr“ und „vermessung“.",
+        "„basis-dlm“ ist eher ein Fachkürzel/Produktkürzel und für Laien nur begrenzt verständlich.",
+        "Die numerischen Schlagwörter „110.000“, „125.000“ und „150.000“ sind kryptisch bzw. ohne Kontext nicht aussagekräftig; „opendata“ ist eher formal als inhaltlich."
+      ],
+      "reasoning": "Ein Teil der Schlagwörter beschreibt Thema und Datentyp sinnvoll. Die Qualität wird jedoch durch mehrere unklare numerische Tags, ein Fachkürzel und ein formales Tag deutlich gemindert.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Titel, Beschreibung und viele Schlagwörter verweisen konsistent auf Geodaten, Topographie, Vektordaten, Verkehr, Bodenbedeckung und Vermessung.",
+        "Die Themen ENVI, AGRI, REGI und TECH passen plausibel zu Landschafts-, Raum- und Geodaten.",
+        "Das Thema GOVE ist nur mittelbar über amtliche Geobasisdaten nachvollziehbar, wirkt aber nicht klar widersprüchlich."
+      ],
+      "reasoning": "Die Metadaten ergeben insgesamt ein stimmiges Themenbild rund um amtliche topographische Geobasisdaten. Einzelne Themenzuordnungen sind breit, aber es gibt keine erkennbaren Off-topic-Widersprüche.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Für Geodaten ist eine räumliche Abdeckung vorhanden: der Titel nennt „3248-SW Grüntal“ und die Metadaten enthalten eine Polygon-Geometrie.",
+        "Der Datensatz ist als täglich aktualisiert gekennzeichnet; die Beschreibung erwähnt jedoch nicht den Aktualisierungsstand oder Bezugs-/Erhebungszeitpunkt der konkreten Daten.",
+        "Die Beschreibung nennt eine Lagegenauigkeit, aber keine konkrete Aktualitäts- oder Stichtagsinformation für die Kachel."
+      ],
+      "reasoning": "Bei Geodaten und regelmäßig aktualisierten Verwaltungs-/Geobasisdaten sind räumlicher Bezug und Aktualisierungszyklus relevante Qualifizierer. Der räumliche Bezug und die tägliche Aktualisierung sind vorhanden, aber eine konkrete Aktualitäts-/Stichtagsangabe zum Dateninhalt fehlt, was die Kontextualisierung einschränkt.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "overall_summary": "Die Metadaten sind insgesamt aussagekräftig: Titel, Beschreibung und Themen verweisen konsistent auf eine konkrete ATKIS-Basis-DLM-Kachel und die Beschreibung liefert substanzielle fachliche Informationen. Schwächen liegen vor allem bei kryptischen/formalen Schlagwörtern sowie fehlenden konkreten Aktualitäts- und kachelspezifischen Detailangaben in der Beschreibung."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3883,
+      "output_tokens": 1169,
+      "total_tokens": 5052,
+      "cost_usd": 0.044693,
+      "latency_seconds": 19.247
+    }
+  ],
+  "distribution_count": 2
+}
+2026-07-16 11:25:38 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_open-data-brandenburg/result.json
+2026-07-16 11:25:38 - __main__ - INFO -   ✓ Completed | score=0.75 grade=B

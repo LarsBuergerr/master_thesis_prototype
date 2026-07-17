@@ -1,0 +1,929 @@
+2026-07-16 11:58:12 - reporting.output_manager - INFO - Created file log handler for geo_open-data-portal-rheinland-pfalz_05.rdf at run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/geo_open-data-portal-rheinland-pfalz_05/logs.log
+2026-07-16 11:58:12 - __main__ - INFO - Started processing: geo_open-data-portal-rheinland-pfalz_05.rdf
+2026-07-16 11:58:12 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_open-data-portal-rheinland-pfalz_05.rdf
+2026-07-16 11:58:12 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_open-data-portal-rheinland-pfalz_05.rdf using format: xml
+2026-07-16 11:58:13 - extraction.rdf_parser - INFO - Successfully parsed 131 triples
+2026-07-16 11:58:13 - scoring.service - INFO - Parsed 131 triples
+2026-07-16 11:58:13 - scoring.service - DEBUG - DatasetContext built: 8 distribution(s)
+2026-07-16 11:58:13 - scoring.service - DEBUG - attach_probes: 8/8 unique fetch keys, 8 distribution(s) covered
+2026-07-16 11:58:13 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_mapviewer_layer_76116 — Online Karte
+  accessURL   : https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=76116
+  HTTP        : 200
+  final URL   : https://www.geoportal.rlp.de/mapbender/extensions/mobilemap2/index.html?layerid=76116
+  attachment  : index.html
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=map.php                                  mime=-
+    http_content_type    raw=text/html                                mime=text/html
+    attachment_filename  raw=index.html (from final URL)              mime=text/html
+  coalesced   : text/html
+2026-07-16 11:58:13 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_layer_metadata_76116 — Originäre Metadaten für Kartenebene
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=76116
+  HTTP        : 200
+  attachment  : mod_showMetadata.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mod_showMetadata.php                     mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mod_showMetadata.php (from final URL)    mime=-
+  coalesced   : text/html
+2026-07-16 11:58:13 - scoring.service - DEBUG - [ERROR] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_wfs_interface_ms__colon__HCE_Natrium_617 — WFS Schnittstelle
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=4270&REQUEST=GetCapabilities&SERVICE=WFS&INSPIRE=1
+  HTTP        : 200
+  attachment  : wfs.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=wfs.php                                  mime=-
+    http_content_type    raw=application/xhtml+xml; charset=UTF-8     mime=application/xhtml+xml
+    attachment_filename  raw=wfs.php (from final URL)                 mime=-
+  coalesced   : application/xml
+  issue       : http_content_type='application/xhtml+xml' conflicts with previously coalesced 'application/xml'
+2026-07-16 11:58:13 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_atom_feed_wfs_617 — Vektordownload nach EU-Standard
+  accessURL   : https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D71f09e19-dd25-4285-be96-a0b9bdbc5d8e%26type%3DSERVICE%26generateFrom%3Dwfs%26wfsid%3D617
+  HTTP        : 200
+  attachment  : mb_downloadFeedClient.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mb_downloadFeedClient.php                mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mb_downloadFeedClient.php (from final U… mime=-
+  coalesced   : text/html
+2026-07-16 11:58:13 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/html_metadata_71f09e19-dd25-4285-be96-a0b9bdbc5d8e — Original Metadaten HTML
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D71f09e19-dd25-4285-be96-a0b9bdbc5d8e
+  HTTP        : 200
+  attachment  : mod_exportIso19139.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mod_exportIso19139.php                   mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mod_exportIso19139.php (from final URL)  mime=-
+  coalesced   : text/html
+2026-07-16 11:58:13 - scoring.service - DEBUG - [ERROR] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_wms_interface_76116 — WMS Schnittstelle
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=76116&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS
+  HTTP        : 200
+  attachment  : wms.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=wms.php                                  mime=-
+    http_content_type    raw=application/xhtml+xml; charset=UTF-8     mime=application/xhtml+xml
+    attachment_filename  raw=wms.php (from final URL)                 mime=-
+  coalesced   : application/xml
+  issue       : http_content_type='application/xhtml+xml' conflicts with previously coalesced 'application/xml'
+2026-07-16 11:58:14 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_geoportal_layer_76116 — GeoPortal.rlp
+  accessURL   : https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=76116
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=map                                      mime=-
+    http_content_type    raw=text/html; charset=utf-8                 mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-16 11:58:20 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_ogc_api_interface_ms__colon__HCE_Natrium_617 — OGC API Features (REST)
+  accessURL   : https://www.geoportal.rlp.de/spatial-objects/617/collections/ms:HCE_Natrium
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=ms:HCE_Natrium                           mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-16 11:58:20 - scoring.service - DEBUG - Attached probes to 8/8 distribution(s)
+2026-07-16 11:58:45 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten behandeln konsistent Natrium in Grundwasserkörpern in Rheinland-Pfalz, sind aber durch einen kryptischen T')
+2026-07-16 11:58:45 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:58:45 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=15
+2026-07-16 11:58:45 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['ag_geoinformation', 'eg-wasserrahmenrichtlinie', 'flusseinzugsgebiete', 'geodaten', 'geologie', 'gewässer', 'grundwasserkörper', 'grundwasserleiter', 'grundwasserschutz', 'hydrogeologie', 'lgb', 'rheinland-pfalz', 'trinkwasserschutzgebiet', 'wasserschutz', 'wasserschutzgebiet']
+2026-07-16 11:58:45 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/TECH']
+2026-07-16 11:58:45 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 11:58:45 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 11:58:45 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:58:45 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:58:45 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['2021-01-01'], endDate: ['2021-01-01']
+2026-07-16 11:58:45 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=date/True end=date/True
+2026-07-16 11:58:45 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=9/9 dataset=1 distribution=8 field=http://purl.org/dc/terms/issued
+2026-07-16 11:58:45 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e = 2024-10-15
+2026-07-16 11:58:45 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/html_metadata_71f09e19-dd25-4285-be96-a0b9bdbc5d8e = 2024-12-04T04:48:57.313659
+2026-07-16 11:58:45 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_mapviewer_layer_76116 = 2024-12-04T04:48:57.313662
+2026-07-16 11:58:45 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_geoportal_layer_76116 = 2024-12-04T04:48:57.313664
+2026-07-16 11:58:45 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_layer_metadata_76116 = 2024-12-04T04:48:57.313665
+2026-07-16 11:58:45 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_wms_interface_76116 = 2024-12-04T04:48:57.313666
+2026-07-16 11:58:45 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_wfs_interface_ms__colon__HCE_Natrium_617 = 2026-01-22T22:58:30.052209
+2026-07-16 11:58:45 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_ogc_api_interface_ms__colon__HCE_Natrium_617 = 2026-01-22T22:58:30.052213
+2026-07-16 11:58:45 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_atom_feed_wfs_617 = 2024-12-04T04:48:57.313670
+2026-07-16 11:58:45 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=9/9 dataset=1 distribution=8 field=http://purl.org/dc/terms/modified
+2026-07-16 11:58:45 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e = 2024-10-15
+2026-07-16 11:58:45 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/html_metadata_71f09e19-dd25-4285-be96-a0b9bdbc5d8e = 2024-12-04T04:48:57.296291
+2026-07-16 11:58:45 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_mapviewer_layer_76116 = 2024-12-04T04:48:57.296404
+2026-07-16 11:58:45 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_geoportal_layer_76116 = 2024-12-04T04:48:57.296490
+2026-07-16 11:58:45 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_layer_metadata_76116 = 2024-12-04T04:48:57.296594
+2026-07-16 11:58:45 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_wms_interface_76116 = 2024-12-04T04:48:57.296677
+2026-07-16 11:58:45 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_wfs_interface_ms__colon__HCE_Natrium_617 = 2026-01-22T22:58:30.025789
+2026-07-16 11:58:45 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_ogc_api_interface_ms__colon__HCE_Natrium_617 = 2026-01-22T22:58:30.025919
+2026-07-16 11:58:45 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_atom_feed_wfs_617 = 2024-12-04T04:48:57.296918
+2026-07-16 11:58:45 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:58:45 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:58:45 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:58:45 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/8
+2026-07-16 11:58:45 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:58:45 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=8/8
+2026-07-16 11:58:45 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:58:45 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/8
+2026-07-16 11:58:45 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:58:45 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-16 11:58:45 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=8/8 relevant=8/8
+2026-07-16 11:58:45 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.62 high=2 mid=6 none=0 total=8
+2026-07-16 11:58:45 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=8/8
+2026-07-16 11:58:45 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:58:45 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=8/8
+2026-07-16 11:58:45 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:58:45 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:58:45 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:58:45 - scoring.indicator.reuse_contact - INFO - [reuse_contact] FAIL score=0.00 no contactPoint set
+2026-07-16 11:58:45 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:58:47 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-16 11:58:47 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/8
+2026-07-16 11:58:47 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] fail | score=0.30 | Der Titel besteht im Wesentlichen aus einer kryptischen Abkürzung plus einem Stoffnamen. Ohne Auflösung von 'GWB' und oh
+2026-07-16 11:58:47 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.10 | Die Beschreibung beantwortet keine der zentralen Fragen (Was, Wie strukturiert, Wie/warum erhoben, Wozu). Sie ist inhalt
+2026-07-16 11:58:47 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.70 | Titel und Beschreibung sind widerspruchsfrei und behandeln dieselbe Sache. Da beide jedoch nahezu identisch minimal sind
+2026-07-16 11:58:47 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.50 | Die Schlagwörter decken das Thema breit ab und sind überwiegend fachlich relevant, enthalten aber formale/redundante Tag
+2026-07-16 11:58:47 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] partial | score=0.60 | Titel, Beschreibung und Schlagwörter ergeben ein widerspruchsfreies Bild (Grundwasser/Natrium in RLP). Die Themenzuordnu
+2026-07-16 11:58:47 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.40 | Als Geodaten mit Zeitreihenbezug wären räumliche Abdeckung und Bezugszeitraum in der beschreibenden Metadatenebene erwar
+2026-07-16 11:58:47 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:58:47 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:58:47 - scoring.service - DEBUG - {
+  "dataset_uri": "https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e",
+  "titles": [
+    "GWB: Natrium"
+  ],
+  "descriptions": [
+    "Darstellung von Natrium"
+  ],
+  "keywords": [
+    "ag_geoinformation",
+    "eg-wasserrahmenrichtlinie",
+    "flusseinzugsgebiete",
+    "geodaten",
+    "geologie",
+    "gewässer",
+    "grundwasserkörper",
+    "grundwasserleiter",
+    "grundwasserschutz",
+    "hydrogeologie",
+    "lgb",
+    "rheinland-pfalz",
+    "trinkwasserschutzgebiet",
+    "wasserschutz",
+    "wasserschutzgebiet"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/TECH"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2024-10-15"
+  ],
+  "issued": [
+    "2024-10-15"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [
+    "2021-01-01"
+  ],
+  "end_dates": [
+    "2021-01-01"
+  ],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "https://www.geoportal.rlp.de/organization/45e43076-7570-4c1e-761e-7c42a5cb572e",
+  "contact_points": [],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/html_metadata_71f09e19-dd25-4285-be96-a0b9bdbc5d8e",
+      "titles": [
+        "Original Metadaten HTML"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D71f09e19-dd25-4285-be96-a0b9bdbc5d8e",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-12-04T04:48:57.296291"
+      ],
+      "issued": [
+        "2024-12-04T04:48:57.313659"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-zero"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mod_exportIso19139.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mod_exportIso19139.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D71f09e19-dd25-4285-be96-a0b9bdbc5d8e",
+        "content_disposition": null,
+        "attachment_filename": "mod_exportIso19139.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_mapviewer_layer_76116",
+      "titles": [
+        "Online Karte"
+      ],
+      "descriptions": [
+        "GWB: Natrium - Vorschau im integrierten Kartenviewer"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=76116",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-12-04T04:48:57.296404"
+      ],
+      "issued": [
+        "2024-12-04T04:48:57.313662"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "map.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "index.html (from final URL)",
+            "mime_type": "text/html"
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/extensions/mobilemap2/index.html?layerid=76116",
+        "content_disposition": null,
+        "attachment_filename": "index.html",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_geoportal_layer_76116",
+      "titles": [
+        "GeoPortal.rlp"
+      ],
+      "descriptions": [
+        "GWB: Natrium - Anzeige im GeoPortal.rlp"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=76116",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-12-04T04:48:57.296490"
+      ],
+      "issued": [
+        "2024-12-04T04:48:57.313664"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "map",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=utf-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=76116",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_layer_metadata_76116",
+      "titles": [
+        "Originäre Metadaten für Kartenebene"
+      ],
+      "descriptions": [
+        "Kartenebene: GWB: Natrium - Anzeige der originären Metadaten"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=76116",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-12-04T04:48:57.296594"
+      ],
+      "issued": [
+        "2024-12-04T04:48:57.313665"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-zero"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mod_showMetadata.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mod_showMetadata.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=76116",
+        "content_disposition": null,
+        "attachment_filename": "mod_showMetadata.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_wms_interface_76116",
+      "titles": [
+        "WMS Schnittstelle"
+      ],
+      "descriptions": [
+        "Ebene: GWB: Natrium"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=76116&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-12-04T04:48:57.296677"
+      ],
+      "issued": [
+        "2024-12-04T04:48:57.313666"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "wms.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/xhtml+xml; charset=UTF-8",
+            "mime_type": "application/xhtml+xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "wms.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [
+          "http_content_type='application/xhtml+xml' conflicts with previously coalesced 'application/xml'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=76116&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS",
+        "content_disposition": null,
+        "attachment_filename": "wms.php",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_wfs_interface_ms__colon__HCE_Natrium_617",
+      "titles": [
+        "WFS Schnittstelle"
+      ],
+      "descriptions": [
+        "Objektart: ms:HCE_Natrium - WFS"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=4270&REQUEST=GetCapabilities&SERVICE=WFS&INSPIRE=1",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-01-22T22:58:30.025789"
+      ],
+      "issued": [
+        "2026-01-22T22:58:30.052209"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "wfs.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/xhtml+xml; charset=UTF-8",
+            "mime_type": "application/xhtml+xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "wfs.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [
+          "http_content_type='application/xhtml+xml' conflicts with previously coalesced 'application/xml'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=4270&REQUEST=GetCapabilities&SERVICE=WFS&INSPIRE=1",
+        "content_disposition": null,
+        "attachment_filename": "wfs.php",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_ogc_api_interface_ms__colon__HCE_Natrium_617",
+      "titles": [
+        "OGC API Features (REST)"
+      ],
+      "descriptions": [
+        "Objektart: ms:HCE_Natrium - ISO19168-1:20202 API"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/spatial-objects/617/collections/ms:HCE_Natrium",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-01-22T22:58:30.025919"
+      ],
+      "issued": [
+        "2026-01-22T22:58:30.052213"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "ms:HCE_Natrium",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/spatial-objects/617/collections/ms:HCE_Natrium",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_atom_feed_wfs_617",
+      "titles": [
+        "Vektordownload nach EU-Standard"
+      ],
+      "descriptions": [
+        "INSPIRE Downloaddienst (predefined ATOM) für Datensatz: GWB: Natrium - basierend auf WFS Datenquelle"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D71f09e19-dd25-4285-be96-a0b9bdbc5d8e%26type%3DSERVICE%26generateFrom%3Dwfs%26wfsid%3D617",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-12-04T04:48:57.296918"
+      ],
+      "issued": [
+        "2024-12-04T04:48:57.313670"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mb_downloadFeedClient.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mb_downloadFeedClient.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D71f09e19-dd25-4285-be96-a0b9bdbc5d8e%26type%3DSERVICE%26generateFrom%3Dwfs%26wfsid%3D617",
+        "content_disposition": null,
+        "attachment_filename": "mb_downloadFeedClient.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Titel 'GWB: Natrium' verwendet die unerklärte Abkürzung 'GWB' (vermutlich Grundwasserkörper) als Hauptkennzeichnung",
+        "Kein Orts- oder Zeitbezug im Titel, obwohl es sich um regionale Geodaten (Rheinland-Pfalz) handelt",
+        "Titel ist sehr knapp und für Laien kaum verständlich"
+      ],
+      "reasoning": "Der Titel besteht im Wesentlichen aus einer kryptischen Abkürzung plus einem Stoffnamen. Ohne Auflösung von 'GWB' und ohne Orts-/Zeitkontext ist er wenig aussagekräftig und schwer von anderen Datensätzen unterscheidbar.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "description_quality": {
+      "findings": [
+        "Beschreibung 'Darstellung von Natrium' ist extrem knapp und wiederholt praktisch nur den Titelbegriff",
+        "Keine Angaben zu Struktur, Format, Erhebungsmethode, Quelle oder Zweck",
+        "Kein Bezug zu Grundwasserkörpern, Messverfahren oder räumlicher Abdeckung"
+      ],
+      "reasoning": "Die Beschreibung beantwortet keine der zentralen Fragen (Was, Wie strukturiert, Wie/warum erhoben, Wozu). Sie ist inhaltsleer und liefert keinen Mehrwert über den Titel hinaus.",
+      "applicable": true,
+      "score": 0.1
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel nennt 'Natrium', Beschreibung nennt 'Darstellung von Natrium' - beide beziehen sich auf denselben Stoff",
+        "Kein Widerspruch, aber die Beschreibung ergänzt den Titel inhaltlich nicht"
+      ],
+      "reasoning": "Titel und Beschreibung sind widerspruchsfrei und behandeln dieselbe Sache. Da beide jedoch nahezu identisch minimal sind, ist die Kohärenz zwar gegeben, aber trivial.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "keyword_quality": {
+      "findings": [
+        "Viele fachlich passende Begriffe (Grundwasserkörper, Hydrogeologie, Grundwasserschutz)",
+        "Enthält formale/organisatorische Tags wie 'ag_geoinformation', 'lgb', 'geodaten' und den Ortsnamen 'rheinland-pfalz', die in eigene Felder gehören",
+        "Komposita und Pluralformen ('flusseinzugsgebiete', 'gewässer', 'grundwasserleiter') statt atomarer Singularbegriffe"
+      ],
+      "reasoning": "Die Schlagwörter decken das Thema breit ab und sind überwiegend fachlich relevant, enthalten aber formale/redundante Tags sowie Komposita und Pluralformen, was die Qualität mindert. Auffällig fehlt ein Schlagwort zum eigentlichen Inhalt 'Natrium'.",
+      "applicable": true,
+      "score": 0.5
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Themen sind REGI (Regionen) und TECH (Wissenschaft/Technik), Schlagwörter sind hydrogeologisch/wasserbezogen",
+        "Ein Umwelt-Thema (ENVI) wäre für Grundwasser/Wasserschutz naheliegender als TECH",
+        "Titel, Beschreibung und Schlagwörter zeigen konsistent ein hydrogeologisches Grundwasserthema"
+      ],
+      "reasoning": "Titel, Beschreibung und Schlagwörter ergeben ein widerspruchsfreies Bild (Grundwasser/Natrium in RLP). Die Themenzuordnung REGI/TECH passt nur eingeschränkt zum klaren Umwelt-/Wasserbezug, ein direkter Widerspruch liegt aber nicht vor.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Es handelt sich um Geodaten mit Zeitbezug (temporal 2021-01-01), ein Bezugszeitraum ist grundsätzlich vorhanden",
+        "Räumliche Abdeckung wird nur über Schlagwort 'rheinland-pfalz' angedeutet, spatial-Feld ist leer",
+        "Weder im Titel noch in der Beschreibung wird der Bezugszeitraum (2021) genannt"
+      ],
+      "reasoning": "Als Geodaten mit Zeitreihenbezug wären räumliche Abdeckung und Bezugszeitraum in der beschreibenden Metadatenebene erwartbar. Die Zeitangabe existiert nur im temporal-Feld, die räumliche Abdeckung nur implizit im Schlagwort - in Titel/Beschreibung fehlen diese Qualifizierer, was die Aussagekraft schwächt.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "overall_summary": "Die Metadaten behandeln konsistent Natrium in Grundwasserkörpern in Rheinland-Pfalz, sind aber durch einen kryptischen Titel ('GWB'), eine inhaltsleere Beschreibung und fehlende Kontextangaben (Zeitraum, räumliche Abdeckung) insgesamt wenig aussagekräftig. Die Schlagwörter sind fachlich brauchbar, enthalten aber formale und redundante Tags."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-opus-4.8",
+      "input_tokens": 7109,
+      "output_tokens": 2007,
+      "total_tokens": 9116,
+      "cost_usd": 0.08572,
+      "latency_seconds": 25.698
+    }
+  ],
+  "distribution_count": 8
+}
+2026-07-16 11:58:47 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/geo_open-data-portal-rheinland-pfalz_05/result.json
+2026-07-16 11:58:47 - __main__ - INFO -   ✓ Completed | score=0.52 grade=D

@@ -1,0 +1,1005 @@
+{
+  "by_dimension": {
+    "findability": {
+      "dimension": "findability",
+      "indicators": [
+        {
+          "indicator_id": "find_keywords_count",
+          "name_de": "Angemessene Anzahl Schlagwörter",
+          "name_en": "Appropriate number of keywords",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Optimale Anzahl Keywords: 4",
+          "message_en": "Optimal number of keywords: 4",
+          "details": {
+            "keyword_count": 4,
+            "keywords": [
+              "bauleitplanung",
+              "erdbeobachtung-und-umwelt",
+              "opendata",
+              "planung"
+            ],
+            "expected_range": "3–15 keywords (PASS), 1–2 or 16–25 (PARTIAL)"
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.234103",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_theme_valid",
+          "name_de": "Theme aus kontrolliertem Vokabular",
+          "name_en": "Theme from controlled vocabulary",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle Themes sind aus dem kontrollierten Vokabular",
+          "message_en": "All themes are from controlled vocabulary",
+          "details": {
+            "valid_themes": [
+              "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+              "http://publications.europa.eu/resource/authority/data-theme/REGI"
+            ],
+            "invalid_themes": [],
+            "valid_count": 2,
+            "total_count": 2
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.234288",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_locn_geometry",
+          "name_de": "Räumliche Suchangabe (Geometrie)",
+          "name_en": "Spatial search term (geometry)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1 geometrische Angabe(n) gefunden",
+          "message_en": "1 geometry value(s) found",
+          "details": {
+            "geometries": [
+              "POLYGON ((12.6437 52.2805, 12.6452 52.2805, 12.6452 52.2796, 12.6437 52.2796, 12.6437 52.2805))"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.234381",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_political_geocoding",
+          "name_de": "Politische Geokodierung aus kontrolliertem Vokabular",
+          "name_en": "Political geocoding from controlled vocabulary",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine politische Geokodierung angegeben",
+          "message_en": "No political geocoding specified",
+          "details": {
+            "geocoding_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.234463",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_geocoding_level",
+          "name_de": "Geokodierungs-Ebene aus kontrolliertem Vokabular",
+          "name_en": "Geocoding level from controlled vocabulary",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine politische Geokodierungs-Ebene angegeben",
+          "message_en": "No political geocoding level specified",
+          "details": {
+            "level_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.234543",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_temporal_coverage",
+          "name_de": "Zeitliche Abdeckung angegeben",
+          "name_en": "Temporal coverage specified",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine zeitliche Abdeckung gefunden oder ungültiges Datumsformat",
+          "message_en": "No temporal coverage found or invalid date format",
+          "details": {
+            "start_count": 0,
+            "end_count": 0,
+            "start_format": null,
+            "end_format": null,
+            "start_valid": false,
+            "end_valid": false
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.234659",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_issued_datetime",
+          "name_de": "Issued Datum (xs:dateTime)",
+          "name_en": "Issued date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 4 Werte gültig (Dataset: 1, Distribution: 3)",
+          "message_en": "All 4 values valid (Dataset: 1, Distribution: 3)",
+          "details": {
+            "valid": [
+              {
+                "value": "2011-07-26T00:00:00",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/6d9044b5-2bc0-4aa8-b214-7d906fbde826"
+              },
+              {
+                "value": "2025-12-02T05:14:10.430204",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292"
+              },
+              {
+                "value": "2025-12-02T05:14:10.430209",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8"
+              },
+              {
+                "value": "2025-12-02T05:14:10.430211",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e"
+              }
+            ],
+            "invalid": [],
+            "total": 4,
+            "dataset_count": 1,
+            "distribution_count": 3
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.234943",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_modified_datetime",
+          "name_de": "Modified Datum (xs:dateTime)",
+          "name_en": "Modified date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 4 Werte gültig (Dataset: 1, Distribution: 3)",
+          "message_en": "All 4 values valid (Dataset: 1, Distribution: 3)",
+          "details": {
+            "valid": [
+              {
+                "value": "2026-02-13T10:08:54",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/6d9044b5-2bc0-4aa8-b214-7d906fbde826"
+              },
+              {
+                "value": "2025-12-02T05:14:10.414083",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292"
+              },
+              {
+                "value": "2026-02-13T10:10:22",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8"
+              },
+              {
+                "value": "2026-02-13T10:10:29",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e"
+              }
+            ],
+            "invalid": [],
+            "total": 4,
+            "dataset_count": 1,
+            "distribution_count": 3
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.235175",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        }
+      ],
+      "score": 0.625,
+      "dimension_weight": 1,
+      "total_indicator_weight": 8.0,
+      "indicator_count": 8,
+      "pass_count": 5,
+      "pass_rate": 0.625
+    },
+    "accessibility": {
+      "dimension": "accessibility",
+      "indicators": [
+        {
+          "indicator_id": "acc_download_url",
+          "name_de": "Download-URL je Distribution",
+          "name_en": "Download URL per distribution",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.3333,
+          "message_de": "1/3 Distribution(en) mit Download-URL",
+          "message_en": "1/3 distribution(s) with a download URL",
+          "details": {
+            "total_distributions": 3,
+            "distributions_with_download_url": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.235535",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.3333,
+          "effective_score": 0.3333
+        },
+        {
+          "indicator_id": "acc_format",
+          "name_de": "Format aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Format from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "partial",
+          "score": 0.6667,
+          "message_de": "2/3 Distribution(en) mit Format aus dem Vokabular",
+          "message_en": "2/3 distribution(s) with a format from the vocabulary",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 2,
+            "per_distribution": [
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292",
+                "formats": [],
+                "passes": false
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"
+                ],
+                "passes": true
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+                ],
+                "passes": true
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.235674",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.6667,
+          "effective_score": 0.6667
+        },
+        {
+          "indicator_id": "acc_media_type",
+          "name_de": "Media Type aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Media type from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit gültigem Media Type",
+          "message_en": "0/3 distribution(s) with a valid media type",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292",
+                "media_types": [],
+                "passes": false
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8",
+                "media_types": [],
+                "passes": false
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e",
+                "media_types": [],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.235806",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_download_url_response",
+          "name_de": "Download-URL Antwortcode",
+          "name_en": "Download URL response code",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Download-URL(s) mit gültigem HTTP-Statuscode",
+          "message_en": "1/1 download URL(s) with valid HTTP status code",
+          "details": {
+            "total_distributions": 3,
+            "relevant_distributions": 1,
+            "sampled_distributions": 1,
+            "valid_count": 1,
+            "invalid_count": 0,
+            "dead_url_malus": -0.5,
+            "valid": [
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292",
+                "url": "https://www.geoportal-amt-brueck.de/isk/bp28?",
+                "status_code": 200,
+                "fetch_error": null
+              }
+            ],
+            "invalid": []
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.235941",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_access_url_response",
+          "name_de": "Access-URL Antwortcode",
+          "name_en": "Access URL response code",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "3/3 Access-URL(s) mit gültigem HTTP-Statuscode",
+          "message_en": "3/3 access URL(s) with valid HTTP status code",
+          "details": {
+            "total_distributions": 3,
+            "relevant_distributions": 3,
+            "sampled_distributions": 3,
+            "valid_count": 3,
+            "invalid_count": 0,
+            "dead_url_malus": -0.5,
+            "valid": [
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292",
+                "url": "https://www.geoportal-amt-brueck.de/isk/bp28?",
+                "status_code": 200,
+                "fetch_error": null
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8",
+                "url": "https://www.geoportal-amt-brueck.de/isk/bp28?REQUEST=GetCapabilities&SERVICE=WFS",
+                "status_code": 200,
+                "fetch_error": null
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e",
+                "url": "https://www.geoportal-amt-brueck.de/isk/bp28?REQUEST=GetCapabilities&SERVICE=WMS",
+                "status_code": 200,
+                "fetch_error": null
+              }
+            ],
+            "invalid": []
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.236028",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_machine_readable_access",
+          "name_de": "Maschinenlesbarer Zugang (alle Distributionen)",
+          "name_en": "Machine-readable access (all distributions)",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "3/3 hoch maschinenlesbar, 0/3 mittel, 0/3 keine (Score 1.00)",
+          "message_en": "3/3 high machine-readable, 0/3 mid, 0/3 none (score 1.00)",
+          "details": {
+            "total_distributions": 3,
+            "high_count": 3,
+            "mid_count": 0,
+            "none_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292",
+                "effective_mime": "text/xml",
+                "tier": 1.0,
+                "tier_label": "high"
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8",
+                "effective_mime": "application/xml",
+                "tier": 1.0,
+                "tier_label": "high"
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e",
+                "effective_mime": "application/xml",
+                "tier": 1.0,
+                "tier_label": "high"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.236124",
+          "default_weight": 1.0,
+          "effective_weight": 1.5,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_format_non_proprietary",
+          "name_de": "Nicht-proprietäres Format (alle Distributionen)",
+          "name_en": "Non-proprietary format (all distributions)",
+          "dimension": "accessibility",
+          "status": "partial",
+          "score": 0.6667,
+          "message_de": "2/3 Distribution(en) mit nicht-proprietärem Format",
+          "message_en": "2/3 distribution(s) with non-proprietary format",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 2,
+            "per_distribution": [
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292",
+                "formats": [],
+                "passes": false
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"
+                ],
+                "passes": true
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+                ],
+                "passes": true
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.236209",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.6667,
+          "effective_score": 0.6667
+        }
+      ],
+      "score": 0.7543894736842105,
+      "dimension_weight": 2,
+      "total_indicator_weight": 9.5,
+      "indicator_count": 7,
+      "pass_count": 3,
+      "pass_rate": 0.42857142857142855
+    },
+    "reusability": {
+      "dimension": "reusability",
+      "indicators": [
+        {
+          "indicator_id": "reuse_license",
+          "name_de": "Freie Lizenz je Distribution",
+          "name_en": "Free-use license per distribution",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "3/3 Distribution(en) mit freier Lizenz (Score 1.00)",
+          "message_en": "3/3 distribution(s) with a free-use license (score 1.00)",
+          "details": {
+            "total_distributions": 3,
+            "free_count": 3,
+            "no_free_license_malus": -0.5,
+            "per_distribution": [
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.236579",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_publisher",
+          "name_de": "Herausgeber als strukturierter Agent",
+          "name_en": "Publisher modelled as structured agent",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Herausgeber als foaf:Agent mit foaf:name modelliert",
+          "message_en": "Publisher modelled as foaf:Agent with foaf:name",
+          "details": {
+            "publisher_count": 1,
+            "publishers": [
+              {
+                "value": "N9039160f68754102bf36b835bde63ff8",
+                "typed_as_agent": true,
+                "names": [
+                  "Amt Brück"
+                ],
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.236827",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_contact",
+          "name_de": "Kontaktpunkt mit E-Mail oder URL",
+          "name_en": "Contact point with email or URL",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Kontaktpunkt mit E-Mail oder URL vorhanden",
+          "message_en": "Contact point with email or URL present",
+          "details": {
+            "contact_count": 1,
+            "contacts_with_channel": 1,
+            "contacts": [
+              {
+                "value": "N6d44e2f9dd344fe5bb1d42b5ba5b6be3",
+                "emails": [
+                  "mailto:baurecht@amt-brueck.de"
+                ],
+                "valid_emails": [
+                  "mailto:baurecht@amt-brueck.de"
+                ],
+                "urls": [
+                  "https://www.amt-brueck.de"
+                ],
+                "valid_urls": [
+                  "https://www.amt-brueck.de"
+                ],
+                "has_channel": true
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.236982",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_contributor_id",
+          "name_de": "contributorID aus kontrolliertem Vokabular",
+          "name_en": "contributorID from controlled vocabulary",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Genau eine contributorID aus dem Vokabular",
+          "message_en": "Exactly one contributorID from the vocabulary",
+          "details": {
+            "contributor_id_count": 1,
+            "valid": [
+              "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+            ],
+            "invalid": [],
+            "values": [
+              "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:56.237074",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_dcat_ap_de_compliance",
+          "name_de": "DCAT-AP.de Schema-Konformität (SHACL)",
+          "name_en": "DCAT-AP.de schema compliance (SHACL)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "2 SHACL-Verletzung(en) gefunden",
+          "message_en": "2 SHACL violation(s) found",
+          "details": {
+            "conforms": false,
+            "violation_count": 2,
+            "violations": [
+              {
+                "severity": "Warning",
+                "message": "Deprecated: dcat:Dataset: dct:type soll nicht mehr fÃ¼r Collections verwendet werden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#sammlungen-und-reihen-von-datensatzen ",
+                "focus": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/6d9044b5-2bc0-4aa8-b214-7d906fbde826",
+                "path": "http://purl.org/dc/terms/type"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Dataset: adms:identifier MUSS auf einen adms:Identifier verweisen.",
+                "focus": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/6d9044b5-2bc0-4aa8-b214-7d906fbde826",
+                "path": "http://www.w3.org/ns/adms#identifier"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:57.748647",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "reuse_availability",
+          "name_de": "Verfügbarkeit aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Availability from controlled vocabulary (per distribution)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit gültiger Verfügbarkeit",
+          "message_en": "0/3 distribution(s) with a valid availability value",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292",
+                "availability": [],
+                "passes": false
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8",
+                "availability": [],
+                "passes": false
+              },
+              {
+                "uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e",
+                "availability": [],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:57.748894",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.7142857142857143,
+      "dimension_weight": 1.5,
+      "total_indicator_weight": 7.0,
+      "indicator_count": 6,
+      "pass_count": 4,
+      "pass_rate": 0.6666666666666666
+    },
+    "expressiveness": {
+      "dimension": "expressiveness",
+      "indicators": [
+        {
+          "indicator_id": "expr_title_quality",
+          "name_de": "Titel-Qualität",
+          "name_en": "Title quality",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 0.95,
+          "message_de": "Der Titel erfüllt alle Anforderungen: Er ist spezifisch, prägnant, verständlich und unterscheidbar. Die geografische Verortung hilft bei der Identifikation. Keine Abwertungsgründe erkennbar.",
+          "message_en": "Der Titel erfüllt alle Anforderungen: Er ist spezifisch, prägnant, verständlich und unterscheidbar. Die geografische Verortung hilft bei der Identifikation. Keine Abwertungsgründe erkennbar.",
+          "details": {
+            "criterion": "title_quality",
+            "llm_status": "pass",
+            "findings": [
+              "Der Titel ist sehr spezifisch und nennt Art des Plans (Bebauungsplan), Nutzungsart (Wohngebiet), Ortsbezeichnung (Oberjünne), Verwaltungseinheit (Amt Brück, Gemeinde Planebruch, OT Oberjünne)",
+              "Der Titel ist gut unterscheidbar von anderen Bebauungsplänen durch die präzise geografische Verortung",
+              "Der Titel ist verständlich und frei von Abkürzungen (außer 'OT' für Ortsteil, was üblich ist)"
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, die Beschreibung bleibt jedoch generisch ohne konkrete Informationen zum spezifischen Plan. Thematische Konsistenz ist gegeben, aber wichtige Kontextangaben (Verfahrensstatus) fehlen."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:57.749137",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 0.95,
+          "effective_score": 0.95
+        },
+        {
+          "indicator_id": "expr_description_quality",
+          "name_de": "Beschreibungs-Qualität",
+          "name_en": "Description quality",
+          "dimension": "expressiveness",
+          "status": "fail",
+          "score": 0.35,
+          "message_de": "Die Beschreibung ist generisch und könnte für jeden Bebauungsplan verwendet werden. Sie erklärt zwar das Konzept 'Bebauungsplan', gibt aber keine spezifischen Informationen zum Wohngebiet Oberjünne. Wesentliche Fragen (Was? Wie strukturiert? Welche Besonderheiten?) bleiben unbeantwortet.",
+          "message_en": "Die Beschreibung ist generisch und könnte für jeden Bebauungsplan verwendet werden. Sie erklärt zwar das Konzept 'Bebauungsplan', gibt aber keine spezifischen Informationen zum Wohngebiet Oberjünne. Wesentliche Fragen (Was? Wie strukturiert? Welche Besonderheiten?) bleiben unbeantwortet.",
+          "details": {
+            "criterion": "description_quality",
+            "llm_status": "fail",
+            "findings": [
+              "Die Beschreibung erklärt die allgemeine Funktion eines Bebauungsplans (verbindlicher Bauleitplan, Bodennutzungskonzept)",
+              "Es fehlen konkrete Informationen zu diesem spezifischen Plan: Welche Nutzungen sind hier vorgesehen? Wie ist die Struktur? Welche Besonderheiten gibt es?",
+              "Format, Datenstruktur, Erhebungsmethode und Zweck dieses konkreten Plans werden nicht beschrieben"
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, die Beschreibung bleibt jedoch generisch ohne konkrete Informationen zum spezifischen Plan. Thematische Konsistenz ist gegeben, aber wichtige Kontextangaben (Verfahrensstatus) fehlen."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:57.749263",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.35,
+          "effective_score": 0.35
+        },
+        {
+          "indicator_id": "expr_title_description_coherence",
+          "name_de": "Kohärenz von Titel und Beschreibung",
+          "name_en": "Title–description coherence",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.6,
+          "message_de": "Titel und Beschreibung sind thematisch konsistent (beide Bebauungsplan), aber die Beschreibung versäumt es, den im Titel genannten spezifischen Plan zu konkretisieren. Sie stützt den Titel nur minimal durch allgemeine Erklärung des Konzepts.",
+          "message_en": "Titel und Beschreibung sind thematisch konsistent (beide Bebauungsplan), aber die Beschreibung versäumt es, den im Titel genannten spezifischen Plan zu konkretisieren. Sie stützt den Titel nur minimal durch allgemeine Erklärung des Konzepts.",
+          "details": {
+            "criterion": "title_description_coherence",
+            "llm_status": "partial",
+            "findings": [
+              "Titel und Beschreibung behandeln beide das Thema Bebauungsplan",
+              "Der Titel nennt konkret 'Wohngebiet Oberjünne', die Beschreibung bleibt aber vollständig generisch ohne Bezug zu diesem spezifischen Ort oder Wohngebiet",
+              "Kein inhaltlicher Widerspruch, aber die Beschreibung konkretisiert den Titel nicht"
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, die Beschreibung bleibt jedoch generisch ohne konkrete Informationen zum spezifischen Plan. Thematische Konsistenz ist gegeben, aber wichtige Kontextangaben (Verfahrensstatus) fehlen."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:57.749338",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.6,
+          "effective_score": 0.6
+        },
+        {
+          "indicator_id": "expr_keyword_quality",
+          "name_de": "Schlagwort-Qualität",
+          "name_en": "Keyword quality",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.7,
+          "message_de": "Die Schlagwörter sind überwiegend gut gewählt (bauleitplanung, planung) und korrekt formuliert. 'opendata' ist ein formales Tag ohne inhaltlichen Mehrwert. 'erdbeobachtung-und-umwelt' ist zwar thematisch nicht falsch, aber sehr breit. Insgesamt brauchbar mit kleineren Schwächen.",
+          "message_en": "Die Schlagwörter sind überwiegend gut gewählt (bauleitplanung, planung) und korrekt formuliert. 'opendata' ist ein formales Tag ohne inhaltlichen Mehrwert. 'erdbeobachtung-und-umwelt' ist zwar thematisch nicht falsch, aber sehr breit. Insgesamt brauchbar mit kleineren Schwächen.",
+          "details": {
+            "criterion": "keyword_quality",
+            "llm_status": "partial",
+            "findings": [
+              "Die Schlagwörter sind in Kleinschreibung und singularisch ('bauleitplanung', 'planung')",
+              "Die Begriffe sind inhaltlich passend und laienverständlich",
+              "'opendata' ist ein formales Meta-Tag ohne inhaltlichen Mehrwert, 'erdbeobachtung-und-umwelt' erscheint für einen Bebauungsplan etwas generisch"
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, die Beschreibung bleibt jedoch generisch ohne konkrete Informationen zum spezifischen Plan. Thematische Konsistenz ist gegeben, aber wichtige Kontextangaben (Verfahrensstatus) fehlen."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:57.749412",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.7,
+          "effective_score": 0.7
+        },
+        {
+          "indicator_id": "expr_thematic_consistency",
+          "name_de": "Thematische Konsistenz",
+          "name_en": "Thematic consistency",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 0.95,
+          "message_de": "Thema, Schlagwörter, Titel und Beschreibung bilden ein widerspruchsfreies Bild eines kommunalen Bebauungsplans. Keine Off-topic-Signale erkennbar.",
+          "message_en": "Thema, Schlagwörter, Titel und Beschreibung bilden ein widerspruchsfreies Bild eines kommunalen Bebauungsplans. Keine Off-topic-Signale erkennbar.",
+          "details": {
+            "criterion": "thematic_consistency",
+            "llm_status": "pass",
+            "findings": [
+              "Die Themen GOVE (Regierung/öffentlicher Sektor) und REGI (Regionen/Städte) passen gut zu einem kommunalen Bebauungsplan",
+              "Schlagwörter (bauleitplanung, planung) und Titel (Bebauungsplan) sind konsistent",
+              "Alle Felder zeigen erkennbar dasselbe Sujet: kommunale Bauleitplanung"
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, die Beschreibung bleibt jedoch generisch ohne konkrete Informationen zum spezifischen Plan. Thematische Konsistenz ist gegeben, aber wichtige Kontextangaben (Verfahrensstatus) fehlen."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:57.749481",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 0.95,
+          "effective_score": 0.95
+        },
+        {
+          "indicator_id": "expr_contextual_qualifiers",
+          "name_de": "Kontextuelle Qualifizierer",
+          "name_en": "Contextual qualifiers",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "Bei einem Bebauungsplan fehlt die Kennzeichnung des Verfahrensstatus (Entwurf/rechtskräftig). Das vorhandene Datum ist nicht qualifiziert. Die räumliche Abdeckung ist durch Koordinaten gegeben. Ein wichtiger Qualifizierer (Status) fehlt.",
+          "message_en": "Bei einem Bebauungsplan fehlt die Kennzeichnung des Verfahrensstatus (Entwurf/rechtskräftig). Das vorhandene Datum ist nicht qualifiziert. Die räumliche Abdeckung ist durch Koordinaten gegeben. Ein wichtiger Qualifizierer (Status) fehlt.",
+          "details": {
+            "criterion": "contextual_qualifiers",
+            "llm_status": "partial",
+            "findings": [
+              "Für einen Bebauungsplan als Planungsdokument wäre der Status relevant (rechtskräftig, im Verfahren, Entwurf) - fehlt",
+              "Räumliche Abdeckung ist durch Geometrie-Koordinaten vorhanden",
+              "Ein Datum ist vorhanden (issued: 2011-07-26), aber unklar ob Beschlussdatum, Rechtskraft oder Veröffentlichung"
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, die Beschreibung bleibt jedoch generisch ohne konkrete Informationen zum spezifischen Plan. Thematische Konsistenz ist gegeben, aber wichtige Kontextangaben (Verfahrensstatus) fehlen."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:24:57.749547",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        }
+      ],
+      "score": 0.6749999999999999,
+      "dimension_weight": 2.0,
+      "total_indicator_weight": 6.0,
+      "indicator_count": 6,
+      "pass_count": 2,
+      "pass_rate": 0.3333333333333333
+    }
+  },
+  "summary": {
+    "overall_score": 0.7008011567379988,
+    "overall_pass_rate": 0.5185185185185185,
+    "dimension_scores": {
+      "findability": 0.625,
+      "accessibility": 0.7543894736842105,
+      "reusability": 0.7142857142857143,
+      "expressiveness": 0.6749999999999999
+    },
+    "dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "effective_dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "dimension_weight_mode": "explicit",
+    "total_dimension_weight": 6.5,
+    "total_indicators": 27,
+    "total_pass": 14,
+    "total_fail": 13,
+    "quality_grade": "C"
+  },
+  "errors": [],
+  "weights": {
+    "dimension_weights": {
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0,
+      "findability": 1
+    },
+    "indicator_weights": {
+      "find_keywords_count": 1.0,
+      "find_theme_valid": 1.0,
+      "find_temporal_coverage": 1.0,
+      "find_locn_geometry": 1.0,
+      "find_political_geocoding": 1.0,
+      "find_geocoding_level": 1.0,
+      "find_issued_datetime": 1.0,
+      "find_modified_datetime": 1.0,
+      "acc_download_url": 1.0,
+      "acc_machine_readable_access": 1.5,
+      "acc_download_url_response": 2.0,
+      "acc_access_url_response": 2.0,
+      "acc_format": 1.0,
+      "acc_media_type": 1.0,
+      "reuse_license": 2.0,
+      "reuse_contact": 1.0,
+      "reuse_contributor_id": 1.0,
+      "reuse_publisher": 1.0,
+      "reuse_availability": 1.0,
+      "expr_description_quality": 1.0,
+      "expr_title_quality": 1.0,
+      "expr_title_description_coherence": 1.0,
+      "expr_keyword_quality": 1.0,
+      "expr_thematic_consistency": 1.0,
+      "expr_contextual_qualifiers": 1.0
+    }
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6143,
+      "output_tokens": 1543,
+      "total_tokens": 7686,
+      "cost_usd": 0.041574,
+      "latency_seconds": 24.827
+    }
+  ]
+}

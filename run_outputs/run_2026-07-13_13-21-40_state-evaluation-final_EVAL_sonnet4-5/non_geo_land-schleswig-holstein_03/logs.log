@@ -1,0 +1,301 @@
+2026-07-13 13:37:20 - reporting.output_manager - INFO - Created file log handler for non_geo_land-schleswig-holstein_03.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_land-schleswig-holstein_03/logs.log
+2026-07-13 13:37:20 - __main__ - INFO - Started processing: non_geo_land-schleswig-holstein_03.rdf
+2026-07-13 13:37:20 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_land-schleswig-holstein_03.rdf
+2026-07-13 13:37:20 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_land-schleswig-holstein_03.rdf using format: xml
+2026-07-13 13:37:20 - extraction.rdf_parser - INFO - Successfully parsed 51 triples
+2026-07-13 13:37:20 - scoring.service - INFO - Parsed 51 triples
+2026-07-13 13:37:20 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-13 13:37:20 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-13 13:37:22 - scoring.service - DEBUG - [OK   ] https://region.statistik-nord.de/detail_timelineexport/29/2402/40/1/355/ — 2022-12-09-13-01-Bundestagswahl:_Verteilung_der_gueltigen_Zweitstimmen_in_Stormarn
+  downloadURL : https://region.statistik-nord.de/detail_timelineexport/29/2402/40/1/355/
+  HTTP        : 200
+  attachment  : 2026-07-13-13-37-Zeitreihe_fuer_Stormarn.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/csv
+    url_extension        raw=-                                        mime=-
+    http_content_type    raw=text/csv; charset=iso-8859-1             mime=text/csv
+    attachment_filename  raw=2026-07-13-13-37-Zeitreihe_fuer_Stormar… mime=text/csv
+  coalesced   : text/csv
+2026-07-13 13:37:22 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-13 13:37:46 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind thematisch konsistent und enthalten die wichtigsten kontextuellen Qualifizierer (Zeitraum, Ort, Aktua')
+2026-07-13 13:37:46 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:37:46 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=5
+2026-07-13 13:37:46 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['bundestagswahl-am-zeitstempel', 'bundestagswahl-verteilung-der-gültigen-zweitstimmen', 'stormarn', 'von-den-gültigen-zweitstimmen-entfallen-auf', 'wahlen']
+2026-07-13 13:37:46 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/SOCI']
+2026-07-13 13:37:46 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-13 13:37:46 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-13 13:37:46 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] pass score=1.00 source=dcatde:politicalGeocodingURI uri=http://dcat-ap.de/def/politicalGeocoding/districtKey/01062 segment=districtKey
+2026-07-13 13:37:46 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] pass score=1.00 valid=1/1
+2026-07-13 13:37:46 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['2002-09-01T00:00:00'], endDate: ['2021-09-01T00:00:00']
+2026-07-13 13:37:46 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=dateTime/True
+2026-07-13 13:37:46 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-13 13:37:46 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://opendata.schleswig-holstein.de/dataset/c0a903e3-5520-4502-9bdf-74fb41cc5514 = 2022-06-10T00:00:00
+2026-07-13 13:37:46 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://region.statistik-nord.de/detail_timelineexport/29/2402/40/1/355/ = 2021-05-07T06:47:23.279111
+2026-07-13 13:37:46 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-13 13:37:46 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://opendata.schleswig-holstein.de/dataset/c0a903e3-5520-4502-9bdf-74fb41cc5514 = 2022-06-10T00:00:00
+2026-07-13 13:37:46 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://region.statistik-nord.de/detail_timelineexport/29/2402/40/1/355/ = 2021-05-07T06:47:23.279111
+2026-07-13 13:37:46 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:37:46 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:37:46 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=1/1
+2026-07-13 13:37:46 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:37:46 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=1/1
+2026-07-13 13:37:46 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:37:46 - scoring.indicator.acc_media_type - INFO - [acc_media_type] pass score=1.00 passing=1/1
+2026-07-13 13:37:46 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:37:46 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-13 13:37:46 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-13 13:37:46 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=1 mid=0 none=0 total=1
+2026-07-13 13:37:46 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=1/1
+2026-07-13 13:37:46 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:37:46 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:37:46 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:37:46 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=1/1
+2026-07-13 13:37:46 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:37:46 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:37:46 - scoring.indicator.reuse_contact - INFO - [reuse_contact] FAIL score=0.00 no contactPoint set
+2026-07-13 13:37:46 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-13 13:37:48 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=4
+2026-07-13 13:37:48 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-13 13:37:48 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.85 | Der Titel ist prägnant, spezifisch und verständlich. Er benennt klar Wahlart, Inhalt und räumlichen Bezug. Ein Zeitbezug
+2026-07-13 13:37:48 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.20 | Die Beschreibung ist sehr kurz und wiederholt im Wesentlichen den Titel. Der unaufgelöste Platzhalter 'ZEITSTEMPEL' deut
+2026-07-13 13:37:48 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.75 | Titel und Beschreibung sind inhaltlich konsistent und behandeln dasselbe Thema. Es gibt keine Widersprüche bezüglich Ort
+2026-07-13 13:37:48 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.25 | Die Schlagwörter sind schlecht formuliert: Sie bestehen aus langen Komposita und Phrasen statt kurzen, atomaren Begriffe
+2026-07-13 13:37:48 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:37:48 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.95 | Thema, Titel, Beschreibung und Schlagwörter bilden ein konsistentes Themenbild rund um Bundestagswahlen und Zweitstimmen
+2026-07-13 13:37:48 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=1.00 | Für eine Zeitreihe sind alle wesentlichen kontextuellen Qualifizierer vorhanden: Bezugszeitraum (2002–2021), räumliche A
+2026-07-13 13:37:48 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:37:48 - scoring.service - DEBUG - {
+  "dataset_uri": "https://opendata.schleswig-holstein.de/dataset/c0a903e3-5520-4502-9bdf-74fb41cc5514",
+  "titles": [
+    "Bundestagswahl: Verteilung der gültigen Zweitstimmen in Stormarn"
+  ],
+  "descriptions": [
+    "\nWahlen - Bundestagswahl am ZEITSTEMPEL - Bundestagswahl: Verteilung der gültigen Zweitstimmen in Stormarn \n\n[Zum HTML-Angebot der Zeitreihe](https://region.statistik-nord.de/detail_timeline/29/2402/40/1/355/)\n\n[Regionaldaten für Schleswig-Holstein](https://region.statistik-nord.de/main/1)\n\nStatistisches Amt für Hamburg und Schleswig-Holstein\n          "
+  ],
+  "keywords": [
+    "bundestagswahl-am-zeitstempel",
+    "bundestagswahl-verteilung-der-gültigen-zweitstimmen",
+    "stormarn",
+    "von-den-gültigen-zweitstimmen-entfallen-auf",
+    "wahlen"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2022-06-10T00:00:00"
+  ],
+  "issued": [
+    "2022-06-10T00:00:00"
+  ],
+  "accrual_periodicity": "http://publications.europa.eu/resource/authority/frequency/YEARLY",
+  "accrual_periodicity_in_vocab": false,
+  "start_dates": [
+    "2002-09-01T00:00:00"
+  ],
+  "end_dates": [
+    "2021-09-01T00:00:00"
+  ],
+  "geometries": [],
+  "spatial_resources": [
+    "http://dcat-ap.de/def/politicalGeocoding/districtKey/01062",
+    "N1ee66b82672e412885a13ca3f252934b"
+  ],
+  "admin_units": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/districtKey/01062",
+      "segment": "districtKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/districtKey/01062",
+      "segment": "districtKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/Level/administrativeDistrict"
+  ],
+  "political_geocoding_level_in_vocab": [
+    true
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+  "publisher": "https://opendata.schleswig-holstein.de/organization/statistikamt-nord",
+  "contact_points": [],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/schleswigHolstein"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://region.statistik-nord.de/detail_timelineexport/29/2402/40/1/355/",
+      "titles": [
+        "2022-12-09-13-01-Bundestagswahl:_Verteilung_der_gueltigen_Zweitstimmen_in_Stormarn"
+      ],
+      "descriptions": [],
+      "download_url": "https://region.statistik-nord.de/detail_timelineexport/29/2402/40/1/355/",
+      "access_url": "https://region.statistik-nord.de/detail_timelineexport/29/2402/40/1/355/",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/csv"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2021-05-07T06:47:23.279111"
+      ],
+      "issued": [
+        "2021-05-07T06:47:23.279111"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/csv; charset=iso-8859-1",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "2026-07-13-13-37-Zeitreihe_fuer_Stormarn.csv",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://region.statistik-nord.de/detail_timelineexport/29/2402/40/1/355/",
+        "content_disposition": "attachment; filename=2026-07-13-13-37-Zeitreihe_fuer_Stormarn.csv",
+        "attachment_filename": "2026-07-13-13-37-Zeitreihe_fuer_Stormarn.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel ist spezifisch und nennt Wahlart (Bundestagswahl), Gegenstand (Verteilung der gültigen Zweitstimmen) und Ort (Stormarn).",
+        "Der Titel ist verständlich und unterscheidet sich klar von ähnlichen Datensätzen anderer Regionen.",
+        "Kein Zeitbezug im Titel, obwohl es sich um eine Zeitreihe handelt (2002–2021); dies wäre hilfreich, ist aber nicht zwingend erforderlich."
+      ],
+      "reasoning": "Der Titel ist prägnant, spezifisch und verständlich. Er benennt klar Wahlart, Inhalt und räumlichen Bezug. Ein Zeitbezug fehlt, wäre aber bei Zeitreihen hilfreich; da der Titel dennoch eindeutig und informativ ist, wird dies nur leicht abgewertet.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung wiederholt den Titel fast wörtlich und fügt kaum neue Informationen hinzu.",
+        "Der Platzhalter 'ZEITSTEMPEL' ist nicht aufgelöst und wirkt wie ein technischer Fehler.",
+        "Es fehlen strukturelle Informationen (Format, Tabellenaufbau, Kategorien der Parteien), Erhebungsmethode und Zweck der Daten."
+      ],
+      "reasoning": "Die Beschreibung ist sehr kurz und wiederholt im Wesentlichen den Titel. Der unaufgelöste Platzhalter 'ZEITSTEMPEL' deutet auf einen technischen Fehler hin. Wesentliche Informationen zu Struktur, Inhalt, Methode und Zweck fehlen vollständig. Links zu externen Ressourcen sind vorhanden, ersetzen aber keine substanzielle Beschreibung.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung behandeln dasselbe Thema (Bundestagswahl, Zweitstimmen, Stormarn).",
+        "Die Beschreibung wiederholt den Titel, ohne ihn zu konkretisieren oder zu erweitern.",
+        "Der Platzhalter 'ZEITSTEMPEL' in der Beschreibung ist unklar, aber kein inhaltlicher Widerspruch zum Titel."
+      ],
+      "reasoning": "Titel und Beschreibung sind inhaltlich konsistent und behandeln dasselbe Thema. Es gibt keine Widersprüche bezüglich Ort, Zeit oder Gegenstand. Die Beschreibung konkretisiert den Titel jedoch nicht, sondern wiederholt ihn nur.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter sind überwiegend Komposita und Phrasen statt atomarer Begriffe (z. B. 'bundestagswahl-am-zeitstempel', 'von-den-gültigen-zweitstimmen-entfallen-auf').",
+        "Der Platzhalter 'zeitstempel' in einem Schlagwort ist technisch fehlerhaft.",
+        "Die Schlagwörter wiederholen weitgehend den Titel und sind nicht laienverständlich formuliert (z. B. 'von-den-gültigen-zweitstimmen-entfallen-auf')."
+      ],
+      "reasoning": "Die Schlagwörter sind schlecht formuliert: Sie bestehen aus langen Komposita und Phrasen statt kurzen, atomaren Begriffen. Der unaufgelöste Platzhalter 'zeitstempel' ist ein technischer Fehler. Die Schlagwörter wiederholen den Titel und bieten kaum zusätzlichen Mehrwert. Sie sind nicht laienverständlich.",
+      "applicable": true,
+      "score": 0.25
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das Thema SOCI (Bevölkerung und Gesellschaft) passt zu Wahldaten.",
+        "Titel, Beschreibung und Schlagwörter behandeln konsistent das Thema Bundestagswahl und Zweitstimmen in Stormarn.",
+        "Keine Off-topic-Signale erkennbar."
+      ],
+      "reasoning": "Thema, Titel, Beschreibung und Schlagwörter bilden ein konsistentes Themenbild rund um Bundestagswahlen und Zweitstimmen. Das DCAT-Thema SOCI ist passend. Es gibt keine Widersprüche oder Off-topic-Signale.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Der Zeitraum der Zeitreihe ist im temporal-Feld angegeben (2002-09-01 bis 2021-09-01).",
+        "Die räumliche Abdeckung (Stormarn) ist im Titel und in spatial klar benannt.",
+        "Die Aktualisierungsfrequenz ist angegeben (jährlich)."
+      ],
+      "reasoning": "Für eine Zeitreihe sind alle wesentlichen kontextuellen Qualifizierer vorhanden: Bezugszeitraum (2002–2021), räumliche Abdeckung (Stormarn) und Aktualisierungszyklus (jährlich). Die Metadaten erfüllen die Anforderungen an kontextuelle Qualifizierer vollständig.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "overall_summary": "Die Metadaten sind thematisch konsistent und enthalten die wichtigsten kontextuellen Qualifizierer (Zeitraum, Ort, Aktualisierungszyklus). Titel ist gut, aber Beschreibung und Schlagwörter weisen erhebliche Mängel auf: Die Beschreibung wiederholt nur den Titel, enthält einen unaufgelösten Platzhalter und bietet keine strukturellen Informationen; die Schlagwörter sind schlecht formuliert (Komposita, Phrasen, technischer Fehler). Insgesamt ist die Aussagekraft eingeschränkt."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6184,
+      "output_tokens": 1685,
+      "total_tokens": 7869,
+      "cost_usd": 0.043827,
+      "latency_seconds": 24.382
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-13 13:37:48 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_land-schleswig-holstein_03/result.json
+2026-07-13 13:37:48 - __main__ - INFO -   ✓ Completed | score=0.78 grade=B

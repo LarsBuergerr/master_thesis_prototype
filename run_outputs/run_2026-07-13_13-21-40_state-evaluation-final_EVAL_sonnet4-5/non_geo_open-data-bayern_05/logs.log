@@ -1,0 +1,600 @@
+2026-07-13 13:40:59 - reporting.output_manager - INFO - Created file log handler for non_geo_open-data-bayern_05.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_open-data-bayern_05/logs.log
+2026-07-13 13:40:59 - __main__ - INFO - Started processing: non_geo_open-data-bayern_05.rdf
+2026-07-13 13:40:59 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_open-data-bayern_05.rdf
+2026-07-13 13:40:59 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_open-data-bayern_05.rdf using format: xml
+2026-07-13 13:40:59 - extraction.rdf_parser - INFO - Successfully parsed 98 triples
+2026-07-13 13:40:59 - scoring.service - INFO - Parsed 98 triples
+2026-07-13 13:40:59 - scoring.service - DEBUG - DatasetContext built: 4 distribution(s)
+2026-07-13 13:40:59 - scoring.service - DEBUG - attach_probes: 4/4 unique fetch keys, 4 distribution(s) covered
+2026-07-13 13:41:08 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/e50b5af7-6761-44df-8b38-285f073a4b9e — Baufertigstellungen - CSV
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=csv&regionalschluessel=09272151&regionalmerkmal=GEMEIN
+  HTTP        : 200
+  attachment  : 31121-006z.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/csv
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=text/html;charset=UTF-8                  mime=text/html
+    attachment_filename  raw=31121-006z.csv                           mime=text/csv
+  coalesced   : text/csv
+  warning     : HTTP Content-Type 'text/html' disagrees with attachment filename ('31121-006z.csv' → 'text/csv'); treating as advisory
+2026-07-13 13:41:08 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/2876dd41-68af-464b-84a3-a597b3435323 — Baufertigstellungen - XML
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=xml&regionalschluessel=09272151&regionalmerkmal=GEMEIN
+  HTTP        : 200
+  attachment  : 31121-006z.xml
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/xml
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=text/xml;charset=UTF-8                   mime=text/xml
+    attachment_filename  raw=31121-006z.xml                           mime=application/xml
+  coalesced   : application/xml
+2026-07-13 13:41:09 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/6ba68f50-8158-474c-96a7-25ce6fe07dd4 — Baufertigstellungen - Flat CSV
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=ffcsv&regionalschluessel=09272151&regionalmerkmal=GEMEIN
+  HTTP        : 200
+  attachment  : 31121-006z_flat.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/csv
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=text/comma-separated-values;charset=ISO… mime=text/comma-separated-values
+    attachment_filename  raw=31121-006z_flat.csv                      mime=text/csv
+  coalesced   : text/csv
+  warning     : HTTP Content-Type 'text/comma-separated-values' disagrees with attachment filename ('31121-006z_flat.csv' → 'text/csv'); treating as advisory
+2026-07-13 13:41:09 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/6cee931e-ae5a-4ac5-8afe-73b2b9964891 — Baufertigstellungen - XLSX
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=xlsx&regionalschluessel=09272151&regionalmerkmal=GEMEIN
+  HTTP        : 200
+  attachment  : 31121-006z.xlsx
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/vnd.ms-excel
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/xlsx
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=application/vnd.openxmlformats-officedo… mime=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+    attachment_filename  raw=31121-006z.xlsx                          mime=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  coalesced   : application/vnd.ms-excel
+2026-07-13 13:41:09 - scoring.service - DEBUG - Attached probes to 4/4 distribution(s)
+2026-07-13 13:41:34 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten bieten einen klaren Titel und thematisch passende Schlagwörter, leiden aber unter einer extrem knappen Bes')
+2026-07-13 13:41:34 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:41:34 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] partial score=0.50 keywords=20
+2026-07-13 13:41:34 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['1-raum', '2-räume', '3-räume', '4-räume', '5-räume', '6-räume', '7-oder-mehr-räume', 'baufertigstellung', 'baufertigstellungen', 'berichtsjahr', 'fertigstellungen', 'gemeinden-einschl.-gemeindefreie-gebiete', 'nach-raumzahl', 'neubauten', 'neubautätigkeit', 'neuerrichtungen', 'statistik-der-baufertigstellungen', 'waldkirchen-st', 'wohnungen-in-wohn--und-nichtwohngebäuden', 'wohnungsbau']
+2026-07-13 13:41:34 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/ECON']
+2026-07-13 13:41:34 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-13 13:41:34 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-13 13:41:34 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-13 13:41:34 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] pass score=1.00 valid=1/1
+2026-07-13 13:41:34 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-13 13:41:34 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-13 13:41:34 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/issued
+2026-07-13 13:41:34 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://open.bydata.de/api/hub/repo/datasets/31121-006-09272151 = 2023-11-06T14:12:27
+2026-07-13 13:41:34 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/e50b5af7-6761-44df-8b38-285f073a4b9e = 2026-02-28T11:00:01.563149
+2026-07-13 13:41:34 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/6ba68f50-8158-474c-96a7-25ce6fe07dd4 = 2026-02-28T11:00:01.563159
+2026-07-13 13:41:34 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/6cee931e-ae5a-4ac5-8afe-73b2b9964891 = 2026-02-28T11:00:01.563164
+2026-07-13 13:41:34 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/2876dd41-68af-464b-84a3-a597b3435323 = 2026-02-28T11:00:01.563168
+2026-07-13 13:41:34 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/modified
+2026-07-13 13:41:34 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://open.bydata.de/api/hub/repo/datasets/31121-006-09272151 = 2025-10-31T13:38:18
+2026-07-13 13:41:34 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/e50b5af7-6761-44df-8b38-285f073a4b9e = 2026-06-09T05:00:04
+2026-07-13 13:41:34 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/6ba68f50-8158-474c-96a7-25ce6fe07dd4 = 2026-06-09T05:00:04
+2026-07-13 13:41:34 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/6cee931e-ae5a-4ac5-8afe-73b2b9964891 = 2026-06-09T05:00:04
+2026-07-13 13:41:34 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/2876dd41-68af-464b-84a3-a597b3435323 = 2026-06-09T05:00:04
+2026-07-13 13:41:34 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:41:34 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:41:34 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:41:34 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/4
+2026-07-13 13:41:34 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:41:34 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=4/4
+2026-07-13 13:41:34 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:41:34 - scoring.indicator.acc_media_type - INFO - [acc_media_type] partial score=0.75 passing=3/4
+2026-07-13 13:41:34 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:41:34 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-13 13:41:34 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=4/4 relevant=4/4
+2026-07-13 13:41:34 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=0.88 high=3 mid=1 none=0 total=4
+2026-07-13 13:41:34 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] partial score=0.75 passing=3/4
+2026-07-13 13:41:34 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:41:34 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=4/4
+2026-07-13 13:41:34 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:41:34 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:41:34 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:41:34 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-13 13:41:34 - scoring.indicator.reuse_contributor_id - DEBUG - [reuse_contributor_id] contributorID cardinality violated: 2 values found
+2026-07-13 13:41:36 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] pass score=1.00 conforms=True violations=0
+2026-07-13 13:41:36 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/4
+2026-07-13 13:41:36 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.80 | Der Titel ist insgesamt gut: Er benennt klar Ort und Thema. Die Abkürzung 'St' ist zwar nicht ideal, aber im Kontext von
+2026-07-13 13:41:36 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:41:36 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.20 | Die Beschreibung ist unzureichend. Sie wiederholt im Wesentlichen nur Dimensionen, die bereits aus Titel und Schlagwörte
+2026-07-13 13:41:36 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.90 | Titel und Beschreibung passen inhaltlich zusammen. Die Beschreibung ist zwar sehr knapp, aber sie widerspricht dem Titel
+2026-07-13 13:41:36 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.50 | Die Schlagwörter sind inhaltlich sinnvoll und spezifisch, leiden aber unter formalen Mängeln: Pluralformen statt Singula
+2026-07-13 13:41:36 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] partial | score=0.60 | Titel, Beschreibung und Schlagwörter bilden ein konsistentes Themenbild (Baufertigstellungen, Wohnungsbau). Die Kategori
+2026-07-13 13:41:36 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.30 | Für eine Zeitreihen-Statistik fehlen zentrale Qualifizierer: Bezugszeitraum, Aktualisierungszyklus und Status der Daten 
+2026-07-13 13:41:36 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:41:36 - scoring.service - DEBUG - {
+  "dataset_uri": "https://open.bydata.de/api/hub/repo/datasets/31121-006-09272151",
+  "titles": [
+    "Waldkirchen, St: Baufertigstellungen"
+  ],
+  "descriptions": [
+    "Gemeinden, Wohnungen, Raumzahl, Jahre"
+  ],
+  "keywords": [
+    "1-raum",
+    "2-räume",
+    "3-räume",
+    "4-räume",
+    "5-räume",
+    "6-räume",
+    "7-oder-mehr-räume",
+    "baufertigstellung",
+    "baufertigstellungen",
+    "berichtsjahr",
+    "fertigstellungen",
+    "gemeinden-einschl.-gemeindefreie-gebiete",
+    "nach-raumzahl",
+    "neubauten",
+    "neubautätigkeit",
+    "neuerrichtungen",
+    "statistik-der-baufertigstellungen",
+    "waldkirchen-st",
+    "wohnungen-in-wohn--und-nichtwohngebäuden",
+    "wohnungsbau"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/ECON"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2025-10-31T13:38:18"
+  ],
+  "issued": [
+    "2023-11-06T14:12:27"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/Level/municipality"
+  ],
+  "political_geocoding_level_in_vocab": [
+    true
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "N1e4c5c22b1ec41d0999d02d362a32efa",
+  "contact_points": [
+    "N21b31e9cdb154de1bfc6f105ab1061b6"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/GenesisDestatis",
+    "http://dcat-ap.de/def/contributors/openDataBayern"
+  ],
+  "contributor_ids_in_vocab": [
+    false,
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/e50b5af7-6761-44df-8b38-285f073a4b9e",
+      "titles": [
+        "Baufertigstellungen - CSV"
+      ],
+      "descriptions": [
+        "Baufertigstellungen: Gemeinden, Wohnungen, Raumzahl, Jahre"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=csv&regionalschluessel=09272151&regionalmerkmal=GEMEIN",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/csv"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2026-06-09T05:00:04"
+      ],
+      "issued": [
+        "2026-02-28T11:00:01.563149"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html;charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "31121-006z.csv",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [
+          "HTTP Content-Type 'text/html' disagrees with attachment filename ('31121-006z.csv' → 'text/csv'); treating as advisory"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=csv&regionalschluessel=09272151&regionalmerkmal=GEMEIN",
+        "content_disposition": "attachment; filename=31121-006z.csv",
+        "attachment_filename": "31121-006z.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/6ba68f50-8158-474c-96a7-25ce6fe07dd4",
+      "titles": [
+        "Baufertigstellungen - Flat CSV"
+      ],
+      "descriptions": [
+        "Baufertigstellungen: Gemeinden, Wohnungen, Raumzahl, Jahre"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=ffcsv&regionalschluessel=09272151&regionalmerkmal=GEMEIN",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/csv"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2026-06-09T05:00:04"
+      ],
+      "issued": [
+        "2026-02-28T11:00:01.563159"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/comma-separated-values;charset=ISO-8859-1",
+            "mime_type": "text/comma-separated-values"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "31121-006z_flat.csv",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [
+          "HTTP Content-Type 'text/comma-separated-values' disagrees with attachment filename ('31121-006z_flat.csv' → 'text/csv'); treating as advisory"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=ffcsv&regionalschluessel=09272151&regionalmerkmal=GEMEIN",
+        "content_disposition": "attachment; filename=31121-006z_flat.csv",
+        "attachment_filename": "31121-006z_flat.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/6cee931e-ae5a-4ac5-8afe-73b2b9964891",
+      "titles": [
+        "Baufertigstellungen - XLSX"
+      ],
+      "descriptions": [
+        "Baufertigstellungen: Gemeinden, Wohnungen, Raumzahl, Jahre"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=xlsx&regionalschluessel=09272151&regionalmerkmal=GEMEIN",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/XLS"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/xlsx"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-06-09T05:00:04"
+      ],
+      "issued": [
+        "2026-02-28T11:00:01.563164"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/XLS",
+            "mime_type": "application/vnd.ms-excel"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/xlsx",
+            "mime_type": "text/xlsx"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "31121-006z.xlsx",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          }
+        ],
+        "coalesced_mime": "application/vnd.ms-excel",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=xlsx&regionalschluessel=09272151&regionalmerkmal=GEMEIN",
+        "content_disposition": "attachment; filename=31121-006z.xlsx",
+        "attachment_filename": "31121-006z.xlsx",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/2876dd41-68af-464b-84a3-a597b3435323",
+      "titles": [
+        "Baufertigstellungen - XML"
+      ],
+      "descriptions": [
+        "Baufertigstellungen: Gemeinden, Wohnungen, Raumzahl, Jahre"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=xml&regionalschluessel=09272151&regionalmerkmal=GEMEIN",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/XML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/xml"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2026-06-09T05:00:04"
+      ],
+      "issued": [
+        "2026-02-28T11:00:01.563168"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/XML",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml;charset=UTF-8",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "31121-006z.xml",
+            "mime_type": "application/xml"
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=31121-006z&option=xml&regionalschluessel=09272151&regionalmerkmal=GEMEIN",
+        "content_disposition": "attachment; filename=31121-006z.xml",
+        "attachment_filename": "31121-006z.xml",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel nennt den Ort 'Waldkirchen, St' und das Thema 'Baufertigstellungen', ist damit spezifisch und verständlich.",
+        "Die Abkürzung 'St' bleibt unklar (vermutlich Stadtteil oder Stadt), was die Präzision leicht mindert.",
+        "Der Titel ist prägnant und unterscheidet sich durch den Ortsbezug von ähnlichen Datensätzen."
+      ],
+      "reasoning": "Der Titel ist insgesamt gut: Er benennt klar Ort und Thema. Die Abkürzung 'St' ist zwar nicht ideal, aber im Kontext von Gemeindenamen üblich und nicht gravierend. Der Titel ist spezifisch genug, um den Datensatz zu identifizieren.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung ist extrem kurz und listet nur vier Begriffe: 'Gemeinden, Wohnungen, Raumzahl, Jahre'.",
+        "Es fehlen alle strukturellen Informationen: Format, Tabellenaufbau, Erhebungsmethode, Zweck, Besonderheiten.",
+        "Die Beschreibung beantwortet keine der fünf Kernfragen (Was? Wie strukturiert? Wie/warum erhoben? Wozu? Besonderheiten?)."
+      ],
+      "reasoning": "Die Beschreibung ist unzureichend. Sie wiederholt im Wesentlichen nur Dimensionen, die bereits aus Titel und Schlagwörtern ersichtlich sind, ohne substanzielle Information über Struktur, Methode oder Zweck zu liefern. Dies ist weit unter dem erwarteten Standard.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung behandeln dasselbe Thema: Baufertigstellungen in Waldkirchen.",
+        "Die Beschreibung ergänzt den Titel um Dimensionen (Wohnungen, Raumzahl, Jahre), ohne ihm zu widersprechen.",
+        "Es gibt keine erkennbaren inhaltlichen Widersprüche zwischen beiden Feldern."
+      ],
+      "reasoning": "Titel und Beschreibung passen inhaltlich zusammen. Die Beschreibung ist zwar sehr knapp, aber sie widerspricht dem Titel nicht und konkretisiert ihn minimal durch Nennung der Dimensionen.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "keyword_quality": {
+      "findings": [
+        "Viele Schlagwörter sind in Pluralform ('2-räume', '3-räume', 'baufertigstellungen', 'fertigstellungen', 'neubauten'), was gegen die Konvention verstößt.",
+        "Einige Schlagwörter sind redundant zum Titel ('waldkirchen-st', 'baufertigstellungen').",
+        "Die Schlagwörter sind inhaltlich relevant und decken verschiedene Facetten ab (Raumzahl, Neubau, Wohnungsbau), aber die Formulierung ist nicht optimal."
+      ],
+      "reasoning": "Die Schlagwörter sind inhaltlich sinnvoll und spezifisch, leiden aber unter formalen Mängeln: Pluralformen statt Singular, Redundanz mit dem Titel und teilweise unnötig lange Komposita. Dies mindert die Qualität deutlich.",
+      "applicable": true,
+      "score": 0.5
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Der Datensatz ist als ECON (Wirtschaft/Finanzen) kategorisiert, behandelt aber Baufertigstellungen und Wohnungsbau.",
+        "Titel, Beschreibung und Schlagwörter sind konsistent auf Bau- und Wohnungsstatistik ausgerichtet.",
+        "Die Zuordnung zu ECON ist fragwürdig; passender wären Themen wie Infrastruktur, Bauwesen oder Bevölkerung/Gesellschaft."
+      ],
+      "reasoning": "Titel, Beschreibung und Schlagwörter bilden ein konsistentes Themenbild (Baufertigstellungen, Wohnungsbau). Die Kategorisierung als ECON passt jedoch nicht gut, da Baustatistik eher infrastrukturell oder gesellschaftlich einzuordnen ist. Dies ist ein Off-topic-Signal.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Es handelt sich um eine Statistik/Zeitreihe ('Berichtsjahr' in Schlagwörtern, 'Jahre' in Beschreibung), aber kein konkreter Bezugszeitraum ist angegeben.",
+        "Das Feld 'temporal' ist leer (start_dates/end_dates fehlen).",
+        "Es fehlt die Angabe, ob die Daten vorläufig, geschätzt oder endgültig sind, und der Aktualisierungszyklus ist nicht dokumentiert."
+      ],
+      "reasoning": "Für eine Zeitreihen-Statistik fehlen zentrale Qualifizierer: Bezugszeitraum, Aktualisierungszyklus und Status der Daten (vorläufig/endgültig). Dies ist ein klarer Mangel.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "overall_summary": "Die Metadaten bieten einen klaren Titel und thematisch passende Schlagwörter, leiden aber unter einer extrem knappen Beschreibung, fehlenden Kontextangaben (Bezugszeitraum, Aktualisierungszyklus) und formalen Mängeln bei den Schlagwörtern (Pluralformen, Redundanz). Die thematische Kategorisierung als ECON ist zudem fragwürdig."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6044,
+      "output_tokens": 1593,
+      "total_tokens": 7637,
+      "cost_usd": 0.042027,
+      "latency_seconds": 25.392
+    }
+  ],
+  "distribution_count": 4
+}
+2026-07-13 13:41:36 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_open-data-bayern_05/result.json
+2026-07-13 13:41:36 - __main__ - INFO -   ✓ Completed | score=0.61 grade=C

@@ -1,0 +1,461 @@
+2026-07-16 11:13:37 - reporting.output_manager - INFO - Created file log handler for geo_open-data-brandenburg_04.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_open-data-brandenburg_04/logs.log
+2026-07-16 11:13:37 - __main__ - INFO - Started processing: geo_open-data-brandenburg_04.rdf
+2026-07-16 11:13:37 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_open-data-brandenburg_04.rdf
+2026-07-16 11:13:37 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_open-data-brandenburg_04.rdf using format: xml
+2026-07-16 11:13:37 - extraction.rdf_parser - INFO - Successfully parsed 76 triples
+2026-07-16 11:13:37 - scoring.service - INFO - Parsed 76 triples
+2026-07-16 11:13:37 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-16 11:13:37 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-16 11:13:37 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/d03612ff-ca50-4231-a0d4-4cb3ca2e0577 — Bebauungsplan Nr. 69 Wohnbebauung Feldstraße / Ecke Oranienburger Straße - Stadt Hohen Neuendorf Stadtteil Hohen Neuendorf
+  downloadURL : https://www.isk-hohen-neuendorf.de/isk/bp02?
+  HTTP        : 200
+  final URL   : https://isk-hohen-neuendorf.de/isk/bp02
+  signals     :
+    dct:format           raw=-                                        mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=bp02                                     mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/xml
+2026-07-16 11:13:37 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/f3020a51-a85e-4933-bb9b-f29f86da7679 — Bebauungsplan Nr. 69 Wohnbebauung Feldstraße / Ecke Oranienburger Straße - Stadt Hohen Neuendorf Stadtteil Hohen Neuendorf (WFS)
+  accessURL   : https://www.isk-hohen-neuendorf.de/isk/bp02?REQUEST=GetCapabilities&SERVICE=WFS
+  HTTP        : 200
+  final URL   : https://isk-hohen-neuendorf.de/isk/bp02?REQUEST=GetCapabilities&SERVICE=WFS
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=bp02                                     mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+2026-07-16 11:13:37 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/bb01d2dd-8257-467e-8d76-e20c97587682 — Bebauungsplan Nr. 69 Wohnbebauung Feldstraße / Ecke Oranienburger Straße - Stadt Hohen Neuendorf Stadtteil Hohen Neuendorf (WMS)
+  accessURL   : https://www.isk-hohen-neuendorf.de/isk/bp02?REQUEST=GetCapabilities&SERVICE=WMS
+  HTTP        : 200
+  final URL   : https://isk-hohen-neuendorf.de/isk/bp02?REQUEST=GetCapabilities&SERVICE=WMS
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=bp02                                     mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+2026-07-16 11:13:37 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-16 11:13:53 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten machen den konkreten Bebauungsplan durch den Titel und den räumlichen Bezug grundsätzlich gut erkennbar. D')
+2026-07-16 11:13:53 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:13:53 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=4
+2026-07-16 11:13:53 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['bauleitplanung', 'erdbeobachtung-und-umwelt', 'opendata', 'planung']
+2026-07-16 11:13:53 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/GOVE']
+2026-07-16 11:13:53 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 11:13:53 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:13:53 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:13:53 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:13:53 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:13:53 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:13:53 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-16 11:13:53 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/90c42b35-7f16-44b9-b725-35a40cef2a41 = 2022-03-19T00:00:00
+2026-07-16 11:13:53 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/d03612ff-ca50-4231-a0d4-4cb3ca2e0577 = 2026-03-06T05:58:25.492333
+2026-07-16 11:13:53 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/bb01d2dd-8257-467e-8d76-e20c97587682 = 2026-03-06T05:58:25.492338
+2026-07-16 11:13:53 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/f3020a51-a85e-4933-bb9b-f29f86da7679 = 2026-03-06T05:58:25.492340
+2026-07-16 11:13:53 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-16 11:13:53 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/90c42b35-7f16-44b9-b725-35a40cef2a41 = 2026-03-04T13:20:05
+2026-07-16 11:13:53 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/d03612ff-ca50-4231-a0d4-4cb3ca2e0577 = 2026-03-06T05:58:25.479443
+2026-07-16 11:13:53 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/bb01d2dd-8257-467e-8d76-e20c97587682 = 2026-03-04T13:21:01
+2026-07-16 11:13:53 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/f3020a51-a85e-4933-bb9b-f29f86da7679 = 2026-03-04T13:20:32
+2026-07-16 11:13:53 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:13:53 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:13:53 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.33 with_download=1/3
+2026-07-16 11:13:53 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:13:53 - scoring.indicator.acc_format - INFO - [acc_format] partial score=0.67 passing=2/3
+2026-07-16 11:13:53 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:13:53 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/3
+2026-07-16 11:13:53 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:13:53 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/3
+2026-07-16 11:13:53 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-16 11:13:53 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=3 mid=0 none=0 total=3
+2026-07-16 11:13:53 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] partial score=0.67 passing=2/3
+2026-07-16 11:13:53 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:13:53 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:13:53 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-16 11:13:53 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:13:53 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:13:53 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:13:53 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:13:53 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:13:54 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-16 11:13:54 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-16 11:13:54 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.85 | Der Titel ist spezifisch, verständlich und ohne technische oder Formatierungsreste formuliert. Die Länge und die Ortsred
+2026-07-16 11:13:54 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.40 | Die Beschreibung ist verständlich, bleibt aber generisch und könnte auf nahezu jeden Bebauungsplan zutreffen. Für den ko
+2026-07-16 11:13:54 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.75 | Inhaltlich passen Titel und Beschreibung zusammen, da beide denselben Datentyp betreffen. Die Kohärenz ist gut, auch wen
+2026-07-16 11:13:54 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.55 | Die Schlagwörter enthalten relevante Begriffe, sind aber teils generisch, formal oder als zusammengesetzte technische Ka
+2026-07-16 11:13:54 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.80 | Das Gesamtbild ist überwiegend widerspruchsfrei und thematisch plausibel. Einzelne Schlagwörter sind nicht optimal präzi
+2026-07-16 11:13:54 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.60 | Der räumliche Kontext ist gut erkennbar. Für einen verbindlichen Planungsdatensatz wäre jedoch ein fachlicher Stand bzw.
+2026-07-16 11:13:54 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:13:54 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:13:54 - scoring.service - DEBUG - {
+  "dataset_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/90c42b35-7f16-44b9-b725-35a40cef2a41",
+  "titles": [
+    "Bebauungsplan Nr. 69 Wohnbebauung Feldstraße / Ecke Oranienburger Straße - Stadt Hohen Neuendorf Stadtteil Hohen Neuendorf"
+  ],
+  "descriptions": [
+    "Der Bebauungsplan setzt als verbindlicher Bauleitplan das Bodennutzungskonzept der Gemeinde in unmittelbar geltendes Recht um. Der Bebauungsplan gibt vor, welche Bodennutzungen auf den betroffenen Grundflächen zulässig und unzulässig sind."
+  ],
+  "keywords": [
+    "bauleitplanung",
+    "erdbeobachtung-und-umwelt",
+    "opendata",
+    "planung"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-03-04T13:20:05"
+  ],
+  "issued": [
+    "2022-03-19T00:00:00"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((13.2812 52.6803, 13.2831 52.6803, 13.2831 52.6793, 13.2812 52.6793, 13.2812 52.6803))"
+  ],
+  "spatial_resources": [
+    "Nbbefaa0c4930427ebe73eacd24d7b201"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "N525e9870eab54d5f81bd0982a4567c40",
+  "publisher": "Nd7522854334444388309184038c95e77",
+  "contact_points": [
+    "Nc7feb9f90e404c93b5585f1607d77620"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/d03612ff-ca50-4231-a0d4-4cb3ca2e0577",
+      "titles": [
+        "Bebauungsplan Nr. 69 Wohnbebauung Feldstraße / Ecke Oranienburger Straße - Stadt Hohen Neuendorf Stadtteil Hohen Neuendorf"
+      ],
+      "descriptions": [
+        "Bebauungsplan Nr. 69 Wohnbebauung Feldstraße / Ecke Oranienburger Straße - Stadt Hohen Neuendorf Stadtteil Hohen Neuendorf"
+      ],
+      "download_url": "https://www.isk-hohen-neuendorf.de/isk/bp02?",
+      "access_url": "https://www.isk-hohen-neuendorf.de/isk/bp02?",
+      "formats": [],
+      "formats_in_vocab": [],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-03-06T05:58:25.479443"
+      ],
+      "issued": [
+        "2026-03-06T05:58:25.492333"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bp02",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://isk-hohen-neuendorf.de/isk/bp02",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/bb01d2dd-8257-467e-8d76-e20c97587682",
+      "titles": [
+        "Bebauungsplan Nr. 69 Wohnbebauung Feldstraße / Ecke Oranienburger Straße - Stadt Hohen Neuendorf Stadtteil Hohen Neuendorf (WMS)"
+      ],
+      "descriptions": [
+        "Der Bebauungsplan setzt als verbindlicher Bauleitplan das Bodennutzungskonzept der Gemeinde in unmittelbar geltendes Recht um. Der Bebauungsplan gibt vor, welche Bodennutzungen auf den betroffenen Grundflächen zulässig und unzulässig sind."
+      ],
+      "download_url": null,
+      "access_url": "https://www.isk-hohen-neuendorf.de/isk/bp02?REQUEST=GetCapabilities&SERVICE=WMS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-03-04T13:21:01"
+      ],
+      "issued": [
+        "2026-03-06T05:58:25.492338"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bp02",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://isk-hohen-neuendorf.de/isk/bp02?REQUEST=GetCapabilities&SERVICE=WMS",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/f3020a51-a85e-4933-bb9b-f29f86da7679",
+      "titles": [
+        "Bebauungsplan Nr. 69 Wohnbebauung Feldstraße / Ecke Oranienburger Straße - Stadt Hohen Neuendorf Stadtteil Hohen Neuendorf (WFS)"
+      ],
+      "descriptions": [
+        "Der Bebauungsplan setzt als verbindlicher Bauleitplan das Bodennutzungskonzept der Gemeinde in unmittelbar geltendes Recht um. Der Bebauungsplan gibt vor, welche Bodennutzungen auf den betroffenen Grundflächen zulässig und unzulässig sind."
+      ],
+      "download_url": null,
+      "access_url": "https://www.isk-hohen-neuendorf.de/isk/bp02?REQUEST=GetCapabilities&SERVICE=WFS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-03-04T13:20:32"
+      ],
+      "issued": [
+        "2026-03-06T05:58:25.492340"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bp02",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://isk-hohen-neuendorf.de/isk/bp02?REQUEST=GetCapabilities&SERVICE=WFS",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel benennt einen konkreten Bebauungsplan mit Nummer, Planinhalt und Lagebezug.",
+        "Ort und Stadtteil werden angegeben, wodurch der Datensatz gut unterscheidbar ist.",
+        "Der Titel ist sehr lang und enthält eine leichte Redundanz durch „Stadt Hohen Neuendorf Stadtteil Hohen Neuendorf“."
+      ],
+      "reasoning": "Der Titel ist spezifisch, verständlich und ohne technische oder Formatierungsreste formuliert. Die Länge und die Ortsredundanz sind kleinere Schwächen, beeinträchtigen die Aussagekraft aber nur gering.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt allgemein, was ein Bebauungsplan rechtlich bewirkt.",
+        "Sie beschreibt nicht konkret den Bebauungsplan Nr. 69, dessen räumlichen Geltungsbereich, Planstand oder enthaltene Unterlagen.",
+        "Struktur, Datenformat, Quelle/Methode oder besondere Hinweise zum konkreten Datensatz fehlen."
+      ],
+      "reasoning": "Die Beschreibung ist verständlich, bleibt aber generisch und könnte auf nahezu jeden Bebauungsplan zutreffen. Für den konkreten Datensatz liefert sie nur begrenzte inhaltliche und strukturelle Informationen.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung behandeln beide das Thema Bebauungsplan/Bauleitplanung.",
+        "Es gibt keinen Widerspruch bei Thema, Ort oder Zeitraum.",
+        "Die Beschreibung konkretisiert den im Titel genannten Plan nicht individuell."
+      ],
+      "reasoning": "Inhaltlich passen Titel und Beschreibung zusammen, da beide denselben Datentyp betreffen. Die Kohärenz ist gut, auch wenn die Beschreibung eher allgemein bleibt.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "keyword_quality": {
+      "findings": [
+        "„bauleitplanung“ und „planung“ sind thematisch passende Schlagwörter.",
+        "„opendata“ ist ein formales Schlagwort ohne inhaltlichen Mehrwert.",
+        "„erdbeobachtung-und-umwelt“ wirkt als zusammengesetzter Kategorien-/Slug-Begriff und passt nur eingeschränkt präzise zu einem Bebauungsplan."
+      ],
+      "reasoning": "Die Schlagwörter enthalten relevante Begriffe, sind aber teils generisch, formal oder als zusammengesetzte technische Kategorie formuliert. Dadurch ergänzen sie den Titel nur mäßig.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Titel, Beschreibung und passende Schlagwörter weisen konsistent auf Bebauungsplan/Bauleitplanung hin.",
+        "Die Themen REGI und GOVE sind für Raumordnung/Verwaltung grundsätzlich plausibel.",
+        "Das Schlagwort „erdbeobachtung-und-umwelt“ setzt einen etwas unscharfen Nebenaspekt."
+      ],
+      "reasoning": "Das Gesamtbild ist überwiegend widerspruchsfrei und thematisch plausibel. Einzelne Schlagwörter sind nicht optimal präzise, erzeugen aber keinen klaren Themenwiderspruch.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Für einen Bebauungsplan/Geodatensatz ist ein räumlicher Bezug erforderlich; dieser ist im Titel und zusätzlich als Geometrie vorhanden.",
+        "Ein konkreter Planstand, Rechtskraft-/Beschlussdatum oder Stichtag des Plans wird in Titel/Beschreibung nicht genannt.",
+        "Die Metadaten enthalten Ausgabedatum und Änderungsdatum, aber keine fachliche Einordnung des Planstands."
+      ],
+      "reasoning": "Der räumliche Kontext ist gut erkennbar. Für einen verbindlichen Planungsdatensatz wäre jedoch ein fachlicher Stand bzw. Rechtskraft-/Beschlussbezug wichtig, der nicht aussagekräftig in den beschreibenden Metadaten erscheint.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "overall_summary": "Die Metadaten machen den konkreten Bebauungsplan durch den Titel und den räumlichen Bezug grundsätzlich gut erkennbar. Die Aussagekraft wird vor allem durch die generische Beschreibung, nur mittelpräzise Schlagwörter und fehlende Angaben zum fachlichen Planstand begrenzt."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3562,
+      "output_tokens": 852,
+      "total_tokens": 4414,
+      "cost_usd": 0.033578,
+      "latency_seconds": 15.482
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-16 11:13:54 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_open-data-brandenburg_04/result.json
+2026-07-16 11:13:54 - __main__ - INFO -   ✓ Completed | score=0.70 grade=C

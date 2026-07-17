@@ -1,0 +1,311 @@
+2026-07-16 11:11:46 - reporting.output_manager - INFO - Created file log handler for geo_gdi-de_03.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_gdi-de_03/logs.log
+2026-07-16 11:11:46 - __main__ - INFO - Started processing: geo_gdi-de_03.rdf
+2026-07-16 11:11:46 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_gdi-de_03.rdf
+2026-07-16 11:11:46 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_gdi-de_03.rdf using format: xml
+2026-07-16 11:11:46 - extraction.rdf_parser - INFO - Successfully parsed 73 triples
+2026-07-16 11:11:46 - scoring.service - INFO - Parsed 73 triples
+2026-07-16 11:11:46 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-16 11:11:46 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-16 11:11:46 - scoring.service - DEBUG - [ERROR] https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution — Direktdownload Bebauungspläne und Satzungen
+  downloadURL : https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip
+  HTTP        : 200
+  attachment  : ko_uwb_bp.zip
+  signals     :
+    dct:format           raw=SHP                                      mime=x-gis/x-shapefile
+    dcat:mediaType       raw=application/zip                          mime=application/zip
+    url_extension        raw=ko_uwb_bp.zip                            mime=application/zip
+    http_content_type    raw=application/zip                          mime=application/zip
+    attachment_filename  raw=ko_uwb_bp.zip                            mime=application/zip
+  coalesced   : x-gis/x-shapefile
+  issue       : dcat:mediaType='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+  issue       : attachment_filename='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+  issue       : url_extension='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+  issue       : http_content_type='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+2026-07-16 11:11:46 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-16 11:12:01 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind insgesamt aussagekräftig: Titel, Beschreibung, Schlagwörter und Themen passen klar zusammen und mache')
+2026-07-16 11:12:01 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:12:01 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] partial score=0.50 keywords=17
+2026-07-16 11:12:01 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['außenbereichssatzung', 'b-plan', 'bauleitplanung', 'bebauungsplan', 'bodennutzung', 'einfacher-b-plan', 'entwicklungssatzung', 'ergänzungssatzung', 'innenbereichssatzung', 'klarstellungssatzung', 'opendata', 'qualifizierter-b-plan', 'sanierungssatzung', 'satzungen', 'thüringen', 'vorhaben--und-erschließungsplan', 'vorhabenbezogener-b-plan']
+2026-07-16 11:12:01 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/GOVE', 'http://publications.europa.eu/resource/authority/data-theme/REGI']
+2026-07-16 11:12:01 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 11:12:01 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:12:01 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:12:01 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:12:01 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:12:01 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:12:01 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-16 11:12:01 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=73111fcb-2db2-4452-a0ce-b121079a8f29 = 2025-07-23T13:46:14.438124
+2026-07-16 11:12:01 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution = 2025-07-23T13:46:14.440502
+2026-07-16 11:12:01 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-16 11:12:01 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=73111fcb-2db2-4452-a0ce-b121079a8f29 = 2025-11-13T08:16:59
+2026-07-16 11:12:01 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution = 2025-12-03T03:21:42.041913
+2026-07-16 11:12:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:12:01 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:12:01 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=1/1
+2026-07-16 11:12:01 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:12:01 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:12:01 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/1
+2026-07-16 11:12:01 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:12:01 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/1
+2026-07-16 11:12:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:12:01 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 11:12:01 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 11:12:01 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.50 high=0 mid=1 none=0 total=1
+2026-07-16 11:12:01 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/1
+2026-07-16 11:12:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:12:01 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=1/1
+2026-07-16 11:12:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:12:01 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:12:01 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:12:01 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:12:01 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:12:03 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=5
+2026-07-16 11:12:03 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-16 11:12:03 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.90 | Der Titel ist prägnant, ortsbezogen und unterscheidbar. Eine leichte Unschärfe besteht bei „Satzungen“, insgesamt ist de
+2026-07-16 11:12:03 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] partial | score=0.75 | Die Beschreibung ist substanziell und nennt Inhalt, Zweck/Vorinformation sowie Qualitäts- und Rechtsverbindlichkeits-Hin
+2026-07-16 11:12:03 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=1.00 | Die Beschreibung stützt und präzisiert den Titel eindeutig; Thema und Ortsbezug stimmen überein.
+2026-07-16 11:12:03 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.70 | Die Schlagwörter decken das Thema fachlich gut ab, sind aber teilweise jargonhaft, nicht atomar bzw. redundant oder form
+2026-07-16 11:12:03 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.95 | Alle betrachteten Felder ergeben ein widerspruchsfreies Themenbild zu kommunalen Bauleitplanungs- und Satzungsdaten mit 
+2026-07-16 11:12:03 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.75 | Für Geodaten und einen fortgeschriebenen Verwaltungs-/Sekundärdatenbestand sind räumliche Abdeckung und Aktualisierungsl
+2026-07-16 11:12:03 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:12:03 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:12:03 - scoring.service - DEBUG - {
+  "dataset_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=73111fcb-2db2-4452-a0ce-b121079a8f29",
+  "titles": [
+    "Bebauungspläne und Satzungen der Gemeinde Unterwellenborn"
+  ],
+  "descriptions": [
+    "Der Datensatz enthält die Geltungsbereiche der Bebauungspläne und Satzungen der Gemeinde Unterwellenborn mit Verlinkung auf die Planunterlagen. Es handelt sich um einen Sekundärdatenbestand.\n\t\t\t\t\tHinweis: Die im Datensatz verlinkten Unterlagen dienen lediglich als Vorinformation. Aus organisatorischen Gründen kann für die Vollständigkeit und Richtigkeit keine Gewähr übernommen werden. Rechtsverbindlich sind nur die Originaldokumente, die beim Urheber eingesehen werden können."
+  ],
+  "keywords": [
+    "außenbereichssatzung",
+    "b-plan",
+    "bauleitplanung",
+    "bebauungsplan",
+    "bodennutzung",
+    "einfacher-b-plan",
+    "entwicklungssatzung",
+    "ergänzungssatzung",
+    "innenbereichssatzung",
+    "klarstellungssatzung",
+    "opendata",
+    "qualifizierter-b-plan",
+    "sanierungssatzung",
+    "satzungen",
+    "thüringen",
+    "vorhaben--und-erschließungsplan",
+    "vorhabenbezogener-b-plan"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "http://publications.europa.eu/resource/authority/data-theme/REGI"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2025-11-13T08:16:59"
+  ],
+  "issued": [
+    "2025-07-23T13:46:14.438124"
+  ],
+  "accrual_periodicity": "http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded",
+  "accrual_periodicity_in_vocab": false,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((11.3540 50.7110, 11.5210 50.7110, 11.5210 50.6080, 11.3540 50.6080, 11.3540 50.7110))"
+  ],
+  "spatial_resources": [
+    "N78602accf53d498097d96ff8b140f3cb"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "Nded5608c094940748875e64611e40a6f",
+  "publisher": "N873b66e0d5f34f18b726c2379e7b9e94",
+  "contact_points": [
+    "Na9f734afdd5d4200928969a7174eb67b"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/gdiDE"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution",
+      "titles": [
+        "Direktdownload Bebauungspläne und Satzungen"
+      ],
+      "descriptions": [
+        "Direktdownload Bebauungspläne und Satzungen der Gemeinde Unterwellenborn. (Format: Shapefile)"
+      ],
+      "download_url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip",
+      "access_url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip",
+      "formats": [
+        "SHP"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/zip"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2025-12-03T03:21:42.041913"
+      ],
+      "issued": [
+        "2025-07-23T13:46:14.440502"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "SHP",
+            "mime_type": "x-gis/x-shapefile"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "ko_uwb_bp.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "ko_uwb_bp.zip",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "x-gis/x-shapefile",
+        "issues": [
+          "dcat:mediaType='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'",
+          "attachment_filename='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'",
+          "url_extension='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'",
+          "http_content_type='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip",
+        "content_disposition": "attachment;filename=\"ko_uwb_bp.zip\"",
+        "attachment_filename": "ko_uwb_bp.zip",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel benennt spezifisch den Inhalt („Bebauungspläne und Satzungen“) und die Gemeinde Unterwellenborn.",
+        "Er ist verständlich und ohne technische Zeichen, Markdown oder HTML formuliert.",
+        "Der Begriff „Satzungen“ ist relativ breit, wird aber durch den Kontext der Bebauungspläne eingegrenzt."
+      ],
+      "reasoning": "Der Titel ist prägnant, ortsbezogen und unterscheidbar. Eine leichte Unschärfe besteht bei „Satzungen“, insgesamt ist der Titel aber für sich gut verständlich.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt, dass Geltungsbereiche von Bebauungsplänen und Satzungen mit Verlinkung auf Planunterlagen enthalten sind.",
+        "Sie enthält einen wichtigen Hinweis zum Sekundärdatenbestand sowie zur fehlenden Gewähr und Rechtsverbindlichkeit der Originaldokumente.",
+        "Strukturelle Details wie Attribute, Datenformat, genaue Kategorien/Kodierungen oder Erhebungs-/Ableitungsmethode werden kaum beschrieben."
+      ],
+      "reasoning": "Die Beschreibung ist substanziell und nennt Inhalt, Zweck/Vorinformation sowie Qualitäts- und Rechtsverbindlichkeits-Hinweise. Für eine sehr gute Aussagekraft fehlen jedoch Angaben zur Datenstruktur und genaueren Entstehung bzw. Pflege des Sekundärdatenbestands.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung behandeln beide Bebauungspläne und Satzungen der Gemeinde Unterwellenborn.",
+        "Die Beschreibung konkretisiert den Titel durch Geltungsbereiche und Verlinkung auf Planunterlagen.",
+        "Es gibt keine erkennbaren Widersprüche bei Thema, Ort oder Inhalt."
+      ],
+      "reasoning": "Die Beschreibung stützt und präzisiert den Titel eindeutig; Thema und Ortsbezug stimmen überein.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "keyword_quality": {
+      "findings": [
+        "Viele Schlagwörter sind fachlich passend und spezifisch, z. B. „bauleitplanung“, „bebauungsplan“, „bodennutzung“.",
+        "Mehrere Schlagwörter enthalten Abkürzungen oder Bindestrichformen wie „b-plan“, „einfacher-b-plan“ und „vorhabenbezogener-b-plan“, die für Laien weniger verständlich sind.",
+        "Einige Tags sind formal oder redundant, etwa „opendata“, „thüringen“ und die Pluralform „satzungen“."
+      ],
+      "reasoning": "Die Schlagwörter decken das Thema fachlich gut ab, sind aber teilweise jargonhaft, nicht atomar bzw. redundant oder formal. Dadurch ist die Qualität brauchbar, aber nicht vorbildlich.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Titel, Beschreibung und Schlagwörter verweisen konsistent auf Bauleitplanung, Bebauungspläne, Satzungen und Bodennutzung.",
+        "Die Themen GOVE und REGI passen zu kommunalen Satzungs-/Planungsdaten und räumlicher Planung.",
+        "Es sind keine off-topic-Signale erkennbar."
+      ],
+      "reasoning": "Alle betrachteten Felder ergeben ein widerspruchsfreies Themenbild zu kommunalen Bauleitplanungs- und Satzungsdaten mit räumlichem Bezug.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Für den Geodatensatz ist eine räumliche Abdeckung vorhanden; der Titel nennt zusätzlich die Gemeinde Unterwellenborn.",
+        "Die Aktualisierung ist als „as needed“ angegeben.",
+        "Ein temporaler Bezugszeitraum bzw. Stichtag der geltenden Pläne/Satzungen fehlt; es wird nur auf Änderungs- und Ausgabedatum der Metadaten verwiesen."
+      ],
+      "reasoning": "Für Geodaten und einen fortgeschriebenen Verwaltungs-/Sekundärdatenbestand sind räumliche Abdeckung und Aktualisierungslogik vorhanden. Ein fachlicher Stichtag oder Gültigkeits-/Bezugszeitraum der enthaltenen Plan- und Satzungsstände wäre jedoch erforderlich bzw. zumindest sehr hilfreich und fehlt in den Metadaten.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "overall_summary": "Die Metadaten sind insgesamt aussagekräftig: Titel, Beschreibung, Schlagwörter und Themen passen klar zusammen und machen den Datensatz gut verständlich. Verbesserungsbedarf besteht vor allem bei detaillierteren Struktur-/Methodenangaben, laienfreundlicheren Schlagwörtern und einem fachlichen Stichtag bzw. Bezugszeitraum der enthaltenen Planstände."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3726,
+      "output_tokens": 952,
+      "total_tokens": 4678,
+      "cost_usd": 0.037398,
+      "latency_seconds": 14.991
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-16 11:12:03 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_gdi-de_03/result.json
+2026-07-16 11:12:03 - __main__ - INFO -   ✓ Completed | score=0.70 grade=C

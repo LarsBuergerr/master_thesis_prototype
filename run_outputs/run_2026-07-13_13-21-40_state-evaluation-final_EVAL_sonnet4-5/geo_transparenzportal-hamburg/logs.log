@@ -1,0 +1,503 @@
+2026-07-13 13:31:29 - reporting.output_manager - INFO - Created file log handler for geo_transparenzportal-hamburg.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/geo_transparenzportal-hamburg/logs.log
+2026-07-13 13:31:29 - __main__ - INFO - Started processing: geo_transparenzportal-hamburg.rdf
+2026-07-13 13:31:29 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_transparenzportal-hamburg.rdf
+2026-07-13 13:31:29 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_transparenzportal-hamburg.rdf using format: xml
+2026-07-13 13:31:29 - rdflib.term - WARNING - Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#hexBinary, Converter=<function _unhexlify at 0x76bfb10dd4e0>
+Traceback (most recent call last):
+  File "/home/lbuerger/masterthesis/master_thesis_prototype/.venv/lib/python3.12/site-packages/rdflib/term.py", line 2262, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/lbuerger/masterthesis/master_thesis_prototype/.venv/lib/python3.12/site-packages/rdflib/term.py", line 1847, in _unhexlify
+    return unhexlify(value)
+           ^^^^^^^^^^^^^^^^
+binascii.Error: Odd-length string
+2026-07-13 13:31:29 - extraction.rdf_parser - INFO - Successfully parsed 113 triples
+2026-07-13 13:31:29 - scoring.service - INFO - Parsed 113 triples
+2026-07-13 13:31:29 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-13 13:31:29 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-13 13:31:30 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f — Festsetzungen (Planzeichnung / Verordnung) als PDF Datei
+  accessURL   : https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/TB913.pdf
+  HTTP        : 200
+  attachment  : TB913.pdf
+  signals     :
+    dct:format           raw=PDF                                      mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=TB913.pdf                                mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=TB913.pdf (from final URL)               mime=application/pdf
+  coalesced   : application/pdf
+2026-07-13 13:31:30 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034 — Metadatenbeschreibung aus dem MetaVer
+  accessURL   : http://metaver.de/trefferanzeige?docuuid=49BD6FE5-1C7E-4478-A039-8A8518959B45
+  HTTP        : 200
+  final URL   : https://metaver.de/trefferanzeige?docuuid=49BD6FE5-1C7E-4478-A039-8A8518959B45
+  signals     :
+    dct:format           raw=HTML                                     mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=trefferanzeige                           mime=-
+    http_content_type    raw=text/html;charset=UTF-8                  mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-13 13:31:30 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297 — Download WFS Bebauungsplan (XPlanGML)
+  accessURL   : https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=TB913
+  HTTP        : 400
+  signals     :
+    dct:format           raw=GML                                      mime=application/gml+xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=HH_WFS_xplan_dls                         mime=-
+    http_content_type    raw=application/xml;charset=UTF-8            mime=application/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/gml+xml
+  warning     : accessURL returned HTTP 400; remaining checks rely on declared metadata only
+2026-07-13 13:31:30 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-13 13:31:54 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind in Titel, thematischer Konsistenz und Kontextangaben gut. Die Beschreibung ist jedoch zu knapp und er')
+2026-07-13 13:31:54 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:31:54 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=4
+2026-07-13 13:31:54 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['hamburgisches-bebauungsplangesetz-vom-31.10.1923--bplang', 'plis', 'teilbebauungsplan', 'öffentliche-pläne']
+2026-07-13 13:31:54 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI']
+2026-07-13 13:31:54 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-13 13:31:54 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-13 13:31:54 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] pass score=1.00 source=dcatde:politicalGeocodingURI uri=http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000 segment=regionalKey
+2026-07-13 13:31:54 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] partial score=0.50 valid=0/1
+2026-07-13 13:31:54 - scoring.indicator.find_geocoding_level - DEBUG - [find_geocoding_level] invalid_levels=['http://dcat-ap.de/def/politicalGeocoding/level/state']
+2026-07-13 13:31:54 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['1961-06-05T00:00:00'], endDate: []
+2026-07-13 13:31:54 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=None/False
+2026-07-13 13:31:54 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-13 13:31:54 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756 = 2025-08-28T00:00:00
+2026-07-13 13:31:54 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297 = 2025-08-28T00:00:00
+2026-07-13 13:31:54 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f = 2025-08-28T00:00:00
+2026-07-13 13:31:54 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034 = 2025-08-28T00:00:00
+2026-07-13 13:31:54 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-13 13:31:54 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756 = 2026-05-08T22:36:25.360227
+2026-07-13 13:31:54 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297 = 2026-05-08T22:36:25.360227
+2026-07-13 13:31:54 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f = 2026-05-08T22:36:25.360227
+2026-07-13 13:31:54 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034 = 2026-05-08T22:36:25.360227
+2026-07-13 13:31:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:31:54 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:31:54 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:31:54 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/3
+2026-07-13 13:31:54 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:31:54 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/3
+2026-07-13 13:31:54 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:31:54 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/3
+2026-07-13 13:31:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:31:54 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-13 13:31:54 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] partial score=0.50 valid=2/3 relevant=3/3
+2026-07-13 13:31:54 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.50 high=1 mid=1 none=1 total=3
+2026-07-13 13:31:54 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/3
+2026-07-13 13:31:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:31:54 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-13 13:31:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:31:54 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:31:54 - scoring.indicator.reuse_contact - INFO - [reuse_contact] partial score=0.50 contacts=1 with_channel=0
+2026-07-13 13:31:54 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-13 13:31:54 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:31:56 - rdflib.term - WARNING - Failed to convert Literal lexical form to value. Datatype=http://www.w3.org/2001/XMLSchema#hexBinary, Converter=<function _unhexlify at 0x76bfb10dd4e0>
+Traceback (most recent call last):
+  File "/home/lbuerger/masterthesis/master_thesis_prototype/.venv/lib/python3.12/site-packages/rdflib/term.py", line 2262, in _castLexicalToPython
+    return conv_func(lexical)  # type: ignore[arg-type]
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/lbuerger/masterthesis/master_thesis_prototype/.venv/lib/python3.12/site-packages/rdflib/term.py", line 1847, in _unhexlify
+    return unhexlify(value)
+           ^^^^^^^^^^^^^^^^
+binascii.Error: Odd-length string
+2026-07-13 13:31:56 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=12
+2026-07-13 13:31:56 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-13 13:31:56 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.90 | Der Titel erfüllt die Anforderungen gut: Er ist spezifisch durch die Plannummer TB 913, nennt den Ortsbezug Hamburg und 
+2026-07-13 13:31:56 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.40 | Die Beschreibung ist sehr knapp und beschränkt sich auf geografische Zuordnungen. Sie beantwortet nicht die Kernfragen: 
+2026-07-13 13:31:56 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=1.00 | Titel und Beschreibung passen inhaltlich zusammen. Die Beschreibung konkretisiert den im Titel genannten Plan durch geog
+2026-07-13 13:31:56 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.40 | Die Schlagwörter weisen mehrere Schwächen auf: Sie verwenden lange Komposita statt kurzer, atomarer Begriffe. Das Schlag
+2026-07-13 13:31:56 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=1.00 | Alle Felder zeigen ein konsistentes Themenbild: Bebauungsplanung und räumliche Planung. Das DCAT-Thema REGI passt zu Beb
+2026-07-13 13:31:56 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=1.00 | Für einen Bebauungsplan sind die relevanten Kontextangaben vorhanden: Das Datum des Inkrafttretens (1961), die räumliche
+2026-07-13 13:31:56 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:31:56 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:31:56 - scoring.service - DEBUG - {
+  "dataset_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756",
+  "titles": [
+    "Teilbebauungsplan TB 913 Hamburg"
+  ],
+  "descriptions": [
+    "Bezirk: Eimsbüttel, Stadtteil: Stellingen, Ortsteil: 321, \nPlanbezirk: Schulfläche an der Gutenbergstraße"
+  ],
+  "keywords": [
+    "hamburgisches-bebauungsplangesetz-vom-31.10.1923--bplang",
+    "plis",
+    "teilbebauungsplan",
+    "öffentliche-pläne"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-05-08T22:36:25.360227"
+  ],
+  "issued": [
+    "2025-08-28T00:00:00"
+  ],
+  "accrual_periodicity": "http://publications.europa.eu/resource/authority/frequency/NEVER",
+  "accrual_periodicity_in_vocab": true,
+  "start_dates": [
+    "1961-06-05T00:00:00"
+  ],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((10.3263 53.3950, 10.3263 53.9642, 8.4206 53.9642, 8.4206 53.3950, 10.3263 53.3950))"
+  ],
+  "spatial_resources": [
+    "Ne375d4d2c19344d894f8bbaeab3682d0",
+    "N9db1f3258e3a4985b5f338744f2beee3"
+  ],
+  "admin_units": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/level/state"
+  ],
+  "political_geocoding_level_in_vocab": [
+    false
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "https://www.govdata.de/dl-de/by-2-0",
+  "publisher": "N4472ec95afb44f9a8ec9290e6fb685bc",
+  "contact_points": [
+    "Nc1d6b63a08f54821a7b1b9d8636aa580"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/transparenzportalHamburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297",
+      "titles": [
+        "Download WFS Bebauungsplan (XPlanGML)"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=TB913",
+      "formats": [
+        "GML"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-08T22:36:25.360227"
+      ],
+      "issued": [
+        "2025-08-28T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "219505",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "GML",
+            "mime_type": "application/gml+xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "HH_WFS_xplan_dls",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/xml;charset=UTF-8",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/gml+xml",
+        "issues": [],
+        "warnings": [
+          "accessURL returned HTTP 400; remaining checks rely on declared metadata only"
+        ],
+        "fetched": true,
+        "status_code": 400,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 400,
+        "access_fetch_error": null,
+        "final_url": "https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=TB913",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f",
+      "titles": [
+        "Festsetzungen (Planzeichnung / Verordnung) als PDF Datei"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/TB913.pdf",
+      "formats": [
+        "PDF"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-05-08T22:36:25.360227"
+      ],
+      "issued": [
+        "2025-08-28T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "5463896",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "TB913.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "TB913.pdf (from final URL)",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/TB913.pdf",
+        "content_disposition": null,
+        "attachment_filename": "TB913.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034",
+      "titles": [
+        "Metadatenbeschreibung aus dem MetaVer"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "http://metaver.de/trefferanzeige?docuuid=49BD6FE5-1C7E-4478-A039-8A8518959B45",
+      "formats": [
+        "HTML"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-08T22:36:25.360227"
+      ],
+      "issued": [
+        "2025-08-28T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "104927",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "trefferanzeige",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html;charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://metaver.de/trefferanzeige?docuuid=49BD6FE5-1C7E-4478-A039-8A8518959B45",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel ist spezifisch und nennt die eindeutige Plannummer 'TB 913' sowie den Ortsbezug 'Hamburg'.",
+        "Der Titel ist prägnant und unterscheidet sich durch die Plannummer von anderen Bebauungsplänen.",
+        "Keine Sonderzeichen, Markdown oder technischen Reste vorhanden."
+      ],
+      "reasoning": "Der Titel erfüllt die Anforderungen gut: Er ist spezifisch durch die Plannummer TB 913, nennt den Ortsbezug Hamburg und ist prägnant formuliert. Die Plannummer macht ihn von anderen Bebauungsplänen unterscheidbar. Der Titel ist reiner Text ohne Formatierungsfehler.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung nennt konkrete geografische Zuordnungen: Bezirk Eimsbüttel, Stadtteil Stellingen, Ortsteil 321.",
+        "Der Planbezirk 'Schulfläche an der Gutenbergstraße' wird genannt.",
+        "Es fehlen wesentliche Informationen: Was ist der Inhalt/Zweck des Plans? Welche baulichen Festsetzungen werden getroffen? Wie ist der Plan strukturiert?"
+      ],
+      "reasoning": "Die Beschreibung ist sehr knapp und beschränkt sich auf geografische Zuordnungen. Sie beantwortet nicht die Kernfragen: Was ist enthalten (bauliche Festsetzungen, Nutzungsarten)? Wozu dient der Plan? Wie wurde er erstellt? Die Beschreibung ist zwar korrekt, aber nicht substanziell informativ über den eigentlichen Inhalt des Bebauungsplans.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf denselben Bebauungsplan TB 913.",
+        "Die Beschreibung konkretisiert den Ortsbezug 'Hamburg' aus dem Titel durch detaillierte geografische Angaben.",
+        "Keine inhaltlichen Widersprüche erkennbar."
+      ],
+      "reasoning": "Titel und Beschreibung passen inhaltlich zusammen. Die Beschreibung konkretisiert den im Titel genannten Plan durch geografische Details. Es gibt keine Widersprüche bezüglich Thema, Ort oder Zeitraum.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter enthalten lange Komposita statt atomarer Begriffe: 'hamburgisches-bebauungsplangesetz-vom-31.10.1923--bplang', 'öffentliche-pläne'.",
+        "Das Schlagwort 'hamburgisches-bebauungsplangesetz-vom-31.10.1923--bplang' ist sehr spezifisch-juristisch und enthält ein Datum, was eher in die Beschreibung gehört.",
+        "Die Schlagwörter 'teilbebauungsplan' und 'plis' sind relevant, aber 'teilbebauungsplan' wiederholt den Titel teilweise."
+      ],
+      "reasoning": "Die Schlagwörter weisen mehrere Schwächen auf: Sie verwenden lange Komposita statt kurzer, atomarer Begriffe. Das Schlagwort zum Bebauungsplangesetz ist übermäßig detailliert mit Datumsangabe und wirkt wie Jargon. 'Teilbebauungsplan' wiederholt den Titel. Die Schlagwörter sind nicht optimal für Laienverständlichkeit formuliert.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das Thema REGI (Regionen und Städte) passt zu einem Bebauungsplan.",
+        "Die Schlagwörter beziehen sich auf Bebauungsplanung und öffentliche Pläne, was konsistent ist.",
+        "Titel und Beschreibung behandeln eindeutig einen Bebauungsplan, was mit dem Thema übereinstimmt."
+      ],
+      "reasoning": "Alle Felder zeigen ein konsistentes Themenbild: Bebauungsplanung und räumliche Planung. Das DCAT-Thema REGI passt zu Bebauungsplänen, die Schlagwörter beziehen sich auf Planungsrecht und -instrumente, und Titel sowie Beschreibung behandeln denselben Bebauungsplan. Keine Off-topic-Signale erkennbar.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Der Bezugszeitraum ist vorhanden: temporal.start_dates zeigt '1961-06-05', vermutlich das Inkrafttreten des Plans.",
+        "Die räumliche Abdeckung ist detailliert angegeben (Bezirk, Stadtteil, Ortsteil, Geometrie).",
+        "Der Aktualisierungszyklus ist angegeben: 'NEVER' (einmaliger, statischer Plan)."
+      ],
+      "reasoning": "Für einen Bebauungsplan sind die relevanten Kontextangaben vorhanden: Das Datum des Inkrafttretens (1961), die räumliche Abdeckung (sehr detailliert) und der Hinweis, dass keine Aktualisierungen erfolgen. Alle vom Datentyp verlangten Qualifizierer sind erfüllt.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "overall_summary": "Die Metadaten sind in Titel, thematischer Konsistenz und Kontextangaben gut. Die Beschreibung ist jedoch zu knapp und erklärt nicht den Inhalt oder Zweck des Plans. Die Schlagwörter sind durch Komposita und Jargon suboptimal formuliert."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6168,
+      "output_tokens": 1606,
+      "total_tokens": 7774,
+      "cost_usd": 0.042594,
+      "latency_seconds": 24.408
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-13 13:31:56 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/geo_transparenzportal-hamburg/result.json
+2026-07-13 13:31:56 - __main__ - INFO -   ✓ Completed | score=0.59 grade=D

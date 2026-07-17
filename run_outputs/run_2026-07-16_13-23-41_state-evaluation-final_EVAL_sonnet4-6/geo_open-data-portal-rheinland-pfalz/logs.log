@@ -1,0 +1,796 @@
+2026-07-16 13:28:48 - reporting.output_manager - INFO - Created file log handler for geo_open-data-portal-rheinland-pfalz.rdf at run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_open-data-portal-rheinland-pfalz/logs.log
+2026-07-16 13:28:48 - __main__ - INFO - Started processing: geo_open-data-portal-rheinland-pfalz.rdf
+2026-07-16 13:28:48 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_open-data-portal-rheinland-pfalz.rdf
+2026-07-16 13:28:48 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_open-data-portal-rheinland-pfalz.rdf using format: xml
+2026-07-16 13:28:48 - extraction.rdf_parser - INFO - Successfully parsed 94 triples
+2026-07-16 13:28:48 - scoring.service - INFO - Parsed 94 triples
+2026-07-16 13:28:48 - scoring.service - DEBUG - DatasetContext built: 6 distribution(s)
+2026-07-16 13:28:48 - scoring.service - DEBUG - attach_probes: 6/6 unique fetch keys, 6 distribution(s) covered
+2026-07-16 13:28:49 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_mapviewer_layer_66892 — Online Karte
+  accessURL   : https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=66892
+  HTTP        : 200
+  final URL   : https://www.geoportal.rlp.de/mapbender/extensions/mobilemap2/index.html?layerid=66892
+  attachment  : index.html
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=map.php                                  mime=-
+    http_content_type    raw=text/html                                mime=text/html
+    attachment_filename  raw=index.html (from final URL)              mime=text/html
+  coalesced   : text/html
+2026-07-16 13:28:49 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_layer_metadata_66892 — Originäre Metadaten für Kartenebene
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=66892
+  HTTP        : 200
+  attachment  : mod_showMetadata.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mod_showMetadata.php                     mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mod_showMetadata.php (from final URL)    mime=-
+  coalesced   : text/html
+2026-07-16 13:28:49 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_atom_feed_wms_66892 — Rasterdownload nach EU-Standard
+  accessURL   : https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D74f3e8c1-08c5-5901-a371-049e2ed04742%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D66892
+  HTTP        : 200
+  attachment  : mb_downloadFeedClient.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mb_downloadFeedClient.php                mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mb_downloadFeedClient.php (from final U… mime=-
+  coalesced   : text/html
+2026-07-16 13:28:49 - scoring.service - DEBUG - [ERROR] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_wms_interface_66892 — WMS Schnittstelle
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=66892&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS
+  HTTP        : 200
+  attachment  : wms.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=wms.php                                  mime=-
+    http_content_type    raw=application/xhtml+xml; charset=UTF-8     mime=application/xhtml+xml
+    attachment_filename  raw=wms.php (from final URL)                 mime=-
+  coalesced   : application/xml
+  issue       : http_content_type='application/xhtml+xml' conflicts with previously coalesced 'application/xml'
+2026-07-16 13:28:50 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/html_metadata_74f3e8c1-08c5-5901-a371-049e2ed04742 — Original Metadaten HTML
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D74f3e8c1-08c5-5901-a371-049e2ed04742
+  HTTP        : 200
+  attachment  : mod_exportIso19139.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mod_exportIso19139.php                   mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mod_exportIso19139.php (from final URL)  mime=-
+  coalesced   : text/html
+2026-07-16 13:28:51 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_geoportal_layer_66892 — GeoPortal.rlp
+  accessURL   : https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=66892
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=map                                      mime=-
+    http_content_type    raw=text/html; charset=utf-8                 mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-16 13:28:51 - scoring.service - DEBUG - Attached probes to 6/6 distribution(s)
+2026-07-16 13:29:18 - scoring.service - DEBUG - Attached expressiveness assessment (summary: '{"$value": "Die Metadaten sind in nahezu allen Dimensionen unzureichend: Die Beschreibung ist substanzlos, das einzige S')
+2026-07-16 13:29:18 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 13:29:18 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] partial score=0.50 keywords=1
+2026-07-16 13:29:18 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['inspireidentifiziert']
+2026-07-16 13:29:18 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/ECON', 'http://publications.europa.eu/resource/authority/data-theme/ENVI']
+2026-07-16 13:29:18 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 13:29:18 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 13:29:18 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 13:29:18 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 13:29:18 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['1982-12-07'], endDate: ['1988-05-13']
+2026-07-16 13:29:18 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=date/True end=date/True
+2026-07-16 13:29:18 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=7/7 dataset=1 distribution=6 field=http://purl.org/dc/terms/issued
+2026-07-16 13:29:18 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742 = 2026-06-19
+2026-07-16 13:29:18 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/html_metadata_74f3e8c1-08c5-5901-a371-049e2ed04742 = 2025-03-08T21:17:22.527271
+2026-07-16 13:29:18 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_mapviewer_layer_66892 = 2025-03-08T21:17:22.527274
+2026-07-16 13:29:18 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_geoportal_layer_66892 = 2025-03-08T21:17:22.527276
+2026-07-16 13:29:18 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_layer_metadata_66892 = 2025-03-08T21:17:22.527278
+2026-07-16 13:29:18 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_wms_interface_66892 = 2025-03-08T21:17:22.527280
+2026-07-16 13:29:18 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_atom_feed_wms_66892 = 2025-07-18T06:30:16.481643
+2026-07-16 13:29:18 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=7/7 dataset=1 distribution=6 field=http://purl.org/dc/terms/modified
+2026-07-16 13:29:18 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742 = 2026-06-19
+2026-07-16 13:29:18 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/html_metadata_74f3e8c1-08c5-5901-a371-049e2ed04742 = 2025-03-08T21:17:22.519532
+2026-07-16 13:29:18 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_mapviewer_layer_66892 = 2025-07-18T06:30:16.466835
+2026-07-16 13:29:18 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_geoportal_layer_66892 = 2025-07-18T06:30:16.466905
+2026-07-16 13:29:18 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_layer_metadata_66892 = 2025-07-18T06:30:16.466968
+2026-07-16 13:29:18 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_wms_interface_66892 = 2025-07-18T06:30:16.467029
+2026-07-16 13:29:18 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_atom_feed_wms_66892 = 2025-07-18T06:30:16.467166
+2026-07-16 13:29:18 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 13:29:18 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 13:29:18 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 13:29:18 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/6
+2026-07-16 13:29:18 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 13:29:18 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=6/6
+2026-07-16 13:29:18 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 13:29:18 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/6
+2026-07-16 13:29:18 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 13:29:18 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-16 13:29:18 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=6/6 relevant=6/6
+2026-07-16 13:29:18 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.58 high=1 mid=5 none=0 total=6
+2026-07-16 13:29:18 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=6/6
+2026-07-16 13:29:18 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 13:29:18 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=6/6
+2026-07-16 13:29:18 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 13:29:18 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 13:29:18 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 13:29:18 - scoring.indicator.reuse_contact - INFO - [reuse_contact] FAIL score=0.00 no contactPoint set
+2026-07-16 13:29:18 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 13:29:20 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-16 13:29:20 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/6
+2026-07-16 13:29:20 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] fail | score=0.30 | Der Titel ist zu generisch und kontextlos: Er nennt zwar einen Straßennamen, lässt aber offen, um welchen Datensatztyp e
+2026-07-16 13:29:20 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.00 | Die Beschreibung ist faktisch leer und substanzlos – sie wiederholt nur einen Titelbestandteil ohne jegliche inhaltliche
+2026-07-16 13:29:20 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 13:29:20 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] fail | score=0.30 | Es gibt keinen inhaltlichen Widerspruch zwischen Titel und Beschreibung, da die Beschreibung lediglich einen Titelbestan
+2026-07-16 13:29:20 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.05 | Das einzige Schlagwort 'inspireidentifiziert' ist reiner technischer Jargon und trägt nichts zur inhaltlichen Erschließu
+2026-07-16 13:29:20 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] fail | score=0.20 | Die gewählten DCAT-Themen ECON und ENVI stehen in keinem erkennbaren Zusammenhang mit dem Titel (Straßenänderung/Bebauun
+2026-07-16 13:29:20 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.40 | Ein Bezugszeitraum ist vorhanden, was positiv ist. Allerdings ist das Änderungs-/Ausgabedatum (2026) offensichtlich unpl
+2026-07-16 13:29:20 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 13:29:20 - scoring.service - DEBUG - {
+  "dataset_uri": "https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742",
+  "titles": [
+    "Von-Brulé-Straße 1. vereinfachte Änderung"
+  ],
+  "descriptions": [
+    "1. vereinfachte Änderung"
+  ],
+  "keywords": [
+    "inspireidentifiziert"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/ECON",
+    "http://publications.europa.eu/resource/authority/data-theme/ENVI"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2026-06-19"
+  ],
+  "issued": [
+    "2026-06-19"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [
+    "1982-12-07"
+  ],
+  "end_dates": [
+    "1988-05-13"
+  ],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "https://www.geoportal.rlp.de/organization/8fbc32d8-8543-6bf0-e6d8-74168c4a2759",
+  "contact_points": [],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/html_metadata_74f3e8c1-08c5-5901-a371-049e2ed04742",
+      "titles": [
+        "Original Metadaten HTML"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D74f3e8c1-08c5-5901-a371-049e2ed04742",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-03-08T21:17:22.519532"
+      ],
+      "issued": [
+        "2025-03-08T21:17:22.527271"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-zero"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mod_exportIso19139.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mod_exportIso19139.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D74f3e8c1-08c5-5901-a371-049e2ed04742",
+        "content_disposition": null,
+        "attachment_filename": "mod_exportIso19139.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_mapviewer_layer_66892",
+      "titles": [
+        "Online Karte"
+      ],
+      "descriptions": [
+        "Von-Brulé-Straße 1. vereinfachte Änderung - Vorschau im integrierten Kartenviewer"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=66892",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-07-18T06:30:16.466835"
+      ],
+      "issued": [
+        "2025-03-08T21:17:22.527274"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "map.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "index.html (from final URL)",
+            "mime_type": "text/html"
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/extensions/mobilemap2/index.html?layerid=66892",
+        "content_disposition": null,
+        "attachment_filename": "index.html",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_geoportal_layer_66892",
+      "titles": [
+        "GeoPortal.rlp"
+      ],
+      "descriptions": [
+        "Von-Brulé-Straße 1. vereinfachte Änderung - Anzeige im GeoPortal.rlp"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=66892",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-07-18T06:30:16.466905"
+      ],
+      "issued": [
+        "2025-03-08T21:17:22.527276"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "map",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=utf-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=66892",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_layer_metadata_66892",
+      "titles": [
+        "Originäre Metadaten für Kartenebene"
+      ],
+      "descriptions": [
+        "Kartenebene: Von-Brulé-Straße 1. vereinfachte Änderung - Anzeige der originären Metadaten"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=66892",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-07-18T06:30:16.466968"
+      ],
+      "issued": [
+        "2025-03-08T21:17:22.527278"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-zero"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mod_showMetadata.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mod_showMetadata.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=66892",
+        "content_disposition": null,
+        "attachment_filename": "mod_showMetadata.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_wms_interface_66892",
+      "titles": [
+        "WMS Schnittstelle"
+      ],
+      "descriptions": [
+        "Ebene: Von-Brulé-Straße 1. vereinfachte Änderung"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=66892&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-07-18T06:30:16.467029"
+      ],
+      "issued": [
+        "2025-03-08T21:17:22.527280"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "wms.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/xhtml+xml; charset=UTF-8",
+            "mime_type": "application/xhtml+xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "wms.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [
+          "http_content_type='application/xhtml+xml' conflicts with previously coalesced 'application/xml'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=66892&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS",
+        "content_disposition": null,
+        "attachment_filename": "wms.php",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/74f3e8c1-08c5-5901-a371-049e2ed04742/resource/74f3e8c1-08c5-5901-a371-049e2ed04742_atom_feed_wms_66892",
+      "titles": [
+        "Rasterdownload nach EU-Standard"
+      ],
+      "descriptions": [
+        "INSPIRE Downloaddienst (predefined ATOM) für Datensatz: Von-Brulé-Straße 1. vereinfachte Änderung - basierend auf WMS Datenquelle"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D74f3e8c1-08c5-5901-a371-049e2ed04742%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D66892",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-07-18T06:30:16.467166"
+      ],
+      "issued": [
+        "2025-07-18T06:30:16.481643"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mb_downloadFeedClient.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mb_downloadFeedClient.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D74f3e8c1-08c5-5901-a371-049e2ed04742%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D66892",
+        "content_disposition": null,
+        "attachment_filename": "mb_downloadFeedClient.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel 'Von-Brulé-Straße 1. vereinfachte Änderung' benennt eine Straße und eine Änderung, ohne zu erklären, worum es sich handelt (Bebauungsplan? Flächennutzungsplan? Straßenplanung?)",
+        "Kein Orts- oder Zeitbezug im Titel, der den Datensatz von ähnlichen unterscheidbar machen würde",
+        "Unerklärte Formulierung '1. vereinfachte Änderung' ohne Kontext ist für Laien nicht verständlich"
+      ],
+      "reasoning": "Der Titel ist zu generisch und kontextlos: Er nennt zwar einen Straßennamen, lässt aber offen, um welchen Datensatztyp es sich handelt (z. B. Bebauungsplan, Geodaten, Verwaltungsakt). Die Formulierung '1. vereinfachte Änderung' ist ohne Erklärung kryptisch. Kein Orts- oder Zeitbezug zur Unterscheidung.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung lautet lediglich '1. vereinfachte Änderung' – sie wiederholt einen Teil des Titels und fügt keinerlei neue Information hinzu",
+        "Keine Angaben zu Inhalt, Struktur, Erhebungsmethode, Zweck oder Besonderheiten des Datensatzes",
+        "Keinerlei Hinweis auf Datenformat, räumliche Abdeckung oder thematischen Kontext"
+      ],
+      "reasoning": "Die Beschreibung ist faktisch leer und substanzlos – sie wiederholt nur einen Titelbestandteil ohne jegliche inhaltliche Ergänzung. Alle relevanten Informationsdimensionen (Was, Wie, Warum, Struktur) fehlen vollständig.",
+      "applicable": true,
+      "score": 0.0
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung sind inhaltlich konsistent, da die Beschreibung einen Teil des Titels wiederholt",
+        "Allerdings liefert die Beschreibung keinerlei Mehrwert oder Konkretisierung gegenüber dem Titel",
+        "Kein Widerspruch, aber auch keine echte Kohärenz im Sinne von Ergänzung oder Vertiefung"
+      ],
+      "reasoning": "Es gibt keinen inhaltlichen Widerspruch zwischen Titel und Beschreibung, da die Beschreibung lediglich einen Titelbestandteil wiederholt. Eine echte inhaltliche Kohärenz (Beschreibung konkretisiert den Titel) ist jedoch nicht gegeben.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "keyword_quality": {
+      "findings": [
+        "Einziges Schlagwort ist 'inspireidentifiziert' – ein technischer Jargon-Begriff ohne inhaltlichen Mehrwert für Nutzer",
+        "Kein inhaltlich beschreibendes Schlagwort vorhanden (z. B. Bebauungsplan, Stadtplanung, Bauleitplanung)",
+        "Das Schlagwort ist eine formale Kennzeichnung, kein thematischer Begriff"
+      ],
+      "reasoning": "Das einzige Schlagwort 'inspireidentifiziert' ist reiner technischer Jargon und trägt nichts zur inhaltlichen Erschließung des Datensatzes bei. Inhaltlich relevante Schlagwörter fehlen vollständig.",
+      "applicable": true,
+      "score": 0.05
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Die Themen ECON (Wirtschaft/Finanzen) und ENVI (Umwelt) passen nicht erkennbar zum Titel, der auf eine Straßen- oder Bebauungsplanänderung hindeutet",
+        "Weder Titel noch Beschreibung noch das Schlagwort 'inspireidentifiziert' geben einen Hinweis auf einen Wirtschafts- oder Umweltbezug",
+        "Plausibler wäre ein Thema wie REGI (Regionen/Städte) oder TRAN (Verkehr/Transport)"
+      ],
+      "reasoning": "Die gewählten DCAT-Themen ECON und ENVI stehen in keinem erkennbaren Zusammenhang mit dem Titel (Straßenänderung/Bebauungsplan). Das ergibt ein inkonsistentes Themenbild. Passendere Kategorien wären Raumplanung oder Verkehr.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Ein Zeitraum ist angegeben (1982-12-07 bis 1988-05-13), was einen Bezugszeitraum liefert",
+        "Das Änderungsdatum liegt in der Zukunft (2026-06-19), was unplausibel wirkt und auf einen Datenfehler hindeutet",
+        "Es fehlt eine Kennzeichnung, ob es sich um vorläufige, abgeschlossene oder in Kraft getretene Daten handelt"
+      ],
+      "reasoning": "Ein Bezugszeitraum ist vorhanden, was positiv ist. Allerdings ist das Änderungs-/Ausgabedatum (2026) offensichtlich unplausibel (Zukunftsdatum), und es fehlt eine Kennzeichnung des Status (z. B. rechtskräftig, vorläufig). Dies mindert die Qualität der kontextuellen Qualifizierer.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "overall_summary": "{\"$value\": \"Die Metadaten sind in nahezu allen Dimensionen unzureichend: Die Beschreibung ist substanzlos, das einzige Schlagwort ist technischer Jargon, die DCAT-Themen passen nicht zum Titel, und der Titel selbst ist ohne Kontext kaum verständlich. Lediglich ein Zeitraum ist angegeben, jedoch mit einem unplausiblen Zukunftsdatum als Änderungszeitpunkt.\"}"
+  },
+  "semantic_assessment_raw": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "tool_args": {
+      "title_quality": {
+        "findings": [
+          "Der Titel 'Von-Brulé-Straße 1. vereinfachte Änderung' benennt eine Straße und eine Änderung, ohne zu erklären, worum es sich handelt (Bebauungsplan? Flächennutzungsplan? Straßenplanung?)",
+          "Kein Orts- oder Zeitbezug im Titel, der den Datensatz von ähnlichen unterscheidbar machen würde",
+          "Unerklärte Formulierung '1. vereinfachte Änderung' ohne Kontext ist für Laien nicht verständlich"
+        ],
+        "reasoning": "Der Titel ist zu generisch und kontextlos: Er nennt zwar einen Straßennamen, lässt aber offen, um welchen Datensatztyp es sich handelt (z. B. Bebauungsplan, Geodaten, Verwaltungsakt). Die Formulierung '1. vereinfachte Änderung' ist ohne Erklärung kryptisch. Kein Orts- oder Zeitbezug zur Unterscheidung.",
+        "score": 0.3
+      },
+      "description_quality": {
+        "findings": [
+          "Die Beschreibung lautet lediglich '1. vereinfachte Änderung' – sie wiederholt einen Teil des Titels und fügt keinerlei neue Information hinzu",
+          "Keine Angaben zu Inhalt, Struktur, Erhebungsmethode, Zweck oder Besonderheiten des Datensatzes",
+          "Keinerlei Hinweis auf Datenformat, räumliche Abdeckung oder thematischen Kontext"
+        ],
+        "reasoning": "Die Beschreibung ist faktisch leer und substanzlos – sie wiederholt nur einen Titelbestandteil ohne jegliche inhaltliche Ergänzung. Alle relevanten Informationsdimensionen (Was, Wie, Warum, Struktur) fehlen vollständig.",
+        "score": 0.0
+      },
+      "title_description_coherence": {
+        "findings": [
+          "Titel und Beschreibung sind inhaltlich konsistent, da die Beschreibung einen Teil des Titels wiederholt",
+          "Allerdings liefert die Beschreibung keinerlei Mehrwert oder Konkretisierung gegenüber dem Titel",
+          "Kein Widerspruch, aber auch keine echte Kohärenz im Sinne von Ergänzung oder Vertiefung"
+        ],
+        "reasoning": "Es gibt keinen inhaltlichen Widerspruch zwischen Titel und Beschreibung, da die Beschreibung lediglich einen Titelbestandteil wiederholt. Eine echte inhaltliche Kohärenz (Beschreibung konkretisiert den Titel) ist jedoch nicht gegeben.",
+        "score": 0.3
+      },
+      "keyword_quality": {
+        "findings": [
+          "Einziges Schlagwort ist 'inspireidentifiziert' – ein technischer Jargon-Begriff ohne inhaltlichen Mehrwert für Nutzer",
+          "Kein inhaltlich beschreibendes Schlagwort vorhanden (z. B. Bebauungsplan, Stadtplanung, Bauleitplanung)",
+          "Das Schlagwort ist eine formale Kennzeichnung, kein thematischer Begriff"
+        ],
+        "reasoning": "Das einzige Schlagwort 'inspireidentifiziert' ist reiner technischer Jargon und trägt nichts zur inhaltlichen Erschließung des Datensatzes bei. Inhaltlich relevante Schlagwörter fehlen vollständig.",
+        "score": 0.05
+      },
+      "thematic_consistency": {
+        "findings": [
+          "Die Themen ECON (Wirtschaft/Finanzen) und ENVI (Umwelt) passen nicht erkennbar zum Titel, der auf eine Straßen- oder Bebauungsplanänderung hindeutet",
+          "Weder Titel noch Beschreibung noch das Schlagwort 'inspireidentifiziert' geben einen Hinweis auf einen Wirtschafts- oder Umweltbezug",
+          "Plausibler wäre ein Thema wie REGI (Regionen/Städte) oder TRAN (Verkehr/Transport)"
+        ],
+        "reasoning": "Die gewählten DCAT-Themen ECON und ENVI stehen in keinem erkennbaren Zusammenhang mit dem Titel (Straßenänderung/Bebauungsplan). Das ergibt ein inkonsistentes Themenbild. Passendere Kategorien wären Raumplanung oder Verkehr.",
+        "score": 0.2
+      },
+      "contextual_qualifiers": {
+        "findings": [
+          "Ein Zeitraum ist angegeben (1982-12-07 bis 1988-05-13), was einen Bezugszeitraum liefert",
+          "Das Änderungsdatum liegt in der Zukunft (2026-06-19), was unplausibel wirkt und auf einen Datenfehler hindeutet",
+          "Es fehlt eine Kennzeichnung, ob es sich um vorläufige, abgeschlossene oder in Kraft getretene Daten handelt"
+        ],
+        "reasoning": "Ein Bezugszeitraum ist vorhanden, was positiv ist. Allerdings ist das Änderungs-/Ausgabedatum (2026) offensichtlich unplausibel (Zukunftsdatum), und es fehlt eine Kennzeichnung des Status (z. B. rechtskräftig, vorläufig). Dies mindert die Qualität der kontextuellen Qualifizierer.",
+        "score": 0.4
+      },
+      "overall_summary": "{\"$value\": \"Die Metadaten sind in nahezu allen Dimensionen unzureichend: Die Beschreibung ist substanzlos, das einzige Schlagwort ist technischer Jargon, die DCAT-Themen passen nicht zum Titel, und der Titel selbst ist ohne Kontext kaum verständlich. Lediglich ein Zeitraum ist angegeben, jedoch mit einem unplausiblen Zukunftsdatum als Änderungszeitpunkt.\"}"
+    },
+    "text_content": null,
+    "parsing_error": null,
+    "salvaged": false,
+    "repairs": []
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "input_tokens": 5411,
+      "output_tokens": 1590,
+      "total_tokens": 7001,
+      "cost_usd": 0.040083,
+      "latency_seconds": 27.571
+    }
+  ],
+  "distribution_count": 6
+}
+2026-07-16 13:29:20 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_open-data-portal-rheinland-pfalz/result.json
+2026-07-16 13:29:20 - __main__ - INFO -   ✓ Completed | score=0.44 grade=D

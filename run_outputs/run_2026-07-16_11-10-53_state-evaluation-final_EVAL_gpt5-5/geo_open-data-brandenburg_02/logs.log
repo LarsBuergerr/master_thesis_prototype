@@ -1,0 +1,459 @@
+2026-07-16 11:12:56 - reporting.output_manager - INFO - Created file log handler for geo_open-data-brandenburg_02.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_open-data-brandenburg_02/logs.log
+2026-07-16 11:12:56 - __main__ - INFO - Started processing: geo_open-data-brandenburg_02.rdf
+2026-07-16 11:12:56 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_open-data-brandenburg_02.rdf
+2026-07-16 11:12:56 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_open-data-brandenburg_02.rdf using format: xml
+2026-07-16 11:12:56 - extraction.rdf_parser - INFO - Successfully parsed 76 triples
+2026-07-16 11:12:56 - scoring.service - INFO - Parsed 76 triples
+2026-07-16 11:12:56 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-16 11:12:56 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-16 11:12:56 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292 — Bebauungsplan Wohngebiet Oberjünne - Amt Brück Gemeinde Planebruch OT Oberjünne
+  downloadURL : https://www.geoportal-amt-brueck.de/isk/bp28?
+  HTTP        : 200
+  final URL   : https://www.geoportal-amt-brueck.de/isk/bp28
+  signals     :
+    dct:format           raw=-                                        mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=bp28                                     mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/xml
+2026-07-16 11:12:56 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e — Bebauungsplan Wohngebiet Oberjünne - Amt Brück Gemeinde Planebruch OT Oberjünne (WMS)
+  accessURL   : https://www.geoportal-amt-brueck.de/isk/bp28?REQUEST=GetCapabilities&SERVICE=WMS
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=bp28                                     mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+2026-07-16 11:12:56 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8 — Bebauungsplan Wohngebiet Oberjünne - Amt Brück Gemeinde Planebruch OT Oberjünne (WFS)
+  accessURL   : https://www.geoportal-amt-brueck.de/isk/bp28?REQUEST=GetCapabilities&SERVICE=WFS
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=bp28                                     mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+2026-07-16 11:12:56 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-16 11:13:15 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten machen den Datensatz als Bebauungsplan für das Wohngebiet Oberjünne grundsätzlich erkennbar und thematisch')
+2026-07-16 11:13:15 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:13:15 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=4
+2026-07-16 11:13:15 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['bauleitplanung', 'erdbeobachtung-und-umwelt', 'opendata', 'planung']
+2026-07-16 11:13:15 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/GOVE', 'http://publications.europa.eu/resource/authority/data-theme/REGI']
+2026-07-16 11:13:15 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 11:13:15 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:13:15 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:13:15 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:13:15 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:13:15 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:13:15 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-16 11:13:15 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/6d9044b5-2bc0-4aa8-b214-7d906fbde826 = 2011-07-26T00:00:00
+2026-07-16 11:13:15 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292 = 2025-12-02T05:14:10.430204
+2026-07-16 11:13:15 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8 = 2025-12-02T05:14:10.430209
+2026-07-16 11:13:15 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e = 2025-12-02T05:14:10.430211
+2026-07-16 11:13:15 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-16 11:13:15 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/6d9044b5-2bc0-4aa8-b214-7d906fbde826 = 2026-02-13T10:08:54
+2026-07-16 11:13:15 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292 = 2025-12-02T05:14:10.414083
+2026-07-16 11:13:15 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8 = 2026-02-13T10:10:22
+2026-07-16 11:13:15 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e = 2026-02-13T10:10:29
+2026-07-16 11:13:15 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:13:15 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:13:15 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:13:15 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.33 with_download=1/3
+2026-07-16 11:13:15 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:13:15 - scoring.indicator.acc_format - INFO - [acc_format] partial score=0.67 passing=2/3
+2026-07-16 11:13:15 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:13:15 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/3
+2026-07-16 11:13:15 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:13:15 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/3
+2026-07-16 11:13:15 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-16 11:13:15 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=3 mid=0 none=0 total=3
+2026-07-16 11:13:15 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] partial score=0.67 passing=2/3
+2026-07-16 11:13:15 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:13:15 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-16 11:13:15 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:13:15 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:13:15 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:13:15 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:13:15 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:13:17 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-16 11:13:17 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-16 11:13:17 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.85 | Der Titel ist spezifisch, verständlich und unterscheidbar, weil er Planart, Gebiet und Ortsbezug nennt. Kleinere Abzüge 
+2026-07-16 11:13:17 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.40 | Die Beschreibung ist fachlich grundsätzlich verständlich, bleibt aber generisch und liefert kaum datensatzspezifische In
+2026-07-16 11:13:17 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.70 | Inhaltlich passen Titel und Beschreibung grundsätzlich zusammen, da beide denselben Datensatztyp betreffen. Die Kohärenz
+2026-07-16 11:13:17 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.55 | Ein Teil der Schlagwörter beschreibt das Thema sinnvoll, andere Tags sind zu formal, zusammengesetzt oder nur indirekt p
+2026-07-16 11:13:17 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.80 | Die Metadaten ergeben insgesamt ein stimmiges Themenbild zur kommunalen Bauleitplanung. Einzelne weniger präzise Schlagw
+2026-07-16 11:13:17 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.70 | Wichtige Kontextangaben wie räumliche Abdeckung und Datumsangaben sind vorhanden. Für Bauleitpläne ist jedoch der rechtl
+2026-07-16 11:13:17 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:13:17 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:13:17 - scoring.service - DEBUG - {
+  "dataset_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/6d9044b5-2bc0-4aa8-b214-7d906fbde826",
+  "titles": [
+    "Bebauungsplan Wohngebiet Oberjünne - Amt Brück Gemeinde Planebruch OT Oberjünne"
+  ],
+  "descriptions": [
+    "Der Bebauungsplan setzt als verbindlicher Bauleitplan das Bodennutzungskonzept der Gemeinde in unmittelbar geltendes Recht um. Der Bebauungsplan gibt vor, welche Bodennutzungen auf den betroffenen Grundflächen zulässig und unzulässig sind."
+  ],
+  "keywords": [
+    "bauleitplanung",
+    "erdbeobachtung-und-umwelt",
+    "opendata",
+    "planung"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "http://publications.europa.eu/resource/authority/data-theme/REGI"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-02-13T10:08:54"
+  ],
+  "issued": [
+    "2011-07-26T00:00:00"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((12.6437 52.2805, 12.6452 52.2805, 12.6452 52.2796, 12.6437 52.2796, 12.6437 52.2805))"
+  ],
+  "spatial_resources": [
+    "N44c7519431f74f0f93a02bfbd4ec396d"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "Nd6cdc49b075045d8a9a6a02fd9dfec8c",
+  "publisher": "N3684e292f2594928b234d05bf26b9651",
+  "contact_points": [
+    "N4231793665b748af9d9dceeaa771e8f6"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/b57182c7-4da5-4627-a8e7-b64915dc4292",
+      "titles": [
+        "Bebauungsplan Wohngebiet Oberjünne - Amt Brück Gemeinde Planebruch OT Oberjünne"
+      ],
+      "descriptions": [
+        "Bebauungsplan Wohngebiet Oberjünne - Amt Brück Gemeinde Planebruch OT Oberjünne"
+      ],
+      "download_url": "https://www.geoportal-amt-brueck.de/isk/bp28?",
+      "access_url": "https://www.geoportal-amt-brueck.de/isk/bp28?",
+      "formats": [],
+      "formats_in_vocab": [],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-12-02T05:14:10.414083"
+      ],
+      "issued": [
+        "2025-12-02T05:14:10.430204"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bp28",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-amt-brueck.de/isk/bp28",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/2e7e424e-9952-4b28-aaa9-6f00784af0e8",
+      "titles": [
+        "Bebauungsplan Wohngebiet Oberjünne - Amt Brück Gemeinde Planebruch OT Oberjünne (WFS)"
+      ],
+      "descriptions": [
+        "Der Bebauungsplan setzt als verbindlicher Bauleitplan das Bodennutzungskonzept der Gemeinde in unmittelbar geltendes Recht um. Der Bebauungsplan gibt vor, welche Bodennutzungen auf den betroffenen Grundflächen zulässig und unzulässig sind."
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal-amt-brueck.de/isk/bp28?REQUEST=GetCapabilities&SERVICE=WFS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-02-13T10:10:22"
+      ],
+      "issued": [
+        "2025-12-02T05:14:10.430209"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bp28",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-amt-brueck.de/isk/bp28?REQUEST=GetCapabilities&SERVICE=WFS",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/70205a4b-d401-4ac8-b85d-525c9dad3e5e",
+      "titles": [
+        "Bebauungsplan Wohngebiet Oberjünne - Amt Brück Gemeinde Planebruch OT Oberjünne (WMS)"
+      ],
+      "descriptions": [
+        "Der Bebauungsplan setzt als verbindlicher Bauleitplan das Bodennutzungskonzept der Gemeinde in unmittelbar geltendes Recht um. Der Bebauungsplan gibt vor, welche Bodennutzungen auf den betroffenen Grundflächen zulässig und unzulässig sind."
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal-amt-brueck.de/isk/bp28?REQUEST=GetCapabilities&SERVICE=WMS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-02-13T10:10:29"
+      ],
+      "issued": [
+        "2025-12-02T05:14:10.430211"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bp28",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-amt-brueck.de/isk/bp28?REQUEST=GetCapabilities&SERVICE=WMS",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel benennt konkret den Datensatztyp („Bebauungsplan“) und das betroffene Vorhaben/ Gebiet („Wohngebiet Oberjünne“).",
+        "Ort und Verwaltungskontext („Amt Brück Gemeinde Planebruch OT Oberjünne“) sind im Titel enthalten und helfen bei der Unterscheidbarkeit.",
+        "Der Titel ist etwas lang und durch die Aneinanderreihung von Verwaltungsbezeichnungen weniger prägnant."
+      ],
+      "reasoning": "Der Titel ist spezifisch, verständlich und unterscheidbar, weil er Planart, Gebiet und Ortsbezug nennt. Kleinere Abzüge ergeben sich nur aus der etwas sperrigen Formulierung.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt allgemein, was ein Bebauungsplan rechtlich bewirkt.",
+        "Sie beschreibt nicht konkret den vorliegenden Bebauungsplan „Wohngebiet Oberjünne“ und nennt keine Inhalte wie Plangebiet, Festsetzungen, Planunterlagen oder betroffene Flächen.",
+        "Struktur, Datenformat, Quelle/Erhebungsstand und besondere Hinweise fehlen vollständig."
+      ],
+      "reasoning": "Die Beschreibung ist fachlich grundsätzlich verständlich, bleibt aber generisch und liefert kaum datensatzspezifische Informationen. Der Kern des Datentyps ist erkennbar, die Aussagekraft für diesen konkreten Datensatz ist deutlich begrenzt.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf einen Bebauungsplan.",
+        "Die Beschreibung widerspricht dem Titel nicht, bleibt aber allgemein und konkretisiert den genannten Bebauungsplan „Wohngebiet Oberjünne“ nicht.",
+        "Ort und konkretes Wohngebiet aus dem Titel werden in der Beschreibung nicht aufgegriffen."
+      ],
+      "reasoning": "Inhaltlich passen Titel und Beschreibung grundsätzlich zusammen, da beide denselben Datensatztyp betreffen. Die Kohärenz ist jedoch nicht optimal, weil die Beschreibung den konkreten Orts- und Planbezug des Titels nicht stützt oder näher ausführt.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "keyword_quality": {
+      "findings": [
+        "„bauleitplanung“ und „planung“ sind inhaltlich passend zum Bebauungsplan.",
+        "„erdbeobachtung-und-umwelt“ wirkt als zusammengesetzter, portalnaher Themenstring und ist für einen Bebauungsplan nur bedingt spezifisch.",
+        "„opendata“ ist ein formales Schlagwort ohne inhaltlichen Mehrwert; die Schreibweise ist überwiegend kleingeschrieben und nicht laienoptimal."
+      ],
+      "reasoning": "Ein Teil der Schlagwörter beschreibt das Thema sinnvoll, andere Tags sind zu formal, zusammengesetzt oder nur indirekt passend. Insgesamt sind die Schlagwörter brauchbar, aber nicht besonders präzise oder nutzerfreundlich formuliert.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Titel, Beschreibung und die Schlagwörter „bauleitplanung“/„planung“ zeigen klar auf Bauleitplanung bzw. Raum-/Gemeindeplanung.",
+        "Die Themen REGI und GOVE passen plausibel zu kommunaler Planung und Verwaltung.",
+        "Das Schlagwort „erdbeobachtung-und-umwelt“ ist weniger passend bzw. breiter als der konkrete Bebauungsplan, erzeugt aber keinen klaren Widerspruch."
+      ],
+      "reasoning": "Die Metadaten ergeben insgesamt ein stimmiges Themenbild zur kommunalen Bauleitplanung. Einzelne weniger präzise Schlagwörter schwächen die thematische Konsistenz leicht, führen aber nicht zu einem offenkundigen Widerspruch.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Für einen Bebauungsplan als raumbezogenen Verwaltungs-/Planungsdatensatz ist ein räumlicher Bezug erforderlich; dieser ist durch Titel und Polygon-Geometrie vorhanden.",
+        "Das Ausgabedatum 2011-07-26 und Änderungsdatum 2026-02-13 sind vorhanden.",
+        "Ein expliziter Planstatus bzw. Verfahrensstand wie rechtskräftig, Entwurf oder aufgehoben wird in Titel/Beschreibung nicht genannt."
+      ],
+      "reasoning": "Wichtige Kontextangaben wie räumliche Abdeckung und Datumsangaben sind vorhanden. Für Bauleitpläne ist jedoch der rechtliche bzw. verfahrensbezogene Status besonders aussagekräftig; dieser fehlt in den textlichen Metadaten, obwohl die Beschreibung allgemein von einem verbindlichen Bauleitplan spricht.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "overall_summary": "Die Metadaten machen den Datensatz als Bebauungsplan für das Wohngebiet Oberjünne grundsätzlich erkennbar und thematisch weitgehend konsistent. Deutliche Schwächen liegen vor allem in der generischen Beschreibung und in teils wenig präzisen Schlagwörtern; außerdem fehlt ein klarer Plan- bzw. Verfahrensstatus."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3559,
+      "output_tokens": 1030,
+      "total_tokens": 4589,
+      "cost_usd": 0.038903,
+      "latency_seconds": 18.82
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-16 11:13:17 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_open-data-brandenburg_02/result.json
+2026-07-16 11:13:17 - __main__ - INFO -   ✓ Completed | score=0.70 grade=C

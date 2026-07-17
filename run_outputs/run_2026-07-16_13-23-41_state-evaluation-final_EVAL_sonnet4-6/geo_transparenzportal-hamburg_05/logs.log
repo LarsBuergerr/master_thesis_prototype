@@ -1,0 +1,550 @@
+2026-07-16 13:36:26 - reporting.output_manager - INFO - Created file log handler for geo_transparenzportal-hamburg_05.rdf at run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_transparenzportal-hamburg_05/logs.log
+2026-07-16 13:36:26 - __main__ - INFO - Started processing: geo_transparenzportal-hamburg_05.rdf
+2026-07-16 13:36:26 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_transparenzportal-hamburg_05.rdf
+2026-07-16 13:36:26 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_transparenzportal-hamburg_05.rdf using format: xml
+2026-07-16 13:36:26 - extraction.rdf_parser - INFO - Successfully parsed 114 triples
+2026-07-16 13:36:26 - scoring.service - INFO - Parsed 114 triples
+2026-07-16 13:36:26 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-16 13:36:26 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-16 13:36:26 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508 — Festsetzungen (Planzeichnung / Verordnung) als PDF Datei
+  accessURL   : https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/D112.pdf
+  HTTP        : 200
+  attachment  : D112.pdf
+  signals     :
+    dct:format           raw=PDF                                      mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=D112.pdf                                 mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=D112.pdf (from final URL)                mime=application/pdf
+  coalesced   : application/pdf
+2026-07-16 13:36:27 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f — Metadatenbeschreibung aus dem MetaVer
+  accessURL   : http://metaver.de/trefferanzeige?docuuid=38969F5F-AC90-41A3-B408-C616B621B460
+  HTTP        : 200
+  final URL   : https://metaver.de/trefferanzeige?docuuid=38969F5F-AC90-41A3-B408-C616B621B460
+  signals     :
+    dct:format           raw=HTML                                     mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=trefferanzeige                           mime=-
+    http_content_type    raw=text/html;charset=UTF-8                  mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-16 13:36:27 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb — Download WFS Bebauungsplan (XPlanGML)
+  accessURL   : https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=D112
+  HTTP        : 400
+  signals     :
+    dct:format           raw=GML                                      mime=application/gml+xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=HH_WFS_xplan_dls                         mime=-
+    http_content_type    raw=application/xml;charset=UTF-8            mime=application/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/gml+xml
+  warning     : accessURL returned HTTP 400; remaining checks rely on declared metadata only
+2026-07-16 13:36:27 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-16 13:36:54 - scoring.service - DEBUG - Attached expressiveness assessment (summary: '{"overall_summary": "Die Metadaten identifizieren den Datensatz als Durchführungsplan D 112 in Hamburg-Horn und sind the')
+2026-07-16 13:36:54 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 13:36:54 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=5
+2026-07-16 13:36:54 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['aufbaugesetz-vom-11.04.1949--aufbaug', 'baupolizeiverodnung-vom-08.06.1938--bpvo', 'durchführungsplan', 'plis', 'öffentliche-pläne']
+2026-07-16 13:36:54 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI']
+2026-07-16 13:36:54 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 13:36:54 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 13:36:54 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] pass score=1.00 source=dcatde:politicalGeocodingURI uri=http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000 segment=regionalKey
+2026-07-16 13:36:54 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] partial score=0.50 valid=0/1
+2026-07-16 13:36:54 - scoring.indicator.find_geocoding_level - DEBUG - [find_geocoding_level] invalid_levels=['http://dcat-ap.de/def/politicalGeocoding/level/state']
+2026-07-16 13:36:54 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['1954-12-28T00:00:00'], endDate: []
+2026-07-16 13:36:54 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=None/False
+2026-07-16 13:36:54 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-16 13:36:54 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717 = 2025-10-19T00:00:00
+2026-07-16 13:36:54 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb = 2025-10-19T00:00:00
+2026-07-16 13:36:54 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508 = 2025-10-19T00:00:00
+2026-07-16 13:36:54 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f = 2025-10-19T00:00:00
+2026-07-16 13:36:54 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-16 13:36:54 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717 = 2026-05-08T23:32:08.220478
+2026-07-16 13:36:54 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb = 2026-05-08T23:32:08.220478
+2026-07-16 13:36:54 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508 = 2026-05-08T23:32:08.220478
+2026-07-16 13:36:54 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f = 2026-05-08T23:32:08.220478
+2026-07-16 13:36:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 13:36:54 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 13:36:54 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/3
+2026-07-16 13:36:54 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 13:36:54 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/3
+2026-07-16 13:36:54 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 13:36:54 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 13:36:54 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/3
+2026-07-16 13:36:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 13:36:54 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-16 13:36:54 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] partial score=0.50 valid=2/3 relevant=3/3
+2026-07-16 13:36:54 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.50 high=1 mid=1 none=1 total=3
+2026-07-16 13:36:54 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/3
+2026-07-16 13:36:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 13:36:54 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-16 13:36:54 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 13:36:54 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 13:36:54 - scoring.indicator.reuse_contact - INFO - [reuse_contact] partial score=0.50 contacts=1 with_channel=0
+2026-07-16 13:36:54 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 13:36:54 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 13:36:56 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=11
+2026-07-16 13:36:56 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-16 13:36:56 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] partial | score=0.50 | Der Titel ist formal korrekt und benennt den Plantyp sowie eine Kennziffer, bleibt aber generisch, da weder der Stadttei
+2026-07-16 13:36:56 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.15 | Die Beschreibung ist inhaltlich sehr dünn und wiederholt im Wesentlichen geografische Verwaltungsangaben, die auch aus a
+2026-07-16 13:36:56 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.70 | Titel und Beschreibung passen thematisch zusammen und widersprechen sich nicht. Die Beschreibung liefert zumindest den r
+2026-07-16 13:36:56 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.20 | Die Schlagwörter sind überwiegend technische Codes und Abkürzungen, die für Laien unverständlich sind. Nur 'durchführung
+2026-07-16 13:36:56 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.90 | Alle Felder zeigen konsistent dasselbe Sujet: ein stadtplanerisches Dokument (Durchführungsplan) für einen Hamburger Sta
+2026-07-16 13:36:56 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.70 | Die wesentlichen zeitlichen Qualifizierer (Startdatum, keine Aktualisierung) sind vorhanden. Der fehlende Hinweis auf de
+2026-07-16 13:36:56 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 13:36:56 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 13:36:56 - scoring.service - DEBUG - {
+  "dataset_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717",
+  "titles": [
+    "Durchführungsplan D 112 Hamburg"
+  ],
+  "descriptions": [
+    "Bezirk: Hamburg-Mitte, Stadtteil: Horn, Ortsteil: 129, Planbezirk: Hertogestraße, Beim Rauhen Hause, Bauerberg, Horner Landstraße"
+  ],
+  "keywords": [
+    "aufbaugesetz-vom-11.04.1949--aufbaug",
+    "baupolizeiverodnung-vom-08.06.1938--bpvo",
+    "durchführungsplan",
+    "plis",
+    "öffentliche-pläne"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-05-08T23:32:08.220478"
+  ],
+  "issued": [
+    "2025-10-19T00:00:00"
+  ],
+  "accrual_periodicity": "http://publications.europa.eu/resource/authority/frequency/NEVER",
+  "accrual_periodicity_in_vocab": true,
+  "start_dates": [
+    "1954-12-28T00:00:00"
+  ],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((10.3263 53.3950, 10.3263 53.9642, 8.4206 53.9642, 8.4206 53.3950, 10.3263 53.3950))"
+  ],
+  "spatial_resources": [
+    "N544948c45d39497f96500476b1cff0b3",
+    "N7509271bf0e644b3b907451e5d42ca45"
+  ],
+  "admin_units": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/level/state"
+  ],
+  "political_geocoding_level_in_vocab": [
+    false
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "https://www.govdata.de/dl-de/by-2-0",
+  "publisher": "Nba875eb3d5524b5ba94bcb06cf0c9b52",
+  "contact_points": [
+    "Nbb39e4fcc118434bab3ce1c1b452bc78"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/transparenzportalHamburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+      "titles": [
+        "Download WFS Bebauungsplan (XPlanGML)"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=D112",
+      "formats": [
+        "GML"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-08T23:32:08.220478"
+      ],
+      "issued": [
+        "2025-10-19T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "130630",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "GML",
+            "mime_type": "application/gml+xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "HH_WFS_xplan_dls",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/xml;charset=UTF-8",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/gml+xml",
+        "issues": [],
+        "warnings": [
+          "accessURL returned HTTP 400; remaining checks rely on declared metadata only"
+        ],
+        "fetched": true,
+        "status_code": 400,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 400,
+        "access_fetch_error": null,
+        "final_url": "https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=D112",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+      "titles": [
+        "Festsetzungen (Planzeichnung / Verordnung) als PDF Datei"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/D112.pdf",
+      "formats": [
+        "PDF"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-05-08T23:32:08.220478"
+      ],
+      "issued": [
+        "2025-10-19T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "3313873",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "D112.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "D112.pdf (from final URL)",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/D112.pdf",
+        "content_disposition": null,
+        "attachment_filename": "D112.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+      "titles": [
+        "Metadatenbeschreibung aus dem MetaVer"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "http://metaver.de/trefferanzeige?docuuid=38969F5F-AC90-41A3-B408-C616B621B460",
+      "formats": [
+        "HTML"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-08T23:32:08.220478"
+      ],
+      "issued": [
+        "2025-10-19T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "106590",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "trefferanzeige",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html;charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://metaver.de/trefferanzeige?docuuid=38969F5F-AC90-41A3-B408-C616B621B460",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel 'Durchführungsplan D 112 Hamburg' benennt den Plantyp und eine Kennziffer, ist aber ohne Erläuterung der Kennziffer wenig aussagekräftig",
+        "Der Ortsname 'Hamburg' ist sehr allgemein – der tatsächliche Geltungsbereich (Stadtteil Horn) geht aus dem Titel nicht hervor",
+        "Keine unerklärten Sonderzeichen oder Markdown-Reste; der Titel ist formal sauber"
+      ],
+      "reasoning": "Der Titel ist formal korrekt und benennt den Plantyp sowie eine Kennziffer, bleibt aber generisch, da weder der Stadtteil noch der Planbezirk erkennbar sind. Für Fachkundige ist 'D 112' möglicherweise eindeutig, für Laien jedoch kryptisch.",
+      "applicable": true,
+      "score": 0.5
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung listet lediglich Verwaltungsangaben (Bezirk, Stadtteil, Ortsteil, Planbezirk) auf, ohne den Inhalt oder Zweck des Plans zu erläutern",
+        "Es fehlen Angaben zur Struktur des Datensatzes (Format, enthaltene Ebenen, Kodierung), zur Erhebungsmethode oder zum Verwendungszweck",
+        "Kein Hinweis auf Besonderheiten, Qualitätsdisclaimern oder weiterführende Dokumentation"
+      ],
+      "reasoning": "Die Beschreibung ist inhaltlich sehr dünn und wiederholt im Wesentlichen geografische Verwaltungsangaben, die auch aus anderen Feldern hervorgehen. Sie beantwortet keine der relevanten Fragen (Was ist enthalten? Wie strukturiert? Warum erhoben? Wozu?).",
+      "applicable": true,
+      "score": 0.15
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich erkennbar auf denselben Plan (Durchführungsplan D 112 in Hamburg)",
+        "Die Beschreibung konkretisiert den geografischen Geltungsbereich des im Titel genannten Plans (Stadtteil Horn, Planbezirk Hertogestraße etc.)",
+        "Kein inhaltlicher Widerspruch zwischen Titel und Beschreibung"
+      ],
+      "reasoning": "Titel und Beschreibung passen thematisch zusammen und widersprechen sich nicht. Die Beschreibung liefert zumindest den räumlichen Kontext zum Titel.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "keyword_quality": {
+      "findings": [
+        "Schlagwörter wie 'aufbaugesetz-vom-11.04.1949--aufbaug' und 'baupolizeiverodnung-vom-08.06.1938--bpvo' sind technische Kürzel/Codes mit Bindestrichen statt lesbarer Begriffe",
+        "'plis' ist eine unerklärte Abkürzung ohne Mehrwert für Laien",
+        "'durchführungsplan' und 'öffentliche-pläne' sind inhaltlich relevant, aber in Bindestrich-Schreibweise statt als normale Begriffe formuliert"
+      ],
+      "reasoning": "Die Schlagwörter sind überwiegend technische Codes und Abkürzungen, die für Laien unverständlich sind. Nur 'durchführungsplan' ist ein brauchbarer Begriff; die restlichen Schlagwörter sind durch Jargon, Abkürzungen und unlesbare Formatierung geprägt.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das DCAT-Theme 'REGI' (Regionen und Städte) passt gut zu einem Durchführungsplan im Stadtgebiet Hamburg",
+        "Schlagwörter wie 'durchführungsplan' und 'öffentliche-pläne' stützen das Thema Stadtplanung/Regionalplanung",
+        "Kein Off-topic-Signal in einem der Felder"
+      ],
+      "reasoning": "Alle Felder zeigen konsistent dasselbe Sujet: ein stadtplanerisches Dokument (Durchführungsplan) für einen Hamburger Stadtteil. Das REGI-Theme ist passend.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Ein Startdatum (1954-12-28) ist angegeben, was den historischen Bezugszeitraum des Plans kennzeichnet",
+        "Die Aktualisierungsfrequenz 'NEVER' ist gesetzt, was für einen einmaligen historischen Plan sinnvoll ist",
+        "Es fehlt ein Hinweis darauf, ob der Plan noch rechtskräftig ist oder durch neuere Pläne abgelöst wurde – für einen Bebauungsplan aus 1954 wäre das ein relevanter Qualifizierer"
+      ],
+      "reasoning": "Die wesentlichen zeitlichen Qualifizierer (Startdatum, keine Aktualisierung) sind vorhanden. Der fehlende Hinweis auf den Rechtsstatus des Plans ist ein kleinerer Mangel, aber kein gravierender Fehler.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "overall_summary": "{\"overall_summary\": \"Die Metadaten identifizieren den Datensatz als Durchführungsplan D 112 in Hamburg-Horn und sind thematisch konsistent, leiden jedoch erheblich unter einer inhaltslosen Beschreibung (nur Verwaltungsangaben) und technisch kodierten, für Laien unverständlichen Schlagwörtern. Für eine aussagekräftige Erschließung fehlen Angaben zu Inhalt, Struktur und Zweck des Plans.\"}"
+  },
+  "semantic_assessment_raw": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "tool_args": {
+      "title_quality": {
+        "findings": [
+          "Der Titel 'Durchführungsplan D 112 Hamburg' benennt den Plantyp und eine Kennziffer, ist aber ohne Erläuterung der Kennziffer wenig aussagekräftig",
+          "Der Ortsname 'Hamburg' ist sehr allgemein – der tatsächliche Geltungsbereich (Stadtteil Horn) geht aus dem Titel nicht hervor",
+          "Keine unerklärten Sonderzeichen oder Markdown-Reste; der Titel ist formal sauber"
+        ],
+        "reasoning": "Der Titel ist formal korrekt und benennt den Plantyp sowie eine Kennziffer, bleibt aber generisch, da weder der Stadtteil noch der Planbezirk erkennbar sind. Für Fachkundige ist 'D 112' möglicherweise eindeutig, für Laien jedoch kryptisch.",
+        "score": 0.5
+      },
+      "description_quality": {
+        "findings": [
+          "Die Beschreibung listet lediglich Verwaltungsangaben (Bezirk, Stadtteil, Ortsteil, Planbezirk) auf, ohne den Inhalt oder Zweck des Plans zu erläutern",
+          "Es fehlen Angaben zur Struktur des Datensatzes (Format, enthaltene Ebenen, Kodierung), zur Erhebungsmethode oder zum Verwendungszweck",
+          "Kein Hinweis auf Besonderheiten, Qualitätsdisclaimern oder weiterführende Dokumentation"
+        ],
+        "reasoning": "Die Beschreibung ist inhaltlich sehr dünn und wiederholt im Wesentlichen geografische Verwaltungsangaben, die auch aus anderen Feldern hervorgehen. Sie beantwortet keine der relevanten Fragen (Was ist enthalten? Wie strukturiert? Warum erhoben? Wozu?).",
+        "score": 0.15
+      },
+      "title_description_coherence": {
+        "findings": [
+          "Titel und Beschreibung beziehen sich erkennbar auf denselben Plan (Durchführungsplan D 112 in Hamburg)",
+          "Die Beschreibung konkretisiert den geografischen Geltungsbereich des im Titel genannten Plans (Stadtteil Horn, Planbezirk Hertogestraße etc.)",
+          "Kein inhaltlicher Widerspruch zwischen Titel und Beschreibung"
+        ],
+        "reasoning": "Titel und Beschreibung passen thematisch zusammen und widersprechen sich nicht. Die Beschreibung liefert zumindest den räumlichen Kontext zum Titel.",
+        "score": 0.7
+      },
+      "keyword_quality": {
+        "findings": [
+          "Schlagwörter wie 'aufbaugesetz-vom-11.04.1949--aufbaug' und 'baupolizeiverodnung-vom-08.06.1938--bpvo' sind technische Kürzel/Codes mit Bindestrichen statt lesbarer Begriffe",
+          "'plis' ist eine unerklärte Abkürzung ohne Mehrwert für Laien",
+          "'durchführungsplan' und 'öffentliche-pläne' sind inhaltlich relevant, aber in Bindestrich-Schreibweise statt als normale Begriffe formuliert"
+        ],
+        "reasoning": "Die Schlagwörter sind überwiegend technische Codes und Abkürzungen, die für Laien unverständlich sind. Nur 'durchführungsplan' ist ein brauchbarer Begriff; die restlichen Schlagwörter sind durch Jargon, Abkürzungen und unlesbare Formatierung geprägt.",
+        "score": 0.2
+      },
+      "thematic_consistency": {
+        "findings": [
+          "Das DCAT-Theme 'REGI' (Regionen und Städte) passt gut zu einem Durchführungsplan im Stadtgebiet Hamburg",
+          "Schlagwörter wie 'durchführungsplan' und 'öffentliche-pläne' stützen das Thema Stadtplanung/Regionalplanung",
+          "Kein Off-topic-Signal in einem der Felder"
+        ],
+        "reasoning": "Alle Felder zeigen konsistent dasselbe Sujet: ein stadtplanerisches Dokument (Durchführungsplan) für einen Hamburger Stadtteil. Das REGI-Theme ist passend.",
+        "score": 0.9
+      },
+      "contextual_qualifiers": {
+        "findings": [
+          "Ein Startdatum (1954-12-28) ist angegeben, was den historischen Bezugszeitraum des Plans kennzeichnet",
+          "Die Aktualisierungsfrequenz 'NEVER' ist gesetzt, was für einen einmaligen historischen Plan sinnvoll ist",
+          "Es fehlt ein Hinweis darauf, ob der Plan noch rechtskräftig ist oder durch neuere Pläne abgelöst wurde – für einen Bebauungsplan aus 1954 wäre das ein relevanter Qualifizierer"
+        ],
+        "reasoning": "Die wesentlichen zeitlichen Qualifizierer (Startdatum, keine Aktualisierung) sind vorhanden. Der fehlende Hinweis auf den Rechtsstatus des Plans ist ein kleinerer Mangel, aber kein gravierender Fehler.",
+        "score": 0.7
+      },
+      "overall_summary": "{\"overall_summary\": \"Die Metadaten identifizieren den Datensatz als Durchführungsplan D 112 in Hamburg-Horn und sind thematisch konsistent, leiden jedoch erheblich unter einer inhaltslosen Beschreibung (nur Verwaltungsangaben) und technisch kodierten, für Laien unverständlichen Schlagwörtern. Für eine aussagekräftige Erschließung fehlen Angaben zu Inhalt, Struktur und Zweck des Plans.\"}"
+    },
+    "text_content": null,
+    "parsing_error": null,
+    "salvaged": false,
+    "repairs": []
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "input_tokens": 5705,
+      "output_tokens": 1494,
+      "total_tokens": 7199,
+      "cost_usd": 0.039525,
+      "latency_seconds": 27.276
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-16 13:36:56 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_transparenzportal-hamburg_05/result.json
+2026-07-16 13:36:56 - __main__ - INFO -   ✓ Completed | score=0.51 grade=D

@@ -1,6 +1,10 @@
 .venv
 outputs
-run_outputs
+run_outputs/*
+!run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL_sonnet4-5
+!run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL_gpt5-5
+!run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL_opus4-8
+!run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL_sonnet4-6
 run_outputs_old
 mqa_output
 comparison_output

@@ -1,0 +1,381 @@
+2026-07-16 11:20:42 - reporting.output_manager - INFO - Created file log handler for non_geo_gdi-de_05.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_gdi-de_05/logs.log
+2026-07-16 11:20:42 - __main__ - INFO - Started processing: non_geo_gdi-de_05.rdf
+2026-07-16 11:20:42 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_gdi-de_05.rdf
+2026-07-16 11:20:42 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_gdi-de_05.rdf using format: xml
+2026-07-16 11:20:42 - extraction.rdf_parser - INFO - Successfully parsed 66 triples
+2026-07-16 11:20:42 - scoring.service - INFO - Parsed 66 triples
+2026-07-16 11:20:42 - scoring.service - DEBUG - DatasetContext built: 2 distribution(s)
+2026-07-16 11:20:42 - scoring.service - DEBUG - attach_probes: 2/2 unique fetch keys, 2 distribution(s) covered
+2026-07-16 11:20:43 - scoring.service - DEBUG - [OK   ] https://inspire.govconnect.de/services/bsp/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0/service/atom/id_predefined_dataset#distribution — Kindergarten Martfeld (Ursprungsplan)
+  downloadURL : https://inspire.govconnect.de/services/bsp/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0/service/atom/id_predefined_dataset
+  HTTP        : 200
+  signals     :
+    dct:format           raw=onLine                                   mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=id_predefined_dataset                    mime=-
+    http_content_type    raw=application/atom+xml; charset=UTF-8      mime=application/atom+xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/atom+xml
+  warning     : dct:format='onLine' has no known MIME mapping; not comparable
+2026-07-16 11:20:43 - scoring.service - DEBUG - [OK   ] https://inspire.govconnect.de/ows/services/org.101.1ad7687c-355b-403b-8679-0fa31c4d4835_wfs/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0?SERVICE=WFS&Request=GetCapabilities#distribution — Kindergarten Martfeld (Ursprungsplan)
+  downloadURL : https://inspire.govconnect.de/ows/services/org.101.1ad7687c-355b-403b-8679-0fa31c4d4835_wfs/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0?SERVICE=WFS&Request=GetCapabilities
+  HTTP        : 200
+  attachment  : org.101.ae79c212-9650-4a75-967f-22d0d0c65df0
+  signals     :
+    dct:format           raw=onLine                                   mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=org.101.ae79c212-9650-4a75-967f-22d0d0c… mime=-
+    http_content_type    raw=text/xml;charset=UTF-8                   mime=text/xml
+    attachment_filename  raw=org.101.ae79c212-9650-4a75-967f-22d0d0c… mime=-
+  coalesced   : text/xml
+  warning     : dct:format='onLine' has no known MIME mapping; not comparable
+2026-07-16 11:20:43 - scoring.service - DEBUG - Attached probes to 2/2 distribution(s)
+2026-07-16 11:20:59 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten machen grob erkennbar, dass es um einen Ursprungsplan zum Kindergarten Martfeld mit Bauleitplan-/XPlanung-')
+2026-07-16 11:20:59 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:20:59 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=6
+2026-07-16 11:20:59 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['b-plan', 'bruchhausen-vilsen', 'landkreis-diepholz', 'opendata', 'pminspireharvestlkdh', 'xplanung']
+2026-07-16 11:20:59 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/GOVE']
+2026-07-16 11:20:59 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 11:20:59 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:20:59 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:20:59 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:20:59 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:20:59 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:20:59 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/issued
+2026-07-16 11:20:59 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=ddf35cbf-8c8f-45f9-b1ae-f9d516e9ca19 = 2024-08-30
+2026-07-16 11:20:59 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://inspire.govconnect.de/ows/services/org.101.1ad7687c-355b-403b-8679-0fa31c4d4835_wfs/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0?SERVICE=WFS&Request=GetCapabilities#distribution = 2025-07-23T15:44:20.547927
+2026-07-16 11:20:59 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://inspire.govconnect.de/services/bsp/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0/service/atom/id_predefined_dataset#distribution = 2025-07-23T15:44:20.547931
+2026-07-16 11:20:59 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/modified
+2026-07-16 11:20:59 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=ddf35cbf-8c8f-45f9-b1ae-f9d516e9ca19 = 2024-09-09
+2026-07-16 11:20:59 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://inspire.govconnect.de/ows/services/org.101.1ad7687c-355b-403b-8679-0fa31c4d4835_wfs/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0?SERVICE=WFS&Request=GetCapabilities#distribution = 2026-04-21T05:01:34.634423
+2026-07-16 11:20:59 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://inspire.govconnect.de/services/bsp/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0/service/atom/id_predefined_dataset#distribution = 2026-04-21T05:01:34.634563
+2026-07-16 11:20:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:20:59 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:20:59 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=2/2
+2026-07-16 11:20:59 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:20:59 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/2
+2026-07-16 11:20:59 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:20:59 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/2
+2026-07-16 11:20:59 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:20:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:20:59 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 11:20:59 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 11:20:59 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=2 mid=0 none=0 total=2
+2026-07-16 11:20:59 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/2
+2026-07-16 11:20:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:20:59 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=2/2
+2026-07-16 11:20:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:20:59 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:20:59 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:20:59 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:20:59 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:21:01 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=4
+2026-07-16 11:21:01 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/2
+2026-07-16 11:21:01 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] partial | score=0.75 | Der Titel ist spezifisch und grundsätzlich verständlich, da Objekt/Ort und Planart erkennbar sind. Etwas erklärungsbedür
+2026-07-16 11:21:01 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.10 | Die Beschreibung ist für sich genommen kaum informativ, weil sie ausschließlich den Titel dupliziert. Wesentliche Inform
+2026-07-16 11:21:01 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.90 | Da Beschreibung und Titel identisch sind, besteht zwar vollständige formale Kohärenz und kein Widerspruch. Die fehlende 
+2026-07-16 11:21:01 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:21:01 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.35 | Die Schlagwörter enthalten einzelne fachlich nützliche Hinweise, sind aber überwiegend nicht laienverständlich, teilweis
+2026-07-16 11:21:01 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.80 | Die vorhandenen Felder widersprechen sich thematisch nicht: Kindergarten Martfeld als Ursprungsplan, B-Plan/XPlanung und
+2026-07-16 11:21:01 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.45 | Bei einem Bauleitplan-/Geodatensatz sind räumliche und statusbezogene Qualifizierer relevant. Ein Teil ist vorhanden, ab
+2026-07-16 11:21:01 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:21:01 - scoring.service - DEBUG - {
+  "dataset_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=ddf35cbf-8c8f-45f9-b1ae-f9d516e9ca19",
+  "titles": [
+    "Kindergarten Martfeld (Ursprungsplan)"
+  ],
+  "descriptions": [
+    "Kindergarten Martfeld (Ursprungsplan)"
+  ],
+  "keywords": [
+    "b-plan",
+    "bruchhausen-vilsen",
+    "landkreis-diepholz",
+    "opendata",
+    "pminspireharvestlkdh",
+    "xplanung"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2024-09-09"
+  ],
+  "issued": [
+    "2024-08-30"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((9.0612 52.8796, 9.0626 52.8796, 9.0626 52.8788, 9.0612 52.8788, 9.0612 52.8796))"
+  ],
+  "spatial_resources": [
+    "N49efd30636e441b5a2b685ec34c3f9dc"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations",
+  "publisher": "Necded22f4370499fb18aff625841a673",
+  "contact_points": [
+    "N6d984fdda6d64f97ba4dd7786454c51f"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/gdiDE"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://inspire.govconnect.de/ows/services/org.101.1ad7687c-355b-403b-8679-0fa31c4d4835_wfs/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0?SERVICE=WFS&Request=GetCapabilities#distribution",
+      "titles": [
+        "Kindergarten Martfeld (Ursprungsplan)"
+      ],
+      "descriptions": [
+        "Kindergarten Martfeld (Ursprungsplan)"
+      ],
+      "download_url": "https://inspire.govconnect.de/ows/services/org.101.1ad7687c-355b-403b-8679-0fa31c4d4835_wfs/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0?SERVICE=WFS&Request=GetCapabilities",
+      "access_url": "https://inspire.govconnect.de/ows/services/org.101.1ad7687c-355b-403b-8679-0fa31c4d4835_wfs/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0?SERVICE=WFS&Request=GetCapabilities",
+      "formats": [
+        "onLine"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-04-21T05:01:34.634423"
+      ],
+      "issued": [
+        "2025-07-23T15:44:20.547927"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "onLine",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "org.101.ae79c212-9650-4a75-967f-22d0d0c65df0",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml;charset=UTF-8",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "org.101.ae79c212-9650-4a75-967f-22d0d0c65df0 (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/xml",
+        "issues": [],
+        "warnings": [
+          "dct:format='onLine' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://inspire.govconnect.de/ows/services/org.101.1ad7687c-355b-403b-8679-0fa31c4d4835_wfs/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0?SERVICE=WFS&Request=GetCapabilities",
+        "content_disposition": null,
+        "attachment_filename": "org.101.ae79c212-9650-4a75-967f-22d0d0c65df0",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://inspire.govconnect.de/services/bsp/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0/service/atom/id_predefined_dataset#distribution",
+      "titles": [
+        "Kindergarten Martfeld (Ursprungsplan)"
+      ],
+      "descriptions": [
+        "Kindergarten Martfeld (Ursprungsplan)"
+      ],
+      "download_url": "https://inspire.govconnect.de/services/bsp/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0/service/atom/id_predefined_dataset",
+      "access_url": "https://inspire.govconnect.de/services/bsp/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0/service/atom/id_predefined_dataset",
+      "formats": [
+        "onLine"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-04-21T05:01:34.634563"
+      ],
+      "issued": [
+        "2025-07-23T15:44:20.547931"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "onLine",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "id_predefined_dataset",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/atom+xml; charset=UTF-8",
+            "mime_type": "application/atom+xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/atom+xml",
+        "issues": [],
+        "warnings": [
+          "dct:format='onLine' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://inspire.govconnect.de/services/bsp/org.101.ae79c212-9650-4a75-967f-22d0d0c65df0/service/atom/id_predefined_dataset",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel benennt mit „Kindergarten Martfeld“ ein konkretes Objekt bzw. Gebiet.",
+        "Der Zusatz „(Ursprungsplan)“ kennzeichnet den Planstatus, bleibt aber ohne weitere Einordnung knapp.",
+        "Der Titel ist verständlich und enthält keine technischen Zeichenfolgen oder Formatierungsreste."
+      ],
+      "reasoning": "Der Titel ist spezifisch und grundsätzlich verständlich, da Objekt/Ort und Planart erkennbar sind. Etwas erklärungsbedürftig bleibt, dass nicht ausdrücklich genannt wird, dass es sich um einen Bebauungs-/Bauleitplan handelt; der Kontext muss aus anderen Feldern erschlossen werden.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung wiederholt wortgleich nur den Titel.",
+        "Es fehlen Angaben zum Inhalt des Datensatzes, zur Struktur, zu Plan-/Geodatenformaten oder zur rechtlichen/planerischen Bedeutung.",
+        "Es werden keine Hinweise zu Quelle, Zweck, Methode oder Besonderheiten gegeben."
+      ],
+      "reasoning": "Die Beschreibung ist für sich genommen kaum informativ, weil sie ausschließlich den Titel dupliziert. Wesentliche Informationen, die den Datensatz verständlich machen würden, fehlen vollständig.",
+      "applicable": true,
+      "score": 0.1
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung sind wortgleich.",
+        "Es gibt keine inhaltlichen Widersprüche zwischen beiden Feldern.",
+        "Die Beschreibung konkretisiert den Titel jedoch nicht weiter."
+      ],
+      "reasoning": "Da Beschreibung und Titel identisch sind, besteht zwar vollständige formale Kohärenz und kein Widerspruch. Die fehlende Konkretisierung ist primär ein Mangel der Beschreibungsqualität, nicht der Kohärenz.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "keyword_quality": {
+      "findings": [
+        "Einige Schlagwörter deuten relevant auf Bauleitplanung/XPlanung hin, z. B. „b-plan“ und „xplanung“.",
+        "Mehrere Schlagwörter sind technische oder kryptische Codes bzw. System-/Harvesting-Tags, z. B. „pminspireharvestlkdh“.",
+        "Ortsangaben und formale Tags wie „bruchhausen-vilsen“, „landkreis-diepholz“ und „opendata“ sind wenig inhaltlich bzw. redundant/formal."
+      ],
+      "reasoning": "Die Schlagwörter enthalten einzelne fachlich nützliche Hinweise, sind aber überwiegend nicht laienverständlich, teilweise kryptisch oder formal. Statt atomarer, verständlicher Begriffe dominieren Codes, Orts-/Organisationsbezüge und technische Tags.",
+      "applicable": true,
+      "score": 0.35
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Titel und Schlagwörter deuten auf einen Bebauungs-/Planungsdatensatz mit räumlichem Bezug hin.",
+        "Die Themen REGI und GOVE passen grundsätzlich zu Raumplanung/Verwaltung.",
+        "Es gibt keine klar off-topic wirkenden Angaben, allerdings bleibt das Themenbild wegen der sehr knappen Beschreibung schwach ausgearbeitet."
+      ],
+      "reasoning": "Die vorhandenen Felder widersprechen sich thematisch nicht: Kindergarten Martfeld als Ursprungsplan, B-Plan/XPlanung und regionale bzw. staatliche Themen passen zusammen. Die Konsistenz ist erkennbar, auch wenn die Beschreibung wenig zur Absicherung beiträgt.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Für einen Plan-/Geodatensatz ist eine räumliche Abdeckung vorhanden, allerdings nur als Geometrie ohne lesbare administrative Einordnung.",
+        "Der Status „Ursprungsplan“ ist im Titel genannt.",
+        "Es fehlen verständliche Kontextangaben zum Planstand, Rechts-/Geltungsstatus oder Bezugs-/Beschlussdatum; modified/issued sind nur Metadaten-Daten."
+      ],
+      "reasoning": "Bei einem Bauleitplan-/Geodatensatz sind räumliche und statusbezogene Qualifizierer relevant. Ein Teil ist vorhanden, aber die räumliche Einordnung ist für Nutzer nur über Koordinaten nachvollziehbar und wichtige planerische Kontextangaben fehlen bzw. werden nicht erläutert.",
+      "applicable": true,
+      "score": 0.45
+    },
+    "overall_summary": "Die Metadaten machen grob erkennbar, dass es um einen Ursprungsplan zum Kindergarten Martfeld mit Bauleitplan-/XPlanung-Bezug geht. Die Aussagekraft ist jedoch deutlich eingeschränkt, weil die Beschreibung nur den Titel wiederholt, viele Schlagwörter kryptisch oder formal sind und wichtige planerische Kontextangaben fehlen."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3507,
+      "output_tokens": 937,
+      "total_tokens": 4444,
+      "cost_usd": 0.035853,
+      "latency_seconds": 16.358
+    }
+  ],
+  "distribution_count": 2
+}
+2026-07-16 11:21:01 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_gdi-de_05/result.json
+2026-07-16 11:21:01 - __main__ - INFO -   ✓ Completed | score=0.64 grade=C

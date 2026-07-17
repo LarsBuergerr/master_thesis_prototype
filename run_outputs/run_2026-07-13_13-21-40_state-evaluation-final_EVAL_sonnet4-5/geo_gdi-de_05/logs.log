@@ -1,0 +1,488 @@
+2026-07-13 13:23:36 - reporting.output_manager - INFO - Created file log handler for geo_gdi-de_05.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/geo_gdi-de_05/logs.log
+2026-07-13 13:23:36 - __main__ - INFO - Started processing: geo_gdi-de_05.rdf
+2026-07-13 13:23:36 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_gdi-de_05.rdf
+2026-07-13 13:23:36 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_gdi-de_05.rdf using format: xml
+2026-07-13 13:23:36 - extraction.rdf_parser - INFO - Successfully parsed 80 triples
+2026-07-13 13:23:36 - scoring.service - INFO - Parsed 80 triples
+2026-07-13 13:23:36 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-13 13:23:36 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-13 13:23:36 - scoring.service - DEBUG - [OK   ] https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0#distribution — Karte der Schutzgebiete im Landkreis Holzminden (pdf)
+  downloadURL : https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0
+  HTTP        : 403
+  signals     :
+    dct:format           raw=shape                                    mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZ… mime=-
+    http_content_type    raw=text/html; charset=iso-8859-1            mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+  warning     : dct:format='shape' has no known MIME mapping; not comparable
+  warning     : downloadURL returned HTTP 403; remaining checks rely on declared metadata only
+2026-07-13 13:23:37 - scoring.service - DEBUG - [OK   ] https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip#distribution — Schutzgebiete als Geo-Datenbank (zip)
+  downloadURL : https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip
+  HTTP        : 200
+  attachment  : Schutzgebiete.gdb.zip
+  signals     :
+    dct:format           raw=shape                                    mime=-
+    dcat:mediaType       raw=application/zip                          mime=application/zip
+    url_extension        raw=Schutzgebiete.gdb.zip                    mime=application/zip
+    http_content_type    raw=application/x-zip-compressed             mime=application/x-zip-compressed
+    attachment_filename  raw=Schutzgebiete.gdb.zip (from final URL)   mime=application/zip
+  coalesced   : application/zip
+  warning     : dct:format='shape' has no known MIME mapping; not comparable
+2026-07-13 13:23:37 - scoring.service - DEBUG - [OK   ] https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip#distribution — Schutzgebiete als Shape-Dateien (zip)
+  downloadURL : https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip
+  HTTP        : 200
+  attachment  : Schutzgebiete.zip
+  signals     :
+    dct:format           raw=shape                                    mime=-
+    dcat:mediaType       raw=application/zip                          mime=application/zip
+    url_extension        raw=Schutzgebiete.zip                        mime=application/zip
+    http_content_type    raw=application/x-zip-compressed             mime=application/x-zip-compressed
+    attachment_filename  raw=Schutzgebiete.zip (from final URL)       mime=application/zip
+  coalesced   : application/zip
+  warning     : dct:format='shape' has no known MIME mapping; not comparable
+2026-07-13 13:23:37 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-13 13:23:59 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind thematisch konsistent und der Titel ist vorbildlich. Allerdings ist die Beschreibung viel zu knapp un')
+2026-07-13 13:23:59 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:23:59 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=5
+2026-07-13 13:23:59 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['inspireidentifiziert', 'opendata', 'schutzgebiete', 'wasserschutz', 'wasserschutzgebiet']
+2026-07-13 13:23:59 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/ENVI']
+2026-07-13 13:23:59 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-13 13:23:59 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-13 13:23:59 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-13 13:23:59 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-13 13:23:59 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['2007-10-09'], endDate: []
+2026-07-13 13:23:59 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=date/True end=None/False
+2026-07-13 13:23:59 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-13 13:23:59 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=98a2fd34-b2bc-4e12-be69-6272c5200788 = 2007-10-09
+2026-07-13 13:23:59 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip#distribution = 2025-07-23T14:30:08.823653
+2026-07-13 13:23:59 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip#distribution = 2025-07-23T14:30:08.823658
+2026-07-13 13:23:59 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0#distribution = 2025-07-23T14:30:08.823661
+2026-07-13 13:23:59 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-13 13:23:59 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=98a2fd34-b2bc-4e12-be69-6272c5200788 = 2024-10-14T10:12:51.246000+00:00
+2026-07-13 13:23:59 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip#distribution = 2025-07-26T11:02:23.072295
+2026-07-13 13:23:59 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip#distribution = 2025-07-26T11:02:23.072466
+2026-07-13 13:23:59 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0#distribution = 2025-07-23T14:30:08.811053
+2026-07-13 13:23:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:23:59 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:23:59 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=3/3
+2026-07-13 13:23:59 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:23:59 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/3
+2026-07-13 13:23:59 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:23:59 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/3
+2026-07-13 13:23:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:23:59 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] partial score=0.50 valid=2/3 relevant=3/3
+2026-07-13 13:23:59 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] partial score=0.50 valid=2/3 relevant=3/3
+2026-07-13 13:23:59 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.50 high=0 mid=3 none=0 total=3
+2026-07-13 13:23:59 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/3
+2026-07-13 13:23:59 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:23:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:23:59 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-13 13:23:59 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:23:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:23:59 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:23:59 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-13 13:23:59 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-13 13:24:01 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=8
+2026-07-13 13:24:01 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-13 13:24:01 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=1.00 | Der Titel erfüllt alle Anforderungen: Er ist spezifisch, verständlich, enthält den notwendigen Ortsbezug und ist frei vo
+2026-07-13 13:24:01 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.20 | Die Beschreibung bietet kaum Mehrwert über den Titel hinaus. Sie beantwortet weder, wie die Daten strukturiert sind, noc
+2026-07-13 13:24:01 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.90 | Titel und Beschreibung sind inhaltlich konsistent und behandeln denselben Gegenstand. Die Beschreibung fügt zumindest di
+2026-07-13 13:24:01 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.70 | Die inhaltlichen Schlagwörter sind gut gewählt und spezifisch. Allerdings sind 'inspireidentifiziert' und 'opendata' for
+2026-07-13 13:24:01 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=1.00 | Alle Metadatenfelder bilden ein widerspruchsfreies, konsistentes Themenbild rund um Wasserschutzgebiete und Umweltschutz
+2026-07-13 13:24:01 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:24:01 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=1.00 | Alle für diesen Datentyp (Verwaltungsdaten/Geodaten) erforderlichen kontextuellen Qualifizierer sind vorhanden: räumlich
+2026-07-13 13:24:01 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:24:01 - scoring.service - DEBUG - {
+  "dataset_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=98a2fd34-b2bc-4e12-be69-6272c5200788",
+  "titles": [
+    "Wasserschutzgebiete (Landkreis Holzminden)"
+  ],
+  "descriptions": [
+    "festgesetzte Wasserschutzgebiete im Landkreis Holzminden"
+  ],
+  "keywords": [
+    "inspireidentifiziert",
+    "opendata",
+    "schutzgebiete",
+    "wasserschutz",
+    "wasserschutzgebiet"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/ENVI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2024-10-14T10:12:51.246000+00:00"
+  ],
+  "issued": [
+    "2007-10-09"
+  ],
+  "accrual_periodicity": "http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded",
+  "accrual_periodicity_in_vocab": false,
+  "start_dates": [
+    "2007-10-09"
+  ],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((9.3319 52.0356, 9.8627 52.0356, 9.8627 51.6445, 9.3319 51.6445, 9.3319 52.0356))"
+  ],
+  "spatial_resources": [
+    "N3778beba24da4a288b74e4cafb534d65"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "Nb87c50e8e5ef4bec821a1e2d4d0ef574",
+  "publisher": "Na9355b3e55584154bcf6bbd23cf1eea0",
+  "contact_points": [
+    "N20ce11cfaebc40dfa6b49fbf2f454e46"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/gdiDE"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip#distribution",
+      "titles": [
+        "Schutzgebiete als Shape-Dateien (zip)"
+      ],
+      "descriptions": [
+        "Schutzgebiete als Shape-Dateien (zip)"
+      ],
+      "download_url": "https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip",
+      "access_url": "https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip",
+      "formats": [
+        "shape"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/zip"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2025-07-26T11:02:23.072295"
+      ],
+      "issued": [
+        "2025-07-23T14:30:08.823653"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "shape",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "Schutzgebiete.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/x-zip-compressed",
+            "mime_type": "application/x-zip-compressed"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "Schutzgebiete.zip (from final URL)",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "application/zip",
+        "issues": [],
+        "warnings": [
+          "dct:format='shape' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.zip",
+        "content_disposition": null,
+        "attachment_filename": "Schutzgebiete.zip",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip#distribution",
+      "titles": [
+        "Schutzgebiete als Geo-Datenbank (zip)"
+      ],
+      "descriptions": [
+        "Schutzgebiete als Geo-Datenbank (zip)"
+      ],
+      "download_url": "https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip",
+      "access_url": "https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip",
+      "formats": [
+        "shape"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/zip"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2025-07-26T11:02:23.072466"
+      ],
+      "issued": [
+        "2025-07-23T14:30:08.823658"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "shape",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "Schutzgebiete.gdb.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/x-zip-compressed",
+            "mime_type": "application/x-zip-compressed"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "Schutzgebiete.gdb.zip (from final URL)",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "application/zip",
+        "issues": [],
+        "warnings": [
+          "dct:format='shape' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://gis.landkreis-holzminden.de/Dokumente/Schutzgebiete/Schutzgebiete.gdb.zip",
+        "content_disposition": null,
+        "attachment_filename": "Schutzgebiete.gdb.zip",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0#distribution",
+      "titles": [
+        "Karte der Schutzgebiete im Landkreis Holzminden (pdf)"
+      ],
+      "descriptions": [
+        "Karte der Schutzgebiete im Landkreis Holzminden (pdf)"
+      ],
+      "download_url": "https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0",
+      "access_url": "https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0",
+      "formats": [
+        "shape"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-07-23T14:30:08.811053"
+      ],
+      "issued": [
+        "2025-07-23T14:30:08.823661"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "shape",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=iso-8859-1",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [
+          "dct:format='shape' has no known MIME mapping; not comparable",
+          "downloadURL returned HTTP 403; remaining checks rely on declared metadata only"
+        ],
+        "fetched": true,
+        "status_code": 403,
+        "fetch_error": null,
+        "download_status_code": 403,
+        "download_fetch_error": null,
+        "access_status_code": 403,
+        "access_fetch_error": null,
+        "final_url": "https://www.landkreis-holzminden.de/downloads/datei/NmMwYzQzN2VjMjllMjc2M2FwcTJmd0tHc2p1UXZlN0YxdXowd3ZrMjNtMEtpRFYzclJ5bGFpZVF4OGdCVUZyZG9UYkFBUDBRV0QzTjNnQkF4anRiTnpsandUa3hTQ3lBTExmM1BGQU1PUm9ET0dQQ2Y5ak96cU9Pa2trK1hRT25xeEhuZHdDd1dkYkg5blh4c25tUzAvbzBCajloVVdFZWlmc3lLN2NBUGkyZ2hPU1Jsa1dFSmEzTE9BUT0",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel ist spezifisch und nennt sowohl den Datentyp (Wasserschutzgebiete) als auch den räumlichen Bezug (Landkreis Holzminden).",
+        "Der Titel ist prägnant, verständlich und unterscheidet sich klar von ähnlichen Datensätzen anderer Landkreise.",
+        "Keine Sonderzeichen, Codes oder unnötige Zusätze vorhanden."
+      ],
+      "reasoning": "Der Titel erfüllt alle Anforderungen: Er ist spezifisch, verständlich, enthält den notwendigen Ortsbezug und ist frei von technischen Artefakten. Er ermöglicht eine klare Unterscheidung von ähnlichen Datensätzen anderer Regionen.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung ist sehr kurz und wiederholt im Wesentlichen nur den Titel ('festgesetzte Wasserschutzgebiete im Landkreis Holzminden').",
+        "Es fehlen strukturelle Informationen wie Format, Tabellenaufbau, Kategorien oder Kodierung.",
+        "Keine Angaben zu Erhebungsmethode, Datenquelle, Zweck oder Besonderheiten vorhanden."
+      ],
+      "reasoning": "Die Beschreibung bietet kaum Mehrwert über den Titel hinaus. Sie beantwortet weder, wie die Daten strukturiert sind, noch wie sie erhoben wurden oder welchem Zweck sie dienen. Wesentliche Informationen für die Nutzbarkeit fehlen.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung behandeln dasselbe Thema (Wasserschutzgebiete im Landkreis Holzminden).",
+        "Die Beschreibung ergänzt den Titel um die Information 'festgesetzt', was einen Hinweis auf den rechtlichen Status gibt.",
+        "Keine Widersprüche zwischen Titel und Beschreibung erkennbar."
+      ],
+      "reasoning": "Titel und Beschreibung sind inhaltlich konsistent und behandeln denselben Gegenstand. Die Beschreibung fügt zumindest die Information 'festgesetzt' hinzu, auch wenn sie insgesamt sehr knapp ist. Es gibt keine Widersprüche.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter 'wasserschutz', 'wasserschutzgebiet' und 'schutzgebiete' sind inhaltlich relevant und laienverständlich.",
+        "Die Schlagwörter 'inspireidentifiziert' und 'opendata' sind formale/technische Tags, die nicht den Inhalt beschreiben.",
+        "Die Schlagwörter sind in Singularform und gut formuliert, ergänzen den Titel sinnvoll."
+      ],
+      "reasoning": "Die inhaltlichen Schlagwörter sind gut gewählt und spezifisch. Allerdings sind 'inspireidentifiziert' und 'opendata' formale Tags, die laut Konvention abgewertet werden sollten, da sie keine inhaltliche Beschreibung bieten. Insgesamt überwiegen die positiven Aspekte.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das Thema ENVI (Umwelt) passt perfekt zu Wasserschutzgebieten.",
+        "Titel, Beschreibung und Schlagwörter behandeln konsistent das Thema Wasserschutz.",
+        "Keine Off-topic-Signale in irgendeinem Feld erkennbar."
+      ],
+      "reasoning": "Alle Metadatenfelder bilden ein widerspruchsfreies, konsistentes Themenbild rund um Wasserschutzgebiete und Umweltschutz. Die Kategorisierung als ENVI ist vollständig passend.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Der räumliche Bezug (Landkreis Holzminden) ist im Titel und in der Beschreibung klar angegeben.",
+        "Die zeitliche Abdeckung ist durch 'issued' (2007-10-09) und 'modified' (2024-10-14) dokumentiert.",
+        "Der Aktualisierungszyklus ist mit 'asNeeded' (bei Bedarf) angegeben, was für Verwaltungsdaten angemessen ist."
+      ],
+      "reasoning": "Alle für diesen Datentyp (Verwaltungsdaten/Geodaten) erforderlichen kontextuellen Qualifizierer sind vorhanden: räumliche Abdeckung, zeitlicher Bezug und Aktualisierungszyklus. Die Angaben sind klar und vollständig.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "overall_summary": "Die Metadaten sind thematisch konsistent und der Titel ist vorbildlich. Allerdings ist die Beschreibung viel zu knapp und bietet kaum Mehrwert. Die Schlagwörter sind überwiegend gut, enthalten aber einige formale Tags. Insgesamt sind die Metadaten grundsätzlich aussagekräftig, könnten aber durch eine substanziellere Beschreibung deutlich verbessert werden."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6094,
+      "output_tokens": 1496,
+      "total_tokens": 7590,
+      "cost_usd": 0.040722,
+      "latency_seconds": 21.621
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-13 13:24:01 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/geo_gdi-de_05/result.json
+2026-07-13 13:24:01 - __main__ - INFO -   ✓ Completed | score=0.65 grade=C

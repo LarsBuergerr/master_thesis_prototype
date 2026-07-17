@@ -1,0 +1,465 @@
+2026-07-13 13:24:01 - reporting.output_manager - INFO - Created file log handler for geo_open-data-brandenburg.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/geo_open-data-brandenburg/logs.log
+2026-07-13 13:24:01 - __main__ - INFO - Started processing: geo_open-data-brandenburg.rdf
+2026-07-13 13:24:01 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_open-data-brandenburg.rdf
+2026-07-13 13:24:01 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_open-data-brandenburg.rdf using format: xml
+2026-07-13 13:24:01 - extraction.rdf_parser - INFO - Successfully parsed 81 triples
+2026-07-13 13:24:01 - scoring.service - INFO - Parsed 81 triples
+2026-07-13 13:24:01 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-13 13:24:01 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-13 13:24:01 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/a124e3f5-bcef-41f8-95a1-6de4d345f83f — Geoportal der Stadt Wriezen
+  downloadURL : https://www.geoportal-wriezen.de/
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=-                                        mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-13 13:24:01 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/78950850-ba32-414f-892b-be3209507c2a — Vorhabenbezogener Bebauungsplan Solarpark Haselberg - Stadt Wriezen OT Haselberg (WMS)
+  accessURL   : https://www.geoportal-wriezen.de/isk/bp23?REQUEST=GetCapabilities&SERVICE=WMS
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=bp23                                     mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+2026-07-13 13:24:01 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/f054aee9-cb6f-4880-b6af-8ac51512f058 — Vorhabenbezogener Bebauungsplan Solarpark Haselberg - Stadt Wriezen OT Haselberg (WFS)
+  accessURL   : https://www.geoportal-wriezen.de/isk/bp23?REQUEST=GetCapabilities&SERVICE=WFS
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=bp23                                     mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+2026-07-13 13:24:01 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-13 13:24:29 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Der Titel ist vorbildlich spezifisch und verständlich, die thematische Konsistenz ist gegeben. Die Beschreibung ist jedo')
+2026-07-13 13:24:29 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:24:29 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=5
+2026-07-13 13:24:29 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['bauleitplanung', 'bodennutzung', 'erdbeobachtung-und-umwelt', 'opendata', 'planung']
+2026-07-13 13:24:29 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/TECH', 'http://publications.europa.eu/resource/authority/data-theme/ENVI', 'http://publications.europa.eu/resource/authority/data-theme/REGI']
+2026-07-13 13:24:29 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=3/3
+2026-07-13 13:24:29 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-13 13:24:29 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-13 13:24:29 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-13 13:24:29 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-13 13:24:29 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-13 13:24:29 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-13 13:24:29 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/fb358b4f-66be-424a-b8bc-da4f82f30a9b = 2023-11-03T13:31:37
+2026-07-13 13:24:29 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/f054aee9-cb6f-4880-b6af-8ac51512f058 = 2025-10-12T03:09:07.235905
+2026-07-13 13:24:29 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/78950850-ba32-414f-892b-be3209507c2a = 2025-10-12T03:09:07.235912
+2026-07-13 13:24:29 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/a124e3f5-bcef-41f8-95a1-6de4d345f83f = 2026-05-17T06:27:23.334226
+2026-07-13 13:24:29 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-13 13:24:29 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/fb358b4f-66be-424a-b8bc-da4f82f30a9b = 2025-10-22T11:26:47
+2026-07-13 13:24:29 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/f054aee9-cb6f-4880-b6af-8ac51512f058 = 2025-10-22T11:26:47
+2026-07-13 13:24:29 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/78950850-ba32-414f-892b-be3209507c2a = 2025-10-22T11:26:47
+2026-07-13 13:24:29 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/a124e3f5-bcef-41f8-95a1-6de4d345f83f = 2026-05-17T06:27:23.323240
+2026-07-13 13:24:29 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:24:29 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:24:29 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:24:29 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.33 with_download=1/3
+2026-07-13 13:24:29 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:24:29 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=3/3
+2026-07-13 13:24:29 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:24:29 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/3
+2026-07-13 13:24:29 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:24:29 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/3
+2026-07-13 13:24:29 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-13 13:24:29 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=0.83 high=2 mid=1 none=0 total=3
+2026-07-13 13:24:29 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=3/3
+2026-07-13 13:24:29 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:24:29 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-13 13:24:29 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:24:29 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:24:29 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-13 13:24:29 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-13 13:24:29 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:24:31 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-13 13:24:31 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-13 13:24:31 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=1.00 | Der Titel erfüllt alle Anforderungen vorbildlich: Er ist spezifisch, prägnant, verständlich und unterscheidet sich klar 
+2026-07-13 13:24:31 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.30 | Die Beschreibung ist eine generische Definition des Plantyps, beantwortet aber keine der fünf Kernfragen (Was? Wie struk
+2026-07-13 13:24:31 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.60 | Titel und Beschreibung widersprechen sich nicht und behandeln dasselbe Thema (vorhabenbezogener Bebauungsplan). Allerdin
+2026-07-13 13:24:31 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.70 | Die meisten Schlagwörter sind gut gewählt und ergänzen den Titel sinnvoll. Das Kompositum 'erdbeobachtung-und-umwelt' so
+2026-07-13 13:24:31 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=1.00 | Alle Felder (Themen, Schlagwörter, Titel, Beschreibung) bilden ein konsistentes Themenbild rund um Bauleitplanung, Solar
+2026-07-13 13:24:31 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.40 | Für einen Bebauungsplan ist der Verfahrensstatus (Entwurf, Offenlage, rechtskräftig) ein klar verlangter kontextueller Q
+2026-07-13 13:24:31 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:24:31 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:24:31 - scoring.service - DEBUG - {
+  "dataset_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/fb358b4f-66be-424a-b8bc-da4f82f30a9b",
+  "titles": [
+    "Vorhabenbezogener Bebauungsplan Solarpark Haselberg - Stadt Wriezen OT Haselberg"
+  ],
+  "descriptions": [
+    "Der Vorhabenbezogene Bebauungsplan setzt als verbindlicher Bauleitplan eine objektbezogene Vorhabensplanung in unmittelbar geltendes Recht um. Für ihn gelten dieselben Regelungen, die auch für den Bebauungsplan maßgeblich sind."
+  ],
+  "keywords": [
+    "bauleitplanung",
+    "bodennutzung",
+    "erdbeobachtung-und-umwelt",
+    "opendata",
+    "planung"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "http://publications.europa.eu/resource/authority/data-theme/ENVI",
+    "http://publications.europa.eu/resource/authority/data-theme/REGI"
+  ],
+  "themes_in_vocab": [
+    true,
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2025-10-22T11:26:47"
+  ],
+  "issued": [
+    "2023-11-03T13:31:37"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((14.0470 52.7081, 14.0550 52.7081, 14.0550 52.7016, 14.0470 52.7016, 14.0470 52.7081))"
+  ],
+  "spatial_resources": [
+    "Nc5339410825e445a8985c93741322ff4"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply",
+  "publisher": "N4ee132289d8941d6b6f9ff0d2a50c007",
+  "contact_points": [
+    "Nf7ccd5dd1b164017813c7b36d4e13919"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/f054aee9-cb6f-4880-b6af-8ac51512f058",
+      "titles": [
+        "Vorhabenbezogener Bebauungsplan Solarpark Haselberg - Stadt Wriezen OT Haselberg (WFS)"
+      ],
+      "descriptions": [
+        "Der Vorhabenbezogene Bebauungsplan setzt als verbindlicher Bauleitplan eine objektbezogene Vorhabensplanung in unmittelbar geltendes Recht um. Für ihn gelten dieselben Regelungen, die auch für den Bebauungsplan maßgeblich sind."
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal-wriezen.de/isk/bp23?REQUEST=GetCapabilities&SERVICE=WFS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-10-22T11:26:47"
+      ],
+      "issued": [
+        "2025-10-12T03:09:07.235905"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bp23",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-wriezen.de/isk/bp23?REQUEST=GetCapabilities&SERVICE=WFS",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/78950850-ba32-414f-892b-be3209507c2a",
+      "titles": [
+        "Vorhabenbezogener Bebauungsplan Solarpark Haselberg - Stadt Wriezen OT Haselberg (WMS)"
+      ],
+      "descriptions": [
+        "Der Vorhabenbezogene Bebauungsplan setzt als verbindlicher Bauleitplan eine objektbezogene Vorhabensplanung in unmittelbar geltendes Recht um. Für ihn gelten dieselben Regelungen, die auch für den Bebauungsplan maßgeblich sind."
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal-wriezen.de/isk/bp23?REQUEST=GetCapabilities&SERVICE=WMS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-10-22T11:26:47"
+      ],
+      "issued": [
+        "2025-10-12T03:09:07.235912"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bp23",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-wriezen.de/isk/bp23?REQUEST=GetCapabilities&SERVICE=WMS",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/a124e3f5-bcef-41f8-95a1-6de4d345f83f",
+      "titles": [
+        "Geoportal der Stadt Wriezen"
+      ],
+      "descriptions": [
+        "Geoportal der Stadt Wriezen"
+      ],
+      "download_url": "https://www.geoportal-wriezen.de/",
+      "access_url": "https://www.geoportal-wriezen.de/",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-17T06:27:23.323240"
+      ],
+      "issued": [
+        "2026-05-17T06:27:23.334226"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-wriezen.de/",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel ist sehr spezifisch und nennt Planungsart (Vorhabenbezogener Bebauungsplan), Projektname (Solarpark Haselberg), Stadt (Wriezen) und Ortsteil (Haselberg).",
+        "Der Titel ist klar strukturiert und ermöglicht eine eindeutige Unterscheidung von anderen Bebauungsplänen.",
+        "Keine Sonderzeichen, Codes oder Markdown-Reste vorhanden; reiner, verständlicher Text."
+      ],
+      "reasoning": "Der Titel erfüllt alle Anforderungen vorbildlich: Er ist spezifisch, prägnant, verständlich und unterscheidet sich klar von ähnlichen Datensätzen. Die Nennung von Ort und Projektname ist hier sinnvoll und notwendig für das Verständnis. Keine Abwertungsgründe erkennbar.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt nur allgemein, was ein vorhabenbezogener Bebauungsplan ist, aber nicht, was dieser spezifische Datensatz enthält.",
+        "Es fehlen konkrete Informationen zu Inhalt, Struktur, Format, Dateitypen oder Zweck dieses speziellen Solarpark-Projekts.",
+        "Keine Angaben zu Erhebungsmethode, Datenquelle, Planungsstand, Verfahrensstatus oder technischen Details."
+      ],
+      "reasoning": "Die Beschreibung ist eine generische Definition des Plantyps, beantwortet aber keine der fünf Kernfragen (Was? Wie strukturiert? Wie/warum erhoben? Wozu? Besonderheiten?). Sie könnte für jeden vorhabenbezogenen Bebauungsplan verwendet werden und liefert keinen spezifischen Mehrwert für diesen Datensatz. Deutliche Mängel.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung behandeln beide das Thema 'Vorhabenbezogener Bebauungsplan'.",
+        "Die Beschreibung geht nicht auf die im Titel genannten Spezifika (Solarpark Haselberg, Wriezen) ein.",
+        "Kein inhaltlicher Widerspruch, aber die Beschreibung konkretisiert den Titel nicht."
+      ],
+      "reasoning": "Titel und Beschreibung widersprechen sich nicht und behandeln dasselbe Thema (vorhabenbezogener Bebauungsplan). Allerdings versäumt es die Beschreibung, den spezifischen Titel zu stützen oder zu konkretisieren – sie bleibt vollständig generisch. Die Kohärenz ist formal gegeben, aber die Beschreibung erfüllt ihre Funktion nur minimal.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter sind kleingeschrieben, singularisch und laienverständlich (bauleitplanung, bodennutzung, planung).",
+        "Das Schlagwort 'erdbeobachtung-und-umwelt' ist ein Kompositum mit Bindestrich, nicht atomar.",
+        "'opendata' ist ein formales Tag ohne inhaltlichen Mehrwert; 'planung' wiederholt teilweise den Titel."
+      ],
+      "reasoning": "Die meisten Schlagwörter sind gut gewählt und ergänzen den Titel sinnvoll. Das Kompositum 'erdbeobachtung-und-umwelt' sollte in atomare Begriffe zerlegt werden. 'opendata' ist ein formales Tag, das abgewertet werden sollte. Insgesamt brauchbar mit kleineren Schwächen.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Die Themen TECH (Technologie), ENVI (Umwelt) und REGI (Regionen/Städte) passen zu einem Bebauungsplan für einen Solarpark.",
+        "Schlagwörter (bauleitplanung, bodennutzung, planung) sind konsistent mit Bebauungsplanung und Regionalentwicklung.",
+        "Titel und Beschreibung behandeln beide Bauleitplanung; kein Off-topic-Signal erkennbar."
+      ],
+      "reasoning": "Alle Felder (Themen, Schlagwörter, Titel, Beschreibung) bilden ein konsistentes Themenbild rund um Bauleitplanung, Solarenergie und Regionalentwicklung. Keine Widersprüche oder Off-topic-Signale vorhanden.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Es handelt sich um einen Bebauungsplan (Planungsdokument), für den der Planungsstand/Verfahrensstatus relevant wäre (z. B. Entwurf, rechtskräftig).",
+        "Kein Hinweis auf Planungsstand, Stichtag, Gültigkeit oder Aktualisierungszyklus in den Metadaten.",
+        "Das Änderungsdatum (modified: 2025-10-22) liegt in der Zukunft, was auf einen Fehler hindeutet, aber nicht hier bewertet wird."
+      ],
+      "reasoning": "Für einen Bebauungsplan ist der Verfahrensstatus (Entwurf, Offenlage, rechtskräftig) ein klar verlangter kontextueller Qualifizierer, der hier fehlt. Auch ein Stichtag oder Gültigkeitszeitraum wäre hilfreich. Ein klar verlangter Qualifizierer fehlt.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, die thematische Konsistenz ist gegeben. Die Beschreibung ist jedoch generisch und liefert keine spezifischen Informationen zum Datensatz. Kontextuelle Qualifizierer wie der Planungsstand fehlen. Insgesamt ist die Aussagekraft eingeschränkt."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6179,
+      "output_tokens": 1696,
+      "total_tokens": 7875,
+      "cost_usd": 0.043977,
+      "latency_seconds": 28.423
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-13 13:24:31 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/geo_open-data-brandenburg/result.json
+2026-07-13 13:24:31 - __main__ - INFO -   ✓ Completed | score=0.71 grade=C

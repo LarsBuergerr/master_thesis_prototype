@@ -1,0 +1,588 @@
+2026-07-16 11:23:58 - reporting.output_manager - INFO - Created file log handler for non_geo_open-data-bayern_03.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_open-data-bayern_03/logs.log
+2026-07-16 11:23:58 - __main__ - INFO - Started processing: non_geo_open-data-bayern_03.rdf
+2026-07-16 11:23:58 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_open-data-bayern_03.rdf
+2026-07-16 11:23:58 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_open-data-bayern_03.rdf using format: xml
+2026-07-16 11:23:58 - extraction.rdf_parser - INFO - Successfully parsed 86 triples
+2026-07-16 11:23:58 - scoring.service - INFO - Parsed 86 triples
+2026-07-16 11:23:58 - scoring.service - DEBUG - DatasetContext built: 4 distribution(s)
+2026-07-16 11:23:58 - scoring.service - DEBUG - attach_probes: 4/4 unique fetch keys, 4 distribution(s) covered
+2026-07-16 11:24:08 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/91c90bc3-0e81-4bbe-843f-501e4c39dd1b — Lebendgeborene - XLSX
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=xlsx&regionalschluessel=09778123&regionalmerkmal=GEMEIN
+  HTTP        : 200
+  attachment  : 12612-003z.xlsx
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/vnd.ms-excel
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/xlsx
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=application/vnd.openxmlformats-officedo… mime=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+    attachment_filename  raw=12612-003z.xlsx                          mime=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  coalesced   : application/vnd.ms-excel
+2026-07-16 11:24:09 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/eecfae8f-51b3-4a61-99a5-42b2de01d8a2 — Lebendgeborene - XML
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=xml&regionalschluessel=09778123&regionalmerkmal=GEMEIN
+  HTTP        : 200
+  attachment  : 12612-003z.xml
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/xml
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=text/xml;charset=UTF-8                   mime=text/xml
+    attachment_filename  raw=12612-003z.xml                           mime=application/xml
+  coalesced   : application/xml
+2026-07-16 11:24:09 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/62499cb3-64db-430a-882f-a388fd10840d — Lebendgeborene - CSV
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=csv&regionalschluessel=09778123&regionalmerkmal=GEMEIN
+  HTTP        : 200
+  attachment  : 12612-003z.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/csv
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=text/html;charset=UTF-8                  mime=text/html
+    attachment_filename  raw=12612-003z.csv                           mime=text/csv
+  coalesced   : text/csv
+  warning     : HTTP Content-Type 'text/html' disagrees with attachment filename ('12612-003z.csv' → 'text/csv'); treating as advisory
+2026-07-16 11:24:09 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/4777b86c-84b4-49af-8e4b-1f3da2aaee55 — Lebendgeborene - Flat CSV
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=ffcsv&regionalschluessel=09778123&regionalmerkmal=GEMEIN
+  HTTP        : 200
+  attachment  : 12612-003z_flat.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/csv
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=text/comma-separated-values;charset=ISO… mime=text/comma-separated-values
+    attachment_filename  raw=12612-003z_flat.csv                      mime=text/csv
+  coalesced   : text/csv
+  warning     : HTTP Content-Type 'text/comma-separated-values' disagrees with attachment filename ('12612-003z_flat.csv' → 'text/csv'); treating as advisory
+2026-07-16 11:24:09 - scoring.service - DEBUG - Attached probes to 4/4 distribution(s)
+2026-07-16 11:24:27 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten machen den Kern des Datensatzes – Lebendgeborene in Buxheim nach Geschlecht und Jahr – grundsätzlich erken')
+2026-07-16 11:24:27 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:24:27 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=8
+2026-07-16 11:24:27 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['berichtsjahr', 'buxheim', 'gemeinden-bayerns-einschl.-gemeindefreie-gebiete', 'geschlecht', 'lebendgeborene', 'männlich', 'statistik-der-geburten', 'weiblich']
+2026-07-16 11:24:27 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/SOCI']
+2026-07-16 11:24:27 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 11:24:27 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 11:24:27 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:24:27 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] pass score=1.00 valid=1/1
+2026-07-16 11:24:27 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:24:27 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:24:27 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/issued
+2026-07-16 11:24:27 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://open.bydata.de/api/hub/repo/datasets/12612-003-09778123 = 2024-02-14T19:41:13
+2026-07-16 11:24:27 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/eecfae8f-51b3-4a61-99a5-42b2de01d8a2 = 2026-02-14T12:57:50.709014
+2026-07-16 11:24:27 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/62499cb3-64db-430a-882f-a388fd10840d = 2026-02-14T12:57:50.709020
+2026-07-16 11:24:27 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/4777b86c-84b4-49af-8e4b-1f3da2aaee55 = 2026-02-14T12:57:50.709023
+2026-07-16 11:24:27 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/91c90bc3-0e81-4bbe-843f-501e4c39dd1b = 2026-02-14T12:57:50.709025
+2026-07-16 11:24:27 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/modified
+2026-07-16 11:24:27 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://open.bydata.de/api/hub/repo/datasets/12612-003-09778123 = 2024-02-14T19:41:13
+2026-07-16 11:24:27 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/eecfae8f-51b3-4a61-99a5-42b2de01d8a2 = 2026-06-09T22:05:21
+2026-07-16 11:24:27 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/62499cb3-64db-430a-882f-a388fd10840d = 2026-06-09T22:05:21
+2026-07-16 11:24:27 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/4777b86c-84b4-49af-8e4b-1f3da2aaee55 = 2026-06-09T22:05:21
+2026-07-16 11:24:27 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/91c90bc3-0e81-4bbe-843f-501e4c39dd1b = 2026-06-09T22:05:21
+2026-07-16 11:24:27 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:24:27 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:24:27 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:24:27 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/4
+2026-07-16 11:24:27 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:24:27 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=4/4
+2026-07-16 11:24:27 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:24:27 - scoring.indicator.acc_media_type - INFO - [acc_media_type] partial score=0.75 passing=3/4
+2026-07-16 11:24:27 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:24:27 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-16 11:24:27 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=4/4 relevant=4/4
+2026-07-16 11:24:27 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=0.88 high=3 mid=1 none=0 total=4
+2026-07-16 11:24:27 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] partial score=0.75 passing=3/4
+2026-07-16 11:24:27 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:24:27 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=4/4
+2026-07-16 11:24:27 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:24:27 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:24:27 - scoring.indicator.reuse_contact - INFO - [reuse_contact] partial score=0.50 contacts=1 with_channel=0
+2026-07-16 11:24:27 - scoring.indicator.reuse_contributor_id - DEBUG - [reuse_contributor_id] contributorID cardinality violated: 2 values found
+2026-07-16 11:24:27 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:24:28 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] pass score=1.00 conforms=True violations=0
+2026-07-16 11:24:28 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/4
+2026-07-16 11:24:28 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.85 | Der Titel ist für sich genommen klar, prägnant und unterscheidbar, weil er sowohl räumlichen Bezug als auch Datengegenst
+2026-07-16 11:24:28 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.35 | Die Beschreibung macht den Kerninhalt grob erkennbar, ist aber sehr knapp und hat eher Schlagwortcharakter. Wesentliche 
+2026-07-16 11:24:28 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.80 | Zwischen Titel und Beschreibung besteht kein inhaltlicher Widerspruch; die Beschreibung konkretisiert den Datensatz zumi
+2026-07-16 11:24:28 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.60 | Die Schlagwörter beschreiben das Thema grundsätzlich zutreffend, sind aber teils nicht atomar, formal bzw. redundant und
+2026-07-16 11:24:28 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.95 | Alle vorhandenen inhaltlichen Felder bilden ein stimmiges Themenbild einer sozialen/demografischen Statistik zu Lebendge
+2026-07-16 11:24:28 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.45 | Für eine Statistik mit Jahresdimension sind konkrete zeitliche Kontextangaben wichtig. Zwar ist der Ort erkennbar und Ja
+2026-07-16 11:24:28 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:24:28 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:24:28 - scoring.service - DEBUG - {
+  "dataset_uri": "https://open.bydata.de/api/hub/repo/datasets/12612-003-09778123",
+  "titles": [
+    "Buxheim: Lebendgeborene"
+  ],
+  "descriptions": [
+    "Gemeinden, Lebendgeborene, Geschlecht, Jahr"
+  ],
+  "keywords": [
+    "berichtsjahr",
+    "buxheim",
+    "gemeinden-bayerns-einschl.-gemeindefreie-gebiete",
+    "geschlecht",
+    "lebendgeborene",
+    "männlich",
+    "statistik-der-geburten",
+    "weiblich"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2024-02-14T19:41:13"
+  ],
+  "issued": [
+    "2024-02-14T19:41:13"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/Level/municipality"
+  ],
+  "political_geocoding_level_in_vocab": [
+    true
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "N1b81963c5f45426eb05124a735bb80e1",
+  "contact_points": [
+    "N3e1d4c6c60774be0841761ae8c869da2"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/GenesisDestatis",
+    "http://dcat-ap.de/def/contributors/openDataBayern"
+  ],
+  "contributor_ids_in_vocab": [
+    false,
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/eecfae8f-51b3-4a61-99a5-42b2de01d8a2",
+      "titles": [
+        "Lebendgeborene - XML"
+      ],
+      "descriptions": [
+        "Lebendgeborene: Gemeinden, Lebendgeborene, Geschlecht, Jahr"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=xml&regionalschluessel=09778123&regionalmerkmal=GEMEIN",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/XML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/xml"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2026-06-09T22:05:21"
+      ],
+      "issued": [
+        "2026-02-14T12:57:50.709014"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/XML",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml;charset=UTF-8",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "12612-003z.xml",
+            "mime_type": "application/xml"
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=xml&regionalschluessel=09778123&regionalmerkmal=GEMEIN",
+        "content_disposition": "attachment; filename=12612-003z.xml",
+        "attachment_filename": "12612-003z.xml",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/62499cb3-64db-430a-882f-a388fd10840d",
+      "titles": [
+        "Lebendgeborene - CSV"
+      ],
+      "descriptions": [
+        "Lebendgeborene: Gemeinden, Lebendgeborene, Geschlecht, Jahr"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=csv&regionalschluessel=09778123&regionalmerkmal=GEMEIN",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/csv"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2026-06-09T22:05:21"
+      ],
+      "issued": [
+        "2026-02-14T12:57:50.709020"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html;charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "12612-003z.csv",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [
+          "HTTP Content-Type 'text/html' disagrees with attachment filename ('12612-003z.csv' → 'text/csv'); treating as advisory"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=csv&regionalschluessel=09778123&regionalmerkmal=GEMEIN",
+        "content_disposition": "attachment; filename=12612-003z.csv",
+        "attachment_filename": "12612-003z.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/4777b86c-84b4-49af-8e4b-1f3da2aaee55",
+      "titles": [
+        "Lebendgeborene - Flat CSV"
+      ],
+      "descriptions": [
+        "Lebendgeborene: Gemeinden, Lebendgeborene, Geschlecht, Jahr"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=ffcsv&regionalschluessel=09778123&regionalmerkmal=GEMEIN",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/csv"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2026-06-09T22:05:21"
+      ],
+      "issued": [
+        "2026-02-14T12:57:50.709023"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/comma-separated-values;charset=ISO-8859-1",
+            "mime_type": "text/comma-separated-values"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "12612-003z_flat.csv",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [
+          "HTTP Content-Type 'text/comma-separated-values' disagrees with attachment filename ('12612-003z_flat.csv' → 'text/csv'); treating as advisory"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=ffcsv&regionalschluessel=09778123&regionalmerkmal=GEMEIN",
+        "content_disposition": "attachment; filename=12612-003z_flat.csv",
+        "attachment_filename": "12612-003z_flat.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/91c90bc3-0e81-4bbe-843f-501e4c39dd1b",
+      "titles": [
+        "Lebendgeborene - XLSX"
+      ],
+      "descriptions": [
+        "Lebendgeborene: Gemeinden, Lebendgeborene, Geschlecht, Jahr"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=xlsx&regionalschluessel=09778123&regionalmerkmal=GEMEIN",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/XLS"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/xlsx"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-06-09T22:05:21"
+      ],
+      "issued": [
+        "2026-02-14T12:57:50.709025"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/XLS",
+            "mime_type": "application/vnd.ms-excel"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/xlsx",
+            "mime_type": "text/xlsx"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "12612-003z.xlsx",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          }
+        ],
+        "coalesced_mime": "application/vnd.ms-excel",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12612-003z&option=xlsx&regionalschluessel=09778123&regionalmerkmal=GEMEIN",
+        "content_disposition": "attachment; filename=12612-003z.xlsx",
+        "attachment_filename": "12612-003z.xlsx",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel nennt Ort („Buxheim“) und Gegenstand („Lebendgeborene“) spezifisch und knapp.",
+        "Der Titel ist verständlich und enthält keine technischen Zeichen oder Formatierungsreste.",
+        "Der Begriff ist thematisch eng, aber ohne Hinweis auf Geschlecht/Jahr als Untergliederungen."
+      ],
+      "reasoning": "Der Titel ist für sich genommen klar, prägnant und unterscheidbar, weil er sowohl räumlichen Bezug als auch Datengegenstand benennt. Kleinere Einschränkung ist, dass die im Datensatz offenbar relevanten Dimensionen Jahr und Geschlecht nicht sichtbar werden, was aber nicht zwingend im Titel stehen muss.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung besteht nur aus einer kommagetrennten Liste: „Gemeinden, Lebendgeborene, Geschlecht, Jahr“.",
+        "Sie nennt einige enthaltene Dimensionen, erklärt aber weder Struktur, Methode, Quelle noch Zweck der Daten.",
+        "Es fehlen Hinweise zu Format/Tabellenaufbau, Kodierung oder zur Erhebung der Geburtenstatistik."
+      ],
+      "reasoning": "Die Beschreibung macht den Kerninhalt grob erkennbar, ist aber sehr knapp und hat eher Schlagwortcharakter. Wesentliche Informationen zur Struktur und Herkunft der statistischen Daten fehlen, daher ist die Aussagekraft deutlich eingeschränkt.",
+      "applicable": true,
+      "score": 0.35
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf Lebendgeborene.",
+        "Der Ort Buxheim aus dem Titel wird durch die Beschreibung nicht widersprochen, aber auch nicht explizit wiederholt.",
+        "Die Beschreibung nennt zusätzliche Dimensionen wie Geschlecht und Jahr, die zum Titel passen."
+      ],
+      "reasoning": "Zwischen Titel und Beschreibung besteht kein inhaltlicher Widerspruch; die Beschreibung konkretisiert den Datensatz zumindest durch Kategorien wie Geschlecht und Jahr. Die Kohärenz ist gut, auch wenn die Beschreibung sehr knapp bleibt.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "keyword_quality": {
+      "findings": [
+        "Mehrere Schlagwörter sind inhaltlich passend, etwa „lebendgeborene“, „geschlecht“, „männlich“ und „weiblich“.",
+        "Einige Schlagwörter sind formal oder redundant, z. B. „buxheim“ als Ortsname und „berichtsjahr“.",
+        "Das Schlagwort „gemeinden-bayerns-einschl.-gemeindefreie-gebiete“ ist lang, kompositartig und laienunfreundlich formuliert."
+      ],
+      "reasoning": "Die Schlagwörter beschreiben das Thema grundsätzlich zutreffend, sind aber teils nicht atomar, formal bzw. redundant und enthalten eine schwer lesbare zusammengesetzte Verwaltungskategorie. Dadurch ist die Qualität brauchbar, aber mit klaren Schwächen.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Thema SOCI passt zu Geburten- bzw. Bevölkerungsstatistik.",
+        "Titel, Beschreibung und Schlagwörter beziehen sich konsistent auf Lebendgeborene, Geschlecht, Jahr und Gemeinde/Buxheim.",
+        "Es sind keine off-topic-Signale erkennbar."
+      ],
+      "reasoning": "Alle vorhandenen inhaltlichen Felder bilden ein stimmiges Themenbild einer sozialen/demografischen Statistik zu Lebendgeborenen. Widersprüche zwischen Thema, Schlagwörtern, Titel und Beschreibung sind nicht erkennbar.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Der Datensatz ist eine Statistik bzw. offenbar Zeit-/Jahresreihe zu Lebendgeborenen.",
+        "„Jahr“ bzw. „berichtsjahr“ wird als Dimension genannt, aber kein konkreter Bezugszeitraum in den Metadaten angegeben.",
+        "Der räumliche Bezug Buxheim ist im Titel vorhanden; ein Aktualisierungszyklus fehlt trotz statistischem Jahresbezug."
+      ],
+      "reasoning": "Für eine Statistik mit Jahresdimension sind konkrete zeitliche Kontextangaben wichtig. Zwar ist der Ort erkennbar und Jahr als Feld genannt, aber der tatsächliche Zeitraum bzw. die abgedeckten Berichtsjahre fehlen in den Metadaten; auch ein Aktualisierungszyklus ist nicht angegeben.",
+      "applicable": true,
+      "score": 0.45
+    },
+    "overall_summary": "Die Metadaten machen den Kern des Datensatzes – Lebendgeborene in Buxheim nach Geschlecht und Jahr – grundsätzlich erkennbar und sind thematisch konsistent. Die Aussagekraft leidet jedoch deutlich unter der sehr knappen Beschreibung und fehlenden konkreten Zeit-/Kontextangaben."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3381,
+      "output_tokens": 966,
+      "total_tokens": 4347,
+      "cost_usd": 0.036093,
+      "latency_seconds": 17.264
+    }
+  ],
+  "distribution_count": 4
+}
+2026-07-16 11:24:28 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_open-data-bayern_03/result.json
+2026-07-16 11:24:28 - __main__ - INFO -   ✓ Completed | score=0.64 grade=C

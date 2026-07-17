@@ -1,0 +1,301 @@
+2026-07-16 11:12:03 - reporting.output_manager - INFO - Created file log handler for geo_gdi-de_04.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_gdi-de_04/logs.log
+2026-07-16 11:12:03 - __main__ - INFO - Started processing: geo_gdi-de_04.rdf
+2026-07-16 11:12:03 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_gdi-de_04.rdf
+2026-07-16 11:12:03 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_gdi-de_04.rdf using format: xml
+2026-07-16 11:12:03 - extraction.rdf_parser - INFO - Successfully parsed 60 triples
+2026-07-16 11:12:03 - scoring.service - INFO - Parsed 60 triples
+2026-07-16 11:12:03 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-16 11:12:03 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-16 11:12:04 - scoring.service - DEBUG - [ERROR] https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution — Direktdownload Spielplätze
+  downloadURL : https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip
+  HTTP        : 200
+  attachment  : ko_berg_spiel.zip
+  signals     :
+    dct:format           raw=SHP                                      mime=x-gis/x-shapefile
+    dcat:mediaType       raw=application/zip                          mime=application/zip
+    url_extension        raw=ko_berg_spiel.zip                        mime=application/zip
+    http_content_type    raw=application/zip                          mime=application/zip
+    attachment_filename  raw=ko_berg_spiel.zip                        mime=application/zip
+  coalesced   : x-gis/x-shapefile
+  issue       : dcat:mediaType='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+  issue       : attachment_filename='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+  issue       : url_extension='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+  issue       : http_content_type='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+2026-07-16 11:12:04 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-16 11:12:19 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind insgesamt verständlich und konsistent: Titel und Beschreibung machen den Inhalt als kommunale Spielpl')
+2026-07-16 11:12:19 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:12:19 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=4
+2026-07-16 11:12:19 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['bodennutzung', 'opendata', 'spielplatz', 'thüringen']
+2026-07-16 11:12:19 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/GOVE', 'http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/EDUC', 'http://publications.europa.eu/resource/authority/data-theme/SOCI']
+2026-07-16 11:12:19 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=4/4
+2026-07-16 11:12:19 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:12:19 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:12:19 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:12:19 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:12:19 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:12:19 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-16 11:12:19 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=760045f4-2db4-490a-9ef1-19169e126d6a = 2022-12-09
+2026-07-16 11:12:19 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution = 2025-07-23T13:51:03.359320
+2026-07-16 11:12:19 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-16 11:12:19 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=760045f4-2db4-490a-9ef1-19169e126d6a = 2024-05-13T11:54:37
+2026-07-16 11:12:19 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution = 2025-07-26T10:34:05.323462
+2026-07-16 11:12:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:12:19 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:12:19 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=1/1
+2026-07-16 11:12:19 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:12:19 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/1
+2026-07-16 11:12:19 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:12:19 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/1
+2026-07-16 11:12:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:12:19 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 11:12:19 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 11:12:19 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.50 high=0 mid=1 none=0 total=1
+2026-07-16 11:12:19 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/1
+2026-07-16 11:12:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:12:19 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=1/1
+2026-07-16 11:12:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:12:19 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:12:19 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:12:19 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:12:19 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:12:19 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:12:21 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=5
+2026-07-16 11:12:21 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-16 11:12:21 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.95 | Der Titel ist für sich genommen klar und unterscheidbar, da sowohl Thema als auch Kommune genannt werden. Es sind keine 
+2026-07-16 11:12:21 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] partial | score=0.60 | Die Beschreibung ist verständlich und benennt den Kern des Datensatzes, bleibt aber knapp. Wichtige Informationen zur St
+2026-07-16 11:12:21 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.95 | Titel und Beschreibung passen inhaltlich sehr gut zusammen; die Beschreibung stützt und präzisiert den Titel.
+2026-07-16 11:12:21 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.65 | Die vorhandenen Schlagwörter enthalten einen zentralen fachlichen Begriff, aber auch ein formales Tag und ein eher grobe
+2026-07-16 11:12:21 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.80 | Die Metadaten weisen insgesamt widerspruchsfrei auf kommunale Geodaten zu Spielplätzen hin. Einzelne breite Themen bzw. 
+2026-07-16 11:12:21 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.65 | Für Standort-Geodaten sind räumliche Abdeckung und Aktualisierungszyklus grundsätzlich vorhanden. Da der Datensatz ausdr
+2026-07-16 11:12:21 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:12:21 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:12:21 - scoring.service - DEBUG - {
+  "dataset_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=760045f4-2db4-490a-9ef1-19169e126d6a",
+  "titles": [
+    "Spielplätze der Stadt Berga-Wünschendorf"
+  ],
+  "descriptions": [
+    "Der Datensatz zeigt die Standorte der frei zugänglichen Spielplätze der Stadt Berga-Wünschendorf. Es handelt sich um einen Sekundärdatenbestand."
+  ],
+  "keywords": [
+    "bodennutzung",
+    "opendata",
+    "spielplatz",
+    "thüringen"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/EDUC",
+    "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+  ],
+  "themes_in_vocab": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2024-05-13T11:54:37"
+  ],
+  "issued": [
+    "2022-12-09"
+  ],
+  "accrual_periodicity": "http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded",
+  "accrual_periodicity_in_vocab": false,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((12.0950 50.7980, 12.2110 50.7980, 12.2110 50.7090, 12.0950 50.7090, 12.0950 50.7980))"
+  ],
+  "spatial_resources": [
+    "N868e95216dce4ab1b3aa579ffa3ed64c"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "Na4090e47302d46a0974180e117920242",
+  "publisher": "N28920dd018da4a6e8f5f00fa1daff511",
+  "contact_points": [
+    "N1f240ab206fc40959a997f2714984890"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/gdiDE"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+      "titles": [
+        "Direktdownload Spielplätze"
+      ],
+      "descriptions": [
+        "Direktdownload - Spielplätze der Stadt Berga-Wünschendorf. (Format: Shapefile)"
+      ],
+      "download_url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip",
+      "access_url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip",
+      "formats": [
+        "SHP"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/zip"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2025-07-26T10:34:05.323462"
+      ],
+      "issued": [
+        "2025-07-23T13:51:03.359320"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "SHP",
+            "mime_type": "x-gis/x-shapefile"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "ko_berg_spiel.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "ko_berg_spiel.zip",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "x-gis/x-shapefile",
+        "issues": [
+          "dcat:mediaType='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'",
+          "attachment_filename='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'",
+          "url_extension='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'",
+          "http_content_type='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip",
+        "content_disposition": "attachment;filename=\"ko_berg_spiel.zip\"",
+        "attachment_filename": "ko_berg_spiel.zip",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel benennt den Gegenstand spezifisch als Spielplätze und enthält den Ortsbezug Stadt Berga-Wünschendorf.",
+        "Der Titel ist kurz, verständlich und ohne technische Zeichen oder unerklärte Abkürzungen formuliert."
+      ],
+      "reasoning": "Der Titel ist für sich genommen klar und unterscheidbar, da sowohl Thema als auch Kommune genannt werden. Es sind keine formalen oder sprachlichen Mängel erkennbar.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung nennt den Inhalt: Standorte frei zugänglicher Spielplätze der Stadt Berga-Wünschendorf.",
+        "Sie enthält einen Hinweis, dass es sich um einen Sekundärdatenbestand handelt.",
+        "Es fehlen nähere Angaben zur Datenstruktur, Quelle/Erhebungsmethode, Aktualität oder Dokumentation."
+      ],
+      "reasoning": "Die Beschreibung ist verständlich und benennt den Kern des Datensatzes, bleibt aber knapp. Wichtige Informationen zur Struktur der Geodaten und zur Herkunft bzw. Ableitung des Sekundärdatenbestands fehlen.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf Spielplätze der Stadt Berga-Wünschendorf.",
+        "Die Beschreibung konkretisiert den Titel durch den Zusatz, dass Standorte frei zugänglicher Spielplätze gezeigt werden.",
+        "Es gibt keine erkennbaren Widersprüche bei Thema, Ort oder Inhalt."
+      ],
+      "reasoning": "Titel und Beschreibung passen inhaltlich sehr gut zusammen; die Beschreibung stützt und präzisiert den Titel.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter „spielplatz“ und „thüringen“ sind thematisch passend und verständlich.",
+        "„opendata“ ist eher formal und beschreibt nicht den fachlichen Inhalt.",
+        "„bodennutzung“ wirkt für Spielplatzstandorte nur indirekt passend und unspezifisch."
+      ],
+      "reasoning": "Die vorhandenen Schlagwörter enthalten einen zentralen fachlichen Begriff, aber auch ein formales Tag und ein eher grobes bzw. nur mittelbar passendes Schlagwort. Insgesamt sind sie brauchbar, aber nicht optimal spezifisch oder ergänzend.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Titel, Beschreibung und das Schlagwort „spielplatz“ bilden ein konsistentes Bild von öffentlichen Spielplatzstandorten.",
+        "Die Themen SOCI, EDUC, REGI und GOVE sind für öffentliche Spielplätze bzw. kommunale Standortdaten plausibel.",
+        "Das Schlagwort „bodennutzung“ ist nicht widersprüchlich, aber fachlich weniger zentral."
+      ],
+      "reasoning": "Die Metadaten weisen insgesamt widerspruchsfrei auf kommunale Geodaten zu Spielplätzen hin. Einzelne breite Themen bzw. das Schlagwort „bodennutzung“ schwächen die Präzision, erzeugen aber keinen klaren Off-topic-Konflikt.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Es handelt sich um Geodaten zu Standorten; der Ortsbezug ist im Titel und durch eine Bounding-Box-Geometrie vorhanden.",
+        "Eine Aktualisierungsfrequenz ist mit „as needed“ angegeben.",
+        "Für den Sekundärdatenbestand wird keine Quelle oder Ableitungsmethode genannt; auch ein fachlicher Stichtag der Standorte fehlt."
+      ],
+      "reasoning": "Für Standort-Geodaten sind räumliche Abdeckung und Aktualisierungszyklus grundsätzlich vorhanden. Da der Datensatz ausdrücklich als Sekundärdatenbestand beschrieben wird, wäre jedoch eine Angabe zur Quelle bzw. Ableitungsmethode wichtig; außerdem bleibt unklar, auf welchen fachlichen Stand sich die Spielplatzstandorte beziehen.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "overall_summary": "Die Metadaten sind insgesamt verständlich und konsistent: Titel und Beschreibung machen den Inhalt als kommunale Spielplatz-Standorte klar. Die Aussagekraft wird vor allem durch die knappe Beschreibung, teilweise formale bzw. unspezifische Schlagwörter und fehlende Angaben zur Quelle/Ableitung des Sekundärdatenbestands begrenzt."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3562,
+      "output_tokens": 866,
+      "total_tokens": 4428,
+      "cost_usd": 0.033998,
+      "latency_seconds": 14.884
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-16 11:12:21 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_gdi-de_04/result.json
+2026-07-16 11:12:21 - __main__ - INFO -   ✓ Completed | score=0.68 grade=C

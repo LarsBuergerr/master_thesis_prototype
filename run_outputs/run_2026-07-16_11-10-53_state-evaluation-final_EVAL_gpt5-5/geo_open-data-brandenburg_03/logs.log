@@ -1,0 +1,463 @@
+2026-07-16 11:13:17 - reporting.output_manager - INFO - Created file log handler for geo_open-data-brandenburg_03.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_open-data-brandenburg_03/logs.log
+2026-07-16 11:13:17 - __main__ - INFO - Started processing: geo_open-data-brandenburg_03.rdf
+2026-07-16 11:13:17 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_open-data-brandenburg_03.rdf
+2026-07-16 11:13:17 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_open-data-brandenburg_03.rdf using format: xml
+2026-07-16 11:13:17 - extraction.rdf_parser - INFO - Successfully parsed 81 triples
+2026-07-16 11:13:17 - scoring.service - INFO - Parsed 81 triples
+2026-07-16 11:13:17 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-16 11:13:17 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-16 11:13:17 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/7129bab3-1c8a-425d-85d9-125bd5da3b1b — Geoportal der Gemeinde Nuthetal
+  downloadURL : https://www.geoportal-nuthetal.de/
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=-                                        mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-16 11:13:17 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/902449e0-a1e9-4a02-bcf4-403f9670abf1 — Bebauungsplan 18 Ortskern Rehbrücke - 1. Änderung und Ergänzung - Gemeinde Nuthetal OT Bergholz-Rehbrücke (WMS)
+  accessURL   : https://www.geoportal-nuthetal.de/isk/nuth_bp23?REQUEST=GetCapabilities&SERVICE=WMS
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=nuth_bp23                                mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+2026-07-16 11:13:17 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/bfca0e9c-ba29-4eaf-9114-cd6c25f22014 — Bebauungsplan 18 Ortskern Rehbrücke - 1. Änderung und Ergänzung - Gemeinde Nuthetal OT Bergholz-Rehbrücke (WFS)
+  accessURL   : https://www.geoportal-nuthetal.de/isk/nuth_bp23?REQUEST=GetCapabilities&SERVICE=WFS
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=nuth_bp23                                mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+2026-07-16 11:13:17 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-16 11:13:35 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind durch den sehr spezifischen Titel und den klaren räumlichen Bezug grundsätzlich aussagekräftig. Deutl')
+2026-07-16 11:13:35 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:13:35 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=5
+2026-07-16 11:13:35 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['bauleitplanung', 'boden', 'bodennutzung', 'erdbeobachtung-und-umwelt', 'opendata']
+2026-07-16 11:13:35 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/GOVE', 'http://publications.europa.eu/resource/authority/data-theme/REGI']
+2026-07-16 11:13:35 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 11:13:35 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:13:35 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:13:35 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:13:35 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:13:35 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:13:35 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-16 11:13:35 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/c2916861-e150-4315-bbc1-d2bfdb982b63 = 2010-10-17T00:00:00
+2026-07-16 11:13:35 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/bfca0e9c-ba29-4eaf-9114-cd6c25f22014 = 2025-10-29T04:07:34.251886
+2026-07-16 11:13:35 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/7129bab3-1c8a-425d-85d9-125bd5da3b1b = 2026-02-14T05:23:33.155853
+2026-07-16 11:13:35 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/902449e0-a1e9-4a02-bcf4-403f9670abf1 = 2025-10-29T04:07:34.251888
+2026-07-16 11:13:35 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-16 11:13:35 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/c2916861-e150-4315-bbc1-d2bfdb982b63 = 2025-10-28T14:02:03
+2026-07-16 11:13:35 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/bfca0e9c-ba29-4eaf-9114-cd6c25f22014 = 2025-10-28T14:04:07
+2026-07-16 11:13:35 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/7129bab3-1c8a-425d-85d9-125bd5da3b1b = 2026-02-14T05:23:33.137535
+2026-07-16 11:13:35 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/902449e0-a1e9-4a02-bcf4-403f9670abf1 = 2025-10-28T14:04:08
+2026-07-16 11:13:35 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:13:35 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:13:35 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.33 with_download=1/3
+2026-07-16 11:13:35 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:13:35 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=3/3
+2026-07-16 11:13:35 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:13:35 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/3
+2026-07-16 11:13:35 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:13:35 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/3
+2026-07-16 11:13:35 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-16 11:13:35 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=0.83 high=2 mid=1 none=0 total=3
+2026-07-16 11:13:35 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=3/3
+2026-07-16 11:13:35 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:13:35 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:13:35 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:13:35 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-16 11:13:35 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:13:35 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:13:35 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:13:35 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:13:37 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-16 11:13:37 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-16 11:13:37 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.90 | Der Titel ist sehr spezifisch und unterscheidet den Datensatz durch Planbezeichnung, Änderungsstand und Ortsbezug gut vo
+2026-07-16 11:13:37 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:13:37 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.40 | Die Beschreibung ist verständlich, bleibt aber generisch und könnte nahezu für jeden Bebauungsplan verwendet werden. Für
+2026-07-16 11:13:37 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.80 | Inhaltlich passen Titel und Beschreibung grundsätzlich zusammen, da beide denselben Gegenstandsbereich betreffen. Die fe
+2026-07-16 11:13:37 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.65 | Mehrere Schlagwörter sind thematisch brauchbar, jedoch sind formale bzw. wenig spezifische Tags enthalten und ein zusamm
+2026-07-16 11:13:37 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.80 | Das Gesamtbild ist überwiegend widerspruchsfrei: Bebauungsplan, Verwaltung/Region und Bodennutzung passen zusammen. Einz
+2026-07-16 11:13:37 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.65 | Für planungs- und geobezogene Verwaltungsdaten sind Ortsbezug und zeitliche Kontextangaben erforderlich und teilweise vo
+2026-07-16 11:13:37 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:13:37 - scoring.service - DEBUG - {
+  "dataset_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/c2916861-e150-4315-bbc1-d2bfdb982b63",
+  "titles": [
+    "Bebauungsplan 18 Ortskern Rehbrücke - 1. Änderung und Ergänzung - Gemeinde Nuthetal OT Bergholz-Rehbrücke"
+  ],
+  "descriptions": [
+    "Der Bebauungsplan setzt als verbindlicher Bauleitplan das Bodennutzungskonzept der Gemeinde in unmittelbar geltendes Recht um. Der Bebauungsplan gibt vor, welche Bodennutzungen auf den betroffenen Grundflächen zulässig und unzulässig sind."
+  ],
+  "keywords": [
+    "bauleitplanung",
+    "boden",
+    "bodennutzung",
+    "erdbeobachtung-und-umwelt",
+    "opendata"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "http://publications.europa.eu/resource/authority/data-theme/REGI"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2025-10-28T14:02:03"
+  ],
+  "issued": [
+    "2010-10-17T00:00:00"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((13.1022 52.3446, 13.1028 52.3446, 13.1028 52.3443, 13.1022 52.3443, 13.1022 52.3446))"
+  ],
+  "spatial_resources": [
+    "Nf96d56163e1a4573b6b952eee397b17f"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "Ne11893f5b6f24e8e927aa903beda73e0",
+  "publisher": "Ne06affd946aa43b4bf3a6bc031117188",
+  "contact_points": [
+    "N02b1a0635ba24d1bb4221f9f355e7665"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/bfca0e9c-ba29-4eaf-9114-cd6c25f22014",
+      "titles": [
+        "Bebauungsplan 18 Ortskern Rehbrücke - 1. Änderung und Ergänzung - Gemeinde Nuthetal OT Bergholz-Rehbrücke (WFS)"
+      ],
+      "descriptions": [
+        "Der Bebauungsplan setzt als verbindlicher Bauleitplan das Bodennutzungskonzept der Gemeinde in unmittelbar geltendes Recht um. Der Bebauungsplan gibt vor, welche Bodennutzungen auf den betroffenen Grundflächen zulässig und unzulässig sind."
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal-nuthetal.de/isk/nuth_bp23?REQUEST=GetCapabilities&SERVICE=WFS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-10-28T14:04:07"
+      ],
+      "issued": [
+        "2025-10-29T04:07:34.251886"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "nuth_bp23",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-nuthetal.de/isk/nuth_bp23?REQUEST=GetCapabilities&SERVICE=WFS",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/7129bab3-1c8a-425d-85d9-125bd5da3b1b",
+      "titles": [
+        "Geoportal der Gemeinde Nuthetal"
+      ],
+      "descriptions": [
+        "Geoportal der Gemeinde Nuthetal"
+      ],
+      "download_url": "https://www.geoportal-nuthetal.de/",
+      "access_url": "https://www.geoportal-nuthetal.de/",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-02-14T05:23:33.137535"
+      ],
+      "issued": [
+        "2026-02-14T05:23:33.155853"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-nuthetal.de/",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/902449e0-a1e9-4a02-bcf4-403f9670abf1",
+      "titles": [
+        "Bebauungsplan 18 Ortskern Rehbrücke - 1. Änderung und Ergänzung - Gemeinde Nuthetal OT Bergholz-Rehbrücke (WMS)"
+      ],
+      "descriptions": [
+        "Der Bebauungsplan setzt als verbindlicher Bauleitplan das Bodennutzungskonzept der Gemeinde in unmittelbar geltendes Recht um. Der Bebauungsplan gibt vor, welche Bodennutzungen auf den betroffenen Grundflächen zulässig und unzulässig sind."
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal-nuthetal.de/isk/nuth_bp23?REQUEST=GetCapabilities&SERVICE=WMS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-10-28T14:04:08"
+      ],
+      "issued": [
+        "2025-10-29T04:07:34.251888"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "nuth_bp23",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-nuthetal.de/isk/nuth_bp23?REQUEST=GetCapabilities&SERVICE=WMS",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel nennt Planart und Nummer („Bebauungsplan 18“), Änderungsstand sowie Gemeinde/Ortsteil.",
+        "Der Titel ist lang, aber noch als normaler Klartext verständlich und spezifisch.",
+        "Keine Markdown-/HTML-Reste oder kryptischen Codes im Titel."
+      ],
+      "reasoning": "Der Titel ist sehr spezifisch und unterscheidet den Datensatz durch Planbezeichnung, Änderungsstand und Ortsbezug gut von anderen Bebauungsplänen. Die Länge mindert die Prägnanz leicht, beeinträchtigt die Verständlichkeit aber kaum.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt allgemein, was ein Bebauungsplan rechtlich bewirkt.",
+        "Sie enthält keine konkreten Angaben zu diesem Bebauungsplan 18, zur 1. Änderung/Ergänzung oder zum räumlichen Geltungsbereich.",
+        "Struktur, enthaltene Unterlagen/Layer, Format, Erhebungs- bzw. Rechtsgrundlage über die allgemeine Definition hinaus und Besonderheiten werden nicht beschrieben."
+      ],
+      "reasoning": "Die Beschreibung ist verständlich, bleibt aber generisch und könnte nahezu für jeden Bebauungsplan verwendet werden. Für die Aussagekraft fehlen datensatzspezifische Inhalte und Angaben zur Struktur der bereitgestellten Daten deutlich.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung behandeln beide einen Bebauungsplan beziehungsweise verbindliche Bauleitplanung.",
+        "Die Beschreibung widerspricht weder Ort noch Thema des Titels.",
+        "Die Beschreibung konkretisiert den genannten Plan nicht, bleibt aber sachlich passend."
+      ],
+      "reasoning": "Inhaltlich passen Titel und Beschreibung grundsätzlich zusammen, da beide denselben Gegenstandsbereich betreffen. Die fehlende Konkretisierung ist eher ein Qualitätsmangel der Beschreibung als ein Kohärenzproblem.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "keyword_quality": {
+      "findings": [
+        "„bauleitplanung“, „boden“ und „bodennutzung“ sind inhaltlich passende, kurze Begriffe.",
+        "„erdbeobachtung-und-umwelt“ wirkt wie ein zusammengesetztes Themen-/Kategorie-Label und passt nur teilweise zum Bebauungsplan.",
+        "„opendata“ ist ein formales Tag ohne inhaltlichen Mehrwert."
+      ],
+      "reasoning": "Mehrere Schlagwörter sind thematisch brauchbar, jedoch sind formale bzw. wenig spezifische Tags enthalten und ein zusammengesetztes Kategorien-Schlagwort mindert die sprachliche und inhaltliche Qualität.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Titel, Beschreibung und mehrere Schlagwörter verweisen konsistent auf Bauleitplanung/Bodennutzung.",
+        "Die Themen GOVE und REGI passen plausibel zu kommunaler Planung und regional-/raumbezogenen Verwaltungsdaten.",
+        "Das Schlagwort „erdbeobachtung-und-umwelt“ setzt einen leichten Umwelt-/Erdbeobachtungsakzent, der aus Titel und Beschreibung nicht klar hervorgeht."
+      ],
+      "reasoning": "Das Gesamtbild ist überwiegend widerspruchsfrei: Bebauungsplan, Verwaltung/Region und Bodennutzung passen zusammen. Einzelne Schlagwörter sind etwas unscharf, erzeugen aber keinen klaren Themenwiderspruch.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Der Titel nennt den konkreten räumlichen Bezug Gemeinde Nuthetal, OT Bergholz-Rehbrücke; zusätzlich ist eine Geometrie vorhanden.",
+        "Das Ausgabedatum 2010-10-17 und Änderungsdatum 2025-10-28 sind vorhanden.",
+        "Für einen Bebauungsplan fehlen in den Textmetadaten klarere Angaben zum rechtlichen Stand der Änderung/Ergänzung, etwa Inkrafttreten/Rechtskraft oder Verfahrensstand."
+      ],
+      "reasoning": "Für planungs- und geobezogene Verwaltungsdaten sind Ortsbezug und zeitliche Kontextangaben erforderlich und teilweise vorhanden. Der räumliche Kontext ist gut erkennbar, aber der für Bebauungspläne zentrale Verfahrens- bzw. Rechtsstand wird nicht aussagekräftig erläutert.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "overall_summary": "Die Metadaten sind durch den sehr spezifischen Titel und den klaren räumlichen Bezug grundsätzlich aussagekräftig. Deutliche Schwächen liegen in der generischen Beschreibung sowie in teilweise formalen oder unscharfen Schlagwörtern und fehlenden Angaben zum konkreten Rechts-/Verfahrensstand des Plans."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3570,
+      "output_tokens": 955,
+      "total_tokens": 4525,
+      "cost_usd": 0.036708,
+      "latency_seconds": 17.866
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-16 11:13:37 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_open-data-brandenburg_03/result.json
+2026-07-16 11:13:37 - __main__ - INFO -   ✓ Completed | score=0.72 grade=C
