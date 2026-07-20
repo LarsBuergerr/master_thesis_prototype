@@ -2262,9 +2262,17 @@ Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenf
 
 \chapter{Evaluation}
 
-% Aufbau des Kapitels: zweigeteilt -- Methodik (5.1-5.5), Ergebnisse (5.6-5.9).
+% Aufbau des Kapitels: zweigeteilt -- Methodik (5.1-5.5), Ergebnisse (5.6-5.10).
 % Quellen: docs/methodik_evaluation_ground_truth_v3.md, docs/evaluation_vs_mqa.md,
-% Notebooks 10 (Ground Truth) und 11 (MQA-Vergleich).
+% Notebooks 10 (Ground Truth), 11 (MQA-Vergleich), 14 (Run-Konsistenz).
+%
+% WICHTIG -- Zahlenbasis: Alle berichteten Kennzahlen stammen aus Laeufen mit der
+% Config conf/state/state_evaluation_final.yaml. Aeltere Kennzahlensammlungen
+% (insb. docs/ground_truth_kennzahlen_kappa_analyse.md, Run 2026-07-02 mit
+% state_evaluation_weighted_02) sind fuer die Arbeit NICHT mehr zitierfaehig:
+% mit der finalen Config faellt u.a. rho(Zugaenglichkeit) von 0.824 auf 0.712.
+% Aus dieser Doku traegt nur noch die methodische Argumentation (Metrik-Hierarchie,
+% Kappa-Paradox), nicht ihre Zahlentabelle.
 
 % Scope: Die Klammer zuerst: zwei komplementäre Evidenzstränge auf identischem Input --
 % (a) Vergleich gegen externes menschliches Qualitätsurteil (Ground Truth): bewertet der
@@ -2301,14 +2309,327 @@ Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenf
 % Mapping-Tabelle in den Anhang, im Text Schema + Beispiele + Grenzfälle (review=True).
 \section{Vergleichsbaseline: MQA-Reimplementierung und A/B/C-Klassifikation}
 
-% Scope: Pro Evidenzstrang. Ground Truth: Cohen's kappa (gewichtet) auf dem Gesamturteil
-% als Primärmetrik, Spearman/Kendall je Dimension als Sekundärmetrik, Ceiling-Analyse
-% (maximal erreichbares rho bei gegebener GT-Verteilung). MQA-Vergleich: Agreement-Rate (A),
-% Overestimation-Rate (B), Score-Varianz bei flacher MQA (C), Bland-Altman.
+% Scope: Pro Evidenzstrang. Diese Section legt die Metrik-Hierarchie fest, BEVOR die
+% erste Zahl faellt -- an ihr haengt spaeter die Modellauswahl (5.6).
+%
+% Ground Truth -- Primaermetrik: Spearman rho (gesamt + je Dimension), ergaenzt um
+% Kendall tau und die Ceiling-Analyse (maximal erreichbares rho bei gegebener
+% GT-Verteilung). Begruendung in drei Schritten:
+%   (1) Die Forschungsfrage ist ordinal -- erzeugt der Prototyp dieselbe Rangordnung
+%       wie ein Mensch? Der kontinuierliche Score ist der eigentliche Modell-Output,
+%       das Urteil gut/mittel/schlecht nur eine abgeleitete Diskretisierung.
+%   (2) Cohen's kappa ist auf dieser Stichprobe strukturell gedeckelt: Die GT-Verteilung
+%       ist mit rund 87 Prozent "mittel" extrem konzentriert, die Zufallsuebereinstimmung
+%       liegt dadurch bereits bei p_e ~ 0.79 (Kappa-Paradox, Feinstein & Cicchetti 1990).
+%       Selbst ein nahezu perfektes Modell koennte hier kein hohes kappa erreichen --
+%       das ist eine Eigenschaft der realistischen, stratifizierten Stichprobe.
+%   (3) Der kappa-Punktschaetzer ist bei so wenigen Nicht-mittel-Faellen instabil; das
+%       breite Bootstrap-95%-CI ist das staerkste Einzelargument gegen kappa als
+%       Entscheidungsgrundlage.
+% Ergaenzend MAE und Bias als Kalibrierungs-Check, da Rangkorrelation nur die Reihenfolge
+% misst, nicht das Niveau.
+%
+% Ground Truth -- Sekundaermetrik: Urteilsuebereinstimmung (gut/mittel/schlecht) mit
+% Accuracy, gewichtetem kappa MIT Bootstrap-CI, PABAK (praevalenzbereinigt,
+% Byrt/Bishop/Carlin 1993), AUC gut-vs-rest (schwellenfrei) und Konfusionsmatrix.
+% Das Urteil ist die praktische Entscheidungsebene (publizierbar / verbessern /
+% ueberarbeiten) und bleibt berichtenswert -- mit expliziter Einordnung des
+% Praevalenzproblems, damit eine niedrige kappa-Punktschaetzung nicht als
+% Qualitaetsbefund missverstanden wird.
+%
+% Kurzer Exkurs (nimmt den naheliegenden Einwand vorweg): Feinere Urteilsstufen loesen
+% das Problem nicht. Nicht die Stufenzahl ist entscheidend, sondern die Lage der
+% Schwellen relativ zur Stichprobenverteilung; fein gestuftes, quadratisch gewichtetes
+% kappa konvergiert ohnehin gegen eine Korrelation. Bewusst NICHT gemacht:
+% Schwellen-Shopping (nachtraeglich guenstig gewaehlte Schnittpunkte waeren
+% Metrik-Optimierung).
+%
+% MQA-Vergleich: Agreement-Rate (A), Overestimation-Rate (B), Score-Varianz bei flacher
+% MQA (C), Bland-Altman.
 \section{Auswertungsverfahren und Kennzahlen}
 
+% Scope: Erste Ergebnis-Section und Weichenstellung fuer alles Folgende. Die Modellwahl
+% wird hier mit dem in 5.1-5.5 aufgebauten Instrument entschieden; ab 5.7 wird
+% ausschliesslich das gewaehlte Modell berichtet.
+%
+% Rahmung zuerst (traegt die ganze Section): Von den vier Dimensionen ist nur die
+% Aussagekraft LLM-gestuetzt. Auffindbarkeit, Zugaenglichkeit und Wiederverwendbarkeit
+% werden deterministisch aus dem RDF berechnet und liefern ueber alle Modelle exakt
+% identische rho-Werte (0.5244 / 0.7119 / 0.7390). Die Modellwahl beruehrt also genau
+% eine von vier Dimensionen -- Gesamtmetriken mischen den identischen deterministischen
+% Teil bei und verwaessern den Vergleich. Der Vergleich wird deshalb auf der
+% Aussagekraft gefuehrt.
+%
+% Datenbasis: Kernstichprobe n=50, identischer Input, Config state_evaluation_final,
+% je ein Lauf pro Kandidat (Laeufe unter outputs/runs/, Kennzahlen aus
+% outputs/ground_truth/*/eval_kennzahlen.json, erzeugt mit Notebook 10).
+% Wiederholungslaeufe und Abbildungen: Notebooks 14 und 15.
+\section{Modellauswahl für die LLM-gestützte Bewertung}
+
+Die semantische Bewertung der Aussagekraft ist der einzige Bestandteil des Prototyps, der
+auf ein Sprachmodell zurückgreift. Die übrigen drei Dimensionen werden deterministisch aus
+dem RDF-Graphen berechnet und sind vom gewählten Modell vollständig unabhängig. Bevor die
+eigentlichen Evaluationsergebnisse berichtet werden, ist deshalb zu klären, welches Modell
+dieser Bewertung zugrunde liegt und wie stark diese Wahl das Gesamtergebnis überhaupt
+beeinflusst.
+
+Verglichen werden drei Kandidaten auf identischer Datenbasis: der Kernstichprobe
+($n = 50$) unter der Konfiguration \texttt{state\_evaluation\_final}, jeweils mit
+demselben Prompt und derselben Bewertungsrubrik. Abbildung~\ref{fig:modellauswahl_dimensionen}
+zeigt die Rangkorrelation zur Ground Truth je Dimension und Modell.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/modellauswahl_rho_je_dimension.pdf}
+    \captionsetup{justification=centering}
+    \caption{Spearman-Rangkorrelation zur Ground Truth je Qualitätsdimension und Sprachmodell (Kernstichprobe, $n = 50$)}
+    \label{fig:modellauswahl_dimensionen}
+\end{figure}
+
+Der Befund ist eindeutig: In den Dimensionen Auffindbarkeit, Zugänglichkeit und
+Wiederverwendbarkeit sind die Werte über alle drei Modelle bitgenau identisch
+($\rho = 0{,}524$, $0{,}712$ und $0{,}739$). Die Modellwahl berührt ausschließlich die
+Aussagekraft. Für den Vergleich folgt daraus zweierlei. Erstens ist die Aussagekraft die
+einzige Dimension, auf der die Kandidaten überhaupt sinnvoll gegeneinander zu bewerten
+sind. Zweitens sind Gesamtkennzahlen für diesen Zweck nur eingeschränkt aussagekräftig,
+weil sie den identischen deterministischen Anteil mitmitteln und die tatsächlichen
+Unterschiede dadurch verwässern. Die Gesamtwerte werden im Folgenden dennoch berichtet,
+da sie die praktische Auswirkung der Modellwahl auf das Endergebnis sichtbar machen.
+
+% Scope: Kandidatenvergleich und Entscheidung.
+%
+% TABELLE (Kandidatenvergleich, drei Spalten GPT-5.5 / Opus 4.8 / Sonnet 4.6):
+%   rho Aussagekraft   0.5687 | 0.6084 | 0.5981   <- Primaermetrik, entscheidet
+%   rho gesamt         0.7655 | 0.7697 | 0.7447
+%   Accuracy (Urteil)  0.92   | 0.90   | 0.88
+%   kappa gewichtet    0.635  | 0.508  | 0.359
+%   PABAK              0.88   | 0.85   | 0.82
+%   AUC gut-vs-rest    0.907  | 0.902  | 0.876
+%   MAE                0.289  | 0.275  | 0.308
+%   Bias              +0.018  | -0.018 | -0.144
+%   Kosten je 50 Dateien (USD)  1.79 | 4.10 | 2.02
+%
+% ABBILDUNG "rho je Dimension und Modell" (gruppierte Balken, vier Dimensionsgruppen
+% mal drei Modelle): In drei Gruppen sind die Balken exakt gleich hoch, nur bei der
+% Aussagekraft unterscheiden sie sich. Transportiert den strukturellen Befund ohne
+% erklaerenden Satz und ist die Ankerabbildung der Section.
+%
+% Argumentationslinie der Entscheidung (zwei Ausschluesse, nicht eine Rangliste):
+%   - Opus 4.8 scheidet an den Kosten aus: doppelter Preis gegenueber Sonnet 4.6
+%     ($4.10 vs. $2.02 je 50 Datensaetze) bei einem Vorsprung von Delta rho = 0.010
+%     auf der Aussagekraft. Dieser Vorsprung liegt innerhalb der Wiederholungsstreuung
+%     desselben Modells (5.6.2, Spanne 0.0432) und ist damit nicht belastbar.
+%   - GPT-5.5 scheidet an der Primaermetrik aus: rho = 0.5687 auf der Aussagekraft,
+%     der niedrigste Wert der drei und -0.029 gegenueber Sonnet 4.6 -- ausserhalb der
+%     Wiederholungsstreuung, also im Gegensatz zum Opus-Abstand ein echter Unterschied.
+%
+% WICHTIG: Die Argumentation folgt bewusst NICHT dem Muster "Modell X gewinnt bei
+% A, B und C" -- das waere nachtraegliches Zusammensuchen von Argumenten. Sie folgt
+% der in 5.5 festgelegten Hierarchie: Trennt die Primaermetrik die Kandidaten? Wenn
+% nein, entscheiden die nachgeordneten Kriterien.
+\subsection{Auswahl des Sprachmodells}
+
+Tabelle~\ref{tab:modellauswahl_kennzahlen} stellt die Kandidaten gegenüber. Die
+Kennzahlen sind nach der in Abschnitt~5.5 festgelegten Hierarchie geordnet: zuerst die
+Primärmetrik, dann die Kalibrierungsmaße, dann die Urteilsebene als Sekundärmetrik.
+
+\begin{table}[H]
+    \centering
+    \scriptsize
+    \renewcommand{\arraystretch}{1.2}
+    \rowcolors{1}{white}{white}
+    \begin{tabular}{p{6.2cm}rrr}
+    \hline
+    \textbf{Kennzahl} & \textbf{GPT-5.5} & \textbf{Opus 4.8} & \textbf{Sonnet 4.6} \\
+    \hline
+    \multicolumn{4}{l}{\textit{Primärmetrik}} \\
+    Spearman $\rho$ Aussagekraft & 0,569 & \textbf{0,608} & 0,598 \\
+    Spearman $\rho$ gesamt & 0,766 & \textbf{0,770} & 0,745 \\
+    \hline
+    \multicolumn{4}{l}{\textit{Kalibrierung}} \\
+    MAE (Skala 0--5) & 0,289 & \textbf{0,275} & 0,308 \\
+    Bias gesamt & $\mathbf{+0{,}018}$ & $\mathbf{-0{,}018}$ & $-0{,}144$ \\
+    Bias Aussagekraft & $\mathbf{-0{,}077}$ & $-0{,}220$ & $-0{,}723$ \\
+    \hline
+    \multicolumn{4}{l}{\textit{Urteilsebene (Sekundärmetrik)}} \\
+    Accuracy & \textbf{0,92} & 0,90 & 0,88 \\
+    Cohen $\kappa$ (gewichtet) & \textbf{0,635} & 0,508 & 0,359 \\
+    PABAK & \textbf{0,88} & 0,85 & 0,82 \\
+    AUC gut-vs-rest & \textbf{0,907} & 0,902 & 0,876 \\
+    Als „gut“ erkannt (von 5) & \textbf{3} & 2 & 1 \\
+    \hline
+    \multicolumn{4}{l}{\textit{Aufwand}} \\
+    Kosten je 50 Datensätze (USD) & \textbf{1,79} & 4,10 & 2,02 \\
+    \hline
+    \end{tabular}
+    \captionsetup{justification=centering}
+    \caption[Kennzahlenvergleich der Kandidatenmodelle]{Kennzahlenvergleich der Kandidatenmodelle auf der Kernstichprobe ($n = 50$), je ein Lauf pro Modell.}
+    \label{tab:modellauswahl_kennzahlen}
+\end{table}
+
+\textbf{Opus 4.8} scheidet am Aufwand aus. Das Modell verursacht mit 4,10~USD je
+50~Datensätzen etwa doppelt so hohe Kosten wie die beiden anderen Kandidaten, ohne dass
+dem ein belastbarer Qualitätsvorsprung gegenüberstünde: Auf der Primärmetrik liegt es
+lediglich 0,010 vor Sonnet~4.6 und 0,040 vor GPT-5.5 --- Abstände, die, wie
+Abschnitt~5.6.2 zeigt, kleiner sind als die Schwankung eines einzelnen Modells zwischen
+Wiederholungsläufen.
+
+Zwischen \textbf{GPT-5.5} und \textbf{Sonnet 4.6} trennt die Primärmetrik die Kandidaten
+nicht. Der Abstand auf der Aussagekraft beträgt 0,028 zugunsten von Sonnet~4.6, während
+die Streuung desselben Modells zwischen Wiederholungsläufen bei $\sigma = 0{,}023$ liegt
+(Abschnitt~5.6.2). Der Unterschied entspricht damit dem 1,2-fachen der Streuung, und die
+Wertebereiche beider Modelle überlappen einander. Ein Vorsprung dieser Größenordnung ist
+auf dieser Stichprobe nicht von Zufallsschwankung zu unterscheiden.
+
+Damit fällt die Entscheidung auf den nachgeordneten Kriterien, und diese weisen
+übereinstimmend auf GPT-5.5. Am deutlichsten ist der Befund zur \emph{Kalibrierung}:
+Sonnet~4.6 unterschätzt die Aussagekraft systematisch um 0,723 Skalenpunkte, also rund
+15\,\% der Skalenbreite, GPT-5.5 dagegen nur um 0,077. Diese Niveauverschiebung ist für
+die Rangkorrelation folgenlos --- $\rho$ misst ausschließlich die Reihenfolge --- wirkt
+sich auf der Urteilsebene aber unmittelbar aus, weil die Urteilsregel feste Schwellen auf
+die gerundeten Dimensionswerte anwendet. Sonnet~4.6 drückt dadurch 19 der 30 Datensätze
+unter die konjunktive Sperrklausel „keine Dimension unter 3“ (Ground Truth: 7) und erkennt
+in der Folge nur einen der fünf tatsächlich guten Datensätze als „gut“, gegenüber drei bei
+GPT-5.5. Für ein Werkzeug, das Datenbereitstellern eine Qualitätsrückmeldung geben soll,
+ist eine systematische Abwertung guter Metadaten ein praktisch relevanter Mangel.
+
+Dieser Zusammenhang erklärt zugleich den auf den ersten Blick widersprüchlichen Befund,
+dass GPT-5.5 auf der Primärmetrik hinten liegt, auf der Urteilsebene jedoch durchgängig
+vorn: Rangkorrelation und Urteilsregel messen unterschiedliche Eigenschaften. Erstere ist
+niveaublind und bewertet allein die Reihenfolge, letztere ist niveauempfindlich und
+bewertet die absolute Lage relativ zu festen Schwellen. GPT-5.5 ordnet die Datensätze
+geringfügig schlechter, verortet sie aber auf dem zutreffenden Niveau; Sonnet~4.6 ordnet
+minimal besser, verschiebt jedoch das gesamte Niveau nach unten.
+
+Die Unterschiede auf der Urteilsebene sind allerdings mit Zurückhaltung zu lesen. Die
+Konfusionsmatrizen der drei Modelle sind in zwei von drei Zeilen identisch; der gesamte
+Unterschied entsteht in den fünf Datensätzen mit dem Ground-Truth-Urteil „gut“. Aus einer
+Differenz von zwei Datensätzen resultiert bereits die $\kappa$-Spanne von 0,635 bis 0,359
+--- eine Sensitivität, die den in Abschnitt~5.5 dargelegten Prävalenzbefund bestätigt und
+begründet, warum diese Kennzahlen als Sekundärmetrik geführt werden. Sie stützen die
+Entscheidung, tragen sie aber nicht allein.
+
+Gewählt wird daher \textbf{GPT-5.5}. Es ist auf der Primärmetrik von Sonnet~4.6 nicht
+unterscheidbar, deutlich besser kalibriert, auf der Urteilsebene durchgängig genauer,
+reproduzierbarer (Abschnitt~5.6.2) und zugleich das kostengünstigste der drei Modelle.
+Alle folgenden Ergebnisse dieses Kapitels beruhen auf diesem Modell.
+
+% Scope: Nachweis, dass das gewaehlte Modell reproduzierbar bewertet. Zwei Funktionen:
+% (a) eigenstaendiges Guetekriterium, (b) liefert die Rauschschaetzung, mit der in 5.6.1
+% ueberhaupt beurteilt werden kann, ob ein Modellabstand belastbar ist.
+%
+% Design: drei Wiederholungen mit Sonnet 4.6 auf identischer Teilstichprobe (n=30, alle
+% Dateien mit Suffix _02/_03/_04), Auswertung mit Notebook 14. Bewusst nur fuer das
+% gewaehlte Modell erhoben -- fuer Opus und GPT liegt keine Streuungsschaetzung vor
+% (als Limitation in 5.10 fuehren).
+%
+% Kennzahlen:
+%   Spanne der Run-Mittelwerte     0.0063
+%   Ø Standardabweichung je Datei  0.0082
+%   MAE zwischen den Laeufen       0.0107
+%   Spearman rho zwischen Laeufen  0.9906
+%   rho Aussagekraft je Lauf       0.5547 / 0.5818 / 0.5386 -> Spanne 0.0432, sigma 0.0218
+%
+% Drei Befunde, in dieser Reihenfolge:
+%   (1) Validitaetsnachweis der Pipeline: Die drei deterministischen Dimensionen sind
+%       ueber alle Laeufe bitgleich. Die gesamte beobachtete Streuung stammt aus der
+%       LLM-Bewertung -- alles andere reproduziert exakt.
+%   (2) Aufloesungsgrenze: Die Spanne der Run-Mittelwerte (0.0063) ist die Untergrenze,
+%       ab der Unterschiede zwischen Konfigurationen oder Modellen ueberhaupt
+%       interpretierbar sind. Auf der Aussagekraft betraegt die Streuung von rho zwischen
+%       Wiederholungen 0.0432 -- viermal so viel wie der Abstand Sonnet/Opus (0.010).
+%       Das ist die quantitative Grundlage fuer den Ausschluss von Opus in 5.6.1.
+%   (3) Lokalisierung der Instabilitaet: Die Streuung verteilt sich nicht gleichmaessig,
+%       sondern konzentriert sich auf zwei Kriterien -- Kontextuelle Qualifizierer
+%       (Statuswechsel bei 47 Prozent der Dateien) und Kohaerenz von Titel und
+%       Beschreibung (37 Prozent). Beschreibungs-Qualitaet ist mit 3 Prozent praktisch
+%       stabil. Anknuepfungspunkt fuer die Diskussion (Rubrik-Schaerfe) und fuer 5.10.
+%
+% ABBILDUNG (vorhanden, outputs/model_comparison/plots/): Statuswechsel je Kriterium als
+% Balkendiagramm -- zeigt Befund (3) unmittelbar. Die Fehlerbalken-Abbildung
+% (Gesamtscore je Datei mit Min-Max-Spanne ueber die Laeufe) belegt Befund (2);
+% ihr gezoomtes unteres Panel macht die Streuung ueberhaupt erst sichtbar.
+\subsection{Reproduzierbarkeit der Bewertung}
+
+Da die Bewertung der Aussagekraft auf einem generativen Sprachmodell beruht, ist sie
+anders als die übrigen Dimensionen nicht deterministisch. Wie stark die Ergebnisse
+zwischen zwei Läufen desselben Modells schwanken, ist deshalb sowohl ein eigenständiges
+Gütekriterium als auch die Voraussetzung dafür, Unterschiede zwischen Modellen überhaupt
+beurteilen zu können: Ein Abstand, der kleiner ist als die Schwankung eines einzelnen
+Modells, trägt keine Aussage.
+
+Erhoben wurden je drei Läufe für GPT-5.5 und Sonnet~4.6 auf einer identischen
+Teilstichprobe von 30 Datensätzen. Für Opus~4.8 liegt nur ein Lauf vor; das Modell wird
+in diesem Abschnitt daher nicht betrachtet, da eine Streuungsangabe ohne Wiederholung
+nicht möglich ist. Abbildung~\ref{fig:modellauswahl_wiederholungen} zeigt die
+Einzelergebnisse sowie die Spanne je Modell.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/modellauswahl_wiederholungen.pdf}
+    \captionsetup{justification=centering}
+    \caption[Spearman $\rho$ der Aussagekraft über Wiederholungsläufe]{Spearman $\rho$ der Aussagekraft über je drei Wiederholungsläufe, identische Teilstichprobe ($n = 30$)}
+    \label{fig:modellauswahl_wiederholungen}
+\end{figure}
+
+Beide Modelle streuen in vergleichbarer Größenordnung: Sonnet~4.6 erreicht im Mittel
+$\rho = 0{,}558$ bei einer Spanne von 0,043 ($\sigma = 0{,}022$), GPT-5.5 im Mittel
+$\rho = 0{,}530$ bei einer Spanne von 0,047 ($\sigma = 0{,}024$). Dass die Streuung bei
+beiden nahezu identisch ausfällt, legt nahe, dass sie weniger eine Eigenschaft des
+einzelnen Modells als der Bewertungsaufgabe selbst ist. Der Abstand der Mittelwerte
+beträgt 0,028 und liegt damit beim 1,2-fachen der gepoolten Streuung; die Wertebereiche
+überlappen einander deutlich, da der beste Lauf von GPT-5.5 ($\rho = 0{,}557$) über dem
+schwächsten von Sonnet~4.6 ($\rho = 0{,}539$) liegt. Dies ist die in Abschnitt~5.6.1
+herangezogene Grundlage für die Feststellung, dass die Primärmetrik die beiden Kandidaten
+nicht trennt.
+
+Auf der Ebene der Scores --- statt der aus ihnen abgeleiteten Rangkorrelation --- fällt
+der Vergleich klarer aus. Tabelle~\ref{tab:modellauswahl_reproduzierbarkeit} stellt die
+Reproduzierbarkeitskennzahlen beider Modelle gegenüber.
+
+\begin{table}[H]
+    \centering
+    \scriptsize
+    \renewcommand{\arraystretch}{1.2}
+    \rowcolors{1}{white}{white}
+    \begin{tabular}{p{7.4cm}rr}
+    \hline
+    \textbf{Kennzahl} & \textbf{GPT-5.5} & \textbf{Sonnet 4.6} \\
+    \hline
+    Spanne der Run-Mittelwerte & \bf{0,0004} & 0,0063 \\
+    Ø Standardabweichung je Datensatz & \bf{0,0046} & 0,0082 \\
+    Ø Standardabweichung Aussagekraft & \bf{0,0150} & 0,0268 \\
+    MAE zwischen zwei Läufen & \bf{0,0058} & 0,0107 \\
+    Spearman $\rho$ zwischen zwei Läufen & \bf{0,993} & 0,991 \\
+    Höchster Anteil an Statuswechseln je Kriterium & \bf{17\,\%} & 47\,\% \\
+    \hline
+    \end{tabular}
+    \captionsetup{justification=centering}
+    \caption[Reproduzierbarkeit über drei Wiederholungsläufe]{Reproduzierbarkeit über je drei Wiederholungsläufe auf identischer Teilstichprobe ($n = 30$)}
+    \label{tab:modellauswahl_reproduzierbarkeit}
+\end{table}
+
+GPT-5.5 reproduziert seine Bewertungen durchgehend stabiler, auf Ebene der
+Run-Mittelwerte um mehr als eine Größenordnung. Dass die Streuung der Rangkorrelation
+dennoch minimal höher ausfällt, ist kein Widerspruch: $\rho$ ist eine Rangstatistik, und
+bei eng beieinanderliegenden Werten genügen geringe Score-Änderungen, um Ränge zu
+vertauschen. Die zugrunde liegenden Scores selbst sind bei GPT-5.5 klar reproduzierbarer.
+
+Drei Befunde sind darüber hinaus festzuhalten. Erstens sind die drei deterministischen
+Dimensionen über sämtliche Läufe hinweg bitgenau identisch. Die gesamte beobachtete
+Streuung stammt somit aus der LLM-gestützten Bewertung, während die übrige
+Verarbeitungskette exakt reproduziert --- ein Validitätsnachweis für die Pipeline als
+Ganzes. Zweitens ergibt sich aus der Spanne der Run-Mittelwerte eine Auflösungsgrenze für
+alle weiteren Vergleiche: Unterschiede zwischen Konfigurationen oder Modellen, die
+kleiner sind als 0,0004 (GPT-5.5), sind nicht interpretierbar. Drittens verteilt sich die
+Instabilität nicht gleichmäßig über die Bewertungskriterien, sondern konzentriert sich
+auf einzelne von ihnen; bei GPT-5.5 wechselt der diskrete Status im ungünstigsten Fall
+bei 17\,\% der Datensätze, bei Sonnet~4.6 dagegen bei 47\,\%. Die betroffenen Kriterien
+--- insbesondere die kontextuellen Qualifizierer --- sind damit als Ansatzpunkt für eine
+Schärfung der Bewertungsrubrik identifiziert.
+
 % Scope: Kernstichprobe und Extremfälle getrennt; Konfusionsmatrix, kappa, Scatter,
-% Dimensions-Korrelationen mit Ceiling-Einordnung.
+% Dimensions-Korrelationen mit Ceiling-Einordnung. Ab hier ausschliesslich Sonnet 4.6.
 \section{Ergebnisse: Prototyp und Ground Truth}
 
 % Scope: Entlang A/B/C, also entlang H1/H2. H3 (Korrelation Prototyp<->GT vs. MQA<->GT)
@@ -2341,6 +2662,19 @@ Die hohe Gesamtkorrelation belegt, dass Feldpräsenz im Aggregat ein brauchbarer
 % Einzelbewerter, Stichprobengröße, Skalenartefakte/Attenuation (Disattenuation nur als
 % grobe Obergrenze), LLM-Stabilität (Run-zu-Run-MAE), A/B/C-Einstufung als Interpretation,
 % Frontend nur demonstrativ statt empirisch mit Nutzern evaluiert.
+%
+% Ergaenzend zur Modellauswahl (5.6) -- im Text auszuformulieren:
+%   - Die Wiederholungsschaetzung beruht auf drei Laeufen je Modell auf der
+%     Teilstichprobe n=30, waehrend der Kennzahlenvergleich auf n=50 gerechnet ist.
+%     Die Aussage "Abstand innerhalb der Streuung" ist ein Groessenordnungsvergleich
+%     (1,2-fache Streuung, ueberlappende Wertebereiche), kein Signifikanztest; bei
+%     drei Laeufen je Modell ist sigma selbst nur grob geschaetzt.
+%   - Fuer Opus 4.8 existiert nur ein Lauf; seine Streuung ist unbekannt. Der
+%     Ausschluss stuetzt sich daher primaer auf die Kosten, nicht auf die Streuung.
+%   - Je Modell wurde nur ein Prompt bzw. eine Rubrikfassung getestet; die Ergebnisse
+%     sind Aussagen ueber die Kombination Modell + Prompt, nicht ueber das Modell allein.
+%   - Auch das gewaehlte Modell unterschaetzt die Aussagekraft leicht (Bias -0,077).
+%     Eine Kalibrierung der Rubrik-Anker wurde nicht vorgenommen und bleibt offen.
 \section{Limitationen der Evaluation}
 
 
