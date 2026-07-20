@@ -7,30 +7,24 @@
 defaults:
   - _self_
 
-# Disable Hydra output subdirectory (.hydra folder)
-hydra:
-  output_subdir: null
-  job:
-    chdir: false
-
 # Directory path for input data
 # directory_path: "data/sample_2026-06-25_09-57"
 # directory_path: "data/"
 directory_path: "data/sample_2026-06-25_09-57"
 # If empty: process all files matching extensions in directory_path
-files: ["geo_open-data-brandenburg_02.rdf"]
+files: []
 
 # File filtering (only used if files list is empty)
 file_filter:
   # Only process files with these extensions
   extensions: [".rdf"]
   # Include patterns: process only files matching these (filename starts with) e.g. "geo_", "non_geo_"
-  include_patterns: []
+  include_patterns: ["_02", "_03", "_04"]
   # Exclude patterns: skip files matching these (filename starts with)
   exclude_patterns: []
 
 # Output directory for results
-output_dir: "run_outputs/"
+output_dir: "outputs/runs/"
 # Optional custom suffix for the run output directory (overrides default naming based on directorypath or filename if only one file is processed)
 run_output_dir_suffix: "EVAL"
 # Master switch for creating run output directory and saving results there. If false no output is generated
@@ -44,7 +38,7 @@ llm:
   # LLM provider. Options: "local", "openrouter" (for local make sure to have the required model downloaded and running)
   provider: "openrouter"
   # model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id, for local use a supported model name e.g. qwen3.5
-  model: "anthropic/claude-opus-4.8"
+  model: "anthropic/claude-sonnet-4.6"
   # LLM response randomness (0.0 = deterministic, higher values = more random) default 0.0
   temperature: 0.0
   # Maximum tokens for LLM responses (adjust based on expected response length and model limits) default 10000

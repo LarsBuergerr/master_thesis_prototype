@@ -4,12 +4,6 @@
 defaults:
   - _self_
 
-# Disable Hydra output subdirectory (.hydra folder)
-hydra:
-  output_subdir: null
-  job:
-    chdir: false
-
 # Directory path for input data
 directory_path: "data/extreme_cases"
 # If empty: process all files matching extensions in directory_path
@@ -25,7 +19,7 @@ file_filter:
   exclude_patterns: []
 
 # Output directory for results
-output_dir: "run_outputs/"
+output_dir: "outputs/runs/"
 # Optional custom suffix for the run output directory (overrides default naming based on directorypath or filename if only one file is processed)
 run_output_dir_suffix: "versuch_6"
 # Master switch for creating run output directory and saving results there. If false no output is generated

@@ -12,7 +12,7 @@ Expected residual divergences (NOT logic bugs), reported separately:
   * format literals       -> intentional URI-strict handling (see scorer docstring)
 
 Usage:
-  python3 scripts/validate_mqa.py mqa_output/sample_2026-06-03_13-33.json
+  python3 scripts/validate_mqa.py outputs/mqa_reference/sample_2026-06-03_13-33.json
 """
 
 import json

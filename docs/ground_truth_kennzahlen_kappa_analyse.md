@@ -9,7 +9,7 @@
 **Datenbasis aller Zahlen:**
 
 - Stichprobe: `data/sample_2026-06-25_09-57` (Kernstichprobe, n=50, Seed 67)
-- Modell-Scores: `run_outputs/run_2026-07-02_14-14-40_state-evaluation-weighted-02_EVAL_SAMPLE`
+- Modell-Scores: `outputs/runs/run_2026-07-02_14-14-40_state-evaluation-weighted-02_EVAL_SAMPLE`
   (Config `state_evaluation_weighted_02`, inkl. LLM-Expressiveness; 2 Dateien ohne
   Expressiveness → n=48 für Urteils-Metriken)
 - Ground Truth: `data/sample_2026-06-25_09-57/ground_truth_template_slim_v2.csv`

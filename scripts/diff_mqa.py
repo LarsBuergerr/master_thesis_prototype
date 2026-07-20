@@ -2,7 +2,7 @@
 
 Compares the local scorer output (``src/score_mqa.py`` → e.g. ``run_output_mqa``)
 against the official data.europa.eu report (``scripts/fetch_mqa_metrics.py`` →
-e.g. ``mqa_output/extreme_cases_03.json``), per dataset:
+e.g. ``outputs/mqa_reference/extreme_cases_03.json``), per dataset:
 
   * total score and the five dimension scores, and
   * every individual metric (local ``passed`` vs. official ``met``).
@@ -12,7 +12,7 @@ matches the original MQA.
 
 Usage:
     python3 scripts/diff_mqa.py
-    python3 scripts/diff_mqa.py run_output_mqa mqa_output/extreme_cases_03.json
+    python3 scripts/diff_mqa.py run_output_mqa outputs/mqa_reference/extreme_cases_03.json
 """
 
 from __future__ import annotations
@@ -56,7 +56,7 @@ def _by_file(records: list[dict], key: str) -> dict[str, dict]:
 
 def main() -> None:
     local_path = sys.argv[1] if len(sys.argv) > 1 else "run_output_mqa"
-    official_path = sys.argv[2] if len(sys.argv) > 2 else "mqa_output/extreme_cases_03.json"
+    official_path = sys.argv[2] if len(sys.argv) > 2 else "outputs/mqa_reference/extreme_cases_03.json"
 
     local = _by_file(json.load(open(local_path)), "file")
     official_raw = json.load(open(official_path))

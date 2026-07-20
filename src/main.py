@@ -89,16 +89,12 @@ def resolve_files_to_process(cfg: DictConfig) -> List[Path]:
 
     # Apply include patterns
     if include_patterns:
-        all_files = [
-            f for f in all_files if any(f.name.startswith(p) for p in include_patterns)
-        ]
+        all_files = [f for f in all_files if any(p in f.name for p in include_patterns)]
 
     # Apply exclude patterns
     if exclude_patterns:
         all_files = [
-            f
-            for f in all_files
-            if not any(f.name.startswith(p) for p in exclude_patterns)
+            f for f in all_files if not any(p in f.name for p in exclude_patterns)
         ]
 
     return sorted(all_files)
@@ -313,5 +309,36 @@ def main(cfg: DictConfig) -> None:
         session_handler.close()
 
 
+# Hydra darf nichts ins Dateisystem schreiben, damit outputs/ komplett uns
+# gehoert. Diese Einstellungen koennen NICHT in conf/state/*.yaml stehen: die
+# Primary Config liegt in der Gruppe state/, wird deshalb unter das Paket
+# ``state`` gehaengt, und ein dortiger ``hydra:``-Block landet als
+# ``state.hydra`` im Baum, wo Hydra ihn nie liest. Als CLI-Overrides gesetzt
+# greifen sie dagegen global.
+HYDRA_NO_OUTPUT = {
+    "hydra.run.dir": ".",           # kein outputs/<datum>/<zeit>/ Runverzeichnis
+    "hydra.sweep.dir": ".",         # dito fuer --multirun
+    "hydra.sweep.subdir": ".",
+    "hydra.output_subdir": "null",  # kein .hydra/ Unterordner
+    "hydra/job_logging": "none",    # keine main.log - Konsole via basicConfig oben
+    "hydra/hydra_logging": "none",  # keine Hydra-eigenen Startmeldungen
+}
+
+
+def _silence_hydra_output() -> None:
+    """Haenge die Hydra-Overrides an sys.argv, sofern nicht schon gesetzt.
+
+    Eigene Angaben auf der Kommandozeile gewinnen: ein Wert wird nur ergaenzt,
+    wenn derselbe Schluessel nicht ohnehin schon uebergeben wurde.
+    """
+    import sys
+
+    gesetzt = {a.split("=", 1)[0] for a in sys.argv[1:] if "=" in a}
+    for schluessel, wert in HYDRA_NO_OUTPUT.items():
+        if schluessel not in gesetzt:
+            sys.argv.append(f"{schluessel}={wert}")
+
+
 if __name__ == "__main__":
+    _silence_hydra_output()
     main()

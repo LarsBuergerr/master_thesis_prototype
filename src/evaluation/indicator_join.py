@@ -158,7 +158,7 @@ def load_model_indicators_from_run(run_dir, *, file_suffix: str = ".rdf") -> pd.
                 )
     if not rows:
         raise FileNotFoundError(
-            f"No <dataset>/result.json found under {run_dir} — is this a run_outputs run dir?"
+            f"No <dataset>/result.json found under {run_dir} — is this an outputs/runs run dir?"
         )
     n_files = len({r["file"] for r in rows})
     print(f"loaded model indicators from existing run: {run_dir} ({n_files} files)")

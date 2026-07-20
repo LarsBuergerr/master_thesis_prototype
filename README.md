@@ -236,7 +236,12 @@ src/
 
 conf/state/                  # Hydra configs (mounted under the `state` group — see Running)
 data/                        # Sample RDF/XML records + extrem_cases/
-run_outputs/                 # Generated run reports (timestamped)
+outputs/                     # All generated artifacts (see Output)
+  runs/                      # Generated run reports (timestamped)
+  runs_archive/              # Older runs, kept for reference
+  mqa_comparison/            # MQA-vs-prototype indicator comparison
+  ground_truth/              # Ground-truth evaluation figures & metrics
+  model_comparison/          # Cross-run / cross-model consistency plots
 ```
 
 **Dependency direction** is one-way: everything points _down_ into `core`, which
@@ -357,12 +362,6 @@ Full schema (from [state_default.yaml](conf/state/state_default.yaml)). All keys
 live under `state` in code (`cfg.state.<key>`):
 
 ```yaml
-# Disable Hydra's own output subdir; keep the working directory at the repo root
-hydra:
-  output_subdir: null
-  job:
-    chdir: false
-
 # --- Input ---------------------------------------------------------------
 directory_path: "data/sample_2026-05-18_09-12" # folder containing the RDF files
 
@@ -375,7 +374,7 @@ file_filter: # only used when `files` is empty
   exclude_patterns: [] # filename prefixes to skip
 
 # --- Output --------------------------------------------------------------
-output_dir: "run_outputs/" # root for all run directories
+output_dir: "outputs/runs/" # root for all run directories
 run_output_dir_suffix: "" # optional explicit suffix for the run folder name
 run_output_enabled: true # false = run in-memory, write nothing to disk
 
@@ -439,10 +438,28 @@ file_filter:
 
 ## Output
 
+All generated artifacts live under `outputs/`, one subdirectory per kind:
+
+| Directory | Written by | Contents |
+|---|---|---|
+| `outputs/runs/` | `src/main.py` | One timestamped directory per validation run |
+| `outputs/runs_archive/` | — | Older runs, kept for reference |
+| `outputs/mqa_comparison/` | `scripts/build_indicator_join.py`, notebook 11 | MQA-vs-prototype indicator comparison |
+| `outputs/ground_truth/` | notebook 10 | Ground-truth evaluation figures & metrics |
+| `outputs/model_comparison/` | notebook 14 | Cross-run / cross-model consistency plots |
+| `outputs/mqa_reference/` | `scripts/fetch_mqa_metrics.py` | Official data.europa.eu MQA reports used as reference |
+
+**Hydra writes nothing to disk.** No `outputs/<date>/<time>/` run directory, no
+`.hydra/` subdir, no `main.log` — so `outputs/` belongs entirely to the artifacts
+above. This is enforced by `HYDRA_NO_OUTPUT` in [src/main.py](src/main.py), which
+appends the necessary overrides to the command line. It cannot live in
+`conf/state/*.yaml`: those configs sit in the `state` config group, so a `hydra:`
+block inside them is loaded as `state.hydra` and silently ignored by Hydra.
+
 When `run_output_enabled: true`, each run creates a timestamped directory:
 
 ```
-run_outputs/
+outputs/runs/
 └── run_<timestamp>_<config-name>_<suffix>/      # e.g. run_2026-06-02_11-51-10_state-extrem-cases_extrem_cases
     ├── metadata.json              # run config, input info, git commit hash, timestamp
     ├── run_aggregate.json         # per-file summary + run-level means/min/max + indicator status counts

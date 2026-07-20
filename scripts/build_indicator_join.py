@@ -4,13 +4,13 @@
 Scores every ``*.rdf`` in a sample directory with BOTH the prototype and the MQA
 baseline on identical input, joins them per indicator via the A/B/C mapping
 (``src/evaluation/indicator_map.py``), and writes all output into a named
-subdirectory of ``comparison_output/``:
+subdirectory of ``outputs/mqa_comparison/``:
 
-  comparison_output/<name>/model_indicators.csv      – prototype, one row per (file, indicator)
-  comparison_output/<name>/mqa_metrics.csv           – MQA, one row per (file, metric)
-  comparison_output/<name>/indicator_join.csv        – the joined long table (core artifact)
-  comparison_output/<name>/class_b_overestimation.csv
-  comparison_output/<name>/class_c_blindness.csv
+  outputs/mqa_comparison/<name>/model_indicators.csv      – prototype, one row per (file, indicator)
+  outputs/mqa_comparison/<name>/mqa_metrics.csv           – MQA, one row per (file, metric)
+  outputs/mqa_comparison/<name>/indicator_join.csv        – the joined long table (core artifact)
+  outputs/mqa_comparison/<name>/class_b_overestimation.csv
+  outputs/mqa_comparison/<name>/class_c_blindness.csv
 
 It also prints the headline numbers (A agreement, B overestimation, class
 counts, unmapped indicators, MQA-only metrics).
@@ -73,8 +73,8 @@ def main() -> None:
     )
     ap.add_argument(
         "--output-dir",
-        default="comparison_output",
-        help="root output directory (default: comparison_output)",
+        default="outputs/mqa_comparison",
+        help="root output directory (default: outputs/mqa_comparison)",
     )
     ap.add_argument(
         "--no-llm",

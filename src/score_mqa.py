@@ -6,7 +6,7 @@ compared against the prototype's own scores on the same input.
 Usage (from the repo root):
 
     python src/score_mqa.py data/extreme_cases
-    python src/score_mqa.py data/extreme_cases --no-probe -o run_outputs/mqa.json
+    python src/score_mqa.py data/extreme_cases --no-probe -o outputs/runs/mqa.json
     python src/score_mqa.py data/extreme_cases/good_01.rdf
 
 ``--no-probe`` skips all HTTP requests; the URL-status metrics then score 0
