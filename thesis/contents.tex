@@ -2283,6 +2283,31 @@ Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenf
 % erst H3 belegt Überlegenheit.
 \section{Evaluationsdesign und Hypothesen}
 
+Die Evaluation stützt sich auf zwei komplementäre Evidenzstränge, die auf identischem
+RDF-Input erhoben werden. Der erste vergleicht den Prototyp mit einem externen
+menschlichen Qualitätsurteil und beantwortet die Frage, ob er \emph{richtig} bewertet.
+Der zweite vergleicht ihn mit der Metadata Quality Assurance (MQA) von data.europa.eu als
+etablierter Baseline und beantwortet die Frage, was er \emph{zusätzlich} sieht. Beide
+Stränge sind aufeinander angewiesen: Der Baseline-Vergleich allein kann lediglich zeigen,
+dass sich die Bewertungen unterscheiden, nicht aber, welche der beiden näher an der
+tatsächlichen Qualität liegt. Erst der Ground-Truth-Vergleich erlaubt diese Aussage.
+
+Daraus ergeben sich drei Hypothesen. \textbf{H1 (Konvergenz)} besagt, dass die Scores
+beider Verfahren auf den äquivalenten Prüfungen stark konvergieren, der Prototyp die
+etablierte MQA-Logik also korrekt abbildet; methodisch entspricht dies dem Nachweis
+konvergenter Validität~\cite{campbell1959convergent}. \textbf{H2 (Mehrwert)} besagt, dass
+die Scores auf denjenigen Indikatoren systematisch divergieren, bei denen der Prototyp
+tiefer prüft als die MQA oder bei denen die MQA über kein Pendant verfügt --- hier ist
+eine Divergenz kein Fehler, sondern der erwartete Effekt des verifizierenden statt
+lediglich prüfenden Ansatzes. \textbf{H3 (Korrektheit)} besagt, dass der Prototyp dort,
+wo beide Verfahren divergieren, stärker mit dem externen Qualitätsurteil übereinstimmt
+als die MQA. H3 verbindet beide Stränge und trägt die eigentliche Überlegenheitsaussage;
+ohne sie belegt H2 nur, dass anders gemessen wird, nicht dass besser gemessen wird.
+
+Die Auswertung erfolgt entlang dieser Struktur: Abschnitt~5.5 legt die Kennzahlen fest,
+Abschnitt~5.6 bestimmt zunächst das für die semantische Bewertung eingesetzte
+Sprachmodell, und die Abschnitte~5.7 und~5.8 berichten die Ergebnisse je Evidenzstrang.
+
 % Scope: Stratifizierte purposive Kernstichprobe (n=50, Seed 67) mit fünf
 % Schichtungsmerkmalen (Themen, Bereitsteller, Zugriffstypen, Formatgruppen, technische
 % Vorqualität) + kuratierte Extremfälle (n=10) als Stresstest. Begründung des
@@ -2290,6 +2315,48 @@ Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenf
 % Kernstichprobe kontrolliert Bias und zeigt Praxisrelevanz -> getrennte Auswertung.
 % Erhebungsdatum, Portal-Quelle, DCAT-AP-Version dokumentieren (Replikationspaket).
 \section{Datengrundlage und Stichprobe}
+
+Grundlage der Evaluation ist ein vollständiger Abzug des GovData-CKAN-Katalogs vom
+15.~Mai~2026 mit 151.579 Datensätzen. Aus diesem wurden zunächst alle Datensätze
+entfernt, die mindestens eine NetCDF-Distribution enthalten (1.793 Datensätze,
+verbleibend 149.786). NetCDF-Ressourcen sind typischerweise sehr große Klima- und
+Umweltdatenreihen, deren Abruf im Rahmen der technischen Erreichbarkeitsprüfung
+Laufzeit und Datenvolumen dominiert hätte, ohne inhaltlich zusätzliche Erkenntnisse zu
+liefern. Der verbleibende Katalog wurde anhand von Formatangaben, Medientypen und
+Service-Kennungen in 25.416 Geo-Datensätze und 124.370 Nicht-Geo-Datensätze unterteilt.
+
+Aus dieser Grundgesamtheit wurde am 25.~Juni~2026 eine \textbf{stratifizierte
+Zufallsstichprobe} von $n = 50$ Datensätzen gezogen (Seed~67, reproduzierbar über
+Notebook~12). Die Schichtung erfolgt zweistufig: primär nach der Unterscheidung
+Geo/Nicht-Geo, sekundär innerhalb beider Gruppen nach den vier jeweils
+aufkommensstärksten Datenbereitstellern zuzüglich einer Restkategorie für alle übrigen
+Bereitsteller. Aus jedem der so entstehenden zehn Straten werden fünf Datensätze gezogen.
+Die Schichtung stellt sicher, dass die Stichprobe die für die Metadatenqualität
+relevanten Unterschiede der Grundgesamtheit abbildet --- Themenbereiche, Bereitsteller,
+Zugriffstypen, Formatgruppen und technische Vorqualität --- statt von den wenigen
+aufkommensstärksten Portalen dominiert zu werden, die bei einer einfachen Zufallsziehung
+den Großteil der Stichprobe stellen würden. Die gezogenen Datensätze wurden anschließend
+als RDF/XML von GovData abgerufen und bilden damit denselben Input, auf dem Prototyp und
+MQA-Reimplementierung arbeiten.
+
+Ergänzend zur Kernstichprobe steht ein Satz von zehn \textbf{kuratierten Extremfällen}
+zur Verfügung, je fünf mit erwartbar hoher und erwartbar niedriger Metadatenqualität.
+Erstere zeichnen sich durch eine aussagekräftige Beschreibung, erreichbare Ressourcen,
+maschinenlesbare Formate sowie vorhandene Lizenz- und Kontaktangaben aus, letztere durch
+generische Titel, nichtssagende Beschreibungen, defekte Verweise, unklare Lizenzen und
+fehlerhafte Formatangaben. Beide Schichten verfolgen unterschiedliche Zwecke und werden
+deshalb getrennt ausgewertet: Die Extremfälle belegen den Wirkmechanismus per
+Konstruktion, da bei ihnen bekannt ist, welches Ergebnis zu erwarten wäre; die
+Kernstichprobe kontrolliert die Selektionsverzerrung, die einer kuratierten Auswahl
+notwendigerweise anhaftet, und zeigt das Verhalten unter realistischen Bedingungen.
+Da die Extremfälle konstruiert und nicht gezogen sind, erlauben sie keine
+Verallgemeinerung auf die Grundgesamtheit; die quantitativen Aussagen dieser Arbeit
+stützen sich daher durchgehend auf die Kernstichprobe.
+% @TODO Extremfall-Evaluation steht noch aus: Ground-Truth-Bewertung der Extremfaelle
+% fehlt. Vor Durchfuehrung entscheiden, ob bei n=10 (5 gut / 5 schlecht) bleiben oder
+% auf n=20 erhoehen -- Begruendung siehe Antwort im Chat: n=10 traegt eine rein
+% qualitative Demonstration, fuer eine berichtete Trennkennzahl (z. B. mittlere
+% Score-Differenz gut vs. schlecht) waere n=20 deutlich robuster.
 
 % Scope: Bewertungsraster (0-5, verankerte Rubrik je Dimension) mit messtheoretischer
 % Begründung (Preston & Colman zur Stufenzahl, kriteriumsorientierte Schwellen, hybride
@@ -2300,6 +2367,56 @@ Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenf
 % offen benennen (Kalibrierung, kompakte Sessions, Zweifelsfall-Markierung).
 \section{Ground-Truth-Erhebung}
 
+Als externer Maßstab dient eine manuelle Bewertung aller 50 Datensätze der
+Kernstichprobe entlang derselben vier Qualitätsdimensionen, die auch der Prototyp
+verwendet. Bewertet wird jede Dimension auf einer sechsstufigen Skala von 0 bis 5, deren
+Stufen durch ausformulierte Anker beschrieben sind. Die Stufenzahl folgt dem Befund von
+Preston und Colman~\cite{preston2000optimal}, wonach Reliabilität, Validität und
+Diskriminierungsfähigkeit von Ratingskalen bis etwa fünf bis sieben Kategorien zunehmen
+und vierstufige Skalen suboptimal sind. Auf einen expliziten Skalenmittelpunkt wird
+verzichtet; das gegen Mittelpunkte vorgebrachte Argument des Central-Tendency-Bias
+betrifft primär Einstellungsskalen ohne inhaltliche Anker, während bei einer
+kriteriengeleiteten Bewertung mit definierten Ankerformulierungen kein Ausweichverhalten
+zu erwarten ist~\cite{jonsson2007rubrics}.
+
+Methodisch entscheidend ist, dass die Anker die \emph{nutzerseitige Qualitätserfahrung}
+beschreiben und nicht die Indikatorlogik des Prototyps. Ein Anker der Dimension
+Auffindbarkeit formuliert beispielsweise, ob ein Nutzer den Datensatz über seine
+Metadaten finden und thematisch einordnen kann, nicht ob ein bestimmtes DCAT-Feld belegt
+ist. Damit misst die Ground Truth dasselbe Konstrukt aus methodisch unabhängiger
+Perspektive, statt die Prüflogik des Prototyps manuell
+nachzuvollziehen~\cite{campbell1959convergent}.
+
+Aus den vier Dimensionswerten wird ein Gesamturteil in den Stufen \emph{gut},
+\emph{mittel} und \emph{schlecht} abgeleitet. Als \emph{gut} gilt ein Datensatz bei einem
+Durchschnitt von mindestens 4,0, sofern keine Dimension unter 3 liegt; als
+\emph{schlecht} bei einem Durchschnitt von höchstens 2,0 oder bei einem Durchschnitt
+unter 3,5 in Verbindung mit mindestens zwei Dimensionen unter 2. Alle übrigen Fälle
+gelten als \emph{mittel}. Die Schwellen sind kriteriumsorientiert
+gesetzt~\cite{glaser1963}: Sie repräsentieren inhaltlich definierte Qualitätsniveaus und
+nicht die relative Lage innerhalb der Stichprobenverteilung. Die Aggregation ist bewusst
+hybrid --- primär kompensatorisch über den Durchschnitt, abgesichert durch eine
+konjunktive Klausel --- damit ein hoher Wert in einer Dimension eine gravierende Lücke in
+einer anderen nicht vollständig ausgleichen kann~\cite{einhorn1971}.
+
+Die Bewertung erfolgte blind gegenüber den Ergebnissen des Prototyps: Die
+Bewertungsvorlage enthält ausschließlich die zur Beurteilung erforderlichen Fakten ---
+Titel, Beschreibung, Schlagwörter, Themen, Lizenz, Formate sowie Angaben zur
+Erreichbarkeit der Ressourcen --- nicht jedoch dessen Scores. Damit wird ein
+Anchoring-Bias ausgeschlossen, der die gemessene Übereinstimmung künstlich erhöhen würde.
+Nach einem ersten Bewertungsdurchgang wurden die Datensätze mit den größten Abweichungen
+zwischen manueller und maschineller Bewertung erneut gegen die Rubrik geprüft; dabei
+wurden 20 von 200 Zellwerten korrigiert, überwiegend Fehleinschätzungen der
+Zugänglichkeit. Diese Re-Annotation erfolgte dokumentiert und regelgeleitet, ist aber
+nicht mehr blind; die Erstbewertung war es. Die korrigierte Fassung bildet die Grundlage
+aller berichteten Kennzahlen.
+
+Als Limitation ist festzuhalten, dass die Bewertung von einer einzelnen Person
+vorgenommen wurde und eine Inter-Rater-Reliabilität daher nicht bestimmt werden kann. Der
+internen Konsistenz wurde durch eine vorherige Kalibrierung an fünf Beispieldatensätzen,
+kompakte Bewertungssitzungen und die explizite Markierung von Zweifelsfällen Rechnung
+getragen.
+
 % Scope: Alles MQA-Bezogene der Evaluation. Begründung der Baseline-Wahl,
 % Reimplementierung (identischer RDF-Input, offizielle Methodik, Validierung gegen
 % data.europa.eu, Methodikversion), Score-Normalisierung beider Seiten, A/B/C-Schema
@@ -2308,6 +2425,40 @@ Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenf
 % Validität). Fairness-Nachweis: mqa_only_metrics ausweisen. Vollständige
 % Mapping-Tabelle in den Anhang, im Text Schema + Beispiele + Grenzfälle (review=True).
 \section{Vergleichsbaseline: MQA-Reimplementierung und A/B/C-Klassifikation}
+
+Als Vergleichsmaßstab dient die Metadata Quality Assurance von data.europa.eu. Sie
+eignet sich als Baseline, weil sie im europäischen Open-Data-Kontext etabliert ist,
+ihre Methodik offengelegt ist und sie denselben DCAT-AP-Input bewertet wie der Prototyp.
+Um beide Verfahren auf exakt derselben Datengrundlage vergleichen zu können, wurde die
+MQA-Bewertungslogik nach der offiziellen Methodik~\cite{dataeuropa2024mqa}
+reimplementiert und gegen die veröffentlichten Berichte von data.europa.eu validiert.
+Die Reimplementierung ist ausdrücklich Evaluationsinstrument und nicht Bestandteil des
+Artefakts. Da beide Verfahren unterschiedliche Punkteskalen verwenden, werden die
+Ergebnisse vor dem Vergleich auf einen gemeinsamen Wertebereich normalisiert.
+
+Der inhaltliche Kern des Vergleichs ist die Unterscheidung zweier Prüfparadigmen. Die MQA
+bewertet überwiegend, \emph{ob} ein Feld vorhanden, in einem kontrollierten Vokabular
+gelistet oder eine URL auflösbar ist; sie nimmt Qualität bei Vorhandensein weitgehend an.
+Der Prototyp prüft darüber hinaus, ob die vorhandenen Angaben gültig, untereinander
+kongruent und inhaltlich tragfähig sind. Um diesen Unterschied systematisch auswertbar zu
+machen, wird jeder Indikator des Prototyps einer von drei Klassen zugeordnet.
+\textbf{Klasse~A} umfasst Indikatoren, die im Kern dasselbe prüfen wie eine
+MQA-Metrik; hier ist hohe Übereinstimmung zu erwarten (H1). \textbf{Klasse~B} umfasst
+Indikatoren, bei denen die MQA bereits das Vorhandensein honoriert, während der Prototyp
+Gültigkeit oder Kongruenz verifiziert; eine Kombination aus MQA-PASS und
+Prototyp-FAIL ist hier der Nachweis einer Überschätzung durch die MQA (H2).
+\textbf{Klasse~C} umfasst Indikatoren ohne MQA-Pendant --- darunter die gesamte Dimension
+der Aussagekraft --- bei denen die MQA strukturell blind bleibt, der Prototyp aber
+variiert (H2).
+
+Diese Partitionierung entspricht klassischen Validitätsbegriffen der
+Messtheorie~\cite{cronbach1955construct}: Klasse~A adressiert die konvergente Validität,
+die Klassen~B und~C die inkrementelle Validität des Prototyps gegenüber der Baseline. Die
+Zuordnung ist vollständig dokumentiert und enthält je Indikator die zugeordneten
+MQA-Metriken, die Aggregationsregel sowie eine Begründung; Grenzfälle sind explizit
+markiert. Umgekehrt werden auch diejenigen MQA-Metriken ausgewiesen, für die der Prototyp
+kein Pendant besitzt, damit der Vergleich nicht einseitig zugunsten des Prototyps
+ausfällt. Die vollständige Zuordnungstabelle findet sich im Anhang.
 
 % Scope: Pro Evidenzstrang. Diese Section legt die Metrik-Hierarchie fest, BEVOR die
 % erste Zahl faellt -- an ihr haengt spaeter die Modellauswahl (5.6).
@@ -2348,6 +2499,53 @@ Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenf
 % MQA (C), Bland-Altman.
 \section{Auswertungsverfahren und Kennzahlen}
 
+Für den Ground-Truth-Vergleich ist die \textbf{Spearman-Rangkorrelation $\rho$} die
+Primärmetrik, berichtet als Gesamtwert und je Dimension. Diese Festlegung hat drei
+Gründe. Erstens ist die Forschungsfrage ordinal: Zu prüfen ist, ob der Prototyp dieselbe
+Rangordnung erzeugt wie ein menschlicher Bewerter. Der kontinuierliche Score ist das
+eigentliche Ergebnis des Verfahrens, das dreistufige Urteil lediglich eine daraus
+abgeleitete Diskretisierung. Zweitens ist Cohens $\kappa$ auf dieser Stichprobe
+strukturell nach oben begrenzt: Die Urteilsverteilung der Ground Truth ist mit rund
+87\,\% der Datensätze in der Kategorie \emph{mittel} stark konzentriert, wodurch die
+zufällig zu erwartende Übereinstimmung bereits bei etwa 0,79 liegt. Selbst ein nahezu
+perfektes Verfahren könnte unter diesen Randbedingungen kein hohes $\kappa$ erreichen ---
+ein bekanntes Phänomen, das als Kappa-Paradox beschrieben
+ist~\cite{feinstein1990kappa}. Dass eine reale, stratifiziert gezogene
+GovData-Stichprobe überwiegend mittelmäßige Metadaten enthält, ist ein Befund über die
+Datenlage, kein Mangel des Prototyps. Drittens ist der $\kappa$-Punktschätzer bei so
+wenigen Fällen außerhalb der mittleren Kategorie instabil; das entsprechend breite
+Bootstrap-Konfidenzintervall ist das stärkste Einzelargument gegen seine Verwendung als
+Entscheidungsgrundlage.
+
+Ergänzt wird die Rangkorrelation durch Kendalls $\tau$ sowie durch eine Ceiling-Analyse,
+die das bei gegebener Ground-Truth-Verteilung maximal erreichbare $\rho$ ausweist und
+damit einordnet, wie viel des theoretisch Möglichen tatsächlich erreicht wird. Da
+Rangkorrelationen ausschließlich die Reihenfolge und nicht das Niveau bewerten, treten
+mittlerer absoluter Fehler (MAE) und Bias als Kalibrierungsmaße hinzu.
+
+Auf der Urteilsebene werden als \textbf{Sekundärmetriken} Accuracy, gewichtetes $\kappa$
+mit Bootstrap-Konfidenzintervall, PABAK sowie die schwellenfreie AUC für die Trennung
+\emph{gut} gegen den Rest und die Konfusionsmatrix berichtet. PABAK bereinigt das
+Prävalenzproblem rechnerisch~\cite{byrt1993bias} und macht damit sichtbar, dass eine
+niedrige $\kappa$-Punktschätzung hier ein Verteilungs- und kein Qualitätsbefund ist. Die
+Urteilsebene bleibt berichtenswert, weil sie die praktische Entscheidungsebene abbildet
+--- publizierbar, verbesserungsbedürftig oder überarbeitungsbedürftig ---, sie trägt die
+Aussagen dieser Arbeit jedoch nicht allein.
+
+Naheliegend wäre der Einwand, eine feiner gestufte Urteilsskala könne das Problem
+beheben. Kontrollrechnungen mit abweichenden Klasseneinteilungen zeigen jedoch, dass
+nicht die Stufenzahl entscheidend ist, sondern die Lage der Schwellen relativ zur
+Stichprobenverteilung; zudem konvergiert fein gestuftes, quadratisch gewichtetes $\kappa$
+gegen eine Korrelation und misst damit dasselbe wie $\rho$, nur abhängig von zwei
+zusätzlichen willkürlichen Festlegungen. Auf eine nachträgliche Anpassung der Schwellen
+wurde bewusst verzichtet, da günstig gewählte Schnittpunkte eine Optimierung der Kennzahl
+statt einer Messung darstellen würden.
+
+Für den MQA-Vergleich werden je Indikatorklasse eigene Kennzahlen berichtet: die
+Übereinstimmungsrate für Klasse~A, die Überschätzungsrate für Klasse~B, die
+Score-Varianz des Prototyps bei flacher MQA-Bewertung für Klasse~C sowie eine
+Bland-Altman-Darstellung der Score-Differenzen über den gesamten Wertebereich.
+
 % Scope: Erste Ergebnis-Section und Weichenstellung fuer alles Folgende. Die Modellwahl
 % wird hier mit dem in 5.1-5.5 aufgebauten Instrument entschieden; ab 5.7 wird
 % ausschliesslich das gewaehlte Modell berichtet.
@@ -2373,7 +2571,19 @@ eigentlichen Evaluationsergebnisse berichtet werden, ist deshalb zu klären, wel
 dieser Bewertung zugrunde liegt und wie stark diese Wahl das Gesamtergebnis überhaupt
 beeinflusst.
 
-Verglichen werden drei Kandidaten auf identischer Datenbasis: der Kernstichprobe
+Als Kandidaten wurden GPT-5.5, Claude Opus~4.8 und Claude Sonnet~4.6 ausgewählt. Die
+Auswahl orientiert sich an der Nutzungsstatistik von OpenRouter, über die auch die
+Modellaufrufe des Prototyps abgewickelt werden: Die Plattform weist aus, welche Modelle je
+Aufgabentyp den größten Anteil der abgerechneten Nutzung auf sich vereinen, und die drei
+genannten Modelle führen dort die Kategorie der Klassifikationsaufgaben
+an~\cite{openrouter_rankings_classification}. Da die Bewertung der Aussagekraft im
+Kern eine Klassifikationsaufgabe auf Freitextfeldern ist, bildet diese Rangliste einen
+sachnahen und nachvollziehbaren Auswahlmaßstab, der zugleich verhindert, dass die Auswahl
+als beliebig oder anbietergebunden erscheint. Ein erschöpfender Modellvergleich ist damit
+ausdrücklich nicht beabsichtigt; die Auswahl deckt die in der Praxis dominierenden
+Kandidaten ab.
+
+Verglichen werden die drei Kandidaten auf identischer Datenbasis: der Kernstichprobe
 ($n = 50$) unter der Konfiguration \texttt{state\_evaluation\_final}, jeweils mit
 demselben Prompt und derselben Bewertungsrubrik. Abbildung~\ref{fig:modellauswahl_dimensionen}
 zeigt die Rangkorrelation zur Ground Truth je Dimension und Modell.
