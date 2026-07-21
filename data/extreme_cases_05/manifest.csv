@@ -1,0 +1,21 @@
+category,filename,source_path,score_3dim_real,z_score,n_laeufe,expressiveness_light_note
+good,good_01.rdf,data/sample_small_portals_2026-07-21_10-20/geo_rest_10.rdf,0.944,2.66,1,"Klarer Titel 'Landtagswahl 2021', informative Beschreibung, passende Keywords - Expressiveness duerfte stark sein."
+good,good_02.rdf,data/sample_small_portals_2026-07-21_10-20/geo_rest_09.rdf,0.905,2.37,1,"Titel/Beschreibung knapp aber klar ('Landgerichtsbezirke Mecklenburg-Vorpommern') - Expressiveness vermutlich solide, nicht herausragend."
+good,good_03.rdf,data/extreme_cases_04/good_01.rdf,0.901,2.34,3,Bereits vorhandener Top-Fall (reused): Titel/Beschreibung/Lizenz durchgehend stark.
+good,good_04.rdf,data/sample_small_portals_2026-07-21_10-20/non_geo_open-nrw_03.rdf,0.883,2.21,1,Titel/Beschreibung klar ('Einwohnerstatistik 2025 nach Alter und Geschlecht') - Expressiveness vermutlich gut.
+good,good_05.rdf,data/sample_2026-05-18_09-12/non_geo_land-schleswig-holstein.rdf,0.861,2.04,1,"Sehr langer, praeziser Titel + informative Beschreibung - Expressiveness vermutlich stark."
+good,good_06.rdf,data/sample_2026-05-18_09-12/non_geo_land-schleswig-holstein_03.rdf,0.861,2.04,1,"Gleiches Portal, zweiter unabhaengig gezogener Datensatz - Muster wiederholt sich (Schleswig-Holstein konsistent stark)."
+good,good_07.rdf,data/sample_2026-05-18_09-12/geo_rest_03.rdf,0.84,1.89,1,"Achtung: Titel ist ein reiner Datencode ('01001000_BP_Kauslund...'), nur die Beschreibung ist lesbar - Expressiveness hier eher gemischt, nicht durchgehend stark."
+good,good_08.rdf,data/extreme_cases/good_02.rdf,0.831,1.82,6,"Legacy-Fall (Schleswig-Holstein, 'Windkraftanlagen'): klare, sachliche Beschreibung - Expressiveness solide."
+good,good_09.rdf,data/extreme_cases/good_01.rdf,0.82,1.74,10,"Legacy-Fall (Schleswig-Holstein, 'Siedlungsabfallaufkommen'): informative Beschreibung - Expressiveness solide."
+good,good_10.rdf,data/sample_small_portals_2026-07-21_10-20/non_geo_open-nrw_21.rdf,0.812,1.68,1,"Titel klar ('Ergebnisse der Europawahlen in Koeln seit 1979'), Beschreibung wiederholt den Titel nur knapp - Expressiveness vermutlich mittel."
+bad,bad_01.rdf,data/extreme_cases_04/bad_01.rdf,0.219,-2.75,2,"Titel/Beschreibung ebenfalls schwach (keine Download-URL, duerftige Angaben) - verstaerkt die Statistik."
+bad,bad_02.rdf,data/sample_small_portals_2026-07-21_10-20/non_geo_open-nrw_18.rdf,0.221,-2.73,1,"Titel kryptisch-buerokratisch, Beschreibung nur 'Vorlage ohne Finanzbericht' - Expressiveness vermutlich ebenfalls schwach."
+bad,bad_03.rdf,data/sample_small_portals_2026-07-21_10-20/geo_freistaat-sachsen_06.rdf,0.252,-2.5,1,"Titel/Beschreibung hier tatsaechlich ordentlich (Digitale Stadtkarte Leipzig) - Expressiveness duerfte das strukturelle Defizit leicht abfedern, bleibt aber ein starker statistischer Ausreisser."
+bad,bad_04.rdf,data/sample_small_portals_2026-07-20_14-45/non_geo_open-nrw_05.rdf,0.268,-2.38,1,Aus der ersten Kleinportale-Ziehung (Seed 67); Expressiveness nicht naeher geprueft.
+bad,bad_05.rdf,data/sample_small_portals_2026-07-21_10-20/non_geo_statistisches-bundesamt_05.rdf,0.273,-2.34,1,Titel 'Zensus 2011 - So wohnt Deutschland' eigentlich einpraegsam - Expressiveness duerfte hier positiv abweichen.
+bad,bad_06.rdf,data/sample_small_portals_2026-07-21_10-20/non_geo_freistaat-sachsen_14.rdf,0.295,-2.18,1,"Lange, informative Beschreibung vorhanden - Expressiveness vermutlich ueberdurchschnittlich, statistisch aber klar im unteren Bereich."
+bad,bad_07.rdf,data/sample_small_portals_2026-07-21_10-20/geo_open-nrw_29.rdf,0.296,-2.17,1,Titel/Beschreibung klar (Gebaeudeadressen Kreis Unna) - strukturelle Schwaeche (Accessibility/Reusability) dominiert trotzdem.
+bad,bad_08.rdf,data/sample_small_portals_2026-07-21_10-20/geo_open-nrw_07.rdf,0.307,-2.09,1,"Ausfuehrliche Beschreibung (>1000 Zeichen) - Expressiveness vermutlich gut, aber strukturell einer der schwaechsten Faelle."
+bad,bad_09.rdf,data/sample_2026-06-18_13-45/non_geo_rest_03.rdf,0.309,-2.07,1,"Titel 'Justizblatt Nr. 10', Beschreibung nur 'Justizblatt' - Expressiveness vermutlich ebenfalls schwach, verstaerkt die Statistik."
+bad,bad_10.rdf,data/sample_small_portals_2026-07-21_10-20/geo_open-nrw_06.rdf,0.319,-2.0,1,"Ausfuehrliche, gut formatierte Beschreibung (Stadtradeln-Kampagne) - Expressiveness vermutlich gut trotz struktureller Schwaeche."

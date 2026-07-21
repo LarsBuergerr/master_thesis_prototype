@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <dcat:Dataset rdf:about="https://www.opendata-hro.de/dataset/db6d965d-cfe4-425c-a228-de24a328be6d">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <dct:title>Landgerichtsbezirke Mecklenburg-Vorpommern</dct:title>
+    <dct:description>Landgerichtsbezirke in Mecklenburg-Vorpommern</dct:description>
+    <dcat:landingPage rdf:resource="https://www.opendata-hro.de/dataset/db6d965d-cfe4-425c-a228-de24a328be6d"/>
+    <dct:identifier>db6d965d-cfe4-425c-a228-de24a328be6d</dct:identifier>
+    <dcat:keyword>gericht</dcat:keyword>
+    <dcat:keyword>grenze</dcat:keyword>
+    <dcat:keyword>verwaltung</dcat:keyword>
+    <dcat:keyword>verwaltungsgrenze</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-11T15:10:40.828670</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-27T09:40:16.112070</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/JUST"/>
+    <dct:conformsTo>
+      <dct:Standard rdf:about="http://dcat-ap.de/def/dcatde/"/>
+    </dct:conformsTo>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N25651260d8224da2b81ff67b3d560e35">
+        <vcard:fn>Hanse- und Universitätsstadt Rostock</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:geodienste@rostock.de"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://www.opendata-hro.de/organization/b952e781-ab4c-456a-8e7a-2845f7efaf83">
+        <foaf:name>Hanse- und Universitätsstadt Rostock</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:creator>
+      <foaf:Agent rdf:nodeID="Ned6a2e6f65c944e59afcb92e2ff1020e">
+        <foaf:name>Hanse- und Universitätsstadt Rostock</foaf:name>
+        <foaf:mbox>geodienste@rostock.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:creator>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="N8e10addfaeaa4e39af05e46cd4d269b3">
+        <foaf:name>Hanse- und Universitätsstadt Rostock</foaf:name>
+        <foaf:mbox>geodienste@rostock.de</foaf:mbox>
+      </foaf:Organization>
+    </dct:creator>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Na50c946dd4a2413ab72d0304b2f5da01">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((10.5960 53.0688, 10.5960 54.7039, 14.4103 54.7039, 14.4103 53.0688, 10.5960 53.0688))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Ndc37e8f6585f44bfbc4b4be70336f08d">
+        <locn:adminUnitL2 rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/13"/>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.opendata-hro.de/dataset/db6d965d-cfe4-425c-a228-de24a328be6d/resource/258879d0-8ec3-458f-ab6a-d582ce399287">
+        <dct:title>Landgerichtsbezirke Mecklenburg-Vorpommern</dct:title>
+        <dct:description>Dieser Datensatz umfasst die Landgerichtsbezirke in Mecklenburg-Vorpommern mit Informationen zu Bezeichnung sowie Schlüssel des Oberlandesgerichts und Bezeichnung sowie Schlüssel des Landgerichts.</dct:description>
+        <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.csv"/>
+        <dcat:downloadURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.csv"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-11T15:12:55</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-27T09:40:16.116594</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">371</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N03d3b398d7774072bd911971253be4c5">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">da45e49c8b47a1e282476b5d19bc29150840bd0f0a2e1a5abb65094c41b50622</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/sha/256"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.opendata-hro.de/dataset/db6d965d-cfe4-425c-a228-de24a328be6d/resource/e915c05b-ff8e-41ba-a577-1a6dd62e2d07">
+        <dct:title>Landgerichtsbezirke Mecklenburg-Vorpommern</dct:title>
+        <dct:description>Dieser Datensatz umfasst die Landgerichtsbezirke in Mecklenburg-Vorpommern mit Informationen zu Bezeichnung sowie Schlüssel des Oberlandesgerichts und Bezeichnung sowie Schlüssel des Landgerichts.</dct:description>
+        <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.xlsx"/>
+        <dcat:downloadURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.xlsx"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-11T15:12:55</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-27T09:40:16.116658</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3518</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N306deb2c34364921b4ceebd531b86e4d">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">dc02b65c75cce4f998901a9c49f2f3281da145b7f3460bc158d13d4c98d58bc0</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/sha/256"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.opendata-hro.de/dataset/db6d965d-cfe4-425c-a228-de24a328be6d/resource/b493b538-d31f-4961-90b5-50d809e16f94">
+        <dct:title>Landgerichtsbezirke Mecklenburg-Vorpommern</dct:title>
+        <dct:description>Dieser Datensatz umfasst die Landgerichtsbezirke in Mecklenburg-Vorpommern mit Informationen zu Bezeichnung sowie Schlüssel des Oberlandesgerichts und Bezeichnung sowie Schlüssel des Landgerichts.</dct:description>
+        <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.json"/>
+        <dcat:downloadURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.json"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/geo+json"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/GEOJSON"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-11T15:12:55</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-27T09:40:16.116702</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3185897</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N579c8267b0b44673911a5d0c926998cf">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">a513eead135f4a40e785b952e2f7dabe83e6201fca92f17862e9c3ac0208614a</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/sha/256"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.opendata-hro.de/dataset/db6d965d-cfe4-425c-a228-de24a328be6d/resource/a305926c-2e85-4b55-9e4a-fd7aff803a4f">
+        <dct:title>Landgerichtsbezirke Mecklenburg-Vorpommern</dct:title>
+        <dct:description>Dieser Datensatz umfasst die Landgerichtsbezirke in Mecklenburg-Vorpommern mit Informationen zu Bezeichnung sowie Schlüssel des Oberlandesgerichts und Bezeichnung sowie Schlüssel des Landgerichts.</dct:description>
+        <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.shp.zip"/>
+        <dcat:downloadURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.shp.zip"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/zip"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/SHP"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-11T15:12:55</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-27T09:40:16.116746</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1408968</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nb0559f5393044994906d3b917b8ccd1d">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">3f32b501220f6e41e8a4ef849da417bb073ae2ceb7e173707469f33a5c5a6385</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/sha/256"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.opendata-hro.de/dataset/db6d965d-cfe4-425c-a228-de24a328be6d/resource/636b7a82-8dc4-4c5a-8b93-1b9d2561eabf">
+        <dct:title>Landgerichtsbezirke Mecklenburg-Vorpommern</dct:title>
+        <dct:description>Dieser Datensatz umfasst die Landgerichtsbezirke in Mecklenburg-Vorpommern mit Informationen zu Bezeichnung sowie Schlüssel des Oberlandesgerichts und Bezeichnung sowie Schlüssel des Landgerichts.</dct:description>
+        <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.kml"/>
+        <dcat:downloadURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.kml"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.google-earth.kml+xml"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/KML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-11T15:12:55</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-27T09:40:16.116791</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3885813</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N139bdb6ca9d644329cb3ddfcd17d6728">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">6b826f4b0e4e985194a151158cf480b935e67d8247ffc290c5b95157d4b0c61e</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/sha/256"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.opendata-hro.de/dataset/db6d965d-cfe4-425c-a228-de24a328be6d/resource/f3683763-8785-4eee-b54a-5ba98df46ca8">
+        <dct:title>Landgerichtsbezirke Mecklenburg-Vorpommern</dct:title>
+        <dct:description>Dieser Datensatz umfasst die Landgerichtsbezirke in Mecklenburg-Vorpommern mit Informationen zu Bezeichnung sowie Schlüssel des Oberlandesgerichts und Bezeichnung sowie Schlüssel des Landgerichts.</dct:description>
+        <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.gml"/>
+        <dcat:downloadURL rdf:resource="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.gml"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/gml+xml"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/GML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-11T15:12:55</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-27T09:40:16.116834</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3899412</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N5e46a0744ccf4f5783b78d287b69e236">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">e4c0ae60d61a79f5a53a0a4c5acd8799e486fd04bfc1c801ed7d38d95a4e32b7</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/sha/256"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.opendata-hro.de/dataset/db6d965d-cfe4-425c-a228-de24a328be6d/resource/5088f56c-aa72-4908-863d-bfa7f5740a1a">
+        <dct:title>Gerichtsbezirke in Mecklenburg-Vorpommern</dct:title>
+        <dct:description>Diese Karte umfasst die Gerichtsbezirke in Mecklenburg-Vorpommern.</dct:description>
+        <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://geo.sv.rostock.de/geodienste/gerichtsbezirke/wms"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-11T15:12:55</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-27T09:40:16.116874</dct:modified>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.opendata-hro.de/dataset/db6d965d-cfe4-425c-a228-de24a328be6d/resource/c50ef3e3-f9da-4263-8329-440ee5d09de3">
+        <dct:title>Gerichtsbezirke in Mecklenburg-Vorpommern</dct:title>
+        <dct:description>Diese Daten umfassen die Gerichtsbezirke in Mecklenburg-Vorpommern.</dct:description>
+        <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://geo.sv.rostock.de/geodienste/gerichtsbezirke/wfs"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-11T15:12:55</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-27T09:40:16.116916</dct:modified>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/state"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openDataHRO"/>
+    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/stateKey/13"/>
+    <dcatde:geocodingDescription>Mecklenburg-Vorpommern</dcatde:geocodingDescription>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="N3875c1c952804793b2378b28429a2c6c">
+        <foaf:name>Hanse- und Universitätsstadt Rostock</foaf:name>
+        <foaf:mbox>geodienste@rostock.de</foaf:mbox>
+      </foaf:Organization>
+    </dcatde:maintainer>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/cc-zero">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://geo.sv.rostock.de/geodienste/gerichtsbezirke/wms"/>
+  <rdfs:Resource rdf:about="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.csv"/>
+  <rdfs:Resource rdf:about="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.gml"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/SHP"/>
+  <spdx:ChecksumAlgorithm rdf:about="http://dcat-ap.de/def/hashAlgorithms/sha/256"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+  <rdfs:Resource rdf:about="https://geo.sv.rostock.de/geodienste/gerichtsbezirke/wfs"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/zip"/>
+  <rdfs:Resource rdf:about="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.json"/>
+  <rdfs:Resource rdf:about="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.kml"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/KML"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/geo+json"/>
+  <rdfs:Resource rdf:about="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.shp.zip"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/text/csv"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/vnd.google-earth.kml+xml"/>
+  <rdfs:Resource rdf:about="https://geo.sv.rostock.de/download/opendata/landgerichtsbezirke_mecklenburg-vorpommern/landgerichtsbezirke_mecklenburg-vorpommern.xlsx"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/GML"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/gml+xml"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/GEOJSON"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+</rdf:RDF>

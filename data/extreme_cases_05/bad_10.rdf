@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <dcat:Dataset rdf:about="https://opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa">
+    <dct:title>Bochum - Radverkehr - Stadtradeln 2024</dct:title>
+    <dct:description>Dieses Repository enthält Geodaten, welche im Zuge der [**Stadtradeln-Kampagne 2024**](https://www.stadtradeln.de/darum-geht-es) gesammelt wurden. Im Zeitraum vom 03.05.-21.05.2024 waren in Bochum radfahrende Personen dazu aufgerufen, deren Radtouren in Alltag und Freizeit mittels der Stadtradeln-App aufzuzeichnen. Die darin eingegangenen Daten wurden anschließend auf das Netz von [**OpenStreetMap**](https://www.openstreetmap.de/karte/) gelegt und aggregiert. Die Stadt Bochum hat nun erstmalig eine Open Data-Lizenz zur freien Verfügunng der aggregierten Daten erworben. Der vorliegende Layer gibt die Anzahl der Fahrradfahrten (`number_of_matched_trips`) auf spezifischen OpenStreetMap-Segmenten (`osm_way_id`) in Bochum wieder. Die Daten liegen in zwei Formaten vor:&#13;
+&#13;
+- **GeoPackage**: `bochum_stadtradeln_trafficvolumes_2024_k.gpkg`&#13;
+- **GeoJSON**: `bochum_stadtradeln_trafficvolumes_2024_k.json`&#13;
+&#13;
+Eine simple Visualisierung und weitere Informationen sind unter [https://gitlab.opencode.de/StadtBochum/open-data/radverkehr-stadtradeln-2024](https://gitlab.opencode.de/StadtBochum/open-data/radverkehr-stadtradeln-2024) zu finden.&#13;
+&#13;
+Interaktive Visualisierungen lassen sich hier unter Ressourcen als HTML-Datei herunterladen und im Browser öffnen.&#13;
+&#13;
+## Lizenz&#13;
+&#13;
+Veröffentlicht unter [**CC BY-NC-SA 4.0**](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.de).&#13;
+Quelle: RiDE - Radverkehr in Deutschland, [www.radverkehr-in-deutschland.de](https://www.radverkehr-in-deutschland.de). </dct:description>
+    <dcat:landingPage>
+      <foaf:Document rdf:about="https://www.radverkehr-in-deutschland.de"/>
+    </dcat:landingPage>
+    <dct:identifier>d77ec2bf-55c4-4c3c-91db-31899fe502fa</dct:identifier>
+    <dcat:keyword>bochum</dcat:keyword>
+    <dcat:keyword>fahrradverkehr</dcat:keyword>
+    <dcat:keyword>radverkehr</dcat:keyword>
+    <dcat:keyword>verkehr</dcat:keyword>
+    <dcat:keyword>verkehrszählung</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-04-28T15:01:52.577460</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-09T10:25:59.883338</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N1ed0878818bc4800a1997f8fa40e93bb">
+        <vcard:fn>Nahmobilität</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:nahmobil@bochum.de"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.ruhr/organization/24e3b814-2e2e-4374-9058-8f1d438abee9">
+        <foaf:name>Bochum</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:creator>
+      <foaf:Agent rdf:nodeID="Neb7c6ffb7e544fd8b826206514f763d6">
+        <foaf:name>Stabsstelle Digitalisierung</foaf:name>
+        <foaf:mbox>opendata@bochum.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:creator>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="N71f6caa62ee742a096ee5005cefaaba1">
+        <foaf:name>Stabsstelle Digitalisierung</foaf:name>
+      </foaf:Organization>
+    </dct:creator>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/6cd2db87-c243-46a1-8238-bcf77b5f7e47">
+        <dct:title>bochum_stadtradeln_trafficvolumes_2024_k.gpkg</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/6cd2db87-c243-46a1-8238-bcf77b5f7e47/download/bochum_stadtradeln_trafficvolumes_2024_k.gpkg"/>
+        <dcat:mediaType>application/geopackage+sqlite3</dcat:mediaType>
+        <dct:format>Geopackage</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-18T14:09:50.848315</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-18T14:09:50.829398</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">25833472</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/04f562a4-a723-4507-98e0-6beb115b7504">
+        <dct:title>bochum_stadtradeln_trafficvolumes_2024_k.json</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/04f562a4-a723-4507-98e0-6beb115b7504/download/bochum_stadtradeln_trafficvolumes_2024_k.json"/>
+        <dcat:mediaType>application/json</dcat:mediaType>
+        <dct:format>JSON</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-19T11:16:53.320021</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-19T11:16:53.304188</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">53231805</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/22164e22-081c-48d4-a4dc-8a9c6290b87f">
+        <dct:title>All resource data</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/22164e22-081c-48d4-a4dc-8a9c6290b87f/download/bochum-radverkehr-stadtradeln-2024-12d26t26.zip"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format>ZIP</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-16T12:53:27.477896</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-16T12:53:27.441321</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">19802225</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/d65ed129-8bf4-4ad9-badb-a52a99c31cc7">
+        <dct:title>bochum_stadtradeln_2024_visualization_equal_obs.html</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/d65ed129-8bf4-4ad9-badb-a52a99c31cc7/download/bochum_stadtradeln_2024_visualization_equal_obs.html"/>
+        <dcat:mediaType>text/html</dcat:mediaType>
+        <dct:format>HTML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-21T13:40:58.280367</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-21T13:40:58.252929</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12118216</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/c1addb56-36a9-4071-a5ac-4fbec5d97542">
+        <dct:title>bochum_stadtradeln_2024_visualization_natural_jenks.html</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/c1addb56-36a9-4071-a5ac-4fbec5d97542/download/bochum_stadtradeln_2024_visualization_natural_jenks.html"/>
+        <dcat:mediaType>text/html</dcat:mediaType>
+        <dct:format>HTML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-21T13:41:16.943736</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-21T13:41:16.912811</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12914896</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/71ae4559-3ca0-4c2c-93a7-2722119089e3">
+        <dct:title>bochum_stadtradeln_2024_visualization_nice_intervals.html</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/71ae4559-3ca0-4c2c-93a7-2722119089e3/download/bochum_stadtradeln_2024_visualization_nice_intervals.html"/>
+        <dcat:mediaType>text/html</dcat:mediaType>
+        <dct:format>HTML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-21T13:41:37.876866</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-01-21T13:41:37.846679</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12914836</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openNRW"/>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="N45a2de7c59fd4fc3b666c60a324b9fb7">
+        <foaf:name>Nahmobilität</foaf:name>
+        <foaf:mbox>nahmobil@bochum.de</foaf:mbox>
+      </foaf:Organization>
+    </dcatde:maintainer>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/71ae4559-3ca0-4c2c-93a7-2722119089e3/download/bochum_stadtradeln_2024_visualization_nice_intervals.html"/>
+  <rdfs:Resource rdf:about="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/04f562a4-a723-4507-98e0-6beb115b7504/download/bochum_stadtradeln_trafficvolumes_2024_k.json"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/d65ed129-8bf4-4ad9-badb-a52a99c31cc7/download/bochum_stadtradeln_2024_visualization_equal_obs.html"/>
+  <rdfs:Resource rdf:about="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/22164e22-081c-48d4-a4dc-8a9c6290b87f/download/bochum-radverkehr-stadtradeln-2024-12d26t26.zip"/>
+  <rdfs:Resource rdf:about="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/6cd2db87-c243-46a1-8238-bcf77b5f7e47/download/bochum_stadtradeln_trafficvolumes_2024_k.gpkg"/>
+  <rdfs:Resource rdf:about="https://bochum.opendata.ruhr/dataset/d77ec2bf-55c4-4c3c-91db-31899fe502fa/resource/c1addb56-36a9-4071-a5ac-4fbec5d97542/download/bochum_stadtradeln_2024_visualization_natural_jenks.html"/>
+</rdf:RDF>

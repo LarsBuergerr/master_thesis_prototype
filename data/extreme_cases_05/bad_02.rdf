@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+>
+  <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/95488836-b9b6-42f8-9b35-dbf52b7f4268/resource/95488836-b9b6-42f8-9b35-dbf52b7f4268">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <dct:title>11. Projektstatusbericht - Beschlusskontrolle</dct:title>
+    <dct:description>Vorlage ohne Finanzbericht</dct:description>
+    <dct:license>
+      <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+        <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+      </dct:LicenseDocument>
+    </dct:license>
+    <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/95488836-b9b6-42f8-9b35-dbf52b7f4268/resource/95488836-b9b6-42f8-9b35-dbf52b7f4268"/>
+    <foaf:page rdf:resource="https://opendata.bonn.de/dataset/95488836-b9b6-42f8-9b35-dbf52b7f4268/resource/95488836-b9b6-42f8-9b35-dbf52b7f4268"/>
+    <dct:format>
+      <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+    </dct:format>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:47:43+02:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:47:43+02:00</dct:modified>
+  </dcat:Distribution>
+  <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/803c96ea-642c-4e90-b06a-04c0848385b0/resource/803c96ea-642c-4e90-b06a-04c0848385b0">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <dct:title>23. Projektstatusbericht - Finanzbericht</dct:title>
+    <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+    <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/803c96ea-642c-4e90-b06a-04c0848385b0/resource/803c96ea-642c-4e90-b06a-04c0848385b0"/>
+    <foaf:page rdf:resource="https://opendata.bonn.de/dataset/803c96ea-642c-4e90-b06a-04c0848385b0/resource/803c96ea-642c-4e90-b06a-04c0848385b0"/>
+    <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:52:06+02:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:52:06+02:00</dct:modified>
+  </dcat:Distribution>
+  <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/91f16b7c-0368-45e4-9dea-f4f4d3782a7c/resource/91f16b7c-0368-45e4-9dea-f4f4d3782a7c">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <dct:title>18. Projektstatusbericht - Finanzbericht</dct:title>
+    <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+    <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/91f16b7c-0368-45e4-9dea-f4f4d3782a7c/resource/91f16b7c-0368-45e4-9dea-f4f4d3782a7c"/>
+    <foaf:page rdf:resource="https://opendata.bonn.de/dataset/91f16b7c-0368-45e4-9dea-f4f4d3782a7c/resource/91f16b7c-0368-45e4-9dea-f4f4d3782a7c"/>
+    <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:39:52+02:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:39:52+02:00</dct:modified>
+  </dcat:Distribution>
+  <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/9945a63d-7746-42bc-bafc-74a857888f3a/resource/9945a63d-7746-42bc-bafc-74a857888f3a">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <dct:title>14. Projektstatusbericht - Finanzbericht</dct:title>
+    <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+    <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/9945a63d-7746-42bc-bafc-74a857888f3a/resource/9945a63d-7746-42bc-bafc-74a857888f3a"/>
+    <foaf:page rdf:resource="https://opendata.bonn.de/dataset/9945a63d-7746-42bc-bafc-74a857888f3a/resource/9945a63d-7746-42bc-bafc-74a857888f3a"/>
+    <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:40:04+02:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:40:04+02:00</dct:modified>
+  </dcat:Distribution>
+  <dcat:Dataset rdf:about="https://opendata.bonn.de/dataset/projektstatusberichte-konferenzzentrum">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <dct:title>Projektstatusberichte Konferenzzentrum</dct:title>
+    <dct:description>Mit den öffentlichen Projektstatusberichten berichtet die Verwaltung über den aktuellen Sachstand zum Konferenzzentrum. Wie gewohnt, ist der Bericht in einen öffentlichen sowie einen nichtöffentlichen Teil aufgeteilt.
+Die öffentliche Teile sind hier abrufbar.
+</dct:description>
+    <dct:identifier>e1139a24-6eb3-4144-b123-62a8864e319a</dct:identifier>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/IRREG"/>
+    </dct:accrualPeriodicity>
+    <dcat:keyword>bauen-und-wohnen</dcat:keyword>
+    <dcat:keyword>infrastruktur</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-07-17T00:15:07+02:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-10-24T07:22:48+02:00</dct:modified>
+    <foaf:page rdf:resource="https://opendata.bonn.de/dataset/projektstatusberichte-konferenzzentrum"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Nd5ee0f1a3d924a299d8f08d10fc321df">
+        <vcard:fn>Stadt Bonn</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:opendata@bonn.de"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://ckan.open.nrw.de/organization/5db34c99-d68a-429b-bab5-6472111154ff">
+        <foaf:name>Bonn</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:nodeID="N066361bb24a04fd080a16f30c88766a0">
+        <rdfs:label>öffentlich </rdfs:label>
+      </dct:RightsStatement>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/8de71617-47ca-400d-a310-1bfb4bfd3be7/resource/8de71617-47ca-400d-a310-1bfb4bfd3be7">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>19. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/8de71617-47ca-400d-a310-1bfb4bfd3be7/resource/8de71617-47ca-400d-a310-1bfb4bfd3be7"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/8de71617-47ca-400d-a310-1bfb4bfd3be7/resource/8de71617-47ca-400d-a310-1bfb4bfd3be7"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:35:34+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:35:34+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/e71528e8-36f0-4c4c-a6bd-d5f30a9070c5/resource/e71528e8-36f0-4c4c-a6bd-d5f30a9070c5">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>19. Projektstatusbericht - Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/e71528e8-36f0-4c4c-a6bd-d5f30a9070c5/resource/e71528e8-36f0-4c4c-a6bd-d5f30a9070c5"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/e71528e8-36f0-4c4c-a6bd-d5f30a9070c5/resource/e71528e8-36f0-4c4c-a6bd-d5f30a9070c5"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:36:27+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:36:27+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/44f9a318-9915-4cb7-986b-4a67a1368ddd/resource/44f9a318-9915-4cb7-986b-4a67a1368ddd">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>18. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/44f9a318-9915-4cb7-986b-4a67a1368ddd/resource/44f9a318-9915-4cb7-986b-4a67a1368ddd"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/44f9a318-9915-4cb7-986b-4a67a1368ddd/resource/44f9a318-9915-4cb7-986b-4a67a1368ddd"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:39:11+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:40:20+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution rdf:resource="https://opendata.bonn.de/dataset/91f16b7c-0368-45e4-9dea-f4f4d3782a7c/resource/91f16b7c-0368-45e4-9dea-f4f4d3782a7c"/>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/8a05d75c-a92f-4369-89f5-506a6f1ec846/resource/8a05d75c-a92f-4369-89f5-506a6f1ec846">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>17. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/8a05d75c-a92f-4369-89f5-506a6f1ec846/resource/8a05d75c-a92f-4369-89f5-506a6f1ec846"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/8a05d75c-a92f-4369-89f5-506a6f1ec846/resource/8a05d75c-a92f-4369-89f5-506a6f1ec846"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:42:04+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:42:04+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/3c1e1b6d-e996-4850-bd49-6e053afb01b5/resource/3c1e1b6d-e996-4850-bd49-6e053afb01b5">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>17. Projektstatusbericht - Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/3c1e1b6d-e996-4850-bd49-6e053afb01b5/resource/3c1e1b6d-e996-4850-bd49-6e053afb01b5"/>
+        <dcat:downloadURL rdf:resource="http://www2.bonn.de/bo_ris/daten/O/Pdf/14/1410649ED2.pdf"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/3c1e1b6d-e996-4850-bd49-6e053afb01b5/resource/3c1e1b6d-e996-4850-bd49-6e053afb01b5"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:43:13+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T10:43:13+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/fe65aad9-08d2-401d-bf1b-5888bcc4adb7/resource/fe65aad9-08d2-401d-bf1b-5888bcc4adb7">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>16. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/fe65aad9-08d2-401d-bf1b-5888bcc4adb7/resource/fe65aad9-08d2-401d-bf1b-5888bcc4adb7"/>
+        <dcat:downloadURL rdf:resource="http://www2.bonn.de/bo_ris/daten/o/pdf/13/1313318.pdf"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/fe65aad9-08d2-401d-bf1b-5888bcc4adb7/resource/fe65aad9-08d2-401d-bf1b-5888bcc4adb7"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:36:13+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:36:13+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/042cf321-c8e2-4fed-a4ba-17b1f00b6d1f/resource/042cf321-c8e2-4fed-a4ba-17b1f00b6d1f">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>16. Projektstatusbericht - Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/042cf321-c8e2-4fed-a4ba-17b1f00b6d1f/resource/042cf321-c8e2-4fed-a4ba-17b1f00b6d1f"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/042cf321-c8e2-4fed-a4ba-17b1f00b6d1f/resource/042cf321-c8e2-4fed-a4ba-17b1f00b6d1f"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:36:44+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:36:44+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/86975af2-3226-4dd1-854c-70bd621c2400/resource/86975af2-3226-4dd1-854c-70bd621c2400">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>15. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/86975af2-3226-4dd1-854c-70bd621c2400/resource/86975af2-3226-4dd1-854c-70bd621c2400"/>
+        <dcat:downloadURL rdf:resource="http://www2.bonn.de/bo_ris/daten/O/Pdf/13/1312614ED2.pdf"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/86975af2-3226-4dd1-854c-70bd621c2400/resource/86975af2-3226-4dd1-854c-70bd621c2400"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:37:56+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:38:14+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/f6d2717d-3935-463d-bbc6-57a938741342/resource/f6d2717d-3935-463d-bbc6-57a938741342">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>15. Projektstatusbericht - Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/f6d2717d-3935-463d-bbc6-57a938741342/resource/f6d2717d-3935-463d-bbc6-57a938741342"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/f6d2717d-3935-463d-bbc6-57a938741342/resource/f6d2717d-3935-463d-bbc6-57a938741342"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:38:46+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:38:46+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/c1f80ca4-2946-41af-8d76-b875f3433156/resource/c1f80ca4-2946-41af-8d76-b875f3433156">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>14. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/c1f80ca4-2946-41af-8d76-b875f3433156/resource/c1f80ca4-2946-41af-8d76-b875f3433156"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/c1f80ca4-2946-41af-8d76-b875f3433156/resource/c1f80ca4-2946-41af-8d76-b875f3433156"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:39:28+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:39:28+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution rdf:resource="https://opendata.bonn.de/dataset/9945a63d-7746-42bc-bafc-74a857888f3a/resource/9945a63d-7746-42bc-bafc-74a857888f3a"/>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/57025fa6-758d-42d6-b844-559b21a8006c/resource/57025fa6-758d-42d6-b844-559b21a8006c">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>13. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/57025fa6-758d-42d6-b844-559b21a8006c/resource/57025fa6-758d-42d6-b844-559b21a8006c"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/57025fa6-758d-42d6-b844-559b21a8006c/resource/57025fa6-758d-42d6-b844-559b21a8006c"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:44:48+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:44:48+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/625e5af6-a02b-4a9e-82d1-74f880bad74a/resource/625e5af6-a02b-4a9e-82d1-74f880bad74a">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>13. Projektstatusbericht - Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/625e5af6-a02b-4a9e-82d1-74f880bad74a/resource/625e5af6-a02b-4a9e-82d1-74f880bad74a"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/625e5af6-a02b-4a9e-82d1-74f880bad74a/resource/625e5af6-a02b-4a9e-82d1-74f880bad74a"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:45:13+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:45:13+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/1879e604-e0d4-4f90-8efa-cb9e9d4c403d/resource/1879e604-e0d4-4f90-8efa-cb9e9d4c403d">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>12. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/1879e604-e0d4-4f90-8efa-cb9e9d4c403d/resource/1879e604-e0d4-4f90-8efa-cb9e9d4c403d"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/1879e604-e0d4-4f90-8efa-cb9e9d4c403d/resource/1879e604-e0d4-4f90-8efa-cb9e9d4c403d"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:46:01+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:46:01+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/c725d205-1248-473a-9fee-4b0f293f910b/resource/c725d205-1248-473a-9fee-4b0f293f910b">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>12. Projektstatusbericht - Finanbericht </dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/c725d205-1248-473a-9fee-4b0f293f910b/resource/c725d205-1248-473a-9fee-4b0f293f910b"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/c725d205-1248-473a-9fee-4b0f293f910b/resource/c725d205-1248-473a-9fee-4b0f293f910b"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:46:35+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:46:35+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution rdf:resource="https://opendata.bonn.de/dataset/95488836-b9b6-42f8-9b35-dbf52b7f4268/resource/95488836-b9b6-42f8-9b35-dbf52b7f4268"/>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/5d5c7f54-89d3-44d1-a95f-520956c9987d/resource/5d5c7f54-89d3-44d1-a95f-520956c9987d">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>10. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/5d5c7f54-89d3-44d1-a95f-520956c9987d/resource/5d5c7f54-89d3-44d1-a95f-520956c9987d"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/5d5c7f54-89d3-44d1-a95f-520956c9987d/resource/5d5c7f54-89d3-44d1-a95f-520956c9987d"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:48:22+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:48:22+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/5f3d2438-7cc4-4af1-94fd-21c18e01c554/resource/5f3d2438-7cc4-4af1-94fd-21c18e01c554">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>10. Projektstatusbericht - Projektzeitplan</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/5f3d2438-7cc4-4af1-94fd-21c18e01c554/resource/5f3d2438-7cc4-4af1-94fd-21c18e01c554"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/5f3d2438-7cc4-4af1-94fd-21c18e01c554/resource/5f3d2438-7cc4-4af1-94fd-21c18e01c554"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:48:56+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:48:56+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/bbd5f4cc-56a7-4f35-b515-0f2d07efb1fd/resource/bbd5f4cc-56a7-4f35-b515-0f2d07efb1fd">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>9. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/bbd5f4cc-56a7-4f35-b515-0f2d07efb1fd/resource/bbd5f4cc-56a7-4f35-b515-0f2d07efb1fd"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/bbd5f4cc-56a7-4f35-b515-0f2d07efb1fd/resource/bbd5f4cc-56a7-4f35-b515-0f2d07efb1fd"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:49:44+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:49:44+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/9364c02e-4c3e-4f40-b2f6-32a992a6c480/resource/9364c02e-4c3e-4f40-b2f6-32a992a6c480">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>8. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/9364c02e-4c3e-4f40-b2f6-32a992a6c480/resource/9364c02e-4c3e-4f40-b2f6-32a992a6c480"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/9364c02e-4c3e-4f40-b2f6-32a992a6c480/resource/9364c02e-4c3e-4f40-b2f6-32a992a6c480"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:50:32+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:50:32+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/44b7a073-d312-490c-b35b-235b8cb59b89/resource/44b7a073-d312-490c-b35b-235b8cb59b89">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>7. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/44b7a073-d312-490c-b35b-235b8cb59b89/resource/44b7a073-d312-490c-b35b-235b8cb59b89"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/44b7a073-d312-490c-b35b-235b8cb59b89/resource/44b7a073-d312-490c-b35b-235b8cb59b89"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:51:07+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:51:07+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/176e867f-c2e9-4e21-8b72-4d9d4e45c11d/resource/176e867f-c2e9-4e21-8b72-4d9d4e45c11d">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>6. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/176e867f-c2e9-4e21-8b72-4d9d4e45c11d/resource/176e867f-c2e9-4e21-8b72-4d9d4e45c11d"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/176e867f-c2e9-4e21-8b72-4d9d4e45c11d/resource/176e867f-c2e9-4e21-8b72-4d9d4e45c11d"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:51:54+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:51:54+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/bae10299-193f-4e4a-ade5-f402afd56538/resource/bae10299-193f-4e4a-ade5-f402afd56538">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>6. Projektstatusbericht - Projektplan</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/bae10299-193f-4e4a-ade5-f402afd56538/resource/bae10299-193f-4e4a-ade5-f402afd56538"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/bae10299-193f-4e4a-ade5-f402afd56538/resource/bae10299-193f-4e4a-ade5-f402afd56538"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:53:09+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:53:09+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/dfdd570e-816a-40be-8190-26de55bc5261/resource/dfdd570e-816a-40be-8190-26de55bc5261">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>5. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/dfdd570e-816a-40be-8190-26de55bc5261/resource/dfdd570e-816a-40be-8190-26de55bc5261"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/dfdd570e-816a-40be-8190-26de55bc5261/resource/dfdd570e-816a-40be-8190-26de55bc5261"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:53:33+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:53:33+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/13c8a6b4-7ce4-4cd3-85df-17f8548b0501/resource/13c8a6b4-7ce4-4cd3-85df-17f8548b0501">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>4. Projektstatusbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/13c8a6b4-7ce4-4cd3-85df-17f8548b0501/resource/13c8a6b4-7ce4-4cd3-85df-17f8548b0501"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/13c8a6b4-7ce4-4cd3-85df-17f8548b0501/resource/13c8a6b4-7ce4-4cd3-85df-17f8548b0501"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:56:29+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:56:29+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/0dffa0ed-ef1a-44a4-a341-46ae696b8b59/resource/0dffa0ed-ef1a-44a4-a341-46ae696b8b59">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>3. Projektstatusbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/0dffa0ed-ef1a-44a4-a341-46ae696b8b59/resource/0dffa0ed-ef1a-44a4-a341-46ae696b8b59"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/0dffa0ed-ef1a-44a4-a341-46ae696b8b59/resource/0dffa0ed-ef1a-44a4-a341-46ae696b8b59"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:57:23+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-08-26T11:57:23+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/244d6e14-86c0-430d-953e-d0052855632d/resource/244d6e14-86c0-430d-953e-d0052855632d">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>20. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/244d6e14-86c0-430d-953e-d0052855632d/resource/244d6e14-86c0-430d-953e-d0052855632d"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/244d6e14-86c0-430d-953e-d0052855632d/resource/244d6e14-86c0-430d-953e-d0052855632d"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-11-03T15:47:41+01:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-11-03T15:48:05+01:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/6b58615a-88e6-4dd8-9902-4d9419e90454/resource/6b58615a-88e6-4dd8-9902-4d9419e90454">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>20. Projektstatusbericht - Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/6b58615a-88e6-4dd8-9902-4d9419e90454/resource/6b58615a-88e6-4dd8-9902-4d9419e90454"/>
+        <dcat:downloadURL rdf:resource="http://www2.bonn.de/bo_ris/daten/o/pdf/14/1412737ST3.pdf"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/6b58615a-88e6-4dd8-9902-4d9419e90454/resource/6b58615a-88e6-4dd8-9902-4d9419e90454"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-12-04T13:51:04+01:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-12-04T13:51:04+01:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/373fb8fb-d198-4213-a4a1-515bdba4e8dd/resource/373fb8fb-d198-4213-a4a1-515bdba4e8dd">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>20. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/373fb8fb-d198-4213-a4a1-515bdba4e8dd/resource/373fb8fb-d198-4213-a4a1-515bdba4e8dd"/>
+        <dcat:downloadURL rdf:resource="http://www2.bonn.de/bo_ris/daten/O/Pdf/14/1412737ED2.pdf"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/373fb8fb-d198-4213-a4a1-515bdba4e8dd/resource/373fb8fb-d198-4213-a4a1-515bdba4e8dd"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-02-23T14:27:00+01:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-10-23T10:37:52+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/d87305a8-970d-49f1-b9d3-ba66aa1d7cbc/resource/d87305a8-970d-49f1-b9d3-ba66aa1d7cbc">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>20. Projektstatusbericht - Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/d87305a8-970d-49f1-b9d3-ba66aa1d7cbc/resource/d87305a8-970d-49f1-b9d3-ba66aa1d7cbc"/>
+        <dcat:downloadURL rdf:resource="http://www2.bonn.de/bo_ris/daten/O/Pdf/14/1412737ED4.pdf"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/d87305a8-970d-49f1-b9d3-ba66aa1d7cbc/resource/d87305a8-970d-49f1-b9d3-ba66aa1d7cbc"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-02-23T14:30:05+01:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-10-23T10:37:52+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/3ddc5c70-277d-4398-95c3-6d000d281a15/resource/3ddc5c70-277d-4398-95c3-6d000d281a15">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>21. Projektstatusbericht - Beschlusskontrolle und Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/3ddc5c70-277d-4398-95c3-6d000d281a15/resource/3ddc5c70-277d-4398-95c3-6d000d281a15"/>
+        <dcat:downloadURL rdf:resource="http://www2.bonn.de/bo_ris/daten/O/Pdf/15/1510669ED2.pdf"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/3ddc5c70-277d-4398-95c3-6d000d281a15/resource/3ddc5c70-277d-4398-95c3-6d000d281a15"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-02-23T14:31:49+01:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-02-23T14:38:38+01:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/fd92df13-1b04-49a4-9ae3-9c61b8ffd238/resource/fd92df13-1b04-49a4-9ae3-9c61b8ffd238">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>22. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/fd92df13-1b04-49a4-9ae3-9c61b8ffd238/resource/fd92df13-1b04-49a4-9ae3-9c61b8ffd238"/>
+        <dcat:downloadURL rdf:resource="http://www2.bonn.de/bo_ris/daten/O/Pdf/15/1511861ED2.pdf"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/fd92df13-1b04-49a4-9ae3-9c61b8ffd238/resource/fd92df13-1b04-49a4-9ae3-9c61b8ffd238"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-07-16T14:51:13+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-07-16T14:51:13+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/74e7d655-e72b-46d3-823b-c2b8dfc11b81/resource/74e7d655-e72b-46d3-823b-c2b8dfc11b81">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>22. Projektstatusbericht - Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/74e7d655-e72b-46d3-823b-c2b8dfc11b81/resource/74e7d655-e72b-46d3-823b-c2b8dfc11b81"/>
+        <dcat:downloadURL rdf:resource="http://www2.bonn.de/bo_ris/daten/O/Pdf/15/1511861ED2.pdf"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/74e7d655-e72b-46d3-823b-c2b8dfc11b81/resource/74e7d655-e72b-46d3-823b-c2b8dfc11b81"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-07-16T14:51:50+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-07-16T14:51:50+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/82f51296-bdf8-476a-86b2-b08802ec58de/resource/82f51296-bdf8-476a-86b2-b08802ec58de">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>23. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/82f51296-bdf8-476a-86b2-b08802ec58de/resource/82f51296-bdf8-476a-86b2-b08802ec58de"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/82f51296-bdf8-476a-86b2-b08802ec58de/resource/82f51296-bdf8-476a-86b2-b08802ec58de"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:51:26+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:51:26+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution rdf:resource="https://opendata.bonn.de/dataset/803c96ea-642c-4e90-b06a-04c0848385b0/resource/803c96ea-642c-4e90-b06a-04c0848385b0"/>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/d0457fec-d591-4e74-9ee7-b90cad1e47ba/resource/d0457fec-d591-4e74-9ee7-b90cad1e47ba">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>24. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/d0457fec-d591-4e74-9ee7-b90cad1e47ba/resource/d0457fec-d591-4e74-9ee7-b90cad1e47ba"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/d0457fec-d591-4e74-9ee7-b90cad1e47ba/resource/d0457fec-d591-4e74-9ee7-b90cad1e47ba"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:52:37+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:52:37+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/006fb804-e944-43f8-b57f-b4953c3d9439/resource/006fb804-e944-43f8-b57f-b4953c3d9439">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>24. Projektstatusbericht - Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/006fb804-e944-43f8-b57f-b4953c3d9439/resource/006fb804-e944-43f8-b57f-b4953c3d9439"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/006fb804-e944-43f8-b57f-b4953c3d9439/resource/006fb804-e944-43f8-b57f-b4953c3d9439"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:53:09+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:53:09+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/2de5f749-24f5-4a28-9d33-3e00f10a6e10/resource/2de5f749-24f5-4a28-9d33-3e00f10a6e10">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>25. Projektstatusbereicht Beschlusskontrolle und Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/2de5f749-24f5-4a28-9d33-3e00f10a6e10/resource/2de5f749-24f5-4a28-9d33-3e00f10a6e10"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/2de5f749-24f5-4a28-9d33-3e00f10a6e10/resource/2de5f749-24f5-4a28-9d33-3e00f10a6e10"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:54:29+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:54:29+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/30ac025c-c7fa-4fcf-8554-04aa00dbb281/resource/30ac025c-c7fa-4fcf-8554-04aa00dbb281">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>26. Projektstatusbericht - Beschlusskontrolle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/30ac025c-c7fa-4fcf-8554-04aa00dbb281/resource/30ac025c-c7fa-4fcf-8554-04aa00dbb281"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/30ac025c-c7fa-4fcf-8554-04aa00dbb281/resource/30ac025c-c7fa-4fcf-8554-04aa00dbb281"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:55:05+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:55:05+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/a930d3f0-7ee4-4b62-82f2-51549981aa3c/resource/a930d3f0-7ee4-4b62-82f2-51549981aa3c">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>26. Projektstatusbericht - Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/a930d3f0-7ee4-4b62-82f2-51549981aa3c/resource/a930d3f0-7ee4-4b62-82f2-51549981aa3c"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/a930d3f0-7ee4-4b62-82f2-51549981aa3c/resource/a930d3f0-7ee4-4b62-82f2-51549981aa3c"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:55:35+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:55:35+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.bonn.de/dataset/416d99c5-831c-4393-8cc1-d547ff26bc45/resource/416d99c5-831c-4393-8cc1-d547ff26bc45">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <dct:title>27. Projektstatusbericht - Beschlusskontrolle und Finanzbericht</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.bonn.de/dataset/416d99c5-831c-4393-8cc1-d547ff26bc45/resource/416d99c5-831c-4393-8cc1-d547ff26bc45"/>
+        <foaf:page rdf:resource="https://opendata.bonn.de/dataset/416d99c5-831c-4393-8cc1-d547ff26bc45/resource/416d99c5-831c-4393-8cc1-d547ff26bc45"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:56:26+02:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-08-22T09:56:26+02:00</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="https://opendata.bonn.de/"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openNRW"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="http://www2.bonn.de/bo_ris/daten/O/Pdf/15/1510669ED2.pdf"/>
+  <rdfs:Resource rdf:about="http://www2.bonn.de/bo_ris/daten/o/pdf/14/1412737ST3.pdf"/>
+  <rdfs:Resource rdf:about="http://www2.bonn.de/bo_ris/daten/O/Pdf/14/1412737ED2.pdf"/>
+  <rdfs:Resource rdf:about="http://www2.bonn.de/bo_ris/daten/O/Pdf/14/1410649ED2.pdf"/>
+  <rdfs:Resource rdf:about="http://www2.bonn.de/bo_ris/daten/O/Pdf/14/1412737ED4.pdf"/>
+  <rdfs:Resource rdf:about="http://www2.bonn.de/bo_ris/daten/o/pdf/13/1313318.pdf"/>
+  <rdfs:Resource rdf:about="http://www2.bonn.de/bo_ris/daten/O/Pdf/15/1511861ED2.pdf"/>
+  <rdfs:Resource rdf:about="http://www2.bonn.de/bo_ris/daten/O/Pdf/13/1312614ED2.pdf"/>
+</rdf:RDF>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <dcat:Dataset rdf:about="https://opendata.ruhr/dataset/0dd772d7-f8e1-4464-b8be-c32ddc4865b6">
+    <dct:title>Ausflugziele und POIs in Hamm</dct:title>
+    <dct:description>Der Datensatz umfasst touristische Points of interest und Ausflugsziele in Hamm und in der Metropole Ruhr. Die beschreibenden Inhalte werden regelmäßig aktualisiert und umfassen u.a. detaillierte Informationen zu Kontaktadressen, Öffnungszeiten, Preisen, Beschreibungstexten und Fotos.&#13;
+&#13;
+##Anleitung des Open Data Finders:&#13;
+&#13;
+###Schritt 1 &#13;
+Im ersten Schritt können Sie, unter Eingabe Ihrer Kontaktdaten, einen Lizenzschlüssel generieren.&#13;
+&#13;
+###Schritt 2 &#13;
+Im nächsten Schritt müssen Sie auswählen, in welchem Gebiet Sie die touristischen Daten abrufen möchten. Hierzu können Sie entweder die Umkreis- oder die Gebietssuche auswählen. Wählen Sie ""Hamm"" aus, wenn Sie Ausflugsziele und PIOs in Hamm angezeigt bekommen möchten. &#13;
+&#13;
+###Schritt 3 &#13;
+Anschließend können Sie sich für zwei Arten des direkten Datenabruf entscheiden: destination.pages (Widgets) für die Webseite und destination.meta (API Zugriff) auf die Inhalte.&#13;
+&#13;
+Es stehen folgende Datenformate zur Verfügung: CSV, XML, HTML, JSON, JSON_LD (schema.org), JSON_LD (schema.org ODTA), GEOJSON, ATOM, GPX, JPEG, PNG, RSS, RDF, RSS-FEED&#13;
+</dct:description>
+    <dcat:landingPage>
+      <foaf:Document rdf:about="https://www.ruhr-tourismus.de/open-data-finder/">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+      </foaf:Document>
+    </dcat:landingPage>
+    <dct:identifier>0dd772d7-f8e1-4464-b8be-c32ddc4865b6</dct:identifier>
+    <dcat:keyword>ausflugsziele</dcat:keyword>
+    <dcat:keyword>freizeit</dcat:keyword>
+    <dcat:keyword>poi</dcat:keyword>
+    <dcat:keyword>tourismus</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-06T13:19:33.644008</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-06T13:19:33.644013</dct:modified>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Na3ab9896ee7344ce9456100cdb528e11">
+        <vcard:fn>Dörthe Strübli</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:Struebli@Stadt.Hamm.de"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.ruhr/organization/c47b4b3b-44a9-4a9b-a4e4-6a9b50680167">
+        <foaf:name>Hamm</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:creator>
+      <foaf:Agent rdf:nodeID="N24e7d4faf7d54975baad0852821ac952">
+        <foaf:name>Stadt Hamm </foaf:name>
+      </foaf:Agent>
+    </dct:creator>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="N56863f9a15334b67a5acf728c7e99803">
+        <foaf:name>Stadt Hamm </foaf:name>
+      </foaf:Organization>
+    </dct:creator>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.ruhr/dataset/0dd772d7-f8e1-4464-b8be-c32ddc4865b6/resource/afc322c1-94b0-4564-99dc-8befd4bf09eb">
+        <dct:title>Open Data Finder - Ausflugsziele und POIs in Hamm </dct:title>
+        <dct:description>##Mit dem Open Data Finder auf hochwertige, standardisierte touristische Daten aus der Metropole Ruhr zugreifen.&#13;
+&#13;
+Durch die zentrale Steuerung und einheitliche Qualitätskriterien werden in der Metropole Ruhr die Datenqualität und Nutzbarkeit der Daten stark erhöht. Durch den direkten Datenabruf über den Open Data Finder ermöglicht der DestinationHub.Ruhr neuen, innovativen Dienstleistern, ihre Produkte direkt mit hochwertigen touristischen Daten zu befüllen.&#13;
+&#13;
+##Schritt 1&#13;
+Im ersten Schritt bitten wir Sie zur Angabe Ihrer Kontaktdaten sowie der Zustimmung unserer Nutzungsbedingungen und der Datenschutzerklärung.&#13;
+&#13;
+##Schritt 2&#13;
+Im nächsten Schritt müssen Sie auswählen, in welchem Gebiet Sie die touristischen Daten abrufen möchten. Hierzu können Sie entweder die Umkreis- oder die Gebietssuche auswählen.&#13;
+&#13;
+###Umkreissuche:&#13;
+Geben Sie in das Suchfeld eine Adresse oder eine Ortsangabe ein. Über den Schieberegler „Eingrenzung der Inhalte“ kann der Radius um den ausgewählten Punkt frei bestimmt werden. Sollten Sie sich für Daten aus der gesamten Metropole Ruhr interessieren, können Sie alternativ die Checkbox „Datensätze aus der gesamten Metropole Ruhr abrufen“ anklicken.&#13;
+&#13;
+###Gebietssuche:&#13;
+Wählen Sie zunächst einen der vier Gebietstypen aus: Landkreise, Naturparke / Nationalpark, Reisegebiete oder Vermarktungsregionen. Im folgenden Schritt können Sie entsprechend einzelne Gebiete auswählen. Wenn Sie sich für den Gebietstyp „Landkreise“ entscheiden, haben Sie nach Auswahl des Kreises / der kreisfreien Stadt die zusätzliche Option eine oder mehrere Gemeinden innerhalb des Landkreises zu wählen. Die entsprechende Anzahl an abzurufenden Datensätzen wird Ihnen als Ergebnis innerhalb der Kartenansicht anzeigt.&#13;
+&#13;
+##Schritt 3&#13;
+Anschließend können Sie sich für zwei Arten des direkten Datenabruf entscheiden: destination.pages (Widgets) für die Webseite und destination.meta (API Zugriff) auf die Inhalte.&#13;
+&#13;
+Die Nutzung des Widgets bezeichnen wir als „technisch einfachere Variante“. Hierbei wird destination.pages als fertiges Ausgabemodul genutzt. Dieses wird wie ein Widget über ein Codeschnipsel in die eigene Website eingefügt. Die Widget-Lösung empfehlen wir für touristische Leistungsträger, zum Beispiel Übernachtungsbetriebe oder kleinere touristische Organisationen. Es besteht somit die Möglichkeit einfach touristische Inhalte in bestehende Webseiten einzubinden und seinen Besucher:innen einen Mehrwert anzubieten.&#13;
+&#13;
+Der API-Zugriff ist technisch aufwendiger, bietet jedoch vor allem für größere Unternehmen und Organisationen mehr Individualisierung. Die Nutzung der destination.meta dient dazu, sich die Daten per API Zugriff / Schnittstelle abzuholen. Die Ausgabe der Daten erfolgt über selbst gebaute Module.&#13;
+&#13;
+##Schritt 4&#13;
+Je nachdem für welche Art des Datenabrufs Sie sich in Schritt 3 entschieden haben, können Sie nun die entsprechenden Daten abrufen.&#13;
+&#13;
+Durch die Auswahl der Widget-Lösung besteht folgend die Möglichkeit den entsprechenden Javascript-Code oder die URL zu dieser Seite in ihre Webseite zu integrieren.&#13;
+&#13;
+##Konditionen&#13;
+Die Nutzung des Widgets erfolgt unentgeltlich. Zur Nutzung der Daten ist lediglich eine Registrierung über ein Kontaktformular notwendig und die Nutzungs- und Datenschutzbedingungen des DestinationHub.Ruhr sind zu akzeptieren. Das Data Hub Widget ist ein Tool muss entsprechend als Drittservice in ihrer Datenschutzerklärung eingebunden werden.&#13;
+</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://www.ruhr-tourismus.de/open-data-finder/"/>
+        <dct:format>CSV, XML, HTML, JSON, JSON_LD (schema.org), JSON_LD (schema.org ODTA), GEOJSON, ATOM, GPX, JPEG, PNG, RSS, RDF, RSS-FEED</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-29T10:38:02.811466</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-06T13:19:33.636477</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.ruhr/dataset/0dd772d7-f8e1-4464-b8be-c32ddc4865b6/resource/d6c3be68-34ee-47a6-8dfc-f4f0873a9abd">
+        <dct:title>All resource data</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://hamm.opendata.ruhr/dataset/0dd772d7-f8e1-4464-b8be-c32ddc4865b6/resource/d6c3be68-34ee-47a6-8dfc-f4f0873a9abd/download/ausflugziele-und-pois-in-hamm-yl68mxo5.zip"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format>ZIP</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-11T09:54:09.899378</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-03-11T09:54:09.863184</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">28376</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openNRW"/>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="N9353c611b7fc4756bb5dea021471d059">
+        <foaf:name>Dörthe Strübli</foaf:name>
+        <foaf:mbox>Struebli@Stadt.Hamm.de</foaf:mbox>
+      </foaf:Organization>
+    </dcatde:maintainer>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://hamm.opendata.ruhr/dataset/0dd772d7-f8e1-4464-b8be-c32ddc4865b6/resource/d6c3be68-34ee-47a6-8dfc-f4f0873a9abd/download/ausflugziele-und-pois-in-hamm-yl68mxo5.zip"/>
+</rdf:RDF>
