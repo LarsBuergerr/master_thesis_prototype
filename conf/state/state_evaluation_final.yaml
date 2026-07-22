@@ -27,7 +27,7 @@ file_filter:
 # Output directory for results
 output_dir: "outputs/runs/"
 # Optional custom suffix for the run output directory (overrides default naming based on directorypath or filename if only one file is processed)
-run_output_dir_suffix: "BAD"
+run_output_dir_suffix: "EVAL"
 # Master switch for creating run output directory and saving results there. If false no output is generated
 run_output_enabled: true
 # Language configuration. Options: "de", "en"
@@ -77,7 +77,8 @@ quality:
       # malus in the indicator itself — no fail_score override needed here.
 
   # Optional dimension whitelist (default: all dimensions if list is empty or missing)
-  dimension_whitelist: ["accessibility", "reusability", "findability"]
+  dimension_whitelist:
+    ["accessibility", "reusability", "findability", "expressiveness"]
   # If specified, these indicators will be skipped
   indicator_blacklist:
     [
