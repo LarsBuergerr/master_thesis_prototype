@@ -1,0 +1,106 @@
+{
+  "erstellt": "2026-07-22T11:17:45",
+  "parameter": {
+    "sample_dir": "/home/lbuerger/masterthesis/master_thesis_prototype/data/extreme_cases_05",
+    "gt_csv": "/home/lbuerger/masterthesis/master_thesis_prototype/data/extreme_cases_05/ground_truth_template_slim.csv",
+    "run_path": "/home/lbuerger/masterthesis/master_thesis_prototype/outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL",
+    "proto_config": "conf/state/state_evaluation_final.yaml",
+    "use_llm": true,
+    "n_datensaetze": 20,
+    "n_bewertet": 20
+  },
+  "gesamt": {
+    "n_total": 20,
+    "n_graded": 20,
+    "accuracy": 0.5,
+    "weighted_kappa": 0.3827160493827162,
+    "weighted_kappa_ci": [
+      0.05063291139240511,
+      0.6575342465753424
+    ],
+    "pabak": 0.25,
+    "cohen_kappa": 0.24528301886792447,
+    "auc_gut_vs_rest": 0.890625,
+    "spearman_overall": 0.8271705393371815,
+    "kendall_overall": 0.6489789085282036,
+    "mean_spearman_dims": 0.6947607949263005,
+    "mae": 0.32619467418546355,
+    "rmse": 0.3910185443162539,
+    "bias": 0.06718587092731813
+  },
+  "pro_dimension": {
+    "findability": {
+      "spearman": 0.873551778233274,
+      "kendall_tau": 0.755648171598035,
+      "n": 20.0
+    },
+    "accessibility": {
+      "spearman": 0.7130848177094512,
+      "kendall_tau": 0.5253137831729978,
+      "n": 20.0
+    },
+    "reusability": {
+      "spearman": 0.8715362178408115,
+      "kendall_tau": 0.7692635432869869,
+      "n": 20.0
+    },
+    "expressiveness": {
+      "spearman": 0.32087036592166507,
+      "kendall_tau": 0.2554727885819837,
+      "n": 20.0
+    }
+  },
+  "konfusionsmatrix": {
+    "GT:schlecht": {
+      "M:schlecht": 3,
+      "M:mittel": 2,
+      "M:gut": 0
+    },
+    "GT:mittel": {
+      "M:schlecht": 3,
+      "M:mittel": 4,
+      "M:gut": 4
+    },
+    "GT:gut": {
+      "M:schlecht": 0,
+      "M:mittel": 1,
+      "M:gut": 3
+    }
+  },
+  "ceiling_analyse": {
+    "findability": {
+      "spearman_beobachtet": 0.873551778233274,
+      "spearman_ceiling": 0.9674946513052146,
+      "anteil_vom_ceiling": 0.9029008863819501,
+      "kendall_tau_b": 0.755648171598035,
+      "gt_stufen_genutzt": 5
+    },
+    "accessibility": {
+      "spearman_beobachtet": 0.7130848177094512,
+      "spearman_ceiling": 0.9778344654769169,
+      "anteil_vom_ceiling": 0.7292490118577075,
+      "kendall_tau_b": 0.5253137831729978,
+      "gt_stufen_genutzt": 5
+    },
+    "reusability": {
+      "spearman_beobachtet": 0.8715362178408115,
+      "spearman_ceiling": 0.9574403253340814,
+      "anteil_vom_ceiling": 0.9102773246329527,
+      "kendall_tau_b": 0.7692635432869869,
+      "gt_stufen_genutzt": 6
+    },
+    "expressiveness": {
+      "spearman_beobachtet": 0.32087036592166507,
+      "spearman_ceiling": 0.94223203342875,
+      "anteil_vom_ceiling": 0.34054283290924514,
+      "kendall_tau_b": 0.2554727885819837,
+      "gt_stufen_genutzt": 4
+    }
+  },
+  "disattenuation": {
+    "cronbach_alpha_gt": 0.8900935086055021,
+    "cronbach_alpha_modell": 0.8366047330485437,
+    "spearman_beobachtet": 0.8271705393371815,
+    "spearman_disattenuiert": 0.9585551008897443
+  }
+}
