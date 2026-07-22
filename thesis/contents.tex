@@ -2456,10 +2456,19 @@ Diese Partitionierung entspricht klassischen Validitätsbegriffen der
 Messtheorie~\cite{cronbach1955construct}: Klasse~A adressiert die konvergente Validität,
 die Klassen~B und~C die inkrementelle Validität des Prototyps gegenüber der Baseline. Die
 Zuordnung ist vollständig dokumentiert und enthält je Indikator die zugeordneten
-MQA-Metriken, die Aggregationsregel sowie eine Begründung; Grenzfälle sind explizit
-markiert. Umgekehrt werden auch diejenigen MQA-Metriken ausgewiesen, für die der Prototyp
-kein Pendant besitzt, damit der Vergleich nicht einseitig zugunsten des Prototyps
-ausfällt. Die vollständige Zuordnungstabelle findet sich in Anhang~\ref{app:mqa_abc_mapping}.
+MQA-Metriken, die Aggregationsregel sowie eine Begründung; die vollständige
+Zuordnungstabelle findet sich in Anhang~\ref{app:mqa_abc_mapping}.
+
+
+% @TODO das mal noch etwas weniger belastend formulieren am ende wird man deswegen zerrissen.
+Damit der Vergleich nicht einseitig zugunsten des Prototyps ausfällt, sind umgekehrt auch
+die MQA-Metriken zu nennen, für die der Prototyp keine Entsprechung vorsieht:
+\texttt{rights\_availability} (\texttt{dct:rights}) und \texttt{byte\_size\_availability}
+(\texttt{dcat:byteSize}). Beide Felder sind nach DCAT-AP.de weder verpflichtend noch
+empfohlen; bereits die Experteninterviews ordneten wenig aussagekräftige Zusatzfelder
+dieser Art unter dem Prinzip \enquote{Qualität statt Quantität} als für die Bewertung
+verzichtbar ein (Anhang~\ref{app:kodierleitfaden}, Kategorie K1.2), weshalb der Prototyp
+hierfür keinen eigenen Indikator vorsieht.
 
 % Scope: Pro Evidenzstrang. Diese Section legt die Metrik-Hierarchie fest, BEVOR die
 % erste Zahl faellt -- an ihr haengt spaeter die Modellauswahl (5.6).
@@ -2989,8 +2998,8 @@ Der Blick auf die Indikatorebene liefert die Erklärung. Die Aussagekraft wird a
 ungewichteter Mittelwert aus sechs vom Sprachmodell bewerteten Teilkriterien
 gebildet (Abschnitt~\ref{sec:llm_aussagekraft}). Bei \texttt{bad\_09.rdf} etwa
 bewertet das Modell die Beschreibungsqualität als FAIL ($0{,}15$) mit der
-Begründung, die Beschreibung bestehe nur aus dem einzelnen Wort „Justizblatt" und
-erkläre weder Inhalt noch Struktur der Ressource; die übrigen fünf Teilkriterien
+Begründung, die Beschreibung bestehe nur aus dem einzelnen Wort \enquote{Justizblatt}
+und erkläre weder Inhalt noch Struktur der Ressource; die übrigen fünf Teilkriterien
 liegen bei $0{,}65$ bis $0{,}95$, sodass der gemittelte Dimensionswert bei $0{,}72$
 landet -- ein einzelnes hartes Defizit wird durch fünf unauffällige Werte praktisch
 neutralisiert. Bei zehn der zwanzig Extremfälle weicht das resultierende
@@ -3130,21 +3139,34 @@ zeigen auch hier durchgängige Streuung, etwa bei der Verfügbarkeitsangabe
 Die bisherigen Befunde belegen, dass Prototyp und MQA unterschiedlich messen (H2),
 nicht aber, welches Verfahren näher an der tatsächlichen Qualität liegt. Dafür
 werden beide Gesamtscores -- unabhängig voneinander -- gegen dieselbe
-Ground Truth korreliert (Abschnitt~5.5). Auf der Kernstichprobe liegt der Prototyp
+Ground Truth korreliert (Abschnitt~5.5).
+
+\textbf{Methodischer Hinweis:} Anders als in Abschnitt~5.7, wo je Dimension die
+\emph{eigene} Modell-Teilbewertung gegen die gleichnamige GT-Dimension korreliert wird
+(Abbildung~\ref{fig:gt_kern_dimension}), steht auf der Prototyp-Seite in diesem Abschnitt
+durchgehend der \emph{globale} Gesamtscore -- dieselbe eine Zahl, die auch dem
+Scatter in Abbildung~\ref{fig:mqa_kern_scatter} zugrunde liegt. Die Zeile
+\enquote{Auffindbarkeit} misst hier also nicht die Güte der
+Auffindbarkeits-Teilbewertung selbst, sondern wie gut der \emph{Gesamtscore} die
+menschliche Auffindbarkeits-Einschätzung vorhersagt. Diese Wahl ist notwendig, weil
+die MQA über keine mit den Prototyp-Dimensionen vergleichbaren Teilscores verfügt und
+ein fairer Vergleich beider Systeme deshalb nur auf Ebene des jeweiligen Gesamtscores
+möglich ist.
+
+Auf der Kernstichprobe liegt der Prototyp-Gesamtscore
 bei fünf von sechs Zielen vorn: gesamt ($0{,}779$ vs. $0{,}740$), ohne Aussagekraft
 ($0{,}695$ vs. $0{,}671$), Zugänglichkeit ($0{,}591$ vs. $0{,}569$),
 Wiederverwendbarkeit ($0{,}457$ vs. $0{,}426$) und Aussagekraft ($0{,}682$ vs.
 $0{,}611$) -- Abstände von durchweg $0{,}02$ bis $0{,}07$
 (Abbildung~\ref{fig:mqa_kern_triangulation}). Einzige Ausnahme ist die
-Auffindbarkeit, auf der die MQA vorn liegt ($0{,}252$ vs. $0{,}134$). Das ist
-bemerkenswert, weil gerade die Auffindbarkeitsindikatoren mit den größten
-MQA-Überschätzungsraten (politische Geokodierung, Geometrievalidität) zu den
-Klasse-B-Fällen zählen, in denen der Prototyp zusätzliche Kongruenzprüfungen
-vornimmt (Abschnitt~5.8.1); diese zusätzliche Strenge zahlt sich auf der
-Kernstichprobe für die Übereinstimmung mit der menschlichen Auffindbarkeits\-wahrnehmung
-nicht aus. Ein möglicher Grund ist, dass menschliche Bewerter Auffindbarkeit eher an
-der Präsenz beschreibender Angaben (Schlagwörter, Themenklassifikation) festmachen als
-an der internen Korrektheit der Geokodierung, die der Prototyp zusätzlich sanktioniert.
+Auffindbarkeit, auf der die MQA vorn liegt ($0{,}252$ vs. $0{,}134$). Ein naheliegender
+Grund liegt in der Gewichtung des Gesamtscores (Abschnitt~4.6.3, Tabelle~4.5):
+Auffindbarkeit geht mit dem niedrigsten Dimensionsgewicht ($1{,}0$ gegenüber $1{,}5$
+bis $2{,}0$ bei den übrigen drei Dimensionen) in den Gesamtscore ein und prägt ihn
+folglich am wenigsten -- der Gesamtscore ist damit strukturell ein schwächerer
+Prädiktor gerade für diese GT-Dimension, unabhängig von der inhaltlichen Prüfgüte der
+Auffindbarkeitsindikatoren selbst, die laut Abbildung~\ref{fig:gt_kern_dimension} mit
+$\rho = 0{,}524$ im Mittelfeld der vier Dimensionen liegt.
 
 Auf den Extremfällen fällt der Befund eindeutiger aus: Der Prototyp liegt hier auf
 \emph{allen sechs} Zielen vorn, mit deutlich größeren Abständen als auf der
