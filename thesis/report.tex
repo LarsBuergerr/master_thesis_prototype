@@ -93,4 +93,21 @@
 \label{app:prompts_semantische_anreicherung}
 \input{appendix/prompts_semantische_anreicherung}
 
+\chapter{A/B/C-Zuordnung der Prototyp-Indikatoren zur MQA}
+\label{app:mqa_abc_mapping}
+
+Vollständige Zuordnung aller 29 klassifizierten Prototyp-Indikatoren zu den
+entsprechenden MQA-Metriken, wie sie dem A/B/C-Vergleich in
+Abschnitt~5.3 zugrunde liegt (Quelle: \texttt{src/evaluation/indicator\_map.py}).
+Mit $\ast$ markierte Zeilen sind Grenzfälle, die vor der endgültigen Einstufung
+gegen die MQA-Spezifikation geprüft wurden; mit $\dagger$ markierte Indikatoren
+sind in der finalen Konfiguration \texttt{state\_evaluation\_final.yaml} per
+Indikator-Blacklist deaktiviert und tauchen deshalb in den in Kapitel~5
+berichteten Kennzahlen nicht auf (dort 27 statt 29 Indikatoren je Klasse A/B/C
+zu je 9). Tabelle~\ref{tab:mqa_only_metrics} zeigt ergänzend die MQA-Metriken,
+für die der Prototyp umgekehrt keine Entsprechung besitzt.
+
+\input{appendix/mqa_only_metrics}
+\input{appendix/mqa_abc_mapping}
+
 \end{document}
