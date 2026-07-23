@@ -1,0 +1,640 @@
+// GovData-Portal-Oberfläche (Mock): Bund-Leiste, Kopf-/Fußzeile, Suche mit
+// Facetten, Trefferliste mit kompaktem Qualitäts-Indikator, Detailseite und
+// aggregiertes Metadatenqualitäts-Dashboard. Ausschließlich auf Basis der
+// GovData-Tokens (_color-tokens.scss/_variables.scss) und -Komponenten
+// (design-box, gd-button, gd-tag, alert). Reines Hell-Design, keine Umschalter.
+
+// ---- Hilfsklassen -----------------------------------------------------------
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.gd-portal-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: $spacer * 3;
+  padding-right: $spacer * 3;
+
+  @media (max-width: $small-breakpoint) {
+    padding-left: $spacer * 2;
+    padding-right: $spacer * 2;
+  }
+}
+
+.gd-portal {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.gd-portal-main {
+  flex: 1 0 auto;
+  padding-bottom: $spacer * 6;
+}
+
+// ---- Bund-Leiste ------------------------------------------------------------
+.gd-federal {
+  background: $black;
+  color: $white;
+}
+.gd-federal-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6px ($spacer * 3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: $fnt-paragraph-extra-small;
+
+  span:last-child {
+    opacity: 0.85;
+  }
+}
+.gd-flag {
+  display: inline-flex;
+  flex-direction: column;
+  width: 20px;
+  height: 14px;
+  border-radius: 2px;
+  overflow: hidden;
+
+  i {
+    flex: 1;
+    &:nth-child(1) {
+      background: #000;
+    }
+    &:nth-child(2) {
+      background: #d00;
+    }
+    &:nth-child(3) {
+      background: #ffce00;
+    }
+  }
+}
+
+// ---- Kopfzeile --------------------------------------------------------------
+.gd-header {
+  background: $white;
+  border-bottom: 1px solid $clr-neutral-grey-300;
+}
+.gd-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: ($spacer * 1.5) ($spacer * 3);
+  display: flex;
+  align-items: center;
+  gap: $spacer * 3;
+
+  @media (max-width: $medium-breakpoint) {
+    flex-wrap: wrap;
+    gap: $spacer * 1.5;
+  }
+}
+.gd-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+}
+.gd-logo-mark {
+  font-size: rem-calc(24);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.gd-logo-gov {
+  color: $clr-neutral-grey-800;
+}
+.gd-logo-data {
+  color: $clr-primary-400;
+}
+.gd-logo-sub {
+  font-size: rem-calc(11);
+  color: $clr-neutral-grey-500;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.gd-nav {
+  display: flex;
+  gap: 4px;
+}
+.gd-nav-link {
+  @include outline-base();
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: $fnt-paragraph-small;
+  font-weight: 700;
+  color: $clr-neutral-grey-700;
+
+  &:hover {
+    background: $clr-neutral-grey-100;
+  }
+  &.active {
+    color: $clr-primary-400;
+    background: $clr-primary-100;
+  }
+}
+.gd-header-actions {
+  margin-left: auto;
+}
+
+// ---- Suche / Hero -----------------------------------------------------------
+.gd-hero {
+  background: linear-gradient(180deg, $white, $clr-neutral-grey-100);
+  border-bottom: 1px solid $clr-neutral-grey-300;
+}
+.gd-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: ($spacer * 4) ($spacer * 3) ($spacer * 3.5);
+
+  h1 {
+    margin: 0 0 4px;
+  }
+}
+.gd-hero-sub {
+  margin: 0 0 $spacer * 2;
+  color: $clr-neutral-grey-600;
+  font-size: $fnt-paragraph-small;
+}
+.gd-searchbar {
+  display: flex;
+  gap: $spacer;
+  max-width: 720px;
+
+  input {
+    flex: 1;
+    height: rem-calc(46);
+    padding: 0 $spacer * 1.5;
+    border-radius: $spacer * 0.5;
+    border: 1px solid $clr-neutral-grey-500;
+    background: $white;
+    color: $black;
+    font-size: $fnt-paragraph-regular;
+
+    @include outline-base();
+  }
+}
+
+// ---- Such-Layout ------------------------------------------------------------
+.gd-search-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: $spacer * 3;
+  align-items: start;
+  padding-top: $spacer * 3;
+
+  @media (max-width: $medium-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}
+.gd-facets {
+  position: sticky;
+  top: $spacer * 2;
+  display: flex;
+  flex-direction: column;
+  gap: $spacer * 1.5;
+
+  @media (max-width: $medium-breakpoint) {
+    position: static;
+  }
+}
+.gd-facet {
+  padding: $spacer * 1.5;
+}
+.gd-facet-title {
+  margin: 0 0 $spacer;
+  font-size: rem-calc(12);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $clr-neutral-grey-600;
+}
+.gd-facet-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.gd-facet-item {
+  @include outline-base();
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacer;
+  padding: 6px 8px;
+  border-radius: 5px;
+  font-size: $fnt-paragraph-small;
+  color: $clr-neutral-grey-700;
+  text-align: left;
+
+  &:not(.is-static):hover {
+    background: $clr-neutral-grey-100;
+    cursor: pointer;
+  }
+  &.active {
+    background: $clr-primary-100;
+    color: $clr-primary-400;
+    font-weight: 700;
+  }
+  &.is-static {
+    color: $clr-neutral-grey-600;
+  }
+}
+.gd-facet-count {
+  font-size: $fnt-paragraph-extra-small;
+  color: $clr-neutral-grey-500;
+  font-variant-numeric: tabular-nums;
+}
+
+.gd-results-col {
+  min-width: 0;
+}
+.gd-results-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacer * 2;
+  margin-bottom: $spacer * 1.5;
+  flex-wrap: wrap;
+}
+.gd-results-count {
+  margin: 0;
+  font-size: $fnt-paragraph-small;
+  color: $clr-neutral-grey-600;
+
+  strong {
+    color: $clr-neutral-grey-800;
+    font-variant-numeric: tabular-nums;
+  }
+}
+.gd-select {
+  height: rem-calc(38);
+  padding: 0 $spacer;
+  border-radius: $spacer * 0.5;
+  border: 1px solid $clr-neutral-grey-500;
+  background: $white;
+  color: $clr-neutral-grey-800;
+  font-size: $fnt-paragraph-small;
+
+  @include outline-base();
+}
+.gd-results {
+  display: flex;
+  flex-direction: column;
+  gap: $spacer * 1.5;
+}
+
+// ---- Treffer-Karte ----------------------------------------------------------
+.ds-card {
+  display: flex;
+  gap: $spacer * 2;
+  align-items: flex-start;
+  padding: $spacer * 2;
+  transition: border-color 0.12s ease;
+
+  // design-box hat nur rechts/unten Rahmen; hier volle Kontur für Listenoptik
+  border-width: 1px;
+  border-color: $clr-neutral-grey-300;
+  border-radius: 8px;
+
+  &:hover {
+    border-color: $clr-primary-400;
+  }
+}
+.ds-card-body {
+  flex: 1;
+  min-width: 0;
+}
+.ds-card-title {
+  margin: 0 0 4px;
+  font-size: rem-calc(17);
+  line-height: 1.35;
+}
+.ds-card-link {
+  color: $clr-primary-400;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+  @include outline-base();
+}
+.ds-card-desc {
+  margin: 0 0 $spacer;
+  color: $clr-neutral-grey-700;
+  font-size: $fnt-paragraph-small;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ds-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: $fnt-paragraph-extra-small;
+  color: $clr-neutral-grey-500;
+  align-items: center;
+}
+.ds-card-pub {
+  color: $clr-neutral-grey-700;
+  font-weight: 700;
+}
+.ds-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: $spacer;
+}
+.ds-format {
+  font-size: rem-calc(11);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: $clr-neutral-grey-100;
+  border: 1px solid $clr-neutral-grey-300;
+  color: $clr-neutral-grey-700;
+}
+.ds-keyword {
+  font-size: rem-calc(11);
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: $clr-primary-100;
+  color: $clr-primary-500;
+}
+.ds-card-score {
+  flex: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 2px;
+
+  @include outline-base();
+}
+
+// ---- Score-Indikator --------------------------------------------------------
+.score-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 72px;
+  text-align: center;
+}
+.score-indicator-value {
+  font-size: rem-calc(15);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.score-indicator-label {
+  font-size: rem-calc(11);
+  font-weight: 700;
+}
+
+// ---- Detailseite ------------------------------------------------------------
+.gd-detail {
+  padding-top: $spacer * 3;
+}
+.gd-breadcrumb {
+  font-size: $fnt-paragraph-small;
+  margin-bottom: $spacer * 2;
+
+  .link-reset {
+    color: $clr-primary-400;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.gd-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: $spacer * 3;
+  align-items: start;
+
+  @media (max-width: $medium-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}
+.gd-detail-main {
+  min-width: 0;
+}
+.gd-stratum-tag {
+  margin-bottom: $spacer;
+}
+.gd-detail-title {
+  margin: $spacer 0 4px;
+}
+.gd-detail-pub {
+  margin: 0 0 $spacer * 1.5;
+  color: $clr-neutral-grey-600;
+  font-weight: 700;
+}
+.gd-detail-desc {
+  margin: 0 0 $spacer * 2;
+  color: $clr-neutral-grey-700;
+  white-space: pre-line;
+}
+.gd-detail-h2 {
+  font-size: rem-calc(16);
+  margin: $spacer * 2 0 $spacer;
+}
+.gd-quality {
+  margin-top: $spacer * 3;
+}
+.gd-quality-head {
+  margin-bottom: $spacer * 1.5;
+
+  h2 {
+    margin: 0 0 4px;
+  }
+  p {
+    margin: 0;
+    font-size: $fnt-paragraph-small;
+  }
+}
+.gd-detail-side {
+  @media (max-width: $medium-breakpoint) {
+    order: -1;
+  }
+}
+.gd-side-title {
+  font-size: rem-calc(16);
+  margin: 0 0 $spacer;
+}
+.gd-meta-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+
+  dt {
+    font-size: $fnt-paragraph-extra-small;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: $clr-neutral-grey-500;
+    margin-top: $spacer;
+  }
+  dd {
+    margin: 0;
+    font-size: $fnt-paragraph-small;
+    color: $clr-neutral-grey-800;
+  }
+}
+.gd-meta-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: rem-calc(12);
+  word-break: break-all;
+  color: $clr-neutral-grey-600;
+}
+
+// ---- Dashboard --------------------------------------------------------------
+.gd-dashboard {
+  padding-top: $spacer * 3;
+}
+.gd-dash-head {
+  h1 {
+    margin: 0 0 6px;
+  }
+}
+.gd-dash-eyebrow {
+  margin: 0 0 4px;
+  font-size: $fnt-paragraph-extra-small;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: $clr-primary-400;
+}
+.gd-dash-lead {
+  margin: 0;
+  max-width: 72ch;
+  color: $clr-neutral-grey-700;
+  font-size: $fnt-paragraph-small;
+}
+.gd-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacer * 1.5;
+
+  @media (max-width: $medium-breakpoint) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.gd-kpi {
+  padding: $spacer * 1.5 $spacer * 2;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: $clr-neutral-grey-300;
+}
+.gd-kpi-k {
+  margin: 0 0 6px;
+  font-size: rem-calc(11);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $clr-neutral-grey-500;
+}
+.gd-kpi-v {
+  margin: 0;
+  font-size: rem-calc(30);
+  font-weight: 800;
+  line-height: 1;
+  color: $clr-neutral-grey-800;
+  font-variant-numeric: tabular-nums;
+}
+.gd-kpi-unit {
+  font-size: rem-calc(15);
+  font-weight: 700;
+  color: $clr-neutral-grey-500;
+}
+.gd-kpi-n {
+  margin: 7px 0 0;
+  font-size: $fnt-paragraph-extra-small;
+  color: $clr-neutral-grey-600;
+}
+.gd-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacer * 2;
+
+  @media (max-width: $medium-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}
+.gd-panel {
+  border-radius: 8px;
+}
+.gd-panel-title {
+  margin: 0 0 2px;
+  font-size: rem-calc(16);
+}
+.gd-panel-hint {
+  margin: 0 0 $spacer * 1.5;
+  max-width: 64ch;
+}
+
+// ---- Fußzeile ---------------------------------------------------------------
+.gd-footer {
+  flex-shrink: 0;
+  background: $clr-neutral-grey-800;
+  border-top: 3px solid $clr-primary-400;
+  color: $clr-neutral-grey-300;
+}
+.gd-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: ($spacer * 3) ($spacer * 3);
+}
+.gd-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-bottom: $spacer;
+
+  a {
+    color: $clr-neutral-grey-300;
+    font-size: $fnt-paragraph-small;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+.gd-footer-note {
+  margin: 0;
+  font-size: $fnt-paragraph-extra-small;
+  color: $clr-neutral-grey-400;
+  line-height: 1.5;
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+}
+
+// Analyzer innerhalb des Portals: Kopfabstand
+.gd-analyzer-intro {
+  padding-top: $spacer * 3;
+
+  h1 {
+    margin: 0 0 4px;
+  }
+}
+// .app bringt eigenes Padding mit; im Portal-Kontext oben andocken
+.gd-portal-container .app {
+  padding: $spacer * 2 0;
+  min-height: 0;
+}
