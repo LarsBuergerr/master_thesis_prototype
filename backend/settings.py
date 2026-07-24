@@ -20,12 +20,19 @@ MAX_UPLOAD_BYTES = int(os.environ.get("ANALYZER_MAX_UPLOAD_BYTES", str(25 * 1024
 MAX_FILES_PER_JOB = int(os.environ.get("ANALYZER_MAX_FILES", "50"))
 
 # CORS origins allowed to call the API (comma-separated). Defaults cover the
-# Vite dev server.
+# Vite dev server (which falls back to 5174/5175 when 5173 is taken).
 CORS_ORIGINS = [
     o.strip()
     for o in os.environ.get(
         "ANALYZER_CORS_ORIGINS",
-        "http://localhost:5173,http://127.0.0.1:5173",
+        "http://localhost:5173,http://127.0.0.1:5173,"
+        "http://localhost:5174,http://127.0.0.1:5174,"
+        "http://localhost:5175,http://127.0.0.1:5175",
     ).split(",")
     if o.strip()
 ]
+
+# RDF files of the evaluation sample. The GovData portal mock reads its
+# datasets from here so its detail page can trigger a *real* analysis run
+# against the same file the thesis evaluation used.
+SAMPLES_DIR = Path(os.environ.get("ANALYZER_SAMPLES_DIR", ROOT / "data" / "sample_2026-06-25_09-57"))

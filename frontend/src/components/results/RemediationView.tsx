@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { ChangePatch, FieldSuggestion, Recommendation, Remediation } from "../../api/types";
 import { shortenUri } from "../../lib/status";
+import { rankCandidates } from "../../lib/remediation";
+
+/** Wie viele Vokabular-Einträge die Auswahlliste anbietet. */
+const MAX_OPTIONS = 40;
 
 function ChangeLine({ sign, predicate, value, title }: {
   sign: "+" | "-";
@@ -17,39 +21,57 @@ function ChangeLine({ sign, predicate, value, title }: {
   );
 }
 
-function NeedsInputRow({ suggestion }: { suggestion: FieldSuggestion }) {
-  const [chosen, setChosen] = useState("");
+/**
+ * Fehlender Wert aus einem kontrollierten Vokabular. Der wahrscheinlichste
+ * Kandidat (abgeleitet aus dem, was aktuell im Metadatensatz steht) ist
+ * vorbelegt und steht als Vorschlagszeile im Diff — der Rest des Vokabulars
+ * bleibt über die Auswahlliste erreichbar.
+ */
+function NeedsInputRow({
+  suggestion,
+  hints,
+}: {
+  suggestion: FieldSuggestion;
+  hints: string[];
+}) {
+  const ranked = useMemo(
+    () => rankCandidates(suggestion.candidates, hints),
+    [suggestion.candidates, hints],
+  );
+  const [chosen, setChosen] = useState(() => (hints.length > 0 ? (ranked[0] ?? "") : ""));
+  const total = (suggestion as FieldSuggestion & { candidate_total?: number }).candidate_total
+    ?? suggestion.candidates.length;
+
   return (
-    <div className="diff-line diff-pending">
-      <span className="diff-sign muted">?</span>
-      <span className="muted">{shortenUri(suggestion.predicate)}</span>
-      <select
-        value={chosen}
-        onChange={(e) => setChosen(e.target.value)}
-        style={{ width: "auto", flex: 1 }}
-      >
-        <option value="">
-          Wert wählen… ({suggestion.candidates.length} Kandidaten)
-        </option>
-        {suggestion.candidates.map((c) => (
-          <option key={c} value={c} title={c}>
-            {shortenUri(c)}
-          </option>
-        ))}
-      </select>
+    <div className="diff-pending">
+      <div className="diff-line">
+        <span className="diff-sign muted">?</span>
+        <span className="muted">{shortenUri(suggestion.predicate)}</span>
+        <select
+          value={chosen}
+          onChange={(e) => setChosen(e.target.value)}
+          style={{ width: "auto", flex: 1 }}
+          aria-label={`Wert für ${shortenUri(suggestion.predicate)} wählen`}
+        >
+          <option value="">Wert wählen… ({total} zugelassene Werte)</option>
+          {ranked.slice(0, MAX_OPTIONS).map((c) => (
+            <option key={c} value={c} title={c}>
+              {shortenUri(c)}
+            </option>
+          ))}
+        </select>
+      </div>
       {chosen && (
-        <ChangeLine
-          sign="+"
-          predicate={suggestion.predicate}
-          value={shortenUri(chosen)}
-          title={chosen}
-        />
+        // Volle URI statt Kurzform: der Vorschlag soll zeigen, was wörtlich in
+        // die Datei gehört — die Kurzform „SHP“ wäre vom bisherigen Freitext
+        // nicht zu unterscheiden.
+        <ChangeLine sign="+" predicate={suggestion.predicate} value={chosen} title={chosen} />
       )}
     </div>
   );
 }
 
-function ChangePatchView({ patch }: { patch: ChangePatch }) {
+function ChangePatchView({ patch, hints }: { patch: ChangePatch; hints: string[] }) {
   return (
     <div>
       <div className="gd-row" style={{ gap: 6 }}>
@@ -67,7 +89,7 @@ function ChangePatchView({ patch }: { patch: ChangePatch }) {
           />
         ))}
         {patch.needs_input.map((s, idx) => (
-          <NeedsInputRow key={idx} suggestion={s} />
+          <NeedsInputRow key={idx} suggestion={s} hints={hints} />
         ))}
       </div>
     </div>
@@ -105,9 +127,16 @@ function RecommendationView({ rec }: { rec: Recommendation }) {
   );
 }
 
-export function RemediationView({ remediation }: { remediation: Remediation }) {
+export function RemediationView({
+  remediation,
+  hints = [],
+}: {
+  remediation: Remediation;
+  /** Werte, die aktuell im Metadatensatz stehen — sortieren die Vorschläge. */
+  hints?: string[];
+}) {
   if (remediation.kind === "change_patch") {
-    return <ChangePatchView patch={remediation} />;
+    return <ChangePatchView patch={remediation} hints={hints} />;
   }
   return <RecommendationView rec={remediation} />;
 }

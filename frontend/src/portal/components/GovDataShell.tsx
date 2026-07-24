@@ -53,11 +53,18 @@ export function GovDataShell({ view, onNavigate, children }: Props) {
             onClick={() => onNavigate({ view: "list" })}
             aria-label="GovData – zur Startseite"
           >
-            <span className="gd-logo-mark">
-              <span className="gd-logo-gov">Gov</span>
-              <span className="gd-logo-data">Data</span>
+            <span className="gd-logo-dots" aria-hidden="true">
+              {Array.from({ length: 20 }, (_, i) => (
+                <i key={i} />
+              ))}
             </span>
-            <span className="gd-logo-sub">Das Datenportal für Deutschland</span>
+            <span className="gd-logo-text">
+              <span className="gd-logo-mark">
+                <span className="gd-logo-gov">Gov</span>
+                <span className="gd-logo-data">Data</span>
+              </span>
+              <span className="gd-logo-sub">Das Datenportal für Deutschland</span>
+            </span>
           </button>
 
           <nav className="gd-nav" aria-label="Hauptnavigation">

@@ -23,6 +23,12 @@ export function DatasetCard({
   return (
     <article className="ds-card design-box">
       <div className="ds-card-body">
+        <div className="ds-card-top">
+          <span className="ds-card-kind">Datensatz</span>
+          <span className="ds-card-changed">
+            Letzte Änderung: <span className="tnum">{formatDate(dataset.modified)}</span>
+          </span>
+        </div>
         <h3 className="ds-card-title">
           <button type="button" className="link-reset ds-card-link" onClick={open}>
             {dataset.title}
@@ -31,24 +37,16 @@ export function DatasetCard({
         <p className="ds-card-desc">
           {dataset.description || <em>Keine Beschreibung hinterlegt.</em>}
         </p>
-        <div className="ds-card-meta">
-          <span className="ds-card-pub">{dataset.publisherName}</span>
-          <span>
-            Letzte Änderung: <span className="tnum">{formatDate(dataset.modified)}</span>
-          </span>
-          {dataset.license && <span>{dataset.license}</span>}
-        </div>
-        <div className="ds-card-chips">
-          {dataset.formats.slice(0, 6).map((f) => (
+        <div className="ds-card-formats">
+          {dataset.formats.slice(0, 8).map((f) => (
             <span key={f} className="ds-format">
               {f}
             </span>
           ))}
-          {dataset.keywords.slice(0, 3).map((k) => (
-            <span key={k} className="ds-keyword">
-              {k}
-            </span>
-          ))}
+          <span className="ds-card-source">
+            <span className="ds-card-pub">{dataset.publisherName}</span>
+            {dataset.license && ` · ${dataset.license}`}
+          </span>
         </div>
       </div>
       <button

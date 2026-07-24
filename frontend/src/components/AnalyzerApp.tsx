@@ -9,41 +9,15 @@ import { JobProgress } from "./JobProgress";
 import { ResultsView } from "./results/ResultsView";
 import { UploadPanel } from "./UploadPanel";
 import { useIndicators, useJob, useSubmitAnalysis } from "../hooks/useAnalysis";
+import { defaultAnalysisConfig } from "../lib/config";
 import type { AnalysisConfigInput } from "../api/types";
-
-function defaultConfig(): AnalysisConfigInput {
-  return {
-    dimension_whitelist: null,
-    indicator_blacklist: null,
-    indicator_whitelist: null,
-    dimension_weights: {},
-    indicator_weights: {},
-    scoring: {
-      pass_score: 1.0,
-      partial_score: 0.5,
-      fail_score: 0.0,
-      allow_partial: true,
-      overrides: {},
-    },
-    llm: {
-      enabled: false,
-      provider: "openrouter",
-      model: "anthropic/claude-sonnet-4.5",
-      base_url: "http://localhost:8080/v1",
-      temperature: 0.0,
-      max_tokens: 10000,
-    },
-    language: "de",
-    max_workers: 4,
-  };
-}
 
 export function AnalyzerApp() {
   const indicators = useIndicators();
   const submit = useSubmitAnalysis();
 
   const [files, setFiles] = useState<File[]>([]);
-  const [config, setConfig] = useState<AnalysisConfigInput>(defaultConfig);
+  const [config, setConfig] = useState<AnalysisConfigInput>(defaultAnalysisConfig);
   const [jobId, setJobId] = useState<string | null>(null);
   const [seeded, setSeeded] = useState(false);
 

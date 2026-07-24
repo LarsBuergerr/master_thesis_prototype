@@ -1,15 +1,23 @@
 // Detailseite eines Datensatzes im GovData-Stil (Metadaten-Steckbrief) mit
 // eingebettetem Qualitäts-Dashboard. Das Dashboard nutzt die bestehenden
 // Analyzer-Komponenten (OverallScoreCard, DimensionRadar, DimensionPanel)
-// unverändert — gespeist aus der Stichprobe via buildAnalysisResult().
+// unverändert.
+//
+// Zwei Ergebnisquellen, gleiche Darstellung: das hinterlegte Ergebnis des
+// Referenzlaufs (buildAnalysisResult) und — über LiveAnalysis — ein echter
+// Lauf des Backends über dieselbe RDF-Datei. Liegt der RDF-Quelltext vor,
+// zeigen die Befunde zusätzlich die betroffene Stelle der Datei.
 
-import { useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { datasetById } from "../data/evaluation";
 import type { Navigate } from "../route";
 import { buildAnalysisResult, scorePct } from "../lib/quality";
+import { useSampleRdf } from "../../hooks/useAnalysis";
+import type { AnalysisResult } from "../../api/types";
 import { OverallScoreCard } from "../../components/results/OverallScoreCard";
 import { DimensionRadar } from "../../components/results/DimensionRadar";
 import { DimensionPanel } from "../../components/results/DimensionPanel";
+import { LiveAnalysis, type ResultSource } from "./LiveAnalysis";
 
 function formatDate(iso: string): string {
   const parts = iso.split("-");
@@ -18,7 +26,19 @@ function formatDate(iso: string): string {
 
 export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navigate }) {
   const dataset = datasetById(id);
-  const result = useMemo(() => (dataset ? buildAnalysisResult(dataset) : null), [dataset]);
+  const stored = useMemo(() => (dataset ? buildAnalysisResult(dataset) : null), [dataset]);
+
+  const [live, setLive] = useState<AnalysisResult | null>(null);
+  const [source, setSource] = useState<ResultSource>("stored");
+  const rdf = useSampleRdf(dataset?.file ?? null);
+
+  const handleResult = useCallback((res: AnalysisResult) => {
+    setLive(res);
+    setSource("live");
+  }, []);
+  const showStored = useCallback(() => setSource("stored"), []);
+
+  const result = source === "live" && live ? live : stored;
 
   if (!dataset || !result) {
     return (
@@ -78,19 +98,30 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
             <div className="gd-quality-head">
               <h2>Metadaten-Qualität</h2>
               <p className="muted">
-                Automatische Bewertung durch den Prototyp (vier Dimensionen, 27 Indikatoren).
+                Automatische Bewertung durch den Prototyp ({Object.keys(by_dimension).length}{" "}
+                Dimensionen, {summary.total_indicators} Indikatoren). Jeder nicht erfüllte
+                Indikator lässt sich aufklappen und zeigt, was im Metadatensatz steht und wie es
+                aussehen müsste.
                 {dataset.mqaNorm != null && (
                   <> MQA-Referenzscore (data.europa.eu): <strong>{scorePct(dataset.mqaNorm)} / 100</strong>.</>
                 )}
               </p>
             </div>
+
+            <LiveAnalysis
+              sampleName={dataset.file}
+              source={source}
+              onResult={handleResult}
+              onShowStored={showStored}
+            />
+
             <OverallScoreCard summary={summary} />
             <div style={{ marginTop: 12 }}>
               <DimensionRadar summary={summary} />
             </div>
             <div style={{ marginTop: 8 }}>
               {Object.values(by_dimension).map((dim) => (
-                <DimensionPanel key={dim.dimension} dim={dim} />
+                <DimensionPanel key={dim.dimension} dim={dim} rdfSource={rdf.data} />
               ))}
             </div>
           </section>

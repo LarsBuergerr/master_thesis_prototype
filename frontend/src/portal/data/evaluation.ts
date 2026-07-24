@@ -4,21 +4,36 @@
 // Stichprobe). Die JSON wird zur Bauzeit gebündelt (resolveJsonModule) und
 // hier einmalig in domänennahe, camelCase-Objekte übersetzt.
 
+import type { Remediation } from "../../api/types";
 import raw from "./evaluation.json";
 
 export type Stratum = "geo" | "non_geo";
 export type ModelStatus = "pass" | "partial" | "fail";
 
+/**
+ * Ein Indikator-Ergebnis der Stichprobe. `message`, `details` und
+ * `remediation` stammen 1:1 aus dem Referenz-Run (siehe
+ * scripts/enrich_portal_evaluation.py) und entsprechen exakt dem, was das
+ * Backend live liefert — die Detailseite stellt beide Quellen identisch dar.
+ */
 export interface RawIndicator {
   id: string;
   dim: string;
   status: ModelStatus;
   score: number;
+  message?: string;
+  details?: Record<string, unknown>;
+  remediation?: Remediation | null;
+  weight?: number;
+  rawScore?: number;
+  rawStatus?: string;
 }
 
 export interface Dataset {
   id: string;
   slug: string;
+  /** RDF-Datei der Stichprobe — Schlüssel für den Live-Lauf über /samples. */
+  file: string;
   title: string;
   description: string;
   publisher: string;
@@ -65,6 +80,7 @@ export interface Aggregate {
 interface RawDataset {
   id: string;
   slug: string;
+  file: string;
   publisher: string;
   stratum: string;
   title: string;
@@ -105,6 +121,7 @@ const file = raw as unknown as RawFile;
 export const DATASETS: Dataset[] = file.datasets.map((d) => ({
   id: d.id,
   slug: d.slug,
+  file: d.file,
   title: d.title,
   description: d.description,
   publisher: d.publisher,

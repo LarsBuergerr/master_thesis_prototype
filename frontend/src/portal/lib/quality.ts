@@ -10,7 +10,10 @@ import type {
   IndicatorResult,
   Summary,
 } from "../../api/types";
+import { dimensionLabel, indicatorMeta } from "../../lib/indicators";
 import type { Dataset } from "../data/evaluation";
+
+export { dimensionLabel };
 
 /** Score -> Note, identisch zu src/scoring/service.py::_score_to_grade. */
 export function scoreToGrade(score: number): string {
@@ -44,17 +47,6 @@ export const DIMENSION_ORDER = [
   "expressiveness",
 ] as const;
 
-const DIMENSION_LABELS: Record<string, string> = {
-  findability: "Auffindbarkeit",
-  accessibility: "Zugänglichkeit",
-  reusability: "Nachnutzbarkeit",
-  expressiveness: "Aussagekraft",
-};
-
-export function dimensionLabel(dim: string): string {
-  return DIMENSION_LABELS[dim] ?? dim;
-}
-
 export const scorePct = (score: number): number => Math.round(score * 100);
 
 function toIndicatorResult(
@@ -62,21 +54,21 @@ function toIndicatorResult(
 ): IndicatorResult {
   return {
     indicator_id: raw.id,
-    name_de: raw.id,
+    name_de: indicatorMeta(raw.id).label,
     name_en: raw.id,
     dimension: raw.dim,
     status: raw.status,
     score: raw.score,
-    raw_status: raw.status,
-    raw_score: raw.score,
+    raw_status: raw.rawStatus ?? raw.status,
+    raw_score: raw.rawScore ?? raw.score,
     effective_score: raw.score,
-    default_weight: 1,
-    effective_weight: 1,
-    message_de: "",
-    message_en: "",
-    details: {},
+    default_weight: raw.weight ?? 1,
+    effective_weight: raw.weight ?? 1,
+    message_de: raw.message ?? "",
+    message_en: raw.message ?? "",
+    details: raw.details ?? {},
     error: null,
-    remediation: null,
+    remediation: raw.remediation ?? null,
   };
 }
 

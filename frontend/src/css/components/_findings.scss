@@ -1,0 +1,391 @@
+// Erklärende Elemente der Indikator-Tabelle: Info-Icons mit Tooltip, die
+// Indikatorzeile mit Klarnamen und Prüfmeldung, der aufklappbare Befund
+// (Ist-Zustand / Soll-Zustand / Änderungsvorschlag / Fundstelle im RDF) und
+// die Leiste für den Live-Lauf.
+//
+// Farben und Abstände stammen aus den GovData-Tokens, damit sich die
+// Erweiterung nicht vom übrigen Portal absetzt.
+
+// ---------------------------------------------------------------------------
+// Info-Icon mit Tooltip
+// ---------------------------------------------------------------------------
+.info-tip {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.info-tip-btn {
+  @extend .button-reset;
+
+  width: 16px;
+  height: 16px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid $clr-primary-300;
+  background: $clr-primary-100;
+  color: $clr-primary-500;
+  font-size: 11px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+
+  &:hover,
+  &:focus-visible {
+    background: $clr-primary-400;
+    border-color: $clr-primary-400;
+    color: $clr-shades-white-0;
+  }
+}
+
+.info-tip-bubble {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: -6px;
+  z-index: 20;
+  width: max-content;
+  max-width: 280px;
+  padding: 8px 10px;
+  background: $clr-neutral-grey-800;
+  color: $clr-shades-white-0;
+  border-radius: 5px;
+  box-shadow: 0 4px 14px rgba(3, 13, 24, 0.28);
+  font-size: $fnt-paragraph-extra-small;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.45;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: normal;
+
+  &.end {
+    left: auto;
+    right: -6px;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 2px;
+    color: $clr-primary-200;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Dimensions-Panel
+// ---------------------------------------------------------------------------
+.dim-panel {
+  summary {
+    cursor: pointer;
+  }
+}
+
+.dim-name {
+  font-weight: 700;
+}
+
+.dim-what {
+  margin: 4px 0 0;
+  max-width: 70ch;
+}
+
+// ---------------------------------------------------------------------------
+// Indikatorzeile
+// ---------------------------------------------------------------------------
+.ind-table {
+  // Feste Spaltenbreiten: sonst zieht ein langer Befundtext in der
+  // aufgeklappten Zeile die Tabelle über die Seitenbreite hinaus.
+  table-layout: fixed;
+  width: 100%;
+
+  // Die erste Spalte trägt Name, Meldung und Aufklapper; die Kennzahlen
+  // bleiben schmal und rechtsbündig lesbar.
+  th.ind-cell {
+    font-weight: 400;
+    width: 48%;
+  }
+
+  // Status trägt eine Plakette („nicht erfüllt") und braucht mehr Platz als
+  // die drei Zahlenspalten.
+  .gd-table-head th:nth-child(2) {
+    width: 16%;
+  }
+  .gd-table-head th:nth-child(n + 3) {
+    width: 12%;
+  }
+
+  td.tnum {
+    white-space: nowrap;
+  }
+
+  .gd-table-head th {
+    white-space: nowrap;
+  }
+}
+
+.ind-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ind-name {
+  font-weight: 700;
+  color: $clr-neutral-grey-800;
+}
+
+.ind-field {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: $fnt-paragraph-extra-small;
+  color: $clr-neutral-grey-500;
+  background: $clr-neutral-grey-100;
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+.ind-message {
+  margin: 3px 0 0;
+  color: $clr-neutral-grey-600;
+  font-size: $fnt-paragraph-small;
+  max-width: 60ch;
+}
+
+.ind-toggle {
+  @extend .button-reset;
+
+  margin-top: 4px;
+  color: $clr-primary-400;
+  font-size: $fnt-paragraph-small;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: $clr-primary-500;
+  }
+}
+
+.ind-row.actionable {
+  background: rgba(255, 218, 218, 0.22);
+}
+
+.ind-finding-row > td {
+  padding-top: 0;
+  background: rgba(255, 218, 218, 0.22);
+}
+
+// ---------------------------------------------------------------------------
+// Befund: Ist / Soll / Einzelhinweise / Fundstelle
+// ---------------------------------------------------------------------------
+.finding {
+  border: 1px solid $clr-neutral-grey-300;
+  border-left: 3px solid $clr-primary-400;
+  border-radius: 5px;
+  background: $clr-shades-white-0;
+  padding: map-get($spacers, "1_5");
+  margin-bottom: map-get($spacers, 1);
+}
+
+.finding-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: map-get($spacers, 2);
+  align-items: start;
+
+  @media (max-width: $medium-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+
+  // Ohne Ist-Block (LLM-Indikatoren) soll der Soll-Text die volle Breite nutzen.
+  &.single {
+    grid-template-columns: 1fr;
+  }
+}
+
+.finding-block + .finding-block {
+  margin-top: map-get($spacers, "1_5");
+}
+
+.finding-h {
+  margin: 0 0 6px;
+  font-size: $fnt-paragraph-extra-small;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $clr-neutral-grey-500;
+}
+
+.finding-facts {
+  margin: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.finding-fact {
+  // Label über Wert: Feldnamen wie „dcatde:politicalGeocodingLevelURI" sind zu
+  // lang für eine eigene Spalte und würden mitten im Wort umbrechen.
+  display: block;
+  padding: 5px 7px;
+  border-radius: 3px;
+  background: $clr-neutral-grey-100;
+  font-size: $fnt-paragraph-small;
+
+  dt {
+    color: $clr-neutral-grey-600;
+    font-weight: 700;
+    font-size: $fnt-paragraph-extra-small;
+    overflow-wrap: anywhere;
+  }
+
+  dd {
+    margin: 0;
+    word-break: break-word;
+  }
+
+  &.bad {
+    background: $clr-error-red-200;
+    dt {
+      color: $clr-error-red-500;
+    }
+  }
+  &.warn {
+    background: $clr-warning-yellow-200;
+    dt {
+      color: $clr-warning-yellow-500;
+    }
+  }
+  &.good {
+    background: $clr-success-green-200;
+    dt {
+      color: $clr-success-green-500;
+    }
+  }
+}
+
+.finding-where {
+  display: block;
+  margin-top: 2px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: $fnt-paragraph-extra-small;
+  color: $clr-neutral-grey-500;
+  overflow-wrap: anywhere;
+}
+
+.finding-target {
+  margin: 0;
+  font-size: $fnt-paragraph-small;
+  overflow-wrap: anywhere;
+}
+
+.finding-fix {
+  margin: 6px 0 0;
+  font-size: $fnt-paragraph-small;
+  color: $clr-neutral-grey-700;
+}
+
+.finding-vocab {
+  margin: 6px 0 0;
+  font-size: $fnt-paragraph-extra-small;
+}
+
+.finding .findings li {
+  overflow-wrap: anywhere;
+}
+
+// ---------------------------------------------------------------------------
+// RDF-Fundstelle
+// ---------------------------------------------------------------------------
+.rdf-excerpt {
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 5px;
+  background: $clr-neutral-grey-100;
+  overflow-x: auto;
+}
+
+.rdf-line {
+  display: flex;
+  gap: 8px;
+  padding: 1px 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: $fnt-paragraph-extra-small;
+  white-space: pre;
+
+  code {
+    color: $clr-neutral-grey-800;
+  }
+}
+
+.rdf-line-no {
+  flex: none;
+  min-width: 32px;
+  text-align: right;
+  color: $clr-neutral-grey-400;
+  user-select: none;
+}
+
+// ---------------------------------------------------------------------------
+// Leiste für den Live-Lauf
+// ---------------------------------------------------------------------------
+.live-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: map-get($spacers, "1_5");
+  align-items: center;
+  justify-content: space-between;
+  padding: map-get($spacers, "1_5");
+  margin-bottom: map-get($spacers, 2);
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 5px;
+  background: $clr-neutral-grey-50;
+}
+
+.live-bar-main {
+  min-width: 240px;
+  flex: 1 1 320px;
+}
+
+.live-bar-state {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: $fnt-paragraph-small;
+
+  code {
+    font-size: $fnt-paragraph-extra-small;
+  }
+}
+
+.live-bar-progress {
+  margin: 4px 0 0;
+}
+
+.live-bar-error {
+  margin: 4px 0 0;
+  font-size: $fnt-paragraph-small;
+  color: $clr-error-red-500;
+}
+
+.live-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: map-get($spacers, 1);
+  flex-wrap: wrap;
+
+  .gd-button {
+    padding: 8px 16px;
+  }
+}
+
+.live-bar-llm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: $fnt-paragraph-small;
+  color: $clr-neutral-grey-700;
+  cursor: pointer;
+}

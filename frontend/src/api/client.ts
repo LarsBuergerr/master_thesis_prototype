@@ -30,3 +30,30 @@ export async function fetchJob(jobId: string): Promise<JobDetail> {
   const { data } = await api.get<JobDetail>(`/jobs/${jobId}`);
   return data;
 }
+
+// ---- Stichprobe (Portal) ---------------------------------------------------
+// Die Portalseite zeigt Datensätze der Evaluationsstichprobe. Damit sie nicht
+// nur hinterlegte Zahlen wiedergibt, kann sie dieselbe RDF-Datei über das
+// Backend live bewerten lassen — gleiche Pipeline wie beim Upload.
+
+/** RDF-Quelltext eines Stichproben-Datensatzes (für die Fundstellen-Anzeige). */
+export async function fetchSampleRdf(name: string): Promise<string> {
+  const { data } = await api.get<string>(`/samples/${encodeURIComponent(name)}/rdf`, {
+    responseType: "text",
+    transformResponse: (v) => v,
+  });
+  return data;
+}
+
+/** Startet eine echte Analyse der Stichproben-Datei und liefert die Job-ID. */
+export async function analyzeSample(
+  name: string,
+  config: AnalysisConfigInput,
+): Promise<JobCreated> {
+  const { data } = await api.post<JobCreated>(
+    `/samples/${encodeURIComponent(name)}/analyze`,
+    null,
+    { params: { config: JSON.stringify(config) } },
+  );
+  return data;
+}

@@ -11,11 +11,22 @@ import {
 import type { DimensionResult } from "../../api/types";
 import { CHART_COLORS } from "../../lib/theme";
 import { statusColor } from "../../lib/status";
+import { indicatorMeta } from "../../lib/indicators";
+
+const STATUS_TEXT: Record<string, string> = {
+  pass: "erfüllt",
+  partial: "teilweise erfüllt",
+  fail: "nicht erfüllt",
+  not_applicable: "nicht anwendbar",
+  error: "Fehler",
+};
 
 export function IndicatorBarChart({ dim }: { dim: DimensionResult }) {
   const colors = CHART_COLORS;
+  // Achsenbeschriftung mit dem Klarnamen: die technische ID sagt einem
+  // Datenbereitsteller nichts.
   const data = dim.indicators.map((i) => ({
-    id: i.indicator_id,
+    id: indicatorMeta(i.indicator_id, i.name_de).label,
     score: i.score ?? 0,
     status: i.status,
     weight: i.effective_weight ?? 1,
@@ -53,8 +64,8 @@ export function IndicatorBarChart({ dim }: { dim: DimensionResult }) {
               color: colors.text,
             }}
             formatter={(value, _name, item) => [
-              `${value} (${item?.payload?.status}, w=${item?.payload?.weight})`,
-              "score",
+              `${value} — ${STATUS_TEXT[item?.payload?.status] ?? item?.payload?.status}, Gewicht ${item?.payload?.weight}`,
+              "Score",
             ]}
           />
           <Bar dataKey="score" radius={[0, 4, 4, 0]}>

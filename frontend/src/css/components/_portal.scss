@@ -43,9 +43,11 @@
 }
 
 // ---- Bund-Leiste ------------------------------------------------------------
+// GovData zeigt die Bund-Leiste hell (#f0f0f0) mit dunkler Schrift, nicht
+// invertiert.
 .gd-federal {
-  background: $black;
-  color: $white;
+  background: #f0f0f0;
+  color: $clr-neutral-grey-800;
 }
 .gd-federal-inner {
   max-width: 1200px;
@@ -54,11 +56,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: $fnt-paragraph-extra-small;
-
-  span:last-child {
-    opacity: 0.85;
-  }
+  font-size: $fnt-paragraph-small;
 }
 .gd-flag {
   display: inline-flex;
@@ -83,9 +81,9 @@
 }
 
 // ---- Kopfzeile --------------------------------------------------------------
+// GovData-Kopfzeile: weißer Grund, ohne Trennlinie.
 .gd-header {
   background: $white;
-  border-bottom: 1px solid $clr-neutral-grey-300;
 }
 .gd-header-inner {
   max-width: 1200px;
@@ -100,28 +98,59 @@
     gap: $spacer * 1.5;
   }
 }
+// GovData-Signet: Punktraster links neben dem Wortmarken-Text.
 .gd-logo {
+  display: flex;
+  align-items: center;
+  gap: $spacer;
+  line-height: 1.1;
+}
+.gd-logo-dots {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(5, 4px);
+  grid-auto-rows: 4px;
+  gap: 2px;
+
+  i {
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: $clr-neutral-grey-800;
+  }
+  // vereinzelte Farbtupfer wie im Original-Signet
+  i:nth-child(7) {
+    background: $clr-warning-yellow-300;
+  }
+  i:nth-child(13) {
+    background: $clr-error-red-400;
+  }
+}
+.gd-logo-text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  line-height: 1.1;
 }
 .gd-logo-mark {
   font-size: rem-calc(24);
-  font-weight: 800;
-  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1;
 }
 .gd-logo-gov {
-  color: $clr-neutral-grey-800;
+  color: $clr-neutral-grey-900;
+  font-weight: 800;
 }
 .gd-logo-data {
-  color: $clr-primary-400;
+  color: $clr-neutral-grey-800;
+  font-weight: 400;
 }
 .gd-logo-sub {
   font-size: rem-calc(11);
-  color: $clr-neutral-grey-500;
+  color: $clr-neutral-grey-600;
   font-weight: 400;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .gd-nav {
@@ -131,16 +160,16 @@
 .gd-nav-link {
   @include outline-base();
   padding: 8px 12px;
-  border-radius: 6px;
-  font-size: $fnt-paragraph-small;
+  border-radius: 4px;
+  font-size: $fnt-paragraph-regular;
   font-weight: 700;
-  color: $clr-neutral-grey-700;
+  color: $clr-primary-400;
 
   &:hover {
     background: $clr-neutral-grey-100;
+    text-decoration: underline;
   }
   &.active {
-    color: $clr-primary-400;
     background: $clr-primary-100;
   }
 }
@@ -149,40 +178,94 @@
 }
 
 // ---- Suche / Hero -----------------------------------------------------------
+// GovData legt die Hero-Suche über eine dunkle Netzwerk-Grafik; Überschrift und
+// Untertitel stehen in dunkelgrauen Beschriftungskästen, die Suchleiste ist
+// mittig, der Such-Button dunkel.
 .gd-hero {
-  background: linear-gradient(180deg, $white, $clr-neutral-grey-100);
-  border-bottom: 1px solid $clr-neutral-grey-300;
+  background-color: #2a2f36;
+  background-image:
+    radial-gradient(circle at 18% 30%, rgba(255, 206, 0, 0.10), transparent 45%),
+    radial-gradient(circle at 82% 70%, rgba(0, 115, 168, 0.28), transparent 50%),
+    linear-gradient(120deg, #1f242b 0%, #2f3640 55%, #3a4a57 100%);
 }
 .gd-hero-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: ($spacer * 4) ($spacer * 3) ($spacer * 3.5);
+  padding: ($spacer * 5) ($spacer * 3) ($spacer * 5);
+  text-align: center;
 
   h1 {
-    margin: 0 0 4px;
+    display: inline-block;
+    margin: 0 0 $spacer;
+    padding: 4px 12px;
+    background: $clr-media-grey-500;
+    color: $white;
   }
 }
 .gd-hero-sub {
-  margin: 0 0 $spacer * 2;
-  color: $clr-neutral-grey-600;
-  font-size: $fnt-paragraph-small;
+  display: inline-block;
+  margin: 0 0 $spacer * 3;
+  padding: 3px 12px;
+  background: $clr-media-grey-500;
+  color: $white;
+  font-size: $fnt-paragraph-regular;
 }
 .gd-searchbar {
   display: flex;
-  gap: $spacer;
+  gap: 0;
   max-width: 720px;
+  margin: 0 auto;
 
   input {
     flex: 1;
-    height: rem-calc(46);
+    height: rem-calc(48);
     padding: 0 $spacer * 1.5;
-    border-radius: $spacer * 0.5;
-    border: 1px solid $clr-neutral-grey-500;
+    border-radius: 0;
+    border: 1px solid $white;
+    border-right: none;
     background: $white;
     color: $black;
     font-size: $fnt-paragraph-regular;
 
     @include outline-base();
+  }
+
+  // GovData-Hero-Button: dunkelgrau statt Primärblau, eckig, an das Feld bündig.
+  .gd-button {
+    border-radius: 0;
+    padding: 12px 22px;
+  }
+  .gd-button-primary {
+    background: $clr-media-grey-500;
+    color: $white;
+
+    &:hover {
+      background: $clr-neutral-grey-900;
+      color: $white;
+      border-color: $clr-media-grey-500;
+    }
+  }
+}
+// Sekundäre Hero-Aktionen (Erweiterte Suche / Kartensuche) rechtsbündig unter
+// dem Suchfeld, kleine dunkle Chips wie bei GovData.
+.gd-hero-actions {
+  max-width: 720px;
+  margin: 6px auto 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+
+  .gd-hero-action {
+    @include outline-base();
+    padding: 4px 10px;
+    font-size: $fnt-paragraph-extra-small;
+    font-weight: 700;
+    color: $white;
+    background: $clr-media-grey-500;
+
+    &:hover {
+      background: $clr-neutral-grey-900;
+    }
   }
 }
 
@@ -214,10 +297,9 @@
 }
 .gd-facet-title {
   margin: 0 0 $spacer;
-  font-size: rem-calc(12);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: $clr-neutral-grey-600;
+  font-size: rem-calc(16);
+  font-weight: 700;
+  color: $clr-neutral-grey-800;
 }
 .gd-facet-list {
   list-style: none;
@@ -254,8 +336,12 @@
   }
 }
 .gd-facet-count {
+  flex: none;
+  padding: 1px 8px;
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 20px;
   font-size: $fnt-paragraph-extra-small;
-  color: $clr-neutral-grey-500;
+  color: $clr-neutral-grey-600;
   font-variant-numeric: tabular-nums;
 }
 
@@ -305,10 +391,11 @@
   padding: $spacer * 2;
   transition: border-color 0.12s ease;
 
-  // design-box hat nur rechts/unten Rahmen; hier volle Kontur für Listenoptik
+  // design-box hat nur rechts/unten Rahmen; hier volle Kontur für Listenoptik,
+  // eckig wie bei GovData (kein Radius).
   border-width: 1px;
   border-color: $clr-neutral-grey-300;
-  border-radius: 8px;
+  border-radius: 0;
 
   &:hover {
     border-color: $clr-primary-400;
@@ -318,17 +405,39 @@
   flex: 1;
   min-width: 0;
 }
+// Kopfzeile der Karte: „Datensatz“-Label links, „Letzte Änderung“ rechts.
+.ds-card-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: $spacer;
+  margin: 0 0 2px;
+}
+.ds-card-kind {
+  font-size: $fnt-paragraph-small;
+  font-weight: 700;
+  color: $clr-neutral-grey-800;
+}
+.ds-card-changed {
+  font-size: $fnt-paragraph-small;
+  color: $clr-neutral-grey-600;
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
 .ds-card-title {
-  margin: 0 0 4px;
-  font-size: rem-calc(17);
-  line-height: 1.35;
+  margin: 0 0 $spacer;
+  font-size: rem-calc(20);
+  line-height: 1.3;
 }
 .ds-card-link {
-  color: $clr-primary-400;
+  color: $clr-neutral-grey-800;
   text-align: left;
   cursor: pointer;
 
   &:hover {
+    color: $clr-primary-400;
     text-decoration: underline;
   }
   @include outline-base();
@@ -342,17 +451,52 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.ds-card-meta {
+// Format-Chips und Quelle in einer Zeile: „CSV XLSX · Publisher“ wie GovData.
+.ds-card-formats {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 14px;
-  font-size: $fnt-paragraph-extra-small;
-  color: $clr-neutral-grey-500;
   align-items: center;
+  gap: 6px;
+  margin: 0;
 }
-.ds-card-pub {
+.ds-card-source {
   color: $clr-neutral-grey-700;
-  font-weight: 700;
+  font-size: $fnt-paragraph-small;
+
+  &::before {
+    content: "·";
+    margin-right: 6px;
+    color: $clr-neutral-grey-500;
+  }
+  .ds-card-pub {
+    color: $clr-neutral-grey-800;
+    font-weight: 700;
+  }
+}
+.ds-card-meta {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.ds-card-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: $fnt-paragraph-extra-small;
+  line-height: 1.4;
+
+  dt {
+    color: $clr-neutral-grey-500;
+  }
+  dd {
+    margin: 0;
+    color: $clr-neutral-grey-700;
+  }
+  dd.ds-card-pub {
+    color: $clr-neutral-grey-800;
+    font-weight: 700;
+  }
 }
 .ds-card-chips {
   display: flex;
@@ -361,14 +505,13 @@
   margin-top: $spacer;
 }
 .ds-format {
-  font-size: rem-calc(11);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  padding: 2px 7px;
-  border-radius: 4px;
-  background: $clr-neutral-grey-100;
-  border: 1px solid $clr-neutral-grey-300;
-  color: $clr-neutral-grey-700;
+  font-size: rem-calc(13);
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 1px 8px;
+  border-radius: 5px;
+  background: $clr-media-grey-500;
+  color: $white;
 }
 .ds-keyword {
   font-size: rem-calc(11);
@@ -380,7 +523,7 @@
 .ds-card-score {
   flex: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 2px;
 
   @include outline-base();
@@ -535,36 +678,38 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+// GovData-Kennzahlenkacheln: dunkelgrau (#3d3d3d), weiße Schrift, eckig.
 .gd-kpi {
-  padding: $spacer * 1.5 $spacer * 2;
-  border-radius: 8px;
-  border-width: 1px;
-  border-color: $clr-neutral-grey-300;
+  padding: $spacer * 2;
+  border-radius: 0;
+  border: none;
+  background: $clr-media-grey-500;
+  color: $white;
 }
 .gd-kpi-k {
   margin: 0 0 6px;
   font-size: rem-calc(11);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: $clr-neutral-grey-500;
+  color: $clr-neutral-grey-300;
 }
 .gd-kpi-v {
   margin: 0;
   font-size: rem-calc(30);
   font-weight: 800;
   line-height: 1;
-  color: $clr-neutral-grey-800;
+  color: $white;
   font-variant-numeric: tabular-nums;
 }
 .gd-kpi-unit {
   font-size: rem-calc(15);
   font-weight: 700;
-  color: $clr-neutral-grey-500;
+  color: $clr-neutral-grey-300;
 }
 .gd-kpi-n {
   margin: 7px 0 0;
   font-size: $fnt-paragraph-extra-small;
-  color: $clr-neutral-grey-600;
+  color: $clr-neutral-grey-300;
 }
 .gd-panels {
   display: grid;
@@ -576,7 +721,7 @@
   }
 }
 .gd-panel {
-  border-radius: 8px;
+  border-radius: 0;
 }
 .gd-panel-title {
   margin: 0 0 2px;
@@ -588,11 +733,11 @@
 }
 
 // ---- Fußzeile ---------------------------------------------------------------
+// GovData-Fußzeile: dunkelgrau (#3d3d3d), weiße Links, ohne farbige Oberkante.
 .gd-footer {
   flex-shrink: 0;
-  background: $clr-neutral-grey-800;
-  border-top: 3px solid $clr-primary-400;
-  color: $clr-neutral-grey-300;
+  background: $clr-media-grey-500;
+  color: $white;
 }
 .gd-footer-inner {
   max-width: 1200px;
@@ -603,21 +748,22 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px 22px;
-  margin-bottom: $spacer;
+  margin-bottom: $spacer * 1.5;
 
   a {
-    color: $clr-neutral-grey-300;
+    color: $white;
     font-size: $fnt-paragraph-small;
 
     &:hover {
       color: $white;
+      text-decoration: underline;
     }
   }
 }
 .gd-footer-note {
   margin: 0;
   font-size: $fnt-paragraph-extra-small;
-  color: $clr-neutral-grey-400;
+  color: $clr-neutral-grey-300;
   line-height: 1.5;
 
   code {

@@ -8,11 +8,12 @@ import {
 } from "recharts";
 import type { Summary } from "../../api/types";
 import { CHART_COLORS } from "../../lib/theme";
+import { dimensionLabel } from "../../lib/indicators";
 
 export function DimensionRadar({ summary }: { summary: Summary }) {
   const colors = CHART_COLORS;
   const data = Object.entries(summary.dimension_scores).map(([dim, score]) => ({
-    dimension: dim,
+    dimension: dimensionLabel(dim),
     score: Number(score.toFixed(3)),
   }));
 

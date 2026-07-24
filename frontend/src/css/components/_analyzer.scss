@@ -106,8 +106,9 @@ h3 {
 .diff-line {
   display: flex;
   gap: 6px;
-  align-items: center;
+  align-items: baseline;
   padding: 2px 0;
+  overflow-wrap: anywhere;
 
   &.diff-add {
     color: $clr-success-green-500;
