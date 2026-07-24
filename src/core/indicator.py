@@ -7,6 +7,8 @@ from typing import Any, Dict, Optional
 from datetime import datetime
 
 from core.dimension import QualityDimension
+from core.finding import Finding
+from core.guidance import IndicatorGuidance, guidance_for
 from core.remediation import Remediation
 from utils.logger import get_logger
 
@@ -40,6 +42,9 @@ class IndicatorResult:
     #: PARTIAL results: either a concrete ChangePatch or a free-text
     #: Recommendation — never both, never neither for a failing indicator.
     remediation: Optional[Remediation] = None
+    #: Set (post-hoc, see scoring.findings.attach_finding) for FAIL / PARTIAL /
+    #: ERROR results: ``details`` aufbereitet als Ist-/Soll-Gegenüberstellung.
+    finding: Optional[Finding] = None
 
     def to_dict(self) -> Dict[str, Any]:
         """Convert result to dictionary."""
@@ -56,6 +61,7 @@ class IndicatorResult:
             "error": self.error,
             "timestamp": self.timestamp.isoformat(),
             "remediation": self.remediation.to_dict() if self.remediation else None,
+            "finding": self.finding.to_dict() if self.finding else None,
         }
 
 
@@ -122,6 +128,17 @@ class Indicator(ABC):
                 f"Indicator with ID '{self.indicator_id}' is already registered"
             )
         self._registry[self.indicator_id] = self
+
+    @property
+    def guidance(self) -> Optional[IndicatorGuidance]:
+        """Klartext-Beschreibung für Endnutzer (Name, Feld, Handlungsanweisung).
+
+        Die Texte liegen als Beiwagen-Registry in :mod:`core.guidance`, damit
+        die 27 Indikator-Konstruktoren unverändert bleiben — über diese
+        Property hängen sie trotzdem am Indikator und werden von
+        ``GET /indicators`` mit ausgeliefert.
+        """
+        return guidance_for(self.indicator_id)
 
     @classmethod
     def get(cls, indicator_id: str) -> Optional["Indicator"]:

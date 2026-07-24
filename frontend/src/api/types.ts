@@ -9,6 +9,21 @@ export type IndicatorStatus =
   | "not_applicable"
   | "error";
 
+// Mirrors core/guidance.py — the plain-German layer over an indicator:
+// what it checks, which field it touches and what to do about it.
+export interface Vocabulary {
+  label_de: string;
+  url: string;
+}
+
+export interface IndicatorGuidance {
+  label_de: string;
+  what_de: string;
+  field: string;
+  fix_de: string;
+  vocabulary?: Vocabulary | null;
+}
+
 export interface IndicatorInfo {
   indicator_id: string;
   name_de: string;
@@ -18,11 +33,20 @@ export interface IndicatorInfo {
   description_en: string;
   default_weight: number;
   graded: boolean;
+  guidance?: IndicatorGuidance | null;
+}
+
+export interface DimensionInfo {
+  dimension: string;
+  label_de: string;
+  what_de: string;
 }
 
 export interface IndicatorsResponse {
   dimensions: string[];
   indicators: IndicatorInfo[];
+  dimension_info: DimensionInfo[];
+  score_glossary: Record<string, string>;
 }
 
 // Mirrors core/remediation.py. Attached to FAIL/PARTIAL results only.
@@ -47,6 +71,11 @@ export interface FieldSuggestion {
   predicate: string;
   candidates: string[];
   reason: string;
+  /** Kandidaten nach Nähe zum vorhandenen Wert sortiert — nur dann taugt der
+   *  erste Eintrag als Vorschlag. Sonst ist die Liste alphabetisch. */
+  ranked?: boolean;
+  /** Umfang des Vokabulars, falls die Liste gekürzt ausgeliefert wurde. */
+  candidate_total?: number;
 }
 
 export interface ChangePatch {
@@ -67,6 +96,26 @@ export interface Recommendation {
 
 export type Remediation = ChangePatch | Recommendation;
 
+// Mirrors core/finding.py. Attached to FAIL/PARTIAL/ERROR results: the
+// indicator's `details` turned into an Ist/Soll comparison a data provider can
+// act on. Built in the backend (scoring/findings.py), never in the UI.
+export type FindingTone = "bad" | "warn" | "good" | "neutral";
+
+export interface FactLine {
+  label: string;
+  value: string;
+  tone: FindingTone;
+  /** Fundstelle im Metadatensatz (Distributions-URI, SHACL-Pfad …). */
+  where?: string | null;
+}
+
+export interface Finding {
+  headline: string;
+  current: FactLine[];
+  target?: string | null;
+  notes: string[];
+}
+
 export interface IndicatorResult {
   indicator_id: string;
   name_de: string;
@@ -84,6 +133,7 @@ export interface IndicatorResult {
   details: Record<string, unknown>;
   error?: string | null;
   remediation?: Remediation | null;
+  finding?: Finding | null;
 }
 
 export interface DimensionResult {

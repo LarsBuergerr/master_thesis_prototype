@@ -1,12 +1,13 @@
-// Aufgeklappter Befund zu einem Indikator: Ist-Zustand mit Fundstelle,
-// Soll-Zustand, Einzelhinweise, der Änderungsvorschlag des Backends (Diff) und
-// — sofern der RDF-Quelltext vorliegt — die betroffenen Zeilen der Datei.
+// Aufgeklappter Befund zu einem Indikator.
+//
+// Der Inhalt kommt fertig aus dem Backend (`IndicatorResult.finding`, gebaut in
+// scoring/findings.py) — hier wird er nur dargestellt: Ist-Zustand mit
+// Fundstelle, Soll-Zustand, Einzelhinweise, der Änderungsvorschlag und, sofern
+// der RDF-Quelltext geladen ist, die betroffenen Zeilen der Datei.
 
 import type { IndicatorResult } from "../../api/types";
-import { buildFinding } from "../../lib/findings";
 import { indicatorMeta } from "../../lib/indicators";
 import { fieldTerms, rdfExcerpt } from "../../lib/rdf";
-import { hintsFromDetails } from "../../lib/remediation";
 import { RemediationView } from "./RemediationView";
 
 export function IndicatorFinding({
@@ -17,15 +18,15 @@ export function IndicatorFinding({
   /** RDF-Quelltext des Datensatzes, falls geladen. */
   rdfSource?: string;
 }) {
-  const finding = buildFinding(indicator);
+  const finding = indicator.finding;
   if (!finding) return null;
 
   const meta = indicatorMeta(indicator.indicator_id, indicator.name_de);
   const excerpt = rdfSource ? rdfExcerpt(rdfSource, fieldTerms(meta.field)) : [];
 
   // Eine Empfehlung besteht aus Meldung und Einzelbefunden — beides steht
-  // bereits oben in der Zeile bzw. unter „Im Einzelnen". Nur ein Patch bringt
-  // hier zusätzliche Information (die konkreten Änderungen).
+  // bereits in der Zeile bzw. unter „Im Einzelnen". Nur ein Patch bringt hier
+  // zusätzliche Information (die konkreten Änderungen).
   const remediation = indicator.remediation;
   const patch = remediation?.kind === "change_patch" ? remediation : null;
   const seeAlso = remediation?.kind === "recommendation" ? remediation.see_also : [];
@@ -104,10 +105,7 @@ export function IndicatorFinding({
       {patch && (
         <section className="finding-block">
           <h4 className="finding-h">Änderungsvorschlag</h4>
-          <RemediationView
-            remediation={patch}
-            hints={hintsFromDetails(indicator.details ?? {})}
-          />
+          <RemediationView remediation={patch} />
         </section>
       )}
 

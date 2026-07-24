@@ -10,7 +10,7 @@
 import { Fragment, useState } from "react";
 import type { DimensionResult, IndicatorResult } from "../../api/types";
 import { fmt, statusIcon, statusLabel } from "../../lib/status";
-import { COLUMN_HELP, DIMENSION_META, indicatorMeta } from "../../lib/indicators";
+import { columnHelp, dimensionLabel, dimensionWhat, indicatorMeta } from "../../lib/indicators";
 import { InfoTip } from "../InfoTip";
 import { IndicatorBarChart } from "./IndicatorBarChart";
 import { IndicatorFinding } from "./IndicatorFinding";
@@ -36,10 +36,9 @@ function IndicatorRow({
 }) {
   const [open, setOpen] = useState(false);
   const meta = indicatorMeta(indicator.indicator_id, indicator.name_de);
-  const actionable =
-    indicator.status === "fail" ||
-    indicator.status === "partial" ||
-    indicator.status === "error";
+  // Aufklappbar ist eine Zeile genau dann, wenn das Backend einen Befund
+  // mitgeliefert hat — bei PASS gibt es nichts zu tun.
+  const actionable = indicator.finding != null;
 
   return (
     <Fragment>
@@ -99,8 +98,8 @@ export function DimensionPanel({
   rdfSource?: string;
   defaultOpen?: boolean;
 }) {
-  const meta = DIMENSION_META[dim.dimension];
-  const label = meta?.label ?? dim.dimension;
+  const label = dimensionLabel(dim.dimension);
+  const what = dimensionWhat(dim.dimension);
   const open = dim.indicators.filter((i) => i.status !== "pass").length;
 
   return (
@@ -113,7 +112,7 @@ export function DimensionPanel({
         </span>
       </summary>
 
-      {meta && <p className="dim-what muted">{meta.what}</p>}
+      {what && <p className="dim-what muted">{what}</p>}
 
       <div style={{ marginTop: 10 }}>
         <IndicatorBarChart dim={dim} />
@@ -126,16 +125,16 @@ export function DimensionPanel({
             <tr>
               <th scope="col">Indikator und Prüfergebnis</th>
               <th scope="col">
-                Status <InfoTip label="Status" text={COLUMN_HELP.status} />
+                Status <InfoTip label="Status" text={columnHelp("status")} />
               </th>
               <th scope="col">
-                Score <InfoTip label="Score" text={COLUMN_HELP.score} />
+                Score <InfoTip label="Score" text={columnHelp("score")} />
               </th>
               <th scope="col">
-                Roh <InfoTip label="Rohwert" text={COLUMN_HELP.raw} />
+                Roh <InfoTip label="Rohwert" text={columnHelp("raw")} />
               </th>
               <th scope="col">
-                Gewicht <InfoTip label="Gewicht" text={COLUMN_HELP.weight} align="end" />
+                Gewicht <InfoTip label="Gewicht" text={columnHelp("weight")} align="end" />
               </th>
             </tr>
           </thead>

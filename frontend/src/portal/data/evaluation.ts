@@ -4,17 +4,18 @@
 // Stichprobe). Die JSON wird zur Bauzeit gebündelt (resolveJsonModule) und
 // hier einmalig in domänennahe, camelCase-Objekte übersetzt.
 
-import type { Remediation } from "../../api/types";
+import type { Finding, Remediation } from "../../api/types";
 import raw from "./evaluation.json";
 
 export type Stratum = "geo" | "non_geo";
 export type ModelStatus = "pass" | "partial" | "fail";
 
 /**
- * Ein Indikator-Ergebnis der Stichprobe. `message`, `details` und
- * `remediation` stammen 1:1 aus dem Referenz-Run (siehe
- * scripts/enrich_portal_evaluation.py) und entsprechen exakt dem, was das
- * Backend live liefert — die Detailseite stellt beide Quellen identisch dar.
+ * Ein Indikator-Ergebnis der Stichprobe. `message` und `remediation` stammen
+ * 1:1 aus dem Referenz-Run, `finding` erzeugt derselbe Backend-Code, den auch
+ * ein Live-Lauf benutzt (siehe scripts/enrich_portal_evaluation.py). Die
+ * Felder entsprechen damit exakt dem, was das Backend liefert — die
+ * Detailseite stellt beide Quellen identisch dar.
  */
 export interface RawIndicator {
   id: string;
@@ -22,7 +23,7 @@ export interface RawIndicator {
   status: ModelStatus;
   score: number;
   message?: string;
-  details?: Record<string, unknown>;
+  finding?: Finding | null;
   remediation?: Remediation | null;
   weight?: number;
   rawScore?: number;

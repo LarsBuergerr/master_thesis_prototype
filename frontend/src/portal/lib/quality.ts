@@ -66,9 +66,10 @@ function toIndicatorResult(
     effective_weight: raw.weight ?? 1,
     message_de: raw.message ?? "",
     message_en: raw.message ?? "",
-    details: raw.details ?? {},
+    details: {},
     error: null,
     remediation: raw.remediation ?? null,
+    finding: raw.finding ?? null,
   };
 }
 

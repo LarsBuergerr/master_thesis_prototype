@@ -66,6 +66,12 @@ class FieldSuggestion:
     predicate: Identifier
     candidates: list[str] = field(default_factory=list)
     reason: str = ""
+    #: True, wenn ``candidates`` nach Nähe zum vorhandenen Wert sortiert wurde
+    #: und der erste Eintrag daher als Vorschlag taugt. False heißt: es gab
+    #: keinen Anhaltspunkt, die Liste ist alphabetisch — eine Oberfläche darf
+    #: dann nichts vorbelegen, sonst liest sich der erste Treffer wie eine
+    #: Empfehlung.
+    ranked: bool = False
 
     def to_dict(self) -> dict:
         return {
@@ -74,6 +80,7 @@ class FieldSuggestion:
             "predicate": str(self.predicate),
             "candidates": list(self.candidates),
             "reason": self.reason,
+            "ranked": self.ranked,
         }
 
 

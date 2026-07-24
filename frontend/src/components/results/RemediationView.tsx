@@ -1,7 +1,6 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import type { ChangePatch, FieldSuggestion, Recommendation, Remediation } from "../../api/types";
 import { shortenUri } from "../../lib/status";
-import { rankCandidates } from "../../lib/remediation";
 
 /** Wie viele Vokabular-Einträge die Auswahlliste anbietet. */
 const MAX_OPTIONS = 40;
@@ -22,25 +21,17 @@ function ChangeLine({ sign, predicate, value, title }: {
 }
 
 /**
- * Fehlender Wert aus einem kontrollierten Vokabular. Der wahrscheinlichste
- * Kandidat (abgeleitet aus dem, was aktuell im Metadatensatz steht) ist
- * vorbelegt und steht als Vorschlagszeile im Diff — der Rest des Vokabulars
- * bleibt über die Auswahlliste erreichbar.
+ * Fehlender Wert aus einem kontrollierten Vokabular. Konnte das Backend die
+ * Kandidaten nach Nähe zum vorhandenen Wert sortieren (`ranked`, siehe
+ * scoring/remediation/vocab_fields.py), steht der wahrscheinlich gemeinte
+ * vorbelegt als Vorschlagszeile im Diff; sonst bleibt die Auswahl leer, statt
+ * den alphabetisch ersten Eintrag wie eine Empfehlung aussehen zu lassen.
  */
-function NeedsInputRow({
-  suggestion,
-  hints,
-}: {
-  suggestion: FieldSuggestion;
-  hints: string[];
-}) {
-  const ranked = useMemo(
-    () => rankCandidates(suggestion.candidates, hints),
-    [suggestion.candidates, hints],
+function NeedsInputRow({ suggestion }: { suggestion: FieldSuggestion }) {
+  const [chosen, setChosen] = useState(() =>
+    suggestion.ranked ? (suggestion.candidates[0] ?? "") : "",
   );
-  const [chosen, setChosen] = useState(() => (hints.length > 0 ? (ranked[0] ?? "") : ""));
-  const total = (suggestion as FieldSuggestion & { candidate_total?: number }).candidate_total
-    ?? suggestion.candidates.length;
+  const total = suggestion.candidate_total ?? suggestion.candidates.length;
 
   return (
     <div className="diff-pending">
@@ -54,7 +45,7 @@ function NeedsInputRow({
           aria-label={`Wert für ${shortenUri(suggestion.predicate)} wählen`}
         >
           <option value="">Wert wählen… ({total} zugelassene Werte)</option>
-          {ranked.slice(0, MAX_OPTIONS).map((c) => (
+          {suggestion.candidates.slice(0, MAX_OPTIONS).map((c) => (
             <option key={c} value={c} title={c}>
               {shortenUri(c)}
             </option>
@@ -71,7 +62,7 @@ function NeedsInputRow({
   );
 }
 
-function ChangePatchView({ patch, hints }: { patch: ChangePatch; hints: string[] }) {
+function ChangePatchView({ patch }: { patch: ChangePatch }) {
   return (
     <div>
       <div className="gd-row" style={{ gap: 6 }}>
@@ -89,7 +80,7 @@ function ChangePatchView({ patch, hints }: { patch: ChangePatch; hints: string[]
           />
         ))}
         {patch.needs_input.map((s, idx) => (
-          <NeedsInputRow key={idx} suggestion={s} hints={hints} />
+          <NeedsInputRow key={idx} suggestion={s} />
         ))}
       </div>
     </div>
@@ -127,16 +118,9 @@ function RecommendationView({ rec }: { rec: Recommendation }) {
   );
 }
 
-export function RemediationView({
-  remediation,
-  hints = [],
-}: {
-  remediation: Remediation;
-  /** Werte, die aktuell im Metadatensatz stehen — sortieren die Vorschläge. */
-  hints?: string[];
-}) {
+export function RemediationView({ remediation }: { remediation: Remediation }) {
   if (remediation.kind === "change_patch") {
-    return <ChangePatchView patch={remediation} hints={hints} />;
+    return <ChangePatchView patch={remediation} />;
   }
   return <RecommendationView rec={remediation} />;
 }

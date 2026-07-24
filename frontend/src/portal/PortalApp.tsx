@@ -8,10 +8,16 @@ import { DatasetSearch } from "./components/DatasetSearch";
 import { DatasetDetail } from "./components/DatasetDetail";
 import { QualityDashboard } from "./components/QualityDashboard";
 import { AnalyzerApp } from "../components/AnalyzerApp";
+import { useIndicators } from "../hooks/useAnalysis";
 import type { PortalRoute } from "./route";
 
 export function PortalApp() {
   const [route, setRoute] = useState<PortalRoute>({ view: "list" });
+
+  // Holt die Indikator-Registry samt Klartext-Guidance und aktualisiert damit
+  // den Katalog (siehe lib/indicators). Ohne Backend bleibt der gebündelte
+  // Abzug in Kraft — die Seite funktioniert dann unverändert.
+  useIndicators();
 
   useEffect(() => {
     window.scrollTo(0, 0);

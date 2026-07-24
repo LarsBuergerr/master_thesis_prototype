@@ -14,12 +14,13 @@ from typing import Any, Optional
 # ``backend`` package import puts ``src`` on sys.path (see backend/__init__.py).
 from core.indicator import Indicator
 from core.dimension import QualityDimension
+from core.guidance import DIMENSION_GUIDANCE, SCORE_GLOSSARY
 from extraction.rdf_parser import RDFMetadataParser
 from scoring.service import QualityMetricsService
 from scoring.score_policy import ScorePolicy
 from llm_factory import build_llm_from_params
 
-from .schemas import AnalysisConfig, IndicatorInfo
+from .schemas import AnalysisConfig, DimensionInfo, GuidanceInfo, IndicatorInfo
 
 logger = logging.getLogger("backend.analysis")
 
@@ -98,6 +99,7 @@ def list_indicators() -> list[IndicatorInfo]:
 
     infos: list[IndicatorInfo] = []
     for ind_id, ind in sorted(Indicator.all().items()):
+        guidance = ind.guidance
         infos.append(
             IndicatorInfo(
                 indicator_id=ind_id,
@@ -108,6 +110,9 @@ def list_indicators() -> list[IndicatorInfo]:
                 description_en=ind.description_en,
                 default_weight=ind.weight,
                 graded=type(ind).GRADED,
+                guidance=(
+                    GuidanceInfo.model_validate(guidance.to_dict()) if guidance else None
+                ),
             )
         )
     return infos
@@ -115,3 +120,20 @@ def list_indicators() -> list[IndicatorInfo]:
 
 def list_dimensions() -> list[str]:
     return [d.value for d in QualityDimension]
+
+
+def list_dimension_info() -> list[DimensionInfo]:
+    """Deutsche Bezeichnung und Erklärung je Dimension."""
+    return [
+        DimensionInfo(
+            dimension=d.value,
+            label_de=DIMENSION_GUIDANCE.get(d.value, {}).get("label_de", d.value),
+            what_de=DIMENSION_GUIDANCE.get(d.value, {}).get("what_de", ""),
+        )
+        for d in QualityDimension
+    ]
+
+
+def score_glossary() -> dict[str, str]:
+    """Erklärung der Kennzahlen neben jedem Indikator."""
+    return dict(SCORE_GLOSSARY)

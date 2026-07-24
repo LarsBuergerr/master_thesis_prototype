@@ -6,12 +6,23 @@ import {
   fetchSampleRdf,
   submitAnalysis,
 } from "../api/client";
+import { applyIndicatorsResponse } from "../lib/indicators";
 import type { AnalysisConfigInput } from "../api/types";
 
+/**
+ * Indikator-Registry inklusive Klartext-Guidance. Die Antwort füttert
+ * zusätzlich den Katalog in `lib/indicators`, damit Ergebnisse überall mit den
+ * Texten des Backends beschriftet werden — bis dahin gilt der gebündelte
+ * Abzug.
+ */
 export function useIndicators() {
   return useQuery({
     queryKey: ["indicators"],
-    queryFn: fetchIndicators,
+    queryFn: async () => {
+      const data = await fetchIndicators();
+      applyIndicatorsResponse(data);
+      return data;
+    },
     staleTime: Infinity,
   });
 }

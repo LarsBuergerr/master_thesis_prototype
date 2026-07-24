@@ -90,6 +90,9 @@ class IndicatorResultModel(BaseModel):
     # loose dict here like ``details``, since it's relayed from
     # QualityMetricsService rather than re-validated by the API.
     remediation: Optional[dict[str, Any]] = None
+    # Shape mirrors core.finding.Finding: headline / current[] / target /
+    # notes[]. Set for FAIL, PARTIAL and ERROR results, ``None`` for PASS.
+    finding: Optional[dict[str, Any]] = None
 
 
 class DimensionResultModel(BaseModel):
@@ -174,6 +177,29 @@ class JobCreatedResponse(BaseModel):
 # ---------------------------------------------------------------------------
 
 
+class VocabularyInfo(BaseModel):
+    """Kontrolliertes Vokabular, aus dem ein Feldwert stammen muss."""
+
+    label_de: str
+    url: str
+
+
+class GuidanceInfo(BaseModel):
+    """Klartext-Beschreibung eines Indikators (siehe core.guidance)."""
+
+    label_de: str
+    what_de: str
+    field: str
+    fix_de: str
+    vocabulary: Optional[VocabularyInfo] = None
+
+
+class DimensionInfo(BaseModel):
+    dimension: str
+    label_de: str
+    what_de: str
+
+
 class IndicatorInfo(BaseModel):
     indicator_id: str
     name_de: str
@@ -183,8 +209,15 @@ class IndicatorInfo(BaseModel):
     description_en: str = ""
     default_weight: float = 1.0
     graded: bool = False
+    #: ``None``, solange für eine neue Indikator-ID noch kein Klartext
+    #: hinterlegt ist — Oberflächen fallen dann auf ``name_de`` zurück.
+    guidance: Optional[GuidanceInfo] = None
 
 
 class IndicatorsResponse(BaseModel):
     dimensions: list[str]
     indicators: list[IndicatorInfo]
+    #: Deutsche Bezeichnung und Erklärung je Dimension.
+    dimension_info: list[DimensionInfo] = Field(default_factory=list)
+    #: Erklärung der Kennzahlen (status / score / raw / weight).
+    score_glossary: dict[str, str] = Field(default_factory=dict)

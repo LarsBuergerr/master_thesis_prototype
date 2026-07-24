@@ -105,13 +105,13 @@
   // bleiben schmal und rechtsbündig lesbar.
   th.ind-cell {
     font-weight: 400;
-    width: 48%;
+    width: 44%;
   }
 
-  // Status trägt eine Plakette („nicht erfüllt") und braucht mehr Platz als
+  // Status trägt eine Plakette („nicht anwendbar") und braucht mehr Platz als
   // die drei Zahlenspalten.
   .gd-table-head th:nth-child(2) {
-    width: 16%;
+    width: 20%;
   }
   .gd-table-head th:nth-child(n + 3) {
     width: 12%;
