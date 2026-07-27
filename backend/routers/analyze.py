@@ -81,9 +81,15 @@ def list_jobs(request: Request, limit: int = 50) -> list[JobSummary]:
 
 
 @router.get("/jobs/{job_id}", response_model=JobDetail)
-def get_job(request: Request, job_id: str) -> JobDetail:
-    """Full job state including per-file results (populated as files finish)."""
-    job = _store(request).get(job_id, include_results=True)
+def get_job(request: Request, job_id: str, results: bool = True) -> JobDetail:
+    """Job state, per Vorgabe mit den Ergebnissen der bereits fertigen Dateien.
+
+    ``results=false`` liefert nur Status und Fortschritt. Das ist die
+    sinnvolle Form fürs Pollen eines Laufs über viele Dateien: die Ergebnisse
+    summieren sich auf etliche Megabyte, und sie jede Sekunde erneut zu
+    übertragen kostet mehr, als der Zwischenstand wert ist.
+    """
+    job = _store(request).get(job_id, include_results=results)
     if job is None:
         raise HTTPException(status_code=404, detail="Job not found")
     return JobDetail.model_validate(job)

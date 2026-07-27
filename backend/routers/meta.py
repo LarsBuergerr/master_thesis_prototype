@@ -10,7 +10,8 @@ from ..analysis_adapter import (
     list_indicators,
     score_glossary,
 )
-from ..schemas import IndicatorsResponse
+from ..eval_config import default_config, default_config_source
+from ..schemas import DefaultConfigResponse, IndicatorsResponse
 
 router = APIRouter(tags=["meta"])
 
@@ -35,3 +36,15 @@ def indicators() -> IndicatorsResponse:
         dimension_info=list_dimension_info(),
         score_glossary=score_glossary(),
     )
+
+
+@router.get("/config/default", response_model=DefaultConfigResponse)
+def config_default() -> DefaultConfigResponse:
+    """Die Konfiguration der Evaluation — Ausgangspunkt jedes Laufs im Frontend.
+
+    Damit ein im Frontend ausgelöster Lauf dieselben Zahlen liefert wie die
+    Evaluation der Arbeit, müssen Gewichte, Score-Policy, Indikator-Menge und
+    LLM-Modell identisch sein. Maßgeblich ist die YAML auf dem Server
+    (``settings.EVAL_CONFIG_PATH``); das Frontend hält keine eigene Kopie.
+    """
+    return DefaultConfigResponse(config=default_config(), source=default_config_source())

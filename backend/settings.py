@@ -32,7 +32,17 @@ CORS_ORIGINS = [
     if o.strip()
 ]
 
-# RDF files of the evaluation sample. The GovData portal mock reads its
-# datasets from here so its detail page can trigger a *real* analysis run
-# against the same file the thesis evaluation used.
-SAMPLES_DIR = Path(os.environ.get("ANALYZER_SAMPLES_DIR", ROOT / "data" / "sample_2026-06-25_09-57"))
+# Zwei Wurzeln, zwei Ebenen: unter DATA_ROOT liegen die Datenverzeichnisse
+# (RDF-Metadaten -> Portalinhalte), unter RUNS_ROOT die abgeschlossenen
+# Bewertungsläufe (Scores -> Qualitäts-Overlay). Das Portal lädt zuerst ein
+# Datenverzeichnis und legt danach optional einen Lauf darüber.
+DATA_ROOT = Path(os.environ.get("ANALYZER_DATA_ROOT", ROOT / "data"))
+RUNS_ROOT = Path(os.environ.get("ANALYZER_RUNS_ROOT", ROOT / "outputs" / "runs"))
+
+# Reference configuration of the thesis evaluation. Served over
+# ``GET /config/default`` and used by the frontend as its starting point, so a
+# run triggered in the UI uses the same weights, score policy, indicator set and
+# LLM model as the evaluation (see backend/eval_config.py).
+EVAL_CONFIG_PATH = Path(
+    os.environ.get("ANALYZER_EVAL_CONFIG", ROOT / "conf" / "state" / "state_evaluation_final.yaml")
+)

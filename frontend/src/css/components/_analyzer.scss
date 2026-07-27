@@ -122,8 +122,14 @@ h3 {
   flex: none;
   font-weight: 700;
 }
-.diff-pending select {
-  max-width: 320px;
+// Fehlender Wert: Feld, erwartete Form, Schreibweise, Vokabular-Link.
+.diff-hint {
+  margin: 2px 0 0 18px;
+  overflow-wrap: anywhere;
+
+  code {
+    font-size: inherit;
+  }
 }
 .findings {
   margin: 4px 0 0;

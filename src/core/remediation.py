@@ -3,8 +3,8 @@
 Two shapes, chosen per indicator:
 
 - ``ChangePatch``    — a concrete fix. ``ready`` ops can be applied as-is;
-  ``needs_input`` suggestions need a human to pick a value from
-  ``candidates`` (a small controlled vocabulary) before they become an op.
+  ``needs_input`` names a location that still needs a human-supplied value and
+  describes the *form* that value must have (see :class:`FieldSuggestion`).
 - ``Recommendation`` — free-text guidance, for everything where no
   automatic vocabulary-backed fix exists (real content, LLM judgement,
   reachability, ...).
@@ -17,7 +17,7 @@ special-casing per indicator_id (see ``scoring.remediation.attach_remediation``)
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Literal, Union
+from typing import Literal, Optional, Union
 
 from rdflib import Literal as RdfLiteral, URIRef
 from rdflib.term import Identifier
@@ -58,29 +58,43 @@ class ChangeOp:
 
 @dataclass(frozen=True)
 class FieldSuggestion:
-    """A known location in the graph that needs a value a human must choose
-    (e.g. from a controlled vocabulary) before it becomes a ``ChangeOp``."""
+    """A known location in the graph that needs a value a human must supply.
+
+    Beschrieben wird die **Form** des erwarteten Werts, nicht die Menge der
+    zulässigen Werte: ein kontrolliertes Vokabular hat schnell mehrere tausend
+    Einträge (IANA-Media-Types), und diese Liste mitzuschleppen bläht jedes
+    Ergebnis auf, ohne dass sie jemand durchsieht. Wer den Wert einträgt,
+    braucht die Stelle (``predicate``), das erwartete Format (``expected_de``)
+    und ein Beispiel für die Schreibweise (``example``) — die vollständige
+    Liste steht im verlinkten Vokabular (``vocabulary_url``).
+    """
 
     indicator_id: str
     subject: Identifier
     predicate: Identifier
-    candidates: list[str] = field(default_factory=list)
     reason: str = ""
-    #: True, wenn ``candidates`` nach Nähe zum vorhandenen Wert sortiert wurde
-    #: und der erste Eintrag daher als Vorschlag taugt. False heißt: es gab
-    #: keinen Anhaltspunkt, die Liste ist alphabetisch — eine Oberfläche darf
-    #: dann nichts vorbelegen, sonst liest sich der erste Treffer wie eine
-    #: Empfehlung.
-    ranked: bool = False
+    #: Erwartete Form in einem Satz, z. B. „URI aus dem EU-Vokabular
+    #: Dateiformate".
+    expected_de: str = ""
+    expected_en: str = ""
+    #: Ein Wert, der die Schreibweise zeigt — ausdrücklich ein Formbeispiel und
+    #: keine inhaltliche Empfehlung.
+    example: Optional[str] = None
+    #: Das maßgebliche Vokabular, in dem die zulässigen Werte nachzuschlagen sind.
+    vocabulary_label: Optional[str] = None
+    vocabulary_url: Optional[str] = None
 
     def to_dict(self) -> dict:
         return {
             "indicator_id": self.indicator_id,
             "subject": str(self.subject),
             "predicate": str(self.predicate),
-            "candidates": list(self.candidates),
             "reason": self.reason,
-            "ranked": self.ranked,
+            "expected_de": self.expected_de,
+            "expected_en": self.expected_en,
+            "example": self.example,
+            "vocabulary_label": self.vocabulary_label,
+            "vocabulary_url": self.vocabulary_url,
         }
 
 

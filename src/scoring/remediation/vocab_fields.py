@@ -8,7 +8,6 @@ logic lives in exactly one place instead of once per indicator.
 
 from __future__ import annotations
 
-import difflib
 from dataclasses import dataclass
 from typing import Optional
 
@@ -16,6 +15,7 @@ from rdflib import Graph
 from rdflib.namespace import URIRef
 from rdflib.term import Identifier
 
+from core.guidance import guidance_for
 from core.remediation import ChangeOp, ChangePatch, FieldSuggestion
 
 
@@ -34,43 +34,41 @@ def _local_name(uri: str) -> str:
     return uri.rstrip("/#").replace("#", "/").rsplit("/", 1)[-1]
 
 
-#: Ab welcher Ähnlichkeit ein Treffer als „gemeint" gilt. Bewusst nahe an 1.0:
-#: eine Sortierung, die den falschen Wert nach vorn stellt, ist schlechter als
-#: gar keine — sie liest sich wie eine Empfehlung.
-_RANK_THRESHOLD = 0.85
+def _syntax_example(valid_uris: frozenset[str]) -> Optional[str]:
+    """Ein Eintrag des Vokabulars, der die Schreibweise zeigt.
 
+    Gewählt wird der mit dem kürzesten lokalen Namen (bei Gleichstand
+    alphabetisch) — kurz und damit gut lesbar, und vor allem deterministisch:
+    das Beispiel soll die *Form* belegen (``…/file-type/CSV``) und darf nicht
+    wie eine inhaltliche Empfehlung wirken, die sich von Lauf zu Lauf ändert.
 
-def rank_candidates(
-    candidates: list[str], current_values: list[str]
-) -> tuple[list[str], bool]:
-    """Vokabular-Einträge nach Nähe zu den bereits eingetragenen Werten sortieren.
-
-    Liefert die Liste und ob tatsächlich sortiert wurde — nur dann darf eine
-    Oberfläche den ersten Eintrag als Vorschlag vorbelegen.
-
-    Ein kontrolliertes Vokabular hat schnell mehrere hundert bis tausend
-    Einträge (IANA-Media-Types). Alphabetisch sortiert hilft das niemandem —
-    steht im Metadatensatz ``SHP``, ist ``…/file-type/SHP`` gemeint. Die
-    Sortierung stellt den wahrscheinlichsten Kandidaten nach vorn, damit
-    Oberflächen ihn als Vorschlag zeigen können, ohne selbst raten zu müssen.
-
-    Findet sich kein nahezu deckungsgleicher Eintrag, bleibt die Reihenfolge
-    unverändert: dann kennt das Vokabular den vorhandenen Wert schlicht nicht
-    (``x-gis/x-shapefile`` ist kein IANA-Typ), und ein „ähnlichster" Treffer
-    wäre geraten.
+    Einbuchstabige Kürzel (``file-type/Z``) sind zwar am kürzesten, taugen aber
+    schlecht als Muster; ab drei Zeichen sieht ein Eintrag wie ein echter Wert
+    aus. Gibt es keinen solchen, zählt wieder die reine Länge.
     """
-    hints = [_local_name(v).lower() for v in current_values if v]
-    if not hints:
-        return candidates, False
+    if not valid_uris:
+        return None
+    readable = {uri for uri in valid_uris if len(_local_name(uri)) >= 3}
+    return min(readable or valid_uris, key=lambda uri: (len(_local_name(uri)), uri))
 
-    def score(uri: str) -> float:
-        tail = _local_name(uri).lower()
-        return max(difflib.SequenceMatcher(None, tail, hint).ratio() for hint in hints)
 
-    scored = sorted(candidates, key=score, reverse=True)
-    if scored and score(scored[0]) >= _RANK_THRESHOLD:
-        return scored, True
-    return candidates, False
+def _expected_text(indicator_id: str) -> tuple[str, str, Optional[str], Optional[str]]:
+    """Erwartete Form plus Vokabular-Verweis, aus der Guidance des Indikators."""
+    guidance = guidance_for(indicator_id)
+    vocab = guidance.vocabulary if guidance else None
+    if vocab is not None:
+        return (
+            f"URI aus dem kontrollierten Vokabular „{vocab.label_de}“",
+            f"URI from the controlled vocabulary “{vocab.label_de}”",
+            vocab.label_de,
+            vocab.url,
+        )
+    return (
+        "URI aus dem für dieses Feld vorgeschriebenen Vokabular",
+        "URI from the vocabulary prescribed for this field",
+        None,
+        None,
+    )
 
 
 def vocab_change_patch(
@@ -78,20 +76,14 @@ def vocab_change_patch(
     subject: Identifier,
     vfield: VocabField,
     indicator_id: str,
-    extra_hints: Optional[list[str]] = None,
 ) -> Optional[ChangePatch]:
     """``ready``: remove values not in the vocabulary. ``needs_input``: if no
-    valid value remains afterwards, offer the vocabulary as candidates.
+    valid value remains afterwards, name the field and the form its value needs.
 
     Returns ``None`` when this generic logic has nothing to say — e.g. a
     cardinality-only fail where every present value is individually valid
     (multiple contributorIDs, each a real vocab URI). Callers fall back to a
     plain-text recommendation in that case.
-
-    ``extra_hints``: weitere Werte desselben Objekts (Format-Literal,
-    Dateiendung der URL), nach denen die Kandidaten sortiert werden, wenn das
-    Feld selbst leer ist — dann gibt es keinen eigenen Wert, an dem sich die
-    Sortierung orientieren könnte.
     """
     current = list(graph.objects(subject, vfield.predicate))
     invalid = [o for o in current if str(o) not in vfield.valid_uris]
@@ -107,19 +99,16 @@ def vocab_change_patch(
     still_missing = len(invalid) == len(current)  # kein gueltiger Wert uebrig
     needs_input = []
     if still_missing:
-        # Nach Aehnlichkeit zum aktuell eingetragenen Wert sortiert, damit der
-        # erste Kandidat der wahrscheinlich gemeinte ist. ``ranked`` sagt, ob
-        # das gelungen ist -- nur dann taugt er als Vorschlag.
-        candidates, ranked = rank_candidates(
-            sorted(vfield.valid_uris),
-            [str(o) for o in current] or list(extra_hints or []),
-        )
+        expected_de, expected_en, vocab_label, vocab_url = _expected_text(indicator_id)
         needs_input.append(
             FieldSuggestion(
                 indicator_id, subject, vfield.predicate,
-                candidates=candidates,
-                reason=f"{indicator_id}: gueltigen Wert aus dem Vokabular waehlen",
-                ranked=ranked,
+                reason=f"{indicator_id}: gueltigen Wert aus dem Vokabular eintragen",
+                expected_de=expected_de,
+                expected_en=expected_en,
+                example=_syntax_example(vfield.valid_uris),
+                vocabulary_label=vocab_label,
+                vocabulary_url=vocab_url,
             )
         )
 

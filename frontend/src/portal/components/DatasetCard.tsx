@@ -1,8 +1,12 @@
 // Ein Treffer in der Datensatz-Liste im GovData-Stil: Titel (Link zur
-// Detailseite), Kurzbeschreibung, Metazeile, Format-/Schlagwort-Chips und
-// rechts der kompakte Qualitäts-Indikator.
+// Detailseite), Kurzbeschreibung, Metazeile und Format-Chips — alles aus den
+// Metadaten des Katalogs.
+//
+// Der Qualitäts-Indikator rechts erscheint nur, wenn eine Bewertung über dem
+// Katalog liegt. Ohne sie ist die Karte vollständig; das Portal soll nicht so
+// aussehen, als fehle etwas.
 
-import type { Dataset } from "../data/evaluation";
+import type { CatalogDataset } from "../../api/types";
 import type { Navigate } from "../route";
 import { ScoreIndicator } from "./ScoreIndicator";
 
@@ -13,9 +17,12 @@ function formatDate(iso: string): string {
 
 export function DatasetCard({
   dataset,
+  score,
   onNavigate,
 }: {
-  dataset: Dataset;
+  dataset: CatalogDataset;
+  /** Gesamtscore aus der überlagerten Bewertung, sonst `undefined`/`null`. */
+  score?: number | null;
   onNavigate: Navigate;
 }) {
   const open = () => onNavigate({ view: "detail", id: dataset.id });
@@ -44,19 +51,21 @@ export function DatasetCard({
             </span>
           ))}
           <span className="ds-card-source">
-            <span className="ds-card-pub">{dataset.publisherName}</span>
+            <span className="ds-card-pub">{dataset.publisher_name}</span>
             {dataset.license && ` · ${dataset.license}`}
           </span>
         </div>
       </div>
-      <button
-        type="button"
-        className="ds-card-score button-reset"
-        onClick={open}
-        aria-label={`Qualität von ${dataset.title} ansehen`}
-      >
-        <ScoreIndicator score={dataset.overall} />
-      </button>
+      {score != null && (
+        <button
+          type="button"
+          className="ds-card-score button-reset"
+          onClick={open}
+          aria-label={`Qualität von ${dataset.title} ansehen`}
+        >
+          <ScoreIndicator score={score} />
+        </button>
+      )}
     </article>
   );
 }

@@ -65,17 +65,23 @@ export interface ChangeOp {
   reason: string;
 }
 
+/**
+ * Stelle im Graphen, an der ein Wert fehlt. Beschrieben wird die *Form* des
+ * erwarteten Werts — nicht die Menge der zulässigen Werte: die steht im
+ * verlinkten Vokabular (siehe core/remediation.py::FieldSuggestion).
+ */
 export interface FieldSuggestion {
   indicator_id: string;
   subject: string;
   predicate: string;
-  candidates: string[];
   reason: string;
-  /** Kandidaten nach Nähe zum vorhandenen Wert sortiert — nur dann taugt der
-   *  erste Eintrag als Vorschlag. Sonst ist die Liste alphabetisch. */
-  ranked?: boolean;
-  /** Umfang des Vokabulars, falls die Liste gekürzt ausgeliefert wurde. */
-  candidate_total?: number;
+  /** Erwartete Form in einem Satz. */
+  expected_de: string;
+  expected_en: string;
+  /** Ein Wert, der die Schreibweise zeigt — Formbeispiel, keine Empfehlung. */
+  example?: string | null;
+  vocabulary_label?: string | null;
+  vocabulary_url?: string | null;
 }
 
 export interface ChangePatch {
@@ -186,7 +192,8 @@ export interface JobDetail {
   progress: JobProgress;
   files: string[];
   error?: string | null;
-  config: AnalysisConfigInput;
+  /** Fehlen bei `results=false` — dann trägt die Antwort nur den Fortschritt. */
+  config?: AnalysisConfigInput | null;
   results: FileResult[];
 }
 
@@ -231,4 +238,64 @@ export interface AnalysisConfigInput {
   llm: LLMConfig;
   language: string;
   max_workers: number;
+}
+
+// ---- Katalog: beschreibende Metadaten (spiegelt backend/catalog.py) --------
+
+export interface CatalogInfo {
+  name: string;
+  dataset_count: number;
+}
+
+/** Ein Datensatz, wie ihn das Portal ohne jede Bewertung anzeigt. */
+export interface CatalogDataset {
+  /** Dateiname inkl. Endung — Adresse innerhalb des Katalogs. */
+  file: string;
+  /** Dateistamm — der Schlüssel, über den ein Lauf zugeordnet wird. */
+  id: string;
+  slug: string;
+  uri?: string | null;
+  title: string;
+  description: string;
+  keywords: string[];
+  themes: string[];
+  formats: string[];
+  license?: string | null;
+  license_uri?: string | null;
+  modified: string;
+  issued: string;
+  publisher_name: string;
+  category?: string | null;
+  source?: string | null;
+}
+
+// ---- Läufe: Bewertung (spiegelt backend/runs.py) ---------------------------
+
+export interface RunInfo {
+  name: string;
+  dataset_count: number;
+  /** Datenverzeichnis des Laufs — zeigt, ob er zum geladenen Katalog passt. */
+  directory?: string | null;
+  /** Modell der Aussagekraft-Bewertung; `null` = ohne Sprachmodell gelaufen. */
+  llm_model?: string | null;
+  dimensions: string[];
+}
+
+export interface RunIndexRow {
+  stem: string;
+  overall?: number | null;
+  grade?: string | null;
+  dims: Record<string, number>;
+  dim_weights: Record<string, number>;
+  total_indicators: number;
+  n_pass: number;
+  n_partial: number;
+  n_fail: number;
+}
+
+/** Antwort von `GET /config/default` — die Konfiguration der Evaluation. */
+export interface DefaultConfigResponse {
+  config: AnalysisConfigInput;
+  /** Dateiname der Referenz-YAML; `null` heißt: Server nutzt nur Feld-Defaults. */
+  source: string | null;
 }

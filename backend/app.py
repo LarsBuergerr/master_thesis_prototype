@@ -18,7 +18,7 @@ load_dotenv()
 
 from . import settings  # noqa: E402
 from .jobs import JobRunner, JobStore  # noqa: E402
-from .routers import analyze, meta, samples  # noqa: E402
+from .routers import analyze, catalogs, meta, runs  # noqa: E402
 
 logging.basicConfig(
     level=logging.INFO,
@@ -53,4 +53,5 @@ app.add_middleware(
 
 app.include_router(meta.router)
 app.include_router(analyze.router)
-app.include_router(samples.router)
+app.include_router(catalogs.router)
+app.include_router(runs.router)

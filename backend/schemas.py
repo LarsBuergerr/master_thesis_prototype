@@ -161,9 +161,13 @@ class JobSummary(BaseModel):
 
 
 class JobDetail(JobSummary):
-    """Full job view including per-file results and the config used."""
+    """Full job view including per-file results and the config used.
 
-    config: AnalysisConfig
+    Beide Felder fehlen, wenn der Job mit ``results=false`` abgefragt wurde —
+    dann interessiert nur der Fortschritt (siehe ``GET /jobs/{id}``).
+    """
+
+    config: Optional[AnalysisConfig] = None
     results: list[FileResultModel] = Field(default_factory=list)
 
 
@@ -221,3 +225,71 @@ class IndicatorsResponse(BaseModel):
     dimension_info: list[DimensionInfo] = Field(default_factory=list)
     #: Erklärung der Kennzahlen (status / score / raw / weight).
     score_glossary: dict[str, str] = Field(default_factory=dict)
+
+
+class CatalogInfo(BaseModel):
+    """Ein Datenverzeichnis, das sich als Portalinhalt laden lässt."""
+
+    name: str
+    dataset_count: int
+
+
+class CatalogDataset(BaseModel):
+    """Beschreibende Metadaten eines Datensatzes — ohne jede Bewertung."""
+
+    model_config = ConfigDict(extra="allow")
+
+    file: str
+    id: str
+    slug: str
+    uri: Optional[str] = None
+    title: str
+    description: str = ""
+    keywords: list[str] = Field(default_factory=list)
+    themes: list[str] = Field(default_factory=list)
+    formats: list[str] = Field(default_factory=list)
+    license: Optional[str] = None
+    license_uri: Optional[str] = None
+    modified: str = ""
+    issued: str = ""
+    publisher_name: str = ""
+    #: ``geo`` / ``non_geo``, sofern der Dateiname es hergibt.
+    category: Optional[str] = None
+    #: Herkunftsportal, aus dem Dateinamen abgeleitet.
+    source: Optional[str] = None
+
+
+class RunInfo(BaseModel):
+    """Ein abgeschlossener Lauf, wie er zur Auswahl angeboten wird."""
+
+    name: str
+    dataset_count: int
+    #: Datenverzeichnis, über das der Lauf lief — zeigt, ob er zum Katalog passt.
+    directory: Optional[str] = None
+    #: Modell der Aussagekraft-Bewertung; ``None`` heißt: ohne Sprachmodell.
+    llm_model: Optional[str] = None
+    dimensions: list[str] = Field(default_factory=list)
+
+
+class RunIndexRow(BaseModel):
+    """Bewertung einer Datei in Kurzform (Liste und Übersichtsseite)."""
+
+    stem: str
+    overall: Optional[float] = None
+    grade: Optional[str] = None
+    dims: dict[str, float] = Field(default_factory=dict)
+    dim_weights: dict[str, float] = Field(default_factory=dict)
+    total_indicators: int = 0
+    n_pass: int = 0
+    n_partial: int = 0
+    n_fail: int = 0
+
+
+class DefaultConfigResponse(BaseModel):
+    """Ausgangskonfiguration für Läufe im Frontend (siehe backend/eval_config)."""
+
+    config: AnalysisConfig
+    #: Dateiname der gelesenen Referenz-YAML. ``None`` heißt: Datei nicht
+    #: lesbar, es gelten die Feld-Defaults — dann laufen Frontend-Läufe *nicht*
+    #: mit der Konfiguration der Evaluation, und die Oberfläche sagt das auch.
+    source: Optional[str] = None

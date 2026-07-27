@@ -79,34 +79,6 @@ _DISTRIBUTION_VOCAB_FIELDS: dict[str, VocabField] = {
 }
 
 
-def _distribution_hints(dist, predicate: URIRef) -> list[str]:
-    """Anhaltspunkte, welcher Vokabular-Eintrag gemeint ist, wenn das Feld
-    selbst leer ist.
-
-    Bewusst feldspezifisch: ein Format-Literal (``SHP``) sagt etwas über die
-    gesuchte Format-URI, aber nichts über einen IANA-Media-Type — dort würde
-    es die Sortierung nur verschlechtern. Gibt es kein passendes Signal,
-    bleibt die Liste leer und das Vokabular alphabetisch sortiert.
-    """
-    hints: list[str] = []
-    if predicate == DCTERMS.format:
-        hints += [f for f in dist.formats if f]
-    elif predicate == DCAT.mediaType:
-        hints += [m for m in dist.media_types if m]
-        probe = getattr(dist, "probe", None)
-        coalesced = getattr(probe, "coalesced_mime", None) if probe else None
-        if coalesced:
-            hints.append(coalesced)
-    else:
-        return []
-
-    url = dist.download_url or dist.access_url
-    tail = url.rsplit("/", 1)[-1] if url else ""
-    if "." in tail:
-        hints.append(tail.rsplit(".", 1)[-1].split("?")[0])
-    return hints
-
-
 def _resolve_distribution_vocab_field(
     context: DatasetContext, result: IndicatorResult
 ) -> Optional[ChangePatch]:
@@ -119,7 +91,6 @@ def _resolve_distribution_vocab_field(
             URIRef(dist.distribution_uri),
             vfield,
             result.indicator_id,
-            extra_hints=_distribution_hints(dist, vfield.predicate),
         )
         if patch is None:
             continue

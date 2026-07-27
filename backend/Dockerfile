@@ -20,6 +20,10 @@ RUN pip install --no-cache-dir -r requirements-core.txt -r requirements-web.txt
 
 COPY src/ ./src/
 COPY backend/ ./backend/
+# Referenz-Konfiguration der Evaluation: das Backend liefert sie über
+# GET /config/default aus, das Frontend startet damit jeden Lauf. Fehlt sie,
+# liefen Analysen im Container mit anderen Gewichten als die Arbeit ausweist.
+COPY conf/ ./conf/
 
 # Job database lives on a volume so results survive container rebuilds.
 ENV ANALYZER_DB_PATH=/data/analyzer.db

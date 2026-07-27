@@ -1,87 +1,114 @@
-// Die „Daten"-Ansicht: Suchleiste, Facetten-Filter und Trefferliste über die
-// 50 Datensätze der Evaluationsstichprobe. Facetten (Kategorie, Format,
-// Qualitätsstufe) und Sortierung entsprechen Funktionen, die es auch in der
-// echten GovData-Suche gibt — keine künstlichen Zusatz-Regler.
+// Die „Daten"-Ansicht: Suchleiste, Facetten-Filter und Trefferliste über den
+// geladenen Datenbestand. Facetten (Datenart, Format, Lizenz) und Sortierung
+// entsprechen Funktionen, die es auch in der echten GovData-Suche gibt.
+//
+// Alle Inhalte stammen aus dem Katalog. Die qualitätsbezogenen Teile —
+// Notenfacette, Score-Sortierung, Indikator auf der Karte — erscheinen nur,
+// wenn eine Bewertung darüberliegt, und verschwinden rückstandslos, wenn man
+// sie ausblendet.
 
 import { useMemo, useState } from "react";
-import { DATASETS } from "../data/evaluation";
-import type { Dataset } from "../data/evaluation";
+import type { CatalogDataset } from "../../api/types";
 import type { Navigate } from "../route";
 import { gradeLabel, scoreToGrade } from "../lib/quality";
 import { DatasetCard } from "./DatasetCard";
+import { OverlayBar } from "./OverlayBar";
+import { useCatalog, useOverlay, usePortalSource } from "../source";
 
 type SortKey = "relevanz" | "neueste" | "titel" | "score_desc" | "score_asc";
 
-const STRATA: { key: Dataset["stratum"]; label: string }[] = [
+const CATEGORIES: { key: string; label: string }[] = [
   { key: "geo", label: "Geodaten" },
   { key: "non_geo", label: "Fachdaten" },
 ];
 
 const GRADE_ORDER = ["A", "B", "C", "D", "F"];
 
-function prettyPublisher(p: string): string {
+function prettySource(p: string): string {
   return p.replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase());
 }
 
 export function DatasetSearch({ onNavigate }: { onNavigate: Navigate }) {
+  const { catalog } = usePortalSource();
+  const { datasets, loading, error } = useCatalog();
+  const overlay = useOverlay();
+
   const [query, setQuery] = useState("");
-  const [stratum, setStratum] = useState<Dataset["stratum"] | null>(null);
+  const [category, setCategory] = useState<string | null>(null);
   const [format, setFormat] = useState<string | null>(null);
   const [license, setLicense] = useState<string | null>(null);
   const [grade, setGrade] = useState<string | null>(null);
   const [sort, setSort] = useState<SortKey>("relevanz");
 
+  const scoreOf = (d: CatalogDataset) => overlay.rows.get(d.id)?.overall ?? null;
+
   const formatCounts = useMemo(() => {
     const m = new Map<string, number>();
-    DATASETS.forEach((d) => d.formats.forEach((f) => m.set(f, (m.get(f) ?? 0) + 1)));
+    datasets.forEach((d) => d.formats.forEach((f) => m.set(f, (m.get(f) ?? 0) + 1)));
     return [...m.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
-  }, []);
+  }, [datasets]);
 
   const gradeCounts = useMemo(() => {
     const m = new Map<string, number>();
-    DATASETS.forEach((d) => {
-      const g = scoreToGrade(d.overall);
+    datasets.forEach((d) => {
+      const score = overlay.rows.get(d.id)?.overall;
+      if (score == null) return;
+      const g = scoreToGrade(score);
       m.set(g, (m.get(g) ?? 0) + 1);
     });
     return GRADE_ORDER.filter((g) => m.has(g)).map((g) => [g, m.get(g)!] as const);
-  }, []);
+  }, [datasets, overlay.rows]);
 
   const licenseCounts = useMemo(() => {
     const m = new Map<string, number>();
-    DATASETS.forEach((d) => {
+    datasets.forEach((d) => {
       if (d.license) m.set(d.license, (m.get(d.license) ?? 0) + 1);
     });
     return [...m.entries()].sort((a, b) => b[1] - a[1]);
-  }, []);
+  }, [datasets]);
 
-  const publisherCounts = useMemo(() => {
+  const sourceCounts = useMemo(() => {
     const m = new Map<string, number>();
-    DATASETS.forEach((d) => m.set(d.publisher, (m.get(d.publisher) ?? 0) + 1));
+    datasets.forEach((d) => {
+      if (d.source) m.set(d.source, (m.get(d.source) ?? 0) + 1);
+    });
     return [...m.entries()].sort((a, b) => b[1] - a[1]).slice(0, 7);
-  }, []);
+  }, [datasets]);
+
+  const categoryCounts = useMemo(() => {
+    const m = new Map<string, number>();
+    datasets.forEach((d) => {
+      if (d.category) m.set(d.category, (m.get(d.category) ?? 0) + 1);
+    });
+    return m;
+  }, [datasets]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
-    let list = DATASETS.filter((d) => {
-      if (stratum && d.stratum !== stratum) return false;
+    let list = datasets.filter((d) => {
+      if (category && d.category !== category) return false;
       if (format && !d.formats.includes(format)) return false;
       if (license && d.license !== license) return false;
-      if (grade && scoreToGrade(d.overall) !== grade) return false;
+      if (grade) {
+        const score = overlay.rows.get(d.id)?.overall;
+        if (score == null || scoreToGrade(score) !== grade) return false;
+      }
       if (q) {
-        const hay = `${d.title} ${d.description} ${d.keywords.join(" ")} ${d.publisherName}`.toLowerCase();
+        const hay = `${d.title} ${d.description} ${d.keywords.join(" ")} ${d.publisher_name}`.toLowerCase();
         if (!hay.includes(q)) return false;
       }
       return true;
     });
     list = [...list];
-    if (sort === "score_desc") list.sort((a, b) => b.overall - a.overall);
-    else if (sort === "score_asc") list.sort((a, b) => a.overall - b.overall);
+    if (sort === "score_desc") list.sort((a, b) => (scoreOf(b) ?? -1) - (scoreOf(a) ?? -1));
+    else if (sort === "score_asc") list.sort((a, b) => (scoreOf(a) ?? 2) - (scoreOf(b) ?? 2));
     else if (sort === "neueste") list.sort((a, b) => (b.modified || "").localeCompare(a.modified || ""));
     else if (sort === "titel") list.sort((a, b) => a.title.localeCompare(b.title, "de"));
     return list;
-  }, [query, stratum, format, license, grade, sort]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [datasets, query, category, format, license, grade, sort, overlay.rows]);
 
-  const activeFilters = [stratum, format, license, grade].filter(Boolean).length;
+  const activeFilters = [category, format, license, grade].filter(Boolean).length;
 
   return (
     <>
@@ -89,7 +116,7 @@ export function DatasetSearch({ onNavigate }: { onNavigate: Navigate }) {
         <div className="gd-hero-inner">
           <h1>Datensätze durchsuchen</h1>
           <p className="gd-hero-sub">
-            Evaluationsstichprobe · {DATASETS.length} Datensätze aus 10 Datenbereitstellern
+            Datenbestand <code>{catalog}</code> · {datasets.length} Datensätze
           </p>
           <div className="gd-searchbar" role="search">
             <input
@@ -111,31 +138,48 @@ export function DatasetSearch({ onNavigate }: { onNavigate: Navigate }) {
         </div>
       </section>
 
+      <div className="gd-portal-container">
+        <OverlayBar datasetCount={datasets.length} />
+      </div>
+
+      {loading && <div className="gd-portal-container"><p className="muted">Metadaten werden gelesen…</p></div>}
+      {error && (
+        <div className="gd-portal-container">
+          <div className="alert gd-alert-danger" role="alert">
+            Datenbestand konnte nicht geladen werden.
+          </div>
+        </div>
+      )}
+
       <div className="gd-search-layout gd-portal-container">
         <aside className="gd-facets" aria-label="Filter">
-          <FacetGroup title="Metadaten-Qualität">
-            {gradeCounts.map(([g, c]) => (
-              <FacetItem
-                key={g}
-                label={`${gradeLabel(g)} (${g})`}
-                count={c}
-                active={grade === g}
-                onClick={() => setGrade(grade === g ? null : g)}
-              />
-            ))}
-          </FacetGroup>
+          {overlay.active && gradeCounts.length > 0 && (
+            <FacetGroup title="Metadaten-Qualität">
+              {gradeCounts.map(([g, c]) => (
+                <FacetItem
+                  key={g}
+                  label={`${gradeLabel(g)} (${g})`}
+                  count={c}
+                  active={grade === g}
+                  onClick={() => setGrade(grade === g ? null : g)}
+                />
+              ))}
+            </FacetGroup>
+          )}
 
-          <FacetGroup title="Datenart">
-            {STRATA.map((s) => (
-              <FacetItem
-                key={s.key}
-                label={s.label}
-                count={DATASETS.filter((d) => d.stratum === s.key).length}
-                active={stratum === s.key}
-                onClick={() => setStratum(stratum === s.key ? null : s.key)}
-              />
-            ))}
-          </FacetGroup>
+          {categoryCounts.size > 0 && (
+            <FacetGroup title="Datenart">
+              {CATEGORIES.filter((s) => categoryCounts.has(s.key)).map((s) => (
+                <FacetItem
+                  key={s.key}
+                  label={s.label}
+                  count={categoryCounts.get(s.key) ?? 0}
+                  active={category === s.key}
+                  onClick={() => setCategory(category === s.key ? null : s.key)}
+                />
+              ))}
+            </FacetGroup>
+          )}
 
           <FacetGroup title="Dateiformate">
             {formatCounts.map(([f, c]) => (
@@ -161,11 +205,13 @@ export function DatasetSearch({ onNavigate }: { onNavigate: Navigate }) {
             ))}
           </FacetGroup>
 
-          <FacetGroup title="Datenbereitsteller">
-            {publisherCounts.map(([p, c]) => (
-              <FacetItem key={p} label={prettyPublisher(p)} count={c} static />
-            ))}
-          </FacetGroup>
+          {sourceCounts.length > 0 && (
+            <FacetGroup title="Herkunft">
+              {sourceCounts.map(([p, c]) => (
+                <FacetItem key={p} label={prettySource(p)} count={c} static />
+              ))}
+            </FacetGroup>
+          )}
         </aside>
 
         <div className="gd-results-col">
@@ -186,17 +232,21 @@ export function DatasetSearch({ onNavigate }: { onNavigate: Navigate }) {
                 <option value="relevanz">Relevanz</option>
                 <option value="neueste">Neueste zuerst</option>
                 <option value="titel">Titel A–Z</option>
-                <option value="score_desc">Metadaten-Qualität absteigend</option>
-                <option value="score_asc">Metadaten-Qualität aufsteigend</option>
+                {overlay.active && (
+                  <>
+                    <option value="score_desc">Metadaten-Qualität absteigend</option>
+                    <option value="score_asc">Metadaten-Qualität aufsteigend</option>
+                  </>
+                )}
               </select>
             </label>
           </div>
 
           <div className="gd-results">
             {results.map((d) => (
-              <DatasetCard key={d.id} dataset={d} onNavigate={onNavigate} />
+              <DatasetCard key={d.id} dataset={d} score={scoreOf(d)} onNavigate={onNavigate} />
             ))}
-            {results.length === 0 && (
+            {results.length === 0 && !loading && (
               <div className="alert alert-info">
                 Keine Datensätze passen zu den aktuellen Filtern.
               </div>

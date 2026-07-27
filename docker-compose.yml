@@ -17,12 +17,14 @@ services:
     environment:
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
       ANALYZER_DB_PATH: /data/analyzer.db
-      # RDF-Dateien der Evaluationsstichprobe: die Portalseite lässt darüber
-      # denselben Datensatz live bewerten, den sie anzeigt.
-      ANALYZER_SAMPLES_DIR: /samples/sample_2026-06-25_09-57
+      # Zwei Wurzeln: Datenverzeichnisse (Portalinhalte) und abgeschlossene
+      # Läufe (Qualitäts-Overlay). Das Portal lädt daraus zur Laufzeit.
+      ANALYZER_DATA_ROOT: /data-root
+      ANALYZER_RUNS_ROOT: /runs-root
     volumes:
       - analyzer-data:/data
-      - ./data:/samples:ro
+      - ./data:/data-root:ro
+      - ./outputs/runs:/runs-root:ro
     # Lets a container reach a llama.cpp server on the host via
     # http://host.docker.internal:8080/v1 (llm provider "local").
     extra_hosts:

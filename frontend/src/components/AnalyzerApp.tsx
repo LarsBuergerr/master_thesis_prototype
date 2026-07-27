@@ -8,37 +8,35 @@ import { ConfigPanel } from "./ConfigPanel";
 import { JobProgress } from "./JobProgress";
 import { ResultsView } from "./results/ResultsView";
 import { UploadPanel } from "./UploadPanel";
-import { useIndicators, useJob, useSubmitAnalysis } from "../hooks/useAnalysis";
-import { defaultAnalysisConfig } from "../lib/config";
+import {
+  useDefaultConfig,
+  useIndicators,
+  useJob,
+  useSubmitAnalysis,
+} from "../hooks/useAnalysis";
 import type { AnalysisConfigInput } from "../api/types";
 
 export function AnalyzerApp() {
   const indicators = useIndicators();
+  const defaults = useDefaultConfig();
   const submit = useSubmitAnalysis();
 
   const [files, setFiles] = useState<File[]>([]);
-  const [config, setConfig] = useState<AnalysisConfigInput>(defaultAnalysisConfig);
+  // `null`, bis die Referenz-Konfiguration geladen ist. Vorher gibt es keine
+  // sinnvollen Startwerte: Gewichte und Indikator-Menge stammen aus der YAML
+  // der Evaluation, nicht aus Konstanten im Frontend.
+  const [config, setConfig] = useState<AnalysisConfigInput | null>(null);
   const [jobId, setJobId] = useState<string | null>(null);
-  const [seeded, setSeeded] = useState(false);
 
-  // Seed weights from the live registry once indicators are loaded.
   useEffect(() => {
-    if (seeded || !indicators.data) return;
-    const dimWeights: Record<string, number> = {};
-    indicators.data.dimensions.forEach((d) => (dimWeights[d] = 1));
-    const indWeights: Record<string, number> = {};
-    indicators.data.indicators.forEach((i) => (indWeights[i.indicator_id] = i.default_weight));
-    setConfig((c) => ({
-      ...c,
-      dimension_weights: dimWeights,
-      indicator_weights: indWeights,
-    }));
-    setSeeded(true);
-  }, [indicators.data, seeded]);
+    if (config || !defaults.data) return;
+    setConfig(defaults.data.config);
+  }, [config, defaults.data]);
 
   const job = useJob(jobId);
 
   function handleSubmit() {
+    if (!config) return;
     submit.mutate({ files, config }, { onSuccess: (res) => setJobId(res.job_id) });
   }
 
@@ -54,6 +52,8 @@ export function AnalyzerApp() {
         <p className="muted">
           Eigene DCAT-AP.de-Metadaten (RDF/XML) hochladen, Gewichte und Policy einstellen und
           dieselbe Qualitätsbewertung ausführen, die den Portal-Datensätzen zugrunde liegt.
+          Voreingestellt ist die Konfiguration der Evaluation
+          {defaults.data?.source && <> (<code>{defaults.data.source}</code>)</>}.
         </p>
       </div>
 
@@ -63,12 +63,18 @@ export function AnalyzerApp() {
             files={files}
             onFilesChange={setFiles}
             onSubmit={handleSubmit}
-            submitting={isRunning}
+            submitting={isRunning || !config}
           />
-          {indicators.data && (
+          {indicators.data && config && (
             <ConfigPanel indicators={indicators.data} config={config} onChange={setConfig} />
           )}
-          {indicators.isError && (
+          {defaults.data && defaults.data.source === null && (
+            <div className="alert alert-info" role="status">
+              Die Referenz-Konfiguration der Evaluation ist auf dem Server nicht lesbar — es
+              gelten Standardwerte. Ergebnisse weichen dann von den Zahlen der Arbeit ab.
+            </div>
+          )}
+          {(indicators.isError || defaults.isError) && (
             <div className="alert gd-alert-danger" role="alert">
               Backend nicht erreichbar. Läuft uvicorn auf{" "}
               {import.meta.env.VITE_API_BASE ?? "http://localhost:8000"}?

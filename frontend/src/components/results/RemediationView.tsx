@@ -1,9 +1,5 @@
-import { useState } from "react";
 import type { ChangePatch, FieldSuggestion, Recommendation, Remediation } from "../../api/types";
 import { shortenUri } from "../../lib/status";
-
-/** Wie viele Vokabular-Einträge die Auswahlliste anbietet. */
-const MAX_OPTIONS = 40;
 
 function ChangeLine({ sign, predicate, value, title }: {
   sign: "+" | "-";
@@ -21,42 +17,32 @@ function ChangeLine({ sign, predicate, value, title }: {
 }
 
 /**
- * Fehlender Wert aus einem kontrollierten Vokabular. Konnte das Backend die
- * Kandidaten nach Nähe zum vorhandenen Wert sortieren (`ranked`, siehe
- * scoring/remediation/vocab_fields.py), steht der wahrscheinlich gemeinte
- * vorbelegt als Vorschlagszeile im Diff; sonst bleibt die Auswahl leer, statt
- * den alphabetisch ersten Eintrag wie eine Empfehlung aussehen zu lassen.
+ * Fehlender Wert an einer bekannten Stelle. Gezeigt wird das betroffene Feld,
+ * die erwartete Form und ein Beispiel für die Schreibweise — nicht das
+ * Vokabular selbst: das hat je nach Feld bis zu ein paar tausend Einträge, und
+ * eine Auswahlliste dieser Größe hilft niemandem beim Eintragen. Die
+ * vollständige Liste steht verlinkt an der Quelle.
  */
 function NeedsInputRow({ suggestion }: { suggestion: FieldSuggestion }) {
-  const [chosen, setChosen] = useState(() =>
-    suggestion.ranked ? (suggestion.candidates[0] ?? "") : "",
-  );
-  const total = suggestion.candidate_total ?? suggestion.candidates.length;
-
   return (
     <div className="diff-pending">
       <div className="diff-line">
         <span className="diff-sign muted">?</span>
         <span className="muted">{shortenUri(suggestion.predicate)}</span>
-        <select
-          value={chosen}
-          onChange={(e) => setChosen(e.target.value)}
-          style={{ width: "auto", flex: 1 }}
-          aria-label={`Wert für ${shortenUri(suggestion.predicate)} wählen`}
-        >
-          <option value="">Wert wählen… ({total} zugelassene Werte)</option>
-          {suggestion.candidates.slice(0, MAX_OPTIONS).map((c) => (
-            <option key={c} value={c} title={c}>
-              {shortenUri(c)}
-            </option>
-          ))}
-        </select>
+        <span>{suggestion.expected_de}</span>
       </div>
-      {chosen && (
-        // Volle URI statt Kurzform: der Vorschlag soll zeigen, was wörtlich in
-        // die Datei gehört — die Kurzform „SHP“ wäre vom bisherigen Freitext
-        // nicht zu unterscheiden.
-        <ChangeLine sign="+" predicate={suggestion.predicate} value={chosen} title={chosen} />
+      {suggestion.example && (
+        <p className="diff-hint muted">
+          Schreibweise: <code title={suggestion.example}>{suggestion.example}</code>
+        </p>
+      )}
+      {suggestion.vocabulary_url && (
+        <p className="diff-hint muted">
+          Zulässige Werte:{" "}
+          <a href={suggestion.vocabulary_url} target="_blank" rel="noreferrer">
+            {suggestion.vocabulary_label ?? shortenUri(suggestion.vocabulary_url)}
+          </a>
+        </p>
       )}
     </div>
   );

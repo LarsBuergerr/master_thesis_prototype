@@ -6,6 +6,7 @@
 
 import type { ReactNode } from "react";
 import type { Navigate, PortalView } from "../route";
+import { usePortalSource } from "../source";
 
 interface NavItem {
   label: string;
@@ -24,10 +25,15 @@ const NAV: NavItem[] = [
 interface Props {
   view: PortalView;
   onNavigate: Navigate;
+  /** Ohne geladenen Datenbestand führt die Navigation ins Leere — dann bleibt
+   *  nur die Quellenauswahl, und die Menüpunkte sind abgeschaltet. */
+  hasCatalog: boolean;
   children: ReactNode;
 }
 
-export function GovDataShell({ view, onNavigate, children }: Props) {
+export function GovDataShell({ view, onNavigate, hasCatalog, children }: Props) {
+  const { reset } = usePortalSource();
+
   return (
     <div className="gd-portal">
       <a className="skip-link" href="#portal-main">
@@ -69,15 +75,17 @@ export function GovDataShell({ view, onNavigate, children }: Props) {
 
           <nav className="gd-nav" aria-label="Hauptnavigation">
             {NAV.map((item, idx) => {
-              const active = !item.inert && item.view === view;
+              const active = hasCatalog && !item.inert && item.view === view;
+              const disabled = !hasCatalog || item.inert;
               return (
                 <button
                   key={`${item.label}-${idx}`}
                   type="button"
                   className={`gd-nav-link button-reset${active ? " active" : ""}`}
                   aria-current={active ? "page" : undefined}
+                  disabled={disabled}
                   onClick={() =>
-                    !item.inert &&
+                    !disabled &&
                     onNavigate(item.view === "quality" ? { view: "quality" } : { view: "list" })
                   }
                 >
@@ -88,6 +96,16 @@ export function GovDataShell({ view, onNavigate, children }: Props) {
           </nav>
 
           <div className="gd-header-actions">
+            {hasCatalog && (
+              <button
+                type="button"
+                className="gd-button gd-button-ghost"
+                onClick={reset}
+                title="Portal leeren und einen anderen Datenbestand laden"
+              >
+                Datenbestand wechseln
+              </button>
+            )}
             <button
               type="button"
               className={`gd-button${view === "analyzer" ? " gd-button-secondary" : " gd-button-primary"}`}
@@ -123,8 +141,8 @@ export function GovDataShell({ view, onNavigate, children }: Props) {
             </a>
           </nav>
           <p className="gd-footer-note">
-            Prototyp-Demonstrator auf Basis der GovData-Gestaltung. Datengrundlage:
-            Evaluationsstichprobe <code>sample_2026-06-25</code> (n&nbsp;=&nbsp;50).
+            Prototyp-Demonstrator auf Basis der GovData-Gestaltung. Inhalte und
+            Qualitätsbewertung werden zur Laufzeit geladen und sind getrennte Ebenen.
             Kein offizielles Angebot von GovData bzw. der Bundesrepublik Deutschland.
           </p>
         </div>

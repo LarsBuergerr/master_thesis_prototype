@@ -2,7 +2,7 @@
 //
 // Ein Befund ist erst dann umsetzbar, wenn klar ist, an welcher Stelle der
 // Datei nachgebessert werden muss. Steht der Quelltext zur Verfügung (Live-Lauf
-// über /samples/{name}/rdf), zeigt die Detailseite die betroffenen Zeilen mit
+// über /catalogs/{name}/files/{file}/rdf), zeigt die Detailseite die Zeilen mit
 // Zeilennummer — analog zu einem Diff-Hunk.
 
 export interface RdfLine {
