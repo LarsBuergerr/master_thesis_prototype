@@ -1,12 +1,14 @@
 // Aggregierte Auswertung der überlagerten Bewertung („Metadatenqualität"-Seite):
 // Kennzahlen plus vier Diagramme (Verteilung der Gesamtbewertung,
-// Dimensions-Mittel, häufigste Mängel, Geo- gegen Fachdaten).
+// Dimensions-Mittel, häufigste Mängel, Verlauf über die Läufe).
 //
 // Alle Zahlen stammen aus der Bewertung, die gerade über dem Datenbestand
 // liegt — aus einem abgeschlossenen Lauf oder aus einer Berechnung dieser
 // Sitzung. Ohne Bewertung zeigt die Seite, was zu tun ist, statt leerer Achsen.
-// Die Aufteilung Geo/Fachdaten kommt aus dem Katalog: nur dort steht, was ein
-// Datensatz *ist* — der Lauf kennt bloß Dateinamen.
+//
+// Ausnahme ist der Verlauf: er blickt über alle Läufe dieses Datenbestands
+// hinweg und beantwortet die Frage, die einen Portalbetreiber mehr interessiert
+// als jeder Einzelstand — bewegt sich die Qualität nach oben oder nach unten.
 //
 // Diagramme mit Recharts und den GovData-Chartfarben (CHART_COLORS /
 // STATUS_COLORS), konsistent zu den übrigen Charts der Anwendung.
@@ -17,7 +19,9 @@ import {
   BarChart,
   CartesianGrid,
   Cell,
-  Legend,
+  Line,
+  LineChart,
+  ReferenceArea,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -29,7 +33,7 @@ import { gradeColor, statusColor } from "../../lib/status";
 import { scoreToGrade } from "../lib/quality";
 import { indicatorMeta } from "../../lib/indicators";
 import { useCatalog, useOverlay, usePortalSource } from "../source";
-import { useRunResult } from "../../hooks/usePortal";
+import { useRunDeficits, useRunResult, useRunTrend } from "../../hooks/usePortal";
 
 const C = CHART_COLORS;
 
@@ -72,21 +76,34 @@ export function QualityDashboard() {
   const sampleStem = scored[0]?.stem ?? null;
   const sampleResult = useRunResult(overlay?.kind === "run" ? overlay.run : null, sampleStem);
 
+  // Die Rangliste braucht die Indikator-Ebene, die der Lauf-Index nicht trägt.
+  // Für einen abgeschlossenen Lauf aggregiert sie das Backend (ein Aufruf statt
+  // 50 Einzelergebnissen); eine Berechnung dieser Sitzung hat die Ergebnisse
+  // ohnehin schon im Speicher.
+  const runDeficits = useRunDeficits(overlay?.kind === "run" ? overlay.run : null);
+
   const deficitData = useMemo(() => {
     const counts = new Map<string, { fail: number; partial: number; total: number }>();
-    for (const row of scored) {
-      const result = state.resultFor(row.stem);
-      if (!result) continue;
-      for (const dim of Object.values(result.by_dimension)) {
-        for (const indicator of dim.indicators) {
-          const entry = counts.get(indicator.indicator_id) ?? { fail: 0, partial: 0, total: 0 };
-          entry.total += 1;
-          if (indicator.status === "fail") entry.fail += 1;
-          else if (indicator.status === "partial") entry.partial += 1;
-          counts.set(indicator.indicator_id, entry);
+
+    for (const row of runDeficits.data ?? []) {
+      counts.set(row.indicator_id, { fail: row.fail, partial: row.partial, total: row.total });
+    }
+    if (counts.size === 0) {
+      for (const row of scored) {
+        const result = state.resultFor(row.stem);
+        if (!result) continue;
+        for (const dim of Object.values(result.by_dimension)) {
+          for (const indicator of dim.indicators) {
+            const entry = counts.get(indicator.indicator_id) ?? { fail: 0, partial: 0, total: 0 };
+            entry.total += 1;
+            if (indicator.status === "fail") entry.fail += 1;
+            else if (indicator.status === "partial") entry.partial += 1;
+            counts.set(indicator.indicator_id, entry);
+          }
         }
       }
     }
+
     return [...counts.entries()]
       .map(([id, c]) => ({
         id,
@@ -99,7 +116,7 @@ export function QualityDashboard() {
       }))
       .sort((a, b) => b.share - a.share)
       .slice(0, TOP_DEFICITS);
-  }, [scored, state]);
+  }, [scored, state, runDeficits.data]);
 
   const stats = useMemo(() => {
     if (scored.length === 0) return null;
@@ -144,33 +161,18 @@ export function QualityDashboard() {
     [stats],
   );
 
-  // Katalogseite (was ein Datensatz ist) mit Laufseite (wie gut er ist) über
-  // den Dateistamm verbunden — die einzige Stelle, an der beide Ebenen sich
-  // berühren.
-  const strataData = useMemo(() => {
-    const byCategory = new Map<string, Map<string, number[]>>();
-    for (const dataset of datasets) {
-      const row = state.rows.get(dataset.id);
-      if (!row || !dataset.category) continue;
-      const perDim = byCategory.get(dataset.category) ?? new Map<string, number[]>();
-      for (const [dim, score] of Object.entries(row.dims)) {
-        const list = perDim.get(dim) ?? [];
-        list.push(score);
-        perDim.set(dim, list);
-      }
-      byCategory.set(dataset.category, perDim);
-    }
-    if (byCategory.size < 2) return [];
-
-    const mean = (list?: number[]) =>
-      list && list.length ? Number(((list.reduce((a, b) => a + b, 0) / list.length) * 100).toFixed(1)) : 0;
-
-    return DIMENSION_ORDER.filter((dim) => stats?.dimAvg[dim] != null).map((dim) => ({
-      dim: dimensionLabel(dim),
-      Geodaten: mean(byCategory.get("geo")?.get(dim)),
-      Fachdaten: mean(byCategory.get("non_geo")?.get(dim)),
-    }));
-  }, [datasets, state.rows, stats]);
+  const trend = useRunTrend(catalog);
+  const trendData = useMemo(
+    () =>
+      (trend.data ?? []).map((point) => ({
+        label: point.timestamp ?? point.run,
+        score: Math.round(point.mean_overall * 1000) / 10,
+        n: point.dataset_count,
+        model: point.llm_model,
+        run: point.run,
+      })),
+    [trend.data],
+  );
 
   const worst = deficitData[0];
 
@@ -235,7 +237,7 @@ export function QualityDashboard() {
             n={worst.fullLabel}
           />
         ) : (
-          <Kpi k="Häufigster Mangel" v="—" n="nur nach einer Berechnung verfügbar" />
+          <Kpi k="Häufigster Mangel" v="—" n="wird ermittelt…" />
         )}
       </div>
 
@@ -342,49 +344,54 @@ export function QualityDashboard() {
           </Panel>
         )}
 
-        {strataData.length > 0 && (
+        {trendData.length > 1 && (
           <Panel
-            title="Geodaten gegen Fachdaten"
-            hint="Mittlerer Score je Dimension in den beiden Gruppen des Datenbestands."
+            title="Verlauf über die Bewertungsläufe"
+            hint="Mittlerer Gesamtscore je Lauf über diesen Datenbestand, chronologisch."
           >
-            <div style={{ width: "100%", height: 320 }}>
+            <div style={{ width: "100%", height: 260 }}>
               <ResponsiveContainer>
-                <BarChart
-                  data={strataData}
-                  layout="vertical"
-                  margin={{ left: 24, right: 16, top: 8, bottom: 4 }}
-                  barGap={2}
-                >
-                  <CartesianGrid strokeDasharray="3 3" stroke={C.gridline} horizontal={false} />
-                  <XAxis type="number" domain={[0, 100]} tick={{ fill: C.textSubtle, fontSize: 11 }} />
-                  <YAxis
-                    type="category"
-                    dataKey="dim"
-                    width={130}
-                    tick={{ fill: C.textSecondary, fontSize: 11 }}
-                  />
+                <LineChart data={trendData} margin={{ left: 4, right: 16, top: 8, bottom: 4 }}>
+                  {/* Notenbänder als ruhiger Hintergrund: zeigt, in welchem
+                      Qualitätsbereich sich der Bestand bewegt. */}
+                  <ReferenceArea y1={0} y2={40} fill={gradeColor("F")} fillOpacity={0.06} />
+                  <ReferenceArea y1={40} y2={60} fill={gradeColor("D")} fillOpacity={0.05} />
+                  <ReferenceArea y1={60} y2={75} fill={gradeColor("C")} fillOpacity={0.06} />
+                  <ReferenceArea y1={75} y2={100} fill={gradeColor("A")} fillOpacity={0.06} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={C.gridline} vertical={false} />
+                  <XAxis dataKey="label" tick={{ fill: C.textSubtle, fontSize: 10 }} />
+                  <YAxis domain={[0, 100]} tick={{ fill: C.textSubtle, fontSize: 11 }} />
                   <Tooltip
                     contentStyle={tooltipStyle}
-                    cursor={{ fill: C.panel2 }}
-                    formatter={(v, n) => [`${v} / 100`, n]}
+                    formatter={(_v, _n, item) => {
+                      const d = item.payload as (typeof trendData)[number];
+                      return [
+                        `${d.score} / 100 · ${d.n} Datensätze · ${d.model ?? "ohne Sprachmodell"}`,
+                        "Ø Gesamtscore",
+                      ];
+                    }}
                   />
-                  <Legend />
-                  <Bar dataKey="Geodaten" fill={C.primary} radius={[0, 3, 3, 0]} />
-                  <Bar dataKey="Fachdaten" fill={C.accent} radius={[0, 3, 3, 0]} />
-                </BarChart>
+                  <Line
+                    type="monotone"
+                    dataKey="score"
+                    name="Ø Gesamtscore"
+                    stroke={C.primary}
+                    strokeWidth={2}
+                    dot={{ r: 4, fill: C.primary }}
+                  />
+                </LineChart>
               </ResponsiveContainer>
             </div>
+            <p className="gd-panel-note muted">
+              Die Punkte sind Bewertungsläufe, keine Erhebungszeitpunkte. Solange derselbe
+              Datenstand mehrfach bewertet wird, zeigt die Linie die Streuung des Verfahrens;
+              zum Qualitätsverlauf wird sie erst, wenn der Bestand wiederholt geerntet und
+              danach bewertet wird.
+            </p>
           </Panel>
         )}
       </div>
 
-      {!indicatorLevelAvailable && (
-        <p className="muted">
-          Die Mängel-Rangliste braucht die Indikator-Ebene. Sie steht zur Verfügung, sobald die
-          Bewertung in dieser Sitzung berechnet wurde — für einen abgeschlossenen Lauf lädt die
-          Detailseite sie je Datensatz nach.
-        </p>
-      )}
     </div>
   );
 }

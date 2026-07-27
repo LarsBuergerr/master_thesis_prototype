@@ -8,6 +8,53 @@ import type { ReactNode } from "react";
 import type { Navigate, PortalView } from "../route";
 import { usePortalSource } from "../source";
 
+// GovData liefert kein Icon-Set aus, das hier eingebunden wäre (der übernommene
+// Button-Auszug lässt die Icon-Variante bewusst weg). Die beiden Glyphen sind
+// deshalb selbst gezeichnet — im selben Stil wie der Qualitätsring: schlankes
+// Inline-SVG mit `currentColor`, damit sie die Zustandsfarben des Buttons
+// mitnehmen.
+function ToolIcon() {
+  return (
+    <svg
+      className="gd-button-icon"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {/* Schraubenschlüssel */}
+      <path d="M15.5 4.2a4.5 4.5 0 0 0-5.9 5.6L3.6 15.8a1.6 1.6 0 0 0 0 2.3l2.3 2.3a1.6 1.6 0 0 0 2.3 0l6-6a4.5 4.5 0 0 0 5.6-5.9l-2.6 2.6-2.6-.7-.7-2.6z" />
+    </svg>
+  );
+}
+
+function SwapIcon() {
+  return (
+    <svg
+      className="gd-button-icon"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {/* Datenbestand (Zylinder) mit Wechselpfeil */}
+      <ellipse cx="12" cy="5.5" rx="7" ry="2.8" />
+      <path d="M5 5.5v6c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-6" />
+      <path d="M8 19h8m0 0-2.5-2.5M16 19l-2.5 2.5" />
+    </svg>
+  );
+}
+
 interface NavItem {
   label: string;
   // Nur parameterlose Ansichten sind über die Hauptnavigation erreichbar.
@@ -99,19 +146,24 @@ export function GovDataShell({ view, onNavigate, hasCatalog, children }: Props) 
             {hasCatalog && (
               <button
                 type="button"
-                className="gd-button gd-button-ghost"
+                className="gd-button gd-button-ghost gd-button-icon-only"
                 onClick={reset}
                 title="Portal leeren und einen anderen Datenbestand laden"
+                aria-label="Datenbestand wechseln"
               >
-                Datenbestand wechseln
+                <SwapIcon />
+                <span className="gd-button-label">Datenbestand wechseln</span>
               </button>
             )}
             <button
               type="button"
-              className={`gd-button${view === "analyzer" ? " gd-button-secondary" : " gd-button-primary"}`}
+              className={`gd-button gd-button-collapsing${view === "analyzer" ? " gd-button-secondary" : " gd-button-primary"}`}
               onClick={() => onNavigate({ view: "analyzer" })}
+              title="Analyse-Werkzeug"
+              aria-label="Analyse-Werkzeug"
             >
-              Analyse-Werkzeug
+              <ToolIcon />
+              <span className="gd-button-label">Analyse-Werkzeug</span>
             </button>
           </div>
         </div>

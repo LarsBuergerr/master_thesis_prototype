@@ -8,8 +8,10 @@ import type {
   IndicatorsResponse,
   JobCreated,
   JobDetail,
+  RunDeficit,
   RunIndexRow,
   RunInfo,
+  RunTrendPoint,
 } from "./types";
 
 const baseURL = import.meta.env.VITE_API_BASE ?? "http://localhost:8000";
@@ -116,6 +118,18 @@ export async function fetchRuns(): Promise<RunInfo[]> {
 /** Kurzbewertung je Datei — klein genug für Liste und Übersichtsseite. */
 export async function fetchRunIndex(name: string): Promise<RunIndexRow[]> {
   const { data } = await api.get<RunIndexRow[]>(`/runs/${enc(name)}`);
+  return data;
+}
+
+/** Häufigste Mängel eines Laufs — je Indikator die Zahl der Fehlschläge. */
+export async function fetchRunDeficits(name: string): Promise<RunDeficit[]> {
+  const { data } = await api.get<RunDeficit[]>(`/runs/deficits/${enc(name)}`);
+  return data;
+}
+
+/** Mittlerer Gesamtscore je Lauf über einen Datenbestand, chronologisch. */
+export async function fetchRunTrend(catalog: string): Promise<RunTrendPoint[]> {
+  const { data } = await api.get<RunTrendPoint[]>(`/runs/trend/${enc(catalog)}`);
   return data;
 }
 

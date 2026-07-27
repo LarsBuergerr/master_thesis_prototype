@@ -93,9 +93,16 @@
   align-items: center;
   gap: $spacer * 3;
 
+  // Sicherheitsnetz: Logo, Navigation und Aktionen zusammen füllen den
+  // 1200-px-Container fast aus. Der Bestandswechsel trägt deshalb dauerhaft nur
+  // sein Icon (.gd-button-icon-only), das Analyse-Werkzeug ab $large-breakpoint
+  // (.gd-button-collapsing); der Umbruch greift nur, wenn es trotzdem eng wird.
+  @media (max-width: $large-breakpoint) {
+    gap: $spacer;
+  }
+
   @media (max-width: $medium-breakpoint) {
     flex-wrap: wrap;
-    gap: $spacer * 1.5;
   }
 }
 // GovData-Signet: Punktraster links neben dem Wortmarken-Text.
@@ -165,16 +172,72 @@
   font-weight: 700;
   color: $clr-primary-400;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: $clr-neutral-grey-100;
     text-decoration: underline;
   }
   &.active {
     background: $clr-primary-100;
   }
+
+  // Ohne geladenen Datenbestand (und bei den nur dekorativen Punkten) führt
+  // der Menüpunkt ins Leere — dann darf er auch nicht klickbar aussehen.
+  &:disabled {
+    color: $clr-neutral-grey-500;
+    cursor: default;
+  }
 }
 .gd-header-actions {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: $spacer;
+  flex: none;
+}
+
+// Kopfzeilen-Buttons: Icon plus Beschriftung. Wird der Platz eng, bleibt das
+// Icon und die Beschriftung entfällt — der Button behält über aria-label und
+// title seine Bedeutung.
+// Beschriftung nur für Screenreader — der Knopf zeigt dauerhaft sein Icon.
+.gd-button-icon-only {
+  padding: 12px 14px;
+
+  .gd-button-label {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+.gd-button-collapsing {
+  gap: 8px;
+
+  .gd-button-icon {
+    flex: none;
+  }
+
+  // @extend greift aus einer Media-Query heraus nicht, daher ausgeschrieben.
+  @media (max-width: $large-breakpoint) {
+    padding: 12px 14px;
+
+    .gd-button-label {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
 }
 
 // ---- Suche / Hero -----------------------------------------------------------
@@ -925,4 +988,11 @@
     background: $clr-neutral-grey-100;
     color: $clr-primary-500;
   }
+}
+
+// Fußnote unter einem Diagramm-Panel (Einordnung, Lesehinweis)
+.gd-panel-note {
+  margin: 8px 0 0;
+  font-size: $fnt-paragraph-extra-small;
+  line-height: 1.5;
 }

@@ -1,6 +1,8 @@
 """Run-Endpoints: abgeschlossene Bewertungsläufe als Overlay über den Katalog.
 
     GET /runs                    — verfügbare Läufe
+    GET /runs/trend/{catalog}    — Qualitätsverlauf über die Läufe eines Bestands
+    GET /runs/deficits/{name}    — häufigste Mängel eines Laufs
     GET /runs/{name}             — Kurzbewertung je Datei (Liste/Übersicht)
     GET /runs/{name}/{stem}      — vollständiges Ergebnis einer Datei (Detailseite)
 
@@ -16,7 +18,7 @@ from typing import Any
 from fastapi import APIRouter, HTTPException
 
 from .. import runs
-from ..schemas import RunIndexRow, RunInfo
+from ..schemas import RunDeficit, RunIndexRow, RunInfo, RunTrendPoint
 
 logger = logging.getLogger("backend.runs")
 
@@ -26,6 +28,23 @@ router = APIRouter(tags=["runs"], prefix="/runs")
 @router.get("", response_model=list[RunInfo])
 def list_runs() -> list[RunInfo]:
     return [RunInfo(**r) for r in runs.list_runs()]
+
+
+@router.get("/trend/{catalog}", response_model=list[RunTrendPoint])
+def run_trend(catalog: str) -> list[RunTrendPoint]:
+    """Mittlerer Gesamtscore je Lauf über diesen Datenbestand, chronologisch."""
+    return [RunTrendPoint(**row) for row in runs.trend(catalog)]
+
+
+@router.get("/deficits/{name}", response_model=list[RunDeficit])
+def run_deficits(name: str) -> list[RunDeficit]:
+    """Häufigste Mängel eines Laufs — je Indikator die Zahl der Fehlschläge."""
+    try:
+        return [RunDeficit(**row) for row in runs.deficits(name)]
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
 
 
 @router.get("/{name}", response_model=list[RunIndexRow])

@@ -2164,11 +2164,14 @@ Die drei auf das Gewicht 2,0 angehobenen Indikatoren teilen eine Eigenschaft: Ei
 
 Die Dimensionsgewichte folgen derselben Logik auf der übergeordneten Ebene: Die Dimensionen tragen nicht gleich viel zur Nutzbarkeit eines Datensatzes bei. Zugänglichkeit und Aussagekraft erhalten das höchste Gewicht, weil ein Versagen in diesen Dimensionen den Datensatz vollständig entwertet. Sind die Daten nicht erreichbar, existiert faktisch kein nutzbares Angebot. Sind Titel, Beschreibung und Schlagwörter nichtssagend, bleibt der Datensatz für Nutzende unverständlich, auch wenn die Metadaten vollständig sind, worauf auch die Handreichung zur Verbesserung der Metadatenqualität ihren Schwerpunkt legt \cite{bydata2025handreichung}. Die Nachnutzbarkeit wird über der Auffindbarkeit gewichtet, da selbst vollständig vorhandene und erreichbare Daten ohne geklärte rechtliche und organisatorische Rahmenbedingungen ihren Nutzen verlieren. Die Auffindbarkeit erhält das Standardgewicht, da ihre Indikatoren überwiegend Präsenz- und Strukturprüfungen einzelner Suchmerkmale sind. Ihr Beitrag zur Nutzbarkeit hängt zudem stärker als bei den übrigen Dimensionen von deren Erfüllung ab, insbesondere von den datenbrechenden Indikatoren der anderen Dimensionen: Ein auffindbarer Datensatz bleibt nutzlos, wenn die Lizenz fehlt, auf die Daten nicht zugegriffen werden kann oder die Freitextfelder trotz formaler Vollständigkeit widersprüchliche oder zusammenhanglose Inhalte aufweisen. Das Modell weicht damit bewusst von der MQA ab, die die Auffindbarkeit zu den am höchsten gewichteten Dimensionen zählt, dies allerdings auf Basis reiner Präsenzmetriken (vgl. Tabelle~\ref{tab:mqa_metrics_weights}).
 
-\section{Qualitätsreporting}
+% Scope: Der Bewertungslauf als abgeschlossenes, selbsttragendes Artefakt.
+% Aufbau des result.json, Nachvollziehbarkeit ohne Zugriff auf den Prototyp,
+% Protokolle je Datei, Aggregate auf Laufebene. Adressat ist die maschinelle
+% Weiterverarbeitung; die menschenlesbare Ebene folgt in Section~\ref{sec:frontend}.
+\section{Maschinenlesbare Ergebnisreports}
+\label{sec:maschinenreport}
 
-Der Prototyp erzeugt für jede bewertete Metadatendatei einen vollständigen maschinenlesbaren Report, der jedes Einzelergebnis mitsamt Begründung und allen zur Berechnung verwendeten Parametern dokumentiert. Die menschenlesbare Aufbereitung dieser Reports übernimmt ein eigenständiges Frontend, das die Reports als Datengrundlage konsumiert.
-
-\subsection{Maschinenlesbare Ergebnisreports}
+Der Prototyp erzeugt für jede bewertete Metadatendatei einen vollständigen maschinenlesbaren Report, der jedes Einzelergebnis mitsamt Begründung und allen zur Berechnung verwendeten Parametern dokumentiert. Dieser Report ist zugleich die einzige Datengrundlage der menschenlesbaren Aufbereitung, die Section~\ref{sec:frontend} beschreibt.
 
 Jeder Bewertungslauf legt ein eigenes Ausgabeverzeichnis an.
 Innerhalb dieses Verzeichnisses erhält jede bewertete Datei ein Unterverzeichnis mit drei Artefakten: dem Ergebnisreport als \texttt{json} Objekt sowie zwei Protokolldateien. Listing~\ref{lst:result_json} zeigt den Ergebnisreport in gekürzter Form.
@@ -2235,10 +2238,62 @@ Der Report wird zusätzlich durch zwei weitere Protokollsdateien ergänzt.
 Eine \texttt{logs} Datei zeichnet alle Verarbeitungsschritte der jeweiligen Datei auf, vom RDF-Parsing über die Erreichbarkeitsprüfungen mit ihren Einzelsignalen bis zur Entscheidung jedes Indikators. Zusätzlich wird eine \texttt{llm} spezifische Datei generiert, die die vollständige Anfrage an das Sprachmodell einschließlich System-Prompt, übergebener Faktenbasis und Rohantwort enthält. Ein Bewertungslauf lässt sich damit auch nachträglich Schritt für Schritt nachvollziehen und bei Bedarf reproduzieren.
 
 Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenfassung aller Einzelergebnisse und eine Kostenübersicht der Sprachmodellaufrufe.
-% Scope: Zielgruppe, Darstellungskonzept (Navigation über Dimensionen, Indikatoren,
-% Befunde, LLM-Reasonings), warum diese Aufbereitung Nachvollziehbarkeit herstellt.
-% Bei wachsendem Umfang zur eigenen Section hochziehen.
-\subsection{Menschenlesbare Ergebnisaufbereitung (Frontend)}
+% ===========================================================================
+% Scope dieser Section: Antwort auf FF5. Sie beschreibt, wie aus dem
+% maschinenlesbaren Report (Section~\ref{sec:maschinenreport}) eine Darstellung
+% wird, die ein Datenbereitsteller ohne DCAT-Kenntnisse handlungsfähig macht.
+% Abgrenzung: keine Nutzerstudie und keine Aussage über tatsächliche Wirkung —
+% die Bewertung erfolgt demonstrativ im Walkthrough (Section~\ref{sec:fallanalysen})
+% und wird in Section~\ref{sec:limitationen_eval} als Grenze ausgewiesen.
+% ===========================================================================
+\section{Menschenlesbares Qualitätsreporting}
+\label{sec:frontend}
+
+% Scope: Wer liest das Ergebnis und was muss er danach tun können. Adressat ist
+% der Datenbereitsteller, nicht der Entwickler des Bewertungsmodells. Aus den
+% Interviews (Kap.~3) abgeleitete Gestaltungsziele: Befund statt Punktzahl,
+% Fundstelle statt Feldname, Handlungsanweisung statt Fehlermeldung.
+% Nachvollziehbarkeit als durchgängiges Ziel wie beim Prototyp selbst.
+\subsection{Zielgruppe und Gestaltungsziele}
+
+% Scope: Warum die Darstellung die Portalumgebung nachbildet und kein
+% eigenständiges Analyse-Dashboard ist — ein Qualitätsbefund muss dort
+% erscheinen, wo die Metadaten gepflegt werden. Übernahme des GovData-
+% Gestaltungssystems (Farbtokens, Komponenten) und was der Mock bewusst
+% nicht leistet.
+\subsection{Einbettung in die Portalumgebung}
+
+% Scope: Die zentrale Architekturentscheidung. Zwei getrennte Ebenen — die
+% beschreibenden Metadaten eines Datenverzeichnisses (Portalinhalt) und die
+% Bewertung eines abgeschlossenen Laufs (Overlay). Verknüpfung ausschließlich
+% über den Dateinamen; das Portal ist ohne Bewertung vollständig, der
+% Bewertungsreport trägt keine Titel oder Schlagwörter. Konsequenz für die
+% Schnittstelle (Katalog- und Lauf-Endpunkte) und für die Übertragbarkeit auf
+% ein reales Portal.
+\subsection{Trennung von Metadaten- und Bewertungsebene}
+
+% Scope: Wie aus indikatorspezifischer Evidenz eine einheitliche Darstellung
+% wird. Das Befundmodell (Kernaussage, Ist-Angaben mit Fundstelle, Soll-Zustand,
+% Einzelbefunde) als gemeinsame Form über alle Indikatoren hinweg, obwohl deren
+% Detailbefunde unterschiedlich aufgebaut sind. Verortung im RDF-Quelltext.
+% Warum der Befund im Backend entsteht und nicht in der Oberfläche.
+\subsection{Vom Prüfergebnis zum Befund}
+
+% Scope: Die zweite Aufbereitungsstufe — was konkret zu ändern ist. Zwei Formen:
+% der strukturierte Änderungsvorschlag für maschinell ableitbare Korrekturen und
+% die Empfehlung für alles Übrige. Entwurfsentscheidung: bei fehlenden Werten
+% wird die *Form* des erwarteten Werts benannt (Feld, Schreibweise, maßgebliches
+% Vokabular), nicht die Menge der zulässigen Werte — mit der Größenordnung als
+% Beleg (kontrollierte Vokabulare mit mehreren tausend Einträgen).
+\subsection{Von der Meldung zur Handlungsanweisung}
+
+% Scope: Die drei Sichten und ihre Aufgabe. Aggregatsicht über einen Datenbestand
+% (Verteilung, Dimensionsmittel, häufigste Mängel), Detailsicht je Datensatz
+% (Gesamtscore, Dimensionsprofil, aufklappbare Indikatoren) und das Anstoßen
+% eigener Bewertungsläufe aus der Oberfläche mit der Konfiguration der
+% Evaluation. Barrierefreiheit: Farbe nie alleiniger Bedeutungsträger,
+% nachgerechnete Kontraste.
+\subsection{Darstellung und Bedienung}
 
 % \section{Konfigurierbarkeit und technische Grenzen des Prototyps}
 
@@ -3239,6 +3294,15 @@ Punkt aufgegriffen.
 % Datensätze). Hier auch der Screenshot-gestützte Frontend-Walkthrough eines gut/schlecht-
 % Falls (Nachvollziehbarkeit des Scorings demonstrativ zeigen).
 \section{Vertiefende Fallanalysen}
+\label{sec:fallanalysen}
+
+% Scope-Ergänzung Frontend (FF5): Die Fallanalysen sind zugleich der Ort, an dem
+% die menschenlesbare Aufbereitung (Section~\ref{sec:frontend}) demonstrativ
+% gezeigt wird. Vorgehen: an ausgewählten Fällen den Weg vom Gesamtscore über
+% den Dimensionsbefund bis zur konkreten Handlungsanweisung nachzeichnen und
+% dabei belegen, dass sich jedes Teilergebnis auf eine Prüfregel zurückführen
+% lässt. Bewusst ein Walkthrough und keine Nutzerbewertung — die Grenze steht
+% in Section~\ref{sec:limitationen_eval}.
 
 % Scope: Nur Limitationen DER EVALUATION (Limitationen des Ansatzes -> Kap. 6/7):
 % Einzelbewerter, Stichprobengröße, Skalenartefakte/Attenuation (Disattenuation nur als
@@ -3258,6 +3322,7 @@ Punkt aufgegriffen.
 %   - Auch das gewaehlte Modell unterschaetzt die Aussagekraft leicht (Bias -0,077).
 %     Eine Kalibrierung der Rubrik-Anker wurde nicht vorgenommen und bleibt offen.
 \section{Limitationen der Evaluation}
+\label{sec:limitationen_eval}
 
 
 \chapter{Diskussion}
@@ -3267,6 +3332,15 @@ Punkt aufgegriffen.
 \section{Bedeutung kontext- und semantikbezogener Prüfungen}
 
 \section{Potenziale und Grenzen KI-gestützter Verfahren}
+
+% Scope: Diskussionsteil zu FF5. Nicht die Umsetzung wiederholen (das steht in
+% Section~\ref{sec:frontend}), sondern die Tragweite der Entwurfsentscheidungen
+% einordnen: Was gewinnt ein Bewertungsverfahren dadurch, dass es Befund und
+% Handlungsanweisung statt einer Punktzahl ausgibt? Was folgt aus der Trennung
+% von Metadaten- und Bewertungsebene für die Anschlussfähigkeit an ein
+% bestehendes Portal? Und wo endet die Aussagekraft ohne empirische Prüfung
+% mit Datenbereitstellern?
+\section{Nachvollziehbarkeit als Gestaltungsziel des Qualitätsreportings}
 
 
 \chapter{Fazit und Ausblick}

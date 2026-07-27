@@ -108,6 +108,56 @@ def run_result(name: str, stem: str) -> dict[str, Any]:
     raise FileNotFoundError(f"No result for {stem} in run {name}")
 
 
+#: run-Verzeichnis -> Mängelstatistik. Wie der Index unveränderlich.
+_DEFICIT_CACHE: dict[str, list[dict[str, Any]]] = {}
+
+
+def deficits(name: str) -> list[dict[str, Any]]:
+    """Je Indikator, wie oft er über den Lauf hinweg nicht erfüllt wurde.
+
+    Die Rangliste der häufigsten Mängel braucht die Indikator-Ebene, die der
+    Index bewusst nicht trägt. Sie hier zu aggregieren kostet einmal das Lesen
+    des Laufs und liefert ein paar Kilobyte — die Alternative wäre, im Frontend
+    50 Einzelergebnisse zu laden, nur um sie zu zählen.
+    """
+    if name in _DEFICIT_CACHE:
+        return _DEFICIT_CACHE[name]
+
+    run_dir = resolve_run(name)
+    counts: dict[str, dict[str, Any]] = {}
+    for result_path in _result_paths(run_dir):
+        try:
+            data = json.loads(result_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        for dim in (data.get("by_dimension") or {}).values():
+            for indicator in dim.get("indicators", []):
+                entry = counts.setdefault(
+                    indicator["indicator_id"],
+                    {
+                        "indicator_id": indicator["indicator_id"],
+                        "dimension": dim.get("dimension"),
+                        "fail": 0,
+                        "partial": 0,
+                        "total": 0,
+                    },
+                )
+                entry["total"] += 1
+                status = indicator.get("status")
+                if status == "fail":
+                    entry["fail"] += 1
+                elif status == "partial":
+                    entry["partial"] += 1
+
+    rows = sorted(
+        counts.values(),
+        key=lambda e: (e["fail"] + e["partial"]) / e["total"] if e["total"] else 0,
+        reverse=True,
+    )
+    _DEFICIT_CACHE[name] = rows
+    return rows
+
+
 def _run_meta(run_dir: Path) -> dict[str, Any]:
     """Konfigurationseckdaten eines Laufs aus seiner ``metadata.json``."""
     meta_path = run_dir / "metadata.json"
@@ -157,6 +207,49 @@ def list_runs() -> list[dict[str, Any]]:
             }
         )
     return runs
+
+
+def _timestamp_from_name(name: str) -> Optional[str]:
+    """``run_2026-07-27_09-54-46_…`` -> ``2026-07-27 09:54``."""
+    parts = name.split("_")
+    if len(parts) < 3:
+        return None
+    date, clock = parts[1], parts[2].replace("-", ":")
+    return f"{date} {clock[:5]}"
+
+
+def trend(catalog_directory: str) -> list[dict[str, Any]]:
+    """Mittlerer Gesamtscore je Lauf über dieses Datenverzeichnis, chronologisch.
+
+    Für einen Portalbetreiber ist die interessante Frage nicht der Stand eines
+    einzelnen Laufs, sondern die Richtung: Wird die Metadatenqualität besser
+    oder schlechter? Solange dieselbe Momentaufnahme mehrfach bewertet wird,
+    zeigt die Kurve allerdings die Streuung des Verfahrens und nicht die des
+    Portals — erst wiederholte Ernten desselben Bestands machen daraus einen
+    Qualitätsverlauf. Die Oberfläche weist genau darauf hin.
+    """
+    rows = []
+    for run in list_runs():
+        directory = run.get("directory") or ""
+        if not directory or Path(directory).name != Path(catalog_directory).name:
+            continue
+        index = run_index(run["name"])
+        scores = [r["overall"] for r in index if r.get("overall") is not None]
+        if not scores:
+            continue
+        rows.append(
+            {
+                "run": run["name"],
+                "timestamp": _timestamp_from_name(run["name"]),
+                "dataset_count": len(scores),
+                "mean_overall": sum(scores) / len(scores),
+                "min_overall": min(scores),
+                "max_overall": max(scores),
+                "llm_model": run.get("llm_model"),
+            }
+        )
+    # list_runs liefert absteigend; für einen Verlauf ist aufsteigend richtig.
+    return sorted(rows, key=lambda r: r["run"])
 
 
 def matching_run(catalog_directory: str) -> Optional[str]:

@@ -285,6 +285,28 @@ class RunIndexRow(BaseModel):
     n_fail: int = 0
 
 
+class RunDeficit(BaseModel):
+    """Wie oft ein Indikator über einen Lauf hinweg nicht erfüllt wurde."""
+
+    indicator_id: str
+    dimension: Optional[str] = None
+    fail: int
+    partial: int
+    total: int
+
+
+class RunTrendPoint(BaseModel):
+    """Ein Lauf im Qualitätsverlauf eines Datenbestands."""
+
+    run: str
+    timestamp: Optional[str] = None
+    dataset_count: int
+    mean_overall: float
+    min_overall: float
+    max_overall: float
+    llm_model: Optional[str] = None
+
+
 class DefaultConfigResponse(BaseModel):
     """Ausgangskonfiguration für Läufe im Frontend (siehe backend/eval_config)."""
 

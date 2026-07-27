@@ -1,3 +1,10 @@
+// Gesamturteil als Ring mit Notenbuchstaben.
+//
+// Der Ring steht für sich, die Zahlen darunter — nebeneinander würde die
+// Textspalte den Ring aus der Mitte drücken, sobald er neben dem Dimensionsnetz
+// steht. Die Note ist nie der einzige Träger: Score und Pass-Rate stehen als
+// Text daneben (WCAG 1.4.1).
+
 import {
   RadialBar,
   RadialBarChart,
@@ -15,8 +22,8 @@ export function OverallScoreCard({ summary }: { summary: Summary }) {
   const data = [{ name: "score", value: gaugeValue * 100, fill: color }];
 
   return (
-    <div className="gd-row" style={{ gap: 16, alignItems: "center" }}>
-      <div style={{ width: 130, height: 130, position: "relative" }}>
+    <div className="score-card">
+      <div className="score-card-gauge">
         <ResponsiveContainer width="100%" height="100%">
           <RadialBarChart
             innerRadius="70%"
@@ -29,27 +36,15 @@ export function OverallScoreCard({ summary }: { summary: Summary }) {
             <RadialBar background dataKey="value" cornerRadius={8} />
           </RadialBarChart>
         </ResponsiveContainer>
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <span className={`grade ${summary.quality_grade}`}>
-            {summary.quality_grade}
-          </span>
+        <div className="score-card-grade">
+          <span className={`grade ${summary.quality_grade}`}>{summary.quality_grade}</span>
         </div>
       </div>
-      <div>
-        <div style={{ fontSize: 28, fontWeight: 700 }}>
-          {fmt(summary.overall_score)}
-        </div>
+
+      <div className="score-card-figures">
+        <div className="score-card-value">{fmt(summary.overall_score)}</div>
         <div className="muted">Gesamtscore</div>
-        <div className="muted" style={{ marginTop: 6 }}>
+        <div className="muted score-card-note">
           Pass-Rate: {fmt(summary.overall_pass_rate * 100, 0)}% · {summary.total_pass}/
           {summary.total_indicators} bestanden
         </div>

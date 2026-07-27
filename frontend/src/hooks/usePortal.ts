@@ -14,8 +14,10 @@ import {
   fetchCatalogDatasets,
   fetchCatalogRdf,
   fetchCatalogs,
+  fetchRunDeficits,
   fetchRunIndex,
   fetchRunResult,
+  fetchRunTrend,
   fetchRuns,
 } from "../api/client";
 import type { AnalysisConfigInput } from "../api/types";
@@ -67,6 +69,26 @@ export function useRunResult(run: string | null, stem: string | null) {
     enabled: !!run && !!stem,
     staleTime: Infinity,
     retry: false,
+  });
+}
+
+/** Häufigste Mängel eines abgeschlossenen Laufs. */
+export function useRunDeficits(run: string | null) {
+  return useQuery({
+    queryKey: ["run-deficits", run],
+    queryFn: () => fetchRunDeficits(run as string),
+    enabled: !!run,
+    staleTime: Infinity,
+  });
+}
+
+/** Qualitätsverlauf über alle Läufe eines Datenbestands. */
+export function useRunTrend(catalog: string | null) {
+  return useQuery({
+    queryKey: ["run-trend", catalog],
+    queryFn: () => fetchRunTrend(catalog as string),
+    enabled: !!catalog,
+    staleTime: Infinity,
   });
 }
 

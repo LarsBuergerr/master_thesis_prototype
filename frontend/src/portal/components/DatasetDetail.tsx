@@ -19,6 +19,7 @@ import { withExpressiveness } from "../../lib/config";
 import { OverallScoreCard } from "../../components/results/OverallScoreCard";
 import { DimensionRadar } from "../../components/results/DimensionRadar";
 import { DimensionPanel } from "../../components/results/DimensionPanel";
+import { ResultToolbar } from "../../components/results/ResultToolbar";
 import { useCatalog, useOverlay, usePortalSource } from "../source";
 
 function formatDate(iso: string): string {
@@ -58,6 +59,14 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
 
   const rdf = useCatalogRdf(catalog, dataset?.file ?? null);
   const result = single ?? fromJob ?? (overlay?.kind === "run" ? fromRun.data : undefined);
+
+  const [hidePassing, setHidePassing] = useState(false);
+  const actionableCount = result
+    ? Object.values(result.by_dimension).reduce(
+        (acc, dim) => acc + dim.indicators.filter((i) => i.status !== "pass").length,
+        0,
+      )
+    : 0;
 
   function reanalyze(withExpr: boolean) {
     const config = defaults.data?.config;
@@ -214,13 +223,26 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
 
             {result && (
               <>
-                <OverallScoreCard summary={result.summary} />
-                <div style={{ marginTop: 12 }}>
-                  <DimensionRadar summary={result.summary} />
+                <div className="score-row">
+                  <OverallScoreCard summary={result.summary} />
+                  <div className="score-row-radar">
+                    <DimensionRadar summary={result.summary} />
+                  </div>
                 </div>
+                <ResultToolbar
+                  hidePassing={hidePassing}
+                  onChange={setHidePassing}
+                  actionable={actionableCount}
+                  total={result.summary.total_indicators}
+                />
                 <div style={{ marginTop: 8 }}>
                   {Object.values(result.by_dimension).map((dim) => (
-                    <DimensionPanel key={dim.dimension} dim={dim} rdfSource={rdf.data} />
+                    <DimensionPanel
+                      key={dim.dimension}
+                      dim={dim}
+                      rdfSource={rdf.data}
+                      hidePassing={hidePassing}
+                    />
                   ))}
                 </div>
               </>

@@ -43,10 +43,10 @@
 }
 
 .info-tip-bubble {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: -6px;
-  z-index: 20;
+  // Position kommt aus InfoTip.tsx (fest zum Viewport, per Portal an <body>),
+  // damit die Blase nicht den Scrollbereich der Tabelle aufspannt.
+  position: fixed;
+  z-index: 60;
   width: max-content;
   max-width: 280px;
   padding: 8px 10px;
@@ -61,11 +61,7 @@
   text-transform: none;
   letter-spacing: normal;
   white-space: normal;
-
-  &.end {
-    left: auto;
-    right: -6px;
-  }
+  pointer-events: none;
 
   strong {
     display: block;
@@ -388,4 +384,148 @@
   font-size: $fnt-paragraph-small;
   color: $clr-neutral-grey-700;
   cursor: pointer;
+}
+
+// ---------------------------------------------------------------------------
+// Werkzeugleiste über den Ergebnistabellen: Handlungsbedarf-Filter, Spalten
+// ---------------------------------------------------------------------------
+.ind-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: map-get($spacers, "1_5");
+  margin-top: map-get($spacers, "1_5");
+  font-size: $fnt-paragraph-extra-small;
+}
+
+.ind-toolbar-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: $fnt-paragraph-extra-small;
+  white-space: nowrap;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+  }
+}
+
+.ind-toolbar-count {
+  color: $clr-neutral-grey-500;
+  font-variant-numeric: tabular-nums;
+}
+
+// Spaltenauswahl als natives details/summary — Tastaturbedienung inklusive,
+// ohne eigene Popover-Logik.
+.ind-toolbar-menu {
+  position: relative;
+
+  > summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border: 1px solid $clr-neutral-grey-300;
+    border-radius: 4px;
+    background: $white;
+    color: $clr-primary-400;
+    cursor: pointer;
+    list-style: none;
+    white-space: nowrap;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: "▾";
+      font-size: 9px;
+    }
+
+    &:hover {
+      background: $clr-neutral-grey-100;
+    }
+  }
+}
+
+.ind-toolbar-popover {
+  position: absolute;
+  right: 0;
+  z-index: 20;
+  margin-top: 4px;
+  padding: 10px 12px;
+  min-width: 200px;
+  display: grid;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(25, 39, 56, 0.15);
+}
+
+.ind-toolbar-note {
+  margin: 4px 0 0;
+  font-size: $fnt-paragraph-extra-small;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+.dim-all-passed {
+  margin: 0;
+  font-size: $fnt-paragraph-small;
+}
+
+// ---------------------------------------------------------------------------
+// Gesamturteil: Ring mit Note, daneben das Dimensionsnetz
+// ---------------------------------------------------------------------------
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: map-get($spacers, 3);
+  flex-wrap: wrap;
+}
+
+.score-row-radar {
+  flex: 1 1 320px;
+  min-width: 260px;
+}
+
+.score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+
+.score-card-gauge {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.score-card-grade {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-card-figures {
+  text-align: center;
+}
+
+.score-card-value {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.score-card-note {
+  margin-top: 4px;
+  font-size: $fnt-paragraph-extra-small;
 }

@@ -64,22 +64,17 @@ function IndicatorRow({
           )}
         </th>
         <td>
-          <span className={`gd-tag ${indicator.status}`}>
+          <span className={`gd-tag gd-tag-status ${indicator.status}`}>
             <span aria-hidden="true">{statusIcon(indicator.status)}</span>
             {statusText(indicator.status)}
           </span>
         </td>
         <td className="tnum">{fmt(indicator.score)}</td>
-        <td className="tnum muted">
-          {indicator.raw_status && indicator.raw_status !== indicator.status
-            ? `${statusText(indicator.raw_status)} / ${fmt(indicator.raw_score)}`
-            : fmt(indicator.raw_score)}
-        </td>
         <td className="tnum">{fmt(indicator.effective_weight, 2)}</td>
       </tr>
       {actionable && open && (
         <tr className="ind-finding-row">
-          <td colSpan={5}>
+          <td colSpan={4}>
             <IndicatorFinding indicator={indicator} rdfSource={rdfSource} />
           </td>
         </tr>
@@ -92,59 +87,92 @@ export function DimensionPanel({
   dim,
   rdfSource,
   defaultOpen = false,
+  hidePassing = false,
 }: {
   dim: DimensionResult;
   /** RDF-Quelltext, um die betroffene Stelle zu zeigen (optional). */
   rdfSource?: string;
   defaultOpen?: boolean;
+  /** Erfüllte Indikatoren ausblenden, um nur den Handlungsbedarf zu zeigen. */
+  hidePassing?: boolean;
 }) {
   const label = dimensionLabel(dim.dimension);
   const what = dimensionWhat(dim.dimension);
   const open = dim.indicators.filter((i) => i.status !== "pass").length;
+
+  // Gefiltert wird nur die Tabelle. Das Balkendiagramm behält alle Indikatoren:
+  // es ist die Übersicht der Dimension, und ohne die erfüllten Balken sähe eine
+  // gut bewertete Dimension aus wie eine schlechte.
+  const rows = hidePassing
+    ? dim.indicators.filter((i) => i.status !== "pass")
+    : dim.indicators;
+  const hidden = dim.indicators.length - rows.length;
+
+  // Die Aufgabe des Diagramms ist der *Vergleich* von Erfüllungsgraden. Wo alle
+  // Indikatoren 0 oder 1 erreichen, zeigt es nichts, was nicht schon in der
+  // Statusspalte steht; bei einem einzigen Zwischenwert steht die Zahl bereits
+  // in der Score-Spalte. Erst ab zwei gestuften Ergebnissen gibt es etwas zu
+  // vergleichen. Über die Stichprobe (n = 50) heißt das: bei Aussagekraft immer
+  // sichtbar, bei Zugänglichkeit in 38 % der Fälle, bei Auffindbarkeit und
+  // Nachnutzbarkeit praktisch nie.
+  const graded =
+    dim.indicators.filter((i) => {
+      const score = i.score ?? 0;
+      return score > 0 && score < 1;
+    }).length >= 2;
 
   return (
     <details className="dim-panel" open={defaultOpen}>
       <summary>
         <span className="dim-name">{label}</span>{" "}
         <span className="muted">
-          Score {fmt(dim.score)} · {dim.pass_count} von {dim.indicator_count} Indikatoren erfüllt
+          Score {fmt(dim.score)} · Gewicht {fmt(dim.dimension_weight, 1)} ·{" "}
+          {dim.pass_count} von {dim.indicator_count} Indikatoren erfüllt
           {open > 0 && ` · ${open} mit Handlungsbedarf`}
         </span>
       </summary>
 
       {what && <p className="dim-what muted">{what}</p>}
 
-      <div style={{ marginTop: 10 }}>
-        <IndicatorBarChart dim={dim} />
-      </div>
+      {graded && (
+        <div style={{ marginTop: 10 }}>
+          <IndicatorBarChart dim={dim} />
+        </div>
+      )}
 
-      <div className="gd-table-wrapper">
-        <table className="gd-table ind-table" style={{ marginTop: 10 }}>
-          <caption>Indikatoren der Dimension {label}</caption>
-          <thead className="gd-table-head">
-            <tr>
-              <th scope="col">Indikator und Prüfergebnis</th>
-              <th scope="col">
-                Status <InfoTip label="Status" text={columnHelp("status")} />
-              </th>
-              <th scope="col">
-                Score <InfoTip label="Score" text={columnHelp("score")} />
-              </th>
-              <th scope="col">
-                Roh <InfoTip label="Rohwert" text={columnHelp("raw")} />
-              </th>
-              <th scope="col">
-                Gewicht <InfoTip label="Gewicht" text={columnHelp("weight")} align="end" />
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {dim.indicators.map((i) => (
-              <IndicatorRow key={i.indicator_id} indicator={i} rdfSource={rdfSource} />
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {rows.length === 0 ? (
+        <p className="dim-all-passed muted" style={{ marginTop: 10 }}>
+          Alle {dim.indicator_count} Indikatoren dieser Dimension sind erfüllt.
+        </p>
+      ) : (
+        <div className="gd-table-wrapper">
+          <table className="gd-table ind-table" style={{ marginTop: 10 }}>
+            <caption>
+              Indikatoren der Dimension {label}
+              {hidden > 0 && ` — ${hidden} erfüllte ausgeblendet`}
+            </caption>
+            <thead className="gd-table-head">
+              <tr>
+                <th scope="col">Indikator und Prüfergebnis</th>
+                <th scope="col">
+                  Status <InfoTip label="Status" text={columnHelp("status")} />
+                </th>
+                <th scope="col">
+                  Score <InfoTip label="Score" text={columnHelp("score")} />
+                </th>
+                <th scope="col">
+                  Gewicht <InfoTip label="Gewicht" text={columnHelp("weight")} align="end" />
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((i) => (
+                <IndicatorRow key={i.indicator_id} indicator={i} rdfSource={rdfSource} />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </details>
   );
 }

@@ -293,6 +293,26 @@ export interface RunIndexRow {
   n_fail: number;
 }
 
+/** Wie oft ein Indikator über einen Lauf hinweg nicht erfüllt wurde. */
+export interface RunDeficit {
+  indicator_id: string;
+  dimension?: string | null;
+  fail: number;
+  partial: number;
+  total: number;
+}
+
+/** Ein Lauf im Qualitätsverlauf eines Datenbestands. */
+export interface RunTrendPoint {
+  run: string;
+  timestamp?: string | null;
+  dataset_count: number;
+  mean_overall: number;
+  min_overall: number;
+  max_overall: number;
+  llm_model?: string | null;
+}
+
 /** Antwort von `GET /config/default` — die Konfiguration der Evaluation. */
 export interface DefaultConfigResponse {
   config: AnalysisConfigInput;
