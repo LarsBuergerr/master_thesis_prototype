@@ -245,11 +245,16 @@
 // Untertitel stehen in dunkelgrauen Beschriftungskästen, die Suchleiste ist
 // mittig, der Such-Button dunkel.
 .gd-hero {
+  // Die Netzgrafik des GovData-Portals. Überschrift, Untertitel und die
+  // sekundären Aktionen stehen deshalb in deckenden dunklen Kästen — auf einem
+  // Foto wäre freistehender Text nicht zuverlässig lesbar (WCAG 1.4.3).
+  // Die Hintergrundfarbe trägt den Bereich, solange das Bild lädt, und füllt
+  // ihn bei sehr hohen Viewports über die Bildkante hinaus.
   background-color: #2a2f36;
-  background-image:
-    radial-gradient(circle at 18% 30%, rgba(255, 206, 0, 0.10), transparent 45%),
-    radial-gradient(circle at 82% 70%, rgba(0, 115, 168, 0.28), transparent 50%),
-    linear-gradient(120deg, #1f242b 0%, #2f3640 55%, #3a4a57 100%);
+  background-image: url("/images/top_banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .gd-hero-inner {
   max-width: 1200px;
