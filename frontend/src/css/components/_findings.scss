@@ -490,6 +490,10 @@
 .score-row-radar {
   flex: 1 1 320px;
   min-width: 260px;
+  // Das Netz ist quadratisch und an seine feste Höhe gebunden; jenseits von
+  // Polygon plus Achsenbeschriftung bringt zusätzliche Breite nichts mehr und
+  // ließe die Grafik im breiten Inhaltsbereich verloren wirken.
+  max-width: 460px;
 }
 
 .score-card {

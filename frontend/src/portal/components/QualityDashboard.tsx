@@ -62,7 +62,7 @@ function shorten(label: string, max = 30): string {
 }
 
 export function QualityDashboard() {
-  const { catalog, overlay } = usePortalSource();
+  const { catalog, overlay, presenting } = usePortalSource();
   const { datasets } = useCatalog();
   const state = useOverlay();
 
@@ -203,13 +203,15 @@ export function QualityDashboard() {
         <p className="gd-dash-lead">
           Auswertung über <strong>{stats.n}</strong> bewertete Datensätze aus{" "}
           <code>{catalog}</code>
-          {overlay?.kind === "run" && (
+          {/* Die Herkunft der Bewertung ist eine Eigenschaft des Prototyps,
+              nicht des Portals — im Vorführmodus entfällt sie. */}
+          {!presenting && overlay?.kind === "run" && (
             <>
               {" "}
               · Lauf <code>{overlay.run}</code>
             </>
           )}
-          {overlay?.kind === "job" && <> · {overlay.label}</>}. Bewertet werden{" "}
+          {!presenting && overlay?.kind === "job" && <> · {overlay.label}</>}. Bewertet werden{" "}
           {Object.keys(stats.dimAvg).length} Dimensionen mit{" "}
           {sampleResult.data?.summary.total_indicators ?? scored[0]?.total_indicators} Indikatoren.
         </p>

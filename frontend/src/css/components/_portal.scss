@@ -20,8 +20,14 @@
   font-variant-numeric: tabular-nums;
 }
 
+// Breite des Portal-Rasters. GovData nutzt den weiten Container seines
+// Design-Systems — den `lg`-Eintrag aus $container-max-widths (1440 px). Alle
+// Streifen der Seite (Bund-Leiste, Kopfzeile, Hero, Inhalt, Fußzeile) teilen
+// sich diesen Wert, damit ihre Kanten übereinander liegen.
+$gd-container-width: map-get($container-max-widths, lg);
+
 .gd-portal-container {
-  max-width: 1200px;
+  max-width: $gd-container-width;
   margin: 0 auto;
   padding-left: $spacer * 3;
   padding-right: $spacer * 3;
@@ -50,7 +56,7 @@
   color: $clr-neutral-grey-800;
 }
 .gd-federal-inner {
-  max-width: 1200px;
+  max-width: $gd-container-width;
   margin: 0 auto;
   padding: 6px ($spacer * 3);
   display: flex;
@@ -86,17 +92,18 @@
   background: $white;
 }
 .gd-header-inner {
-  max-width: 1200px;
+  max-width: $gd-container-width;
   margin: 0 auto;
   padding: ($spacer * 1.5) ($spacer * 3);
   display: flex;
   align-items: center;
   gap: $spacer * 3;
 
-  // Sicherheitsnetz: Logo, Navigation und Aktionen zusammen füllen den
-  // 1200-px-Container fast aus. Der Bestandswechsel trägt deshalb dauerhaft nur
-  // sein Icon (.gd-button-icon-only), das Analyse-Werkzeug ab $large-breakpoint
-  // (.gd-button-collapsing); der Umbruch greift nur, wenn es trotzdem eng wird.
+  // Sicherheitsnetz: unterhalb der Containerbreite füllen Logo, Navigation und
+  // Aktionen die Zeile fast aus. Der Bestandswechsel trägt deshalb dauerhaft
+  // nur sein Icon (.gd-button-icon-only), das Analyse-Werkzeug ab
+  // $large-breakpoint (.gd-button-collapsing); der Umbruch greift nur, wenn es
+  // trotzdem eng wird.
   @media (max-width: $large-breakpoint) {
     gap: $spacer;
   }
@@ -257,35 +264,39 @@
   background-repeat: no-repeat;
 }
 .gd-hero-inner {
-  max-width: 1200px;
+  max-width: $gd-container-width;
   margin: 0 auto;
   padding: ($spacer * 5) ($spacer * 3) ($spacer * 5);
-  text-align: center;
+}
+
+// Der Suchblock ist ein zweispaltiges Raster: links das Eingabefeld, rechts
+// eine Spalte, die sich alle drei Schaltflächen teilen. Dadurch sind Suchen,
+// Erweiterte Suche und Kartensuche zwangsläufig gleich breit und fluchten links
+// wie rechts — ohne feste Pixelbreite, die beim Ändern einer Beschriftung
+// wieder auseinanderliefe. Die Überschrift läuft über beide Spalten und beginnt
+// damit an derselben Kante wie das Feld.
+.gd-hero-search {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  // Zeilenabstand ja, Spaltenabstand nein: Feld und Suchen-Knopf stoßen bündig
+  // aneinander wie bei GovData.
+  row-gap: 6px;
+  column-gap: 0;
 
   h1 {
-    display: inline-block;
+    grid-column: 1 / -1;
+    justify-self: start;
     margin: 0 0 $spacer;
     padding: 4px 12px;
     background: $clr-media-grey-500;
     color: $white;
   }
-}
-.gd-hero-sub {
-  display: inline-block;
-  margin: 0 0 $spacer * 3;
-  padding: 3px 12px;
-  background: $clr-media-grey-500;
-  color: $white;
-  font-size: $fnt-paragraph-regular;
-}
-.gd-searchbar {
-  display: flex;
-  gap: 0;
-  max-width: 720px;
-  margin: 0 auto;
 
   input {
-    flex: 1;
+    grid-column: 1;
+    grid-row: 2;
     height: rem-calc(48);
     padding: 0 $spacer * 1.5;
     border-radius: 0;
@@ -294,12 +305,15 @@
     background: $white;
     color: $black;
     font-size: $fnt-paragraph-regular;
+    min-width: 0;
 
     @include outline-base();
   }
 
   // GovData-Hero-Button: dunkelgrau statt Primärblau, eckig, an das Feld bündig.
   .gd-button {
+    grid-column: 2;
+    grid-row: 2;
     border-radius: 0;
     padding: 12px 22px;
   }
@@ -313,19 +327,13 @@
       border-color: $clr-media-grey-500;
     }
   }
-}
-// Sekundäre Hero-Aktionen (Erweiterte Suche / Kartensuche) rechtsbündig unter
-// dem Suchfeld, kleine dunkle Chips wie bei GovData.
-.gd-hero-actions {
-  max-width: 720px;
-  margin: 6px auto 0;
-  display: flex;
-  justify-content: flex-end;
-  gap: 6px;
 
+  // Sekundäre Aktionen: dieselbe Rasterspalte, gestapelt unter dem Suchen-Knopf.
   .gd-hero-action {
     @include outline-base();
+    grid-column: 2;
     padding: 4px 10px;
+    text-align: center;
     font-size: $fnt-paragraph-extra-small;
     font-weight: 700;
     color: $white;
@@ -402,6 +410,15 @@
   &.is-static {
     color: $clr-neutral-grey-600;
   }
+}
+// Formatnamen sind teils ein einziges langes Wort (z. B. der MIME-Typ
+// „application/vnd.openxmlformats-officedocument.spreadsheetml.sheet“). Ohne
+// Umbruchpunkt drückte es die Facettenspalte auf. `anywhere` bricht nur, wenn
+// es sein muss, und zählt anders als `break-word` in die Mindestbreite des
+// Flex-Elements — nur so schrumpft die Beschriftung überhaupt mit.
+.gd-facet-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .gd-facet-count {
   flex: none;
@@ -580,6 +597,10 @@
   border-radius: 5px;
   background: $clr-media-grey-500;
   color: $white;
+  // Lange MIME-Typen sind ein einziges Wort; ohne dies ragt das Etikett aus
+  // der Trefferkarte heraus (siehe .gd-facet-label).
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 .ds-keyword {
   font-size: rem-calc(11);
@@ -645,9 +666,6 @@
 .gd-detail-main {
   min-width: 0;
 }
-.gd-stratum-tag {
-  margin-bottom: $spacer;
-}
 .gd-detail-title {
   margin: $spacer 0 4px;
 }
@@ -660,6 +678,11 @@
   margin: 0 0 $spacer * 2;
   color: $clr-neutral-grey-700;
   white-space: pre-line;
+  // Der Inhaltsbereich ist breiter als die angenehme Lesezeile. Die
+  // Beschreibungen sind der einzige längere Fließtext der Seite und werden
+  // deshalb auf ein übliches Zeilenmaß begrenzt; die übrigen Blöcke (Tabellen,
+  // Diagramme, Trefferliste) profitieren weiter von der vollen Breite.
+  max-width: 90ch;
 }
 .gd-detail-h2 {
   font-size: rem-calc(16);
@@ -808,7 +831,7 @@
   color: $white;
 }
 .gd-footer-inner {
-  max-width: 1200px;
+  max-width: $gd-container-width;
   margin: 0 auto;
   padding: ($spacer * 3) ($spacer * 3);
 }
@@ -845,6 +868,11 @@
 
   h1 {
     margin: 0 0 4px;
+  }
+  // Wie bei der Datensatzbeschreibung: Fließtext auf ein lesbares Zeilenmaß,
+  // während die Arbeitsfläche darunter die volle Breite nutzt.
+  p {
+    max-width: 90ch;
   }
 }
 // .app bringt eigenes Padding mit; im Portal-Kontext oben andocken

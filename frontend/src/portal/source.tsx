@@ -32,6 +32,15 @@ interface PortalSource {
   overlay: Overlay;
   setOverlay: (overlay: Overlay) => void;
   reset: () => void;
+  /**
+   * Vorführmodus. Blendet die Bedienelemente aus, die es nur gibt, weil der
+   * Prototyp seine Datenquelle und seine Bewertung zur Laufzeit wählen lässt —
+   * Quellen- und Laufauswahl, Neuberechnung, Herkunftsangabe des Ergebnisses.
+   * In einem echten Portal existieren sie nicht; für Screenshots stören sie.
+   * Was bleibt, ist die Portalansicht mit ihrer Bewertung.
+   */
+  presenting: boolean;
+  setPresenting: (next: boolean) => void;
 }
 
 const SourceContext = createContext<PortalSource | null>(null);
@@ -39,6 +48,7 @@ const SourceContext = createContext<PortalSource | null>(null);
 export function PortalSourceProvider({ children }: { children: ReactNode }) {
   const [catalog, setCatalogState] = useState<string | null>(null);
   const [overlay, setOverlay] = useState<Overlay>(null);
+  const [presenting, setPresenting] = useState(false);
 
   // Katalogwechsel verwirft die Bewertung: ein Lauf gehört immer zu genau
   // einem Datenverzeichnis, über einem anderen wäre er sinnlos.
@@ -50,11 +60,14 @@ export function PortalSourceProvider({ children }: { children: ReactNode }) {
   const reset = useCallback(() => {
     setCatalogState(null);
     setOverlay(null);
+    // Ohne Datenbestand gibt es nichts vorzuführen — und der Vorführmodus
+    // würde die Quellenauswahl verbergen, die jetzt gebraucht wird.
+    setPresenting(false);
   }, []);
 
   const value = useMemo(
-    () => ({ catalog, setCatalog, overlay, setOverlay, reset }),
-    [catalog, setCatalog, overlay, reset],
+    () => ({ catalog, setCatalog, overlay, setOverlay, reset, presenting, setPresenting }),
+    [catalog, setCatalog, overlay, reset, presenting],
   );
 
   return <SourceContext.Provider value={value}>{children}</SourceContext.Provider>;

@@ -1,5 +1,5 @@
 // Die „Daten"-Ansicht: Suchleiste, Facetten-Filter und Trefferliste über den
-// geladenen Datenbestand. Facetten (Datenart, Format, Lizenz) und Sortierung
+// geladenen Datenbestand. Facetten (Format, Lizenz, Herkunft) und Sortierung
 // entsprechen Funktionen, die es auch in der echten GovData-Suche gibt.
 //
 // Alle Inhalte stammen aus dem Katalog. Die qualitätsbezogenen Teile —
@@ -17,11 +17,6 @@ import { useCatalog, useOverlay, usePortalSource } from "../source";
 
 type SortKey = "relevanz" | "neueste" | "titel" | "score_desc" | "score_asc";
 
-const CATEGORIES: { key: string; label: string }[] = [
-  { key: "geo", label: "Geodaten" },
-  { key: "non_geo", label: "Fachdaten" },
-];
-
 const GRADE_ORDER = ["A", "B", "C", "D", "F"];
 
 function prettySource(p: string): string {
@@ -29,12 +24,11 @@ function prettySource(p: string): string {
 }
 
 export function DatasetSearch({ onNavigate }: { onNavigate: Navigate }) {
-  const { catalog } = usePortalSource();
+  const { presenting } = usePortalSource();
   const { datasets, loading, error } = useCatalog();
   const overlay = useOverlay();
 
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState<string | null>(null);
   const [format, setFormat] = useState<string | null>(null);
   const [license, setLicense] = useState<string | null>(null);
   const [grade, setGrade] = useState<string | null>(null);
@@ -75,18 +69,9 @@ export function DatasetSearch({ onNavigate }: { onNavigate: Navigate }) {
     return [...m.entries()].sort((a, b) => b[1] - a[1]).slice(0, 7);
   }, [datasets]);
 
-  const categoryCounts = useMemo(() => {
-    const m = new Map<string, number>();
-    datasets.forEach((d) => {
-      if (d.category) m.set(d.category, (m.get(d.category) ?? 0) + 1);
-    });
-    return m;
-  }, [datasets]);
-
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     let list = datasets.filter((d) => {
-      if (category && d.category !== category) return false;
       if (format && !d.formats.includes(format)) return false;
       if (license && d.license !== license) return false;
       if (grade) {
@@ -106,19 +91,18 @@ export function DatasetSearch({ onNavigate }: { onNavigate: Navigate }) {
     else if (sort === "titel") list.sort((a, b) => a.title.localeCompare(b.title, "de"));
     return list;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [datasets, query, category, format, license, grade, sort, overlay.rows]);
+  }, [datasets, query, format, license, grade, sort, overlay.rows]);
 
-  const activeFilters = [category, format, license, grade].filter(Boolean).length;
+  const activeFilters = [format, license, grade].filter(Boolean).length;
 
   return (
     <>
       <section className="gd-hero">
         <div className="gd-hero-inner">
-          <h1>Datensätze durchsuchen</h1>
-          <p className="gd-hero-sub">
-            Datenbestand <code>{catalog}</code> · {datasets.length} Datensätze
-          </p>
-          <div className="gd-searchbar" role="search">
+          {/* Überschrift, Feld und Aktionen teilen sich ein Raster, damit ihre
+              Kanten zwangsläufig fluchten — siehe .gd-hero-search. */}
+          <div className="gd-hero-search" role="search">
+            <h1>Datensätze durchsuchen</h1>
             <input
               type="search"
               value={query}
@@ -130,17 +114,21 @@ export function DatasetSearch({ onNavigate }: { onNavigate: Navigate }) {
             <button type="button" className="gd-button gd-button-primary">
               Suchen
             </button>
-          </div>
-          <div className="gd-hero-actions" aria-hidden="true">
-            <span className="gd-hero-action">Erweiterte Suche</span>
-            <span className="gd-hero-action">Kartensuche</span>
+            <span className="gd-hero-action" aria-hidden="true">
+              Erweiterte Suche
+            </span>
+            <span className="gd-hero-action" aria-hidden="true">
+              Kartensuche
+            </span>
           </div>
         </div>
       </section>
 
-      <div className="gd-portal-container">
-        <OverlayBar datasetCount={datasets.length} />
-      </div>
+      {!presenting && (
+        <div className="gd-portal-container">
+          <OverlayBar datasetCount={datasets.length} />
+        </div>
+      )}
 
       {loading && <div className="gd-portal-container"><p className="muted">Metadaten werden gelesen…</p></div>}
       {error && (
@@ -162,20 +150,6 @@ export function DatasetSearch({ onNavigate }: { onNavigate: Navigate }) {
                   count={c}
                   active={grade === g}
                   onClick={() => setGrade(grade === g ? null : g)}
-                />
-              ))}
-            </FacetGroup>
-          )}
-
-          {categoryCounts.size > 0 && (
-            <FacetGroup title="Datenart">
-              {CATEGORIES.filter((s) => categoryCounts.has(s.key)).map((s) => (
-                <FacetItem
-                  key={s.key}
-                  label={s.label}
-                  count={categoryCounts.get(s.key) ?? 0}
-                  active={category === s.key}
-                  onClick={() => setCategory(category === s.key ? null : s.key)}
                 />
               ))}
             </FacetGroup>
@@ -283,7 +257,7 @@ function FacetItem({
   if (isStatic) {
     return (
       <li className="gd-facet-item is-static">
-        <span>{label}</span>
+        <span className="gd-facet-label">{label}</span>
         <span className="gd-facet-count">{count}</span>
       </li>
     );
@@ -296,7 +270,7 @@ function FacetItem({
         aria-pressed={active}
         onClick={onClick}
       >
-        <span>{label}</span>
+        <span className="gd-facet-label">{label}</span>
         <span className="gd-facet-count">{count}</span>
       </button>
     </li>

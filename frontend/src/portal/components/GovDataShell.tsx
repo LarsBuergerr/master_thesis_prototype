@@ -33,6 +33,29 @@ function ToolIcon() {
   );
 }
 
+// Auge offen/geschlossen für den Vorführmodus: offen = die Bedienelemente des
+// Prototyps sind sichtbar, durchgestrichen = ausgeblendet.
+function EyeIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      className="gd-button-icon"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" />
+      <circle cx="12" cy="12" r="3" />
+      {!open && <path d="M4 20 20 4" />}
+    </svg>
+  );
+}
+
 function SwapIcon() {
   return (
     <svg
@@ -79,7 +102,7 @@ interface Props {
 }
 
 export function GovDataShell({ view, onNavigate, hasCatalog, children }: Props) {
-  const { reset } = usePortalSource();
+  const { reset, presenting, setPresenting } = usePortalSource();
 
   return (
     <div className="gd-portal">
@@ -143,7 +166,30 @@ export function GovDataShell({ view, onNavigate, hasCatalog, children }: Props) 
           </nav>
 
           <div className="gd-header-actions">
+            {/* Der Schalter selbst bleibt immer sichtbar — sonst käme man aus
+                dem Vorführmodus nicht wieder heraus. */}
             {hasCatalog && (
+              <button
+                type="button"
+                className={`gd-button gd-button-icon-only${presenting ? " gd-button-secondary" : " gd-button-ghost"}`}
+                onClick={() => setPresenting(!presenting)}
+                aria-pressed={presenting}
+                title={
+                  presenting
+                    ? "Bedienelemente des Prototyps wieder einblenden"
+                    : "Bedienelemente des Prototyps ausblenden (für Screenshots)"
+                }
+                aria-label={
+                  presenting ? "Bedienelemente einblenden" : "Bedienelemente ausblenden"
+                }
+              >
+                <EyeIcon open={!presenting} />
+                <span className="gd-button-label">
+                  {presenting ? "Bedienelemente einblenden" : "Bedienelemente ausblenden"}
+                </span>
+              </button>
+            )}
+            {hasCatalog && !presenting && (
               <button
                 type="button"
                 className="gd-button gd-button-ghost gd-button-icon-only"
@@ -155,16 +201,18 @@ export function GovDataShell({ view, onNavigate, hasCatalog, children }: Props) 
                 <span className="gd-button-label">Datenbestand wechseln</span>
               </button>
             )}
-            <button
-              type="button"
-              className={`gd-button gd-button-collapsing${view === "analyzer" ? " gd-button-secondary" : " gd-button-primary"}`}
-              onClick={() => onNavigate({ view: "analyzer" })}
-              title="Analyse-Werkzeug"
-              aria-label="Analyse-Werkzeug"
-            >
-              <ToolIcon />
-              <span className="gd-button-label">Analyse-Werkzeug</span>
-            </button>
+            {!presenting && (
+              <button
+                type="button"
+                className={`gd-button gd-button-collapsing${view === "analyzer" ? " gd-button-secondary" : " gd-button-primary"}`}
+                onClick={() => onNavigate({ view: "analyzer" })}
+                title="Analyse-Werkzeug"
+                aria-label="Analyse-Werkzeug"
+              >
+                <ToolIcon />
+                <span className="gd-button-label">Analyse-Werkzeug</span>
+              </button>
+            )}
           </div>
         </div>
       </header>

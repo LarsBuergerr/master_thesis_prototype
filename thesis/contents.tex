@@ -1,3 +1,22 @@
+% ===========================================================================
+% Platzhalter für noch nicht erstellte Abbildungen. Rendert einen gerahmten
+% Kasten mit der geplanten Bildbeschreibung, damit das Dokument übersetzbar
+% bleibt, solange die Screenshots fehlen. Zum Einsetzen der fertigen Grafik den
+% Aufruf durch die darüberstehende, auskommentierte \includegraphics-Zeile
+% ersetzen. Optionales Argument = Höhe des Kastens.
+% @TODO Makro samt aller \bildplatzhalter-Aufrufe entfernen, sobald alle
+% Abbildungen vorliegen.
+% ===========================================================================
+\newcommand{\bildplatzhalter}[2][0.30\textheight]{%
+  \fbox{%
+    \begin{minipage}[c][#1][c]{0.95\textwidth}%
+      \centering\sffamily\small
+      \textbf{[Platzhalter Abbildung]}\\[0.6em]
+      \begin{minipage}{0.85\linewidth}\centering #2\end{minipage}%
+    \end{minipage}%
+  }%
+}
+
 \chapter{Einleitung}
 
 \section{Problemstellung und Motivation}
@@ -1721,6 +1740,7 @@ Aus Nutzungssicht bewertet der Prototyp einzelne DCAT-AP.de-Metadatensätze, die
 Ebenso bewusst ist der Funktionsumfang begrenzt. Der Prototyp harvestet keine Metadaten, sondern arbeitet auf bereits exportierten RDF-Dateien, wie sie die GovData-Infrastruktur bereitstellt. Er ist als Analysewerkzeug für Einzel- und Stichprobenbewertungen ausgelegt und nicht als dauerhaft betriebener Portaldienst mit kontinuierlichem Monitoring. Bewertet werden die Metadaten und ihre technische Einlösbarkeit, nicht die fachliche Qualität der beschriebenen Daten selbst.
 
 \section{Systemarchitektur und Verarbeitungspipeline}
+\label{sec:architektur}
 
 Die Architektur des Prototyps folgt drei Entwurfsprinzipien. Erstens ist die Verarbeitung in Schichten mit strikt einwärts gerichteten Abhängigkeiten organisiert, sodass die Domänenlogik von Ein- und Ausgabe entkoppelt bleibt. Zweitens ist das Indikatorensystem über eine Registrierung erweiterbar, sodass neue Indikatoren hinzugefügt werden können, ohne die Verarbeitungskette anzupassen. Drittens werden alle Fakten über einen Datensatz genau einmal erhoben und anschließend von allen Indikatoren gemeinsam genutzt. Abbildung~\ref{fig:prototyp_architektur} zeigt den Aufbau des Prototyps und den Datenfluss durch die Verarbeitungskette.
 
@@ -2249,51 +2269,220 @@ Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenf
 \section{Menschenlesbares Qualitätsreporting}
 \label{sec:frontend}
 
-% Scope: Wer liest das Ergebnis und was muss er danach tun können. Adressat ist
-% der Datenbereitsteller, nicht der Entwickler des Bewertungsmodells. Aus den
-% Interviews (Kap.~3) abgeleitete Gestaltungsziele: Befund statt Punktzahl,
-% Fundstelle statt Feldname, Handlungsanweisung statt Fehlermeldung.
-% Nachvollziehbarkeit als durchgängiges Ziel wie beim Prototyp selbst.
-\subsection{Zielgruppe und Gestaltungsziele}
+Der in Section~\ref{sec:maschinenreport} beschriebene Report ist vollständig, aber nicht adressatengerecht: Er richtet sich an Maschinen und an Leser, die den Aufbau von DCAT-AP.de kennen. Dieser Abschnitt beschreibt, wie daraus eine Darstellung wird, die ihre jeweiligen Adressaten handlungsfähig macht, und beantwortet damit die fünfte Forschungsfrage.
 
-% Scope: Warum die Darstellung die Portalumgebung nachbildet und kein
-% eigenständiges Analyse-Dashboard ist — ein Qualitätsbefund muss dort
-% erscheinen, wo die Metadaten gepflegt werden. Übernahme des GovData-
-% Gestaltungssystems (Farbtokens, Komponenten) und was der Mock bewusst
-% nicht leistet.
-\subsection{Einbettung in die Portalumgebung}
+% Scope: Wer liest das Ergebnis und was muss er danach tun können. Drei
+% Zielgruppen mit unterschiedlichem Auflösungsbedarf; der Datenbereitsteller ist
+% der anspruchsvollste Fall. Aus den Interviews (Kap.~3) abgeleitete
+% Gestaltungsziele: Befund statt Punktzahl, Fundstelle statt Feldname,
+% Handlungsanweisung statt Fehlermeldung. Nachvollziehbarkeit als durchgängiges
+% Ziel wie beim Prototyp selbst.
+\subsection{Zielgruppen und Gestaltungsziele}
+\label{subsec:zielgruppen}
 
-% Scope: Die zentrale Architekturentscheidung. Zwei getrennte Ebenen — die
-% beschreibenden Metadaten eines Datenverzeichnisses (Portalinhalt) und die
-% Bewertung eines abgeschlossenen Laufs (Overlay). Verknüpfung ausschließlich
-% über den Dateinamen; das Portal ist ohne Bewertung vollständig, der
-% Bewertungsreport trägt keine Titel oder Schlagwörter. Konsequenz für die
-% Schnittstelle (Katalog- und Lauf-Endpunkte) und für die Übertragbarkeit auf
-% ein reales Portal.
+Ein Qualitätsurteil hat mehr als einen Adressaten, und die Adressaten benötigen es in unterschiedlicher Auflösung. Tabelle~\ref{tab:zielgruppen} stellt die drei Gruppen gegenüber, an denen sich die Darstellung ausrichtet.
+
+\begin{table}[H]
+\rowcolors{1}{white}{white}
+\centering
+\tiny
+\renewcommand{\arraystretch}{1}
+\begin{tabularx}{\textwidth}{p{3cm} X X}
+\toprule
+\textbf{Zielgruppe} & \textbf{Leitfrage} & \textbf{Benötigte Auflösung} \\
+\midrule
+
+Datennutzende &
+Kann ich diesem Datensatz trauen und ihn ohne Rückfragen weiterverwenden? &
+Gesamtscore, ergänzend die vier Dimensionswerte \\ \hline
+
+Datenbereitstellende &
+Was muss ich an meinem Metadatensatz konkret ändern? &
+Einzelergebnis je Indikator mit Befund, Fundstelle und Handlungsanweisung \\ \hline
+
+Portalbetreibende &
+Wo liegen die systematischen Lücken im Bestand und wie entwickeln sie sich? &
+Aggregation über den Bestand: Mängelhäufigkeit je Indikator, Verlauf über die Zeit \\
+
+\bottomrule
+\end{tabularx}
+\captionsetup{justification=centering}
+\caption{Zielgruppen des Qualitätsreportings und ihr jeweiliger Auflösungsbedarf}
+\label{tab:zielgruppen}
+\end{table}
+
+Für Datennutzende ist die Bewertung ein Auswahlkriterium und kein Arbeitsauftrag. Sie treffen anhand des Ergebnisses eine Vorentscheidung darüber, ob ein Datensatz für ihr Vorhaben in Betracht kommt, und benötigen dafür einen verdichteten Wert; die Dimensionswerte sind für sie insofern von Interesse, als sie unterschiedliche Nutzungshürden trennen -- ein Datensatz mit guter Auffindbarkeit, aber schwacher Zugänglichkeit ist für die automatisierte Weiterverarbeitung anders zu bewerten als umgekehrt. Eine Aufschlüsselung bis zum einzelnen Indikator ist für diese Gruppe ohne Nutzen, weil sie an den Metadaten nichts ändern kann.
+
+Portalbetreibende stehen am anderen Ende: Sie interessiert weniger der einzelne Datensatz als das Muster über den Bestand. Ein Indikator, den nahezu alle Datensätze verfehlen, verweist auf eine Lücke im Erfassungsprozess oder in der Erntekonfiguration und damit auf eine Maßnahme, die viele Datensätze zugleich verbessert -- im Unterschied zu einem vereinzelt verfehlten Indikator, der eine Einzelfallkorrektur bleibt. Ebenso ist für diese Gruppe die Entwicklung über die Zeit aussagekräftiger als ein Momentanwert, weil sich erst daran ablesen lässt, ob eine ergriffene Maßnahme gewirkt hat.
+
+Der anspruchsvollste Fall sind die Datenbereitstellenden, weil sie als Einzige aus dem Ergebnis eine konkrete Handlung ableiten müssen. Die Gestaltung richtet sich deshalb an ihnen aus; die beiden übrigen Sichten entstehen durch Verdichtung derselben Daten. Aus dieser Ausrichtung folgen drei Gestaltungsziele. Erstens der Vorrang des Befunds vor der Punktzahl: Ein Zahlenwert ordnet ein, benennt aber nichts, weshalb zu jedem nicht erfüllten Indikator der zugrunde liegende Sachverhalt gezeigt wird. Zweitens der Vorrang der Fundstelle vor dem Feldnamen: Die Angabe, dass ein Feld fehlt, hilft nur, wenn erkennbar bleibt, an welcher Stelle des konkreten Metadatensatzes das gilt -- bei mehreren Distributionen ist diese Unterscheidung entscheidend. Drittens der Vorrang der Handlungsanweisung vor der Fehlermeldung: Aus jedem Befund muss hervorgehen, welche Änderung ihn auflösen würde.
+
+Alle drei sind Ausprägungen desselben Prinzips, das bereits den maschinenlesbaren Report leitet: Nachvollziehbarkeit. Ein Qualitätsurteil, das sein Zustandekommen nicht offenlegt, ist nicht überprüfbar und damit nicht handlungsleitend.
+
+% Scope: Warum die Darstellung in einer Portalumgebung sitzt und kein
+% eigenständiges Analyse-Dashboard ist. Die GovData-Nachbildung ist Mittel zum
+% Zweck (Demonstration der Einbettbarkeit), nicht Gegenstand der Bewertung.
+\subsection{Einbettung in eine Portalumgebung}
+
+Ein Qualitätsbefund entfaltet seine Wirkung dort, wo die Metadaten ohnehin gepflegt und betrachtet werden. Ein eigenständiges Analysewerkzeug, in das Metadaten gesondert hochgeladen werden, verlangt dagegen einen zusätzlichen Arbeitsschritt an einem zusätzlichen Ort. Die Bewertung wird deshalb als zusätzliche Ebene innerhalb der gewohnten Portalansichten dargestellt: In der Trefferliste erscheint je Datensatz ein kompakter Qualitätsindikator, die Detailansicht erhält einen Bewertungsabschnitt unterhalb der beschreibenden Metadaten, und die Aggregation über den Bestand liegt als eigener Menüpunkt daneben.
+
+Um dies zeigen zu können, ohne Zugriff auf ein produktiv betriebenes Portal zu haben, bildet der Prototyp die Oberfläche des GovData-Portals nach \cite{govdata_portal} und übernimmt dessen Gestaltungssystem und Seitenaufbau. Diese Nachbildung ist ausdrücklich Mittel zum Zweck und nicht Gegenstand der Arbeit: Sie dient dem Nachweis, dass sich die Bewertungsergebnisse in eine bestehende Portalumgebung einfügen lassen, und wird selbst nicht bewertet. Sie umfasst entsprechend nur die für die Qualitätsdarstellung erforderlichen Ansichten, bildet die Redaktionsprozesse des Portals nicht nach und schreibt insbesondere nicht in die Metadaten zurück. Der Prototyp belegt damit die Einbettbarkeit, ersetzt aber keine Untersuchung der tatsächlichen Wirkung in der Praxis; diese Abgrenzung wird in Section~\ref{sec:limitationen_eval} als Grenze ausgewiesen.
+
+\begin{figure}[H]
+    \centering
+    % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
+    % \includegraphics[width=\textwidth]{images/frontend_trefferliste.png}
+    \bildplatzhalter{Screenshot der Trefferliste: Suchbereich mit
+    Facettenfilter links, Trefferkarten mit Titel, Beschreibung, Format- und
+    Lizenzangaben sowie dem kompakten Qualitätsring je Datensatz rechts.}
+    \captionsetup{justification=centering}
+    \caption{Trefferliste mit eingebettetem Qualitätsindikator}
+    \label{fig:frontend_trefferliste}
+\end{figure}
+
+% Scope: Die Bewertungsebene ist von den Portalinhalten getrennt und wird über
+% den Dateistamm verknüpft. Das Umschalten zwischen Läufen ist ein
+% Demonstrationsmittel, nicht das Zielbild — im Regelbetrieb liegt genau eine
+% fortlaufend fortgeschriebene Bewertung über dem Bestand.
 \subsection{Trennung von Metadaten- und Bewertungsebene}
+
+Portalinhalt und Bewertung werden als zwei getrennte Ebenen geführt, die ausschließlich über den Dateinamen miteinander verknüpft sind. Die erste Ebene ist der Datenbestand: ein Verzeichnis mit DCAT-AP.de-Metadatendateien, aus denen Titel, Beschreibung, Schlagwörter, Formate, Lizenz und herausgebende Stelle gewonnen werden. Diese Ebene weiß nichts von Bewertung. Die zweite Ebene ist das Ausgabeverzeichnis eines abgeschlossenen Bewertungslaufs; es enthält weder Titel noch Schlagwörter, sondern ausschließlich Ergebnisse.
+
+Diese Trennung ist die für die Übertragbarkeit wesentliche Eigenschaft des Entwurfs. Ein produktiv betriebenes Portal führt seine Metadaten in einer eigenen Datenhaltung und wird diese nicht um Bewertungsfelder ergänzen wollen; das hier gewählte Modell verlangt das auch nicht. Die Bewertung bleibt ein Nebenprodukt, das über den bestehenden Bestand gelegt wird, ohne ihn zu verändern. In einem realen Portal träte an die Stelle des Verzeichnisses die vorhandene Datenhaltung, während die Bewertungsebene unverändert bliebe und fortlaufend automatisiert fortgeschrieben würde.
+
+Dass die Oberfläche des Prototyps ohne Inhalt startet, einen Datenbestand erst laden lässt und anschließend das Umschalten zwischen mehreren vorliegenden Läufen erlaubt, ist demgegenüber kein Zielbild, sondern ein Demonstrationsmittel. Es macht die Trennung beider Ebenen unmittelbar sichtbar und erlaubt es, in einer Vorführung dieselben Datensätze unter verschiedenen Bewertungsläufen zu zeigen. Im Regelbetrieb läge über einem Bestand genau eine Bewertung, die nach jeder Ernte automatisch erneuert wird.
+
+\begin{figure}[H]
+    \centering
+    % @TODO Schemazeichnung erstellen und die folgende Zeile einkommentieren:
+    % \includegraphics[width=\textwidth]{images/frontend_ebenenmodell.png}
+    \bildplatzhalter{Schemazeichnung des Zwei-Ebenen-Modells: oben der
+    Datenbestand (im Prototyp ein Verzeichnis mit RDF-Dateien, im Regelbetrieb
+    die Datenhaltung des Portals), unten die Bewertungsebene mit den
+    Ergebnisreports eines Laufs, dazwischen die Verknüpfung allein über den
+    Dateistamm; rechts die Portalansicht, in der beide Ebenen zusammentreffen.}
+    \captionsetup{justification=centering}
+    \caption{Trennung von Metadaten- und Bewertungsebene und ihre Verknüpfung über den Dateistamm}
+    \label{fig:frontend_ebenen}
+\end{figure}
+
+% Scope: Nur anreißen — welche Bausteine, welche Sprache, welches Protokoll.
+% Die ausführliche Architektur des Bewertungskerns steht in
+% Section~\ref{sec:architektur}; hier geht es allein um die Anbindung der
+% Oberfläche.
+\subsection{Anbindung an den Bewertungskern}
+\label{subsec:frontend_architektur}
+
+Die Oberfläche greift nicht auf den Bewertungskern durch, sondern spricht mit ihm über eine dazwischenliegende Dienstschicht. Diese ist in Python umgesetzt und bindet den in Section~\ref{sec:architektur} beschriebenen Bewertungsdienst als Bibliothek ein; sie enthält selbst keine Bewertungslogik, sondern übersetzt zwischen Konfiguration, Ergebnisreport und Anzeigeform. Nach außen stellt sie eine HTTP-Schnittstelle bereit, über die sämtlicher Austausch in JSON erfolgt -- demselben Format, in dem auch die Ergebnisreports auf der Festplatte liegen. Die Oberfläche ist eine im Browser laufende Anwendung in TypeScript und hält keinen eigenen Zustand über die dargestellten Ergebnisse hinaus.
+
+Die Schnittstelle spiegelt die Trennung beider Ebenen: Eine Gruppe von Endpunkten bedient Datenbestände, eine zweite abgeschlossene Läufe, und keine Antwort der einen Gruppe enthält Felder der anderen. Eine dritte Gruppe stößt neue Bewertungsläufe an. Weil ein solcher Lauf je Datei Netzabfragen und einen Sprachmodellaufruf umfasst und damit deutlich länger dauert, als eine HTTP-Anfrage offen gehalten werden sollte, arbeitet diese Gruppe zweistufig: Die Anfrage legt einen Auftrag an und antwortet sofort mit dessen Kennung, die eigentliche Verarbeitung läuft im Hintergrund, und die Oberfläche fragt den Fortschritt zyklisch ab, bis das Ergebnis vorliegt.
+
+\begin{figure}[H]
+    \centering
+    % @TODO Schemazeichnung erstellen und die folgende Zeile einkommentieren:
+    % \includegraphics[width=\textwidth]{images/frontend_anbindung.png}
+    \bildplatzhalter{Schemazeichnung der Anbindung: Browseranwendung
+    (TypeScript) -- HTTP/JSON -- Dienstschicht (Python) -- Funktionsaufruf --
+    Bewertungskern; daneben die beiden Datenquellen (Datenbestand,
+    Laufverzeichnis) und der zweistufige Ablauf eines angestoßenen
+    Bewertungslaufs.}
+    \captionsetup{justification=centering}
+    \caption{Anbindung der Oberfläche an den Bewertungskern}
+    \label{fig:frontend_anbindung}
+\end{figure}
 
 % Scope: Wie aus indikatorspezifischer Evidenz eine einheitliche Darstellung
 % wird. Das Befundmodell (Kernaussage, Ist-Angaben mit Fundstelle, Soll-Zustand,
-% Einzelbefunde) als gemeinsame Form über alle Indikatoren hinweg, obwohl deren
-% Detailbefunde unterschiedlich aufgebaut sind. Verortung im RDF-Quelltext.
-% Warum der Befund im Backend entsteht und nicht in der Oberfläche.
+% Einzelbefunde) als gemeinsame Form über alle Indikatoren hinweg. Verortung im
+% RDF-Quelltext. Warum der Befund im Backend entsteht.
 \subsection{Vom Prüfergebnis zum Befund}
+\label{subsec:befund}
+
+Die Evidenz, die ein Indikator im Feld \texttt{details} des Reports hinterlegt, ist notwendigerweise indikatorspezifisch: Ein Erreichbarkeitsindikator hält Antwortstatus je Distribution fest, ein Konformitätsindikator die verletzten Regeln der Schemaprüfung, ein sprachmodellgestützter Indikator die Einzelbefunde und deren Begründung. Für die Darstellung ist diese Vielfalt hinderlich -- eine Oberfläche, die 27~unterschiedlich aufgebaute Evidenzstrukturen jeweils eigens darstellt, ist weder wartbar noch für den Leser erlernbar.
+
+Der Prototyp überträgt deshalb jedes negative Prüfergebnis in eine einheitliche Form, den \emph{Befund}. Er besteht aus einer Kernaussage, die das Problem in einem Satz benennt, aus Ist-Angaben, die den vorgefundenen Zustand belegen und jeweils eine Fundstelle tragen können, aus einer Beschreibung des Soll-Zustands sowie aus Einzelbefunden für den Fall mehrerer gleichartiger Verstöße. Diese Form ist über alle Indikatoren hinweg identisch; der Leser lernt sie einmal und kann sie danach auf jeden Indikator anwenden, unabhängig davon, ob dessen Urteil aus einer Feldprüfung, einer Netzabfrage oder einer Sprachmodellbewertung stammt. Als Fundstelle dient je nach Indikator die betroffene Distribution, der verletzte Pfad der Schemaprüfung oder das Feld; ergänzend blendet die Detailansicht die einschlägigen Zeilen des RDF-Quelltexts ein, sodass sich die Kette von der Punktzahl bis zur konkreten Stelle im Metadatensatz schließt. Die Auflistung der nicht bestandenen Prüfungen mit Fundstelle und Quelltextbeleg orientiert sich damit an der Form, die die Konformitätsprüfdienste des W3C für Markup und Stylesheets etabliert haben \cite{w3c_nu_checker, w3c_css_validator}: Deren Meldungen bestehen ebenfalls aus einem Schweregrad, einer natürlichsprachlichen Kernaussage, der Position in der Quelle und einem Auszug des Quelltexts um diese Position. Der Befund überträgt dieses Muster von der Syntaxprüfung eines Dokuments auf die Qualitätsprüfung eines Metadatensatzes.
+
+\begin{figure}[H]
+    \centering
+    % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
+    % \includegraphics[width=\textwidth]{images/frontend_befund.png}
+    \bildplatzhalter{Screenshot eines aufgeklappten Indikators: Kernaussage des
+    Befunds, gegenübergestellt Ist-Angaben mit Fundstelle und Soll-Zustand,
+    darunter die Einzelbefunde und der hervorgehobene Auszug aus dem
+    RDF-Quelltext.}
+    \captionsetup{justification=centering}
+    \caption{Aufgeklappter Befund zu einem nicht erfüllten Indikator}
+    \label{fig:frontend_befund}
+\end{figure}
+
+Der Befund entsteht im Bewertungskern und nicht in der Oberfläche. Die Übersetzung von Evidenz in eine Aussage über den Metadatensatz setzt Kenntnis des jeweiligen Indikators voraus und ist damit eine fachliche, keine gestalterische Entscheidung. Läge sie in der Oberfläche, entstünde eine zweite Interpretationsschicht neben dem Bewertungsmodell, Änderungen an einem Indikator müssten an zwei Stellen nachgezogen werden, und der maschinenlesbare Report wäre nicht mehr die einzige Quelle der Darstellung. Erzeugt wird ein Befund nur für nicht oder teilweise erfüllte Indikatoren sowie für Fehlerfälle -- bei einem erfüllten Indikator gibt es nichts zu erklären.
 
 % Scope: Die zweite Aufbereitungsstufe — was konkret zu ändern ist. Zwei Formen:
-% der strukturierte Änderungsvorschlag für maschinell ableitbare Korrekturen und
-% die Empfehlung für alles Übrige. Entwurfsentscheidung: bei fehlenden Werten
-% wird die *Form* des erwarteten Werts benannt (Feld, Schreibweise, maßgebliches
-% Vokabular), nicht die Menge der zulässigen Werte — mit der Größenordnung als
-% Beleg (kontrollierte Vokabulare mit mehreren tausend Einträgen).
+% strukturierter Änderungsvorschlag und Empfehlung. Entwurfsentscheidung: bei
+% fehlenden Werten wird die *Form* des erwarteten Werts benannt, nicht die Menge
+% der zulässigen Werte.
 \subsection{Von der Meldung zur Handlungsanweisung}
 
-% Scope: Die drei Sichten und ihre Aufgabe. Aggregatsicht über einen Datenbestand
-% (Verteilung, Dimensionsmittel, häufigste Mängel), Detailsicht je Datensatz
-% (Gesamtscore, Dimensionsprofil, aufklappbare Indikatoren) und das Anstoßen
-% eigener Bewertungsläufe aus der Oberfläche mit der Konfiguration der
-% Evaluation. Barrierefreiheit: Farbe nie alleiniger Bedeutungsträger,
-% nachgerechnete Kontraste.
+Der Befund benennt das Problem, aber noch nicht dessen Auflösung. Die zweite Aufbereitungsstufe beantwortet daher, was konkret zu ändern ist, und unterscheidet dafür zwei Formen. Wo sich eine Korrektur maschinell ableiten lässt, wird sie als strukturierter Änderungsvorschlag ausgedrückt: eine Menge von Einzeländerungen am RDF-Graphen aus Operation, Subjekt, Prädikat, Wert und Begründung, die vollständig bestimmt sind und grundsätzlich automatisiert angewendet werden könnten. Für alles Übrige -- namentlich die sprachmodellgestützt bewerteten Eigenschaften, bei denen es keinen eindeutig richtigen Wert gibt -- tritt an ihre Stelle eine Empfehlung, die benennt, woran es der vorliegenden Beschreibung mangelt.
+
+Dazwischen liegt der praktisch häufigste Fall: Ein Wert fehlt, die Stelle im Graphen ist eindeutig bestimmbar, der einzusetzende Wert aber nicht -- er ist eine inhaltliche Entscheidung des Datenbereitstellers. Naheliegend erscheint hier, die zulässigen Werte des maßgeblichen kontrollierten Vokabulars zur Auswahl anzubieten. Eine erste Fassung des Prototyps tat dies und erwies sich als untauglich: Für das Feld des Medientyps umfasst das maßgebliche Vokabular allein 1\,855 Einträge. Eine Liste dieser Länge ist keine Empfehlung mehr, sondern eine Wiedergabe des Vokabulars; sie trifft keine Auswahl und nimmt dem Adressaten keine Entscheidung ab.
+
+Der Prototyp benennt daher nicht die Menge der zulässigen Werte, sondern die \emph{Form} des erwarteten Werts: das betroffene Feld, eine Beschreibung der erwarteten Angabe in einem Satz, ein Beispiel, das ausschließlich die Schreibweise veranschaulicht, sowie Bezeichnung und Verweis auf das maßgebliche Vokabular. Die inhaltliche Auswahl bleibt damit dort, wo sie fachlich hingehört, während die formale Hürde -- welches Feld, welche Notation, welche Quelle -- vollständig genommen wird.
+
+\begin{figure}[H]
+    \centering
+    % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
+    % \includegraphics[width=\textwidth]{images/frontend_handlungsanweisung.png}
+    \bildplatzhalter{Screenshot des Bereichs „Was ist zu tun?“ eines Befunds:
+    oben der strukturierte Änderungsvorschlag mit den unmittelbar anwendbaren
+    Einzeländerungen, darunter die Angabe der erwarteten Form für ein fehlendes
+    Feld mit Beispielschreibweise und Verweis auf das maßgebliche Vokabular.}
+    \captionsetup{justification=centering}
+    \caption{Handlungsanweisung: strukturierter Änderungsvorschlag und Angabe der erwarteten Form}
+    \label{fig:frontend_handlungsanweisung}
+\end{figure}
+
+% Scope: Die Sichten und ihre Zuordnung zu den Zielgruppen aus
+% Tabelle~\ref{tab:zielgruppen}. Barrierefreiheit: Farbe nie alleiniger
+% Bedeutungsträger, nachgerechnete Kontraste.
 \subsection{Darstellung und Bedienung}
+
+Den drei Zielgruppen aus Tabelle~\ref{tab:zielgruppen} entsprechen drei Auflösungsstufen der Darstellung. Sie folgen dem Ordnungsprinzip \emph{Überblick zuerst, dann Filtern, dann Details auf Anforderung}, das Shneiderman als Grundmuster informationsvisualisierender Oberflächen beschreibt \cite{shneiderman1996eyes}: Jede Stufe zeigt so viel, wie die Entscheidung auf dieser Ebene erfordert, und macht die nächste Detailtiefe erst auf Anforderung sichtbar. Die Trefferliste zeigt je Datensatz allein den Gesamtscore als Ring mit Note und bedient damit die Auswahlentscheidung der Datennutzenden, ohne die Liste mit Bewertungsdetails zu überfrachten.
+
+Die Detailsicht eines Datensatzes richtet sich an die Datenbereitstellenden. Sie zeigt den Gesamtscore, das Profil über die vier Qualitätsdimensionen als Netzdiagramm und darunter je Dimension eine Übersicht ihrer Indikatoren mit Ergebnisstufe, Punktwert und Gewicht; jeder nicht erfüllte Indikator lässt sich zu dem in Section~\ref{subsec:befund} beschriebenen Befund aufklappen. Ein Schalter blendet die erfüllten Indikatoren aus und reduziert die Ansicht auf das, was zu bearbeiten ist.
+
+\begin{figure}[H]
+    \centering
+    % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
+    % \includegraphics[width=\textwidth]{images/frontend_detailsicht.png}
+    \bildplatzhalter{Screenshot der Detailsicht eines Datensatzes:
+    Gesamtscore als Ring mit Note, daneben das Netzdiagramm der vier
+    Qualitätsdimensionen, darunter die nach Dimensionen gruppierten
+    Indikatortabellen sowie der Schalter zum Ausblenden erfüllter Indikatoren.}
+    \captionsetup{justification=centering}
+    \caption{Detailsicht eines Datensatzes mit Dimensionsprofil und Indikatorübersicht}
+    \label{fig:frontend_detailsicht}
+\end{figure}
+
+Die Aggregatsicht bedient die Portalbetreibenden. Sie weist die Zahl der bewerteten Datensätze, den mittleren Gesamtscore mit Spannweite und den Anteil erfüllter Prüfungen aus und ergänzt diese Kennzahlen um die Verteilung der Gesamtbewertung, die Mittelwerte je Dimension, die häufigsten Mängel als Anteil der Datensätze, die einen Indikator nicht oder nur teilweise erfüllen, sowie den Verlauf über die vorliegenden Bewertungsläufe. Die Zusammenstellung folgt dem für Übersichtsdarstellungen formulierten Grundsatz, die zur Beurteilung erforderlichen Größen gemeinsam und nach ihrem Informationswert geordnet zu zeigen, statt sie auf mehrere Ansichten zu verteilen \cite{few2006dashboard}. Die Verlaufsdarstellung ist bewusst zurückhaltend beschriftet, weil ihre Punkte Bewertungsläufe und keine Erhebungszeitpunkte sind: Sie zeigt zunächst die Streuung des Verfahrens und wird erst dann zu einer Qualitätsentwicklung, wenn der Bestand wiederholt geerntet und danach bewertet wird.
+
+\begin{figure}[H]
+    \centering
+    % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
+    % \includegraphics[width=\textwidth]{images/frontend_aggregatsicht.png}
+    \bildplatzhalter{Screenshot der Aggregatsicht: Kennzahlenleiste mit Anzahl
+    bewerteter Datensätze, mittlerem Gesamtscore, Anteil erfüllter Indikatoren
+    und häufigstem Mangel; darunter die Verteilung der Gesamtbewertung, die
+    Mittelwerte je Dimension, die häufigsten Mängel und der Verlauf über die
+    Bewertungsläufe.}
+    \captionsetup{justification=centering}
+    \caption{Aggregatsicht über einen Datenbestand}
+    \label{fig:frontend_aggregatsicht}
+\end{figure}
+
+Für die aus der Oberfläche angestoßenen Bewertungsläufe gilt eine Vorgabe, die für die Belastbarkeit der dargestellten Werte wesentlich ist: Die Oberfläche führt keine eigenen Voreinstellungen, sondern lädt zur Laufzeit dieselbe Konfigurationsdatei, die auch der Evaluation dieser Arbeit zugrunde liegt. Gewichte, Punktevergabe und Indikatormenge sind damit nicht nur ähnlich, sondern identisch. Als einzige Wahl bleibt, ob die sprachmodellgestützte Dimension der Aussagekraft einbezogen wird -- eine Unterscheidung, die auf Zeit- und Kostenaufwand des Laufs durchschlägt.
+
+Für die Gestaltung gelten durchgängig zwei Regeln der Barrierefreiheit, die den Web Content Accessibility Guidelines entnommen sind \cite{w3c_wcag22}. Farbe ist nie alleiniger Bedeutungsträger (Erfolgskriterium~1.4.1): Jede Ergebnisstufe trägt neben ihrer Farbe ein Symbol und eine ausgeschriebene Bezeichnung, jede Diagrammreihe ist beschriftet. Sämtliche Farbwerte stammen aus dem Gestaltungssystem des Portals; ihre Kontraste wurden für die verwendeten Kombinationen gegen die Schwellen der Erfolgskriterien~1.4.3 und~1.4.11 nachgerechnet, statt sie nach Augenmaß zu wählen. Ergänzend wurden die Diagrammfarben mit einem physiologisch begründeten Simulationsmodell für Farbfehlsichtigkeit \cite{machado2009cvd} auf ihre Unterscheidbarkeit geprüft. Eine ursprünglich nach Ergebnisstufen gestapelte Darstellung der häufigsten Mängel wurde infolge dieser Prüfung durch eine einreihige Darstellung mit Aufschlüsselung im Tooltip ersetzt, weil die beiden Reihen unter simulierter Deuteranopie nicht hinreichend trennscharf blieben.
 
 % \section{Konfigurierbarkeit und technische Grenzen des Prototyps}
 
@@ -2353,7 +2542,7 @@ beider Verfahren auf den äquivalenten Prüfungen stark konvergieren, der Protot
 etablierte MQA-Logik also korrekt abbildet; methodisch entspricht dies dem Nachweis
 konvergenter Validität~\cite{campbell1959convergent}. \textbf{H2 (Mehrwert)} besagt, dass
 die Scores auf denjenigen Indikatoren systematisch divergieren, bei denen der Prototyp
-tiefer prüft als die MQA oder bei denen die MQA über kein Pendant verfügt --- hier ist
+tiefer prüft als die MQA oder bei denen die MQA über kein Pendant verfügt -- hier ist
 eine Divergenz kein Fehler, sondern der erwartete Effekt des verifizierenden statt
 lediglich prüfenden Ansatzes. \textbf{H3 (Korrektheit)} besagt, dass der Prototyp dort,
 wo beide Verfahren divergieren, stärker mit dem externen Qualitätsurteil übereinstimmt
@@ -2388,8 +2577,8 @@ Geo/Nicht-Geo, sekundär innerhalb beider Gruppen nach den vier jeweils
 aufkommensstärksten Datenbereitstellern zuzüglich einer Restkategorie für alle übrigen
 Bereitsteller. Aus jedem der so entstehenden zehn Straten werden fünf Datensätze gezogen.
 Die Schichtung stellt sicher, dass die Stichprobe die für die Metadatenqualität
-relevanten Unterschiede der Grundgesamtheit abbildet --- Themenbereiche, Bereitsteller,
-Zugriffstypen, Formatgruppen und technische Vorqualität --- statt von den wenigen
+relevanten Unterschiede der Grundgesamtheit abbildet -- Themenbereiche, Bereitsteller,
+Zugriffstypen, Formatgruppen und technische Vorqualität -- statt von den wenigen
 aufkommensstärksten Portalen dominiert zu werden, die bei einer einfachen Zufallsziehung
 den Großteil der Stichprobe stellen würden. Die gezogenen Datensätze wurden anschließend
 als RDF/XML von GovData abgerufen und bilden damit denselben Input, auf dem Prototyp und
@@ -2451,14 +2640,14 @@ unter 3,5 in Verbindung mit mindestens zwei Dimensionen unter 2. Alle übrigen F
 gelten als \emph{mittel}. Die Schwellen sind kriteriumsorientiert
 gesetzt~\cite{glaser1963}: Sie repräsentieren inhaltlich definierte Qualitätsniveaus und
 nicht die relative Lage innerhalb der Stichprobenverteilung. Die Aggregation ist bewusst
-hybrid --- primär kompensatorisch über den Durchschnitt, abgesichert durch eine
-konjunktive Klausel --- damit ein hoher Wert in einer Dimension eine gravierende Lücke in
+hybrid -- primär kompensatorisch über den Durchschnitt, abgesichert durch eine
+konjunktive Klausel -- damit ein hoher Wert in einer Dimension eine gravierende Lücke in
 einer anderen nicht vollständig ausgleichen kann~\cite{einhorn1971}.
 
 Die Bewertung erfolgte blind gegenüber den Ergebnissen des Prototyps: Die
 Bewertungsvorlage enthält ausschließlich die zur Beurteilung erforderlichen Fakten ---
 Titel, Beschreibung, Schlagwörter, Themen, Lizenz, Formate sowie Angaben zur
-Erreichbarkeit der Ressourcen --- nicht jedoch dessen Scores. Damit wird ein
+Erreichbarkeit der Ressourcen -- nicht jedoch dessen Scores. Damit wird ein
 Anchoring-Bias ausgeschlossen, der die gemessene Übereinstimmung künstlich erhöhen würde.
 Nach einem ersten Bewertungsdurchgang wurden die Datensätze mit den größten Abweichungen
 zwischen manueller und maschineller Bewertung erneut gegen die Rubrik geprüft; dabei
@@ -2503,8 +2692,8 @@ MQA-Metrik; hier ist hohe Übereinstimmung zu erwarten (H1). \textbf{Klasse~B} u
 Indikatoren, bei denen die MQA bereits das Vorhandensein honoriert, während der Prototyp
 Gültigkeit oder Kongruenz verifiziert; eine Kombination aus MQA-PASS und
 Prototyp-FAIL ist hier der Nachweis einer Überschätzung durch die MQA (H2).
-\textbf{Klasse~C} umfasst Indikatoren ohne MQA-Pendant --- darunter die gesamte Dimension
-der Aussagekraft --- bei denen die MQA strukturell blind bleibt, der Prototyp aber
+\textbf{Klasse~C} umfasst Indikatoren ohne MQA-Pendant -- darunter die gesamte Dimension
+der Aussagekraft -- bei denen die MQA strukturell blind bleibt, der Prototyp aber
 variiert (H2).
 
 Diese Partitionierung entspricht klassischen Validitätsbegriffen der
@@ -2745,7 +2934,7 @@ Primärmetrik, dann die Kalibrierungsmaße, dann die Urteilsebene als Sekundärm
 \textbf{Opus 4.8} scheidet am Aufwand aus. Das Modell verursacht mit 4,10~USD je
 50~Datensätzen etwa doppelt so hohe Kosten wie die beiden anderen Kandidaten, ohne dass
 dem ein belastbarer Qualitätsvorsprung gegenüberstünde: Auf der Primärmetrik liegt es
-lediglich 0,010 vor Sonnet~4.6 und 0,040 vor GPT-5.5 --- Abstände, die, wie
+lediglich 0,010 vor Sonnet~4.6 und 0,040 vor GPT-5.5 -- Abstände, die, wie
 Abschnitt~5.6.2 zeigt, kleiner sind als die Schwankung eines einzelnen Modells zwischen
 Wiederholungsläufen.
 
@@ -2760,7 +2949,7 @@ Damit fällt die Entscheidung auf den nachgeordneten Kriterien, und diese weisen
 übereinstimmend auf GPT-5.5. Am deutlichsten ist der Befund zur \emph{Kalibrierung}:
 Sonnet~4.6 unterschätzt die Aussagekraft systematisch um 0,723 Skalenpunkte, also rund
 15\,\% der Skalenbreite, GPT-5.5 dagegen nur um 0,077. Diese Niveauverschiebung ist für
-die Rangkorrelation folgenlos --- $\rho$ misst ausschließlich die Reihenfolge --- wirkt
+die Rangkorrelation folgenlos -- $\rho$ misst ausschließlich die Reihenfolge -- wirkt
 sich auf der Urteilsebene aber unmittelbar aus, weil die Urteilsregel feste Schwellen auf
 die gerundeten Dimensionswerte anwendet. Sonnet~4.6 drückt dadurch 19 der 30 Datensätze
 unter die konjunktive Sperrklausel „keine Dimension unter 3“ (Ground Truth: 7) und erkennt
@@ -2858,7 +3047,7 @@ schwächsten von Sonnet~4.6 ($\rho = 0{,}539$) liegt. Dies ist die in Abschnitt~
 herangezogene Grundlage für die Feststellung, dass die Primärmetrik die beiden Kandidaten
 nicht trennt.
 
-Auf der Ebene der Scores --- statt der aus ihnen abgeleiteten Rangkorrelation --- fällt
+Auf der Ebene der Scores -- statt der aus ihnen abgeleiteten Rangkorrelation -- fällt
 der Vergleich klarer aus. Tabelle~\ref{tab:modellauswahl_reproduzierbarkeit} stellt die
 Reproduzierbarkeitskennzahlen beider Modelle gegenüber.
 
@@ -2893,14 +3082,14 @@ vertauschen. Die zugrunde liegenden Scores selbst sind bei GPT-5.5 klar reproduz
 Drei Befunde sind darüber hinaus festzuhalten. Erstens sind die drei deterministischen
 Dimensionen über sämtliche Läufe hinweg bitgenau identisch. Die gesamte beobachtete
 Streuung stammt somit aus der LLM-gestützten Bewertung, während die übrige
-Verarbeitungskette exakt reproduziert --- ein Validitätsnachweis für die Pipeline als
+Verarbeitungskette exakt reproduziert -- ein Validitätsnachweis für die Pipeline als
 Ganzes. Zweitens ergibt sich aus der Spanne der Run-Mittelwerte eine Auflösungsgrenze für
 alle weiteren Vergleiche: Unterschiede zwischen Konfigurationen oder Modellen, die
 kleiner sind als 0,0004 (GPT-5.5), sind nicht interpretierbar. Drittens verteilt sich die
 Instabilität nicht gleichmäßig über die Bewertungskriterien, sondern konzentriert sich
 auf einzelne von ihnen; bei GPT-5.5 wechselt der diskrete Status im ungünstigsten Fall
 bei 17\,\% der Datensätze, bei Sonnet~4.6 dagegen bei 47\,\%. Die betroffenen Kriterien
---- insbesondere die kontextuellen Qualifizierer --- sind damit als Ansatzpunkt für eine
+--- insbesondere die kontextuellen Qualifizierer -- sind damit als Ansatzpunkt für eine
 Schärfung der Bewertungsrubrik identifiziert.
 
 \section{Ergebnisse: Prototyp und Ground Truth}

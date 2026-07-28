@@ -28,7 +28,7 @@ function formatDate(iso: string): string {
 }
 
 export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navigate }) {
-  const { catalog, overlay } = usePortalSource();
+  const { catalog, overlay, presenting } = usePortalSource();
   const { datasets } = useCatalog();
   const overlayState = useOverlay();
   const dataset = datasets.find((d) => d.id === id);
@@ -102,13 +102,6 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
 
       <div className="gd-detail-grid">
         <div className="gd-detail-main">
-          {dataset.category && (
-            <span
-              className={`gd-tag ${dataset.category === "geo" ? "green" : "not_applicable"} gd-stratum-tag`}
-            >
-              {dataset.category === "geo" ? "Geodaten" : "Fachdaten"}
-            </span>
-          )}
           <h1 className="gd-detail-title">{dataset.title}</h1>
           <p className="gd-detail-pub">{dataset.publisher_name}</p>
           <p className="gd-detail-desc">
@@ -159,6 +152,7 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
               </p>
             </div>
 
+            {!presenting && (
             <div className="live-bar">
               <div className="live-bar-main">
                 <p className="live-bar-state">
@@ -220,6 +214,7 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
                 </button>
               </div>
             </div>
+            )}
 
             {result && (
               <>
