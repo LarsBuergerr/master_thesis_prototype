@@ -2250,7 +2250,7 @@ fontsize=\footnotesize
 \label{lst:result_json}
 \end{listing}
 
-Der Block \texttt{by\_dimension} gruppiert die Einzelergebnisse nach Qualitätsdimension und weist je Dimension den Dimensionswert, das Dimensionsgewicht und die Summe der Indikatorgewichte aus. Jeder Indikatoreintrag enthält neben Ergebnisstufe und Punktwert die Bezeichnung und eine Ergebnismeldung in deutscher und englischer Sprache sowie im Feld \texttt{details} die indikatorspezifische Evidenz. Dazu zählen Zählwerte, Ergebnisse je Distribution und bei den semantischen Indikatoren die Befunde und die Begründung des Sprachmodells. Die Felder \texttt{raw\_status} und \texttt{raw\_score} halten das unveränderte Urteil des Indikators fest, während \texttt{status} und \texttt{score} das Ergebnis nach Anwendung der konfigurierten Punktevergabe wiedergeben. Analog dokumentiert das Paar aus \texttt{default\_weight} und \texttt{effective\_weight}, ob die Konfiguration das Standardgewicht des Indikators überschreibt. Der Einfluss der Konfiguration auf jedes Einzelergebnis bleibt damit im Report sichtbar.
+Der Block \texttt{by\_dimension} gruppiert die Einzelergebnisse nach Qualitätsdimension und weist je Dimension den Dimensionswert, das Dimensionsgewicht und die Summe der Indikatorgewichte aus. Jeder Indikatoreintrag enthält neben Ergebnisstufe und Punktwert die Bezeichnung und eine Ergebnismeldung in deutscher und englischer Sprache sowie im Feld \texttt{details} die indikatorspezifische Evidenz. Dazu zählen Zählwerte, Ergebnisse je Distribution und bei den semantischen Indikatoren die Befunde und die Begründung des Sprachmodells. Nicht oder nur teilweise erfüllte Indikatoren tragen darüber hinaus zwei aufbereitete Felder, die der Bewertungskern aus dieser Evidenz ableitet und die Section~\ref{sec:frontend} beschreibt: den \texttt{finding}-Block mit Kernaussage, Ist-Angaben, Hinweis und Einzelbefunden sowie, wo eine Korrektur maschinell bestimmbar ist, den strukturierten Änderungsvorschlag unter \texttt{remediation}. Beide entstehen im Bewertungskern und nicht in der Oberfläche, sodass der Report auch die Erklärung eines Ergebnisses vollständig mitführt. Die Felder \texttt{raw\_status} und \texttt{raw\_score} halten das unveränderte Urteil des Indikators fest, während \texttt{status} und \texttt{score} das Ergebnis nach Anwendung der konfigurierten Punktevergabe wiedergeben. Analog dokumentiert das Paar aus \texttt{default\_weight} und \texttt{effective\_weight}, ob die Konfiguration das Standardgewicht des Indikators überschreibt. Der Einfluss der Konfiguration auf jedes Einzelergebnis bleibt damit im Report sichtbar.
 
 Der Block \texttt{summary} verdichtet das Ergebnis zu Gesamtscore, Note und Dimensionswerten, der Block \texttt{weights} gibt die vollständige Gewichtskonfiguration beider Ebenen wieder. Der Report ist dadurch in sich abgeschlossen: Sämtliche Größen, die in die Gleichungen~\ref{eq:dimension_score} und~\ref{eq:overall_score} eingehen, sind enthalten, sodass sich der Gesamtscore ohne Zugriff auf den Prototyp oder dessen Konfigurationsdateien nachträglich vollständig herleiten lässt. Ergänzend legt der Lauf auf oberster Ebene eine Metadatendatei ab, die die vollständig aufgelöste Konfiguration und den Commit-Hash des verwendeten Quellcodestands festhält. Der Block \texttt{llm\_usage} dokumentiert je Sprachmodellaufruf das verwendete Modell, die verbrauchten Tokens, die entstandenen Kosten und die Antwortzeit und macht damit den nichtdeterministischen und kostenpflichtigen Teil der Bewertung transparent.
 
@@ -2375,41 +2375,28 @@ Dass die Oberfläche des Prototyps ohne Inhalt startet, einen Datenbestand erst 
 
 Die Oberfläche greift nicht auf den Bewertungskern durch, sondern spricht mit ihm über eine dazwischenliegende Dienstschicht. Diese ist in Python umgesetzt und bindet den in Section~\ref{sec:architektur} beschriebenen Bewertungsdienst als Bibliothek ein; sie enthält selbst keine Bewertungslogik, sondern übersetzt zwischen Konfiguration, Ergebnisreport und Anzeigeform. Nach außen stellt sie eine HTTP-Schnittstelle bereit, über die sämtlicher Austausch in JSON erfolgt -- demselben Format, in dem auch die Ergebnisreports auf der Festplatte liegen. Die Oberfläche ist eine im Browser laufende Anwendung in TypeScript und hält keinen eigenen Zustand über die dargestellten Ergebnisse hinaus.
 
-Die Schnittstelle spiegelt die Trennung beider Ebenen: Eine Gruppe von Endpunkten bedient Datenbestände, eine zweite abgeschlossene Läufe, und keine Antwort der einen Gruppe enthält Felder der anderen. Eine dritte Gruppe stößt neue Bewertungsläufe an. Weil ein solcher Lauf je Datei Netzabfragen und einen Sprachmodellaufruf umfasst und damit deutlich länger dauert, als eine HTTP-Anfrage offen gehalten werden sollte, arbeitet diese Gruppe zweistufig: Die Anfrage legt einen Auftrag an und antwortet sofort mit dessen Kennung, die eigentliche Verarbeitung läuft im Hintergrund, und die Oberfläche fragt den Fortschritt zyklisch ab, bis das Ergebnis vorliegt.
-
-\begin{figure}[H]
-    \centering
-    % @TODO Schemazeichnung erstellen und die folgende Zeile einkommentieren:
-    % \includegraphics[width=\textwidth]{images/frontend_anbindung.png}
-    \bildplatzhalter{Schemazeichnung der Anbindung: Browseranwendung
-    (TypeScript) -- HTTP/JSON -- Dienstschicht (Python) -- Funktionsaufruf --
-    Bewertungskern; daneben die beiden Datenquellen (Datenbestand,
-    Laufverzeichnis) und der zweistufige Ablauf eines angestoßenen
-    Bewertungslaufs.}
-    \captionsetup{justification=centering}
-    \caption{Anbindung der Oberfläche an den Bewertungskern}
-    \label{fig:frontend_anbindung}
-\end{figure}
+Die Schnittstelle spiegelt die Trennung beider Ebenen: Eine Gruppe von Endpunkten bedient Datenbestände, eine zweite abgeschlossene Läufe, und keine Antwort der einen Gruppe enthält Felder der anderen. Eine dritte Gruppe stößt neue Bewertungsläufe an, eine vierte liefert die Bewertungskonfiguration und den Klartext je Indikator -- Bezeichnung, betroffenes Feld, Handlungsanweisung und Vorlage --, sodass auch diese Angaben aus dem Bewertungskern stammen und nicht in der Oberfläche gepflegt werden. Weil ein solcher Lauf je Datei Netzabfragen und einen Sprachmodellaufruf umfasst und damit deutlich länger dauert, als eine HTTP-Anfrage offen gehalten werden sollte, arbeitet diese Gruppe zweistufig: Die Anfrage legt einen Auftrag an und antwortet sofort mit dessen Kennung, die eigentliche Verarbeitung läuft im Hintergrund, und die Oberfläche fragt den Fortschritt zyklisch ab, bis das Ergebnis vorliegt.
 
 % Scope: Wie aus indikatorspezifischer Evidenz eine einheitliche Darstellung
-% wird. Das Befundmodell (Kernaussage, Ist-Angaben mit Fundstelle, Soll-Zustand,
-% Einzelbefunde) als gemeinsame Form über alle Indikatoren hinweg. Verortung im
-% RDF-Quelltext. Warum der Befund im Backend entsteht.
+% wird. Das Befundmodell (Kernaussage, Ist-Angaben mit Fundstelle, Hinweis als
+% Handlungsanweisung, Einzelbefunde) als gemeinsame Form über alle Indikatoren
+% hinweg. Warum der Befund im Backend entsteht. Die Verortung im RDF-Quelltext
+% behandelt die folgende Subsection als eine der beiden Formen des Detailblocks.
 \subsection{Vom Prüfergebnis zum Befund}
 \label{subsec:befund}
 
 Die Evidenz, die ein Indikator im Feld \texttt{details} des Reports hinterlegt, ist notwendigerweise indikatorspezifisch: Ein Erreichbarkeitsindikator hält Antwortstatus je Distribution fest, ein Konformitätsindikator die verletzten Regeln der Schemaprüfung, ein sprachmodellgestützter Indikator die Einzelbefunde und deren Begründung. Für die Darstellung ist diese Vielfalt hinderlich -- eine Oberfläche, die 27~unterschiedlich aufgebaute Evidenzstrukturen jeweils eigens darstellt, ist weder wartbar noch für den Leser erlernbar.
 
-Der Prototyp überträgt deshalb jedes negative Prüfergebnis in eine einheitliche Form, den \emph{Befund}. Er besteht aus einer Kernaussage, die das Problem in einem Satz benennt, aus Ist-Angaben, die den vorgefundenen Zustand belegen und jeweils eine Fundstelle tragen können, aus einer Beschreibung des Soll-Zustands sowie aus Einzelbefunden für den Fall mehrerer gleichartiger Verstöße. Diese Form ist über alle Indikatoren hinweg identisch; der Leser lernt sie einmal und kann sie danach auf jeden Indikator anwenden, unabhängig davon, ob dessen Urteil aus einer Feldprüfung, einer Netzabfrage oder einer Sprachmodellbewertung stammt. Als Fundstelle dient je nach Indikator die betroffene Distribution, der verletzte Pfad der Schemaprüfung oder das Feld; ergänzend blendet die Detailansicht die einschlägigen Zeilen des RDF-Quelltexts ein, sodass sich die Kette von der Punktzahl bis zur konkreten Stelle im Metadatensatz schließt. Die Auflistung der nicht bestandenen Prüfungen mit Fundstelle und Quelltextbeleg orientiert sich damit an der Form, die die Konformitätsprüfdienste des W3C für Markup und Stylesheets etabliert haben \cite{w3c_nu_checker, w3c_css_validator}: Deren Meldungen bestehen ebenfalls aus einem Schweregrad, einer natürlichsprachlichen Kernaussage, der Position in der Quelle und einem Auszug des Quelltexts um diese Position. Der Befund überträgt dieses Muster von der Syntaxprüfung eines Dokuments auf die Qualitätsprüfung eines Metadatensatzes.
+Der Prototyp überträgt deshalb jedes negative Prüfergebnis in eine einheitliche Form, den \emph{Befund}. Er besteht aus einer Kernaussage, die das Problem in einem Satz benennt, aus Ist-Angaben, die den vorgefundenen Zustand belegen und jeweils eine Fundstelle tragen können, aus einem Hinweis, der den Weg zum geforderten Zustand beschreibt, sowie aus Einzelbefunden für den Fall mehrerer gleichartiger Verstöße. Diese Form ist über alle Indikatoren hinweg identisch; der Leser lernt sie einmal und kann sie danach auf jeden Indikator anwenden, unabhängig davon, ob dessen Urteil aus einer Feldprüfung, einer Netzabfrage oder einer Sprachmodellbewertung stammt. Als Fundstelle dient je nach Indikator die betroffene Distribution, der verletzte Pfad der Schemaprüfung oder das Feld. Der Hinweis ist bewusst als Handlungsanweisung und nicht als Zustandsbeschreibung formuliert -- er benennt, was zu tun ist, statt zu wiederholen, wie das Ergebnis aussähe, wenn es richtig wäre. Die Auflistung der nicht bestandenen Prüfungen mit Fundstelle und, wo möglich, Quelltextbeleg orientiert sich damit an der Form, die die Konformitätsprüfdienste des W3C für Markup und Stylesheets etabliert haben \cite{w3c_nu_checker, w3c_css_validator}: Deren Meldungen bestehen ebenfalls aus einem Schweregrad, einer natürlichsprachlichen Kernaussage, der Position in der Quelle und einem Auszug des Quelltexts um diese Position. Der Befund überträgt dieses Muster von der Syntaxprüfung eines Dokuments auf die Qualitätsprüfung eines Metadatensatzes.
 
 \begin{figure}[H]
     \centering
     % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
     % \includegraphics[width=\textwidth]{images/frontend_befund.png}
-    \bildplatzhalter{Screenshot eines aufgeklappten Indikators: Kernaussage des
-    Befunds, gegenübergestellt Ist-Angaben mit Fundstelle und Soll-Zustand,
-    darunter die Einzelbefunde und der hervorgehobene Auszug aus dem
-    RDF-Quelltext.}
+    \bildplatzhalter{Screenshot eines aufgeklappten Indikators: in der Zeile
+    Klarname, betroffenes Feld und Prüfmeldung, darunter gegenübergestellt die
+    Ist-Angaben mit Fundstelle und der Hinweis mit Verweis auf das maßgebliche
+    Vokabular, gefolgt von den Einzelbefunden und dem Detailblock.}
     \captionsetup{justification=centering}
     \caption{Aufgeklappter Befund zu einem nicht erfüllten Indikator}
     \label{fig:frontend_befund}
@@ -2417,28 +2404,36 @@ Der Prototyp überträgt deshalb jedes negative Prüfergebnis in eine einheitlic
 
 Der Befund entsteht im Bewertungskern und nicht in der Oberfläche. Die Übersetzung von Evidenz in eine Aussage über den Metadatensatz setzt Kenntnis des jeweiligen Indikators voraus und ist damit eine fachliche, keine gestalterische Entscheidung. Läge sie in der Oberfläche, entstünde eine zweite Interpretationsschicht neben dem Bewertungsmodell, Änderungen an einem Indikator müssten an zwei Stellen nachgezogen werden, und der maschinenlesbare Report wäre nicht mehr die einzige Quelle der Darstellung. Erzeugt wird ein Befund nur für nicht oder teilweise erfüllte Indikatoren sowie für Fehlerfälle -- bei einem erfüllten Indikator gibt es nichts zu erklären.
 
-% Scope: Die zweite Aufbereitungsstufe — was konkret zu ändern ist. Zwei Formen:
-% strukturierter Änderungsvorschlag und Empfehlung. Entwurfsentscheidung: bei
-% fehlenden Werten wird die *Form* des erwarteten Werts benannt, nicht die Menge
-% der zulässigen Werte.
+% Scope: Die zweite Aufbereitungsstufe — wie die geforderte Angabe konkret
+% aussieht. Zwei Formen je Indikator: Vorlage oder Fundstelle im Quelltext.
+% Entwurfsentscheidung: nicht die Menge der zulässigen Werte zeigen, sondern
+% die Form der erwarteten Angabe.
 \subsection{Von der Meldung zur Handlungsanweisung}
 
-Der Befund benennt das Problem, aber noch nicht dessen Auflösung. Die zweite Aufbereitungsstufe beantwortet daher, was konkret zu ändern ist, und unterscheidet dafür zwei Formen. Wo sich eine Korrektur maschinell ableiten lässt, wird sie als strukturierter Änderungsvorschlag ausgedrückt: eine Menge von Einzeländerungen am RDF-Graphen aus Operation, Subjekt, Prädikat, Wert und Begründung, die vollständig bestimmt sind und grundsätzlich automatisiert angewendet werden könnten. Für alles Übrige -- namentlich die sprachmodellgestützt bewerteten Eigenschaften, bei denen es keinen eindeutig richtigen Wert gibt -- tritt an ihre Stelle eine Empfehlung, die benennt, woran es der vorliegenden Beschreibung mangelt.
+Der Befund benennt das Problem und den Weg zu seiner Auflösung, beides jedoch in Prosa. Was er nicht leistet, ist die Übersetzung dieser Anweisung in die Schreibweise, die der Metadatensatz verlangt: Ein Datenbereitsteller ohne DCAT-Kenntnisse weiß nach dem Hinweis, dass eine Kategorie aus dem EU-Vokabular zu setzen ist, aber nicht, wie das im RDF/XML seines Datensatzes auszusehen hat. Die zweite Aufbereitungsstufe schließt diese Lücke.
 
-Dazwischen liegt der praktisch häufigste Fall: Ein Wert fehlt, die Stelle im Graphen ist eindeutig bestimmbar, der einzusetzende Wert aber nicht -- er ist eine inhaltliche Entscheidung des Datenbereitstellers. Naheliegend erscheint hier, die zulässigen Werte des maßgeblichen kontrollierten Vokabulars zur Auswahl anzubieten. Eine erste Fassung des Prototyps tat dies und erwies sich als untauglich: Für das Feld des Medientyps umfasst das maßgebliche Vokabular allein 1\,855 Einträge. Eine Liste dieser Länge ist keine Empfehlung mehr, sondern eine Wiedergabe des Vokabulars; sie trifft keine Auswahl und nimmt dem Adressaten keine Entscheidung ab.
+Naheliegend erscheint zunächst, die zulässigen Werte des maßgeblichen kontrollierten Vokabulars zur Auswahl anzubieten. Eine erste Fassung des Prototyps tat dies und erwies sich als untauglich: Für das Feld des Medientyps umfasst das maßgebliche Vokabular allein 1\,855 Einträge. Eine Liste dieser Länge ist keine Empfehlung mehr, sondern eine Wiedergabe des Vokabulars; sie trifft keine Auswahl und nimmt dem Adressaten keine Entscheidung ab.
 
-Der Prototyp benennt daher nicht die Menge der zulässigen Werte, sondern die \emph{Form} des erwarteten Werts: das betroffene Feld, eine Beschreibung der erwarteten Angabe in einem Satz, ein Beispiel, das ausschließlich die Schreibweise veranschaulicht, sowie Bezeichnung und Verweis auf das maßgebliche Vokabular. Die inhaltliche Auswahl bleibt damit dort, wo sie fachlich hingehört, während die formale Hürde -- welches Feld, welche Notation, welche Quelle -- vollständig genommen wird.
+Der Prototyp zeigt daher nicht die Menge der zulässigen Werte, sondern die \emph{Form} der erwarteten Angabe: eine \textbf{Vorlage} als kurzes RDF/XML-Fragment, das das betroffene Feld in korrekter Schreibweise mit genau einem Beispielwert enthält. Die inhaltliche Auswahl bleibt damit dort, wo sie fachlich hingehört, während die formale Hürde -- welches Feld, welche Verschachtelung, welche Notation -- vollständig genommen wird; die Bezeichnung des Vokabulars und der Verweis auf dessen Übersichtsseite stehen im Hinweis daneben. Die Beispielwerte sind dabei programmatisch gegen die geladenen Vokabulare geprüft: Eine Vorlage darf keinen Wert zeigen, der seinerseits durch die Prüfung fiele.
+
+Entscheidend für den Nutzen der Vorlage ist, dass sie unabhängig vom vorgefundenen Zustand ist. Sie sieht identisch aus, ob das Feld falsch belegt ist oder ganz fehlt -- und gerade der zweite Fall ist der, in dem sie gebraucht wird, denn dort gibt es im Metadatensatz nichts, worauf sich zeigen ließe.
+
+Nicht jeder Indikator lässt eine solche Vorlage zu. Wo die richtige Angabe vom Inhalt abhängt und nicht von der Schreibweise -- bei den Schlagwörtern ebenso wie bei den sprachmodellgestützt bewerteten Freitextfeldern --, gäbe eine Vorlage nur eine Syntax vor, die ohnehin nie das Problem war. Wo das Problem außerhalb des Metadatensatzes liegt, etwa bei einem Verweis, der ins Leere führt, gilt dasselbe. Für diese Indikatoren tritt an die Stelle der Vorlage die \textbf{Fundstelle}: die einschlägigen Zeilen des RDF-Quelltexts mit Zeilennummer, sodass sich die Kette von der Punktzahl bis zur konkreten Stelle im Metadatensatz schließt. Für eine dritte Gruppe schließlich entfällt der Detailblock ganz, weil Befund und Hinweis bereits alles tragen -- so bei der Schemakonformität, deren Ist-Angaben jeden Verstoß samt betroffenem Feld einzeln auflisten.
+
+Welche der drei Formen ein Indikator führt, ist damit keine Eigenschaft des Einzelergebnisses, sondern des Indikators, und liegt entsprechend als feste Angabe neben Klarnamen, Feldbezeichnung und Handlungsanweisung im Bewertungskern. Der Detailblock trägt in jedem Fall genau eine dieser Formen; eine Karte zeigt nie zwei nebeneinander.
+
+Unabhängig von der Darstellung leitet der Prototyp dort, wo eine Korrektur maschinell bestimmbar ist -- durchweg bei den Feldern mit kontrolliertem Vokabular --, zusätzlich einen strukturierten Änderungsvorschlag ab: eine Menge von Einzeländerungen am RDF-Graphen aus Operation, Subjekt, Prädikat, Wert und Begründung, die vollständig bestimmt sind und grundsätzlich automatisiert angewendet werden könnten. Dieser Vorschlag ist Teil des maschinenlesbaren Reports, wird in der Oberfläche aber bewusst nicht dargestellt: Seine Entfernungsoperationen benennen genau die Werte, die die Ist-Angaben bereits als unzulässig ausweisen, und seine Angabe zur erwarteten Form wiederholt Hinweis und Vorlage. Als dritte Wiedergabe desselben Sachverhalts hätte er die Karte verlängert, ohne ihr etwas hinzuzufügen.
 
 \begin{figure}[H]
     \centering
     % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
     % \includegraphics[width=\textwidth]{images/frontend_handlungsanweisung.png}
-    \bildplatzhalter{Screenshot des Bereichs „Was ist zu tun?“ eines Befunds:
-    oben der strukturierte Änderungsvorschlag mit den unmittelbar anwendbaren
-    Einzeländerungen, darunter die Angabe der erwarteten Form für ein fehlendes
-    Feld mit Beispielschreibweise und Verweis auf das maßgebliche Vokabular.}
+    \bildplatzhalter{Zwei Screenshots im Vergleich: links ein Befund mit Vorlage
+    („So sollte es aussehen“) für ein Feld mit kontrolliertem Vokabular, rechts
+    ein Befund mit Fundstelle („Betroffene Stelle in der Metadatendatei“) für
+    einen inhaltsabhängigen Indikator.}
     \captionsetup{justification=centering}
-    \caption{Handlungsanweisung: strukturierter Änderungsvorschlag und Angabe der erwarteten Form}
+    \caption{Die beiden Formen des Detailblocks: Vorlage und Fundstelle im Quelltext}
     \label{fig:frontend_handlungsanweisung}
 \end{figure}
 
@@ -2449,7 +2444,7 @@ Der Prototyp benennt daher nicht die Menge der zulässigen Werte, sondern die \e
 
 Den drei Zielgruppen aus Tabelle~\ref{tab:zielgruppen} entsprechen drei Auflösungsstufen der Darstellung. Sie folgen dem Ordnungsprinzip \emph{Überblick zuerst, dann Filtern, dann Details auf Anforderung}, das Shneiderman als Grundmuster informationsvisualisierender Oberflächen beschreibt \cite{shneiderman1996eyes}: Jede Stufe zeigt so viel, wie die Entscheidung auf dieser Ebene erfordert, und macht die nächste Detailtiefe erst auf Anforderung sichtbar. Die Trefferliste zeigt je Datensatz allein den Gesamtscore als Ring mit Note und bedient damit die Auswahlentscheidung der Datennutzenden, ohne die Liste mit Bewertungsdetails zu überfrachten.
 
-Die Detailsicht eines Datensatzes richtet sich an die Datenbereitstellenden. Sie zeigt den Gesamtscore, das Profil über die vier Qualitätsdimensionen als Netzdiagramm und darunter je Dimension eine Übersicht ihrer Indikatoren mit Ergebnisstufe, Punktwert und Gewicht; jeder nicht erfüllte Indikator lässt sich zu dem in Section~\ref{subsec:befund} beschriebenen Befund aufklappen. Ein Schalter blendet die erfüllten Indikatoren aus und reduziert die Ansicht auf das, was zu bearbeiten ist.
+Die Detailsicht eines Datensatzes richtet sich an die Datenbereitstellenden. Sie zeigt den Gesamtscore, das Profil über die vier Qualitätsdimensionen als Netzdiagramm und darunter je Dimension eine Übersicht ihrer Indikatoren mit Ergebnisstufe, Punktwert und Gewicht; jeder nicht erfüllte Indikator lässt sich zu dem in Section~\ref{subsec:befund} beschriebenen Befund aufklappen. Zwei Bedienelemente steuern den Umfang der Ansicht: Ein Schalter blendet die erfüllten Indikatoren aus und reduziert sie auf das, was zu bearbeiten ist; ein Knopf klappt Dimensionen und Befunde gemeinsam auf oder zu und macht damit den vollständigen Bearbeitungsbedarf eines Datensatzes in einem Schritt sichtbar, statt ihn Dimension für Dimension und darin Befund für Befund erschließen zu lassen.
 
 \begin{figure}[H]
     \centering
@@ -2555,7 +2550,7 @@ Sprachmodell, und die Abschnitte~5.7 und~5.8 berichten die Ergebnisse je Evidenz
 
 % Scope: Stratifizierte purposive Kernstichprobe (n=50, Seed 67) mit fünf
 % Schichtungsmerkmalen (Themen, Bereitsteller, Zugriffstypen, Formatgruppen, technische
-% Vorqualität) + kuratierte Extremfälle (n=10) als Stresstest. Begründung des
+% Vorqualität) + kuratierte Extremfälle (n=20) als Stresstest. Begründung des
 % Zwei-Schichten-Designs: Extremfälle belegen den Mechanismus per Konstruktion,
 % Kernstichprobe kontrolliert Bias und zeigt Praxisrelevanz -> getrennte Auswertung.
 % Erhebungsdatum, Portal-Quelle, DCAT-AP-Version dokumentieren (Replikationspaket).
@@ -2584,8 +2579,8 @@ den Großteil der Stichprobe stellen würden. Die gezogenen Datensätze wurden a
 als RDF/XML von GovData abgerufen und bilden damit denselben Input, auf dem Prototyp und
 MQA-Reimplementierung arbeiten.
 
-Ergänzend zur Kernstichprobe steht ein Satz von zehn \textbf{kuratierten Extremfällen}
-zur Verfügung, je fünf mit erwartbar hoher und erwartbar niedriger Metadatenqualität.
+Ergänzend zur Kernstichprobe steht ein Satz von zwanzig \textbf{kuratierten Extremfällen}
+zur Verfügung, je zehn mit erwartbar hoher und erwartbar niedriger Metadatenqualität.
 Erstere zeichnen sich durch eine aussagekräftige Beschreibung, erreichbare Ressourcen,
 maschinenlesbare Formate sowie vorhandene Lizenz- und Kontaktangaben aus, letztere durch
 generische Titel, nichtssagende Beschreibungen, defekte Verweise, unklare Lizenzen und
