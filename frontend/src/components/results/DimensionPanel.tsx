@@ -73,7 +73,9 @@ function IndicatorRow({
 
   return (
     <Fragment>
-      <tr className={actionable ? "ind-row actionable" : "ind-row"}>
+      <tr
+        className={`ind-row${actionable ? " actionable" : ""}${open ? " open" : ""}`}
+      >
         <th scope="row" className="ind-cell">
           <div className="ind-head">
             <InfoTip label={meta.label} text={meta.what} />

@@ -33,6 +33,19 @@ class Vocabulary:
         return asdict(self)
 
 
+#: Was ein Befund unterhalb der Ist/Soll-Gegenüberstellung zeigt.
+#:
+#: ``template`` — eine Vorlage aus :attr:`IndicatorGuidance.template`: das Feld
+#:   in korrekter Schreibweise mit einem Beispielwert. Sie steht unabhängig vom
+#:   Ist-Zustand, ist also bei „falsch angegeben" und „fehlt ganz" dieselbe.
+#: ``location`` — die betroffenen Zeilen der geprüften Datei. Für Felder, deren
+#:   richtige Form sich nicht als Vorlage vorgeben lässt, weil sie vom Inhalt
+#:   abhängt (Schlagwörter, LLM-Kriterien) oder weil das Problem außerhalb der
+#:   Datei liegt (tote Links).
+#: ``none`` — nichts; Befund und Hinweis oben tragen bereits alles.
+DetailMode = str  # "template" | "location" | "none"
+
+
 @dataclass(frozen=True)
 class IndicatorGuidance:
     """Klartext-Beschreibung eines Indikators für Endnutzer."""
@@ -46,6 +59,13 @@ class IndicatorGuidance:
     #: Was zu tun ist, um den Indikator zu erfüllen.
     fix_de: str
     vocabulary: Optional[Vocabulary] = None
+    #: Siehe :data:`DetailMode`.
+    detail: DetailMode = "location"
+    #: RDF/XML-Vorlage, nur bei ``detail == "template"``. Alle Beispielwerte
+    #: sind gegen das jeweilige Vokabular geprüft (siehe
+    #: ``extraction.vocabularies``) — eine Vorlage darf keinen Wert zeigen, der
+    #: seinerseits durchfallen würde.
+    template: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -54,44 +74,46 @@ class IndicatorGuidance:
             "field": self.field,
             "fix_de": self.fix_de,
             "vocabulary": self.vocabulary.to_dict() if self.vocabulary else None,
+            "detail": self.detail,
+            "template": self.template,
         }
 
 
-_DATA_THEME = Vocabulary(
-    "EU-Datenkategorien",
-    "http://publications.europa.eu/resource/authority/data-theme",
+# Verlinkt wird jeweils die *Übersichtsseite* eines Vokabulars, nicht die
+# Namensraum-URI der Werte. Letztere liefert zwar HTTP 200, aber rohes RDF/XML
+# (``text/xml``) — im Browser eine Wand aus Markup statt einer Werteliste.
+#
+# Für die EU-Vokabulare ist das die Concept-Scheme-Ansicht auf op.europa.eu;
+# sie nimmt genau die Authority-URI entgegen, gegen die auch validiert wird.
+# Die Werte lädt die Seite per JavaScript nach — im Browser sichtbar, in einem
+# reinen HTTP-Abruf nicht.
+_EU_SCHEME = (
+    "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource"
+    "?uri=http://publications.europa.eu/resource/authority/"
 )
-_FILE_TYPE = Vocabulary(
-    "EU-Dateiformate",
-    "http://publications.europa.eu/resource/authority/file-type",
-)
+
+_DATA_THEME = Vocabulary("EU-Datenkategorien", _EU_SCHEME + "data-theme")
+_FILE_TYPE = Vocabulary("EU-Dateiformate", _EU_SCHEME + "file-type")
 _MEDIA_TYPE = Vocabulary(
     "IANA Media Types",
     "https://www.iana.org/assignments/media-types/media-types.xhtml",
 )
-_AVAILABILITY = Vocabulary(
-    "Planned Availability",
-    "http://publications.europa.eu/resource/authority/planned-availability",
-)
+_AVAILABILITY = Vocabulary("Planned Availability", _EU_SCHEME + "planned-availability")
 _LICENSE = Vocabulary("DCAT-AP.de Lizenzen", "https://www.dcat-ap.de/def/licenses/")
-_GEOCODING = Vocabulary(
-    "DCAT-AP.de Geokodierung", "http://dcat-ap.de/def/politicalGeocoding/"
-)
+# ``/def/politicalGeocoding/`` selbst gibt es nicht (404) — die fünf
+# Schlüssel-Vokabulare (Gemeinde-, Regional-, Kreis-, Landes-,
+# Regierungsbezirksschlüssel) hängen einzeln darunter. Der Indikator akzeptiert
+# jedes davon, also verweist der Link auf die Übersicht, die sie alle listet.
+_GEOCODING = Vocabulary("DCAT-AP.de Geokodierung", "https://www.dcat-ap.de/def/")
 _GEOCODING_LEVEL = Vocabulary(
     "DCAT-AP.de Geokodierungs-Ebenen",
-    "http://dcat-ap.de/def/politicalGeocoding/Level/",
+    "https://www.dcat-ap.de/def/politicalGeocoding/Level/",
 )
 _CONTRIBUTOR = Vocabulary(
-    "DCAT-AP.de Datenbereitsteller", "http://dcat-ap.de/def/contributors/"
+    "DCAT-AP.de Datenbereitsteller", "https://www.dcat-ap.de/def/contributors/"
 )
-_FREQUENCY = Vocabulary(
-    "EU-Aktualisierungsfrequenzen",
-    "http://publications.europa.eu/resource/authority/frequency",
-)
-_ACCESS_RIGHTS = Vocabulary(
-    "EU-Zugriffsrechte",
-    "http://publications.europa.eu/resource/authority/access-right",
-)
+_FREQUENCY = Vocabulary("EU-Aktualisierungsfrequenzen", _EU_SCHEME + "frequency")
+_ACCESS_RIGHTS = Vocabulary("EU-Zugriffsrechte", _EU_SCHEME + "access-right")
 
 
 GUIDANCE: Dict[str, IndicatorGuidance] = {
@@ -108,6 +130,9 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "Ergänzen Sie Schlagwörter, bis mindestens 3 vorhanden sind — z. B. "
             "Thema, Region und Datenart. Über 15 Schlagwörter sollten Sie ausdünnen."
         ),
+        # Welche Schlagwörter richtig sind, hängt am Inhalt — eine Vorlage
+        # könnte nur die Syntax zeigen, die hier nie das Problem ist.
+        detail="location",
     ),
     "find_theme_valid": IndicatorGuidance(
         label_de="Kategorie aus EU-Vokabular",
@@ -121,6 +146,11 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "freie Textwerte zählen nicht."
         ),
         vocabulary=_DATA_THEME,
+        detail="template",
+        template=(
+            '<dcat:theme rdf:resource="http://publications.europa.eu/resource/'
+            'authority/data-theme/ENVI"/>'
+        ),
     ),
     "find_locn_geometry": IndicatorGuidance(
         label_de="Räumliche Abdeckung (Geometrie)",
@@ -132,6 +162,15 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         fix_de=(
             "Hinterlegen Sie eine Bounding Box oder ein Polygon (WKT oder GeoJSON) "
             "als locn:geometry im dct:spatial-Objekt."
+        ),
+        detail="template",
+        template=(
+            "<dct:spatial>\n"
+            "  <dct:Location>\n"
+            '    <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"\n'
+            "      >POLYGON ((9.25 52.16, 9.95 52.16, 9.95 52.52, 9.25 52.52, 9.25 52.16))</locn:geometry>\n"
+            "  </dct:Location>\n"
+            "</dct:spatial>"
         ),
     ),
     "find_political_geocoding": IndicatorGuidance(
@@ -146,6 +185,14 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "DCAT-AP.de-Vokabular ein."
         ),
         vocabulary=_GEOCODING,
+        detail="template",
+        # districtKey/01001 ist ein realer Eintrag des Vokabulars. Die früher
+        # hier genannte municipalityKey/07131038 steht NICHT darin und wäre als
+        # Vorlage eine Falschauskunft gewesen.
+        template=(
+            '<dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/'
+            'politicalGeocoding/districtKey/01001"/>'
+        ),
     ),
     "find_geocoding_level": IndicatorGuidance(
         label_de="Ebene des Verwaltungsgebiets",
@@ -159,6 +206,11 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "DCAT-AP.de-Vokabular."
         ),
         vocabulary=_GEOCODING_LEVEL,
+        detail="template",
+        template=(
+            '<dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/'
+            'politicalGeocoding/Level/municipality"/>'
+        ),
     ),
     "find_temporal_coverage": IndicatorGuidance(
         label_de="Zeitliche Abdeckung",
@@ -170,6 +222,17 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         fix_de=(
             "Geben Sie Start- und Enddatum als gültiges Datum (JJJJ-MM-TT) oder "
             "Zeitstempel an."
+        ),
+        detail="template",
+        template=(
+            "<dct:temporal>\n"
+            "  <dct:PeriodOfTime>\n"
+            '    <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date"\n'
+            "      >2024-01-01</dcat:startDate>\n"
+            '    <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date"\n'
+            "      >2024-12-31</dcat:endDate>\n"
+            "  </dct:PeriodOfTime>\n"
+            "</dct:temporal>"
         ),
     ),
     "find_accrual_periodicity": IndicatorGuidance(
@@ -184,6 +247,11 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "MONTHLY) statt als Freitext."
         ),
         vocabulary=_FREQUENCY,
+        detail="template",
+        template=(
+            '<dct:accrualPeriodicity rdf:resource="http://publications.europa.eu/'
+            'resource/authority/frequency/ANNUAL"/>'
+        ),
     ),
     "find_issued_datetime": IndicatorGuidance(
         label_de="Veröffentlichungsdatum",
@@ -193,6 +261,11 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         ),
         field="dct:issued",
         fix_de="Tragen Sie das Datum im Format JJJJ-MM-TT oder als Zeitstempel (xs:dateTime) ein.",
+        detail="template",
+        template=(
+            '<dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date"\n'
+            "  >2024-01-15</dct:issued>"
+        ),
     ),
     "find_modified_datetime": IndicatorGuidance(
         label_de="Datum der letzten Änderung",
@@ -205,6 +278,11 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "Pflegen Sie das Änderungsdatum bei jeder Aktualisierung im Format "
             "JJJJ-MM-TT oder als Zeitstempel."
         ),
+        detail="template",
+        template=(
+            '<dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date"\n'
+            "  >2024-06-30</dct:modified>"
+        ),
     ),
     # --- Accessibility ----------------------------------------------------
     "acc_download_url": IndicatorGuidance(
@@ -216,6 +294,9 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         ),
         field="dcat:downloadURL",
         fix_de="Ergänzen Sie je Distribution die direkte Datei-URL zusätzlich zur dcat:accessURL.",
+        # Der Befund oben nennt bereits, welche Distribution keine URL hat; die
+        # URL selbst kann keine Vorlage vorgeben.
+        detail="none",
     ),
     "acc_format": IndicatorGuidance(
         label_de="Format aus EU-Vokabular",
@@ -227,6 +308,13 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         field="dct:format",
         fix_de="Ersetzen Sie den Freitext durch die passende Format-URI aus dem EU-Vokabular.",
         vocabulary=_FILE_TYPE,
+        detail="template",
+        template=(
+            '<dcat:Distribution rdf:about="…">\n'
+            '  <dct:format rdf:resource="http://publications.europa.eu/resource/'
+            'authority/file-type/CSV"/>\n'
+            "</dcat:Distribution>"
+        ),
     ),
     "acc_media_type": IndicatorGuidance(
         label_de="Media Type (MIME)",
@@ -240,6 +328,13 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "zum tatsächlichen Dateiformat."
         ),
         vocabulary=_MEDIA_TYPE,
+        detail="template",
+        template=(
+            '<dcat:Distribution rdf:about="…">\n'
+            '  <dcat:mediaType rdf:resource="https://www.iana.org/assignments/'
+            'media-types/text/csv"/>\n'
+            "</dcat:Distribution>"
+        ),
     ),
     "acc_format_congruence": IndicatorGuidance(
         label_de="Format-Angaben stimmen überein",
@@ -250,6 +345,9 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         ),
         field="dct:format / dcat:mediaType",
         fix_de="Gleichen Sie die Angaben an die tatsächlich ausgelieferte Datei an.",
+        # Welcher der widersprüchlichen Werte der richtige ist, entscheidet die
+        # ausgelieferte Datei — eine Vorlage kann das nicht vorwegnehmen.
+        detail="location",
     ),
     "acc_download_url_response": IndicatorGuidance(
         label_de="Download-Link erreichbar",
@@ -259,6 +357,9 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         ),
         field="dcat:downloadURL",
         fix_de="Prüfen Sie die gemeldeten URLs und korrigieren oder entfernen Sie tote Links.",
+        # Das Problem liegt am anderen Ende der Leitung, nicht in der Syntax —
+        # die Fundstelle zeigt, welche Zeile die tote URL trägt.
+        detail="location",
     ),
     "acc_access_url_response": IndicatorGuidance(
         label_de="Zugangs-Link erreichbar",
@@ -268,6 +369,7 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         ),
         field="dcat:accessURL",
         fix_de="Prüfen Sie die gemeldeten URLs und korrigieren oder entfernen Sie tote Links.",
+        detail="location",
     ),
     "acc_machine_readable_access": IndicatorGuidance(
         label_de="Maschinenlesbarer Zugang",
@@ -278,15 +380,19 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         ),
         field="dcat:mediaType / dct:format",
         fix_de=(
-            "Bieten Sie den Inhalt zusätzlich in einem strukturierten Format an "
-            "(z. B. CSV, JSON, GeoJSON)."
+            "Bieten Sie den Inhalt in einem strukturierten, maschinenlesbaren "
+            "Format an — etwa CSV, JSON oder GeoJSON."
         ),
+        # Das Format ist eine Frage des bereitgestellten Inhalts, nicht der
+        # Schreibweise; die Zeile im Quelltext hilft dabei nicht weiter.
+        detail="none",
     ),
     "acc_distribution_model": IndicatorGuidance(
         label_de="Vollständigkeit der Distributionen",
         what_de="Prüft, ob jede Distribution die Pflichtangaben (Zugang, Format, Titel) mitbringt.",
         field="dcat:distribution",
         fix_de="Vervollständigen Sie die fehlenden Pflichtangaben je Distribution.",
+        detail="location",
     ),
     "acc_format_non_proprietary": IndicatorGuidance(
         label_de="Offenes Dateiformat",
@@ -296,9 +402,10 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         ),
         field="dct:format",
         fix_de=(
-            "Stellen Sie zusätzlich zu proprietären Formaten (z. B. XLSX, SHP) "
-            "eine offene Variante bereit (z. B. CSV, GeoJSON)."
+            "Stellen Sie die Daten in einem offenen, nicht proprietären Format "
+            "bereit — etwa CSV, JSON, GeoJSON oder XML."
         ),
+        detail="none",
     ),
     # --- Reusability ------------------------------------------------------
     "reuse_license": IndicatorGuidance(
@@ -313,6 +420,15 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "dl-zero-de/2.0 oder CC-BY 4.0)."
         ),
         vocabulary=_LICENSE,
+        # Vorlage statt Fundstelle: welche Lizenz falsch dasteht, sagt schon der
+        # Ist-Block; was fehlt, ist die zulässige Schreibweise einer freien.
+        detail="template",
+        template=(
+            '<dcat:Distribution rdf:about="…">\n'
+            '  <dct:license rdf:resource="http://dcat-ap.de/def/licenses/'
+            'dl-zero-de/2.0"/>\n'
+            "</dcat:Distribution>"
+        ),
     ),
     "reuse_access_rights": IndicatorGuidance(
         label_de="Zugriffsrechte",
@@ -320,6 +436,11 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         field="dct:accessRights",
         fix_de="Setzen Sie die Zugriffsrechte als URI aus dem EU-Vokabular (in der Regel PUBLIC).",
         vocabulary=_ACCESS_RIGHTS,
+        detail="template",
+        template=(
+            '<dct:accessRights rdf:resource="http://publications.europa.eu/'
+            'resource/authority/access-right/PUBLIC"/>'
+        ),
     ),
     "reuse_publisher": IndicatorGuidance(
         label_de="Herausgeber strukturiert angegeben",
@@ -333,6 +454,14 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "Legen Sie den Herausgeber als foaf:Agent mit foaf:name an und "
             "verlinken Sie ihn über dct:publisher."
         ),
+        detail="template",
+        template=(
+            "<dct:publisher>\n"
+            '  <foaf:Agent rdf:about="https://example.org/organisation/musterbehoerde">\n'
+            "    <foaf:name>Musterbehörde der Beispielstadt</foaf:name>\n"
+            "  </foaf:Agent>\n"
+            "</dct:publisher>"
+        ),
     ),
     "reuse_contact": IndicatorGuidance(
         label_de="Kontaktmöglichkeit",
@@ -345,6 +474,15 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "Hinterlegen Sie im Kontaktpunkt eine E-Mail-Adresse (mailto:) oder "
             "eine Kontakt-URL."
         ),
+        detail="template",
+        template=(
+            "<dcat:contactPoint>\n"
+            '  <vcard:Organization rdf:about="https://example.org/organisation/musterbehoerde">\n'
+            "    <vcard:fn>Poststelle der Musterbehörde</vcard:fn>\n"
+            '    <vcard:hasEmail rdf:resource="mailto:open.data@musterbehoerde.de"/>\n'
+            "  </vcard:Organization>\n"
+            "</dcat:contactPoint>"
+        ),
     ),
     "reuse_contributor_id": IndicatorGuidance(
         label_de="Kennung des Datenbereitstellers",
@@ -355,6 +493,13 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         field="dcatde:contributorID",
         fix_de="Verwenden Sie genau eine contributorID-URI aus dem DCAT-AP.de-Vokabular.",
         vocabulary=_CONTRIBUTOR,
+        detail="template",
+        # Der Beispielwert ist ein realer Eintrag des Vokabulars und steht nur
+        # für die Schreibweise — einzutragen ist das eigene liefernde Portal.
+        template=(
+            '<dcatde:contributorID rdf:resource="http://dcat-ap.de/def/'
+            'contributors/berlinOpenData"/>'
+        ),
     ),
     "reuse_dcat_ap_de_compliance": IndicatorGuidance(
         label_de="DCAT-AP.de-Konformität",
@@ -365,6 +510,10 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         ),
         field="gesamter Metadatensatz",
         fix_de="Arbeiten Sie die gemeldeten Verstöße ab — jede Meldung nennt das betroffene Feld.",
+        # Der Ist-Block listet jeden Verstoß samt betroffenem Feld; ein
+        # gemeinsamer Ausschnitt oder eine Vorlage für „den ganzen Datensatz"
+        # gäbe es ohnehin nicht.
+        detail="none",
     ),
     "reuse_availability": IndicatorGuidance(
         label_de="Verfügbarkeitsgarantie",
@@ -375,6 +524,13 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
         field="dcatap:availability",
         fix_de="Setzen Sie je Distribution eine Verfügbarkeits-URI aus dem EU-Vokabular.",
         vocabulary=_AVAILABILITY,
+        detail="template",
+        template=(
+            '<dcat:Distribution rdf:about="…">\n'
+            '  <dcatap:availability rdf:resource="http://publications.europa.eu/'
+            'resource/authority/planned-availability/AVAILABLE"/>\n'
+            "</dcat:Distribution>"
+        ),
     ),
     # --- Expressiveness (LLM) ---------------------------------------------
     "expr_title_quality": IndicatorGuidance(

@@ -13,7 +13,7 @@
 // `scripts/export_indicator_guidance.py`). Die Portalseite bleibt damit auch
 // offline vollständig lesbar, ohne dass die Texte zweimal gepflegt werden.
 
-import type { IndicatorGuidance, IndicatorsResponse } from "../api/types";
+import type { DetailMode, IndicatorGuidance, IndicatorsResponse } from "../api/types";
 import snapshot from "../portal/data/indicator_guidance.json";
 
 let guidanceById: Record<string, IndicatorGuidance> = {};
@@ -63,6 +63,10 @@ export interface IndicatorMeta {
   /** Was zu tun ist, um den Indikator zu erfüllen. */
   fix: string;
   vocab?: { label: string; url: string };
+  /** Was unter dem Befund steht — Vorlage, Fundstelle oder nichts. */
+  detail: DetailMode;
+  /** RDF/XML-Vorlage, gesetzt genau dann, wenn `detail === "template"`. */
+  template?: string;
 }
 
 /**
@@ -78,6 +82,7 @@ export function indicatorMeta(id: string, fallbackName?: string): IndicatorMeta 
       what: "Für diesen Indikator liegt noch keine Kurzbeschreibung vor.",
       field: id,
       fix: "Siehe Prüfmeldung.",
+      detail: "location",
     };
   }
   return {
@@ -88,6 +93,10 @@ export function indicatorMeta(id: string, fallbackName?: string): IndicatorMeta 
     vocab: guidance.vocabulary
       ? { label: guidance.vocabulary.label_de, url: guidance.vocabulary.url }
       : undefined,
+    // Ohne Vorlage gibt es nichts zu zeigen — dann bleibt nur die Fundstelle,
+    // auch wenn ein älterer Abzug „template" behauptet.
+    detail: guidance.template ? "template" : guidance.detail ?? "location",
+    template: guidance.template ?? undefined,
   };
 }
 

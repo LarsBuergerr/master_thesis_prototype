@@ -10,7 +10,9 @@
     "what_de": "Die Zugangs-URL (Landing Page oder Dienst) wurde aufgerufen. Fehlerhafte Antworten führen Nutzende ins Leere.",
     "field": "dcat:accessURL",
     "fix_de": "Prüfen Sie die gemeldeten URLs und korrigieren oder entfernen Sie tote Links.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "location",
+    "template": null
    }
   },
   {
@@ -23,7 +25,9 @@
     "what_de": "Prüft, ob jede Distribution die Pflichtangaben (Zugang, Format, Titel) mitbringt.",
     "field": "dcat:distribution",
     "fix_de": "Vervollständigen Sie die fehlenden Pflichtangaben je Distribution.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "location",
+    "template": null
    }
   },
   {
@@ -36,7 +40,9 @@
     "what_de": "Die Download-URL zeigt direkt auf die Datei. Ohne sie müssen Nutzende erst durch eine Webseite navigieren — automatische Weiterverarbeitung ist dann nicht möglich.",
     "field": "dcat:downloadURL",
     "fix_de": "Ergänzen Sie je Distribution die direkte Datei-URL zusätzlich zur dcat:accessURL.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "none",
+    "template": null
    }
   },
   {
@@ -49,7 +55,9 @@
     "what_de": "Der Download-Link wurde aufgerufen. Antwortet der Server mit einem Fehler, ist der Datensatz praktisch nicht nutzbar.",
     "field": "dcat:downloadURL",
     "fix_de": "Prüfen Sie die gemeldeten URLs und korrigieren oder entfernen Sie tote Links.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "location",
+    "template": null
    }
   },
   {
@@ -64,8 +72,10 @@
     "fix_de": "Ersetzen Sie den Freitext durch die passende Format-URI aus dem EU-Vokabular.",
     "vocabulary": {
      "label_de": "EU-Dateiformate",
-     "url": "http://publications.europa.eu/resource/authority/file-type"
-    }
+     "url": "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/file-type"
+    },
+    "detail": "template",
+    "template": "<dcat:Distribution rdf:about=\"…\">\n  <dct:format rdf:resource=\"http://publications.europa.eu/resource/authority/file-type/CSV\"/>\n</dcat:Distribution>"
    }
   },
   {
@@ -78,7 +88,9 @@
     "what_de": "Format, Media Type, Dateiendung und der vom Server gemeldete Content-Type müssen dasselbe Format beschreiben. Widersprüche führen zu Fehlern beim Abruf.",
     "field": "dct:format / dcat:mediaType",
     "fix_de": "Gleichen Sie die Angaben an die tatsächlich ausgelieferte Datei an.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "location",
+    "template": null
    }
   },
   {
@@ -90,8 +102,10 @@
     "label_de": "Offenes Dateiformat",
     "what_de": "Offene, herstellerunabhängige Formate lassen sich ohne kostenpflichtige Software öffnen — Kernanforderung an offene Daten.",
     "field": "dct:format",
-    "fix_de": "Stellen Sie zusätzlich zu proprietären Formaten (z. B. XLSX, SHP) eine offene Variante bereit (z. B. CSV, GeoJSON).",
-    "vocabulary": null
+    "fix_de": "Stellen Sie die Daten in einem offenen, nicht proprietären Format bereit — etwa CSV, JSON, GeoJSON oder XML.",
+    "vocabulary": null,
+    "detail": "none",
+    "template": null
    }
   },
   {
@@ -103,8 +117,10 @@
     "label_de": "Maschinenlesbarer Zugang",
     "what_de": "Bewertet, wie gut sich die Daten automatisiert weiterverarbeiten lassen: strukturierte Formate wie CSV, JSON oder GeoJSON zählen hoch, PDF oder HTML niedrig.",
     "field": "dcat:mediaType / dct:format",
-    "fix_de": "Bieten Sie den Inhalt zusätzlich in einem strukturierten Format an (z. B. CSV, JSON, GeoJSON).",
-    "vocabulary": null
+    "fix_de": "Bieten Sie den Inhalt in einem strukturierten, maschinenlesbaren Format an — etwa CSV, JSON oder GeoJSON.",
+    "vocabulary": null,
+    "detail": "none",
+    "template": null
    }
   },
   {
@@ -120,7 +136,9 @@
     "vocabulary": {
      "label_de": "IANA Media Types",
      "url": "https://www.iana.org/assignments/media-types/media-types.xhtml"
-    }
+    },
+    "detail": "template",
+    "template": "<dcat:Distribution rdf:about=\"…\">\n  <dcat:mediaType rdf:resource=\"https://www.iana.org/assignments/media-types/text/csv\"/>\n</dcat:Distribution>"
    }
   },
   {
@@ -133,7 +151,9 @@
     "what_de": "Angaben wie Bezugszeitraum, Gebietsstand, Version oder „vorläufig/geschätzt“ entscheiden darüber, ob die Daten korrekt interpretiert werden.",
     "field": "dct:description / dct:temporal",
     "fix_de": "Ergänzen Sie Stichtag bzw. Bezugszeitraum, Gebiets- oder Verfahrensstand und Hinweise auf vorläufige Werte.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "location",
+    "template": null
    }
   },
   {
@@ -146,7 +166,9 @@
     "what_de": "Die Beschreibung soll erklären, was die Daten enthalten, wie sie entstanden sind und wofür sie taugen — nicht nur den Titel wiederholen.",
     "field": "dct:description",
     "fix_de": "Beschreiben Sie Inhalt, Erhebungsmethode, Struktur und Nutzungszweck in einigen vollständigen Sätzen.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "location",
+    "template": null
    }
   },
   {
@@ -159,7 +181,9 @@
     "what_de": "Bewertet nicht die Anzahl, sondern den Inhalt: Schlagwörter sollten fachlich, verständlich und einzeln sinnvoll sein — keine Systemkürzel wie „inspireidentifiziert“.",
     "field": "dcat:keyword",
     "fix_de": "Ersetzen Sie technische und formale Tags durch verständliche Fachbegriffe; ein Begriff je Schlagwort.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "location",
+    "template": null
    }
   },
   {
@@ -172,7 +196,9 @@
     "what_de": "Kategorien, Schlagwörter, Titel und Beschreibung sollen dasselbe Thema zeichnen. Ausreißer verschlechtern die Trefferqualität der Suche.",
     "field": "dcat:theme / dcat:keyword / dct:title",
     "fix_de": "Entfernen Sie thematisch unpassende Kategorien und Schlagwörter.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "location",
+    "template": null
    }
   },
   {
@@ -185,7 +211,9 @@
     "what_de": "Titel und Beschreibung müssen denselben Gegenstand meinen. Widersprüche lassen Nutzende am falschen Datensatz arbeiten.",
     "field": "dct:title / dct:description",
     "fix_de": "Gleichen Sie beide Felder ab: Die Beschreibung sollte den Titel aufgreifen und konkretisieren.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "location",
+    "template": null
    }
   },
   {
@@ -198,7 +226,9 @@
     "what_de": "Der Titel ist das Erste, was Nutzende sehen. Er sollte den Inhalt konkret benennen — ohne unerklärte Kürzel und ohne reine Nummerierung.",
     "field": "dct:title",
     "fix_de": "Nennen Sie im Titel Datenart, Gegenstand und ggf. Ort oder Zeitraum; schreiben Sie Abkürzungen aus.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "location",
+    "template": null
    }
   },
   {
@@ -213,8 +243,10 @@
     "fix_de": "Setzen Sie die Frequenz als URI aus dem EU-Vokabular (z. B. ANNUAL, MONTHLY) statt als Freitext.",
     "vocabulary": {
      "label_de": "EU-Aktualisierungsfrequenzen",
-     "url": "http://publications.europa.eu/resource/authority/frequency"
-    }
+     "url": "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/frequency"
+    },
+    "detail": "template",
+    "template": "<dct:accrualPeriodicity rdf:resource=\"http://publications.europa.eu/resource/authority/frequency/ANNUAL\"/>"
    }
   },
   {
@@ -229,8 +261,10 @@
     "fix_de": "Ergänzen Sie die passende Ebenen-URI (z. B. municipality) aus dem DCAT-AP.de-Vokabular.",
     "vocabulary": {
      "label_de": "DCAT-AP.de Geokodierungs-Ebenen",
-     "url": "http://dcat-ap.de/def/politicalGeocoding/Level/"
-    }
+     "url": "https://www.dcat-ap.de/def/politicalGeocoding/Level/"
+    },
+    "detail": "template",
+    "template": "<dcatde:politicalGeocodingLevelURI rdf:resource=\"http://dcat-ap.de/def/politicalGeocoding/Level/municipality\"/>"
    }
   },
   {
@@ -243,7 +277,9 @@
     "what_de": "Datum der Erstveröffentlichung, maschinenlesbar formatiert. Portale sortieren neue Datensätze danach.",
     "field": "dct:issued",
     "fix_de": "Tragen Sie das Datum im Format JJJJ-MM-TT oder als Zeitstempel (xs:dateTime) ein.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "template",
+    "template": "<dct:issued rdf:datatype=\"http://www.w3.org/2001/XMLSchema#date\"\n  >2024-01-15</dct:issued>"
    }
   },
   {
@@ -256,7 +292,9 @@
     "what_de": "Schlagwörter sind der wichtigste Treffer-Kanal in der Portalsuche. Ideal sind 3 bis 15 Stück; zu wenige machen den Datensatz unauffindbar, zu viele verwässern die Treffer.",
     "field": "dcat:keyword",
     "fix_de": "Ergänzen Sie Schlagwörter, bis mindestens 3 vorhanden sind — z. B. Thema, Region und Datenart. Über 15 Schlagwörter sollten Sie ausdünnen.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "location",
+    "template": null
    }
   },
   {
@@ -269,7 +307,9 @@
     "what_de": "Die Geometrie beschreibt, welches Gebiet die Daten abdecken. Ohne sie erscheint der Datensatz nicht in Kartensuchen oder Umkreisfiltern.",
     "field": "dct:spatial / locn:geometry",
     "fix_de": "Hinterlegen Sie eine Bounding Box oder ein Polygon (WKT oder GeoJSON) als locn:geometry im dct:spatial-Objekt.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "template",
+    "template": "<dct:spatial>\n  <dct:Location>\n    <locn:geometry rdf:datatype=\"http://www.opengis.net/ont/geosparql#wktLiteral\"\n      >POLYGON ((9.25 52.16, 9.95 52.16, 9.95 52.52, 9.25 52.52, 9.25 52.16))</locn:geometry>\n  </dct:Location>\n</dct:spatial>"
    }
   },
   {
@@ -282,7 +322,9 @@
     "what_de": "Zeigt, wie aktuell der Datensatz ist. Fehlt oder veraltet die Angabe, wirkt der Datensatz ungepflegt.",
     "field": "dct:modified",
     "fix_de": "Pflegen Sie das Änderungsdatum bei jeder Aktualisierung im Format JJJJ-MM-TT oder als Zeitstempel.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "template",
+    "template": "<dct:modified rdf:datatype=\"http://www.w3.org/2001/XMLSchema#date\"\n  >2024-06-30</dct:modified>"
    }
   },
   {
@@ -297,8 +339,10 @@
     "fix_de": "Setzen Sie die URI des zuständigen Verwaltungsgebiets aus dem DCAT-AP.de-Vokabular ein.",
     "vocabulary": {
      "label_de": "DCAT-AP.de Geokodierung",
-     "url": "http://dcat-ap.de/def/politicalGeocoding/"
-    }
+     "url": "https://www.dcat-ap.de/def/"
+    },
+    "detail": "template",
+    "template": "<dcatde:politicalGeocodingURI rdf:resource=\"http://dcat-ap.de/def/politicalGeocoding/districtKey/01001\"/>"
    }
   },
   {
@@ -311,7 +355,9 @@
     "what_de": "Anfang und Ende des Zeitraums, den die Daten beschreiben. Nutzende filtern damit nach Aktualität und Vergleichbarkeit.",
     "field": "dct:temporal (dcat:startDate / dcat:endDate)",
     "fix_de": "Geben Sie Start- und Enddatum als gültiges Datum (JJJJ-MM-TT) oder Zeitstempel an.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "template",
+    "template": "<dct:temporal>\n  <dct:PeriodOfTime>\n    <dcat:startDate rdf:datatype=\"http://www.w3.org/2001/XMLSchema#date\"\n      >2024-01-01</dcat:startDate>\n    <dcat:endDate rdf:datatype=\"http://www.w3.org/2001/XMLSchema#date\"\n      >2024-12-31</dcat:endDate>\n  </dct:PeriodOfTime>\n</dct:temporal>"
    }
   },
   {
@@ -326,8 +372,10 @@
     "fix_de": "Vergeben Sie mindestens eine Kategorie als URI aus dem EU-Vokabular; freie Textwerte zählen nicht.",
     "vocabulary": {
      "label_de": "EU-Datenkategorien",
-     "url": "http://publications.europa.eu/resource/authority/data-theme"
-    }
+     "url": "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/data-theme"
+    },
+    "detail": "template",
+    "template": "<dcat:theme rdf:resource=\"http://publications.europa.eu/resource/authority/data-theme/ENVI\"/>"
    }
   },
   {
@@ -342,8 +390,10 @@
     "fix_de": "Setzen Sie die Zugriffsrechte als URI aus dem EU-Vokabular (in der Regel PUBLIC).",
     "vocabulary": {
      "label_de": "EU-Zugriffsrechte",
-     "url": "http://publications.europa.eu/resource/authority/access-right"
-    }
+     "url": "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right"
+    },
+    "detail": "template",
+    "template": "<dct:accessRights rdf:resource=\"http://publications.europa.eu/resource/authority/access-right/PUBLIC\"/>"
    }
   },
   {
@@ -358,8 +408,10 @@
     "fix_de": "Setzen Sie je Distribution eine Verfügbarkeits-URI aus dem EU-Vokabular.",
     "vocabulary": {
      "label_de": "Planned Availability",
-     "url": "http://publications.europa.eu/resource/authority/planned-availability"
-    }
+     "url": "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/planned-availability"
+    },
+    "detail": "template",
+    "template": "<dcat:Distribution rdf:about=\"…\">\n  <dcatap:availability rdf:resource=\"http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE\"/>\n</dcat:Distribution>"
    }
   },
   {
@@ -372,7 +424,9 @@
     "what_de": "Eine erreichbare Kontaktadresse ist die einzige Möglichkeit für Nutzende, Fehler zu melden oder Rückfragen zu stellen.",
     "field": "dcat:contactPoint (vcard:hasEmail / vcard:hasURL)",
     "fix_de": "Hinterlegen Sie im Kontaktpunkt eine E-Mail-Adresse (mailto:) oder eine Kontakt-URL.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "template",
+    "template": "<dcat:contactPoint>\n  <vcard:Organization rdf:about=\"https://example.org/organisation/musterbehoerde\">\n    <vcard:fn>Poststelle der Musterbehörde</vcard:fn>\n    <vcard:hasEmail rdf:resource=\"mailto:open.data@musterbehoerde.de\"/>\n  </vcard:Organization>\n</dcat:contactPoint>"
    }
   },
   {
@@ -387,8 +441,10 @@
     "fix_de": "Verwenden Sie genau eine contributorID-URI aus dem DCAT-AP.de-Vokabular.",
     "vocabulary": {
      "label_de": "DCAT-AP.de Datenbereitsteller",
-     "url": "http://dcat-ap.de/def/contributors/"
-    }
+     "url": "https://www.dcat-ap.de/def/contributors/"
+    },
+    "detail": "template",
+    "template": "<dcatde:contributorID rdf:resource=\"http://dcat-ap.de/def/contributors/berlinOpenData\"/>"
    }
   },
   {
@@ -401,7 +457,9 @@
     "what_de": "Formale Prüfung der Metadaten gegen das DCAT-AP.de-Schema (SHACL). Verstöße können dazu führen, dass der Datensatz beim Harvesting abgelehnt wird.",
     "field": "gesamter Metadatensatz",
     "fix_de": "Arbeiten Sie die gemeldeten Verstöße ab — jede Meldung nennt das betroffene Feld.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "none",
+    "template": null
    }
   },
   {
@@ -417,7 +475,9 @@
     "vocabulary": {
      "label_de": "DCAT-AP.de Lizenzen",
      "url": "https://www.dcat-ap.de/def/licenses/"
-    }
+    },
+    "detail": "template",
+    "template": "<dcat:Distribution rdf:about=\"…\">\n  <dct:license rdf:resource=\"http://dcat-ap.de/def/licenses/dl-zero-de/2.0\"/>\n</dcat:Distribution>"
    }
   },
   {
@@ -430,7 +490,9 @@
     "what_de": "Der Herausgeber muss als eigenständiges Objekt mit Namen hinterlegt sein, nicht nur als Textzeile — sonst lässt sich nicht eindeutig zuordnen, wer verantwortlich ist.",
     "field": "dct:publisher (foaf:Agent / foaf:name)",
     "fix_de": "Legen Sie den Herausgeber als foaf:Agent mit foaf:name an und verlinken Sie ihn über dct:publisher.",
-    "vocabulary": null
+    "vocabulary": null,
+    "detail": "template",
+    "template": "<dct:publisher>\n  <foaf:Agent rdf:about=\"https://example.org/organisation/musterbehoerde\">\n    <foaf:name>Musterbehörde der Beispielstadt</foaf:name>\n  </foaf:Agent>\n</dct:publisher>"
    }
   }
  ],

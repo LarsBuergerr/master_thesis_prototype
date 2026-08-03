@@ -169,8 +169,15 @@
   background: rgba(255, 218, 218, 0.22);
 }
 
+// Ausgeklappt gehören Indikatorzeile und Befund zusammen. Die Trennlinie aus
+// `.gd-table tbody tr` schnitte sie auseinander und läge dabei direkt auf der
+// Befundkarte auf, weil deren Zelle oben nicht polstert.
+.ind-row.open {
+  border-bottom: none;
+}
+
 .ind-finding-row > td {
-  padding-top: 0;
+  padding-top: 4px;
   background: rgba(255, 218, 218, 0.22);
 }
 
@@ -202,8 +209,17 @@
   }
 }
 
-.finding-block + .finding-block {
-  margin-top: map-get($spacers, "1_5");
+// Abstand bekommen nur die Blöcke *unter* dem Raster. Im Raster selbst darf
+// die zweite Spalte keinen bekommen — sonst begänne „Hinweise" tiefer als
+// „So steht es im Metadatensatz", obwohl beide auf einer Höhe stehen sollen.
+.finding > .finding-block {
+  margin-top: map-get($spacers, 2);
+}
+
+// Die Fundstelle steht etwas weiter ab: sie verlässt die Ebene der Deutung
+// und zeigt den Quelltext selbst.
+.finding > .finding-block-source {
+  margin-top: map-get($spacers, 3);
 }
 
 .finding-h {
@@ -218,6 +234,14 @@
   margin: 0;
   display: grid;
   gap: 4px;
+
+  // Lange Listen (v. a. SHACL-Verstöße) bekommen eine eigene Bildlaufleiste,
+  // statt den Befund über mehrere Bildschirmhöhen zu ziehen.
+  &.scroll {
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
 }
 
 .finding-fact {
@@ -292,9 +316,34 @@
 }
 
 // ---------------------------------------------------------------------------
+// Vorlage („So sollte es aussehen")
+// ---------------------------------------------------------------------------
+// Bewusst mit waagerechter Bildlaufleiste statt Umbruch: die Beispiele sind
+// RDF/XML zum Übernehmen, und ein umbrochenes rdf:resource-Attribut liesse sich
+// nicht mehr sauber herauskopieren.
+.finding-template {
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 5px;
+  background: $clr-neutral-grey-100;
+  overflow-x: auto;
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: $fnt-paragraph-extra-small;
+    line-height: 1.5;
+    color: $clr-neutral-grey-800;
+    white-space: pre;
+  }
+}
+
+// ---------------------------------------------------------------------------
 // RDF-Fundstelle
 // ---------------------------------------------------------------------------
 .rdf-excerpt {
+  // Etwas Luft oben und unten, damit die erste Zeile nicht am Rahmen klebt.
+  padding: 5px 0;
   border: 1px solid $clr-neutral-grey-300;
   border-radius: 5px;
   background: $clr-neutral-grey-100;

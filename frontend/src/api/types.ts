@@ -16,12 +16,22 @@ export interface Vocabulary {
   url: string;
 }
 
+/**
+ * Was unter dem Befund gezeigt wird (siehe core/guidance.py):
+ *  - `template`  — Vorlage mit Beispielwert, unabhängig vom Ist-Zustand
+ *  - `location`  — die betroffenen Zeilen der geprüften Datei
+ *  - `none`      — nichts; Befund und Hinweis oben tragen bereits alles
+ */
+export type DetailMode = "template" | "location" | "none";
+
 export interface IndicatorGuidance {
   label_de: string;
   what_de: string;
   field: string;
   fix_de: string;
   vocabulary?: Vocabulary | null;
+  detail?: DetailMode;
+  template?: string | null;
 }
 
 export interface IndicatorInfo {

@@ -196,6 +196,11 @@ class GuidanceInfo(BaseModel):
     field: str
     fix_de: str
     vocabulary: Optional[VocabularyInfo] = None
+    #: Was unter dem Befund steht: ``template`` (Vorlage), ``location``
+    #: (Fundstelle in der geprüften Datei) oder ``none``.
+    detail: str = "location"
+    #: RDF/XML-Vorlage, nur bei ``detail == "template"``.
+    template: Optional[str] = None
 
 
 class DimensionInfo(BaseModel):

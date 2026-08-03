@@ -133,7 +133,7 @@ def _keywords_count(details: Details, message: str) -> Finding:
     return Finding(
         headline=headline,
         current=[FactLine(label, _quote(keywords) if keywords else "keine", "bad")],
-        target="3 bis 15 Schlagwörter, die Thema, Region und Datenart benennen.",
+        target="Vergeben Sie 3 bis 15 Schlagwörter, die Thema, Region und Datenart benennen.",
     )
 
 
@@ -145,20 +145,22 @@ def _theme_valid(details: Details, message: str) -> Finding:
         return Finding(
             headline="Es ist keine Kategorie gesetzt — der Datensatz erscheint in keiner Themen-Facette.",
             current=[FactLine("dcat:theme", "nicht gesetzt", "bad")],
-            target="Mindestens eine Kategorie als URI aus dem EU-Vokabular der 13 Datenkategorien.",
+            target="Setzen Sie mindestens eine Kategorie als URI aus dem EU-Vokabular der 13 Datenkategorien.",
         )
-    current: List[FactLine] = []
-    if valid:
-        current.append(FactLine("Anerkannt", ", ".join(valid), "good"))
-    if invalid:
-        current.append(FactLine("Nicht anerkannt", ", ".join(invalid), "bad"))
+    # Eine Zeile je Wert, beschriftet mit dem Feld statt mit „Anerkannt" /
+    # „Nicht anerkannt" — die Bewertung trägt bereits die Farbe, und der
+    # Feldname ist die Angabe, nach der man in der Datei sucht.
+    current = [
+        FactLine("dcat:theme", t, "good" if t in valid else "bad")
+        for t in valid + invalid
+    ]
     return Finding(
         headline=(
             f"{len(invalid)} von {count} Kategorien stammen nicht aus dem "
             "EU-Vokabular und werden ignoriert."
         ),
         current=current,
-        target="Mindestens eine Kategorie als URI aus dem EU-Vokabular der 13 Datenkategorien.",
+        target="Setzen Sie mindestens eine Kategorie als URI aus dem EU-Vokabular der 13 Datenkategorien.",
     )
 
 
@@ -167,8 +169,8 @@ def _locn_geometry(details: Details, message: str) -> Finding:
         headline="Es ist kein Gebiet hinterlegt — der Datensatz taucht in Kartensuchen nicht auf.",
         current=[FactLine("locn:geometry", "nicht gesetzt", "bad")],
         target=(
-            "Eine Bounding Box oder ein Polygon als WKT oder GeoJSON, "
-            "z. B. POLYGON ((9.25 52.16, …))."
+            "Hinterlegen Sie eine Bounding Box oder ein Polygon als WKT oder "
+            "GeoJSON, z. B. POLYGON ((9.25 52.16, …))."
         ),
     )
 
@@ -184,31 +186,51 @@ def _political_geocoding(details: Details, message: str) -> Finding:
             else "Das angegebene Verwaltungsgebiet stammt nicht aus dem DCAT-AP.de-Vokabular."
         ),
         current=[FactLine("dcatde:politicalGeocodingURI", uri or "nicht gesetzt", "bad")],
+        # Beispiel gegen das Vokabular geprüft — die früher hier genannte
+        # municipalityKey/07131038 ist darin nicht enthalten.
         target=(
-            "Eine URI aus dem DCAT-AP.de-Geokodierungs-Vokabular, z. B. "
-            "http://dcat-ap.de/def/politicalGeocoding/municipalityKey/07131038."
+            "Tragen Sie eine URI aus dem DCAT-AP.de-Geokodierungs-Vokabular ein, "
+            "z. B. http://dcat-ap.de/def/politicalGeocoding/districtKey/01001."
         ),
     )
 
 
 def _geocoding_level(details: Details, message: str) -> Finding:
-    count = _num(details, "level_count")
+    valid = _strings(details, "valid")
     invalid = _strings(details, "invalid")
+    if valid or invalid:
+        # Wie bei dcat:theme: je Wert eine Zeile, beschriftet mit dem Feld.
+        return Finding(
+            headline=(
+                "Die Ebene des Verwaltungsgebiets stammt nicht aus dem "
+                "kontrollierten Vokabular."
+            ),
+            current=[
+                FactLine(
+                    "dcatde:politicalGeocodingLevelURI",
+                    level,
+                    "good" if level in valid else "bad",
+                )
+                for level in valid + invalid
+            ],
+            target=(
+                "Tragen Sie eine Ebenen-URI ein, z. B. "
+                "http://dcat-ap.de/def/politicalGeocoding/Level/municipality."
+            ),
+        )
+    # Weder gültige noch ungültige Werte protokolliert — das Feld fehlt.
     return Finding(
         headline=(
             "Die Ebene des Verwaltungsgebiets fehlt — Suchfilter können den "
             "Raumbezug nicht einordnen."
-            if count == 0
-            else "Nicht alle angegebenen Ebenen stammen aus dem kontrollierten Vokabular."
         ),
         current=[
-            FactLine(
-                "dcatde:politicalGeocodingLevelURI",
-                ", ".join(invalid) if invalid else "nicht gesetzt",
-                "bad",
-            )
+            FactLine("dcatde:politicalGeocodingLevelURI", "nicht gesetzt", "bad")
         ],
-        target="Eine Ebenen-URI, z. B. http://dcat-ap.de/def/politicalGeocoding/Level/municipality.",
+        target=(
+            "Tragen Sie eine Ebenen-URI ein, z. B. "
+            "http://dcat-ap.de/def/politicalGeocoding/Level/municipality."
+        ),
     )
 
 
@@ -239,7 +261,8 @@ def _temporal_coverage(details: Details, message: str) -> Finding:
             line("dcat:startDate", start_count, start_valid, "start_format"),
             line("dcat:endDate", end_count, end_valid, "end_format"),
         ],
-        target="Start- und Enddatum im Format JJJJ-MM-TT (oder als vollständiger Zeitstempel).",
+        target="Geben Sie Start- und Enddatum im Format JJJJ-MM-TT oder als "
+        "vollständigen Zeitstempel an.",
     )
 
 
@@ -251,7 +274,8 @@ def _datetime_field(field: str) -> Builder:
             return Finding(
                 headline=f"{field} ist nicht gesetzt — es ist nicht erkennbar, wie aktuell der Datensatz ist.",
                 current=[FactLine(field, "nicht gesetzt", "bad")],
-                target="Datum als JJJJ-MM-TT oder Zeitstempel JJJJ-MM-TTThh:mm:ss.",
+                target="Tragen Sie das Datum als JJJJ-MM-TT oder als Zeitstempel "
+                "JJJJ-MM-TTThh:mm:ss ein.",
             )
         return Finding(
             headline=(
@@ -267,7 +291,8 @@ def _datetime_field(field: str) -> Builder:
                 )
                 for entry in invalid
             ],
-            target="Datum als JJJJ-MM-TT oder Zeitstempel JJJJ-MM-TTThh:mm:ss.",
+            target="Tragen Sie das Datum als JJJJ-MM-TT oder als Zeitstempel "
+                "JJJJ-MM-TTThh:mm:ss ein.",
         )
 
     return build
@@ -282,7 +307,8 @@ def _accrual_periodicity(details: Details, message: str) -> Finding:
             else "Die Aktualisierungsfrequenz fehlt — Nutzende wissen nicht, ob sich ein erneuter Abruf lohnt."
         ),
         current=[FactLine("dct:accrualPeriodicity", value or "nicht gesetzt", "bad")],
-        target="Eine Frequenz-URI aus dem EU-Vokabular, z. B. …/authority/frequency/ANNUAL.",
+        target="Setzen Sie eine Frequenz-URI aus dem EU-Vokabular, z. B. "
+        "…/authority/frequency/ANNUAL.",
     )
 
 
@@ -303,8 +329,8 @@ def _download_url(details: Details, message: str) -> Finding:
             FactLine("davon mit dcat:downloadURL", str(with_url), "bad"),
         ],
         target=(
-            "Je Distribution eine dcat:downloadURL, die direkt auf die Datei zeigt "
-            "(nicht auf eine Webseite)."
+            "Ergänzen Sie je Distribution eine dcat:downloadURL, die direkt auf die "
+            "Datei zeigt und nicht auf eine Webseite."
         ),
     )
 
@@ -350,8 +376,8 @@ def _machine_readable(details: Details, message: str) -> Finding:
         headline=headline,
         current=current,
         target=(
-            "Den Inhalt zusätzlich strukturiert anbieten (CSV, JSON, GeoJSON) "
-            "statt nur als PDF, HTML oder Bilddienst."
+            "Bieten Sie den Inhalt in einem strukturierten, maschinenlesbaren "
+            "Format an — etwa CSV, JSON oder GeoJSON."
         ),
     )
 
@@ -365,7 +391,7 @@ def _url_response(field: str) -> Builder:
             return Finding(
                 headline=f"Es gibt keine {field}, die geprüft werden könnte.",
                 current=[FactLine(field, "bei keiner Distribution gesetzt", "bad")],
-                target=f"Je Distribution eine erreichbare {field}.",
+                target=f"Je Distribution muss eine erreichbare {field} hinterlegt sein.",
             )
         return Finding(
             headline=(
@@ -381,12 +407,13 @@ def _url_response(field: str) -> Builder:
                 )
                 for entry in invalid
             ],
-            target="Alle Links antworten mit einem Statuscode im Bereich 200–299.",
-            notes=[
-                f"{entry.get('url')}: {entry.get('fetch_error')}"
-                for entry in invalid
-                if entry.get("fetch_error")
-            ],
+            # Kein „Im Einzelnen": der Ist-Block nennt je Link bereits Status
+            # und Adresse, die Fehlermeldung darunter wiederholte nur dieselben
+            # URLs.
+            target=(
+                "Alle Links müssen mit einem Statuscode im Bereich 200–299 "
+                "antworten."
+            ),
         )
 
     return build
@@ -412,7 +439,7 @@ def _format_congruence(details: Details, message: str) -> Finding:
         ],
         target=(
             "dct:format, dcat:mediaType, Dateiendung und der vom Server gemeldete "
-            "Content-Type beschreiben dasselbe Format."
+            "Content-Type müssen dasselbe Format beschreiben."
         ),
         notes=[
             w
@@ -439,8 +466,9 @@ def _distribution_model(details: Details, message: str) -> Finding:
             if isinstance(count, int)
         ],
         target=(
-            "Neben dem Dienst-Endpunkt mindestens eine herunterladbare Datendatei "
-            "anbieten, damit Nutzende die Daten auch ohne Dienst verarbeiten können."
+            "Bieten Sie neben dem Dienst-Endpunkt mindestens eine herunterladbare "
+            "Datendatei an, damit Nutzende die Daten auch ohne Dienst "
+            "verarbeiten können."
         ),
     )
 
@@ -466,7 +494,8 @@ def _access_rights(details: Details, message: str) -> Finding:
             if entries
             else [FactLine("dct:accessRights", "nicht gesetzt", "bad")]
         ),
-        target="Eine URI aus dem EU-Vokabular, in der Regel …/authority/access-right/PUBLIC.",
+        target="Setzen Sie eine URI aus dem EU-Vokabular, in der Regel "
+        "…/authority/access-right/PUBLIC.",
     )
 
 
@@ -493,7 +522,7 @@ def _license(details: Details, message: str) -> Finding:
         ),
         current=current,
         target=(
-            "Je Distribution eine freie Lizenz als URI, z. B. "
+            "Weisen Sie je Distribution eine freie Lizenz als URI zu, z. B. "
             "http://dcat-ap.de/def/licenses/dl-zero-de/2.0."
         ),
         notes=(
@@ -519,7 +548,8 @@ def _publisher(details: Details, message: str) -> Finding:
                 "bad",
             )
         ],
-        target="Ein foaf:Agent mit foaf:name, verlinkt über dct:publisher.",
+        target="Legen Sie den Herausgeber als foaf:Agent mit foaf:name an und "
+        "verlinken Sie ihn über dct:publisher.",
     )
 
 
@@ -540,7 +570,8 @@ def _contact(details: Details, message: str) -> Finding:
             ),
             FactLine("davon mit E-Mail oder URL", str(with_channel), "bad"),
         ],
-        target="Ein vcard:Kind mit vcard:hasEmail (mailto:…) oder vcard:hasURL.",
+        target="Hinterlegen Sie ein vcard:Kind mit vcard:hasEmail (mailto:…) oder "
+        "vcard:hasURL.",
     )
 
 
@@ -565,7 +596,7 @@ def _contributor_id(details: Details, message: str) -> Finding:
     return Finding(
         headline=headline,
         current=current,
-        target="Genau eine URI aus http://dcat-ap.de/def/contributors/.",
+        target="Tragen Sie genau eine URI aus http://dcat-ap.de/def/contributors/ ein.",
     )
 
 
@@ -586,7 +617,8 @@ def _shacl(details: Details, message: str) -> Finding:
             )
             for v in violations
         ],
-        target="Keine Verstöße gegen DCAT-AP.de v2.0 — jede Meldung nennt das betroffene Feld.",
+        target="Arbeiten Sie die gemeldeten Verstöße gegen DCAT-AP.de v2.0 ab — jede "
+        "Meldung nennt das betroffene Feld.",
     )
 
 
@@ -611,27 +643,29 @@ BUILDERS: Dict[str, Builder] = {
         "formats",
         "ein Format aus dem EU-Vokabular",
         "kein Format angegeben",
-        "Je Distribution eine Format-URI, z. B. "
+        "Setzen Sie je Distribution eine Format-URI, z. B. "
         "http://publications.europa.eu/resource/authority/file-type/CSV.",
     ),
     "acc_media_type": _distribution_builder(
         "media_types",
         "einen gültigen Media Type",
         "kein Media Type angegeben",
-        "Je Distribution eine IANA-URI, z. B. "
+        "Setzen Sie je Distribution eine IANA-URI, z. B. "
         "https://www.iana.org/assignments/media-types/text/csv.",
     ),
     "acc_format_non_proprietary": _distribution_builder(
         "formats",
         "ein offenes, herstellerunabhängiges Format",
         "kein Format angegeben",
-        "Mindestens eine Distribution in einem offenen Format (z. B. CSV, JSON, GeoJSON, XML).",
+        "Stellen Sie die Daten in einem offenen, nicht proprietären Format "
+        "bereit — etwa CSV, JSON, GeoJSON oder XML.",
     ),
     "reuse_availability": _distribution_builder(
         "availability",
         "eine Verfügbarkeitsangabe",
         "keine Angabe",
-        "Je Distribution eine Verfügbarkeits-URI, z. B. …/planned-availability/STABLE.",
+        "Setzen Sie je Distribution eine Verfügbarkeits-URI, z. B. "
+        "…/planned-availability/STABLE.",
     ),
     "acc_machine_readable_access": _machine_readable,
     "acc_format_congruence": _format_congruence,
