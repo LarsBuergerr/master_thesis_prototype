@@ -18,7 +18,10 @@ import { useDefaultConfig, useJob } from "../../hooks/useAnalysis";
 import { withExpressiveness } from "../../lib/config";
 import { OverallScoreCard } from "../../components/results/OverallScoreCard";
 import { DimensionRadar } from "../../components/results/DimensionRadar";
-import { DimensionPanel } from "../../components/results/DimensionPanel";
+import {
+  DimensionPanel,
+  type ExpandSignal,
+} from "../../components/results/DimensionPanel";
 import { ResultToolbar } from "../../components/results/ResultToolbar";
 import { useCatalog, useOverlay, usePortalSource } from "../source";
 
@@ -61,6 +64,7 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
   const result = single ?? fromJob ?? (overlay?.kind === "run" ? fromRun.data : undefined);
 
   const [hidePassing, setHidePassing] = useState(false);
+  const [expand, setExpand] = useState<ExpandSignal>({ open: false, nonce: 0 });
   const actionableCount = result
     ? Object.values(result.by_dimension).reduce(
         (acc, dim) => acc + dim.indicators.filter((i) => i.status !== "pass").length,
@@ -229,6 +233,10 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
                   onChange={setHidePassing}
                   actionable={actionableCount}
                   total={result.summary.total_indicators}
+                  allExpanded={expand.open}
+                  onToggleAll={() =>
+                    setExpand((p) => ({ open: !p.open, nonce: p.nonce + 1 }))
+                  }
                 />
                 <div style={{ marginTop: 8 }}>
                   {Object.values(result.by_dimension).map((dim) => (
@@ -237,6 +245,7 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
                       dim={dim}
                       rdfSource={rdf.data}
                       hidePassing={hidePassing}
+                      expand={expand}
                     />
                   ))}
                 </div>

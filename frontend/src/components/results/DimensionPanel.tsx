@@ -7,7 +7,7 @@
 // sich zu einem vollständigen Befund aufklappen (Ist-Zustand, Soll-Zustand,
 // Änderungsvorschlag).
 
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import type { DimensionResult, IndicatorResult } from "../../api/types";
 import { fmt, statusIcon, statusLabel } from "../../lib/status";
 import { columnHelp, dimensionLabel, dimensionWhat, indicatorMeta } from "../../lib/indicators";
@@ -27,14 +27,45 @@ function statusText(status: string): string {
   return STATUS_LABELS[status] ?? statusLabel(status as never);
 }
 
+/**
+ * Auftrag von außen, alles auf- oder zuzuklappen (Werkzeugleiste).
+ *
+ * `nonce` zählt die Betätigungen mit und ist der eigentliche Auslöser: Wer nach
+ * „Alles ausklappen" einzelne Panels von Hand zuklappt und dann erneut auf
+ * denselben Knopf drückt, erwartet, dass wieder alles offen ist. An `open`
+ * allein wäre das nicht zu erkennen — der Wert hat sich ja nicht geändert.
+ */
+export interface ExpandSignal {
+  open: boolean;
+  nonce: number;
+}
+
+/** Folgt dem Signal, lässt zwischendurch aber jedes Auf- und Zuklappen von Hand zu. */
+function useExpandSignal(initial: boolean, signal?: ExpandSignal) {
+  const [open, setOpen] = useState(initial);
+  // Der beim Einhängen anliegende Stand zählt nicht als Auftrag — sonst würde
+  // das Signal beim ersten Rendern `initial` überschreiben.
+  const applied = useRef(signal?.nonce);
+
+  useEffect(() => {
+    if (!signal || signal.nonce === applied.current) return;
+    applied.current = signal.nonce;
+    setOpen(signal.open);
+  }, [signal]);
+
+  return [open, setOpen] as const;
+}
+
 function IndicatorRow({
   indicator,
   rdfSource,
+  expand,
 }: {
   indicator: IndicatorResult;
   rdfSource?: string;
+  expand?: ExpandSignal;
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useExpandSignal(false, expand);
   const meta = indicatorMeta(indicator.indicator_id, indicator.name_de);
   // Aufklappbar ist eine Zeile genau dann, wenn das Backend einen Befund
   // mitgeliefert hat — bei PASS gibt es nichts zu tun.
@@ -88,6 +119,7 @@ export function DimensionPanel({
   rdfSource,
   defaultOpen = false,
   hidePassing = false,
+  expand,
 }: {
   dim: DimensionResult;
   /** RDF-Quelltext, um die betroffene Stelle zu zeigen (optional). */
@@ -95,10 +127,13 @@ export function DimensionPanel({
   defaultOpen?: boolean;
   /** Erfüllte Indikatoren ausblenden, um nur den Handlungsbedarf zu zeigen. */
   hidePassing?: boolean;
+  /** Auf-/Zuklappen von außen — gilt für das Panel und seine Befunde. */
+  expand?: ExpandSignal;
 }) {
   const label = dimensionLabel(dim.dimension);
   const what = dimensionWhat(dim.dimension);
-  const open = dim.indicators.filter((i) => i.status !== "pass").length;
+  const [open, setOpen] = useExpandSignal(defaultOpen, expand);
+  const actionable = dim.indicators.filter((i) => i.status !== "pass").length;
 
   // Gefiltert wird nur die Tabelle. Das Balkendiagramm behält alle Indikatoren:
   // es ist die Übersicht der Dimension, und ohne die erfüllten Balken sähe eine
@@ -122,13 +157,17 @@ export function DimensionPanel({
     }).length >= 2;
 
   return (
-    <details className="dim-panel" open={defaultOpen}>
+    <details
+      className="dim-panel"
+      open={open}
+      onToggle={(e) => setOpen(e.currentTarget.open)}
+    >
       <summary>
         <span className="dim-name">{label}</span>{" "}
         <span className="muted">
           Score {fmt(dim.score)} · Gewicht {fmt(dim.dimension_weight, 1)} ·{" "}
           {dim.pass_count} von {dim.indicator_count} Indikatoren erfüllt
-          {open > 0 && ` · ${open} mit Handlungsbedarf`}
+          {actionable > 0 && ` · ${actionable} mit Handlungsbedarf`}
         </span>
       </summary>
 
@@ -167,7 +206,12 @@ export function DimensionPanel({
             </thead>
             <tbody>
               {rows.map((i) => (
-                <IndicatorRow key={i.indicator_id} indicator={i} rdfSource={rdfSource} />
+                <IndicatorRow
+                  key={i.indicator_id}
+                  indicator={i}
+                  rdfSource={rdfSource}
+                  expand={expand}
+                />
               ))}
             </tbody>
           </table>

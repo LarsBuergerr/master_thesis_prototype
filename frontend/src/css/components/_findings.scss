@@ -420,6 +420,26 @@
   font-variant-numeric: tabular-nums;
 }
 
+// „Alles ausklappen": gleiche Anmutung wie die Spaltenauswahl daneben, damit
+// die Leiste eine Reihe gleichrangiger Anzeigeschalter bleibt.
+.ind-toolbar-btn {
+  @extend .button-reset;
+
+  padding: 3px 8px;
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 4px;
+  background: $white;
+  color: $clr-primary-400;
+  font-size: $fnt-paragraph-extra-small;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background: $clr-neutral-grey-100;
+    color: $clr-primary-500;
+  }
+}
+
 // Spaltenauswahl als natives details/summary — Tastaturbedienung inklusive,
 // ohne eigene Popover-Logik.
 .ind-toolbar-menu {
