@@ -2495,12 +2495,12 @@ Für die Gestaltung gelten durchgängig zwei Regeln der Barrierefreiheit, die de
 % erst H3 belegt Überlegenheit.
 \section{Evaluationsdesign und Hypothesen}
 
-Die Evaluation stützt sich auf zwei komplementäre Evidenzstränge, die auf identischem
+Die Evaluation stützt sich auf zwei komplementäre Argumentationsstränge, die auf identischem
 RDF-Input erhoben werden. Der erste vergleicht den Prototyp mit einem externen
-menschlichen Qualitätsurteil und beantwortet die Frage, ob er \emph{richtig} bewertet.
-Der zweite vergleicht ihn mit der Metadata Quality Assurance (MQA) von data.europa.eu als
-etablierter Baseline und beantwortet die Frage, was er \emph{zusätzlich} sieht. Beide
-Stränge sind aufeinander angewiesen: Der Baseline-Vergleich allein kann lediglich zeigen,
+menschlichen Qualitätsurteil und beantwortet die Frage, ob er \emph{korrekt} bewertet.
+Der zweite vergleicht ihn mit der Metadata Quality Assessment (MQA) von data.europa.eu als
+etablierter Baseline und beantwortet die Frage, was er \emph{ergänzend} sieht. Beide
+Stränge sind aufeinander aufbauend: Der Baseline-Vergleich allein kann lediglich zeigen,
 dass sich die Bewertungen unterscheiden, nicht aber, welche der beiden näher an der
 tatsächlichen Qualität liegt. Erst der Ground-Truth-Vergleich erlaubt diese Aussage.
 
@@ -2509,16 +2509,12 @@ beider Verfahren auf den äquivalenten Prüfungen stark konvergieren, der Protot
 etablierte MQA-Logik also korrekt abbildet; methodisch entspricht dies dem Nachweis
 konvergenter Validität~\cite{campbell1959convergent}. \textbf{H2 (Mehrwert)} besagt, dass
 die Scores auf denjenigen Indikatoren systematisch divergieren, bei denen der Prototyp
-tiefer prüft als die MQA oder bei denen die MQA über kein Pendant verfügt -- hier ist
+tiefer prüft als die MQA oder bei denen die MQA über kein Pendant verfügt. Hier ist
 eine Divergenz kein Fehler, sondern der erwartete Effekt des verifizierenden statt
 lediglich prüfenden Ansatzes. \textbf{H3 (Korrektheit)} besagt, dass der Prototyp dort,
 wo beide Verfahren divergieren, stärker mit dem externen Qualitätsurteil übereinstimmt
-als die MQA. H3 verbindet beide Stränge und trägt die eigentliche Überlegenheitsaussage;
-ohne sie belegt H2 nur, dass anders gemessen wird, nicht dass besser gemessen wird.
-
-Die Auswertung erfolgt entlang dieser Struktur: Abschnitt~5.5 legt die Kennzahlen fest,
-Abschnitt~5.6 bestimmt zunächst das für die semantische Bewertung eingesetzte
-Sprachmodell, und die Abschnitte~5.7 und~5.8 berichten die Ergebnisse je Evidenzstrang.
+als die MQA. H3 verbindet beide Stränge und trägt die eigentliche Überlegenheitsaussage.
+Ohne sie belegt H2 nur, dass anders gemessen wird, nicht dass besser gemessen wird.
 
 % Scope: Stratifizierte purposive Kernstichprobe (n=50, Seed 67) mit fünf
 % Schichtungsmerkmalen (Themen, Bereitsteller, Zugriffstypen, Formatgruppen, technische
@@ -2539,17 +2535,16 @@ Service-Kennungen in 25.416 Geo-Datensätze und 124.370 Nicht-Geo-Datensätze un
 
 Aus dieser Grundgesamtheit wurde am 25.~Juni~2026 eine \textbf{stratifizierte
 Zufallsstichprobe} von $n = 50$ Datensätzen gezogen (Seed~67, reproduzierbar über
-Notebook~12). Die Schichtung erfolgt zweistufig: primär nach der Unterscheidung
+Notebook~12). Die Gruppierung erfolgt zweistufig: primär nach der Unterscheidung
 Geo/Nicht-Geo, sekundär innerhalb beider Gruppen nach den vier jeweils
 aufkommensstärksten Datenbereitstellern zuzüglich einer Restkategorie für alle übrigen
 Bereitsteller. Aus jedem der so entstehenden zehn Straten werden fünf Datensätze gezogen.
 Die Schichtung stellt sicher, dass die Stichprobe die für die Metadatenqualität
-relevanten Unterschiede der Grundgesamtheit abbildet -- Themenbereiche, Bereitsteller,
-Zugriffstypen, Formatgruppen und technische Vorqualität -- statt von den wenigen
+relevanten Unterschiede der Grundgesamtheit abbildet, statt von den wenigen
 aufkommensstärksten Portalen dominiert zu werden, die bei einer einfachen Zufallsziehung
 den Großteil der Stichprobe stellen würden. Die gezogenen Datensätze wurden anschließend
-als RDF/XML von GovData abgerufen und bilden damit denselben Input, auf dem Prototyp und
-MQA-Reimplementierung arbeiten.
+als RDF/XML von GovData abgerufen und bilden damit denselben Input, auf dem der Prototyp 
+und die MQA-Reimplementierung arbeiten.
 
 Ergänzend zur Kernstichprobe steht ein Satz von zwanzig \textbf{kuratierten Extremfällen}
 zur Verfügung, je zehn mit erwartbar hoher und erwartbar niedriger Metadatenqualität.
@@ -2600,16 +2595,38 @@ Perspektive, statt die Prüflogik des Prototyps manuell
 nachzuvollziehen~\cite{campbell1959convergent}.
 
 Aus den vier Dimensionswerten wird ein Gesamturteil in den Stufen \emph{gut},
-\emph{mittel} und \emph{schlecht} abgeleitet. Als \emph{gut} gilt ein Datensatz bei einem
-Durchschnitt von mindestens 4,0, sofern keine Dimension unter 3 liegt; als
-\emph{schlecht} bei einem Durchschnitt von höchstens 2,0 oder bei einem Durchschnitt
-unter 3,5 in Verbindung mit mindestens zwei Dimensionen unter 2. Alle übrigen Fälle
-gelten als \emph{mittel}. Die Schwellen sind kriteriumsorientiert
+\emph{mittel} und \emph{schlecht} abgeleitet; Tabelle~\ref{tab:gt_gesamturteil} führt die
+Schwellen auf.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\rowcolors{1}{white}{white}
+\begin{tabular}{p{0.13\textwidth} p{0.28\textwidth} p{0.38\textwidth}}
+\hline
+\textbf{Gesamturteil} & \textbf{Durchschnitt der vier Dimensionen} & \textbf{Zusätzliche Bedingung} \\
+\hline
+gut & mindestens 4,0 & keine Dimension unter 3 \\
+\hline
+schlecht & höchstens 2,0 & -- \\
+ & oder unter 3,5 & mindestens zwei Dimensionen unter 2 \\
+\hline
+mittel & \multicolumn{2}{p{0.68\textwidth}}{alle übrigen Fälle} \\
+\hline
+\end{tabular}
+\caption{Ableitung des Gesamturteils der Ground Truth aus den vier Dimensionswerten}
+\label{tab:gt_gesamturteil}
+\end{table}
+
+Die Schwellen sind kriteriumsorientiert
 gesetzt~\cite{glaser1963}: Sie repräsentieren inhaltlich definierte Qualitätsniveaus und
 nicht die relative Lage innerhalb der Stichprobenverteilung. Die Aggregation ist bewusst
 hybrid -- primär kompensatorisch über den Durchschnitt, abgesichert durch eine
 konjunktive Klausel -- damit ein hoher Wert in einer Dimension eine gravierende Lücke in
-einer anderen nicht vollständig ausgleichen kann~\cite{einhorn1971}.
+einer anderen nicht vollständig ausgleichen kann~\cite{einhorn1971}. In der Tabelle
+entspricht die mittlere Spalte dem kompensatorischen, die rechte dem konjunktiven Teil
+dieser Regel.
 
 Die Bewertung erfolgte blind gegenüber den Ergebnissen des Prototyps: Die
 Bewertungsvorlage enthält ausschließlich die zur Beurteilung erforderlichen Fakten ---
