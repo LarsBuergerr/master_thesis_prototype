@@ -776,6 +776,15 @@ $gd-container-width: map-get($container-max-widths, lg);
   border: none;
   background: $clr-media-grey-500;
   color: $white;
+
+  // `.design-box:not(:last-child)` setzt einen unteren Abstand für Boxen, die
+  // untereinander stehen. Im Raster stapelt nichts: Die Regel traf nur die
+  // ersten drei Kacheln und verkürzte deren Fläche um 10px, während die letzte
+  // („Häufigster Mangel") die volle Zeilenhöhe füllte und dadurch tiefer
+  // reichte als ihre Nachbarn.
+  &.design-box {
+    margin-bottom: 0;
+  }
 }
 .gd-kpi-k {
   margin: 0 0 6px;
@@ -813,6 +822,12 @@ $gd-container-width: map-get($container-max-widths, lg);
 }
 .gd-panel {
   border-radius: 0;
+
+  // Gleicher Grund wie bei .gd-kpi: im Raster darf der Stapelabstand der
+  // design-box die Kachelhöhen nicht gegeneinander verschieben.
+  &.design-box {
+    margin-bottom: 0;
+  }
 }
 .gd-panel-title {
   margin: 0 0 2px;

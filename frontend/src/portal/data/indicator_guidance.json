@@ -426,7 +426,7 @@
     "fix_de": "Hinterlegen Sie im Kontaktpunkt eine E-Mail-Adresse (mailto:) oder eine Kontakt-URL.",
     "vocabulary": null,
     "detail": "template",
-    "template": "<dcat:contactPoint>\n  <vcard:Organization rdf:about=\"https://example.org/organisation/musterbehoerde\">\n    <vcard:fn>Poststelle der Musterbehörde</vcard:fn>\n    <vcard:hasEmail rdf:resource=\"mailto:open.data@musterbehoerde.de\"/>\n  </vcard:Organization>\n</dcat:contactPoint>"
+    "template": "<dcat:contactPoint>\n  <vcard:Organization rdf:about=\"https://example.org/organisation/musterbehoerde\">\n    <vcard:fn>Poststelle der Musterbehörde</vcard:fn>\n    <vcard:hasEmail rdf:resource=\"mailto:open.data@musterbehoerde.de\"/>\n    <vcard:hasURL rdf:resource=\"https://www.musterbehoerde.de/kontakt\"/>\n  </vcard:Organization>\n</dcat:contactPoint>"
    }
   },
   {

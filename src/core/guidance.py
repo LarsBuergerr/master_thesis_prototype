@@ -475,11 +475,15 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "eine Kontakt-URL."
         ),
         detail="template",
+        # Beide Kanäle in der Vorlage: Der Indikator lässt E-Mail *oder* URL
+        # genügen, die Vorlage zeigt aber, wie jeder von beiden zu schreiben
+        # ist — die E-Mail mit mailto:-Präfix, die URL als absolute http(s)-URL.
         template=(
             "<dcat:contactPoint>\n"
             '  <vcard:Organization rdf:about="https://example.org/organisation/musterbehoerde">\n'
             "    <vcard:fn>Poststelle der Musterbehörde</vcard:fn>\n"
             '    <vcard:hasEmail rdf:resource="mailto:open.data@musterbehoerde.de"/>\n'
+            '    <vcard:hasURL rdf:resource="https://www.musterbehoerde.de/kontakt"/>\n'
             "  </vcard:Organization>\n"
             "</dcat:contactPoint>"
         ),

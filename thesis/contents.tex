@@ -2326,44 +2326,15 @@ Alle drei sind Ausprägungen desselben Prinzips, das bereits den maschinenlesbar
 
 Ein Qualitätsbefund entfaltet seine Wirkung dort, wo die Metadaten ohnehin gepflegt und betrachtet werden. Ein eigenständiges Analysewerkzeug, in das Metadaten gesondert hochgeladen werden, verlangt dagegen einen zusätzlichen Arbeitsschritt an einem zusätzlichen Ort. Die Bewertung wird deshalb als zusätzliche Ebene innerhalb der gewohnten Portalansichten dargestellt: In der Trefferliste erscheint je Datensatz ein kompakter Qualitätsindikator, die Detailansicht erhält einen Bewertungsabschnitt unterhalb der beschreibenden Metadaten, und die Aggregation über den Bestand liegt als eigener Menüpunkt daneben.
 
-Um dies zeigen zu können, ohne Zugriff auf ein produktiv betriebenes Portal zu haben, bildet der Prototyp die Oberfläche des GovData-Portals nach \cite{govdata_portal} und übernimmt dessen Gestaltungssystem und Seitenaufbau. Diese Nachbildung ist ausdrücklich Mittel zum Zweck und nicht Gegenstand der Arbeit: Sie dient dem Nachweis, dass sich die Bewertungsergebnisse in eine bestehende Portalumgebung einfügen lassen, und wird selbst nicht bewertet. Sie umfasst entsprechend nur die für die Qualitätsdarstellung erforderlichen Ansichten, bildet die Redaktionsprozesse des Portals nicht nach und schreibt insbesondere nicht in die Metadaten zurück. Der Prototyp belegt damit die Einbettbarkeit, ersetzt aber keine Untersuchung der tatsächlichen Wirkung in der Praxis; diese Abgrenzung wird in Section~\ref{sec:limitationen_eval} als Grenze ausgewiesen.
+Um dies zeigen zu können, ohne Zugriff auf ein produktiv betriebenes Portal zu haben, bildet der Prototyp die Oberfläche des GovData-Portals nach \cite{govdata_portal} und übernimmt dessen Gestaltungssystem und Seitenaufbau. Diese Nachbildung ist ausdrücklich Mittel zum Zweck und nicht Gegenstand der Arbeit: Sie dient dem Nachweis, dass sich die Bewertungsergebnisse in eine bestehende Portalumgebung einfügen lassen, und wird selbst nicht bewertet. Sie umfasst entsprechend nur die für die Qualitätsdarstellung erforderlichen Ansichten, bildet die Redaktionsprozesse des Portals nicht nach und schreibt insbesondere nicht in die Metadaten zurück. Bewertungsergebnisse liegen als eigene Ebene neben dem Datenbestand und sind mit ihm allein über die Identität des Datensatzes verknüpft; ein produktiv betriebenes Portal müsste sein Datenmodell also nicht um Bewertungsfelder erweitern. Dass die Oberfläche zwischen mehreren vorliegenden Bewertungsläufen umschalten lässt, ist dabei ein Demonstrationsmittel -- im Regelbetrieb läge über einem Bestand genau eine Bewertung, die nach jeder Ernte erneuert wird. Der Prototyp belegt damit die Einbettbarkeit, ersetzt aber keine Untersuchung der tatsächlichen Wirkung in der Praxis; diese Abgrenzung wird in Section~\ref{sec:limitationen_eval} als Grenze ausgewiesen.
 
 \begin{figure}[H]
     \centering
-    % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
-    % \includegraphics[width=\textwidth]{images/frontend_trefferliste.png}
-    \bildplatzhalter{Screenshot der Trefferliste: Suchbereich mit
-    Facettenfilter links, Trefferkarten mit Titel, Beschreibung, Format- und
-    Lizenzangaben sowie dem kompakten Qualitätsring je Datensatz rechts.}
+    \includegraphics[width=\textwidth]{images/einbettung_scoring_gesamtansicht_2.png}
+
     \captionsetup{justification=centering}
-    \caption{Trefferliste mit eingebettetem Qualitätsindikator}
+    \caption{Suchseite mit Qualitätsfacette links und Qualitätsring je Treffer}
     \label{fig:frontend_trefferliste}
-\end{figure}
-
-% Scope: Die Bewertungsebene ist von den Portalinhalten getrennt und wird über
-% den Dateistamm verknüpft. Das Umschalten zwischen Läufen ist ein
-% Demonstrationsmittel, nicht das Zielbild — im Regelbetrieb liegt genau eine
-% fortlaufend fortgeschriebene Bewertung über dem Bestand.
-\subsection{Trennung von Metadaten- und Bewertungsebene}
-
-Portalinhalt und Bewertung werden als zwei getrennte Ebenen geführt, die ausschließlich über den Dateinamen miteinander verknüpft sind. Die erste Ebene ist der Datenbestand: ein Verzeichnis mit DCAT-AP.de-Metadatendateien, aus denen Titel, Beschreibung, Schlagwörter, Formate, Lizenz und herausgebende Stelle gewonnen werden. Diese Ebene weiß nichts von Bewertung. Die zweite Ebene ist das Ausgabeverzeichnis eines abgeschlossenen Bewertungslaufs; es enthält weder Titel noch Schlagwörter, sondern ausschließlich Ergebnisse.
-
-Diese Trennung ist die für die Übertragbarkeit wesentliche Eigenschaft des Entwurfs. Ein produktiv betriebenes Portal führt seine Metadaten in einer eigenen Datenhaltung und wird diese nicht um Bewertungsfelder ergänzen wollen; das hier gewählte Modell verlangt das auch nicht. Die Bewertung bleibt ein Nebenprodukt, das über den bestehenden Bestand gelegt wird, ohne ihn zu verändern. In einem realen Portal träte an die Stelle des Verzeichnisses die vorhandene Datenhaltung, während die Bewertungsebene unverändert bliebe und fortlaufend automatisiert fortgeschrieben würde.
-
-Dass die Oberfläche des Prototyps ohne Inhalt startet, einen Datenbestand erst laden lässt und anschließend das Umschalten zwischen mehreren vorliegenden Läufen erlaubt, ist demgegenüber kein Zielbild, sondern ein Demonstrationsmittel. Es macht die Trennung beider Ebenen unmittelbar sichtbar und erlaubt es, in einer Vorführung dieselben Datensätze unter verschiedenen Bewertungsläufen zu zeigen. Im Regelbetrieb läge über einem Bestand genau eine Bewertung, die nach jeder Ernte automatisch erneuert wird.
-
-\begin{figure}[H]
-    \centering
-    % @TODO Schemazeichnung erstellen und die folgende Zeile einkommentieren:
-    % \includegraphics[width=\textwidth]{images/frontend_ebenenmodell.png}
-    \bildplatzhalter{Schemazeichnung des Zwei-Ebenen-Modells: oben der
-    Datenbestand (im Prototyp ein Verzeichnis mit RDF-Dateien, im Regelbetrieb
-    die Datenhaltung des Portals), unten die Bewertungsebene mit den
-    Ergebnisreports eines Laufs, dazwischen die Verknüpfung allein über den
-    Dateistamm; rechts die Portalansicht, in der beide Ebenen zusammentreffen.}
-    \captionsetup{justification=centering}
-    \caption{Trennung von Metadaten- und Bewertungsebene und ihre Verknüpfung über den Dateistamm}
-    \label{fig:frontend_ebenen}
 \end{figure}
 
 % Scope: Nur anreißen — welche Bausteine, welche Sprache, welches Protokoll.
@@ -2391,12 +2362,7 @@ Der Prototyp überträgt deshalb jedes negative Prüfergebnis in eine einheitlic
 
 \begin{figure}[H]
     \centering
-    % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
-    % \includegraphics[width=\textwidth]{images/frontend_befund.png}
-    \bildplatzhalter{Screenshot eines aufgeklappten Indikators: in der Zeile
-    Klarname, betroffenes Feld und Prüfmeldung, darunter gegenübergestellt die
-    Ist-Angaben mit Fundstelle und der Hinweis mit Verweis auf das maßgebliche
-    Vokabular, gefolgt von den Einzelbefunden und dem Detailblock.}
+    \includegraphics[width=\textwidth]{images/befund_nicht_erfuellter_einzelindikator.png}
     \captionsetup{justification=centering}
     \caption{Aufgeklappter Befund zu einem nicht erfüllten Indikator}
     \label{fig:frontend_befund}
@@ -2426,12 +2392,21 @@ Unabhängig von der Darstellung leitet der Prototyp dort, wo eine Korrektur masc
 
 \begin{figure}[H]
     \centering
-    % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
-    % \includegraphics[width=\textwidth]{images/frontend_handlungsanweisung.png}
-    \bildplatzhalter{Zwei Screenshots im Vergleich: links ein Befund mit Vorlage
-    („So sollte es aussehen“) für ein Feld mit kontrolliertem Vokabular, rechts
-    ein Befund mit Fundstelle („Betroffene Stelle in der Metadatendatei“) für
-    einen inhaltsabhängigen Indikator.}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/so_sollte_es_aussehen_ansicht.png}
+        \captionsetup{justification=centering}
+        \caption{Vorlage („So sollte es aussehen“) für ein Feld mit vorgegebener Schreibweise}
+        \label{fig:frontend_detailblock_vorlage}
+    \end{subfigure}
+    \\[1em]
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/betroffene_stelle_in_den_metadaten_ansicht.png}
+        \captionsetup{justification=centering}
+        \caption{Fundstelle („Betroffene Stelle in der Metadatendatei“) für einen inhaltsabhängigen Indikator}
+        \label{fig:frontend_detailblock_fundstelle}
+    \end{subfigure}
     \captionsetup{justification=centering}
     \caption{Die beiden Formen des Detailblocks: Vorlage und Fundstelle im Quelltext}
     \label{fig:frontend_handlungsanweisung}
@@ -2448,12 +2423,7 @@ Die Detailsicht eines Datensatzes richtet sich an die Datenbereitstellenden. Sie
 
 \begin{figure}[H]
     \centering
-    % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
-    % \includegraphics[width=\textwidth]{images/frontend_detailsicht.png}
-    \bildplatzhalter{Screenshot der Detailsicht eines Datensatzes:
-    Gesamtscore als Ring mit Note, daneben das Netzdiagramm der vier
-    Qualitätsdimensionen, darunter die nach Dimensionen gruppierten
-    Indikatortabellen sowie der Schalter zum Ausblenden erfüllter Indikatoren.}
+    \includegraphics[width=0.85\textwidth]{images/einzelansicht_uebersicht_metadatenqualitaet.png}
     \captionsetup{justification=centering}
     \caption{Detailsicht eines Datensatzes mit Dimensionsprofil und Indikatorübersicht}
     \label{fig:frontend_detailsicht}
@@ -2463,13 +2433,7 @@ Die Aggregatsicht bedient die Portalbetreibenden. Sie weist die Zahl der bewerte
 
 \begin{figure}[H]
     \centering
-    % @TODO Screenshot erstellen und die folgende Zeile einkommentieren:
-    % \includegraphics[width=\textwidth]{images/frontend_aggregatsicht.png}
-    \bildplatzhalter{Screenshot der Aggregatsicht: Kennzahlenleiste mit Anzahl
-    bewerteter Datensätze, mittlerem Gesamtscore, Anteil erfüllter Indikatoren
-    und häufigstem Mangel; darunter die Verteilung der Gesamtbewertung, die
-    Mittelwerte je Dimension, die häufigsten Mängel und der Verlauf über die
-    Bewertungsläufe.}
+    \includegraphics[width=\textwidth]{images/gesamtansicht_aggregation_portalweit.png}
     \captionsetup{justification=centering}
     \caption{Aggregatsicht über einen Datenbestand}
     \label{fig:frontend_aggregatsicht}
@@ -2903,7 +2867,7 @@ Primärmetrik, dann die Kalibrierungsmaße, dann die Urteilsebene als Sekundärm
     \hline
     \multicolumn{4}{l}{\textit{Primärmetrik}} \\
     Spearman $\rho$ Aussagekraft & 0,569 & \textbf{0,608} & 0,598 \\
-    Spearman $\rho$ gesamt & 0,766 & \textbf{0,770} & 0,745 \\
+    Spearman $\rho$ gesamt & 0,765 & \textbf{0,770} & 0,745 \\
     \hline
     \multicolumn{4}{l}{\textit{Kalibrierung}} \\
     MAE (Skala 0--5) & 0,289 & \textbf{0,275} & 0,308 \\
@@ -2934,10 +2898,12 @@ Abschnitt~5.6.2 zeigt, kleiner sind als die Schwankung eines einzelnen Modells z
 Wiederholungsläufen.
 
 Zwischen \textbf{GPT-5.5} und \textbf{Sonnet 4.6} trennt die Primärmetrik die Kandidaten
-nicht. Der Abstand auf der Aussagekraft beträgt 0,028 zugunsten von Sonnet~4.6, während
-die Streuung desselben Modells zwischen Wiederholungsläufen bei $\sigma = 0{,}023$ liegt
-(Abschnitt~5.6.2). Der Unterschied entspricht damit dem 1,2-fachen der Streuung, und die
-Wertebereiche beider Modelle überlappen einander. Ein Vorsprung dieser Größenordnung ist
+nicht. Der Abstand auf der Aussagekraft beträgt in obiger Tabelle 0,029; auf der
+Wiederholungsstichprobe, auf der auch die Streuung bestimmt ist ($n = 30$,
+Abschnitt~5.6.2), sind es 0,028 zugunsten von Sonnet~4.6, während die Streuung desselben
+Modells zwischen Wiederholungsläufen dort bei $\sigma = 0{,}023$ liegt. Der Unterschied
+entspricht damit dem 1,2-fachen der Streuung, und die Wertebereiche beider Modelle
+überlappen einander. Ein Vorsprung dieser Größenordnung ist
 auf dieser Stichprobe nicht von Zufallsschwankung zu unterscheiden.
 
 Damit fällt die Entscheidung auf den nachgeordneten Kriterien, und diese weisen
@@ -2946,7 +2912,7 @@ Sonnet~4.6 unterschätzt die Aussagekraft systematisch um 0,723 Skalenpunkte, al
 15\,\% der Skalenbreite, GPT-5.5 dagegen nur um 0,077. Diese Niveauverschiebung ist für
 die Rangkorrelation folgenlos -- $\rho$ misst ausschließlich die Reihenfolge -- wirkt
 sich auf der Urteilsebene aber unmittelbar aus, weil die Urteilsregel feste Schwellen auf
-die gerundeten Dimensionswerte anwendet. Sonnet~4.6 drückt dadurch 19 der 30 Datensätze
+die gerundeten Dimensionswerte anwendet. Sonnet~4.6 drückt dadurch 19 der 50 Datensätze
 unter die konjunktive Sperrklausel „keine Dimension unter 3“ (Ground Truth: 7) und erkennt
 in der Folge nur einen der fünf tatsächlich guten Datensätze als „gut“, gegenüber drei bei
 GPT-5.5. Für ein Werkzeug, das Datenbereitstellern eine Qualitätsrückmeldung geben soll,
