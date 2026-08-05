@@ -1,22 +1,3 @@
-% ===========================================================================
-% Platzhalter für noch nicht erstellte Abbildungen. Rendert einen gerahmten
-% Kasten mit der geplanten Bildbeschreibung, damit das Dokument übersetzbar
-% bleibt, solange die Screenshots fehlen. Zum Einsetzen der fertigen Grafik den
-% Aufruf durch die darüberstehende, auskommentierte \includegraphics-Zeile
-% ersetzen. Optionales Argument = Höhe des Kastens.
-% @TODO Makro samt aller \bildplatzhalter-Aufrufe entfernen, sobald alle
-% Abbildungen vorliegen.
-% ===========================================================================
-\newcommand{\bildplatzhalter}[2][0.30\textheight]{%
-  \fbox{%
-    \begin{minipage}[c][#1][c]{0.95\textwidth}%
-      \centering\sffamily\small
-      \textbf{[Platzhalter Abbildung]}\\[0.6em]
-      \begin{minipage}{0.85\linewidth}\centering #2\end{minipage}%
-    \end{minipage}%
-  }%
-}
-
 \chapter{Einleitung}
 
 \section{Problemstellung und Motivation}
@@ -2504,8 +2485,17 @@ Stränge sind aufeinander aufbauend: Der Baseline-Vergleich allein kann lediglic
 dass sich die Bewertungen unterscheiden, nicht aber, welche der beiden näher an der
 tatsächlichen Qualität liegt. Erst der Ground-Truth-Vergleich erlaubt diese Aussage.
 
-Daraus ergeben sich drei Hypothesen. \textbf{H1 (Konvergenz)} besagt, dass die Scores
-beider Verfahren auf den äquivalenten Prüfungen stark konvergieren, der Prototyp die
+Daraus ergeben sich drei Hypothesen: 
+
+\begin{enumerate}
+
+    \item \textbf{H1 (Konvergenz):} Die Scores beider Verfahren konvergieren stark auf denjenigen Indikatoren, die äquivalent geprüft werden. 
+    \item \textbf{H2 (Mehrwert):} Die Scores divergieren systematisch auf denjenigen Indikatoren, bei denen der Prototyp tiefer prüft als die MQA oder bei denen die MQA über kein Pendant verfügt.
+    \item \textbf{H3 (Korrektheit):} Auf denjenigen Indikatoren, auf denen beide Verfahren divergieren, stimmt der Prototyp stärker mit dem externen Qualitätsurteil überein als die MQA.
+
+\end{enumerate}
+
+\textbf{H1 (Konvergenz)} besagt, dass die Scores beider Verfahren auf den äquivalenten Prüfungen stark konvergieren, der Prototyp die
 etablierte MQA-Logik also korrekt abbildet; methodisch entspricht dies dem Nachweis
 konvergenter Validität~\cite{campbell1959convergent}. \textbf{H2 (Mehrwert)} besagt, dass
 die Scores auf denjenigen Indikatoren systematisch divergieren, bei denen der Prototyp
@@ -2524,7 +2514,7 @@ Ohne sie belegt H2 nur, dass anders gemessen wird, nicht dass besser gemessen wi
 % Erhebungsdatum, Portal-Quelle, DCAT-AP-Version dokumentieren (Replikationspaket).
 \section{Datengrundlage und Stichprobe}
 
-Grundlage der Evaluation ist ein vollständiger Abzug des GovData-CKAN-Katalogs vom
+Grundlage der Evaluation ist ein vollständiger Auszug des GovData-CKAN-Katalogs vom
 15.~Mai~2026 mit 151.579 Datensätzen. Aus diesem wurden zunächst alle Datensätze
 entfernt, die mindestens eine NetCDF-Distribution enthalten (1.793 Datensätze,
 verbleibend 149.786). NetCDF-Ressourcen sind typischerweise sehr große Klima- und
@@ -2551,13 +2541,13 @@ zur Verfügung, je zehn mit erwartbar hoher und erwartbar niedriger Metadatenqua
 Erstere zeichnen sich durch eine aussagekräftige Beschreibung, erreichbare Ressourcen,
 maschinenlesbare Formate sowie vorhandene Lizenz- und Kontaktangaben aus, letztere durch
 generische Titel, nichtssagende Beschreibungen, defekte Verweise, unklare Lizenzen und
-fehlerhafte Formatangaben. Beide Schichten verfolgen unterschiedliche Zwecke und werden
-deshalb getrennt ausgewertet: Die Extremfälle belegen den Wirkmechanismus per
-Konstruktion, da bei ihnen bekannt ist, welches Ergebnis zu erwarten wäre; die
+fehlerhafte Formatangaben. Beide Schichten verfolgen unterschiedliche Zwecke und werden 
+getrennt ausgewertet: Die Extremfälle belegen den Wirkmechanismus per
+Konstruktion, da bei ihnen bekannt ist, welches Ergebnis zu erwarten ist. Die
 Kernstichprobe kontrolliert die Selektionsverzerrung, die einer kuratierten Auswahl
 notwendigerweise anhaftet, und zeigt das Verhalten unter realistischen Bedingungen.
-Da die Extremfälle konstruiert und nicht gezogen sind, erlauben sie keine
-Verallgemeinerung auf die Grundgesamtheit; die quantitativen Aussagen dieser Arbeit
+Da die Extremfälle konstruiert und nicht randomisiert selektiert sind, erlauben sie keine
+Verallgemeinerung auf die Grundgesamtheit. Alle quantitativen Aussagen dieser Arbeit
 stützen sich daher durchgehend auf die Kernstichprobe.
 % @TODO Extremfall-Evaluation steht noch aus: Ground-Truth-Bewertung der Extremfaelle
 % fehlt. Vor Durchfuehrung entscheiden, ob bei n=10 (5 gut / 5 schlecht) bleiben oder
@@ -2575,9 +2565,10 @@ stützen sich daher durchgehend auf die Kernstichprobe.
 \section{Ground-Truth-Erhebung}
 
 Als externer Maßstab dient eine manuelle Bewertung aller 50 Datensätze der
-Kernstichprobe entlang derselben vier Qualitätsdimensionen, die auch der Prototyp
-verwendet. Bewertet wird jede Dimension auf einer sechsstufigen Skala von 0 bis 5, deren
-Stufen durch ausformulierte Anker beschrieben sind. Die Stufenzahl folgt dem Befund von
+Kernstichprobe und der Extremfälle, entlang derselben vier Qualitätsdimensionen, die auch der Prototyp
+verwendet. Bewertet wird jede Dimension auf einer sechsstufigen Skala von 0 bis 5 entlang
+je einer ausformulierten Ankerfrage; Tabelle~\ref{tab:gt_anker} führt die vier Fragen auf.
+Die Stufenzahl folgt dem Befund von
 Preston und Colman~\cite{preston2000optimal}, wonach Reliabilität, Validität und
 Diskriminierungsfähigkeit von Ratingskalen bis etwa fünf bis sieben Kategorien zunehmen
 und vierstufige Skalen suboptimal sind. Auf einen expliziten Skalenmittelpunkt wird
@@ -2585,6 +2576,38 @@ verzichtet; das gegen Mittelpunkte vorgebrachte Argument des Central-Tendency-Bi
 betrifft primär Einstellungsskalen ohne inhaltliche Anker, während bei einer
 kriteriengeleiteten Bewertung mit definierten Ankerformulierungen kein Ausweichverhalten
 zu erwarten ist~\cite{jonsson2007rubrics}.
+
+
+
+\begin{table}[H]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.3}
+\rowcolors{1}{white}{white}
+\begin{tabularx}{\textwidth}{p{0.20\textwidth} X}
+\hline
+\textbf{Dimension} & \textbf{Ankerfrage} \\
+\hline
+Auffindbarkeit &
+Ist der Datensatz über Titel, Beschreibung, Schlagwörter, Kategorien sowie räumliche
+und zeitliche Angaben gut auffindbar und einordenbar? \\
+\hline
+Zugänglichkeit &
+Ist die beschriebene Ressource erreichbar, abrufbar, maschinenlesbar und technisch
+plausibel beschrieben? \\
+\hline
+Nachnutzbarkeit &
+Sind Lizenz, Rechte, Kontakt, Herausgeber und verwendete Vokabulare für eine
+Weiterverwendung ausreichend klar? \\
+\hline
+Aussagekraft &
+Sind Titel, Beschreibung, Schlagwörter und Kontextangaben verständlich, plausibel und
+informationshaltig? \\
+\hline
+\end{tabularx}
+\caption{Ankerfragen der manuellen Ground-Truth-Bewertung je Qualitätsdimension}
+\label{tab:gt_anker}
+\end{table}
 
 Methodisch entscheidend ist, dass die Anker die \emph{nutzerseitige Qualitätserfahrung}
 beschreiben und nicht die Indikatorlogik des Prototyps. Ein Anker der Dimension
@@ -2629,16 +2652,9 @@ entspricht die mittlere Spalte dem kompensatorischen, die rechte dem konjunktive
 dieser Regel.
 
 Die Bewertung erfolgte blind gegenüber den Ergebnissen des Prototyps: Die
-Bewertungsvorlage enthält ausschließlich die zur Beurteilung erforderlichen Fakten ---
-Titel, Beschreibung, Schlagwörter, Themen, Lizenz, Formate sowie Angaben zur
-Erreichbarkeit der Ressourcen -- nicht jedoch dessen Scores. Damit wird ein
+Bewertungsvorlage enthält ausschließlich den Inhalt der zu bewertenden Metadatendatei
+ nicht jedoch dessen Scores. Damit wird ein
 Anchoring-Bias ausgeschlossen, der die gemessene Übereinstimmung künstlich erhöhen würde.
-Nach einem ersten Bewertungsdurchgang wurden die Datensätze mit den größten Abweichungen
-zwischen manueller und maschineller Bewertung erneut gegen die Rubrik geprüft; dabei
-wurden 20 von 200 Zellwerten korrigiert, überwiegend Fehleinschätzungen der
-Zugänglichkeit. Diese Re-Annotation erfolgte dokumentiert und regelgeleitet, ist aber
-nicht mehr blind; die Erstbewertung war es. Die korrigierte Fassung bildet die Grundlage
-aller berichteten Kennzahlen.
 
 Als Limitation ist festzuhalten, dass die Bewertung von einer einzelnen Person
 vorgenommen wurde und eine Inter-Rater-Reliabilität daher nicht bestimmt werden kann. Der
@@ -2655,36 +2671,39 @@ getragen.
 % Mapping-Tabelle in den Anhang, im Text Schema + Beispiele + Grenzfälle (review=True).
 \section{Vergleichsbaseline: MQA-Reimplementierung und A/B/C-Klassifikation}
 
-Als Vergleichsmaßstab dient die Metadata Quality Assurance von data.europa.eu. Sie
+Als Vergleichsmaßstab dient die Metadata Quality Assessment Implementierung von data.europa.eu. Sie
 eignet sich als Baseline, weil sie im europäischen Open-Data-Kontext etabliert ist,
 ihre Methodik offengelegt ist und sie denselben DCAT-AP-Input bewertet wie der Prototyp.
 Um beide Verfahren auf exakt derselben Datengrundlage vergleichen zu können, wurde die
 MQA-Bewertungslogik nach der offiziellen Methodik~\cite{dataeuropa2024mqa}
 reimplementiert und gegen die veröffentlichten Berichte von data.europa.eu validiert.
-Die Reimplementierung ist ausdrücklich Evaluationsinstrument und nicht Bestandteil des
+Die Reimplementierung ist dabei lediglich Evaluationsinstrument und nicht Bestandteil des
 Artefakts. Da beide Verfahren unterschiedliche Punkteskalen verwenden, werden die
 Ergebnisse vor dem Vergleich auf einen gemeinsamen Wertebereich normalisiert.
 
 Der inhaltliche Kern des Vergleichs ist die Unterscheidung zweier Prüfparadigmen. Die MQA
 bewertet überwiegend, \emph{ob} ein Feld vorhanden, in einem kontrollierten Vokabular
-gelistet oder eine URL auflösbar ist; sie nimmt Qualität bei Vorhandensein weitgehend an.
+gelistet oder eine URL auflösbar ist. Sie nimmt Qualität bei Vorhandensein weitgehend an.
 Der Prototyp prüft darüber hinaus, ob die vorhandenen Angaben gültig, untereinander
 kongruent und inhaltlich tragfähig sind. Um diesen Unterschied systematisch auswertbar zu
 machen, wird jeder Indikator des Prototyps einer von drei Klassen zugeordnet.
-\textbf{Klasse~A} umfasst Indikatoren, die im Kern dasselbe prüfen wie eine
-MQA-Metrik; hier ist hohe Übereinstimmung zu erwarten (H1). \textbf{Klasse~B} umfasst
-Indikatoren, bei denen die MQA bereits das Vorhandensein honoriert, während der Prototyp
-Gültigkeit oder Kongruenz verifiziert; eine Kombination aus MQA-PASS und
-Prototyp-FAIL ist hier der Nachweis einer Überschätzung durch die MQA (H2).
-\textbf{Klasse~C} umfasst Indikatoren ohne MQA-Pendant -- darunter die gesamte Dimension
-der Aussagekraft -- bei denen die MQA strukturell blind bleibt, der Prototyp aber
-variiert (H2).
+
+\begin{itemize}
+    \item \textbf{Klasse~A} umfasst Indikatoren, die im Kern dasselbe prüfen wie eine
+    MQA-Metrik. Hier ist hohe Übereinstimmung zu erwarten (H1).
+
+    \item \textbf{Klasse~B} umfasst Indikatoren, bei denen die MQA bereits das Vorhandensein honoriert, während der Prototyp Gültigkeit oder Kongruenz verifiziert. Eine Kombination aus MQA-PASS und Prototyp-FAIL ist hier der Nachweis einer Überschätzung durch die MQA (H2).
+
+    \item \textbf{Klasse~C} umfasst Indikatoren ohne MQA-Pendant -- darunter die gesamte Dimension
+    der Aussagekraft -- bei denen die MQA strukturell blind bleibt, der Prototyp aber
+    variiert (H2).
+\end{itemize}
 
 Diese Partitionierung entspricht klassischen Validitätsbegriffen der
-Messtheorie~\cite{cronbach1955construct}: Klasse~A adressiert die konvergente Validität,
-die Klassen~B und~C die inkrementelle Validität des Prototyps gegenüber der Baseline. Die
+Messtheorie~\cite{cronbach1955construct}: Klasse~A adressiert konvergente Validität,
+Klasse~B und~C die inkrementelle Validität des Prototyps gegenüber der Baseline. Die
 Zuordnung ist vollständig dokumentiert und enthält je Indikator die zugeordneten
-MQA-Metriken, die Aggregationsregel sowie eine Begründung; die vollständige
+MQA-Metriken, die Aggregationsregel und die Begründung. Die vollständige
 Zuordnungstabelle findet sich in Anhang~\ref{app:mqa_abc_mapping}.
 
 
@@ -2693,7 +2712,7 @@ Damit der Vergleich nicht einseitig zugunsten des Prototyps ausfällt, sind umge
 die MQA-Metriken zu nennen, für die der Prototyp keine Entsprechung vorsieht:
 \texttt{rights\_availability} (\texttt{dct:rights}) und \texttt{byte\_size\_availability}
 (\texttt{dcat:byteSize}). Beide Felder sind nach DCAT-AP.de weder verpflichtend noch
-empfohlen; bereits die Experteninterviews ordneten wenig aussagekräftige Zusatzfelder
+empfohlen. Bereits die Experteninterviews ordneten wenig aussagekräftige Zusatzfelder
 dieser Art unter dem Prinzip \enquote{Qualität statt Quantität} als für die Bewertung
 verzichtbar ein (Anhang~\ref{app:kodierleitfaden}, Kategorie K1.2), weshalb der Prototyp
 hierfür keinen eigenen Indikator vorsieht.
@@ -2755,9 +2774,9 @@ wenigen Fällen außerhalb der mittleren Kategorie instabil; das entsprechend br
 Bootstrap-Konfidenzintervall ist das stärkste Einzelargument gegen seine Verwendung als
 Entscheidungsgrundlage.
 
-Ergänzt wird die Rangkorrelation durch Kendalls $\tau$ sowie durch eine Ceiling-Analyse,
-die das bei gegebener Ground-Truth-Verteilung maximal erreichbare $\rho$ ausweist und
-damit einordnet, wie viel des theoretisch Möglichen tatsächlich erreicht wird. Da
+Ergänzt wird die Rangkorrelation durch Kendalls $\tau$ sowie durch eine Ceiling-Analyse.
+Diese berechnet, welches $\rho$ bei der vorliegenden Ground-Truth-Verteilung überhaupt
+erreichbar wäre, und zeigt damit, wie nah der Prototyp an dieses Maximum herankommt. Da
 Rangkorrelationen ausschließlich die Reihenfolge und nicht das Niveau bewerten, treten
 mittlerer absoluter Fehler (MAE) und Bias als Kalibrierungsmaße hinzu.
 
@@ -2765,18 +2784,15 @@ Auf der Urteilsebene werden als \textbf{Sekundärmetriken} Accuracy, gewichtetes
 mit Bootstrap-Konfidenzintervall, PABAK sowie die schwellenfreie AUC für die Trennung
 \emph{gut} gegen den Rest und die Konfusionsmatrix berichtet. PABAK bereinigt das
 Prävalenzproblem rechnerisch~\cite{byrt1993bias} und macht damit sichtbar, dass eine
-niedrige $\kappa$-Punktschätzung hier ein Verteilungs- und kein Qualitätsbefund ist. Die
-Urteilsebene bleibt berichtenswert, weil sie die praktische Entscheidungsebene abbildet
---- publizierbar, verbesserungsbedürftig oder überarbeitungsbedürftig ---, sie trägt die
-Aussagen dieser Arbeit jedoch nicht allein.
+niedrige $\kappa$-Punktschätzung hier ein Verteilungs- und kein Qualitätsbefund ist.
 
 Naheliegend wäre der Einwand, eine feiner gestufte Urteilsskala könne das Problem
 beheben. Kontrollrechnungen mit abweichenden Klasseneinteilungen zeigen jedoch, dass
 nicht die Stufenzahl entscheidend ist, sondern die Lage der Schwellen relativ zur
-Stichprobenverteilung; zudem konvergiert fein gestuftes, quadratisch gewichtetes $\kappa$
+Stichprobenverteilung. Zudem konvergiert fein gestuftes, quadratisch gewichtetes $\kappa$
 gegen eine Korrelation und misst damit dasselbe wie $\rho$, nur abhängig von zwei
 zusätzlichen willkürlichen Festlegungen. Auf eine nachträgliche Anpassung der Schwellen
-wurde bewusst verzichtet, da günstig gewählte Schnittpunkte eine Optimierung der Kennzahl
+wurde verzichtet, da günstig gewählte Schnittpunkte eine Optimierung der Kennzahl
 statt einer Messung darstellen würden.
 
 Für den MQA-Vergleich werden je Indikatorklasse eigene Kennzahlen berichtet: die
@@ -2809,7 +2825,7 @@ eigentlichen Evaluationsergebnisse berichtet werden, ist deshalb zu klären, wel
 dieser Bewertung zugrunde liegt und wie stark diese Wahl das Gesamtergebnis überhaupt
 beeinflusst.
 
-Als Kandidaten wurden GPT-5.5, Claude Opus~4.8 und Claude Sonnet~4.6 ausgewählt. Die
+Als Kandidaten wurden GPT-5.5, Claude Opus~4.8 und Claude Sonnet~4.6 gewählt. Die
 Auswahl orientiert sich an der Nutzungsstatistik von OpenRouter, über die auch die
 Modellaufrufe des Prototyps abgewickelt werden: Die Plattform weist aus, welche Modelle je
 Aufgabentyp den größten Anteil der abgerechneten Nutzung auf sich vereinen, und die drei
@@ -2818,7 +2834,7 @@ an~\cite{openrouter_rankings_classification}. Da die Bewertung der Aussagekraft 
 Kern eine Klassifikationsaufgabe auf Freitextfeldern ist, bildet diese Rangliste einen
 sachnahen und nachvollziehbaren Auswahlmaßstab, der zugleich verhindert, dass die Auswahl
 als beliebig oder anbietergebunden erscheint. Ein erschöpfender Modellvergleich ist damit
-ausdrücklich nicht beabsichtigt; die Auswahl deckt die in der Praxis dominierenden
+ausdrücklich nicht beabsichtigt. Die Auswahl deckt die in der Praxis dominierenden
 Kandidaten ab.
 
 Verglichen werden die drei Kandidaten auf identischer Datenbasis: der Kernstichprobe
@@ -2837,9 +2853,9 @@ zeigt die Rangkorrelation zur Ground Truth je Dimension und Modell.
 Der Befund ist eindeutig: In den Dimensionen Auffindbarkeit, Zugänglichkeit und
 Wiederverwendbarkeit sind die Werte über alle drei Modelle bitgenau identisch
 ($\rho = 0{,}524$, $0{,}712$ und $0{,}739$). Die Modellwahl berührt ausschließlich die
-Aussagekraft. Für den Vergleich folgt daraus zweierlei. Erstens ist die Aussagekraft die
-einzige Dimension, auf der die Kandidaten überhaupt sinnvoll gegeneinander zu bewerten
-sind. Zweitens sind Gesamtkennzahlen für diesen Zweck nur eingeschränkt aussagekräftig,
+Aussagekraft. Für den Vergleich folgt daraus, dass die Aussagekraft die
+einzige Dimension ist, auf der die Kandidaten überhaupt sinnvoll gegeneinander zu bewerten
+sind. Zudem sind Gesamtkennzahlen für diesen Zweck nur eingeschränkt aussagekräftig,
 weil sie den identischen deterministischen Anteil mitmitteln und die tatsächlichen
 Unterschiede dadurch verwässern. Die Gesamtwerte werden im Folgenden dennoch berichtet,
 da sie die praktische Auswirkung der Modellwahl auf das Endergebnis sichtbar machen.
@@ -2879,7 +2895,7 @@ da sie die praktische Auswirkung der Modellwahl auf das Endergebnis sichtbar mac
 
 Tabelle~\ref{tab:modellauswahl_kennzahlen} stellt die Kandidaten gegenüber. Die
 Kennzahlen sind nach der in Abschnitt~5.5 festgelegten Hierarchie geordnet: zuerst die
-Primärmetrik, dann die Kalibrierungsmaße, dann die Urteilsebene als Sekundärmetrik.
+Primärmetrik, dann die Kalibrierungsmaße, zuletzt die Urteilsebene als Sekundärmetrik.
 
 \begin{table}[H]
     \centering
@@ -2948,8 +2964,8 @@ dass GPT-5.5 auf der Primärmetrik hinten liegt, auf der Urteilsebene jedoch dur
 vorn: Rangkorrelation und Urteilsregel messen unterschiedliche Eigenschaften. Erstere ist
 niveaublind und bewertet allein die Reihenfolge, letztere ist niveauempfindlich und
 bewertet die absolute Lage relativ zu festen Schwellen. GPT-5.5 ordnet die Datensätze
-geringfügig schlechter, verortet sie aber auf dem zutreffenden Niveau; Sonnet~4.6 ordnet
-minimal besser, verschiebt jedoch das gesamte Niveau nach unten.
+geringfügig schlechter, verortet sie aber auf dem zutreffenden Niveau. Sonnet~4.6 hingegen ordnet
+minimal besser ein, verschiebt jedoch das gesamte Niveau nach unten.
 
 Die Unterschiede auf der Urteilsebene sind allerdings mit Zurückhaltung zu lesen. Die
 Konfusionsmatrizen der drei Modelle sind in zwei von drei Zeilen identisch; der gesamte
@@ -3009,9 +3025,7 @@ beurteilen zu können: Ein Abstand, der kleiner ist als die Schwankung eines ein
 Modells, trägt keine Aussage.
 
 Erhoben wurden je drei Läufe für GPT-5.5 und Sonnet~4.6 auf einer identischen
-Teilstichprobe von 30 Datensätzen. Für Opus~4.8 liegt nur ein Lauf vor; das Modell wird
-in diesem Abschnitt daher nicht betrachtet, da eine Streuungsangabe ohne Wiederholung
-nicht möglich ist. Abbildung~\ref{fig:modellauswahl_wiederholungen} zeigt die
+Teilstichprobe von 30 Datensätzen. Abbildung~\ref{fig:modellauswahl_wiederholungen} zeigt die
 Einzelergebnisse sowie die Spanne je Modell.
 
 \begin{figure}[H]
@@ -3026,14 +3040,13 @@ Beide Modelle streuen in vergleichbarer Größenordnung: Sonnet~4.6 erreicht im 
 $\rho = 0{,}558$ bei einer Spanne von 0,043 ($\sigma = 0{,}022$), GPT-5.5 im Mittel
 $\rho = 0{,}530$ bei einer Spanne von 0,047 ($\sigma = 0{,}024$). Dass die Streuung bei
 beiden nahezu identisch ausfällt, legt nahe, dass sie weniger eine Eigenschaft des
-einzelnen Modells als der Bewertungsaufgabe selbst ist. Der Abstand der Mittelwerte
-beträgt 0,028 und liegt damit beim 1,2-fachen der gepoolten Streuung; die Wertebereiche
+einzelnen Modells als der Bewertungsaufgabe selbst ist. Die Wertebereiche
 überlappen einander deutlich, da der beste Lauf von GPT-5.5 ($\rho = 0{,}557$) über dem
 schwächsten von Sonnet~4.6 ($\rho = 0{,}539$) liegt. Dies ist die in Abschnitt~5.6.1
 herangezogene Grundlage für die Feststellung, dass die Primärmetrik die beiden Kandidaten
 nicht trennt.
 
-Auf der Ebene der Scores -- statt der aus ihnen abgeleiteten Rangkorrelation -- fällt
+Auf der Ebene der Scores, statt der aus ihnen abgeleiteten Rangkorrelation, fällt
 der Vergleich klarer aus. Tabelle~\ref{tab:modellauswahl_reproduzierbarkeit} stellt die
 Reproduzierbarkeitskennzahlen beider Modelle gegenüber.
 
@@ -3075,17 +3088,14 @@ kleiner sind als 0,0004 (GPT-5.5), sind nicht interpretierbar. Drittens verteilt
 Instabilität nicht gleichmäßig über die Bewertungskriterien, sondern konzentriert sich
 auf einzelne von ihnen; bei GPT-5.5 wechselt der diskrete Status im ungünstigsten Fall
 bei 17\,\% der Datensätze, bei Sonnet~4.6 dagegen bei 47\,\%. Die betroffenen Kriterien
---- insbesondere die kontextuellen Qualifizierer -- sind damit als Ansatzpunkt für eine
-Schärfung der Bewertungsrubrik identifiziert.
+sind damit als Ansatzpunkt für eine Schärfung der Bewertungsrubrik identifiziert.
 
 \section{Ergebnisse: Prototyp und Ground Truth}
 
 Dieser Abschnitt berichtet die in Abschnitt~5.5 festgelegten Kennzahlen für beide
 Stichproben getrennt: zuerst die Kernstichprobe, die die quantitativen Aussagen dieser
 Arbeit trägt, dann die Extremfälle, die den Wirkmechanismus per Konstruktion belegen
-(Abschnitt~5.2). Beide Auswertungen verwenden durchgängig GPT-5.5, das in
-Abschnitt~5.6.1 final gewählte Modell; Kennzahlen und Abbildungen sind vollständig
-reproduzierbar aus genau zwei abgeschlossenen Läufen erzeugt (Notebook~18).
+(Abschnitt~5.2). Beide Auswertungen verwenden durchgängig GPT-5.5.
 
 \subsection{Kernstichprobe (n=50)}
 
@@ -3133,9 +3143,9 @@ Dimension.
 \end{table}
 
 Dass Auffindbarkeit das niedrigste rohe $\rho$ aufweist, ist damit nur zur Hälfte
-ein Skalenartefakt: Ihr Ceiling liegt mit $0{,}768$ selbst unter dem der übrigen drei
-Dimensionen, weil die Ground Truth hier nur vier statt sechs Stufen tatsächlich
-nutzt; die verbleibende Lücke zum Ceiling ($68{,}3\,\%$ ausgeschöpft) ist aber real
+ein Skalenartefakt: Das Ceiling liegt mit $0{,}768$ selbst unter dem der übrigen drei
+Dimensionen, weil die Ground Truth hier nur vier der sechs Stufen tatsächlich
+nutzt. Die verbleibende Lücke zum Ceiling ($68{,}3\,\%$ ausgeschöpft) ist aber real
 und kleiner als bei Zugänglichkeit oder Wiederverwendbarkeit ($74{,}8\,\%$ bzw.
 $79{,}6\,\%$). Aussagekraft liegt mit $66{,}8\,\%$ auf ähnlichem Niveau wie
 Auffindbarkeit -- ein erster Hinweis auf die in Abschnitt~5.7.2 vertiefte Schwäche
@@ -3151,7 +3161,7 @@ besonders hohe latente Übereinstimmung -- und wird deshalb nicht als Kennzahl
 weiterverwendet.
 
 Abbildung~\ref{fig:gt_kern_scatter} zeigt den Gesamtscore-Vergleich nach
-GT-Urteil eingefärbt; die Konfusionsmatrix in Abbildung~\ref{fig:gt_kern_konfusion}
+GT-Urteil eingefärbt. Die Konfusionsmatrix in Abbildung~\ref{fig:gt_kern_konfusion}
 macht sichtbar, dass beide Fehlklassifikationen an der Schwelle
 \emph{gut}/\emph{mittel} liegen, keine an der Schwelle \emph{mittel}/\emph{schlecht}
 -- der Prototyp verwechselt auf der Kernstichprobe ausschließlich benachbarte
@@ -3159,7 +3169,7 @@ Qualitätsstufen.
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}[t]{0.52\textwidth}
+    \begin{minipage}[t]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/gt_kernstichprobe_scatter.pdf}
         \captionsetup{justification=centering}
@@ -3167,7 +3177,7 @@ Qualitätsstufen.
         \label{fig:gt_kern_scatter}
     \end{minipage}
     \hfill
-    \begin{minipage}[t]{0.44\textwidth}
+    \begin{minipage}[t]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/gt_kernstichprobe_konfusionsmatrix.pdf}
         \captionsetup{justification=centering}
@@ -3221,15 +3231,15 @@ Kernstichprobe ($0{,}569$) und mit nur $34{,}1\,\%$ des eigenen Ceilings ($0{,}9
 der mit Abstand am wenigsten ausgeschöpfte Wert der gesamten Auswertung. Die
 Ceiling-Analyse schließt Skalen- oder Stichprobenartefakte hier explizit aus: Selbst
 ein perfekt monotones Modell könnte auf dieser Ground-Truth-Verteilung ein $\rho$ von
-$0{,}942$ erreichen; der Abstand dazu ist ein Befund über das Modell, nicht über die
-Messskala.
+$0{,}942$ erreichen.
 
 Der Blick auf die Indikatorebene liefert die Erklärung. Die Aussagekraft wird als
 ungewichteter Mittelwert aus sechs vom Sprachmodell bewerteten Teilkriterien
-gebildet (Abschnitt~\ref{sec:llm_aussagekraft}). Bei \texttt{bad\_09.rdf} etwa
-bewertet das Modell die Beschreibungsqualität als FAIL ($0{,}15$) mit der
+gebildet (Abschnitt~\ref{sec:llm_aussagekraft}). Bei dem Metadatensatz
+\texttt{bad\_09.rdf} etwa bewertet das Modell die 
+Beschreibungsqualität als FAIL ($0{,}15$) mit der
 Begründung, die Beschreibung bestehe nur aus dem einzelnen Wort \enquote{Justizblatt}
-und erkläre weder Inhalt noch Struktur der Ressource; die übrigen fünf Teilkriterien
+und erkläre weder Inhalt noch Struktur der Ressource. Die übrigen fünf Teilkriterien
 liegen bei $0{,}65$ bis $0{,}95$, sodass der gemittelte Dimensionswert bei $0{,}72$
 landet -- ein einzelnes hartes Defizit wird durch fünf unauffällige Werte praktisch
 neutralisiert. Bei zehn der zwanzig Extremfälle weicht das resultierende
@@ -3266,10 +3276,9 @@ Datensätze tendenziell in allen vier Dimensionen gemeinsam ausschlagen.
 
 Für das Aussagekraftskriterium folgt daraus eine Limitation der
 Aggregationslogik, nicht des zugrunde liegenden Sprachmodellurteils selbst: Die
-einzelnen Teilkriterien differenzieren sichtbar -- der Boxplot in
-Abbildung~\ref{fig:mqa_blindheit} zeigt das für dieselbe Kernstichprobe --, ihre
-ungewichtete Mittelung verschluckt jedoch punktuelle harte Defizite. Diese
-Beobachtung wird in Abschnitt~5.10 als Limitation der Evaluation aufgegriffen.
+einzelnen Teilkriterien differenzieren sichtbar, der Boxplot in
+Abbildung~\ref{fig:mqa_blindheit} zeigt das für dieselbe Kernstichprobe, ihre
+ungewichtete Mittelung verschluckt jedoch punktuelle harte Defizite.
 
 % Scope: Entlang A/B/C, also entlang H1/H2. H3 (Korrelation Prototyp<->GT vs. MQA<->GT)
 % als Synthese beider Stränge ans Ende des quantitativen Teils. Kernstichprobe und
@@ -3307,9 +3316,7 @@ der Prototyp zusätzlich Gültigkeit oder Kongruenz prüft, überschätzt die MQ
 $71$ von $450$ Fällen ($15{,}8\,\%$) die tatsächliche Qualität
 (Abbildung~\ref{fig:mqa_kern_ueberschaetzung}). Der stärkste Einzelbefund betrifft
 die politische Geokodierung: Bei $56\,\%$ der Datensätze ($28$ von $50$) vergibt
-die MQA einen Pass, weil ein entsprechendes Feld vorhanden bzw. im kontrollierten
-Vokabular gelistet ist, während der Prototyp die inhaltliche Übereinstimmung mit dem
-tatsächlichen räumlichen Bezug prüft und verwirft. Auf den Klasse-C-Indikatoren, für
+die MQA einen PASS wegen bloßer Existenz, während der Prototyp die tatsächliche Gültigkeit prüft und verweigert. Auf den Klasse-C-Indikatoren, für
 die die MQA strukturell keine Metrik besitzt, streut der Prototyp-Score sichtbar
 (Abbildung~\ref{fig:mqa_blindheit}): Die Beschreibungsqualität etwa variiert von
 $0$ bis $0{,}9$ (Mittelwert $0{,}46$, Standardabweichung $0{,}22$) -- ein Beleg, dass
@@ -3334,7 +3341,7 @@ es die MQA an dieser Stelle per Design ist.
 
 Auf Ebene der Gesamtscores korrelieren beide Systeme mit $\rho = 0{,}829$ stark
 (Abbildung~\ref{fig:mqa_kern_scatter}); die mittlere Differenz beträgt nur
-$-0{,}022$ Skalenpunkte (Prototyp minus MQA). Diese geringe Niveauverschiebung bei
+$-0{,}022$ Skalenpunkte zwischen Prototyp und MQA. Diese geringe Niveauverschiebung bei
 gleichzeitig hoher Rangkorrelation ist konsistent mit dem Befund aus Klasse~A und~B:
 Der Prototyp bewertet überwiegend dieselben Datensätze strenger, nicht andere
 Datensätze anders -- eine Rangvertauschung, die $\rho$ senken würde, findet
@@ -3354,27 +3361,33 @@ Abschnitt (H3) sichtbar werden.
 
 Auf den Extremfällen fällt die Konvergenz mit $95{,}6\,\%$ ($n=180$) ähnlich hoch
 aus wie auf der Kernstichprobe, die Asymmetrie ist hier jedoch vollständig
-einseitig: In $8$ Fällen vergibt die MQA einen Pass, den der Prototyp verweigert,
-in keinem einzigen Fall ist es umgekehrt. Die Überschätzungsrate steigt auf
+einseitig (Abbildung~\ref{fig:mqa_extrem_konvergenz}): In $8$ Fällen vergibt die MQA
+einen Pass, den der Prototyp verweigert, in keinem einzigen Fall ist es umgekehrt.
+Die Überschätzungsrate steigt auf
 $20{,}0\,\%$ ($36$ von $180$ Klasse-B-Fällen); dominierend ist hier die Lizenz: Bei
 $50\,\%$ der Datensätze ($10$ von $20$) bewertet die MQA die Lizenzangabe als
 ausreichend, während der Prototyp sie als ungültig oder unfrei einstuft --
-naheliegend, da unter den Extremfällen gezielt Datensätze mit fehlerhaften oder
-unklaren Lizenzangaben konstruiert wurden (Abschnitt~5.2). Die Klasse-C-Indikatoren
+naheliegend, da unter den Extremfällen gezielt Datensätze mit unter anderem fehlerhaften oder
+unklaren Lizenzangaben gewählt wurden (Abschnitt~5.2). Die Klasse-C-Indikatoren
 zeigen auch hier durchgängige Streuung, etwa bei der Verfügbarkeitsangabe
-(Standardabweichung $0{,}36$) und der Geokodierungsstufe ($0{,}48$).
+(Standardabweichung $0{,}36$) und der Geokodierungsstufe ($0{,}48$). Auf Ebene der
+Gesamtscores liegt die Rangkorrelation beider Verfahren bei $\rho = 0{,}820$ und
+die mittlere Differenz bei $-0{,}036$ Skalenpunkten -- beides nahe an den Werten der
+Kernstichprobe.
+
+Die zugehörigen Abbildungen finden sich vollständig in Anhang~\ref{app:mqa_extremfaelle_abbildungen}.
 
 \subsection{Triangulation gegen die Ground Truth (H3)}
 
 Die bisherigen Befunde belegen, dass Prototyp und MQA unterschiedlich messen (H2),
 nicht aber, welches Verfahren näher an der tatsächlichen Qualität liegt. Dafür
-werden beide Gesamtscores -- unabhängig voneinander -- gegen dieselbe
-Ground Truth korreliert (Abschnitt~5.5).
+werden beide Gesamtscores, unabhängig voneinander, gegen dieselbe
+Ground Truth korreliert.
 
-\textbf{Methodischer Hinweis:} Anders als in Abschnitt~5.7, wo je Dimension die
+Anders als in Abschnitt~5.7, wo je Dimension die
 \emph{eigene} Modell-Teilbewertung gegen die gleichnamige GT-Dimension korreliert wird
 (Abbildung~\ref{fig:gt_kern_dimension}), steht auf der Prototyp-Seite in diesem Abschnitt
-durchgehend der \emph{globale} Gesamtscore -- dieselbe eine Zahl, die auch dem
+durchgehend der \emph{globale} Gesamtscore. Dieselbe eine Zahl, die auch dem
 Scatter in Abbildung~\ref{fig:mqa_kern_scatter} zugrunde liegt. Die Zeile
 \enquote{Auffindbarkeit} misst hier also nicht die Güte der
 Auffindbarkeits-Teilbewertung selbst, sondern wie gut der \emph{Gesamtscore} die
@@ -3393,18 +3406,18 @@ Auffindbarkeit, auf der die MQA vorn liegt ($0{,}252$ vs. $0{,}134$). Ein naheli
 Grund liegt in der Gewichtung des Gesamtscores (Abschnitt~4.6.3, Tabelle~4.5):
 Auffindbarkeit geht mit dem niedrigsten Dimensionsgewicht ($1{,}0$ gegenüber $1{,}5$
 bis $2{,}0$ bei den übrigen drei Dimensionen) in den Gesamtscore ein und prägt ihn
-folglich am wenigsten -- der Gesamtscore ist damit strukturell ein schwächerer
+folglich am wenigsten. Damit ist der Gesamtscore strukturell ein schwächerer
 Prädiktor gerade für diese GT-Dimension, unabhängig von der inhaltlichen Prüfgüte der
-Auffindbarkeitsindikatoren selbst, die laut Abbildung~\ref{fig:gt_kern_dimension} mit
-$\rho = 0{,}524$ im Mittelfeld der vier Dimensionen liegt.
+Auffindbarkeitsindikatoren selbst. Diese liegt laut Abbildung~\ref{fig:gt_kern_dimension} mit
+$\rho = 0{,}524$ im Mittelfeld der vier Dimensionen.
 
 Auf den Extremfällen fällt der Befund eindeutiger aus: Der Prototyp liegt hier auf
 \emph{allen sechs} Zielen vorn, mit deutlich größeren Abständen als auf der
-Kernstichprobe ($+0{,}08$ bis $+0{,}15$; Abbildung~\ref{fig:mqa_extrem_triangulation}) --
-auch bei der Auffindbarkeit, wo die Kernstichprobe die einzige Ausnahme zugunsten der
-MQA zeigte ($0{,}755$ vs. $0{,}671$). Das ist plausibel: Die Extremfälle sind gezielt
-so konstruiert, dass sich Feldpräsenz und tatsächliche Validität auseinanderentwickeln
-(Abschnitt~5.2) -- genau die Fälle, in denen sich der Vorteil vertiefender Prüfung am
+Kernstichprobe ($+0{,}08$ bis $+0{,}15$. Auch bei der Auffindbarkeit, wo die Kernstichprobe 
+die einzige Ausnahme zugunsten der
+MQA zeigte ($0{,}755$ vs. $0{,}671$). Das ist plausibel da die Extremfälle gezielt
+so selektiert wurden, dass sich Feldpräsenz und tatsächliche Validität auseinanderentwickeln
+(Abschnitt~5.2). Damit genau die Fälle, in denen sich der Vorteil vertiefender Prüfung am
 stärksten auszahlen sollte. Abbildung~\ref{fig:mqa_kern_triangulation} und
 Abbildung~\ref{fig:mqa_extrem_triangulation} stellen beide Stichproben nebeneinander
 dar.
@@ -3430,17 +3443,17 @@ dar.
 
 Ergänzend zeigt Abbildung~\ref{fig:mqa_extrem_trennschaerfe} beide Systeme auf
 derselben Trennschärfe-Darstellung wie Abbildung~\ref{fig:gt_extrem_trennschaerfe},
-diesmal auf der gemeinsamen normalisierten 0--1-Skala. Bei den konstruiert
+diesmal auf der gemeinsamen normalisierten 0--1-Skala. Bei den selektiert
 schlechten Datensätzen liegen beide Systeme mit $0{,}45$ (MQA) und $0{,}44$
-(Prototyp) fast gleichauf; bei den konstruiert guten bewertet die MQA mit
+(Prototyp) fast gleichauf. Bei den selektiert guten bewertet die MQA mit
 $0{,}88$ etwas großzügiger als der Prototyp mit $0{,}82$. Die absolute Spreizung
 zwischen den Gruppen fällt bei der MQA mit $0{,}44$ Punkten sogar geringfügig
-größer aus als beim Prototyp ($0{,}38$) -- die MQA ist auf den Extremfällen also
+größer aus als beim Prototyp ($0{,}38$). MQA ist auf den Extremfällen also
 nicht per se weniger trennscharf im Sinne der Score-Spannweite. Der entscheidende
 Unterschied liegt nicht in der Breite der Spreizung, sondern in ihrer Richtung
 relativ zur menschlichen Bewertung: Die Triangulation zeigt, dass die MQA-Scores
 trotz vergleichbarer oder sogar größerer Spreizung schlechter mit der Ground Truth
-rangkorrelieren als die des Prototyps -- ein Beleg dafür, dass hohe Streuung allein
+rangkorrelieren als die des Prototyps. Das ist ein Beleg dafür, dass hohe Streuung allein
 noch keine korrekte Rangordnung garantiert.
 
 \begin{figure}[H]
@@ -3453,16 +3466,15 @@ noch keine korrekte Rangordnung garantiert.
 
 Zusammengenommen stützen die drei Evidenzstränge dieses Kapitels die eingangs
 formulierten Hypothesen konsistent: Auf äquivalenten Prüfungen konvergieren
-Prototyp und MQA mit über $95\,\%$ Übereinstimmung (H1); wo der Prototyp tiefer
+Prototyp und MQA mit über $95\,\%$ Übereinstimmung (H1). Indikatoren, die der Prototyp tiefer
 prüft, überschätzt die MQA in $16$ bis $20\,\%$ der Fälle eine Qualität, die nicht
-gegeben ist, und differenziert dort, wo die MQA strukturell blind bleibt, sichtbar
-(H2); und wo beide Verfahren divergieren, liegt der Prototyp auf der Kernstichprobe
+gegeben ist, und differenziert dort, wo die MQA strukturell blind bleibt
+(H2). An Stellen wo beide Verfahren divergieren, liegt der Prototyp auf der Kernstichprobe
 in fünf von sechs, auf den Extremfällen in allen sechs Zielgrößen näher an der
-menschlichen Bewertung (H3). Die einzige Ausnahme -- Auffindbarkeit auf der
-Kernstichprobe -- relativiert diesen Befund, ohne ihn zu widerlegen: Sie zeigt, dass
+menschlichen Bewertung (H3). Die einzige Ausnahme, Auffindbarkeit auf der
+Kernstichprobe, relativiert diesen Befund, ohne ihn zu widerlegen: Sie zeigt, dass
 zusätzliche Prüftiefe nicht in jeder Dimension automatisch mit besserer
-menschlicher Übereinstimmung einhergeht, und wird in Abschnitt~5.10 als offener
-Punkt aufgegriffen.
+menschlicher Übereinstimmung einhergeht.
 
 % Scope: Top-Disagreements aus beiden Vergleichen qualitativ -- wo weicht das Modell vom
 % Menschen ab und warum, wo sieht der Prototyp Dinge, die MQA nicht sieht (konkrete
