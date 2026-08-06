@@ -109,6 +109,78 @@ Die Qualität und Standartkonformität der Metadaten ist damit eine zentrale Vor
 
 Zugleich zeigt sich an DCAT-AP.de, dass Metadaten im Open-Data-Kontext nicht nur eine dokumentierende, sondern auch eine strukturierende Funktion haben. Der Standard legt fest, welche Informationen in welcher Form beschrieben werden sollen, und schafft so die Grundlage für einheitliche semantische Beschreibungen, föderierte Suche, und die Weiterverarbeitung von Metadaten über Schnittstellen und Portale hinweg \cite{DCATAPDESpec3,DCATAPDEImplRules2}. Für die vorliegende Arbeit ist DCAT-AP.de damit der maßgebliche Referenzrahmen, innerhalb dessen sich die Frage nach der Qualität von Metadaten im GovData-Kontext konkretisiert.
 
+\subsection{Aufbau eines DCAT-AP.de-Datensatzes am Referenzdatensatz}
+\label{sec:referenzdatensatz}
+
+Wie ein nach diesem Standard beschriebener Datensatz konkret aussieht, lässt sich an einem Beispiel schneller zeigen als an der Spezifikation entlang erläutern. Die vorliegende Arbeit führt dafür einen \emph{Referenzdatensatz} ein, der sie von hier an als durchgehendes Beispiel begleitet: In diesem Kapitel dient er der Erläuterung des Standards, am Ende von Kapitel~3 als Veranschaulichung des Sollzustands, den die abgeleiteten Indikatoren beschreiben, in Kapitel~4 als Bezugspunkt der Handlungsanweisungen des Prototyps und in Kapitel~5 als Prüfstück für die obere Grenze der Bewertungsskala (Abschnitt~\ref{subsec:deckenpruefung}).
+
+Grundlage ist ein realer Metadatensatz aus dem Open-Data-Portal Schleswig-Holstein, der die Tagesmittelwerte der Feinstaubbelastung des Jahres 2023 an einer Lübecker Luftmessstation beschreibt. Er wurde an den Stellen ergänzt, an denen das Original Angaben schuldig blieb, bis er sämtliche Prüfungen des in Kapitel~3 entwickelten Bewertungsmodells erfüllt. Der Datensatz ist damit ein \emph{konstruierter Idealfall}: Er zeigt, wie eine vollständige Beschreibung nach DCAT-AP.de aussieht, erlaubt aber ausdrücklich keine Aussage darüber, wie verbreitet eine solche Beschreibungstiefe in der Portalpraxis ist. Listing~\ref{lst:referenzdatensatz} zeigt ihn gekürzt, der vollständige Quelltext steht in Anhang~\ref{app:referenzdatensatz}.
+
+\begin{listing}[H]
+\begin{minted}
+[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.1,
+fontsize=\scriptsize,
+breaklines,
+breakafter=/,
+breakaftersymbolpre={}
+]
+{xml}
+<dcat:Dataset rdf:about="https://opendata.schleswig-holstein.de/dataset/39054cb0-...">
+  <dct:title>Feinstaub (PM2,5) in Lübeck, Messstation Moislinger Allee: Tagesmittelwerte 2023</dct:title>
+  <dct:description>Der Datensatz enthält die Tagesmittelwerte der Feinstaubkonzentration ...</dct:description>
+  <dcat:keyword xml:lang="de">Feinstaub</dcat:keyword>
+  <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+  <dct:temporal>
+    <dct:PeriodOfTime rdf:nodeID="temporal-2023">
+      <dcat:startDate rdf:datatype="...#date">2023-01-01</dcat:startDate>
+      <dcat:endDate rdf:datatype="...#date">2023-12-31</dcat:endDate>
+    </dct:PeriodOfTime>
+  </dct:temporal>
+  <dct:spatial>
+    <dct:Location rdf:nodeID="location-luebeck-moislinger-allee">
+      <locn:geometry rdf:datatype="...#wktLiteral">POINT (10.6733 53.8622)</locn:geometry>
+    </dct:Location>
+  </dct:spatial>
+  <dcat:contactPoint>
+    <vcard:Organization rdf:nodeID="contact-lfu-sh">
+      <vcard:fn>Landesamt für Umwelt Schleswig-Holstein, Open Data</vcard:fn>
+      <vcard:hasURL rdf:resource="https://opendata.schleswig-holstein.de/organization/lfu"/>
+    </vcard:Organization>
+  </dcat:contactPoint>
+  <dcat:distribution>
+    <dcat:Distribution rdf:about="http://lfu.landsh.de/DESH053_PM25_1TMW_2023/data">
+      <dct:title xml:lang="de">Tagesmittelwerte PM2,5 2023, Station Lübeck Moislinger Allee – CSV</dct:title>
+      <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+      <dcat:accessURL rdf:resource="https://www.umweltbundesamt.de/api/air_data/v2/measures/csv?..."/>
+      <dcat:downloadURL rdf:resource="https://www.umweltbundesamt.de/api/air_data/v2/measures/csv?..."/>
+      <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+      <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+      <dcatap:availability rdf:resource=".../planned-availability/STABLE"/>
+    </dcat:Distribution>
+  </dcat:distribution>
+  <dcat:distribution>
+    <dcat:Distribution rdf:about="http://lfu.landsh.de/DESH053_PM25_1TMW_2023/data.json">
+      <dct:title xml:lang="de">Tagesmittelwerte PM2,5 2023, Station Lübeck Moislinger Allee – JSON</dct:title>
+      <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+      ...
+    </dcat:Distribution>
+  </dcat:distribution>
+  <dcatde:politicalGeocodingLevelURI rdf:resource=".../politicalGeocoding/Level/municipality"/>
+  <dcatde:politicalGeocodingURI rdf:resource=".../politicalGeocoding/municipalityKey/01003000"/>
+  <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/schleswigHolstein"/>
+</dcat:Dataset>
+\end{minted}
+\caption{Referenzdatensatz in DCAT-AP.de, gekürzt}
+\label{lst:referenzdatensatz}
+\end{listing}
+
+Zwei Strukturmerkmale prägen den Aufbau. Erstens trennt DCAT zwischen dem \texttt{dcat:Dataset} als der beschriebenen Sache und der \texttt{dcat:Distribution} als der konkret abrufbaren Repräsentation dieser Sache. Titel, Beschreibung, Schlagwörter, Thema sowie räumlicher und zeitlicher Bezug hängen am Datensatz, während Format, Medientyp, Lizenz und die Zugriffs- und Download-Adressen Eigenschaften der einzelnen Distribution sind. Ein Datensatz kann mehrere Distributionen tragen, im Regelfall denselben Inhalt in unterschiedlichen Formaten: Der Referenzdatensatz bietet die Messreihe als CSV und als JSON an, beide über dieselbe Schnittstelle des Umweltbundesamtes und mit identischem Datenbestand. Diese Trennung ist für die Qualitätsbewertung folgenreich, weil ein Teil der Prüfungen damit je Distribution und nicht je Datensatz zu erfolgen hat -- ein Punkt, auf den Abschnitt~\ref{sec:messmodell} zurückkommt.
+
+Zweitens sind die inhaltlich entscheidenden Angaben keine freien Texte, sondern Verweise auf kontrollierte Vokabulare. Thema, Dateiformat, Medientyp, Sprache, Aktualisierungsfrequenz, Lizenz und Verfügbarkeit werden jeweils als URI aus einer vorgegebenen Liste gesetzt, überwiegend aus den Vokabularen des EU-Publikationsamts. Hinzu kommen die deutschen Erweiterungen des Profils im Namensraum \texttt{dcatde}, insbesondere die politische Geokodierung über den amtlichen Gemeindeschlüssel samt zugehöriger Ebene sowie die Kennung der liefernden Stelle. Erst diese Festlegung auf gemeinsame Wertelisten macht Metadaten portalübergreifend vergleichbar und filterbar: Ein Freitext \enquote{Umwelt} im Themenfeld wäre für eine föderierte Suche wertlos, der URI der Kategorie \texttt{ENVI} dagegen eindeutig auswertbar. Für die Qualitätsbewertung folgt daraus, dass sich ein erheblicher Teil der Prüfungen als Abgleich gegen genau diese Vokabulare formulieren lässt.
+
 \section{RDF, Linked Data und SHACL}
 
 RDF bildet die technische Grundlage für die Beschreibung von Metadaten im Semantic-Web-Kontext. Nach der W3C-Spezifikation ist RDF ein Modell zur Repräsentation von Informationen im Web, dessen Kernstruktur aus Subjekt-Prädikat-Objekt-Tripeln besteht, die gemeinsam als RDF-Graph modelliert werden. RDF ist damit nicht primär als konkretes Dateiformat zu verstehen, sondern als abstraktes Datenmodell, auf dem unterschiedliche RDF-basierte Sprachen und Serialisierungen aufbauen. \cite{W3CRDF11Concepts}
@@ -1703,6 +1775,8 @@ Aussagekraftsindikatoren prüfen, ob vorhandene Metadaten inhaltlich verständli
 \label{tab:aussagekraftsindikatoren}
 \end{table}
 
+Die vier Indikatorgruppen beschreiben zusammengenommen einen Zustand, den der in Abschnitt~\ref{sec:referenzdatensatz} eingeführte Referenzdatensatz bereits verkörpert: Sein Titel benennt Gegenstand, Ort und Zeitbezug, seine Beschreibung erläutert Aufbau, Erhebung und Vorbehalte der Daten, sein Thema und seine Schlagwörter stammen aus kontrollierten Vokabularen beziehungsweise sind atomar formuliert, seine Distributionen sind erreichbar, maschinenlesbar, formatdeklariert und offen lizenziert, und die für die Nachnutzung nötigen Angaben zu Herausgeber, Kontakt und liefernder Stelle liegen vollständig vor. Der Referenzdatensatz ist damit nichts anderes als die konkrete Form des hier entwickelten Modells: Was die Indikatoren einzeln prüfen, steht in ihm einmal als Ganzes. Umgekehrt lässt sich an ihm die Vollständigkeit der Indikatormenge plausibilisieren, denn jede Angabe, die er trägt, ist einem Indikator zugeordnet, und jeder Indikator findet in ihm die von ihm geforderte Angabe. Ob das Messinstrument diesen Sollzustand auch tatsächlich mit dem Höchstwert quittiert, ist eine empirische Frage und wird in Abschnitt~\ref{subsec:deckenpruefung} geprüft.
+
 \pagebreak
 
 % \section{Einordnung kontext- und KI-gestützter Analyseverfahren}
@@ -2397,6 +2471,8 @@ Der Prototyp zeigt dafür eine \textbf{Vorlage}: ein kurzes RDF/XML-Fragment, da
 
 Entscheidend für den Nutzen der Vorlage ist, dass sie unabhängig vom vorgefundenen Zustand ist. Sie sieht identisch aus, ob das Feld falsch belegt ist oder ganz fehlt. Gerade der zweite Fall ist der, in dem sie gebraucht wird, denn dort gibt es im Metadatensatz nichts, worauf sich zeigen ließe.
 
+Die Vorlagen zeigen die geforderte Schreibweise damit feldweise und jeweils nur für den einen Indikator, an dem der Datensatz gescheitert ist. Zusammengesetzt ergeben sie genau das Bild, das der Referenzdatensatz aus Abschnitt~\ref{sec:referenzdatensatz} als Ganzes vorführt: Was die Oberfläche einem Bereitsteller Feld für Feld und anlassbezogen zeigt, steht dort einmal vollständig und in sich stimmig. Beide Darstellungen bedienen dieselbe Frage -- wie sieht die richtige Angabe aus? -- auf zwei Auflösungsstufen, der Einzelfeldvorlage im Bearbeitungsfluss und dem vollständigen Beispieldatensatz als Ganzes.
+
 
 
 \begin{figure}[H]
@@ -2823,6 +2899,78 @@ Für den MQA-Vergleich werden je Indikatorklasse eigene Kennzahlen berichtet: di
 Übereinstimmungsrate für Klasse~A, die Überschätzungsrate für Klasse~B, die
 Score-Varianz des Prototyps bei flacher MQA-Bewertung für Klasse~C sowie eine
 Bland-Altman-Darstellung der Score-Differenzen über den gesamten Wertebereich.
+
+\subsection{Deckenprüfung des Messinstruments am Referenzdatensatz}
+\label{subsec:deckenpruefung}
+
+Die bisher beschriebenen Kennzahlen beziehen sich auf die Übereinstimmung zwischen
+Prototyp und menschlicher Bewertung. Sie beantworten eine Frage nicht, die vor allen
+Ergebniszahlen steht: Ist das obere Ende der Skala überhaupt erreichbar? Fallen die
+Werte einer Stichprobe überwiegend mittelmäßig aus, sind zwei Erklärungen möglich --
+die bewerteten Metadaten sind mittelmäßig, oder das Verfahren misst systematisch zu
+streng. Solange nicht gezeigt ist, dass ein Datensatz den Höchstwert erreichen
+\emph{kann}, bleibt die zweite Erklärung offen. Die in Abschnitt~\ref{sec:messmodell}
+eingeführten Mali verschärfen diesen Einwand zusätzlich, da sie einzelne
+Indikatorbeiträge unter null drücken können.
+
+Geprüft wird dies am Referenzdatensatz aus Abschnitt~\ref{sec:referenzdatensatz}, also
+am konstruierten Idealfall: einem realen Portaldatensatz, der so lange ergänzt wurde,
+bis er den Sollzustand des Bewertungsmodells vollständig verkörpert. Bewertet wird er
+mit derselben Konfiguration und demselben Sprachmodell wie beide Stichproben.
+Tabelle~\ref{tab:deckenpruefung} berichtet das Ergebnis.
+
+\begin{table}[H]
+    \centering
+    \scriptsize
+    \renewcommand{\arraystretch}{1.2}
+    \rowcolors{1}{white}{white}
+    \begin{tabular}{lrrr}
+    \hline
+    \textbf{Dimension} & \textbf{Score} & \textbf{Bestandene Indikatoren} & \textbf{Gewicht} \\
+    \hline
+    Auffindbarkeit & 1,000 & 8 von 8 & 1,0 \\
+    Zugänglichkeit & 1,000 & 7 von 7 & 2,0 \\
+    Wiederverwendbarkeit & 1,000 & 6 von 6 & 1,5 \\
+    Aussagekraft & 0,972 & 6 von 6 & 2,0 \\
+    \hline
+    \textbf{Gesamtscore} & \textbf{0,991} & \textbf{27 von 27} & \\
+    \hline
+    \end{tabular}
+    \captionsetup{justification=centering}
+    \caption[Deckenprüfung am Referenzdatensatz]{Bewertung des Referenzdatensatzes je
+    Dimension (Konfiguration \texttt{state\_evaluation\_final}, GPT-5.5).}
+    \label{tab:deckenpruefung}
+\end{table}
+
+Die drei deterministischen Dimensionen erreichen exakt den Höchstwert: Alle
+21~regelbasierten und technischen Indikatoren werden bestanden, einschließlich der
+Erreichbarkeitsprüfungen beider Distributionen und der SHACL-Konformitätsprüfung. Die
+Skala ist in diesem Teil des Instruments also nach oben ausgeschöpft, und keiner der
+Mali greift bei einem korrekt beschriebenen Datensatz. Damit ist der Einwand einer
+systematisch zu strengen Messung für die regelbasierten Dimensionen ausgeräumt: Wo die
+Stichproben niedrigere Werte zeigen, ist das ein Befund über die bewerteten Metadaten
+und nicht über das Verfahren.
+
+Die Aussagekraft bleibt mit $0{,}972$ knapp unter dem Höchstwert, obwohl alle sechs
+Teilkriterien als erfüllt gewertet werden. Die Abzüge sind gering und liegen beim
+Titel ($0{,}95$), den Schlagwörtern ($0{,}90$) und der Beschreibung ($0{,}98$); die
+Begründungen des Modells nennen dort ausschließlich Abwägungen zwischen
+konkurrierenden Rubrikforderungen, etwa zwischen atomaren und inhaltlich
+spezifischen Schlagwörtern. Das Sprachmodell vergibt den vollen Punktwert
+also auch dann nicht durchgängig, wenn die Rubrik keinen benennbaren Mangel mehr
+findet. Für die Interpretation der Ergebniskapitel folgt daraus zweierlei: Die
+Aussagekraftswerte sind nach oben faktisch bei etwa $0{,}97$ gedeckelt, weshalb
+Abstände in diesem Bereich nicht überinterpretiert werden dürfen; und der Effekt
+verstärkt die in Abschnitt~5.6 berichtete Beobachtung, dass die semantische Bewertung
+zu einer Kompression am oberen Skalenrand neigt.
+
+Zwei Einschränkungen sind festzuhalten. Erstens ist diese Prüfung eine
+Instrumentenprüfung und kein Qualitätsbefund: Der Referenzdatensatz ist konstruiert und
+nicht zufällig gezogen, sein Ergebnis sagt nichts über die Verteilung realer
+Portaldaten aus. Zweitens ist die Aussagekraftsbewertung nicht bitgenau reproduzierbar;
+Wiederholungsläufe auf identischer Eingabe ergaben Gesamtscores zwischen $0{,}991$ und
+$0{,}993$, was der in Abschnitt~5.6 ermittelten Streuung des Verfahrens entspricht und
+die Aussage der Deckenprüfung nicht berührt.
 
 % Scope: Erste Ergebnis-Section und Weichenstellung fuer alles Folgende. Die Modellwahl
 % wird hier mit dem in 5.1-5.5 aufgebauten Instrument entschieden; ab 5.7 wird

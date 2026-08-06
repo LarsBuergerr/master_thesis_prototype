@@ -1,11 +1,11 @@
-# Referenzdatensatz als roter Faden durch die Thesis — Arbeitsplan
+# Referenzdatensatz als roter Faden durch die Thesis
 
-Vorhaben aus einer Anregung des Erstbetreuers: Der handgebaute „perfect example"-
-Metadatensatz soll die Thesis als wiederkehrendes Beispiel durchziehen, statt
-ungenutzt im Repository zu liegen.
+Vorhaben aus einer Anregung des Erstbetreuers: Ein Idealfall-Metadatensatz soll
+die Thesis als wiederkehrendes Beispiel durchziehen, statt ungenutzt im
+Repository zu liegen.
 
-Stand: 06.08.2026. **Noch nichts davon ist umgesetzt** — diese Datei hält den
-abgestimmten Plan fest.
+Stand: 06.08.2026. **Umgesetzt** — diese Datei dokumentiert das Artefakt, die
+getroffenen Entscheidungen und die Stellen, an denen es in der Thesis auftaucht.
 
 ---
 
@@ -13,152 +13,160 @@ abgestimmten Plan fest.
 
 | | |
 |---|---|
-| Datei | `data/perfect_example_01.rdf` (109 Zeilen) |
-| Variante | `data/perfect_example_01.rebuilt.rdf` (Zweck ungeklärt, vor Verwendung prüfen) |
-| Inhalt | Destatis-Tabelle 12411-0001 „Bevölkerung: Deutschland, Stichtag", zwei Distributionen (CSV, JSON) |
-| Alte Läufe | `outputs/runs_archive/run_2026-06-02_*_state-perfect-example_*` |
+| Datei | `data/perfect_example_01.rdf` (110 Zeilen) |
+| Herkunft | `data/sample_2026-06-03_13-33/non_geo_land-schleswig-holstein_04.rdf` — realer Datensatz aus dem Open-Data-Portal Schleswig-Holstein, enthalten in der Stichprobe dieser Arbeit |
+| Inhalt | „Feinstaub (PM2,5) Lübeck, Moislinger Allee Tagesmittel 2023“, Herausgeber Landesamt für Umwelt SH, ausgeliefert über die Messwertschnittstelle des Umweltbundesamtes |
+| Distributionen | zwei — **derselbe Datenbestand** als CSV und als JSON |
 | Eigene Config | `conf/state/state_perfect_example.yaml` |
+| Altlast | `data/perfect_example_01.rebuilt.rdf` gehört noch zum alten Destatis-Beispiel und ist verwaist — löschen oder ignorieren |
+
+### Warum dieser Satz und nicht die beiden Vorgänger
+
+1. **Destatis 12411-0001** (erster Versuch): selbst zusammengesucht, Herkunft
+   schlechter erklärbar; außerdem existiert im DCAT-AP.de-Schlüsselvokabular
+   kein Schlüssel für das Bundesgebiet, sodass `find_political_geocoding` auf
+   Bundesebene nicht kongruent erfüllbar ist.
+2. **Bodenfeuchte Ingolstadt** (`data/extreme_cases_04/good_01.rdf`, aus dem
+   Experteninterview): Herkunft ideal, Struktur nicht. Die beiden verbleibenden
+   Distributionen waren **Messreihe + Abkürzungsverzeichnis**, also inhaltlich
+   verschiedene Ressourcen — genau das Muster, das Abschnitt 3.x der Thesis als
+   Fehlgebrauch der Distributionsebene beschreibt (`dcat:DatasetSeries` in
+   DCAT~3). Ein Idealfall darf nicht ausgerechnet eine Schwäche des Prototyps
+   ausnutzen. Andere Formate derselben Daten bietet das Portal nicht an:
+   geprüft wurden `.json`, `.xlsx`, `.xls`, `.xml`, `.ods` — alle 404, es
+   existieren nur `.csv` und `.jsonld`. Und `JSON_LD` fehlt in
+   `NON_PROPRIETARY_FORMAT_URIS` (`src/extraction/distribution_probes.py:222`),
+   weshalb die JSON-LD-Variante `acc_format_non_proprietary` auf 0,67 drückt.
+   Die Liste zu ergänzen wäre sachlich richtig — JSON-LD ist so offen wie das
+   dort gelistete RDF/Turtle —, würde aber die Scores aller Stichproben mit
+   JSON-LD-Distributionen verschieben (u. a. 18 Dateien in
+   `sample_small_portals_2026-07-21_10-20`) und damit berichtete Kennzahlen
+   invalidieren. Bleibt als dokumentierte Lücke stehen.
+3. **PM2,5 Lübeck 2023** (aktuell): zwei Distributionen mit identischem Inhalt
+   in zwei offenen Formaten, abgeschlossener Bezugszeitraum, Gemeindeebene
+   kongruent zum Gemeindeschlüssel, Herkunft aus der eigenen Stichprobe.
+
+### Was gegenüber dem Portaloriginal geändert wurde
+
+Beibehalten: Datensatz-URI, Distributions-URIs und -URLs, Herausgeber,
+Lizenz (dl-by-de/2.0), `contributorID` (schleswigHolstein), Thema ENVI,
+Geometrie der Messstation, Zeitraum 2023, `issued`/`modified`, `accessRights`.
+
+Ergänzt (für den vollen Score nötig):
+
+- `dcat:contactPoint` — fehlte; `reuse_contact`. Als Kontakt dient die
+  Organisationsseite des LfU im Portal, **keine erfundene E-Mail-Adresse**
+  (das Portal hinterlegt keine)
+- `dcatap:availability` je Distribution — fehlte; `reuse_availability`
+- `dcat:mediaType` je Distribution — fehlte; `acc_media_type`
+- `dcatde:politicalGeocodingURI` (Gemeindeschlüssel 01003000, Lübeck) und
+  `dcatde:politicalGeocodingLevelURI` (`municipality`) — fehlten;
+  `find_political_geocoding`, `find_geocoding_level`
+- `dct:language` je Datensatz und Distribution, `foaf:homepage`,
+  `dcat:landingPage`, `dct:accrualPeriodicity` (`NEVER`, da abgeschlossen)
+
+Entfernt: `dct:rights` (dubliert `dct:license`, ohne Wirkung).
+
+Inhaltlich überarbeitet (Aussagekraft):
+
+- **Titel** benennt Stoff, Ort, Station, Auswertungsart und Jahr
+- **Beschreibung** neu geschrieben: Inhalt, Spalten, Einheit, Erhebungsmethode
+  und Quelle, Formatunterschied der beiden Distributionen, Vorläufigkeit der
+  Werte, abgeschlossener Bezugszeitraum, Nutzungszwecke. Das Original enthielt
+  Markdown-Auszeichnung (`***vorläufig***`, Markdown-Link), die als
+  Formatierungsrest abgewertet wird
+- **Schlagwörter** atomar und singularisch statt der Slug-Reste des Portals
+  (`5_`, `feinstaub-pm2`, `moislinger-allee`), ein englisches Äquivalent
+- **Distributionstitel und -beschreibungen** neu, jeweils formatspezifisch
 
 ### Geprüfter Stand (06.08.2026)
 
-Bewertet mit `state_evaluation_final`, Sprachmodell aus:
+Lauf `outputs/runs/run_2026-08-06_15-42-18_state-evaluation-final_REF_UBA`,
+Config `state_evaluation_final`, Modell GPT-5.5:
 
 ```
-findability    score 1.000   8/8
-accessibility  score 1.000   7/7
-reusability    score 1.000   6/6
+Auffindbarkeit        1,000   8/8
+Zugänglichkeit        1,000   7/7
+Wiederverwendbarkeit  1,000   6/6
+Aussagekraft          0,972   6/6   (Titel 0,95 · Beschreibung 0,98 ·
+                                     Kohärenz 1,00 · Schlagwörter 0,90 ·
+                                     Thematik 1,00 · Kontext 1,00)
+Gesamtscore           0,991   Note A   27/27 Indikatoren bestanden
 ```
 
-**Alle 21 deterministischen Indikatoren bestanden.** Der Datensatz ist also
-entgegen der ursprünglichen Annahme *nicht* veraltet und kann ohne Sanierung
-verwendet werden. Ungeprüft ist allein die Aussagekraft (LLM).
-
-Reproduktion:
+Reproduktion (die Eval-Config hat aktuell die Aussagekraft nicht im
+Dimensions-Whitelist, deshalb der Override):
 
 ```bash
 .venv/bin/python src/main.py --config-name state/state_evaluation_final \
   state.directory_path=data state.files='[perfect_example_01.rdf]' \
-  state.llm.enabled=false state.run_output_dir_suffix=PERFECT_CHECK
+  'state.quality.dimension_whitelist=[accessibility,reusability,findability,expressiveness]' \
+  state.run_output_dir_suffix=REF_UBA
 ```
 
-Lauf vom 06.08.: `outputs/runs/run_2026-08-06_10-13-21_state-evaluation-final_PERFECT_CHECK`
-(kann gelöscht werden, war nur Verifikation).
+Kosten je Lauf: rund 0,04 USD.
+
+**Die deterministischen 21 Indikatoren sind vollständig erreichbar.** Die
+Aussagekraft nicht: Das Sprachmodell vergibt auch bei einer Rubrik ohne
+benennbaren Mangel nicht durchgängig 1,0; oberhalb von etwa 0,97 ist die
+Dimension faktisch gedeckelt. Wiederholungsläufe auf identischer Eingabe ergaben
+0,991 und 0,993 (LLM-Streuung, deckt sich mit Abschnitt 5.6 der Thesis).
+
+Erreichbarkeit beider Distributions-URLs am 06.08.2026 geprüft: HTTP 200,
+55,9 kB (CSV) bzw. 23,3 kB (JSON).
 
 ---
 
 ## 2. Leitidee
 
-Derselbe Datensatz, in jedem Kapitel eine andere Frage an ihn — nicht viermal
-dieselbe Darstellung:
+Derselbe Datensatz, in jedem Kapitel eine andere Frage an ihn:
 
 | Kapitel | Frage |
 |---|---|
 | 2 Grundlagen | Wie sieht ein vollständiger DCAT-AP.de-Datensatz aus? |
-| 3 Konzeption | Welche der abgeleiteten Anforderungen erfüllt er? |
-| 4 Operationalisierung | Was macht der Prototyp mit ihm? |
+| 3 Konzeption | Welchen Sollzustand beschreiben die abgeleiteten Indikatoren? |
+| 4 Operationalisierung | Was zeigt der Prototyp einem Bereitsteller davon? |
 | 5 Evaluation | Erreicht das Messinstrument seinen eigenen Höchstwert? |
 
-**Benennung:** nicht „Perfect Example" — das behauptet mehr, als das Konstrukt
-einlöst, und provoziert die Rückfrage „perfekt wonach?". Stattdessen
-**Referenzdatensatz** oder *konstruierter Idealfall*. Der Begriff muss
-mittragen, dass der Satz konstruiert ist und keine Aussage über reale
-Portaldaten erlaubt.
+**Benennung:** durchgängig **Referenzdatensatz**, in der Einführung einmal als
+*konstruierter Idealfall* präzisiert. Nicht „Perfect Example“ — das behauptet
+mehr, als das Konstrukt einlöst. Der Dateiname im Repository bleibt aus
+Kompatibilitätsgründen `perfect_example_01.rdf`.
 
 ---
 
-## 3. Die vier Ankerpunkte (nach Nutzen sortiert)
+## 3. Umgesetzte Ankerpunkte in der Thesis
 
-### 3.1 Kapitel 5 — Deckenprüfung des Instruments (höchster Nutzen)
+| Stelle | Label | Inhalt |
+|---|---|---|
+| §2.3, neuer Unterabschnitt „Aufbau eines DCAT-AP.de-Datensatzes am Referenzdatensatz“ | `sec:referenzdatensatz` | Einführung, gekürztes Listing (`lst:referenzdatensatz`), zwei Absätze zu Dataset↔Distribution (inkl. „derselbe Inhalt in zwei Formaten“) und kontrollierten Vokabularen |
+| Ende Kapitel 3, nach der Aussagekrafts-Tabelle | — | Scharnier-Absatz: Der Referenzdatensatz ist die konkrete Form des Modells; plausibilisiert die Vollständigkeit der Indikatormenge |
+| §4.8.5 „Von der Meldung zur Handlungsanweisung“ | `subsec:handlungsanweisung` | Absatz: Feldweise Vorlage vs. vollständiger Beispieldatensatz als zwei Auflösungsstufen |
+| §5.5, neuer Unterabschnitt „Deckenprüfung des Messinstruments am Referenzdatensatz“ | `subsec:deckenpruefung` | Trägt das Argument: Tabelle `tab:deckenpruefung`, Befund zur Skalendecke, Deckelung der Aussagekraft bei ~0,97, zwei Einschränkungen |
+| Anhang | `app:referenzdatensatz` | Vollständiges RDF/XML, `thesis/appendix/referenzdatensatz.tex`, eingebunden in `report.tex` |
 
-Das eigentliche Argument, kein Beiwerk. Die Kernstichprobe liegt im Mittel bei
-65/100; der naheliegende Prüfereinwand lautet: *Ist die Skala oben überhaupt
-erreichbar, oder misst das Verfahren systematisch zu streng?* Ein konstruierter
-Datensatz, der 1,0 erreicht, beantwortet das — analog zur Ceiling-Analyse, aber
-auf der Instrumentenseite statt der Verteilungsseite. Damit wird aus
-„mittelmäßige Metadaten" ein Befund über die Datenlage statt über das Verfahren.
+Zur Formulierung in §4.8.5: Die Vorlagen in `src/core/guidance.py` sind
+**keine** wörtlichen Ausschnitte dieses Datensatzes (sie führen eigene
+Beispielwerte). Der Text behauptet das entsprechend auch nicht, sondern stellt
+die beiden Darstellungsformen nebeneinander.
 
-- Umfang: ca. eine halbe Seite, ggf. eine kleine Tabelle (Score je Dimension)
-- Platzierung: eigener Unterabschnitt, entweder am Ende von 5.5
-  (Auswertungsverfahren, als Instrumentenprüfung vor der ersten Zahl) oder als
-  erster Unterabschnitt von 5.7
-- **Voraussetzung: ein Lauf mit aktiviertem Sprachmodell**, sonst fehlt die
-  Aussagekraft-Dimension und der Gesamtscore ist nicht belastbar
-- Muss ausdrücklich als Instrumentenprüfung deklariert werden, nicht als
-  Qualitätsbefund — der Satz ist konstruiert und nicht randomisiert gezogen
+Nicht umgesetzt: der optionale Frontend-Screenshot der Detailansicht mit Note A.
 
-### 3.2 Kapitel 2, §2.3 „DCAT-AP.de als Metadatenstandard" — Einführung
+### LaTeX-Fallstrick
 
-In `contents.tex:118` steht ein `@TODO` des Autors: „ggf. noch etwas expliziter
-erläutern wie DCAT-AP.de aufgebaut ist". Der Referenzdatensatz beantwortet genau
-das.
-
-- gekürztes Listing: Dataset-Kopf, eine Distribution, Kontaktblock
-- zwei Absätze: Aufbau Dataset ↔ Distribution, Rolle der kontrollierten Vokabulare
-- vollständiges RDF in den Anhang
-- hier wird der Datensatz eingeführt und benannt, alle späteren Stellen verweisen zurück
-
-### 3.3 §4.8.5 „Von der Meldung zur Handlungsanweisung" — Auflösung der Vorlagen
-
-Label: `subsec:handlungsanweisung`. Billigster Einbau mit sichtbarster Wirkung.
-
-Zwei Sätze genügen: Die „So sollte es aussehen"-Vorlagen aus
-`src/core/guidance.py` sind feldweise Ausschnitte genau dieses Datensatzes. Was
-die Oberfläche einem Bereitsteller stückweise zeigt, steht in Kapitel 2 einmal
-als Ganzes. Schließt den Kreis, ohne neue Argumentation.
-
-### 3.4 Ende von Kapitel 3 — Scharnier zur Operationalisierung
-
-Ein Absatz: Die abgeleiteten Indikatoren beschreiben zusammengenommen den
-Zustand, den der Referenzdatensatz verkörpert; er ist der operationalisierte
-Sollzustand des Modells. Begründet nebenbei die Vollständigkeit der
-Indikatormenge.
-
-### 3.5 Optional — Frontend-Screenshot
-
-Detailansicht mit Note A und durchgehend erfüllten Indikatoren, als Gegenstück
-zu den Befund-Screenshots in 4.8. Billig, da das Frontend ohnehin läuft.
+Die Listings brauchen `breaklines`, aber **nicht** `breakanywhere`: Unter
+pdflatex bricht fvextra sonst mitten in ein UTF-8-Mehrbyte-Zeichen und der Lauf
+stirbt mit `Invalid UTF-8 byte sequence`. Stattdessen `breakafter=/` — bricht
+lange Vokabular-URIs, ohne je in einen Umlaut zu schneiden.
 
 ---
 
-## 4. Vor der Umsetzung zu klären
+## 4. Randbedingungen
 
-Sobald der Datensatz Schaustück wird, liest ihn jemand genau. Drei Stellen, die
-die Indikatoren *nicht* prüfen, einem Leser aber auffallen:
-
-1. **Distributions-URLs passen nicht zum Inhalt.** `dcat:accessURL` und
-   `dcat:downloadURL` zeigen auf
-   `opendata.schleswig-holstein.de/.../kreis-hzgt.-lauenburg.csv`, während der
-   Datensatz Bevölkerungszahlen des Bundes von Destatis beschreibt. Erreichbar
-   ja, inhaltlich passend nein.
-2. **Zweite Distribution widersprüchlich benannt.** Titel und Beschreibung sagen
-   „XLSX", `dct:format` ist JSON und `dcat:mediaType` ist `application/json`.
-3. **Geokodierung inkonsistent.** `politicalGeocodingLevelURI` steht auf
-   `federal`, der Schlüssel darunter
-   (`politicalGeocoding/municipalityKey/08435005`) ist eine Gemeinde in
-   Baden-Württemberg.
-
-Zwei Wege: korrigieren, oder im Text als bewusste Platzhalter benennen. Die
-zweite Variante hat Charme, weil sie zeigt, wo die Grenze des Indikatorensatzes
-liegt (Kongruenzprüfungen fehlen bzw. sind blacklisted).
-
----
-
-## 5. Reihenfolge der Umsetzung
-
-1. Lauf mit Sprachmodell über die eine Datei → Gesamtscore und
-   Aussagekraft-Werte für 3.1 (Kosten: wenige Cent)
-2. Entscheidung zu Abschnitt 4 (korrigieren vs. deklarieren)
-3. Kapitel 5 (3.1) — trägt das Argument
-4. Kapitel 2 (3.2) + Anhang — führt ein
-5. Die beiden Kurzverweise (3.3, 3.4)
-6. optional Screenshot (3.5)
-
----
-
-## 6. Randbedingungen
-
-- **Thesis nicht selbst kompilieren** (siehe Memory `no-latex-build`): Der
-  Editor des Autors läuft mit eigenem latexmk auf dasselbe `thesis/build`.
+- **Thesis nicht selbst kompilieren** (Memory `no-latex-build`): Der Editor des
+  Autors läuft mit eigenem latexmk auf dasselbe `thesis/build`. Wenn doch
+  nötig, mit `-outdir` in ein separates Verzeichnis bauen.
 - Keine Commits, Pushes oder PRs.
 - `@TODO`-Kommentare des Autors nie entfernen, auch nicht bei Erledigung — das
-  gilt insbesondere für das TODO in §2.3, das durch 3.2 beantwortet wird.
+  gilt insbesondere für das TODO in §2.3, das durch den neuen Unterabschnitt
+  beantwortet wird.

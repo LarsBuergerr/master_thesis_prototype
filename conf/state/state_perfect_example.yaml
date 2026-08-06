@@ -7,7 +7,7 @@ defaults:
 # Directory path for input data
 directory_path: "data"
 # If empty: process all files matching extensions in directory_path
-files: ["perfect_example_01_updated.rdf"]
+files: ["perfect_example_01.rdf"]
 
 # File filtering (only used if files list is empty)
 file_filter:
@@ -21,7 +21,7 @@ file_filter:
 # Output directory for results
 output_dir: "outputs/runs/"
 # Optional custom suffix for the run output directory (overrides default naming based on directorypath or filename if only one file is processed)
-run_output_dir_suffix: "perfect_example_01_updated"
+run_output_dir_suffix: "referenzdatensatz"
 # Master switch for creating run output directory and saving results there. If false no output is generated
 run_output_enabled: true
 # Language configuration. Options: "de", "en"

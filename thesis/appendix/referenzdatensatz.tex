@@ -1,3 +1,23 @@
+Vollständiger RDF/XML-Quelltext des in Abschnitt~\ref{sec:referenzdatensatz}
+eingeführten Referenzdatensatzes. Grundlage ist der reale Metadatensatz
+\enquote{Feinstaub (PM2,5) Lübeck, Moislinger Allee Tagesmittel 2023} aus dem
+Open-Data-Portal Schleswig-Holstein, wie er in der Stichprobe dieser Arbeit
+enthalten ist; die dort fehlenden oder unvollständig belegten Angaben wurden
+ergänzt, bis alle Indikatoren des Bewertungsmodells erfüllt sind (Datei
+\texttt{data/perfect\_example\_01.rdf} im Repository der Arbeit). Die Bewertung
+dieses Datensatzes ist in Abschnitt~\ref{subsec:deckenpruefung} dokumentiert.
+
+\begin{minted}
+[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.1,
+fontsize=\scriptsize,
+breaklines,
+breakafter=/,
+breakaftersymbolpre={}
+]
+{xml}
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF
   xmlns:dct="http://purl.org/dc/terms/"
@@ -100,3 +120,4 @@
     <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/schleswigHolstein"/>
   </dcat:Dataset>
 </rdf:RDF>
+\end{minted}
