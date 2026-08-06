@@ -1,14 +1,13 @@
 """Bauen der Befunde: ``details`` → Ist-/Soll-Gegenüberstellung.
 
-Aufbau analog zu :mod:`scoring.remediation`: eine Tabelle von Buildern, je
-Indikator einer, angehängt post-hoc an das Ergebnis
-(:func:`attach_finding`). Die Indikator-Klassen bleiben dadurch unberührt —
-sie liefern weiterhin nur ``details``, die Deutung passiert hier.
+Eine Tabelle von Buildern, je Indikator einer, angehängt post-hoc an das
+Ergebnis (:func:`attach_finding`). Die Indikator-Klassen bleiben dadurch
+unberührt — sie liefern weiterhin nur ``details``, die Deutung passiert hier.
 
-Anders als die Remediation braucht ein Befund keinen ``DatasetContext``: er
-liest ausschließlich das, was der Indikator ohnehin schon protokolliert hat.
-Fehlt für eine ID ein Builder, entsteht ein generischer Befund aus Prüfmeldung
-und Handlungsanweisung — kein Indikator bleibt ohne Erklärung.
+Ein Befund braucht keinen ``DatasetContext``: er liest ausschließlich das, was
+der Indikator ohnehin schon protokolliert hat. Fehlt für eine ID ein Builder,
+entsteht ein generischer Befund aus Prüfmeldung und Handlungsanweisung — kein
+Indikator bleibt ohne Erklärung.
 """
 
 from __future__ import annotations

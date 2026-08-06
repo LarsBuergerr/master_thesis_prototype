@@ -18,7 +18,6 @@ from extraction.semantic_assessment import (
 )
 from extraction.rdf_parser import RDFMetadataParser
 from scoring.findings import attach_finding
-from scoring.remediation import attach_remediation
 from scoring.score_policy import ScorePolicy
 from utils.logger import get_logger
 
@@ -595,12 +594,10 @@ class QualityMetricsService:
         indicator's signature accepts it. Indicators opt in by declaring a
         ``context`` keyword argument.
 
-        FAIL/PARTIAL results additionally get a ``remediation`` attached
-        (see ``scoring.remediation``) -- requires ``context`` (subject URIs,
-        the graph, the LLM assessment), so it's skipped when no context was
-        built for this call -- and a ``finding`` (see ``scoring.findings``),
-        which only reads the indicator's own ``details`` and therefore always
-        runs.
+        FAIL/PARTIAL/ERROR results additionally get a ``finding`` attached
+        (see ``scoring.findings``), which only reads the indicator's own
+        ``details`` and therefore always runs, unabhängig davon, ob für
+        diesen Aufruf ein ``context`` gebaut wurde.
         """
         result = None
         if context is not None:
@@ -613,8 +610,6 @@ class QualityMetricsService:
         if result is None:
             result = indicator.validate(metadata)
 
-        if context is not None:
-            attach_remediation(result, context)
         attach_finding(result)
         return result
 

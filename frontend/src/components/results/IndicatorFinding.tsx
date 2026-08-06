@@ -15,9 +15,6 @@
 //             oder deren Problem außerhalb der Datei liegt (tote Links). Fehlt
 //             das Feld ganz, gibt es keine Zeilen — dann entfällt der Block.
 //   none      Nichts. Befund und Hinweis oben tragen bereits alles.
-//
-// `indicator.remediation` wird bewusst nicht dargestellt: die Vorlage sagt
-// dasselbe knapper, und der Ist-Block nennt die beanstandeten Werte schon.
 
 import type { IndicatorResult } from "../../api/types";
 import { indicatorMeta } from "../../lib/indicators";

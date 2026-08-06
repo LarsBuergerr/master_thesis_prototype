@@ -59,59 +59,6 @@ export interface IndicatorsResponse {
   score_glossary: Record<string, string>;
 }
 
-// Mirrors core/remediation.py. Attached to FAIL/PARTIAL results only.
-export type RdfTermKind = "uri" | "literal" | "bnode";
-
-export interface RdfTerm {
-  type: RdfTermKind;
-  value: string;
-}
-
-export interface ChangeOp {
-  op: "add" | "remove";
-  subject: string;
-  predicate: string;
-  object: RdfTerm;
-  reason: string;
-}
-
-/**
- * Stelle im Graphen, an der ein Wert fehlt. Beschrieben wird die *Form* des
- * erwarteten Werts — nicht die Menge der zulässigen Werte: die steht im
- * verlinkten Vokabular (siehe core/remediation.py::FieldSuggestion).
- */
-export interface FieldSuggestion {
-  indicator_id: string;
-  subject: string;
-  predicate: string;
-  reason: string;
-  /** Erwartete Form in einem Satz. */
-  expected_de: string;
-  expected_en: string;
-  /** Ein Wert, der die Schreibweise zeigt — Formbeispiel, keine Empfehlung. */
-  example?: string | null;
-  vocabulary_label?: string | null;
-  vocabulary_url?: string | null;
-}
-
-export interface ChangePatch {
-  kind: "change_patch";
-  ready: ChangeOp[];
-  needs_input: FieldSuggestion[];
-  summary_de: string;
-  summary_en: string;
-}
-
-export interface Recommendation {
-  kind: "recommendation";
-  message_de: string;
-  message_en: string;
-  findings: string[];
-  see_also: string[];
-}
-
-export type Remediation = ChangePatch | Recommendation;
-
 // Mirrors core/finding.py. Attached to FAIL/PARTIAL/ERROR results: the
 // indicator's `details` turned into an Ist/Soll comparison a data provider can
 // act on. Built in the backend (scoring/findings.py), never in the UI.
@@ -148,7 +95,6 @@ export interface IndicatorResult {
   message_en: string;
   details: Record<string, unknown>;
   error?: string | null;
-  remediation?: Remediation | null;
   finding?: Finding | null;
 }
 

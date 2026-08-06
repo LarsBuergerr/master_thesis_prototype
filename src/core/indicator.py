@@ -9,7 +9,6 @@ from datetime import datetime
 from core.dimension import QualityDimension
 from core.finding import Finding
 from core.guidance import IndicatorGuidance, guidance_for
-from core.remediation import Remediation
 from utils.logger import get_logger
 
 
@@ -38,10 +37,6 @@ class IndicatorResult:
     details: Dict[str, Any] = field(default_factory=dict)
     error: Optional[str] = None
     timestamp: datetime = field(default_factory=datetime.now)
-    #: Set (post-hoc, see scoring.remediation.attach_remediation) for FAIL /
-    #: PARTIAL results: either a concrete ChangePatch or a free-text
-    #: Recommendation — never both, never neither for a failing indicator.
-    remediation: Optional[Remediation] = None
     #: Set (post-hoc, see scoring.findings.attach_finding) for FAIL / PARTIAL /
     #: ERROR results: ``details`` aufbereitet als Ist-/Soll-Gegenüberstellung.
     finding: Optional[Finding] = None
@@ -60,7 +55,6 @@ class IndicatorResult:
             "details": self.details,
             "error": self.error,
             "timestamp": self.timestamp.isoformat(),
-            "remediation": self.remediation.to_dict() if self.remediation else None,
             "finding": self.finding.to_dict() if self.finding else None,
         }
 

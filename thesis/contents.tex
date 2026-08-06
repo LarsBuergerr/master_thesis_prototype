@@ -1703,6 +1703,8 @@ Aussagekraftsindikatoren prüfen, ob vorhandene Metadaten inhaltlich verständli
 \label{tab:aussagekraftsindikatoren}
 \end{table}
 
+\pagebreak
+
 % \section{Einordnung kontext- und KI-gestützter Analyseverfahren}
 
 % \section{Gewichtung und Aggregation der Einzelnindikatoren}
@@ -2172,9 +2174,7 @@ Die Dimensionsgewichte folgen derselben Logik auf der übergeordneten Ebene: Die
 \section{Maschinenlesbare Ergebnisreports}
 \label{sec:maschinenreport}
 
-Der Prototyp erzeugt für jede bewertete Metadatendatei einen vollständigen maschinenlesbaren Report, der jedes Einzelergebnis mitsamt Begründung und allen zur Berechnung verwendeten Parametern dokumentiert. Dieser Report ist zugleich die einzige Datengrundlage der menschenlesbaren Aufbereitung, die Section~\ref{sec:frontend} beschreibt.
-
-Jeder Bewertungslauf legt ein eigenes Ausgabeverzeichnis an.
+Der Prototyp erzeugt für jede bewertete Metadatendatei einen vollständigen maschinenlesbaren Report, der jedes Einzelergebnis mit Begründung und allen verwendeten Parametern dokumentiert. Dieser Report ist zugleich die einzige Datengrundlage der menschenlesbaren Aufbereitung, die Section~\ref{sec:frontend} beschreibt. Jeder Bewertungslauf legt ein eigenes Ausgabeverzeichnis an.
 Innerhalb dieses Verzeichnisses erhält jede bewertete Datei ein Unterverzeichnis mit drei Artefakten: dem Ergebnisreport als \texttt{json} Objekt sowie zwei Protokolldateien. Listing~\ref{lst:result_json} zeigt den Ergebnisreport in gekürzter Form.
 
 \begin{listing}[H]
@@ -2182,56 +2182,79 @@ Innerhalb dieses Verzeichnisses erhält jede bewertete Datei ein Unterverzeichni
 [
 frame=lines,
 framesep=2mm,
-baselinestretch=1.1,
-fontsize=\footnotesize
+baselinestretch=1,
+fontsize=\scriptsize
 ]
 {js}
 {
   "by_dimension": {
-    "accessibility": {
-      "score": 0.9,
+    "accessibility": {  
+      "dimension": "accessibility",
+      "score": 0.684,
       "dimension_weight": 2.0,
-      "total_indicator_weight": 10.0,
+      "total_indicator_weight": 9.5,
+      "indicator_count": 7, "pass_count": 4, "pass_rate": 0.571,
       "indicators": [
         {
-          "indicator_id": "acc_download_url",
-          "name_de": "Download-URL je Distribution",
-          "status": "pass",
-          "score": 1.0,
-          "raw_status": "pass",
-          "raw_score": 1.0,
+          "indicator_id": "acc_format",
+          "name_de": "Format aus kontrolliertem Vokabular (je Distribution)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit Format aus dem Vokabular",
+          "message_en": "0/1 distribution(s) with a format from the vocabulary",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 0,
+            "per_distribution": [{"uri": "…/distributions/a675922c-…",
+                                  "formats": [], "passes": false}]
+          },
+          "error": null,
+          "timestamp": "2026-07-16T11:27:02.637627",
+          "finding": {
+            "headline": "Keine der 1 Distribution hat ein Format aus dem
+                         EU-Vokabular.",
+            "current": [{"label": "Distribution 1",
+                         "value": "kein Format angegeben", "tone": "bad",
+                         "where": "…/distributions/a675922c-…"}],
+            "target": "Setzen Sie je Distribution eine Format-URI, z. B.
+                       http://publications.europa.eu/…/file-type/CSV.",
+            "notes": []
+          },
           "default_weight": 1.0,
           "effective_weight": 1.0,
-          "message_de": "1/1 Distribution(en) mit Download-URL",
-          "message_en": "1/1 distribution(s) with a download URL",
-          "details": {"total_distributions": 1, ...}
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
         },
         ...  // weitere Indikatoren der Dimension
       ]
     },
-    "expressiveness": {...},  // weitere Dimensionen
+    "findability": {...},  // weitere Dimensionen
   },
   "summary": {
-    "overall_score": 0.833,
-    "quality_grade": "B",
-    "dimension_scores": {"accessibility": 0.9, ...},
+    "overall_score": 0.650,
+    "quality_grade": "C",
+    "dimension_scores": {"accessibility": 0.684, "findability": 0.5, ...},
     "effective_dimension_weights": {"accessibility": 2.0, ...},
-    "total_indicators": 27, "total_pass": 20, "total_fail": 7
+    "total_indicators": 27, "total_pass": 13, "total_fail": 14
   },
   "weights": {
-    "dimension_weights": {"accessibility": 2.0, ...},
-    "indicator_weights": {"reuse_license": 2.0, ...}
+    "dimension_weights": {"accessibility": 2.0, "findability": 1.0, ...},
+    "indicator_weights": {"acc_format": 1.0, "reuse_license": 2.0, ...}
   },
   "errors": [],
-  "llm_usage": [{"model": "anthropic/claude-sonnet-4.5", "total_tokens": 8987, 
-                 "cost_usd": 0.0505, "latency_seconds": 28.4}]
+  "llm_usage": [{"model": "openai/gpt-5.5", "total_tokens": 4445,
+                 "cost_usd": 0.0334, "latency_seconds": 18.9}]
 }
 \end{minted}
-\caption{Ergebnisreport \texttt{result.json} einer einzelnen Metadatendatei, gekürzt}
+\caption{Ergebnisreport \texttt{result.json} einer einzelnen Metadatendatei; vollständig gezeigt ist ein Indikator, die übrigen 26 sind ausgelassen}
 \label{lst:result_json}
 \end{listing}
 
-Der Block \texttt{by\_dimension} gruppiert die Einzelergebnisse nach Qualitätsdimension und weist je Dimension den Dimensionswert, das Dimensionsgewicht und die Summe der Indikatorgewichte aus. Jeder Indikatoreintrag enthält neben Ergebnisstufe und Punktwert die Bezeichnung und eine Ergebnismeldung in deutscher und englischer Sprache sowie im Feld \texttt{details} die indikatorspezifische Evidenz. Dazu zählen Zählwerte, Ergebnisse je Distribution und bei den semantischen Indikatoren die Befunde und die Begründung des Sprachmodells. Nicht oder nur teilweise erfüllte Indikatoren tragen darüber hinaus zwei aufbereitete Felder, die der Bewertungskern aus dieser Evidenz ableitet und die Section~\ref{sec:frontend} beschreibt: den \texttt{finding}-Block mit Kernaussage, Ist-Angaben, Hinweis und Einzelbefunden sowie, wo eine Korrektur maschinell bestimmbar ist, den strukturierten Änderungsvorschlag unter \texttt{remediation}. Beide entstehen im Bewertungskern und nicht in der Oberfläche, sodass der Report auch die Erklärung eines Ergebnisses vollständig mitführt. Die Felder \texttt{raw\_status} und \texttt{raw\_score} halten das unveränderte Urteil des Indikators fest, während \texttt{status} und \texttt{score} das Ergebnis nach Anwendung der konfigurierten Punktevergabe wiedergeben. Analog dokumentiert das Paar aus \texttt{default\_weight} und \texttt{effective\_weight}, ob die Konfiguration das Standardgewicht des Indikators überschreibt. Der Einfluss der Konfiguration auf jedes Einzelergebnis bleibt damit im Report sichtbar.
+Der Block \texttt{by\_dimension} gruppiert die Einzelergebnisse nach Qualitätsdimension und weist je Dimension den Dimensionswert, das Dimensionsgewicht, die Summe der Indikatorgewichte sowie die Zahl der geprüften und der bestandenen Indikatoren aus. Jeder Indikatoreintrag enthält neben Ergebnisstufe und Punktwert die Bezeichnung und eine Ergebnismeldung sowie im Feld \texttt{details} die indikatorspezifische Evidenz. Dazu zählen Zählwerte, Ergebnisse je Distribution und bei den semantischen Indikatoren die Befunde und die Begründung des Sprachmodells. Nicht oder nur teilweise erfüllte Indikatoren sowie Fehlerfälle tragen darüber hinaus das Feld \texttt{finding}, das der Bewertungskern aus dieser Evidenz ableitet; bei erfüllten Indikatoren bleibt es leer, weil dort nichts zu erklären ist.
+
+Das Feld enthält den in Section~\ref{subsec:befund} beschriebenen Befund in genau der Form, in der ihn die Oberfläche darstellt: \texttt{headline} als Kernaussage in einem Satz, \texttt{current} als Liste der vorgefundenen Angaben mit Bezeichnung, Wert, einer Bewertung des Werts (\texttt{tone}) und optionaler Fundstelle (\texttt{where}), \texttt{target} als Handlungsanweisung und \texttt{notes} für Einzelbefunde bei mehreren gleichartigen Verstößen. Diese Struktur ist über alle Indikatoren hinweg identisch, während \texttt{details} darunter indikatorspezifisch bleibt. Der Befund entsteht im Bewertungskern und nicht in der Oberfläche, sodass der Report auch die Erklärung eines Ergebnisses vollständig mitführt. Die Felder \texttt{raw\_status} und \texttt{raw\_score} halten das unveränderte Urteil des Indikators fest, während \texttt{status} und \texttt{score} das Ergebnis nach Anwendung der konfigurierten Punktevergabe wiedergeben. Analog dokumentiert das Paar aus \texttt{default\_weight} und \texttt{effective\_weight}, ob die Konfiguration das Standardgewicht des Indikators überschreibt. Der Einfluss der Konfiguration auf jedes Einzelergebnis bleibt damit im Report sichtbar.
 
 Der Block \texttt{summary} verdichtet das Ergebnis zu Gesamtscore, Note und Dimensionswerten, der Block \texttt{weights} gibt die vollständige Gewichtskonfiguration beider Ebenen wieder. Der Report ist dadurch in sich abgeschlossen: Sämtliche Größen, die in die Gleichungen~\ref{eq:dimension_score} und~\ref{eq:overall_score} eingehen, sind enthalten, sodass sich der Gesamtscore ohne Zugriff auf den Prototyp oder dessen Konfigurationsdateien nachträglich vollständig herleiten lässt. Ergänzend legt der Lauf auf oberster Ebene eine Metadatendatei ab, die die vollständig aufgelöste Konfiguration und den Commit-Hash des verwendeten Quellcodestands festhält. Der Block \texttt{llm\_usage} dokumentiert je Sprachmodellaufruf das verwendete Modell, die verbrauchten Tokens, die entstandenen Kosten und die Antwortzeit und macht damit den nichtdeterministischen und kostenpflichtigen Teil der Bewertung transparent.
 
@@ -2250,7 +2273,7 @@ Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenf
 \section{Menschenlesbares Qualitätsreporting}
 \label{sec:frontend}
 
-Der in Section~\ref{sec:maschinenreport} beschriebene Report ist vollständig, aber nicht adressatengerecht: Er richtet sich an Maschinen und an Leser, die den Aufbau von DCAT-AP.de kennen. Dieser Abschnitt beschreibt, wie daraus eine Darstellung wird, die ihre jeweiligen Adressaten handlungsfähig macht, und beantwortet damit die fünfte Forschungsfrage.
+Der folgende Abschnitt beschreibt, wie der maschinenlesbare Report aus Section~\ref{sec:maschinenreport} in eine menschenlesbare Darstellung überführt wird, die ihre jeweiligen Adressaten handlungsfähig macht. Die Gestaltung folgt den in Section~\ref{subsec:zielgruppen} beschriebenen Zielgruppen und Gestaltungszielen und beantwortet damit die fünfte Forschungsfrage.
 
 % Scope: Wer liest das Ergebnis und was muss er danach tun können. Drei
 % Zielgruppen mit unterschiedlichem Auflösungsbedarf; der Datenbereitsteller ist
@@ -2366,10 +2389,11 @@ Der Befund entsteht im Bewertungskern und nicht in der Oberfläche. Die Überset
 % Entwurfsentscheidung: nicht die Menge der zulässigen Werte zeigen, sondern
 % die Form der erwarteten Angabe.
 \subsection{Von der Meldung zur Handlungsanweisung}
+\label{subsec:handlungsanweisung}
 
 Der Befund benennt das Problem und den Weg zu seiner Auflösung, beides jedoch in Prosa. Was er nicht leistet, ist die Übersetzung dieser Anweisung in die Schreibweise, die der Metadatensatz verlangt: Ein Datenbereitsteller ohne DCAT-Kenntnisse weiß nach dem Hinweis, dass eine Kategorie aus dem EU-Vokabular zu setzen ist, aber nicht, wie das im RDF/XML seines Datensatzes auszusehen hat. Die zweite Aufbereitungsstufe schließt diese Lücke.
 
-Der Prototyp zeigt dafür eine \textbf{Vorlage}: ein kurzes RDF/XML-Fragment, das das betroffene Feld in korrekter Schreibweise mit einem Beispielwert enthält. Damit entfällt die Hürde, erst nachschlagen zu müssen, wie die geforderte Angabe zu notieren ist -- welches Feld, welche Verschachtelung, welche Schreibweise steht unmittelbar vor dem Adressaten. Geht es um ein Feld mit kontrolliertem Vokabular, stehen im Hinweis daneben zusätzlich die Bezeichnung des Vokabulars und der Verweis auf dessen Übersichtsseite, sodass sich der inhaltlich passende Wert dort auswählen lässt. Abbildung~\ref{fig:frontend_handlungsanweisung}\,(\subref{fig:frontend_detailblock_vorlage}) zeigt eine solche Vorlage für die Geometrieangabe eines Datensatzes.
+Der Prototyp zeigt dafür eine \textbf{Vorlage}: ein kurzes RDF/XML-Fragment, dass das betroffene Feld in korrekter Schreibweise mit einem Beispielwert enthält. Damit entfällt die Hürde, erst nachschlagen zu müssen, wie die geforderte Angabe zu notieren ist -- welches Feld, welche Verschachtelung, welche Schreibweise steht unmittelbar vor dem Adressaten. Geht es um ein Feld mit kontrolliertem Vokabular, stehen im Hinweis daneben zusätzlich die Bezeichnung des Vokabulars und der Verweis auf dessen Übersichtsseite, sodass sich der inhaltlich passende Wert dort auswählen lässt. Abbildung~\ref{fig:frontend_handlungsanweisung}\,(\subref{fig:frontend_detailblock_vorlage}) zeigt eine solche Vorlage für die Geometrieangabe eines Datensatzes.
 
 Entscheidend für den Nutzen der Vorlage ist, dass sie unabhängig vom vorgefundenen Zustand ist. Sie sieht identisch aus, ob das Feld falsch belegt ist oder ganz fehlt. Gerade der zweite Fall ist der, in dem sie gebraucht wird, denn dort gibt es im Metadatensatz nichts, worauf sich zeigen ließe.
 
