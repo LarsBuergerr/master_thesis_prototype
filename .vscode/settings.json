@@ -8,5 +8,6 @@
   "[bibtex]": {
     "editor.formatOnSave": false
   },
-  "python-envs.defaultEnvManager": "ms-python.python:venv"
+  "python-envs.defaultEnvManager": "ms-python.python:venv",
+  "latex-workshop.latex.outDir": "%DIR%/build"
 }
