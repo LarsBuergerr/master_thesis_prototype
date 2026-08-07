@@ -13,12 +13,11 @@ getroffenen Entscheidungen und die Stellen, an denen es in der Thesis auftaucht.
 
 | | |
 |---|---|
-| Datei | `data/perfect_example_01.rdf` (110 Zeilen) |
+| Datei | `data/referenzdatensatz.rdf` (110 Zeilen) |
 | Herkunft | `data/sample_2026-06-03_13-33/non_geo_land-schleswig-holstein_04.rdf` — realer Datensatz aus dem Open-Data-Portal Schleswig-Holstein, enthalten in der Stichprobe dieser Arbeit |
 | Inhalt | „Feinstaub (PM2,5) Lübeck, Moislinger Allee Tagesmittel 2023“, Herausgeber Landesamt für Umwelt SH, ausgeliefert über die Messwertschnittstelle des Umweltbundesamtes |
 | Distributionen | zwei — **derselbe Datenbestand** als CSV und als JSON |
 | Eigene Config | `conf/state/state_perfect_example.yaml` |
-| Altlast | `data/perfect_example_01.rebuilt.rdf` gehört noch zum alten Destatis-Beispiel und ist verwaist — löschen oder ignorieren |
 
 ### Warum dieser Satz und nicht die beiden Vorgänger
 
@@ -99,7 +98,7 @@ Dimensions-Whitelist, deshalb der Override):
 
 ```bash
 .venv/bin/python src/main.py --config-name state/state_evaluation_final \
-  state.directory_path=data state.files='[perfect_example_01.rdf]' \
+  state.directory_path=data state.files='[referenzdatensatz.rdf]' \
   'state.quality.dimension_whitelist=[accessibility,reusability,findability,expressiveness]' \
   state.run_output_dir_suffix=REF_UBA
 ```
@@ -130,8 +129,9 @@ Derselbe Datensatz, in jedem Kapitel eine andere Frage an ihn:
 
 **Benennung:** durchgängig **Referenzdatensatz**, in der Einführung einmal als
 *konstruierter Idealfall* präzisiert. Nicht „Perfect Example“ — das behauptet
-mehr, als das Konstrukt einlöst. Der Dateiname im Repository bleibt aus
-Kompatibilitätsgründen `perfect_example_01.rdf`.
+mehr, als das Konstrukt einlöst. Der Dateiname im Repository wurde am
+07.08.2026 entsprechend von `perfect_example_01.rdf` auf `referenzdatensatz.rdf`
+umbenannt (`conf/state/state_perfect_example.yaml` folgt der Umbenennung).
 
 ---
 

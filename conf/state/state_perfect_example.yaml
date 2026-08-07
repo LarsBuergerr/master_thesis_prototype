@@ -7,7 +7,7 @@ defaults:
 # Directory path for input data
 directory_path: "data"
 # If empty: process all files matching extensions in directory_path
-files: ["perfect_example_01.rdf"]
+files: ["referenzdatensatz.rdf"]
 
 # File filtering (only used if files list is empty)
 file_filter:
