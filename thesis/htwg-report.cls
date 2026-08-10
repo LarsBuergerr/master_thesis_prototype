@@ -80,6 +80,7 @@
 \makeglossaries
 
 \usepackage{tabularx}
+\usepackage{longtable}
 %% tikz figure import
 \usepackage{tikz}
 \usetikzlibrary{positioning, shapes.geometric, arrows.meta}

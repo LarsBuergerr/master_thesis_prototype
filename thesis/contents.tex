@@ -114,7 +114,7 @@ Zugleich zeigt sich an DCAT-AP.de, dass Metadaten im Open-Data-Kontext nicht nur
 
 Wie ein nach diesem Standard beschriebener Datensatz konkret aussieht, lässt sich an einem Referenzdatensatz als Beispiel zeigen.
 
-Grundlage ist ein realer Metadatensatz aus dem Open-Data-Portal Schleswig-Holstein, der die Tagesmittelwerte der Feinstaubbelastung des Jahres 2023 an einer Lübecker Luftmessstation beschreibt. Er wurde an den Stellen ergänzt, an denen das Original Angaben schuldig blieb, bis er sämtliche Prüfungen des in Kapitel~3 entwickelten Bewertungsmodells erfüllt. Der Datensatz ist damit ein \emph{konstruierter Idealfall}: Er zeigt, wie eine vollständige Beschreibung nach DCAT-AP.de aussieht, erlaubt aber ausdrücklich keine Aussage darüber, wie verbreitet eine solche Beschreibungstiefe in der Portalpraxis ist. Listing~\ref{lst:referenzdatensatz} zeigt ihn gekürzt, der vollständige Quelltext steht in Anhang~\ref{app:referenzdatensatz}.
+Grundlage ist ein realer Metadatensatz aus dem Open-Data-Portal Schleswig-Holstein, der die Tagesmittelwerte der Feinstaubbelastung des Jahres 2023 an einer Lübecker Luftmessstation beschreibt. Er wurde an den Stellen ergänzt, an denen das Original Angaben schuldig blieb, bis er sämtliche Prüfungen des in Kapitel~4 entwickelten Bewertungsmodells erfüllt. Der Datensatz ist damit ein \emph{konstruierter Idealfall}: Er zeigt, wie eine vollständige Beschreibung nach DCAT-AP.de aussieht, erlaubt aber ausdrücklich keine Aussage darüber, wie verbreitet eine solche Beschreibungstiefe in der Portalpraxis ist. Listing~\ref{lst:referenzdatensatz} zeigt ihn gekürzt, der vollständige Quelltext steht in Anhang~\ref{app:referenzdatensatz}.
 
 \begin{listing}[H]
 \begin{minted}
@@ -1051,6 +1051,7 @@ Gleichzeitig zeigt sich an diesen Ansätzen die zentrale Reduktionsproblematik o
 % Diese Ansätze sind für ein vollständiges Bewertungsverfahren hilfreich, weil Qualitätsbefunde dokumentiert, aggregiert und kommuniziert werden müssen. Für die inhaltliche Bewertungslücke sind sie jedoch nur nachgelagert relevant. Sie verändern nicht, welche Qualitätsaspekte ursprünglich gemessen werden, sondern strukturieren, gewichten oder repräsentieren die Ergebnisse dieser Messungen.
 
 \subsubsection{Bewertungslücke im DCAT-AP.de- und GovData-Kontext}
+\label{sec:bewertungsluecke}
 
 Aus dem Vergleich der Literatur werden bereits unterschiedliche Bausteine bereitgestellt: allgemeine Qualitätsdimensionen, Linked-Data-spezifische Qualitätslogiken, portalnahe Indikatoren sowie Verfahren zur Aggregation und Repräsentation von Qualitätsmessungen. Die zentrale Lücke liegt in der Verbindung dieser Bausteine zu einem Bewertungsmodell, das zugleich anwendungsspezifisch, operationalisierbar und inhaltlich hinreichend aussagekräftig ist.
 
@@ -1062,9 +1063,10 @@ Die vorliegende Arbeit setzt an dieser Stelle an. Ziel ist es ein domänenspezif
 
 \pagebreak
 
-\chapter[Konzeption eines Metadatenqualitätsmodells]{Konzeption eines Metadatenqualitäts- \\ modells}
+\chapter{Experteninterviews}
+\label{sec:chapter_03}
 
-@TODO hier sagen was gemacht wird
+% @TODO hier sagen was gemacht wird
 
 \section{Experteninterviews: Ziel, Auswahl und Durchführung}
 
@@ -1107,22 +1109,36 @@ Die Auswertung der Experteninterviews erfolgte mithilfe einer qualitativen Inhal
 
 Im ersten Schritt wurden deduktive Hauptkategorien aus den Forschungsfragen, dem Interviewleitfaden und den in Kapitel~2 dargestellten Qualitätsansätzen abgeleitet. Die Hauptkategorien bilden die analytische Grundstruktur der Interviewauswertung und stellen zugleich die Verbindung zwischen den empirischen Aussagen und dem zu entwickelnden Bewertungsmodell her. Insgesamt wurden zehn Hauptkategorien identifiziert, die im weiteren Verlauf mit den Codes \texttt{K1} bis \texttt{K10} gekennzeichnet werden. Tabelle~\ref{tab:hauptkategorien} zeigt die Hauptkategorien, ihre deduktive Herleitung und ihre jeweilige Funktion im Bewertungsmodell.
 
-\begin{table}[H]
-\rowcolors{1}{white}{white}
-\centering
-\renewcommand{\arraystretch}{1}
-
-\tiny
-\begin{tabularx}{\textwidth}{p{1.2cm} p{3.6cm} X X}
+\begin{center}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{0.9}
+\begin{longtable}{p{0.05\textwidth} p{0.15\textwidth} p{0.42\textwidth} p{0.32\textwidth}}
+\caption{Deduktiv abgeleitete Hauptkategorien der Interviewauswertung}
+\label{tab:hauptkategorien}\\
 \toprule
 \textbf{Code} & \textbf{Hauptkategorie} & \textbf{Deduktive Herleitung} & \textbf{Funktion im Bewertungsmodell} \\
 \midrule
+\endfirsthead
 
-K1 & Qualitätsverständnis und ideale Metadaten & Forschungsfrage zur Entwicklung eines praxisrelevanten Bewertungsmodells; Leitfadenblock „perfekte Metadaten“; Datenqualitätsverständnis nach \cite{wang1996beyond}. & Ableitung übergeordneter Anforderungen an ein gutes DCAT-AP.de-Metadatenmodell. \\ \hline
+\multicolumn{4}{l}{\textit{Fortsetzung von vorheriger Seite}} \\
+\toprule
+\textbf{Code} & \textbf{Hauptkategorie} & \textbf{Deduktive Herleitung} & \textbf{Funktion im Bewertungsmodell} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{4}{r}{\textit{Fortsetzung auf nächster Seite}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+K1 & Qualitäts- \ verständnis und ideale Metadaten & Forschungsfrage zur Entwicklung eines praxisrelevanten Bewertungsmodells; Leitfadenblock „perfekte Metadaten“; Datenqualitätsverständnis nach \cite{wang1996beyond}. & Ableitung übergeordneter Anforderungen an ein gutes DCAT-AP.de-Metadatenmodell. \\ \hline
 
 K2 & Vollständigkeit, Reichhaltigkeit und Feldrelevanz & Leitfadenfrage zu Qualitätsmerkmalen; Literatur zu Vollständigkeit nach \cite{wentzel2023extensive, wilkinson2016fair, DCATAPDESpec2, DCATAPDESpec3}. & Bestimmung, welche Metadatenfelder für einen Score geprüft und wie Pflicht-, empfohlene und optionale Angaben gewichtet werden. \\ \hline
 
-K3 & Formale und syntaktische Qualität & Forschungsfrage zur Integration von RDF-/SHACL-Prüfungen; Literatur zu Conformance, syntaktischer Validität und DCAT-AP.de-Konformität nach \cite{W3CRDF11Concepts, W3CSHACL, DCATAPDESpec2, DCATAPDESpec3, DCATAPDEImplRules2, Gayo2015LinkedDataValidationQuality}. & Erfassung regelbasierter, automatisierbarer Fehler über SHACL, XML/RDF, URI-, Vokabular- und Datentypprüfungen. \\\hline
+K3 & Formale und syntaktische Qualität & Forschungsfrage zur Integration von RDF-/SHACL-Prüfungen; Literatur zu Conformance, syntaktischer Validität und DCAT-AP.de-Konformität nach \cite{W3CRDF11Concepts, W3CSHACL, DCATAPDESpec2, DCATAPDESpec3, DCATAPDEImplRules2, Gayo2015LinkedDataValidationQuality}. & Erfassung regelbasierter, automatisierbarer Fehler über SHACL, XML/RDF, URI-, Vokabular- und Datentypprüfungen. \\ \hline
 
 K4 & Semantische und inhaltliche Qualität & Forschungsfrage zu KI-gestützten Analyseverfahren; Literatur zu Verständlichkeit, Accuracy, semantischer Konsistenz und Qualität von Freitextfeldern nach \cite{wang1996beyond, wand1996anchoring, StrongLeeWang1997, Zaveri2016LinkedDataQuality, noguerasiso_quality_metadata}. & Ergänzung formaler Prüfungen um Aussagekraft, Verständlichkeit, Plausibilität und inhaltliche Passung. \\ \hline
 
@@ -1137,11 +1153,10 @@ K8 & Rohdatenbezug und Metadaten-Daten-Kongruenz & Forschungsfrage zur Kombinati
 K9 & Scoring, Gewichtung, Reporting und Verbesserungshinweise & Forschungsfrage zu aggregiertem Qualitätsindikator; Literatur zu MQA/Piveau, AHP-basierter Gewichtung, DQV-nahen Qualitätsdimensionen und ISO-orientierten Qualitätsmodellen nach \cite{data_europa, kubler2018comparison, Neumaier2016MetadataQuality, wentzel2023extensive, iso25012, W3CDQV, ISO19157}. & Überführung von Einzelindikatoren in Teilscores, Gesamtscore und handlungsorientiertes Qualitätsreporting. \\ \hline
 
 K10 & KI-gestützte Analyseverfahren und Automatisierungsgrenzen & Forschungsfrage zu KI-basierter Unterstützung und agentenbasierten Ansätzen; Leitfadenblock „KI-gestützte Ansätze und AI Agents“; Literatur zu automatisierter Metadatenqualitätsbewertung, SHACL-gestützter Qualitätsprüfung und Grenzen regelbasierter beziehungsweise automatisierter Verfahren nach \cite{Neumaier2016MetadataQuality, wentzel2023extensive, corteslasalle_shacl_dqa, Gayo2015LinkedDataValidationQuality, Zaveri2016LinkedDataQuality, BernersLee2006LinkedData}. & Einordnung, welche Qualitätsaspekte durch KI unterstützt werden können und wo regelbasierte oder menschliche Bewertung notwendig bleibt. \\
-\bottomrule
-\end{tabularx}
-\caption{Deduktiv abgeleitete Hauptkategorien der Interviewauswertung}
-\label{tab:hauptkategorien}
-\end{table}
+
+\end{longtable}
+\end{center}
+\normalsize
 
 Ergänzend zu den deduktiven Hauptkategorien wurden in einem zweiten Schritt induktive Unterkategorien aus dem Interviewmaterial gebildet. Diese Unterkategorien konkretisieren die Hauptkategorien anhand wiederkehrender oder für das Bewertungsmodell besonders relevanter Aussagen der Expertinnen und Experten. Insgesamt wurden 52 Unterkategorien identifiziert und den zehn Hauptkategorien zugeordnet.
 Ein exemlarischer Auszug der Unterkategorien ist in Tabelle \ref{tab:unterkategorien_auszug} dargestellt.
@@ -1207,11 +1222,11 @@ K10.8 & KI-gestützte Analyseverfahren und Automatisierungsgrenzen
 \end{table}
 
 
-Für die Codierung wurden die Analyseeinheiten vorab festgelegt. Als Kodiereinheit wurde die kleinste sinntragende Aussage definiert, die sich auf eine Qualitätsanforderung, ein Qualitätsproblem, einen Prüfindikator, eine Grenze oder eine mögliche Modellfolge bezieht. Als Kontexteinheit diente jeweils der zusammenhängende Antwortabschnitt innerhalb einer Leitfadenfrage. Auswertungseinheit war jeweils ein vollständiges Interviewtranskript. Die Interviewstellen werden über Interview-ID und Absatznummer referenziert, zum Beispiel \texttt{I1\_024}.
+Für die Codierung wurden die Analyseeinheiten vorab festgelegt. Als Codiereinheit wurde die kleinste sinntragende Aussage definiert, die sich auf eine Qualitätsanforderung, ein Qualitätsproblem, einen Prüfindikator, eine Grenze oder eine mögliche Modellfolge bezieht. Als Kontexteinheit diente jeweils der zusammenhängende Antwortabschnitt innerhalb einer Leitfadenfrage. Auswertungseinheit war jeweils ein vollständiges Interviewtranskript. Die Interviewstellen werden über Interview-ID und Absatznummer referenziert, zum Beispiel \texttt{I1\_024}.
 
-Aus dem deduktiv-induktiv entwickelten Kategoriensystem wurde anschließend ein Kodierleitfaden erstellt. Während die Kategorientabelle dokumentiert, welche Haupt- und Unterkategorien gebildet wurden, operationalisiert der Kodierleitfaden die Anwendung dieser Kategorien im Codierprozess. Er enthält für jede codierrelevante Unterkategorie eine Definition, eine Kodierregel sowie ein Ankerbeispiel mit Bezug zum Bewertungsmodell. Dadurch wurde festgelegt, wann eine Textstelle einer bestimmten Kategorie zugeordnet wird und welche analytische Funktion diese Kategorie für die weitere Modellbildung erfüllt.
+Aus dem deduktiv-induktiv entwickelten Kategoriensystem wurde anschließend ein Codierleitfaden erstellt. Während die Kategorientabelle dokumentiert, welche Haupt- und Unterkategorien gebildet wurden, operationalisiert der Codierleitfaden die Anwendung dieser Kategorien im Codierprozess. Er enthält für jede codierrelevante Unterkategorie eine Definition, eine Codierregel sowie ein Ankerbeispiel mit Bezug zum Bewertungsmodell. Dadurch wurde festgelegt, wann eine Textstelle einer bestimmten Kategorie zugeordnet wird und welche analytische Funktion diese Kategorie für die weitere Modellbildung erfüllt.
 
-Tabelle~\ref{tab:auszug_kodierleitfaden} zeigt exemplarisch den Aufbau des Kodierleitfadens. Der vollständige Kodierleitfaden befindet sich im Anhang~\ref{app:kodierleitfaden}.
+Tabelle~\ref{tab:auszug_kodierleitfaden} zeigt exemplarisch den Aufbau des Codierleitfadens. Der vollständige Codierleitfaden befindet sich im Anhang~\ref{app:kodierleitfaden}.
 
 \begin{table}[H]
 \rowcolors{1}{white}{white}
@@ -1220,7 +1235,7 @@ Tabelle~\ref{tab:auszug_kodierleitfaden} zeigt exemplarisch den Aufbau des Kodie
 \renewcommand{\arraystretch}{1.1}
 \begin{tabularx}{\textwidth}{p{1.3cm} p{3.2cm} X X X}
 \toprule
-\textbf{Code} & \textbf{Kategorie} & \textbf{Definition} & \textbf{Kodierregel} & \textbf{Ankerbeispiel / Modellbezug} \\
+\textbf{Code} & \textbf{Kategorie} & \textbf{Definition} & \textbf{Codierregel} & \textbf{Ankerbeispiel / Modellbezug} \\
 \midrule
 
 K4.1 & Nichtssagende oder zu kurze Titel
@@ -1240,11 +1255,11 @@ K9.2 & SHACL als Teildimension statt Gesamtscore
 
 \bottomrule
 \end{tabularx}
-\caption{Auszug aus dem Kodierleitfaden}
+\caption{Auszug aus dem Codierleitfaden}
 \label{tab:auszug_kodierleitfaden}
 \end{table}
 
-Der Kodierleitfaden wurde anschließend auf alle drei Interviewtranskripte angewendet. Die Codierung erfolgte absatzweise in einer Auswertungsmatrix. Für jede relevante Textstelle wurden Fundstelle, paraphrasierte Aussage, Primärcode, gegebenenfalls Sekundärcode und eine analytische Notiz zur möglichen Modellfolge dokumentiert. Mehrfachcodierungen waren möglich, wenn eine Aussage mehrere Qualitätsaspekte berührte. In diesen Fällen wurde ein Primärcode vergeben, der den dominierenden analytischen Bezug der Aussage markiert; ein Sekundärcode wurde ergänzt, wenn ein weiterer relevanter Qualitätsaspekt erkennbar war.
+Der Codierleitfaden wurde anschließend auf alle drei Interviewtranskripte angewendet. Die Codierung erfolgte absatzweise in einer Auswertungsmatrix. Für jede relevante Textstelle wurden Fundstelle, paraphrasierte Aussage, Primärcode, gegebenenfalls Sekundärcode und eine analytische Notiz zur möglichen Modellfolge dokumentiert. Mehrfachcodierungen waren möglich, wenn eine Aussage mehrere Qualitätsaspekte berührte. In diesen Fällen wurde ein Primärcode vergeben, der den dominierenden analytischen Bezug der Aussage markiert; ein Sekundärcode wurde ergänzt, wenn ein weiterer relevanter Qualitätsaspekt erkennbar war.
 
 Die codierte Auswertungsmatrix bildet die Grundlage für die anschließende Ergebnisdarstellung. Sie dient dazu, die Interviewaussagen nicht interviewweise nachzuerzählen, sondern thematisch entlang der Haupt- und Unterkategorien zu verdichten. Auf dieser Grundlage werden in den folgenden Abschnitten zentrale Interviewbefunde herausgearbeitet und anschließend in Anforderungen an das Bewertungsmodell überführt. Die vollständige codierte Auswertungsmatrix befindet sich im Anhang~\ref{app:kodierte_auswertungsmatrix}.
 
@@ -1254,15 +1269,30 @@ Die Ergebnisse der Interviewauswertung werden nicht entlang der einzelnen Interv
 
 Tabelle~\ref{tab:zentrale_interviewergebnisse} fasst die zentralen Interviewbefunde entlang der deduktiv-induktiv entwickelten Kategorien zusammen. Die Tabelle verdichtet die codierten Aussagen aus der Auswertungsmatrix und übersetzt sie in Anforderungen an das Bewertungsmodell. Die Belegstellen verweisen auf die jeweiligen Interviewabsätze.
 
-\begin{table}[H]
-\rowcolors{1}{white}{white}
-\centering
-\tiny
+\begin{center}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{0.9}
-\begin{tabularx}{\textwidth}{p{0.6cm} p{2.2cm} X p{3cm}}
+\begin{longtable}{p{0.05\textwidth} p{0.15\textwidth} p{0.55\textwidth} p{0.15\textwidth}}
+\caption{Zentrale Ergebnisse der Interviewauswertung}
+\label{tab:zentrale_interviewergebnisse}\\
 \toprule
 \textbf{Code} & \textbf{Analysebereich} & \textbf{zentraler Interviewbefund} & \textbf{Belegstellen} \\
 \midrule
+\endfirsthead
+
+\multicolumn{4}{l}{\textit{Fortsetzung von vorheriger Seite}} \\
+\toprule
+\textbf{Code} & \textbf{Analysebereich} & \textbf{zentraler Interviewbefund} & \textbf{Belegstellen} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{4}{r}{\textit{Fortsetzung auf nächster Seite}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
 
 K1 & Qualitätsverständnis und ideale Metadaten
 & Metadatenqualität wird nicht mit bloßer Mindestvalidität gleichgesetzt. Hochwertige Metadaten erfüllen zwar DCAT-AP.de-Mindestanforderungen, gehen aber durch Best-Practice-Empfehlungen, relevante Zusatzinformationen, semantische Modellierung und Nachnutzbarkeit darüber hinaus.
@@ -1304,11 +1334,9 @@ K10 & KI-gestützte Analyseverfahren und Automatisierungsgrenzen
 & KI wird als unterstützendes Werkzeug für Freitextprüfung, Keyword-Mapping, SPARQL-Unterstützung, Rohdatenanalyse und Kontextprüfung gesehen. Eine autonome generative Bewertung wird wegen Halluzinationen, stochastischer Ausreißer, Datenhoheit und Ressourcenaufwand kritisch bewertet.
 & I1\_035--I1\_049; I2\_049--I2\_063; I3\_024--I3\_031 \\
 
-\bottomrule
-\end{tabularx}
-\caption{Zentrale Ergebnisse der Interviewauswertung}
-\label{tab:zentrale_interviewergebnisse}
-\end{table}
+\end{longtable}
+\end{center}
+\normalsize
 
 % @TODO ab hier die zentralen Interviewergebnisse noch anpassen. die aktuelle Form is Quatsch
 
@@ -1348,7 +1376,7 @@ Darüber hinaus zeigen die Interviews, dass einige Qualitätsprobleme erst durch
 
 Die Einschätzungen zu KI-gestützten Verfahren fallen differenziert aus. Einerseits sehen die Expertinnen und Experten Potenzial bei Aufgaben, die mit rein formalen Regeln nur schwer abbildbar sind. Dazu zählen insbesondere die Bewertung von Freitextqualität, die Erkennung nichtssagender Beschreibungen, das Mapping von Keywords auf kontrollierte Vokabulare, die Unterstützung bei SPARQL-Abfragen, die semantische Plausibilisierung sowie ausgewählte Rohdatenanalysen.
 
-Andererseits werden klare Grenzen benannt. Generative KI kann halluzinieren, fachliche Begriffe falsch interpretieren, stochastische Ausreißer produzieren und schwer reproduzierbare Bewertungen erzeugen. Hinzu kommen Fragen der Datenhoheit, der technischen Betriebslast und der Nachvollziehbarkeit. Aus methodischer Sicht ist daher eine autonome KI-basierte Bewertungsinstanz nicht geeignet, wenn das Ziel ein transparentes und auditierbares Qualitätsmodell ist.
+Andererseits werden klare Grenzen benannt. Generative KI kann halluzinieren und fachliche Begriffe falsch interpretieren \cite{Ji2023HallucinationSurvey}; die Interviews bestätigen dieses Risiko explizit für den vorliegenden Anwendungsfall (INT-K10.8). Außerdem neigen LLM-gestützte Bewertungen selbst bei identischer Eingabe zu inkonsistenten und schwer reproduzierbaren Urteilen: Bekannte Fehlerquellen sind unter anderem Positions-, Verbositäts- und Selbstbevorzugungseffekte sowie eine eingeschränkte Urteilsfähigkeit bei komplexen Bewertungskriterien \cite{Zheng2023LLMJudge}. Hinzu kommen Fragen der Datenhoheit, der technischen Betriebslast und der Nachvollziehbarkeit (INT-K10). Aus methodischer Sicht ist daher eine autonome KI-basierte Bewertungsinstanz nicht geeignet, wenn das Ziel ein transparentes und auditierbares Qualitätsmodell ist.
 
 Für die Modellbildung folgt daraus, dass KI-gestützte Verfahren nur ergänzend eingesetzt werden sollten. Sie können Hinweise, Plausibilitätsbewertungen oder Verbesserungsvorschläge erzeugen, sollten aber nicht die alleinige Grundlage des Scores bilden. Die eigentliche Scoringlogik bleibt regelbasiert, dokumentiert und nachvollziehbar. KI-basierte Ergebnisse werden als zusätzliche Evidenzebene behandelt und müssen im Reporting entsprechend gekennzeichnet werden.
 
@@ -1358,13 +1386,20 @@ Zusammenfassend bestätigen die Interviews zentrale literaturbasierte Qualitäts
 
 Für die weitere Modellbildung ergeben sich daraus fünf zentrale Anforderungen. Erstens muss formale Validierung als eigene Basisschicht berücksichtigt werden, ohne sie mit Gesamtqualität gleichzusetzen. Zweitens muss Vollständigkeit kontextsensitiv und feldrelevanzbezogen operationalisiert werden. Drittens müssen semantische Qualitätsaspekte ergänzt werden, insbesondere bei Titel, Beschreibung, Keywords und Kategorien. Viertens muss die technische Nutzbarkeit der referenzierten Ressourcen geprüft werden. Fünftens muss das Bewertungsmodell transparente Teilscores und konkrete Verbesserungshinweise erzeugen.
 
-Die Interviewauswertung liefert damit keine eigenständige Alternativsystematik zur Literatur, sondern eine praxisbezogene Präzisierung und Priorisierung der literaturbasierten Qualitätsdimensionen. Sie bildet die empirische Grundlage für die im folgenden Abschnitt vorgenommene Ableitung relevanter Qualitätsdimensionen.
+Die Interviewauswertung liefert damit keine eigenständige Alternativsystematik zur Literatur, sondern eine praxisbezogene Präzisierung und Priorisierung der literaturbasierten Qualitätsdimensionen. Sie bildet die empirische Grundlage für die im folgenden Kapitel vorgenommene Ableitung relevanter Qualitätsdimensionen.
+
+\pagebreak
+
+\chapter{Konzeption eines Metadatenqualitätsmodells}
+\label{sec:chapter_04}
+
+Dieses Kapitel führt die in Kapitel~2 aufgearbeitete Literatur und die in Kapitel~3 ausgewerteten Experteninterviews zu einem Bewertungsmodell zusammen. Aus beiden Quellen werden zunächst relevante Qualitätsdimensionen abgeleitet und zu einem kompakten Dimensionsmodell verdichtet, bevor daraus konkrete, prüfbare Einzelindikatoren entwickelt werden.
 
 \section{Ableitung relevanter Qualitätsdimensionen}
 
 Die Qualitätsdimensionen werden nicht unmittelbar aus einem einzelnen bestehenden Modell übernommen, sondern durch eine Synthese aus Literatur, identifizierten Bewertungslücken und Interviewbefunden abgeleitet. Die Literatur liefert etablierte Qualitätskonzepte und bereits operationalisierte Metriken. Die Problemanalyse zeigt, welche Aspekte bestehender Bewertungsansätze im DCAT-AP.de- und GovData-Kontext nur unvollständig abdecken. Die Experteninterviews ergänzen diese Perspektive durch praxisbezogene Anforderungen und Hinweise auf besonders relevante Qualitätsprobleme.
 
-Im ersten Schritt werden aus den in Kapitel~2 dargestellten Ansätzen wiederkehrende Qualitätsdimensionen und Metriken extrahiert. Diese werden anschließend mit den in Abschnitt~2.7 beschriebenen Bewertungslücken sowie mit den Ergebnissen der Interviewauswertung abgeglichen. Ziel dieses Vorgehens ist nicht die vollständige Übernahme vorhandener Modelle, sondern die Bildung einer domänenspezifischen Longlist von Kandidatendimensionen für die Bewertung von DCAT-AP.de-Metadaten.
+Im ersten Schritt werden aus den in Kapitel~2 dargestellten Ansätzen wiederkehrende Qualitätsdimensionen und Metriken extrahiert. Diese werden anschließend mit den in Abschnitt~\ref{sec:bewertungsluecke} beschriebenen Bewertungslücken sowie mit den Ergebnissen der Interviewauswertung abgeglichen. Ziel dieses Vorgehens ist nicht die vollständige Übernahme vorhandener Modelle, sondern die Bildung einer domänenspezifischen Longlist von Kandidatendimensionen für die Bewertung von DCAT-AP.de-Metadaten.
 
 Eine Dimension wird in die Longlist aufgenommen, wenn sie die folgenden Kriterien erfüllt:
 
@@ -1376,106 +1411,40 @@ Eine Dimension wird in die Longlist aufgenommen, wenn sie die folgenden Kriterie
     \item Sie wird nicht vollständig durch eine andere Dimension abgedeckt.
 \end{enumerate}
 
-Tabelle~\ref{tab:longlist-kandidatendimensionen} zeigt die auf dieser Grundlage gebildete Longlist. Sie bündelt unterschiedliche Konzepte aus der Literatur und ordnet sie den Interviewbefunden zu. Die Longlist ist dabei noch nicht als finales Bewertungsmodell zu verstehen.
+Tabelle~\ref{tab:longlist-uebersicht} zeigt die auf dieser Grundlage gebildete Longlist der Kandidatendimensionen. Die vollständige Herleitung mit allen Bezugsquellen aus Literatur und Interviewauswertung findet sich in Anhang~\ref{app:longlist_kandidatendimensionen}. Die Longlist ist dabei noch nicht als finales Bewertungsmodell zu verstehen.
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
-\tiny
-\rowcolors{1}{white}{white}
-\renewcommand{\arraystretch}{1}
-% \hspace*{-1.5cm}
-\begin{tabularx}{\textwidth}{p{0.1cm} p{3cm} X p{4cm}}
+\scriptsize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\textwidth}{p{0.7cm} X}
 \hline
-\textbf{Nr.} &
-\textbf{Dimension} &
-\textbf{Bezugsquellen} &
-\textbf{Interviewbezug} \\
+\textbf{Nr.} & \textbf{Dimension} \\
 \hline
-
-1 &
-Formale und syntaktische Konformität &
-\textit{Conformance} \cite{Neumaier2016MetadataQuality}; \textit{DCAT-AP conformity} \cite{wentzel2023extensive,data_europa}; \textit{syntactic validity}, \textit{consistency} \cite{Zaveri2016LinkedDataQuality}; SHACL-Constraints für Kardinalitäten, Datentypen, Klassen, Properties und Wertebereiche \cite{W3CSHACL}; \textit{conformity} \cite{iso25012} &
-K1.1; K3.1--K3.5; K9.2; (I1\_002; I1\_027--I1\_029; I3\_015; I3\_017--I3\_018) \\ \hline
-
-2 &
-Vollständigkeit und feldbezogene Reichhaltigkeit &
-\textit{Completeness}, \textit{appropriate amount of data}, \textit{value-added} \cite{wang1996beyond}; \textit{completeness} \cite{iso25012}; FAIR F2, R1 \cite{wilkinson2016fair}; \textit{schema completeness}, \textit{property completeness} \cite{Zaveri2016LinkedDataQuality}; \textit{Existence} \cite{Neumaier2016MetadataQuality}; feldbezogene MQA-Metriken \cite{wentzel2023extensive,data_europa}; \textit{completeness omission} \cite{noguerasiso_quality_metadata} &
-K1.1--K1.3; K2.1--K2.4; (I1\_007--I1\_010; I2\_026; I3\_002--I3\_003; I3\_013) \\ \hline
-
-3 &
-Auffindbarkeit und Identifizierbarkeit &
-FAIR F1--F4 \cite{wilkinson2016fair}; \textit{Findability}: keywords, categories, spatial search, temporal search \cite{wentzel2023extensive,data_europa}; \textit{Discovery}: \texttt{dct:title}, \texttt{dct:description}, \texttt{dcat:keyword} \cite{Neumaier2016MetadataQuality}; DCAT-Identifikatoren und Katalogmodell \cite{W3CDCAT3}; \textit{relevance} \cite{wang1996beyond,Zaveri2016LinkedDataQuality} &
-K1.3; K4.1; K4.4; K4.6; K6.1; (I2\_008; I2\_027; I3\_005; I3\_028--I3\_029) \\ \hline
-
-4 &
-Technische Zugänglichkeit und Abrufbarkeit &
-FAIR A1, A1.1, A2 \cite{wilkinson2016fair}; \textit{availability}, \textit{dereferenceability} \cite{Zaveri2016LinkedDataQuality}; \textit{Access}, \textit{AccessURL}, \textit{Retrievable} \cite{Neumaier2016MetadataQuality}; \textit{Accessibility}: accessURL, downloadURL, URL availability \cite{wentzel2023extensive,data_europa} &
-K5.1--K5.3; K8.2; (I1\_015; I1\_019; I1\_024--I1\_025; I2\_011; I2\_028; I2\_046) \\ \hline
-
-5 &
-Aktualität und temporale Konsistenz &
-\textit{Timeliness} \cite{wang1996beyond}; \textit{currentness} \cite{iso25012}; \textit{timeliness}, \textit{freshness}, \textit{currency} \cite{Zaveri2016LinkedDataQuality}; \textit{Date}, \textit{Preservation} \cite{Neumaier2016MetadataQuality}; \texttt{dct:issued}, \texttt{dct:modified} \cite{wentzel2023extensive,data_europa}; \textit{temporal consistency}, \textit{temporal validity} \cite{noguerasiso_quality_metadata} &
-K5.3; K7.5; (I1\_019; I1\_024--I1\_025) \\ \hline
-
-6 &
-Interoperabilität und Linked-Data-Reife &
-FAIR I1--I3 \cite{wilkinson2016fair}; \textit{interoperability}, \textit{interlinking}, \textit{reuse of existing terms}, \textit{reuse of vocabularies}, \textit{dereferenceability} \cite{Zaveri2016LinkedDataQuality}; \textit{Interoperability} \cite{wentzel2023extensive,data_europa}; RDF-/DCAT-basierte Katalogbeschreibung \cite{W3CDCAT3,W3CRDF11Concepts}; Linked-Data-Prinzipien \cite{BernersLee2006LinkedData} &
-K1.4; K6.1--K6.5; (I1\_020--I1\_022; I2\_003--I2\_006; I2\_029; I2\_055--I2\_056; I3\_018) \\ \hline
-
-7 &
-Vokabular-, Normdaten- und Klassifikationsqualität &
-FAIR I2 \cite{wilkinson2016fair}; MQA-Vokabularmetriken für Format, Lizenz, Zugriffsrechte und Kategorien \cite{wentzel2023extensive,data_europa}; \textit{vocabulary reuse}, \textit{semantic accuracy} \cite{Zaveri2016LinkedDataQuality}; \textit{thematic classification correctness}, \textit{domain consistency} \cite{noguerasiso_quality_metadata} &
-K3.3; K4.6; K6.2--K6.3; K10.3; (I1\_022; I1\_041; I2\_005; I2\_055--I2\_056; I3\_018; I3\_028) \\ \hline
-
-8 &
-Wiederverwendbarkeit und organisatorische Nutzbarkeit &
-FAIR R1, R1.1, R1.2, R1.3 \cite{wilkinson2016fair}; \textit{Reusability}: license, access rights, contact point, publisher \cite{wentzel2023extensive,data_europa}; \textit{Rights}, \textit{OpenLicense}, \textit{Contact} \cite{Neumaier2016MetadataQuality}; \textit{value-added}, \textit{relevance} \cite{wang1996beyond} &
-K1.3; K2.3; K5.4; K7.1; (I2\_030--I2\_031; I3\_021) \\ \hline
-
-9 &
-Format- und Maschinenlesbarkeitsqualität &
-\textit{FileFormat}, \textit{FormatAccr}, \textit{OpenFormat}, \textit{MachineRead} \cite{Neumaier2016MetadataQuality}; format, media type, format vocabulary, non-proprietary format, machine readability \cite{wentzel2023extensive,data_europa}; FAIR R1.3 \cite{wilkinson2016fair}; \textit{versatility}, \textit{interoperability} \cite{Zaveri2016LinkedDataQuality} &
-K5.4; K8.1; (I2\_028; I2\_045; I3\_020--I3\_021) \\ \hline
-
-10 &
-Semantische Aussagekraft und Verständlichkeit &
-\textit{interpretability}, \textit{ease of understanding}, \textit{concise representation} \cite{wang1996beyond}; \textit{understandability} \cite{iso25012}; \textit{understandability}, \textit{interpretability} \cite{Zaveri2016LinkedDataQuality}; \textit{quality of free text} \cite{noguerasiso_quality_metadata} &
-K4.1--K4.4; K10.2; (I1\_035; I1\_043--I1\_044; I2\_008--I2\_010; I2\_027; I3\_005) \\ \hline
-
-11 &
-Inhaltliche Plausibilität und semantische Konsistenz &
-\textit{semantic accuracy}, \textit{consistency}, \textit{no contradictory values}, \textit{correct annotations} \cite{Zaveri2016LinkedDataQuality}; \textit{conceptual consistency}, \textit{domain consistency}, \textit{nonquantitative attribute correctness} \cite{noguerasiso_quality_metadata}; \textit{accuracy}, \textit{consistent representation} \cite{wang1996beyond}; \textit{accuracy}, \textit{consistency} \cite{iso25012}; ontologische Repräsentationsdefizite \cite{wand1996anchoring} &
-K4.5; K4.6; K8.3; (I2\_011; I2\_047; I3\_010; I3\_028--I3\_029) \\ \hline
-
-12 &
-Metadaten-Daten-Kongruenz &
-\textit{FormatAccr}, \textit{SizeAccr}, \textit{Retrievable} \cite{Neumaier2016MetadataQuality}; \textit{nonquantitative attribute correctness}, \textit{positional correctness}, \textit{domain consistency} \cite{noguerasiso_quality_metadata}; \textit{accuracy}, \textit{consistency} \cite{Zaveri2016LinkedDataQuality}; FAIR R1: genaue und relevante Attribute \cite{wilkinson2016fair} &
-K8.1--K8.5; (I2\_013; I2\_045--I2\_047; I2\_059; I3\_020--I3\_022) \\ \hline
-
-13 &
-Räumliche und domänenspezifische Kontextqualität &
-\textit{positional correctness}, spatial domain consistency \cite{noguerasiso_quality_metadata}; geographic search, \texttt{dct:spatial} \cite{wentzel2023extensive,data_europa}; spatial information \cite{Neumaier2016MetadataQuality}; FAIR R1.3 \cite{wilkinson2016fair}; \textit{fitness for use}, \textit{relevance} \cite{wang1996beyond}; ISO 19157 als geodatenbezogener Qualitätsrahmen \cite{ISO19157} &
-K7.1--K7.3; K8.4; (I1\_006; I1\_009--I1\_010; I1\_031--I1\_033; I1\_040; I2\_013; I2\_059; I3\_022) \\ \hline
-
-14 &
-Vertrauenswürdigkeit, Provenienz und Verantwortlichkeit &
-\textit{believability}, \textit{reputation}, \textit{objectivity} \cite{wang1996beyond}; \textit{credibility}, \textit{traceability} \cite{iso25012}; \textit{trustworthiness}, \textit{reputation} \cite{Zaveri2016LinkedDataQuality}; FAIR R1.2 \cite{wilkinson2016fair}; publisher, contact point \cite{wentzel2023extensive,data_europa} &
-K2.3; K6.2; K7.5; (I2\_030--I2\_031) \\ \hline
-
-15 &
-Nutzungsrelevanz und \textit{Fit for Purpose} &
-\textit{fitness for use}, \textit{relevance}, \textit{value-added}, \textit{appropriate amount of data} \cite{wang1996beyond}; Datenqualität im Nutzungskontext \cite{StrongLeeWang1997}; kontextabhängige Relevanz von Qualitätsmerkmalen \cite{iso25012}; FAIR R1/R1.3 \cite{wilkinson2016fair}; \textit{relevance} \cite{Zaveri2016LinkedDataQuality} &
-K1.3; K7.1; K7.4--K7.5; (I1\_006; I1\_047--I1\_049) \\ \hline
-
+1 & Formale und syntaktische Konformität \\ \hline
+2 & Vollständigkeit und feldbezogene Reichhaltigkeit \\ \hline
+3 & Auffindbarkeit und Identifizierbarkeit \\ \hline
+4 & Technische Zugänglichkeit und Abrufbarkeit \\ \hline
+5 & Aktualität und temporale Konsistenz \\ \hline
+6 & Interoperabilität und Linked-Data-Reife \\ \hline
+7 & Vokabular-, Normdaten- und Klassifikationsqualität \\ \hline
+8 & Wiederverwendbarkeit und organisatorische Nutzbarkeit \\ \hline
+9 & Format- und Maschinenlesbarkeitsqualität \\ \hline
+10 & Semantische Aussagekraft und Verständlichkeit \\ \hline
+11 & Inhaltliche Plausibilität und semantische Konsistenz \\ \hline
+12 & Metadaten-Daten-Kongruenz \\ \hline
+13 & Räumliche und domänenspezifische Kontextqualität \\ \hline
+14 & Vertrauenswürdigkeit, Provenienz und Verantwortlichkeit \\ \hline
+15 & Nutzungsrelevanz und \textit{Fit for Purpose} \\ \hline
 \end{tabularx}
-\caption{Longlist gebündelter Kandidatendimensionen}
-\label{tab:longlist-kandidatendimensionen}
+\caption{Longlist gebündelter Kandidatendimensionen, Übersicht (vollständige Herleitung mit Bezugsquellen: Anhang~\ref{app:longlist_kandidatendimensionen}, Tabelle~\ref{tab:longlist-kandidatendimensionen})}
+\label{tab:longlist-uebersicht}
 \end{table}
 
-Die Longlist enthält eine hohe Zahl potenziell relevanter Dimensionen. Für ein prototypisch operationalisierbares Bewertungsmodell ist diese Struktur jedoch zu umfangreich. Zum einen würden sich zahlreiche Indikatoren überschneiden. Zum anderen ist ein solches Modell nur eingeschränkt nachvollziehbar, schwer zu implementieren und in der Evaluation schlecht vergleichbar. Daher werden die Kandidatendimensionen im nächsten Schritt zu vier Hauptdimensionen verdichtet.
+Die Longlist enthält eine hohe Zahl potenziell relevanter Dimensionen. Mehrere Kandidatendimensionen überschneiden sich in ihren Indikatoren und verletzen damit Kriterium~5 der Longlist-Aufnahme (keine vollständige Abdeckung durch eine andere Dimension). Daher werden die Kandidatendimensionen im nächsten Schritt zu vier Hauptdimensionen verdichtet. Eine kleinere Anzahl orthogonaler Dimensionen ist zudem Voraussetzung für die in Teilfrage~4 geforderte prototypische Operationalisierbarkeit des Modells sowie für ein im Reporting nachvollziehbares und in der Evaluation vergleichbares Scoring.
 
-Die Verdichtung folgt zwei Prinzipien. Erstens werden Dimensionen zusammengeführt, wenn sie dieselbe Bewertungsfunktion erfüllen.
-Zweitens werden Dimensionen nicht danach gruppiert, aus welchem Literaturmodell sie stammen, sondern danach, welchen Qualitätsaspekt sie im DCAT-AP.de-Kontext prüfen.
+Dabei gelten zwei Prinzipien. Erstens werden Dimensionen zusammengeführt, wenn sie dieselbe Bewertungsfunktion erfüllen.
+Zweitens werden Dimensionen nicht danach gruppiert, aus welchem Literaturmodell sie stammen, sondern danach, welchen Qualitätsaspekt sie im DCAT-AP.de-Kontext prüfen. Für dieses Vorgehen gibt es ein methodisches Vorbild: Auch Wang und Strong (1996) ordneten ihre empirisch ermittelten Qualitätsdimensionen in der abschließenden Verdichtungsstufe ihrer Studie nicht nach deren Herkunft, sondern anhand eines zuvor entwickelten konzeptionellen Rahmens vier übergeordneten Kategorien zu \cite{wang1996beyond}.
 Tabelle \ref{tab:finale-qualitaetsdimensionen} visualisiert die finalen Dimensionen und ihre Bewertungsfunktion im Modell.
 Zu beachten ist das bestimmte Dimensionen der Longlist auf mehrere finale Dimensionen aufgeteilt wurden, da hier eine exakte Zuordnung nicht möglich ist.
 
@@ -1564,7 +1533,7 @@ Die formale DCAT-AP.de-Konformität wird dabei nicht als eigene Qualitätsdimens
 
 Die Ableitung der Einzelindikatoren erfolgt regelgeleitet. Ausgangspunkt bilden die vier finalen Qualitätsdimensionen. Für jede Dimension werden zunächst Qualitätskriterien formuliert, die beschreiben, welche Eigenschaft der Metadaten oder der beschriebenen Ressource bewertet werden soll. Anschließend wird geprüft, durch welche Einzelindikatoren diese Kriterien operationalisiert werden können.
 
-Die Auswahl der Indikatoren orientiert sich an sechs Kriterien:
+Die Auswahl der Indikatoren orientiert sich – in Anlehnung an das Goal-Question-Metric-Prinzip, nach dem Metriken top-down aus übergeordneten Zielen abgeleitet werden \cite{Basili1994GQM} – an sechs Kriterien, die sich aus den Forschungsfragen und der bisherigen Methodik ergeben: Standardbezug und Konventionsbezug sichern die normative Verankerung im DCAT-AP.de-Standard (vgl. Abschnitt~2.3), Literaturbezug und Interviewbezug die empirische Fundierung aus Kapitel~2 und Abschnitt~3.3, Operationalisierbarkeit und Reportingfähigkeit die in Teilfrage~4 und~5 geforderte prototypische Umsetzbarkeit und Nachvollziehbarkeit.
 
 \begin{enumerate}
     \item \textbf{Standardbezug:} Der Indikator ist aus verpflichtenden, empfohlenen oder optionalen Anforderungen des DCAT-AP.de-Standards ableitbar.
@@ -1584,7 +1553,7 @@ Für das Bewertungsmodell werden drei Indikatortypen unterschieden.
 
 \textbf{Semantische Indikatoren} prüfen inhaltliche, sprachliche oder kontextbezogene Eigenschaften, die nicht allein durch Feldexistenz oder syntaktische Validität erfasst werden können. Dazu gehören insbesondere Aussagekraft, Verständlichkeit, Redundanz, thematische Passung und Plausibilität von Metadatenangaben. Sie werden mit \texttt{SI} abgekürzt.
 
-Die konkrete technische Implementierung der Indikatoren wird in Kapitel~4 beschrieben. Der vorliegende Abschnitt definiert die konzeptionelle Funktion der Indikatoren, ihre Zuordnung zu den Qualitätsdimensionen und die jeweils geprüften DCAT-AP.de-Elemente.
+Die konkrete technische Implementierung der Indikatoren wird in Kapitel~5 beschrieben. Der vorliegende Abschnitt definiert die konzeptionelle Funktion der Indikatoren, ihre Zuordnung zu den Qualitätsdimensionen und die jeweils geprüften DCAT-AP.de-Elemente.
 
 \subsection{Konzeptionelles Messmodell}
 \label{sec:messmodell}
@@ -1597,7 +1566,7 @@ Jeder Indikator liefert ein dreistufiges Prüfergebnis: \textit{erfüllt}, \text
 
 \subsubsection{Ternäre und graduelle Indikatoren}
 
-Das Modell unterscheidet zwei Messformen. \textbf{Ternäre Indikatoren} bilden ihr Prüfergebnis unmittelbar auf die drei Ergebnisstufen ab. Dies betrifft Eigenschaften mit klar abgrenzbaren Zuständen, insbesondere Vokabular- und Strukturprüfungen auf Datensatzebene. \textbf{Graduelle Indikatoren} messen dagegen einen kontinuierlichen Erfüllungsgrad zwischen 0 und 1, aus dem die Ergebnisstufe nachgelagert abgeleitet wird, diese allerdings keinen Einfluss auf den Wert hat. Graduell gemessen werden zwei Klassen von Eigenschaften. Die erste Klasse umfasst anteilige Eigenschaften, die sich auf mehrere Teilobjekte eines Datensatzes beziehen, beispielsweise den Anteil der Distributionen mit erreichbarer Download-URL. Die zweite Klasse umfasst semantische Urteile, die naturgemäß keine scharfe Erfüllungsgrenze besitzen, beispielsweise die Aussagekraft einer Beschreibung. Diese Trennung stellt sicher, dass der kontinuierliche Erfüllungsgrad unverfälscht in die Aggregation eingeht, während die Ergebnisstufe der verständlichen Darstellung im Reporting dient.
+Das Modell unterscheidet zwei Messformen, die sich an den in ISO/IEC 25024 vorgesehenen Skalentypen für Datenqualitätsmaße orientieren; die Norm ergänzt die Qualitätscharakteristiken aus ISO/IEC 25012 um konkrete Messfunktionen \cite{iso25024, iso25012}. \textbf{Ternäre Indikatoren} bilden ihr Prüfergebnis unmittelbar auf die drei Ergebnisstufen ab. Dies betrifft Eigenschaften mit klar abgrenzbaren Zuständen, insbesondere Vokabular- und Strukturprüfungen auf Datensatzebene. \textbf{Graduelle Indikatoren} messen dagegen einen kontinuierlichen Erfüllungsgrad zwischen 0 und 1, aus dem die Ergebnisstufe nachgelagert abgeleitet wird, diese allerdings keinen Einfluss auf den Wert hat. Graduell gemessen werden zwei Klassen von Eigenschaften. Die erste Klasse umfasst anteilige Eigenschaften, die sich auf mehrere Teilobjekte eines Datensatzes beziehen, beispielsweise den Anteil der Distributionen mit erreichbarer Download-URL. Die zweite Klasse umfasst semantische Urteile, die naturgemäß keine scharfe Erfüllungsgrenze besitzen, beispielsweise die Aussagekraft einer Beschreibung; für solche originär subjektiven Qualitätsurteile ist eine kontinuierliche Skala methodisch etabliert, wie sie bereits Wang und Strong zur Erhebung von Wichtigkeitsurteilen mittels neunstufiger Skala einsetzten \cite{wang1996beyond}. Diese Trennung stellt sicher, dass der kontinuierliche Erfüllungsgrad unverfälscht in die Aggregation eingeht, während die Ergebnisstufe der verständlichen Darstellung im Reporting dient.
 
 \subsubsection{Bewertungsebene und Aggregation über Distributionen}
 
@@ -1605,15 +1574,15 @@ Ein DCAT-Datensatz kann mehrere Distributionen besitzen. Zahlreiche Qualitätsei
 
 Damit grenzt sich das Modell bewusst von der MQA ab. Die MQA bewertet distributionsbezogene Metriken nach dem Best-Distribution-Prinzip. Bei mehreren Distributionen bestimmt die am besten bewertete Distribution das Ergebnis, unter der Annahme, dass alle Distributionen denselben Datensatz lediglich in unterschiedlichen Formaten repräsentieren \cite{data_europa, piveauMetricsScore}.
 Diese Annahme trägt in der Praxis jedoch nicht durchgängig. Bereits die DCAT-Spezifikation dokumentiert, dass bestehende Implementierungen Distributionen auch zur Modellierung inhaltlich eigenständiger Teildatensätze verwenden, indem etwa die Mitglieder einer Datensatzserie als Distributionen eines einzelnen Datensatzes typisiert werden. Erst mit DCAT~3 wurde für diesen Fall die eigene Klasse \texttt{dcat:DatasetSeries} eingeführt \cite[Abschnitt~12.3]{W3CDCAT3}. Distributionen desselben Datensatzes können sich damit inhaltlich unterscheiden und folglich auch in ihrer Qualität voneinander abweichen. Empirische Untersuchungen von Open-Data-Portalen verorten zentrale Fehlerbilder wie nicht abrufbare Ressourcen entsprechend auf der Ebene der einzelnen Ressource, weshalb Neumaier et al. die Abrufbarkeit je Ressource und nicht je Datensatz prüfen \cite{Neumaier2016MetadataQuality}. Die Interviews bestätigen dieses Bild und benennen defekte Einzelverweise und heterogene Distributionsqualität als zentrales Praxisproblem (INT-K5, INT-K8). % @TODO: konkrete Interview-Belegstellen ergänzen
-Unter dem Best-Distribution-Prinzip bleibt eine nicht erreichbare Download-URL zudem folgenlos, solange eine einzige Distribution funktioniert. Aus Nutzendensicht wird ein solcher Datensatz systematisch überbewertet. Die Mittelwertbildung macht dagegen jede Distribution im Ergebnis sichtbar und setzt zugleich einen Anreiz, fehlerhafte Distributionen zu korrigieren oder zu entfernen, statt sie durch eine einzelne funktionierende Distribution zu maskieren.
+Unter dem Best-Distribution-Prinzip bleibt eine nicht erreichbare Download-URL zudem folgenlos, solange eine einzige Distribution funktioniert. Aus Nutzendensicht wird ein solcher Datensatz systematisch überbewertet. Die Mittelwertbildung macht dagegen jede Distribution im Ergebnis sichtbar und setzt zugleich einen Anreiz, fehlerhafte Distributionen zu korrigieren oder zu entfernen, statt sie durch eine einzelne funktionierende Distribution zu maskieren. In der Terminologie der Datenintegration entspricht das Best-Distribution-Prinzip damit einer \textit{conflict-avoiding}-Strategie, die einen bevorzugten Wert auswählt und übrige Werte unberücksichtigt lässt und dadurch Inkonsistenzen maskiert, statt sie sichtbar zu machen \cite{BleiholderNaumann2008}. Da das Ziel dieser Arbeit gerade die Aufdeckung und Meldung fehlerhafter Distributionen ist (Abschnitt~\ref{subsec:befund}), wählt das Bewertungsmodell stattdessen bewusst eine \textit{conflict-resolving}-Strategie in Form der Mittelwertbildung \cite{BleiholderNaumann2008}.
 
 \subsubsection{Malus-Prinzip}
 
-Innerhalb der graduellen, distributionsbezogenen Messung werden ausgewählte Defekte nicht mit null, sondern mit einem negativen Beitrag bewertet. Dies betrifft Zustände, die aus Nutzendensicht schlechter sind als das Fehlen der Angabe, weil sie irreführen oder die Nachnutzung aktiv verhindern. Dazu zählen eine angegebene, aber nicht erreichbare Zugriffs- oder Download-URL sowie eine eingeschränkte, unklare oder fehlende Lizenz. Eine nicht erreichbare URL täuscht Verfügbarkeit vor und verursacht vergeblichen Zugriffsaufwand (INT-K5). Eine unklare Lizenz macht die Nachnutzung rechtlich unsicher und damit faktisch unmöglich \cite{Neumaier2016MetadataQuality}. Ein nicht maschinenlesbarer Zugriffsweg fällt dagegen bewusst nicht unter das Malus-Prinzip: Eine solche Distribution täuscht keine Verfügbarkeit vor, sondern liefert, was sie ankündigt, und wird in der Bereitstellungspraxis häufig ergänzend zu einem maschinenlesbaren Zugriffsweg angeboten; sie geht deshalb lediglich mit null in die Messung ein. Würden solche Defekte lediglich mit null bewertet, wäre ein Datensatz mit fünf Distributionen, von denen vier defekt sind, kaum von einem Datensatz mit einer einzigen fehlenden Angabe unterscheidbar. Der negative Beitrag senkt das Datensatzergebnis aktiv, wobei der Dimensionswert konzeptionell bei null nach unten begrenzt ist. Die konkrete Höhe der Malus-Beiträge wird in Kapitel~4 festgelegt.
+Innerhalb der graduellen, distributionsbezogenen Messung werden ausgewählte Defekte nicht mit null, sondern mit einem negativen Beitrag bewertet. Dies betrifft Zustände, die aus Nutzendensicht schlechter sind als das Fehlen der Angabe, weil sie irreführen oder die Nachnutzung aktiv verhindern. Dazu zählen eine angegebene, aber nicht erreichbare Zugriffs- oder Download-URL sowie eine eingeschränkte, unklare oder fehlende Lizenz. Eine nicht erreichbare URL täuscht Verfügbarkeit vor und verursacht vergeblichen Zugriffsaufwand (INT-K5). Eine unklare Lizenz macht die Nachnutzung rechtlich unsicher und damit faktisch unmöglich \cite{Neumaier2016MetadataQuality}. Würden solche Defekte lediglich mit null bewertet, wäre ein Datensatz mit fünf Distributionen, von denen vier defekt sind, kaum von einem Datensatz mit einer einzigen fehlenden Angabe unterscheidbar. Der negative Beitrag senkt das Datensatzergebnis aktiv, wobei der Dimensionswert konzeptionell bei null nach unten begrenzt ist. Die konkrete Höhe der Malus-Beiträge wird in Kapitel~5 festgelegt.
 
 \subsubsection{Nicht-Anwendbarkeit}
 
-Nicht jedes Qualitätskriterium trifft auf jeden Datensatz zu. Die Interviews fassen Vollständigkeit als relative Feldrelevanz auf und betonen die Kontextabhängigkeit der Bewertung (INT-K2, INT-K7). Das Messmodell sieht deshalb ergänzend die Ergebnisstufe \textit{nicht anwendbar} vor. Ein Kriterium, das auf einen Datensatz fachlich nicht zutrifft, wird neutral übersprungen und geht weder positiv noch negativ in die Aggregation ein. Ein Beispiel hierfür ist die Anforderung kontextueller Qualifizierer wie Stichtags- oder Vorläufigkeitsangaben bei einem einmaligen, statischen Datensatz. Auf diese Weise wird verhindert, dass Datensätze für Angaben abgewertet werden, die für sie nicht relevant sind. Zugleich setzt diese Ergebnisstufe die aus den Interviews abgeleitete Anforderung einer kontextsensitiven Bewertung um.
+Nicht jedes Qualitätskriterium trifft auf jeden Datensatz zu. Die Interviews fassen Vollständigkeit als relative Feldrelevanz auf und betonen die Kontextabhängigkeit der Bewertung (INT-K2, INT-K7). Das Messmodell sieht deshalb ergänzend die Ergebnisstufe \textit{nicht anwendbar} vor. Ein Kriterium, das auf einen Datensatz fachlich nicht zutrifft, wird neutral übersprungen und geht weder positiv noch negativ in die Aggregation ein. Ein Beispiel hierfür ist die Anforderung kontextueller Qualifizierer wie Stichtags- oder Vorläufigkeitsangaben bei einem einmaligen, statischen Datensatz. Auf diese Weise wird verhindert, dass Datensätze für Angaben abgewertet werden, die für sie nicht relevant sind. Zugleich setzt diese Ergebnisstufe die aus den Interviews abgeleitete Anforderung einer kontextsensitiven Bewertung um. Die Entscheidung über die Anwendbarkeit ist dabei kein vorgelagerter, separat zu pflegender Regelmechanismus, sondern Teil der Prüflogik des jeweiligen Indikators selbst. Im Prototyp betrifft dies einzig den semantischen Indikator zu kontextuellen Qualifizierern innerhalb der Dimension Aussagekraft: Das in Abschnitt~\ref{sec:llm_aussagekraft} beschriebene sprachmodellgestützte Verfahren gibt die Anwendbarkeit als eigenes Feld seiner strukturierten Ausgabe aus und begründet sie mit denselben beobachtbaren Befunden, auf die auch das inhaltliche Urteil gestützt wird.
 
 \subsubsection{Herleitungsnachweis der Indikatoren}
 
@@ -1790,7 +1759,7 @@ Die Umsetzung erfolgt in einer modularen Architektur, die die einzelnen Verarbei
 
 \section{Zielsetzung und Funktionsumfang des Prototyps}
 
-Der Prototyp überführt das in Kapitel~3 entwickelte Bewertungsmodell in ein lauffähiges System und setzt damit den operationalisierenden Teil der Zielsetzung dieser Arbeit um. Sein Ziel ist es, die Qualität von DCAT-AP.de-Metadaten im GovData-Kontext automatisiert, aussagekräftig und nachvollziehbar zu bewerten und die rein formale RDF-/SHACL-Validierung um kontext- und semantikbezogene Prüfungen sowie ein interpretierbares Reporting zu erweitern. Die Nachvollziehbarkeit der Bewertung ist dabei durchgängiges Entwurfsziel: Jedes Teilergebnis ist auf eine dokumentierte Prüfregel zurückführbar, und identische Eingaben führen bei den regelbasierten und technischen Prüfungen zu identischen Ergebnissen. Damit bildet der Prototyp zugleich die Grundlage für die Evaluation in Kapitel~5.
+Der Prototyp überführt das in Kapitel~4 entwickelte Bewertungsmodell in ein lauffähiges System und setzt damit den operationalisierenden Teil der Zielsetzung dieser Arbeit um. Sein Ziel ist es, die Qualität von DCAT-AP.de-Metadaten im GovData-Kontext automatisiert, aussagekräftig und nachvollziehbar zu bewerten und die rein formale RDF-/SHACL-Validierung um kontext- und semantikbezogene Prüfungen sowie ein interpretierbares Reporting zu erweitern. Die Nachvollziehbarkeit der Bewertung ist dabei durchgängiges Entwurfsziel: Jedes Teilergebnis ist auf eine dokumentierte Prüfregel zurückführbar, und identische Eingaben führen bei den regelbasierten und technischen Prüfungen zu identischen Ergebnissen. Damit bildet der Prototyp zugleich die Grundlage für die Evaluation in Kapitel~6.
 
 Aus Nutzungssicht bewertet der Prototyp einzelne DCAT-AP.de-Metadatensätze, die als RDF/XML-Dateien vorliegen. Die Verarbeitung erfolgt wahlweise für einzelne Dateien oder gebündelt für ein Verzeichnis, sodass sowohl Einzelbewertungen als auch Stichprobenläufe möglich sind. Für jeden Datensatz werden die Indikatoren des Bewertungsmodells ausgewertet und zu einem vollständigen, maschinenlesbaren Bewertungsergebnis zusammengeführt. Dieses enthält je Indikator die Ergebnisstufe, den Erfüllungsgrad, eine deutsch- und englischsprachige Ergebnismeldung sowie indikatorspezifische Detailbefunde, darüber hinaus die aggregierten Dimensionswerte, den gewichteten Gesamtscore und eine daraus abgeleitete Gesamtnote. Auf Ebene eines Bewertungslaufs werden zusätzlich aggregierte Kennzahlen und Visualisierungen über alle verarbeiteten Datensätze erzeugt. Welche Dimensionen und Indikatoren ausgewertet werden und mit welchen Gewichten sie in die Aggregation eingehen, ist konfigurierbar, ohne dass Quellcode angepasst werden muss.
 
@@ -1908,7 +1877,7 @@ class ThemeIndicator(Indicator):
 
 Alle Indikatoren folgen derselben Implementierungsstruktur. Ein Indikator ist eine Klasse mit einer einzelnen Prüfmethode, die die Faktenbasis liest und ein Ergebnisobjekt zurückgibt. Das Ergebnisobjekt enthält die Ergebnisstufe, den Erfüllungsgrad, eine deutsch- und englischsprachige Ergebnismeldung sowie ein Detailobjekt mit den geprüften Werten, aus dem sich das Urteil im Reporting nachvollziehen lässt. Listing~\ref{lst:indicator_anatomy} zeigt das Muster in vereinfachter Form am Beispiel der Themenkategorie. Da die Faktenbasis die Vokabularzugehörigkeit bereits vorberechnet bereitstellt, reduziert sich die Prüflogik der meisten formalen Indikatoren auf wenige Fallunterscheidungen.
 
-Die folgenden Abschnitte dokumentieren je Dimension die gemeinsame Prüfmechanik und die konkreten Prüfregeln einschließlich der gewählten Schwellwerte. Die konzeptionelle Herleitung der Indikatoren wird nicht wiederholt, referenziert wird ausschließlich über die Kürzel aus Kapitel~3.
+Die folgenden Abschnitte dokumentieren je Dimension die gemeinsame Prüfmechanik und die konkreten Prüfregeln einschließlich der gewählten Schwellwerte. Die konzeptionelle Herleitung der Indikatoren wird nicht wiederholt, referenziert wird ausschließlich über die Kürzel aus Kapitel~4.
 
 \subsection{Abbildung des konzeptionellen Modells auf implementierte Indikatoren}
 
@@ -2083,12 +2052,12 @@ N7 & Erfüllt bei null SHACL-Verletzungen gegen das DCAT-AP.de-Regelwerk, nicht 
 
 Der Lizenzindikator N1 wendet als einziger Indikator dieser Dimension das Malus-Prinzip an. Die Gleichbehandlung von eingeschränkten, unbekannten und fehlenden Lizenzen folgt der Nutzendenperspektive, denn in allen drei Fällen ist die Rechtslage ungeklärt und die Nachnutzung damit gleichermaßen blockiert.
 
-Die Konformitätsprüfung N7 validiert den Metadatensatz nicht mit einer lokalen Kopie der SHACL-Shapes, sondern über den öffentlich betriebenen SHACL-Validierungsdienst des Interoperability Test Bed der Europäischen Kommission\footnote{\url{https://www.itb.ec.europa.eu/shacl/dcat-ap.de/api/validate}}. Dadurch wird stets gegen das offiziell gepflegte DCAT-AP.de-Regelwerk geprüft und die Urteile bleiben deckungsgleich mit dem Referenzvalidator, ohne dass der Prototyp eine eigene Regelwerkskopie aktuell halten muss. Geprüft wird gegen das Profil in der Version~2.0. Diese Version bildet ein vollständig abgeschlossenes Profil, das neben der Spezifikation auch ein zugehöriges Konventionenhandbuch bereitstellt \cite{DCATAPDESpec2, DCATAPDEImplRules2} und damit die Grundlage des in Kapitel~3 abgeleiteten Bewertungsmodells bildet. Die im Dezember 2024 veröffentlichte Version~3.0 wird bewusst nicht verwendet, da für sie kein geschlossenes Konventionenhandbuch mehr vorgesehen ist; die Konventionen werden stattdessen in die Spezifikation überführt, in Guidelines umgewandelt oder gestrichen, wobei entsprechende Guidelines bislang nicht vorliegen \cite{DCATAPDESpec3}. Die Bewertung ist binär, da Standardkonformität keine sinnvolle Teilerfüllung kennt. Als einziger Indikator hängt N7 von der Verfügbarkeit eines externen Dienstes ab. Ist der Dienst nicht erreichbar, wird der Indikator als Fehler ausgewiesen.
+Die Konformitätsprüfung N7 validiert den Metadatensatz nicht mit einer lokalen Kopie der SHACL-Shapes, sondern über den öffentlich betriebenen SHACL-Validierungsdienst des Interoperability Test Bed der Europäischen Kommission\footnote{\url{https://www.itb.ec.europa.eu/shacl/dcat-ap.de/api/validate}}. Dadurch wird stets gegen das offiziell gepflegte DCAT-AP.de-Regelwerk geprüft und die Urteile bleiben deckungsgleich mit dem Referenzvalidator, ohne dass der Prototyp eine eigene Regelwerkskopie aktuell halten muss. Geprüft wird gegen das Profil in der Version~2.0. Diese Version bildet ein vollständig abgeschlossenes Profil, das neben der Spezifikation auch ein zugehöriges Konventionenhandbuch bereitstellt \cite{DCATAPDESpec2, DCATAPDEImplRules2} und damit die Grundlage des in Kapitel~4 abgeleiteten Bewertungsmodells bildet. Die im Dezember 2024 veröffentlichte Version~3.0 wird bewusst nicht verwendet, da für sie kein geschlossenes Konventionenhandbuch mehr vorgesehen ist; die Konventionen werden stattdessen in die Spezifikation überführt, in Guidelines umgewandelt oder gestrichen, wobei entsprechende Guidelines bislang nicht vorliegen \cite{DCATAPDESpec3}. Die Bewertung ist binär, da Standardkonformität keine sinnvolle Teilerfüllung kennt. Als einziger Indikator hängt N7 von der Verfügbarkeit eines externen Dienstes ab. Ist der Dienst nicht erreichbar, wird der Indikator als Fehler ausgewiesen.
 
 \section{LLM-gestützte Bewertung der Aussagekraft}
 \label{sec:llm_aussagekraft}
 
-Die Aussagekraft ist die einzige Qualitätsdimension, die sich nicht regelbasiert bestimmen lässt. Kapitel~3 hat begründet, dass ihre Kriterien ein sprachverstehendes Verfahren als Messinstrument erfordern. Der vorliegende Abschnitt beschreibt, wie dieses Instrument im Prototyp umgesetzt ist, und behandelt damit den für Forschungsfrage~3 zentralen Baustein.
+Die Aussagekraft ist die einzige Qualitätsdimension, die sich nicht regelbasiert bestimmen lässt. Kapitel~4 hat begründet, dass ihre Kriterien ein sprachverstehendes Verfahren als Messinstrument erfordern. Der vorliegende Abschnitt beschreibt, wie dieses Instrument im Prototyp umgesetzt ist, und behandelt damit den für Forschungsfrage~3 zentralen Baustein.
 
 \subsection{Ein-Aufruf-Architektur}
 
@@ -2184,7 +2153,7 @@ Wie in Sektion \ref{sec:wang_strong_definition_quality} erläutert, ist Datenqua
 Ternäre Indikatoren werden über ihre Ergebnisstufe in einen Punktwert überführt. Ein erfülltes Kriterium erhält den Wert 1,0, ein teilweise erfülltes 0,5 und ein nicht erfülltes 0,0. Der Wert 0,5 für die Teilerfüllung entspricht dem Mittelpunkt der Skala und behandelt die Zwischenstufe damit als genau halb erfülltes Kriterium, ohne eine Richtung zu bevorzugen. Graduelle Indikatoren tragen unmittelbar ihren kontinuierlichen Erfüllungsgrad bei. Ihre Ergebnisstufe hat, wie in Abschnitt~\ref{sec:einzelindikatoren} beschrieben, keinen Einfluss auf die Punktevergabe. Innerhalb der graduellen Indikatoren wirkt der Malus: Eine nicht erreichbare URL und eine eingeschränkte, unbekannte oder fehlende Lizenz gehen mit $-$0,5 statt mit 0 in die Distributionsmittelung ein. Als \textit{nicht anwendbar} oder als Fehler ausgewiesene Indikatoren werden neutral behandelt und gehen weder in den Zähler noch in den Nenner der Aggregation ein.
 
 Die konkreten Punktwerte sind normative Setzungen. Ein empirisch optimaler Wert existiert für solche Größen nicht, und auch etablierte Bewertungsmodelle legen ihre Punktwerte per Konvention fest, wie die Punkteverteilung der MQA zeigt (vgl. Tabelle~\ref{tab:mqa_metrics_weights}) \cite{data_europa}. Die Literatur zu zusammengesetzten Indikatoren behandelt die Gewichts- und Punktwahl entsprechend als transparent zu dokumentierende Entwurfsentscheidung, die sich auf Experten- und Konstrukteursurteile stützt \cite{nardo2008handbook}. Kubler et al. zeigen mit ihrem AHP-basierten Ansatz zudem, dass Qualitätsgewichte grundsätzlich präferenzabhängig sind und je nach Stakeholderperspektive unterschiedlich ausfallen \cite{kubler2018comparison}. Maßgeblich für das Modell sind daher weniger die Absolutwerte als die durch sie ausgedrückten Relationen: Teilerfüllung zählt halb, und ein irreführender Defekt wiegt schwerer als eine fehlende Angabe. Für die Malus-Höhe von $-$0,5 bedeutet das konkret, dass zwei defekte Distributionen den Beitrag einer funktionierenden vollständig aufheben.
-% @TODO(eigen): Begründung der Malus-Höhe ggf. um Interview-Belegstellen (data-breaking) erweitern, sobald die Argumentation für Kapitel 5 steht
+% @TODO(eigen): Begründung der Malus-Höhe ggf. um Interview-Belegstellen (data-breaking) erweitern, sobald die Argumentation für Kapitel 6 steht
 
 \subsection{Aggregation zum Gesamtscore}
 
@@ -2205,6 +2174,7 @@ S = \frac{\sum_{d} W_d \cdot s_d}{\sum_{d} W_d}
 Aus dem Gesamtscore wird abschließend eine Gesamtnote abgeleitet, die das Ergebnis für das Reporting verdichtet. Ab 0,9 wird die Note A vergeben, ab 0,75 die Note B, ab 0,6 die Note C, ab 0,4 die Note D und darunter die Note F. Die Notenstufen sind wie bei den graduellen Indikatoren rein konventionell gewählt und dienen der intuitiven Ergebnisinterpretation. Sie haben keinen Einfluss auf die Berechnung des Gesamtscores.
 
 \subsection{Gewichtung der Indikatoren und Dimensionen}
+\label{subsec:gewichtung_indikatoren}
 
 Tabelle~\ref{tab:impl_weights} zeigt die Gewichte der evaluierten Konfiguration auf beiden Ebenen. Auf Indikatorebene bleibt das Modell bewusst nah am Standardgewicht 1,0 und hebt ausschließlich vier Indikatoren an: die drei datenbrechenden Prüfungen Z5, Z6 und N1 auf das Gewicht 2,0 sowie den maschinenlesbaren Zugriffsweg Z7 auf das Gewicht 1,5.
 
@@ -2961,7 +2931,7 @@ also auch dann nicht durchgängig, wenn die Rubrik keinen benennbaren Mangel meh
 findet. Für die Interpretation der Ergebniskapitel folgt daraus zweierlei: Die
 Aussagekraftswerte sind nach oben faktisch bei etwa $0{,}97$ gedeckelt, weshalb
 Abstände in diesem Bereich nicht überinterpretiert werden dürfen; und der Effekt
-verstärkt die in Abschnitt~5.6 berichtete Beobachtung, dass die semantische Bewertung
+verstärkt die in Abschnitt~6.6 berichtete Beobachtung, dass die semantische Bewertung
 zu einer Kompression am oberen Skalenrand neigt.
 
 Zwei Einschränkungen sind festzuhalten. Erstens ist diese Prüfung eine
@@ -2969,7 +2939,7 @@ Instrumentenprüfung und kein Qualitätsbefund: Der Referenzdatensatz ist konstr
 nicht zufällig gezogen, sein Ergebnis sagt nichts über die Verteilung realer
 Portaldaten aus. Zweitens ist die Aussagekraftsbewertung nicht bitgenau reproduzierbar;
 Wiederholungsläufe auf identischer Eingabe ergaben Gesamtscores zwischen $0{,}991$ und
-$0{,}993$, was der in Abschnitt~5.6 ermittelten Streuung des Verfahrens entspricht und
+$0{,}993$, was der in Abschnitt~6.6 ermittelten Streuung des Verfahrens entspricht und
 die Aussage der Deckenprüfung nicht berührt.
 
 % Scope: Erste Ergebnis-Section und Weichenstellung fuer alles Folgende. Die Modellwahl
@@ -3066,7 +3036,7 @@ da sie die praktische Auswirkung der Modellwahl auf das Endergebnis sichtbar mac
 \subsection{Auswahl des Sprachmodells}
 
 Tabelle~\ref{tab:modellauswahl_kennzahlen} stellt die Kandidaten gegenüber. Die
-Kennzahlen sind nach der in Abschnitt~5.5 festgelegten Hierarchie geordnet: zuerst die
+Kennzahlen sind nach der in Abschnitt~6.5 festgelegten Hierarchie geordnet: zuerst die
 Primärmetrik, dann die Kalibrierungsmaße, zuletzt die Urteilsebene als Sekundärmetrik.
 
 \begin{table}[H]
@@ -3107,13 +3077,13 @@ Primärmetrik, dann die Kalibrierungsmaße, zuletzt die Urteilsebene als Sekund�
 50~Datensätzen etwa doppelt so hohe Kosten wie die beiden anderen Kandidaten, ohne dass
 dem ein belastbarer Qualitätsvorsprung gegenüberstünde: Auf der Primärmetrik liegt es
 lediglich 0,010 vor Sonnet~4.6 und 0,040 vor GPT-5.5 -- Abstände, die, wie
-Abschnitt~5.6.2 zeigt, kleiner sind als die Schwankung eines einzelnen Modells zwischen
+Abschnitt~6.6.2 zeigt, kleiner sind als die Schwankung eines einzelnen Modells zwischen
 Wiederholungsläufen.
 
 Zwischen \textbf{GPT-5.5} und \textbf{Sonnet 4.6} trennt die Primärmetrik die Kandidaten
 nicht. Der Abstand auf der Aussagekraft beträgt in obiger Tabelle 0,029; auf der
 Wiederholungsstichprobe, auf der auch die Streuung bestimmt ist ($n = 30$,
-Abschnitt~5.6.2), sind es 0,028 zugunsten von Sonnet~4.6, während die Streuung desselben
+Abschnitt~6.6.2), sind es 0,028 zugunsten von Sonnet~4.6, während die Streuung desselben
 Modells zwischen Wiederholungsläufen dort bei $\sigma = 0{,}023$ liegt. Der Unterschied
 entspricht damit dem 1,2-fachen der Streuung, und die Wertebereiche beider Modelle
 überlappen einander. Ein Vorsprung dieser Größenordnung ist
@@ -3143,13 +3113,13 @@ Die Unterschiede auf der Urteilsebene sind allerdings mit Zurückhaltung zu lese
 Konfusionsmatrizen der drei Modelle sind in zwei von drei Zeilen identisch; der gesamte
 Unterschied entsteht in den fünf Datensätzen mit dem Ground-Truth-Urteil „gut“. Aus einer
 Differenz von zwei Datensätzen resultiert bereits die $\kappa$-Spanne von 0,635 bis 0,359
---- eine Sensitivität, die den in Abschnitt~5.5 dargelegten Prävalenzbefund bestätigt und
+--- eine Sensitivität, die den in Abschnitt~6.5 dargelegten Prävalenzbefund bestätigt und
 begründet, warum diese Kennzahlen als Sekundärmetrik geführt werden. Sie stützen die
 Entscheidung, tragen sie aber nicht allein.
 
 Gewählt wird daher \textbf{GPT-5.5}. Es ist auf der Primärmetrik von Sonnet~4.6 nicht
 unterscheidbar, deutlich besser kalibriert, auf der Urteilsebene durchgängig genauer,
-reproduzierbarer (Abschnitt~5.6.2) und zugleich das kostengünstigste der drei Modelle.
+reproduzierbarer (Abschnitt~6.6.2) und zugleich das kostengünstigste der drei Modelle.
 Alle folgenden Ergebnisse dieses Kapitels beruhen auf diesem Modell.
 
 % Scope: Nachweis, dass das gewaehlte Modell reproduzierbar bewertet. Zwei Funktionen:
@@ -3214,7 +3184,7 @@ $\rho = 0{,}530$ bei einer Spanne von 0,047 ($\sigma = 0{,}024$). Dass die Streu
 beiden nahezu identisch ausfällt, legt nahe, dass sie weniger eine Eigenschaft des
 einzelnen Modells als der Bewertungsaufgabe selbst ist. Die Wertebereiche
 überlappen einander deutlich, da der beste Lauf von GPT-5.5 ($\rho = 0{,}557$) über dem
-schwächsten von Sonnet~4.6 ($\rho = 0{,}539$) liegt. Dies ist die in Abschnitt~5.6.1
+schwächsten von Sonnet~4.6 ($\rho = 0{,}539$) liegt. Dies ist die in Abschnitt~6.6.1
 herangezogene Grundlage für die Feststellung, dass die Primärmetrik die beiden Kandidaten
 nicht trennt.
 
@@ -3264,15 +3234,15 @@ sind damit als Ansatzpunkt für eine Schärfung der Bewertungsrubrik identifizie
 
 \section{Ergebnisse: Prototyp und Ground Truth}
 
-Dieser Abschnitt berichtet die in Abschnitt~5.5 festgelegten Kennzahlen für beide
+Dieser Abschnitt berichtet die in Abschnitt~6.5 festgelegten Kennzahlen für beide
 Stichproben getrennt: zuerst die Kernstichprobe, die die quantitativen Aussagen dieser
 Arbeit trägt, dann die Extremfälle, die den Wirkmechanismus per Konstruktion belegen
-(Abschnitt~5.2). Beide Auswertungen verwenden durchgängig GPT-5.5.
+(Abschnitt~6.2). Beide Auswertungen verwenden durchgängig GPT-5.5.
 
 \subsection{Kernstichprobe (n=50)}
 
 Primär- und Sekundärmetrik für die Kernstichprobe wurden bereits in
-Abschnitt~5.6.1 im Rahmen der Modellauswahl vollständig berichtet
+Abschnitt~6.6.1 im Rahmen der Modellauswahl vollständig berichtet
 (Tabelle~\ref{tab:modellauswahl_kennzahlen}, Spalte GPT-5.5): Spearman $\rho$ gesamt
 $= 0{,}765$, Genauigkeit $92\,\%$, gewichtetes $\kappa = 0{,}635$, PABAK $= 0{,}88$,
 AUC $= 0{,}907$. Sie bilden zugleich das Hauptergebnis dieses Abschnitts, da GPT-5.5
@@ -3282,7 +3252,7 @@ Aufbereitung ergänzt.
 
 Abbildung~\ref{fig:gt_kern_dimension} stellt die vier Dimensions-$\rho$ ihrem
 jeweiligen Ceiling gegenüber -- dem bei gegebener Ground-Truth-Verteilung maximal
-erreichbaren $\rho$ (Abschnitt~5.5). Tabelle~\ref{tab:gt_kern_ceiling} listet die
+erreichbaren $\rho$ (Abschnitt~6.5). Tabelle~\ref{tab:gt_kern_ceiling} listet die
 Werte vollständig, einschließlich der tatsächlich genutzten GT-Stufenzahl je
 Dimension.
 
@@ -3320,15 +3290,15 @@ Dimensionen, weil die Ground Truth hier nur vier der sechs Stufen tatsächlich
 nutzt. Die verbleibende Lücke zum Ceiling ($68{,}3\,\%$ ausgeschöpft) ist aber real
 und kleiner als bei Zugänglichkeit oder Wiederverwendbarkeit ($74{,}8\,\%$ bzw.
 $79{,}6\,\%$). Aussagekraft liegt mit $66{,}8\,\%$ auf ähnlichem Niveau wie
-Auffindbarkeit -- ein erster Hinweis auf die in Abschnitt~5.7.2 vertiefte Schwäche
+Auffindbarkeit -- ein erster Hinweis auf die in Abschnitt~6.7.2 vertiefte Schwäche
 dieser Dimension, die auf den Extremfällen deutlich stärker hervortritt.
 
-Die Disattenuationskorrektur (Abschnitt~5.5) liefert für die Kernstichprobe keinen
+Die Disattenuationskorrektur (Abschnitt~6.5) liefert für die Kernstichprobe keinen
 brauchbaren Punktschätzer: Cronbachs $\alpha$ liegt auf der Modellseite bei nur
 $0{,}294$, weil die vier Dimensionen absichtlich verschiedene Konstrukte messen; die
 Korrektur $r_{\text{latent}} = \rho / \sqrt{\alpha_{GT} \cdot \alpha_{\text{Modell}}}$
 überschreitet den zulässigen Wertebereich und wird bei $1{,}0$ gekappt. Dies
-bestätigt die in Abschnitt~5.5 vorab benannte methodische Grenze -- nicht eine
+bestätigt die in Abschnitt~6.5 vorab benannte methodische Grenze -- nicht eine
 besonders hohe latente Übereinstimmung -- und wird deshalb nicht als Kennzahl
 weiterverwendet.
 
@@ -3363,7 +3333,7 @@ Qualitätsstufen.
 Auf den konstruierten Extremfällen liegt die Gesamtkorrelation mit
 $\rho = 0{,}827$ über der Kernstichprobe ($0{,}765$) -- erwartbar, da die Stichprobe
 bewusst auf maximale Trennschärfe zwischen guten und schlechten Datensätzen angelegt
-ist (Abschnitt~5.2). Auffindbarkeit und Wiederverwendbarkeit erreichen hier
+ist (Abschnitt~6.2). Auffindbarkeit und Wiederverwendbarkeit erreichen hier
 $90{,}3\,\%$ bzw. $91{,}0\,\%$ ihres jeweiligen Ceilings -- praktisch das bei dieser
 Skalengranularität Erreichbare. Zugänglichkeit bleibt mit $\rho = 0{,}713$ nahezu
 identisch zur Kernstichprobe ($0{,}712$) und zeigt damit eine über beide Stichproben
@@ -3457,11 +3427,11 @@ ungewichtete Mittelung verschluckt jedoch punktuelle harte Defizite.
 % Extremfälle getrennt, H3 als gemeinsamer Abschluss.
 \section{Ergebnisse: Prototyp und MQA im Vergleich}
 
-Dieser Abschnitt prüft die in Abschnitt~5.1 formulierten Hypothesen H1 und H2 anhand
-der A/B/C-Klassifikation aus Abschnitt~5.3 und schließt mit der Triangulation gegen
+Dieser Abschnitt prüft die in Abschnitt~6.1 formulierten Hypothesen H1 und H2 anhand
+der A/B/C-Klassifikation aus Abschnitt~6.3 und schließt mit der Triangulation gegen
 die Ground Truth (H3), die beide Evidenzstränge dieses Kapitels zusammenführt. Die
 MQA-Seite ist rein deterministisch und probe-basiert und daher vom Prototyp-Modell
-unabhängig; die Prototyp-Seite verwendet -- wie in Abschnitt~5.7 -- durchgängig
+unabhängig; die Prototyp-Seite verwendet -- wie in Abschnitt~6.7 -- durchgängig
 GPT-5.5.
 
 \subsection{Kernstichprobe (n=50)}
@@ -3540,7 +3510,7 @@ $20{,}0\,\%$ ($36$ von $180$ Klasse-B-Fällen); dominierend ist hier die Lizenz:
 $50\,\%$ der Datensätze ($10$ von $20$) bewertet die MQA die Lizenzangabe als
 ausreichend, während der Prototyp sie als ungültig oder unfrei einstuft --
 naheliegend, da unter den Extremfällen gezielt Datensätze mit unter anderem fehlerhaften oder
-unklaren Lizenzangaben gewählt wurden (Abschnitt~5.2). Die Klasse-C-Indikatoren
+unklaren Lizenzangaben gewählt wurden (Abschnitt~6.2). Die Klasse-C-Indikatoren
 zeigen auch hier durchgängige Streuung, etwa bei der Verfügbarkeitsangabe
 (Standardabweichung $0{,}36$) und der Geokodierungsstufe ($0{,}48$). Auf Ebene der
 Gesamtscores liegt die Rangkorrelation beider Verfahren bei $\rho = 0{,}820$ und
@@ -3556,7 +3526,7 @@ nicht aber, welches Verfahren näher an der tatsächlichen Qualität liegt. Daf�
 werden beide Gesamtscores, unabhängig voneinander, gegen dieselbe
 Ground Truth korreliert.
 
-Anders als in Abschnitt~5.7, wo je Dimension die
+Anders als in Abschnitt~6.7, wo je Dimension die
 \emph{eigene} Modell-Teilbewertung gegen die gleichnamige GT-Dimension korreliert wird
 (Abbildung~\ref{fig:gt_kern_dimension}), steht auf der Prototyp-Seite in diesem Abschnitt
 durchgehend der \emph{globale} Gesamtscore. Dieselbe eine Zahl, die auch dem
@@ -3575,7 +3545,7 @@ Wiederverwendbarkeit ($0{,}457$ vs. $0{,}426$) und Aussagekraft ($0{,}682$ vs.
 $0{,}611$) -- Abstände von durchweg $0{,}02$ bis $0{,}07$
 (Abbildung~\ref{fig:mqa_kern_triangulation}). Einzige Ausnahme ist die
 Auffindbarkeit, auf der die MQA vorn liegt ($0{,}252$ vs. $0{,}134$). Ein naheliegender
-Grund liegt in der Gewichtung des Gesamtscores (Abschnitt~4.6.3, Tabelle~4.5):
+Grund liegt in der Gewichtung des Gesamtscores (Abschnitt~\ref{subsec:gewichtung_indikatoren}, Tabelle~\ref{tab:impl_weights}):
 Auffindbarkeit geht mit dem niedrigsten Dimensionsgewicht ($1{,}0$ gegenüber $1{,}5$
 bis $2{,}0$ bei den übrigen drei Dimensionen) in den Gesamtscore ein und prägt ihn
 folglich am wenigsten. Damit ist der Gesamtscore strukturell ein schwächerer
@@ -3589,7 +3559,7 @@ Kernstichprobe ($+0{,}08$ bis $+0{,}15$. Auch bei der Auffindbarkeit, wo die Ker
 die einzige Ausnahme zugunsten der
 MQA zeigte ($0{,}755$ vs. $0{,}671$). Das ist plausibel da die Extremfälle gezielt
 so selektiert wurden, dass sich Feldpräsenz und tatsächliche Validität auseinanderentwickeln
-(Abschnitt~5.2). Damit genau die Fälle, in denen sich der Vorteil vertiefender Prüfung am
+(Abschnitt~6.2). Damit genau die Fälle, in denen sich der Vorteil vertiefender Prüfung am
 stärksten auszahlen sollte. Abbildung~\ref{fig:mqa_kern_triangulation} und
 Abbildung~\ref{fig:mqa_extrem_triangulation} stellen beide Stichproben nebeneinander
 dar.
