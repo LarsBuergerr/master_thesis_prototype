@@ -9,5 +9,6 @@
     "editor.formatOnSave": false
   },
   "python-envs.defaultEnvManager": "ms-python.python:venv",
-  "latex-workshop.latex.outDir": "%DIR%/build"
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "latex-workshop.message.badbox.show": "none"
 }
