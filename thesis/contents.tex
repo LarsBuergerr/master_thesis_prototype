@@ -18,6 +18,7 @@ Darauf aufbauend wird ein konzeptionelles Bewertungsverfahren entwickelt, das Va
 Die entwickelten Metriken und Analyseverfahren werden prototypisch umgesetzt, auf repräsentative Metadatensätze angewendet und hinsichtlich ihrer Aussagekraft und praktischen Anwendbarkeit evaluiert. Ziel ist es, die rein formale RDF-Validierung um ein kontextsensitives und nachvollziehbares Qualitätsbewertungs- und Reportingsystem zu erweitern, das regelbasierte Validierung mit KI-gestützten Analyseverfahren kombiniert.
 
 \section{Forschungsfragen}
+\label{sec:forschungsfragen}
 
 Ausgehend vom dargestellten Forschungsstand zeigt sich, dass zwar zahlreiche Modelle und technische Verfahren zur Bewertung von Daten- und Metadatenqualität existieren, deren Übertragbarkeit auf den spezifischen Kontext von DCAT-AP.de und GovData jedoch gesondert untersucht werden muss. Insbesondere stellt sich die Frage, wie formale Prüfergebnisse um kontext- und semantikbezogene Qualitätsindikatoren ergänzt werden können, ohne die Nachvollziehbarkeit des Bewertungsmodells zu beeinträchtigen. Vor diesem Hintergrund lautet die zentrale Forschungsfrage dieser Arbeit:
 
@@ -1686,7 +1687,7 @@ Zugänglichkeitsindikatoren prüfen, ob die in den Metadaten beschriebene Ressou
 
 \subsection{Nachnutzbarkeitsindikatoren}
 
-Nachnutzbarkeitsindikatoren prüfen, ob Metadaten und Ressourcen über den bloßen Zugriff hinaus rechtlich, organisatorisch und maschinell weiterverwendbar sind. Verpflichtende Angaben, die bereits durch SHACL-Constraints geprüft werden, werden nicht als reine Vorhandenseinsindikatoren aufgenommen. Die formale DCAT-AP.de-Konformität geht jedoch als aggregierter Indikator N7 in diese Dimension ein, da Standardverletzungen die maschinelle Weiterverwendung unmittelbar beeinträchtigen. Die Lizenzprüfung erfolgt je Distribution und unterliegt dem Malus-Prinzip, da eingeschränkte, unklare oder fehlende Lizenzen die Nachnutzung rechtlich unsicher machen und deshalb aktiv negativ bewertet werden.
+Nachnutzbarkeitsindikatoren prüfen, ob Metadaten und Ressourcen über den bloßen Zugriff hinaus rechtlich, organisatorisch und maschinell weiterverwendbar sind. Verpflichtende Angaben, die bereits durch SHACL-Constraints geprüft werden, werden nicht als reine Vorhandenseinsindikatoren aufgenommen. Die formale DCAT-AP.de-Konformität geht jedoch als aggregierter Indikator N6 in diese Dimension ein, da Standardverletzungen die maschinelle Weiterverwendung unmittelbar beeinträchtigen. Die Lizenzprüfung erfolgt je Distribution und unterliegt dem Malus-Prinzip, da eingeschränkte, unklare oder fehlende Lizenzen die Nachnutzung rechtlich unsicher machen und deshalb aktiv negativ bewertet werden.
 
 \begin{table}[H]
 \centering
@@ -1755,7 +1756,7 @@ Die vier Indikatorgruppen beschreiben zusammengenommen einen Zustand, den der in
 \chapter{Prototypische Operationalisierung}
 
 Mit dem konzeptionellen Bewertungsmodell ist festgelegt, welche Qualitätsaspekte geprüft werden und nach welchen Prinzipien die Prüfergebnisse zu einem Gesamturteil verdichtet werden. Im folgenden Kapitel wird beschrieben, wie diese Prinzipien prototypisch operationalisiert werden.
-Die Umsetzung erfolgt in einer modularen Architektur, die die einzelnen Verarbeitungsschritte klar voneinander trennt und eine nachvollziehbare Bewertungskette von der Metadateneingabe bis zum Ergebnisreport abbildet.
+Die Umsetzung erfolgt als Verarbeitungspipeline, die die einzelnen Verarbeitungsschritte klar voneinander trennt und eine nachvollziehbare Bewertungskette von der Metadateneingabe bis zum Ergebnisreport abbildet.
 
 \section{Zielsetzung und Funktionsumfang des Prototyps}
 
@@ -1765,27 +1766,25 @@ Aus Nutzungssicht bewertet der Prototyp einzelne DCAT-AP.de-Metadatensätze, die
 
 Ebenso bewusst ist der Funktionsumfang begrenzt. Der Prototyp harvestet keine Metadaten, sondern arbeitet auf bereits exportierten RDF-Dateien, wie sie die GovData-Infrastruktur bereitstellt. Er ist als Analysewerkzeug für Einzel- und Stichprobenbewertungen ausgelegt und nicht als dauerhaft betriebener Portaldienst mit kontinuierlichem Monitoring. Bewertet werden die Metadaten und ihre technische Einlösbarkeit, nicht die fachliche Qualität der beschriebenen Daten selbst.
 
-\section{Systemarchitektur und Verarbeitungspipeline}
+\section{Verarbeitungspipeline}
 \label{sec:architektur}
 
-Die Architektur des Prototyps folgt drei Entwurfsprinzipien. Erstens ist die Verarbeitung in Schichten mit strikt einwärts gerichteten Abhängigkeiten organisiert, sodass die Domänenlogik von Ein- und Ausgabe entkoppelt bleibt. Zweitens ist das Indikatorensystem über eine Registrierung erweiterbar, sodass neue Indikatoren hinzugefügt werden können, ohne die Verarbeitungskette anzupassen. Drittens werden alle Fakten über einen Datensatz genau einmal erhoben und anschließend von allen Indikatoren gemeinsam genutzt. Abbildung~\ref{fig:prototyp_architektur} zeigt den Aufbau des Prototyps und den Datenfluss durch die Verarbeitungskette.
+Der Aufbau des Prototyps folgt drei Entwurfsentscheidungen. Erstens werden alle bewertungsrelevanten Fakten über einen Datensatz genau einmal erhoben und in einer typisierten Faktenbasis abgelegt, auf der anschließend sämtliche Indikatoren arbeiten. Zweitens werden die beiden aufwendigen Anreicherungsschritte, die Netzzugriffe beziehungsweise einen Sprachmodellaufruf erfordern, bedarfsgesteuert ausgeführt und entfallen, sofern kein aktiver Indikator ihre Ergebnisse konsumiert. Drittens ist der Indikatorenkatalog über eine Registrierung erweiterbar, sodass neue Indikatoren aufgenommen werden können, ohne die Verarbeitungskette anzupassen. Der Prototyp ist entlang dieser Entscheidungen als Verarbeitungspipeline organisiert. Abbildung~\ref{fig:prototyp_architektur} zeigt den Weg eines Metadatensatzes durch die Verarbeitungsschritte.
 
 \begin{figure}[H]
     \centering
     % @TODO: vorhandenes Architekturdiagramm einfügen
-    \includegraphics[width=\textwidth]{images/architecture_prototype.png}
+    \includegraphics[width=\textwidth]{images/pipeline_prototype.png}
     \captionsetup{justification=centering}
-    \caption{Systemarchitektur und Datenfluss des Prototyps}
+    \caption{Verarbeitungspipeline eines Bewertungslaufs}
     \label{fig:prototyp_architektur}
 \end{figure}
 
-Der Verarbeitungsweg eines Metadatensatzes folgt den drei Schichten der Abbildung. 
-In der \texttt{extraction}-Schicht wird ein RDF-Graph als RDF/XML-Datei eingelesen und in eine typisierte Faktenbasis überführt.
-Darauf folgen zwei bedarfsgesteuerte Anreicherungsschritte, die technische Erreichbarkeitsprüfung der Distributionen und die semantische Bewertung der Freitextfelder. 
-Um sich Netwerkzugriffe und Sprachmodellaufrufe zu sparen, werden diese nur ausgeführt, wenn nach der aktiven Konfiguration mindestens ein Indikator ihre Ergebnisse tatsächlich konsumiert.
-In der Schicht \texttt{scoring} werden anschließend die Indikatoren je Qualitätsdimension ausgeführt und die Einzelergebnisse zu Dimensions- und Gesamtwerten aggregiert. Die Schicht \texttt{reporting} persistiert und visualisiert abschließend die fertigen Ergebnisse zusammen mit den Protokollen des Bewertungslaufs.
+Die Verarbeitung beginnt mit dem Einlesen der RDF/XML-Datei. Der Graph wird einmal traversiert und in die Faktenbasis überführt, wobei bereits gegen lokal mitgelieferte Kopien der Referenzlisten vorberechnet wird, ob Themen, Formate, Medientypen und Lizenzen den kontrollierten Vokabularen angehören. Darauf folgen die beiden bedarfsgesteuerten Anreicherungsschritte, die technische Erreichbarkeitsprüfung der Distributionen und die semantische Bewertung der Freitextfelder durch das Sprachmodell. Um sich Netzwerkzugriffe und Sprachmodellaufrufe zu sparen, werden diese nur ausgeführt, wenn nach der aktiven Konfiguration mindestens ein Indikator ihre Ergebnisse tatsächlich konsumiert; andernfalls werden sie übersprungen. Anschließend werden die Indikatoren der vier Qualitätsdimensionen ausgeführt, ihre Einzelergebnisse über die konfigurierte Abbildung von Ergebnisstufen auf Punktwerte vereinheitlicht und zu Dimensions- und Gesamtwerten aggregiert. Das fertige Bewertungsergebnis wird zusammen mit dem Protokoll des Datensatzes abgelegt. Dieser Ablauf wiederholt sich für jede Eingabedatei des Bewertungslaufs; erst nach dem letzten Datensatz entstehen die laufweiten Kennzahlen, Diagramme und Kostenübersichten.
 
-Die Indikatoren registrieren sich bei ihrer Instanziierung selbst in einer zentralen Registrierung, aus der die Bewertungsschicht die auszuführenden Prüfungen bezieht. Ein neuer Indikator besteht damit aus einer einzelnen Klasse, die eine Prüfmethode implementiert, und wird von der Verarbeitungskette automatisch berücksichtigt. Dieses Erweiterungsprinzip setzt die im Bewertungsmodell angelegte Offenheit des Indikatorenkatalogs technisch um.
+Die Schritte der Pipeline sind nicht unabhängig voneinander lauffähig, sondern über die Faktenbasis sequenziell gekoppelt: Die Bewertung setzt den in der Extraktion aufgebauten Datensatzkontext voraus, und die Anreicherungen können ihre Prüfsignale nur an einen bereits bestehenden Kontext anhängen. Dass sich die Schritte damit ein gemeinsames Datenmodell teilen, ist beabsichtigt und wird in Abschnitt~\ref{sec:extraktion} begründet. Über den eigenen Prozess hinaus greift der Prototyp auf drei externe Dienste zu, nämlich auf die Endpunkte der Distributionen, auf das Sprachmodell und auf den SHACL-Validierungsdienst, der aus dem Konformitätsindikator heraus angesprochen wird.
+
+Die Indikatoren registrieren sich bei ihrer Instanziierung selbst in einer zentralen Registrierung, aus der der Bewertungsschritt die auszuführenden Prüfungen bezieht. Ein neuer Indikator besteht damit aus einer einzelnen Klasse, die eine Prüfmethode implementiert, und wird von der Verarbeitungskette automatisch berücksichtigt. Dieses Erweiterungsprinzip setzt die im Bewertungsmodell angelegte Offenheit des Indikatorenkatalogs technisch um.
 
 Der Prototyp ist in Python implementiert und setzt Python~3.12 voraus. Die RDF-Verarbeitung erfolgt mit der Bibliothek rdflib\footnote{\url{https://rdflib.readthedocs.io/}}, die Erreichbarkeitsprüfungen nutzen requests\footnote{\url{https://requests.readthedocs.io/}}. Die strukturierte Ausgabe des Sprachmodells wird über Pydantic\footnote{\url{https://docs.pydantic.dev/}} schemavalidiert, die Anbindung des Modells erfolgt über LangChain\footnote{\url{https://www.langchain.com/}}. Die Konfiguration der Bewertungsläufe wird mit Hydra\footnote{\url{https://hydra.cc/}} verwaltet, die Visualisierungen werden mit matplotlib\footnote{\url{https://matplotlib.org/}} erzeugt. Die exakten Versionsstände aller Abhängigkeiten sind im Quellcode-Repository\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/tree/v3_prototype_freeze}} festgeschrieben. 
 % @TODO github link am ende noch updaten falls nötig, und eventuell matplotlib entfernen da die visualisierungen ja dann im frontend erzeugt werden. und das mit den versionständen eventuell weg machen :sob: 
@@ -1795,7 +1794,7 @@ Der Prototyp ist in Python implementiert und setzt Python~3.12 voraus. Die RDF-V
 
 Die in der Verarbeitungspipeline aufgebaute Faktenbasis hält je Datensatz alle bewertungsrelevanten Angaben, darunter Titel, Beschreibung, Schlagwörter, Themen sowie Datums- und Frequenzangaben, und für jede Distribution ein eigenes Faktenobjekt mit Format-, Medientyp-, Lizenz- und URL-Angaben. Häufig benötigte abgeleitete Größen wie die Anzahl der Distributionen mit Download-URL werden als berechnete Eigenschaften bereitgestellt.
 
-Ihre Einführung als eigene Zwischenschicht zwischen RDF-Graph und Indikatoren ist eine bewusste Entwurfsentscheidung. Sie stellt erstens Konsistenz sicher, da alle Indikatoren über dieselben, an genau einer Stelle extrahierten Fakten urteilen und Interpretationsfragen der RDF-Struktur nicht je Indikator unterschiedlich beantwortet werden können. Desweiteren wird redundante Arbeit vermieden, da der Graph nur einmal traversiert wird. Zudem wird die Prüflogik vom Datenmodell entkoppelt, denn die Indikatoren operieren auf typisierten Werten und enthalten keine RDF-spezifische Logik, was ihre Implementierung und Erweiterung wesentlich vereinfacht.
+Ihre Einführung als eigene Zwischenstufe zwischen RDF-Graph und Indikatoren ist eine bewusste Entwurfsentscheidung. Sie stellt erstens Konsistenz sicher, da alle Indikatoren über dieselben, an genau einer Stelle extrahierten Fakten urteilen und Interpretationsfragen der RDF-Struktur nicht je Indikator unterschiedlich beantwortet werden können. Desweiteren wird redundante Arbeit vermieden, da der Graph nur einmal traversiert wird. Zudem wird die Prüflogik vom Datenmodell entkoppelt, denn die Indikatoren operieren auf typisierten Werten und enthalten keine RDF-spezifische Logik, was ihre Implementierung und Erweiterung wesentlich vereinfacht.
 
 \begin{listing}[H]
 \begin{minted}
@@ -1881,53 +1880,79 @@ Die folgenden Abschnitte dokumentieren je Dimension die gemeinsame Prüfmechanik
 
 \subsection{Abbildung des konzeptionellen Modells auf implementierte Indikatoren}
 
-Da das konzeptionelle Modell bereits auf operationalisierbare Indikatoren zugeschnitten ist, bilden die implementierten Indikatoren die Konzept-Kürzel eins zu eins ab. Von den im Konzept abgeleiteten Indikatoren werden in der evaluierten Modellkonfiguration 27 aktiviert. Tabelle~\ref{tab:impl_mapping} dokumentiert deren Zuordnung zu den Indikator-Bezeichnern der Implementierung. Diese Bezeichner erscheinen in den Bewertungsergebnissen, den Reports und den Auswertungen der Evaluation. Die Tabelle dient damit als durchgängige Referenz zwischen Konzept, Quellcode und Ergebnisdarstellung.
+Da das konzeptionelle Modell bereits auf operationalisierbare Indikatoren zugeschnitten ist, bilden die implementierten Indikatoren die Konzept-Kürzel eins zu eins ab. Insgesamt sind 27 Indikatoren umgesetzt. Tabelle~\ref{tab:impl_mapping} führt sie mit ihrem Namen und ihrem Bezeichner in der Implementierung auf. Diese Bezeichner erscheinen in den Bewertungsergebnissen, den Reports und den Auswertungen der Evaluation. Die Tabelle dient damit als durchgängige Referenz zwischen Konzept, Quellcode und Ergebnisdarstellung.
 
 \begin{table}[H]
 \centering
 \scriptsize
 \renewcommand{\arraystretch}{1.2}
 \rowcolors{1}{white}{white}
-\begin{tabular}{p{0.07\textwidth} p{0.35\textwidth} p{0.07\textwidth} p{0.35\textwidth}}
+\begin{tabular}{p{0.06\textwidth} >{\raggedright\arraybackslash}p{0.42\textwidth} >{\raggedright\arraybackslash}p{0.38\textwidth}}
 \hline
-\textbf{Kürzel} & \textbf{Indikator-Bezeichner} & \textbf{Kürzel} & \textbf{Indikator-Bezeichner} \\
+\textbf{Kürzel} & \textbf{Indikatorname} & \textbf{Indikator-Bezeichner} \\
 \hline
-A1 & \texttt{find\_keywords\_count} & Z1 & \texttt{acc\_download\_url} \\
+A1 & Schlagwortumfang in angemessenem Bereich & \texttt{find\_keywords\_count} \\
 \hline
-A2 & \texttt{find\_theme\_valid} & Z2 & \texttt{acc\_format} \\
+A2 & Themenkategorie aus kontrolliertem Vokabular & \texttt{find\_theme\_valid} \\
 \hline
-A3 & \texttt{find\_locn\_geometry} & Z3 & \texttt{acc\_media\_type} \\
+A3 & Räumliche Geometrieangabe vorhanden & \texttt{find\_locn\_geometry} \\
 \hline
-A4 & \texttt{find\_political\_geocoding} & Z4 & \texttt{acc\_format\_non\_proprietary} \\
+A4 & Politische Geokodierung aus DCAT-AP.de-Vokabular & \texttt{find\_political\_geocoding} \\
 \hline
-A5 & \texttt{find\_geocoding\_level} & Z5 & \texttt{acc\_download\_url\_response} \\
+A5 & Ebene der politischen Geokodierung aus Vokabular & \texttt{find\_geocoding\_level} \\
 \hline
-A6 & \texttt{find\_temporal\_coverage} & Z6 & \texttt{acc\_access\_url\_response} \\
+A6 & Zeitliche Abdeckung mit valider Datumsangabe & \texttt{find\_temporal\_coverage} \\
 \hline
-A7 & \texttt{find\_issued\_datetime} & Z7 & \texttt{acc\_machine\_readable\_access} \\
+A7 & Veröffentlichungsdatum valide typisiert & \texttt{find\_issued\_datetime} \\
 \hline
-A8 & \texttt{find\_modified\_datetime} & N1 & \texttt{reuse\_license} \\
+A8 & Änderungsdatum valide typisiert & \texttt{find\_modified\_datetime} \\
 \hline
-S1 & \texttt{expr\_title\_quality} & N2 & \texttt{reuse\_publisher} \\
+Z1 & Download-URL angegeben & \texttt{acc\_download\_url} \\
 \hline
-S2 & \texttt{expr\_description\_quality} & N3 & \texttt{reuse\_contact} \\
+Z2 & Formatangabe aus kontrolliertem Vokabular & \texttt{acc\_format} \\
 \hline
-S3 & \texttt{expr\_title\_description\_coherence} & N4 & \texttt{reuse\_availability} \\
+Z3 & Medientyp als IANA-Medientyp & \texttt{acc\_media\_type} \\
 \hline
-S4 & \texttt{expr\_keyword\_quality} & N5 & \texttt{reuse\_contributor\_id} \\
+Z4 & Nicht-proprietäres Format & \texttt{acc\_format\_non\_proprietary} \\
 \hline
-S5 & \texttt{expr\_thematic\_consistency} & N6 & \texttt{reuse\_dcat\_ap\_de\_compliance} \\
+Z5 & Download-URL technisch erreichbar & \texttt{acc\_download\_url\_response} \\
 \hline
-S6 & \texttt{expr\_contextual\_qualifiers} & & \\
+Z6 & Access-URL technisch erreichbar & \texttt{acc\_access\_url\_response} \\
+\hline
+Z7 & Maschinenlesbarer Zugriffsweg (abgestuft) & \texttt{acc\_machine\_readable\_access} \\
+\hline
+N1 & Freie Lizenz aus DCAT-AP.de-Lizenzliste & \texttt{reuse\_license} \\
+\hline
+N2 & Herausgeber als strukturierter Agent mit Namen & \texttt{reuse\_publisher} \\
+\hline
+N3 & Kontaktpunkt mit nutzbarer E-Mail oder URL & \texttt{reuse\_contact} \\
+\hline
+N4 & Geplante Verfügbarkeit aus kontrolliertem Vokabular & \texttt{reuse\_availability} \\
+\hline
+N5 & ContributorID aus Contributor-Vokabular & \texttt{reuse\_contributor\_id} \\
+\hline
+N6 & DCAT-AP.de-Konformität (SHACL-Validierung) & \texttt{reuse\_dcat\_ap\_de\_compliance} \\
+\hline
+S1 & Aussagekraft des Titels & \texttt{expr\_title\_quality} \\
+\hline
+S2 & Aussagekraft der Beschreibung & \texttt{expr\_description\_quality} \\
+\hline
+S3 & Kohärenz von Titel und Beschreibung & \texttt{expr\_title\_description\_coherence} \\
+\hline
+S4 & Qualität der Schlagwörter & \texttt{expr\_keyword\_quality} \\
+\hline
+S5 & Thematische Konsistenz & \texttt{expr\_thematic\_consistency} \\
+\hline
+S6 & Kontextuelle Qualifizierer & \texttt{expr\_contextual\_qualifiers} \\
 \hline
 \end{tabular}
-\caption{Zuordnung der Konzept-Kürzel zu den implementierten Indikator-Bezeichnern}
+\caption{Konzept-Kürzel, Indikatorname und Bezeichner in der Implementierung}
 \label{tab:impl_mapping}
 \end{table}
 
 \subsection{Auffindbarkeitsindikatoren}
 
-Die Auffindbarkeitsindikatoren prüfen datensatzweite Angaben direkt auf der Faktenbasis und benötigen weder Netzwerkzugriffe noch das Sprachmodell. Mit Ausnahme von A7 und A8 sind alle ternär. Die beiden Datumsindikatoren messen graduell den Anteil der vorhandenen Datumswerte mit validem \texttt{xsd:date}- oder \texttt{xsd:dateTime}-Typ, wobei Angaben auf Datensatz- und Distributionsebene gemeinsam betrachtet werden. Fehlt die jeweilige Angabe vollständig, gilt der Indikator als nicht erfüllt. Tabelle~\ref{tab:impl_findability} fasst die Prüfregeln zusammen.
+Die Auffindbarkeitsindikatoren prüfen datensatzweite Angaben direkt auf der Faktenbasis und benötigen weder Netzwerkzugriffe noch das Sprachmodell. Mit Ausnahme der beiden Datumsindikatoren A7 (Veröffentlichungsdatum) und A8 (Änderungsdatum) sind alle ternär. Die beiden Datumsindikatoren messen graduell den Anteil der vorhandenen Datumswerte mit validem \texttt{xsd:date}- oder \texttt{xsd:dateTime}-Typ, wobei Angaben auf Datensatz- und Distributionsebene gemeinsam betrachtet werden. Fehlt die jeweilige Angabe vollständig, gilt der Indikator als nicht erfüllt. Tabelle~\ref{tab:impl_findability} fasst die Prüfregeln zusammen.
 
 \begin{table}[H]
 \centering
@@ -2018,11 +2043,11 @@ Z7 & 1 bei Stufe \textit{high}, 0,5 bei Stufe \textit{mid}, 0 bei Stufe \textit{
 \label{tab:impl_accessibility}
 \end{table}
 
-Die Stufenzuordnung von Z7 orientiert sich an der Klassifikation maschinenlesbarer Dateitypen der Data Quality Guidelines von data.europa.eu \cite{dataeuropa_dqguidelines}. Deren Tabelle unterscheidet drei Grade der Maschinenlesbarkeit, die unmittelbar auf die drei Stufen des Indikators abgebildet werden. Vollständig maschinenlesbare Formate wie CSV, JSON, XML oder RDF sowie deklarierte Datenservice-Endpunkte werden als \textit{high} eingestuft, überwiegend maschinenlesbare Formate wie XLSX, ODS, XLS, HTML oder reine Textdateien als \textit{mid} und nicht maschinenlesbare Auslieferungen wie PDF, Office-Dokumente oder Bildformate als \textit{none}. Da die zugrunde liegende Klassifikation geospezifische Datentypen nicht berücksichtigt, wurde sie um solche Formate ergänzt, etwa Shapefile, die entsprechend ihrer Maschinenlesbarkeit eingeordnet werden. Anders als die Erreichbarkeitsprüfungen Z5 und Z6 wendet Z7 das Malus-Prinzip nicht an, die Stufe \textit{none} geht mit 0 in die Distributionsmittelung ein. Eine nicht maschinenlesbare Distribution täuscht, anders als eine tote URL, keine Verfügbarkeit vor, sondern liefert, was sie deklariert. Zudem ist es verbreitete Bereitstellungspraxis, neben einem maschinenlesbaren Zugriffsweg ergänzende, nicht maschinenlesbare Distributionen anzubieten, etwa begleitende PDF-Dokumente oder bei Geodaten Kartenansichten und Bildvorschauen. Ein Malus würde solche ergänzenden Angebote den Beitrag der maschinenlesbaren Distribution aktiv aufzehren lassen, obwohl ein maschinenlesbarer Zugriff auf die Daten besteht.
+Die Stufenzuordnung von Z7 (maschinenlesbarer Zugriffsweg) orientiert sich an der Klassifikation maschinenlesbarer Dateitypen der Data Quality Guidelines von data.europa.eu \cite{dataeuropa_dqguidelines}. Deren Tabelle unterscheidet drei Grade der Maschinenlesbarkeit, die unmittelbar auf die drei Stufen des Indikators abgebildet werden. Vollständig maschinenlesbare Formate wie CSV, JSON, XML oder RDF sowie deklarierte Datenservice-Endpunkte werden als \textit{high} eingestuft, überwiegend maschinenlesbare Formate wie XLSX, ODS, XLS, HTML oder reine Textdateien als \textit{mid} und nicht maschinenlesbare Auslieferungen wie PDF, Office-Dokumente oder Bildformate als \textit{none}. Da die zugrunde liegende Klassifikation geospezifische Datentypen nicht berücksichtigt, wurde sie um solche Formate ergänzt, etwa Shapefile, die entsprechend ihrer Maschinenlesbarkeit eingeordnet werden. Anders als die Erreichbarkeitsprüfungen Z5 und Z6 wendet Z7 das Malus-Prinzip nicht an; die Stufe \textit{none} geht mit 0 in die Distributionsmittelung ein, da eine nicht maschinenlesbare Distribution keine Verfügbarkeit vortäuscht, sondern liefert, was sie deklariert.
 
 \subsection{Nachnutzbarkeitsindikatoren}
 
-Die Nachnutzbarkeitsindikatoren kombinieren beide Messformen. N1 und N5 messen graduell je Distribution nach dem Muster aus Listing~\ref{lst:graded_scoring}, die übrigen Indikatoren prüfen ternär auf Datensatzebene. Tabelle~\ref{tab:impl_reusability} fasst die Prüfregeln zusammen.
+Die Nachnutzbarkeitsindikatoren kombinieren beide Messformen. N1 (freie Lizenz) und N4 (geplante Verfügbarkeit) messen graduell je Distribution nach dem Muster aus Listing~\ref{lst:graded_scoring}, die übrigen Indikatoren prüfen ternär auf Datensatzebene. Tabelle~\ref{tab:impl_reusability} fasst die Prüfregeln zusammen.
 
 \begin{table}[H]
 \centering
@@ -2035,15 +2060,15 @@ Die Nachnutzbarkeitsindikatoren kombinieren beide Messformen. N1 und N5 messen g
 \hline
 N1 & Graduell je Distribution: 1 bei freier Lizenz aus der DCAT-AP.de-Lizenzliste, $-$0,5 bei eingeschränkter, unbekannter oder fehlender Lizenz \\
 \hline
-N3 & Erfüllt, wenn der Herausgeber als \texttt{foaf:Agent} typisiert ist und einen \texttt{foaf:name} trägt, teilweise erfüllt bei nur einem der beiden Merkmale, sonst nicht erfüllt \\
+N2 & Erfüllt, wenn der Herausgeber als \texttt{foaf:Agent} typisiert ist und einen \texttt{foaf:name} trägt, teilweise erfüllt bei nur einem der beiden Merkmale, sonst nicht erfüllt \\
 \hline
-N4 & Erfüllt, wenn der Kontaktpunkt eine valide E-Mail-Adresse oder URL enthält, teilweise erfüllt bei Kontaktpunkt ohne nutzbaren Kanal, nicht erfüllt ohne Kontaktpunkt \\
+N3 & Erfüllt, wenn der Kontaktpunkt eine valide E-Mail-Adresse oder URL enthält, teilweise erfüllt bei Kontaktpunkt ohne nutzbaren Kanal, nicht erfüllt ohne Kontaktpunkt \\
 \hline
-N5 & Graduell je Distribution: 1 bei Verfügbarkeitsangabe aus dem Planned-Availability-Vokabular, sonst 0 \\
+N4 & Graduell je Distribution: 1 bei Verfügbarkeitsangabe aus dem Planned-Availability-Vokabular, sonst 0 \\
 \hline
-N6 & Erfüllt, wenn genau eine \texttt{dcatde:contributorID} als IRI aus dem Contributor-Vokabular vorliegt, sonst nicht erfüllt \\
+N5 & Erfüllt, wenn genau eine \texttt{dcatde:contributorID} als IRI aus dem Contributor-Vokabular vorliegt, sonst nicht erfüllt \\
 \hline
-N7 & Erfüllt bei null SHACL-Verletzungen gegen das DCAT-AP.de-Regelwerk, nicht erfüllt bei mindestens einer Verletzung \\
+N6 & Erfüllt bei null SHACL-Verletzungen gegen das DCAT-AP.de-Regelwerk, nicht erfüllt bei mindestens einer Verletzung \\
 \hline
 \end{tabular}
 \caption{Prüfregeln der Nachnutzbarkeitsindikatoren}
@@ -2052,12 +2077,12 @@ N7 & Erfüllt bei null SHACL-Verletzungen gegen das DCAT-AP.de-Regelwerk, nicht 
 
 Der Lizenzindikator N1 wendet als einziger Indikator dieser Dimension das Malus-Prinzip an. Die Gleichbehandlung von eingeschränkten, unbekannten und fehlenden Lizenzen folgt der Nutzendenperspektive, denn in allen drei Fällen ist die Rechtslage ungeklärt und die Nachnutzung damit gleichermaßen blockiert.
 
-Die Konformitätsprüfung N7 validiert den Metadatensatz nicht mit einer lokalen Kopie der SHACL-Shapes, sondern über den öffentlich betriebenen SHACL-Validierungsdienst des Interoperability Test Bed der Europäischen Kommission\footnote{\url{https://www.itb.ec.europa.eu/shacl/dcat-ap.de/api/validate}}. Dadurch wird stets gegen das offiziell gepflegte DCAT-AP.de-Regelwerk geprüft und die Urteile bleiben deckungsgleich mit dem Referenzvalidator, ohne dass der Prototyp eine eigene Regelwerkskopie aktuell halten muss. Geprüft wird gegen das Profil in der Version~2.0. Diese Version bildet ein vollständig abgeschlossenes Profil, das neben der Spezifikation auch ein zugehöriges Konventionenhandbuch bereitstellt \cite{DCATAPDESpec2, DCATAPDEImplRules2} und damit die Grundlage des in Kapitel~4 abgeleiteten Bewertungsmodells bildet. Die im Dezember 2024 veröffentlichte Version~3.0 wird bewusst nicht verwendet, da für sie kein geschlossenes Konventionenhandbuch mehr vorgesehen ist; die Konventionen werden stattdessen in die Spezifikation überführt, in Guidelines umgewandelt oder gestrichen, wobei entsprechende Guidelines bislang nicht vorliegen \cite{DCATAPDESpec3}. Die Bewertung ist binär, da Standardkonformität keine sinnvolle Teilerfüllung kennt. Als einziger Indikator hängt N7 von der Verfügbarkeit eines externen Dienstes ab. Ist der Dienst nicht erreichbar, wird der Indikator als Fehler ausgewiesen.
+Die Konformitätsprüfung N6 validiert den Metadatensatz nicht mit einer lokalen Kopie der SHACL-Shapes, sondern über den öffentlich betriebenen SHACL-Validierungsdienst des Interoperability Test Bed der Europäischen Kommission\footnote{Weboberfläche des Dienstes: \url{https://www.itb.ec.europa.eu/shacl/dcat-ap.de/upload}. Der Prototyp spricht die zugehörige REST-Schnittstelle unter \texttt{/shacl/dcat-ap.de/api/validate} per POST an; ein direkter Aufruf dieser Adresse im Browser beantwortet der Dienst erwartungsgemäß mit \texttt{405 Method Not Allowed}.}. Dadurch wird stets gegen das offiziell gepflegte DCAT-AP.de-Regelwerk geprüft und die Urteile bleiben deckungsgleich mit dem Referenzvalidator, ohne dass der Prototyp eine eigene Regelwerkskopie aktuell halten muss. Geprüft wird gegen das Profil in der Version~2.0. Diese Version bildet ein vollständig abgeschlossenes Profil, das neben der Spezifikation auch ein zugehöriges Konventionenhandbuch bereitstellt \cite{DCATAPDESpec2, DCATAPDEImplRules2} und damit die Grundlage des in Kapitel~4 abgeleiteten Bewertungsmodells bildet. Die im Dezember 2024 veröffentlichte Version~3.0 wird bewusst nicht verwendet, da für sie kein geschlossenes Konventionenhandbuch mehr vorgesehen ist; die Konventionen werden stattdessen in die Spezifikation überführt, in Guidelines umgewandelt oder gestrichen, wobei entsprechende Guidelines bislang nicht vorliegen \cite{DCATAPDESpec3}. Die Bewertung ist binär, da Standardkonformität keine sinnvolle Teilerfüllung kennt. Als einziger Indikator hängt N6 von der Verfügbarkeit eines externen Dienstes ab. Ist der Dienst nicht erreichbar, wird der Indikator als Fehler ausgewiesen.
 
 \section{LLM-gestützte Bewertung der Aussagekraft}
 \label{sec:llm_aussagekraft}
 
-Die Aussagekraft ist die einzige Qualitätsdimension, die sich nicht regelbasiert bestimmen lässt. Kapitel~4 hat begründet, dass ihre Kriterien ein sprachverstehendes Verfahren als Messinstrument erfordern. Der vorliegende Abschnitt beschreibt, wie dieses Instrument im Prototyp umgesetzt ist, und behandelt damit den für Forschungsfrage~3 zentralen Baustein.
+Die Aussagekraft ist die einzige Qualitätsdimension, die sich nicht regelbasiert bestimmen lässt. Kapitel~4 hat begründet, dass ihre Kriterien ein sprachverstehendes Verfahren als Messinstrument erfordern. Der vorliegende Abschnitt beschreibt, wie dieses Instrument im Prototyp umgesetzt ist, und behandelt damit den zentralen Baustein für die dritte Teilfrage dieser Arbeit, welche ergänzenden kontext- und semantikbezogenen Prüfungen das formale Qualitätsmodell sinnvoll erweitern können, ohne die Nachvollziehbarkeit und Verlässlichkeit des Scorings zu gefährden (vgl. Abschnitt~\ref{sec:forschungsfragen}). Bewertet werden dabei ausschließlich Metadaten offener Verwaltungsdaten, die ohnehin frei im Netz veröffentlicht sind; ihre Übergabe an ein externes Sprachmodell wirft daher keine Fragen des Datenschutzes oder der Vertraulichkeit auf.
 
 \subsection{Ein-Aufruf-Architektur}
 
@@ -2207,7 +2232,7 @@ Tabelle~\ref{tab:impl_weights} zeigt die Gewichte der evaluierten Konfiguration 
 \label{tab:impl_weights}
 \end{table}
 
-Die drei auf das Gewicht 2,0 angehobenen Indikatoren teilen eine Eigenschaft: Ein Defekt an ihnen macht den Datensatz faktisch unbrauchbar, unabhängig davon, wie gut die übrigen Metadaten sind. Eine nicht erreichbare Zugriffs-URL bedeutet, dass keine Daten vorliegen. Eine fehlende oder eingeschränkte Lizenz blockiert die Nachnutzung rechtlich. Damit prüfen genau diese Indikatoren definierende Merkmale offener Daten, die in Kapitel~2 eingeführt wurden: Bereitstellung ohne Zugangsbeschränkungen unter Bedingungen, die die Wiederverwendung erlauben \cite{Ubaldi2013OGD, OECD2020OURdata}. Die Experteninterviews benennen dieselben Defekte als zentrale Praxisprobleme (INT-K5). Es sind zugleich die Indikatoren, die den Malus tragen. Die Anhebung des Gewichts verstärkt diese Kopplung gezielt: Ein Datensatz, der an einem datenbrechenden Kriterium scheitert, soll sich im Ergebnis deutlich von einem Datensatz unterscheiden, der lediglich optionale Angaben schuldig bleibt. Der maschinenlesbare Zugriffsweg Z7 wird mit dem Gewicht 1,5 bewusst zwischen den datenbrechenden Indikatoren und dem Standardgewicht eingeordnet. Maschinenlesbarkeit zählt ebenfalls zu den definierenden Merkmalen offener Daten, und ein Datensatz ganz ohne maschinenlesbaren Zugriffsweg entzieht sich der automatisierten Verarbeitung. Anders als eine tote URL oder eine ungeklärte Lizenz wirkt eine einzelne nicht maschinenlesbare Distribution jedoch nicht zwingend datenbrechend, da sie in der Bereitstellungspraxis häufig als ergänzendes Angebot neben einem maschinenlesbaren Zugriffsweg steht. Diese Priorisierung deckt sich mit der MQA, in der die Erreichbarkeit der Access-URL mit 50 Punkten das höchste Einzelgewicht aller Metriken trägt und die Lizenzangaben den am stärksten gewichteten Block der Wiederverwendbarkeit bilden, während die Maschinenlesbarkeit dort mit 20 Punkten im Mittelfeld liegt und damit dieselbe Zwischenstellung einnimmt (vgl. Tabelle~\ref{tab:mqa_metrics_weights}) \cite{data_europa}.
+Die drei auf das Gewicht 2,0 angehobenen Indikatoren teilen eine Eigenschaft: Ein Defekt an ihnen macht den Datensatz faktisch unbrauchbar, unabhängig davon, wie gut die übrigen Metadaten sind. Eine nicht erreichbare Zugriffs-URL bedeutet, dass keine Daten vorliegen. Eine fehlende oder eingeschränkte Lizenz blockiert die Nachnutzung rechtlich. Damit prüfen genau diese Indikatoren definierende Merkmale offener Daten, die in Kapitel~2 eingeführt wurden: Bereitstellung ohne Zugangsbeschränkungen unter Bedingungen, die die Wiederverwendung erlauben \cite{Ubaldi2013OGD, OECD2020OURdata}. Die Experteninterviews benennen dieselben Defekte als zentrale Praxisprobleme (INT-K5). Es sind zugleich die Indikatoren, die den Malus tragen. Die Anhebung des Gewichts verstärkt diese Kopplung gezielt: Ein Datensatz, der an einem datenbrechenden Kriterium scheitert, soll sich im Ergebnis deutlich von einem Datensatz unterscheiden, der lediglich optionale Angaben schuldig bleibt. Der maschinenlesbare Zugriffsweg Z7 wird mit dem Gewicht 1,5 bewusst zwischen den datenbrechenden Indikatoren und dem Standardgewicht eingeordnet. Maschinenlesbarkeit zählt ebenfalls zu den definierenden Merkmalen offener Daten, und ein Datensatz ganz ohne maschinenlesbaren Zugriffsweg entzieht sich der automatisierten Verarbeitung. Anders als eine nicht erreichbare URL oder eine ungeklärte Lizenz wirkt eine einzelne nicht maschinenlesbare Distribution jedoch nicht zwingend datenbrechend, da sie in der Bereitstellungspraxis häufig als ergänzendes Angebot neben einem maschinenlesbaren Zugriffsweg steht. Diese Priorisierung deckt sich mit der MQA, in der die Erreichbarkeit der Access-URL mit 50 Punkten das höchste Einzelgewicht aller Metriken trägt und die Lizenzangaben den am stärksten gewichteten Block der Wiederverwendbarkeit bilden, während die Maschinenlesbarkeit dort mit 20 Punkten im Mittelfeld liegt und damit dieselbe Zwischenstellung einnimmt (vgl. Tabelle~\ref{tab:mqa_metrics_weights}) \cite{data_europa}.
 
 Die Dimensionsgewichte folgen derselben Logik auf der übergeordneten Ebene: Die Dimensionen tragen nicht gleich viel zur Nutzbarkeit eines Datensatzes bei. Zugänglichkeit und Aussagekraft erhalten das höchste Gewicht, weil ein Versagen in diesen Dimensionen den Datensatz vollständig entwertet. Sind die Daten nicht erreichbar, existiert faktisch kein nutzbares Angebot. Sind Titel, Beschreibung und Schlagwörter nichtssagend, bleibt der Datensatz für Nutzende unverständlich, auch wenn die Metadaten vollständig sind, worauf auch die Handreichung zur Verbesserung der Metadatenqualität ihren Schwerpunkt legt \cite{bydata2025handreichung}. Die Nachnutzbarkeit wird über der Auffindbarkeit gewichtet, da selbst vollständig vorhandene und erreichbare Daten ohne geklärte rechtliche und organisatorische Rahmenbedingungen ihren Nutzen verlieren. Die Auffindbarkeit erhält das Standardgewicht, da ihre Indikatoren überwiegend Präsenz- und Strukturprüfungen einzelner Suchmerkmale sind. Ihr Beitrag zur Nutzbarkeit hängt zudem stärker als bei den übrigen Dimensionen von deren Erfüllung ab, insbesondere von den datenbrechenden Indikatoren der anderen Dimensionen: Ein auffindbarer Datensatz bleibt nutzlos, wenn die Lizenz fehlt, auf die Daten nicht zugegriffen werden kann oder die Freitextfelder trotz formaler Vollständigkeit widersprüchliche oder zusammenhanglose Inhalte aufweisen. Das Modell weicht damit bewusst von der MQA ab, die die Auffindbarkeit zu den am höchsten gewichteten Dimensionen zählt, dies allerdings auf Basis reiner Präsenzmetriken (vgl. Tabelle~\ref{tab:mqa_metrics_weights}).
 
