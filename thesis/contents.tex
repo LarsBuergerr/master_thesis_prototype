@@ -1244,17 +1244,17 @@ Tabelle~\ref{tab:auszug_kodierleitfaden} zeigt exemplarisch den Aufbau des Codie
 K4.1 & Nichtssagende oder zu kurze Titel
 & Aussagen zu Titeln, die vorhanden sind, aber den Datensatz nicht ausreichend beschreiben.
 & Codieren, wenn Titel als zu kurz, generisch, mehrdeutig oder unverständlich beschrieben werden.
-& „Los 1“ als Titel ohne erkennbare Aussage. Modellbezug: semantischer Titelindikator. \\ \hline
+& „Los 1“ als Titel ohne erkennbare Aussage. \\ \hline
 
 K8.1 & Formatkongruenz zwischen Metadaten und Ressource
 & Aussagen zum Abgleich zwischen angegebenem Format und tatsächlicher Ressource.
 & Codieren, wenn geprüft werden soll, ob das in den Metadaten angegebene Format mit Datei, Service oder Inhalt übereinstimmt.
-& Metadaten geben CSV an, aber der Inhalt ist kein CSV. Modellbezug: Kongruenzindikator. \\ \hline
+& Metadaten geben CSV an, aber der Inhalt ist kein CSV. \\ \hline
 
 K9.2 & SHACL als Teildimension statt Gesamtscore
 & Aussagen, die SHACL- oder DCAT-AP.de-Konformität als Teil, aber nicht als vollständiges Qualitätsurteil verstehen.
 & Codieren, wenn formale Validierung als eigene Dimension im Gesamtscore beschrieben wird.
-& DCAT-AP.de-Qualität sollte als eine Dimension im Gesamtscoring angezeigt werden. Modellbezug: separater formaler Teilschritt. \\
+& DCAT-AP.de-Qualität sollte als eine Dimension im Gesamtscoring angezeigt werden.  \\
 
 \bottomrule
 \end{tabularx}
@@ -1402,7 +1402,7 @@ Ein Bewertungsmodell für Metadatenqualität hat nicht einen, sondern mehrere Ad
     \item \textbf{Portalbetreibende} verantworten den Metadatenbestand eines Portals wie GovData als Ganzes (Abschnitt~\ref{sec:govdata_portal}). Für sie ist die Bewertung ein Steuerungsinstrument: Sie interessieren sich weniger für den einzelnen Datensatz als für systematische Lücken im Bestand und deren Entwicklung über die Zeit.
 \end{itemize}
 
-Diese Dreiteilung folgt der in Kapitel~2 eingeführten Definition offener Daten, die Bereitstellung und Nachnutzung als zwei Seiten desselben Vorgangs begreift \cite{Ubaldi2013OGD, OECD2020OURdata}, und deckt sich mit der Auswahl der Interviewpartner, die sowohl die Perspektive des GovData-Produktmanagements und der Standardisierung als auch die der praktischen Datenbereitstellung abdecken (Abschnitt~\ref{sec:interviews_ziel_auswahl}). Wie sich die Zielgruppen auf die Gestaltung des menschenlesbaren Ergebnisreportings auswirken, beschreibt Abschnitt~\ref{subsec:zielgruppen_frontend}.
+Diese Dreiteilung folgt der in Kapitel~2 eingeführten Definition offener Daten, die Bereitstellung und Nachnutzung als zwei Seiten desselben Vorgangs begreift \cite{Ubaldi2013OGD, OECD2020OURdata}, und deckt sich mit der Auswahl der Interviewpartner, die sowohl die Perspektive des GovData-Produktmanagements und der Standardisierung als auch die der praktischen Datenbereitstellung abdecken (Abschnitt~\ref{sec:interviews_ziel_auswahl}).
 
 \pagebreak
 
@@ -1460,7 +1460,7 @@ Tabelle~\ref{tab:longlist-uebersicht} zeigt die auf dieser Grundlage gebildete L
 Die Longlist enthält eine hohe Zahl potenziell relevanter Dimensionen. Mehrere Kandidatendimensionen überschneiden sich in ihren Indikatoren und verletzen damit Kriterium~5 der Longlist-Aufnahme (keine vollständige Abdeckung durch eine andere Dimension). Daher werden die Kandidatendimensionen im nächsten Schritt zu vier Hauptdimensionen verdichtet. Eine kleinere Anzahl orthogonaler Dimensionen ist zudem Voraussetzung für die in Teilfrage~4 geforderte prototypische Operationalisierbarkeit des Modells sowie für ein im Reporting nachvollziehbares Scoring.
 
 Dabei gelten zwei Prinzipien. Erstens werden Dimensionen zusammengeführt, wenn sie dieselbe Bewertungsfunktion erfüllen.
-Zweitens werden Dimensionen nicht danach gruppiert, aus welchem Literaturmodell sie stammen, sondern danach, welchen Qualitätsaspekt sie im DCAT-AP.de-Kontext prüfen. Für dieses Vorgehen gibt es ein methodisches Vorbild: Auch Wang und Strong (1996) ordneten ihre empirisch ermittelten Qualitätsdimensionen in der abschließenden Verdichtungsstufe ihrer Studie nicht nach deren Herkunft, sondern anhand eines zuvor entwickelten konzeptionellen Rahmens vier übergeordneten Kategorien zu \cite{wang1996beyond}.
+Zweitens werden Dimensionen nicht danach gruppiert, aus welchem Literaturmodell sie stammen, sondern danach, welchen Qualitätsaspekt sie im DCAT-AP.de-Kontext decken. Für dieses Vorgehen gibt es ein methodisches Vorbild: Auch Wang und Strong (1996) ordneten ihre empirisch ermittelten Qualitätsdimensionen in der abschließenden Verdichtungsstufe ihrer Studie nicht nach deren Herkunft, sondern anhand eines zuvor entwickelten konzeptionellen Rahmens vier übergeordneten Kategorien zu \cite{wang1996beyond}.
 Tabelle \ref{tab:finale-qualitaetsdimensionen} visualisiert die finalen Dimensionen und ihre Bewertungsfunktion im Modell.
 Zu beachten ist das bestimmte Dimensionen der Longlist auf mehrere finale Dimensionen aufgeteilt wurden, da hier eine exakte Zuordnung nicht möglich ist.
 
@@ -1549,7 +1549,8 @@ Die formale DCAT-AP.de-Konformität wird dabei nicht als eigene Qualitätsdimens
 
 Die Ableitung der Einzelindikatoren erfolgt regelgeleitet. Ausgangspunkt bilden die vier finalen Qualitätsdimensionen. Für jede Dimension werden zunächst Qualitätskriterien formuliert, die beschreiben, welche Eigenschaft der Metadaten oder der beschriebenen Ressource bewertet werden soll. Anschließend wird geprüft, durch welche Einzelindikatoren diese Kriterien operationalisiert werden können.
 
-Die Auswahl der Indikatoren orientiert sich – in Anlehnung an das Goal-Question-Metric-Prinzip, nach dem Metriken top-down aus übergeordneten Zielen abgeleitet werden \cite{Basili1994GQM} – an sechs Kriterien, die sich aus den Forschungsfragen und der bisherigen Methodik ergeben: Standardbezug und Konventionsbezug sichern die normative Verankerung im DCAT-AP.de-Standard (vgl. Abschnitt~2.3), Literaturbezug und Interviewbezug die empirische Fundierung aus Kapitel~2 und Abschnitt~3.3, Operationalisierbarkeit und Reportingfähigkeit die in Teilfrage~4 und~5 geforderte prototypische Umsetzbarkeit und Nachvollziehbarkeit.
+Die Auswahl der Indikatoren orientiert sich, am Goal-Question-Metric-Prinzip, nachdem Metriken top-down aus übergeordneten Zielen abgeleitet werden \cite{Basili1994GQM}. Die Indikatoren werden dabei nach sechs Kriterien ausgewählt, die sich aus den Forschungsfragen und der bisherigen Methodik ergeben:
+Standardbezug und Konventionsbezug sichern die normative Verankerung im DCAT-AP.de-Standard (vgl. Abschnitt~2.3), Literaturbezug und Interviewbezug die empirische Fundierung aus Kapitel~2 und Abschnitt~3.3, Operationalisierbarkeit und Reportingfähigkeit die in Teilfrage~4 und~5 geforderte prototypische Umsetzbarkeit und Nachvollziehbarkeit.
 
 \begin{enumerate}
     \item \textbf{Standardbezug:} Der Indikator ist aus verpflichtenden, empfohlenen oder optionalen Anforderungen des DCAT-AP.de-Standards ableitbar.
@@ -1582,7 +1583,7 @@ Jeder Indikator liefert ein dreistufiges Prüfergebnis: \textit{erfüllt}, \text
 
 \subsubsection{Ternäre und graduelle Indikatoren}
 
-Das Modell unterscheidet zwei Messformen, die sich an den in ISO/IEC 25024 vorgesehenen Skalentypen für Datenqualitätsmaße orientieren; die Norm ergänzt die Qualitätscharakteristiken aus ISO/IEC 25012 um konkrete Messfunktionen \cite{iso25024, iso25012}. \textbf{Ternäre Indikatoren} bilden ihr Prüfergebnis unmittelbar auf die drei Ergebnisstufen ab. Dies betrifft Eigenschaften mit klar abgrenzbaren Zuständen, insbesondere Vokabular- und Strukturprüfungen auf Datensatzebene. \textbf{Graduelle Indikatoren} messen dagegen einen kontinuierlichen Erfüllungsgrad zwischen 0 und 1, aus dem die Ergebnisstufe nachgelagert abgeleitet wird, diese allerdings keinen Einfluss auf den Wert hat. Graduell gemessen werden zwei Klassen von Eigenschaften. Die erste Klasse umfasst anteilige Eigenschaften, die sich auf mehrere Teilobjekte eines Datensatzes beziehen, beispielsweise den Anteil der Distributionen mit erreichbarer Download-URL. Die zweite Klasse umfasst semantische Urteile, die naturgemäß keine scharfe Erfüllungsgrenze besitzen, beispielsweise die Aussagekraft einer Beschreibung; für solche originär subjektiven Qualitätsurteile ist eine kontinuierliche Skala methodisch etabliert, wie sie bereits Wang und Strong zur Erhebung von Wichtigkeitsurteilen mittels neunstufiger Skala einsetzten \cite{wang1996beyond}. Diese Trennung stellt sicher, dass der kontinuierliche Erfüllungsgrad unverfälscht in die Aggregation eingeht, während die Ergebnisstufe der verständlichen Darstellung im Reporting dient.
+Das Modell unterscheidet zwei Messformen, die sich an den in ISO/IEC 25024 vorgesehenen Skalentypen für Datenqualitätsmaße orientieren. Die Norm ergänzt die Qualitätscharakteristiken aus ISO/IEC 25012 um konkrete Messfunktionen \cite{iso25024, iso25012}. \textbf{Ternäre Indikatoren} bilden ihr Prüfergebnis unmittelbar auf die drei Ergebnisstufen ab und sind damit ordinal skaliert. Dies betrifft Eigenschaften mit klar abgrenzbaren Zuständen, insbesondere Vokabular- und Strukturprüfungen auf Datensatzebene. \textbf{Graduelle Indikatoren} messen dagegen einen kontinuierlichen, verhältnisskalierten Erfüllungsgrad zwischen 0 und 1, aus dem die Ergebnisstufe nachgelagert abgeleitet wird, diese allerdings keinen Einfluss auf den Wert hat. Graduell gemessen werden zwei Klassen von Eigenschaften. Die erste Klasse umfasst anteilige Eigenschaften, die sich auf mehrere Teilobjekte eines Datensatzes beziehen, beispielsweise den Anteil der Distributionen mit erreichbarer Download-URL. Die zweite Klasse umfasst semantische Urteile, die naturgemäß keine scharfe Erfüllungsgrenze besitzen, beispielsweise die Aussagekraft einer Beschreibung; für solche originär subjektiven Qualitätsurteile ist eine kontinuierliche Skala methodisch etabliert, wie sie bereits Wang und Strong zur Erhebung von Wichtigkeitsurteilen mittels neunstufiger Skala einsetzten \cite{wang1996beyond}. Diese Trennung stellt sicher, dass der kontinuierliche Erfüllungsgrad unverfälscht in die Aggregation eingeht, während die Ergebnisstufe der verständlichen Darstellung im Reporting dient.
 
 \subsubsection{Bewertungsebene und Aggregation über Distributionen}
 
@@ -1598,7 +1599,7 @@ Innerhalb der graduellen, distributionsbezogenen Messung werden ausgewählte Def
 
 \subsubsection{Nicht-Anwendbarkeit}
 
-Nicht jedes Qualitätskriterium trifft auf jeden Datensatz zu. Die Interviews fassen Vollständigkeit als relative Feldrelevanz auf und betonen die Kontextabhängigkeit der Bewertung (INT-K2, INT-K7). Das Messmodell sieht deshalb ergänzend die Ergebnisstufe \textit{nicht anwendbar} vor. Ein Kriterium, das auf einen Datensatz fachlich nicht zutrifft, wird neutral übersprungen und geht weder positiv noch negativ in die Aggregation ein. Ein Beispiel hierfür ist die Anforderung kontextueller Qualifizierer wie Stichtags- oder Vorläufigkeitsangaben bei einem einmaligen, statischen Datensatz. Auf diese Weise wird verhindert, dass Datensätze für Angaben abgewertet werden, die für sie nicht relevant sind. Zugleich setzt diese Ergebnisstufe die aus den Interviews abgeleitete Anforderung einer kontextsensitiven Bewertung um. Die Entscheidung über die Anwendbarkeit ist dabei kein vorgelagerter, separat zu pflegender Regelmechanismus, sondern Teil der Prüflogik des jeweiligen Indikators selbst. Im Prototyp betrifft dies einzig den semantischen Indikator zu kontextuellen Qualifizierern innerhalb der Dimension Aussagekraft: Das in Abschnitt~\ref{sec:llm_aussagekraft} beschriebene sprachmodellgestützte Verfahren gibt die Anwendbarkeit als eigenes Feld seiner strukturierten Ausgabe aus und begründet sie mit denselben beobachtbaren Befunden, auf die auch das inhaltliche Urteil gestützt wird.
+Nicht jedes Qualitätskriterium trifft auf jeden Datensatz zu. Die Interviews fassen Vollständigkeit als relative Feldrelevanz auf und betonen die Kontextabhängigkeit der Bewertung (INT-K2, INT-K7). Das Messmodell sieht deshalb ergänzend die Ergebnisstufe \textit{nicht anwendbar} vor. Ein Kriterium, das auf einen Datensatz fachlich nicht zutrifft, wird neutral übersprungen und geht weder positiv noch negativ in die Aggregation ein. Ein Beispiel hierfür ist die Anforderung kontextueller Qualifizierer wie Stichtags- oder Vorläufigkeitsangaben bei einem einmaligen, statischen Datensatz. Auf diese Weise wird verhindert, dass Datensätze für Angaben abgewertet werden, die für sie nicht relevant sind. Zugleich setzt diese Ergebnisstufe die aus den Interviews abgeleitete Anforderung einer kontextsensitiven Bewertung um. Die Entscheidung über die Anwendbarkeit ist dabei kein vorgelagerter, separat zu pflegender Regelmechanismus, sondern Teil der Prüflogik des jeweiligen Indikators selbst. Im Prototyp betrifft dies einzig den semantischen Indikator zu kontextuellen Qualifizierern in der Dimension Aussagekraft: Das in Abschnitt~\ref{sec:llm_aussagekraft} beschriebene sprachmodellgestützte Verfahren gibt die Anwendbarkeit als eigenes Feld seiner strukturierten Ausgabe aus und begründet sie mit denselben beobachtbaren Befunden, auf die auch das inhaltliche Urteil gestützt wird.
 
 \subsubsection{Herleitungsnachweis der Indikatoren}
 
@@ -1795,9 +1796,9 @@ Der Aufbau des Prototyps folgt drei Entwurfsentscheidungen. Erstens werden alle 
     \label{fig:prototyp_architektur}
 \end{figure}
 
-Die Verarbeitung beginnt mit dem Einlesen der RDF/XML-Datei. Der Graph wird einmal traversiert und in die Faktenbasis überführt, wobei bereits gegen lokal mitgelieferte Kopien der Referenzlisten vorberechnet wird, ob Themen, Formate, Medientypen und Lizenzen den kontrollierten Vokabularen angehören. Darauf folgen die beiden bedarfsgesteuerten Anreicherungsschritte, die technische Erreichbarkeitsprüfung der Distributionen und die semantische Bewertung der Freitextfelder durch das Sprachmodell. Um sich Netzwerkzugriffe und Sprachmodellaufrufe zu sparen, werden diese nur ausgeführt, wenn nach der aktiven Konfiguration mindestens ein Indikator ihre Ergebnisse tatsächlich konsumiert; andernfalls werden sie übersprungen. Anschließend werden die Indikatoren der vier Qualitätsdimensionen ausgeführt, ihre Einzelergebnisse über die konfigurierte Abbildung von Ergebnisstufen auf Punktwerte vereinheitlicht und zu Dimensions- und Gesamtwerten aggregiert. Das fertige Bewertungsergebnis wird zusammen mit dem Protokoll des Datensatzes abgelegt. Dieser Ablauf wiederholt sich für jede Eingabedatei des Bewertungslaufs; erst nach dem letzten Datensatz entstehen die laufweiten Kennzahlen, Diagramme und Kostenübersichten.
+Die Verarbeitung beginnt mit dem Einlesen der RDF/XML-Datei. Der Graph wird einmal traversiert und in die Faktenbasis überführt, wobei bereits gegen lokal mitgelieferte Kopien der Referenzlisten vorberechnet wird, ob Themen, Formate, Medientypen und Lizenzen den kontrollierten Vokabularen angehören. Darauf folgen die beiden bedarfsgesteuerten Anreicherungsschritte, die technische Erreichbarkeitsprüfung der Distributionen und die semantische Bewertung der Freitextfelder durch das Sprachmodell. Um sich Netzwerkzugriffe und Sprachmodellaufrufe zu sparen, werden diese nur ausgeführt, wenn nach der aktiven Konfiguration mindestens ein Indikator ihre Ergebnisse tatsächlich konsumiert, andernfalls werden sie übersprungen. Anschließend werden die Indikatoren der vier Qualitätsdimensionen ausgeführt, ihre Einzelergebnisse über die konfigurierte Abbildung von Ergebnisstufen auf Punktwerte vereinheitlicht und zu Dimensions- und Gesamtwerten aggregiert. Das fertige Bewertungsergebnis wird zusammen mit dem Protokoll des Datensatzes abgelegt. Dieser Ablauf wiederholt sich für jede Eingabedatei des Bewertungslaufs. Nach dem letzten Datensatz entstehen zusätzlich laufweite Kennzahlen, Diagramme und Kostenübersichten.
 
-Die Schritte der Pipeline sind nicht unabhängig voneinander lauffähig, sondern über die Faktenbasis sequenziell gekoppelt: Die Bewertung setzt den in der Extraktion aufgebauten Datensatzkontext voraus, und die Anreicherungen können ihre Prüfsignale nur an einen bereits bestehenden Kontext anhängen. Dass sich die Schritte damit ein gemeinsames Datenmodell teilen, ist beabsichtigt und wird in Abschnitt~\ref{sec:extraktion} begründet. Über den eigenen Prozess hinaus greift der Prototyp auf drei externe Dienste zu, nämlich auf die Endpunkte der Distributionen, auf das Sprachmodell und auf den SHACL-Validierungsdienst, der aus dem Konformitätsindikator heraus angesprochen wird.
+Die Schritte der Pipeline sind nicht unabhängig voneinander lauffähig, sondern über die Faktenbasis sequenziell gekoppelt: Die Bewertung setzt den in der Extraktion aufgebauten Datensatzkontext voraus, und die Anreicherungen können ihre Prüfsignale nur an einen bereits bestehenden Kontext anhängen. Dass sich die Schritte damit ein gemeinsames Datenmodell teilen, ist beabsichtigt und wird in Abschnitt~\ref{sec:extraktion} begründet. Über den eigenen Prozess hinaus greift der Prototyp auf drei externe Dienste zu: Die Endpunkte der Distributionen, das Sprachmodell und auf den SHACL-Validierungsdienst, der aus dem Konformitätsindikator heraus angesprochen wird.
 
 Die Indikatoren registrieren sich bei ihrer Instanziierung selbst in einer zentralen Registrierung, aus der der Bewertungsschritt die auszuführenden Prüfungen bezieht. Ein neuer Indikator besteht damit aus einer einzelnen Klasse, die eine Prüfmethode implementiert, und wird von der Verarbeitungskette automatisch berücksichtigt. Dieses Erweiterungsprinzip setzt die im Bewertungsmodell angelegte Offenheit des Indikatorenkatalogs technisch um.
 
@@ -2097,14 +2098,14 @@ Die Konformitätsprüfung N6 validiert den Metadatensatz nicht mit einer lokalen
 \section{LLM-gestützte Bewertung der Aussagekraft}
 \label{sec:llm_aussagekraft}
 
-Die Aussagekraft ist die einzige Qualitätsdimension, die sich nicht regelbasiert bestimmen lässt. Kapitel~4 hat begründet, dass ihre Kriterien ein sprachverstehendes Verfahren als Messinstrument erfordern. Der vorliegende Abschnitt beschreibt, wie dieses Instrument im Prototyp umgesetzt ist, und behandelt damit den zentralen Baustein für die dritte Teilfrage dieser Arbeit, welche ergänzenden kontext- und semantikbezogenen Prüfungen das formale Qualitätsmodell sinnvoll erweitern können, ohne die Nachvollziehbarkeit und Verlässlichkeit des Scorings zu gefährden (vgl. Abschnitt~\ref{sec:forschungsfragen}). Bewertet werden dabei ausschließlich Metadaten offener Verwaltungsdaten, die ohnehin frei im Netz veröffentlicht sind; ihre Übergabe an ein externes Sprachmodell wirft daher keine Fragen des Datenschutzes oder der Vertraulichkeit auf.
+Die Aussagekraft ist die einzige Qualitätsdimension, die sich nicht regelbasiert bestimmen lässt. Kapitel~4 hat begründet, dass ihre Kriterien ein sprachverstehendes Verfahren als Messinstrument erfordern. Der vorliegende Abschnitt beschreibt, wie dieses Instrument im Prototyp umgesetzt ist, und behandelt damit den zentralen Baustein der dritten Teilfrage dieser Arbeit, welche ergänzenden kontext- und semantikbezogenen Prüfungen das formale Qualitätsmodell sinnvoll erweitern können, ohne die Nachvollziehbarkeit und Verlässlichkeit des Scorings zu gefährden (vgl. Abschnitt~\ref{sec:forschungsfragen}). Bewertet werden dabei ausschließlich Metadaten offener Verwaltungsdaten, die ohnehin frei im Netz veröffentlicht sind. Ihre Übergabe an ein externes Sprachmodell wirft daher keine Fragen des Datenschutzes oder der Vertraulichkeit auf.
 
 \subsection{Ein-Aufruf-Architektur}
 
 Für das Sprachmodell verfolgt der Prototyp eine Ein-Aufruf-Architektur. 
 Statt die sechs Kriterien einzeln abzufragen, wird der gesamte Datensatz in einem einzigen Aufruf bewertet.
 Das Ergebnis wird an die Faktenbasis angehängt, und jeder Indikator liest daraus seinen Teil. 
-Damit folgt die semantische Anreicherung demselben Muster wie die technische Erreichbarkeitsprüfung, bei der die geteilte Ressource einmal berechnet und von allen Konsumenten gemeinsam genutzt wird. Zum einen werden durch dieses Vorgehen Kosten reduziert, da statt sechs Aufrufen nur einer je Datensatz anfällt. Zum anderen erhöht der gemeinsame Aufruf die Konsistenz der Bewertung. Alle sechs Kriterien gehen aus derselben ganzheitlichen Betrachtung des Datensatzes hervor und beruhen damit auf einem einheitlichen Verständnis der Metadaten. Widersprüche zwischen den Einzelurteilen, wie sie bei sechs voneinander unabhängigen Aufrufen entstehen könnten, werden dadurch unwahrscheinlich. Schlägt der Aufruf fehl oder ist kein Modell konfiguriert, bleibt die Bewertung leer und die Aussagekraftsindikatoren melden \textit{nicht anwendbar}, statt den Bewertungslauf abzubrechen.
+Damit folgt die semantische Anreicherung dem gleichen Muster wie die technische Erreichbarkeitsprüfung, bei der die geteilte Ressource einmal berechnet und von allen Konsumenten gemeinsam genutzt wird. Zum einen werden durch dieses Vorgehen Kosten reduziert, da statt sechs Aufrufen nur einer je Datensatz anfällt. Zum anderen erhöht der gemeinsame Aufruf die Konsistenz der Bewertung. Alle sechs Kriterien gehen aus derselben ganzheitlichen Betrachtung des Datensatzes hervor und beruhen damit auf einem einheitlichen Verständnis der Metadaten. Widersprüche zwischen den Einzelurteilen, wie sie bei sechs voneinander unabhängigen Aufrufen entstehen könnten, werden dadurch unwahrscheinlich. Schlägt der Aufruf fehl oder ist kein Modell konfiguriert, bleibt die Bewertung leer und die Aussagekraftsindikatoren melden \textit{nicht anwendbar}, statt den Bewertungslauf abzubrechen.
 
 \subsection{Strukturierte Ausgabe}
 
@@ -2247,9 +2248,9 @@ Tabelle~\ref{tab:impl_weights} zeigt die Gewichte der evaluierten Konfiguration 
 \label{tab:impl_weights}
 \end{table}
 
-Die drei auf das Gewicht 2,0 angehobenen Indikatoren teilen eine Eigenschaft: Ein Defekt an ihnen macht den Datensatz faktisch unbrauchbar, unabhängig davon, wie gut die übrigen Metadaten sind. Eine nicht erreichbare Zugriffs-URL bedeutet, dass keine Daten vorliegen. Eine fehlende oder eingeschränkte Lizenz blockiert die Nachnutzung rechtlich. Damit prüfen genau diese Indikatoren definierende Merkmale offener Daten, die in Kapitel~2 eingeführt wurden: Bereitstellung ohne Zugangsbeschränkungen unter Bedingungen, die die Wiederverwendung erlauben \cite{Ubaldi2013OGD, OECD2020OURdata}. Die Experteninterviews benennen dieselben Defekte als zentrale Praxisprobleme (INT-K5). Es sind zugleich die Indikatoren, die den Malus tragen. Die Anhebung des Gewichts verstärkt diese Kopplung gezielt: Ein Datensatz, der an einem datenbrechenden Kriterium scheitert, soll sich im Ergebnis deutlich von einem Datensatz unterscheiden, der lediglich optionale Angaben schuldig bleibt. Der maschinenlesbare Zugriffsweg Z7 wird mit dem Gewicht 1,5 bewusst zwischen den datenbrechenden Indikatoren und dem Standardgewicht eingeordnet. Maschinenlesbarkeit zählt ebenfalls zu den definierenden Merkmalen offener Daten, und ein Datensatz ganz ohne maschinenlesbaren Zugriffsweg entzieht sich der automatisierten Verarbeitung. Anders als eine nicht erreichbare URL oder eine ungeklärte Lizenz wirkt eine einzelne nicht maschinenlesbare Distribution jedoch nicht zwingend datenbrechend, da sie in der Bereitstellungspraxis häufig als ergänzendes Angebot neben einem maschinenlesbaren Zugriffsweg steht. Diese Priorisierung deckt sich mit der MQA, in der die Erreichbarkeit der Access-URL mit 50 Punkten das höchste Einzelgewicht aller Metriken trägt und die Lizenzangaben den am stärksten gewichteten Block der Wiederverwendbarkeit bilden, während die Maschinenlesbarkeit dort mit 20 Punkten im Mittelfeld liegt und damit dieselbe Zwischenstellung einnimmt (vgl. Tabelle~\ref{tab:mqa_metrics_weights}) \cite{data_europa}.
+Die drei auf das Gewicht 2,0 angehobenen Indikatoren teilen eine Eigenschaft: Ein Defekt an ihnen macht den Datensatz faktisch unbrauchbar, unabhängig davon, wie gut die übrigen Metadaten sind. Eine nicht erreichbare Zugriffs-URL bedeutet, dass keine Daten vorliegen. Eine fehlende oder eingeschränkte Lizenz blockiert die Nachnutzung rechtlich. Damit prüfen genau diese Indikatoren definierende Merkmale offener Daten, die in Kapitel~2 eingeführt wurden: Bereitstellung ohne Zugangsbeschränkungen unter Bedingungen, die die Wiederverwendung erlauben \cite{Ubaldi2013OGD, OECD2020OURdata}. Die Experteninterviews benennen dieselben Defekte als zentrale Praxisprobleme (INT-K5). Es sind zugleich die Indikatoren, die den Malus tragen. Die Anhebung des Gewichts verstärkt diese Kopplung gezielt: Ein Datensatz, der an einem datenbrechenden Kriterium scheitert, soll sich im Ergebnis deutlich von einem Datensatz unterscheiden, der lediglich optionale Angaben schuldig bleibt. Der maschinenlesbare Zugriffsweg Z7 wird mit dem Gewicht 1,5 bewusst zwischen den datenbrechenden Indikatoren und dem Standardgewicht eingeordnet. Maschinenlesbarkeit zählt ebenfalls zu den definierenden Merkmalen offener Daten, und ein Datensatz ganz ohne maschinenlesbaren Zugriffsweg entzieht sich der automatisierten Verarbeitung. Eine einzelne nicht maschinenlesbare Distribution wirkt jedoch nicht zwingend datenbrechend, da sie häufig als ergänzendes Angebot neben einem maschinenlesbaren Zugriffsweg steht. Diese Priorisierung deckt sich mit der MQA, in der die Erreichbarkeit der Access-URL mit 50 Punkten das höchste Einzelgewicht aller Metriken trägt und die Lizenzangaben den am stärksten gewichteten Block der Wiederverwendbarkeit bilden, während die Maschinenlesbarkeit dort mit 20 Punkten im Mittelfeld liegt und damit dieselbe Zwischenstellung einnimmt (vgl. Tabelle~\ref{tab:mqa_metrics_weights}) \cite{data_europa}.
 
-Die Dimensionsgewichte folgen derselben Logik auf der übergeordneten Ebene: Die Dimensionen tragen nicht gleich viel zur Nutzbarkeit eines Datensatzes bei. Zugänglichkeit und Aussagekraft erhalten das höchste Gewicht, weil ein Versagen in diesen Dimensionen den Datensatz vollständig entwertet. Sind die Daten nicht erreichbar, existiert faktisch kein nutzbares Angebot. Sind Titel, Beschreibung und Schlagwörter nichtssagend, bleibt der Datensatz für Nutzende unverständlich, auch wenn die Metadaten vollständig sind, worauf auch die Handreichung zur Verbesserung der Metadatenqualität ihren Schwerpunkt legt \cite{bydata2025handreichung}. Die Nachnutzbarkeit wird über der Auffindbarkeit gewichtet, da selbst vollständig vorhandene und erreichbare Daten ohne geklärte rechtliche und organisatorische Rahmenbedingungen ihren Nutzen verlieren. Die Auffindbarkeit erhält das Standardgewicht, da ihre Indikatoren überwiegend Präsenz- und Strukturprüfungen einzelner Suchmerkmale sind. Ihr Beitrag zur Nutzbarkeit hängt zudem stärker als bei den übrigen Dimensionen von deren Erfüllung ab, insbesondere von den datenbrechenden Indikatoren der anderen Dimensionen: Ein auffindbarer Datensatz bleibt nutzlos, wenn die Lizenz fehlt, auf die Daten nicht zugegriffen werden kann oder die Freitextfelder trotz formaler Vollständigkeit widersprüchliche oder zusammenhanglose Inhalte aufweisen. Das Modell weicht damit bewusst von der MQA ab, die die Auffindbarkeit zu den am höchsten gewichteten Dimensionen zählt, dies allerdings auf Basis reiner Präsenzmetriken (vgl. Tabelle~\ref{tab:mqa_metrics_weights}).
+Die Dimensionsgewichte folgen derselben Logik auf der übergeordneten Ebene: Die Dimensionen tragen nicht gleich viel zur Nutzbarkeit eines Datensatzes bei. Zugänglichkeit und Aussagekraft erhalten das höchste Gewicht, weil ein Versagen in diesen Dimensionen den Datensatz stärker entwertet als die anderen. Sind Titel, Beschreibung und Schlagwörter nichtssagend, bleibt der Datensatz für Nutzende unverständlich, auch wenn die Metadaten vollständig sind, worauf auch die Handreichung zur Verbesserung der Metadatenqualität ihren Schwerpunkt legt \cite{bydata2025handreichung}. Die Nachnutzbarkeit wird über der Auffindbarkeit gewichtet, da selbst vollständig vorhandene und erreichbare Daten ohne geklärte rechtliche und organisatorische Rahmenbedingungen ihren Nutzen verlieren. Die Auffindbarkeit erhält das Standardgewicht, da ihre Indikatoren überwiegend Präsenz- und Strukturprüfungen einzelner Suchmerkmale sind. Ihr Beitrag zur Nutzbarkeit hängt zudem stärker als bei den übrigen Dimensionen von deren Erfüllung ab, insbesondere von den datenbrechenden Indikatoren der anderen Dimensionen: Ein auffindbarer Datensatz bleibt nutzlos, wenn die Lizenz fehlt, auf die Daten nicht zugegriffen werden kann oder die Freitextfelder trotz formaler Vollständigkeit widersprüchliche oder zusammenhanglose Inhalte aufweisen. Das Modell weicht damit bewusst von der MQA ab, die die Auffindbarkeit zu den am höchsten gewichteten Dimensionen zählt, dies allerdings auf Basis reiner Präsenzmetriken (vgl. Tabelle~\ref{tab:mqa_metrics_weights}).
 
 % Scope: Der Bewertungslauf als abgeschlossenes, selbsttragendes Artefakt.
 % Aufbau des result.json, Nachvollziehbarkeit ohne Zugriff auf den Prototyp,
@@ -2258,8 +2259,7 @@ Die Dimensionsgewichte folgen derselben Logik auf der übergeordneten Ebene: Die
 \section{Maschinenlesbare Ergebnisreports}
 \label{sec:maschinenreport}
 
-Der Prototyp erzeugt für jede bewertete Metadatendatei einen vollständigen maschinenlesbaren Report, der jedes Einzelergebnis mit Begründung und allen verwendeten Parametern dokumentiert. Dieser Report ist zugleich die einzige Datengrundlage der menschenlesbaren Aufbereitung, die Section~\ref{sec:frontend} beschreibt. Jeder Bewertungslauf legt ein eigenes Ausgabeverzeichnis an.
-Innerhalb dieses Verzeichnisses erhält jede bewertete Datei ein Unterverzeichnis mit drei Artefakten: dem Ergebnisreport als \texttt{json} Objekt sowie zwei Protokolldateien. Listing~\ref{lst:result_json} zeigt den Ergebnisreport in gekürzter Form.
+Der Prototyp erzeugt für jede bewertete Metadatendatei einen vollständigen maschinenlesbaren Report, der jedes Einzelergebnis mit Begründung und allen verwendeten Parametern dokumentiert. Dieser Report ist zugleich die einzige Datengrundlage der menschenlesbaren Aufbereitung, die Section~\ref{sec:frontend} beschreibt. Jeder Bewertungslauf legt ein eigenes Ausgabeverzeichnis an, in dem jede bewertete Datei ein Unterverzeichnis mit drei Artefakten erhält: dem Ergebnisreport als \texttt{json} Objekt sowie zwei Protokolldateien. Listing~\ref{lst:result_json} zeigt den Ergebnisreport in gekürzter Form.
 
 \begin{listing}[H]
 \begin{minted}
@@ -2368,7 +2368,7 @@ Der folgende Abschnitt beschreibt, wie der maschinenlesbare Report aus Section~\
 \subsection{Auflösungsbedarf und Gestaltungsziele}
 \label{subsec:zielgruppen_frontend}
 
-Die in Abschnitt~\ref{subsec:zielgruppen} eingeführten Zielgruppen benötigen das Qualitätsurteil in unterschiedlicher Auflösung. Tabelle~\ref{tab:zielgruppen} stellt die drei Gruppen einander gegenüber und zeigt, an welcher Auflösung sich die Darstellung jeweils ausrichtet.
+Die in Abschnitt~\ref{subsec:zielgruppen} beschriebenen Zielgruppen benötigen das Qualitätsurteil in unterschiedlicher Auflösung. Tabelle~\ref{tab:zielgruppen} stellt die drei Gruppen einander gegenüber und zeigt, an welcher Auflösung sich die Darstellung jeweils ausrichtet.
 
 \begin{table}[H]
 \rowcolors{1}{white}{white}
@@ -2466,7 +2466,7 @@ Der Prototyp überträgt deshalb jedes negative Prüfergebnis in eine einheitlic
     \label{fig:frontend_befund}
 \end{figure}
 
-Der Befund entsteht im Bewertungskern und nicht in der Oberfläche. Die Übersetzung von Evidenz in eine Aussage über den Metadatensatz setzt Kenntnis des jeweiligen Indikators voraus und ist damit eine fachliche, keine gestalterische Entscheidung. Läge sie in der Oberfläche, entstünde eine zweite Interpretationsschicht neben dem Bewertungsmodell, Änderungen an einem Indikator müssten an zwei Stellen nachgezogen werden, und der maschinenlesbare Report wäre nicht mehr die einzige Quelle der Darstellung. Erzeugt wird ein Befund nur für nicht oder teilweise erfüllte Indikatoren sowie für Fehlerfälle -- bei einem erfüllten Indikator gibt es nichts zu erklären.
+Der Befund entsteht im Bewertungskern und nicht in der Oberfläche. Die Übersetzung von Evidenz in eine Aussage über den Metadatensatz setzt Kenntnis des jeweiligen Indikators voraus und ist damit eine fachliche, keine gestalterische Entscheidung. Läge sie in der Oberfläche, entstünde eine zweite Interpretationsschicht neben dem Bewertungsmodell, Änderungen an einem Indikator müssten an zwei Stellen nachgezogen werden, und der maschinenlesbare Report wäre nicht mehr die einzige Quelle der Darstellung. Erzeugt wird ein Befund nur für nicht oder teilweise erfüllte Indikatoren sowie für Fehlerfälle. Bei einem erfüllten Indikator gibt es nichts zu erklären.
 
 % Scope: Die zweite Aufbereitungsstufe — wie die geforderte Angabe konkret
 % aussieht. Zwei Formen je Indikator: Vorlage oder Fundstelle im Quelltext.
@@ -2481,7 +2481,7 @@ Der Prototyp zeigt dafür eine \textbf{Vorlage}: ein kurzes RDF/XML-Fragment, da
 
 Entscheidend für den Nutzen der Vorlage ist, dass sie unabhängig vom vorgefundenen Zustand ist. Sie sieht identisch aus, ob das Feld falsch belegt ist oder ganz fehlt. Gerade der zweite Fall ist der, in dem sie gebraucht wird, denn dort gibt es im Metadatensatz nichts, worauf sich zeigen ließe.
 
-Die Vorlagen zeigen die geforderte Schreibweise damit feldweise und jeweils nur für den einen Indikator, an dem der Datensatz gescheitert ist. Zusammengesetzt ergeben sie genau das Bild, das der Referenzdatensatz aus Abschnitt~\ref{sec:referenzdatensatz} als Ganzes vorführt: Was die Oberfläche einem Bereitsteller Feld für Feld und anlassbezogen zeigt, steht dort einmal vollständig und in sich stimmig. Beide Darstellungen bedienen dieselbe Frage -- wie sieht die richtige Angabe aus? -- auf zwei Auflösungsstufen, der Einzelfeldvorlage im Bearbeitungsfluss und dem vollständigen Beispieldatensatz als Ganzes.
+Die Vorlagen zeigen die geforderte Schreibweise damit feldweise und jeweils nur für den einen Indikator, an dem der Datensatz gescheitert ist. Zusammengesetzt ergeben sie genau das Bild, das der Referenzdatensatz aus Abschnitt~\ref{sec:referenzdatensatz} als Ganzes vorführt: Was die Oberfläche einem Bereitsteller Feld für Feld und anlassbezogen zeigt, steht dort einmal vollständig und in sich stimmig. Beide Darstellungen bedienen dieselbe Frage: Wie sieht die richtige Angabe aus? Und wird durch zwei Auflösungsstufen, der Einzelfeldvorlage im Bearbeitungsfluss und dem vollständigen Beispieldatensatz als Ganzes beantwortet.
 
 
 
@@ -2609,22 +2609,24 @@ stützen sich daher durchgehend auf die Kernstichprobe.
 
 \section{Ground-Truth-Erhebung}
 
-Als unabhängiger Maßstab dient eine manuelle Referenzbewertung aller 50 Datensätze der
+Als Maßstab dient eine manuelle Referenzbewertung aller 50 Datensätze der
 Kernstichprobe und der Extremfälle entlang derselben vier Qualitätsdimensionen, die in
 Kapitel~4 hergeleitet wurden (Tabelle~\ref{tab:finale-qualitaetsdimensionen}) und die der
-Prototyp gemäß Kapitel~5 operationalisiert. Bewertet wird jede Dimension auf einer
+Prototyp gemäß Kapitel~5 operationalisiert. Diese Referenzbewertung wurde nicht durch
+eine unbeteiligte dritte Person, sondern im Rahmen dieser Arbeit selbst vorgenommen. Wo
+im Folgenden von einem \emph{unabhängigen} Maßstab die Rede ist, bezieht sich das
+ausschließlich auf die methodische Trennung von der Prüflogik des Prototyps, nicht auf
+eine personelle Unabhängigkeit. Bewertet wird jede Dimension auf einer
 sechsstufigen Skala von 0 bis 5 entlang je einer ausformulierten Ankerfrage.
 Tabelle~\ref{tab:gt_anker} führt die vier Fragen auf. Die Stufenzahl folgt dem Befund von
 Preston und Colman~\cite{preston2000optimal}, wonach Reliabilität, Validität und
-Diskriminierungsfähigkeit von Ratingskalen auf etwa fünf bis sieben Kategorien zunehmen
-und vierstufige Skalen suboptimal sind. Auf einen Skalenmittelpunkt, also eine
-neutrale mittlere Stufe, wird bewusst verzichtet. Bei Einstellungsskalen ohne inhaltliche
-Kriterien führt ein solcher Mittelpunkt häufig dazu, dass Bewertende bei Unsicherheit
-ausweichen und die neutrale Mitte wählen (Central-Tendency-Bias). Da hier jede Dimension
-stattdessen durch eine feste, inhaltlich definierte Ankerfrage konkretisiert ist
-(Tabelle~\ref{tab:gt_anker}), lässt sich eine Einschätzung an einem konkreten Kriterium
-statt an einer unspezifischen Präferenz festmachen, was ein Ausweichen zur neutralen
-Mitte mangels inhaltlicher Orientierung zumindest abschwächt.
+Diskriminierungsfähigkeit von Ratingskalen auf etwa fünf bis sieben Stufen zunehmen
+und vierstufige Skalen suboptimal sind. Da die Stufenzahl gerade ist, besitzt die Skala
+keinen Mittelpunkt, auf den Bewertende bei Unsicherheit ausweichen könnten
+(Central-Tendency-Bias). Hinzu kommt, dass jede Dimension durch eine feste, inhaltlich
+definierte Ankerfrage konkretisiert ist (Tabelle~\ref{tab:gt_anker}), sodass sich eine
+Einschätzung an einem konkreten Kriterium statt an einer unspezifischen Präferenz
+festmachen lässt.
 
 
 
@@ -2642,7 +2644,7 @@ Ist der Datensatz über Titel, Beschreibung, Schlagwörter, Kategorien sowie rä
 und zeitliche Angaben gut auffindbar und einordenbar? \\
 \hline
 Zugänglichkeit &
-Ist die beschriebene Ressource erreichbar, abrufbar, maschinenlesbar und technisch
+Sind die beschriebenen Distributionen erreichbar, abrufbar, maschinenlesbar und technisch
 plausibel beschrieben? \\
 \hline
 Nachnutzbarkeit &
@@ -2692,8 +2694,8 @@ mittel & \multicolumn{2}{p{0.68\textwidth}}{alle übrigen Fälle} \\
 \end{table}
 
 Die Schwellen in Tabelle~\ref{tab:gt_gesamturteil} legen inhaltlich fest, was ein
-\emph{gutes}, \emph{mittleres} oder \emph{schlechtes} Ergebnis bedeutet, unabhängig
-davon, wie sich die konkrete Stichprobe zufällig verteilt~\cite{glaser1963}. Sie wurden
+\emph{gutes}, \emph{mittleres} oder \emph{schlechtes} Ergebnis trennt, unabhängig
+davon, wie sich die konkrete Stichprobe zufällig verteilt und orientieren sich an der kriteriumsorientierten Messung nach Glaser~\cite{glaser1963}. Sie wurden
 also nicht nachträglich so gewählt, dass eine bestimmte Verteilung von
 gut/mittel/schlecht herauskommt.
 
@@ -2711,16 +2713,9 @@ Bewertungsvorlage enthält ausschließlich den Inhalt der zu bewertenden Metadat
  nicht jedoch dessen Scores. Damit wird ein
 Anchoring-Bias ausgeschlossen, der die gemessene Übereinstimmung künstlich erhöhen würde.
 
-Als Limitation ist festzuhalten, dass diese Referenzbewertung nicht durch eine
-unbeteiligte dritte Person, sondern im Rahmen dieser Arbeit selbst vorgenommen wurde. Die
-Bezeichnung \emph{unabhängig} bezieht sich deshalb nur auf die methodische Trennung von
-der Prüflogik des Prototyps (andere Anker, Blindheit gegenüber den Scores), nicht auf
-eine personelle Unabhängigkeit. Eine Inter-Rater-Reliabilität kann folglich nicht
+Aus der eingangs genannten fehlenden unabhängigen Person der Referenzbewertung folgen zwei Einschränkungen. Eine Inter-Rater-Reliabilität kann nicht
 bestimmt werden, und ein Bestätigungsfehler durch Vorwissen über das Bewertungsmodell
-lässt sich nicht vollständig ausschließen. Entgegengewirkt wurde dem durch eine
-vorherige Kalibrierung an fünf Beispieldatensätzen, kompakte Bewertungssitzungen und die
-explizite Markierung von Zweifelsfällen. Eine Bewertung durch fachfremde Dritte ersetzt
-das jedoch nicht.
+lässt sich nicht vollständig ausschließen.
 
 \section{Vergleichsbaseline: MQA-Reimplementierung und A/B/C-Klassifikation}
 \label{sec:eval_mqa_abc}
@@ -2731,6 +2726,9 @@ ihre Methodik offengelegt ist und sie denselben DCAT-AP-Input bewertet wie der P
 Um beide Verfahren auf exakt derselben Datengrundlage vergleichen zu können, wurde die
 MQA-Bewertungslogik nach der offiziellen Methodik~\cite{dataeuropa2024mqa}
 reimplementiert und gegen die veröffentlichten Berichte von data.europa.eu validiert.
+Wo die Methodik die Berechnung nicht abschließend festlegt, insbesondere bei der
+Behandlung mehrerer Distributionen, wurde die Logik ergänzend aus dem öffentlichen
+Quellcode des MQA-Scoring-Dienstes nachvollzogen~\cite{piveauMetricsScore}.
 Die Reimplementierung ist dabei lediglich Evaluationsinstrument und nicht Bestandteil des
 Artefakts. Da beide Verfahren unterschiedliche Punkteskalen verwenden, werden die
 Ergebnisse vor dem Vergleich auf einen gemeinsamen Wertebereich normalisiert.
@@ -2775,15 +2773,18 @@ hierfür keinen eigenen Indikator vorsieht.
 \label{sec:eval_auswertungsverfahren}
 
 Für den Ground-Truth-Vergleich ist die \textbf{Spearman-Rangkorrelation $\rho$} die
-Primärmetrik, berichtet als Gesamtwert und je Dimension. Diese Festlegung hat drei
+Primärmetrik, berichtet als Gesamtwert und je Dimension. Die naheliegende Alternative
+wäre ein Übereinstimmungsmaß auf dem dreistufigen Gesamturteil, üblicherweise
+\textbf{Cohens $\kappa$}, das aus der beobachteten Übereinstimmung zwischen
+Prototyp-Urteil und Ground Truth den Anteil herausrechnet, der bereits durch Zufall zu
+erwarten wäre. Dass stattdessen $\rho$ die Entscheidungsgrundlage bildet und $\kappa$
+nur ergänzend berichtet wird, hat drei
 Gründe. Erstens ist die Forschungsfrage ordinal: Zu prüfen ist, ob der Prototyp die gleiche
 Rangordnung erzeugt wie ein menschlicher Bewerter. Der kontinuierliche Score ist das
 eigentliche Ergebnis des Verfahrens, das dreistufige Urteil lediglich eine daraus
-abgeleitete Diskretisierung. Zweitens ist Cohens $\kappa$, ein Maß für die
-Übereinstimmung zwischen Prototyp-Urteil und Ground Truth, das die durch Zufall allein
-zu erwartende Übereinstimmung herausrechnet, auf dieser Stichprobe strukturell nach
+abgeleitete Diskretisierung. Zweitens ist $\kappa$ auf dieser Stichprobe strukturell nach
 oben begrenzt: Die Urteilsverteilung der Ground Truth ist mit rund
-87\,\% der Datensätze in der Kategorie \emph{mittel} stark konzentriert, wodurch die
+88\,\% der Datensätze in der Kategorie \emph{mittel} stark konzentriert, wodurch die
 zufällig zu erwartende Übereinstimmung bereits bei etwa 0,79 liegt. Selbst ein nahezu
 perfektes Verfahren könnte unter diesen Randbedingungen kein hohes $\kappa$ erreichen. Das ist
 ein bekanntes Phänomen, das als Kappa-Paradox beschrieben
@@ -2795,9 +2796,10 @@ berichtete Wert ist, zeigt ein Bootstrap-Konfidenzintervall: Aus der vorhandenen
 Stichprobe werden wiederholt neue, gleich große Stichproben mit Zurücklegen gezogen und
 $\kappa$ jeweils neu berechnet. Die Bandbreite dieser wiederholten Berechnungen zeigt,
 wie stark der Wert allein durch die zufällige Zusammensetzung der Stichprobe schwanken
-würde. Für $\kappa$ fällt diese Bandbreite in der vorliegenden Stichprobe sehr breit
-aus und liefert damit das stärkste Einzelargument gegen seine Verwendung als
-Entscheidungsgrundlage.
+würde. Für die Kernstichprobe reicht dieses Intervall von $0{,}18$ bis $0{,}92$ und
+überspannt damit den gesamten Bereich von schwacher bis nahezu perfekter
+Übereinstimmung. Das ist das stärkste Einzelargument gegen die Verwendung von $\kappa$
+als Entscheidungsgrundlage.
 
 Ergänzt wird die Rangkorrelation durch Kendalls $\tau$, eine weitere, robustere
 Rangkorrelation, sowie durch eine Ceiling-Analyse.
@@ -2808,14 +2810,12 @@ mittlerer absoluter Fehler (MAE) und Bias als Kalibrierungsmaße hinzu.
 
 Auf der Urteilsebene, dem aus den vier Dimensionswerten abgeleiteten dreistufigen
 Gesamturteil \emph{gut}/\emph{mittel}/\emph{schlecht}, werden ergänzend fünf
-\textbf{Sekundärmetriken} berichtet. Keine davon ist für sich allein aussagekräftig,
-weil jede eine Schwäche der anderen hat. Erst gemeinsam ergeben sie ein verlässliches
-Bild:
+\textbf{Sekundärmetriken} berichtet:
 
 \begin{itemize}
     \item \textbf{Accuracy} ist der Anteil korrekt vorhergesagter Urteile: leicht
     verständlich, aber bei der stark ungleichen Urteilsverteilung der Ground Truth
-    (87\,\% \emph{mittel}) irreführend: Ein Verfahren, das unabhängig vom Datensatz
+    (88\,\% \emph{mittel}) irreführend: Ein Verfahren, das unabhängig vom Datensatz
     immer \emph{mittel} vorhersagt, erzielt bereits eine hohe Accuracy.
     \item \textbf{Gewichtetes Cohens $\kappa$} korrigiert die Übereinstimmung um den
     Anteil, der bei dieser Verteilung bereits durch Zufall zu erwarten wäre, ist aber,
@@ -2834,14 +2834,14 @@ Bild:
     macht damit sichtbar, welche Urteile konkret verwechselt werden statt nur, wie oft.
 \end{itemize}
 
-Naheliegend wäre der Einwand, eine feiner gestufte Urteilsskala könne das Problem
-beheben. Kontrollrechnungen mit abweichenden Klasseneinteilungen zeigen jedoch, dass
-nicht die Stufenzahl entscheidend ist, sondern die Lage der Schwellen relativ zur
-Stichprobenverteilung. Zudem konvergiert fein gestuftes, quadratisch gewichtetes $\kappa$
-gegen eine Korrelation und misst damit dasselbe wie $\rho$, nur abhängig von zwei
-zusätzlichen willkürlichen Festlegungen. Auf eine nachträgliche Anpassung der Schwellen
-wurde verzichtet, da günstig gewählte Schnittpunkte eine Optimierung der Kennzahl
-statt einer Messung darstellen würden.
+Alle genannten Kennzahlen haben dieselbe Ursache für ihre Schwächen: Fast alle
+Datensätze fallen in die Urteilskategorie \emph{mittel}. Naheliegend wäre daher der Einwand,
+eine feiner gestufte Urteilsskala könne das beheben.
+Kontrollrechnungen mit anderen Klasseneinteilungen zeigen jedoch, dass es nicht auf die
+Stufenzahl ankommt, sondern darauf, wo die Schwellen relativ zur Stichprobenverteilung
+liegen. Hinzu kommt: Je feiner die Skala, desto stärker nähert sich quadratisch
+gewichtetes $\kappa$ einer Korrelation an. Es würde am Ende dasselbe messen wie $\rho$,
+nur zusätzlich abhängig von der gewählten Stufenzahl und der Lage der Schwellen.
 
 Für den MQA-Vergleich werden je Indikatorklasse eigene Kennzahlen berichtet: die
 Übereinstimmungsrate für Klasse~A, die Überschätzungsrate für Klasse~B, die
@@ -2887,7 +2887,8 @@ Tabelle~\ref{tab:deckenpruefung} berichtet das Ergebnis.
     \end{tabular}
     \captionsetup{justification=centering}
     \caption[Deckenprüfung am Referenzdatensatz]{Bewertung des Referenzdatensatzes je
-    Dimension (Konfiguration \texttt{state\_evaluation\_final}, GPT-5.5).}
+    Dimension (Konfiguration \texttt{state\_evaluation\_final},
+    GPT-5.5).}
     \label{tab:deckenpruefung}
 \end{table}
 
@@ -2960,7 +2961,7 @@ ausdrücklich nicht beabsichtigt. Die Auswahl deckt die in der Praxis dominieren
 Kandidaten ab.
 
 Verglichen werden die drei Kandidaten auf identischer Datenbasis: der Kernstichprobe
-($n = 50$) unter der Konfiguration \texttt{state\_evaluation\_final}, jeweils mit
+($n = 50$) unter der Konfiguration \texttt{state\_evaluation\_final}\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/blob/v3_prototype_freeze/conf/state/state_evaluation_final.yaml}}, jeweils mit
 demselben Prompt und derselben Bewertungsrubrik. Abbildung~\ref{fig:modellauswahl_dimensionen}
 zeigt die Rangkorrelation zur Ground Truth je Dimension und Modell.
 
@@ -2982,37 +2983,6 @@ weil sie den identischen deterministischen Anteil mitmitteln und die tatsächlic
 Unterschiede dadurch verwässern. Die Gesamtwerte werden im Folgenden dennoch berichtet,
 da sie die praktische Auswirkung der Modellwahl auf das Endergebnis sichtbar machen.
 
-% Scope: Kandidatenvergleich und Entscheidung.
-%
-% TABELLE (Kandidatenvergleich, drei Spalten GPT-5.5 / Opus 4.8 / Sonnet 4.6):
-%   rho Aussagekraft   0.5687 | 0.6084 | 0.5981   <- Primaermetrik, entscheidet
-%   rho gesamt         0.7655 | 0.7697 | 0.7447
-%   Accuracy (Urteil)  0.92   | 0.90   | 0.88
-%   kappa gewichtet    0.635  | 0.508  | 0.359
-%   PABAK              0.88   | 0.85   | 0.82
-%   AUC gut-vs-rest    0.907  | 0.902  | 0.876
-%   MAE                0.289  | 0.275  | 0.308
-%   Bias              +0.018  | -0.018 | -0.144
-%   Kosten je 50 Dateien (USD)  1.79 | 4.10 | 2.02
-%
-% ABBILDUNG "rho je Dimension und Modell" (gruppierte Balken, vier Dimensionsgruppen
-% mal drei Modelle): In drei Gruppen sind die Balken exakt gleich hoch, nur bei der
-% Aussagekraft unterscheiden sie sich. Transportiert den strukturellen Befund ohne
-% erklaerenden Satz und ist die Ankerabbildung der Section.
-%
-% Argumentationslinie der Entscheidung (zwei Ausschluesse, nicht eine Rangliste):
-%   - Opus 4.8 scheidet an den Kosten aus: doppelter Preis gegenueber Sonnet 4.6
-%     ($4.10 vs. $2.02 je 50 Datensaetze) bei einem Vorsprung von Delta rho = 0.010
-%     auf der Aussagekraft. Dieser Vorsprung liegt innerhalb der Wiederholungsstreuung
-%     desselben Modells (5.6.2, Spanne 0.0432) und ist damit nicht belastbar.
-%   - GPT-5.5 scheidet an der Primaermetrik aus: rho = 0.5687 auf der Aussagekraft,
-%     der niedrigste Wert der drei und -0.029 gegenueber Sonnet 4.6 -- ausserhalb der
-%     Wiederholungsstreuung, also im Gegensatz zum Opus-Abstand ein echter Unterschied.
-%
-% WICHTIG: Die Argumentation folgt bewusst NICHT dem Muster "Modell X gewinnt bei
-% A, B und C" -- das waere nachtraegliches Zusammensuchen von Argumenten. Sie folgt
-% der in 5.5 festgelegten Hierarchie: Trennt die Primaermetrik die Kandidaten? Wenn
-% nein, entscheiden die nachgeordneten Kriterien.
 \subsection{Auswahl des Sprachmodells}
 \label{subsec:eval_modellauswahl_auswahl}
 
@@ -3086,12 +3056,12 @@ Dieser Zusammenhang erklärt zugleich den auf den ersten Blick widersprüchliche
 dass GPT-5.5 auf der Primärmetrik hinten liegt, auf der Urteilsebene jedoch durchgängig
 vorn: Rangkorrelation und Urteilsregel messen unterschiedliche Eigenschaften. Erstere ist
 niveaublind und bewertet allein die Reihenfolge, letztere ist niveauempfindlich und
-bewertet die absolute Lage relativ zu festen Schwellen. GPT-5.5 ordnet die Datensätze
+bewertet die absolute Lage relativ zu festen Schwellen. GPT-5.5 bewertet die Datensätze
 geringfügig schlechter, verortet sie aber auf dem zutreffenden Niveau. Sonnet~4.6 hingegen ordnet
 minimal besser ein, verschiebt jedoch das gesamte Niveau nach unten.
 
 Die Unterschiede auf der Urteilsebene sind allerdings mit Zurückhaltung zu lesen. Die
-Konfusionsmatrizen der drei Modelle sind in zwei von drei Zeilen identisch; der gesamte
+Konfusionsmatrizen der drei Modelle sind in zwei von drei Zeilen identisch. Der gesamte
 Unterschied entsteht in den fünf Datensätzen mit dem Ground-Truth-Urteil „gut“. Aus einer
 Differenz von zwei Datensätzen resultiert bereits die $\kappa$-Spanne von 0,635 bis 0,359
 --- eine Sensitivität, die den in Abschnitt~\ref{sec:eval_auswertungsverfahren} dargelegten Prävalenzbefund bestätigt und
