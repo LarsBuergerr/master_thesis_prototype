@@ -1,6 +1,6 @@
 """Indicator-level join harness: prototype vs. MQA on the same RDF input.
 
-This builds the central comparison artifact for ``docs/evaluation_vs_mqa.md``:
+This builds the central comparison artifact for ``../master_thesis_obsidian/prototyp_doku/evaluation_vs_mqa.md``:
 a **long table with one row per (file × prototype indicator)** carrying both the
 prototype's verdict and the corresponding MQA metric's verdict, tagged by the
 A/B/C class from :mod:`evaluation.indicator_map`. From that single table the

@@ -314,9 +314,13 @@ data/                          # RDF/XML sample directories, one per catalogue
 outputs/runs/                  # Generated run reports (timestamped)
 scripts/                       # Sampling, MQA fetching/comparison, guidance export
 playground/notebooks/          # Evaluation notebooks (ground truth, MQA comparison, figures)
-docs/                          # Methodology notes for the thesis
 thesis/                        # LaTeX sources
 ```
+
+Methodology notes, evaluation write-ups and reference PDFs live outside this repo in
+the Obsidian vault (`../master_thesis_obsidian/prototyp_doku/`, index in its
+`README.md`). Only code and thesis sources are kept here; docstrings that cite a
+methodology note point at that path.
 
 **Dependency direction** is one-way: everything points _down_ into `core`, which
 imports nothing internal. `extraction` builds the `DatasetContext` that every

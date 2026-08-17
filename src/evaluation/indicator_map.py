@@ -1,7 +1,7 @@
 """Prototype-indicator → MQA-metric mapping with A/B/C classification.
 
 This is the **editable heart** of the Modell-vs-MQA evaluation (see
-``docs/evaluation_vs_mqa.md`` §3). Each prototype indicator is mapped to the MQA
+``../master_thesis_obsidian/prototyp_doku/evaluation_vs_mqa.md`` §3). Each prototype indicator is mapped to the MQA
 metric(s) it corresponds to and classified by *how deeply* the two check the
 same thing:
 
@@ -322,7 +322,7 @@ MAPPING: list[dict] = [
 
 #: All MQA metric keys, in dimension/point order (from ``mqa.scorer``). Used to
 #: derive which MQA metrics have NO prototype counterpart (the honest balance,
-#: ``docs/evaluation_vs_mqa.md`` §4.3).
+#: ``../master_thesis_obsidian/prototyp_doku/evaluation_vs_mqa.md`` §4.3).
 ALL_MQA_METRICS: list[str] = [
     "keyword_availability",
     "category_availability",

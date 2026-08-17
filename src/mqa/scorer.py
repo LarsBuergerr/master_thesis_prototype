@@ -1,7 +1,7 @@
 """Faithful, minimal re-implementation of the data.europa.eu MQA score.
 
 This is the **comparison baseline** for the evaluation (see
-``docs/evaluation_vs_mqa.md``). It reproduces the metric set, point values and
+``../master_thesis_obsidian/prototyp_doku/evaluation_vs_mqa.md``). It reproduces the metric set, point values and
 aggregation of the original piveau ``metrics`` pipeline (405 points across five
 FAIR dimensions) so the prototype's scores can be compared against MQA on the
 same RDF input.

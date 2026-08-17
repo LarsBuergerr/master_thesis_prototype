@@ -25,7 +25,7 @@ Pipeline (used by ``playground/notebooks/10_ground_truth_evaluation.ipynb``):
 Stats are implemented in pure numpy/pandas (no scipy/sklearn dependency).
 
 Scale: 0–5 per dimension (6 levels, forced-choice, anchored rubric).
-See ``docs/methodik_evaluation_ground_truth_v3.md`` for full methodology.
+See ``../master_thesis_obsidian/prototyp_doku/methodik_evaluation_ground_truth.md`` for full methodology.
 """
 
 from __future__ import annotations
@@ -57,7 +57,7 @@ VERDICTS = ["schlecht", "mittel", "gut"]  # ordinal order (low -> high)
 def derive_verdict(dims: list[float]) -> Optional[str]:
     """Map four 0-5 dimension values to gut / mittel / schlecht.
 
-    Rules (see docs/methodik_evaluation_ground_truth_v3.md):
+    Rules (see ../master_thesis_obsidian/prototyp_doku/methodik_evaluation_ground_truth.md):
       * gut      = Durchschnitt >= 4.0 und keine Dimension unter 3
       * schlecht = Durchschnitt <= 2.0 oder (Durchschnitt < 3.5 und
                    mindestens zwei Dimensionen unter 2)
@@ -483,7 +483,7 @@ def compare(merged: pd.DataFrame) -> dict:
     with bootstrap CI, PABAK, AUC gut-vs-rest. κ is structurally capped on
     homogeneous samples (kappa paradox), hence CI + PABAK alongside.
     Additional: MAE, RMSE, Bias (0-5 scale), mean Spearman.
-    See docs/methodik_evaluation_ground_truth_v3.md §5 for rationale.
+    See ../master_thesis_obsidian/prototyp_doku/methodik_evaluation_ground_truth.md §5 for rationale.
     """
     per_dim = {}
     for gt_col, dim in DIM_MAP.items():

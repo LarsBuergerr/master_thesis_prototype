@@ -3613,13 +3613,111 @@ menschlicher Übereinstimmung einhergeht.
 \label{sec:limitationen_eval}
 
 
+% ===========================================================================
+% Gliederungsprinzip dieses Kapitels
+% ---------------------------------------------------------------------------
+% Die Diskussion folgt nicht den Forschungsfragen, sondern der Erkenntniskette
+% der Kapitel 2 bis 6. Grund: FF1-FF5 werden über vier Kapitel hinweg
+% beantwortet, und die Evaluation prüft H1-H3 zum Messinstrument, nicht die
+% Forschungsfragen. Eine FF-getaktete Diskussion würde daher entweder das Fazit
+% vorwegnehmen oder redundant werden.
+%
+% Arbeitsteilung mit dem Fazit:
+%   Diskussion  -> Achse Erkenntniskette. Bewertet die Metrik: was hat
+%                  getragen, was nicht, warum.
+%   Fazit       -> Achse Forschungsfragen. Beantwortet knapp, was gefragt war,
+%                  mit Rückverweis in die Diskussion.
+%
+% Jeder Abschnitt folgt demselben Muster: Befund -> Mechanismus (warum ist das
+% so) -> Rückbindung an Literatur/Interviews -> Implikation. Die Abschnitte
+% sollen quervernetzt sein, nicht nebeneinanderstehen: Abschnitt zur Evaluation
+% greift auf Literatur, Konzept und Interviews zurück.
+% ===========================================================================
 \chapter{Diskussion}
+\label{sec:chapter_07}
 
-\section{Beitrag der Arbeit zur Metadatenqualitätsbewertung im GovData-Kontext}
+% Scope: Rahmen, ca. 1 Seite. Die Verengungslogik der Arbeit explizit machen:
+% Literatur (breit, nicht operationalisierbar) -> Interviews (praxisrelevant,
+% teils nicht messbar) -> Konzept (formale Indikatoren) -> Prototyp (was
+% implementierbar war) -> Evaluation (was nachweislich trägt). Jede Stufe wirft
+% weg, was die nächste nicht tragen kann; diese Verengung zu begründen statt
+% nur zu vollziehen ist der Zweck dieses Kapitels. Hier auch die Leserichtung
+% ansagen und die Abgrenzung zum Fazit benennen.
+\section{Verengung von der Theorie zur messbaren Metrik}
+\label{sec:disk_verengung}
 
-\section{Bedeutung kontext- und semantikbezogener Prüfungen}
+% Scope: Diskussion von Kapitel~\ref{sec:chapter_02}. Nicht die Ansätze erneut
+% referieren (das steht dort), sondern bewerten, was übernommen wurde und was
+% nicht:
+%   - Wang/Strong, ISO 25012, FAIR haben gerahmt, aber nichts Prüfbares
+%     geliefert. Warum ist das kein Mangel, sondern erwartbar?
+%   - Zaveri et al. machen Qualitätsaspekte sichtbar, die nicht alle prüfbar
+%     waren. Welche konkret, und woran scheiterte es (Kontextwissen, externe
+%     Referenzdaten, manuelle Bewertung)?
+%   - ISO 19157 / Nogueras-Iso: welcher Beitrag blieb, welcher nicht?
+%   - MQA wurde übernommen UND als Baseline gegen den Prototyp gestellt. Die in
+%     Abschnitt~\ref{sec:bewertungsluecke} behauptete Reduktionsproblematik ist
+%     damit in Kapitel~6 gemessen statt nur postuliert.
+% Belegbar machen über die Spalte "Herleitung" der Indikatortabellen
+% (Tabelle~\ref{tab:herleitungssignale}): Wie viele Indikatoren stammen aus
+% welcher Quelle? Das ist ein prüfbares Argument statt einer Behauptung.
+\section{Bestehende Ansätze: Übernommenes und Verworfenes}
+\label{sec:disk_grundlagen}
 
-\section{Potenziale und Grenzen KI-gestützter Verfahren}
+% Scope: Diskussion von Kapitel~\ref{sec:chapter_03}. Die fünf Modellan-
+% forderungen aus der Interviewauswertung sind unterschiedlich weit gekommen.
+% Ehrlich aufschlüsseln:
+%   - gut umgesetzt: semantische Aussagekraft, technische Nutzbarkeit
+%   - schwächer: Metadaten-Daten-Kongruenz, kontextsensitive Gewichtung
+%     (konzeptionell klar, in der Operationalisierung deutlich reduziert)
+% Zentrale Frage der Betreuung: Welcher Expertengedanke hat sich als nicht
+% operationalisierbar erwiesen, und WORAN? Das ist der Teil, der geprüft wird.
+% Ebenfalls hierher: die drei Zielgruppen aus Abschnitt~\ref{subsec:zielgruppen}.
+% Die Metrik bedient Datenbereitstellende gut, Portalbetreibende und
+% Datennutzende nur mittelbar -- eine Folge der Bewertungsebene (Einzeldatensatz),
+% nicht ein Versäumnis der Umsetzung.
+\section{Expertenanforderungen zwischen Anspruch und Messbarkeit}
+\label{sec:disk_experten}
+
+% Scope: Abgleich zwischen dem konzeptionellen Messmodell
+% (Abschnitt~\ref{sec:messmodell}) und seiner Implementierung
+% (Abschnitt~\ref{sec:einzelindikatoren}). Nicht die Umsetzung wiederholen,
+% sondern die Entwurfsentscheidungen bewerten:
+%   - Was hat getragen: Ergebnisstufen, ternäre vs. graduelle Indikatoren,
+%     Aggregation über Distributionen, Malus-Prinzip, Nicht-Anwendbarkeit.
+%   - Was hat gehakt: welche Indikatoren mussten beim Implementieren
+%     nachgeschärft werden, wo weicht die Implementierung vom Konzept ab?
+%   - Der interessanteste Fall ist die LLM-gestützte Aussagekraftsbewertung
+%     (Abschnitt~\ref{sec:llm_aussagekraft}): Ein nicht deterministisches
+%     Verfahren wird in eine deterministisch gedachte Metrik eingebaut. Was
+%     kostet das, was bringt es, und was folgt aus Ein-Aufruf-Architektur,
+%     strukturierter Ausgabe und Temperatur-/Seed-Konfiguration?
+\section{Vom konzeptionellen Messmodell zur Implementierung}
+\label{sec:disk_konzept_prototyp}
+
+% Scope: Diskussion von Kapitel~6. NICHT die Kennzahlen wiederholen, sondern:
+% Was hat die Evaluation über die Metrik gelehrt, das aus Konzept und
+% Implementierung allein nicht ableitbar war? Kandidaten:
+%   - Deckenprüfung am Referenzdatensatz (Abschnitt~\ref{subsec:deckenpruefung}):
+%     misst das Instrument nach oben überhaupt trennscharf?
+%   - Modellauswahl (Abschnitt~\ref{sec:eval_modellauswahl}) und
+%     Reproduzierbarkeit (Abschnitt~\ref{subsec:eval_reproduzierbarkeit}): die
+%     Metrik ist modellabhängig. Das ist eine Eigenschaft der Metrik, nicht nur
+%     der Implementierung.
+%   - Extremfälle: belegen den Wirkmechanismus per Konstruktion -- was heißt das
+%     für die externe Validität, gegenüber der Kernstichprobe?
+%   - H3 aus Abschnitt~\ref{sec:eval_design} trägt die eigentliche
+%     Überlegenheitsaussage; H2 allein belegt nur andersartiges, nicht besseres
+%     Messen.
+%   - Ground Truth: Spearman rho statt kappa als Primärmetrik ist eine
+%     methodische Entscheidung und gehört begründet.
+% Quervernetzung: Rückgriff auf Abschnitt~\ref{sec:disk_grundlagen} (die
+% MQA-Reduktionsthese ist jetzt gemessen), \ref{sec:disk_konzept_prototyp} (der
+% LLM-Determinismus zeigt sich in der Reproduzierbarkeitsprüfung) und
+% \ref{sec:disk_experten} (welche Expertenanforderung hat sich in der Messung
+% als tragfähig erwiesen).
+\section{Was die Evaluation über die Metrik zeigt}
+\label{sec:disk_evaluation}
 
 % Scope: Diskussionsteil zu FF5. Nicht die Umsetzung wiederholen (das steht in
 % Section~\ref{sec:frontend}), sondern die Tragweite der Entwurfsentscheidungen
@@ -3628,15 +3726,58 @@ menschlicher Übereinstimmung einhergeht.
 % von Metadaten- und Bewertungsebene für die Anschlussfähigkeit an ein
 % bestehendes Portal? Und wo endet die Aussagekraft ohne empirische Prüfung
 % mit Datenbereitstellern?
+% Ergänzend: Dass FF5 als einzige Teilfrage ohne empirische Prüfung bleibt, ist
+% selbst ein Befund und gehört ausgesprochen.
 \section{Nachvollziehbarkeit als Gestaltungsziel des Qualitätsreportings}
+\label{sec:disk_nachvollziehbarkeit}
+
+% Scope: Abgrenzung zu Abschnitt~\ref{sec:limitationen_eval}. Dort steht, was
+% das EXPERIMENT nicht zeigen kann; hier steht, was die METRIK nicht kann.
+% Wechselseitig verweisen, damit die Trennung sichtbar bleibt. Dreiteilung über
+% \paragraph{}:
+%   - Konzeptuelle Grenzen: was an Metadatenqualität grundsätzlich nicht
+%     automatisiert prüfbar ist (Kontextabhängigkeit, Zweckbindung,
+%     fachliche Beurteilung).
+%   - Methodische Grenzen der Metrik: Gewichtung ist gesetzt und nicht empirisch
+%     validiert; Ground Truth von wenigen Ratern; Domänen- und
+%     Portalabhängigkeit der Indikatorauswahl.
+%   - Technische Grenzen: LLM-Abhängigkeit und Modellversionierung,
+%     Reproduzierbarkeit, Laufzeit und Kosten im Portalbetrieb.
+\section{Grenzen der Metrik}
+\label{sec:disk_grenzen}
 
 
 \chapter{Fazit und Ausblick}
+\label{sec:chapter_08}
 
+% Scope: 3-4 Absätze narrativ, keine Wiederholung von Kennzahlen. Was war das
+% Ziel, was ist entstanden, was trägt es. Die Begründungen stehen in
+% Kapitel~\ref{sec:chapter_07} und werden hier nicht wiederholt.
 \section{Zusammenfassung der zentralen Ergebnisse}
 
+% Scope: FF1-FF5 aus Abschnitt~\ref{sec:forschungsfragen} als fettgesetzte
+% Frage-Antwort-Blöcke, ca. ein Absatz je Frage. Diese Blöcke dürfen kurz
+% bleiben, WEIL die Diskussion die Begründung bereits geliefert hat; jede
+% Antwort verweist in den zuständigen Diskussionsabschnitt:
+%   FF1 (Übertragbarkeit bestehender Ansätze) -> \ref{sec:disk_grundlagen}
+%   FF2 (relevante Dimensionen und Indikatoren) -> \ref{sec:disk_experten}
+%   FF3 (ergänzende kontext-/semantikbezogene Prüfungen)
+%        -> \ref{sec:disk_konzept_prototyp}, \ref{sec:disk_grenzen}
+%   FF4 (Konzeption und Operationalisierung)
+%        -> \ref{sec:disk_konzept_prototyp}, \ref{sec:disk_evaluation}
+%   FF5 (menschenlesbares Qualitätsreporting)
+%        -> \ref{sec:disk_nachvollziehbarkeit}
 \section{Beantwortung der Forschungsfragen}
 
-\section{Limitationen}
+% Kein eigener Limitationen-Abschnitt im Fazit. Die Limitationen sind auf zwei
+% Stellen aufgeteilt, die sich sauber trennen lassen:
+%   Abschnitt~\ref{sec:limitationen_eval} -> was das Experiment nicht zeigen kann
+%   Abschnitt~\ref{sec:disk_grenzen}      -> was die Metrik nicht kann
+% Eine dritte Zusammenfassung hier wäre eine Dopplung ohne eigenen Beitrag.
 
+% Scope: Jeder Punkt hier soll aus einer Grenze in Abschnitt~\ref{sec:disk_grenzen}
+% folgen und nicht frei danebenstehen. Also je Forschungsbedarf angeben, welche
+% Grenze ihn motiviert (z.B. empirische Validierung der Gewichtung, Nutzerstudie
+% zum Reporting mit Datenbereitstellenden, Ausweitung der Ground Truth,
+% Portalbetrieb über die Zeit statt Einzeldatensatz).
 \section{Weiterer Forschungs- und Entwicklungsbedarf}
