@@ -688,6 +688,8 @@ $gd-container-width: map-get($container-max-widths, lg);
   font-size: rem-calc(16);
   margin: $spacer * 2 0 $spacer;
 }
+// Breitenbegrenzung liegt in `.ind-box` (_findings.scss), damit Portalseite und
+// Analyzer-Ergebnisliste dieselbe Kante haben.
 .gd-quality {
   margin-top: $spacer * 3;
 }

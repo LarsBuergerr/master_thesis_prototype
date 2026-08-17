@@ -135,7 +135,10 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
             </>
           )}
 
-          <section className="gd-quality design-box design-box-padding" aria-label="Metadaten-Qualität">
+          <section
+            className="gd-quality design-box design-box-padding ind-box"
+            aria-label="Metadaten-Qualität"
+          >
             <div className="gd-quality-head">
               <h2>Metadaten-Qualität</h2>
               <p className="muted">
@@ -238,7 +241,7 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
                     setExpand((p) => ({ open: !p.open, nonce: p.nonce + 1 }))
                   }
                 />
-                <div style={{ marginTop: 8 }}>
+                <div className="dim-panels">
                   {Object.values(result.by_dimension).map((dim) => (
                     <DimensionPanel
                       key={dim.dimension}

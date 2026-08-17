@@ -25,7 +25,7 @@ function FileResultCard({
   }
   const { summary, by_dimension } = fr.result;
   return (
-    <div className="design-box design-box-padding">
+    <div className="design-box design-box-padding ind-box">
       <h3>{fr.filename}</h3>
       <div className="score-row">
         <OverallScoreCard summary={summary} />
@@ -33,7 +33,7 @@ function FileResultCard({
           <DimensionRadar summary={summary} />
         </div>
       </div>
-      <div style={{ marginTop: 8 }}>
+      <div className="dim-panels">
         {Object.values(by_dimension).map((dim) => (
           <DimensionPanel
             key={dim.dimension}

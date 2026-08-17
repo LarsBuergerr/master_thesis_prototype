@@ -14,14 +14,6 @@
   border-radius: 5px;
   text-wrap: nowrap;
 
-  // Statusspalte der Indikatortabellen: einheitliche Breite, damit die Zeilen
-  // eine gemeinsame Kante bilden. Bemessen am längsten Label („nicht erfüllt“),
-  // Inhalt zentriert.
-  &.gd-tag-status {
-    min-width: 13ch;
-    justify-content: center;
-  }
-
   &.black {
     background-color: $clr-media-grey-500;
     color: $clr-shades-white-0;

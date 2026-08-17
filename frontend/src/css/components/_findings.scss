@@ -73,6 +73,28 @@
 // ---------------------------------------------------------------------------
 // Dimensions-Panel
 // ---------------------------------------------------------------------------
+// Behälter der Dimensionspanels. Der Deckel hält Indikatorname und Kennzahlen
+// beieinander, statt sie über die ganze Spaltenbreite auseinanderzuziehen
+// (Wert und Begründung: $ind-content-width in _variables.scss).
+.dim-panels {
+  margin-top: 8px;
+  max-width: $ind-content-width;
+}
+
+// Die Box, die die Dimensionspanels umschließt, endet dort, wo die Tabelle
+// endet: Inhaltsbreite plus die beidseitige Polsterung von
+// `.design-box-padding`. Beide Ansichten der Bewertung tragen die Klasse — die
+// Portalseite (.gd-quality) und die Analyzer-Ergebnisliste —, damit die
+// Kantenberechnung nur an einer Stelle steht. `box-sizing: border-box` gilt
+// global (_global.scss), die Polsterung steckt also mit im Wert.
+.ind-box {
+  max-width: $ind-content-width + $spacer * 4;
+
+  @include media-breakpoint-up(md) {
+    max-width: $ind-content-width + $spacer * 6;
+  }
+}
+
 .dim-panel {
   summary {
     cursor: pointer;
@@ -101,24 +123,89 @@
   // bleiben schmal und rechtsbündig lesbar.
   th.ind-cell {
     font-weight: 400;
-    width: 44%;
+    width: auto;
   }
 
-  // Status trägt eine Plakette („nicht anwendbar") und braucht mehr Platz als
-  // die drei Zahlenspalten.
+  // Kennzahlenspalte: bemessen an der Überschrift „Score / Gewicht" samt
+  // Info-Icon — die ist breiter als der Zellinhalt „✓ 0,50 / 2,00".
   .gd-table-head th:nth-child(2) {
-    width: 20%;
-  }
-  .gd-table-head th:nth-child(n + 3) {
-    width: 12%;
+    width: 19ch;
   }
 
-  td.tnum {
+  td.tnum,
+  td.ind-metrics {
     white-space: nowrap;
   }
 
   .gd-table-head th {
     white-space: nowrap;
+  }
+}
+
+// Kennzahlenzelle: Score und Gewicht in einer Zeile.
+.ind-metrics {
+  text-align: right;
+
+  .ind-metrics-icon {
+    margin-right: 6px;
+    font-weight: 700;
+  }
+
+  .ind-metrics-sep {
+    margin: 0 3px;
+    opacity: 0.55;
+  }
+}
+
+// Statustönung der Tabellenzeilen. Gesetzt wird auf den Zellen und nicht auf
+// `tr`, weil ein Hintergrund am Tabellenzeilenelement von Zellrändern
+// überlagert wird. Nur Zeilen mit Handlungsbedarf werden getönt; erfüllte
+// Indikatoren bleiben weiß. Deckkraft und Wirkung übernommen von der früheren
+// Tönung der aufklappbaren Zeilen. Die Texte behalten ihre Graustufen — die
+// Fläche signalisiert, sie soll nicht mitlesen.
+//
+// Der Mixin gilt für die Indikatorzeile *und* den darunter aufgeklappten
+// Befund: Beide gehören zusammen, ein Farbwechsel zwischen ihnen würde die
+// Fläche auseinanderreißen.
+@mixin ind-status-tint {
+  &.fail > * {
+    background-color: rgba($clr-error-red-200, 0.35);
+  }
+
+  // Höhere Deckkraft als bei Rot, weil das Gelb-200-Token deutlich heller ist
+  // und bei gleichem Wert von Weiß nicht zu unterscheiden wäre.
+  &.partial > * {
+    background-color: rgba($clr-warning-yellow-300, 0.14);
+  }
+
+  &.error > * {
+    background-color: rgba($clr-neutral-grey-200, 0.55);
+  }
+}
+
+.ind-row {
+  @include ind-status-tint;
+}
+
+// Statusglyph in der Kennzahlenzelle: trägt die Statusfarbe als einziges
+// farbiges Element der Zeile und hält damit die Statusinformation auch dort
+// sichtbar, wo die Fläche neutral bleibt (erfüllt, nicht anwendbar).
+.ind-row {
+  &.pass .ind-metrics-icon {
+    color: $clr-success-green-500;
+  }
+
+  &.partial .ind-metrics-icon {
+    color: $clr-warning-yellow-500;
+  }
+
+  &.fail .ind-metrics-icon {
+    color: $clr-error-red-500;
+  }
+
+  &.error .ind-metrics-icon,
+  &.not_applicable .ind-metrics-icon {
+    color: $clr-neutral-grey-600;
   }
 }
 
@@ -165,9 +252,8 @@
   }
 }
 
-.ind-row.actionable {
-  background: rgba(255, 218, 218, 0.22);
-}
+// Der frühere rosa Schleier für aufklappbare Zeilen entfällt: Die Zeile trägt
+// jetzt ihre Statusfarbe, und beides übereinander verfälschte den Ton.
 
 // Ausgeklappt gehören Indikatorzeile und Befund zusammen. Die Trennlinie aus
 // `.gd-table tbody tr` schnitte sie auseinander und läge dabei direkt auf der
@@ -176,9 +262,12 @@
   border-bottom: none;
 }
 
-.ind-finding-row > td {
-  padding-top: 4px;
-  background: rgba(255, 218, 218, 0.22);
+.ind-finding-row {
+  @include ind-status-tint;
+
+  > td {
+    padding-top: 4px;
+  }
 }
 
 // ---------------------------------------------------------------------------

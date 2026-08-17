@@ -74,3 +74,14 @@ $spacers: (
   8: $spacer * 8,
 );
 $gutters: $spacers;
+
+//*******************************
+// Qualitätsbewertung
+//*******************************
+// Inhaltsbreite der Indikatorpanels. Seit Status, Score und Gewicht in einer
+// Spalte stehen, trägt die Tabelle weniger Information und braucht die volle
+// Spaltenbreite nicht. Die umgebende Box (.gd-quality) rechnet ihre Breite aus
+// diesem Wert, damit rechts der Tabelle kein Leerraum in der Box stehen bleibt.
+// In rem, damit sich die Polsterung der Box (ebenfalls rem) direkt aufaddieren
+// lässt; 900px bei 16px-Basis.
+$ind-content-width: 56.25rem;

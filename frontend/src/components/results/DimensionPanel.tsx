@@ -74,7 +74,7 @@ function IndicatorRow({
   return (
     <Fragment>
       <tr
-        className={`ind-row${actionable ? " actionable" : ""}${open ? " open" : ""}`}
+        className={`ind-row ${indicator.status}${actionable ? " actionable" : ""}${open ? " open" : ""}`}
       >
         <th scope="row" className="ind-cell">
           <div className="ind-head">
@@ -96,18 +96,24 @@ function IndicatorRow({
             </button>
           )}
         </th>
-        <td>
-          <span className={`gd-tag gd-tag-status ${indicator.status}`}>
-            <span aria-hidden="true">{statusIcon(indicator.status)}</span>
-            {statusText(indicator.status)}
+        {/* Der Status trägt keine eigene Spalte mehr, sondern färbt diese Zelle.
+            Farbe allein genügt dafür nicht (WCAG SC 1.4.1), deshalb bleiben das
+            Icon-Glyph und ein Textlabel für Screenreader erhalten. */}
+        <td className={`ind-metrics ${indicator.status}`} title={statusText(indicator.status)}>
+          <span aria-hidden="true" className="ind-metrics-icon">
+            {statusIcon(indicator.status)}
           </span>
+          <span className="visually-hidden">{statusText(indicator.status)}</span>
+          <span className="tnum">{fmt(indicator.score)}</span>
+          <span aria-hidden="true" className="ind-metrics-sep">
+            /
+          </span>
+          <span className="tnum">{fmt(indicator.effective_weight, 2)}</span>
         </td>
-        <td className="tnum">{fmt(indicator.score)}</td>
-        <td className="tnum">{fmt(indicator.effective_weight, 2)}</td>
       </tr>
       {actionable && open && (
-        <tr className="ind-finding-row">
-          <td colSpan={4}>
+        <tr className={`ind-finding-row ${indicator.status}`}>
+          <td colSpan={2}>
             <IndicatorFinding indicator={indicator} rdfSource={rdfSource} />
           </td>
         </tr>
@@ -196,13 +202,12 @@ export function DimensionPanel({
               <tr>
                 <th scope="col">Indikator und Prüfergebnis</th>
                 <th scope="col">
-                  Status <InfoTip label="Status" text={columnHelp("status")} />
-                </th>
-                <th scope="col">
-                  Score <InfoTip label="Score" text={columnHelp("score")} />
-                </th>
-                <th scope="col">
-                  Gewicht <InfoTip label="Gewicht" text={columnHelp("weight")} align="end" />
+                  Score / Gewicht{" "}
+                  <InfoTip
+                    label="Score / Gewicht"
+                    text={`${columnHelp("score")} ${columnHelp("weight")} ${columnHelp("status")}`}
+                    align="end"
+                  />
                 </th>
               </tr>
             </thead>
