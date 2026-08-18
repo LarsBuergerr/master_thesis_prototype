@@ -7,7 +7,7 @@
  * offizielle GovData-Frontend (webapp/src/css/_color-tokens.scss); die
  * Chart-Akzentfarben (Magenta) entsprechen der GovData-Metadatenqualitäts-
  * Seite (app/metadatenqualitaet/_components/Charts/common.ts: COLOR_DARK /
- * COLOR_LIGHT). Kontrast-Nachweise: ../master_thesis_obsidian/prototyp_doku/frontend_govdata_adoption.md.
+ * COLOR_LIGHT). Kontrast-Nachweise: Abschnitt 5.8.2 der Thesis.
  *
  * GovData ist ein reines Hell-Design — es gibt daher keinen Dark-Mode mehr.
  */

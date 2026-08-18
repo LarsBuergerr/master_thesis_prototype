@@ -7,7 +7,7 @@ export function statusLabel(status: IndicatorStatus): string {
 }
 
 /** Icon glyph per status — status is never carried by color alone (WCAG SC
- * 1.4.1 "Use of Color"; see ../master_thesis_obsidian/prototyp_doku/frontend_design_literatur.md). */
+ * 1.4.1 "Use of Color"; see thesis section 5.8). */
 const STATUS_ICONS: Record<string, string> = {
   pass: "✓",
   partial: "◐",

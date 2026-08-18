@@ -1,7 +1,7 @@
 """Standalone MQA (data.europa.eu Metadata Quality Assessment) baseline scorer.
 
 Used to compare the prototype's scores against the original MQA metric on the
-same RDF input. See ``../master_thesis_obsidian/prototyp_doku/evaluation_vs_mqa.md``.
+same RDF input. See thesis section 6.4.
 """
 
 from mqa.scorer import MQA_MAX, MqaOptions, score_dataset
