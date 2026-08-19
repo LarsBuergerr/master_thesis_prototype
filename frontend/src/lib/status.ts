@@ -1,6 +1,6 @@
 import type { IndicatorStatus } from "../api/types";
 
-export { statusColor, statusTextColor, gradeColor } from "./theme";
+export { statusColor, statusTextColor, gradeColor, gradeTextColor } from "./theme";
 
 export function statusLabel(status: IndicatorStatus): string {
   return status.replace("_", " ");
@@ -24,6 +24,18 @@ export function statusIcon(status: string): string {
 export function fmt(n: number | null | undefined, digits = 2): string {
   if (n === null || n === undefined || Number.isNaN(n)) return "–";
   return n.toFixed(digits);
+}
+
+/**
+ * Score (0–1) als ganze Punkte von 100.
+ *
+ * Die gesamte Oberfläche nennt Scores in dieser Form („80 / 100"): Der Ring in
+ * der Trefferliste, das Gesamturteil der Detailseite und die Kennzahlen des
+ * Dashboards zeigten dieselbe Zahl vorher in drei Schreibweisen (80, 0.80,
+ * 80/100). Negative Werte (Malus) bleiben erhalten und damit sichtbar.
+ */
+export function scorePoints(n: number): number {
+  return Math.round(n * 100);
 }
 
 /** Last path/fragment segment of a URI, for compact display (full URI stays

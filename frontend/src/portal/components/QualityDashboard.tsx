@@ -56,9 +56,43 @@ const tooltipStyle = {
   color: C.text,
 };
 
-/** Kürzt lange Indikator-Namen für die Achsenbeschriftung. */
-function shorten(label: string, max = 30): string {
+/**
+ * Kürzt lange Indikator-Namen für die Achsenbeschriftung.
+ *
+ * Muss zur Achsenbreite (`DEFICIT_AXIS_WIDTH`) passen: Recharts bricht einen zu
+ * langen Namen sonst in eine zweite Zeile, die Balken rücken auseinander und
+ * die Rangliste liest sich als Absatzfolge statt als Liste. Der vollständige
+ * Name steht im Tooltip.
+ */
+function shorten(label: string, max = 38): string {
   return label.length <= max ? label : `${label.slice(0, max - 1)}…`;
+}
+
+/** Platz für die Indikatornamen der Mängel-Rangliste (eine Zeile, 11 px). */
+const DEFICIT_AXIS_WIDTH = 240;
+
+/**
+ * Einzeilige Achsenbeschriftung.
+ *
+ * Die Vorgabe von Recharts umbricht an der Achsenbreite. Ein eigenes
+ * `<text>`-Element umbricht grundsätzlich nicht — damit bleibt jede Zeile der
+ * Rangliste genau ein Balken hoch.
+ */
+function DeficitTick({
+  x,
+  y,
+  payload,
+}: {
+  x?: number;
+  y?: number;
+  payload?: { value: string };
+}) {
+  if (x == null || y == null || payload == null) return null;
+  return (
+    <text x={x} y={y} dy={4} textAnchor="end" fill={C.textSecondary} fontSize={11}>
+      {payload.value}
+    </text>
+  );
 }
 
 export function QualityDashboard() {
@@ -319,8 +353,8 @@ export function QualityDashboard() {
                   <YAxis
                     type="category"
                     dataKey="label"
-                    width={180}
-                    tick={{ fill: C.textSecondary, fontSize: 11 }}
+                    width={DEFICIT_AXIS_WIDTH}
+                    tick={<DeficitTick />}
                   />
                   <Tooltip
                     contentStyle={tooltipStyle}

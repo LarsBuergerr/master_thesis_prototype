@@ -68,6 +68,12 @@
     margin-bottom: 2px;
     color: $clr-primary-200;
   }
+
+  // Mehrzeiliger Inhalt (Kurzfassung einer Bewertung). Die Breite muss zu
+  // SIZES.rich in InfoTip.tsx passen — dort wird die Position gerechnet.
+  &.rich {
+    max-width: 300px;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -101,8 +107,79 @@
   }
 }
 
+// Feste Spaltenbreite für den Namen: Die vier Dimensionen heißen unterschiedlich
+// lang („Aussagekraft" gegen „Nachnutzbarkeit"), und ohne feste Breite begänne
+// die Chipreihe jedes Panels an einer anderen Stelle. Untereinander gelesen
+// wirkte das wie eine Treppe.
 .dim-name {
+  display: inline-block;
+  min-width: 11rem;
   font-weight: 700;
+}
+
+// Kennzahlen im Deckel des Panels. Bezeichnung normal, Wert fett — so trennt
+// sich innerhalb eines Chips, was benannt wird, von dem, was gilt.
+.dim-chips {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  vertical-align: middle;
+}
+.dim-chip {
+  // Ebenfalls fest bemessen, damit auch die zweite, dritte und vierte Kante
+  // über die Panels hinweg fluchten. Die Werte sind an ihrem breitesten Fall
+  // ausgelegt („Score 100 / 100"); längerer Inhalt sprengt den Chip nicht,
+  // sondern schiebt die Reihe nach rechts.
+  &.dim-chip-score {
+    min-width: 7rem;
+  }
+  &.dim-chip-weight {
+    min-width: 5.5rem;
+  }
+  &.dim-chip-count {
+    min-width: 11.5rem;
+  }
+
+  padding: 1px 8px;
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 20px;
+  background: $clr-neutral-grey-100;
+  font-size: $fnt-paragraph-extra-small;
+  font-weight: 400;
+  color: $clr-neutral-grey-600;
+  white-space: nowrap;
+
+  b {
+    font-weight: 700;
+    color: $clr-neutral-grey-800;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // Handlungsbedarf ist kein Messwert, sondern eine Aufforderung — der einzige
+  // Chip, der die Farbe wechselt.
+  &.actionable {
+    border-color: $clr-error-red-500;
+    background: $clr-error-red-200;
+    color: $clr-error-red-500;
+
+    b {
+      color: $clr-error-red-500;
+    }
+  }
+}
+
+// Unterhalb der Tabellenbreite ist für eine ausgerichtete Reihe kein Platz —
+// dort zählt, dass die Angaben überhaupt lesbar umbrechen.
+@media (max-width: $small-breakpoint) {
+  .dim-name {
+    min-width: 0;
+  }
+  .dim-chip.dim-chip-score,
+  .dim-chip.dim-chip-weight,
+  .dim-chip.dim-chip-count {
+    min-width: 0;
+  }
 }
 
 .dim-what {
@@ -126,10 +203,11 @@
     width: auto;
   }
 
-  // Kennzahlenspalte: bemessen an der Überschrift „Score / Gewicht" samt
-  // Info-Icon — die ist breiter als der Zellinhalt „✓ 0,50 / 2,00".
-  .gd-table-head th:nth-child(2) {
-    width: 19ch;
+  // Score und Gewicht haben wieder je eine Spalte. Bemessen an der Überschrift
+  // samt Info-Icon — die ist breiter als der Zellinhalt („✓ 0,50", „2,00").
+  .gd-table-head th.ind-col-metric {
+    width: 12ch;
+    text-align: right;
   }
 
   td.tnum,
@@ -140,10 +218,28 @@
   .gd-table-head th {
     white-space: nowrap;
   }
+
+  // Etwas mehr Luft zwischen den Indikatoren: Name, Meldung und Aufklapper
+  // sind drei Zeilen, die als ein Block gelesen werden wollen. Bei der
+  // Grundpolsterung der Tabelle (8 px) stand der nächste Indikator näher an
+  // der Meldung des vorigen als dessen eigener Name.
+  tbody th,
+  tbody td {
+    padding-top: map-get($spacers, "1_5");
+    padding-bottom: map-get($spacers, "1_5");
+  }
+
+  // Ausgeklappt gehören Zeile und Befund zusammen — dazwischen bleibt es eng.
+  tbody tr.ind-row.open > * {
+    padding-bottom: map-get($spacers, 1);
+  }
 }
 
-// Kennzahlenzelle: Score und Gewicht in einer Zeile.
-.ind-metrics {
+// Kennzahlenzellen: je eine Spalte, rechtsbündig.
+//
+// Als `td.ind-metrics` geschrieben, damit die Regel `.gd-table td` mit ihrer
+// linksbündigen Vorgabe nicht durch höhere Spezifität gewinnt.
+td.ind-metrics {
   text-align: right;
 
   .ind-metrics-icon {
@@ -151,9 +247,10 @@
     font-weight: 700;
   }
 
-  .ind-metrics-sep {
-    margin: 0 3px;
-    opacity: 0.55;
+  // Der Messwert trägt das Gewicht der Zeile, die Meldung daneben nicht.
+  .ind-metrics-value {
+    font-weight: 700;
+    color: $clr-neutral-grey-800;
   }
 }
 
@@ -240,7 +337,10 @@
 .ind-toggle {
   @extend .button-reset;
 
-  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
   color: $clr-primary-400;
   font-size: $fnt-paragraph-small;
   font-weight: 700;
@@ -250,6 +350,14 @@
   &:hover {
     color: $clr-primary-500;
   }
+}
+
+// Richtungspfeil: zeigt nach unten, solange etwas aufzuklappen ist, und nach
+// oben, sobald es offen steht.
+.ind-toggle-chevron {
+  font-size: 11px;
+  line-height: 1;
+  text-decoration: none;
 }
 
 // Der frühere rosa Schleier für aufklappbare Zeilen entfällt: Die Zeile trägt
@@ -527,14 +635,16 @@
 // ---------------------------------------------------------------------------
 // Werkzeugleiste über den Ergebnistabellen: Handlungsbedarf-Filter, Spalten
 // ---------------------------------------------------------------------------
+// Linksbündig: Am rechten Rand, gegenüber dem Textanfang, wurde die Leiste
+// übersehen. Jetzt steht sie an derselben Kante wie die Panels darunter.
 .ind-toolbar {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: map-get($spacers, "1_5");
   margin-top: map-get($spacers, "1_5");
-  font-size: $fnt-paragraph-extra-small;
+  font-size: $fnt-paragraph-small;
 }
 
 .ind-toolbar-check {
@@ -542,7 +652,7 @@
   align-items: center;
   gap: 6px;
   margin: 0;
-  font-size: $fnt-paragraph-extra-small;
+  font-size: $fnt-paragraph-small;
   white-space: nowrap;
   cursor: pointer;
 
@@ -568,7 +678,7 @@
   border-radius: 4px;
   background: $white;
   color: $clr-primary-400;
-  font-size: $fnt-paragraph-extra-small;
+  font-size: $fnt-paragraph-small;
   white-space: nowrap;
   cursor: pointer;
 
@@ -685,6 +795,13 @@
   font-weight: 700;
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
+}
+
+// Bezugsgröße, wie in der Trefferliste: „80 / 100" statt „0.80".
+.score-card-max {
+  font-size: rem-calc(15);
+  font-weight: 400;
+  color: $clr-neutral-grey-600;
 }
 
 .score-card-note {

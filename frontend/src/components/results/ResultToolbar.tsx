@@ -1,6 +1,9 @@
 // Kompakte Werkzeugleiste über den Ergebnistabellen.
 //
-// Rechtsbündig und klein gehalten — es ist ein Anzeigeschalter, kein Inhalt.
+// Linksbündig an der Kante der Panels darunter: Rechts außen, gegenüber dem
+// Textanfang, wurde sie schlicht übersehen — der Blick beginnt links, und die
+// Leiste ist das Erste, was man an der Ergebnisliste einstellen kann.
+//
 // Der Zähler bleibt sichtbar, damit eine gefilterte Tabelle nie unbemerkt
 // unvollständig ist; in einem Werkzeug, dessen Zweck Nachvollziehbarkeit ist,
 // wäre stilles Ausblenden das falsche Signal.

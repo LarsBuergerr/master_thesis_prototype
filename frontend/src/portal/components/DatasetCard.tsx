@@ -2,13 +2,19 @@
 // Detailseite), Kurzbeschreibung, Metazeile und Format-Chips — alles aus den
 // Metadaten des Katalogs.
 //
+// Die Kopfzeile führt links zusammen, was den Eintrag einordnet — Art,
+// Kategorie und Änderungsdatum. Zuvor stand das Datum am rechten Rand und
+// stand damit weiter von seinem Bezugspunkt entfernt als von dem der
+// Nachbarspalte.
+//
 // Der Qualitäts-Indikator rechts erscheint nur, wenn eine Bewertung über dem
 // Katalog liegt. Ohne sie ist die Karte vollständig; das Portal soll nicht so
 // aussehen, als fehle etwas.
 
-import type { CatalogDataset } from "../../api/types";
+import type { CatalogDataset, RunIndexRow } from "../../api/types";
 import type { Navigate } from "../route";
 import { ScoreIndicator } from "./ScoreIndicator";
+import { themeLabel } from "../lib/quality";
 
 function formatDate(iso: string): string {
   const parts = iso.split("-");
@@ -17,21 +23,29 @@ function formatDate(iso: string): string {
 
 export function DatasetCard({
   dataset,
-  score,
+  quality,
   onNavigate,
 }: {
   dataset: CatalogDataset;
-  /** Gesamtscore aus der überlagerten Bewertung, sonst `undefined`/`null`. */
-  score?: number | null;
+  /** Kurzbewertung aus der überlagerten Bewertung, sonst `undefined`/`null`. */
+  quality?: RunIndexRow | null;
   onNavigate: Navigate;
 }) {
   const open = () => onNavigate({ view: "detail", id: dataset.id });
+  const score = quality?.overall;
 
   return (
     <article className="ds-card design-box">
       <div className="ds-card-body">
         <div className="ds-card-top">
           <span className="ds-card-kind">Datensatz</span>
+          {/* Kategorien sagen in einem Wort, worum es geht — die Beschreibung
+              braucht dafür zwei Zeilen, die hier abgeschnitten werden. */}
+          {dataset.themes.slice(0, 2).map((t) => (
+            <span key={t} className="ds-card-theme">
+              {themeLabel(t)}
+            </span>
+          ))}
           <span className="ds-card-changed">
             Letzte Änderung: <span className="tnum">{formatDate(dataset.modified)}</span>
           </span>
@@ -57,14 +71,14 @@ export function DatasetCard({
         </div>
       </div>
       {score != null && (
-        <button
-          type="button"
-          className="ds-card-score button-reset"
-          onClick={open}
-          aria-label={`Qualität von ${dataset.title} ansehen`}
-        >
-          <ScoreIndicator score={score} />
-        </button>
+        <div className="ds-card-score">
+          <ScoreIndicator
+            score={score}
+            detail={quality}
+            onOpen={open}
+            openLabel={`Qualität von ${dataset.title} ansehen`}
+          />
+        </div>
       )}
     </article>
   );

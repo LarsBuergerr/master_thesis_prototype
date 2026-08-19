@@ -9,12 +9,22 @@
 // Tabelle würde beim Aufklappen breiter und die Erläuterung rechts abgeschnitten.
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import type { ReactNode } from "react";
 import { createPortal } from "react-dom";
 
-/** Muss zur max-width der Blase in _findings.scss passen. */
-const BUBBLE_WIDTH = 280;
-/** Grobe Höhe für die Entscheidung, ob nach oben geklappt wird. */
-const BUBBLE_HEIGHT = 130;
+/**
+ * Maße der Blase je Variante. Sie müssen zu den `max-width`-Werten in
+ * _findings.scss passen: Die Position wird hier gerechnet, nicht vom Browser.
+ * Die Höhe ist nur eine Schätzung — sie entscheidet allein darüber, ob die
+ * Blase nach oben klappt, statt aus dem Bild zu laufen.
+ */
+const SIZES = {
+  regular: { width: 280, height: 130 },
+  // Die Kurzfassung der Bewertung trägt eine Zeile je Dimension und braucht
+  // deshalb mehr Platz in beide Richtungen.
+  rich: { width: 300, height: 230 },
+} as const;
+
 const GAP = 6;
 const MARGIN = 8;
 
@@ -28,11 +38,15 @@ export function InfoTip({
   label,
   text,
   align = "start",
+  size = "regular",
 }: {
   /** Worauf sich die Erläuterung bezieht — für Screenreader. */
   label: string;
-  text: string;
+  /** Erläuterung; auch strukturierter Inhalt (z. B. eine Kurzbewertung). */
+  text: ReactNode;
   align?: "start" | "end";
+  /** `rich` für mehrzeilige Inhalte — breitere Blase, siehe SIZES. */
+  size?: keyof typeof SIZES;
 }) {
   const id = useId();
   const [position, setPosition] = useState<Position | null>(null);
@@ -43,20 +57,18 @@ export function InfoTip({
     const rect = btnRef.current?.getBoundingClientRect();
     if (!rect) return;
 
+    const { width, height } = SIZES[size];
     // Am Knopf ausgerichtet, aber nie über den Fensterrand hinaus.
-    const preferred = align === "end" ? rect.right - BUBBLE_WIDTH : rect.left - GAP;
-    const left = Math.max(
-      MARGIN,
-      Math.min(preferred, window.innerWidth - BUBBLE_WIDTH - MARGIN),
-    );
+    const preferred = align === "end" ? rect.right - width : rect.left - GAP;
+    const left = Math.max(MARGIN, Math.min(preferred, window.innerWidth - width - MARGIN));
     // Nahe am unteren Rand nach oben klappen, statt aus dem Bild zu laufen.
-    const above = rect.bottom + GAP + BUBBLE_HEIGHT > window.innerHeight;
+    const above = rect.bottom + GAP + height > window.innerHeight;
     setPosition({
       top: above ? rect.top - GAP : rect.bottom + GAP,
       left,
       above,
     });
-  }, [align]);
+  }, [align, size]);
 
   const hide = useCallback(() => setPosition(null), []);
 
@@ -93,7 +105,7 @@ export function InfoTip({
       {position &&
         createPortal(
           <span
-            className="info-tip-bubble"
+            className={`info-tip-bubble${size === "rich" ? " rich" : ""}`}
             role="tooltip"
             id={id}
             style={{

@@ -218,7 +218,12 @@ export function DatasetSearch({ onNavigate }: { onNavigate: Navigate }) {
 
           <div className="gd-results">
             {results.map((d) => (
-              <DatasetCard key={d.id} dataset={d} score={scoreOf(d)} onNavigate={onNavigate} />
+              <DatasetCard
+              key={d.id}
+              dataset={d}
+              quality={overlay.rows.get(d.id) ?? null}
+              onNavigate={onNavigate}
+            />
             ))}
             {results.length === 0 && !loading && (
               <div className="alert alert-info">

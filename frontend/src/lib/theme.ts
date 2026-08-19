@@ -78,3 +78,16 @@ export function statusTextColor(status: string): string {
 export function gradeColor(grade: string): string {
   return statusColor(GRADE_STATUS[grade] ?? "fail");
 }
+
+/**
+ * Notenfarbe für *Text* auf hellem Grund.
+ *
+ * `gradeColor` liefert die satten 400er-Töne für Flächen (Ring, Balken, Zelle);
+ * sie erreichen gegen Weiß 3,5–4,1:1 und genügen damit WCAG 1.4.11 für
+ * grafische Objekte, aber nicht 1.4.3 für Fließtext (4,5:1). Beschriftungen
+ * nehmen deshalb die 500er-Töne: #206d5c 6,2:1, #7b7301 5,0:1, #b33030 6,3:1
+ * gegen Weiß.
+ */
+export function gradeTextColor(grade: string): string {
+  return statusTextColor(GRADE_STATUS[grade] ?? "fail");
+}

@@ -490,18 +490,30 @@ $gd-container-width: map-get($container-max-widths, lg);
   flex: 1;
   min-width: 0;
 }
-// Kopfzeile der Karte: „Datensatz“-Label links, „Letzte Änderung“ rechts.
+// Kopfzeile der Karte: Art, Kategorie und Änderungsdatum stehen als eine
+// Gruppe links. Vorher schob `space-between` das Datum an den rechten Rand der
+// Karte — quer über die leere Mitte, näher am Qualitätswert der Nachbarspalte
+// als an dem Eintrag, zu dem es gehört.
 .ds-card-top {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
-  gap: $spacer;
+  flex-wrap: wrap;
+  gap: 4px $spacer;
   margin: 0 0 2px;
 }
 .ds-card-kind {
   font-size: $fnt-paragraph-small;
   font-weight: 700;
   color: $clr-neutral-grey-800;
+}
+// Kategorie des Datensatzes (dcat:theme) — die kürzeste Auskunft darüber,
+// worum es geht.
+.ds-card-theme {
+  font-size: $fnt-paragraph-extra-small;
+  padding: 1px 8px;
+  border-radius: 20px;
+  background: $clr-primary-100;
+  color: $clr-primary-500;
 }
 .ds-card-changed {
   font-size: $fnt-paragraph-small;
@@ -611,30 +623,137 @@ $gd-container-width: map-get($container-max-widths, lg);
 }
 .ds-card-score {
   flex: none;
-  cursor: pointer;
-  border-radius: 4px;
-  padding: 2px;
-
-  @include outline-base();
+  align-self: stretch;
+  padding-left: $spacer * 2;
+  border-left: 1px solid $clr-neutral-grey-200;
 }
 
 // ---- Score-Indikator --------------------------------------------------------
+// Beschriftung, Punktwert mit Bezugsgröße, Balken, Klartext-Urteil. Der Balken
+// hat den früheren Ring abgelöst: Er trägt dieselbe Aussage auf weniger Höhe
+// und lässt in der Kopfzeile Platz für den Infotag.
 .score-indicator {
   display: flex;
   flex-direction: column;
+  gap: 4px;
+  width: 168px;
+}
+.score-indicator-head {
+  display: flex;
   align-items: center;
-  gap: 3px;
-  width: 72px;
-  text-align: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.score-indicator-caption {
+  font-size: $fnt-paragraph-extra-small;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $clr-neutral-grey-500;
+}
+// Der klickbare Teil: Wert, Balken und Urteil führen zur Detailseite. Der
+// Infotag darüber bleibt außerhalb — ein Knopf im Knopf wäre weder gültiges
+// HTML noch mit der Tastatur sinnvoll bedienbar.
+.score-indicator-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  padding: 2px;
+  margin: -2px;
+  border-radius: 4px;
+  text-align: left;
+  cursor: pointer;
+
+  @include outline-base();
+
+  &:hover .score-indicator-value {
+    text-decoration: underline;
+  }
+}
+.score-indicator-figure {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
 }
 .score-indicator-value {
-  font-size: rem-calc(15);
+  font-size: rem-calc(24);
   font-weight: 700;
+  line-height: 1.1;
   font-variant-numeric: tabular-nums;
 }
+// Die Bezugsgröße macht aus einer Zahl einen Wert: „80" allein lässt offen,
+// ob von 100, von 5 oder von 40 Indikatoren die Rede ist.
+.score-indicator-max {
+  font-size: $fnt-paragraph-small;
+  color: $clr-neutral-grey-600;
+  font-variant-numeric: tabular-nums;
+}
+.score-indicator-bar {
+  display: block;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: $clr-neutral-grey-200;
+  overflow: hidden;
+}
+.score-indicator-fill {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+}
 .score-indicator-label {
-  font-size: rem-calc(11);
+  font-size: $fnt-paragraph-extra-small;
   font-weight: 700;
+}
+
+// Kurzfassung der Bewertung im Infotag (Inhalt: ScoreIndicator.tsx).
+.score-tip-lead {
+  display: block;
+  margin-bottom: 6px;
+}
+.score-tip-total {
+  display: block;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba($clr-shades-white-0, 0.18);
+  font-variant-numeric: tabular-nums;
+}
+.score-tip-dims {
+  display: grid;
+  gap: 3px;
+  margin: 5px 0;
+}
+.score-tip-dim {
+  display: grid;
+  grid-template-columns: 1fr 52px 3ch;
+  align-items: center;
+  gap: 6px;
+}
+.score-tip-dim-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.score-tip-dim-bar {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba($clr-shades-white-0, 0.22);
+  overflow: hidden;
+}
+.score-tip-dim-fill {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+}
+.score-tip-dim-value {
+  text-align: right;
+  font-weight: 700;
+}
+.score-tip-foot {
+  display: block;
+  color: $clr-neutral-grey-300;
 }
 
 // ---- Detailseite ------------------------------------------------------------
@@ -788,9 +907,12 @@ $gd-container-width: map-get($container-max-widths, lg);
     margin-bottom: 0;
   }
 }
+// Beschriftung und Fußnote der Kacheln standen mit 11/12 px deutlich unter der
+// Grundschrift der Seite und waren auf dem dunklen Grund schwer zu lesen. Beide
+// gehen um 2–3 px hoch; die Kennzahl selbst bleibt, damit sie führend bleibt.
 .gd-kpi-k {
   margin: 0 0 6px;
-  font-size: rem-calc(11);
+  font-size: rem-calc(14);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: $clr-neutral-grey-300;
@@ -810,7 +932,8 @@ $gd-container-width: map-get($container-max-widths, lg);
 }
 .gd-kpi-n {
   margin: 7px 0 0;
-  font-size: $fnt-paragraph-extra-small;
+  font-size: $fnt-paragraph-small;
+  line-height: 1.4;
   color: $clr-neutral-grey-300;
 }
 .gd-panels {

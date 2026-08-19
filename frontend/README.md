@@ -46,9 +46,9 @@ src/
   hooks/      TanStack Query hooks (indicators, submit, job polling)
   components/
     UploadPanel, ConfigPanel, JobProgress
-    results/  OverallScoreCard (gauge), DimensionRadar, IndicatorBarChart,
-              DimensionPanel (table), BatchComparison (good/bad spread),
-              ResultsView
+    results/  OverallScoreCard (gauge), DimensionRadar (with per-dimension
+              scores), DimensionPanel (table), BatchComparison (good/bad
+              spread), ResultsView
   lib/        GovData chart palette (theme.ts) + status helpers (status.ts)
 ```
 

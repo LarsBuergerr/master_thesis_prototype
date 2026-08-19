@@ -24,6 +24,7 @@ import {
 } from "../../components/results/DimensionPanel";
 import { ResultToolbar } from "../../components/results/ResultToolbar";
 import { useCatalog, useOverlay, usePortalSource } from "../source";
+import { themeLabel } from "../lib/quality";
 
 function formatDate(iso: string): string {
   const parts = iso.split("-");
@@ -276,7 +277,7 @@ export function DatasetDetail({ id, onNavigate }: { id: string; onNavigate: Navi
               {dataset.themes.length > 0 && (
                 <>
                   <dt>Kategorien</dt>
-                  <dd>{dataset.themes.join(", ")}</dd>
+                  <dd>{dataset.themes.map(themeLabel).join(", ")}</dd>
                 </>
               )}
               <dt>Kennung</dt>

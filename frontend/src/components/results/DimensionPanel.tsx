@@ -6,13 +6,15 @@
 // Spalte trägt ihre eigene Erläuterung, und nicht erfüllte Indikatoren lassen
 // sich zu einem vollständigen Befund aufklappen (Ist-Zustand, Soll-Zustand,
 // Änderungsvorschlag).
+//
+// Score und Gewicht stehen in zwei eigenen Spalten. Zusammengelegt („0,50 /
+// 2,00") lasen sie sich wie ein Bruch — als sei 0,50 ein Anteil von 2,00.
 
 import { Fragment, useEffect, useRef, useState } from "react";
 import type { DimensionResult, IndicatorResult } from "../../api/types";
-import { fmt, statusIcon, statusLabel } from "../../lib/status";
+import { fmt, scorePoints, statusIcon, statusLabel } from "../../lib/status";
 import { columnHelp, dimensionLabel, dimensionWhat, indicatorMeta } from "../../lib/indicators";
 import { InfoTip } from "../InfoTip";
-import { IndicatorBarChart } from "./IndicatorBarChart";
 import { IndicatorFinding } from "./IndicatorFinding";
 
 const STATUS_LABELS: Record<string, string> = {
@@ -78,8 +80,11 @@ function IndicatorRow({
       >
         <th scope="row" className="ind-cell">
           <div className="ind-head">
-            <InfoTip label={meta.label} text={meta.what} />
+            {/* Das Icon steht hinter dem Namen: Erst die Sache, dann das
+                Angebot, sie erklärt zu bekommen. Davor gelesen unterbrach es
+                den Namen, noch bevor er begonnen hatte. */}
             <span className="ind-name">{meta.label}</span>
+            <InfoTip label={meta.label} text={meta.what} />
             <code className="ind-field" title={`Metadatenfeld · ${indicator.indicator_id}`}>
               {meta.field}
             </code>
@@ -93,27 +98,35 @@ function IndicatorRow({
               onClick={() => setOpen((v) => !v)}
             >
               {open ? "Hinweise ausblenden" : "Was ist zu tun?"}
+              {/* Richtungspfeil: nach unten heißt „hier geht es weiter", nach
+                  oben „das schließt wieder". Ohne ihn war dem Text nicht
+                  anzusehen, dass er etwas aufklappt. */}
+              <span aria-hidden="true" className="ind-toggle-chevron">
+                {open ? "▴" : "▾"}
+              </span>
             </button>
           )}
         </th>
-        {/* Der Status trägt keine eigene Spalte mehr, sondern färbt diese Zelle.
+        {/* Der Status trägt keine eigene Spalte, sondern färbt die Score-Zelle.
             Farbe allein genügt dafür nicht (WCAG SC 1.4.1), deshalb bleiben das
             Icon-Glyph und ein Textlabel für Screenreader erhalten. */}
-        <td className={`ind-metrics ${indicator.status}`} title={statusText(indicator.status)}>
+        <td
+          className={`ind-metrics ind-metrics-score ${indicator.status}`}
+          title={statusText(indicator.status)}
+        >
           <span aria-hidden="true" className="ind-metrics-icon">
             {statusIcon(indicator.status)}
           </span>
           <span className="visually-hidden">{statusText(indicator.status)}</span>
-          <span className="tnum">{fmt(indicator.score)}</span>
-          <span aria-hidden="true" className="ind-metrics-sep">
-            /
-          </span>
-          <span className="tnum">{fmt(indicator.effective_weight, 2)}</span>
+          <span className="tnum ind-metrics-value">{fmt(indicator.score)}</span>
+        </td>
+        <td className={`ind-metrics ind-metrics-weight ${indicator.status}`}>
+          <span className="tnum ind-metrics-value">{fmt(indicator.effective_weight, 2)}</span>
         </td>
       </tr>
       {actionable && open && (
         <tr className={`ind-finding-row ${indicator.status}`}>
-          <td colSpan={2}>
+          <td colSpan={3}>
             <IndicatorFinding indicator={indicator} rdfSource={rdfSource} />
           </td>
         </tr>
@@ -143,26 +156,10 @@ export function DimensionPanel({
   const [open, setOpen] = useExpandSignal(defaultOpen, expand);
   const actionable = dim.indicators.filter((i) => i.status !== "pass").length;
 
-  // Gefiltert wird nur die Tabelle. Das Balkendiagramm behält alle Indikatoren:
-  // es ist die Übersicht der Dimension, und ohne die erfüllten Balken sähe eine
-  // gut bewertete Dimension aus wie eine schlechte.
   const rows = hidePassing
     ? dim.indicators.filter((i) => i.status !== "pass")
     : dim.indicators;
   const hidden = dim.indicators.length - rows.length;
-
-  // Die Aufgabe des Diagramms ist der *Vergleich* von Erfüllungsgraden. Wo alle
-  // Indikatoren 0 oder 1 erreichen, zeigt es nichts, was nicht schon in der
-  // Statusspalte steht; bei einem einzigen Zwischenwert steht die Zahl bereits
-  // in der Score-Spalte. Erst ab zwei gestuften Ergebnissen gibt es etwas zu
-  // vergleichen. Über die Stichprobe (n = 50) heißt das: bei Aussagekraft immer
-  // sichtbar, bei Zugänglichkeit in 38 % der Fälle, bei Auffindbarkeit und
-  // Nachnutzbarkeit praktisch nie.
-  const graded =
-    dim.indicators.filter((i) => {
-      const score = i.score ?? 0;
-      return score > 0 && score < 1;
-    }).length >= 2;
 
   return (
     <details
@@ -170,22 +167,34 @@ export function DimensionPanel({
       open={open}
       onToggle={(e) => setOpen(e.currentTarget.open)}
     >
+      {/* Die Kennzahlen der Dimension als Chips: In der früheren Fließzeile
+          („Score 0.80 · Gewicht 1.0 · …") verschwammen Bezeichnung und Wert zu
+          einer Kette von Wörtern. Jeder Chip trennt beides — Bezeichnung
+          normal, Wert fett — und ist als eigene Angabe erkennbar. */}
       <summary>
         <span className="dim-name">{label}</span>{" "}
-        <span className="muted">
-          Score {fmt(dim.score)} · Gewicht {fmt(dim.dimension_weight, 1)} ·{" "}
-          {dim.pass_count} von {dim.indicator_count} Indikatoren erfüllt
-          {actionable > 0 && ` · ${actionable} mit Handlungsbedarf`}
+        <span className="dim-chips">
+          <span className="dim-chip dim-chip-score">
+            Score <b className="tnum">{scorePoints(dim.score)} / 100</b>
+          </span>
+          <span className="dim-chip dim-chip-weight">
+            Gewicht <b className="tnum">{fmt(dim.dimension_weight, 1)}</b>
+          </span>
+          <span className="dim-chip dim-chip-count">
+            <b className="tnum">
+              {dim.pass_count} / {dim.indicator_count}
+            </b>{" "}
+            Indikatoren erfüllt
+          </span>
+          {actionable > 0 && (
+            <span className="dim-chip actionable">
+              <b className="tnum">{actionable}</b> mit Handlungsbedarf
+            </span>
+          )}
         </span>
       </summary>
 
       {what && <p className="dim-what muted">{what}</p>}
-
-      {graded && (
-        <div style={{ marginTop: 10 }}>
-          <IndicatorBarChart dim={dim} />
-        </div>
-      )}
 
       {rows.length === 0 ? (
         <p className="dim-all-passed muted" style={{ marginTop: 10 }}>
@@ -201,13 +210,16 @@ export function DimensionPanel({
             <thead className="gd-table-head">
               <tr>
                 <th scope="col">Indikator und Prüfergebnis</th>
-                <th scope="col">
-                  Score / Gewicht{" "}
+                <th scope="col" className="ind-col-metric">
+                  Score{" "}
                   <InfoTip
-                    label="Score / Gewicht"
-                    text={`${columnHelp("score")} ${columnHelp("weight")} ${columnHelp("status")}`}
+                    label="Score"
+                    text={`${columnHelp("score")} ${columnHelp("status")}`}
                     align="end"
                   />
+                </th>
+                <th scope="col" className="ind-col-metric">
+                  Gewicht <InfoTip label="Gewicht" text={columnHelp("weight")} align="end" />
                 </th>
               </tr>
             </thead>
