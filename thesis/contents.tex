@@ -3599,17 +3599,6 @@ vertretbarer Fehlerrate umsetzbar war, und die Evaluation zeigt schließlich,
 welcher Teil davon nachweislich trägt. Jede dieser Stufen verwirft, was die
 nächste nicht tragen kann.
 
-Diese Verengung zu begründen statt sie nur zu vollziehen ist der Zweck dieses
-Kapitels. Es folgt daher nicht den Forschungsfragen, sondern der Erkenntniskette
-der Kapitel~\ref{sec:chapter_02} bis~6. Abschnitt~\ref{sec:disk_grundlagen}
-bewertet, was aus Literatur und Praxis übernommen wurde und was nicht.
-Abschnitt~\ref{sec:disk_konzept_prototyp} prüft die Entwurfsentscheidungen des
-Messmodells und ihrer Umsetzung. Abschnitt~\ref{sec:disk_evaluation} arbeitet
-heraus, was die Messung über die Metrik gelehrt hat, das aus Konzept und
-Implementierung allein nicht ableitbar war. Abschnitt~\ref{sec:disk_grenzen}
-benennt, was die Metrik grundsätzlich nicht leisten kann.
-Die knappe Beantwortung der Forschungsfragen bleibt Kapitel~\ref{sec:chapter_08} vorbehalten und stützt sich auf die hier entwickelten Begründungen.
-
 Zwei Größenordnungen strukturieren die Verengung quantitativ. Aus einer Longlist
 von fünfzehn Kandidatendimensionen entstanden vier Hauptdimensionen, aus diesen
 neunundzwanzig Indikatoren, von denen siebenundzwanzig aktiv sind und sechs auf
@@ -3625,10 +3614,10 @@ nicht Nebenbedingung des Modells, sondern Gegenstand der dritten Teilfrage
 (Abschnitt~\ref{sec:forschungsfragen}).
 
 % =============================================================================
-\section{Zwischen Literatur, Praxis und Messbarkeit}
+\section{Einordnung bestehender Ansätze und Expertenanforderungen}
 \label{sec:disk_grundlagen}
 
-\subsection{Was die Literatur beigetragen hat}
+\subsection{Übertragbarkeit bestehender Bewertungsansätze}
 
 Die in Abschnitt~2.5 dargestellten Qualitätsmodelle haben die Arbeit gerahmt,
 ohne Prüfbares zu liefern. Wang und Strong strukturieren Qualität in Dimensionen
@@ -3720,7 +3709,7 @@ politische Geokodierung, bei der 56~Prozent der Datensätze einen Punkt erhalten
 den der Prototyp verweigert. Damit ist eine These aus Kapitel~2 in eine
 überprüfbare Aussage überführt.
 
-\subsection{Was die Praxis gefordert hat}
+\subsection{Umsetzung der empirischen Modellanforderungen}
 
 Die Interviewauswertung hat fünf Modellanforderungen ergeben
 (Abschnitt~3.3). Sie sind unterschiedlich weit gekommen, und die Verteilung ist
@@ -3819,10 +3808,10 @@ der gewählten Bewertungsebene des Einzeldatensatzes und kein Versäumnis der
 Umsetzung.
 
 % =============================================================================
-\section{Entwurfsentscheidungen und ihre Tragfähigkeit}
+\section{Bewertung der Entwurfsentscheidungen}
 \label{sec:disk_konzept_prototyp}
 
-\subsection{Das Messmodell in der Umsetzung}
+\subsection{Messmodell und Aggregationslogik}
 
 Vier Festlegungen des konzeptionellen Messmodells haben die Implementierung
 getragen, und eine hat sich als problematisch erwiesen.
@@ -3887,7 +3876,7 @@ bleiben als ihr Informationsbeitrag, sonst verschlechtert der Indikator das
 Gesamturteil, statt es zu verbessern. Dieselbe Regel begründet den Verzicht auf
 die Kongruenzprüfung in Abschnitt~\ref{sec:disk_grundlagen}.
 
-\subsection{Der Einbau eines nicht deterministischen Verfahrens}
+\subsection{Integration des sprachmodellgestützten Verfahrens}
 
 Der interessanteste Fall der Umsetzung ist der Einbau einer
 sprachmodellgestützten Bewertung in eine deterministisch gedachte Metrik. Drei
@@ -3923,7 +3912,7 @@ Jede Größe, die zwischen Läufen bewusst variiert wird, ist Bestandteil der
 Konfiguration und liegt danach. Alle in Kapitel~6 berichteten Ergebnisse beruhen
 auf einem einzigen, eingefrorenen Stand der score-erzeugenden Logik.
 
-\subsection{Nachvollziehbarkeit als durchgängiges Gestaltungsziel}
+\subsection{Nachvollziehbarkeit des Qualitätsreportings}
 \label{sec:disk_nachvollziehbarkeit}
 
 Die Entwurfsentscheidungen der beiden vorangegangenen Unterabschnitte folgen
@@ -3981,10 +3970,10 @@ Gestaltungskonventionen, nicht auf eine Messung. Dass vier Teilfragen quantitati
 geprüft sind und eine nicht, ist eine Asymmetrie, die benannt werden muss.
 
 % =============================================================================
-\section{Was die Evaluation über die Metrik zeigt}
+\section{Einordnung der Evaluationsergebnisse}
 \label{sec:disk_evaluation}
 
-\subsection{Was erst die Messung gezeigt hat}
+\subsection{Befunde zum Messinstrument}
 
 Vier Erkenntnisse der Evaluation waren aus Konzept und Implementierung allein
 nicht ableitbar.
@@ -4044,7 +4033,7 @@ systematische Abwertung guter Metadaten ein praktisch relevanter Mangel, den
 keine Rangkorrelation sichtbar macht. Welche Kennzahl den Ausschlag gibt, hängt
 folglich vom Verwendungszweck ab und nicht von ihrer statistischen Eleganz.
 
-\subsection{Die Grenze der semantischen Bewertung}
+\subsection{Messgüte der semantischen Dimension}
 
 Der schwächste Wert der gesamten Auswertung betrifft die Aussagekraft auf den
 Extremfällen. Die Rangkorrelation liegt dort bei 0{,}321 und schöpft damit nur
@@ -4081,13 +4070,7 @@ der Extremfälle bewertet das Modell die Beschreibungsqualität als nicht erfül
 und begründet dies damit, dass die Beschreibung aus einem einzelnen Wort besteht.
 Die übrigen fünf Kriterien liegen zwischen 0{,}65 und 0{,}95, der gemittelte
 Dimensionswert landet bei 0{,}72. Ein einzelnes hartes Defizit wird von fünf
-unauffälligen Werten praktisch neutralisiert. Bemerkenswert ist, dass dies
-strukturell derselbe Fehler ist, den das Bewertungsmodell auf Dimensionsebene
-bewusst vermeidet. Die Ableitungsregel des Gesamturteils enthält eine
-Sperrbedingung, damit ein gravierender Einzelmangel nicht im Durchschnitt der
-übrigen Dimensionen verschwindet (Tabelle~\ref{tab:gt_gesamturteil}). Genau diese
-Vorkehrung fehlt innerhalb der Aussagekraft. Die Lösung ist konzeptionell also
-vorhanden, sie ist nur eine Ebene tiefer nicht angewendet.
+unauffälligen Werten praktisch neutralisiert.
 
 Beide Erklärungen wirken in dieselbe Richtung. Die relationalen Kriterien liefern
 bei schwachem Inhalt hohe Werte, und die flache Mittelung lässt diese hohen Werte
@@ -4133,7 +4116,7 @@ präzise formuliert. Der Wirkmechanismus funktioniert an dieser Stelle nicht weg
 der Aussagekraft, sondern trotz ihrer, weil die drei übrigen Dimensionen das
 schwache Signal im gewichteten Mittel abfedern.
 
-\subsection{Mehrwert, Überlegenheit und ihre Grenzen}
+\subsection{Mehrwert gegenüber der Vergleichsbaseline}
 
 Der Vergleich mit der Baseline stützt die drei Hypothesen aus
 Abschnitt~\ref{sec:eval_design} konsistent, aber mit unterschiedlicher Deutlichkeit,
@@ -4184,7 +4167,7 @@ Baseline näher am menschlichen Urteil liegt. Der Befund widerlegt die
 jeder Dimension automatisch mit besserer Übereinstimmung einhergeht.
 
 % =============================================================================
-\section{Grenzen der Metrik}
+\section{Grenzen des Bewertungsmodells}
 \label{sec:disk_grenzen}
 
 Dieser Abschnitt behandelt, was die Metrik nicht leisten kann. Was das Experiment
@@ -4294,7 +4277,7 @@ adressiert, da die Bewertung über einen externen Anbieter erfolgt.
 %   FF1 (Übertragbarkeit bestehender Ansätze) -> \ref{sec:disk_grundlagen}
 %   FF2 (relevante Dimensionen und Indikatoren) -> \ref{sec:disk_grundlagen}
 %        (Literatur und Expertenanforderungen sind dort zusammengeführt; der
-%         Unterabschnitt "Was die Praxis gefordert hat" trägt FF2)
+%         Unterabschnitt "Umsetzung der empirischen Modellanforderungen" trägt FF2)
 %   FF3 (ergänzende kontext-/semantikbezogene Prüfungen)
 %        -> \ref{sec:disk_konzept_prototyp}, \ref{sec:disk_grenzen}
 %   FF4 (Konzeption und Operationalisierung)
