@@ -179,9 +179,9 @@ breakaftersymbolpre={}
 \label{lst:referenzdatensatz}
 \end{listing}
 
-Zwei Strukturmerkmale prägen den Aufbau. Erstens trennt DCAT zwischen dem \texttt{dcat:Dataset} als der beschriebenen Sache und der \texttt{dcat:Distribution} als der konkret abrufbaren Repräsentation dieser Sache. Titel, Beschreibung, Schlagwörter, Thema sowie räumlicher und zeitlicher Bezug hängen am Datensatz, während Format, Medientyp, Lizenz und die Zugriffs- und Download-Adressen Eigenschaften der einzelnen Distribution sind. Ein Datensatz kann mehrere Distributionen tragen, im Regelfall denselben Inhalt in unterschiedlichen Formaten: Der Referenzdatensatz bietet die Messreihe als CSV und als JSON an, beide über dieselbe Schnittstelle des Umweltbundesamtes und mit identischem Datenbestand. Diese Trennung ist für die Qualitätsbewertung folgenreich, weil ein Teil der Prüfungen damit je Distribution und nicht je Datensatz zu erfolgen hat -- ein Punkt, auf den Abschnitt~\ref{sec:messmodell} zurückkommt.
+Zwei Strukturmerkmale prägen den Aufbau. Erstens trennt DCAT zwischen dem \texttt{dcat:Dataset} als der beschriebenen Ressource und der \texttt{dcat:Distribution} als der konkret abrufbaren Repräsentation dieser Ressource. Titel, Beschreibung, Schlagwörter, Thema sowie räumlicher und zeitlicher Bezug hängen am Datensatz, während Format, Medientyp, Lizenz und die Zugriffs- und Download-Adressen Eigenschaften der einzelnen Distribution sind. Ein Datensatz kann mehrere Distributionen tragen, im Regelfall denselben Inhalt in unterschiedlichen Formaten: Der Referenzdatensatz bietet die Messreihe als CSV und als JSON an, beide über dieselbe Schnittstelle des Umweltbundesamtes und mit identischem Datenbestand. Diese Trennung ist für die Qualitätsbewertung folgenreich, weil ein Teil der Prüfungen damit je Distribution und nicht je Datensatz zu erfolgen hat -- ein Punkt, auf den Abschnitt~\ref{sec:messmodell} zurückkommt.
 
-Zweitens sind die inhaltlich entscheidenden Angaben keine freien Texte, sondern Verweise auf kontrollierte Vokabulare. Thema, Dateiformat, Medientyp, Sprache, Aktualisierungsfrequenz, Lizenz und Verfügbarkeit werden jeweils als URI aus einer vorgegebenen Liste gesetzt, überwiegend aus den Vokabularen des EU-Publikationsamts. Hinzu kommen die deutschen Erweiterungen des Profils im Namensraum \texttt{dcatde}, insbesondere die politische Geokodierung über den amtlichen Gemeindeschlüssel samt zugehöriger Ebene sowie die Kennung der liefernden Stelle. Erst diese Festlegung auf gemeinsame Wertelisten macht Metadaten portalübergreifend vergleichbar und filterbar: Ein Freitext \enquote{Umwelt} im Themenfeld wäre für eine föderierte Suche wertlos, der URI der Kategorie \texttt{ENVI} dagegen eindeutig auswertbar. Für die Qualitätsbewertung folgt daraus, dass sich ein erheblicher Teil der Prüfungen als Abgleich gegen genau diese Vokabulare formulieren lässt.
+Zweitens sind die inhaltlich entscheidenden Angaben keine freien Texte, sondern Verweise auf kontrollierte Vokabulare. Thema, Dateiformat, Medientyp, Sprache, Aktualisierungsfrequenz, Lizenz und Verfügbarkeit werden jeweils als URI aus einer vorgegebenen Liste gesetzt, überwiegend aus den Vokabularen des EU-Publikationsamts. Hinzu kommen die deutschen Erweiterungen des Profils im Namensraum \texttt{dcatde}, insbesondere die politische Geokodierung über den amtlichen Gemeindeschlüssel samt zugehöriger Ebene sowie die Kennung der liefernden Stelle. Für die Qualitätsbewertung folgt daraus, dass sich ein erheblicher Teil der Prüfungen als Abgleich gegen genau diese Vokabulare formulieren lässt.
 
 \section{RDF, Linked Data und SHACL}
 
@@ -3777,7 +3777,6 @@ Vier Festlegungen des konzeptionellen Messmodells haben die Implementierung
 getragen, und eine hat sich als problematisch erwiesen.
 
 
-% @TODO weis nicht ob das so geil ist das so zu erwähnen
 Die wichtigste Entscheidung ist die Trennung von Messung und Etikett. Der
 kontinuierliche Erfüllungsgrad eines graduellen Indikators ist die kanonische
 Größe des Modells, die Ergebnisstufe dagegen eine nachgelagerte Diskretisierung
@@ -3786,33 +3785,26 @@ Darstellungsfrage, denn sie verlagert die Begründungslast. Wären die Schwellen
 zwischen den Ergebnisstufen zahlenwirksam, müsste jede von ihnen einzeln
 gerechtfertigt werden. Da sie ausschließlich der Darstellung dienen, reduziert
 sich die Begründung auf zwei Aussagen, nämlich wie der kontinuierliche Wert
-gebildet wird und dass die Stufen präsentational sind. Eine frühere Fassung des
-Verfahrens verband die unterste Schwelle noch mit dem Punktwert und erzeugte
-damit eine Unstetigkeit, bei der ein Messunterschied von einem Hundertstel einen
-Ergebnisunterschied von einem halben Punkt auslöste. In der evaluierten Fassung
-ist der Datensatzscore eine stetige und monotone Funktion der Messung.
+gebildet wird und dass die Stufen präsentational sind. Sie ist zugleich die Voraussetzung dafür, dass der
+Datensatzscore eine stetige und monotone Funktion der Messung ist, denn eine
+zahlenwirksame Schwelle würde an ihrer Grenze einen Sprung erzeugen, den kein
+Messunterschied rechtfertigt.
 
-% @TODO weis auch nicht ob das so geil ist oder ueberhautp worht it zu erwaehnen
 Die Aggregation über Distributionen als Mittelwert statt nach dem
-Best-Distribution-Prinzip ist die am breitesten abgestützte Entscheidung der Arbeit, weil sie sich zugleich spezifikationsseitig, empirisch und
-begriffsanalytisch begründen lässt (Abschnitt~\ref{sec:messmodell}).
-Entscheidend für die Bewertung ist ihr Verhältnis zum Zweck des Verfahrens: Da
-die Aufdeckung fehlerhafter Distributionen gerade das Ziel ist, wäre eine
-Aggregation, die Inkonsistenzen maskiert, dem Zweck entgegengesetzt.
+Best-Distribution-Prinzip (Abschnitt~\ref{sec:messmodell}) ist diejenige
+Entwurfsentscheidung, deren Wirkung sich am deutlichsten in der Evaluation
+wiederfindet. Unter dem Prinzip der Baseline bleibt eine nicht erreichbare
+Download-URL folgenlos, solange eine einzige Distribution des Datensatzes
+funktioniert. Ein Teil der auf Klasse~B gemessenen Überschätzung entfällt
+entsprechend auf distributionsbezogene Indikatoren, bei denen die Baseline
+Qualität annimmt, die nur für eine von mehreren Ressourcen gilt. Die
+Mittelwertbildung ist damit nicht nur anders begründet, sondern in ihrer
+Auswirkung nachweisbar.
 
-% und der punkt is auch son Ding obs worth it ist oder sinnvoll ist den hier so zu erwaehnen 
 Das Malus-Prinzip wirkt in der beabsichtigten Richtung, ohne pauschal zu
 verschärfen. Es trennt gute und schlechte Datensätze sichtbar deutlicher, und die
 Deckenprüfung am Referenzdatensatz zeigt, dass bei einem korrekt beschriebenen
-Datensatz kein einziger Malus greift (Tabelle~\ref{tab:deckenpruefung}). Die
-begleitende Entscheidung, den Dimensionswert bei null nach unten zu begrenzen,
-ist dagegen erklärungspflichtig. Sie hält das Ergebnis interpretierbar, kostet
-aber Auflösung im unteren Bereich, weil ab einem bestimmten Punkt ein Datensatz
-mit vier defekten Distributionen von einem mit acht nicht mehr zu unterscheiden
-ist. Das ist eine Darstellungsentscheidung mit Messkosten und sollte als solche
-benannt werden.
-
-% Der punkt ist auf jeden fall relevant zu erwaehnen
+Datensatz kein einziger Malus greift (Tabelle~\ref{tab:deckenpruefung}).
 Bei der Gewichtung besteht eine Lücke zwischen Anspruch und Umsetzung.
 Das Modell hebt vier von siebenundzwanzig Indikatoren vom
 Standardgewicht ab, nämlich die drei datenbrechenden Prüfungen und den
@@ -3870,13 +3862,6 @@ Punktwerte je Metrik aus, deren Zustandekommen für Datenbereitstellende nicht
 rekonstruierbar ist, und die umfassenderen Modelle der Literatur beschreiben
 Indikatoren, ohne eine Ausgabeform überhaupt zu behandeln. 
 
-% weis nicht ob das etwas zu steil formuliert ist
-Bemerkenswert ist, dass dieser Beitrag nicht von der Messgüte des Verfahrens
-abhängt. Er ist eine Entwurfsleistung und wird gegen Anforderungen, Konventionen
-und Literatur belegt, nicht gegen ein Referenzurteil. Auch ein Verfahren mit
-schwächerer Übereinstimmung zur menschlichen Bewertung bliebe in dieser Hinsicht
-brauchbar, solange nachvollziehbar ist, wie seine Urteile zustande kommen.
-
 Aus den Interviews folgt für dieses Gestaltungsziel eine Begründung, die über
 Bedienkomfort hinausgeht. Datenbereitstellende sind häufig Personen ohne
 technischen Hintergrund, die die Modellierung von Metadaten als RDF-Graph nicht
@@ -3888,9 +3873,7 @@ dass eine Qualitätsmessung überhaupt eine Wirkung auf den Datenbestand entfalt
 kann. Dieselbe Beobachtung stützt die Entscheidung, die formale Prüfung nicht in
 den Mittelpunkt des Modells zu stellen. Eine Formprüfung ist einer
 Qualitätsbewertung logisch vorgelagert, denn die Metrik baut auf der Form auf,
-statt sie zu enthalten. Dass ein Portal Metadaten ohne vorgeschaltete Prüfung
-übernimmt, ist aus Sicht dieser Arbeit eine plausible Mitursache des insgesamt
-mittleren Qualitätsniveaus, das die Stichprobe zeigt. % der satz ist natuerlich auch gewagt lmao
+statt sie zu enthalten.
 
 Offen bleibt, wie wirksam die gewählte Aufbereitung in der Anwendung tatsächlich
 ist. Die fünfte Teilfrage ist die einzige, die ohne empirische Prüfung bleibt,
@@ -3906,7 +3889,7 @@ Datenbereitstellenden ist deshalb der naheliegendste nächste Schritt.
 
 \subsection{Befunde zum Messinstrument}
 
-Drei Erkenntnisse der Evaluation waren aus Konzept und Implementierung allein
+Zwei Erkenntnisse der Evaluation waren aus Konzept und Implementierung allein
 nicht ableitbar.
 
 Die erste betrifft eine Frage, die logisch vor allen Ergebniszahlen steht. Fallen
@@ -3922,14 +3905,7 @@ ist kein Modellfehler, sondern ein Konflikt zwischen konkurrierenden
 Rubrikforderungen, was zugleich einen konkreten Ansatzpunkt für eine
 Verbesserung benennt.
 
-Die zweite Erkenntnis betrifft die Modellabhängigkeit. Sie ist eine Eigenschaft
-der Metrik und nicht nur ihrer Implementierung, und sie ist genau bezifferbar:
-Von vier Dimensionen hängt eine am gewählten Sprachmodell, die übrigen drei sind
-über alle geprüften Modelle bitgenau identisch
-(Abschnitt~\ref{sec:eval_modellauswahl}). Diese Rahmung benennt die Abhängigkeit
-und begrenzt sie zugleich auf ein Viertel des Verfahrens.
-
-Die dritte Erkenntnis ist methodischer Natur und betrifft den Aufbau der
+Die zweite Erkenntnis ist methodischer Natur und betrifft den Aufbau der
 Evaluation selbst. Die Wiederholungsläufe
 (Abschnitt~\ref{subsec:eval_reproduzierbarkeit}) belegen nicht nur die Stabilität
 des Verfahrens, sie liefern zugleich die Auflösungsgrenze, unterhalb derer
