@@ -2352,7 +2352,7 @@ Auf Laufebene entstehen zusätzlich aggregierte Dateien, darunter eine Zusammenf
 % wird, die ein Datenbereitsteller ohne DCAT-Kenntnisse handlungsfähig macht.
 % Abgrenzung: keine Nutzerstudie und keine Aussage über tatsächliche Wirkung —
 % die Bewertung erfolgt demonstrativ im Walkthrough (Section~\ref{sec:fallanalysen})
-% und wird in Section~\ref{sec:limitationen_eval} als Grenze ausgewiesen.
+% und wird als Grenze ausgewiesen (Limitationen der Evaluation, derzeit nicht ausformuliert).
 % ===========================================================================
 \section{Menschenlesbares Qualitätsreporting}
 \label{sec:frontend}
@@ -3638,13 +3638,7 @@ und den von ihm referenzierten Ressourcen entscheiden lässt. Nicht prüfbar war
 was eine Referenz außerhalb dieses Rahmens voraussetzt, also Vertrauenswürdigkeit
 und Reputation einer Quelle, die Verifizierbarkeit einer Angabe gegen externe
 Bezugsdaten oder Aktualität im Sinne einer inhaltlichen statt formalen
-Prüfung. Von ISO~19157 \cite{ISO19157} und der Übertragung durch
-Nogueras-Iso et al. \cite{noguerasiso_quality_metadata} ist die Idee geblieben,
-das Qualitätsurteil als eigenes Artefakt neben den Daten zu führen. Diese Idee
-prägt sowohl den maschinenlesbaren Ergebnisreport
-(Abschnitt~\ref{sec:maschinenreport}) als auch die Entscheidung, Bewertungen als
-separate Ebene neben dem Metadatenbestand zu halten. Der geodatenspezifische
-Messapparat der Norm ist dagegen nicht übernommen worden.
+Prüfung.
 
 Eine Beobachtung über die bestehenden Ansätze hinweg verdient eigene
 Aufmerksamkeit, weil sie das Evaluationsdesign dieser Arbeit begründet. Die
@@ -3672,8 +3666,8 @@ Abgleich mit einem menschlichen Referenzurteil erlaubt eine Aussage darüber,
 welches Verfahren näher an der wahrgenommenen Qualität liegt
 (Abschnitt~\ref{sec:eval_design}).
 
-Die MQA nimmt in dieser Arbeit eine Doppelrolle ein, die ausdrücklich benannt
-sein soll. Sie ist Vorbild und Vergleichsmaßstab zugleich. Übernommen wurden ihre
+Die MQA nimmt in dieser Arbeit eine Doppelrolle ein.
+Sie ist Vorbild und Vergleichsmaßstab zugleich. Übernommen wurden ihre
 Dimensionslogik, die Festlegung von Punktwerten per Konvention, die
 Formatbewertung nach der Ratingtabelle von data.europa.eu und die
 Prioritätslogik der Gewichte. Verworfen wurden das Best-Distribution-Prinzip
@@ -3685,29 +3679,11 @@ weitesten ausgearbeitete, produktiv betriebene und dem Gegenstand dieser Arbeit
 nächste Ansatz. Ihre bekannten Schwächen sind zugleich der Grund, sie als
 Baseline zu verwenden.
 
-Ein Befund aus der Vorbereitung dieses Vergleichs gehört hierher, weil er über
-den Einzelfall hinaus verallgemeinerbar ist. Ein Vergleich gegen die
-Originalwerte der MQA war nicht möglich. Drei verfügbare Implementierungen
-liefern auf identischem RDF-Eingabematerial unterschiedliche Ergebnisse, und
-data.europa.eu bewertet eine im Harvestingprozess veränderte Fassung der
-GovData-Metadaten. Hinzu kommt, dass die MQA an einzelnen Stellen von ihrer
-eigenen Methodenbeschreibung abweicht, etwa wenn ein Literal ohne
-Vokabularbindung die Formatprüfung besteht. Die Reimplementierung
-(Abschnitt~\ref{sec:eval_mqa_abc}) war daher nicht eine Frage der Bequemlichkeit,
-sondern die einzige Möglichkeit, beide Verfahren auf demselben Gegenstand zu
-beobachten. Verallgemeinert bedeutet das: Wer ein bestehendes Verfahren als
-Baseline verwendet, muss es reimplementieren, weil die veröffentlichten Werte
-nicht auf denselben Eingabezustand verweisen.
-
-Der zentrale inhaltliche Beitrag dieses Abschnitts ist, dass die in
-Abschnitt~\ref{sec:bewertungsluecke} behauptete Reduktionsproblematik nun
-gemessen und nicht mehr postuliert ist. Auf den Indikatoren, bei denen die MQA
-Vorhandensein honoriert und der Prototyp zusätzlich Gültigkeit prüft, überschätzt
-die Baseline die Qualität in 15{,}8~Prozent der Fälle der Kernstichprobe und in
-20{,}0~Prozent der Fälle der Extremfälle. Der stärkste Einzelbefund betrifft die
-politische Geokodierung, bei der 56~Prozent der Datensätze einen Punkt erhalten,
-den der Prototyp verweigert. Damit ist eine These aus Kapitel~2 in eine
-überprüfbare Aussage überführt.
+Dass dieser Vergleich eine eigene Reimplementierung der Baseline erforderte, ist
+in Abschnitt~\ref{sec:eval_mqa_abc} begründet und verallgemeinert sich zu einer
+methodischen Anforderung: Wer ein bestehendes Verfahren als Baseline verwendet,
+muss es reimplementieren, weil dessen veröffentlichte Werte nicht auf denselben
+Eingabezustand verweisen.
 
 \subsection{Umsetzung der empirischen Modellanforderungen}
 
@@ -3749,7 +3725,7 @@ Messung, die sich in der Reproduzierbarkeitsprüfung als die instabilste erwiese
 hat (Abschnitt~\ref{subsec:eval_reproduzierbarkeit}). Der naheliegende Ausbau
 wäre gewesen, die Indikatorgewichte je Datensatz durch ein Sprachmodell aus dem
 fachlichen Kontext ableiten zu lassen. Dieser Weg wurde aus zwei Gründen nicht
-verfolgt, die beide zählen. Ein Modell mit datensatzabhängigen Gewichten ist für
+verfolgt. Ein Modell mit datensatzabhängigen Gewichten ist für
 Datenbereitstellende nicht mehr nachvollziehbar, und es ist gegen keine Referenz
 mehr sinnvoll prüfbar, weil sich Messinstrument und Messgegenstand gemeinsam
 verändern.
@@ -3765,9 +3741,7 @@ Datenbereitstellende Distributionen anders modelliert und im Portal nahezu jedes
 Format vorkommt, war die Zahl der Sonderfälle nicht beherrschbar, und die
 Unsicherheit der Messung überstieg ihren Informationswert. Von der Anforderung
 verbleiben die Erreichbarkeitsprüfung und die Ableitung des effektiven
-Medientyps. Der Verzicht ist verteidigbar, und er ist zugleich ein Ergebnis:
-Nicht jede fachlich berechtigte Anforderung lässt sich mit einer Fehlerrate
-operationalisieren, die dem Gesamturteil nicht schadet.
+Medientyps.
 
 Über die drei Fälle hinweg zeigt sich ein Muster, das die Verengung aus der
 Kapiteleinleitung konkretisiert. Je näher eine Anforderung an einem
@@ -3790,22 +3764,8 @@ Laufmittelwerte von 0{,}0004 und einer Rangkorrelation von 0{,}993 zwischen
 Wiederholungsläufen. Und das Halluzinationsrisiko ist durch den Aufgabenschnitt
 eingegrenzt, denn bewertet wird nicht, ob eine Angabe sachlich zutrifft, sondern
 ob die Freitextfelder untereinander und zum übrigen Datensatz semantisch passen.
-Diese Aufgabe erfordert kein Weltwissen. Vollständig ausgeräumt ist das Risiko
-damit nicht, und die Frage der Datenhoheit bleibt offen, weil die Bewertung über
-einen externen Anbieter erfolgt. Der Hinweis, dass ausschließlich bereits
-veröffentlichte Daten übergeben werden, betrifft nur die Vertraulichkeit. Die
-Abhängigkeit von einem fremden Dienst und von einer Modellversion bleibt und wird
-in Abschnitt~\ref{sec:disk_grenzen} aufgegriffen.
-
-Schließlich bedient das Modell die drei Zielgruppen aus
-Abschnitt~\ref{subsec:zielgruppen} unterschiedlich gut. Datenbereitstellende
-erhalten je Indikator einen Befund mit Fundstelle und Handlungsanweisung und
-damit genau die Auflösung, die sie benötigen. Datennutzende erhalten einen
-verdichteten Wert und vier Dimensionswerte. Portalbetreibende werden nur
-mittelbar bedient, weil die Aggregation über den Bestand vorliegt, die für diese
-Gruppe entscheidende Entwicklung über die Zeit jedoch nicht. Das ist eine Folge
-der gewählten Bewertungsebene des Einzeldatensatzes und kein Versäumnis der
-Umsetzung.
+Diese Aufgabe erfordert kein Weltwissen, vollständig ausgeräumt ist das Risiko
+damit nicht allerdings nicht.
 
 % =============================================================================
 \section{Bewertung der Entwurfsentscheidungen}
@@ -3816,6 +3776,8 @@ Umsetzung.
 Vier Festlegungen des konzeptionellen Messmodells haben die Implementierung
 getragen, und eine hat sich als problematisch erwiesen.
 
+
+% @TODO weis nicht ob das so geil ist das so zu erwähnen
 Die wichtigste Entscheidung ist die Trennung von Messung und Etikett. Der
 kontinuierliche Erfüllungsgrad eines graduellen Indikators ist die kanonische
 Größe des Modells, die Ergebnisstufe dagegen eine nachgelagerte Diskretisierung
@@ -3830,18 +3792,15 @@ damit eine Unstetigkeit, bei der ein Messunterschied von einem Hundertstel einen
 Ergebnisunterschied von einem halben Punkt auslöste. In der evaluierten Fassung
 ist der Datensatzscore eine stetige und monotone Funktion der Messung.
 
+% @TODO weis auch nicht ob das so geil ist oder ueberhautp worht it zu erwaehnen
 Die Aggregation über Distributionen als Mittelwert statt nach dem
-Best-Distribution-Prinzip ist die am breitesten abgestützte Entscheidung der
-Arbeit. Sie ist spezifikationsseitig begründet, weil Distributionen nachweislich
-auch zur Modellierung inhaltlich eigenständiger Teildatensätze verwendet werden
-\cite[Abschnitt~12.3]{W3CDCAT3}, empirisch, weil zentrale Fehlerbilder auf der
-Ebene der einzelnen Ressource auftreten \cite{Neumaier2016MetadataQuality}, und
-begriffsanalytisch, weil das Best-Distribution-Prinzip einer
-konfliktvermeidenden Strategie entspricht, die Inkonsistenzen maskiert
-\cite{BleiholderNaumann2008}. Da die Aufdeckung fehlerhafter Distributionen
-gerade das Ziel des Verfahrens ist, wäre eine maskierende Aggregation dem Zweck
-entgegengesetzt.
+Best-Distribution-Prinzip ist die am breitesten abgestützte Entscheidung der Arbeit, weil sie sich zugleich spezifikationsseitig, empirisch und
+begriffsanalytisch begründen lässt (Abschnitt~\ref{sec:messmodell}).
+Entscheidend für die Bewertung ist ihr Verhältnis zum Zweck des Verfahrens: Da
+die Aufdeckung fehlerhafter Distributionen gerade das Ziel ist, wäre eine
+Aggregation, die Inkonsistenzen maskiert, dem Zweck entgegengesetzt.
 
+% und der punkt is auch son Ding obs worth it ist oder sinnvoll ist den hier so zu erwaehnen 
 Das Malus-Prinzip wirkt in der beabsichtigten Richtung, ohne pauschal zu
 verschärfen. Es trennt gute und schlechte Datensätze sichtbar deutlicher, und die
 Deckenprüfung am Referenzdatensatz zeigt, dass bei einem korrekt beschriebenen
@@ -3853,15 +3812,15 @@ mit vier defekten Distributionen von einem mit acht nicht mehr zu unterscheiden
 ist. Das ist eine Darstellungsentscheidung mit Messkosten und sollte als solche
 benannt werden.
 
-Bei der Gewichtung besteht eine Lücke zwischen Anspruch und Umsetzung, die offen
-gelegt werden muss. Das Modell hebt vier von siebenundzwanzig Indikatoren vom
+% Der punkt ist auf jeden fall relevant zu erwaehnen
+Bei der Gewichtung besteht eine Lücke zwischen Anspruch und Umsetzung.
+Das Modell hebt vier von siebenundzwanzig Indikatoren vom
 Standardgewicht ab, nämlich die drei datenbrechenden Prüfungen und den
 maschinenlesbaren Zugriffsweg (Tabelle~\ref{tab:impl_weights}). Die
 Gewichtsvergabe ist über eine funktionale Abhängigkeitslogik begründet und an
 der Prioritätensetzung der MQA gespiegelt, sie ist jedoch nicht empirisch
-validiert. Eine Unsicherheits- und Sensitivitätsanalyse, wie sie das Handbuch
-zur Konstruktion zusammengesetzter Indikatoren ausdrücklich fordert
-\cite{nardo2008handbook}, wurde nicht durchgeführt. Damit ist der
+validiert. Eine Unsicherheits- und Sensitivitätsanalyse wurde nicht durchgeführt.
+Damit ist der
 Erklärungsanspruch eingelöst, der Validierungsanspruch nicht. Dass Gewichte
 grundsätzlich präferenzabhängig sind und je nach Stakeholderperspektive
 unterschiedlich ausfallen, zeigen Kubler et al. \cite{kubler2018comparison}, was
@@ -3883,34 +3842,15 @@ sprachmodellgestützten Bewertung in eine deterministisch gedachte Metrik. Drei
 Vorkehrungen kennzeichnen diesen Einbau, und es lohnt sich, genau zu benennen,
 was sie leisten.
 
-Die Ein-Aufruf-Architektur verzichtet auf eine Kette spezialisierter Agenten.
-Damit entfällt die Fehlerfortpflanzung zwischen Verarbeitungsschritten, die
-Kosten je Datensatz sind konstant, und das Zustandekommen des Urteils bleibt an
-einer Stelle nachlesbar. Die strukturierte Ausgabe nach einem festen Schema
-bindet das Modell an ein maschinell weiterverarbeitbares Format und liefert je
-Kriterium eine Begründung, aus der sich der Befund der menschenlesbaren
-Darstellung erzeugen lässt. Die Konfiguration mit Temperatur null reduziert die
-Streuung. Was diese Vorkehrungen nicht leisten, ist Bitgenauigkeit. Das Verfahren
-bleibt nicht exakt reproduzierbar, und diese Eigenschaft überträgt sich auf die
-Metrik als Ganzes.
-
-Ergänzend ist eine Vorkehrung zu nennen, die bei einem Verfahren, das fremde
-Freitexte an ein Sprachmodell übergibt, keine Formsache ist. Der zu bewertende
-Metadateninhalt wird durch Trennmarken abgegrenzt und ausdrücklich als
-Bewertungsgegenstand deklariert, den das Modell nicht als Anweisung behandeln
-darf. Da die bewerteten Texte von Dritten stammen und ein Portal beliebige
-Inhalte annimmt, ist diese Absicherung Voraussetzung dafür, dass das
-Bewertungsergebnis nicht durch den Bewertungsgegenstand steuerbar ist.
-
-Eine methodische Frage, die sich an jede prototypische Arbeit richtet, betrifft
-schließlich das Verhältnis von Instrumentenbau und Messung. Solange am Prototyp
-entwickelt wird, verändern sich die Ergebnisse, und Vergleiche über verschiedene
-Entwicklungsstände hinweg sind wertlos. Diese Arbeit trennt beides an einem
-festen Punkt. Jede Änderung, die den Score einer unveränderten Eingabedatei
-beeinflusst, gehört zur Konstruktion des Instruments und liegt vor diesem Punkt.
-Jede Größe, die zwischen Läufen bewusst variiert wird, ist Bestandteil der
-Konfiguration und liegt danach. Alle in Kapitel~6 berichteten Ergebnisse beruhen
-auf einem einzigen, eingefrorenen Stand der score-erzeugenden Logik.
+Die drei Vorkehrungen aus Abschnitt~\ref{sec:llm_aussagekraft} liefern dabei
+jeweils Unterschiedliches. Die Ein-Aufruf-Architektur beseitigt die
+Fehlerfortpflanzung zwischen Verarbeitungsschritten und hält das Zustandekommen
+des Urteils an einer Stelle nachlesbar. Die strukturierte Ausgabe liefert je
+Kriterium eine Begründung und macht damit den Befund der menschenlesbaren
+Darstellung überhaupt erst erzeugbar. Die Konfiguration mit Temperatur null
+reduziert die Streuung. Was keine von ihnen leistet, ist Bitgenauigkeit. Das
+Verfahren bleibt nicht exakt reproduzierbar, und diese Eigenschaft überträgt sich
+auf die Metrik als Ganzes.
 
 \subsection{Nachvollziehbarkeit des Qualitätsreportings}
 \label{sec:disk_nachvollziehbarkeit}
@@ -3920,54 +3860,45 @@ einem gemeinsamen Prinzip, das auch die Beantwortung der fünften Teilfrage
 trägt. Ein Qualitätsurteil, das sein Zustandekommen nicht offenlegt, ist nicht
 überprüfbar und damit nicht handlungsleitend.
 
-Der wesentliche Gewinn der menschenlesbaren Aufbereitung liegt daher nicht in
-ihrer Gestaltung, sondern im Wechsel des Ausgabetyps. Eine Punktzahl ordnet ein,
-benennt aber nichts. Der Befund benennt den Sachverhalt, belegt ihn mit dem
-vorgefundenen Zustand, verortet ihn im konkreten Metadatensatz und formuliert die
-Änderung, die ihn auflösen würde (Abschnitt~\ref{subsec:befund}). Dass diese Form
-über alle siebenundzwanzig Indikatoren identisch ist, macht sie erlernbar,
-unabhängig davon, ob das zugrunde liegende Urteil aus einer Feldprüfung, einer
-Netzabfrage oder einer Sprachmodellbewertung stammt.
+Daraus ergibt sich ein eigenständiger Beitrag dieser Arbeit. Mit dem in
+Abschnitt~\ref{subsec:befund} beschriebenen Befund liegt ein Bewertungsverfahren
+vor, das jedes negative Teilergebnis bis zur betroffenen Stelle im konkreten
+Metadatensatz zurückverfolgbar macht und in eine Handlungsanweisung überführt,
+und das über alle siebenundzwanzig Indikatoren in derselben Form. Keiner der in
+Kapitel~\ref{sec:chapter_02} untersuchten Ansätze leistet dies. Die MQA gibt
+Punktwerte je Metrik aus, deren Zustandekommen für Datenbereitstellende nicht
+rekonstruierbar ist, und die umfassenderen Modelle der Literatur beschreiben
+Indikatoren, ohne eine Ausgabeform überhaupt zu behandeln. 
 
-Diese Form ist keine Erfindung dieser Arbeit, und das stärkt sie. Die
-Konformitätsprüfdienste des W3C für Markup und Stylesheets melden Verstöße seit
-langem in derselben Struktur, bestehend aus Schweregrad, natürlichsprachlicher
-Kernaussage, Position in der Quelle und einem Auszug des Quelltexts um diese
-Position \cite{w3c_nu_checker, w3c_css_validator}. Der Befund überträgt dieses
-eingeführte Muster von der Syntaxprüfung eines Dokuments auf die Qualitätsprüfung
-eines Metadatensatzes. Die Gestaltung ist damit begründet und nicht bloß gewählt.
+% weis nicht ob das etwas zu steil formuliert ist
+Bemerkenswert ist, dass dieser Beitrag nicht von der Messgüte des Verfahrens
+abhängt. Er ist eine Entwurfsleistung und wird gegen Anforderungen, Konventionen
+und Literatur belegt, nicht gegen ein Referenzurteil. Auch ein Verfahren mit
+schwächerer Übereinstimmung zur menschlichen Bewertung bliebe in dieser Hinsicht
+brauchbar, solange nachvollziehbar ist, wie seine Urteile zustande kommen.
 
-Eine Entwurfsentscheidung verdient besondere Erwähnung. Der Befund entsteht im
-Bewertungskern und nicht in der Oberfläche. Die Übersetzung von Prüfevidenz in
-eine Aussage über den Metadatensatz setzt Kenntnis des jeweiligen Indikators
-voraus und ist damit eine fachliche, keine gestalterische Leistung. Läge sie in
-der Oberfläche, entstünde eine zweite Interpretationsschicht neben dem
-Bewertungsmodell, Änderungen an einem Indikator müssten an zwei Stellen
-nachgezogen werden, und der maschinenlesbare Report wäre nicht mehr die einzige
-Quelle der Darstellung.
-
-Aus den Interviews folgt zudem eine Begründung für dieses Gestaltungsziel, die
-über Bedienkomfort hinausgeht. Datenbereitstellende sind häufig Personen ohne
+Aus den Interviews folgt für dieses Gestaltungsziel eine Begründung, die über
+Bedienkomfort hinausgeht. Datenbereitstellende sind häufig Personen ohne
 technischen Hintergrund, die die Modellierung von Metadaten als RDF-Graph nicht
 beherrschen. Die Meldungen der formalen Validierung sind demgegenüber technisch
 formuliert und setzen Kenntnis des Standards voraus. Sie treffen damit genau die
 Gruppe, die sie umsetzen müsste, ohne sie zu erreichen. Verständliches Reporting
 ist unter dieser Bedingung keine Zusatzfunktion, sondern die Voraussetzung dafür,
 dass eine Qualitätsmessung überhaupt eine Wirkung auf den Datenbestand entfalten
-kann. Dieselbe Beobachtung stützt im Übrigen die Entscheidung, die formale
-Prüfung nicht in den Mittelpunkt des Modells zu stellen. Eine Formprüfung ist
-einer Qualitätsbewertung logisch vorgelagert, denn die Metrik baut auf der Form
-auf, statt sie zu enthalten. Dass ein Portal Metadaten ohne vorgeschaltete
-Prüfung übernimmt, ist aus Sicht dieser Arbeit eine plausible Mitursache des
-insgesamt mittleren Qualitätsniveaus, das die Stichprobe zeigt.
+kann. Dieselbe Beobachtung stützt die Entscheidung, die formale Prüfung nicht in
+den Mittelpunkt des Modells zu stellen. Eine Formprüfung ist einer
+Qualitätsbewertung logisch vorgelagert, denn die Metrik baut auf der Form auf,
+statt sie zu enthalten. Dass ein Portal Metadaten ohne vorgeschaltete Prüfung
+übernimmt, ist aus Sicht dieser Arbeit eine plausible Mitursache des insgesamt
+mittleren Qualitätsniveaus, das die Stichprobe zeigt. % der satz ist natuerlich auch gewagt lmao
 
-Die Reichweite dieses Abschnitts ist allerdings begrenzt, und diese Begrenzung
-ist selbst ein Befund. Die fünfte Teilfrage ist die einzige, die ohne empirische
-Prüfung bleibt. Die Aufbereitung ist an Beispielen demonstriert, nicht mit
-Datenbereitstellenden erprobt. Alle Aussagen über Verständlichkeit und
-Handlungsfähigkeit stützen sich auf Literatur, Interviewbefunde und
-Gestaltungskonventionen, nicht auf eine Messung. Dass vier Teilfragen quantitativ
-geprüft sind und eine nicht, ist eine Asymmetrie, die benannt werden muss.
+Offen bleibt, wie wirksam die gewählte Aufbereitung in der Anwendung tatsächlich
+ist. Die fünfte Teilfrage ist die einzige, die ohne empirische Prüfung bleibt,
+denn die Darstellung ist an Beispielen demonstriert und nicht mit
+Datenbereitstellenden erprobt. Die Aussagen dieses Abschnitts stützen sich damit
+auf Anforderungen, Interviewbefunde und etablierte Gestaltungskonventionen, was
+den Beitrag begründet, seine Wirkung aber nicht misst. Eine Nutzerstudie mit
+Datenbereitstellenden ist deshalb der naheliegendste nächste Schritt.
 
 % =============================================================================
 \section{Einordnung der Evaluationsergebnisse}
@@ -3975,63 +3906,46 @@ geprüft sind und eine nicht, ist eine Asymmetrie, die benannt werden muss.
 
 \subsection{Befunde zum Messinstrument}
 
-Vier Erkenntnisse der Evaluation waren aus Konzept und Implementierung allein
+Drei Erkenntnisse der Evaluation waren aus Konzept und Implementierung allein
 nicht ableitbar.
 
 Die erste betrifft eine Frage, die logisch vor allen Ergebniszahlen steht. Fallen
 die Werte einer Stichprobe überwiegend mittelmäßig aus, sind zwei Erklärungen
 möglich, nämlich mittelmäßige Metadaten oder ein systematisch zu strenges
-Verfahren. Die Deckenprüfung am Referenzdatensatz entscheidet diese Frage für die
-drei deterministischen Dimensionen. Alle einundzwanzig regelbasierten und
-technischen Indikatoren werden bestanden, die Dimensionswerte erreichen exakt den
-Höchstwert, und keiner der Mali greift. Wo die Stichproben niedrigere Werte
-zeigen, ist das damit ein Befund über die bewerteten Metadaten und nicht über das
-Instrument.
+Verfahren. Die Deckenprüfung am Referenzdatensatz
+(Abschnitt~\ref{subsec:deckenpruefung}) entscheidet diese Frage für die drei
+deterministischen Dimensionen zugunsten der ersten Erklärung. Wo die Stichproben
+niedrigere Werte zeigen, ist das ein Befund über die bewerteten Metadaten und
+nicht über das Instrument. Für die vierte Dimension gilt das nur eingeschränkt,
+da die Aussagekraft ihren Höchstwert auch am Idealfall knapp verfehlt. Ursache
+ist kein Modellfehler, sondern ein Konflikt zwischen konkurrierenden
+Rubrikforderungen, was zugleich einen konkreten Ansatzpunkt für eine
+Verbesserung benennt.
 
-Die zweite Erkenntnis relativiert die erste für die vierte Dimension. Die
-Aussagekraft bleibt mit 0{,}972 knapp unter dem Höchstwert, obwohl alle sechs
-Teilkriterien als erfüllt gewertet werden. Die Begründungen des Modells nennen
-dort ausschließlich Abwägungen zwischen konkurrierenden Rubrikforderungen. Das
-Sprachmodell vergibt den vollen Punktwert also auch dann nicht, wenn die Rubrik
-keinen benennbaren Mangel mehr findet. Das ist kein Modellfehler, sondern ein
-Konflikt innerhalb der Bewertungsrubrik, und damit ein konkreter Ansatzpunkt für
-eine Verbesserung. Für die Interpretation folgt daraus, dass die
-Aussagekraftswerte nach oben faktisch gedeckelt sind und Abstände in diesem
-Bereich nicht überinterpretiert werden dürfen.
-
-Die dritte Erkenntnis betrifft die Modellabhängigkeit. Sie ist eine Eigenschaft
-der Metrik und nicht nur ihrer Implementierung, und sie ist genau bezifferbar.
+Die zweite Erkenntnis betrifft die Modellabhängigkeit. Sie ist eine Eigenschaft
+der Metrik und nicht nur ihrer Implementierung, und sie ist genau bezifferbar:
 Von vier Dimensionen hängt eine am gewählten Sprachmodell, die übrigen drei sind
-über alle geprüften Modelle bitgenau identisch. Diese Rahmung benennt die
-Abhängigkeit und begrenzt sie zugleich auf ein Viertel des Verfahrens.
+über alle geprüften Modelle bitgenau identisch
+(Abschnitt~\ref{sec:eval_modellauswahl}). Diese Rahmung benennt die Abhängigkeit
+und begrenzt sie zugleich auf ein Viertel des Verfahrens.
 
-Die vierte Erkenntnis ist ein Validitätsnachweis für die Verarbeitungskette als
-Ganzes. Die gesamte über Wiederholungsläufe beobachtete Streuung stammt aus der
-sprachmodellgestützten Bewertung, während RDF-Verarbeitung,
-Erreichbarkeitsprüfung, Vokabularabgleich, Konformitätsprüfung und Aggregation
-exakt reproduzieren. Als Nebenprodukt liefert diese Prüfung eine
-Auflösungsgrenze, ohne die die Modellauswahl nicht entscheidbar gewesen wäre. Der
-Abstand zwischen den beiden bestplatzierten Kandidatenmodellen ist etwa viermal
-kleiner als die Streuung eines einzelnen Modells zwischen Wiederholungsläufen.
-Ohne diese Referenz hätte man aus dem Kennzahlenvergleich falsche Schlüsse
-gezogen. Die Reproduzierbarkeitsprüfung ist damit keine Ergänzung, sondern
-Voraussetzung der Modellauswahl.
+Die dritte Erkenntnis ist methodischer Natur und betrifft den Aufbau der
+Evaluation selbst. Die Wiederholungsläufe
+(Abschnitt~\ref{subsec:eval_reproduzierbarkeit}) belegen nicht nur die Stabilität
+des Verfahrens, sie liefern zugleich die Auflösungsgrenze, unterhalb derer
+Unterschiede zwischen Modellen oder Konfigurationen nicht mehr interpretierbar
+sind. Da der Abstand zwischen den beiden bestplatzierten Kandidatenmodellen
+kleiner ausfällt als die Streuung eines einzelnen Modells zwischen zwei Läufen,
+wäre die Modellauswahl ohne diese Referenz nicht entscheidbar gewesen. Eine
+Reproduzierbarkeitsprüfung ist damit keine Ergänzung der Modellauswahl, sondern
+deren Voraussetzung.
 
-Die Modellauswahl selbst verdient einen Hinweis, weil das gewählte Modell die
-Primärmetrik nicht gewinnt. Die Entscheidung fällt auf den nachgeordneten
-Kriterien, und sie ist nur deshalb kein nachträgliches Zusammensuchen passender
-Argumente, weil die Kennzahlenhierarchie in
-Abschnitt~\ref{sec:eval_auswertungsverfahren} vorab festgelegt ist. Der
-zugrunde liegende Mechanismus ist über den Einzelfall hinaus lehrreich. Eine
-Rangkorrelation ist niveaublind und bewertet allein die Reihenfolge, die
-Urteilsregel ist niveauempfindlich und bewertet die absolute Lage relativ zu
-festen Schwellen. Ein Modell, das die Aussagekraft systematisch um rund fünfzehn
-Prozent der Skalenbreite unterschätzt, ordnet die Datensätze weiterhin korrekt
-und erkennt dennoch nur einen von fünf tatsächlich guten Datensätzen als gut. Für
-ein Werkzeug, das Datenbereitstellenden eine Rückmeldung geben soll, ist eine
-systematische Abwertung guter Metadaten ein praktisch relevanter Mangel, den
-keine Rangkorrelation sichtbar macht. Welche Kennzahl den Ausschlag gibt, hängt
-folglich vom Verwendungszweck ab und nicht von ihrer statistischen Eleganz.
+Damit liegt für DCAT-AP.de-Metadaten ein Bewertungsmodell vor, dessen
+Übereinstimmung mit einem menschlichen Qualitätsurteil quantifiziert und dessen
+Messunsicherheit beziffert ist. Keiner der in Kapitel~\ref{sec:chapter_02}
+untersuchten Ansätze weist eine vergleichbare Prüfung aus. Die MQA wird seit
+Jahren produktiv eingesetzt, ohne dass geprüft wäre, ob ihre Punktwerte mit der
+Qualitätswahrnehmung von Nutzenden zusammenhängen.
 
 \subsection{Messgüte der semantischen Dimension}
 
@@ -4111,67 +4025,62 @@ Inter-Rater-Reliabilität wäre an dieser Stelle die aussagekräftigste fehlende
 Kennzahl der gesamten Evaluation.
 
 Trotz dieser Schwäche trennt der Gesamtscore die beiden Konstruktionsgruppen
-deutlich, mit 4{,}06 gegenüber 2{,}10 auf der sechsstufigen Skala. Das gehört
-präzise formuliert. Der Wirkmechanismus funktioniert an dieser Stelle nicht wegen
+deutlich, mit 4{,}06 gegenüber 2{,}10 auf der sechsstufigen Skala.
+Der Wirkmechanismus funktioniert an dieser Stelle nicht wegen
 der Aussagekraft, sondern trotz ihrer, weil die drei übrigen Dimensionen das
 schwache Signal im gewichteten Mittel abfedern.
 
 \subsection{Mehrwert gegenüber der Vergleichsbaseline}
 
 Der Vergleich mit der Baseline stützt die drei Hypothesen aus
-Abschnitt~\ref{sec:eval_design} konsistent, aber mit unterschiedlicher Deutlichkeit,
-und diese Unterschiede sind aussagekräftiger als die Bestätigung selbst.
+Abschnitt~\ref{sec:eval_design} konsistent, aber mit unterschiedlicher
+Deutlichkeit. Aussagekräftiger als die Bestätigung selbst sind zwei Befunde, die
+sich erst aus dem Zusammenspiel der drei Vergleichsebenen ergeben.
 
-Die Konvergenz auf äquivalenten Prüfungen ist mit über 95~Prozent Übereinstimmung
-auf beiden Stichproben hoch. Inhaltlich bedeutet das, dass der Prototyp die
-etablierte Prüflogik korrekt abbildet, bevor er sie erweitert. Diese Aussage ist
-notwendig, weil ohne sie jede Abweichung auf den übrigen Indikatoren auch als
-Implementierungsfehler lesbar wäre. Die Divergenz auf den vertiefenden
-Indikatoren ist mit den bereits genannten Überschätzungsraten belegt, und auf den
-Indikatoren ohne Pendant in der Baseline streut der Prototyp sichtbar, wo die
-Baseline konstruktionsbedingt flach bleibt.
+Der erste war so nicht erwartet. Auf Ebene der Gesamtscores korrelieren beide
+Verfahren mit 0{,}829 sehr stark, und die mittlere Differenz beträgt lediglich
+0{,}022 Skalenpunkte. Angesichts einer nachgewiesenen Überschätzungsrate der
+Baseline von 15{,}8~Prozent wäre ein deutlich strengeres Gesamturteil zu erwarten
+gewesen. Die Auflösung liegt in der Art der Abweichung: Der Prototyp bewertet
+überwiegend dieselben Datensätze strenger und nicht andere Datensätze anders.
+Rangvertauschungen, die eine Rangkorrelation senken würden, finden kaum statt.
+Das Aggregat verdeckt damit reale Messunterschiede, die auf Indikatorebene
+nachweisbar sind. Im Rückblick ist das die wichtigste Begründung dafür, den
+Vergleich nicht auf der Scoreebene zu führen, sondern über eine Klassifikation
+der Indikatoren nach Prüftiefe (Abschnitt~\ref{sec:eval_mqa_abc}). Ein reiner
+Scorevergleich hätte den Mehrwert des Verfahrens nicht sichtbar gemacht, und
+genau dieser methodische Kurzschluss liegt den in
+Abschnitt~\ref{sec:disk_grundlagen} beschriebenen Erfolgskontrollen bestehender
+Verfahren zugrunde.
 
-Ein Befund dieses Vergleichs war so nicht erwartet und verdient deshalb eine
-Erklärung. Auf Ebene der Gesamtscores korrelieren beide Verfahren mit 0{,}829
-sehr stark, und die mittlere Differenz beträgt lediglich 0{,}022 Skalenpunkte.
-Angesichts einer nachgewiesenen Überschätzungsrate von 15{,}8~Prozent wäre ein
-deutlich strengeres Gesamturteil zu erwarten gewesen. Die Auflösung liegt in der
-Art der Abweichung. Der Prototyp bewertet überwiegend dieselben Datensätze
-strenger und nicht andere Datensätze anders. Rangvertauschungen, die eine
-Rangkorrelation senken würden, finden kaum statt. Das Aggregat verdeckt damit
-reale Messunterschiede auf Indikatorebene. Im Rückblick ist das die wichtigste
-Begründung für die Entscheidung, den Vergleich nicht nur auf Scoreebene, sondern
-über eine Klassifikation der Indikatoren zu führen
-(Abschnitt~\ref{sec:eval_mqa_abc}). Ein reiner Scorevergleich hätte den Mehrwert
-des Verfahrens nicht sichtbar gemacht.
+Der zweite Befund betrifft die Reichweite der Überlegenheitsaussage. Sie wird
+allein von der Triangulation gegen das Referenzurteil getragen, denn ohne sie
+belegen die Divergenzen nur, dass anders gemessen wird, nicht dass besser
+gemessen wird. Auf der Kernstichprobe liegt der Prototyp bei fünf von sechs
+Zielgrößen näher am menschlichen Urteil, auf den Extremfällen bei allen sechs.
+Die Abstände sind auf der Kernstichprobe allerdings klein, und der Vorsprung
+sollte nicht größer dargestellt werden als er ist.
 
-Die eigentliche Überlegenheitsaussage trägt allein die Triangulation gegen das
-Referenzurteil, denn ohne sie belegen die Divergenzen nur, dass anders gemessen
-wird, nicht dass besser gemessen wird. Auf der Kernstichprobe liegt der Prototyp
-bei fünf von sechs Zielgrößen näher am menschlichen Urteil, auf den Extremfällen
-bei allen sechs. Die Abstände sind auf der Kernstichprobe allerdings klein und
-bewegen sich zwischen 0{,}02 und 0{,}07 bei fünfzig Datensätzen. Der Vorsprung
-ist damit konsistent in der Richtung, aber nicht groß, und er sollte auch nicht
-größer dargestellt werden als er ist.
+Die einzige Ausnahme betrifft die Auffindbarkeit, bei der die Baseline vorn
+liegt. Der naheliegende Grund liegt in der eigenen Gewichtung: Die Auffindbarkeit
+trägt das niedrigste Dimensionsgewicht und prägt den Gesamtscore folglich am
+wenigsten, weshalb dieser strukturell ein schwächerer Prädiktor gerade für diese
+Referenzdimension ist, unabhängig von der Prüfgüte der
+Auffindbarkeitsindikatoren selbst.
 
-Die einzige Ausnahme betrifft die Auffindbarkeit, bei der die Baseline mit
-0{,}252 gegenüber 0{,}134 vorn liegt. Der naheliegende Grund liegt in der eigenen
-Gewichtung. Die Auffindbarkeit trägt das niedrigste Dimensionsgewicht und prägt
-den Gesamtscore folglich am wenigsten, weshalb dieser strukturell ein schwächerer
-Prädiktor gerade für diese Referenzdimension ist, unabhängig von der Prüfgüte der
-Auffindbarkeitsindikatoren selbst. Diese Erklärung ist tragfähig, und sie hat eine
-unangenehme Rückseite, die ausgesprochen werden soll. Es ist eine
-Entwurfsentscheidung dieser Arbeit, die den einzigen Punkt erzeugt, an dem die
-Baseline näher am menschlichen Urteil liegt. Der Befund widerlegt die
-Überlegenheitsaussage nicht, aber er zeigt, dass zusätzliche Prüftiefe nicht in
-jeder Dimension automatisch mit besserer Übereinstimmung einhergeht.
+Für die Gesamteinordnung bleibt damit ein differenziertes, aber tragfähiges
+Bild. Der Prototyp bildet die etablierte Prüflogik korrekt ab, prüft dort tiefer,
+wo die Baseline Vorhandensein mit Qualität gleichsetzt, differenziert dort, wo
+sie strukturell blind bleibt, und liegt in der Summe näher am menschlichen
+Urteil. Dass eine einzelne Dimension diesem Muster widerspricht, schwächt den
+Befund weniger, als ein durchgängiger Vorsprung ihn gestärkt hätte.
 
 % =============================================================================
 \section{Grenzen des Bewertungsmodells}
 \label{sec:disk_grenzen}
 
-Dieser Abschnitt behandelt, was die Metrik nicht leisten kann. Was das Experiment
-nicht zeigen kann, ist Gegenstand von Abschnitt~\ref{sec:limitationen_eval}.
+Dieser Abschnitt behandelt, was die Metrik ihrer Anlage nach nicht leisten kann,
+unabhängig davon, wie sie evaluiert wurde.
 
 \paragraph{Konzeptuelle Grenzen.}
 Die grundlegendste Grenze betrifft nicht das Verfahren, sondern seinen Maßstab.
@@ -4203,10 +4112,7 @@ Metadateneigenschaften benötigen. Der Beitrag dieser Arbeit liegt daher nicht i
 einer Absolutheit des Urteils, sondern in dessen Nachvollziehbarkeit und in einer
 geprüften relativen Güte gegenüber dem etablierten Verfahren.
 
-Vier weitere konzeptuelle Grenzen sind kürzer zu benennen. Die Zweckbindung eines
-Datensatzes ist ohne Kenntnis des Vorhabens nicht entscheidbar. Relationale
-Prüfungen setzen informationshaltige Einzelfelder voraus, weshalb Konsistenz ein
-notwendiges, aber kein hinreichendes Qualitätsmerkmal ist. Die fachliche
+Zwei weitere konzeptuelle Grenzen sind kürzer zu benennen. Die fachliche
 Richtigkeit einer Angabe wird nicht geprüft, sondern nur ihre Konsistenz mit
 anderen Angaben, sodass ein plausibel formulierter, sachlich falscher
 Bezugszeitraum jede Prüfung besteht. Und die Grenze zwischen Metadaten und Daten
@@ -4262,6 +4168,17 @@ gleichmäßig, weshalb sehr große Ressourcen bereits aus der Grundgesamtheit
 ausgeschlossen wurden. Schließlich ist die Frage der Datenhoheit nicht
 adressiert, da die Bewertung über einen externen Anbieter erfolgt.
 
+\paragraph{Einordnung.}
+Diese Grenzen betreffen überwiegend die Reichweite der Aussagen und nicht die
+Tragfähigkeit des Verfahrens. Sie besagen, dass das Modell kein absolutes
+Qualitätsurteil fällt, unter welchen Bedingungen seine Werte gelten und wo seine
+Messung endet. Sie besagen nicht, dass die gemessenen Unterschiede zur Baseline
+oder die nachgewiesene Übereinstimmung mit dem Referenzurteil hinfällig wären.
+Bemerkenswert ist vielmehr, dass sich diese Grenzen überhaupt benennen und in
+weiten Teilen beziffern lassen. Für keinen der in Kapitel~\ref{sec:chapter_02}
+untersuchten Ansätze liegt eine vergleichbare Angabe darüber vor, wie weit seine
+Urteile tragen.
+
 \chapter{Fazit und Ausblick}
 \label{sec:chapter_08}
 
@@ -4289,7 +4206,7 @@ adressiert, da die Bewertung über einen externen Anbieter erfolgt.
 
 % Kein eigener Limitationen-Abschnitt im Fazit. Die Limitationen sind auf zwei
 % Stellen aufgeteilt, die sich sauber trennen lassen:
-%   Abschnitt~\ref{sec:limitationen_eval} -> was das Experiment nicht zeigen kann
+%   (Limitationen der Evaluation, Kap. 6) -> was das Experiment nicht zeigen kann
 %   Abschnitt~\ref{sec:disk_grenzen}      -> was die Metrik nicht kann
 % Eine dritte Zusammenfassung hier wäre eine Dopplung ohne eigenen Beitrag.
 
