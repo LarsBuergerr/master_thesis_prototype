@@ -13,7 +13,7 @@ defaults:
 # directory_path: "data/sample_2026-06-25_09-57"
 directory_path: "data/extreme_cases_04"
 # If empty: process all files matching extensions in directory_path
-files: []
+files: ["good_01.rdf"]
 
 # File filtering (only used if files list is empty)
 file_filter:
@@ -77,7 +77,8 @@ quality:
       # malus in the indicator itself — no fail_score override needed here.
 
   # Optional dimension whitelist (default: all dimensions if list is empty or missing)
-  dimension_whitelist: ["accessibility", "reusability", "findability"]
+  # dimension_whitelist: ["accessibility", "reusability", "findability", "expressiveness"]
+  dimension_whitelist: ["expressiveness"]
   # If specified, these indicators will be skipped
   indicator_blacklist:
     [
