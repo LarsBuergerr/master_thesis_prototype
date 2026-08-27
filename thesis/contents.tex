@@ -72,11 +72,11 @@ Argumentationsstränge. Er wird gegen ein unabhängig erhobenes menschliches
 Referenzurteil und gegen eine reimplementierte Vergleichsbaseline geprüft, jeweils
 auf einer randomisierten Kernstichprobe und auf konstruierten Extremfällen.
 
-Kapitel~\ref{sec:chapter_07} diskutiert die Ergebnisse entlang der fünf
-Teilfragen aus Abschnitt~\ref{sec:forschungsfragen} und benennt abschließend die
-übergreifenden Grenzen des Bewertungsmodells. Kapitel~\ref{sec:chapter_08} fasst
-die zentralen Ergebnisse zusammen, beantwortet die Forschungsfragen und zeigt
-den weiteren Forschungs- und Entwicklungsbedarf auf.
+Kapitel~\ref{sec:chapter_07} führt die Ergebnisse zusammen. Es diskutiert sie
+entlang der fünf Teilfragen aus Abschnitt~\ref{sec:forschungsfragen} und
+beantwortet diese dabei, benennt die übergreifenden Grenzen des
+Bewertungsmodells und schließt mit einer Zusammenfassung der zentralen
+Ergebnisse und dem weiteren Forschungs- und Entwicklungsbedarf.
 
 \pagebreak
 \chapter{Theoretische und konzeptionelle Grundlagen}
@@ -1998,6 +1998,26 @@ S6 & Kontextuelle Qualifizierer & \texttt{expr\_contextual\_qualifiers} \\
 \label{tab:impl_mapping}
 \end{table}
 
+\subsection{Nicht übernommene Kongruenzindikatoren}
+\label{subsec:kongruenzindikatoren}
+
+Das konzeptionelle Modell nennt neben den umgesetzten Indikatoren begrenzte
+Plausibilitäts- und Kongruenzprüfungen als Kandidaten (Kapitel~\ref{sec:chapter_04}).
+Für die Metadaten-Daten-Kongruenz wurden hierzu zwei Indikatoren implementiert
+und nach einer Erprobung an realen Metadaten wieder deaktiviert. Der erste prüfte,
+ob Formatangabe, Medientyp und der tatsächlich ausgelieferte Inhaltstyp einer
+Distribution übereinstimmen; der zweite, ob die Distributionen eines Datensatzes
+denselben Inhalt in verschiedenen Formaten repräsentieren. Beide Prüfungen
+scheiterten an der Heterogenität der Modellierungspraxis: Da Datenbereitstellende
+Distributionen sehr unterschiedlich modellieren und im Portal nahezu jedes Format
+vorkommt, war die Zahl der Sonderfälle nicht beherrschbar, und die Unsicherheit
+der Messung überstieg ihren Informationswert. Von der ursprünglich vorgesehenen
+Kongruenzprüfung verbleiben die Erreichbarkeitsprüfungen Z5 und Z6 sowie die
+Ableitung des effektiven Medientyps (\texttt{coalesced\_mime},
+Abschnitt~\ref{sec:extraktion}). Die Beobachtung, dass Indikatoren mit mehreren
+heterogenen Eingangssignalen an ihrer Fehlerrate scheitern, wird in
+Abschnitt~\ref{sec:disk_konzept_prototyp} aufgegriffen.
+
 \subsection{Auffindbarkeitsindikatoren}
 
 Die Auffindbarkeitsindikatoren prüfen datensatzweite Angaben direkt auf der Faktenbasis und benötigen weder Netzwerkzugriffe noch das Sprachmodell. Mit Ausnahme der beiden Datumsindikatoren A7 (Veröffentlichungsdatum) und A8 (Änderungsdatum) sind alle ternär. Die beiden Datumsindikatoren messen graduell den Anteil der vorhandenen Datumswerte mit validem \texttt{xsd:date}- oder \texttt{xsd:dateTime}-Typ, wobei Angaben auf Datensatz- und Distributionsebene gemeinsam betrachtet werden. Fehlt die jeweilige Angabe vollständig, gilt der Indikator als nicht erfüllt. Tabelle~\ref{tab:impl_findability} fasst die Prüfregeln zusammen.
@@ -2132,12 +2152,16 @@ Die Konformitätsprüfung N6 validiert den Metadatensatz nicht mit einer lokalen
 
 Die Aussagekraft ist die einzige Qualitätsdimension, die sich nicht regelbasiert bestimmen lässt. Kapitel~4 hat begründet, dass ihre Kriterien ein sprachverstehendes Verfahren als Messinstrument erfordern. Der vorliegende Abschnitt beschreibt, wie dieses Instrument im Prototyp umgesetzt ist, und behandelt damit den zentralen Baustein der dritten Teilfrage dieser Arbeit, welche ergänzenden kontext- und semantikbezogenen Prüfungen das formale Qualitätsmodell sinnvoll erweitern können, ohne die Nachvollziehbarkeit und Verlässlichkeit des Scorings zu gefährden (vgl. Abschnitt~\ref{sec:forschungsfragen}). Bewertet werden dabei ausschließlich Metadaten offener Verwaltungsdaten, die ohnehin frei im Netz veröffentlicht sind. Ihre Übergabe an ein externes Sprachmodell wirft daher keine Fragen des Datenschutzes oder der Vertraulichkeit auf.
 
+Der Einsatz eines generativen Verfahrens weicht bewusst von der Zurückhaltung der Experteninterviews gegenüber solchen Verfahren ab, die auf Halluzinationen, stochastische Ausreißer, Datenhoheit und Ressourcenaufwand verweisen (INT-K10, Tabelle~\ref{tab:zentrale_interviewergebnisse}). Drei Vorkehrungen begrenzen den Schritt und werden in den folgenden Abschnitten beschrieben: die Beschränkung auf eine von vier Dimensionen und einen einzigen Aufruf ohne Agentenkette, die strukturierte und begründungspflichtige Ausgabe sowie die deterministische Konfiguration. Der Aufgabenschnitt selbst begrenzt das Halluzinationsrisiko zusätzlich, da nicht bewertet wird, ob eine Angabe sachlich zutrifft, sondern ob die Freitextfelder untereinander und zum übrigen Datensatz semantisch passen. Diese Aufgabe erfordert kein Weltwissen; vollständig ausgeräumt ist das Risiko damit allerdings nicht.
+
 \subsection{Ein-Aufruf-Architektur}
 
 Für das Sprachmodell verfolgt der Prototyp eine Ein-Aufruf-Architektur. 
 Statt die sechs Kriterien einzeln abzufragen, wird der gesamte Datensatz in einem einzigen Aufruf bewertet.
 Das Ergebnis wird an die Faktenbasis angehängt, und jeder Indikator liest daraus seinen Teil. 
 Damit folgt die semantische Anreicherung dem gleichen Muster wie die technische Erreichbarkeitsprüfung, bei der die geteilte Ressource einmal berechnet und von allen Konsumenten gemeinsam genutzt wird. Zum einen werden durch dieses Vorgehen Kosten reduziert, da statt sechs Aufrufen nur einer je Datensatz anfällt. Zum anderen erhöht der gemeinsame Aufruf die Konsistenz der Bewertung. Alle sechs Kriterien gehen aus derselben ganzheitlichen Betrachtung des Datensatzes hervor und beruhen damit auf einem einheitlichen Verständnis der Metadaten. Widersprüche zwischen den Einzelurteilen, wie sie bei sechs voneinander unabhängigen Aufrufen entstehen könnten, werden dadurch unwahrscheinlich. Schlägt der Aufruf fehl oder ist kein Modell konfiguriert, bleibt die Bewertung leer und die Aussagekraftsindikatoren melden \textit{nicht anwendbar}, statt den Bewertungslauf abzubrechen.
+
+Damit tritt an die Stelle der in der Zielsetzung (Abschnitt~\ref{sec:zielsetzung}) skizzierten agentenbasierten Architektur mit spezialisierten Analyseagenten eine einzelne, strukturiert antwortende Modellabfrage. Der Verzicht auf eine Agentenkette ist eine bewusste Entscheidung zugunsten der Nachvollziehbarkeit: Eine mehrstufige Verarbeitung mit Fehlerfortpflanzung zwischen den Schritten ließe sich gegen die Verlässlichkeitsanforderung der dritten Teilfrage (Abschnitt~\ref{sec:forschungsfragen}) schwerer verantworten, und das Zustandekommen des Urteils bliebe nicht mehr an einer Stelle nachlesbar.
 
 \subsection{Strukturierte Ausgabe}
 
@@ -3620,230 +3644,145 @@ zusätzliche Prüftiefe nicht in jeder Dimension automatisch mit besserer
 menschlicher Übereinstimmung einhergeht.
 
 
-\chapter{Diskussion der Qualitätsmetrik}
+\chapter{Diskussion und Fazit}
 \label{sec:chapter_07}
 
-Die vorangegangenen Kapitel folgen einer Verengung. Die Literatur liefert breite
-Qualitätsbegriffe, von denen nur ein Teil prüfbar ist. Die Experteninterviews
-präzisieren diese Begriffe praxisnah, benennen dabei aber auch Anforderungen, die
-sich einer automatisierten Messung entziehen. Das Konzept überführt das
-Verbleibende in Indikatoren, der Prototyp implementiert davon, was mit
-vertretbarer Fehlerrate umsetzbar war, und die Evaluation zeigt schließlich,
-welcher Teil davon nachweislich trägt. Jede dieser Stufen verwirft, was die
-nächste nicht tragen kann.
+Dieses Kapitel setzt sich mit den Ergebnissen der Arbeit auseinander. Es
+diskutiert sie entlang der fünf Teilfragen aus
+Abschnitt~\ref{sec:forschungsfragen} und beantwortet diese dabei
+(Abschnitt~\ref{sec:fazit_forschungsfragen}), benennt anschließend die
+übergreifenden Grenzen des Bewertungsmodells (Abschnitt~\ref{sec:disk_grenzen})
+und schließt mit einer Zusammenfassung der zentralen Ergebnisse
+(Abschnitt~\ref{sec:fazit_zusammenfassung}) und dem weiteren Forschungs- und
+Entwicklungsbedarf (Abschnitt~\ref{sec:fazit_forschungsbedarf}).
 
-Zwei Größenordnungen strukturieren die Verengung quantitativ. Aus einer Longlist
-von fünfzehn Kandidatendimensionen entstanden vier Hauptdimensionen, aus diesen
-neunundzwanzig Indikatoren, von denen siebenundzwanzig aktiv sind und sechs auf
-ein Sprachmodell zurückgreifen. Zwei Verschiebungen gegenüber der Zielsetzung in
-Abschnitt~\ref{sec:zielsetzung} sind dabei so deutlich, dass sie vorab benannt werden sollen. Die
-dort in Aussicht gestellte agentenbasierte Architektur mit spezialisierten
-Analyseagenten ist einer einzelnen, strukturiert antwortenden Modellabfrage
-gewichen. Und die formale Validierung, die als Ausgangspunkt der Arbeit
-beschrieben ist, trägt im finalen Modell einen von siebenundzwanzig Indikatoren.
-Beide Verschiebungen sind begründet, und beide Begründungen laufen auf dasselbe
-Argument zu, das dieses Kapitel mehrfach aufgreift: Nachvollziehbarkeit ist
-nicht Nebenbedingung des Modells, sondern Gegenstand der dritten Teilfrage
-(Abschnitt~\ref{sec:forschungsfragen}).
+Die Diskussion ist dabei auf die Auseinandersetzung mit den eigenen Ergebnissen
+beschränkt. Die Herleitung des Modells aus Literatur und Interviews, die
+Einordnung bestehender Ansätze und die Begründung einzelner
+Entwurfsentscheidungen sind in den jeweiligen Kapiteln verortet und werden hier
+nur so weit aufgegriffen, wie es die Bewertung der Ergebnisse erfordert.
 
-Dieses Kapitel folgt den fünf Teilfragen aus
-Abschnitt~\ref{sec:forschungsfragen} in ihrer dortigen Reihenfolge. Jeder
-Abschnitt greift dazu auf mehrere der vorangegangenen Kapitel zu, weil keine
-der Teilfragen in einem einzelnen Kapitel beantwortet wird. Ein abschließender
-Abschnitt behandelt diejenigen Grenzen, die sich keiner einzelnen Teilfrage
-zuordnen lassen, weil sie das Bewertungsmodell als Ganzes betreffen.
+Über alle Teilfragen hinweg trägt ein Befund: Die Grenze zwischen dem, was das
+Modell verlässlich misst, und dem, was ihm entgeht, verläuft nicht entlang des
+Implementierungsaufwands, sondern entlang der Entscheidbarkeit des Gegenstands.
+Wo ein nachprüfbarer Sachverhalt existiert, trägt die Messung; wo sie ein Urteil
+verlangt, wird sie unsicherer.
 
 % =============================================================================
-\section{Übertragbarkeit bestehender Bewertungsansätze}
+\section{Diskussion und Beantwortung der Forschungsfragen}
+\label{sec:fazit_forschungsfragen}
+
+Die folgenden Abschnitte greifen die fünf Teilfragen in der Reihenfolge aus
+Abschnitt~\ref{sec:forschungsfragen} auf. Jeder Abschnitt fasst den tragenden
+Befund knapp zusammen und diskutiert ihn, soweit die Ergebnisse dies zulassen.
+Der Schwerpunkt liegt auf den Teilfragen~3 und~4, zu denen die Evaluation
+quantitative Ergebnisse liefert. Wo eine Teilfrage vor allem die Herleitung des
+Modells betrifft, verweist der Abschnitt auf das tragende Kapitel und hält die
+Antwort knapp.
+
+\subsection{Teilfrage 1: Übertragbarkeit bestehender Bewertungsansätze}
 \label{sec:disk_grundlagen}
 
-Die erste Teilfrage richtet sich darauf, inwiefern bestehende Ansätze zur
-Bewertung von Metadaten auf den Kontext von DCAT-AP.de und GovData
-übertragbar sind.
+Bestehende Ansätze sind schichtweise übertragbar. Die abstrakten Qualitätsmodelle
+von Wang und Strong, ISO/IEC~25012 und die FAIR-Prinzipien liefern die
+begriffliche Rahmung, aber keine Messvorschrift; erst ISO/IEC~25024 ergänzt
+konkrete Messfunktionen und Skalentypen, an denen das konzeptionelle Messmodell
+ansetzt \cite{wang1996beyond, iso25012, wilkinson2016fair, iso25024}. Die
+Linked-Data-Perspektive von Zaveri et al. macht Qualitätsaspekte sichtbar, von
+denen sich nur ein Teil operationalisieren ließ
+\cite{Zaveri2016LinkedDataQuality}. Die Grenze verläuft nicht entlang des
+Aufwands, sondern entlang einer Eigenschaft der Kriterien selbst: Prüfbar war,
+was sich aus dem Metadatensatz und den von ihm referenzierten Ressourcen
+entscheiden lässt; nicht prüfbar war, was eine Referenz außerhalb dieses Rahmens
+voraussetzt, etwa die Vertrauenswürdigkeit einer Quelle oder die
+Verifizierbarkeit einer Angabe gegen externe Bezugsdaten. Die portalnahe MQA ist
+unmittelbar übertragbar: Übernommen wurden ihre Dimensionslogik, die Festlegung
+von Punktwerten per Konvention, die Formatbewertung nach der Ratingtabelle von
+data.europa.eu und die Prioritätslogik der Gewichte; verworfen wurden das
+Best-Distribution-Prinzip, die überwiegende Beschränkung auf Präsenzprüfungen und
+die hohe Gewichtung der Auffindbarkeit (Abschnitt~\ref{sec:messmodell},
+Abschnitt~\ref{subsec:gewichtung_indikatoren}).
 
-
-Die in Abschnitt~\ref{sec:datenqualitaet} dargestellten Qualitätsmodelle haben die Arbeit gerahmt,
-ohne Prüfbares zu liefern. Wang und Strong strukturieren Qualität in Dimensionen
-aus Konsumentensicht \cite{wang1996beyond}, ISO/IEC~25012 systematisiert
-Qualitätscharakteristiken \cite{iso25012}, die FAIR-Prinzipien formulieren
-Anforderungen an Auffindbarkeit und Nachnutzbarkeit \cite{wilkinson2016fair}.
-Keines dieser Modelle enthält eine Messvorschrift, und das ist kein Mangel,
-sondern ihr Zweck. Erst ISO/IEC~25024 ergänzt die Charakteristiken um konkrete
-Messfunktionen und Skalentypen \cite{iso25024}. Genau dort setzt das
-konzeptionelle Messmodell dieser Arbeit an, wenn es ternäre von graduellen
-Indikatoren trennt (Abschnitt~\ref{sec:messmodell}).
-
-Die Arbeit von Zaveri et al. hat Qualitätsaspekte sichtbar gemacht, von denen
-sich nur ein Teil operationalisieren ließ \cite{Zaveri2016LinkedDataQuality}.
-Die Grenze verläuft dabei nicht entlang des Aufwands, sondern entlang einer
-Eigenschaft der Kriterien selbst. Prüfbar war, was sich aus dem Metadatensatz
-und den von ihm referenzierten Ressourcen entscheiden lässt. Nicht prüfbar war,
-was eine Referenz außerhalb dieses Rahmens voraussetzt, also Vertrauenswürdigkeit
-und Reputation einer Quelle, die Verifizierbarkeit einer Angabe gegen externe
-Bezugsdaten oder Aktualität im Sinne einer inhaltlichen statt formalen
-Prüfung.
-
-Eine Beobachtung über die bestehenden Ansätze hinweg verdient eigene
-Aufmerksamkeit, weil sie das Evaluationsdesign dieser Arbeit begründet. Die
-untersuchten Verfahren überlappen inhaltlich stark, keines hebt sich grundlegend
-von den übrigen ab, und Zaveri et al. dient wiederkehrend als gemeinsame
-Referenz. Dabei zerfallen die Ansätze in zwei Gruppen mit demselben Defizit.
-Umfassende Modelle definieren große Indikatormengen, sind aber weder prototypisch
-operationalisiert noch empirisch geprüft. Portalnahe Modelle wie die Metadata
-Quality Assessment (MQA) von data.europa.eu sind operationalisiert, hinterfragen
-ihre Indikatorauswahl und Gewichtung jedoch nicht \cite{data_europa}. In beiden
-Fällen wird vorausgesetzt, dass die getroffene Auswahl angemessen ist. Die
-Experteninterviews formulieren genau diese Kritik an der MQA
-(Tabelle~\ref{tab:zentrale_interviewergebnisse}, K9).
-
-Daraus folgt ein methodisches Problem, das über einzelne Verfahren hinausgeht.
-Die verbreitete Form der Erfolgskontrolle besteht darin, ein Bewertungsverfahren
-in einen Datenbestand einzubinden und anschließend zu beobachten, wie sich der
-erzeugte Score über die Zeit entwickelt. Eine Metrik, deren Validität nie geprüft
-wurde, wird damit zum Maßstab ihres eigenen Erfolgs. Ein steigender Score belegt
-jedoch zunächst nur, dass die Daten besser zur Metrik passen, nicht dass sie
-besser nutzbar geworden sind. Diese Zirkularität ist der Grund für den
-zweigleisigen Aufbau der Evaluation in Kapitel~\ref{sec:chapter_06}. Der Vergleich mit der Baseline
-allein könnte lediglich zeigen, dass unterschiedlich gemessen wird. Erst der
-Abgleich mit einem menschlichen Referenzurteil erlaubt eine Aussage darüber,
-welches Verfahren näher an der wahrgenommenen Qualität liegt
-(Abschnitt~\ref{sec:eval_design}).
-
-Die MQA nimmt in dieser Arbeit eine Doppelrolle ein.
-Sie ist Vorbild und Vergleichsmaßstab zugleich. Übernommen wurden ihre
-Dimensionslogik, die Festlegung von Punktwerten per Konvention, die
-Formatbewertung nach der Ratingtabelle von data.europa.eu und die
-Prioritätslogik der Gewichte. Verworfen wurden das Best-Distribution-Prinzip
-(Abschnitt~\ref{sec:messmodell}), die überwiegende Beschränkung auf
-Präsenzprüfungen und die hohe Gewichtung der Auffindbarkeit
-(Abschnitt~\ref{subsec:gewichtung_indikatoren}). Dass die MQA trotz dieser
-Einwände als Orientierung dient, hat einen sachlichen Grund. Sie ist der am
-weitesten ausgearbeitete, produktiv betriebene und dem Gegenstand dieser Arbeit
-nächste Ansatz. Ihre bekannten Schwächen sind zugleich der Grund, sie als
-Baseline zu verwenden.
-
-Dass dieser Vergleich eine eigene Reimplementierung der Baseline erforderte, ist
-in Abschnitt~\ref{sec:eval_mqa_abc} begründet und verallgemeinert sich zu einer
+Über die einzelnen Ansätze hinweg fällt ein gemeinsames Defizit auf, das das
+Evaluationsdesign dieser Arbeit begründet. Die untersuchten Verfahren überlappen
+inhaltlich stark, und in beiden Lagern bleibt die Indikatorauswahl ungeprüft:
+Umfassende Modelle definieren große Indikatormengen, ohne sie prototypisch zu
+operationalisieren oder empirisch zu prüfen; portalnahe Modelle wie die MQA sind
+operationalisiert, hinterfragen ihre Auswahl und Gewichtung aber nicht
+\cite{data_europa}. Die verbreitete Form der Erfolgskontrolle, ein Verfahren in
+einen Datenbestand einzubinden und die Entwicklung des erzeugten Scores zu
+beobachten, macht eine nie validierte Metrik zum Maßstab ihres eigenen Erfolgs.
+Ein steigender Score belegt zunächst nur, dass die Daten besser zur Metrik
+passen, nicht dass sie besser nutzbar geworden sind. Diese Zirkularität ist der
+Grund für den zweigleisigen Aufbau der Evaluation (Kapitel~\ref{sec:chapter_06}):
+Erst der Abgleich mit einem menschlichen Referenzurteil erlaubt eine Aussage
+darüber, welches Verfahren näher an der wahrgenommenen Qualität liegt
+(Abschnitt~\ref{sec:eval_design}). Dass dieser Vergleich eine eigene
+Reimplementierung der Baseline erforderte, verallgemeinert sich zu einer
 methodischen Anforderung: Wer ein bestehendes Verfahren als Baseline verwendet,
 muss es reimplementieren, weil dessen veröffentlichte Werte nicht auf denselben
-Eingabezustand verweisen.
+Eingabezustand verweisen (Abschnitt~\ref{sec:eval_mqa_abc}).
 
-% =============================================================================
-\section{Relevante Qualitätsdimensionen und Indikatoren}
+\subsection{Teilfrage 2: Relevante Qualitätsdimensionen und Indikatoren}
 \label{sec:disk_dimensionen}
 
-Die zweite Teilfrage richtet sich darauf, welche Qualitätsdimensionen und
-Indikatoren für den betrachteten Kontext relevant sind.
-
-
-Die Interviewauswertung hat fünf Modellanforderungen ergeben
-(Abschnitt~\ref{sec:interview_ergebnisse}). Sie sind unterschiedlich weit gekommen, und die Verteilung ist
-nicht zufällig.
-
-Gut umgesetzt sind die technische Nutzbarkeit und die Interoperabilität. Defekte
-Verweise, nicht erreichbare Zugriffs- und Download-URLs und fehlende
-Maschinenlesbarkeit werden geprüft, ebenso die Bindung an kontrollierte
-Vokabulare an jedem Feld, für das ein solches existiert. Die technische
-Zugänglichkeit ist zugleich die über beide Stichproben stabilste Dimension der
-Evaluation, mit Rangkorrelationen von 0{,}712 und 0{,}713. Ebenfalls umgesetzt
-ist die Anforderung, über die Pflichtfelder des Standards hinauszugehen. Das
-Modell bewertet auch empfohlene und optionale Angaben und stützt sich dabei auf
-die Konventionen des DCAT-AP.de-Konventionenhandbuchs
-\cite{DCATAPDEImplRules2}. Die semantische Aussagekraft, die in den Interviews
-als zentrale Bewertungslücke erscheint, ist als eigene Dimension mit sechs
-sprachmodellgestützten Kriterien umgesetzt und geht damit deutlich tiefer als die
-Baseline. Ihre Messgüte ist allerdings die schwächste des Modells, was
-Abschnitt~\ref{sec:disk_evaluation} ausführt.
+Relevant sind die vier Dimensionen Auffindbarkeit, Zugänglichkeit,
+Nachnutzbarkeit und Aussagekraft. Die formale Standardkonformität geht als
+einzelner aggregierter Indikator ein, weil die Pflichtfeldprüfung im
+GovData-Kontext bereits durch die SHACL-Validierung abgedeckt ist
+(Kapitel~\ref{sec:chapter_04}). Von den fünf aus den Interviews
+abgeleiteten Modellanforderungen (Abschnitt~\ref{sec:interview_ergebnisse}) sind
+drei umgesetzt: die technische Nutzbarkeit und Interoperabilität, die über die
+stabilste Dimension der Evaluation abgedeckt sind (Rangkorrelationen von 0{,}712
+und 0{,}713), die Anforderung, über die Pflichtfelder des Standards
+hinauszugehen, und die semantische Aussagekraft als eigene Dimension mit sechs
+sprachmodellgestützten Kriterien, die damit deutlich tiefer geht als die
+Baseline.
 
 Drei Anforderungen sind unvollständig geblieben, und in allen drei Fällen liegt
-die Ursache nicht im Aufwand, sondern in der Entscheidbarkeit.
+die Ursache nicht im Aufwand, sondern in der Entscheidbarkeit. Die relative
+Vollständigkeit ist als absolute Eigenschaft eines Datensatzes nicht
+operationalisierbar, weil sie eine Relation zwischen Datensatz und
+Nutzungsvorhaben ist; bereits in den Interviews ließ sich die Frage nach dem
+perfekten Metadatensatz nicht beantworten. Die kontextsensitive Bewertung ist
+konzeptionell über die Ergebnisstufe \emph{nicht anwendbar} vorgesehen, faktisch
+nutzt sie jedoch nur ein einzelner Indikator; der naheliegende Ausbau über
+datensatzabhängige, sprachmodellgestützte Gewichte wurde nicht verfolgt, weil ein
+solches Modell für Datenbereitstellende nicht mehr nachvollziehbar und gegen
+keine Referenz mehr sinnvoll prüfbar wäre. Die Metadaten-Daten-Kongruenzprüfung
+ist der deutlichste Verlustfall, weil sie das Modell am stärksten von der
+Baseline abgehoben hätte: Zwei entsprechende Indikatoren wurden implementiert und
+nach einer Erprobung an realen Metadaten wieder deaktiviert, da die Heterogenität
+der Modellierungspraxis die Zahl der Sonderfälle unbeherrschbar machte und die
+Unsicherheit der Messung ihren Informationswert überstieg
+(Abschnitt~\ref{subsec:kongruenzindikatoren}).
 
-Die Anforderung relativer Vollständigkeit scheitert an ihrer Definition. Bereits
-in den Interviews konnte auf die Frage nach dem perfekten Metadatensatz keine
-belastbare Antwort gegeben werden, weil er nicht existiert. Vollständigkeit ist
-damit keine absolute Eigenschaft eines Datensatzes, sondern eine Relation
-zwischen Datensatz und Nutzungsvorhaben. Als absolute Eigenschaft ist sie nicht
-operationalisierbar.
+Über die Fälle hinweg zeigt sich das Muster aus der Kapiteleinleitung:
+Erreichbarkeit und Lizenzstatus sind entscheidbar, weshalb die zugehörigen
+Indikatoren tragen; Vollständigkeit, Kontextangemessenheit und inhaltliche
+Kongruenz verlangen ein Urteil oder Wissen von außerhalb des Metadatensatzes, und
+genau dort endet die Operationalisierung, entweder in gestrichenen Indikatoren,
+in einer einzelnen Anwendbarkeitsentscheidung oder in schwacher Messgüte.
 
-Die Anforderung kontextsensitiver Bewertung ist konzeptionell vorgesehen, in der
-Umsetzung aber auf ein Minimum reduziert. Das Messmodell führt die Ergebnisstufe
-\emph{nicht anwendbar} ein, faktisch nutzt sie jedoch nur ein einzelner
-Indikator, nämlich die Prüfung kontextueller Qualifizierer in der Dimension
-Aussagekraft. Die Kontextsensitivität des Modells ruht damit auf derjenigen
-Messung, die sich in der Reproduzierbarkeitsprüfung als die instabilste erwiesen
-hat (Abschnitt~\ref{subsec:eval_reproduzierbarkeit}). Der naheliegende Ausbau
-wäre gewesen, die Indikatorgewichte je Datensatz durch ein Sprachmodell aus dem
-fachlichen Kontext ableiten zu lassen. Dieser Weg wurde aus zwei Gründen nicht
-verfolgt. Ein Modell mit datensatzabhängigen Gewichten ist für
-Datenbereitstellende nicht mehr nachvollziehbar, und es ist gegen keine Referenz
-mehr sinnvoll prüfbar, weil sich Messinstrument und Messgegenstand gemeinsam
-verändern.
-
-Die Anforderung einer Metadaten-Daten-Kongruenzprüfung ist der interessanteste
-Verlustfall, weil sie das Modell am deutlichsten von der Baseline abgehoben
-hätte. Zwei entsprechende Indikatoren wurden implementiert und anschließend
-deaktiviert. Der eine prüfte, ob Formatangabe, Medientyp und der tatsächlich
-ausgelieferte Inhaltstyp übereinstimmen, der andere, ob die Distributionen eines
-Datensatzes denselben Inhalt in verschiedenen Formaten repräsentieren. Beide
-Prüfungen scheiterten an der Heterogenität der Modellierungspraxis. Da jeder
-Datenbereitstellende Distributionen anders modelliert und im Portal nahezu jedes
-Format vorkommt, war die Zahl der Sonderfälle nicht beherrschbar, und die
-Unsicherheit der Messung überstieg ihren Informationswert. Von der Anforderung
-verbleiben die Erreichbarkeitsprüfung und die Ableitung des effektiven
-Medientyps.
-
-Über die drei Fälle hinweg zeigt sich ein Muster, das die Verengung aus der
-Kapiteleinleitung konkretisiert. Je näher eine Anforderung an einem
-nachprüfbaren Sachverhalt liegt, desto weiter ist sie gekommen. Erreichbarkeit
-und Lizenzstatus sind entscheidbar, weshalb die zugehörigen Indikatoren tragen.
-Vollständigkeit, Kontextangemessenheit und inhaltliche Kongruenz verlangen ein
-Urteil oder Wissen von außerhalb des Metadatensatzes, und genau dort endet die
-Operationalisierung, entweder in gestrichenen Indikatoren, in einer einzelnen
-Anwendbarkeitsentscheidung oder in schwacher Messgüte. Die Verengung ist damit
-keine Reihe von Einzelversäumnissen, sondern eine Eigenschaft des Gegenstands.
-
-% =============================================================================
-\section{Ergänzende semantik- und kontextbezogene Prüfungen}
+\subsection{Teilfrage 3: Ergänzende semantik- und kontextbezogene Prüfungen}
 \label{sec:disk_semantik}
 
-Die dritte Teilfrage richtet sich darauf, welche ergänzenden kontext- und
-semantikbezogenen Prüfungen das formale Qualitätsmodell erweitern können,
-ohne die Nachvollziehbarkeit und Verlässlichkeit des Scorings zu gefährden.
+Umsetzbar ist eine eigene Dimension aus sechs sprachmodellgestützten Kriterien,
+die die Freitextfelder untereinander und gegen den übrigen Datensatz bewertet.
+Der Einsatz eines generativen Verfahrens weicht bewusst von der Zurückhaltung der
+Experteninterviews gegenüber solchen Verfahren ab (INT-K10); drei Vorkehrungen
+begrenzen den Schritt und sind in Abschnitt~\ref{sec:llm_aussagekraft}
+beschrieben. Die Nachvollziehbarkeit bleibt gewahrt, weil jedes Teilurteil
+begründet ausgegeben wird. Die Verlässlichkeit ist gemessen statt vorausgesetzt
+und mit einer Spanne der Laufmittelwerte von 0{,}0004 und einer Rangkorrelation
+von 0{,}993 zwischen Wiederholungsläufen hoch, aber nicht bitgenau; diese
+Eigenschaft überträgt sich auf die Metrik als Ganzes. Nicht umsetzbar waren
+Prüfungen, die eine Referenz außerhalb des Metadatensatzes voraussetzen.
 
-\subsection{Einsatz eines Sprachmodells entgegen der Expertenempfehlung}
+Die Diskussion dieser Teilfrage betrifft die Messgüte der so umgesetzten
+Dimension, die zugleich die schwächste des Modells ist.
 
-Die deutlichste Abweichung von der Expertenmeinung betrifft das Verfahren, mit
-dem diese Prüfungen umgesetzt sind. Die Interviews
-bewerten den Einsatz generativer Verfahren zurückhaltend und verweisen auf
-Halluzinationen, stochastische Ausreißer, Datenhoheit und Ressourcenaufwand
-(K10). Das Modell setzt ein Sprachmodell dennoch ein, und zwar für eine
-vollständige Dimension. Drei Vorkehrungen begrenzen diesen Schritt. Der Umfang
-ist auf eine von vier Dimensionen und einen einzigen Aufruf ohne Agentenkette
-beschränkt. Die Stabilität ist gemessen statt vorausgesetzt, mit einer Spanne der
-Laufmittelwerte von 0{,}0004 und einer Rangkorrelation von 0{,}993 zwischen
-Wiederholungsläufen. Und das Halluzinationsrisiko ist durch den Aufgabenschnitt
-eingegrenzt, denn bewertet wird nicht, ob eine Angabe sachlich zutrifft, sondern
-ob die Freitextfelder untereinander und zum übrigen Datensatz semantisch passen.
-Diese Aufgabe erfordert kein Weltwissen; vollständig ausgeräumt ist das Risiko
-damit allerdings nicht.
-
-
-Der interessanteste Fall der Umsetzung ist der Einbau einer
-sprachmodellgestützten Bewertung in eine deterministisch gedachte Metrik. Drei
-Vorkehrungen kennzeichnen diesen Einbau, und es lohnt sich, genau zu benennen,
-was sie leisten.
-
-Die drei Vorkehrungen aus Abschnitt~\ref{sec:llm_aussagekraft} liefern dabei
-jeweils Unterschiedliches. Die Ein-Aufruf-Architektur beseitigt die
-Fehlerfortpflanzung zwischen Verarbeitungsschritten und hält das Zustandekommen
-des Urteils an einer Stelle nachlesbar. Die strukturierte Ausgabe liefert je
-Kriterium eine Begründung und macht damit den Befund der menschenlesbaren
-Darstellung überhaupt erst erzeugbar. Die Konfiguration mit Temperatur null
-reduziert die Streuung. Was keine von ihnen leistet, ist Bitgenauigkeit. Das
-Verfahren bleibt nicht exakt reproduzierbar, und diese Eigenschaft überträgt sich
-auf die Metrik als Ganzes.
-
-\subsection{Messgüte der semantischen Dimension}
+\subsubsection{Messgüte der semantischen Dimension}
 \label{sec:disk_evaluation}
 
 Der schwächste Wert der gesamten Auswertung betrifft die Aussagekraft auf den
@@ -3927,74 +3866,60 @@ Der Wirkmechanismus funktioniert an dieser Stelle nicht wegen
 der Aussagekraft, sondern trotz ihrer, weil die drei übrigen Dimensionen das
 schwache Signal im gewichteten Mittel abfedern.
 
-% =============================================================================
-\section{Konzeption und Operationalisierung des Bewertungsmodells}
+\subsection{Teilfrage 4: Konzeption und prototypische Operationalisierung}
 \label{sec:disk_konzept_prototyp}
 
-Die vierte Teilfrage richtet sich auf die konzeptionelle Entwicklung und die
-prototypische Operationalisierung des mehrdimensionalen Bewertungsmodells.
+Das konzeptionelle Messmodell (Abschnitt~\ref{sec:messmodell}) trägt die
+Operationalisierung über vier Festlegungen: die Trennung von kontinuierlicher
+Messung und präsentationaler Ergebnisstufe, die Aggregation über Distributionen
+als Mittelwert, das Malus-Prinzip und die Ergebnisstufe \emph{nicht anwendbar}.
+Ihre Herleitung ist in Kapitel~\ref{sec:chapter_04} ausgeführt und wird hier
+nicht wiederholt. Die Diskussion beschränkt sich auf das, was Evaluation und
+Implementierungsverlauf zu diesen Festlegungen gezeigt haben und was aus dem
+Konzept allein nicht ableitbar war.
 
-\subsection{Messmodell und Aggregationslogik}
-
-
-Vier Festlegungen des konzeptionellen Messmodells haben die Implementierung
-getragen, und eine hat sich als problematisch erwiesen.
-
-
-Die wichtigste Entscheidung ist die Trennung von Messung und Etikett. Der
-kontinuierliche Erfüllungsgrad eines graduellen Indikators ist die kanonische
-Größe des Modells, die Ergebnisstufe dagegen eine nachgelagerte Diskretisierung
-ohne Einfluss auf die Berechnung. Diese Trennung ist mehr als eine
-Darstellungsfrage, denn sie verlagert die Begründungslast. Wären die Schwellen
-zwischen den Ergebnisstufen zahlenwirksam, müsste jede von ihnen einzeln
-gerechtfertigt werden. Da sie ausschließlich der Darstellung dienen, reduziert
-sich die Begründung auf zwei Aussagen, nämlich wie der kontinuierliche Wert
-gebildet wird und dass die Stufen präsentational sind. Sie ist zugleich die Voraussetzung dafür, dass der
-Datensatzscore eine stetige und monotone Funktion der Messung ist, denn eine
-zahlenwirksame Schwelle würde an ihrer Grenze einen Sprung erzeugen, den kein
-Messunterschied rechtfertigt.
+\subsubsection{Wirkung der Distributionsmittelung}
 
 Die Aggregation über Distributionen als Mittelwert statt nach dem
-Best-Distribution-Prinzip (Abschnitt~\ref{sec:messmodell}) ist diejenige
-Entwurfsentscheidung, deren Wirkung sich am deutlichsten in der Evaluation
-wiederfindet. Unter dem Prinzip der Baseline bleibt eine nicht erreichbare
-Download-URL folgenlos, solange eine einzige Distribution des Datensatzes
-funktioniert. Ein Teil der auf Klasse~B gemessenen Überschätzung entfällt
-entsprechend auf distributionsbezogene Indikatoren, bei denen die Baseline
-Qualität annimmt, die nur für eine von mehreren Ressourcen gilt. Die
-Mittelwertbildung ist damit nicht nur anders begründet, sondern in ihrer
-Auswirkung nachweisbar.
+Best-Distribution-Prinzip ist diejenige Entwurfsentscheidung, deren Wirkung sich
+am deutlichsten in der Evaluation wiederfindet. Unter dem Prinzip der Baseline
+bleibt eine nicht erreichbare Download-URL folgenlos, solange eine einzige
+Distribution des Datensatzes funktioniert. Ein Teil der auf Klasse~B gemessenen
+Überschätzung entfällt entsprechend auf distributionsbezogene Indikatoren, bei
+denen die Baseline Qualität annimmt, die nur für eine von mehreren Ressourcen
+gilt. Die Mittelwertbildung ist damit nicht nur anders begründet, sondern in
+ihrer Auswirkung nachweisbar. Das Malus-Prinzip wirkt in derselben Richtung,
+ohne pauschal zu verschärfen: Die Deckenprüfung am Referenzdatensatz zeigt, dass
+bei einem korrekt beschriebenen Datensatz kein einziger Malus greift
+(Tabelle~\ref{tab:deckenpruefung}).
 
-Das Malus-Prinzip wirkt in der beabsichtigten Richtung, ohne pauschal zu
-verschärfen. Es trennt gute und schlechte Datensätze sichtbar deutlicher, und die
-Deckenprüfung am Referenzdatensatz zeigt, dass bei einem korrekt beschriebenen
-Datensatz kein einziger Malus greift (Tabelle~\ref{tab:deckenpruefung}).
-Bei der Gewichtung besteht eine Lücke zwischen Anspruch und Umsetzung.
-Das Modell hebt vier von siebenundzwanzig Indikatoren vom
-Standardgewicht ab, nämlich die drei datenbrechenden Prüfungen und den
-maschinenlesbaren Zugriffsweg (Tabelle~\ref{tab:impl_weights}). Die
-Gewichtsvergabe ist über eine funktionale Abhängigkeitslogik begründet und an
-der Prioritätensetzung der MQA gespiegelt, sie ist jedoch nicht empirisch
-validiert. Eine Unsicherheits- und Sensitivitätsanalyse wurde nicht durchgeführt.
-Damit ist der
-Erklärungsanspruch eingelöst, der Validierungsanspruch nicht. Dass Gewichte
-grundsätzlich präferenzabhängig sind und je nach Stakeholderperspektive
-unterschiedlich ausfallen, zeigen Kubler et al. \cite{kubler2018comparison}, was
-die fehlende Validierung erklärt, aber nicht ersetzt.
+\subsubsection{Gewichtung}
 
-Eine Beobachtung aus dem Implementierungsverlauf ergänzt diese Bilanz und ist
-übertragbar. Indikatoren, die mehrere heterogene Signale zu einem Urteil
-verrechnen, erwiesen sich als nicht tragfähig. Ihre Fehlerrate war zu hoch, um
-den Informationsgewinn zu rechtfertigen. Daraus folgt eine Entwurfsregel, die
-über diese Arbeit hinausweist: Die Unsicherheit einer Messung muss kleiner
-bleiben als ihr Informationsbeitrag, sonst verschlechtert der Indikator das
-Gesamturteil, statt es zu verbessern. Dieselbe Regel begründet den Verzicht auf
-die Kongruenzprüfung in Abschnitt~\ref{sec:disk_dimensionen}.
+Bei der Gewichtung besteht eine Lücke zwischen Anspruch und Umsetzung. Das Modell
+hebt vier von siebenundzwanzig Indikatoren vom Standardgewicht ab, nämlich die
+drei datenbrechenden Prüfungen und den maschinenlesbaren Zugriffsweg
+(Tabelle~\ref{tab:impl_weights}). Die Vergabe ist über eine funktionale
+Abhängigkeitslogik begründet und an der Prioritätensetzung der MQA gespiegelt,
+jedoch nicht empirisch validiert; eine Unsicherheits- und Sensitivitätsanalyse
+wurde nicht durchgeführt. Damit ist der Erklärungsanspruch eingelöst, der
+Validierungsanspruch nicht. Dass Gewichte grundsätzlich präferenzabhängig sind
+und je nach Stakeholderperspektive unterschiedlich ausfallen, zeigen Kubler et
+al. \cite{kubler2018comparison}, was die fehlende Validierung erklärt, aber nicht
+ersetzt.
 
-\subsection{Befunde zum Messinstrument}
+\subsubsection{Eine übertragbare Beobachtung aus dem Implementierungsverlauf}
 
-Zwei Erkenntnisse der Evaluation waren aus Konzept und Implementierung allein
-nicht ableitbar.
+Indikatoren, die mehrere heterogene Signale zu einem Urteil verrechnen, erwiesen
+sich als nicht tragfähig; ihre Fehlerrate war zu hoch, um den Informationsgewinn
+zu rechtfertigen. Daraus folgt eine Entwurfsregel, die über diese Arbeit
+hinausweist: Die Unsicherheit einer Messung muss kleiner bleiben als ihr
+Informationsbeitrag, sonst verschlechtert der Indikator das Gesamturteil, statt
+es zu verbessern. Dieselbe Regel begründet den Verzicht auf die Kongruenzprüfung
+(Abschnitt~\ref{sec:disk_dimensionen}).
+
+\subsubsection{Befunde zum Messinstrument}
+
+Zwei weitere Erkenntnisse betreffen das Messinstrument selbst.
 
 Die erste betrifft eine Frage, die logisch vor allen Ergebniszahlen steht. Fallen
 die Werte einer Stichprobe überwiegend mittelmäßig aus, sind zwei Erklärungen
@@ -4027,8 +3952,7 @@ untersuchten Ansätze weist eine vergleichbare Prüfung aus. Die MQA wird seit
 Jahren produktiv eingesetzt, ohne dass geprüft wäre, ob ihre Punktwerte mit der
 Qualitätswahrnehmung von Nutzenden zusammenhängen.
 
-\subsection{Mehrwert gegenüber der Vergleichsbaseline}
-
+\subsubsection{Mehrwert gegenüber der Vergleichsbaseline}
 
 Der Vergleich mit der Baseline stützt die drei Hypothesen aus
 Abschnitt~\ref{sec:eval_design} konsistent, aber mit unterschiedlicher
@@ -4073,49 +3997,39 @@ sie strukturell blind bleibt, und liegt in der Summe näher am menschlichen
 Urteil. Dass eine einzelne Dimension diesem Muster widerspricht, schwächt den
 Befund weniger, als ein durchgängiger Vorsprung ihn gestärkt hätte.
 
-% =============================================================================
-\section{Menschenlesbares Qualitätsreporting}
+\subsection{Teilfrage 5: Menschenlesbares Qualitätsreporting}
 \label{sec:disk_nachvollziehbarkeit}
 
-Die fünfte Teilfrage richtet sich auf die prototypische Umsetzung eines
-menschenlesbaren Qualitätsreportings.
-
-
-Die in den vorangegangenen Abschnitten beschriebenen Entwurfsentscheidungen
-folgen einem gemeinsamen Prinzip, das auch die Beantwortung dieser Teilfrage
-trägt. Ein Qualitätsurteil, das sein Zustandekommen nicht offenlegt, ist nicht
-überprüfbar und damit nicht handlungsleitend.
-
-Daraus ergibt sich ein eigenständiger Beitrag dieser Arbeit. Mit dem in
-Abschnitt~\ref{subsec:befund} beschriebenen Befund liegt ein Bewertungsverfahren
-vor, das jedes negative Teilergebnis bis zur betroffenen Stelle im konkreten
-Metadatensatz zurückverfolgbar macht und in eine Handlungsanweisung überführt,
-und das über alle siebenundzwanzig Indikatoren in derselben Form. Keiner der in
-Kapitel~\ref{sec:chapter_02} untersuchten Ansätze leistet dies. Die MQA gibt
+Umgesetzt ist eine Darstellung, die jedes negative Teilergebnis bis zur
+betroffenen Stelle im konkreten Metadatensatz zurückverfolgbar macht und in eine
+Handlungsanweisung überführt, und zwar über alle siebenundzwanzig Indikatoren in
+derselben Form (Abschnitt~\ref{subsec:befund}). Keiner der in
+Kapitel~\ref{sec:chapter_02} untersuchten Ansätze leistet dies: Die MQA gibt
 Punktwerte je Metrik aus, deren Zustandekommen für Datenbereitstellende nicht
-rekonstruierbar ist, und die umfassenderen Modelle der Literatur beschreiben
-Indikatoren, ohne eine Ausgabeform überhaupt zu behandeln. 
-
-Aus den Interviews folgt für dieses Gestaltungsziel eine Begründung, die über
-Bedienkomfort hinausgeht. Datenbereitstellende sind häufig Personen ohne
-technischen Hintergrund, die die Modellierung von Metadaten als RDF-Graph nicht
-beherrschen. Die Meldungen der formalen Validierung sind demgegenüber technisch
-formuliert und setzen Kenntnis des Standards voraus. Sie treffen damit genau die
-Gruppe, die sie umsetzen müsste, ohne sie zu erreichen. Verständliches Reporting
-ist unter dieser Bedingung keine Zusatzfunktion, sondern die Voraussetzung dafür,
-dass eine Qualitätsmessung überhaupt eine Wirkung auf den Datenbestand entfalten
-kann. Dieselbe Beobachtung stützt die Entscheidung, die formale Prüfung nicht in
-den Mittelpunkt des Modells zu stellen. Eine Formprüfung ist einer
-Qualitätsbewertung logisch vorgelagert, denn die Metrik baut auf der Form auf,
-statt sie zu enthalten.
+rekonstruierbar ist, und die umfassenderen Modelle der Literatur behandeln keine
+Ausgabeform. Aus den Interviews folgt dafür eine Begründung, die über
+Bedienkomfort hinausgeht: Datenbereitstellende sind häufig Personen ohne
+technischen Hintergrund, die die technisch formulierten Meldungen der formalen
+Validierung nicht umsetzen können. Verständliches Reporting ist unter dieser
+Bedingung die Voraussetzung dafür, dass eine Qualitätsmessung überhaupt auf den
+Datenbestand wirkt.
 
 Offen bleibt, wie wirksam die gewählte Aufbereitung in der Anwendung tatsächlich
-ist. Die fünfte Teilfrage ist die einzige, die ohne empirische Prüfung bleibt,
-denn die Darstellung ist an Beispielen demonstriert und nicht mit
-Datenbereitstellenden erprobt. Die Aussagen dieses Abschnitts stützen sich damit
-auf Anforderungen, Interviewbefunde und etablierte Gestaltungskonventionen, was
-den Beitrag begründet, seine Wirkung aber nicht misst. Eine Nutzerstudie mit
-Datenbereitstellenden ist deshalb der naheliegendste nächste Schritt.
+ist. Die Darstellung ist an Beispielen demonstriert, aber nicht mit
+Datenbereitstellenden erprobt; Teilfrage~5 ist damit die einzige, die ohne
+empirische Prüfung bleibt. Eine Nutzerstudie mit Datenbereitstellenden ist
+deshalb der naheliegendste nächste Schritt.
+
+\subsection{Leitfrage}
+
+Ein Bewertungsmodell, das formale Prüfverfahren mit kontext- und
+semantikbezogenen Indikatoren verbindet, lässt sich für DCAT-AP.de im
+GovData-Kontext entwickeln und betreiben. Die formale Prüfung bildet dabei nicht
+den Kern, sondern die Vorstufe des Modells. Der Preis der Erweiterung ist eine
+Dimension, deren Messunsicherheit deutlich über der der übrigen liegt, und der
+Verzicht auf Bitgenauigkeit der Gesamtbewertung. Der Gewinn ist ein Urteil, das
+näher am menschlichen Qualitätsempfinden liegt als die etablierte Baseline und
+dessen Zustandekommen an jeder Stelle offengelegt ist.
 
 % =============================================================================
 \section{Übergreifende Grenzen des Bewertungsmodells}
@@ -4222,13 +4136,12 @@ weiten Teilen beziffern lassen. Für keinen der in Kapitel~\ref{sec:chapter_02}
 untersuchten Ansätze liegt eine vergleichbare Angabe darüber vor, wie weit seine
 Urteile tragen.
 
-\chapter{Fazit und Ausblick}
-\label{sec:chapter_08}
-
-% ENTWURF. Die Kennzahlen sind aus Kapitel 6 und 7 uebernommen und vor der
-% Abgabe gegen die dortigen Tabellen zu pruefen.
-
+% =============================================================================
 \section{Zusammenfassung der zentralen Ergebnisse}
+\label{sec:fazit_zusammenfassung}
+
+% Hinweis: Die Kennzahlen sind aus Kapitel~6 uebernommen und vor der Abgabe gegen
+% die dortigen Tabellen zu pruefen.
 
 Diese Arbeit hat ein Bewertungsmodell für die Qualität von DCAT-AP.de-Metadaten
 im GovData-Kontext entwickelt, prototypisch umgesetzt und evaluiert. Ausgangspunkt
@@ -4263,74 +4176,9 @@ Diese Grenze verläuft nicht entlang des Implementierungsaufwands, sondern entla
 der Entscheidbarkeit des Gegenstands, und sie ist damit keine Eigenschaft dieses
 Prototyps, sondern der Aufgabe.
 
-\section{Beantwortung der Forschungsfragen}
-
-Die fünf Teilfragen sind in Kapitel~\ref{sec:chapter_07} ausführlich diskutiert.
-Die folgenden Antworten fassen sie zusammen und verweisen auf den jeweils
-tragenden Abschnitt.
-
-\paragraph{Teilfrage 1: Übertragbarkeit bestehender Ansätze.}
-Bestehende Ansätze sind schichtweise übertragbar. Abstrakte Qualitätsmodelle
-liefern die begriffliche Rahmung, aber keine Messvorschrift. Linked-Data-Modelle
-benennen relevante Qualitätsaspekte, von denen nur diejenigen operationalisierbar
-sind, die sich aus dem Metadatensatz und den von ihm referenzierten Ressourcen
-allein entscheiden lassen. Portalnahe Modelle sind unmittelbar übertragbar,
-verengen Qualität jedoch auf leicht Prüfbares. Übernommen wurden Dimensionslogik,
-Formatbewertung und Prioritätslogik der Baseline, verworfen ihr
-Best-Distribution-Prinzip und die überwiegende Beschränkung auf Präsenzprüfungen
-(Abschnitt~\ref{sec:disk_grundlagen}).
-
-\paragraph{Teilfrage 2: Relevante Dimensionen und Indikatoren.}
-Relevant sind die vier Dimensionen Auffindbarkeit, Zugänglichkeit,
-Nachnutzbarkeit und Aussagekraft. Die formale Standardkonformität geht als
-einzelner aggregierter Indikator ein, weil die Pflichtfeldprüfung im
-GovData-Kontext bereits durch die SHACL-Validierung abgedeckt ist. Von den fünf
-aus den Interviews abgeleiteten Modellanforderungen sind technische Nutzbarkeit,
-Interoperabilität und semantische Aussagekraft umgesetzt, während relative
-Vollständigkeit, kontextsensitive Gewichtung und Metadaten-Daten-Kongruenz
-unvollständig geblieben sind (Abschnitt~\ref{sec:disk_dimensionen}).
-
-\paragraph{Teilfrage 3: Ergänzende semantik- und kontextbezogene Prüfungen.}
-Umsetzbar ist eine eigene Dimension aus sechs sprachmodellgestützten Kriterien,
-die die Freitextfelder untereinander und gegen den übrigen Datensatz bewertet.
-Die Nachvollziehbarkeit bleibt gewahrt, weil jedes Teilurteil begründet ausgegeben
-wird; die Verlässlichkeit ist gemessen statt vorausgesetzt und im Mittel hoch,
-aber nicht bitgenau. Die Messgüte dieser Dimension ist zugleich die schwächste
-des Modells. Nicht umsetzbar waren Prüfungen, die eine Referenz außerhalb des
-Metadatensatzes voraussetzen (Abschnitt~\ref{sec:disk_semantik}).
-
-\paragraph{Teilfrage 4: Konzeption und Operationalisierung.}
-Tragend sind vier Festlegungen: die Trennung von kontinuierlicher Messung und
-präsentationaler Ergebnisstufe, die Mittelung über Distributionen, das
-Malus-Prinzip und die Ergebnisstufe \emph{nicht anwendbar}. Die Gewichtung ist
-begründet, aber nicht empirisch validiert. Die Deckenprüfung am Referenzdatensatz
-belegt, dass niedrige Werte einer Stichprobe auf die Metadaten und nicht auf ein
-zu strenges Instrument zurückgehen (Abschnitt~\ref{sec:disk_konzept_prototyp}).
-
-\paragraph{Teilfrage 5: Menschenlesbares Qualitätsreporting.}
-Umgesetzt ist eine Darstellung, die jedes negative Teilergebnis bis zur
-betroffenen Stelle im Metadatensatz zurückverfolgbar macht und in eine
-Handlungsanweisung überführt, und zwar über alle siebenundzwanzig Indikatoren in
-derselben Form. Keiner der untersuchten Ansätze leistet dies. Die Wirksamkeit der
-Aufbereitung ist allerdings nicht empirisch geprüft; diese Teilfrage ist die
-einzige, die ohne Messung bleibt (Abschnitt~\ref{sec:disk_nachvollziehbarkeit}).
-
-\paragraph{Leitfrage.}
-Ein Bewertungsmodell, das formale Prüfverfahren mit kontext- und
-semantikbezogenen Indikatoren verbindet, lässt sich für DCAT-AP.de im
-GovData-Kontext entwickeln und betreiben. Die formale Prüfung bildet dabei nicht
-den Kern, sondern die Vorstufe des Modells. Der Preis der Erweiterung ist eine
-Dimension, deren Messunsicherheit deutlich über der der übrigen liegt, und der
-Verzicht auf Bitgenauigkeit der Gesamtbewertung. Der Gewinn ist ein Urteil, das
-näher am menschlichen Qualitätsempfinden liegt als die etablierte Baseline und
-dessen Zustandekommen an jeder Stelle offengelegt ist.
-
-% Kein eigener Limitationen-Abschnitt im Fazit. Die Limitationen stehen an zwei
-% Stellen, die sich sauber trennen lassen:
-%   Limitationen der Evaluation (Kap. 6) -> was das Experiment nicht zeigen kann
-%   Abschnitt~\ref{sec:disk_grenzen}     -> was die Metrik nicht kann
-
+% =============================================================================
 \section{Weiterer Forschungs- und Entwicklungsbedarf}
+\label{sec:fazit_forschungsbedarf}
 
 Der dringlichste offene Punkt folgt aus der methodischen Grenze der
 Referenzbewertung. Sie stammt von einer einzigen Person, die zugleich das Modell
