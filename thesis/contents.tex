@@ -3926,8 +3926,34 @@ der Entscheidbarkeit des Gegenstands, und sie ist damit keine Eigenschaft dieses
 Prototyps, sondern der Aufgabe.
 
 Die folgenden Abschnitte halten fest, welche Antwort sich aus diesen Ergebnissen
-auf die fünf Teilfragen und die Leitfrage aus
+auf die Leitfrage und die fünf Teilfragen aus
 Abschnitt~\ref{sec:forschungsfragen} ergibt.
+
+\subsection{Leitfrage}
+\label{subsec:fazit_leitfrage}
+
+\emph{Wie kann ein Bewertungsmodell für die Qualität von DCAT-AP.de-Metadaten im
+GovData-Kontext entwickelt werden, das formale Prüfverfahren mit ergänzenden
+kontext- und semantikbezogenen Qualitätsindikatoren verbindet?}
+
+Die Verbindung gelingt über eine Trennung der Prüfarten.
+Formale und technische Kriterien tragen denjenigen
+Teil der Bewertung, für den ein nachprüfbarer Sachverhalt existiert, und werden
+deterministisch geprüft. Die semantische Bewertung ist demgegenüber auf eine von
+vier Dimensionen begrenzt, wird über ein Sprachmodell erhoben und ihre
+Verlässlichkeit gemessen statt vorausgesetzt. Zusammengehalten werden beide
+Prüfarten durch eine gemeinsame Skala, eine offengelegte Gewichtung und die
+Rückverfolgbarkeit jedes Teilurteils bis zur betroffenen Stelle im Metadatensatz.
+
+Diese Verbindung erfordert zwei Kompromisse. Sie fügt dem Modell eine
+Dimension hinzu, deren Messunsicherheit deutlich über der der übrigen liegt, und
+sie nimmt der Gesamtbewertung die bitgenaue Reproduzierbarkeit. Demgegenüber
+steht ein Urteil, das näher am menschlichen Qualitätsempfinden liegt als die
+etablierte Baseline und dessen Zustandekommen an jeder Stelle offengelegt ist.
+Ein absolutes Qualitätsurteil leistet das Modell dabei nicht. Die Gründe dafür
+benennt Abschnitt~\ref{sec:disk_grenzen}.
+
+Die fünf Teilfragen führen diese Antwort im Folgenden aus.
 
 \subsection{Teilfrage 1: Übertragbarkeit bestehender Bewertungsansätze}
 \label{sec:disk_grundlagen}
@@ -3968,9 +3994,9 @@ Von den fünf aus den Interviews abgeleiteten Modellanforderungen
 (Abschnitt~\ref{sec:interview_ergebnisse}) sind vier umgesetzt: die formale
 Validierung als eigene Basisschicht, die als aggregierter Konformitätsindikator
 in die Dimension Nachnutzbarkeit eingeht, ohne mit der Gesamtqualität
-gleichgesetzt zu werden; die technische Nutzbarkeit, die über die stabilste
-Dimension der Evaluation abgedeckt ist; die semantische Aussagekraft als eigene
-Dimension mit sechs sprachmodellgestützten Kriterien; und das transparente
+gleichgesetzt zu werden. Die technische Nutzbarkeit, die über die stabilste
+Dimension der Evaluation abgedeckt ist. Die semantische Aussagekraft als eigene
+Dimension mit sechs sprachmodellgestützten Kriterien und das transparente
 Reporting mit Teilscores je Dimension und indikatorbezogenen
 Verbesserungshinweisen.
 
@@ -3980,12 +4006,10 @@ nicht im Implementierungsaufwand, sondern in der Entscheidbarkeit des
 Gegenstands. Die relative Feldrelevanz ist als absolute Eigenschaft eines
 Datensatzes nicht operationalisierbar, und die kontextsensitive Gewichtung bleibt
 auf eine einzelne Anwendbarkeitsentscheidung beschränkt
-(Abschnitt~\ref{subsec:reichweite_dimensionen}). Hinzu kommt die nicht zu den
-fünf Anforderungen zählende Metadaten-Daten-Kongruenzprüfung, die in den
+(Abschnitt~\ref{subsec:reichweite_dimensionen}). Hinzu kommt  Metadaten-Daten-Kongruenzprüfung, die in den
 Interviews als Prüfansatz benannt wurde, aber nach einer Erprobung an realen
 Metadaten wieder deaktiviert werden musste
-(Abschnitt~\ref{subsec:kongruenzindikatoren}). Dieser Fall wiegt schwer, weil die
-Prüfung das Modell am stärksten von der Baseline abgehoben hätte.
+(Abschnitt~\ref{subsec:kongruenzindikatoren}).
 
 \subsection{Teilfrage 3: Ergänzende semantik- und kontextbezogene Prüfungen}
 \label{sec:disk_semantik}
@@ -4002,18 +4026,17 @@ weicht bewusst von der Zurückhaltung der Experteninterviews gegenüber solchen
 Verfahren ab (INT-K10, Tabelle~\ref{tab:zentrale_interviewergebnisse}). Drei
 Vorkehrungen begrenzen die von den Experten genannten Risiken. Die
 Nachvollziehbarkeit bleibt gewahrt, weil jedes Teilurteil begründet ausgegeben
-wird. Die Verlässlichkeit ist gemessen statt vorausgesetzt und mit einer Spanne
-der Laufmittelwerte von 0{,}0004 und einer Rangkorrelation von 0{,}993 zwischen
+wird. Die Verlässlichkeit ist gemessen statt vorausgesetzt und zwischen
 Wiederholungsläufen hoch, aber nicht bitgenau
 (Abschnitt~\ref{subsec:eval_reproduzierbarkeit}); diese Eigenschaft überträgt
 sich auf die Metrik als Ganzes.
 
-Diese Erweiterung geht allerdings zulasten der Messgüte. Die Aussagekraft ist über
-beide Stichproben die schwächste Dimension des Modells, mit einer Rangkorrelation
-von 0{,}569 auf der Kernstichprobe und 0{,}321 auf den Extremfällen. Die Analyse
-dieses Einbruchs führt ihn auf drei gleichzeitig wirkende Ursachen zurück, von
-denen zwei im Messmodell selbst liegen und mit den dort bereits angelegten
-Mitteln behebbar sind (Abschnitt~\ref{sec:disk_evaluation}). Nicht umsetzen ließen sich Prüfungen, die eine Referenz außerhalb des
+Diese Erweiterung geht allerdings auf Kosten der Messgüte. Die Aussagekraft ist über
+beide Stichproben die schwächste Dimension des Modells, auf den konstruierten
+Extremfällen deutlicher als auf der Kernstichprobe. Die Analyse dieses Einbruchs
+führt ihn auf drei gleichzeitig wirkende Ursachen zurück, von denen zwei im
+Messmodell selbst liegen und mit den dort bereits angelegten Mitteln behebbar
+sind (Abschnitt~\ref{sec:disk_evaluation}). Nicht umsetzen ließen sich Prüfungen, die eine Referenz außerhalb des
 Metadatensatzes voraussetzen.
 
 \subsection{Teilfrage 4: Konzeption und prototypische Operationalisierung}
@@ -4067,21 +4090,6 @@ Wie wirksam die gewählte Aufbereitung in der Anwendung tatsächlich ist, bleibt
 offen. Die Darstellung ist an Beispielen demonstriert, aber nicht mit
 Datenbereitstellenden erprobt; Teilfrage~5 ist damit die einzige, die ohne
 empirische Prüfung bleibt.
-
-\subsection{Leitfrage}
-\label{subsec:fazit_leitfrage}
-
-\emph{Wie kann ein Bewertungsmodell für die Qualität von DCAT-AP.de-Metadaten im
-GovData-Kontext entwickelt werden, das formale Prüfverfahren mit ergänzenden
-kontext- und semantikbezogenen Qualitätsindikatoren verbindet?}
-
-Ein solches Modell lässt sich für DCAT-AP.de im GovData-Kontext entwickeln und
-betreiben. Die formale Prüfung bildet dabei nicht den Kern, sondern die Vorstufe
-des Modells. Die Erweiterung erfordert dabei zwei Zugeständnisse, nämlich eine Dimension, deren
-Messunsicherheit deutlich über der der übrigen liegt, sowie den Verzicht auf eine
-bitgenau reproduzierbare Gesamtbewertung. Demgegenüber steht ein Urteil, das näher
-am menschlichen Qualitätsempfinden liegt als die etablierte Baseline und dessen
-Zustandekommen an jeder Stelle offengelegt ist.
 
 % =============================================================================
 \section{Kritische Würdigung und Reflexion}
@@ -4256,7 +4264,13 @@ zuverlässig über die Struktur eines Metadatensatzes, lässt aber genau die Fä
 passieren, in denen Feldpräsenz und tatsächliche Nutzbarkeit auseinanderfallen.
 Ein ergänzendes Bewertungsmodell sollte deshalb an den Stellen tiefer prüfen, an
 denen die etablierte Metrik Vorhandensein mit Qualität gleichsetzt, und die
-Ergebnisse beider Ebenen getrennt ausweisen.
+Ergebnisse beider Ebenen getrennt ausweisen. Weitergehend liegt es nahe, die
+formale Validierung dem Bewertungsmodell als Vorstufe vorzuschalten, statt sie
+wie hier als einen Indikator unter anderen zu führen: Ein Metadatensatz, der die
+Mindestanforderungen des Standards verfehlt, müsste dann zuerst korrigiert
+werden, bevor eine differenzierte Qualitätsaussage über ihn überhaupt sinnvoll
+ist. Die vorliegende Arbeit prüft diese Anordnung nicht; sie ergibt sich als
+Überlegung aus der beobachteten Rollenverteilung beider Prüfebenen.
 
 Für Datenbereitstellende entfaltet nicht der Score selbst die Wirkung, sondern der
 von ihm ausgehende Weg zurück zur konkreten Stelle im Metadatensatz. Eine Qualitätsmessung,
