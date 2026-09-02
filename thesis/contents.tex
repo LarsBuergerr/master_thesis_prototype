@@ -3881,12 +3881,9 @@ ohne ihn zu widerlegen.
 
 Dieses Kapitel fasst die zentralen Ergebnisse zusammen
 und beantwortet auf dieser Grundlage die Forschungsfragen aus
-Abschnitt~\ref{sec:forschungsfragen}
-(Abschnitt~\ref{sec:fazit_zusammenfassung}), betrachtet das entwickelte
-Bewertungsmodell kritisch, weist die Grenzen seiner Aussagen auf
-(Abschnitt~\ref{sec:disk_grenzen}) und schließt mit dem wissenschaftlichen
-Beitrag, dem weiteren Forschungsbedarf und den praktischen Implikationen der
-Arbeit (Abschnitt~\ref{sec:fazit_ausblick}).
+Abschnitt~\ref{sec:forschungsfragen}, betrachtet das entwickelte
+Bewertungsmodell kritisch, weist die Grenzen seiner Aussagen auf und schließt mit dem wissenschaftlichen Beitrag, dem weiteren Forschungsbedarf und den praktischen Implikationen der
+Arbeit.
 
 % =============================================================================
 \section{Zusammenfassung der Ergebnisse}
@@ -3936,12 +3933,11 @@ Abschnitt~\ref{sec:forschungsfragen} ergibt.
 GovData-Kontext entwickelt werden, das formale Prüfverfahren mit ergänzenden
 kontext- und semantikbezogenen Qualitätsindikatoren verbindet?}
 
-Die Verbindung gelingt über eine Trennung der Prüfarten.
-Formale und technische Kriterien tragen denjenigen
-Teil der Bewertung, für den ein nachprüfbarer Sachverhalt existiert, und werden
-deterministisch geprüft. Die semantische Bewertung ist demgegenüber auf eine von
-vier Dimensionen begrenzt, wird über ein Sprachmodell erhoben und ihre
-Verlässlichkeit gemessen statt vorausgesetzt. Zusammengehalten werden beide
+Die Verbindung gelingt über eine Arbeitsteilung zwischen den Prüfarten. Formale
+und technische Kriterien tragen den Teil der Bewertung, für den ein nachprüfbarer
+Sachverhalt existiert, und werden deterministisch geprüft. Die semantische
+Bewertung ist demgegenüber auf eine von vier Dimensionen begrenzt, wird über ein
+Sprachmodell erhoben und ihre Verlässlichkeit gemessen statt vorausgesetzt. Zusammengehalten werden beide
 Prüfarten durch eine gemeinsame Skala, eine offengelegte Gewichtung und die
 Rückverfolgbarkeit jedes Teilurteils bis zur betroffenen Stelle im Metadatensatz.
 
@@ -3966,10 +3962,10 @@ werden konnte, hing dabei nicht vom Implementierungsaufwand ab, sondern von sein
 Prüfbarkeit aus dem Metadatensatz heraus
 (Abschnitt~\ref{sec:bewertungsluecke}). Die abstrakten Qualitätsmodelle von Wang
 und Strong, ISO/IEC~25012 und die FAIR-Prinzipien liefern die begriffliche
-Rahmung, aber keine Messvorschrift. Erst die ISO/IEC~25024 Norm ergänzt konkrete
+Rahmung, aber keine Messvorschrift. Erst die Norm ISO/IEC~25024 ergänzt konkrete
 Messfunktionen und Skalentypen, an denen das konzeptionelle Messmodell ansetzt
 \cite{wang1996beyond, iso25012, wilkinson2016fair, iso25024}. Das Modell von Zaveri et al. macht Qualitätsaspekte sichtbar, von
-denen sich nur derjenige Teil operationalisieren ließ, der aus dem Metadatensatz
+denen sich nur der Teil operationalisieren ließ, der aus dem Metadatensatz
 und den von ihm referenzierten Ressourcen entscheidbar ist
 \cite{Zaveri2016LinkedDataQuality}. Die portalnahe MQA ist unmittelbar
 übertragbar: Übernommen wurden ihre Dimensionslogik, die Festlegung von
@@ -3994,9 +3990,9 @@ Von den fünf aus den Interviews abgeleiteten Modellanforderungen
 (Abschnitt~\ref{sec:interview_ergebnisse}) sind vier umgesetzt: die formale
 Validierung als eigene Basisschicht, die als aggregierter Konformitätsindikator
 in die Dimension Nachnutzbarkeit eingeht, ohne mit der Gesamtqualität
-gleichgesetzt zu werden. Die technische Nutzbarkeit, die über die stabilste
-Dimension der Evaluation abgedeckt ist. Die semantische Aussagekraft als eigene
-Dimension mit sechs sprachmodellgestützten Kriterien und das transparente
+gleichgesetzt zu werden; die technische Nutzbarkeit, die über die stabilste
+Dimension der Evaluation abgedeckt ist; die semantische Aussagekraft als eigene
+Dimension mit sechs sprachmodellgestützten Kriterien; und das transparente
 Reporting mit Teilscores je Dimension und indikatorbezogenen
 Verbesserungshinweisen.
 
@@ -4006,10 +4002,10 @@ nicht im Implementierungsaufwand, sondern in der Entscheidbarkeit des
 Gegenstands. Die relative Feldrelevanz ist als absolute Eigenschaft eines
 Datensatzes nicht operationalisierbar, und die kontextsensitive Gewichtung bleibt
 auf eine einzelne Anwendbarkeitsentscheidung beschränkt
-(Abschnitt~\ref{subsec:reichweite_dimensionen}). Hinzu kommt  Metadaten-Daten-Kongruenzprüfung, die in den
-Interviews als Prüfansatz benannt wurde, aber nach einer Erprobung an realen
-Metadaten wieder deaktiviert werden musste
-(Abschnitt~\ref{subsec:kongruenzindikatoren}).
+(Abschnitt~\ref{subsec:reichweite_dimensionen}). Hinzu kommt die
+Metadaten-Daten-Kongruenzprüfung, die in den Interviews als Prüfansatz benannt
+wurde, aber nach einer Erprobung an realen Metadaten wieder deaktiviert werden
+musste (Abschnitt~\ref{subsec:kongruenzindikatoren}).
 
 \subsection{Teilfrage 3: Ergänzende semantik- und kontextbezogene Prüfungen}
 \label{sec:disk_semantik}
@@ -4027,9 +4023,8 @@ Verfahren ab (INT-K10, Tabelle~\ref{tab:zentrale_interviewergebnisse}). Drei
 Vorkehrungen begrenzen die von den Experten genannten Risiken. Die
 Nachvollziehbarkeit bleibt gewahrt, weil jedes Teilurteil begründet ausgegeben
 wird. Die Verlässlichkeit ist gemessen statt vorausgesetzt und zwischen
-Wiederholungsläufen hoch, aber nicht bitgenau
-(Abschnitt~\ref{subsec:eval_reproduzierbarkeit}); diese Eigenschaft überträgt
-sich auf die Metrik als Ganzes.
+Wiederholungsläufen hoch, aber nicht bitgenau, was sich auf die Metrik als Ganzes
+überträgt (Abschnitt~\ref{subsec:eval_reproduzierbarkeit}).
 
 Diese Erweiterung geht allerdings auf Kosten der Messgüte. Die Aussagekraft ist über
 beide Stichproben die schwächste Dimension des Modells, auf den konstruierten
@@ -4078,13 +4073,13 @@ betroffenen Stelle im konkreten Metadatensatz zurückverfolgbar macht und in ein
 Handlungsanweisung überführt, und dies über alle siebenundzwanzig Indikatoren in
 derselben Form (Abschnitt~\ref{subsec:befund}). Keiner der in
 Kapitel~\ref{sec:chapter_02} untersuchten Ansätze leistet dies: Die MQA gibt
-Punktwerte je Metrik aus, die für Datenbereitstellenden nicht
-rekonstruierbar sind, und die umfassenderen Modelle der Literatur behandeln keine
+Punktwerte je Metrik aus, die für Datenbereitstellende nicht rekonstruierbar
+sind, und die umfassenderen Modelle der Literatur behandeln keine
 Ausgabeform. Aus den Interviews folgt dafür eine Begründung, die über
 Bedienkomfort hinausgeht: Datenbereitstellende sind häufig Personen ohne
 technischen Hintergrund, die die technisch formulierten Meldungen der formalen
 Validierung nicht umsetzen können. Verständliches Reporting ist unter dieser
-Bedingung die Voraussetzung dafür, dass eine Qualitätsmessung überhaupt auf den Datenbestand eine positive Wirkung hat.
+Bedingung die Voraussetzung dafür, dass eine Qualitätsmessung überhaupt eine positive Wirkung auf den Datenbestand hat.
 
 Wie wirksam die gewählte Aufbereitung in der Anwendung tatsächlich ist, bleibt
 offen. Die Darstellung ist an Beispielen demonstriert, aber nicht mit
@@ -4122,11 +4117,10 @@ Nutzenden, ohne ihn zu ersetzen. Am stärksten
 trifft diese Grenze die Aussagekraft, die doppelt belastet ist, weil sie
 zusätzlich zur Nutzungsabhängigkeit von der bewertenden Person abhängt.
 
-Diese Grenze ist allerdings kein Sonderproblem dieser Arbeit, und die Einordnung
-gehört in denselben Zusammenhang. Sie erklärt, warum bestehende Ansätze ihre
-Validität überwiegend nicht prüfen, und sie erklärt, warum es die perfekte Metrik
-für Metadatenqualität nicht geben kann. Offene Verwaltungsdaten sind ihrem Wesen
-nach breit gefächert und werden in Bereichen genutzt, die jeweils andere
+Diese Grenze ist allerdings kein Sonderproblem dieser Arbeit. Sie erklärt
+zugleich, warum bestehende Ansätze ihre Validität überwiegend nicht prüfen und
+warum es die perfekte Metrik für Metadatenqualität nicht geben kann. Offene Verwaltungsdaten sind ihrem Wesen
+nach breit gefächert und werden in Bereichen genutzt, die jeweils unterschiedliche
 Metadateneigenschaften benötigen. Der Beitrag dieser Arbeit liegt daher nicht in
 einer Absolutheit des Urteils, sondern in dessen Nachvollziehbarkeit und in einer
 geprüften relativen Güte gegenüber dem etablierten Verfahren.
@@ -4189,10 +4183,10 @@ adressiert, da die Bewertung über einen externen Anbieter erfolgt.
 
 \paragraph{Einordnung.}
 Diese Grenzen betreffen überwiegend die Reichweite der Aussagen und nicht die
-Tragfähigkeit des Verfahrens. Sie besagen, dass das Modell kein absolutes
+Tragfähigkeit des Verfahrens. Sie halten fest, dass das Modell kein absolutes
 Qualitätsurteil fällt, unter welchen Bedingungen seine Werte gelten und wo seine
-Messung endet. Sie besagen nicht, dass die gemessenen Unterschiede zur Baseline
-oder die nachgewiesene Übereinstimmung mit dem Referenzurteil hinfällig wären.
+Messung endet, nicht aber, dass die gemessenen Unterschiede zur Baseline oder die
+nachgewiesene Übereinstimmung mit dem Referenzurteil hinfällig wären.
 Hervorzuheben ist vielmehr, dass sich diese Grenzen überhaupt benennen und in
 weiten Teilen beziffern lassen. Für keinen der in Kapitel~\ref{sec:chapter_02}
 untersuchten Ansätze liegt eine vergleichbare Angabe darüber vor, wie weit seine
