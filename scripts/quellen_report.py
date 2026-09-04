@@ -291,7 +291,7 @@ def link_of(f):
 
 CH_ORDER = ["Einleitung", "Theoretische und konzeptionelle Grundlagen", "Experteninterviews",
             "Konzeption eines Metadatenqualitätsmodells", "Prototypische Operationalisierung",
-            "Evaluation", "Diskussion der Qualitätsmetrik", "Fazit und Ausblick"]
+            "Evaluation", "Schlussbetrachtung"]
 def ch_of(ctx): return ctx.split(" › ")[0] if ctx else "(ohne Kapitel)"
 def ch_num(c):
     return CH_ORDER.index(c)+1 if c in CH_ORDER else 99

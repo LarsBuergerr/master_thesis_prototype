@@ -2,7 +2,6 @@
 
 \section{Problemstellung und Motivation}
 
-
 In den vergangenen Jahren hat die Bereitstellung offener Verwaltungsdaten im Rahmen von Open Government Data (OGD) zunehmend an Bedeutung gewonnen. Durch die Veröffentlichung öffentlich finanzierter Daten sollen Transparenz, Innovation und wissenschaftliche Nutzung gefördert werden. Offene Daten können dabei neue wirtschaftliche und gesellschaftliche Mehrwerte schaffen, indem sie Forschung, datenbasierte Anwendungen und evidenzbasierte Entscheidungsprozesse unterstützen \cite{lnenicka2023}.
 
 In Deutschland erfolgt die zentrale Bereitstellung von Metadaten zu offenen Verwaltungsdaten über das nationale Datenportal GovData. GovData fungiert als übergreifender Metadatenkatalog, über den Bund, Länder und Kommunen ihre offenen Datensätze auffindbar machen und einen zentralen Zugang zu Verwaltungsdaten bereitstellen \cite{govdata_portal, FitkoGovdata}. Die eigentlichen Datensätze werden dabei weiterhin von den jeweiligen Datenbereitstellern dezentral verwaltet, während das Portal die zugehörigen Metadaten aggregiert und über standardisierte Schnittstellen zugänglich macht.
@@ -220,7 +219,6 @@ Ein Triple Store ist eine auf RDF-Daten spezialisierte Datenbank, in der Informa
 SPARQL ist die standardisierte Abfragesprache für RDF-Daten und ermöglicht es, RDF-Graphen beziehungsweise RDF-Datenbestände über Graphmuster zu durchsuchen und auszuwerten \cite{W3CRDF11Concepts,w3c_sparql11_query}.
 RDF fungiert in diesem Kontext somit als gemeinsames Modell, in dem Metadaten standardisiert beschrieben, gespeichert, und verarbeitet werden.
 
-
 Die Bedeutung von RDF hängt eng mit den Prinzipien von Linked Data zusammen. Linked Data zielt darauf, Daten im Internet so zu veröffentlichen, dass sie maschinell verarbeitbar, referenzierbar, und mit anderen Datenbeständen verknüpfbar sind. Für Datenkataloge ist dies insbesondere deshalb relevant, weil Metadaten nicht nur innerhalb einzelner Portale genutzt, sondern auch katalogübergreifend aggregiert und durchsucht werden sollen. Das W3C-Vokabular DCAT ist genau für diesen Zweck konzipiert: Es soll die Interoperabilität zwischen im Web veröffentlichten Datenkatalogen erleichtern, die Aggregation von Metadaten aus mehreren Katalogen unterstützen, die Auffindbarkeit von Datensätzen erhöhen, und föderierte Suche über verschiedene Kataloge hinweg ermöglichen. \cite{W3CDCAT3}
 
 Zur formalen Validierung von RDF-basierten Metadaten dient SHACL.
@@ -265,84 +263,7 @@ Der Standard ist weiterhin aktuell und die Ausgabe von 2008 wurde von ISO im Jah
 Er definiert ein allgemeines Datenqualitätsmodell für strukturiert in Computersystemen gehaltene Daten.
 Datenqualitätsmerkmale werden den Perspektiven inhärenter und systemabhänger Qualität zugeordnet. \cite{iso25012}
 
-Figur \ref{fig:iso25012_quality_model_de} veranschaulicht den definierten Standard.
 Das Modell umfasst 15 Qualitätsmerkmale und betont ausdrücklich, dass deren Relevanz je nach Stakeholdern und Anwendungskontext variiert.
-
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[x=0.85cm,y=0.85cm, font=\sffamily]
-
-    % Grautöne
-    \definecolor{headergray}{RGB}{220,220,220}
-    \definecolor{leftgray}{RGB}{245,245,245}
-    \definecolor{rightgray}{RGB}{190,190,190}
-    \definecolor{boxfill}{RGB}{230,230,230}
-
-    % Maße
-    \def\W{18}
-    \def\H{12}
-    \def\HH{1.6}
-
-    % Außenrahmen
-    \draw[line width=1.2pt] (0,0) rectangle (\W,\H);
-
-    % Kopfzeile
-    \fill[headergray] (0,\H-\HH) rectangle (\W,\H);
-    \draw[line width=1.2pt] (0,\H-\HH) -- (\W,\H-\HH);
-
-    % Hauptfläche mit grauem Verlauf
-    \shade[left color=leftgray, right color=rightgray]
-        (0,0) rectangle (\W,\H-\HH);
-
-    % Vertikale Trennlinien
-    \draw[line width=1pt] (4.4,0) -- (4.4,\H-\HH);
-    \draw[line width=1pt] (13.4,0) -- (13.4,\H-\HH);
-
-    % Titel
-    \node[font=\bfseries\fontsize{22}{24}\selectfont] at (\W/2,\H-0.8)
-        {Qualität des Datenprodukts};
-
-    % Bereichsüberschriften
-    \node[anchor=west,font=\fontsize{15}{17}\selectfont] at (0.4,9.75)
-        {Inhärente Datenqualität};
-
-    \node[font=\fontsize{15}{17}\selectfont] at (11.6,0.5)
-        {Systemabhängige Datenqualität};
-
-    % Box-Makro: breiter und mit Zeilenumbruch
-    \newcommand{\ibox}[3]{%
-        \draw[fill=boxfill, line width=0.7pt] (#1,#2) rectangle ++(3.9,0.95);
-        \node[font=\fontsize{11}{11}\selectfont, align=center, text width=3.40cm]
-            at (#1+1.95,#2+0.475) {#3};
-    }
-
-    % Linke Gruppe
-    \ibox{0.25}{7.1}{Genauigkeit}
-    \ibox{0.25}{5.8}{Vollständigkeit}
-    \ibox{0.25}{4.5}{Konsistenz}
-    \ibox{0.25}{3.2}{Glaubwürdigkeit}
-    \ibox{0.25}{1.9}{Aktualität}
-
-    % Mittlere Gruppe links
-    \ibox{4.8}{6.5}{Zugänglichkeit}
-    \ibox{4.8}{5.2}{Konformität}
-    \ibox{4.8}{3.9}{Vertraulichkeit}
-    \ibox{4.8}{2.6}{Effizienz}
-
-    % Mittlere Gruppe rechts
-    \ibox{9.2}{5.85}{Präzision}
-    \ibox{9.2}{4.55}{Nachvollziehbar- \ keit}
-    \ibox{9.2}{3.25}{Verständlichkeit}
-
-    % Rechte Gruppe
-    \ibox{13.6}{5.85}{Verfügbarkeit}
-    \ibox{13.6}{4.55}{Portabilität}
-    \ibox{13.6}{3.25}{Wiederherstell- \ barkeit}
-
-\end{tikzpicture}
-\caption[Schematische Darstellung inhärenter und systemabhängiger Datenqualitätsmerkmale in Anlehnung an ISO/IEC 25012.]{Schematische Darstellung inhärenter und systemabhängiger Datenqualitätsmerkmale in Anlehnung an ISO/IEC 25012. \cite{iso25012}}
-\label{fig:iso25012_quality_model_de}
-\end{figure}
 
 Inhärente Datenqualität beschreibt den Grad, zu dem Daten das ihnen inhärente Potenzial besitzen, festgelegte Anforderungen bei ihrer Nutzung unter bestimmten Bedingungen zu erfüllen. Aus dieser Perspektive bezieht sich Datenqualität auf Eigenschaften, die den Daten selbst zugeschrieben werden können. Dazu zählen insbesondere:
 
@@ -352,7 +273,9 @@ Inhärente Datenqualität beschreibt den Grad, zu dem Daten das ihnen inhärente
     \item sowie die zugehörigen Metadaten.
 \end{itemize}
 
-Systemabhängige Datenqualität bezeichnet demgegenüber den Grad, zu dem Datenqualität innerhalb eines Computersystems erreicht und aufrechterhalten wird, wenn die Daten unter festgelegten Bedingungen verwendet werden.
+Ausschließlich der inhärenten Perspektive zugeordnet sind die Merkmale Genauigkeit, Vollständigkeit, Konsistenz, Glaubwürdigkeit, und Aktualität.
+
+Systemabhängige Datenqualität bezeichnet demgegenüber den Grad, zu dem Datenqualität innerhalb eines Computersystems erreicht und aufrechterhalten wird, wenn die Daten unter festgelegten Bedingungen verwendet werden. Ausschließlich dieser Perspektive zugeordnet sind die Merkmale Verfügbarkeit, Portabilität, und Wiederherstellbarkeit. Die verbleibenden sieben Merkmale -- Zugänglichkeit, Konformität, Vertraulichkeit, Effizienz, Präzision, Nachvollziehbarkeit, und Verständlichkeit -- werden beiden Perspektiven zugerechnet.
 
 Im Vergleich zu Wang und Strong fällt auf, dass ISO/IEC 25012 stärker normativ und modellorientiert vorgeht, während Wang und Strong die Qualitätswahrnehmung empirisch aus Sicht von Datennutzenden rekonstruieren. Gleichwohl bestehen deutliche Überschneidungen. Merkmale wie Genauigkeit, Vollständigkeit, Zugänglichkeit, Verständlichkeit, und Aktualität erscheinen in beiden Ansätzen als zentrale Komponenten von Datenqualität. Die Unterschiede liegen vor allem im jeweiligen Erkenntnisinteresse: Wang und Strong strukturieren Datenqualität aus der Perspektive der Nutzung, Wand und Wang fundieren Datenqualität über die Angemessenheit der Repräsentation realweltlicher Sachverhalte, und ISO/IEC 25012 stellt ein standardisiertes Qualitätsmodell für Daten in Computersystemen bereit.
 
@@ -435,7 +358,6 @@ Die Metriken werden bei Zaveri et al. zusätzlich danach unterschieden, ob sie q
 % Damit ist der Survey weniger als direkt ausführbares Bewertungswerkzeug zu verstehen, sondern als systematisierende Taxonomie von Qualitätsdimensionen und möglichen Operationalisierungen.
 
 % Der Ansatz liefert damit einen breiten Referenzrahmen für die systematische Einordnung von Linked-Data-Qualität und eignet sich insbesondere zur theoretischen Herleitung relevanter Qualitätsdimensionen.
-
 
 \captionsetup[table]{justification=centering}
 
@@ -705,7 +627,6 @@ Kontextualität
 \normalsize
 } % wentzel piveau metriken
 
-
 Die Gewichtung erfolgt über ein Punktesystem mit maximal 405 Punkten. Die höchsten Gewichte entfallen auf Auffindbarkeit, Zugänglichkeit und Interoperabilität, während Kontextualität deutlich geringer gewichtet wird. Dadurch operationalisiert MQA/Piveau Metadatenqualität primär über praktische Nutzbarkeit, technische Zugänglichkeit, strukturelle Interoperabilität und rechtliche Wiederverwendbarkeit. \cite{data_europa, wentzel2023extensive}
 
 Ein methodisch wichtiger Bestandteil des Ansatzes ist die Repräsentation der Messergebnisse mithilfe der \acrfull{DQV}. DQV erweitert DCAT um ein Vokabular zur maschinenlesbaren Beschreibung von Qualitätsinformationen. Dadurch können Qualitätsdimensionen, Metriken, Messwerte, geprüfte Ressourcen und Bewertungszeitpunkte explizit miteinander verknüpft werden. Einzelne Messergebnisse werden als \texttt{dqv:QualityMeasurement} modelliert, während SHACL-basierte Validierungsergebnisse zur DCAT-AP-Konformität als Qualitätsannotation eingebunden werden können. \cite{wentzel2023extensive}
@@ -765,7 +686,6 @@ Der ISO-19157-basierte Ansatz von Nogueras-Iso et al. erweitert eine ursprüngli
 ISO 19157 bietet einen normativen Rahmen, in dem sogenannte \textit{Quality Elements} jeweils durch eine \textit{Measure}, eine \textit{Evaluation Method} und ein oder mehrere \textit{Results} beschrieben werden. Diese Struktur erlaubt es, verschiedene Fehlerarten präziser voneinander zu unterscheiden und Qualitätsmessungen nicht nur als einfache Punktwerte, sondern als methodisch nachvollziehbare Prüfergebnisse zu modellieren. \cite{noguerasiso_quality_metadata}
 
 Für Open-Data-Metadaten übertragen Nogueras-Iso et al. insbesondere Qualitätskategorien wie \textit{Completeness}, \textit{Logical Consistency}, \textit{Temporal Quality}, \textit{Thematic Accuracy}, \textit{Positional Correctness} und \textit{Quality of Free Text}. Eine vollständige Übersicht der Qualitätselemente mit ihren Scopes, Measures und Evaluationsarten findet sich in Anhang~\ref{app:iso19157_qualitaetselemente} (Tabelle~\ref{tab:nogueras_iso_quality_elements}).
-
 
 Dabei wird deutlich, dass der Ansatz nicht nur prüft, ob bestimmte Metadatenelemente vorhanden sind, sondern unterschiedliche Arten von Qualitätsproblemen systematisch trennt. Fehlende Elemente werden als \textit{Completeness Omission} erfasst, während überzählige oder unzulässig wiederholte Elemente unter \textit{Completeness Commission} fallen. Widersprüche zur konzeptuellen Modellstruktur werden als \textit{Conceptual Consistency} bewertet, während fehlerhafte Wertebereiche, Datentypen oder kontrollierte Vokabulare unter \textit{Domain Consistency} fallen. Zeitliche Inkonsistenzen werden über \textit{Temporal Consistency} und \textit{Temporal Validity} adressiert. Darüber hinaus berücksichtigt der Ansatz auch nicht-quantitative Attributkorrektheit, räumliche Korrektheit, thematische Klassifikation und die Qualität von Freitextfeldern wie Titel und Beschreibung.
 
@@ -970,7 +890,6 @@ K10.8 & KI-gestützte Analyseverfahren und Automatisierungsgrenzen
 \caption{Auszug aus den induktiv entwickelten Unterkategorien}
 \label{tab:unterkategorien_auszug}
 \end{table}
-
 
 Für die Codierung wurden die Analyseeinheiten vorab festgelegt. Als Codiereinheit wurde die kleinste sinntragende Aussage definiert, die sich auf eine Qualitätsanforderung, ein Qualitätsproblem, einen Prüfindikator, eine Grenze oder eine mögliche Modellfolge bezieht. Als Kontexteinheit diente jeweils der zusammenhängende Antwortabschnitt innerhalb einer Leitfadenfrage. Auswertungseinheit war jeweils ein vollständiges Interviewtranskript. Die Interviewstellen werden über Interview-ID und Absatznummer referenziert, zum Beispiel \texttt{I1\_024}.
 
@@ -1275,8 +1194,6 @@ Die Metadaten-Daten-Kongruenz ist in Tabelle~\ref{tab:finale-qualitaetsdimension
 
 % Durch diese Struktur wird sichergestellt, dass die Indikatoren nicht nur fachlich begründet, sondern auch technisch umsetzbar und im Reporting nachvollziehbar sind. Gleichzeitig erlaubt der Steckbrief eine klare Trennung zwischen regelbasierten Prüfungen, technischen Verfügbarkeitsprüfungen, semantischen Plausibilitätsprüfungen und kontextabhängigen Bewertungen.
 
-
-
 \section{Ableitung formaler, technischer und semantischer Einzelindikatoren}
 
 Die vier Qualitätsdimensionen Auffindbarkeit, Zugänglichkeit, Nachnutzbarkeit und Aussagekraft beschreiben abstrakte Bewertungsbereiche, die für die prototypische Operationalisierung in konkrete, prüfbare Einzelindikatoren überführt werden müssen. Ein Indikator bestimmt dabei, welches Metadatenfeld, welche Ressource oder welche Relation für einen Qualitätsaspekt geprüft wird.
@@ -1331,7 +1248,7 @@ Unter dem Best-Distribution-Prinzip bleibt eine nicht erreichbare Download-URL z
 
 \subsubsection{Malus-Prinzip}
 
-Innerhalb der graduellen, distributionsbezogenen Messung werden ausgewählte Defekte nicht mit null, sondern mit einem negativen Beitrag bewertet. Dies betrifft Zustände, die aus Sicht der Datennutzenden (Abschnitt~\ref{subsec:zielgruppen}) schlechter sind als das Fehlen der Angabe, weil sie irreführen oder die Nachnutzung aktiv verhindern. Dazu zählen eine angegebene, aber nicht erreichbare Zugriffs- oder Download-URL sowie eine eingeschränkte, unklare oder fehlende Lizenz. Eine nicht erreichbare URL täuscht Verfügbarkeit vor und verursacht vergeblichen Zugriffsaufwand (INT-K5). Eine unklare Lizenz macht die Nachnutzung rechtlich unsicher und damit faktisch unmöglich \cite{Neumaier2016MetadataQuality}. Würden solche Defekte lediglich mit null bewertet, wäre ein Datensatz mit fünf Distributionen, von denen vier defekt sind, kaum von einem Datensatz mit einer einzigen fehlenden Angabe unterscheidbar. Der negative Beitrag senkt das Datensatzergebnis aktiv, wobei der Dimensionswert konzeptionell bei null nach unten begrenzt ist. Die konkrete Höhe der Malus-Beiträge wird in Kapitel~5 festgelegt.
+Innerhalb der graduellen, distributionsbezogenen Messung werden ausgewählte Defekte nicht mit null, sondern mit einem negativen Beitrag bewertet. Dies betrifft Zustände, die aus Sicht der Datennutzenden (Abschnitt~\ref{subsec:zielgruppen}) schlechter sind als das Fehlen der Angabe, weil sie irreführen oder die Nachnutzung aktiv verhindern. Dazu zählen eine angegebene, aber nicht erreichbare Zugriffs- oder Download-URL sowie eine eingeschränkte, unklare oder fehlende Lizenz. Eine nicht erreichbare URL täuscht Verfügbarkeit vor und verursacht vergeblichen Zugriffsaufwand (INT-K5). Eine unklare Lizenz macht die Nachnutzung rechtlich unsicher, was die Nachnutzbarkeit stark verkompliziert \cite{Neumaier2016MetadataQuality}. Würden solche Defekte lediglich mit null bewertet, wäre ein Datensatz mit fünf Distributionen, von denen vier defekt sind, kaum von einem Datensatz mit einer einzigen fehlenden Angabe unterscheidbar. Der negative Beitrag senkt das Datensatzergebnis aktiv, wobei der Dimensionswert konzeptionell bei null nach unten begrenzt ist. Die konkrete Höhe der Malus-Beiträge wird in Kapitel~5 festgelegt.
 
 \subsubsection{Nicht-Anwendbarkeit}
 
@@ -1594,7 +1511,6 @@ DatasetContext(
 \end{listing}
 
 Listing~\ref{lst:dataset_context} zeigt exemplarisch eine gekürzte Faktenbasis nach Abschluss beider Anreicherungsstufen. Neben den extrahierten Rohwerten sind die vorberechneten Vokabularprüfungen wie \texttt{themes\_in\_vocab} sichtbar sowie die angehängten Prüfsignale: Das Ergebnis der Erreichbarkeitsprüfung liegt je Distribution im Feld \texttt{probe}, die semantische Bewertung datensatzweit im Feld \texttt{semantic\_assessment}.
-
 
 Prüfungen gegen kontrollierte Vokabulare stützen sich auf lokal mitgelieferte Kopien der Referenzlisten, die einmalig beim Start geladen werden. Dazu gehören die Vokabulare des Publications Office der Europäischen Union für Themen, Dateitypen und Aktualisierungsfrequenzen\footnote{\url{https://op.europa.eu/en/web/eu-vocabularies/authority-tables}}, das Medientypregister der IANA\footnote{\url{https://www.iana.org/assignments/media-types/}} sowie die Lizenzliste, die IDs der Datenbereitsteller und das Schlüsselverzeichnis der politischen Geokodierung aus DCAT-AP.de \cite{DCATAPDEImplRules2}. Die lokale Bündelung macht die Vokabularprüfungen deterministisch und unabhängig von der Verfügbarkeit externer Dienste.
 
@@ -2269,9 +2185,6 @@ Entscheidend für den Nutzen der Vorlage ist, dass sie unabhängig vom vorgefund
 
 Die Vorlagen zeigen die geforderte Schreibweise damit feldweise und jeweils nur für den einen Indikator, an dem der Datensatz gescheitert ist. Zusammengesetzt ergeben sie genau das Bild, das der Referenzdatensatz aus Abschnitt~\ref{sec:referenzdatensatz} als Ganzes vorführt: Was die Oberfläche einem Bereitsteller Feld für Feld und anlassbezogen zeigt, steht dort einmal vollständig und in sich stimmig. Beide Darstellungen bedienen dieselbe Frage: Wie sieht die richtige Angabe aus? Und wird durch zwei Auflösungsstufen, der Einzelfeldvorlage im Bearbeitungsfluss und dem vollständigen Beispieldatensatz als Ganzes beantwortet.
 
-
-
-
 Nicht jeder Indikator lässt eine solche Vorlage zu. Wenn die richtige Angabe vom Inhalt abhängt und nicht von der Schreibweise, wie Beispielsweise bei den Schlagwörtern oder sprachmodellgestützten Indikatoren, gäbe eine Vorlage nur eine Syntax vor, die ohnehin nie das Problem war. Das selbe gilt auch für Indikatoren, wo das Problem außerhalb des Metadatensatzes liegt, etwa bei einem Verweis, der ins Leere führt. Für diese Indikatoren tritt an die Stelle der Vorlage die \textbf{Fundstelle}: die einschlägigen Zeilen des RDF-Quelltexts mit Zeilennummer, sodass sich die Kette von der Punktzahl bis zur konkreten Stelle im Metadatensatz schließt.
 Abbildung~\ref{fig:frontend_handlungsanweisung}\,(\subref{fig:frontend_detailblock_fundstelle}) zeigt dies für zwei nicht auflösbare Verweise. Für eine dritte Gruppe schließlich entfällt der Detailblock ganz, weil Befund und Hinweis bereits alles tragen. 
 
@@ -2316,8 +2229,6 @@ Diese Sicht ist in ihrer Anlage nicht auf die Portalbetreibenden beschränkt. Ei
 Für die aus der Oberfläche angestoßenen Bewertungsläufe gilt eine Vorgabe, die für die Belastbarkeit der dargestellten Werte wesentlich ist: Die Oberfläche führt keine eigenen Voreinstellungen, sondern lädt zur Laufzeit dieselbe Konfigurationsdatei, die auch der Evaluation dieser Arbeit zugrunde liegt. Gewichte, Punktevergabe und Indikatormenge sind damit nicht nur ähnlich, sondern identisch. Als einzige Wahl bleibt, ob die sprachmodellgestützte Dimension der Aussagekraft einbezogen wird. Eine Unterscheidung, die auf Zeit- und Kostenaufwand des Laufs durchschlägt.
 
 Für die Gestaltung gelten durchgängig zwei Regeln der Barrierefreiheit, die den Web Content Accessibility Guidelines entnommen sind \cite{w3c_wcag22}. Farbe ist nie alleiniger Bedeutungsträger (Erfolgskriterium~1.4.1): Jede Ergebnisstufe trägt neben ihrer Farbe ein Symbol und eine ausgeschriebene Bezeichnung, jede Diagrammreihe ist beschriftet. Sämtliche Farbwerte stammen aus dem Gestaltungssystem des Portals; ihre Kontraste wurden für die verwendeten Kombinationen gegen die Schwellen der Erfolgskriterien~1.4.3 und~1.4.11 nachgerechnet, statt sie nach Augenmaß zu wählen. Ergänzend wurden die Diagrammfarben mit einem physiologisch begründeten Simulationsmodell für Farbfehlsichtigkeit \cite{machado2009cvd} auf ihre Unterscheidbarkeit geprüft.
-
-
 
 \chapter{Evaluation}
 \label{sec:chapter_06}
@@ -2412,8 +2323,6 @@ keinen Mittelpunkt, auf den Bewertende bei Unsicherheit ausweichen könnten
 definierte Ankerfrage konkretisiert ist (Tabelle~\ref{tab:gt_anker}), sodass sich eine
 Einschätzung an einem konkreten Kriterium statt an einer unspezifischen Präferenz
 festmachen lässt.
-
-
 
 \begin{table}[H]
 \centering
@@ -2542,7 +2451,6 @@ Klasse~B und~C die inkrementelle Validität des Prototyps gegenüber der Baselin
 Zuordnung ist vollständig dokumentiert und enthält je Indikator die zugeordneten
 MQA-Metriken, die Aggregationsregel und die Begründung. Die vollständige
 Zuordnungstabelle findet sich in Anhang~\ref{app:mqa_abc_mapping}.
-
 
 % @TODO das mal noch etwas weniger belastend formulieren am ende wird man deswegen zerrissen.
 Damit der Vergleich nicht einseitig zugunsten des Prototyps ausfällt, sind umgekehrt auch
@@ -3360,7 +3268,6 @@ Kernstichprobe, relativiert diesen Befund, ohne ihn zu widerlegen: Sie zeigt, da
 zusätzliche Prüftiefe nicht in jeder Dimension automatisch mit besserer
 menschlicher Übereinstimmung einhergeht.
 
-
 % =============================================================================
 \section{Einordnung der Ergebnisse}
 \label{sec:eval_einordnung}
@@ -3703,7 +3610,6 @@ Teilfrage ohne empirische Prüfung.
 % =============================================================================
 \section{Kritische Würdigung und Reflexion}
 \label{sec:disk_grenzen}
-
 
 Die vorangegangene Zusammenfassung hält fest, was das Modell leistet. Dieser Abschnitt hält fest, was es seiner Anlage nach nicht leisten kann,
 unabhängig davon, wie es evaluiert wurde. Die Grenzen sind nach ihrer Ursache
