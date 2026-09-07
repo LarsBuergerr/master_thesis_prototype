@@ -521,15 +521,14 @@ Der Ansatz zeigt, dass eine Qualitätsbewertung von Metadaten nicht bei der Erhe
 
 Das MQA-Framework von Wentzel et al. stellt eine praxisnahe Operationalisierung der automatisierten Qualitätsbewertung von DCAT-AP-Metadaten dar. 
 % Ausgangspunkt ist die Beobachtung, dass DCAT-AP zwar ein harmonisiertes, RDF-basiertes Metadatenmodell für europäische Open-Data-Portale bereitstellt, seine praktische Umsetzung durch Datenbereitsteller jedoch häufig Qualitätsprobleme aufweist. Dazu zählen eine geringe Nutzung qualitätsrelevanter Properties, fehlende oder falsch verwendete kontrollierte Vokabulare, inkorrekte Datentypen und nicht verfügbare Datenressourcen. 
-Wentzel et al. definieren die \textit{DCAT-AP Quality Metrics}, die auf den FAIR-Prinzipien und den 5-star Linked Open Data Principles aufbauen. Die Metriken sind den fünf Dimensionen \textit{Findability}, \textit{Accessibility}, \textit{Interoperability}, \textit{Reusability} and \textit{Contextuality} zugeordnet. Die in Tabelle~\ref{tab:mqa_metrics_weights} dargestellten Metriken zeigen, dass der Ansatz nicht nur verpflichtende DCAT-AP-Angaben berücksichtigt, sondern auch empfohlene und optionale Eigenschaften bewertet, die für Auffindbarkeit, Zugriff, Interoperabilität und Wiederverwendung praktisch relevant sind.
+Wentzel et al. definieren die \textit{DCAT-AP Quality Metrics}, die auf den FAIR-Prinzipien und den 5-star Linked Open Data Principles aufbauen. Die Metriken sind den fünf Dimensionen \textit{Findability}, \textit{Accessibility}, \textit{Interoperability}, \textit{Reusability} and \textit{Contextuality} zugeordnet. 
 
 {
 \renewcommand{\arraystretch}{1.2}
 \rowcolors{1}{white}{white}
 \centering
-\tiny
-\begin{table}[ht!]
-\tiny
+\begin{table}[H]
+\scriptsize
 \centering
 \begin{tabular}{|p{2.5cm}|p{3.4cm}|p{5.8cm}|p{1.2cm}|}
 \hline
@@ -627,7 +626,9 @@ Kontextualität
 \normalsize
 } % wentzel piveau metriken
 
-Die Gewichtung erfolgt über ein Punktesystem mit maximal 405 Punkten. Die höchsten Gewichte entfallen auf Auffindbarkeit, Zugänglichkeit und Interoperabilität, während Kontextualität deutlich geringer gewichtet wird. Dadurch operationalisiert MQA/Piveau Metadatenqualität primär über praktische Nutzbarkeit, technische Zugänglichkeit, strukturelle Interoperabilität und rechtliche Wiederverwendbarkeit. \cite{data_europa, wentzel2023extensive}
+Die in Tabelle~\ref{tab:mqa_metrics_weights} dargestellten Metriken zeigen, dass der Ansatz nicht nur verpflichtende DCAT-AP-Angaben berücksichtigt, sondern auch empfohlene und optionale Eigenschaften bewertet, die für Auffindbarkeit, Zugriff, Interoperabilität und Wiederverwendung praktisch relevant sind.
+
+Die Gewichtung erfolgt über ein Punktesystem mit maximal 405 Punkten. Die höchsten Gewichte entfallen auf Auffindbarkeit, Zugänglichkeit und Interoperabilität, während Kontextualität deutlich geringer gewichtet wird. Dadurch operationalisiert MQA/Piveau Metadatenqualität primär über praktische Nutzbarkeit, technische Zugänglichkeit, strukturelle Interoperabilität und rechtliche Wiederverwendbarkeit. \cite{data_europa, wentzel2023extensive}\footnote{Während der Bearbeitung dieser Arbeit wurde eine überarbeitete Fassung des Frameworks (Metrics~v2) angekündigt und dokumentiert, jedoch noch nicht veröffentlicht \cite{piveauMetricsV2}. Sie ersetzt das 405-Punkte-System durch gewichtsbasierte, binär geprüfte Eigenschaften (verpflichtend/empfohlen/optional), reduziert die Dimensionen von fünf auf vier, bewertet Datendienste als eigenständige Entitäten, mittelt die Distributionen eines Datensatzes statt die beste auszuwählen und entkoppelt die SHACL-Konformität vom Score. Die vorliegende Arbeit bezieht sich durchgehend auf die zum Bearbeitungszeitpunkt dokumentierte und produktiv betriebene Fassung; auf einzelne Änderungen von Metrics~v2 wird an den betreffenden Stellen gesondert eingegangen.}
 
 Ein methodisch wichtiger Bestandteil des Ansatzes ist die Repräsentation der Messergebnisse mithilfe der \acrfull{DQV}. DQV erweitert DCAT um ein Vokabular zur maschinenlesbaren Beschreibung von Qualitätsinformationen. Dadurch können Qualitätsdimensionen, Metriken, Messwerte, geprüfte Ressourcen und Bewertungszeitpunkte explizit miteinander verknüpft werden. Einzelne Messergebnisse werden als \texttt{dqv:QualityMeasurement} modelliert, während SHACL-basierte Validierungsergebnisse zur DCAT-AP-Konformität als Qualitätsannotation eingebunden werden können. \cite{wentzel2023extensive}
 Beide Modellierungsformen sind in Tabelle~\ref{tab:piveau_dqv_model} dargestellt.
@@ -2426,6 +2427,18 @@ Quellcode des MQA-Scoring-Dienstes nachvollzogen~\cite{piveauMetricsScore}.
 Die Reimplementierung ist dabei lediglich Evaluationsinstrument und nicht Bestandteil des
 Artefakts. Da beide Verfahren unterschiedliche Punkteskalen verwenden, werden die
 Ergebnisse vor dem Vergleich auf einen gemeinsamen Wertebereich normalisiert.
+Der Vergleich bezieht sich auf die zum Bearbeitungszeitpunkt (Stand September~2026)
+dokumentierte und produktiv eingesetzte Fassung der MQA. Die während der Bearbeitung
+angekündigte, aber noch nicht veröffentlichte Fassung Metrics~v2 wird bewusst nicht als
+Baseline herangezogen, da für sie weder eine stabile Spezifikation noch eine betriebene
+Instanz vorliegt, gegen die sich auf identischer Datengrundlage vergleichen ließe.\footnote{%
+Bemerkenswert ist, dass Metrics~v2 zwei Konstruktionsentscheidungen dieses Modells nachträglich
+teilt, die hier gegenüber der MQA v1 eigens begründet wurden: die Mittelung über die
+Distributionen eines Datensatzes anstelle des Best-Distribution-Prinzips
+(Abschnitt~\ref{sec:messmodell}) und die Entkopplung der SHACL-Konformität vom eigentlichen
+Score, die hier als einzelner aggregierter Indikator geführt wird \cite{piveauMetricsV2}. Eine semantische, auf
+die Aussagekraft der Freitextfelder zielende Dimension sieht auch Metrics~v2 nicht vor,
+sodass die in dieser Arbeit adressierte Bewertungslücke fortbesteht.}
 
 Der inhaltliche Kern des Vergleichs ist die Unterscheidung zweier Prüfparadigmen. Die MQA
 bewertet überwiegend, \emph{ob} ein Feld vorhanden, in einem kontrollierten Vokabular
@@ -3502,33 +3515,7 @@ der Entscheidbarkeit des Gegenstands, und sie ist damit keine Eigenschaft dieses
 Prototyps, sondern der Aufgabe.
 
 Die folgenden Abschnitte halten fest, welche Antwort sich aus diesen Ergebnissen
-auf die Leitfrage und die fünf Teilfragen aus
-Abschnitt~\ref{sec:forschungsfragen} ergibt.
-
-\subsection{Leitfrage}
-\label{subsec:fazit_leitfrage}
-
-\emph{Wie kann ein Bewertungsmodell für die Qualität von DCAT-AP.de-Metadaten im
-GovData-Kontext entwickelt werden, das formale Prüfverfahren mit ergänzenden
-kontext- und semantikbezogenen Qualitätsindikatoren verbindet?}
-
-Die Verbindung gelingt über eine Arbeitsteilung zwischen den Prüfarten. Formale
-und technische Kriterien tragen den Teil der Bewertung, für den ein nachprüfbarer
-Sachverhalt existiert, und werden deterministisch geprüft. Die semantische
-Bewertung ist demgegenüber auf eine von vier Dimensionen begrenzt, wird über ein
-Sprachmodell erhoben und ihre Verlässlichkeit gemessen statt vorausgesetzt. Zusammengehalten werden beide
-Prüfarten durch eine gemeinsame Skala, eine offengelegte Gewichtung und die
-Rückverfolgbarkeit jedes Teilurteils bis zur betroffenen Stelle im Metadatensatz.
-
-Diese Verbindung erfordert zwei Kompromisse. Sie fügt dem Modell eine
-Dimension hinzu, deren Messunsicherheit deutlich über der der übrigen liegt, und
-sie nimmt der Gesamtbewertung die bitgenaue Reproduzierbarkeit. Demgegenüber
-steht ein Urteil, das näher am menschlichen Qualitätsempfinden liegt als die
-etablierte Baseline und dessen Zustandekommen an jeder Stelle offengelegt ist.
-Ein absolutes Qualitätsurteil leistet das Modell dabei nicht. Die Gründe dafür
-benennt Abschnitt~\ref{sec:disk_grenzen}.
-
-Die fünf Teilfragen führen diese Antwort im Folgenden aus.
+auf die fünf Teilfragen aus Abschnitt~\ref{sec:forschungsfragen} ergibt.
 
 \subsection{Teilfrage 1: Übertragbarkeit bestehender Bewertungsansätze}
 \label{sec:disk_grundlagen}
@@ -3566,14 +3553,12 @@ im Aufwand, sondern in der Entscheidbarkeit des Gegenstands liegt
 formale Qualitätsmodell sinnvoll erweitern, ohne die Nachvollziehbarkeit und
 Verlässlichkeit des Scorings zu gefährden?}
 
-Das formale Modell lässt sich um eine eigene, sprachmodellgestützte Dimension für
-die Aussagekraft der Freitextfelder erweitern. Sie bleibt nachvollziehbar, weil
-jedes Teilurteil begründet ausgegeben wird, und ihre Verlässlichkeit gemessen
-statt vorausgesetzt ist. Diese Erweiterung geht allerdings zulasten der Messgüte, denn
-die Aussagekraft ist die schwächste Dimension des Modells; nicht umsetzen ließen
-sich Prüfungen, die eine Referenz außerhalb des Metadatensatzes voraussetzen. Die
-Umsetzung und die Grenzen dieser Dimension behandeln
-Abschnitt~\ref{sec:llm_aussagekraft} und Abschnitt~\ref{sec:disk_evaluation}.
+Das formale Modell wurde um eine eigene, sprachmodellgestützte Dimension für
+die Aussagekraft der Freitextfelder erweitern. Sie bleibt nachvollziehbar, da
+jedes Teilurteil begründet ausgegeben wird, und die Verlässlichkeit des Outputs gemessen statt vorausgesetzt ist. 
+
+In Anbetracht der Evaluationsergebnisse ist die Aussagekraft allerdings die schwächste Dimension des Modells, was sich durch ihre Einbindung auf die Messgüte als Ganzes überträgt. 
+Die Umsetzung und die Grenzen dieser Dimension behandeln Abschnitt~\ref{sec:llm_aussagekraft} und Abschnitt~\ref{sec:disk_evaluation}.
 
 \subsection{Teilfrage 4: Konzeption und prototypische Operationalisierung}
 \label{sec:disk_konzept_prototyp}
@@ -3598,17 +3583,15 @@ werden, das Bewertungsergebnisse und betroffene Qualitätsdimensionen
 nachvollziehbar darstellt?}
 
 Das Reporting führt jedes negative Teilergebnis auf die betroffene Stelle im
-Metadatensatz zurück und überführt es in eine Handlungsanweisung, einheitlich über
-alle siebenundzwanzig Indikatoren (Abschnitt~\ref{subsec:befund}). Damit
-adressiert es die Datenbereitstellenden, die die technisch formulierten Meldungen
-der formalen Validierung sonst nicht umsetzen können, und schafft erst die
-Voraussetzung dafür, dass eine Qualitätsmessung auf den Datenbestand wirkt. Wie
-wirksam die Aufbereitung in der Praxis ist, bleibt offen: Sie ist an Beispielen
-gezeigt, aber nicht mit Datenbereitstellenden erprobt und damit die einzige
+Metadatensatz zurück und überführt es in eine einheitliche Handlungsanweisung, über
+alle siebenundzwanzig Indikatoren hinweg (Abschnitt~\ref{subsec:befund}). Damit
+adressiert es Datenbereitstellende, für die die technisch formulierten Meldungen
+der formalen Validierung sonst erschwert umsetzbar sind. Erst dadurch entsteht die
+Voraussetzung dafür, dass die Qualitätsmessung überhaupt einen positiven Effekt auf den Datenbestand entfalten kann. Wie wirksam die Aufbereitung in der Praxis ist, bleibt offen: Sie ist an Beispielen gezeigt, aber nicht mit Datenbereitstellenden erprobt und damit die einzige
 Teilfrage ohne empirische Prüfung.
 
 % =============================================================================
-\section{Kritische Würdigung und Reflexion}
+\section{Ergebnisdiskussion und Reflexion}
 \label{sec:disk_grenzen}
 
 Die vorangegangene Zusammenfassung hält fest, was das Modell leistet. Dieser Abschnitt hält fest, was es seiner Anlage nach nicht leisten kann,
@@ -3616,7 +3599,7 @@ unabhängig davon, wie es evaluiert wurde. Die Grenzen sind nach ihrer Ursache
 geordnet: konzeptuelle Grenzen folgen aus dem Gegenstand, methodische aus dem
 Vorgehen dieser Arbeit, technische aus der gewählten Umsetzung.
 
-\paragraph{Konzeptuelle Grenzen.}
+\subsection{Konzeptuelle Grenzen}
 Die grundlegendste Grenze betrifft nicht das Verfahren, sondern seinen Maßstab.
 Für Metadatenqualität existiert aus prinzipiellen Gründen keine belastbare externe
 Referenz, nicht lediglich aus Aufwandsgründen. Die Interviews definieren Qualität
@@ -3645,14 +3628,12 @@ Metadateneigenschaften benötigen. Der Beitrag dieser Arbeit liegt daher nicht i
 einer Absolutheit des Urteils, sondern in dessen Nachvollziehbarkeit und in einer
 geprüften relativen Güte gegenüber dem etablierten Verfahren.
 
-Zwei weitere konzeptuelle Grenzen sind kürzer zu benennen. Die fachliche
-Richtigkeit einer Angabe wird nicht geprüft, sondern nur ihre Konsistenz mit
+Desweiteren wird nicht die fachliche
+Richtigkeit einer Angabe geprüft, sondern nur ihre Konsistenz mit
 anderen Angaben, sodass ein plausibel formulierter, sachlich falscher
-Bezugszeitraum jede Prüfung besteht. Und die Grenze zwischen Metadaten und Daten
-bleibt gewahrt, denn bewertet wird die Beschreibung und nicht die beschriebene
-Ressource.
+Bezugszeitraum jede Prüfung besteht.
 
-\paragraph{Methodische Grenzen.}
+\subsection{Methodische Grenzen}
 Die Gewichte des Modells sind begründet, aber nicht validiert, und die
 Sensitivitätsanalyse fehlt. Die Punktwerte der Ergebnisstufen sowie die
 Notenschwellen sind normative Setzungen, für die kein empirisch optimaler Wert
@@ -3676,10 +3657,9 @@ ist. Hinzu kommen die Domänen- und Portalabhängigkeit der Indikatorauswahl, di
 auf DCAT-AP.de und GovData kalibriert ist, sowie die Bewertungsebene des
 Einzeldatensatzes, die eine Betrachtung über die Zeit ausschließt.
 
-\paragraph{Technische Grenzen.}
+\subsection{Technische Grenzen}
 Die Abhängigkeit von einem Sprachmodell wirkt über den Betrieb hinaus. Ein
-Modellwechsel oder eine unangekündigte Aktualisierung beim Anbieter verändert die
-Werte der Aussagekraft, weshalb die Metrik nur unter Angabe des verwendeten
+Modellwechsel oder eine unangekündigte Aktualisierung beim Anbieter kann die Werte der Aussagekraft verändern, weshalb die Metrik nur unter Angabe des verwendeten
 Modells reproduzierbar ist. Da je Modell nur eine Rubrik- und Promptfassung
 geprüft wurde, gelten die Ergebnisse zudem für die Kombination aus Modell und
 Prompt und nicht für das Modell allein. Die Bewertung ist nicht bitgenau
@@ -3698,10 +3678,9 @@ verursacht laufende Kosten von etwa 1{,}79~US-Dollar je fünfzig Datensätze, wa
 für eine vollständige Auswertung des betrachteten Katalogs in der Größenordnung
 mehrerer Tausend US-Dollar liegt. Ebenso skaliert die Laufzeit nicht
 gleichmäßig, weshalb sehr große Ressourcen bereits aus der Grundgesamtheit
-ausgeschlossen wurden. Schließlich ist die Frage der Datenhoheit nicht
-adressiert, da die Bewertung über einen externen Anbieter erfolgt.
+ausgeschlossen wurden.
 
-\paragraph{Einordnung.}
+\subsection{Einordnung}
 Diese Grenzen betreffen überwiegend die Reichweite der Aussagen und nicht die
 Tragfähigkeit des Verfahrens. Sie halten fest, dass das Modell kein absolutes
 Qualitätsurteil fällt, unter welchen Bedingungen seine Werte gelten und wo seine
@@ -3717,14 +3696,14 @@ Urteile tragen.
 \section{Ausblick}
 \label{sec:fazit_ausblick}
 
-\paragraph{Wissenschaftlicher Beitrag.}
+\subsection{Wissenschaftlicher Beitrag}
 Die Arbeit trägt vor allem dadurch bei, dass sie drei Elemente verbindet, die in
 den untersuchten Ansätzen getrennt auftreten: eine aus Literatur und Empirie
 hergeleitete und lückenlos rückführbare Indikatormenge, ihre vollständige
 prototypische Operationalisierung und eine Prüfung dieser Operationalisierung
 gegen ein menschliches Referenzurteil. Damit liegt für den DCAT-AP.de-Kontext eine
 Metrik vor, deren Übereinstimmung mit der wahrgenommenen Qualität beziffert und
-deren Messunsicherheit gemessen und nicht vorausgesetzt ist.
+deren Messunsicherheit gemessen ist.
 
 Drei methodische Befunde lassen sich über den Gegenstand dieser Arbeit hinaus
 verallgemeinern. Erstens setzt die Auswahl eines Sprachmodells eine
@@ -3738,7 +3717,7 @@ Gesamtscores nicht aussagekräftig. Beide Verfahren korrelieren hier mit
 $0{,}829$, obwohl auf Indikatorebene eine Überschätzung von $15{,}8\,\%$
 nachweisbar ist (Abschnitt~\ref{subsec:eval_mehrwert}).
 
-\paragraph{Weiterer Forschungs- und Entwicklungsbedarf.}
+\subsection{Weiterer Forschungs- und Entwicklungsbedarf}
 Der dringlichste offene Punkt folgt aus der methodischen Grenze der
 Referenzbewertung. Sie stammt von einer einzigen Person, die zugleich das Modell
 entwickelt hat, sodass eine Inter-Rater-Reliabilität nicht bestimmbar ist. Eine
@@ -3765,13 +3744,15 @@ Aufbereitung tatsächlich zu besseren Metadaten führt, lässt sich nur mit
 Datenbereitstellenden erheben, etwa in einer Studie, die die Verständlichkeit der
 Handlungsanweisungen und die anschließende Korrekturquote misst.
 
-Schließlich bleibt die Bewertungsebene des Einzeldatensatzes eine Einschränkung.
-Ein Portalbetrieb über die Zeit würde erlauben, Qualitätsentwicklung statt
-Qualitätszustand zu beobachten. Dafür wären die Abhängigkeit von einem externen
-Sprachmodell, die laufenden Kosten und die Frage der Datenhoheit zu klären,
-etwa durch ein lokal betriebenes Modell für die semantische Dimension.
+Schließlich legt die während der Bearbeitung angekündigte Fassung Metrics~v2 einen
+erneuten Baseline-Vergleich nahe, sobald sie veröffentlicht und produktiv verfügbar ist
+\cite{piveauMetricsV2}. Da v2 mit der Distributionsmittelung und der vom Score
+entkoppelten SHACL-Konformität zwei hier eigens begründete Entscheidungen übernimmt, ist
+auf den entsprechenden Indikatoren eine höhere Übereinstimmung als mit v1 zu erwarten,
+während die semantische Dimension der Aussagekraft mangels Pendant weiterhin den
+inkrementellen Beitrag des Prototyps tragen dürfte.
 
-\paragraph{Praktische Implikationen.}
+\subsection{Praktische Implikationen}
 Für den Portalbetrieb folgt aus den Ergebnissen zunächst, dass eine formale
 Validierung als alleiniges Qualitätsinstrument nicht ausreicht. Sie entscheidet
 zuverlässig über die Struktur eines Metadatensatzes, lässt aber genau die Fälle
@@ -3799,4 +3780,4 @@ bewusste Rollenteilung. Sie sind dort einzusetzen, wo kein deterministisch prüf
 und liefern in dieser Rolle einen messbaren Zugewinn gegenüber der Baseline. Sie sollten jedoch nicht die Dimensionen dominieren, in
 denen ein solcher Sachverhalt vorliegt, und ihr Ergebnis ist nur unter Angabe von
 Modell und Promptfassung reproduzierbar. Wer sie produktiv einsetzt, muss
-zusätzlich laufende Kosten, Modellstabilität und Datenhoheit einplanen.
+zusätzlich laufende Kosten und Modellstabilität einplanen.
