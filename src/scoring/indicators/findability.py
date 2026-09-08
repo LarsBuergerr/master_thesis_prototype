@@ -18,10 +18,15 @@ from utils.datetime_utils import validate_temporal_value
 
 
 class KeywordsCountIndicator(Indicator):
-    """Validates if dataset has appropriate number of keywords (2 < k < 6)."""
+    """Validates if dataset has appropriate number of keywords (3 ≤ k ≤ 15).
+
+    Per Handreichung zur Metadatenqualität (oc.bydata 12/2025): min 3 keywords.
+    PASS: 3-15, PARTIAL: 1-2 or 16-25, FAIL: 0 or >25.
+    """
 
     MIN_KEYWORDS = 3
-    MAX_KEYWORDS = 10
+    MAX_KEYWORDS = 15
+    OVER_MAX_PARTIAL = 25
 
     def __init__(self):
         super().__init__(
@@ -29,8 +34,8 @@ class KeywordsCountIndicator(Indicator):
             name_de="Angemessene Anzahl Schlagwörter",
             name_en="Appropriate number of keywords",
             dimension=QualityDimension.FINDABILITY,
-            description_de="Schlagwörter sollten zwischen 2 und 6 vorhanden sein",
-            description_en="Keywords should be between 2 and 6",
+            description_de="Mindestens 3 Schlagwörter (Handreichung); optimal 3–15, PARTIAL bei 1–2 oder 16–25",
+            description_en="At least 3 keywords (Handreichung); optimal 3–15, PARTIAL for 1–2 or 16–25",
             weight=1.0,
         )
 
@@ -43,17 +48,17 @@ class KeywordsCountIndicator(Indicator):
             keywords = context.keywords
             keyword_count = len(keywords)
 
-            if self.MIN_KEYWORDS < keyword_count <= self.MAX_KEYWORDS:
+            if self.MIN_KEYWORDS <= keyword_count <= self.MAX_KEYWORDS:
                 status = IndicatorStatus.PASS
                 score = 1.0
                 message_de = f"Optimale Anzahl Keywords: {keyword_count}"
                 message_en = f"Optimal number of keywords: {keyword_count}"
             elif (
-                keyword_count in [self.MIN_KEYWORDS - 1, self.MAX_KEYWORDS - 2]
-                or self.MAX_KEYWORDS < keyword_count <= self.MAX_KEYWORDS + 5
+                0 < keyword_count < self.MIN_KEYWORDS
+                or self.MAX_KEYWORDS < keyword_count <= self.OVER_MAX_PARTIAL
             ):
                 status = IndicatorStatus.PARTIAL
-                score = 0.7
+                score = 0.5
                 message_de = f"Suboptimale Anzahl Keywords: {keyword_count}"
                 message_en = f"Suboptimal number of keywords: {keyword_count}"
             else:
@@ -79,7 +84,7 @@ class KeywordsCountIndicator(Indicator):
                 details={
                     "keyword_count": keyword_count,
                     "keywords": keywords,
-                    "expected_range": f"{self.MIN_KEYWORDS}-{self.MAX_KEYWORDS} keywords",
+                    "expected_range": f"{self.MIN_KEYWORDS}–{self.MAX_KEYWORDS} keywords (PASS), 1–{self.MIN_KEYWORDS-1} or {self.MAX_KEYWORDS+1}–{self.OVER_MAX_PARTIAL} (PARTIAL)",
                 },
             )
 
@@ -265,17 +270,31 @@ class LocnGeometryIndicator(Indicator):
             )
 
 
-class AdminUnitL2Indicator(Indicator):
-    """Checks locn:adminUnitL2 references are present and plausible."""
+class PoliticalGeocodingIndicator(Indicator):
+    """Checks political/administrative coverage against the DCAT-AP-DE geocoding
+    vocabulary.
+
+    DCAT-AP.de's normative field is ``dcatde:politicalGeocodingURI``
+    (Konvention 08, MUSS where a geographic reference applies); this indicator
+    reads it **primarily** and only falls back to the generic
+    ``locn:adminUnitL2`` when no dcatde field is present — so a dataset that
+    correctly uses the dcatde field is no longer false-FAILed.
+    """
 
     def __init__(self):
         super().__init__(
-            indicator_id="find_adminunitl2",
-            name_de="Räumliche Suche aus kontrolliertem Vokabular",
-            name_en="Spatial search from controlled vocabulary",
+            indicator_id="find_political_geocoding",
+            name_de="Politische Geokodierung aus kontrolliertem Vokabular",
+            name_en="Political geocoding from controlled vocabulary",
             dimension=QualityDimension.FINDABILITY,
-            description_de="Prüft ob locn:adminUnitL2 auf dcat-ap politische Kodierung verweist",
-            description_en="Checks if locn:adminUnitL2 references dcat-ap political geocoding",
+            description_de=(
+                "Prüft primär ob dcatde:politicalGeocodingURI auf das dcat-ap.de "
+                "Geocoding-Vokabular verweist; ersatzweise locn:adminUnitL2"
+            ),
+            description_en=(
+                "Checks primarily that dcatde:politicalGeocodingURI references the "
+                "dcat-ap.de geocoding vocabulary; falls back to locn:adminUnitL2"
+            ),
             weight=1.0,
         )
 
@@ -285,11 +304,11 @@ class AdminUnitL2Indicator(Indicator):
         try:
             if context is None:
                 context = DatasetContext.from_graph(metadata)
-            admin_units = context.admin_units
 
-            if not admin_units:
+            if not (context.political_geocoding or context.admin_units):
                 self.logger.info(
-                    f"[{self.indicator_id}] FAIL score=0.00 no locn:adminUnitL2"
+                    f"[{self.indicator_id}] FAIL score=0.00 "
+                    "no politicalGeocodingURI / adminUnitL2"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -298,19 +317,33 @@ class AdminUnitL2Indicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Kein locn:adminUnitL2 angegeben",
-                    message_en="No locn:adminUnitL2 specified",
-                    details={"admin_unit_count": 0},
+                    message_de="Keine politische Geokodierung angegeben",
+                    message_en="No political geocoding specified",
+                    details={"geocoding_count": 0},
                 )
 
-            first = admin_units[0]
-            is_valid = first.is_in_vocab
-            status = IndicatorStatus.PASS if is_valid else IndicatorStatus.PARTIAL
-            score = 1.0 if is_valid else 0.5
+            if context.political_geocoding:
+                # Primary, normative field (Konvention 08).
+                units = context.political_geocoding
+                first = units[0]
+                source = "dcatde:politicalGeocodingURI"
+                is_valid = first.is_in_vocab
+                status = IndicatorStatus.PASS if is_valid else IndicatorStatus.PARTIAL
+                score = 1.0 if is_valid else 0.5
+            else:
+                # Only the generic locn:adminUnitL2 present — secondary fallback
+                # signal, capped at PARTIAL: full credit requires the DCAT-AP.de
+                # field.
+                units = context.admin_units
+                first = units[0]
+                source = "locn:adminUnitL2 (fallback)"
+                is_valid = first.is_in_vocab
+                status = IndicatorStatus.PARTIAL
+                score = 0.5
 
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={score:.2f} "
-                f"uri={first.uri} segment={first.segment}"
+                f"source={source} uri={first.uri} segment={first.segment}"
             )
 
             return IndicatorResult(
@@ -321,20 +354,125 @@ class AdminUnitL2Indicator(Indicator):
                 status=status,
                 score=score,
                 message_de=(
-                    "adminUnitL2 verweist auf dcat-ap"
+                    f"Geokodierung ({source}) verweist auf dcat-ap.de"
                     if is_valid
-                    else "adminUnitL2 ist nicht aus dcat-ap"
+                    else f"Geokodierung ({source}) ist nicht aus dcat-ap.de"
                 ),
                 message_en=(
-                    "adminUnitL2 references dcat-ap"
+                    f"Geocoding ({source}) references dcat-ap.de"
                     if is_valid
-                    else "adminUnitL2 is not from dcat-ap"
+                    else f"Geocoding ({source}) is not from dcat-ap.de"
                 ),
                 details={
+                    "source": source,
                     "uri": first.uri,
                     "segment": first.segment,
                     "is_valid": is_valid,
-                    "admin_unit_count": len(admin_units),
+                    "geocoding_count": len(units),
+                },
+            )
+
+        except Exception as e:
+            self.logger.exception(f"[{self.indicator_id}] Indicator validation failed")
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.ERROR,
+                score=0.0,
+                message_de="Fehler bei der Validierung",
+                message_en="Validation error",
+                error=str(e),
+            )
+
+
+class GeocodingLevelIndicator(Indicator):
+    """Checks ``dcatde:politicalGeocodingLevelURI`` against the DCAT-AP.de
+    geocoding-level vocabulary (Konvention 09, SOLL).
+
+    * PASS    — level present and every value is in the vocabulary
+    * PARTIAL — level present but at least one value is not in the vocabulary
+    * FAIL    — no level set
+    """
+
+    def __init__(self):
+        super().__init__(
+            indicator_id="find_geocoding_level",
+            name_de="Geokodierungs-Ebene aus kontrolliertem Vokabular",
+            name_en="Geocoding level from controlled vocabulary",
+            dimension=QualityDimension.FINDABILITY,
+            description_de=(
+                "Prüft ob dcatde:politicalGeocodingLevelURI aus dem dcat-ap.de "
+                "Level-Vokabular stammt (Konvention 09)"
+            ),
+            description_en=(
+                "Checks that dcatde:politicalGeocodingLevelURI is from the dcat-ap.de "
+                "level vocabulary (Konvention 09)"
+            ),
+            weight=1.0,
+        )
+
+    def validate(
+        self, metadata: Graph, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+            levels = context.political_geocoding_level
+            in_vocab = context.political_geocoding_level_in_vocab
+
+            if not levels:
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 "
+                    "no politicalGeocodingLevelURI"
+                )
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=IndicatorStatus.FAIL,
+                    score=0.0,
+                    message_de="Keine politische Geokodierungs-Ebene angegeben",
+                    message_en="No political geocoding level specified",
+                    details={"level_count": 0},
+                )
+
+            valid = [u for u, ok in zip(levels, in_vocab) if ok]
+            invalid = [u for u, ok in zip(levels, in_vocab) if not ok]
+
+            if invalid:
+                status = IndicatorStatus.PARTIAL
+                score = 0.5
+                message_de = "Nicht alle Ebenen aus dem kontrollierten Vokabular"
+                message_en = "Not all levels are from the controlled vocabulary"
+            else:
+                status = IndicatorStatus.PASS
+                score = 1.0
+                message_de = "Ebene aus dem kontrollierten Vokabular"
+                message_en = "Level from the controlled vocabulary"
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"valid={len(valid)}/{len(levels)}"
+            )
+            if invalid:
+                self.logger.debug(f"[{self.indicator_id}] invalid_levels={invalid}")
+
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=status,
+                score=score,
+                message_de=message_de,
+                message_en=message_en,
+                details={
+                    "valid": valid,
+                    "invalid": invalid,
+                    "total": len(levels),
                 },
             )
 
@@ -449,7 +587,18 @@ class TemporalCoverageIndicator(Indicator):
 
 
 class DateTimeFieldIndicator(Indicator):
-    """Generic validator for issued/modified date fields (xs:date or xs:dateTime)."""
+    """Generic validator for issued/modified date fields (xs:date or xs:dateTime).
+
+    GRADED: score = fraction of the present date values (dataset + distributions)
+    that are validly typed as xs:date / xs:dateTime, meaned over all present
+    values. No malus — an untyped value contributes 0, not negative. FAIL only
+    when the field is absent entirely. PASS ≥ 0.9, PARTIAL ≥ 0.5.
+    """
+
+    GRADED = True
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
 
     def __init__(
         self, field_uri: URIRef, indicator_id: str, name_de: str, name_en: str
@@ -523,8 +672,13 @@ class DateTimeFieldIndicator(Indicator):
                 }
                 (valid if ok else invalid).append(entry)
 
-            status = IndicatorStatus.PASS if not invalid else IndicatorStatus.PARTIAL
-            score = 1.0 if not invalid else 0.5
+            score = len(valid) / len(sourced)
+            if score >= self.PASS_THRESHOLD:
+                status = IndicatorStatus.PASS
+            elif score >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
+            else:
+                status = IndicatorStatus.FAIL
 
             dataset_count = sum(1 for s in sourced if s.source_kind == "dataset")
             dist_count = sum(1 for s in sourced if s.source_kind == "distribution")
@@ -548,7 +702,7 @@ class DateTimeFieldIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=score,
+                score=round(score, 4),
                 message_de=(
                     f"Alle {len(valid)} Werte gültig (Dataset: {dataset_count}, "
                     f"Distribution: {dist_count})"
@@ -607,10 +761,10 @@ class AccrualPeriodicityIndicator(Indicator):
         try:
             if context is None:
                 context = DatasetContext.from_graph(metadata)
-            values = context.accrual_periodicity
+            value = context.accrual_periodicity
             in_vocab = context.accrual_periodicity_in_vocab
 
-            if not values:
+            if value is None:
                 self.logger.info(
                     f"[{self.indicator_id}] FAIL score=0.00 dct:accrualPeriodicity not set"
                 )
@@ -626,18 +780,15 @@ class AccrualPeriodicityIndicator(Indicator):
                     details={"count": 0},
                 )
 
-            valid = [v for v, ok in zip(values, in_vocab) if ok]
-            invalid = [v for v, ok in zip(values, in_vocab) if not ok]
-
-            status = IndicatorStatus.PASS if not invalid else IndicatorStatus.PARTIAL
-            score = 1.0 if not invalid else 0.5
+            status = IndicatorStatus.PASS if in_vocab else IndicatorStatus.PARTIAL
+            score = 1.0 if in_vocab else 0.5
 
             self.logger.info(
                 f"[{self.indicator_id}] {status.value} score={score:.2f} "
-                f"valid={len(valid)}/{len(values)}"
+                f"value={value} in_vocab={in_vocab}"
             )
-            if invalid:
-                self.logger.debug(f"[{self.indicator_id}] invalid_values={invalid}")
+            if not in_vocab:
+                self.logger.debug(f"[{self.indicator_id}] value not in vocab: {value}")
 
             return IndicatorResult(
                 indicator_id=self.indicator_id,
@@ -647,16 +798,16 @@ class AccrualPeriodicityIndicator(Indicator):
                 status=status,
                 score=score,
                 message_de=(
-                    "Alle Werte aus kontrolliertem Vokabular"
-                    if not invalid
-                    else "Nicht alle Werte aus kontrolliertem Vokabular"
+                    "Wert aus kontrolliertem Vokabular"
+                    if in_vocab
+                    else "Wert nicht aus kontrolliertem Vokabular"
                 ),
                 message_en=(
-                    "All values from controlled vocabulary"
-                    if not invalid
-                    else "Not all values from controlled vocabulary"
+                    "Value from controlled vocabulary"
+                    if in_vocab
+                    else "Value not from controlled vocabulary"
                 ),
-                details={"valid": valid, "invalid": invalid, "total": len(values)},
+                details={"value": value, "in_vocab": in_vocab},
             )
 
         except Exception as e:
@@ -678,7 +829,8 @@ class AccrualPeriodicityIndicator(Indicator):
 _keywords_indicator = KeywordsCountIndicator()
 _theme_indicator = ThemeIndicator()
 _locn_geometry = LocnGeometryIndicator()
-_admin_unit = AdminUnitL2Indicator()
+_political_geocoding = PoliticalGeocodingIndicator()
+_geocoding_level = GeocodingLevelIndicator()
 _temporal = TemporalCoverageIndicator()
 _issued = DateTimeFieldIndicator(
     DCTERMS.issued,

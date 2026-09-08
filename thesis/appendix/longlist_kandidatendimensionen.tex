@@ -1,0 +1,104 @@
+Tabelle~\ref{tab:longlist-kandidatendimensionen} zeigt die vollständige, in Abschnitt~3.4 hergeleitete Longlist der Kandidatendimensionen mit allen Bezugsquellen aus Literatur und Interviewauswertung. Tabelle~\ref{tab:longlist-uebersicht} im Fließtext verweist auf die Nummerierung dieser Tabelle.
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{0.9}
+\begin{longtable}{p{0.05\textwidth} p{0.16\textwidth} p{0.5\textwidth} p{0.17\textwidth}}
+\caption{Longlist gebündelter Kandidatendimensionen, vollständig mit Bezugsquellen}
+\label{tab:longlist-kandidatendimensionen}\\
+\toprule
+\textbf{Nr.} & \textbf{Dimension} & \textbf{Bezugsquellen} & \textbf{Interviewbezug} \\
+\midrule
+\endfirsthead
+
+\multicolumn{4}{l}{\textit{Fortsetzung von vorheriger Seite}} \\
+\toprule
+\textbf{Nr.} & \textbf{Dimension} & \textbf{Bezugsquellen} & \textbf{Interviewbezug} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{4}{r}{\textit{Fortsetzung auf nächster Seite}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+1 &
+Formale und syntaktische Konformität &
+\textit{Conformance} \cite{Neumaier2016MetadataQuality}; \textit{DCAT-AP conformity} \cite{wentzel2023extensive,data_europa}; \textit{syntactic validity}, \textit{consistency} \cite{Zaveri2016LinkedDataQuality}; SHACL-Constraints für Kardinalitäten, Datentypen, Klassen, Properties und Wertebereiche \cite{W3CSHACL}; \textit{conformity} \cite{iso25012} &
+K1.1; K3.1--K3.5; K9.2; (I1\_002; I1\_027--I1\_029; I3\_015; I3\_017--I3\_018) \\ \hline
+
+2 &
+Vollständigkeit und feldbezogene Reichhaltigkeit &
+\textit{Completeness}, \textit{appropriate amount of data}, \textit{value-added} \cite{wang1996beyond}; \textit{completeness} \cite{iso25012}; FAIR F2, R1 \cite{wilkinson2016fair}; \textit{schema completeness}, \textit{property completeness} \cite{Zaveri2016LinkedDataQuality}; \textit{Existence} \cite{Neumaier2016MetadataQuality}; feldbezogene MQA-Metriken \cite{wentzel2023extensive,data_europa}; \textit{completeness omission} \cite{noguerasiso_quality_metadata} &
+K1.1--K1.3; K2.1--K2.4; (I1\_007--I1\_010; I2\_026; I3\_002--I3\_003; I3\_013) \\ \hline
+
+3 &
+Auffindbarkeit und Identifizierbarkeit &
+FAIR F1--F4 \cite{wilkinson2016fair}; \textit{Findability}: keywords, categories, spatial search, temporal search \cite{wentzel2023extensive,data_europa}; \textit{Discovery}: \texttt{dct:title}, \texttt{dct:description}, \texttt{dcat:keyword} \cite{Neumaier2016MetadataQuality}; DCAT-Identifikatoren und Katalogmodell \cite{W3CDCAT3}; \textit{relevance} \cite{wang1996beyond,Zaveri2016LinkedDataQuality} &
+K1.3; K4.1; K4.4; K4.6; K6.1; (I2\_008; I2\_027; I3\_005; I3\_028--I3\_029) \\ \hline
+
+4 &
+Technische Zugänglichkeit und Abrufbarkeit &
+FAIR A1, A1.1, A2 \cite{wilkinson2016fair}; \textit{availability}, \textit{dereferenceability} \cite{Zaveri2016LinkedDataQuality}; \textit{Access}, \textit{AccessURL}, \textit{Retrievable} \cite{Neumaier2016MetadataQuality}; \textit{Accessibility}: accessURL, downloadURL, URL availability \cite{wentzel2023extensive,data_europa} &
+K5.1--K5.3; K8.2; (I1\_015; I1\_019; I1\_024--I1\_025; I2\_011; I2\_028; I2\_046) \\ \hline
+
+5 &
+Aktualität und temporale Konsistenz &
+\textit{Timeliness} \cite{wang1996beyond}; \textit{currentness} \cite{iso25012}; \textit{timeliness}, \textit{freshness}, \textit{currency} \cite{Zaveri2016LinkedDataQuality}; \textit{Date}, \textit{Preservation} \cite{Neumaier2016MetadataQuality}; \texttt{dct:issued}, \texttt{dct:modified} \cite{wentzel2023extensive,data_europa}; \textit{temporal consistency}, \textit{temporal validity} \cite{noguerasiso_quality_metadata} &
+K5.3; K7.5; (I1\_019; I1\_024--I1\_025) \\ \hline
+
+6 &
+Interoperabilität und Linked-Data-Reife &
+FAIR I1--I3 \cite{wilkinson2016fair}; \textit{interoperability}, \textit{interlinking}, \textit{reuse of existing terms}, \textit{reuse of vocabularies}, \textit{dereferenceability} \cite{Zaveri2016LinkedDataQuality}; \textit{Interoperability} \cite{wentzel2023extensive,data_europa}; RDF-/DCAT-basierte Katalogbeschreibung \cite{W3CDCAT3,W3CRDF11Concepts}; Linked-Data-Prinzipien \cite{BernersLee2006LinkedData} &
+K1.4; K6.1--K6.5; (I1\_020--I1\_022; I2\_003--I2\_006; I2\_029; I2\_055--I2\_056; I3\_018) \\ \hline
+
+7 &
+Vokabular-, Normdaten- und Klassifikationsqualität &
+FAIR I2 \cite{wilkinson2016fair}; MQA-Vokabularmetriken für Format, Lizenz, Zugriffsrechte und Kategorien \cite{wentzel2023extensive,data_europa}; \textit{vocabulary reuse}, \textit{semantic accuracy} \cite{Zaveri2016LinkedDataQuality}; \textit{thematic classification correctness}, \textit{domain consistency} \cite{noguerasiso_quality_metadata} &
+K3.3; K4.6; K6.2--K6.3; K10.3; (I1\_022; I1\_041; I2\_005; I2\_055--I2\_056; I3\_018; I3\_028) \\ \hline
+
+8 &
+Wiederverwendbarkeit und organisatorische Nutzbarkeit &
+FAIR R1, R1.1, R1.2, R1.3 \cite{wilkinson2016fair}; \textit{Reusability}: license, access rights, contact point, publisher \cite{wentzel2023extensive,data_europa}; \textit{Rights}, \textit{OpenLicense}, \textit{Contact} \cite{Neumaier2016MetadataQuality}; \textit{value-added}, \textit{relevance} \cite{wang1996beyond} &
+K1.3; K2.3; K5.4; K7.1; (I2\_030--I2\_031; I3\_021) \\ \hline
+
+9 &
+Format- und Maschinenlesbarkeitsqualität &
+\textit{FileFormat}, \textit{FormatAccr}, \textit{OpenFormat}, \textit{MachineRead} \cite{Neumaier2016MetadataQuality}; format, media type, format vocabulary, non-proprietary format, machine readability \cite{wentzel2023extensive,data_europa}; FAIR R1.3 \cite{wilkinson2016fair}; \textit{versatility}, \textit{interoperability} \cite{Zaveri2016LinkedDataQuality} &
+K5.4; K8.1; (I2\_028; I2\_045; I3\_020--I3\_021) \\ \hline
+
+10 &
+Semantische Aussagekraft und Verständlichkeit &
+\textit{interpretability}, \textit{ease of understanding}, \textit{concise representation} \cite{wang1996beyond}; \textit{understandability} \cite{iso25012}; \textit{understandability}, \textit{interpretability} \cite{Zaveri2016LinkedDataQuality}; \textit{quality of free text} \cite{noguerasiso_quality_metadata} &
+K4.1--K4.4; K10.2; (I1\_035; I1\_043--I1\_044; I2\_008--I2\_010; I2\_027; I3\_005) \\ \hline
+
+11 &
+Inhaltliche Plausibilität und semantische Konsistenz &
+\textit{semantic accuracy}, \textit{consistency}, \textit{no contradictory values}, \textit{correct annotations} \cite{Zaveri2016LinkedDataQuality}; \textit{conceptual consistency}, \textit{domain consistency}, \textit{nonquantitative attribute correctness} \cite{noguerasiso_quality_metadata}; \textit{accuracy}, \textit{consistent representation} \cite{wang1996beyond}; \textit{accuracy}, \textit{consistency} \cite{iso25012}; ontologische Repräsentationsdefizite \cite{wand1996anchoring} &
+K4.5; K4.6; K8.3; (I2\_011; I2\_047; I3\_010; I3\_028--I3\_029) \\ \hline
+
+12 &
+Metadaten-Daten-Kongruenz &
+\textit{FormatAccr}, \textit{SizeAccr}, \textit{Retrievable} \cite{Neumaier2016MetadataQuality}; \textit{nonquantitative attribute correctness}, \textit{positional correctness}, \textit{domain consistency} \cite{noguerasiso_quality_metadata}; \textit{accuracy}, \textit{consistency} \cite{Zaveri2016LinkedDataQuality}; FAIR R1: genaue und relevante Attribute \cite{wilkinson2016fair} &
+K8.1--K8.5; (I2\_013; I2\_045--I2\_047; I2\_059; I3\_020--I3\_022) \\ \hline
+
+13 &
+Räumliche und domänenspezifische Kontextqualität &
+\textit{positional correctness}, spatial domain consistency \cite{noguerasiso_quality_metadata}; geographic search, \texttt{dct:spatial} \cite{wentzel2023extensive,data_europa}; spatial information \cite{Neumaier2016MetadataQuality}; FAIR R1.3 \cite{wilkinson2016fair}; \textit{fitness for use}, \textit{relevance} \cite{wang1996beyond}; ISO 19157 als geodatenbezogener Qualitätsrahmen \cite{ISO19157} &
+K7.1--K7.3; K8.4; (I1\_006; I1\_009--I1\_010; I1\_031--I1\_033; I1\_040; I2\_013; I2\_059; I3\_022) \\ \hline
+
+14 &
+Vertrauenswürdigkeit, Provenienz und Verantwortlichkeit &
+\textit{believability}, \textit{reputation}, \textit{objectivity} \cite{wang1996beyond}; \textit{credibility}, \textit{traceability} \cite{iso25012}; \textit{trustworthiness}, \textit{reputation} \cite{Zaveri2016LinkedDataQuality}; FAIR R1.2 \cite{wilkinson2016fair}; publisher, contact point \cite{wentzel2023extensive,data_europa} &
+K2.3; K6.2; K7.5; (I2\_030--I2\_031) \\ \hline
+
+15 &
+Nutzungsrelevanz und \textit{Fit for Purpose} &
+\textit{fitness for use}, \textit{relevance}, \textit{value-added}, \textit{appropriate amount of data} \cite{wang1996beyond}; Datenqualität im Nutzungskontext \cite{StrongLeeWang1997}; kontextabhängige Relevanz von Qualitätsmerkmalen \cite{iso25012}; FAIR R1/R1.3 \cite{wilkinson2016fair}; \textit{relevance} \cite{Zaveri2016LinkedDataQuality} &
+K1.3; K7.1; K7.4--K7.5; (I1\_006; I1\_047--I1\_049) \\
+
+\end{longtable}
+\end{center}
+\normalsize

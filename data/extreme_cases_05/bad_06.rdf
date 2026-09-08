@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+>
+  <dcat:Dataset rdf:about="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9">
+    <dct:title>Repräsentative Wahlstatistik Landtagswahlen - Zweitstimmen (seit 1994)</dct:title>
+    <dct:description>Ergebnisse der repräsentativen Wahlstatistik für die Landtagswahlen in Leipzig seit 1994: Zweitstimmen nach Geschlecht für verschiedene Altersgruppen. Die repräsentative Wahlstatistik wurde in der Bundesrepublik Deutschland seit 1953 bei allen Bundestagswahlen mit Ausnahme der Wahljahre 1994 und 1998, und bei den meisten Landtags- und Kommunalwahlen erhoben. Für die repräsentative Wahlstatistik werden einige der Wahlbezirke als repräsentative Wahlbezirke ausgewählt. In diesen Wahlbezirken erhalten die Wählerinnen und Wähler Stimmzettel, auf denen ihr Geschlecht und ihre Altersgruppe gekennzeichnet ist. Dies ermöglicht eine Schätzung der Wahlbeteiligung und der Zweitstimmenergebnisse nach Alter und Geschlecht. Das Wahlgeheimnis ist trotz der gekennzeichneten Stimmzettel gewährleistet.
+      
+'Partei_ID_StatAmtLE' beinhaltet eine vom Amt für Wahlen und Statistik festgelegte wahlübergreifende Partei-ID. Das Parteienverzeichnis kann unterfolgender URL aufgerufen werden: https://opendata.leipzig.de/dataset/parteienverzeichnis-statamtleipzig. 'Parteiname_harmonisiert_vx_y' beinhaltet die zur Partei-ID zugehörige Kurzbezeichnung der Partei in Version x.y.
+
+Die Geschlechtsangabe 'männlich' beinhaltet seit Wahlen ab 2019 auch Wählende mit dem Geschlechtseinträgen 'divers' und 'ohne Angabe'.</dct:description>
+    <dct:identifier>552938b6-77ef-46a6-8b7f-fda28e9c96f9</dct:identifier>
+    <dcat:keyword>harmonisiert</dcat:keyword>
+    <dcat:keyword>landtagswahl</dcat:keyword>
+    <dcat:keyword>repräsentative-wahlstatistik</dcat:keyword>
+    <dcat:keyword>wahlen</dcat:keyword>
+    <dcat:keyword>zweitstimmen</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-02-04</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-02-04</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://www.leipzig.de/">
+        <foaf:name>Stadt Leipzig</foaf:name>
+        <foaf:homepage rdf:resource="https://www.leipzig.de/"/>
+      </foaf:Agent>
+    </dct:publisher>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.leipzig.de/resource/97d252a2-6e62-4eb4-af23-52a364d59e09">
+        <dct:title>rws_landtagswahl_1999_zweitstimmen.csv</dct:title>
+        <dct:description>Zweitstimmenanteile nach Geschlecht und Alter bei der Landtagswahl 1999 in Leipzig aus der repräsentativen Wahlstatistik. 
+
+'Partei_ID_StatAmtLE' beinhaltet eine vom Amt für Wahlen und Statistik festgelegte wahlübergreifende Partei-ID. Das Parteienverzeichnis kann unterfolgender URL aufgerufen werden: https://opendata.leipzig.de/dataset/parteienverzeichnis-statamtleipzig
+'Parteiname_harmonisiert_vx_y' beinhaltet die zur Partei-ID zugehörige wahlübergreifende Kurzbezeichnung der Partei in Version x.y.
+
+Die Geschlechtsangabe 'männlich' beinhaltet seit Wahlen ab 2019 auch Wählende mit dem Geschlechtseinträgen 'divers' und 'ohne Angabe'.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/97d252a2-6e62-4eb4-af23-52a364d59e09/download/rtmpwhhy4nrws_landtagswahl_1999_zweitstimmen.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format>CSV</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.797114</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.776743</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.leipzig.de/resource/fb168253-ae73-4f20-a86d-583cb8d3916a">
+        <dct:title>rws_landtagswahl_2019_zweitstimmen.csv</dct:title>
+        <dct:description>Zweitstimmenanteile nach Geschlecht und Alter bei der Landtagswahl 2019 in Leipzig aus der repräsentativen Wahlstatistik. 
+
+'Partei_ID_StatAmtLE' beinhaltet eine vom Amt für Wahlen und Statistik festgelegte wahlübergreifende Partei-ID. Das Parteienverzeichnis kann unterfolgender URL aufgerufen werden: https://opendata.leipzig.de/dataset/parteienverzeichnis-statamtleipzig
+'Parteiname_harmonisiert_vx_y' beinhaltet die zur Partei-ID zugehörige wahlübergreifende Kurzbezeichnung der Partei in Version x.y.
+
+Die Geschlechtsangabe 'männlich' beinhaltet seit Wahlen ab 2019 auch Wählende mit dem Geschlechtseinträgen 'divers' und 'ohne Angabe'.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/fb168253-ae73-4f20-a86d-583cb8d3916a/download/rtmpwhhy4nrws_landtagswahl_2019_zweitstimmen.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format>CSV</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.797120</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.776947</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.leipzig.de/resource/b0362bf6-88af-4447-9c4f-172d9348a78f">
+        <dct:title>rws_landtagswahl_2024_zweitstimmen.csv</dct:title>
+        <dct:description>Zweitstimmenanteile nach Geschlecht und Alter bei der Landtagswahl 2024 in Leipzig aus der repräsentativen Wahlstatistik. 
+
+'Partei_ID_StatAmtLE' beinhaltet eine vom Amt für Wahlen und Statistik festgelegte wahlübergreifende Partei-ID. Das Parteienverzeichnis kann unterfolgender URL aufgerufen werden: https://opendata.leipzig.de/dataset/parteienverzeichnis-statamtleipzig
+'Parteiname_harmonisiert_vx_y' beinhaltet die zur Partei-ID zugehörige wahlübergreifende Kurzbezeichnung der Partei in Version x.y.
+
+Die Geschlechtsangabe 'männlich' beinhaltet seit Wahlen ab 2019 auch Wählende mit dem Geschlechtseinträgen 'divers' und 'ohne Angabe'.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/b0362bf6-88af-4447-9c4f-172d9348a78f/download/rtmpwhhy4nrws_landtagswahl_2024_zweitstimmen.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format>CSV</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.797122</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.777130</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.leipzig.de/resource/e8f2c24e-77d1-4e29-b8a9-edeceea71588">
+        <dct:title>rws_landtagswahl_2014_zweitstimmen.csv</dct:title>
+        <dct:description>Zweitstimmenanteile nach Geschlecht und Alter bei der Landtagswahl 2014 in Leipzig aus der repräsentativen Wahlstatistik. 
+
+'Partei_ID_StatAmtLE' beinhaltet eine vom Amt für Wahlen und Statistik festgelegte wahlübergreifende Partei-ID. Das Parteienverzeichnis kann unterfolgender URL aufgerufen werden: https://opendata.leipzig.de/dataset/parteienverzeichnis-statamtleipzig
+'Parteiname_harmonisiert_vx_y' beinhaltet die zur Partei-ID zugehörige wahlübergreifende Kurzbezeichnung der Partei in Version x.y.
+
+Die Geschlechtsangabe 'männlich' beinhaltet seit Wahlen ab 2019 auch Wählende mit dem Geschlechtseinträgen 'divers' und 'ohne Angabe'.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/e8f2c24e-77d1-4e29-b8a9-edeceea71588/download/rtmpwhhy4nrws_landtagswahl_2014_zweitstimmen.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format>CSV</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.797124</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.777276</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.leipzig.de/resource/ed97b14a-1899-4100-9a6a-a89b5d27c9d6">
+        <dct:title>rws_landtagswahl_2009_zweitstimmen.csv</dct:title>
+        <dct:description>Zweitstimmenanteile nach Geschlecht und Alter bei der Landtagswahl 2009 in Leipzig aus der repräsentativen Wahlstatistik. 
+
+'Partei_ID_StatAmtLE' beinhaltet eine vom Amt für Wahlen und Statistik festgelegte wahlübergreifende Partei-ID. Das Parteienverzeichnis kann unterfolgender URL aufgerufen werden: https://opendata.leipzig.de/dataset/parteienverzeichnis-statamtleipzig
+'Parteiname_harmonisiert_vx_y' beinhaltet die zur Partei-ID zugehörige wahlübergreifende Kurzbezeichnung der Partei in Version x.y.
+
+Die Geschlechtsangabe 'männlich' beinhaltet seit Wahlen ab 2019 auch Wählende mit dem Geschlechtseinträgen 'divers' und 'ohne Angabe'.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/ed97b14a-1899-4100-9a6a-a89b5d27c9d6/download/rtmpwhhy4nrws_landtagswahl_2009_zweitstimmen.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format>CSV</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.797126</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.777415</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.leipzig.de/resource/07671296-b154-4abc-a8e9-1e2434d1938c">
+        <dct:title>rws_landtagswahl_1994_zweitstimmen.csv</dct:title>
+        <dct:description>Zweitstimmenanteile nach Geschlecht und Alter bei der Landtagswahl 1994 in Leipzig aus der repräsentativen Wahlstatistik. 
+
+'Partei_ID_StatAmtLE' beinhaltet eine vom Amt für Wahlen und Statistik festgelegte wahlübergreifende Partei-ID. Das Parteienverzeichnis kann unterfolgender URL aufgerufen werden: https://opendata.leipzig.de/dataset/parteienverzeichnis-statamtleipzig
+'Parteiname_harmonisiert_vx_y' beinhaltet die zur Partei-ID zugehörige wahlübergreifende Kurzbezeichnung der Partei in Version x.y.
+
+Die Geschlechtsangabe 'männlich' beinhaltet seit Wahlen ab 2019 auch Wählende mit dem Geschlechtseinträgen 'divers' und 'ohne Angabe'.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/07671296-b154-4abc-a8e9-1e2434d1938c/download/rtmpwhhy4nrws_landtagswahl_1994_zweitstimmen.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format>CSV</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.797128</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.777551</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.leipzig.de/resource/07b0067f-2b6d-4740-b265-ecd898ab8972">
+        <dct:title>rws_landtagswahl_2004_zweitstimmen.csv</dct:title>
+        <dct:description>Zweitstimmenanteile nach Geschlecht und Alter bei der Landtagswahl 2004 in Leipzig aus der repräsentativen Wahlstatistik. 
+
+'Partei_ID_StatAmtLE' beinhaltet eine vom Amt für Wahlen und Statistik festgelegte wahlübergreifende Partei-ID. Das Parteienverzeichnis kann unterfolgender URL aufgerufen werden: https://opendata.leipzig.de/dataset/parteienverzeichnis-statamtleipzig
+'Parteiname_harmonisiert_vx_y' beinhaltet die zur Partei-ID zugehörige wahlübergreifende Kurzbezeichnung der Partei in Version x.y.
+
+Die Geschlechtsangabe 'männlich' beinhaltet seit Wahlen ab 2019 auch Wählende mit dem Geschlechtseinträgen 'divers' und 'ohne Angabe'.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/07b0067f-2b6d-4740-b265-ecd898ab8972/download/rtmpwhhy4nrws_landtagswahl_2004_zweitstimmen.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format>CSV</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.797130</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-07T00:54:27.777683</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/freistaatSachsen"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/97d252a2-6e62-4eb4-af23-52a364d59e09/download/rtmpwhhy4nrws_landtagswahl_1999_zweitstimmen.csv"/>
+  <rdfs:Resource rdf:about="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/07671296-b154-4abc-a8e9-1e2434d1938c/download/rtmpwhhy4nrws_landtagswahl_1994_zweitstimmen.csv"/>
+  <rdfs:Resource rdf:about="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/b0362bf6-88af-4447-9c4f-172d9348a78f/download/rtmpwhhy4nrws_landtagswahl_2024_zweitstimmen.csv"/>
+  <rdfs:Resource rdf:about="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/e8f2c24e-77d1-4e29-b8a9-edeceea71588/download/rtmpwhhy4nrws_landtagswahl_2014_zweitstimmen.csv"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/fb168253-ae73-4f20-a86d-583cb8d3916a/download/rtmpwhhy4nrws_landtagswahl_2019_zweitstimmen.csv"/>
+  <rdfs:Resource rdf:about="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/ed97b14a-1899-4100-9a6a-a89b5d27c9d6/download/rtmpwhhy4nrws_landtagswahl_2009_zweitstimmen.csv"/>
+  <rdfs:Resource rdf:about="https://opendata.leipzig.de/dataset/552938b6-77ef-46a6-8b7f-fda28e9c96f9/resource/07b0067f-2b6d-4740-b265-ecd898ab8972/download/rtmpwhhy4nrws_landtagswahl_2004_zweitstimmen.csv"/>
+</rdf:RDF>

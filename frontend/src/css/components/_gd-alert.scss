@@ -1,0 +1,27 @@
+// Übernommen aus GovData-Frontend webapp/src/css/components/_gd-alert.scss:
+// Info-Alert in Primary-100/Primary-400, Fehler-Alert in den
+// gd-alert-danger-Farben des Portals.
+$alert-border-radius: 5px;
+
+.alert {
+  @extend .paragraph-small;
+
+  border-radius: $alert-border-radius;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 12px;
+
+  &.alert-info {
+    background: $alert-info-bg;
+    color: $alert-info-clr;
+    border: 1px solid;
+  }
+
+  &.gd-alert-danger {
+    background-color: #fee5e2;
+    color: #b50303;
+    border: 1px solid #fcaca5;
+  }
+}

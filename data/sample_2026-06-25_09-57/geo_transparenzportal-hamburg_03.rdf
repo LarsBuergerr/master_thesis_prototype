@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+>
+  <dcat:Dataset rdf:about="http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9">
+    <dct:title>Bebauungsplan Bramfeld 20 Hamburg</dct:title>
+    <dct:description>Der Bebauungsplan Bramfeld 20 für den Geltungsbereich Fabriciusstraße - Bräsigweg - Bramfelder Chaussee - Seekamp (Bezirk Wandsbek, Ortsteil 515) wird festgestellt.</dct:description>
+    <dcat:landingPage>
+      <foaf:Document rdf:about="http://www.hamburg.de/bebauungsplaene-online.de"/>
+    </dcat:landingPage>
+    <dct:identifier>1EA78A2C-97FA-4D83-84B6-A9B53DE2EBF8</dct:identifier>
+    <owl:versionInfo>17.0</owl:versionInfo>
+    <adms:versionNotes>Änderungen innerhalb einer Ressource</adms:versionNotes>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/NEVER"/>
+    </dct:accrualPeriodicity>
+    <dcat:keyword>baugesetzbuch--baugb</dcat:keyword>
+    <dcat:keyword>baunutzungsverordnung--baunvo</dcat:keyword>
+    <dcat:keyword>plis</dcat:keyword>
+    <dcat:keyword>öffentliche-pläne</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-26T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T21:20:45.316241</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dct:conformsTo>
+      <dct:Standard rdf:about="http://dcat-ap.de/def/dcatde/1.0/"/>
+    </dct:conformsTo>
+    <foaf:page>
+      <foaf:Document rdf:about="http://suche.transparenz.hamburg.de/dataset/bebauungsplan-bramfeld-20-hamburg16"/>
+    </foaf:page>
+    <dct:isVersionOf rdf:resource="http://suche.transparenz.hamburg.de/dataset/bebauungsplan-bramfeld-20-hamburg15"/>
+    <dct:source rdf:resource="https://metaver.de/cswhh"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Na5fc5293b7464be9a866550093cbe163">
+        <vcard:fn>Bezirksämter</vcard:fn>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="Ne55b380913c640a68062b11611a00a8d">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:creator>
+      <foaf:Agent rdf:nodeID="Nb3a6c62e9495471ea9a9255c0e9b4b02">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Agent>
+    </dct:creator>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="N6f32f261a5164dee9d98d0701982ecf9">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Organization>
+    </dct:creator>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N6cb1dbc2a39f4a59a9dd563320f1d0c9">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1974-07-22T00:00:00</dcat:startDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N32b8a6f1a75a4ee49016628ce01bb6c6">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((10.3263 53.3950, 10.3263 53.9642, 8.4206 53.9642, 8.4206 53.3950, 10.3263 53.3950))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Ncec5ce2048e74e0980ee7e5aeb1c7ca2">
+        <locn:adminUnitL2 rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="https://www.govdata.de/dl-de/by-2-0"/>
+    </dct:accessRights>
+    <dct:provenance>
+      <dct:ProvenanceStatement rdf:nodeID="N54c775b5031749539556b96f1c415ec1">
+        <rdfs:label>Der Datensatz wurde geharvestet. Ursprung: Metaverbund Katalog</rdfs:label>
+      </dct:ProvenanceStatement>
+    </dct:provenance>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/9b324bfb-b9f1-4d50-9962-6eff007d36eb">
+        <dct:title>Download WFS Bebauungsplan (XPlanGML)</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&amp;request=GetFeature&amp;version=2.0.0&amp;resolvedepth=%252A&amp;StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&amp;planName=Bramfeld20"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dct:format>GML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-26T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T21:20:45.316241</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">59312</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nd44c3b63294c45da9fc302d9929f3b32">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">882a4049076f4ba939423cdefc456a0d72f59e7c759c8f30553447d89f90ca89</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Wandsbek, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/00f9a729-d4a6-40ea-9a2a-195389a92245">
+        <dct:title>Festsetzungen (Planzeichnung / Verordnung) als PDF Datei</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/bramfeld20.pdf"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format>PDF</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-26T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T21:20:45.316241</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">548687</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nba63c3e1db134bb79e5e94316ffd0468">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">1f95d34ab9f952f6ee42768844f37a3a82983942353b5fe334fbf1ca8e534644</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Wandsbek, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/a395dbf4-a7ed-42fb-9cc6-49cec4228a9a">
+        <dct:title>Begründung des Bebauungsplans als PDF Datei</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/bramfeld20.pdf"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format>PDF</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-26T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T21:20:45.316241</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">135239</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N4a89acbb55794dc4a81dd4adb3d97b45">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">d2a7ed79f774280b2f25657231e56fec4069b5373cc35cd1b825e6713d912264</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Wandsbek, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/010faf97-6e1f-4553-9aeb-9b93d3a2ef09">
+        <dct:title>Metadatenbeschreibung aus dem MetaVer</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="http://metaver.de/trefferanzeige?docuuid=1EA78A2C-97FA-4D83-84B6-A9B53DE2EBF8"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dct:format>HTML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-26T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T21:20:45.316241</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">105650</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N9f39a2d6e1d84022ba69b012125da11e">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">bb07f85129f0e84513d3c7e0496857f0dfe3fc6fc998f3b4778c9f045bf2bfd1</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Wandsbek, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/level/state"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/transparenzportalHamburg"/>
+    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+    <dcatde:legalBasis>Hamburgisches Transparenzgesetz (HmbTG). URL: http://transparenz.hamburg.de/das-hmbtg/ Gesetzestext: http://transparenz.hamburg.de/contentblob/4318588/c8600b2b27ea31a5de6a92dacc138894/data/gesetzestext-hmbtg.pdf</dcatde:legalBasis>
+    <dcatde:geocodingDescription>Freie und Hansestadt Hamburg</dcatde:geocodingDescription>
+    <dcatde:originator>
+      <foaf:Organization rdf:nodeID="N10974df0ee05405196e2a2ff196cd55d">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Organization>
+    </dcatde:originator>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="Nfbdcfd4965a243bd84d98f2e43be4669">
+        <foaf:name>Bezirksämter</foaf:name>
+      </foaf:Organization>
+    </dcatde:maintainer>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/bramfeld20.pdf"/>
+  <rdfs:Resource rdf:about="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/bramfeld20.pdf"/>
+  <rdfs:Resource rdf:about="http://metaver.de/trefferanzeige?docuuid=1EA78A2C-97FA-4D83-84B6-A9B53DE2EBF8"/>
+  <rdfs:Resource rdf:about="https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&amp;request=GetFeature&amp;version=2.0.0&amp;resolvedepth=%252A&amp;StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&amp;planName=Bramfeld20"/>
+</rdf:RDF>

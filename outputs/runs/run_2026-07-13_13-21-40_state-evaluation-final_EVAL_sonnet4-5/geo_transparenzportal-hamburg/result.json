@@ -1,0 +1,1058 @@
+{
+  "by_dimension": {
+    "findability": {
+      "dimension": "findability",
+      "indicators": [
+        {
+          "indicator_id": "find_keywords_count",
+          "name_de": "Angemessene Anzahl Schlagwörter",
+          "name_en": "Appropriate number of keywords",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Optimale Anzahl Keywords: 4",
+          "message_en": "Optimal number of keywords: 4",
+          "details": {
+            "keyword_count": 4,
+            "keywords": [
+              "hamburgisches-bebauungsplangesetz-vom-31.10.1923--bplang",
+              "plis",
+              "teilbebauungsplan",
+              "öffentliche-pläne"
+            ],
+            "expected_range": "3–15 keywords (PASS), 1–2 or 16–25 (PARTIAL)"
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.693960",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_theme_valid",
+          "name_de": "Theme aus kontrolliertem Vokabular",
+          "name_en": "Theme from controlled vocabulary",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle Themes sind aus dem kontrollierten Vokabular",
+          "message_en": "All themes are from controlled vocabulary",
+          "details": {
+            "valid_themes": [
+              "http://publications.europa.eu/resource/authority/data-theme/REGI"
+            ],
+            "invalid_themes": [],
+            "valid_count": 1,
+            "total_count": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.694096",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_locn_geometry",
+          "name_de": "Räumliche Suchangabe (Geometrie)",
+          "name_en": "Spatial search term (geometry)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1 geometrische Angabe(n) gefunden",
+          "message_en": "1 geometry value(s) found",
+          "details": {
+            "geometries": [
+              "POLYGON ((10.3263 53.3950, 10.3263 53.9642, 8.4206 53.9642, 8.4206 53.3950, 10.3263 53.3950))"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.694217",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_political_geocoding",
+          "name_de": "Politische Geokodierung aus kontrolliertem Vokabular",
+          "name_en": "Political geocoding from controlled vocabulary",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Geokodierung (dcatde:politicalGeocodingURI) verweist auf dcat-ap.de",
+          "message_en": "Geocoding (dcatde:politicalGeocodingURI) references dcat-ap.de",
+          "details": {
+            "source": "dcatde:politicalGeocodingURI",
+            "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+            "segment": "regionalKey",
+            "is_valid": true,
+            "geocoding_count": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.694333",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_geocoding_level",
+          "name_de": "Geokodierungs-Ebene aus kontrolliertem Vokabular",
+          "name_en": "Geocoding level from controlled vocabulary",
+          "dimension": "findability",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "Nicht alle Ebenen aus dem kontrollierten Vokabular",
+          "message_en": "Not all levels are from the controlled vocabulary",
+          "details": {
+            "valid": [],
+            "invalid": [
+              "http://dcat-ap.de/def/politicalGeocoding/level/state"
+            ],
+            "total": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.694559",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "find_temporal_coverage",
+          "name_de": "Zeitliche Abdeckung angegeben",
+          "name_en": "Temporal coverage specified",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Zeitliche Abdeckung vorhanden",
+          "message_en": "Temporal coverage present",
+          "details": {
+            "start_count": 1,
+            "end_count": 0,
+            "start_format": "dateTime",
+            "end_format": null,
+            "start_valid": true,
+            "end_valid": false
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.694659",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_issued_datetime",
+          "name_de": "Issued Datum (xs:dateTime)",
+          "name_en": "Issued date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 4 Werte gültig (Dataset: 1, Distribution: 3)",
+          "message_en": "All 4 values valid (Dataset: 1, Distribution: 3)",
+          "details": {
+            "valid": [
+              {
+                "value": "2025-08-28T00:00:00",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756"
+              },
+              {
+                "value": "2025-08-28T00:00:00",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297"
+              },
+              {
+                "value": "2025-08-28T00:00:00",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f"
+              },
+              {
+                "value": "2025-08-28T00:00:00",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034"
+              }
+            ],
+            "invalid": [],
+            "total": 4,
+            "dataset_count": 1,
+            "distribution_count": 3
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.694855",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_modified_datetime",
+          "name_de": "Modified Datum (xs:dateTime)",
+          "name_en": "Modified date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 4 Werte gültig (Dataset: 1, Distribution: 3)",
+          "message_en": "All 4 values valid (Dataset: 1, Distribution: 3)",
+          "details": {
+            "valid": [
+              {
+                "value": "2026-05-08T22:36:25.360227",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756"
+              },
+              {
+                "value": "2026-05-08T22:36:25.360227",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297"
+              },
+              {
+                "value": "2026-05-08T22:36:25.360227",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f"
+              },
+              {
+                "value": "2026-05-08T22:36:25.360227",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034"
+              }
+            ],
+            "invalid": [],
+            "total": 4,
+            "dataset_count": 1,
+            "distribution_count": 3
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.695029",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        }
+      ],
+      "score": 0.9375,
+      "dimension_weight": 1,
+      "total_indicator_weight": 8.0,
+      "indicator_count": 8,
+      "pass_count": 7,
+      "pass_rate": 0.875
+    },
+    "accessibility": {
+      "dimension": "accessibility",
+      "indicators": [
+        {
+          "indicator_id": "acc_download_url",
+          "name_de": "Download-URL je Distribution",
+          "name_en": "Download URL per distribution",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit Download-URL",
+          "message_en": "0/3 distribution(s) with a download URL",
+          "details": {
+            "total_distributions": 3,
+            "distributions_with_download_url": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.695276",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_format",
+          "name_de": "Format aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Format from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit Format aus dem Vokabular",
+          "message_en": "0/3 distribution(s) with a format from the vocabulary",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297",
+                "formats": [
+                  "GML"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f",
+                "formats": [
+                  "PDF"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034",
+                "formats": [
+                  "HTML"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.695366",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_media_type",
+          "name_de": "Media Type aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Media type from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit gültigem Media Type",
+          "message_en": "0/3 distribution(s) with a valid media type",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297",
+                "media_types": [],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f",
+                "media_types": [
+                  "application/pdf"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034",
+                "media_types": [],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.695452",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_download_url_response",
+          "name_de": "Download-URL Antwortcode",
+          "name_en": "Download URL response code",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine Distribution mit entsprechender URL",
+          "message_en": "No distribution declares the relevant URL",
+          "details": {
+            "total_distributions": 3,
+            "relevant_distributions": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.695535",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_access_url_response",
+          "name_de": "Access-URL Antwortcode",
+          "name_en": "Access URL response code",
+          "dimension": "accessibility",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "2/3 Access-URL(s) mit gültigem HTTP-Statuscode",
+          "message_en": "2/3 access URL(s) with valid HTTP status code",
+          "details": {
+            "total_distributions": 3,
+            "relevant_distributions": 3,
+            "sampled_distributions": 3,
+            "valid_count": 2,
+            "invalid_count": 1,
+            "dead_url_malus": -0.5,
+            "valid": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f",
+                "url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/TB913.pdf",
+                "status_code": 200,
+                "fetch_error": null
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034",
+                "url": "http://metaver.de/trefferanzeige?docuuid=49BD6FE5-1C7E-4478-A039-8A8518959B45",
+                "status_code": 200,
+                "fetch_error": null
+              }
+            ],
+            "invalid": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297",
+                "url": "https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=TB913",
+                "status_code": 400,
+                "fetch_error": null
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.695602",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "acc_machine_readable_access",
+          "name_de": "Maschinenlesbarer Zugang (alle Distributionen)",
+          "name_en": "Machine-readable access (all distributions)",
+          "dimension": "accessibility",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "1/3 hoch maschinenlesbar, 1/3 mittel, 1/3 keine (Score 0.50)",
+          "message_en": "1/3 high machine-readable, 1/3 mid, 1/3 none (score 0.50)",
+          "details": {
+            "total_distributions": 3,
+            "high_count": 1,
+            "mid_count": 1,
+            "none_count": 1,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297",
+                "effective_mime": "application/gml+xml",
+                "tier": 1.0,
+                "tier_label": "high"
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f",
+                "effective_mime": "application/pdf",
+                "tier": 0,
+                "tier_label": "none"
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034",
+                "effective_mime": "text/html",
+                "tier": 0.5,
+                "tier_label": "mid"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.695669",
+          "default_weight": 1.0,
+          "effective_weight": 1.5,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "acc_format_non_proprietary",
+          "name_de": "Nicht-proprietäres Format (alle Distributionen)",
+          "name_en": "Non-proprietary format (all distributions)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit nicht-proprietärem Format",
+          "message_en": "0/3 distribution(s) with non-proprietary format",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297",
+                "formats": [
+                  "GML"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f",
+                "formats": [
+                  "PDF"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034",
+                "formats": [
+                  "HTML"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.695729",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.18421052631578946,
+      "dimension_weight": 2,
+      "total_indicator_weight": 9.5,
+      "indicator_count": 7,
+      "pass_count": 0,
+      "pass_rate": 0.0
+    },
+    "reusability": {
+      "dimension": "reusability",
+      "indicators": [
+        {
+          "indicator_id": "reuse_license",
+          "name_de": "Freie Lizenz je Distribution",
+          "name_en": "Free-use license per distribution",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "3/3 Distribution(en) mit freier Lizenz (Score 1.00)",
+          "message_en": "3/3 distribution(s) with a free-use license (score 1.00)",
+          "details": {
+            "total_distributions": 3,
+            "free_count": 3,
+            "no_free_license_malus": -0.5,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.695930",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_publisher",
+          "name_de": "Herausgeber als strukturierter Agent",
+          "name_en": "Publisher modelled as structured agent",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Herausgeber als foaf:Agent mit foaf:name modelliert",
+          "message_en": "Publisher modelled as foaf:Agent with foaf:name",
+          "details": {
+            "publisher_count": 1,
+            "publishers": [
+              {
+                "value": "N4472ec95afb44f9a8ec9290e6fb685bc",
+                "typed_as_agent": true,
+                "names": [
+                  "Landesbetrieb Geoinformation und Vermessung"
+                ],
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.696046",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_contact",
+          "name_de": "Kontaktpunkt mit E-Mail oder URL",
+          "name_en": "Contact point with email or URL",
+          "dimension": "reusability",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "Kontaktpunkt vorhanden, aber ohne valide E-Mail oder URL",
+          "message_en": "Contact point present but without a valid email or URL",
+          "details": {
+            "contact_count": 1,
+            "contacts_with_channel": 0,
+            "contacts": [
+              {
+                "value": "Nc1d6b63a08f54821a7b1b9d8636aa580",
+                "emails": [],
+                "valid_emails": [],
+                "urls": [],
+                "valid_urls": [],
+                "has_channel": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.696120",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "reuse_contributor_id",
+          "name_de": "contributorID aus kontrolliertem Vokabular",
+          "name_en": "contributorID from controlled vocabulary",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Genau eine contributorID aus dem Vokabular",
+          "message_en": "Exactly one contributorID from the vocabulary",
+          "details": {
+            "contributor_id_count": 1,
+            "valid": [
+              "http://dcat-ap.de/def/contributors/transparenzportalHamburg"
+            ],
+            "invalid": [],
+            "values": [
+              "http://dcat-ap.de/def/contributors/transparenzportalHamburg"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:54.696176",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_dcat_ap_de_compliance",
+          "name_de": "DCAT-AP.de Schema-Konformität (SHACL)",
+          "name_en": "DCAT-AP.de schema compliance (SHACL)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "12 SHACL-Verletzung(en) gefunden",
+          "message_en": "12 SHACL violation(s) found",
+          "details": {
+            "conforms": false,
+            "violation_count": 12,
+            "violations": [
+              {
+                "severity": "Violation",
+                "message": "spdx:Checksum: spdx:checksumValue MUSS ein Literal vom Typ xsd:hexBinary sein. Es MUSS genau einmal vorhanden sein.",
+                "focus": "n0e3fe1074b4846a89b5874cac7192ddfb3",
+                "path": "http://spdx.org/rdf/terms#checksumValue"
+              },
+              {
+                "severity": "Warning",
+                "message": "dct:Location: SOLL eine der folgenden Eigenschaften nutzen: dcat:bbox, dcat:centroid, locn:geometry. Wenn Sie eine davon abweichende Eigenschaften nutzen, kÃ¶nnen Sie den Fehler ignorieren.",
+                "focus": "n0e3fe1074b4846a89b5874cac7192ddfb5",
+                "path": "n0e3fe1074b4846a89b5874cac7192ddfb6"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "focus": "PDF",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "focus": "HTML",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "focus": "GML",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+                "focus": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f",
+                "path": "http://www.w3.org/ns/dcat#mediaType"
+              },
+              {
+                "severity": "Violation",
+                "message": "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+                "focus": "n0e3fe1074b4846a89b5874cac7192ddfb16",
+                "path": "http://spdx.org/rdf/terms#algorithm"
+              },
+              {
+                "severity": "Violation",
+                "message": "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+                "focus": "n0e3fe1074b4846a89b5874cac7192ddfb18",
+                "path": "http://spdx.org/rdf/terms#algorithm"
+              },
+              {
+                "severity": "Violation",
+                "message": "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+                "focus": "n0e3fe1074b4846a89b5874cac7192ddfb3",
+                "path": "http://spdx.org/rdf/terms#algorithm"
+              },
+              {
+                "severity": "Warning",
+                "message": "dcat:Dataset: dct:source MUSS auf ein dcat:Dataset verweisen. (LÃ¶st auch aus, wenn nur eine IRI angegeben wird, die verlinkte Ressource aber nicht mit validiert wird.)",
+                "focus": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756",
+                "path": "http://purl.org/dc/terms/source"
+              },
+              {
+                "severity": "Warning",
+                "message": "dcat:Dataset: dct:isVersionOf MUSS auf ein dcat:Dataset verweisen. (LÃ¶st auch aus, wenn nur eine IRI angegeben wird, die verlinkte Ressource aber nicht mit validiert wird.)",
+                "focus": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756",
+                "path": "http://purl.org/dc/terms/isVersionOf"
+              },
+              {
+                "severity": "Warning",
+                "message": "dcat:Dataset: dcatde:politicalGeocodingLevelURI SOLL folgendes Vokabular benutzten: http://dcat-ap.de/def/politicalGeocoding/Level/",
+                "focus": "http://dcat-ap.de/def/politicalGeocoding/level/state",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:56.233365",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "reuse_availability",
+          "name_de": "Verfügbarkeit aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Availability from controlled vocabulary (per distribution)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit gültiger Verfügbarkeit",
+          "message_en": "0/3 distribution(s) with a valid availability value",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297",
+                "availability": [],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f",
+                "availability": [],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034",
+                "availability": [],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:56.233598",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.6428571428571429,
+      "dimension_weight": 1.5,
+      "total_indicator_weight": 7.0,
+      "indicator_count": 6,
+      "pass_count": 3,
+      "pass_rate": 0.5
+    },
+    "expressiveness": {
+      "dimension": "expressiveness",
+      "indicators": [
+        {
+          "indicator_id": "expr_title_quality",
+          "name_de": "Titel-Qualität",
+          "name_en": "Title quality",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 0.9,
+          "message_de": "Der Titel erfüllt die Anforderungen gut: Er ist spezifisch durch die Plannummer TB 913, nennt den Ortsbezug Hamburg und ist prägnant formuliert. Die Plannummer macht ihn von anderen Bebauungsplänen unterscheidbar. Der Titel ist reiner Text ohne Formatierungsfehler.",
+          "message_en": "Der Titel erfüllt die Anforderungen gut: Er ist spezifisch durch die Plannummer TB 913, nennt den Ortsbezug Hamburg und ist prägnant formuliert. Die Plannummer macht ihn von anderen Bebauungsplänen unterscheidbar. Der Titel ist reiner Text ohne Formatierungsfehler.",
+          "details": {
+            "criterion": "title_quality",
+            "llm_status": "pass",
+            "findings": [
+              "Der Titel ist spezifisch und nennt die eindeutige Plannummer 'TB 913' sowie den Ortsbezug 'Hamburg'.",
+              "Der Titel ist prägnant und unterscheidet sich durch die Plannummer von anderen Bebauungsplänen.",
+              "Keine Sonderzeichen, Markdown oder technischen Reste vorhanden."
+            ],
+            "overall_summary": "Die Metadaten sind in Titel, thematischer Konsistenz und Kontextangaben gut. Die Beschreibung ist jedoch zu knapp und erklärt nicht den Inhalt oder Zweck des Plans. Die Schlagwörter sind durch Komposita und Jargon suboptimal formuliert."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:56.233710",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 0.9,
+          "effective_score": 0.9
+        },
+        {
+          "indicator_id": "expr_description_quality",
+          "name_de": "Beschreibungs-Qualität",
+          "name_en": "Description quality",
+          "dimension": "expressiveness",
+          "status": "fail",
+          "score": 0.4,
+          "message_de": "Die Beschreibung ist sehr knapp und beschränkt sich auf geografische Zuordnungen. Sie beantwortet nicht die Kernfragen: Was ist enthalten (bauliche Festsetzungen, Nutzungsarten)? Wozu dient der Plan? Wie wurde er erstellt? Die Beschreibung ist zwar korrekt, aber nicht substanziell informativ über den eigentlichen Inhalt des Bebauungsplans.",
+          "message_en": "Die Beschreibung ist sehr knapp und beschränkt sich auf geografische Zuordnungen. Sie beantwortet nicht die Kernfragen: Was ist enthalten (bauliche Festsetzungen, Nutzungsarten)? Wozu dient der Plan? Wie wurde er erstellt? Die Beschreibung ist zwar korrekt, aber nicht substanziell informativ über den eigentlichen Inhalt des Bebauungsplans.",
+          "details": {
+            "criterion": "description_quality",
+            "llm_status": "fail",
+            "findings": [
+              "Die Beschreibung nennt konkrete geografische Zuordnungen: Bezirk Eimsbüttel, Stadtteil Stellingen, Ortsteil 321.",
+              "Der Planbezirk 'Schulfläche an der Gutenbergstraße' wird genannt.",
+              "Es fehlen wesentliche Informationen: Was ist der Inhalt/Zweck des Plans? Welche baulichen Festsetzungen werden getroffen? Wie ist der Plan strukturiert?"
+            ],
+            "overall_summary": "Die Metadaten sind in Titel, thematischer Konsistenz und Kontextangaben gut. Die Beschreibung ist jedoch zu knapp und erklärt nicht den Inhalt oder Zweck des Plans. Die Schlagwörter sind durch Komposita und Jargon suboptimal formuliert."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:56.233781",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.4,
+          "effective_score": 0.4
+        },
+        {
+          "indicator_id": "expr_title_description_coherence",
+          "name_de": "Kohärenz von Titel und Beschreibung",
+          "name_en": "Title–description coherence",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Titel und Beschreibung passen inhaltlich zusammen. Die Beschreibung konkretisiert den im Titel genannten Plan durch geografische Details. Es gibt keine Widersprüche bezüglich Thema, Ort oder Zeitraum.",
+          "message_en": "Titel und Beschreibung passen inhaltlich zusammen. Die Beschreibung konkretisiert den im Titel genannten Plan durch geografische Details. Es gibt keine Widersprüche bezüglich Thema, Ort oder Zeitraum.",
+          "details": {
+            "criterion": "title_description_coherence",
+            "llm_status": "pass",
+            "findings": [
+              "Titel und Beschreibung beziehen sich beide auf denselben Bebauungsplan TB 913.",
+              "Die Beschreibung konkretisiert den Ortsbezug 'Hamburg' aus dem Titel durch detaillierte geografische Angaben.",
+              "Keine inhaltlichen Widersprüche erkennbar."
+            ],
+            "overall_summary": "Die Metadaten sind in Titel, thematischer Konsistenz und Kontextangaben gut. Die Beschreibung ist jedoch zu knapp und erklärt nicht den Inhalt oder Zweck des Plans. Die Schlagwörter sind durch Komposita und Jargon suboptimal formuliert."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:56.233842",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "expr_keyword_quality",
+          "name_de": "Schlagwort-Qualität",
+          "name_en": "Keyword quality",
+          "dimension": "expressiveness",
+          "status": "fail",
+          "score": 0.4,
+          "message_de": "Die Schlagwörter weisen mehrere Schwächen auf: Sie verwenden lange Komposita statt kurzer, atomarer Begriffe. Das Schlagwort zum Bebauungsplangesetz ist übermäßig detailliert mit Datumsangabe und wirkt wie Jargon. 'Teilbebauungsplan' wiederholt den Titel. Die Schlagwörter sind nicht optimal für Laienverständlichkeit formuliert.",
+          "message_en": "Die Schlagwörter weisen mehrere Schwächen auf: Sie verwenden lange Komposita statt kurzer, atomarer Begriffe. Das Schlagwort zum Bebauungsplangesetz ist übermäßig detailliert mit Datumsangabe und wirkt wie Jargon. 'Teilbebauungsplan' wiederholt den Titel. Die Schlagwörter sind nicht optimal für Laienverständlichkeit formuliert.",
+          "details": {
+            "criterion": "keyword_quality",
+            "llm_status": "fail",
+            "findings": [
+              "Die Schlagwörter enthalten lange Komposita statt atomarer Begriffe: 'hamburgisches-bebauungsplangesetz-vom-31.10.1923--bplang', 'öffentliche-pläne'.",
+              "Das Schlagwort 'hamburgisches-bebauungsplangesetz-vom-31.10.1923--bplang' ist sehr spezifisch-juristisch und enthält ein Datum, was eher in die Beschreibung gehört.",
+              "Die Schlagwörter 'teilbebauungsplan' und 'plis' sind relevant, aber 'teilbebauungsplan' wiederholt den Titel teilweise."
+            ],
+            "overall_summary": "Die Metadaten sind in Titel, thematischer Konsistenz und Kontextangaben gut. Die Beschreibung ist jedoch zu knapp und erklärt nicht den Inhalt oder Zweck des Plans. Die Schlagwörter sind durch Komposita und Jargon suboptimal formuliert."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:56.233902",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.4,
+          "effective_score": 0.4
+        },
+        {
+          "indicator_id": "expr_thematic_consistency",
+          "name_de": "Thematische Konsistenz",
+          "name_en": "Thematic consistency",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle Felder zeigen ein konsistentes Themenbild: Bebauungsplanung und räumliche Planung. Das DCAT-Thema REGI passt zu Bebauungsplänen, die Schlagwörter beziehen sich auf Planungsrecht und -instrumente, und Titel sowie Beschreibung behandeln denselben Bebauungsplan. Keine Off-topic-Signale erkennbar.",
+          "message_en": "Alle Felder zeigen ein konsistentes Themenbild: Bebauungsplanung und räumliche Planung. Das DCAT-Thema REGI passt zu Bebauungsplänen, die Schlagwörter beziehen sich auf Planungsrecht und -instrumente, und Titel sowie Beschreibung behandeln denselben Bebauungsplan. Keine Off-topic-Signale erkennbar.",
+          "details": {
+            "criterion": "thematic_consistency",
+            "llm_status": "pass",
+            "findings": [
+              "Das Thema REGI (Regionen und Städte) passt zu einem Bebauungsplan.",
+              "Die Schlagwörter beziehen sich auf Bebauungsplanung und öffentliche Pläne, was konsistent ist.",
+              "Titel und Beschreibung behandeln eindeutig einen Bebauungsplan, was mit dem Thema übereinstimmt."
+            ],
+            "overall_summary": "Die Metadaten sind in Titel, thematischer Konsistenz und Kontextangaben gut. Die Beschreibung ist jedoch zu knapp und erklärt nicht den Inhalt oder Zweck des Plans. Die Schlagwörter sind durch Komposita und Jargon suboptimal formuliert."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:56.233958",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "expr_contextual_qualifiers",
+          "name_de": "Kontextuelle Qualifizierer",
+          "name_en": "Contextual qualifiers",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Für einen Bebauungsplan sind die relevanten Kontextangaben vorhanden: Das Datum des Inkrafttretens (1961), die räumliche Abdeckung (sehr detailliert) und der Hinweis, dass keine Aktualisierungen erfolgen. Alle vom Datentyp verlangten Qualifizierer sind erfüllt.",
+          "message_en": "Für einen Bebauungsplan sind die relevanten Kontextangaben vorhanden: Das Datum des Inkrafttretens (1961), die räumliche Abdeckung (sehr detailliert) und der Hinweis, dass keine Aktualisierungen erfolgen. Alle vom Datentyp verlangten Qualifizierer sind erfüllt.",
+          "details": {
+            "criterion": "contextual_qualifiers",
+            "llm_status": "pass",
+            "findings": [
+              "Der Bezugszeitraum ist vorhanden: temporal.start_dates zeigt '1961-06-05', vermutlich das Inkrafttreten des Plans.",
+              "Die räumliche Abdeckung ist detailliert angegeben (Bezirk, Stadtteil, Ortsteil, Geometrie).",
+              "Der Aktualisierungszyklus ist angegeben: 'NEVER' (einmaliger, statischer Plan)."
+            ],
+            "overall_summary": "Die Metadaten sind in Titel, thematischer Konsistenz und Kontextangaben gut. Die Beschreibung ist jedoch zu knapp und erklärt nicht den Inhalt oder Zweck des Plans. Die Schlagwörter sind durch Komposita und Jargon suboptimal formuliert."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:31:56.234015",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        }
+      ],
+      "score": 0.7833333333333332,
+      "dimension_weight": 2.0,
+      "total_indicator_weight": 6.0,
+      "indicator_count": 6,
+      "pass_count": 4,
+      "pass_rate": 0.6666666666666666
+    }
+  },
+  "summary": {
+    "overall_score": 0.5902882205513784,
+    "overall_pass_rate": 0.5185185185185185,
+    "dimension_scores": {
+      "findability": 0.9375,
+      "accessibility": 0.18421052631578946,
+      "reusability": 0.6428571428571429,
+      "expressiveness": 0.7833333333333332
+    },
+    "dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "effective_dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "dimension_weight_mode": "explicit",
+    "total_dimension_weight": 6.5,
+    "total_indicators": 27,
+    "total_pass": 14,
+    "total_fail": 13,
+    "quality_grade": "D"
+  },
+  "errors": [],
+  "weights": {
+    "dimension_weights": {
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0,
+      "findability": 1
+    },
+    "indicator_weights": {
+      "find_keywords_count": 1.0,
+      "find_theme_valid": 1.0,
+      "find_temporal_coverage": 1.0,
+      "find_locn_geometry": 1.0,
+      "find_political_geocoding": 1.0,
+      "find_geocoding_level": 1.0,
+      "find_issued_datetime": 1.0,
+      "find_modified_datetime": 1.0,
+      "acc_download_url": 1.0,
+      "acc_machine_readable_access": 1.5,
+      "acc_download_url_response": 2.0,
+      "acc_access_url_response": 2.0,
+      "acc_format": 1.0,
+      "acc_media_type": 1.0,
+      "reuse_license": 2.0,
+      "reuse_contact": 1.0,
+      "reuse_contributor_id": 1.0,
+      "reuse_publisher": 1.0,
+      "reuse_availability": 1.0,
+      "expr_description_quality": 1.0,
+      "expr_title_quality": 1.0,
+      "expr_title_description_coherence": 1.0,
+      "expr_keyword_quality": 1.0,
+      "expr_thematic_consistency": 1.0,
+      "expr_contextual_qualifiers": 1.0
+    }
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6168,
+      "output_tokens": 1606,
+      "total_tokens": 7774,
+      "cost_usd": 0.042594,
+      "latency_seconds": 24.408
+    }
+  ]
+}

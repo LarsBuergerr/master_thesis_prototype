@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:ns1="http://data.europa.eu/eli/ontology#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/c28e2586-be45-4d64-9917-5b5db4c8d4c9">
+    <dct:title>Flächennutzungsplan Buchholz - Amt Odervorland Gemeinde Steinhöfel OT Buchholz</dct:title>
+    <dct:description>Der Flächennutzungsplan enthält als vorbereitender Bauleitplan ein Bodennutzungskonzept für das gesamte Gemeindegebiet, welches der Umsetzung durch Bebauungspläne bzw. durch Satzungen bedarf.</dct:description>
+    <dct:identifier>c28e2586-be45-4d64-9917-5b5db4c8d4c9</dct:identifier>
+    <dct:type rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset"/>
+    <dcat:keyword>amt-odervorland</dcat:keyword>
+    <dcat:keyword>bauleitplanung</dcat:keyword>
+    <dcat:keyword>erdbeobachtung-und-umwelt</dcat:keyword>
+    <dcat:keyword>flächennutzungsplan</dcat:keyword>
+    <dcat:keyword>fnp</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>ot-buchholz</dcat:keyword>
+    <dcat:keyword>planung</dcat:keyword>
+    <dcat:keyword>steinhöfel</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2000-07-01T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-27T12:11:08</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Nf056e52a3b9f4b50928b707d92069325">
+        <vcard:fn>Odervorland</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:bauamt@amt-odervorland.de"/>
+        <vcard:hasURL rdf:resource="https://www.amt-odervorland.de"/>
+        <vcard:hasTelephone rdf:resource="tel:+033607897-62"/>
+        <vcard:hasStreetAddress>Bahnhofstraße 3-4</vcard:hasStreetAddress>
+        <vcard:hasLocality>Briesen (Mark)</vcard:hasLocality>
+        <vcard:hasPostalCode>15518</vcard:hasPostalCode>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="Nc747dae2c6054840819f55ebaac00821">
+        <foaf:name>Amt Odervorland</foaf:name>
+        <foaf:mbox>bauamt@amt-odervorland.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N4d8d161fde9c43aaa6d37a2f210e0886">
+        <skos:prefLabel>Land Brandenburg</skos:prefLabel>
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((14.0763 52.4418, 14.1398 52.4418, 14.1398 52.4088, 14.0763 52.4088, 14.0763 52.4418))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:nodeID="Nc12334c2feb94c949a4f49ffdf23404f">
+        <rdfs:label>Keine Zugriffsbeschränkungen. Bereitgestellte Daten dienen ausschließlich der Information und besitzen keine Rechtsverbindlichkeit.</rdfs:label>
+      </dct:RightsStatement>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/20e9a88d-4125-4b4d-89de-41358e7e1f84">
+        <dct:title>Geoportal des Amtes Odervorland</dct:title>
+        <dct:description>Geoportal des Amtes Odervorland</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal-amt-odervorland.de/"/>
+        <dcat:downloadURL rdf:resource="https://www.geoportal-amt-odervorland.de/"/>
+        <foaf:page rdf:resource="https://www.geoportal-amt-odervorland.de/"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-21T11:11:34.305281</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-21T11:11:34.273560</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © Amt Odervorland, dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/02af1d22-4766-40d0-955b-36d5ddcf6f49">
+        <dct:title>Flächennutzungsplan Buchholz - Amt Odervorland Gemeinde Steinhöfel OT Buchholz (WFS)</dct:title>
+        <dct:description>Der Flächennutzungsplan enthält als vorbereitender Bauleitplan ein Bodennutzungskonzept für das gesamte Gemeindegebiet, welches der Umsetzung durch Bebauungspläne bzw. durch Satzungen bedarf.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal-amt-odervorland.de/isk/fp098?REQUEST=GetCapabilities&amp;SERVICE=WFS"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-29T04:45:22.522484</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-27T12:11:08</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © Amt Odervorland, dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/53f07580-8b96-47aa-9666-96772835155b">
+        <dct:title>Flächennutzungsplan Buchholz - Amt Odervorland Gemeinde Steinhöfel OT Buchholz (WMS)</dct:title>
+        <dct:description>Der Flächennutzungsplan enthält als vorbereitender Bauleitplan ein Bodennutzungskonzept für das gesamte Gemeindegebiet, welches der Umsetzung durch Bebauungspläne bzw. durch Satzungen bedarf.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal-amt-odervorland.de/isk/fp098?REQUEST=GetCapabilities&amp;SERVICE=WMS"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-29T04:45:22.522486</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-27T12:11:08</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © Amt Odervorland, dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatap:applicableLegislation>
+      <ns1:LegalResource rdf:about="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+    </dcatap:applicableLegislation>
+    <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_dd313021"/>
+    <adms:identifier>c28e2586-be45-4d64-9917-5b5db4c8d4c9</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openDataBrandenburg"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://www.geoportal-amt-odervorland.de/">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+  </rdfs:Resource>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+  <rdfs:Resource rdf:about="https://www.geoportal-amt-odervorland.de/isk/fp098?REQUEST=GetCapabilities&amp;SERVICE=WFS"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+  <rdfs:Resource rdf:about="https://www.geoportal-amt-odervorland.de/isk/fp098?REQUEST=GetCapabilities&amp;SERVICE=WMS"/>
+</rdf:RDF>

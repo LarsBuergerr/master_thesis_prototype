@@ -1,0 +1,302 @@
+2026-07-16 12:05:53 - reporting.output_manager - INFO - Created file log handler for non_geo_land-schleswig-holstein.rdf at run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_land-schleswig-holstein/logs.log
+2026-07-16 12:05:53 - __main__ - INFO - Started processing: non_geo_land-schleswig-holstein.rdf
+2026-07-16 12:05:53 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_land-schleswig-holstein.rdf
+2026-07-16 12:05:53 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_land-schleswig-holstein.rdf using format: xml
+2026-07-16 12:05:53 - extraction.rdf_parser - INFO - Successfully parsed 52 triples
+2026-07-16 12:05:53 - scoring.service - INFO - Parsed 52 triples
+2026-07-16 12:05:53 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-16 12:05:53 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-16 12:06:02 - scoring.service - DEBUG - [OK   ] https://region.statistik-nord.de/detail_timelineexport/13/1102/5/1/352/1111/ — 2024-06-05-20-01-Bevoelkerungsstand_nach_Altersgruppen_in_Havetoft_am_31_12_
+  downloadURL : https://region.statistik-nord.de/detail_timelineexport/13/1102/5/1/352/1111/
+  HTTP        : 200
+  attachment  : 2026-07-16-12-06-Zeitreihe_fuer_Havetoft.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/csv
+    url_extension        raw=-                                        mime=-
+    http_content_type    raw=text/csv; charset=iso-8859-1             mime=text/csv
+    attachment_filename  raw=2026-07-16-12-06-Zeitreihe_fuer_Havetof… mime=text/csv
+  coalesced   : text/csv
+2026-07-16 12:06:02 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-16 12:06:26 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Aussagekräftige, thematisch konsistente Bevölkerungszeitreihe mit sehr gutem Titel und vollständigem Zeitbezug; Schwäche')
+2026-07-16 12:06:26 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 12:06:26 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=6
+2026-07-16 12:06:26 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['altersgruppen', 'bevölkerung', 'bevölkerungsstand', 'bevölkerungsstand-amtliche-bevölkerungsfortschreibung', 'bevölkerungsstand-nach-altersgruppen', 'havetoft-am-31.12.']
+2026-07-16 12:06:26 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/SOCI']
+2026-07-16 12:06:26 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 12:06:26 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 12:06:26 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] partial score=0.50 source=dcatde:politicalGeocodingURI uri=http://dcat-ap.de/def/politicalGeocoding/regionalKey/01059037 segment=regionalKey
+2026-07-16 12:06:26 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] pass score=1.00 valid=1/1
+2026-07-16 12:06:26 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['2000-01-01T00:00:00'], endDate: ['2023-12-31T00:00:00']
+2026-07-16 12:06:26 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=dateTime/True
+2026-07-16 12:06:26 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-16 12:06:26 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://region.statistik-nord.de/detail_timeline/13/1102/5/1/352/1111/ = 2024-05-29T00:00:00
+2026-07-16 12:06:26 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://region.statistik-nord.de/detail_timelineexport/13/1102/5/1/352/1111/ = 2021-09-25T14:02:31.061820
+2026-07-16 12:06:26 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-16 12:06:26 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://region.statistik-nord.de/detail_timeline/13/1102/5/1/352/1111/ = 2024-05-29T00:00:00
+2026-07-16 12:06:26 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://region.statistik-nord.de/detail_timelineexport/13/1102/5/1/352/1111/ = 2024-06-05T18:08:13.710492
+2026-07-16 12:06:26 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 12:06:26 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 12:06:26 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 12:06:26 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=1/1
+2026-07-16 12:06:26 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 12:06:26 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=1/1
+2026-07-16 12:06:26 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 12:06:26 - scoring.indicator.acc_media_type - INFO - [acc_media_type] pass score=1.00 passing=1/1
+2026-07-16 12:06:26 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 12:06:26 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 12:06:26 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 12:06:26 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=1 mid=0 none=0 total=1
+2026-07-16 12:06:26 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=1/1
+2026-07-16 12:06:26 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 12:06:26 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=1/1
+2026-07-16 12:06:26 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 12:06:26 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 12:06:26 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 12:06:26 - scoring.indicator.reuse_contact - INFO - [reuse_contact] FAIL score=0.00 no contactPoint set
+2026-07-16 12:06:26 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 12:06:28 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=5
+2026-07-16 12:06:28 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-16 12:06:28 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.95 | Der Titel ist spezifisch, prägnant und enthält hilfreichen Orts- und Zeitbezug. Er ist reiner Fließtext ohne technische 
+2026-07-16 12:06:28 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.45 | Die Beschreibung nennt Quelle und liefert weiterführende Links, wiederholt aber weitgehend den Titel und erklärt weder S
+2026-07-16 12:06:28 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.95 | Titel und Beschreibung sind vollständig widerspruchsfrei und beziehen sich auf denselben Gegenstand; die Beschreibung ko
+2026-07-16 12:06:28 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.40 | Neben einigen brauchbaren atomaren Begriffen dominieren zusammengesetzte, mit Bindestrichen verkettete Slug-Formen, die 
+2026-07-16 12:06:28 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.95 | Alle Felder zeichnen ein widerspruchsfreies Themenbild rund um amtliche Bevölkerungsstatistik, das gut zum Thema SOCI pa
+2026-07-16 12:06:28 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=0.90 | Als Zeitreihe/Statistik verlangt der Datentyp Zeitbezug und Aktualisierungszyklus; beides ist vorhanden (Stichtag, Zeitr
+2026-07-16 12:06:28 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 12:06:28 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 12:06:28 - scoring.service - DEBUG - {
+  "dataset_uri": "https://region.statistik-nord.de/detail_timeline/13/1102/5/1/352/1111/",
+  "titles": [
+    "Bevölkerungsstand nach Altersgruppen in Havetoft am 31.12."
+  ],
+  "descriptions": [
+    "\nBevölkerung - Bevölkerungsstand (Amtliche Bevölkerungsfortschreibung) - Bevölkerungsstand nach Altersgruppen in Havetoft am 31.12. \n\n[Zum HTML-Angebot der Zeitreihe](https://region.statistik-nord.de/detail_timeline/13/1102/5/1/352/1111/)\n\n[Regionaldaten für Schleswig-Holstein](https://region.statistik-nord.de/main/1)\n\nStatistisches Amt für Hamburg und Schleswig-Holstein\n          "
+  ],
+  "keywords": [
+    "altersgruppen",
+    "bevölkerung",
+    "bevölkerungsstand",
+    "bevölkerungsstand-amtliche-bevölkerungsfortschreibung",
+    "bevölkerungsstand-nach-altersgruppen",
+    "havetoft-am-31.12."
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2024-05-29T00:00:00"
+  ],
+  "issued": [
+    "2024-05-29T00:00:00"
+  ],
+  "accrual_periodicity": "http://publications.europa.eu/resource/authority/frequency/YEARLY",
+  "accrual_periodicity_in_vocab": false,
+  "start_dates": [
+    "2000-01-01T00:00:00"
+  ],
+  "end_dates": [
+    "2023-12-31T00:00:00"
+  ],
+  "geometries": [],
+  "spatial_resources": [
+    "http://dcat-ap.de/def/politicalGeocoding/municipalityKey/01059037",
+    "Nf6a6c1756ba044d49a9a7fece2238834"
+  ],
+  "admin_units": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/01059037",
+      "segment": "regionalKey",
+      "is_in_vocab": false
+    }
+  ],
+  "political_geocoding": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/01059037",
+      "segment": "regionalKey",
+      "is_in_vocab": false
+    }
+  ],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/Level/municipality"
+  ],
+  "political_geocoding_level_in_vocab": [
+    true
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+  "publisher": "https://opendata.schleswig-holstein.de/organization/statistikamt-nord",
+  "contact_points": [],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/schleswigHolstein"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://region.statistik-nord.de/detail_timelineexport/13/1102/5/1/352/1111/",
+      "titles": [
+        "2024-06-05-20-01-Bevoelkerungsstand_nach_Altersgruppen_in_Havetoft_am_31_12_"
+      ],
+      "descriptions": [],
+      "download_url": "https://region.statistik-nord.de/detail_timelineexport/13/1102/5/1/352/1111/",
+      "access_url": "https://region.statistik-nord.de/detail_timelineexport/13/1102/5/1/352/1111/",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/csv"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2024-06-05T18:08:13.710492"
+      ],
+      "issued": [
+        "2021-09-25T14:02:31.061820"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/csv; charset=iso-8859-1",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "2026-07-16-12-06-Zeitreihe_fuer_Havetoft.csv",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://region.statistik-nord.de/detail_timelineexport/13/1102/5/1/352/1111/",
+        "content_disposition": "attachment; filename=2026-07-16-12-06-Zeitreihe_fuer_Havetoft.csv",
+        "attachment_filename": "2026-07-16-12-06-Zeitreihe_fuer_Havetoft.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Spezifischer Titel mit Thema (Bevölkerungsstand nach Altersgruppen), Ort (Havetoft) und Stichtag (31.12.)",
+        "Klare, verständliche Formulierung ohne Abkürzungen oder Sonderzeichen",
+        "Von ähnlichen Datensätzen unterscheidbar durch Orts- und Kategoriebezug"
+      ],
+      "reasoning": "Der Titel ist spezifisch, prägnant und enthält hilfreichen Orts- und Zeitbezug. Er ist reiner Fließtext ohne technische Reste und gut verständlich.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "description_quality": {
+      "findings": [
+        "Beschreibung wiederholt im Wesentlichen den Titel und die Themenhierarchie (Bevölkerung - Bevölkerungsstand - Amtliche Bevölkerungsfortschreibung)",
+        "Enthält Links zum HTML-Angebot und zu Regionaldaten sowie Nennung der Quelle (Statistisches Amt für Hamburg und Schleswig-Holstein)",
+        "Keine Angaben zu Struktur, Format, konkreten Altersgruppen, Tabellenaufbau oder Erhebungsmethode; enthält Markdown-Links und Escape-/Umbruchzeichen"
+      ],
+      "reasoning": "Die Beschreibung nennt Quelle und liefert weiterführende Links, wiederholt aber weitgehend den Titel und erklärt weder Struktur noch konkrete Kategorien oder Methodik. Zudem enthält sie Markdown-Formatierung und Leerzeichen-/Umbruchreste, was die Qualität als reiner Fließtext mindert.",
+      "applicable": true,
+      "score": 0.45
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung behandeln dasselbe Thema, denselben Ort und denselben Stichtag",
+        "Keine Widersprüche erkennbar",
+        "Beschreibung stützt den Titel, ohne wesentlich neuen Inhalt"
+      ],
+      "reasoning": "Titel und Beschreibung sind vollständig widerspruchsfrei und beziehen sich auf denselben Gegenstand; die Beschreibung konkretisiert den Titel zumindest durch die Themenhierarchie und Quelle.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "keyword_quality": {
+      "findings": [
+        "Einige gute atomare Begriffe: 'bevölkerung', 'altersgruppen', 'bevölkerungsstand'",
+        "Mehrere lange Komposita/Slug-artige Schlagwörter: 'bevölkerungsstand-amtliche-bevölkerungsfortschreibung', 'bevölkerungsstand-nach-altersgruppen'",
+        "'havetoft-am-31.12.' ist ein Slug mit Ort und Datum, wiederholt den Titel und ist kein sauberes Schlagwort"
+      ],
+      "reasoning": "Neben einigen brauchbaren atomaren Begriffen dominieren zusammengesetzte, mit Bindestrichen verkettete Slug-Formen, die den Titel wiederholen und formale Ortsangaben enthalten. Das mindert die Schlagwortqualität deutlich.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Thema SOCI (Bevölkerung und Gesellschaft) passt zu Bevölkerungsdaten",
+        "Titel, Beschreibung und Schlagwörter zeigen einheitlich das Sujet Bevölkerungsstatistik",
+        "Keine Off-topic-Signale"
+      ],
+      "reasoning": "Alle Felder zeichnen ein widerspruchsfreies Themenbild rund um amtliche Bevölkerungsstatistik, das gut zum Thema SOCI passt.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Es handelt sich um eine jährliche Zeitreihe (Stichtag 31.12., Bezugszeitraum 2000-2023 über temporal)",
+        "Stichtag im Titel genannt (31.12.), Bezugszeitraum über temporal-Feld abgedeckt",
+        "Aktualisierungszyklus als YEARLY angegeben"
+      ],
+      "reasoning": "Als Zeitreihe/Statistik verlangt der Datentyp Zeitbezug und Aktualisierungszyklus; beides ist vorhanden (Stichtag, Zeitraum, jährliche Periodizität). Die kontextuellen Qualifizierer sind damit weitgehend vollständig.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "overall_summary": "Aussagekräftige, thematisch konsistente Bevölkerungszeitreihe mit sehr gutem Titel und vollständigem Zeitbezug; Schwächen liegen in der eher redundanten, Markdown-behafteten Beschreibung und den slug-artigen, teils den Titel wiederholenden Schlagwörtern."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-opus-4.8",
+      "input_tokens": 7376,
+      "output_tokens": 1829,
+      "total_tokens": 9205,
+      "cost_usd": 0.082605,
+      "latency_seconds": 23.854
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-16 12:06:28 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_land-schleswig-holstein/result.json
+2026-07-16 12:06:28 - __main__ - INFO -   ✓ Completed | score=0.80 grade=B

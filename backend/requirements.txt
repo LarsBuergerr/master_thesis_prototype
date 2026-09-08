@@ -1,0 +1,6 @@
+# Web-layer dependencies for the analyzer backend (on top of the core
+# analyzer deps already in the project: rdflib, langchain-openai, hydra-core,
+# pydantic, python-dotenv).
+fastapi>=0.110
+uvicorn[standard]>=0.27
+python-multipart>=0.0.9

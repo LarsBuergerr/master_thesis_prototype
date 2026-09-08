@@ -1,0 +1,477 @@
+2026-07-16 11:25:57 - reporting.output_manager - INFO - Created file log handler for non_geo_open-data-brandenburg_03.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_open-data-brandenburg_03/logs.log
+2026-07-16 11:25:57 - __main__ - INFO - Started processing: non_geo_open-data-brandenburg_03.rdf
+2026-07-16 11:25:57 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_open-data-brandenburg_03.rdf
+2026-07-16 11:25:57 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_open-data-brandenburg_03.rdf using format: xml
+2026-07-16 11:25:57 - extraction.rdf_parser - INFO - Successfully parsed 86 triples
+2026-07-16 11:25:57 - scoring.service - INFO - Parsed 86 triples
+2026-07-16 11:25:57 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-16 11:25:57 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-16 11:25:58 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/55246de0-dd37-4250-a2b0-18d361f8b408 — Downloadseite
+  downloadURL : https://data.geobasis-bb.de/geobasis/karten/topographische-karten/tk10/historisch/tk10_3251-so_2009.pdf
+  HTTP        : 200
+  attachment  : tk10_3251-so_2009.pdf
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=tk10_3251-so_2009.pdf                    mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=tk10_3251-so_2009.pdf                    mime=application/pdf
+  coalesced   : application/pdf
+2026-07-16 11:25:59 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/c1ee4769-3278-4401-b162-6d32a360b928 — Internetshop der LGB
+  downloadURL : https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=74435757-fcf7-4c92-87ac-04dbf01bc338
+  HTTP        : 200
+  attachment  : gbss.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=gbss.php                                 mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=gbss.php (from final URL)                mime=-
+  coalesced   : text/html
+2026-07-16 11:26:00 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/9d98e74c-b4d8-4be8-9656-e521049dc2ad — statische Informationsseite
+  downloadURL : https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=-                                        mime=-
+    http_content_type    raw=text/html; charset=utf-8                 mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-16 11:26:00 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-16 11:26:19 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind insgesamt aussagekräftig: Titel und Beschreibung machen klar, dass es um ein historisches TK10-Karten')
+2026-07-16 11:26:19 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:26:19 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=5
+2026-07-16 11:26:19 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['110.000', 'historische-karte', 'karte', 'opendata', 'vermessung']
+2026-07-16 11:26:19 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/AGRI', 'http://publications.europa.eu/resource/authority/data-theme/GOVE', 'http://publications.europa.eu/resource/authority/data-theme/TECH', 'http://publications.europa.eu/resource/authority/data-theme/ENVI', 'http://publications.europa.eu/resource/authority/data-theme/REGI']
+2026-07-16 11:26:19 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=5/5
+2026-07-16 11:26:19 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:26:19 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:26:19 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:26:19 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:26:19 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:26:19 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-16 11:26:19 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/b73790eb-e823-4916-b22d-c3cde7d6a9df = 2007-12-31T00:00:00
+2026-07-16 11:26:19 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/55246de0-dd37-4250-a2b0-18d361f8b408 = 2024-12-11T19:23:22.291083
+2026-07-16 11:26:19 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/9d98e74c-b4d8-4be8-9656-e521049dc2ad = 2026-06-21T03:45:46.898806
+2026-07-16 11:26:19 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/c1ee4769-3278-4401-b162-6d32a360b928 = 2026-06-21T03:45:46.898814
+2026-07-16 11:26:19 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-16 11:26:19 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/b73790eb-e823-4916-b22d-c3cde7d6a9df = 2025-07-24T16:36:38
+2026-07-16 11:26:19 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/55246de0-dd37-4250-a2b0-18d361f8b408 = 2025-02-23T02:27:51.089214
+2026-07-16 11:26:19 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/9d98e74c-b4d8-4be8-9656-e521049dc2ad = 2026-06-21T03:45:46.870352
+2026-07-16 11:26:19 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/c1ee4769-3278-4401-b162-6d32a360b928 = 2026-06-21T03:45:46.870531
+2026-07-16 11:26:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:26:19 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:26:19 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=3/3
+2026-07-16 11:26:19 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:26:19 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=3/3
+2026-07-16 11:26:19 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:26:19 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:26:19 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/3
+2026-07-16 11:26:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:26:19 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-16 11:26:19 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-16 11:26:19 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] fail score=0.33 high=0 mid=2 none=1 total=3
+2026-07-16 11:26:19 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] partial score=0.67 passing=2/3
+2026-07-16 11:26:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:26:19 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-16 11:26:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:26:19 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:26:19 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:26:19 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:26:19 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:26:21 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-16 11:26:21 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-16 11:26:21 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.95 | Der Titel ist prägnant und enthält die für ein Kartenblatt wesentlichen Identifikatoren einschließlich Maßstab, Ort und 
+2026-07-16 11:26:21 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] partial | score=0.78 | Die Beschreibung ist substanziell und informativ für die Produktreihe TK10, enthält Methode, Zweck und Besonderheiten. F
+2026-07-16 11:26:21 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.82 | Zwischen Titel und Beschreibung besteht kein Widerspruch; die Beschreibung stützt das Thema des Titels. Sie ist jedoch g
+2026-07-16 11:26:21 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.55 | Die Schlagwörter enthalten einige passende thematische Hinweise, sind aber sprachlich und konzeptionell nur mäßig gut ge
+2026-07-16 11:26:21 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] partial | score=0.78 | Das Gesamtbild ist überwiegend konsistent: Es geht klar um topographische Karten. Einzelne Themenklassifikationen sind s
+2026-07-16 11:26:21 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=0.85 | Für eine historische topographische Karte sind Jahr, Maßstab und räumliche Abdeckung zentrale Qualifizierer und vorhande
+2026-07-16 11:26:21 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:26:21 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:26:21 - scoring.service - DEBUG - {
+  "dataset_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/b73790eb-e823-4916-b22d-c3cde7d6a9df",
+  "titles": [
+    "Topographische Karte 1 : 10 000 - 3251-SO Neulewin (2009)"
+  ],
+  "descriptions": [
+    "Die Topographische Karte im Maßstab 1:10.000 ist der Grundmaßstab der Topographischen Landeskartenwerke Brandenburgs. Die Erdoberfläche wird relativ vollständig (nur geringfügig generalisiert) und maßstabsbezogen geometrisch exakt dargestellt. Sie ist die kartographische Umsetzung einer umfassenden topographischen Landesaufnahme (photogrammetrische Luftbildauswertung, Einarbeitung topographischer Zusatzinformationen, topographischer Feldvergleich). Die historischen Ausgaben der TK10 stehen aus verschiedenen Jahren ab 1992 (Grundaktualität einzelner Blätter älter) zur Verfügung. Ab dem Jahr 2002 entstand die TK10 (ATKIS) durch Ableitung aus dem Basis-Landschaftsmodell (Basis-DLM). In unterschiedlichen Kartenlayouts und -darstellungen bilden die historischen Kartenblätter ein Stück Zeitgeschichte Brandenburgs ab. Sie sind in analoger Plot-Ausgabe (Papier) verfügbar und stehen kostenfrei als Download zur Verfügung. Bei Nutzung der Daten sind die Lizenzbedingungen zu beachten."
+  ],
+  "keywords": [
+    "110.000",
+    "historische-karte",
+    "karte",
+    "opendata",
+    "vermessung"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/AGRI",
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "http://publications.europa.eu/resource/authority/data-theme/ENVI",
+    "http://publications.europa.eu/resource/authority/data-theme/REGI"
+  ],
+  "themes_in_vocab": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2025-07-24T16:36:38"
+  ],
+  "issued": [
+    "2007-12-31T00:00:00"
+  ],
+  "accrual_periodicity": "http://publications.europa.eu/resource/authority/frequency/OTHER",
+  "accrual_periodicity_in_vocab": true,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((14.2481 52.7486, 14.3314 52.7486, 14.3314 52.6986, 14.2481 52.6986, 14.2481 52.7486))"
+  ],
+  "spatial_resources": [
+    "N8b13b88092db495a917a6f7822c72708"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "N997e12c9317b45fc9bb9dcd02db6886e",
+  "publisher": "Ne6ba6310189040ceb418daf3cf1a3e92",
+  "contact_points": [
+    "N78aef37302cc4558b1034cbf711584fe"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/55246de0-dd37-4250-a2b0-18d361f8b408",
+      "titles": [
+        "Downloadseite"
+      ],
+      "descriptions": [
+        "Downloadseite"
+      ],
+      "download_url": "https://data.geobasis-bb.de/geobasis/karten/topographische-karten/tk10/historisch/tk10_3251-so_2009.pdf",
+      "access_url": "https://data.geobasis-bb.de/geobasis/karten/topographische-karten/tk10/historisch/tk10_3251-so_2009.pdf",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/PDF"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2025-02-23T02:27:51.089214"
+      ],
+      "issued": [
+        "2024-12-11T19:23:22.291083"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "tk10_3251-so_2009.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "tk10_3251-so_2009.pdf",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://data.geobasis-bb.de/geobasis/karten/topographische-karten/tk10/historisch/tk10_3251-so_2009.pdf",
+        "content_disposition": "attachment",
+        "attachment_filename": "tk10_3251-so_2009.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/9d98e74c-b4d8-4be8-9656-e521049dc2ad",
+      "titles": [
+        "statische Informationsseite"
+      ],
+      "descriptions": [
+        "statische Informationsseite"
+      ],
+      "download_url": "https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/",
+      "access_url": "https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-06-21T03:45:46.870352"
+      ],
+      "issued": [
+        "2026-06-21T03:45:46.898806"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=utf-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/c1ee4769-3278-4401-b162-6d32a360b928",
+      "titles": [
+        "Internetshop der LGB"
+      ],
+      "descriptions": [
+        "Internetshop der LGB"
+      ],
+      "download_url": "https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=74435757-fcf7-4c92-87ac-04dbf01bc338",
+      "access_url": "https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=74435757-fcf7-4c92-87ac-04dbf01bc338",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-06-21T03:45:46.870531"
+      ],
+      "issued": [
+        "2026-06-21T03:45:46.898814"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "gbss.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "gbss.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=74435757-fcf7-4c92-87ac-04dbf01bc338",
+        "content_disposition": null,
+        "attachment_filename": "gbss.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel nennt Kartentyp, Maßstab, Blattnummer/-lage, Ortsbezug Neulewin und Jahr 2009.",
+        "Der Titel ist spezifisch und gut von anderen Kartenblättern unterscheidbar.",
+        "Keine störenden HTML-/Markdown-Reste oder kryptischen Zeichenfolgen erkennbar; die Blattkennung ist im Kartenkontext plausibel."
+      ],
+      "reasoning": "Der Titel ist prägnant und enthält die für ein Kartenblatt wesentlichen Identifikatoren einschließlich Maßstab, Ort und Jahr. Die verwendete Blattkennung ist fachlich, aber zusammen mit Ort und Jahr verständlich genug.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt Inhalt und Zweck der TK10 sowie den Maßstab und die kartographische Darstellung.",
+        "Sie nennt Erhebungs- bzw. Herstellungsgrundlagen wie Luftbildauswertung, Zusatzinformationen, Feldvergleich und Ableitung aus dem Basis-DLM.",
+        "Sie beschreibt die historische Verfügbarkeit und Ausgabeformen, geht aber nicht konkret auf das einzelne Blatt 3251-SO Neulewin 2009 oder die genaue Datenstruktur/Dateiformate ein."
+      ],
+      "reasoning": "Die Beschreibung ist substanziell und informativ für die Produktreihe TK10, enthält Methode, Zweck und Besonderheiten. Für den konkreten Datensatz bleibt sie jedoch eher allgemein und liefert keine spezifischen Struktur- oder Formatangaben zum Download bzw. Kartenblatt.",
+      "applicable": true,
+      "score": 0.78
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf Topographische Karten im Maßstab 1:10.000 in Brandenburg.",
+        "Die Beschreibung erläutert historische TK10-Ausgaben und passt damit grundsätzlich zum im Titel genannten Jahr 2009.",
+        "Der konkrete Ort/Blattschnitt Neulewin bzw. die Blattkennung 3251-SO wird in der Beschreibung nicht aufgegriffen."
+      ],
+      "reasoning": "Zwischen Titel und Beschreibung besteht kein Widerspruch; die Beschreibung stützt das Thema des Titels. Sie ist jedoch generisch für die Kartenserie und konkretisiert den spezifischen Titel nur teilweise.",
+      "applicable": true,
+      "score": 0.82
+    },
+    "keyword_quality": {
+      "findings": [
+        "Relevante Begriffe wie „historische-karte“, „karte“ und „vermessung“ passen inhaltlich zum Datensatz.",
+        "„110.000“ wirkt wie eine fehlerhaft oder kryptisch formulierte Maßstabsangabe statt eines laienverständlichen Schlagworts.",
+        "„opendata“ ist ein formales Tag und inhaltlich wenig aussagekräftig; Bindestrich-Kompositum „historische-karte“ ist weniger atomar formuliert."
+      ],
+      "reasoning": "Die Schlagwörter enthalten einige passende thematische Hinweise, sind aber sprachlich und konzeptionell nur mäßig gut gewählt. Insbesondere die kryptische Maßstabsangabe und das formale Open-Data-Tag mindern die Aussagekraft.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Titel, Beschreibung und Schlagwörter zeigen übereinstimmend auf topographische bzw. historische Karten und Vermessung.",
+        "Die Themes ENVI, REGI, TECH und GOVE sind für Geodaten/Topographie zumindest nachvollziehbar.",
+        "Das Theme AGRI wirkt für eine topographische Karte ohne erkennbaren Landwirtschaftsschwerpunkt nur indirekt bzw. überbreit."
+      ],
+      "reasoning": "Das Gesamtbild ist überwiegend konsistent: Es geht klar um topographische Karten. Einzelne Themenklassifikationen sind sehr breit, insbesondere AGRI ist nicht direkt aus den übrigen Metadaten ableitbar, erzeugt aber keinen starken Widerspruch.",
+      "applicable": true,
+      "score": 0.78
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Für den Kartendatensatz sind Maßstab, Jahr 2009 im Titel und räumliche Abdeckung als Geometrie vorhanden.",
+        "Die Beschreibung gibt den historischen Kontext und die allgemeine Verfügbarkeit ab 1992 an.",
+        "Ein Aktualisierungszyklus ist mit OTHER nur unspezifisch angegeben; bei historischen Kartenblättern ist aber eher der Ausgabe-/Bezugsstand entscheidend."
+      ],
+      "reasoning": "Für eine historische topographische Karte sind Jahr, Maßstab und räumliche Abdeckung zentrale Qualifizierer und vorhanden. Die Angabe zur Periodizität ist unspezifisch, fällt hier aber weniger ins Gewicht, da es sich erkennbar um ein historisches Blatt handelt.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "overall_summary": "Die Metadaten sind insgesamt aussagekräftig: Titel und Beschreibung machen klar, dass es um ein historisches TK10-Kartenblatt Brandenburgs für Neulewin aus 2009 geht. Schwächen liegen vor allem in der generischen Beschreibung ohne Blattdetails sowie in einigen wenig sauber formulierten Schlagwörtern und sehr breiten Themenzuordnungen."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3777,
+      "output_tokens": 1025,
+      "total_tokens": 4802,
+      "cost_usd": 0.039843,
+      "latency_seconds": 19.185
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-16 11:26:21 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_open-data-brandenburg_03/result.json
+2026-07-16 11:26:21 - __main__ - INFO -   ✓ Completed | score=0.74 grade=C

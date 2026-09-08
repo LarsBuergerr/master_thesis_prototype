@@ -1,0 +1,23 @@
+# Keep the backend build context (repo root) small — only src/ and backend/
+# are copied into the image.
+.git
+.venv
+__pycache__
+**/__pycache__
+*.pyc
+
+# Heavy project data irrelevant to the web stack
+data/
+run_outputs/
+ground_truth_outputs/
+outputs/
+thesis/
+docs/
+playground/
+frontend/
+
+# Runtime artifacts
+backend/analyzer.db
+backend/analyzer.db-shm
+backend/analyzer.db-wal
+.env

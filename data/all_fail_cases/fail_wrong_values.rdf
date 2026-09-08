@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Testfall B — Fehlschlag durch FALSCHE Werte.
+
+  Spiegelbild zu fail_missing.rdf: Jedes geprüfte Feld ist gesetzt, aber
+  entweder mit einer URI ausserhalb des vorgeschriebenen Vokabulars, in
+  falscher Schreibweise (deutsche Datumsformate, untypisierte Literale) oder
+  falsch modelliert (Herausgeber als Literal statt foaf:Agent).
+
+  Die Distributionen zeigen bewusst auf die Test-TLD .invalid — die ist per
+  RFC 2606 garantiert nicht auflösbar, sodass die Erreichbarkeitsprüfungen
+  reproduzierbar auf einen Fetch-Fehler laufen statt auf einen zufälligen
+  HTTP-Status eines fremden Servers.
+-->
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+>
+  <dcat:Dataset rdf:about="https://example.org/testfall/falsche-werte">
+    <dct:title>Testfall B — alle Angaben vorhanden, aber falsch</dct:title>
+    <dct:description>Synthetischer Testdatensatz für die Indikatorprüfung. Sämtliche Felder sind belegt, jedoch durchweg mit Werten ausserhalb der vorgeschriebenen Vokabulare, in falscher Schreibweise oder falsch modelliert.</dct:description>
+
+    <!-- Schlagwörter: 30 Stück — oberhalb der PARTIAL-Grenze von 25, daher FAIL.
+         Zugleich inhaltlich untauglich (Systemkürzel, Dubletten, Fragmente). -->
+    <dcat:keyword>datensatz</dcat:keyword>
+    <dcat:keyword>daten</dcat:keyword>
+    <dcat:keyword>data</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>open-data</dcat:keyword>
+    <dcat:keyword>open_data</dcat:keyword>
+    <dcat:keyword>OpenData</dcat:keyword>
+    <dcat:keyword>inspireidentifiziert</dcat:keyword>
+    <dcat:keyword>INSPIRE</dcat:keyword>
+    <dcat:keyword>inspire</dcat:keyword>
+    <dcat:keyword>sys_export_2024</dcat:keyword>
+    <dcat:keyword>tmp</dcat:keyword>
+    <dcat:keyword>xyz</dcat:keyword>
+    <dcat:keyword>abc</dcat:keyword>
+    <dcat:keyword>test</dcat:keyword>
+    <dcat:keyword>Test</dcat:keyword>
+    <dcat:keyword>TEST</dcat:keyword>
+    <dcat:keyword>v1</dcat:keyword>
+    <dcat:keyword>v2</dcat:keyword>
+    <dcat:keyword>final</dcat:keyword>
+    <dcat:keyword>final2</dcat:keyword>
+    <dcat:keyword>neu</dcat:keyword>
+    <dcat:keyword>alt</dcat:keyword>
+    <dcat:keyword>kopie</dcat:keyword>
+    <dcat:keyword>entwurf</dcat:keyword>
+    <dcat:keyword>ka</dcat:keyword>
+    <dcat:keyword>sonstiges</dcat:keyword>
+    <dcat:keyword>diverses</dcat:keyword>
+    <dcat:keyword>allgemein</dcat:keyword>
+    <dcat:keyword>unbekannt</dcat:keyword>
+
+    <!-- Kategorie: freie URI statt EU-Datenthema (…/data-theme/…) -->
+    <dcat:theme rdf:resource="https://example.org/vokabular/thema/FREIZEIT-UND-TOURISMUS"/>
+
+    <!-- Verwaltungsgebiet und Ebene: freie URIs statt dcat-ap.de-Geokodierung -->
+    <dcatde:politicalGeocodingURI rdf:resource="https://example.org/geo/bayern/landkreis-muster"/>
+    <dcatde:politicalGeocodingLevelURI rdf:resource="https://example.org/geo/ebene/landkreis"/>
+
+    <!-- Geometrie: syntaktisch kaputtes WKT -->
+    <dct:spatial>
+      <!-- <dct:Location rdf:about="https://example.org/testfall/falsche-werte/gebiet">
+        <locn:geometry>POLYGON((12,4 49,1 12,9 49,1 12,9 49,6))</locn:geometry>
+      </dct:Location> -->
+    </dct:spatial>
+
+    <!-- Zeitraum: deutsche Schreibweise statt xs:date -->
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:about="https://example.org/testfall/falsche-werte/zeitraum">
+        <dcat:startDate>01.01.2024</dcat:startDate>
+        <dcat:endDate>31.12.2024</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+
+    <!-- Datumsangaben: untypisierte Literale in falscher Schreibweise -->
+    <dct:issued>13.05.2025</dct:issued>
+    <dct:modified>09/02/2026</dct:modified>
+
+    <!-- Aktualisierungsfrequenz: freie URI statt EU-Frequenz-Vokabular -->
+    <dct:accrualPeriodicity rdf:resource="https://example.org/vokabular/frequenz/jaehrlich"/>
+
+    <!-- Zugriffsrechte: Fliesstext statt RightsStatement-URI -->
+    <dct:accessRights>nur fuer den internen Dienstgebrauch</dct:accessRights>
+
+    <!-- Bereitsteller-Kennung: freie URI statt dcat-ap.de/def/contributors/ -->
+    <dcatde:contributorID rdf:resource="https://example.org/contributors/musterbehoerde"/>
+
+    <!-- Herausgeber: Literal statt foaf:Agent mit foaf:name -->
+    <dct:publisher>Musterbehoerde der Beispielstadt</dct:publisher>
+
+    <!-- Kontaktpunkt: vorhanden, aber ohne auswertbare E-Mail oder URL -->
+    <dcat:contactPoint>
+      <vcard:Organization rdf:about="https://example.org/testfall/falsche-werte/kontakt">
+        <vcard:fn>Poststelle der Musterbehoerde</vcard:fn>
+        <vcard:hasEmail>poststelle(at)example-invalid</vcard:hasEmail>
+      </vcard:Organization>
+    </dcat:contactPoint>
+
+    <dcat:distribution rdf:resource="https://example.org/testfall/falsche-werte/verteilung-1"/>
+    <dcat:distribution rdf:resource="https://example.org/testfall/falsche-werte/verteilung-2"/>
+  </dcat:Dataset>
+
+  <!-- Verteilung 1: proprietäres, nicht maschinenlesbares Format, tote Links,
+       Format- und Media-Type-URIs ausserhalb der Vokabulare. -->
+  <dcat:Distribution rdf:about="https://example.org/testfall/falsche-werte/verteilung-1">
+    <dct:title>Bericht als PDF</dct:title>
+    <dct:format rdf:resource="https://example.org/vokabular/dateiformat/PDF-DOKUMENT"/>
+    <dcat:mediaType>application/pdf</dcat:mediaType>
+    <dcat:downloadURL rdf:resource="https://nicht-aufloesbar.invalid/daten/bericht.pdf"/>
+    <dcat:accessURL rdf:resource="https://nicht-aufloesbar.invalid/daten/bericht"/>
+    <dct:license rdf:resource="https://example.org/lizenzen/nur-intern"/>
+    <dcatap:availability rdf:resource="https://example.org/vokabular/verfuegbarkeit/stabil"/>
+    <dct:issued>13.05.2025</dct:issued>
+    <dct:modified>09/02/2026</dct:modified>
+  </dcat:Distribution>
+
+  <!-- Verteilung 2: dito, Tabellenkalkulation im proprietären Altformat. -->
+  <dcat:Distribution rdf:about="https://example.org/testfall/falsche-werte/verteilung-2">
+    <dct:title>Tabelle als XLS</dct:title>
+    <dct:format rdf:resource="https://example.org/vokabular/dateiformat/EXCEL-TABELLE"/>
+    <dcat:mediaType>application/vnd.ms-excel</dcat:mediaType>
+    <dcat:downloadURL rdf:resource="https://nicht-aufloesbar.invalid/daten/tabelle.xls"/>
+    <dcat:accessURL rdf:resource="https://nicht-aufloesbar.invalid/daten/tabelle"/>
+    <dct:license rdf:resource="https://example.org/lizenzen/nur-intern"/>
+    <dcatap:availability rdf:resource="https://example.org/vokabular/verfuegbarkeit/stabil"/>
+    <dct:issued>13.05.2025</dct:issued>
+    <dct:modified>09/02/2026</dct:modified>
+  </dcat:Distribution>
+</rdf:RDF>

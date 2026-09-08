@@ -1,0 +1,417 @@
+{
+  "erstellt": "2026-07-16T14:44:20",
+  "parameter": {
+    "sample_dir": "/home/lbuerger/masterthesis/master_thesis_prototype/data/sample_2026-06-25_09-57",
+    "gt_csv": "/home/lbuerger/masterthesis/master_thesis_prototype/data/sample_2026-06-25_09-57/ground_truth_template_slim_v2.csv",
+    "run_path": "/home/lbuerger/masterthesis/master_thesis_prototype/run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL_sonnet4-6",
+    "proto_config": "/home/lbuerger/masterthesis/master_thesis_prototype/conf/state/state_evaluation_final.yaml",
+    "use_llm": false,
+    "n_datensaetze": 50,
+    "n_bewertet": 50
+  },
+  "gesamt": {
+    "n_total": 50,
+    "n_graded": 50,
+    "accuracy": 0.88,
+    "weighted_kappa": 0.3589743589743589,
+    "weighted_kappa_ci": [
+      -0.07361963190184051,
+      0.7382198952879582
+    ],
+    "pabak": 0.8200000000000001,
+    "cohen_kappa": 0.34782608695652173,
+    "auc_gut_vs_rest": 0.8755555555555555,
+    "spearman_overall": 0.7447313075237654,
+    "kendall_overall": 0.608621766174105,
+    "mean_spearman_dims": 0.6433571000582663,
+    "mae": 0.308027857142857,
+    "rmse": 0.40205917967297666,
+    "bias": -0.14360859649122812
+  },
+  "pro_dimension": {
+    "findability": {
+      "spearman": 0.5244203572960757,
+      "kendall_tau": 0.469455673635003,
+      "n": 50.0
+    },
+    "accessibility": {
+      "spearman": 0.7119482633389475,
+      "kendall_tau": 0.6011505531708673,
+      "n": 50.0
+    },
+    "reusability": {
+      "spearman": 0.7389914644231667,
+      "kendall_tau": 0.6941322272248858,
+      "n": 50.0
+    },
+    "expressiveness": {
+      "spearman": 0.5980683151748755,
+      "kendall_tau": 0.49571666670533904,
+      "n": 50.0
+    }
+  },
+  "konfusionsmatrix": {
+    "GT:schlecht": {
+      "M:schlecht": 1,
+      "M:mittel": 0,
+      "M:gut": 0
+    },
+    "GT:mittel": {
+      "M:schlecht": 0,
+      "M:mittel": 42,
+      "M:gut": 2
+    },
+    "GT:gut": {
+      "M:schlecht": 0,
+      "M:mittel": 4,
+      "M:gut": 1
+    }
+  },
+  "ceiling_analyse": {
+    "findability": {
+      "spearman_beobachtet": 0.5244203572960757,
+      "spearman_ceiling": 0.7678158455309188,
+      "anteil_vom_ceiling": 0.6830027803521778,
+      "kendall_tau_b": 0.469455673635003,
+      "gt_stufen_genutzt": 4
+    },
+    "accessibility": {
+      "spearman_beobachtet": 0.7119482633389475,
+      "spearman_ceiling": 0.9516723312208686,
+      "anteil_vom_ceiling": 0.7481023036843079,
+      "kendall_tau_b": 0.6011505531708673,
+      "gt_stufen_genutzt": 6
+    },
+    "reusability": {
+      "spearman_beobachtet": 0.7389914644231667,
+      "spearman_ceiling": 0.9282659661831694,
+      "anteil_vom_ceiling": 0.796098845960863,
+      "kendall_tau_b": 0.6941322272248858,
+      "gt_stufen_genutzt": 6
+    },
+    "expressiveness": {
+      "spearman_beobachtet": 0.5980683151748755,
+      "spearman_ceiling": 0.8527003884798564,
+      "anteil_vom_ceiling": 0.7013815441565309,
+      "kendall_tau_b": 0.49571666670533904,
+      "gt_stufen_genutzt": 4
+    }
+  },
+  "disattenuation": {
+    "cronbach_alpha_gt": 0.5628074158153613,
+    "cronbach_alpha_modell": 0.354702274329843,
+    "spearman_beobachtet": 0.7447313075237654,
+    "spearman_disattenuiert": 1.0
+  },
+  "top_abweichungen": [
+    {
+      "file": "geo_gdi-de.rdf",
+      "dimension": "accessibility",
+      "gt": 0,
+      "modell": 4.473684210526316,
+      "diff": 4.473684210526316
+    },
+    {
+      "file": "non_geo_gdi-de_04.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 1.7083333333333337,
+      "diff": -2.291666666666666
+    },
+    {
+      "file": "non_geo_open-data-bayern_03.rdf",
+      "dimension": "accessibility",
+      "gt": 1,
+      "modell": 3.0592105263157894,
+      "diff": 2.0592105263157894
+    },
+    {
+      "file": "non_geo_open-data-bayern_05.rdf",
+      "dimension": "accessibility",
+      "gt": 1,
+      "modell": 3.0592105263157894,
+      "diff": 2.0592105263157894
+    },
+    {
+      "file": "non_geo_gdi-de_05.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.041666666666667,
+      "diff": -1.958333333333333
+    },
+    {
+      "file": "non_geo_gdi-de.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.1666666666666665,
+      "diff": -1.8333333333333335
+    },
+    {
+      "file": "non_geo_open-data-brandenburg_02.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.166666666666667,
+      "diff": -1.833333333333333
+    },
+    {
+      "file": "geo_open-data-portal-rheinland-pfalz_02.rdf",
+      "dimension": "accessibility",
+      "gt": 1,
+      "modell": 2.6833947368421054,
+      "diff": 1.6833947368421054
+    },
+    {
+      "file": "non_geo_open-data-bayern_03.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.333333333333333,
+      "diff": -1.666666666666667
+    },
+    {
+      "file": "geo_open-data-brandenburg_02.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.4166666666666665,
+      "diff": -1.5833333333333335
+    },
+    {
+      "file": "geo_open-data-portal-rheinland-pfalz_05.rdf",
+      "dimension": "expressiveness",
+      "gt": 3,
+      "modell": 1.5416666666666665,
+      "diff": -1.4583333333333335
+    },
+    {
+      "file": "geo_open-data-brandenburg.rdf",
+      "dimension": "reusability",
+      "gt": 5,
+      "modell": 3.5714285714285716,
+      "diff": -1.4285714285714284
+    },
+    {
+      "file": "non_geo_gdi-de.rdf",
+      "dimension": "reusability",
+      "gt": 5,
+      "modell": 3.5714285714285716,
+      "diff": -1.4285714285714284
+    },
+    {
+      "file": "non_geo_open-data-brandenburg_05.rdf",
+      "dimension": "accessibility",
+      "gt": 2,
+      "modell": 3.4210526315789473,
+      "diff": 1.4210526315789473
+    },
+    {
+      "file": "non_geo_land-schleswig-holstein_02.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.5999999999999996,
+      "diff": -1.4000000000000004
+    },
+    {
+      "file": "non_geo_land-schleswig-holstein_03.rdf",
+      "dimension": "findability",
+      "gt": 3,
+      "modell": 4.375,
+      "diff": 1.375
+    },
+    {
+      "file": "geo_open-data-brandenburg.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.625,
+      "diff": -1.375
+    },
+    {
+      "file": "geo_gdi-de_02.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.6666666666666665,
+      "diff": -1.3333333333333335
+    },
+    {
+      "file": "non_geo_gdi-de_03.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.6666666666666665,
+      "diff": -1.3333333333333335
+    },
+    {
+      "file": "non_geo_land-schleswig-holstein_03.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.6666666666666665,
+      "diff": -1.3333333333333335
+    },
+    {
+      "file": "geo_open-data-brandenburg_03.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.708333333333333,
+      "diff": -1.291666666666667
+    },
+    {
+      "file": "geo_open-data-brandenburg_04.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.708333333333333,
+      "diff": -1.291666666666667
+    },
+    {
+      "file": "non_geo_gdi-de.rdf",
+      "dimension": "accessibility",
+      "gt": 2,
+      "modell": 3.223684210526316,
+      "diff": 1.223684210526316
+    },
+    {
+      "file": "non_geo_land-schleswig-holstein_03.rdf",
+      "dimension": "reusability",
+      "gt": 4,
+      "modell": 2.8571428571428568,
+      "diff": -1.1428571428571432
+    },
+    {
+      "file": "non_geo_land-schleswig-holstein_04.rdf",
+      "dimension": "reusability",
+      "gt": 4,
+      "modell": 2.8571428571428568,
+      "diff": -1.1428571428571432
+    },
+    {
+      "file": "non_geo_rest_04.rdf",
+      "dimension": "reusability",
+      "gt": 4,
+      "modell": 2.8571428571428568,
+      "diff": -1.1428571428571432
+    },
+    {
+      "file": "geo_open-data-portal-rheinland-pfalz_05.rdf",
+      "dimension": "findability",
+      "gt": 2,
+      "modell": 3.125,
+      "diff": 1.125
+    },
+    {
+      "file": "non_geo_rest.rdf",
+      "dimension": "findability",
+      "gt": 3,
+      "modell": 1.875,
+      "diff": -1.125
+    },
+    {
+      "file": "geo_rest_04.rdf",
+      "dimension": "accessibility",
+      "gt": 2,
+      "modell": 3.1203157894736844,
+      "diff": 1.1203157894736844
+    },
+    {
+      "file": "geo_transparenzportal-hamburg.rdf",
+      "dimension": "accessibility",
+      "gt": 2,
+      "modell": 0.9210526315789473,
+      "diff": -1.0789473684210527
+    },
+    {
+      "file": "non_geo_open-data-brandenburg.rdf",
+      "dimension": "accessibility",
+      "gt": 3,
+      "modell": 4.078947368421052,
+      "diff": 1.0789473684210522
+    },
+    {
+      "file": "non_geo_rest_03.rdf",
+      "dimension": "accessibility",
+      "gt": 5,
+      "modell": 3.947368421052632,
+      "diff": -1.0526315789473681
+    },
+    {
+      "file": "non_geo_open-data-bayern.rdf",
+      "dimension": "expressiveness",
+      "gt": 3,
+      "modell": 1.9583333333333333,
+      "diff": -1.0416666666666667
+    },
+    {
+      "file": "non_geo_gdi-de_02.rdf",
+      "dimension": "expressiveness",
+      "gt": 4,
+      "modell": 2.9583333333333335,
+      "diff": -1.0416666666666665
+    },
+    {
+      "file": "geo_gdi-de_05.rdf",
+      "dimension": "accessibility",
+      "gt": 3,
+      "modell": 1.973684210526316,
+      "diff": -1.026315789473684
+    },
+    {
+      "file": "non_geo_land-schleswig-holstein_03.rdf",
+      "dimension": "accessibility",
+      "gt": 4,
+      "modell": 5.0,
+      "diff": 1.0
+    },
+    {
+      "file": "non_geo_land-schleswig-holstein_04.rdf",
+      "dimension": "accessibility",
+      "gt": 4,
+      "modell": 5.0,
+      "diff": 1.0
+    },
+    {
+      "file": "geo_open-data-brandenburg.rdf",
+      "dimension": "accessibility",
+      "gt": 3,
+      "modell": 3.9911842105263156,
+      "diff": 0.9911842105263156
+    },
+    {
+      "file": "geo_open-data-brandenburg_03.rdf",
+      "dimension": "accessibility",
+      "gt": 3,
+      "modell": 3.9911842105263156,
+      "diff": 0.9911842105263156
+    },
+    {
+      "file": "geo_open-data-brandenburg_05.rdf",
+      "dimension": "accessibility",
+      "gt": 3,
+      "modell": 3.9911842105263156,
+      "diff": 0.9911842105263156
+    }
+  ],
+  "dateien_hoechste_mittlere_abweichung": {
+    "geo_gdi-de.rdf": 1.355028195488722,
+    "non_geo_land-schleswig-holstein_03.rdf": 1.212797619047619,
+    "geo_open-data-brandenburg.rdf": 1.167438909774436,
+    "non_geo_gdi-de.rdf": 1.1526472431077694,
+    "non_geo_open-data-bayern_03.rdf": 1.0162907268170427,
+    "geo_open-data-portal-rheinland-pfalz_05.rdf": 1.0097901002506267,
+    "non_geo_gdi-de_04.rdf": 0.9547305764411026,
+    "non_geo_gdi-de_05.rdf": 0.9207393483709272,
+    "geo_open-data-brandenburg_02.rdf": 0.9147130325814536,
+    "geo_open-data-brandenburg_03.rdf": 0.8966055764411027,
+    "geo_rest_04.rdf": 0.8812694235588973,
+    "non_geo_open-data-bayern_05.rdf": 0.8667371553884712,
+    "geo_open-data-brandenburg_04.rdf": 0.841796365914787,
+    "non_geo_open-data-brandenburg_02.rdf": 0.7957393483709272,
+    "geo_rest_02.rdf": 0.7910401002506264,
+    "non_geo_open-data-brandenburg_05.rdf": 0.7853226817042606,
+    "geo_open-data-brandenburg_05.rdf": 0.761188909774436,
+    "non_geo_land-schleswig-holstein_04.rdf": 0.7596726190476192,
+    "non_geo_rest_03.rdf": 0.7348840852130324,
+    "non_geo_gdi-de_03.rdf": 0.7151472431077694
+  },
+  "grafiken": [
+    "/home/lbuerger/masterthesis/master_thesis_prototype/ground_truth_outputs/2026-07-16_14-44-19_figures/overall_scatter.png",
+    "/home/lbuerger/masterthesis/master_thesis_prototype/ground_truth_outputs/2026-07-16_14-44-19_figures/per_dimension_scatter.png",
+    "/home/lbuerger/masterthesis/master_thesis_prototype/ground_truth_outputs/2026-07-16_14-44-19_figures/separation_boxplot.png",
+    "/home/lbuerger/masterthesis/master_thesis_prototype/ground_truth_outputs/2026-07-16_14-44-19_figures/confusion_matrix.png",
+    "/home/lbuerger/masterthesis/master_thesis_prototype/ground_truth_outputs/2026-07-16_14-44-19_figures/spearman_per_dimension.png"
+  ]
+}

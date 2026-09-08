@@ -1,0 +1,581 @@
+2026-07-16 11:18:19 - reporting.output_manager - INFO - Created file log handler for geo_transparenzportal-hamburg_03.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_transparenzportal-hamburg_03/logs.log
+2026-07-16 11:18:19 - __main__ - INFO - Started processing: geo_transparenzportal-hamburg_03.rdf
+2026-07-16 11:18:19 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_transparenzportal-hamburg_03.rdf
+2026-07-16 11:18:19 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_transparenzportal-hamburg_03.rdf using format: xml
+2026-07-16 11:18:19 - extraction.rdf_parser - INFO - Successfully parsed 130 triples
+2026-07-16 11:18:19 - scoring.service - INFO - Parsed 130 triples
+2026-07-16 11:18:19 - scoring.service - DEBUG - DatasetContext built: 4 distribution(s)
+2026-07-16 11:18:19 - scoring.service - DEBUG - attach_probes: 4/4 unique fetch keys, 4 distribution(s) covered
+2026-07-16 11:18:19 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/a395dbf4-a7ed-42fb-9cc6-49cec4228a9a — Begründung des Bebauungsplans als PDF Datei
+  accessURL   : https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/bramfeld20.pdf
+  HTTP        : 200
+  final URL   : https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/Bramfeld20.pdf
+  attachment  : Bramfeld20.pdf
+  signals     :
+    dct:format           raw=PDF                                      mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=bramfeld20.pdf                           mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=Bramfeld20.pdf (from final URL)          mime=application/pdf
+  coalesced   : application/pdf
+2026-07-16 11:18:19 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/00f9a729-d4a6-40ea-9a2a-195389a92245 — Festsetzungen (Planzeichnung / Verordnung) als PDF Datei
+  accessURL   : https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/bramfeld20.pdf
+  HTTP        : 200
+  final URL   : https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/Bramfeld20.pdf
+  attachment  : Bramfeld20.pdf
+  signals     :
+    dct:format           raw=PDF                                      mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=bramfeld20.pdf                           mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=Bramfeld20.pdf (from final URL)          mime=application/pdf
+  coalesced   : application/pdf
+2026-07-16 11:18:19 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/010faf97-6e1f-4553-9aeb-9b93d3a2ef09 — Metadatenbeschreibung aus dem MetaVer
+  accessURL   : http://metaver.de/trefferanzeige?docuuid=1EA78A2C-97FA-4D83-84B6-A9B53DE2EBF8
+  HTTP        : 200
+  final URL   : https://metaver.de/trefferanzeige?docuuid=1EA78A2C-97FA-4D83-84B6-A9B53DE2EBF8
+  signals     :
+    dct:format           raw=HTML                                     mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=trefferanzeige                           mime=-
+    http_content_type    raw=text/html;charset=UTF-8                  mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-16 11:18:19 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/9b324bfb-b9f1-4d50-9962-6eff007d36eb — Download WFS Bebauungsplan (XPlanGML)
+  accessURL   : https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=Bramfeld20
+  HTTP        : 400
+  signals     :
+    dct:format           raw=GML                                      mime=application/gml+xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=HH_WFS_xplan_dls                         mime=-
+    http_content_type    raw=application/xml;charset=UTF-8            mime=application/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/gml+xml
+  warning     : accessURL returned HTTP 400; remaining checks rely on declared metadata only
+2026-07-16 11:18:19 - scoring.service - DEBUG - Attached probes to 4/4 distribution(s)
+2026-07-16 11:18:36 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind insgesamt aussagekräftig und in sich konsistent: Titel, Beschreibung, Thema und räumlicher Kontext id')
+2026-07-16 11:18:36 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:18:36 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=4
+2026-07-16 11:18:36 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['baugesetzbuch--baugb', 'baunutzungsverordnung--baunvo', 'plis', 'öffentliche-pläne']
+2026-07-16 11:18:36 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI']
+2026-07-16 11:18:36 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 11:18:36 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:18:36 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] pass score=1.00 source=dcatde:politicalGeocodingURI uri=http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000 segment=regionalKey
+2026-07-16 11:18:36 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] partial score=0.50 valid=0/1
+2026-07-16 11:18:36 - scoring.indicator.find_geocoding_level - DEBUG - [find_geocoding_level] invalid_levels=['http://dcat-ap.de/def/politicalGeocoding/level/state']
+2026-07-16 11:18:36 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['1974-07-22T00:00:00'], endDate: []
+2026-07-16 11:18:36 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=None/False
+2026-07-16 11:18:36 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/issued
+2026-07-16 11:18:36 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9 = 2025-08-26T00:00:00
+2026-07-16 11:18:36 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/9b324bfb-b9f1-4d50-9962-6eff007d36eb = 2025-08-26T00:00:00
+2026-07-16 11:18:36 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/00f9a729-d4a6-40ea-9a2a-195389a92245 = 2025-08-26T00:00:00
+2026-07-16 11:18:36 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/a395dbf4-a7ed-42fb-9cc6-49cec4228a9a = 2025-08-26T00:00:00
+2026-07-16 11:18:36 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/010faf97-6e1f-4553-9aeb-9b93d3a2ef09 = 2025-08-26T00:00:00
+2026-07-16 11:18:36 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/modified
+2026-07-16 11:18:36 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9 = 2026-05-08T21:20:45.316241
+2026-07-16 11:18:36 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/9b324bfb-b9f1-4d50-9962-6eff007d36eb = 2026-05-08T21:20:45.316241
+2026-07-16 11:18:36 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/00f9a729-d4a6-40ea-9a2a-195389a92245 = 2026-05-08T21:20:45.316241
+2026-07-16 11:18:36 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/a395dbf4-a7ed-42fb-9cc6-49cec4228a9a = 2026-05-08T21:20:45.316241
+2026-07-16 11:18:36 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/010faf97-6e1f-4553-9aeb-9b93d3a2ef09 = 2026-05-08T21:20:45.316241
+2026-07-16 11:18:36 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:18:36 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:18:36 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:18:36 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/4
+2026-07-16 11:18:36 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:18:36 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/4
+2026-07-16 11:18:36 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:18:36 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/4
+2026-07-16 11:18:36 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:18:36 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-16 11:18:36 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] partial score=0.62 valid=3/4 relevant=4/4
+2026-07-16 11:18:36 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] fail score=0.38 high=1 mid=1 none=2 total=4
+2026-07-16 11:18:36 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/4
+2026-07-16 11:18:36 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:18:36 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=4/4
+2026-07-16 11:18:36 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:18:36 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:18:36 - scoring.indicator.reuse_contact - INFO - [reuse_contact] partial score=0.50 contacts=1 with_channel=0
+2026-07-16 11:18:36 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:18:36 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:18:38 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=14
+2026-07-16 11:18:38 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/4
+2026-07-16 11:18:38 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.90 | Der Titel ist für sich genommen gut identifizierbar und unterscheidet den Datensatz durch Planname/Nummer und Ortsbezug 
+2026-07-16 11:18:38 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] partial | score=0.60 | Die Beschreibung ist thematisch verständlich und enthält wichtige räumliche Kontextinformationen, bleibt aber sehr knapp
+2026-07-16 11:18:38 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=1.00 | Titel und Beschreibung behandeln klar denselben Bebauungsplan und die Beschreibung stützt den Titel durch zusätzliche Or
+2026-07-16 11:18:38 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.45 | Die Schlagwörter passen zwar zum Thema, sind aber sprachlich und formal deutlich schwächer als ideal: technische Separat
+2026-07-16 11:18:38 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.90 | Die Metadaten ergeben insgesamt ein widerspruchsfreies Themenbild rund um Bebauungsplanung und räumliche Planung. Trotz 
+2026-07-16 11:18:38 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=0.85 | Für diesen räumlich-rechtlichen Planungsdatensatz sind vor allem räumliche Abdeckung, zeitlicher Bezug bzw. Stand und Ak
+2026-07-16 11:18:38 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:18:38 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:18:38 - scoring.service - DEBUG - {
+  "dataset_uri": "http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9",
+  "titles": [
+    "Bebauungsplan Bramfeld 20 Hamburg"
+  ],
+  "descriptions": [
+    "Der Bebauungsplan Bramfeld 20 für den Geltungsbereich Fabriciusstraße - Bräsigweg - Bramfelder Chaussee - Seekamp (Bezirk Wandsbek, Ortsteil 515) wird festgestellt."
+  ],
+  "keywords": [
+    "baugesetzbuch--baugb",
+    "baunutzungsverordnung--baunvo",
+    "plis",
+    "öffentliche-pläne"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-05-08T21:20:45.316241"
+  ],
+  "issued": [
+    "2025-08-26T00:00:00"
+  ],
+  "accrual_periodicity": "http://publications.europa.eu/resource/authority/frequency/NEVER",
+  "accrual_periodicity_in_vocab": true,
+  "start_dates": [
+    "1974-07-22T00:00:00"
+  ],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((10.3263 53.3950, 10.3263 53.9642, 8.4206 53.9642, 8.4206 53.3950, 10.3263 53.3950))"
+  ],
+  "spatial_resources": [
+    "N0e8f7ef12da047c5a26a3095e7dc5b63",
+    "N0d18f09d83ab4bcaba1da143e792ff0f"
+  ],
+  "admin_units": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/level/state"
+  ],
+  "political_geocoding_level_in_vocab": [
+    false
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "https://www.govdata.de/dl-de/by-2-0",
+  "publisher": "Nc2f4da8e6c374eda8bc597438b613c36",
+  "contact_points": [
+    "N3c414d518c4b4dbbba4a5002052ff9ee"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/transparenzportalHamburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/9b324bfb-b9f1-4d50-9962-6eff007d36eb",
+      "titles": [
+        "Download WFS Bebauungsplan (XPlanGML)"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=Bramfeld20",
+      "formats": [
+        "GML"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-08T21:20:45.316241"
+      ],
+      "issued": [
+        "2025-08-26T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "59312",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "GML",
+            "mime_type": "application/gml+xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "HH_WFS_xplan_dls",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/xml;charset=UTF-8",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/gml+xml",
+        "issues": [],
+        "warnings": [
+          "accessURL returned HTTP 400; remaining checks rely on declared metadata only"
+        ],
+        "fetched": true,
+        "status_code": 400,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 400,
+        "access_fetch_error": null,
+        "final_url": "https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=Bramfeld20",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/00f9a729-d4a6-40ea-9a2a-195389a92245",
+      "titles": [
+        "Festsetzungen (Planzeichnung / Verordnung) als PDF Datei"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/bramfeld20.pdf",
+      "formats": [
+        "PDF"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-05-08T21:20:45.316241"
+      ],
+      "issued": [
+        "2025-08-26T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "548687",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bramfeld20.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "Bramfeld20.pdf (from final URL)",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/Bramfeld20.pdf",
+        "content_disposition": null,
+        "attachment_filename": "Bramfeld20.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/a395dbf4-a7ed-42fb-9cc6-49cec4228a9a",
+      "titles": [
+        "Begründung des Bebauungsplans als PDF Datei"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/bramfeld20.pdf",
+      "formats": [
+        "PDF"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-05-08T21:20:45.316241"
+      ],
+      "issued": [
+        "2025-08-26T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "135239",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bramfeld20.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "Bramfeld20.pdf (from final URL)",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/Bramfeld20.pdf",
+        "content_disposition": null,
+        "attachment_filename": "Bramfeld20.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/2863da6d-e077-46c1-8f3f-cd3c5026c7a9/resource/010faf97-6e1f-4553-9aeb-9b93d3a2ef09",
+      "titles": [
+        "Metadatenbeschreibung aus dem MetaVer"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "http://metaver.de/trefferanzeige?docuuid=1EA78A2C-97FA-4D83-84B6-A9B53DE2EBF8",
+      "formats": [
+        "HTML"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-08T21:20:45.316241"
+      ],
+      "issued": [
+        "2025-08-26T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "105650",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "trefferanzeige",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html;charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://metaver.de/trefferanzeige?docuuid=1EA78A2C-97FA-4D83-84B6-A9B53DE2EBF8",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel nennt spezifisch den Plan („Bebauungsplan Bramfeld 20“) und den Ort Hamburg.",
+        "Er ist kurz und verständlich, ohne HTML-/Markdown-Reste oder technische Zeichenfolgen."
+      ],
+      "reasoning": "Der Titel ist für sich genommen gut identifizierbar und unterscheidet den Datensatz durch Planname/Nummer und Ortsbezug ausreichend von anderen Bebauungsplänen. Relevante formale Mängel sind nicht erkennbar.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung nennt den konkreten Geltungsbereich mit Straßennamen, Bezirk und Ortsteil.",
+        "Sie beschreibt im Wesentlichen nur, dass der Bebauungsplan festgestellt wird.",
+        "Angaben zu Struktur/Inhalten der Daten, enthaltenen Ressourcen, Rechts-/Verfahrensstand über den Satz hinaus oder Dokumentationsdetails fehlen."
+      ],
+      "reasoning": "Die Beschreibung ist thematisch verständlich und enthält wichtige räumliche Kontextinformationen, bleibt aber sehr knapp und erklärt kaum, welche Daten/Dateien konkret enthalten sind oder wie sie strukturiert sind. Damit ist sie brauchbar, aber nur begrenzt substanziell.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf den Bebauungsplan Bramfeld 20.",
+        "Die Beschreibung konkretisiert den im Titel genannten Ort durch Geltungsbereich, Bezirk Wandsbek und Ortsteil.",
+        "Es gibt keinen erkennbaren Widerspruch zwischen Titel und Beschreibung."
+      ],
+      "reasoning": "Titel und Beschreibung behandeln klar denselben Bebauungsplan und die Beschreibung stützt den Titel durch zusätzliche Ortsangaben. Inhaltliche Abweichungen sind nicht feststellbar.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter sind inhaltlich grundsätzlich passend zum Baurecht bzw. zu öffentlichen Plänen.",
+        "Mehrere Schlagwörter enthalten technische Schreibweise mit Doppelnennung/Abkürzung („baugesetzbuch--baugb“, „baunutzungsverordnung--baunvo“) und Bindestrichen.",
+        "„plis“ ist eine nicht erklärte Abkürzung und für Laien kryptisch."
+      ],
+      "reasoning": "Die Schlagwörter passen zwar zum Thema, sind aber sprachlich und formal deutlich schwächer als ideal: technische Separatoren, Abkürzungen und Jargon mindern die Verständlichkeit. Atomare, ausgeschriebene Begriffe wären aussagekräftiger.",
+      "applicable": true,
+      "score": 0.45
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Thema REGI (Regionen/Städte) passt grundsätzlich zu einem räumlich-planerischen Bebauungsplan.",
+        "Titel und Beschreibung behandeln konsistent Bauleitplanung in Hamburg/Bramfeld.",
+        "Die Schlagwörter beziehen sich ebenfalls auf Baurecht und öffentliche Pläne."
+      ],
+      "reasoning": "Die Metadaten ergeben insgesamt ein widerspruchsfreies Themenbild rund um Bebauungsplanung und räumliche Planung. Trotz mäßiger Schlagwortformulierung gibt es keine Off-topic-Signale.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Für den Bebauungsplan werden räumliche Kontextangaben genannt, insbesondere Geltungsbereich in der Beschreibung und Geometrie/Admin-Unit in den Metadaten.",
+        "Ein zeitlicher Bezug ist mit Startdatum 1974-07-22 sowie Ausgabedatum vorhanden.",
+        "Die Aktualisierungsfrequenz ist als nie/keine Aktualisierung angegeben, was zu einem festgestellten Plan plausibel ist."
+      ],
+      "reasoning": "Für diesen räumlich-rechtlichen Planungsdatensatz sind vor allem räumliche Abdeckung, zeitlicher Bezug bzw. Stand und Aktualisierungskontext relevant. Diese Qualifizierer sind im Wesentlichen vorhanden; kleinere Unschärfen bleiben, weil der rechtliche Stand/Stichtag nur knapp ausgedrückt wird.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "overall_summary": "Die Metadaten sind insgesamt aussagekräftig und in sich konsistent: Titel, Beschreibung, Thema und räumlicher Kontext identifizieren den Bebauungsplan klar. Schwächen liegen vor allem in der knappen Beschreibung und in formal/jargonhaft formulierten Schlagwörtern."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3607,
+      "output_tokens": 909,
+      "total_tokens": 4516,
+      "cost_usd": 0.035513,
+      "latency_seconds": 16.63
+    }
+  ],
+  "distribution_count": 4
+}
+2026-07-16 11:18:38 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_transparenzportal-hamburg_03/result.json
+2026-07-16 11:18:38 - __main__ - INFO -   ✓ Completed | score=0.59 grade=D

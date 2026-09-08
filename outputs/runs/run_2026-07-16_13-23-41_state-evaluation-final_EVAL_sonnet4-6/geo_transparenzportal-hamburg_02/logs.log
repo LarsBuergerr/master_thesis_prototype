@@ -1,0 +1,647 @@
+2026-07-16 13:34:31 - reporting.output_manager - INFO - Created file log handler for geo_transparenzportal-hamburg_02.rdf at run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_transparenzportal-hamburg_02/logs.log
+2026-07-16 13:34:31 - __main__ - INFO - Started processing: geo_transparenzportal-hamburg_02.rdf
+2026-07-16 13:34:31 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_transparenzportal-hamburg_02.rdf
+2026-07-16 13:34:31 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_transparenzportal-hamburg_02.rdf using format: xml
+2026-07-16 13:34:31 - extraction.rdf_parser - INFO - Successfully parsed 130 triples
+2026-07-16 13:34:31 - scoring.service - INFO - Parsed 130 triples
+2026-07-16 13:34:31 - scoring.service - DEBUG - DatasetContext built: 4 distribution(s)
+2026-07-16 13:34:31 - scoring.service - DEBUG - attach_probes: 4/4 unique fetch keys, 4 distribution(s) covered
+2026-07-16 13:34:32 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/34224408-ab86-47f0-a044-82e265ca7c5d — Festsetzungen (Planzeichnung / Verordnung) als PDF Datei
+  accessURL   : https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/eimsbuettel27.pdf
+  HTTP        : 200
+  final URL   : https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/Eimsbuettel27.pdf
+  attachment  : Eimsbuettel27.pdf
+  signals     :
+    dct:format           raw=PDF                                      mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=eimsbuettel27.pdf                        mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=Eimsbuettel27.pdf (from final URL)       mime=application/pdf
+  coalesced   : application/pdf
+2026-07-16 13:34:32 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/f9883bd7-5d77-4ae5-a208-b0c6ad2f6506 — Begründung des Bebauungsplans als PDF Datei
+  accessURL   : https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/eimsbuettel27.pdf
+  HTTP        : 200
+  final URL   : https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/Eimsbuettel27.pdf
+  attachment  : Eimsbuettel27.pdf
+  signals     :
+    dct:format           raw=PDF                                      mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=eimsbuettel27.pdf                        mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=Eimsbuettel27.pdf (from final URL)       mime=application/pdf
+  coalesced   : application/pdf
+2026-07-16 13:34:32 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/7e3b6ab8-31f8-469d-ae88-61cfca3594c6 — Metadatenbeschreibung aus dem MetaVer
+  accessURL   : http://metaver.de/trefferanzeige?docuuid=91B5E336-A816-476E-BE9C-EE08371D72B0
+  HTTP        : 200
+  final URL   : https://metaver.de/trefferanzeige?docuuid=91B5E336-A816-476E-BE9C-EE08371D72B0
+  signals     :
+    dct:format           raw=HTML                                     mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=trefferanzeige                           mime=-
+    http_content_type    raw=text/html;charset=UTF-8                  mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-16 13:34:32 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/02e7dad2-456e-4aac-9ea0-a19f0e82132a — Download WFS Bebauungsplan (XPlanGML)
+  accessURL   : https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=Eimsbuettel27
+  HTTP        : 400
+  signals     :
+    dct:format           raw=GML                                      mime=application/gml+xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=HH_WFS_xplan_dls                         mime=-
+    http_content_type    raw=application/xml;charset=UTF-8            mime=application/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/gml+xml
+  warning     : accessURL returned HTTP 400; remaining checks rely on declared metadata only
+2026-07-16 13:34:32 - scoring.service - DEBUG - Attached probes to 4/4 distribution(s)
+2026-07-16 13:35:01 - scoring.service - DEBUG - Attached expressiveness assessment (summary: '{"overall_summary": "Der Datensatz ist durch Titel, räumlichen Geltungsbereich und thematische Einordnung grundsätzlich ')
+2026-07-16 13:35:01 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 13:35:01 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=4
+2026-07-16 13:35:01 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['baugesetzbuch--baugb', 'baunutzungsverordnung--baunvo', 'plis', 'öffentliche-pläne']
+2026-07-16 13:35:01 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI']
+2026-07-16 13:35:01 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 13:35:01 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 13:35:01 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] pass score=1.00 source=dcatde:politicalGeocodingURI uri=http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000 segment=regionalKey
+2026-07-16 13:35:01 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] partial score=0.50 valid=0/1
+2026-07-16 13:35:01 - scoring.indicator.find_geocoding_level - DEBUG - [find_geocoding_level] invalid_levels=['http://dcat-ap.de/def/politicalGeocoding/level/state']
+2026-07-16 13:35:01 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['1973-06-24T00:00:00'], endDate: []
+2026-07-16 13:35:01 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=None/False
+2026-07-16 13:35:01 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/issued
+2026-07-16 13:35:01 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0 = 2025-08-28T00:00:00
+2026-07-16 13:35:01 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/02e7dad2-456e-4aac-9ea0-a19f0e82132a = 2025-08-28T00:00:00
+2026-07-16 13:35:01 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/34224408-ab86-47f0-a044-82e265ca7c5d = 2025-08-28T00:00:00
+2026-07-16 13:35:01 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/f9883bd7-5d77-4ae5-a208-b0c6ad2f6506 = 2025-08-28T00:00:00
+2026-07-16 13:35:01 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/7e3b6ab8-31f8-469d-ae88-61cfca3594c6 = 2025-08-28T00:00:00
+2026-07-16 13:35:01 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/modified
+2026-07-16 13:35:01 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0 = 2026-05-08T22:25:43.815275
+2026-07-16 13:35:01 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/02e7dad2-456e-4aac-9ea0-a19f0e82132a = 2026-05-08T22:25:43.815275
+2026-07-16 13:35:01 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/34224408-ab86-47f0-a044-82e265ca7c5d = 2026-05-08T22:25:43.815275
+2026-07-16 13:35:01 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/f9883bd7-5d77-4ae5-a208-b0c6ad2f6506 = 2026-05-08T22:25:43.815275
+2026-07-16 13:35:01 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/7e3b6ab8-31f8-469d-ae88-61cfca3594c6 = 2026-05-08T22:25:43.815275
+2026-07-16 13:35:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 13:35:01 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 13:35:01 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/4
+2026-07-16 13:35:01 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 13:35:01 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 13:35:01 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/4
+2026-07-16 13:35:01 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 13:35:01 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/4
+2026-07-16 13:35:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 13:35:01 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-16 13:35:01 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] partial score=0.62 valid=3/4 relevant=4/4
+2026-07-16 13:35:01 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] fail score=0.38 high=1 mid=1 none=2 total=4
+2026-07-16 13:35:01 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/4
+2026-07-16 13:35:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 13:35:01 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=4/4
+2026-07-16 13:35:01 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 13:35:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 13:35:01 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 13:35:01 - scoring.indicator.reuse_contact - INFO - [reuse_contact] partial score=0.50 contacts=1 with_channel=0
+2026-07-16 13:35:01 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 13:35:03 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=14
+2026-07-16 13:35:03 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/4
+2026-07-16 13:35:03 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.95 | Der Titel benennt den Datensatz präzise und unterscheidbar von ähnlichen Plänen anderer Bezirke. Er ist kurz, verständli
+2026-07-16 13:35:03 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.35 | Die Beschreibung liefert zwar den räumlichen Geltungsbereich, bleibt aber insgesamt sehr knapp und beantwortet weder die
+2026-07-16 13:35:03 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.90 | Titel und Beschreibung passen inhaltlich gut zusammen; die Beschreibung ergänzt den Titel sinnvoll um den räumlichen Gel
+2026-07-16 13:35:03 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.20 | Alle vier Schlagwörter weisen Mängel auf: Jargon/Abkürzungen (BauGB, BauNVO, PLIS), ungewöhnliche Formatierung mit Doppe
+2026-07-16 13:35:03 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.90 | Alle Metadatenfelder zeigen konsistent dasselbe Thema (Bauleitplanung/Stadtplanung). Das gewählte Theme REGI ist sachger
+2026-07-16 13:35:03 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.65 | Der zeitliche Bezug ist durch den temporalen Starttermin vorhanden, aber nicht explizit in der Beschreibung erläutert. D
+2026-07-16 13:35:03 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 13:35:03 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 13:35:03 - scoring.service - DEBUG - {
+  "dataset_uri": "http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0",
+  "titles": [
+    "Bebauungsplan Eimsbüttel 27 Hamburg"
+  ],
+  "descriptions": [
+    "Der Bebauungsplan Eimsbüttel 27 für den Geltungsbereich Kieler Straße-Alter Weg-Högenstraße-Rellinger Straße- Armbruststraße (Bezirk Eimsbüttel, Ortsteil 304) wird festgestellt."
+  ],
+  "keywords": [
+    "baugesetzbuch--baugb",
+    "baunutzungsverordnung--baunvo",
+    "plis",
+    "öffentliche-pläne"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-05-08T22:25:43.815275"
+  ],
+  "issued": [
+    "2025-08-28T00:00:00"
+  ],
+  "accrual_periodicity": "http://publications.europa.eu/resource/authority/frequency/NEVER",
+  "accrual_periodicity_in_vocab": true,
+  "start_dates": [
+    "1973-06-24T00:00:00"
+  ],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((10.3263 53.3950, 10.3263 53.9642, 8.4206 53.9642, 8.4206 53.3950, 10.3263 53.3950))"
+  ],
+  "spatial_resources": [
+    "N029e558ec2304d0c8328002f82808d9a",
+    "N2b9024f7c2434b6290666f278b4b106e"
+  ],
+  "admin_units": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/level/state"
+  ],
+  "political_geocoding_level_in_vocab": [
+    false
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "https://www.govdata.de/dl-de/by-2-0",
+  "publisher": "N061f94118b0741deba28141a9f5a3128",
+  "contact_points": [
+    "N4cc950f78cfa4352b7857098fc4e3e0e"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/transparenzportalHamburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/02e7dad2-456e-4aac-9ea0-a19f0e82132a",
+      "titles": [
+        "Download WFS Bebauungsplan (XPlanGML)"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=Eimsbuettel27",
+      "formats": [
+        "GML"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-08T22:25:43.815275"
+      ],
+      "issued": [
+        "2025-08-28T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "1076",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "GML",
+            "mime_type": "application/gml+xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "HH_WFS_xplan_dls",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/xml;charset=UTF-8",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/gml+xml",
+        "issues": [],
+        "warnings": [
+          "accessURL returned HTTP 400; remaining checks rely on declared metadata only"
+        ],
+        "fetched": true,
+        "status_code": 400,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 400,
+        "access_fetch_error": null,
+        "final_url": "https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=Eimsbuettel27",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/34224408-ab86-47f0-a044-82e265ca7c5d",
+      "titles": [
+        "Festsetzungen (Planzeichnung / Verordnung) als PDF Datei"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/eimsbuettel27.pdf",
+      "formats": [
+        "PDF"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-05-08T22:25:43.815275"
+      ],
+      "issued": [
+        "2025-08-28T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "698249",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "eimsbuettel27.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "Eimsbuettel27.pdf (from final URL)",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/Eimsbuettel27.pdf",
+        "content_disposition": null,
+        "attachment_filename": "Eimsbuettel27.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/f9883bd7-5d77-4ae5-a208-b0c6ad2f6506",
+      "titles": [
+        "Begründung des Bebauungsplans als PDF Datei"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/eimsbuettel27.pdf",
+      "formats": [
+        "PDF"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-05-08T22:25:43.815275"
+      ],
+      "issued": [
+        "2025-08-28T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "206495",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "eimsbuettel27.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "Eimsbuettel27.pdf (from final URL)",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan_begr/Eimsbuettel27.pdf",
+        "content_disposition": null,
+        "attachment_filename": "Eimsbuettel27.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/99b29fe9-ba98-4bf9-bff6-15a515db9ba0/resource/7e3b6ab8-31f8-469d-ae88-61cfca3594c6",
+      "titles": [
+        "Metadatenbeschreibung aus dem MetaVer"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "http://metaver.de/trefferanzeige?docuuid=91B5E336-A816-476E-BE9C-EE08371D72B0",
+      "formats": [
+        "HTML"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-08T22:25:43.815275"
+      ],
+      "issued": [
+        "2025-08-28T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "105699",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "trefferanzeige",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html;charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://metaver.de/trefferanzeige?docuuid=91B5E336-A816-476E-BE9C-EE08371D72B0",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Titel 'Bebauungsplan Eimsbüttel 27 Hamburg' ist spezifisch und eindeutig – Planname, Bezirk und Stadt sind enthalten",
+        "Kein Zeitbezug im Titel, was bei einem Bebauungsplan (einmaliges Rechtsdokument) aber üblich und akzeptabel ist",
+        "Keine Abkürzungen, keine Sonderzeichen, reiner Fließtext"
+      ],
+      "reasoning": "Der Titel benennt den Datensatz präzise und unterscheidbar von ähnlichen Plänen anderer Bezirke. Er ist kurz, verständlich und enthält alle wesentlichen Identifikationsmerkmale.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung nennt den räumlichen Geltungsbereich mit konkreten Straßennamen (Kieler Straße, Alter Weg, Högenstraße, Rellinger Straße, Armbruststraße) sowie Bezirk und Ortsteilnummer 304",
+        "Es fehlen Angaben zur Struktur/Format der Daten (z. B. Shapefile, PDF, WMS), zur Erhebungsmethode oder zum Zweck des Datensatzes über die bloße Feststellung hinaus",
+        "Die Beschreibung ist sehr kurz und wiederholt im Wesentlichen nur den Titel mit etwas mehr geografischem Detail; Informationen zu Inhalt, Kodierung oder Nutzungszweck fehlen vollständig"
+      ],
+      "reasoning": "Die Beschreibung liefert zwar den räumlichen Geltungsbereich, bleibt aber insgesamt sehr knapp und beantwortet weder die Frage nach dem Datenformat/-struktur noch nach Methode oder Zweck. Sie geht kaum über eine Paraphrase des Titels hinaus.",
+      "applicable": true,
+      "score": 0.35
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich eindeutig auf denselben Bebauungsplan (Eimsbüttel 27)",
+        "Die Beschreibung konkretisiert den Titel durch Angabe des genauen Geltungsbereichs",
+        "Kein Widerspruch zwischen Titel und Beschreibung erkennbar"
+      ],
+      "reasoning": "Titel und Beschreibung passen inhaltlich gut zusammen; die Beschreibung ergänzt den Titel sinnvoll um den räumlichen Geltungsbereich.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "keyword_quality": {
+      "findings": [
+        "'baugesetzbuch--baugb' und 'baunutzungsverordnung--baunvo' enthalten Doppelbindestrich-Konstrukte und Abkürzungen in einem ungewöhnlichen Format, das nicht dem Standard kurzer, atomarer Schlagwörter entspricht",
+        "'plis' ist ein internes Systemkürzel ohne Erklärung und für Laien unverständlich",
+        "'öffentliche-pläne' ist ein zusammengesetzter Begriff mit Bindestrich statt eines atomaren Schlagworts; zudem im Plural"
+      ],
+      "reasoning": "Alle vier Schlagwörter weisen Mängel auf: Jargon/Abkürzungen (BauGB, BauNVO, PLIS), ungewöhnliche Formatierung mit Doppelbindestrich sowie ein zusammengesetzter Pluralbegriff. Die inhaltliche Relevanz ist zwar erkennbar, die Formulierung entspricht aber nicht den Qualitätsanforderungen.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das DCAT-Theme REGI (Regionen und Städte) passt gut zu einem Bebauungsplan als Instrument der räumlichen Planung",
+        "Schlagwörter (BauGB, BauNVO, öffentliche Pläne) sind thematisch konsistent mit einem Bebauungsplan",
+        "Titel und Beschreibung bestätigen das Thema Stadtplanung/Regionalplanung"
+      ],
+      "reasoning": "Alle Metadatenfelder zeigen konsistent dasselbe Thema (Bauleitplanung/Stadtplanung). Das gewählte Theme REGI ist sachgerecht.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Das Datum der Feststellung des Bebauungsplans (Inkrafttreten) ist nicht explizit genannt, jedoch ist ein temporaler Starttermin (1973-06-24) vorhanden, der vermutlich das Inkrafttretensdatum des Plans markiert",
+        "Es ist nicht klar gekennzeichnet, ob es sich um den ursprünglichen Plan oder eine Änderung/Fortschreibung handelt",
+        "Der räumliche Bezug ist durch Straßennamen und Ortsteilnummer in der Beschreibung sowie durch Geometrie und administrativen Schlüssel in den Metadaten gut abgedeckt"
+      ],
+      "reasoning": "Der zeitliche Bezug ist durch den temporalen Starttermin vorhanden, aber nicht explizit in der Beschreibung erläutert. Der räumliche Kontext ist gut dokumentiert. Ein Hinweis auf den Planstatus (Original, Änderung) fehlt.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch Titel, räumlichen Geltungsbereich und thematische Einordnung grundsätzlich identifizierbar, leidet jedoch unter einer sehr knappen Beschreibung ohne Angaben zu Datenformat, Struktur oder Zweck sowie unter qualitativ schwachen Schlagwörtern mit Jargon, Abkürzungen und ungewöhnlicher Formatierung. Eine Erweiterung der Beschreibung und eine Überarbeitung der Schlagwörter würden die Aussagekraft deutlich verbessern.\"}"
+  },
+  "semantic_assessment_raw": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "tool_args": {
+      "title_quality": {
+        "findings": [
+          "Titel 'Bebauungsplan Eimsbüttel 27 Hamburg' ist spezifisch und eindeutig – Planname, Bezirk und Stadt sind enthalten",
+          "Kein Zeitbezug im Titel, was bei einem Bebauungsplan (einmaliges Rechtsdokument) aber üblich und akzeptabel ist",
+          "Keine Abkürzungen, keine Sonderzeichen, reiner Fließtext"
+        ],
+        "reasoning": "Der Titel benennt den Datensatz präzise und unterscheidbar von ähnlichen Plänen anderer Bezirke. Er ist kurz, verständlich und enthält alle wesentlichen Identifikationsmerkmale.",
+        "score": 0.95
+      },
+      "description_quality": {
+        "findings": [
+          "Die Beschreibung nennt den räumlichen Geltungsbereich mit konkreten Straßennamen (Kieler Straße, Alter Weg, Högenstraße, Rellinger Straße, Armbruststraße) sowie Bezirk und Ortsteilnummer 304",
+          "Es fehlen Angaben zur Struktur/Format der Daten (z. B. Shapefile, PDF, WMS), zur Erhebungsmethode oder zum Zweck des Datensatzes über die bloße Feststellung hinaus",
+          "Die Beschreibung ist sehr kurz und wiederholt im Wesentlichen nur den Titel mit etwas mehr geografischem Detail; Informationen zu Inhalt, Kodierung oder Nutzungszweck fehlen vollständig"
+        ],
+        "reasoning": "Die Beschreibung liefert zwar den räumlichen Geltungsbereich, bleibt aber insgesamt sehr knapp und beantwortet weder die Frage nach dem Datenformat/-struktur noch nach Methode oder Zweck. Sie geht kaum über eine Paraphrase des Titels hinaus.",
+        "score": 0.35
+      },
+      "title_description_coherence": {
+        "findings": [
+          "Titel und Beschreibung beziehen sich eindeutig auf denselben Bebauungsplan (Eimsbüttel 27)",
+          "Die Beschreibung konkretisiert den Titel durch Angabe des genauen Geltungsbereichs",
+          "Kein Widerspruch zwischen Titel und Beschreibung erkennbar"
+        ],
+        "reasoning": "Titel und Beschreibung passen inhaltlich gut zusammen; die Beschreibung ergänzt den Titel sinnvoll um den räumlichen Geltungsbereich.",
+        "score": 0.9
+      },
+      "keyword_quality": {
+        "findings": [
+          "'baugesetzbuch--baugb' und 'baunutzungsverordnung--baunvo' enthalten Doppelbindestrich-Konstrukte und Abkürzungen in einem ungewöhnlichen Format, das nicht dem Standard kurzer, atomarer Schlagwörter entspricht",
+          "'plis' ist ein internes Systemkürzel ohne Erklärung und für Laien unverständlich",
+          "'öffentliche-pläne' ist ein zusammengesetzter Begriff mit Bindestrich statt eines atomaren Schlagworts; zudem im Plural"
+        ],
+        "reasoning": "Alle vier Schlagwörter weisen Mängel auf: Jargon/Abkürzungen (BauGB, BauNVO, PLIS), ungewöhnliche Formatierung mit Doppelbindestrich sowie ein zusammengesetzter Pluralbegriff. Die inhaltliche Relevanz ist zwar erkennbar, die Formulierung entspricht aber nicht den Qualitätsanforderungen.",
+        "score": 0.2
+      },
+      "thematic_consistency": {
+        "findings": [
+          "Das DCAT-Theme REGI (Regionen und Städte) passt gut zu einem Bebauungsplan als Instrument der räumlichen Planung",
+          "Schlagwörter (BauGB, BauNVO, öffentliche Pläne) sind thematisch konsistent mit einem Bebauungsplan",
+          "Titel und Beschreibung bestätigen das Thema Stadtplanung/Regionalplanung"
+        ],
+        "reasoning": "Alle Metadatenfelder zeigen konsistent dasselbe Thema (Bauleitplanung/Stadtplanung). Das gewählte Theme REGI ist sachgerecht.",
+        "score": 0.9
+      },
+      "contextual_qualifiers": {
+        "applicable": true,
+        "findings": [
+          "Das Datum der Feststellung des Bebauungsplans (Inkrafttreten) ist nicht explizit genannt, jedoch ist ein temporaler Starttermin (1973-06-24) vorhanden, der vermutlich das Inkrafttretensdatum des Plans markiert",
+          "Es ist nicht klar gekennzeichnet, ob es sich um den ursprünglichen Plan oder eine Änderung/Fortschreibung handelt",
+          "Der räumliche Bezug ist durch Straßennamen und Ortsteilnummer in der Beschreibung sowie durch Geometrie und administrativen Schlüssel in den Metadaten gut abgedeckt"
+        ],
+        "reasoning": "Der zeitliche Bezug ist durch den temporalen Starttermin vorhanden, aber nicht explizit in der Beschreibung erläutert. Der räumliche Kontext ist gut dokumentiert. Ein Hinweis auf den Planstatus (Original, Änderung) fehlt.",
+        "score": 0.65
+      },
+      "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch Titel, räumlichen Geltungsbereich und thematische Einordnung grundsätzlich identifizierbar, leidet jedoch unter einer sehr knappen Beschreibung ohne Angaben zu Datenformat, Struktur oder Zweck sowie unter qualitativ schwachen Schlagwörtern mit Jargon, Abkürzungen und ungewöhnlicher Formatierung. Eine Erweiterung der Beschreibung und eine Überarbeitung der Schlagwörter würden die Aussagekraft deutlich verbessern.\"}"
+    },
+    "text_content": null,
+    "parsing_error": null,
+    "salvaged": false,
+    "repairs": []
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "input_tokens": 5700,
+      "output_tokens": 1557,
+      "total_tokens": 7257,
+      "cost_usd": 0.040455,
+      "latency_seconds": 29.585
+    }
+  ],
+  "distribution_count": 4
+}
+2026-07-16 13:35:03 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_transparenzportal-hamburg_02/result.json
+2026-07-16 13:35:03 - __main__ - INFO -   ✓ Completed | score=0.55 grade=D

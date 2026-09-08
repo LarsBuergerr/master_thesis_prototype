@@ -1,0 +1,332 @@
+2026-07-16 13:31:59 - reporting.output_manager - INFO - Created file log handler for geo_rest_02.rdf at run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_rest_02/logs.log
+2026-07-16 13:31:59 - __main__ - INFO - Started processing: geo_rest_02.rdf
+2026-07-16 13:31:59 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_rest_02.rdf
+2026-07-16 13:31:59 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_rest_02.rdf using format: xml
+2026-07-16 13:31:59 - extraction.rdf_parser - INFO - Successfully parsed 25 triples
+2026-07-16 13:31:59 - scoring.service - INFO - Parsed 25 triples
+2026-07-16 13:31:59 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-16 13:31:59 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-16 13:32:00 - scoring.service - DEBUG - [OK   ] https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd/resource/292e2b5b-5f5b-4f1d-9ac6-321c0b09b171#distribution — Test-Beds, Reallabore, Prüfzentren (GeoJSON)
+  downloadURL : https://metropolatlas.digitale-mrn.de/geodata/innoradar/InnoRadar_02_Test-Beds.geojson
+  accessURL   : https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd/resource/292e2b5b-5f5b-4f1d-9ac6-321c0b09b171#distribution
+  HTTP        : 200
+  attachment  : InnoRadar_02_Test-Beds.geojson
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/geo+json
+    dcat:mediaType       raw=application/geo+json                     mime=application/geo+json
+    url_extension        raw=InnoRadar_02_Test-Beds.geojson           mime=application/geo+json
+    http_content_type    raw=application/geo+json                     mime=application/geo+json
+    attachment_filename  raw=InnoRadar_02_Test-Beds.geojson (from fi… mime=application/geo+json
+  coalesced   : application/geo+json
+2026-07-16 13:32:00 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-16 13:32:21 - scoring.service - DEBUG - Attached expressiveness assessment (summary: '{"overall_summary": "Die Metadaten sind bis auf den Titel und das DCAT-Theme nahezu leer: Beschreibung und Schlagwörter ')
+2026-07-16 13:32:21 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 13:32:21 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] fail score=0.00 keywords=0
+2026-07-16 13:32:21 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=[]
+2026-07-16 13:32:21 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/TECH']
+2026-07-16 13:32:21 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 13:32:21 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 13:32:21 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 13:32:21 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 13:32:21 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 13:32:21 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 13:32:21 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-16 13:32:21 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd#dataset = 2022-04-05T12:03:17.624247
+2026-07-16 13:32:21 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd/resource/292e2b5b-5f5b-4f1d-9ac6-321c0b09b171#distribution = 2022-07-27T12:38:07.314332
+2026-07-16 13:32:21 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-16 13:32:21 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd#dataset = 2022-08-09T13:45:45.668720
+2026-07-16 13:32:21 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd/resource/292e2b5b-5f5b-4f1d-9ac6-321c0b09b171#distribution = 2022-04-05T12:03:17.620836
+2026-07-16 13:32:21 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 13:32:21 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 13:32:21 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=1/1
+2026-07-16 13:32:21 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 13:32:21 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 13:32:21 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=1/1
+2026-07-16 13:32:21 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 13:32:21 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/1
+2026-07-16 13:32:21 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 13:32:21 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 13:32:21 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 13:32:21 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=1 mid=0 none=0 total=1
+2026-07-16 13:32:21 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=1/1
+2026-07-16 13:32:21 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 13:32:21 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=1/1
+2026-07-16 13:32:21 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 13:32:21 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 13:32:21 - scoring.indicator.reuse_contact - INFO - [reuse_contact] FAIL score=0.00 no contactPoint set
+2026-07-16 13:32:21 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 13:32:21 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 13:32:23 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=3
+2026-07-16 13:32:23 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-16 13:32:23 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] partial | score=0.65 | Der Titel ist thematisch verständlich und frei von Formatierungsartefakten, bleibt aber ohne räumlichen Kontext etwas ge
+2026-07-16 13:32:23 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.00 | Eine fehlende Beschreibung ist der schwerste Mangel bei der Aussagekraft von Metadaten. Keinerlei inhaltliche Informatio
+2026-07-16 13:32:23 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] fail | score=0.00 | Da die Beschreibung vollständig fehlt, kann keine Kohärenz zwischen Titel und Beschreibung bestehen oder bewertet werden
+2026-07-16 13:32:23 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.00 | Keine Schlagwörter vorhanden; eine qualitative Bewertung der Formulierung ist nicht möglich, aber das vollständige Fehle
+2026-07-16 13:32:23 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 13:32:23 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] partial | score=0.50 | Das einzige vorhandene Themenfeld ist plausibel zum Titel, aber die fehlenden weiteren Felder lassen keine umfassende Ko
+2026-07-16 13:32:23 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.10 | Für einen Datensatz über Infrastruktureinrichtungen in einer Region wären räumliche Abdeckung und Erhebungsstand/Aktuali
+2026-07-16 13:32:23 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 13:32:23 - scoring.service - DEBUG - {
+  "dataset_uri": "https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd#dataset",
+  "titles": [
+    "Test-Beds, Reallabore, Prüfzentren"
+  ],
+  "descriptions": [],
+  "keywords": [],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/TECH"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2022-08-09T13:45:45.668720"
+  ],
+  "issued": [
+    "2022-04-05T12:03:17.624247"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "https://www.m-r-n.com",
+  "contact_points": [],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/metropolregionRheinNeckar"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd/resource/292e2b5b-5f5b-4f1d-9ac6-321c0b09b171#distribution",
+      "titles": [
+        "Test-Beds, Reallabore, Prüfzentren (GeoJSON)"
+      ],
+      "descriptions": [],
+      "download_url": "https://metropolatlas.digitale-mrn.de/geodata/innoradar/InnoRadar_02_Test-Beds.geojson",
+      "access_url": "https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd/resource/292e2b5b-5f5b-4f1d-9ac6-321c0b09b171#distribution",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/GEOJSON"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "application/geo+json"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2022-04-05T12:03:17.620836"
+      ],
+      "issued": [
+        "2022-07-27T12:38:07.314332"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/GEOJSON",
+            "mime_type": "application/geo+json"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/geo+json",
+            "mime_type": "application/geo+json"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "InnoRadar_02_Test-Beds.geojson",
+            "mime_type": "application/geo+json"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/geo+json",
+            "mime_type": "application/geo+json"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "InnoRadar_02_Test-Beds.geojson (from final URL)",
+            "mime_type": "application/geo+json"
+          }
+        ],
+        "coalesced_mime": "application/geo+json",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://metropolatlas.digitale-mrn.de/geodata/innoradar/InnoRadar_02_Test-Beds.geojson",
+        "content_disposition": null,
+        "attachment_filename": "InnoRadar_02_Test-Beds.geojson",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel 'Test-Beds, Reallabore, Prüfzentren' benennt das Thema knapp und verständlich.",
+        "Kein Orts- oder Zeitbezug vorhanden, was bei einem regionalen Portal (MRN = Metropolregion Rhein-Neckar) hilfreich wäre.",
+        "Keine unerklärten Abkürzungen oder technischen Zeichenfolgen; reiner Fließtext."
+      ],
+      "reasoning": "Der Titel ist thematisch verständlich und frei von Formatierungsartefakten, bleibt aber ohne räumlichen Kontext etwas generisch für ein regionales Datenportal.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "description_quality": {
+      "findings": [
+        "Das Beschreibungsfeld ist vollständig leer – keine einzige Zeile Text vorhanden.",
+        "Damit fehlen alle Informationen zu Inhalt, Struktur, Erhebungsmethode und Zweck des Datensatzes.",
+        "Nutzer können nicht einschätzen, was der Datensatz enthält oder wie er verwendet werden kann."
+      ],
+      "reasoning": "Eine fehlende Beschreibung ist der schwerste Mangel bei der Aussagekraft von Metadaten. Keinerlei inhaltliche Information ist vorhanden.",
+      "applicable": true,
+      "score": 0.0
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Es gibt keine Beschreibung, die mit dem Titel verglichen werden könnte.",
+        "Eine Kohärenzprüfung ist daher faktisch nicht möglich."
+      ],
+      "reasoning": "Da die Beschreibung vollständig fehlt, kann keine Kohärenz zwischen Titel und Beschreibung bestehen oder bewertet werden. Das Fehlen der Beschreibung ist selbst ein schwerer Mangel.",
+      "applicable": true,
+      "score": 0.0
+    },
+    "keyword_quality": {
+      "findings": [
+        "Das Schlagwortfeld ist vollständig leer – keine Schlagwörter vorhanden.",
+        "Damit fehlt jede inhaltliche Erschließung über Schlagwörter."
+      ],
+      "reasoning": "Keine Schlagwörter vorhanden; eine qualitative Bewertung der Formulierung ist nicht möglich, aber das vollständige Fehlen ist ein klarer Mangel.",
+      "applicable": true,
+      "score": 0.0
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das DCAT-Theme 'TECH' (Wissenschaft und Technologie) passt grundsätzlich zu Begriffen wie 'Test-Beds', 'Reallabore' und 'Prüfzentren'.",
+        "Da Beschreibung und Schlagwörter fehlen, kann keine vollständige thematische Konsistenz über alle Felder geprüft werden.",
+        "Kein Widerspruch erkennbar, aber auch keine Bestätigung durch weitere Felder."
+      ],
+      "reasoning": "Das einzige vorhandene Themenfeld ist plausibel zum Titel, aber die fehlenden weiteren Felder lassen keine umfassende Konsistenzprüfung zu. Kein Widerspruch, aber sehr dünne Basis.",
+      "applicable": true,
+      "score": 0.5
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Kein räumlicher Bezug angegeben (spatial-Felder leer), obwohl es sich um ein regionales Portal handelt.",
+        "Kein Zeitbezug (temporal leer), obwohl Einrichtungen wie Test-Beds und Prüfzentren typischerweise einen Gültigkeitszeitraum oder Erhebungsstand haben.",
+        "Kein Aktualisierungszyklus angegeben."
+      ],
+      "reasoning": "Für einen Datensatz über Infrastruktureinrichtungen in einer Region wären räumliche Abdeckung und Erhebungsstand/Aktualität relevante Qualifizierer, die beide fehlen.",
+      "applicable": true,
+      "score": 0.1
+    },
+    "overall_summary": "{\"overall_summary\": \"Die Metadaten sind bis auf den Titel und das DCAT-Theme nahezu leer: Beschreibung und Schlagwörter fehlen vollständig, räumliche und zeitliche Kontextangaben sind nicht vorhanden. Der Datensatz ist für Nutzer kaum aussagekräftig und bietet keine Grundlage für eine informierte Nutzungsentscheidung.\"}"
+  },
+  "semantic_assessment_raw": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "tool_args": {
+      "title_quality": {
+        "findings": [
+          "Der Titel 'Test-Beds, Reallabore, Prüfzentren' benennt das Thema knapp und verständlich.",
+          "Kein Orts- oder Zeitbezug vorhanden, was bei einem regionalen Portal (MRN = Metropolregion Rhein-Neckar) hilfreich wäre.",
+          "Keine unerklärten Abkürzungen oder technischen Zeichenfolgen; reiner Fließtext."
+        ],
+        "reasoning": "Der Titel ist thematisch verständlich und frei von Formatierungsartefakten, bleibt aber ohne räumlichen Kontext etwas generisch für ein regionales Datenportal.",
+        "score": 0.65
+      },
+      "description_quality": {
+        "findings": [
+          "Das Beschreibungsfeld ist vollständig leer – keine einzige Zeile Text vorhanden.",
+          "Damit fehlen alle Informationen zu Inhalt, Struktur, Erhebungsmethode und Zweck des Datensatzes.",
+          "Nutzer können nicht einschätzen, was der Datensatz enthält oder wie er verwendet werden kann."
+        ],
+        "reasoning": "Eine fehlende Beschreibung ist der schwerste Mangel bei der Aussagekraft von Metadaten. Keinerlei inhaltliche Information ist vorhanden.",
+        "score": 0.0
+      },
+      "title_description_coherence": {
+        "findings": [
+          "Es gibt keine Beschreibung, die mit dem Titel verglichen werden könnte.",
+          "Eine Kohärenzprüfung ist daher faktisch nicht möglich."
+        ],
+        "reasoning": "Da die Beschreibung vollständig fehlt, kann keine Kohärenz zwischen Titel und Beschreibung bestehen oder bewertet werden. Das Fehlen der Beschreibung ist selbst ein schwerer Mangel.",
+        "score": 0.0
+      },
+      "keyword_quality": {
+        "findings": [
+          "Das Schlagwortfeld ist vollständig leer – keine Schlagwörter vorhanden.",
+          "Damit fehlt jede inhaltliche Erschließung über Schlagwörter."
+        ],
+        "reasoning": "Keine Schlagwörter vorhanden; eine qualitative Bewertung der Formulierung ist nicht möglich, aber das vollständige Fehlen ist ein klarer Mangel.",
+        "score": 0.0
+      },
+      "thematic_consistency": {
+        "findings": [
+          "Das DCAT-Theme 'TECH' (Wissenschaft und Technologie) passt grundsätzlich zu Begriffen wie 'Test-Beds', 'Reallabore' und 'Prüfzentren'.",
+          "Da Beschreibung und Schlagwörter fehlen, kann keine vollständige thematische Konsistenz über alle Felder geprüft werden.",
+          "Kein Widerspruch erkennbar, aber auch keine Bestätigung durch weitere Felder."
+        ],
+        "reasoning": "Das einzige vorhandene Themenfeld ist plausibel zum Titel, aber die fehlenden weiteren Felder lassen keine umfassende Konsistenzprüfung zu. Kein Widerspruch, aber sehr dünne Basis.",
+        "score": 0.5
+      },
+      "contextual_qualifiers": {
+        "findings": [
+          "Kein räumlicher Bezug angegeben (spatial-Felder leer), obwohl es sich um ein regionales Portal handelt.",
+          "Kein Zeitbezug (temporal leer), obwohl Einrichtungen wie Test-Beds und Prüfzentren typischerweise einen Gültigkeitszeitraum oder Erhebungsstand haben.",
+          "Kein Aktualisierungszyklus angegeben."
+        ],
+        "reasoning": "Für einen Datensatz über Infrastruktureinrichtungen in einer Region wären räumliche Abdeckung und Erhebungsstand/Aktualität relevante Qualifizierer, die beide fehlen.",
+        "applicable": true,
+        "score": 0.1
+      },
+      "overall_summary": "{\"overall_summary\": \"Die Metadaten sind bis auf den Titel und das DCAT-Theme nahezu leer: Beschreibung und Schlagwörter fehlen vollständig, räumliche und zeitliche Kontextangaben sind nicht vorhanden. Der Datensatz ist für Nutzer kaum aussagekräftig und bietet keine Grundlage für eine informierte Nutzungsentscheidung.\"}"
+    },
+    "text_content": null,
+    "parsing_error": null,
+    "salvaged": false,
+    "repairs": []
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "input_tokens": 5314,
+      "output_tokens": 1169,
+      "total_tokens": 6483,
+      "cost_usd": 0.033477,
+      "latency_seconds": 21.18
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-16 13:32:23 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_rest_02/result.json
+2026-07-16 13:32:23 - __main__ - INFO -   ✓ Completed | score=0.53 grade=D

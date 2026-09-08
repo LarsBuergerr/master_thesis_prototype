@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+>
+  <dcat:Dataset rdf:about="http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717">
+    <dct:title>Durchführungsplan D 112 Hamburg</dct:title>
+    <dct:description>Bezirk: Hamburg-Mitte, Stadtteil: Horn, Ortsteil: 129, Planbezirk: Hertogestraße, Beim Rauhen Hause, Bauerberg, Horner Landstraße</dct:description>
+    <dcat:landingPage>
+      <foaf:Document rdf:about="http://www.hamburg.de/bebauungsplaene-online.de"/>
+    </dcat:landingPage>
+    <dct:identifier>38969F5F-AC90-41A3-B408-C616B621B460</dct:identifier>
+    <owl:versionInfo>14.0</owl:versionInfo>
+    <adms:versionNotes>Änderungen innerhalb einer Ressource</adms:versionNotes>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/NEVER"/>
+    </dct:accrualPeriodicity>
+    <dcat:keyword>aufbaugesetz-vom-11.04.1949--aufbaug</dcat:keyword>
+    <dcat:keyword>baupolizeiverodnung-vom-08.06.1938--bpvo</dcat:keyword>
+    <dcat:keyword>durchführungsplan</dcat:keyword>
+    <dcat:keyword>plis</dcat:keyword>
+    <dcat:keyword>öffentliche-pläne</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-19T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T23:32:08.220478</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dct:conformsTo>
+      <dct:Standard rdf:about="http://dcat-ap.de/def/dcatde/1.0/"/>
+    </dct:conformsTo>
+    <foaf:page>
+      <foaf:Document rdf:about="http://suche.transparenz.hamburg.de/dataset/durchfuehrungsplan-d-112-hamburg7"/>
+    </foaf:page>
+    <dct:isVersionOf rdf:resource="http://suche.transparenz.hamburg.de/dataset/durchfuehrungsplan-d-112-hamburg6"/>
+    <dct:source rdf:resource="https://metaver.de/cswhh"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N009ac984f6184b5ba363e0a85d582ade">
+        <vcard:fn>Bezirksämter</vcard:fn>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N6920c91ad55147e9a7ea0e6af6e5c2e0">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:creator>
+      <foaf:Agent rdf:nodeID="N0ad59e554e7c47b7ab7b4c7e9b08001d">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Agent>
+    </dct:creator>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="N30a8f9ac9e4e479097df5eab50dfbee6">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Organization>
+    </dct:creator>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N8ccf68f2b2bf4ab9ac798925f3022ba8">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1954-12-28T00:00:00</dcat:startDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N05a37da6584e492eab949a8a857453e5">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((10.3263 53.3950, 10.3263 53.9642, 8.4206 53.9642, 8.4206 53.3950, 10.3263 53.3950))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N1818ac873c9d4aae9134e301b8550975">
+        <locn:adminUnitL2 rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="https://www.govdata.de/dl-de/by-2-0"/>
+    </dct:accessRights>
+    <dct:provenance>
+      <dct:ProvenanceStatement rdf:nodeID="N40abbff0a3494388801129fa3fe5586d">
+        <rdfs:label>Der Datensatz wurde geharvestet. Ursprung: Metaverbund Katalog</rdfs:label>
+      </dct:ProvenanceStatement>
+    </dct:provenance>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb">
+        <dct:title>Download WFS Bebauungsplan (XPlanGML)</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&amp;request=GetFeature&amp;version=2.0.0&amp;resolvedepth=%252A&amp;StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&amp;planName=D112"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dct:format>GML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-19T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T23:32:08.220478</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">130630</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N901a1f53ea3744d7a158769ac37aef96">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">fe33215a2174fac50cf6796a3157a0af001d4759251d70f6cbd6dba36488a5ea</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Hamburg-Mitte, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508">
+        <dct:title>Festsetzungen (Planzeichnung / Verordnung) als PDF Datei</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/D112.pdf"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format>PDF</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-19T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T23:32:08.220478</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3313873</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N3299afc142614878b55c853b2e148bae">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">aa6df7e6891ef6878c61be2633372169938615a8676f90968109eac25f1149e3</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Hamburg-Mitte, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f">
+        <dct:title>Metadatenbeschreibung aus dem MetaVer</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="http://metaver.de/trefferanzeige?docuuid=38969F5F-AC90-41A3-B408-C616B621B460"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dct:format>HTML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-19T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T23:32:08.220478</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">106590</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nb81f2cc569e2478b875983038fa7f7f7">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">d705265fe3c6c8f0643035c5eeae44de691f4347caee1fe907680622cd15652b</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Hamburg-Mitte, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/level/state"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/transparenzportalHamburg"/>
+    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+    <dcatde:legalBasis>Hamburgisches Transparenzgesetz (HmbTG). URL: http://transparenz.hamburg.de/das-hmbtg/ Gesetzestext: http://transparenz.hamburg.de/contentblob/4318588/c8600b2b27ea31a5de6a92dacc138894/data/gesetzestext-hmbtg.pdf</dcatde:legalBasis>
+    <dcatde:geocodingDescription>Freie und Hansestadt Hamburg</dcatde:geocodingDescription>
+    <dcatde:originator>
+      <foaf:Organization rdf:nodeID="Nce38803464c746eb8427b127af58e29a">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Organization>
+    </dcatde:originator>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="N5a9d3975741d467b90bcfffc4a779cc5">
+        <foaf:name>Bezirksämter</foaf:name>
+      </foaf:Organization>
+    </dcatde:maintainer>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&amp;request=GetFeature&amp;version=2.0.0&amp;resolvedepth=%252A&amp;StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&amp;planName=D112"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/D112.pdf"/>
+  <rdfs:Resource rdf:about="http://metaver.de/trefferanzeige?docuuid=38969F5F-AC90-41A3-B408-C616B621B460"/>
+</rdf:RDF>

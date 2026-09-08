@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ns5="http://publications.europa.eu/ontology/euvoc#" xmlns:ns6="http://www.w3.org/2008/05/skos-xl#" xmlns:ns7="http://publications.europa.eu/ontology/authority/">
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/planned-availability">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:imports rdf:resource="http://publications.europa.eu/ontology/euvoc"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Planned availability</rdfs:comment>
+    <owl:versionInfo>20220715-0</owl:versionInfo>
+    <skos:prefLabel xml:lang="en">Planned availability</skos:prefLabel>
+    <rdfs:label xml:lang="en">Planned availability</rdfs:label>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-02-19</dcterms:created>
+    <owl:versionIRI rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/20220715-0"/>
+    <ns5:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-12-08</ns5:startDate>
+    <ns6:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/xl_en_0b6b4de6"/>
+    <dcterms:identifier>http://publications.europa.eu/resource/authority/planned-availability</dcterms:identifier>
+    <dcterms:title xml:lang="en">Planned availability</dcterms:title>
+    <dcterms:type>http://publications.europa.eu/resource/authority/planned-availability</dcterms:type>
+    <ns7:prefLabel xml:lang="en">Planned availability</ns7:prefLabel>
+    <ns7:table.id>planned-availability</ns7:table.id>
+    <ns7:table.version.number>20220715-0</ns7:table.version.number>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/planned-availability/EXPERIMENTAL">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/planned-availability/OP_DATPRO">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/planned-availability/STABLE">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/planned-availability/TEMPORARY">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+  </rdf:Description>
+</rdf:RDF>

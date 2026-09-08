@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/de224abd-2394-4076-b1ad-b37fba0e93bf">
+    <dct:title>ATKIS - Digitales Basis-Landschaftsmodell - 3248-SW Grüntal</dct:title>
+    <dct:description>Das Digitale Basis-Landschaftsmodell (ATKIS-Basis-DLM) ist ein digitaler, objektstrukturierter Vektordatenbestand. Er bestimmt die topographischen Objekte der realen Welt nach Lage und Form, nach Namen und Eigenschaften. Des Weiteren sind objektbezogene Sachdaten so verknüpft, dass der Datenbestand in einer GIS-Anwendung genutzt werden kann. Um eine bundesweite inhaltliche Einheitlichkeit der Daten zu erreichen, wird das Basis-DLM mit Hilfe eines aus dem AAA-Anwendungsschema abgeleiteten Objektartenkataloges (ATKIS-OK Basis-DLM), der Vorschriften zum Inhalt und zur Modellierung der topographischen Informationen für den AdV-Grunddatenbestand und die Länderlösungen enthält, definiert. Zum Inhalt gehören neben den Objekten der Objektartengruppen 'Siedlung', 'Verkehr', 'Vegetation', 'Gewässer', 'Administrative Gebietseinheiten' auch Bauwerke und Einrichtungen auf Siedlungsflächen und für den Verkehr sowie besondere Angaben zum Gewässer. Die Lagegenauigkeit beträgt für die wesentlichen linearen Objekte (Straßenachsen, Fahrbahnachsen, Bahnstrecken und Gewässerachsen) +/- 3m. Die Daten werden über automatisierte Verfahren oder durch Selbstentnahme kostenfrei bereitgestellt. Bei Nutzung der Daten sind die Lizenzbedingungen zu beachten.</dct:description>
+    <dct:identifier>de224abd-2394-4076-b1ad-b37fba0e93bf</dct:identifier>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/DAILY"/>
+    </dct:accrualPeriodicity>
+    <dcat:keyword>110.000</dcat:keyword>
+    <dcat:keyword>125.000</dcat:keyword>
+    <dcat:keyword>150.000</dcat:keyword>
+    <dcat:keyword>basis-dlm</dcat:keyword>
+    <dcat:keyword>bodenbedeckung</dcat:keyword>
+    <dcat:keyword>karte</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>vektordaten</dcat:keyword>
+    <dcat:keyword>verkehr</dcat:keyword>
+    <dcat:keyword>vermessung</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-05-26T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-08T22:00:21</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/AGRI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="Na0f2c96eb2194156a62a214159a64d5a">
+        <vcard:fn>Landesvermessung und Geobasisinformation Brandenburg (LGB)</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:kundenservice@geobasis-bb.de"/>
+        <vcard:hasURL rdf:resource="https://geobasis-bb.de"/>
+        <vcard:hasTelephone rdf:resource="tel:+49-331-8844-123"/>
+        <vcard:hasStreetAddress>Heinrich-Mann-Allee 104 B</vcard:hasStreetAddress>
+        <vcard:hasLocality>Potsdam</vcard:hasLocality>
+        <vcard:hasPostalCode>14473</vcard:hasPostalCode>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="Necc98da6a4e549788e1e8e706229e0de">
+        <foaf:name>Landesvermessung und Geobasisinformation Brandenburg (LGB)</foaf:name>
+        <foaf:mbox>kundenservice@geobasis-bb.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N136501593b5b429e80c6d329e7e4b093">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((13.6649 52.7486, 13.7482 52.7486, 13.7482 52.6986, 13.6649 52.6986, 13.6649 52.7486))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:nodeID="N069e12ae2e224a0ab920348dc860ddf8">
+        <rdfs:label>Die Daten können gemäß der „Datenlizenz Deutschland - Namensnennung - Version 2.0“ (https://www.govdata.de/dl-de/by-2-0) genutzt werden. Namensnennung: "GeoBasis-DE/LGB", Beispiel: „© GeoBasis-DE/LGB, dl-de/by-2-0, (Daten geändert)“, (Klammer = optional)</rdfs:label>
+      </dct:RightsStatement>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/10d941bc-70a0-4072-8dd0-f7ada6d4cf69">
+        <dct:title>Internetshop der LGB</dct:title>
+        <dct:description>Internetshop der LGB</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&amp;PRODUCTID=d2eaa212-f68d-4e2d-a7e7-8e8063d1b855"/>
+        <dcat:downloadURL rdf:resource="https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&amp;PRODUCTID=d2eaa212-f68d-4e2d-a7e7-8e8063d1b855"/>
+        <foaf:page rdf:resource="https://geobasis-bb.de/lgb/de/geodaten/landschaftsmodelle/basis-dlm/"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-14T03:35:34.330646</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-14T03:35:34.292396</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © GeoBasis-DE/LGB, dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/9fb9e7ac-8936-4e8e-8680-11e44676c7f7">
+        <dct:title>statische Informationsseite</dct:title>
+        <dct:description>statische Informationsseite</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://geobasis-bb.de/lgb/de/geodaten/landschaftsmodelle/basis-dlm/"/>
+        <dcat:downloadURL rdf:resource="https://geobasis-bb.de/lgb/de/geodaten/landschaftsmodelle/basis-dlm/"/>
+        <foaf:page rdf:resource="https://geobasis-bb.de/lgb/de/geodaten/landschaftsmodelle/basis-dlm/"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-14T03:35:34.330640</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-14T03:35:34.292190</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © GeoBasis-DE/LGB, dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>de224abd-2394-4076-b1ad-b37fba0e93bf</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openDataBrandenburg"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+  <foaf:Document rdf:about="https://geobasis-bb.de/lgb/de/geodaten/landschaftsmodelle/basis-dlm/">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </foaf:Document>
+  <rdfs:Resource rdf:about="https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&amp;PRODUCTID=d2eaa212-f68d-4e2d-a7e7-8e8063d1b855"/>
+</rdf:RDF>

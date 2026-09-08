@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494">
+    <dct:title>Siedlungsabfallaufkommen Schleswig-Holstein 2022 nach AVV-Schlüsseln</dct:title>
+    <dct:description>Dieser Datensatz enthält Daten zum Siedlungsabfallaufkommen in Schleswig-Holstein im Jahr 2022 in Tonnen und Kilogramm pro Kopf, nach Abfallarten gemäß Abfallverzeichnisverordnung (AVV) und sowie ihrer Zuordnung zur Systematik der Siedlungsabfallbilanz und den 15 Kreisen und kreisfreien Städten zusammengefasst.&#13;
+&#13;
+Die Daten wurden im Rahmen der jährlichen Bilanzpflicht nach § 4 Absatz 2 Landesabfallwirtschaftsgesetz (LAbfWG) von den öffentlich-rechtlichen Entsorgungsträgern (ÖRE) dem Landesamt für Umwelt (LfU) zur Verfügung gestellt und vom LfU geprüft, ausgewertet und zusammengefasst. Eine ausführliche Betrachtung der Daten zum aktuellen Berichtsjahr finden Sie voraussichtlich ab Januar 2024 auch hier: https://www.schleswig-holstein.de/DE/fachinhalte/A/abfallwirtschaft/siedlungsabfallbilanz.html.&#13;
+&#13;
+Bei den Abfallmengen handelt es sich um im Rahmen ihrer Tätigkeit als öffentlich-rechtliche Entsorgungsträger entsorgte Abfallmengen, in der Regel stammen die Abfälle also aus privaten Haushalten und vergleichbaren Geschäfts- und Gewerbebetrieben oder sind – nach jeweiliger Abfallsatzung – überlassungspflichtige Abfälle zur Beseitigung.&#13;
+&#13;
+Gegenüber der Erhebung durch das Statistikamt Nord und das Statistische Bundesamt kommt es zu Abweichungen, da dort einige Abfallschlüssel und damit Teilmengen nicht berücksichtigt werden.&#13;
+&#13;
+##Aufbau der Datei&#13;
+&#13;
+Folgende Spalten sind in den Dateien enthalten:&#13;
+&#13;
+-  'Jahr'  – Jahr, in dem die Abfälle angefallen und eingesammelt oder abgegeben wurden&#13;
+-  'Bilanznr'  – Nummer der Bilanzgruppe nach der Systematik in der Abfallbilanz des Landes Schleswig-Holstein&#13;
+-  'Bilanzbezeichnung'  – Bezeichnung zur Bilanznummer&#13;
+-  'Schluessel_AVV_EAK'  – sechsstelliger Schlüssel nach der Abfallverzeichnisverordnung AVV. Achtung: einzelne Abfallschlüssel sind zwei verschiedenen Bilanzgruppen zugeordnet. Die Unterscheidung erfolgt über die Zusammensetzung oder der Art der Sammlung des Abfalls. &#13;
+-  'Abfallbezeichnung_AVV_EAK'  – Abfallbezeichnung nach der Abfallverzeichnisverordnung AVV zu dem sechsstelligen AVV-Schlüssel; beginnt die Bezeichnung mit einem Sternchen (*), handelt es sich um einen gefährlichen Abfall nach AVV&#13;
+-  'gefährlich'  – gefährlich im Sinne der Abfallverzeichnisverordnung AVV, j für ja, n für nein&#13;
+-  'Kreis_Name'  – Name des Kreises oder der kreisfreien Stadt, aus dem die Abfälle stammen&#13;
+-  'Kreis_Schluessel ' – zweistelliger Kreisschlüssel&#13;
+-  'Menge_in_t' – Abfallmasse in Tonnen (t) mit drei Nachkommastellen &#13;
+-  'kg_proEinw '–  Abfallmasse in Kilogramm (kg) pro Kopf&#13;
+-  'Quelle'  – Datenquelle &#13;
+-  'Stand'–  letzter Stand der Erhebung&#13;
+&#13;
+Trennzeichen ist Semikolon, Zeichensatz Westeuropäisch (Windows-1252/WinLatin 1).</dct:description>
+    <dct:identifier>3bfbad56-5654-4702-afdc-dc05b844b494</dct:identifier>
+    <dcat:keyword>abfall</dcat:keyword>
+    <dcat:keyword>abfallbilanz</dcat:keyword>
+    <dcat:keyword>abfallmengen</dcat:keyword>
+    <dcat:keyword>abfallwirtschaft</dcat:keyword>
+    <dcat:keyword>siedlungsabfall</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-09-25T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-13T06:28:09.143017</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dct:isVersionOf rdf:resource="https://opendata.schleswig-holstein.de/dataset/f7827561-c5f2-4361-bec8-cbbe6e86511f"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.schleswig-holstein.de/organization/lfu">
+        <foaf:name>Landesamt für Umwelt</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N4f28d34b80154f08b2ba81f391a902d1">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-01-01T00:00:00</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-12-31T00:00:00</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/01">
+        <skos:prefLabel>Bundesland Schleswig-Holstein</skos:prefLabel>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/fb39752b-e02a-4b0d-be8c-7582eb6cc66e">
+        <dct:title>Frictionless Tabular Data Resource</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/fb39752b-e02a-4b0d-be8c-7582eb6cc66e/download/siedlungsabfallaufkommen-nach-avv-schluesseln-2022.json"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/fb39752b-e02a-4b0d-be8c-7582eb6cc66e/download/siedlungsabfallaufkommen-nach-avv-schluesseln-2022.json"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/json"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-13T06:28:09.154585</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-13T06:28:09.111770</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">490</dcat:byteSize>
+        <dcatde:licenseAttributionByText>Landesamt für Umwelt</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/651a2604-34fe-4086-94e5-b87e5f3329a1">
+        <dct:title>2022_sh_abfall_avv.csv</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/651a2604-34fe-4086-94e5-b87e5f3329a1/download/2022_sh_abfall_avv.csv"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/651a2604-34fe-4086-94e5-b87e5f3329a1/download/2022_sh_abfall_avv.csv"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-13T06:27:40.693137</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-11-13T06:27:40.649458</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">139233</dcat:byteSize>
+        <dcatde:licenseAttributionByText>Landesamt für Umwelt</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/2707de6c-3106-407a-b382-ddfd364bf56d">
+        <dct:title>2022_SH_Abfall_AVV.xlsx</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/2707de6c-3106-407a-b382-ddfd364bf56d/download/2022_sh_abfall_avv.xlsx"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/2707de6c-3106-407a-b382-ddfd364bf56d/download/2022_sh_abfall_avv.xlsx"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-09-25T11:30:19.271638</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-09-25T11:30:19.200032</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">70218</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N13c12c74a2d24419949534409f479f7e">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">7ac805b9a42e9e9570f7aa8cf9412d2d</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Landesamt für Umwelt</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/schleswigHolstein"/>
+    <dct:references rdf:resource="https://musterdatenkatalog.de/def/musterdatensatz/abfallwirtschaft/abfallmengen"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/fb39752b-e02a-4b0d-be8c-7582eb6cc66e/download/siedlungsabfallaufkommen-nach-avv-schluesseln-2022.json"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/json"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/651a2604-34fe-4086-94e5-b87e5f3329a1/download/2022_sh_abfall_avv.csv"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/text/csv"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/3bfbad56-5654-4702-afdc-dc05b844b494/resource/2707de6c-3106-407a-b382-ddfd364bf56d/download/2022_sh_abfall_avv.xlsx"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+  <spdx:ChecksumAlgorithm rdf:about="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+</rdf:RDF>

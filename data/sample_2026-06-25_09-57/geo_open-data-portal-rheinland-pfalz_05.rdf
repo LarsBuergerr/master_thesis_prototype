@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:ns1="http://data.europa.eu/eli/ontology#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e">
+    <dct:title>GWB: Natrium</dct:title>
+    <dct:description>Darstellung von Natrium</dct:description>
+    <dct:identifier rdf:resource="https://www.lgb-rlp.de/registry/spatial/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e"/>
+    <dcat:keyword>ag_geoinformation</dcat:keyword>
+    <dcat:keyword>eg-wasserrahmenrichtlinie</dcat:keyword>
+    <dcat:keyword>flusseinzugsgebiete</dcat:keyword>
+    <dcat:keyword>geodaten</dcat:keyword>
+    <dcat:keyword>geologie</dcat:keyword>
+    <dcat:keyword>gewässer</dcat:keyword>
+    <dcat:keyword>grundwasserkörper</dcat:keyword>
+    <dcat:keyword>grundwasserleiter</dcat:keyword>
+    <dcat:keyword>grundwasserschutz</dcat:keyword>
+    <dcat:keyword>hydrogeologie</dcat:keyword>
+    <dcat:keyword>lgb</dcat:keyword>
+    <dcat:keyword>rheinland-pfalz</dcat:keyword>
+    <dcat:keyword>trinkwasserschutzgebiet</dcat:keyword>
+    <dcat:keyword>wasserschutz</dcat:keyword>
+    <dcat:keyword>wasserschutzgebiet</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-10-15</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-10-15</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://www.geoportal.rlp.de/organization/45e43076-7570-4c1e-761e-7c42a5cb572e">
+        <foaf:name>Landesamt für Geologie und Bergbau</foaf:name>
+        <foaf:mbox>office@lgb-rlp.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N3caebf5400b9455f88ce70a87b4eab1e">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-01-01</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-01-01</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/html_metadata_71f09e19-dd25-4285-be96-a0b9bdbc5d8e">
+        <dct:title>Original Metadaten HTML</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D71f09e19-dd25-4285-be96-a0b9bdbc5d8e"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.313659</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.296291</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_mapviewer_layer_76116">
+        <dct:title>Online Karte</dct:title>
+        <dct:description>GWB: Natrium - Vorschau im integrierten Kartenviewer</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=76116"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.313662</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.296404</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_geoportal_layer_76116">
+        <dct:title>GeoPortal.rlp</dct:title>
+        <dct:description>GWB: Natrium - Anzeige im GeoPortal.rlp</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&amp;LAYER%5Bid%5D=76116"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.313664</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.296490</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_layer_metadata_76116">
+        <dct:title>Originäre Metadaten für Kartenebene</dct:title>
+        <dct:description>Kartenebene: GWB: Natrium - Anzeige der originären Metadaten</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-zero"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&amp;resource=layer&amp;layout=tabs&amp;id=76116"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.313665</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.296594</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_wms_interface_76116">
+        <dct:title>WMS Schnittstelle</dct:title>
+        <dct:description>Ebene: GWB: Natrium</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=76116&amp;REQUEST=GetCapabilities&amp;VERSION=1.1.1&amp;SERVICE=WMS"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.313666</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.296677</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_wfs_interface_ms__colon__HCE_Natrium_617">
+        <dct:title>WFS Schnittstelle</dct:title>
+        <dct:description>Objektart: ms:HCE_Natrium - WFS</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=4270&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:30.052209</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:30.025789</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_ogc_api_interface_ms__colon__HCE_Natrium_617">
+        <dct:title>OGC API Features (REST)</dct:title>
+        <dct:description>Objektart: ms:HCE_Natrium - ISO19168-1:20202 API</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/spatial-objects/617/collections/ms:HCE_Natrium"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:30.052213</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-01-22T22:58:30.025919</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoportal.rlp.de/dataset/71f09e19-dd25-4285-be96-a0b9bdbc5d8e/resource/71f09e19-dd25-4285-be96-a0b9bdbc5d8e_atom_feed_wfs_617">
+        <dct:title>Vektordownload nach EU-Standard</dct:title>
+        <dct:description>INSPIRE Downloaddienst (predefined ATOM) für Datensatz: GWB: Natrium - basierend auf WFS Datenquelle</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D71f09e19-dd25-4285-be96-a0b9bdbc5d8e%26type%3DSERVICE%26generateFrom%3Dwfs%26wfsid%3D617"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.313670</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-12-04T04:48:57.296918</dct:modified>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatap:applicableLegislation>
+      <ns1:LegalResource rdf:about="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+    </dcatap:applicableLegislation>
+    <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_dd313021"/>
+    <adms:identifier>N9450c85246264e6baed1e0a4ead3c760</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"/>
+    <dcatde:legalBasis>§ 7 Abs. 1 Nr. 9 Landestransparenzgesetz
+Geodaten</dcatde:legalBasis>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D71f09e19-dd25-4285-be96-a0b9bdbc5d8e%26type%3DSERVICE%26generateFrom%3Dwfs%26wfsid%3D617"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=76116&amp;REQUEST=GetCapabilities&amp;VERSION=1.1.1&amp;SERVICE=WMS"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/spatial-objects/617/collections/ms:HCE_Natrium"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/cc-zero">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D71f09e19-dd25-4285-be96-a0b9bdbc5d8e"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=76116"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&amp;LAYER%5Bid%5D=76116"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&amp;resource=layer&amp;layout=tabs&amp;id=76116"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+  <rdfs:Resource rdf:about="https://www.geoportal.rlp.de/mapbender/php/wfs.php?FEATURETYPE_ID=4270&amp;REQUEST=GetCapabilities&amp;SERVICE=WFS&amp;INSPIRE=1"/>
+</rdf:RDF>

@@ -1,0 +1,378 @@
+2026-07-16 12:09:11 - reporting.output_manager - INFO - Created file log handler for non_geo_open-data-bayern_02.rdf at run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_open-data-bayern_02/logs.log
+2026-07-16 12:09:11 - __main__ - INFO - Started processing: non_geo_open-data-bayern_02.rdf
+2026-07-16 12:09:11 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_open-data-bayern_02.rdf
+2026-07-16 12:09:11 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_open-data-bayern_02.rdf using format: xml
+2026-07-16 12:09:11 - extraction.rdf_parser - INFO - Successfully parsed 57 triples
+2026-07-16 12:09:11 - scoring.service - INFO - Parsed 57 triples
+2026-07-16 12:09:11 - scoring.service - DEBUG - DatasetContext built: 2 distribution(s)
+2026-07-16 12:09:11 - scoring.service - DEBUG - attach_probes: 2/2 unique fetch keys, 2 distribution(s) covered
+2026-07-16 12:09:13 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/3e746da3-e6dc-40f2-8197-eaac56f780f9 — Wissenschaftliche Bibliotheken: 15: Geowissenschaften, Bergbau in 2017 - XLSX
+  downloadURL : https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&year=2017&format=xlsx&attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo
+  HTTP        : 200
+  attachment  : auswertung.xlsx
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=dbs-downloader                           mime=-
+    http_content_type    raw=application/vnd.openxmlformats-officedo… mime=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+    attachment_filename  raw=auswertung.xlsx                          mime=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  coalesced   : application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+2026-07-16 12:09:15 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/498923d8-3f57-4936-ba74-918b857f593e — Wissenschaftliche Bibliotheken: 15: Geowissenschaften, Bergbau in 2017 - CSV
+  downloadURL : https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&year=2017&format=csv&attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo
+  HTTP        : 200
+  attachment  : auswertung.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=dbs-downloader                           mime=-
+    http_content_type    raw=text/csv; charset=utf-8                  mime=text/csv
+    attachment_filename  raw=auswertung.csv                           mime=text/csv
+  coalesced   : text/csv
+2026-07-16 12:09:15 - scoring.service - DEBUG - Attached probes to 2/2 distribution(s)
+2026-07-16 12:09:39 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Aussagekräftige, in sich konsistente Metadaten mit klarem Zeit- und Ortsbezug; Hauptschwächen sind die zerhackten, kompo')
+2026-07-16 12:09:39 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 12:09:39 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=10
+2026-07-16 12:09:39 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['ausgaben-insgesamt', 'bestand-gekaufte', 'bibliotheken', 'bibliotheksstatistik', 'darunter-ausgaben-für-gedruckte-bücher', 'darunter-ausgaben-für-laufend-gehaltene', 'dbs', 'gedruckte-zeitschriften-und-zeitungen', 'laufend-gehaltene', 'zugang-gedruckte-bücher']
+2026-07-16 12:09:39 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/EDUC']
+2026-07-16 12:09:39 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 12:09:39 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 12:09:39 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 12:09:39 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 12:09:39 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['2017-01-01T00:00:00'], endDate: ['2017-12-31T00:00:00']
+2026-07-16 12:09:39 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=dateTime/True
+2026-07-16 12:09:39 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/issued
+2026-07-16 12:09:39 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://open.bydata.de/api/hub/repo/datasets/dbs-wb-2017-15geowissenschaftenbergbau = 2025-07-09T00:00:00
+2026-07-16 12:09:39 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/3e746da3-e6dc-40f2-8197-eaac56f780f9 = 2025-07-09T00:00:00
+2026-07-16 12:09:39 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/498923d8-3f57-4936-ba74-918b857f593e = 2025-07-09T00:00:00
+2026-07-16 12:09:39 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/modified
+2026-07-16 12:09:39 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://open.bydata.de/api/hub/repo/datasets/dbs-wb-2017-15geowissenschaftenbergbau = 2025-07-09T00:00:00
+2026-07-16 12:09:39 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/3e746da3-e6dc-40f2-8197-eaac56f780f9 = 2025-07-09T00:00:00
+2026-07-16 12:09:39 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/498923d8-3f57-4936-ba74-918b857f593e = 2025-07-09T00:00:00
+2026-07-16 12:09:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 12:09:39 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 12:09:39 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 12:09:39 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=2/2
+2026-07-16 12:09:39 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 12:09:39 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=2/2
+2026-07-16 12:09:39 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 12:09:39 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/2
+2026-07-16 12:09:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 12:09:39 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 12:09:39 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 12:09:39 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.75 high=1 mid=1 none=0 total=2
+2026-07-16 12:09:39 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] partial score=0.50 passing=1/2
+2026-07-16 12:09:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 12:09:39 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=2/2
+2026-07-16 12:09:39 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 12:09:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 12:09:39 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 12:09:39 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 12:09:39 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 12:09:41 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] pass score=1.00 conforms=True violations=0
+2026-07-16 12:09:41 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/2
+2026-07-16 12:09:41 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.80 | Der Titel ist spezifisch, unterscheidbar und mit sinnvollem Zeit-/Sachbezug versehen. Der vorangestellte Code '15' ist e
+2026-07-16 12:09:41 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] partial | score=0.65 | Die Beschreibung beantwortet Was, Wozu und Herkunft gut und listet die enthaltenen Variablen auf. Struktur-/Formatangabe
+2026-07-16 12:09:41 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.90 | Titel und Beschreibung sind widerspruchsfrei und beziehen sich erkennbar auf denselben Datensatz (gleicher Bibliotheksty
+2026-07-16 12:09:41 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.40 | Ein Teil der Schlagwörter besteht aus zerhackten Phrasen der Beschreibung statt aus prägnanten, singularischen Begriffen
+2026-07-16 12:09:41 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.90 | Alle Felder verweisen widerspruchsfrei auf Bibliotheksstatistik im Bildungskontext. Die Themenzuordnung EDUC ist plausib
+2026-07-16 12:09:41 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=0.85 | Als jahresbezogene Statistik verlangt dieser Datentyp einen Zeitbezug, der klar vorhanden ist. Der räumliche Bezug ist e
+2026-07-16 12:09:41 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 12:09:41 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 12:09:41 - scoring.service - DEBUG - {
+  "dataset_uri": "https://open.bydata.de/api/hub/repo/datasets/dbs-wb-2017-15geowissenschaftenbergbau",
+  "titles": [
+    "Wissenschaftliche Bibliotheken: 15: Geowissenschaften, Bergbau in 2017"
+  ],
+  "descriptions": [
+    "Die deutsche Bibliotheksstatistik (DBS) stellt die nationale Statistik des deutschen Bibliothekswesens dar und beinhaltet statistische Kennzahlen. Sie umfasst öffentliche Bibliotheken, wissenschaftliche Bibliotheken, sowie wissenschaftliche Spezialbibliotheken. Mehr Informationen dazu gibt es bei der [DBS](https://www.bibliotheksstatistik.de/).\n Dieser Datensatz beinhaltet folgende Informationen zu wissenschaftlichen Bibliotheken in Bayern 2017: \n             Ausgaben insgesamt, Ausgaben insgesamt, darunter: Ausgaben für gedruckte Bücher, Ausgaben insgesamt, darunter: Ausgaben für laufend gehaltene, gedruckte Zeitschriften und Zeitungen, Zugang: gedruckte Bücher, Bestand: gekaufte, laufend gehaltene, gedruckte Zeitschriften und Zeitungen \n"
+  ],
+  "keywords": [
+    "ausgaben-insgesamt",
+    "bestand-gekaufte",
+    "bibliotheken",
+    "bibliotheksstatistik",
+    "darunter-ausgaben-für-gedruckte-bücher",
+    "darunter-ausgaben-für-laufend-gehaltene",
+    "dbs",
+    "gedruckte-zeitschriften-und-zeitungen",
+    "laufend-gehaltene",
+    "zugang-gedruckte-bücher"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/EDUC"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2025-07-09T00:00:00"
+  ],
+  "issued": [
+    "2025-07-09T00:00:00"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [
+    "2017-01-01T00:00:00"
+  ],
+  "end_dates": [
+    "2017-12-31T00:00:00"
+  ],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "Ndfbffb1b2d9a4e1dabb5dff9792dccf4",
+  "contact_points": [
+    "N55c7dce31a614a97b041f8c6d80880fc"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBayern"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/3e746da3-e6dc-40f2-8197-eaac56f780f9",
+      "titles": [
+        "Wissenschaftliche Bibliotheken: 15: Geowissenschaften, Bergbau in 2017 - XLSX"
+      ],
+      "descriptions": [
+        "Felder: Ausgaben insgesamt, Ausgaben insgesamt, darunter: Ausgaben für gedruckte Bücher, Ausgaben insgesamt, darunter: Ausgaben für laufend gehaltene, gedruckte Zeitschriften und Zeitungen, Zugang: gedruckte Bücher, Bestand: gekaufte, laufend gehaltene, gedruckte Zeitschriften und Zeitungen"
+      ],
+      "download_url": "https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&year=2017&format=xlsx&attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo",
+      "access_url": "https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&year=2017&format=xlsx&attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/XLSX"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-07-09T00:00:00"
+      ],
+      "issued": [
+        "2025-07-09T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-zero"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/XLSX",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "dbs-downloader",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "auswertung.xlsx",
+            "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          }
+        ],
+        "coalesced_mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&year=2017&format=xlsx&attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo",
+        "content_disposition": "attachment; filename=auswertung.xlsx",
+        "attachment_filename": "auswertung.xlsx",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/498923d8-3f57-4936-ba74-918b857f593e",
+      "titles": [
+        "Wissenschaftliche Bibliotheken: 15: Geowissenschaften, Bergbau in 2017 - CSV"
+      ],
+      "descriptions": [
+        "Felder: Ausgaben insgesamt, Ausgaben insgesamt, darunter: Ausgaben für gedruckte Bücher, Ausgaben insgesamt, darunter: Ausgaben für laufend gehaltene, gedruckte Zeitschriften und Zeitungen, Zugang: gedruckte Bücher, Bestand: gekaufte, laufend gehaltene, gedruckte Zeitschriften und Zeitungen"
+      ],
+      "download_url": "https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&year=2017&format=csv&attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo",
+      "access_url": "https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&year=2017&format=csv&attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-07-09T00:00:00"
+      ],
+      "issued": [
+        "2025-07-09T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-zero"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "dbs-downloader",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/csv; charset=utf-8",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "auswertung.csv",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://europe-west3-open-data-bayern.cloudfunctions.net/dbs-downloader?bibtype=WB&year=2017&format=csv&attrib=f96_ausg_geo%2Cf97_buech_geo%2Cf98_zeit_geo%2Cf99_zu_geo%2Cf100_lfdz_geo",
+        "content_disposition": "attachment; filename=auswertung.csv",
+        "attachment_filename": "auswertung.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Titel benennt spezifisch die Fachgruppe (15: Geowissenschaften, Bergbau), Bibliothekstyp und Jahr 2017",
+        "Der numerische Code '15' vor der Fachbezeichnung wirkt leicht kryptisch, ist aber durch den nachfolgenden Klartext aufgelöst",
+        "Zeitbezug (2017) sinnvoll im Titel enthalten"
+      ],
+      "reasoning": "Der Titel ist spezifisch, unterscheidbar und mit sinnvollem Zeit-/Sachbezug versehen. Der vorangestellte Code '15' ist ein kleiner Schönheitsfehler, wird aber durch die Klartextbezeichnung erklärt.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "description_quality": {
+      "findings": [
+        "Erklärt Herkunft/Kontext (Deutsche Bibliotheksstatistik, Zweck, Link zur DBS)",
+        "Listet die enthaltenen Kennzahlen konkret auf (Ausgaben, Zugang, Bestand)",
+        "Nennt keine Angaben zu Format, Struktur, Trennzeichen oder Kodierung; Aufzählung enthält Redundanzen ('Ausgaben insgesamt' mehrfach) und Markdown-Rest"
+      ],
+      "reasoning": "Die Beschreibung beantwortet Was, Wozu und Herkunft gut und listet die enthaltenen Variablen auf. Struktur-/Formatangaben fehlen, und die Aufzählung ist teils redundant formuliert, was die Klarheit mindert.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel nennt 'Geowissenschaften, Bergbau in 2017', Beschreibung bestätigt wissenschaftliche Bibliotheken in Bayern 2017",
+        "Beschreibung nennt zusätzlich den räumlichen Bezug Bayern, der im Titel fehlt, aber nicht widerspricht",
+        "Kennzahlen der Beschreibung passen zum wissenschaftlichen Bibliotheksthema des Titels"
+      ],
+      "reasoning": "Titel und Beschreibung sind widerspruchsfrei und beziehen sich erkennbar auf denselben Datensatz (gleicher Bibliothekstyp, gleiches Jahr). Der räumliche Zusatz Bayern ergänzt konsistent.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "keyword_quality": {
+      "findings": [
+        "Schlagwörter sind teils lange Komposita/Phrasen ('darunter-ausgaben-für-laufend-gehaltene', 'bestand-gekaufte')",
+        "Bindestrich-verkettete Fragmente statt atomarer, laienverständlicher Begriffe",
+        "Gute atomare Begriffe wie 'bibliotheken', 'bibliotheksstatistik' vorhanden; 'dbs' ist eine unerklärte Abkürzung"
+      ],
+      "reasoning": "Ein Teil der Schlagwörter besteht aus zerhackten Phrasen der Beschreibung statt aus prägnanten, singularischen Begriffen. Einige brauchbare Tags mildern das, aber Komposita und die Abkürzung 'dbs' senken die Qualität.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Thema EDUC (Bildung) passt zu wissenschaftlichen Bibliotheken",
+        "Titel, Beschreibung und Schlagwörter zeigen einheitlich das Sujet Bibliotheksstatistik",
+        "Keine Off-topic-Signale erkennbar"
+      ],
+      "reasoning": "Alle Felder verweisen widerspruchsfrei auf Bibliotheksstatistik im Bildungskontext. Die Themenzuordnung EDUC ist plausibel und konsistent.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Bezugsjahr 2017 klar im Titel und im temporal-Feld (2017-01-01 bis 2017-12-31) angegeben",
+        "Räumliche Abdeckung Bayern in der Beschreibung genannt",
+        "Kein Aktualisierungszyklus angegeben, aber bei einer jahresbezogenen Einzelstatistik vertretbar"
+      ],
+      "reasoning": "Als jahresbezogene Statistik verlangt dieser Datentyp einen Zeitbezug, der klar vorhanden ist. Der räumliche Bezug ist ebenfalls angegeben. Die geforderten Qualifizierer sind damit erfüllt.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "overall_summary": "Aussagekräftige, in sich konsistente Metadaten mit klarem Zeit- und Ortsbezug; Hauptschwächen sind die zerhackten, kompositalen Schlagwörter und fehlende Format-/Strukturangaben in der Beschreibung."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-opus-4.8",
+      "input_tokens": 7525,
+      "output_tokens": 1818,
+      "total_tokens": 9343,
+      "cost_usd": 0.083075,
+      "latency_seconds": 24.653
+    }
+  ],
+  "distribution_count": 2
+}
+2026-07-16 12:09:41 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_open-data-bayern_02/result.json
+2026-07-16 12:09:41 - __main__ - INFO -   ✓ Completed | score=0.77 grade=B

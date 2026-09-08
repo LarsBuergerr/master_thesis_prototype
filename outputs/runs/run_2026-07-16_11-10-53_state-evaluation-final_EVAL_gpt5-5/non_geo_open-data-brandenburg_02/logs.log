@@ -1,0 +1,272 @@
+2026-07-16 11:25:38 - reporting.output_manager - INFO - Created file log handler for non_geo_open-data-brandenburg_02.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_open-data-brandenburg_02/logs.log
+2026-07-16 11:25:38 - __main__ - INFO - Started processing: non_geo_open-data-brandenburg_02.rdf
+2026-07-16 11:25:38 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_open-data-brandenburg_02.rdf
+2026-07-16 11:25:38 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_open-data-brandenburg_02.rdf using format: xml
+2026-07-16 11:25:38 - extraction.rdf_parser - INFO - Successfully parsed 46 triples
+2026-07-16 11:25:38 - scoring.service - INFO - Parsed 46 triples
+2026-07-16 11:25:38 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-16 11:25:38 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-16 11:25:38 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/34c79215-f5e5-4c04-ba64-4b4872ed6b7f — Vorhabenbezogener Bebauungsplan Einzelarztpraxis Schemel - Amt Brück Stadt Brück (WMS)
+  downloadURL : https://www.geoportal-amt-brueck.de/isk/bp20a?
+  HTTP        : 200
+  final URL   : https://www.geoportal-amt-brueck.de/isk/bp20a
+  signals     :
+    dct:format           raw=-                                        mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=bp20a                                    mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/xml
+2026-07-16 11:25:38 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-16 11:25:55 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten machen das Thema des Datensatzes grundsätzlich erkennbar und der Titel ist recht spezifisch. Deutliche Sch')
+2026-07-16 11:25:55 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:25:55 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=4
+2026-07-16 11:25:55 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['bauleitplanung', 'infomapaccessservice', 'opendata', 'planung']
+2026-07-16 11:25:55 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: []
+2026-07-16 11:25:55 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] FAIL score=0.00 no themes
+2026-07-16 11:25:55 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:25:55 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:25:55 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:25:55 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:25:55 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:25:55 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-16 11:25:55 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/d536b57c-a2bc-4fa3-820d-7d5608933b97 = 2011-08-12T00:00:00
+2026-07-16 11:25:55 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/34c79215-f5e5-4c04-ba64-4b4872ed6b7f = 2026-05-01T05:48:11.503006
+2026-07-16 11:25:55 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-16 11:25:55 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/d536b57c-a2bc-4fa3-820d-7d5608933b97 = 2026-02-13T10:10:55
+2026-07-16 11:25:55 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/34c79215-f5e5-4c04-ba64-4b4872ed6b7f = 2026-05-01T05:48:11.488303
+2026-07-16 11:25:55 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:25:55 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:25:55 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=1/1
+2026-07-16 11:25:55 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:25:55 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/1
+2026-07-16 11:25:55 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:25:55 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/1
+2026-07-16 11:25:55 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:25:55 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 11:25:55 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 11:25:55 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:25:55 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=1 mid=0 none=0 total=1
+2026-07-16 11:25:55 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/1
+2026-07-16 11:25:55 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:25:55 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=1/1
+2026-07-16 11:25:55 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:25:55 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:25:55 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:25:55 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:25:55 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:25:57 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=1
+2026-07-16 11:25:57 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-16 11:25:57 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.80 | Der Titel ist insgesamt spezifisch und unterscheidbar, enthält aber mit „WMS“ eine technische, nicht erklärte Abkürzung 
+2026-07-16 11:25:57 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.35 | Die Beschreibung ist verständlich, aber sehr generisch und liefert kaum datensatzspezifische Informationen. Inhalt, Stru
+2026-07-16 11:25:57 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.70 | Titel und Beschreibung sind thematisch kohärent, da beide dasselbe Planinstrument betreffen. Die Beschreibung bleibt abe
+2026-07-16 11:25:57 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.45 | Ein Teil der Schlagwörter passt inhaltlich, mehrere Tags sind jedoch technisch oder formal statt fachlich aussagekräftig
+2026-07-16 11:25:57 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] partial | score=0.70 | Das erkennbare Themenbild ist überwiegend konsistent auf Bauleitplanung ausgerichtet. Die fehlende Themenklassifikation 
+2026-07-16 11:25:57 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.55 | Für diesen georeferenzierten Planungsdatensatz sind räumliche Abdeckung und Planstand relevante Kontextangaben. Die räum
+2026-07-16 11:25:57 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:25:57 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:25:57 - scoring.service - DEBUG - {
+  "dataset_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/d536b57c-a2bc-4fa3-820d-7d5608933b97",
+  "titles": [
+    "Vorhabenbezogener Bebauungsplan Einzelarztpraxis Schemel - Amt Brück Stadt Brück (WMS)"
+  ],
+  "descriptions": [
+    "Der Vorhabenbezogene Bebauungsplan setzt als verbindlicher Bauleitplan eine objektbezogene Vorhabensplanung in unmittelbar geltendes Recht um. Für ihn gelten dieselben Regelungen, die auch für den Bebauungsplan maßgeblich sind."
+  ],
+  "keywords": [
+    "bauleitplanung",
+    "infomapaccessservice",
+    "opendata",
+    "planung"
+  ],
+  "themes": [],
+  "themes_in_vocab": [],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-02-13T10:10:55"
+  ],
+  "issued": [
+    "2011-08-12T00:00:00"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((12.7271 52.1664, 12.7289 52.1664, 12.7289 52.1650, 12.7271 52.1650, 12.7271 52.1664))"
+  ],
+  "spatial_resources": [
+    "N3697a07229bd4267abf4f1fc8e3f2eba"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "N181282b5d9544477bc4ce8c0bcae9714",
+  "publisher": "N51c26ab7d5c940e9a7216b4cb8a85159",
+  "contact_points": [
+    "N9481a84b94814b249d752daea997c34c"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/34c79215-f5e5-4c04-ba64-4b4872ed6b7f",
+      "titles": [
+        "Vorhabenbezogener Bebauungsplan Einzelarztpraxis Schemel - Amt Brück Stadt Brück (WMS)"
+      ],
+      "descriptions": [
+        "Vorhabenbezogener Bebauungsplan Einzelarztpraxis Schemel - Amt Brück Stadt Brück (WMS)"
+      ],
+      "download_url": "https://www.geoportal-amt-brueck.de/isk/bp20a?",
+      "access_url": "https://www.geoportal-amt-brueck.de/isk/bp20a?",
+      "formats": [],
+      "formats_in_vocab": [],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-01T05:48:11.488303"
+      ],
+      "issued": [
+        "2026-05-01T05:48:11.503006"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bp20a",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-amt-brueck.de/isk/bp20a",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel nennt konkret den Typ des Plans („Vorhabenbezogener Bebauungsplan“), das Vorhaben („Einzelarztpraxis Schemel“) sowie Amt und Stadt.",
+        "Der Zusatz „(WMS)“ kennzeichnet eher den Diensttyp und ist als technische Abkürzung nicht erläutert."
+      ],
+      "reasoning": "Der Titel ist insgesamt spezifisch und unterscheidbar, enthält aber mit „WMS“ eine technische, nicht erklärte Abkürzung im Titel. Daher ist die Titelqualität gut, aber nicht vorbildlich.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt allgemein, was ein vorhabenbezogener Bebauungsplan rechtlich ist.",
+        "Sie enthält keine konkreten Angaben zum benannten Vorhaben, zum Geltungsbereich, zur Datenstruktur, zum WMS-Inhalt oder zu relevanten Planunterlagen.",
+        "Sie beschreibt eher den Planinstrument-Typ als den konkreten Datensatz."
+      ],
+      "reasoning": "Die Beschreibung ist verständlich, aber sehr generisch und liefert kaum datensatzspezifische Informationen. Inhalt, Struktur und konkrete Quelle bzw. Zweck des bereitgestellten WMS bleiben weitgehend offen.",
+      "applicable": true,
+      "score": 0.35
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf einen vorhabenbezogenen Bebauungsplan.",
+        "Die Beschreibung konkretisiert jedoch nicht die im Titel genannte Einzelarztpraxis Schemel oder Stadt Brück.",
+        "Es gibt keinen direkten Widerspruch zwischen Titel und Beschreibung."
+      ],
+      "reasoning": "Titel und Beschreibung sind thematisch kohärent, da beide dasselbe Planinstrument betreffen. Die Beschreibung bleibt aber allgemein und stützt den spezifischen Titel nur teilweise.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "keyword_quality": {
+      "findings": [
+        "„bauleitplanung“ und „planung“ sind thematisch passende, verständliche Begriffe, wenn auch nicht einheitlich großgeschrieben.",
+        "„infomapaccessservice“ ist technischer Jargon und für Laien wenig verständlich.",
+        "„opendata“ ist ein formaler Metadaten-Tag und beschreibt den Inhalt nicht spezifisch."
+      ],
+      "reasoning": "Ein Teil der Schlagwörter passt inhaltlich, mehrere Tags sind jedoch technisch oder formal statt fachlich aussagekräftig. Die Schlagwortqualität ist daher nur eingeschränkt brauchbar.",
+      "applicable": true,
+      "score": 0.45
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Titel, Beschreibung und Schlagwörter „bauleitplanung“/„planung“ weisen konsistent auf Bauleitplanung hin.",
+        "Der technische Tag „infomapaccessservice“ passt eher zur Bereitstellungsform als zum Thema.",
+        "Es ist kein dcat:theme angegeben, daher kann dieses Feld die thematische Einordnung nicht stützen."
+      ],
+      "reasoning": "Das erkennbare Themenbild ist überwiegend konsistent auf Bauleitplanung ausgerichtet. Die fehlende Themenklassifikation und ein technischer Tag schwächen die thematische Aussagekraft, erzeugen aber keinen Widerspruch.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Für einen Bebauungsplan/Geodatensatz sind räumliche Angaben relevant; eine Geometrie ist vorhanden und der Ort ist im Titel genannt.",
+        "Ein Bezugsdatum bzw. Planstand ist nicht in Titel oder Beschreibung erläutert; nur technische Metadaten wie issued/modified sind vorhanden.",
+        "Der Titel weist auf WMS hin, aber Aktualisierungszyklus oder Stand der bereitgestellten Planinformation werden nicht angegeben."
+      ],
+      "reasoning": "Für diesen georeferenzierten Planungsdatensatz sind räumliche Abdeckung und Planstand relevante Kontextangaben. Die räumliche Abdeckung ist teilweise vorhanden, der fachliche Stand bzw. Bezugszeitpunkt und Aktualisierungskontext bleiben jedoch unklar.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "overall_summary": "Die Metadaten machen das Thema des Datensatzes grundsätzlich erkennbar und der Titel ist recht spezifisch. Deutliche Schwächen liegen in der generischen Beschreibung, technisch/formalen Schlagwörtern und fehlenden fachlichen Kontextangaben zum konkreten Planstand bzw. Inhalt des WMS."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3518,
+      "output_tokens": 881,
+      "total_tokens": 4399,
+      "cost_usd": 0.031924,
+      "latency_seconds": 17.115
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-16 11:25:57 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_open-data-brandenburg_02/result.json
+2026-07-16 11:25:57 - __main__ - INFO -   ✓ Completed | score=0.63 grade=C

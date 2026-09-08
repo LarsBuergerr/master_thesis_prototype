@@ -1,0 +1,280 @@
+2026-07-13 13:45:47 - reporting.output_manager - INFO - Created file log handler for non_geo_rest_05.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_rest_05/logs.log
+2026-07-13 13:45:47 - __main__ - INFO - Started processing: non_geo_rest_05.rdf
+2026-07-13 13:45:47 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_rest_05.rdf
+2026-07-13 13:45:47 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_rest_05.rdf using format: xml
+2026-07-13 13:45:47 - extraction.rdf_parser - INFO - Successfully parsed 35 triples
+2026-07-13 13:45:47 - scoring.service - INFO - Parsed 35 triples
+2026-07-13 13:45:47 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-13 13:45:47 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-13 13:45:47 - scoring.service - DEBUG - [OK   ] https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72 — TOP_08_Mündliche_Berichte_05.11.2024.pdf
+  accessURL   : https://upload.open.rlp.de/eakte/65838316-b695-4400-8fdc-6b088b45f141/resource/c06b7319-c198-4bb4-8388-14345f6e5569/download/top-08-mundliche-berichte-05.11.2024.pdf
+  HTTP        : 200
+  attachment  : top-08-mundliche-berichte-05.11.2024.pdf
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/pdf
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=application/pdf
+    url_extension        raw=top-08-mundliche-berichte-05.11.2024.pdf mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=top-08-mundliche-berichte-05.11.2024.pdf mime=application/pdf
+  coalesced   : application/pdf
+2026-07-13 13:45:47 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-13 13:46:10 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind extrem knapp und wenig aussagekräftig. Titel und Beschreibung bleiben generisch und bieten kaum Konte')
+2026-07-13 13:46:10 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:46:10 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=5
+2026-07-13 13:46:10 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['landtag', 'ministerrat', 'plenum', 'staatsvertrag', 'swr']
+2026-07-13 13:46:10 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/SOCI', 'http://publications.europa.eu/resource/authority/data-theme/GOVE']
+2026-07-13 13:46:10 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-13 13:46:10 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-13 13:46:10 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-13 13:46:10 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-13 13:46:10 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-13 13:46:10 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-13 13:46:10 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-13 13:46:10 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd = 2025-01-29T14:42:59+01:00
+2026-07-13 13:46:10 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72 = 2026-06-23T06:03:54.514330
+2026-07-13 13:46:10 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-13 13:46:10 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd = 2025-01-29T14:43:00+01:00
+2026-07-13 13:46:10 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72 = 2025-01-29T14:43:00+01:00
+2026-07-13 13:46:10 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:46:10 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:46:10 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:46:10 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/1
+2026-07-13 13:46:10 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:46:10 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=1/1
+2026-07-13 13:46:10 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:46:10 - scoring.indicator.acc_media_type - INFO - [acc_media_type] pass score=1.00 passing=1/1
+2026-07-13 13:46:10 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:46:10 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-13 13:46:10 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-13 13:46:10 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] fail score=0.00 high=0 mid=0 none=1 total=1
+2026-07-13 13:46:10 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/1
+2026-07-13 13:46:10 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:46:10 - scoring.indicator.reuse_license - INFO - [reuse_license] fail score=-0.50 free=0/1
+2026-07-13 13:46:10 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:46:10 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:46:10 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:46:10 - scoring.indicator.reuse_contact - INFO - [reuse_contact] FAIL score=0.00 no contactPoint set
+2026-07-13 13:46:10 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-13 13:46:12 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=1
+2026-07-13 13:46:12 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-13 13:46:12 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] fail | score=0.20 | Der Titel ist zu unspezifisch und bietet keine Möglichkeit, den Datensatz von ähnlichen Datensätzen zu unterscheiden. Es
+2026-07-13 13:46:12 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.10 | Die Beschreibung ist extrem knapp und wiederholt im Wesentlichen nur den Titel in einem Satz. Sie beantwortet keine der 
+2026-07-13 13:46:12 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.90 | Titel und Beschreibung passen inhaltlich zusammen und widersprechen sich nicht. Die Beschreibung konkretisiert den Titel
+2026-07-13 13:46:12 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.60 | Die Schlagwörter sind formal gut gewählt (kurz, singularisch), aber inhaltlich teilweise unklar. 'swr' ist eine Abkürzun
+2026-07-13 13:46:12 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:46:12 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] partial | score=0.70 | Thema, Titel und die meisten Schlagwörter bilden ein erkennbares Bild (Regierung, Ministerrat). Einzelne Schlagwörter ('
+2026-07-13 13:46:12 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.10 | Für einen Datensatz über 'mündliche Berichte' des Ministerrats wäre eine zeitliche Einordnung (Sitzungsdatum, Bezugszeit
+2026-07-13 13:46:12 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:46:12 - scoring.service - DEBUG - {
+  "dataset_uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd",
+  "titles": [
+    "Mündliche Berichte"
+  ],
+  "descriptions": [
+    "Der Ministerrat nimmt die mündlichen Berichte zur Kenntnis."
+  ],
+  "keywords": [
+    "landtag",
+    "ministerrat",
+    "plenum",
+    "staatsvertrag",
+    "swr"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/SOCI",
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2025-01-29T14:43:00+01:00"
+  ],
+  "issued": [
+    "2025-01-29T14:42:59+01:00"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "N67826cb8a4024bba9355cff281b207fd",
+  "contact_points": [],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72",
+      "titles": [
+        "TOP_08_Mündliche_Berichte_05.11.2024.pdf"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://upload.open.rlp.de/eakte/65838316-b695-4400-8fdc-6b088b45f141/resource/c06b7319-c198-4bb4-8388-14345f6e5569/download/top-08-mundliche-berichte-05.11.2024.pdf",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/PDF"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/application/pdf"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2025-01-29T14:43:00+01:00"
+      ],
+      "issued": [
+        "2026-06-23T06:03:54.514330"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/other-closed"
+      ],
+      "licenses_open": [
+        false
+      ],
+      "byte_size": "87322",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "top-08-mundliche-berichte-05.11.2024.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "top-08-mundliche-berichte-05.11.2024.pdf",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://upload.open.rlp.de/eakte/65838316-b695-4400-8fdc-6b088b45f141/resource/c06b7319-c198-4bb4-8388-14345f6e5569/download/top-08-mundliche-berichte-05.11.2024.pdf",
+        "content_disposition": "inline; filename=top-08-mundliche-berichte-05.11.2024.pdf",
+        "attachment_filename": "top-08-mundliche-berichte-05.11.2024.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel 'Mündliche Berichte' ist extrem generisch und ohne jeglichen Kontext.",
+        "Es fehlt jede Unterscheidbarkeit: Welche Berichte? Von wem? Zu welchem Anlass oder Zeitraum?",
+        "Der Titel könnte auf unzählige Datensätze verschiedener Stellen zutreffen."
+      ],
+      "reasoning": "Der Titel ist zu unspezifisch und bietet keine Möglichkeit, den Datensatz von ähnlichen Datensätzen zu unterscheiden. Es fehlen Kontext, Ort, Zeit oder Thema. Ein Nutzer kann aus dem Titel allein nicht erkennen, worum es konkret geht.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung besteht aus einem einzigen, sehr kurzen Satz: 'Der Ministerrat nimmt die mündlichen Berichte zur Kenntnis.'",
+        "Es fehlen alle strukturellen Informationen: Was ist enthalten? Welches Format? Welche Themen werden behandelt?",
+        "Keine Angaben zu Erhebungsmethode, Quelle, Zweck oder Besonderheiten."
+      ],
+      "reasoning": "Die Beschreibung ist extrem knapp und wiederholt im Wesentlichen nur den Titel in einem Satz. Sie beantwortet keine der zentralen Fragen (Inhalt, Struktur, Format, Methode, Zweck). Damit ist sie nicht substanziell informativ.",
+      "applicable": true,
+      "score": 0.1
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf 'mündliche Berichte' im Kontext des Ministerrats.",
+        "Die Beschreibung erweitert den Titel minimal um den Hinweis, dass der Ministerrat diese zur Kenntnis nimmt.",
+        "Keine erkennbaren Widersprüche zwischen Titel und Beschreibung."
+      ],
+      "reasoning": "Titel und Beschreibung passen inhaltlich zusammen und widersprechen sich nicht. Die Beschreibung konkretisiert den Titel zwar kaum, aber sie ist konsistent.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter sind kurz und singularisch formuliert ('landtag', 'ministerrat', 'plenum', 'staatsvertrag', 'swr').",
+        "Einige Schlagwörter sind inhaltlich spezifisch ('ministerrat', 'plenum', 'staatsvertrag'), andere eher formaler Natur ('landtag', 'swr').",
+        "Die Schlagwörter ergänzen den Titel teilweise, aber 'swr' und 'staatsvertrag' wirken ohne Kontext unklar oder möglicherweise off-topic."
+      ],
+      "reasoning": "Die Schlagwörter sind formal gut gewählt (kurz, singularisch), aber inhaltlich teilweise unklar. 'swr' ist eine Abkürzung ohne Erklärung, 'staatsvertrag' passt nicht offensichtlich zu 'mündlichen Berichten'. Insgesamt brauchbar, aber mit Schwächen.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Die Themen SOCI (Gesellschaft) und GOVE (Regierung) passen grundsätzlich zu 'Ministerrat' und 'mündlichen Berichten'.",
+        "Die Schlagwörter ('landtag', 'ministerrat', 'plenum') unterstützen das Thema GOVE.",
+        "Allerdings wirken 'staatsvertrag' und 'swr' ohne weitere Erklärung in Titel/Beschreibung etwas zusammenhanglos."
+      ],
+      "reasoning": "Thema, Titel und die meisten Schlagwörter bilden ein erkennbares Bild (Regierung, Ministerrat). Einzelne Schlagwörter ('staatsvertrag', 'swr') sind ohne Kontext schwer einzuordnen, aber kein klarer Widerspruch. Insgesamt konsistent, aber nicht vollständig kohärent.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Es fehlt jede zeitliche Einordnung: Wann fanden die mündlichen Berichte statt? Welcher Bezugszeitraum?",
+        "Keine Angabe zu Aktualisierungszyklen oder Stichtag.",
+        "Keine Kennzeichnung, ob es sich um vorläufige, geschätzte oder finale Daten handelt."
+      ],
+      "reasoning": "Für einen Datensatz über 'mündliche Berichte' des Ministerrats wäre eine zeitliche Einordnung (Sitzungsdatum, Bezugszeitraum) zwingend erforderlich. Diese fehlt vollständig. Damit ist der Kontext unvollständig.",
+      "applicable": true,
+      "score": 0.1
+    },
+    "overall_summary": "Die Metadaten sind extrem knapp und wenig aussagekräftig. Titel und Beschreibung bleiben generisch und bieten kaum Kontext; zentrale Angaben wie Zeitbezug oder Inhaltsstruktur fehlen vollständig. Die thematische Konsistenz ist erkennbar, aber die Gesamtaussagekraft bleibt sehr schwach."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 5883,
+      "output_tokens": 1519,
+      "total_tokens": 7402,
+      "cost_usd": 0.040434,
+      "latency_seconds": 23.127
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-13 13:46:12 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_rest_05/result.json
+2026-07-13 13:46:12 - __main__ - INFO -   ✓ Completed | score=0.37 grade=F

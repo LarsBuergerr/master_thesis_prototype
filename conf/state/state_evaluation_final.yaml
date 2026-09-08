@@ -1,0 +1,140 @@
+# AgentState configuration - evaluation, data-breaking focus
+# Variant of state_evaluation_weighted: keeps most indicators at the standard
+# weight 1.0 and only elevates the "data-breaking" indicators (a defect there
+# makes the dataset de-facto unusable). Stays close to the standard while giving
+# hard blockers clear priority.
+
+defaults:
+  - _self_
+
+# Directory path for input data
+# directory_path: "data/sample_2026-06-25_09-57"
+# directory_path: "data/"
+# directory_path: "data/sample_2026-06-25_09-57"
+directory_path: "data/extreme_cases_04"
+# If empty: process all files matching extensions in directory_path
+files: ["good_01.rdf"]
+
+# File filtering (only used if files list is empty)
+file_filter:
+  # Only process files with these extensions
+  extensions: [".rdf"]
+  # Include patterns: process only files matching these (filename starts with) e.g. "geo_", "non_geo_"
+  include_patterns: []
+  # Exclude patterns: skip files matching these (filename starts with)
+  exclude_patterns: []
+
+# Output directory for results
+output_dir: "outputs/runs/"
+# Optional custom suffix for the run output directory (overrides default naming based on directorypath or filename if only one file is processed)
+run_output_dir_suffix: "EVAL"
+# Master switch for creating run output directory and saving results there. If false no output is generated
+run_output_enabled: true
+# Language configuration. Options: "de", "en"
+language: "de"
+
+llm:
+  # Master switch for the expressiveness LLM agent. Must be true to spend tokens; when false, expressiveness indicators report NOT_APPLICABLE.
+  enabled: true
+  # LLM provider. Options: "local", "openrouter" (for local make sure to have the required model downloaded and running)
+  provider: "openrouter"
+  # model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id, for local use a supported model name e.g. qwen3.5
+  model: "openai/gpt-5.5"
+  # LLM response randomness (0.0 = deterministic, higher values = more random) default 0.0
+  temperature: 0.0
+  # Maximum tokens for LLM responses (adjust based on expected response length and model limits) default 10000
+  max_tokens: 25000
+
+logging:
+  # Logging level: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
+  level: "DEBUG"
+  # If true, log full details of processing; if false, log only summaries and key events
+  verbose: true
+
+quality:
+  # Maximum workers for parallel dimension processing. (If higher than 1 it can and will fk up the logging output sequence, it doesnt affect the speed much)
+  max_workers: 1
+
+  # Status -> points mapping (optional). If this block is missing, the raw
+  # indicator scores are used unchanged (backwards compatible).
+  #   - pass_score / partial_score / fail_score: points per status
+  #   - fail_score MAY be negative (active penalty for failures)
+  #   - allow_partial: false -> every PARTIAL is counted as FAIL (strict),
+  #     ternary indicators only
+  # Applies to ternary indicators (PASS/PARTIAL/FAIL). Graded/continuous
+  # indicators (GRADED=True: expr_*, acc_machine_readable_access,
+  # acc_format_non_proprietary, acc_*_url_response) always contribute their raw
+  # continuous score regardless of status (the label is presentational); only
+  # an explicit per-indicator fail_score override penalises a graded FAIL.
+  scoring:
+    pass_score: 1.0
+    partial_score: 0.5
+    fail_score: 0.0
+    allow_partial: true
+    # Per-indicator overrides (override the global values above)
+    overrides:
+      # reuse_license & acc_machine_readable_access now carry a per-distribution
+      # malus in the indicator itself — no fail_score override needed here.
+
+  # Optional dimension whitelist (default: all dimensions if list is empty or missing)
+  # dimension_whitelist: ["accessibility", "reusability", "findability", "expressiveness"]
+  dimension_whitelist: []
+  # If specified, these indicators will be skipped
+  indicator_blacklist:
+    [
+      acc_distribution_model,
+      acc_format_congruence,
+      find_accrual_periodicity,
+      reuse_access_rights,
+    ]
+  # If specified, only these indicators will be processed (overrides blacklist)
+  indicator_whitelist: []
+
+  # Optional custom weights per dimension (default for all: 1.0)
+  # accessibility/reusability higher: this is where bad datasets fail most
+  # clearly (no access / no license). expressiveness as a strong semantic
+  # differentiator weighted above findability (structural basis).
+  dimension_weights:
+    accessibility: 2
+    reusability: 1.5
+    expressiveness: 2.0
+    findability: 1
+
+  # Optional custom weights per indicator id (default: indicator.weight = 1.0).
+  # Philosophy: stay close to the standard (everything at 1.0) and only elevate
+  # DATA-BREAKING indicators — a defect there makes the dataset de-facto unusable
+  # (no data / dead link / unreadable format / no legal basis). All non-breaking
+  # indicators keep the standard weight 1.0.
+  indicator_weights:
+    # --- Findability: no data-breaking indicators -> all standard 1.0 ---
+    find_keywords_count: 1.0
+    find_theme_valid: 1.0
+    find_temporal_coverage: 1.0
+    find_locn_geometry: 1.0
+    find_political_geocoding: 1.0
+    find_geocoding_level: 1.0
+    find_issued_datetime: 1.0
+    find_modified_datetime: 1.0
+
+    # --- Accessibility: the core data-breaking blockers live here ---
+    acc_download_url: 1.0 # DATA-BREAKING: no download URL = no data
+    acc_machine_readable_access: 1.5 # important but not data-breaking: non-readable distributions often supplement a machine-readable one (no malus, weight between default and data-breaking)
+    acc_download_url_response: 2.0 # DATA-BREAKING: dead download link
+    acc_access_url_response: 2.0 # DATA-BREAKING: dead access link (accessURL = MUSS)
+    acc_format: 1.0 # DATA-BREAKING: unknown format = cannot interpret data
+    acc_media_type: 1.0 # secondary/optional -> standard
+
+    # --- Reusability: license is the data-breaking (legal) blocker ---
+    reuse_license: 2.0 # DATA-BREAKING: no free-use license = not reusable
+    reuse_contact: 1.0
+    reuse_contributor_id: 1.0
+    reuse_publisher: 1.0
+    reuse_availability: 1.0
+
+    # --- Expressiveness: inactive in this eval (LLM off, not whitelisted) ---
+    expr_description_quality: 1.0
+    expr_title_quality: 1.0
+    expr_title_description_coherence: 1.0
+    expr_keyword_quality: 1.0
+    expr_thematic_consistency: 1.0
+    expr_contextual_qualifiers: 1.0

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>1
+  <dcat:Dataset rdf:about="https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd#dataset">
+    <dct:title>Test-Beds, Reallabore, Prüfzentren</dct:title>
+    <dct:identifier rdf:resource="https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd#dataset"/>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-04-05T12:03:17.624247</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-08-09T13:45:45.668720</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://www.m-r-n.com">
+        <foaf:name>Metropolregion Rhein-Neckar</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd/resource/292e2b5b-5f5b-4f1d-9ac6-321c0b09b171#distribution">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>3
+        <dct:title>Test-Beds, Reallabore, Prüfzentren (GeoJSON)</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://daten.digitale-mrn.de/dataset/23bac0ee-ffed-4c89-b234-3fb506db78dd/resource/292e2b5b-5f5b-4f1d-9ac6-321c0b09b171#distribution"/>
+        <dcat:downloadURL rdf:resource="https://metropolatlas.digitale-mrn.de/geodata/innoradar/InnoRadar_02_Test-Beds.geojson"/>
+        <dcat:mediaType>application/geo+json</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/GEOJSON"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-07-27T12:38:07.314332</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-04-05T12:03:17.620836</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/metropolregionRheinNeckar"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://metropolatlas.digitale-mrn.de/geodata/innoradar/InnoRadar_02_Test-Beds.geojson"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/GEOJSON"/>
+</rdf:RDF>

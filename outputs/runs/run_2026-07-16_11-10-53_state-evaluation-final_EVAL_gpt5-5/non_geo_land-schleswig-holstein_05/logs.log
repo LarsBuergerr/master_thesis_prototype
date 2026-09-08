@@ -1,0 +1,381 @@
+2026-07-16 11:22:45 - reporting.output_manager - INFO - Created file log handler for non_geo_land-schleswig-holstein_05.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_land-schleswig-holstein_05/logs.log
+2026-07-16 11:22:45 - __main__ - INFO - Started processing: non_geo_land-schleswig-holstein_05.rdf
+2026-07-16 11:22:45 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_land-schleswig-holstein_05.rdf
+2026-07-16 11:22:45 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_land-schleswig-holstein_05.rdf using format: xml
+2026-07-16 11:22:45 - extraction.rdf_parser - INFO - Successfully parsed 60 triples
+2026-07-16 11:22:45 - scoring.service - INFO - Parsed 60 triples
+2026-07-16 11:22:45 - scoring.service - DEBUG - DatasetContext built: 2 distribution(s)
+2026-07-16 11:22:45 - scoring.service - DEBUG - attach_probes: 2/2 unique fetch keys, 2 distribution(s) covered
+2026-07-16 11:22:45 - scoring.service - DEBUG - [OK   ] https://hsi-sh.de/gw/od/10L58123003_w_messwerte.json — Frictionless Tabular Data Resource
+  downloadURL : https://hsi-sh.de/gw/od/10L58123003_w_messwerte.json
+  HTTP        : 200
+  attachment  : 10L58123003_w_messwerte.json
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/json
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=application/json
+    url_extension        raw=10L58123003_w_messwerte.json             mime=application/json
+    http_content_type    raw=application/json                         mime=application/json
+    attachment_filename  raw=10L58123003_w_messwerte.json (from fina… mime=application/json
+  coalesced   : application/json
+2026-07-16 11:22:46 - scoring.service - DEBUG - [OK   ] http://lfu.landsh.de/pegel/10L58123003/Grundwasserstand.csv — 10L58123003.csv
+  downloadURL : https://umweltanwendungen.schleswig-holstein.de/GrundwasserChemie/ganglinie_download.php?value_sdate=&inst_id=10&ortnr=100010499&von=&bis=&value_xunit=Zeit+t&value_yunit=H%F6he+in+mNN
+  HTTP        : 200
+  attachment  : ganglinie_10_100010499.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=ganglinie_download.php                   mime=-
+    http_content_type    raw=text/comma-separated-values;charset=iso… mime=text/comma-separated-values
+    attachment_filename  raw=ganglinie_10_100010499.csv               mime=text/csv
+  coalesced   : text/csv
+  warning     : HTTP Content-Type 'text/comma-separated-values' disagrees with attachment filename ('ganglinie_10_100010499.csv' → 'text/csv'); treating as advisory
+2026-07-16 11:22:46 - scoring.service - DEBUG - Attached probes to 2/2 distribution(s)
+2026-07-16 11:23:01 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind insgesamt aussagekräftig: Gegenstand, Messstelle, Zeitraum, räumlicher Bezug und Datenstruktur sind g')
+2026-07-16 11:23:01 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:23:01 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=4
+2026-07-16 11:23:01 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['grundwasserstand', 'in-betrieb', 'messstelle', 'st04']
+2026-07-16 11:23:01 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/ENVI']
+2026-07-16 11:23:01 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 11:23:01 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:23:01 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:23:01 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:23:01 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['2001-08-23T00:00:00'], endDate: ['2025-06-02T00:00:00']
+2026-07-16 11:23:01 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=dateTime/True
+2026-07-16 11:23:01 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/issued
+2026-07-16 11:23:01 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] http://lfu.landsh.de/messstelle/10L58123003/Grundwasserstand = 2019-11-11T00:00:00
+2026-07-16 11:23:01 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://lfu.landsh.de/pegel/10L58123003/Grundwasserstand.csv = 2026-03-20T06:44:26.478631
+2026-07-16 11:23:01 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://hsi-sh.de/gw/od/10L58123003_w_messwerte.json = 2026-03-20T06:44:26.478633
+2026-07-16 11:23:01 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/modified
+2026-07-16 11:23:01 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] http://lfu.landsh.de/messstelle/10L58123003/Grundwasserstand = 2026-06-20T00:00:00
+2026-07-16 11:23:01 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://lfu.landsh.de/pegel/10L58123003/Grundwasserstand.csv = 2026-03-20T06:44:26.472425
+2026-07-16 11:23:01 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://hsi-sh.de/gw/od/10L58123003_w_messwerte.json = 2026-03-23T06:49:26.079124
+2026-07-16 11:23:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:23:01 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:23:01 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=2/2
+2026-07-16 11:23:01 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:23:01 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=2/2
+2026-07-16 11:23:01 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:23:01 - scoring.indicator.acc_media_type - INFO - [acc_media_type] partial score=0.50 passing=1/2
+2026-07-16 11:23:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:23:01 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:23:01 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 11:23:01 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 11:23:01 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=2 mid=0 none=0 total=2
+2026-07-16 11:23:01 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=2/2
+2026-07-16 11:23:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:23:01 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=2/2
+2026-07-16 11:23:01 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:23:01 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:23:01 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:23:01 - scoring.indicator.reuse_contact - INFO - [reuse_contact] partial score=0.50 contacts=1 with_channel=0
+2026-07-16 11:23:01 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:23:03 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=1
+2026-07-16 11:23:03 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/2
+2026-07-16 11:23:03 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] partial | score=0.75 | Der Titel ist spezifisch und unterscheidbar, aber durch unerklärte technische Kürzel und Stationscodes nicht vollständig
+2026-07-16 11:23:03 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] partial | score=0.72 | Die Beschreibung ist substanziell, weil Struktur, Formate, Einheit und technische CSV-Angaben enthalten sind. Abzüge erg
+2026-07-16 11:23:03 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.95 | Titel und Beschreibung passen inhaltlich gut zusammen; die Beschreibung stützt und konkretisiert den im Titel genannten 
+2026-07-16 11:23:03 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.65 | Die Keywords sind teilweise passend, enthalten aber formale bzw. kryptische Angaben und sind überwiegend kleingeschriebe
+2026-07-16 11:23:03 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.98 | Alle thematischen Metadatenfelder bilden ein widerspruchsfreies Bild eines Umweltmessdatensatzes zum Grundwasserstand.
+2026-07-16 11:23:03 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.78 | Die wichtigsten Kontextangaben für Zeit- und Raumbezug sind vorhanden. Für einen offenbar fortlaufenden Messdatensatz fe
+2026-07-16 11:23:03 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:23:03 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:23:03 - scoring.service - DEBUG - {
+  "dataset_uri": "http://lfu.landsh.de/messstelle/10L58123003/Grundwasserstand",
+  "titles": [
+    "Grundwasserstand Messstelle 6193 Osterbyholz Nord F2 - ST04"
+  ],
+  "descriptions": [
+    "\nAlle Daten sind Rohdaten ohne Gewähr. Das Land Schleswig-Holstein übernimmt keine Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der dargestellten Informationen. Haftungsansprüche sind grundsätzlich ausgeschlossen.\n\n\n[Informationen zur Messstelle](https://umweltanwendungen.schleswig-holstein.de/db/dbnuis?thema=lgdms&ubs=ja&kopf&ms_nr=10L58123003)\n\nDer Datensatz enthält folgende Felder\n\n* **Zeit** im Format `dd.MM.yyyy HH:mm:ss`\n* **Grundwasserstand** in m NHN\n\nZeichensatz ist UTF-8, Spaltentrenner ist Semikolon.\n\n"
+  ],
+  "keywords": [
+    "grundwasserstand",
+    "in-betrieb",
+    "messstelle",
+    "st04"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/ENVI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-06-20T00:00:00"
+  ],
+  "issued": [
+    "2019-11-11T00:00:00"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [
+    "2001-08-23T00:00:00"
+  ],
+  "end_dates": [
+    "2025-06-02T00:00:00"
+  ],
+  "geometries": [
+    "SRID=25832;POINT (549828.0000 6033185.0000)"
+  ],
+  "spatial_resources": [
+    "N3fabe95be5554b8b9b4492915d899a5f"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+  "publisher": "https://opendata.schleswig-holstein.de/organization/lfu",
+  "contact_points": [
+    "Nf16d8d2b013a4123ab425f3168595fbb"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/schleswigHolstein"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "http://lfu.landsh.de/pegel/10L58123003/Grundwasserstand.csv",
+      "titles": [
+        "10L58123003.csv"
+      ],
+      "descriptions": [],
+      "download_url": "https://umweltanwendungen.schleswig-holstein.de/GrundwasserChemie/ganglinie_download.php?value_sdate=&inst_id=10&ortnr=100010499&von=&bis=&value_xunit=Zeit+t&value_yunit=H%F6he+in+mNN",
+      "access_url": "https://umweltanwendungen.schleswig-holstein.de/GrundwasserChemie/ganglinie_download.php?value_sdate=&inst_id=10&ortnr=100010499&von=&bis=&value_xunit=Zeit+t&value_yunit=H%F6he+in+mNN",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-03-20T06:44:26.472425"
+      ],
+      "issued": [
+        "2026-03-20T06:44:26.478631"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "ganglinie_download.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/comma-separated-values;charset=iso-8859-15",
+            "mime_type": "text/comma-separated-values"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "ganglinie_10_100010499.csv",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [
+          "HTTP Content-Type 'text/comma-separated-values' disagrees with attachment filename ('ganglinie_10_100010499.csv' → 'text/csv'); treating as advisory"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://umweltanwendungen.schleswig-holstein.de/GrundwasserChemie/ganglinie_download.php?value_sdate=&inst_id=10&ortnr=100010499&von=&bis=&value_xunit=Zeit+t&value_yunit=H%F6he+in+mNN",
+        "content_disposition": "filename=ganglinie_10_100010499.csv",
+        "attachment_filename": "ganglinie_10_100010499.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://hsi-sh.de/gw/od/10L58123003_w_messwerte.json",
+      "titles": [
+        "Frictionless Tabular Data Resource"
+      ],
+      "descriptions": [],
+      "download_url": "https://hsi-sh.de/gw/od/10L58123003_w_messwerte.json",
+      "access_url": "https://hsi-sh.de/gw/od/10L58123003_w_messwerte.json",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/JSON"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/application/json"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2026-03-23T06:49:26.079124"
+      ],
+      "issued": [
+        "2026-03-20T06:44:26.478633"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/JSON",
+            "mime_type": "application/json"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/application/json",
+            "mime_type": "application/json"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "10L58123003_w_messwerte.json",
+            "mime_type": "application/json"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/json",
+            "mime_type": "application/json"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "10L58123003_w_messwerte.json (from final URL)",
+            "mime_type": "application/json"
+          }
+        ],
+        "coalesced_mime": "application/json",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://hsi-sh.de/gw/od/10L58123003_w_messwerte.json",
+        "content_disposition": null,
+        "attachment_filename": "10L58123003_w_messwerte.json",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel benennt den Messgegenstand „Grundwasserstand“ und eine konkrete Messstelle.",
+        "Er enthält mehrere Codes/Bezeichnungen („6193“, „F2“, „ST04“), die ohne Erklärung teilweise kryptisch bleiben.",
+        "Der Ortsbezug „Osterbyholz Nord“ erhöht die Spezifität."
+      ],
+      "reasoning": "Der Titel ist spezifisch und unterscheidbar, aber durch unerklärte technische Kürzel und Stationscodes nicht vollständig laienverständlich. Insgesamt ist er brauchbar mit kleineren Schwächen.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung nennt die enthaltenen Felder „Zeit“ und „Grundwasserstand“ samt Einheit und Zeitformat.",
+        "Für CSV-ähnliche Daten werden UTF-8 und Semikolon als Spaltentrenner angegeben.",
+        "Es gibt einen Qualitäts-/Haftungshinweis und einen Link zur Messstelle, aber keine Erläuterung der Messmethode oder des Erhebungszwecks; zudem enthält die Beschreibung Markdown-Formatierung."
+      ],
+      "reasoning": "Die Beschreibung ist substanziell, weil Struktur, Formate, Einheit und technische CSV-Angaben enthalten sind. Abzüge ergeben sich durch fehlende methodische/zweckbezogene Einordnung und Markdown-Elemente statt reinem Fließtext.",
+      "applicable": true,
+      "score": 0.72
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf Grundwasserstandsdaten einer Messstelle.",
+        "Die Beschreibung konkretisiert den Titel durch Felder, Einheit und Link zur Messstelle.",
+        "Es gibt keinen erkennbaren Widerspruch bei Thema, Ort oder Messstellenbezug."
+      ],
+      "reasoning": "Titel und Beschreibung passen inhaltlich gut zusammen; die Beschreibung stützt und konkretisiert den im Titel genannten Datensatz.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter „grundwasserstand“ und „messstelle“ sind thematisch passend und verständlich.",
+        "„in-betrieb“ beschreibt eher einen Status als ein inhaltliches Schlagwort.",
+        "„st04“ ist ein kryptischer Code und wiederholt einen Bestandteil des Titels ohne Erklärung."
+      ],
+      "reasoning": "Die Keywords sind teilweise passend, enthalten aber formale bzw. kryptische Angaben und sind überwiegend kleingeschrieben. Insgesamt ist die Schlagwortqualität brauchbar, aber nicht optimal.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das Thema ENVI passt zu Grundwasserstand und Messstellendaten.",
+        "Titel, Beschreibung und Keywords zeigen konsistent auf Umwelt-/Grundwassermessdaten.",
+        "Keine off-topic-Signale sind erkennbar."
+      ],
+      "reasoning": "Alle thematischen Metadatenfelder bilden ein widerspruchsfreies Bild eines Umweltmessdatensatzes zum Grundwasserstand.",
+      "applicable": true,
+      "score": 0.98
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Für die Zeitreihe ist ein zeitlicher Umfang von 2001-08-23 bis 2025-06-02 angegeben.",
+        "Die räumliche Lage ist über eine Punktgeometrie vorhanden, zusätzlich nennt der Titel den Standort/Messstellennamen.",
+        "Ein Aktualisierungsdatum ist vorhanden, aber kein Aktualisierungszyklus; die Beschreibung bezeichnet die Daten als Rohdaten ohne weitere Angaben zur Mess-/Aggregationsmethode."
+      ],
+      "reasoning": "Die wichtigsten Kontextangaben für Zeit- und Raumbezug sind vorhanden. Für einen offenbar fortlaufenden Messdatensatz fehlt jedoch ein klarer Aktualisierungszyklus und die Rohdaten-/Messkontextangabe bleibt methodisch knapp.",
+      "applicable": true,
+      "score": 0.78
+    },
+    "overall_summary": "Die Metadaten sind insgesamt aussagekräftig: Gegenstand, Messstelle, Zeitraum, räumlicher Bezug und Datenstruktur sind gut erkennbar. Schwächen bestehen vor allem in unerklärten Codes, Markdown in der Beschreibung sowie fehlenden Angaben zu Messmethode, Zweck und Aktualisierungszyklus."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3599,
+      "output_tokens": 841,
+      "total_tokens": 4440,
+      "cost_usd": 0.031129,
+      "latency_seconds": 14.641
+    }
+  ],
+  "distribution_count": 2
+}
+2026-07-16 11:23:03 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_land-schleswig-holstein_05/result.json
+2026-07-16 11:23:03 - __main__ - INFO -   ✓ Completed | score=0.80 grade=B

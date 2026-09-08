@@ -1,0 +1,473 @@
+2026-07-16 13:37:26 - reporting.output_manager - INFO - Created file log handler for non_geo_gdi-de_02.rdf at run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/non_geo_gdi-de_02/logs.log
+2026-07-16 13:37:26 - __main__ - INFO - Started processing: non_geo_gdi-de_02.rdf
+2026-07-16 13:37:26 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_gdi-de_02.rdf
+2026-07-16 13:37:26 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_gdi-de_02.rdf using format: xml
+2026-07-16 13:37:26 - extraction.rdf_parser - INFO - Successfully parsed 83 triples
+2026-07-16 13:37:26 - scoring.service - INFO - Parsed 83 triples
+2026-07-16 13:37:26 - scoring.service - DEBUG - DatasetContext built: 2 distribution(s)
+2026-07-16 13:37:26 - scoring.service - DEBUG - attach_probes: 2/2 unique fetch keys, 2 distribution(s) covered
+2026-07-16 13:37:27 - scoring.service - DEBUG - [OK   ] https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml#distribution — 1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021
+  downloadURL : https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml
+  HTTP        : 200
+  attachment  : dibenzo-a-l-pyrene-in-dry-sediment-2021.xml
+  signals     :
+    dct:format           raw=XML                                      mime=application/xml
+    dcat:mediaType       raw=application/xml                          mime=application/xml
+    url_extension        raw=dibenzo-a-l-pyrene-in-dry-sediment-2021… mime=application/xml
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=dibenzo-a-l-pyrene-in-dry-sediment-2021… mime=application/xml
+  coalesced   : application/xml
+2026-07-16 13:37:27 - scoring.service - DEBUG - [OK   ] https://gdi.bsh.de/de/data/dibenzo-a-l-pyrene-in-dry-sediment-2021.txt#distribution — 1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021
+  downloadURL : https://gdi.bsh.de/de/data/dibenzo-a-l-pyrene-in-dry-sediment-2021.txt
+  HTTP        : 200
+  final URL   : https://gdi.bsh.de/data/OpenData/DOD/MO_L_DBALP/MO_L_DBALP_2021.txt
+  attachment  : MO_L_DBALP_2021.txt
+  signals     :
+    dct:format           raw=TXT                                      mime=text/plain
+    dcat:mediaType       raw=text/plain                               mime=text/plain
+    url_extension        raw=dibenzo-a-l-pyrene-in-dry-sediment-2021… mime=text/plain
+    http_content_type    raw=text/plain                               mime=text/plain
+    attachment_filename  raw=MO_L_DBALP_2021.txt (from final URL)     mime=text/plain
+  coalesced   : text/plain
+2026-07-16 13:37:27 - scoring.service - DEBUG - Attached probes to 2/2 distribution(s)
+2026-07-16 13:37:56 - scoring.service - DEBUG - Attached expressiveness assessment (summary: '{"overall_summary": "Der Datensatz ist durch Titel und Temporal-/Spatial-Felder gut kontextualisiert, leidet jedoch unte')
+2026-07-16 13:37:56 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 13:37:56 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=15
+2026-07-16 13:37:56 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['2021', 'baltic-sea', 'bsh', 'bundesamt-für-seeschifffahrt-und-hydrographie', 'dbalp', 'federal-maritime-and-hydrographic-agency', 'monitoring', 'national', 'nordsee', 'north-sea', 'open-data', 'opendata', 'ostsee', 'pyrene', 'sediment']
+2026-07-16 13:37:56 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/AGRI', 'http://publications.europa.eu/resource/authority/data-theme/ENVI', 'http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/TECH', 'http://publications.europa.eu/resource/authority/data-theme/TRAN']
+2026-07-16 13:37:56 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=5/5
+2026-07-16 13:37:56 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 13:37:56 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 13:37:56 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 13:37:56 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['2021-04-13'], endDate: ['2021-04-20']
+2026-07-16 13:37:56 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=date/True end=date/True
+2026-07-16 13:37:56 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/issued
+2026-07-16 13:37:56 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=9813e428-b51f-4177-bd36-e1dc8060ce33 = 2025-11-26
+2026-07-16 13:37:56 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml#distribution = 2026-02-09T00:58:43.830048
+2026-07-16 13:37:56 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://gdi.bsh.de/de/data/dibenzo-a-l-pyrene-in-dry-sediment-2021.txt#distribution = 2026-02-09T00:58:43.830053
+2026-07-16 13:37:56 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/modified
+2026-07-16 13:37:56 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=9813e428-b51f-4177-bd36-e1dc8060ce33 = 2026-06-18T18:06:11.667310
+2026-07-16 13:37:56 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml#distribution = 2026-03-21T12:57:12.479283
+2026-07-16 13:37:56 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://gdi.bsh.de/de/data/dibenzo-a-l-pyrene-in-dry-sediment-2021.txt#distribution = 2026-03-21T12:57:12.479419
+2026-07-16 13:37:56 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 13:37:56 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 13:37:56 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=2/2
+2026-07-16 13:37:56 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 13:37:56 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/2
+2026-07-16 13:37:56 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 13:37:56 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 13:37:56 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/2
+2026-07-16 13:37:56 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 13:37:56 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 13:37:56 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 13:37:56 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.75 high=1 mid=1 none=0 total=2
+2026-07-16 13:37:56 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/2
+2026-07-16 13:37:56 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 13:37:56 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=2/2
+2026-07-16 13:37:56 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 13:37:56 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 13:37:56 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 13:37:56 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 13:37:56 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 13:37:57 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=7
+2026-07-16 13:37:57 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/2
+2026-07-16 13:37:57 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.85 | Der Titel ist prägnant, spezifisch und enthält alle wesentlichen Unterscheidungsmerkmale (Parameter, Medium, Jahr). Für 
+2026-07-16 13:37:57 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.30 | Die Beschreibung liefert einen minimalen Kontext (Messprogramm, Meeresgebiete), beantwortet aber weder die Fragen nach S
+2026-07-16 13:37:57 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.80 | Titel und Beschreibung sind thematisch konsistent und widerspruchsfrei; die Beschreibung konkretisiert den Titel zuminde
+2026-07-16 13:37:57 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.40 | Die Schlagwortliste enthält mehrere formale/redundante Tags (Herausgebername, Jahreszahl, doppeltes open-data) und einen
+2026-07-16 13:37:57 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] fail | score=0.40 | Während ENVI und REGI thematisch passen, sind AGRI, TECH und TRAN für einen Sediment-Schadstoff-Datensatz nicht begründb
+2026-07-16 13:37:57 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=0.80 | Die wesentlichen Qualifizierer (Zeitraum, räumliche Abdeckung) sind vorhanden. Der Vorläufigkeitsstatus fehlt, ist aber 
+2026-07-16 13:37:57 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 13:37:57 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 13:37:57 - scoring.service - DEBUG - {
+  "dataset_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=9813e428-b51f-4177-bd36-e1dc8060ce33",
+  "titles": [
+    "1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021"
+  ],
+  "descriptions": [
+    "Im Rahmen des gemeinsamen Bund/Länder-Messprogramms für die Nord- und Ostsee und weiterer Überwachungsprogramme wurde der Parameter \"1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment\" im Sediment bestimmt."
+  ],
+  "keywords": [
+    "2021",
+    "baltic-sea",
+    "bsh",
+    "bundesamt-für-seeschifffahrt-und-hydrographie",
+    "dbalp",
+    "federal-maritime-and-hydrographic-agency",
+    "monitoring",
+    "national",
+    "nordsee",
+    "north-sea",
+    "open-data",
+    "opendata",
+    "ostsee",
+    "pyrene",
+    "sediment"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/AGRI",
+    "http://publications.europa.eu/resource/authority/data-theme/ENVI",
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "http://publications.europa.eu/resource/authority/data-theme/TRAN"
+  ],
+  "themes_in_vocab": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-06-18T18:06:11.667310"
+  ],
+  "issued": [
+    "2025-11-26"
+  ],
+  "accrual_periodicity": "http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded",
+  "accrual_periodicity_in_vocab": false,
+  "start_dates": [
+    "2021-04-13"
+  ],
+  "end_dates": [
+    "2021-04-20"
+  ],
+  "geometries": [
+    "POLYGON ((4.2522 55.7665, 8.3903 55.7665, 8.3903 53.6745, 4.2522 53.6745, 4.2522 55.7665))"
+  ],
+  "spatial_resources": [
+    "Nfe03c7dee60942879dfb00380f9bf598"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "Nf91f1762e31c4b3db6dba0e46f063d8b",
+  "publisher": "N677feed99afc4d6f9e99f9dd647dadd2",
+  "contact_points": [
+    "N714a76f7483b4dc5b364cd33c3b0c86a"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/gdiDE"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml#distribution",
+      "titles": [
+        "1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021"
+      ],
+      "descriptions": [
+        "1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021"
+      ],
+      "download_url": "https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml",
+      "access_url": "https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml",
+      "formats": [
+        "XML"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/xml"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-03-21T12:57:12.479283"
+      ],
+      "issued": [
+        "2026-02-09T00:58:43.830048"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "XML",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/xml",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "dibenzo-a-l-pyrene-in-dry-sediment-2021.xml",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "dibenzo-a-l-pyrene-in-dry-sediment-2021.xml (from final URL)",
+            "mime_type": "application/xml"
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://gdi.bsh.de/de/feed/dibenzo-a-l-pyrene-in-dry-sediment-2021.xml",
+        "content_disposition": null,
+        "attachment_filename": "dibenzo-a-l-pyrene-in-dry-sediment-2021.xml",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://gdi.bsh.de/de/data/dibenzo-a-l-pyrene-in-dry-sediment-2021.txt#distribution",
+      "titles": [
+        "1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021"
+      ],
+      "descriptions": [
+        "1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment 2021"
+      ],
+      "download_url": "https://gdi.bsh.de/de/data/dibenzo-a-l-pyrene-in-dry-sediment-2021.txt",
+      "access_url": "https://gdi.bsh.de/de/data/dibenzo-a-l-pyrene-in-dry-sediment-2021.txt",
+      "formats": [
+        "TXT"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "text/plain"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-03-21T12:57:12.479419"
+      ],
+      "issued": [
+        "2026-02-09T00:58:43.830053"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "TXT",
+            "mime_type": "text/plain"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "text/plain",
+            "mime_type": "text/plain"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "dibenzo-a-l-pyrene-in-dry-sediment-2021.txt",
+            "mime_type": "text/plain"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/plain",
+            "mime_type": "text/plain"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "MO_L_DBALP_2021.txt (from final URL)",
+            "mime_type": "text/plain"
+          }
+        ],
+        "coalesced_mime": "text/plain",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://gdi.bsh.de/data/OpenData/DOD/MO_L_DBALP/MO_L_DBALP_2021.txt",
+        "content_disposition": null,
+        "attachment_filename": "MO_L_DBALP_2021.txt",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Titel ist spezifisch und nennt den gemessenen Parameter ('1,2,9,10 Dibenzopyrene (a,l)'), das Medium ('trockenes Sediment') und das Jahr (2021)",
+        "Chemische Abkürzung/Notation ist fachspezifisch, aber für Fachpublikum verständlich; kein generischer Titel",
+        "Keine Sonderzeichen, Markdown- oder HTML-Reste; reiner Fließtext"
+      ],
+      "reasoning": "Der Titel ist prägnant, spezifisch und enthält alle wesentlichen Unterscheidungsmerkmale (Parameter, Medium, Jahr). Für ein Fachpublikum gut verständlich, leichte Abwertung da die chemische Notation für Laien schwer zugänglich ist.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "description_quality": {
+      "findings": [
+        "Beschreibung nennt den Erhebungsrahmen (gemeinsames Bund/Länder-Messprogramm für Nord- und Ostsee) und den gemessenen Parameter",
+        "Keine Angaben zur Methodik, Stichprobengröße, Datenstruktur oder Kodierung",
+        "Kein Hinweis auf Zweck, Besonderheiten oder weiterführende Dokumentation; die Beschreibung ist sehr kurz und wiederholt im Wesentlichen den Titel"
+      ],
+      "reasoning": "Die Beschreibung liefert einen minimalen Kontext (Messprogramm, Meeresgebiete), beantwortet aber weder die Fragen nach Struktur, Methode, Stichprobengröße noch nach Zweck oder Besonderheiten. Sie ist zu knapp und informationsarm.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich auf denselben Parameter ('1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment')",
+        "Beide Felder nennen konsistent das Sediment als Medium",
+        "Kein inhaltlicher Widerspruch zwischen Titel und Beschreibung"
+      ],
+      "reasoning": "Titel und Beschreibung sind thematisch konsistent und widerspruchsfrei; die Beschreibung konkretisiert den Titel zumindest minimal durch Nennung des Messprogramms.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "keyword_quality": {
+      "findings": [
+        "Redundante Schlagwörter: 'open-data' und 'opendata' sind doppelt vorhanden und inhaltlich trivial",
+        "Herausgebername ('bsh', 'bundesamt-für-seeschifffahrt-und-hydrographie', 'federal-maritime-and-hydrographic-agency') steht bereits in eigenen Feldern und sollte nicht als Schlagwort wiederholt werden",
+        "Jahreszahl '2021' als Schlagwort ist redundant (steht im Titel und im Temporal-Feld); 'dbalp' ist ein unerklärter Jargon-Code; positive Ausnahme: 'sediment', 'pyrene', 'monitoring', 'nordsee'/'north-sea' sind inhaltlich sinnvoll"
+      ],
+      "reasoning": "Die Schlagwortliste enthält mehrere formale/redundante Tags (Herausgebername, Jahreszahl, doppeltes open-data) und einen unerklärten Code ('dbalp'). Die inhaltlich wertvollen Begriffe (sediment, pyrene, monitoring, Meeresgebiete) sind vorhanden, werden aber durch die Qualitätsmängel der anderen Tags deutlich geschwächt.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Themen ENVI (Umwelt) und REGI (Regionen) passen gut zu einem Meeresumwelt-Monitoring-Datensatz",
+        "AGRI (Landwirtschaft), TECH (Technologie) und TRAN (Transport/Verkehr) sind für einen Schadstoff-Sediment-Datensatz nicht nachvollziehbar und wirken off-topic",
+        "Schlagwörter und Titel sind thematisch konsistent mit ENVI, aber die Mehrfachzuweisung zu fachfremden Themen trübt das Gesamtbild"
+      ],
+      "reasoning": "Während ENVI und REGI thematisch passen, sind AGRI, TECH und TRAN für einen Sediment-Schadstoff-Datensatz nicht begründbar. Diese Off-topic-Zuweisungen stören die thematische Konsistenz erheblich.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Bezugsjahr 2021 ist im Titel und im Temporal-Feld (April 2021) klar angegeben",
+        "Räumliche Abdeckung ist durch ein Polygon (Nordsee-Bereich) definiert",
+        "Kein Hinweis darauf, ob die Daten vorläufig oder endgültig sind; Aktualisierungszyklus ist mit 'asNeeded' angegeben"
+      ],
+      "reasoning": "Die wesentlichen Qualifizierer (Zeitraum, räumliche Abdeckung) sind vorhanden. Der Vorläufigkeitsstatus fehlt, ist aber bei einem abgeschlossenen Messprogramm von 2021 weniger kritisch. Insgesamt solide.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch Titel und Temporal-/Spatial-Felder gut kontextualisiert, leidet jedoch unter einer sehr knappen, wenig informativen Beschreibung sowie einer Schlagwortliste mit redundanten, fachfremden und doppelten Einträgen. Die Zuweisung mehrerer thematisch nicht passender DCAT-Themen (AGRI, TECH, TRAN) schwächt die thematische Konsistenz deutlich.\"}"
+  },
+  "semantic_assessment_raw": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "tool_args": {
+      "title_quality": {
+        "findings": [
+          "Titel ist spezifisch und nennt den gemessenen Parameter ('1,2,9,10 Dibenzopyrene (a,l)'), das Medium ('trockenes Sediment') und das Jahr (2021)",
+          "Chemische Abkürzung/Notation ist fachspezifisch, aber für Fachpublikum verständlich; kein generischer Titel",
+          "Keine Sonderzeichen, Markdown- oder HTML-Reste; reiner Fließtext"
+        ],
+        "reasoning": "Der Titel ist prägnant, spezifisch und enthält alle wesentlichen Unterscheidungsmerkmale (Parameter, Medium, Jahr). Für ein Fachpublikum gut verständlich, leichte Abwertung da die chemische Notation für Laien schwer zugänglich ist.",
+        "score": 0.85
+      },
+      "description_quality": {
+        "findings": [
+          "Beschreibung nennt den Erhebungsrahmen (gemeinsames Bund/Länder-Messprogramm für Nord- und Ostsee) und den gemessenen Parameter",
+          "Keine Angaben zur Methodik, Stichprobengröße, Datenstruktur oder Kodierung",
+          "Kein Hinweis auf Zweck, Besonderheiten oder weiterführende Dokumentation; die Beschreibung ist sehr kurz und wiederholt im Wesentlichen den Titel"
+        ],
+        "reasoning": "Die Beschreibung liefert einen minimalen Kontext (Messprogramm, Meeresgebiete), beantwortet aber weder die Fragen nach Struktur, Methode, Stichprobengröße noch nach Zweck oder Besonderheiten. Sie ist zu knapp und informationsarm.",
+        "score": 0.3
+      },
+      "title_description_coherence": {
+        "findings": [
+          "Titel und Beschreibung beziehen sich auf denselben Parameter ('1,2,9,10 Dibenzopyrene (a,l) im trockenen Sediment')",
+          "Beide Felder nennen konsistent das Sediment als Medium",
+          "Kein inhaltlicher Widerspruch zwischen Titel und Beschreibung"
+        ],
+        "reasoning": "Titel und Beschreibung sind thematisch konsistent und widerspruchsfrei; die Beschreibung konkretisiert den Titel zumindest minimal durch Nennung des Messprogramms.",
+        "score": 0.8
+      },
+      "keyword_quality": {
+        "findings": [
+          "Redundante Schlagwörter: 'open-data' und 'opendata' sind doppelt vorhanden und inhaltlich trivial",
+          "Herausgebername ('bsh', 'bundesamt-für-seeschifffahrt-und-hydrographie', 'federal-maritime-and-hydrographic-agency') steht bereits in eigenen Feldern und sollte nicht als Schlagwort wiederholt werden",
+          "Jahreszahl '2021' als Schlagwort ist redundant (steht im Titel und im Temporal-Feld); 'dbalp' ist ein unerklärter Jargon-Code; positive Ausnahme: 'sediment', 'pyrene', 'monitoring', 'nordsee'/'north-sea' sind inhaltlich sinnvoll"
+        ],
+        "reasoning": "Die Schlagwortliste enthält mehrere formale/redundante Tags (Herausgebername, Jahreszahl, doppeltes open-data) und einen unerklärten Code ('dbalp'). Die inhaltlich wertvollen Begriffe (sediment, pyrene, monitoring, Meeresgebiete) sind vorhanden, werden aber durch die Qualitätsmängel der anderen Tags deutlich geschwächt.",
+        "score": 0.4
+      },
+      "thematic_consistency": {
+        "findings": [
+          "Themen ENVI (Umwelt) und REGI (Regionen) passen gut zu einem Meeresumwelt-Monitoring-Datensatz",
+          "AGRI (Landwirtschaft), TECH (Technologie) und TRAN (Transport/Verkehr) sind für einen Schadstoff-Sediment-Datensatz nicht nachvollziehbar und wirken off-topic",
+          "Schlagwörter und Titel sind thematisch konsistent mit ENVI, aber die Mehrfachzuweisung zu fachfremden Themen trübt das Gesamtbild"
+        ],
+        "reasoning": "Während ENVI und REGI thematisch passen, sind AGRI, TECH und TRAN für einen Sediment-Schadstoff-Datensatz nicht begründbar. Diese Off-topic-Zuweisungen stören die thematische Konsistenz erheblich.",
+        "score": 0.4
+      },
+      "contextual_qualifiers": {
+        "applicable": true,
+        "findings": [
+          "Bezugsjahr 2021 ist im Titel und im Temporal-Feld (April 2021) klar angegeben",
+          "Räumliche Abdeckung ist durch ein Polygon (Nordsee-Bereich) definiert",
+          "Kein Hinweis darauf, ob die Daten vorläufig oder endgültig sind; Aktualisierungszyklus ist mit 'asNeeded' angegeben"
+        ],
+        "reasoning": "Die wesentlichen Qualifizierer (Zeitraum, räumliche Abdeckung) sind vorhanden. Der Vorläufigkeitsstatus fehlt, ist aber bei einem abgeschlossenen Messprogramm von 2021 weniger kritisch. Insgesamt solide.",
+        "score": 0.8
+      },
+      "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch Titel und Temporal-/Spatial-Felder gut kontextualisiert, leidet jedoch unter einer sehr knappen, wenig informativen Beschreibung sowie einer Schlagwortliste mit redundanten, fachfremden und doppelten Einträgen. Die Zuweisung mehrerer thematisch nicht passender DCAT-Themen (AGRI, TECH, TRAN) schwächt die thematische Konsistenz deutlich.\"}"
+    },
+    "text_content": null,
+    "parsing_error": null,
+    "salvaged": false,
+    "repairs": []
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "input_tokens": 5850,
+      "output_tokens": 1594,
+      "total_tokens": 7444,
+      "cost_usd": 0.04146,
+      "latency_seconds": 28.962
+    }
+  ],
+  "distribution_count": 2
+}
+2026-07-16 13:37:57 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/non_geo_gdi-de_02/result.json
+2026-07-16 13:37:57 - __main__ - INFO -   ✓ Completed | score=0.66 grade=C

@@ -1,0 +1,850 @@
+2026-07-13 13:30:37 - reporting.output_manager - INFO - Created file log handler for geo_rest_04.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/geo_rest_04/logs.log
+2026-07-13 13:30:37 - __main__ - INFO - Started processing: geo_rest_04.rdf
+2026-07-13 13:30:37 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_rest_04.rdf
+2026-07-13 13:30:37 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_rest_04.rdf using format: xml
+2026-07-13 13:30:37 - extraction.rdf_parser - INFO - Successfully parsed 136 triples
+2026-07-13 13:30:37 - scoring.service - INFO - Parsed 136 triples
+2026-07-13 13:30:37 - scoring.service - DEBUG - DatasetContext built: 7 distribution(s)
+2026-07-13 13:30:37 - scoring.service - DEBUG - attach_probes: 7/7 unique fetch keys, 7 distribution(s) covered
+2026-07-13 13:30:37 - scoring.service - DEBUG - [OK   ] https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/S_M_II_3_2005_1/S_M_II_3_2005_1_RECHTSPLAN.pdf — Rechtsplan als PDF
+  downloadURL : https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/S_M_II_3_2005_1/S_M_II_3_2005_1_RECHTSPLAN.pdf
+  HTTP        : 200
+  attachment  : S_M_II_3_2005_1_RECHTSPLAN.pdf
+  signals     :
+    dct:format           raw=PDF                                      mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=S_M_II_3_2005_1_RECHTSPLAN.pdf           mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=S_M_II_3_2005_1_RECHTSPLAN.pdf (from fi… mime=application/pdf
+  coalesced   : application/pdf
+2026-07-13 13:30:37 - scoring.service - DEBUG - [OK   ] https://apps.villingen-schwenningen.de/linkdata/BPlan/L/S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf — Legende als PDF Dokument
+  downloadURL : https://apps.villingen-schwenningen.de/linkdata/BPlan/L/S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf
+  HTTP        : 200
+  attachment  : S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf
+  signals     :
+    dct:format           raw=PDF                                      mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf     mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf (f… mime=application/pdf
+  coalesced   : application/pdf
+2026-07-13 13:30:37 - scoring.service - DEBUG - [OK   ] https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/index.aspx?id=S_M_II_3_2005_1 — Sonstige Daten zum Bebauungsplan
+  downloadURL : https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/index.aspx?id=S_M_II_3_2005_1
+  HTTP        : 200
+  attachment  : index.aspx
+  signals     :
+    dct:format           raw=-                                        mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=index.aspx                               mime=-
+    http_content_type    raw=text/html; charset=utf-8                 mime=text/html
+    attachment_filename  raw=index.aspx (from final URL)              mime=-
+  coalesced   : text/html
+2026-07-13 13:30:37 - scoring.service - DEBUG - [OK   ] https://apps.villingen-schwenningen.de/linkdata/BPlan/G/S_M_II_3_2005_1.zip — Georeferenziertes Rasterbild als ZIP Datei
+  downloadURL : https://apps.villingen-schwenningen.de/linkdata/BPlan/G/S_M_II_3_2005_1.zip
+  HTTP        : 200
+  attachment  : S_M_II_3_2005_1.zip
+  signals     :
+    dct:format           raw=ZIP                                      mime=application/zip
+    dcat:mediaType       raw=application/zip                          mime=application/zip
+    url_extension        raw=S_M_II_3_2005_1.zip                      mime=application/zip
+    http_content_type    raw=application/x-zip-compressed             mime=application/x-zip-compressed
+    attachment_filename  raw=S_M_II_3_2005_1.zip (from final URL)     mime=application/zip
+  coalesced   : application/zip
+2026-07-13 13:30:37 - scoring.service - DEBUG - [OK   ] https://apps.villingen-schwenningen.de/linkdata/BPlan/T/S_M_II_3_2005_1_TEXTTEIL.pdf — Textliche Ausfertigung zum Bebauungsplan als PDF
+  downloadURL : https://apps.villingen-schwenningen.de/linkdata/BPlan/T/S_M_II_3_2005_1_TEXTTEIL.pdf
+  HTTP        : 200
+  attachment  : S_M_II_3_2005_1_TEXTTEIL.pdf
+  signals     :
+    dct:format           raw=PDF                                      mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=S_M_II_3_2005_1_TEXTTEIL.pdf             mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=S_M_II_3_2005_1_TEXTTEIL.pdf (from fina… mime=application/pdf
+  coalesced   : application/pdf
+2026-07-13 13:30:37 - scoring.service - DEBUG - [OK   ] https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=S_M_II_3_2005_1.map&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities — S - Dickenhardt Teilbereich Schubert-, Sieder- und Salinenstraße ÄNDERUNG / S_M_II_3_2005_1(WMS)
+  accessURL   : https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=S_M_II_3_2005_1.map&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities
+  HTTP        : 200
+  attachment  : getcapbplan.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=getcapbplan.php                          mime=-
+    http_content_type    raw=text/xml; charset=UTF-8                  mime=text/xml
+    attachment_filename  raw=getcapbplan.php (from final URL)         mime=-
+  coalesced   : application/xml
+2026-07-13 13:30:37 - scoring.service - DEBUG - [OK   ] https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=WFS_S_M_II_3_2005_1.map&SERVICE=WFS&VERSION=2.0&REQUEST=GetCapabilities — S - Dickenhardt Teilbereich Schubert-, Sieder- und Salinenstraße ÄNDERUNG / S_M_II_3_2005_1(WFS)
+  accessURL   : https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=WFS_S_M_II_3_2005_1.map&SERVICE=WFS&VERSION=2.0&REQUEST=GetCapabilities
+  HTTP        : 200
+  attachment  : getcapbplan.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=getcapbplan.php                          mime=-
+    http_content_type    raw=text/xml; charset=UTF-8                  mime=text/xml
+    attachment_filename  raw=getcapbplan.php (from final URL)         mime=-
+  coalesced   : application/xml
+2026-07-13 13:30:37 - scoring.service - DEBUG - Attached probes to 7/7 distribution(s)
+2026-07-13 13:31:02 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind inhaltlich konsistent und liefern die wesentlichen Informationen zu einem Bebauungsplan. Titel und Be')
+2026-07-13 13:31:02 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:31:02 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=15
+2026-07-13 13:31:02 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['bauleitplanung', 'bauwesen-und-gebaute-umwelt-bauen', 'bebauung', 'bebauungsplan', 'bodennutzung', 'gdb-gdi-bw', 'gewerbe', 'inspireidentifiziert', 'landschaftsplanung', 'lokal', 'ngdb-gdi-de', 'opendata', 'raumordnung', 'verkehr', 'villingen-schwenningen']
+2026-07-13 13:31:02 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/GOVE', 'http://publications.europa.eu/resource/authority/data-theme/REGI']
+2026-07-13 13:31:02 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-13 13:31:02 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-13 13:31:02 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-13 13:31:02 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-13 13:31:02 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-13 13:31:02 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-13 13:31:02 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=8/8 dataset=1 distribution=7 field=http://purl.org/dc/terms/issued
+2026-07-13 13:31:02 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://registry.gdi-de.org/id/de.bw/Gml_9AA30770-29F0-4376-ADBC-7DDD31341A02 = 2005-12-16
+2026-07-13 13:31:02 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://apps.villingen-schwenningen.de/linkdata/BPlan/L/S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf = 2024-07-31T05:45:22.467786
+2026-07-13 13:31:02 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/S_M_II_3_2005_1/S_M_II_3_2005_1_RECHTSPLAN.pdf = 2024-07-31T05:45:22.467785
+2026-07-13 13:31:02 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=WFS_S_M_II_3_2005_1.map&SERVICE=WFS&VERSION=2.0&REQUEST=GetCapabilities = 2024-07-31T05:45:22.467782
+2026-07-13 13:31:02 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://apps.villingen-schwenningen.de/linkdata/BPlan/T/S_M_II_3_2005_1_TEXTTEIL.pdf = 2024-07-31T05:45:22.467787
+2026-07-13 13:31:02 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=S_M_II_3_2005_1.map&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities = 2024-07-31T05:45:22.467789
+2026-07-13 13:31:02 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/index.aspx?id=S_M_II_3_2005_1 = 2024-07-31T05:45:22.467783
+2026-07-13 13:31:02 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://apps.villingen-schwenningen.de/linkdata/BPlan/G/S_M_II_3_2005_1.zip = 2024-07-31T05:45:22.467777
+2026-07-13 13:31:02 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=8/8 dataset=1 distribution=7 field=http://purl.org/dc/terms/modified
+2026-07-13 13:31:02 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://registry.gdi-de.org/id/de.bw/Gml_9AA30770-29F0-4376-ADBC-7DDD31341A02 = 2022-09-13T14:47:15
+2026-07-13 13:31:02 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://apps.villingen-schwenningen.de/linkdata/BPlan/L/S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf = 2024-08-03T01:07:57.755148
+2026-07-13 13:31:02 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/S_M_II_3_2005_1/S_M_II_3_2005_1_RECHTSPLAN.pdf = 2024-08-03T01:07:57.755075
+2026-07-13 13:31:02 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=WFS_S_M_II_3_2005_1.map&SERVICE=WFS&VERSION=2.0&REQUEST=GetCapabilities = 2025-08-07T08:53:05.926269
+2026-07-13 13:31:02 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://apps.villingen-schwenningen.de/linkdata/BPlan/T/S_M_II_3_2005_1_TEXTTEIL.pdf = 2024-08-03T01:07:57.755218
+2026-07-13 13:31:02 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=S_M_II_3_2005_1.map&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities = 2025-08-07T08:53:05.926354
+2026-07-13 13:31:02 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/index.aspx?id=S_M_II_3_2005_1 = 2024-07-31T05:45:22.434225
+2026-07-13 13:31:02 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://apps.villingen-schwenningen.de/linkdata/BPlan/G/S_M_II_3_2005_1.zip = 2024-08-03T01:07:57.754812
+2026-07-13 13:31:02 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:31:02 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:31:02 - scoring.indicator.acc_download_url - INFO - [acc_download_url] partial score=0.71 with_download=5/7
+2026-07-13 13:31:02 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:31:02 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.29 passing=2/7
+2026-07-13 13:31:02 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:31:02 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:31:02 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/7
+2026-07-13 13:31:02 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:31:02 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=5/5 relevant=5/7
+2026-07-13 13:31:02 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=7/7 relevant=7/7
+2026-07-13 13:31:02 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.43 high=2 mid=2 none=3 total=7
+2026-07-13 13:31:02 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.29 passing=2/7
+2026-07-13 13:31:02 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:31:02 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=7/7
+2026-07-13 13:31:02 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:31:02 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:31:02 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:31:02 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-13 13:31:02 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-13 13:31:03 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=10
+2026-07-13 13:31:03 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/7
+2026-07-13 13:31:03 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] partial | score=0.50 | Der Titel ist zwar spezifisch und nennt Ort sowie betroffene Straßen, jedoch wird er durch die unerklärte technische Ken
+2026-07-13 13:31:03 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:31:03 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] partial | score=0.65 | Die Beschreibung liefert grundlegende inhaltliche Informationen zum Bebauungsplan und dessen rechtlichem Kontext. Sie er
+2026-07-13 13:31:03 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.95 | Titel und Beschreibung passen inhaltlich gut zusammen. Die Beschreibung erläutert und erweitert die im Titel genannte Än
+2026-07-13 13:31:03 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.70 | Die Schlagwörter sind größtenteils gut gewählt, singularisch und thematisch relevant. Allerdings enthalten sie technisch
+2026-07-13 13:31:03 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.95 | Thema, Schlagwörter, Titel und Beschreibung bilden ein konsistentes Bild: Es geht um einen Bebauungsplan im Kontext von 
+2026-07-13 13:31:03 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=1.00 | Für einen Bebauungsplan sind Stichtag (Ausstellungsdatum) und räumliche Abdeckung die relevanten Qualifizierer. Beide si
+2026-07-13 13:31:03 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:31:03 - scoring.service - DEBUG - {
+  "dataset_uri": "https://registry.gdi-de.org/id/de.bw/Gml_9AA30770-29F0-4376-ADBC-7DDD31341A02",
+  "titles": [
+    "S - Dickenhardt Teilbereich Schubert-, Sieder- und Salinenstraße ÄNDERUNG / S_M_II_3_2005_1"
+  ],
+  "descriptions": [
+    "Bebauungsplan der Stadt Villingen-Schwenningen. Nicht selbständige Änderung von S_M_II_3_1983, textl. Änderung GE/GI-Gebiet. Der Bebauungsplan enthält die rechtsverbindlichen Festsetzungen für die städtebauliche Ordnung. Grundsätzlich gilt, dass der Bebauungsplan aus dem Flächennutzungsplan zu entwickeln ist."
+  ],
+  "keywords": [
+    "bauleitplanung",
+    "bauwesen-und-gebaute-umwelt-bauen",
+    "bebauung",
+    "bebauungsplan",
+    "bodennutzung",
+    "gdb-gdi-bw",
+    "gewerbe",
+    "inspireidentifiziert",
+    "landschaftsplanung",
+    "lokal",
+    "ngdb-gdi-de",
+    "opendata",
+    "raumordnung",
+    "verkehr",
+    "villingen-schwenningen"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "http://publications.europa.eu/resource/authority/data-theme/REGI"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2022-09-13T14:47:15"
+  ],
+  "issued": [
+    "2005-12-16"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((8.5259 48.0540, 8.5288 48.0540, 8.5288 48.0520, 8.5259 48.0520, 8.5259 48.0540))"
+  ],
+  "spatial_resources": [
+    "Ne4f4b99dba144b09bf1e29479611d9f3"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "N82f4dceca0e64cb8a8d26160b88a041a",
+  "contact_points": [
+    "N4643b5a1f36646478f5c3aa8332eccd9"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/datenBW"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://apps.villingen-schwenningen.de/linkdata/BPlan/L/S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf",
+      "titles": [
+        "Legende als PDF Dokument"
+      ],
+      "descriptions": [],
+      "download_url": "https://apps.villingen-schwenningen.de/linkdata/BPlan/L/S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf",
+      "access_url": "https://apps.villingen-schwenningen.de/linkdata/BPlan/L/S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf",
+      "formats": [
+        "PDF"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2024-08-03T01:07:57.755148"
+      ],
+      "issued": [
+        "2024-07-31T05:45:22.467786"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf (from final URL)",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://apps.villingen-schwenningen.de/linkdata/BPlan/L/S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf",
+        "content_disposition": null,
+        "attachment_filename": "S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/S_M_II_3_2005_1/S_M_II_3_2005_1_RECHTSPLAN.pdf",
+      "titles": [
+        "Rechtsplan als PDF"
+      ],
+      "descriptions": [],
+      "download_url": "https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/S_M_II_3_2005_1/S_M_II_3_2005_1_RECHTSPLAN.pdf",
+      "access_url": "https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/S_M_II_3_2005_1/S_M_II_3_2005_1_RECHTSPLAN.pdf",
+      "formats": [
+        "PDF"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2024-08-03T01:07:57.755075"
+      ],
+      "issued": [
+        "2024-07-31T05:45:22.467785"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "S_M_II_3_2005_1_RECHTSPLAN.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "S_M_II_3_2005_1_RECHTSPLAN.pdf (from final URL)",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/S_M_II_3_2005_1/S_M_II_3_2005_1_RECHTSPLAN.pdf",
+        "content_disposition": null,
+        "attachment_filename": "S_M_II_3_2005_1_RECHTSPLAN.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=WFS_S_M_II_3_2005_1.map&SERVICE=WFS&VERSION=2.0&REQUEST=GetCapabilities",
+      "titles": [
+        "S - Dickenhardt Teilbereich Schubert-, Sieder- und Salinenstraße ÄNDERUNG / S_M_II_3_2005_1(WFS)"
+      ],
+      "descriptions": [
+        "Umringe der Bebauungspläne der Stadt Villingen-Schwenningen als Web Feature Service (WFS)"
+      ],
+      "download_url": null,
+      "access_url": "https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=WFS_S_M_II_3_2005_1.map&SERVICE=WFS&VERSION=2.0&REQUEST=GetCapabilities",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-08-07T08:53:05.926269"
+      ],
+      "issued": [
+        "2024-07-31T05:45:22.467782"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "getcapbplan.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml; charset=UTF-8",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "getcapbplan.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=WFS_S_M_II_3_2005_1.map&SERVICE=WFS&VERSION=2.0&REQUEST=GetCapabilities",
+        "content_disposition": null,
+        "attachment_filename": "getcapbplan.php",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://apps.villingen-schwenningen.de/linkdata/BPlan/T/S_M_II_3_2005_1_TEXTTEIL.pdf",
+      "titles": [
+        "Textliche Ausfertigung zum Bebauungsplan als PDF"
+      ],
+      "descriptions": [],
+      "download_url": "https://apps.villingen-schwenningen.de/linkdata/BPlan/T/S_M_II_3_2005_1_TEXTTEIL.pdf",
+      "access_url": "https://apps.villingen-schwenningen.de/linkdata/BPlan/T/S_M_II_3_2005_1_TEXTTEIL.pdf",
+      "formats": [
+        "PDF"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2024-08-03T01:07:57.755218"
+      ],
+      "issued": [
+        "2024-07-31T05:45:22.467787"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "S_M_II_3_2005_1_TEXTTEIL.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "S_M_II_3_2005_1_TEXTTEIL.pdf (from final URL)",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://apps.villingen-schwenningen.de/linkdata/BPlan/T/S_M_II_3_2005_1_TEXTTEIL.pdf",
+        "content_disposition": null,
+        "attachment_filename": "S_M_II_3_2005_1_TEXTTEIL.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=S_M_II_3_2005_1.map&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+      "titles": [
+        "S - Dickenhardt Teilbereich Schubert-, Sieder- und Salinenstraße ÄNDERUNG / S_M_II_3_2005_1(WMS)"
+      ],
+      "descriptions": [
+        "Bebauungspläne der Stadt Villingen-Schwenningen als Web Map Service (WMS)"
+      ],
+      "download_url": null,
+      "access_url": "https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=S_M_II_3_2005_1.map&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-08-07T08:53:05.926354"
+      ],
+      "issued": [
+        "2024-07-31T05:45:22.467789"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "getcapbplan.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml; charset=UTF-8",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "getcapbplan.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=S_M_II_3_2005_1.map&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+        "content_disposition": null,
+        "attachment_filename": "getcapbplan.php",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/index.aspx?id=S_M_II_3_2005_1",
+      "titles": [
+        "Sonstige Daten zum Bebauungsplan"
+      ],
+      "descriptions": [],
+      "download_url": "https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/index.aspx?id=S_M_II_3_2005_1",
+      "access_url": "https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/index.aspx?id=S_M_II_3_2005_1",
+      "formats": [],
+      "formats_in_vocab": [],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-07-31T05:45:22.434225"
+      ],
+      "issued": [
+        "2024-07-31T05:45:22.467783"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "index.aspx",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=utf-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "index.aspx (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/index.aspx?id=S_M_II_3_2005_1",
+        "content_disposition": null,
+        "attachment_filename": "index.aspx",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://apps.villingen-schwenningen.de/linkdata/BPlan/G/S_M_II_3_2005_1.zip",
+      "titles": [
+        "Georeferenziertes Rasterbild als ZIP Datei"
+      ],
+      "descriptions": [],
+      "download_url": "https://apps.villingen-schwenningen.de/linkdata/BPlan/G/S_M_II_3_2005_1.zip",
+      "access_url": "https://apps.villingen-schwenningen.de/linkdata/BPlan/G/S_M_II_3_2005_1.zip",
+      "formats": [
+        "ZIP"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/zip"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2024-08-03T01:07:57.754812"
+      ],
+      "issued": [
+        "2024-07-31T05:45:22.467777"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "ZIP",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "S_M_II_3_2005_1.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/x-zip-compressed",
+            "mime_type": "application/x-zip-compressed"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "S_M_II_3_2005_1.zip (from final URL)",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "application/zip",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://apps.villingen-schwenningen.de/linkdata/BPlan/G/S_M_II_3_2005_1.zip",
+        "content_disposition": null,
+        "attachment_filename": "S_M_II_3_2005_1.zip",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel enthält eine Abkürzung 'S_M_II_3_2005_1' ohne Erklärung, die für Laien kryptisch ist.",
+        "Der Titel ist sehr lang und enthält technische Codes, die eher in Metadatenfelder gehören.",
+        "Der Ortsbezug (Dickenhardt, Villingen-Schwenningen) und die betroffenen Straßen sind genannt, was die Spezifität erhöht."
+      ],
+      "reasoning": "Der Titel ist zwar spezifisch und nennt Ort sowie betroffene Straßen, jedoch wird er durch die unerklärte technische Kennung 'S_M_II_3_2005_1' und die Abkürzung 'S' am Anfang für Außenstehende schwer verständlich. Solche Codes sollten in separaten Feldern stehen. Die Länge und Struktur wirken technisch statt nutzerfreundlich.",
+      "applicable": true,
+      "score": 0.5
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt, dass es sich um eine nicht selbständige Änderung eines bestehenden Bebauungsplans handelt und nennt die Art der Änderung (textliche Änderung GE/GI-Gebiet).",
+        "Es wird der rechtliche Kontext (Entwicklung aus Flächennutzungsplan, rechtsverbindliche Festsetzungen) erläutert.",
+        "Format, Datenstruktur, Erhebungsmethode und Stichtag werden nicht genannt."
+      ],
+      "reasoning": "Die Beschreibung liefert grundlegende inhaltliche Informationen zum Bebauungsplan und dessen rechtlichem Kontext. Sie erklärt, was geändert wurde (GE/GI-Gebiet) und verweist auf den ursprünglichen Plan. Allerdings fehlen technische Details wie Datenformat, Struktur, Kodierung oder Erhebungsmethode, die für die Nutzung wichtig wären. Die Beschreibung ist substanziell, aber nicht vollständig.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf denselben Bebauungsplan in Villingen-Schwenningen.",
+        "Die Beschreibung konkretisiert die im Titel genannte Änderung und erklärt den Kontext.",
+        "Keine inhaltlichen Widersprüche zwischen Titel und Beschreibung erkennbar."
+      ],
+      "reasoning": "Titel und Beschreibung passen inhaltlich gut zusammen. Die Beschreibung erläutert und erweitert die im Titel genannte Änderung des Bebauungsplans. Ort, Thema und Bezug sind konsistent.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter sind überwiegend singularisch und thematisch passend (bebauungsplan, bauleitplanung, bodennutzung, raumordnung).",
+        "Einige Schlagwörter sind technischer Jargon oder Codes (gdb-gdi-bw, ngdb-gdi-de, inspireidentifiziert), die für Laien nicht verständlich sind.",
+        "Der Ortsname 'villingen-schwenningen' ist redundant, da er bereits im Titel und in separaten Feldern steht."
+      ],
+      "reasoning": "Die Schlagwörter sind größtenteils gut gewählt, singularisch und thematisch relevant. Allerdings enthalten sie technische Codes (gdb-gdi-bw, ngdb-gdi-de, inspireidentifiziert) und den Ortsnamen, der bereits anderweitig erfasst ist. Dies mindert die Qualität leicht.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Die Themen GOVE (Regierung und öffentlicher Sektor) und REGI (Regionen und Städte) passen zu einem Bebauungsplan.",
+        "Schlagwörter wie bebauungsplan, bauleitplanung, raumordnung, bodennutzung sind konsistent mit dem Thema.",
+        "Titel und Beschreibung bestätigen das Thema Stadtplanung und Bebauung."
+      ],
+      "reasoning": "Thema, Schlagwörter, Titel und Beschreibung bilden ein konsistentes Bild: Es geht um einen Bebauungsplan im Kontext von Stadtplanung und Raumordnung. Keine thematischen Widersprüche erkennbar.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Das Ausstellungsdatum (issued: 2005-12-16) ist vorhanden und kennzeichnet den Zeitpunkt der Planaufstellung.",
+        "Das Änderungsdatum (modified: 2022-09-13) zeigt die letzte Aktualisierung der Metadaten.",
+        "Die räumliche Abdeckung ist durch Koordinaten und Ortsbezug klar definiert."
+      ],
+      "reasoning": "Für einen Bebauungsplan sind Stichtag (Ausstellungsdatum) und räumliche Abdeckung die relevanten Qualifizierer. Beide sind vorhanden. Das Änderungsdatum der Metadaten ist ebenfalls dokumentiert. Alle erforderlichen kontextuellen Qualifizierer sind gegeben.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "overall_summary": "Die Metadaten sind inhaltlich konsistent und liefern die wesentlichen Informationen zu einem Bebauungsplan. Titel und Beschreibung passen zusammen, Zeitbezug und räumliche Abdeckung sind klar. Abzüge gibt es für technische Codes im Titel und bei den Schlagwörtern sowie für fehlende technische Details (Format, Struktur) in der Beschreibung."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6259,
+      "output_tokens": 1652,
+      "total_tokens": 7911,
+      "cost_usd": 0.043557,
+      "latency_seconds": 24.639
+    }
+  ],
+  "distribution_count": 7
+}
+2026-07-13 13:31:03 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/geo_rest_04/result.json
+2026-07-13 13:31:03 - __main__ - INFO -   ✓ Completed | score=0.70 grade=C

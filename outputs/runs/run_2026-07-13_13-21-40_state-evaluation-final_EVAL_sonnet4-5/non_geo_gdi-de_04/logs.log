@@ -1,0 +1,386 @@
+2026-07-13 13:35:11 - reporting.output_manager - INFO - Created file log handler for non_geo_gdi-de_04.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_gdi-de_04/logs.log
+2026-07-13 13:35:11 - __main__ - INFO - Started processing: non_geo_gdi-de_04.rdf
+2026-07-13 13:35:11 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_gdi-de_04.rdf
+2026-07-13 13:35:11 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_gdi-de_04.rdf using format: xml
+2026-07-13 13:35:11 - extraction.rdf_parser - INFO - Successfully parsed 74 triples
+2026-07-13 13:35:11 - scoring.service - INFO - Parsed 74 triples
+2026-07-13 13:35:11 - scoring.service - DEBUG - DatasetContext built: 2 distribution(s)
+2026-07-13 13:35:11 - scoring.service - DEBUG - attach_probes: 2/2 unique fetch keys, 2 distribution(s) covered
+2026-07-13 13:35:11 - scoring.service - DEBUG - [OK   ] https://inspire.govconnect.de/services/bsp/org.62.b97b0be0-8c86-4c10-8442-5dbcf28073c5/service/atom/id_predefined_dataset#distribution — Mak - 1.1 Am Friedhof (1. Änderung)
+  downloadURL : https://inspire.govconnect.de/services/bsp/org.62.b97b0be0-8c86-4c10-8442-5dbcf28073c5/service/atom/id_predefined_dataset
+  HTTP        : 200
+  signals     :
+    dct:format           raw=onLine                                   mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=id_predefined_dataset                    mime=-
+    http_content_type    raw=application/atom+xml; charset=UTF-8      mime=application/atom+xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/atom+xml
+  warning     : dct:format='onLine' has no known MIME mapping; not comparable
+2026-07-13 13:35:13 - scoring.service - DEBUG - [OK   ] https://inspire.govconnect.de/store/data/buckets/org/62/b97b0be0-8c86-4c10-8442-5dbcf28073c5/zip#distribution — Mak - 1.1 Am Friedhof (1. Änderung)
+  downloadURL : https://inspire.govconnect.de/store/data/buckets/org/62/b97b0be0-8c86-4c10-8442-5dbcf28073c5/zip
+  HTTP        : 200
+  attachment  : archive.zip
+  signals     :
+    dct:format           raw=onLine                                   mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=zip                                      mime=-
+    http_content_type    raw=application/zip                          mime=application/zip
+    attachment_filename  raw=archive.zip                              mime=application/zip
+  coalesced   : application/zip
+  warning     : dct:format='onLine' has no known MIME mapping; not comparable
+2026-07-13 13:35:13 - scoring.service - DEBUG - Attached probes to 2/2 distribution(s)
+2026-07-13 13:35:39 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten weisen erhebliche Mängel in der Aussagekraft auf: Titel und Beschreibung sind kryptisch und wenig informat')
+2026-07-13 13:35:39 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:35:39 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=11
+2026-07-13 13:35:39 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['b-plan', 'gemeinde-bahrdorf', 'gemeinde-danndorf', 'gemeinde-grafhorst', 'gemeinde-groß-twülpstedt', 'gemeinde-velpke', 'inspireidentifiziert', 'landkreis-helmstedt', 'opendata', 'pminspireharvestlkhe', 'samtgemeinde-velpke']
+2026-07-13 13:35:39 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/GOVE']
+2026-07-13 13:35:39 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-13 13:35:39 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-13 13:35:39 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-13 13:35:39 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-13 13:35:39 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-13 13:35:39 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-13 13:35:39 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/issued
+2026-07-13 13:35:39 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=c4691346-2f9b-4840-8cfa-d65f3f6b3cba = 2026-04-01
+2026-07-13 13:35:39 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://inspire.govconnect.de/services/bsp/org.62.b97b0be0-8c86-4c10-8442-5dbcf28073c5/service/atom/id_predefined_dataset#distribution = 2026-04-13T10:21:19.959546
+2026-07-13 13:35:39 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://inspire.govconnect.de/store/data/buckets/org/62/b97b0be0-8c86-4c10-8442-5dbcf28073c5/zip#distribution = 2026-04-13T10:21:19.959551
+2026-07-13 13:35:39 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/modified
+2026-07-13 13:35:39 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=c4691346-2f9b-4840-8cfa-d65f3f6b3cba = 2026-04-01
+2026-07-13 13:35:39 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://inspire.govconnect.de/services/bsp/org.62.b97b0be0-8c86-4c10-8442-5dbcf28073c5/service/atom/id_predefined_dataset#distribution = 2026-04-21T03:48:46.999440
+2026-07-13 13:35:39 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://inspire.govconnect.de/store/data/buckets/org/62/b97b0be0-8c86-4c10-8442-5dbcf28073c5/zip#distribution = 2026-04-13T10:21:19.938039
+2026-07-13 13:35:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:35:39 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:35:39 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=2/2
+2026-07-13 13:35:39 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:35:39 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/2
+2026-07-13 13:35:39 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:35:39 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/2
+2026-07-13 13:35:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:35:39 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-13 13:35:39 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:35:39 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-13 13:35:39 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.75 high=1 mid=1 none=0 total=2
+2026-07-13 13:35:39 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/2
+2026-07-13 13:35:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:35:39 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=2/2
+2026-07-13 13:35:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:35:39 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:35:39 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-13 13:35:39 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-13 13:35:39 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:35:41 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=4
+2026-07-13 13:35:41 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/2
+2026-07-13 13:35:41 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] fail | score=0.40 | Der Titel ist durch die unerklärte Abkürzung 'Mak' und die technischen Codes ('1.1', '1. Änderung') für Außenstehende sc
+2026-07-13 13:35:41 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.20 | Die Beschreibung ist extrem knapp und bietet kaum Mehrwert gegenüber dem Titel. Sie beantwortet keine der zentralen Frag
+2026-07-13 13:35:41 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.90 | Titel und Beschreibung sind kohärent und widerspruchsfrei. Die Beschreibung wiederholt den Titel und fügt lediglich eine
+2026-07-13 13:35:41 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.40 | Die Schlagwörter sind überwiegend technisch-formal und wenig nutzerfreundlich. Technische Tags wie 'pminspireharvestlkhe
+2026-07-13 13:35:41 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.90 | Thema, Schlagwörter, Titel und Beschreibung bilden ein konsistentes Bild: Es handelt sich um einen Bebauungsplan (Raumpl
+2026-07-13 13:35:41 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.20 | Für einen Bebauungsplan sind zeitliche Qualifizierer (Beschlussdatum, Rechtskraft, Verfahrensstatus) essentiell. Diese f
+2026-07-13 13:35:41 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:35:41 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:35:41 - scoring.service - DEBUG - {
+  "dataset_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=c4691346-2f9b-4840-8cfa-d65f3f6b3cba",
+  "titles": [
+    "Mak - 1.1 Am Friedhof (1. Änderung)"
+  ],
+  "descriptions": [
+    "Mak - 1.1 Am Friedhof (1. Änderung) im Datenformat INSPIRE PLU Version 4.0.1"
+  ],
+  "keywords": [
+    "b-plan",
+    "gemeinde-bahrdorf",
+    "gemeinde-danndorf",
+    "gemeinde-grafhorst",
+    "gemeinde-groß-twülpstedt",
+    "gemeinde-velpke",
+    "inspireidentifiziert",
+    "landkreis-helmstedt",
+    "opendata",
+    "pminspireharvestlkhe",
+    "samtgemeinde-velpke"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-04-01"
+  ],
+  "issued": [
+    "2026-04-01"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((11.0199 52.3564, 11.0246 52.3564, 11.0246 52.3548, 11.0199 52.3548, 11.0199 52.3564))"
+  ],
+  "spatial_resources": [
+    "Nd90ce7a7a44a4df5b75331bc1f22a927"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations",
+  "publisher": "Na752794aeec648a88e7b3e486e58ab0e",
+  "contact_points": [
+    "Ne7a5f0b90cae42be8597184cdbaac28e"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/gdiDE"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://inspire.govconnect.de/services/bsp/org.62.b97b0be0-8c86-4c10-8442-5dbcf28073c5/service/atom/id_predefined_dataset#distribution",
+      "titles": [
+        "Mak - 1.1 Am Friedhof (1. Änderung)"
+      ],
+      "descriptions": [
+        "Mak - 1.1 Am Friedhof (1. Änderung)"
+      ],
+      "download_url": "https://inspire.govconnect.de/services/bsp/org.62.b97b0be0-8c86-4c10-8442-5dbcf28073c5/service/atom/id_predefined_dataset",
+      "access_url": "https://inspire.govconnect.de/services/bsp/org.62.b97b0be0-8c86-4c10-8442-5dbcf28073c5/service/atom/id_predefined_dataset",
+      "formats": [
+        "onLine"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-04-21T03:48:46.999440"
+      ],
+      "issued": [
+        "2026-04-13T10:21:19.959546"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "onLine",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "id_predefined_dataset",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/atom+xml; charset=UTF-8",
+            "mime_type": "application/atom+xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/atom+xml",
+        "issues": [],
+        "warnings": [
+          "dct:format='onLine' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://inspire.govconnect.de/services/bsp/org.62.b97b0be0-8c86-4c10-8442-5dbcf28073c5/service/atom/id_predefined_dataset",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://inspire.govconnect.de/store/data/buckets/org/62/b97b0be0-8c86-4c10-8442-5dbcf28073c5/zip#distribution",
+      "titles": [
+        "Mak - 1.1 Am Friedhof (1. Änderung)"
+      ],
+      "descriptions": [
+        "Mak - 1.1 Am Friedhof (1. Änderung)"
+      ],
+      "download_url": "https://inspire.govconnect.de/store/data/buckets/org/62/b97b0be0-8c86-4c10-8442-5dbcf28073c5/zip",
+      "access_url": "https://inspire.govconnect.de/store/data/buckets/org/62/b97b0be0-8c86-4c10-8442-5dbcf28073c5/zip",
+      "formats": [
+        "onLine"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-04-13T10:21:19.938039"
+      ],
+      "issued": [
+        "2026-04-13T10:21:19.959551"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "onLine",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "zip",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "archive.zip",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "application/zip",
+        "issues": [],
+        "warnings": [
+          "dct:format='onLine' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://inspire.govconnect.de/store/data/buckets/org/62/b97b0be0-8c86-4c10-8442-5dbcf28073c5/zip",
+        "content_disposition": "inline; filename=\"archive.zip\"; filename*=utf-8''archive.zip",
+        "attachment_filename": "archive.zip",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel 'Mak - 1.1 Am Friedhof (1. Änderung)' enthält eine kryptische Abkürzung 'Mak' ohne Erklärung",
+        "Die Bezeichnung '1.1' und '(1. Änderung)' sind technische Codes, die für Laien nicht verständlich sind",
+        "Ein Ortsbezug ('Am Friedhof') ist erkennbar, aber ohne Gemeinde-/Stadtangabe nicht eindeutig lokalisierbar"
+      ],
+      "reasoning": "Der Titel ist durch die unerklärte Abkürzung 'Mak' und die technischen Codes ('1.1', '1. Änderung') für Außenstehende schwer verständlich. Der Ortsbezug 'Am Friedhof' ist zu generisch, um den Datensatz eindeutig zu identifizieren. Es fehlt eine klare Angabe, um welche Art von Datensatz es sich handelt (vermutlich Bebauungsplan, aber nicht explizit genannt).",
+      "applicable": true,
+      "score": 0.4
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung wiederholt fast wörtlich den Titel und fügt nur die technische Formatangabe 'INSPIRE PLU Version 4.0.1' hinzu",
+        "Es fehlen grundlegende Informationen: Was ist 'Mak'? Was bedeutet '1.1'? Worum geht es inhaltlich?",
+        "Keine Angaben zu Struktur, Erhebungsmethode, Zweck oder Besonderheiten des Datensatzes"
+      ],
+      "reasoning": "Die Beschreibung ist extrem knapp und bietet kaum Mehrwert gegenüber dem Titel. Sie beantwortet keine der zentralen Fragen (Was? Wie? Warum? Struktur?). Lediglich die technische Formatangabe ist neu, aber für das inhaltliche Verständnis nicht ausreichend.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung stimmen inhaltlich überein (gleicher Name, gleiche Änderungsbezeichnung)",
+        "Die Beschreibung ergänzt den Titel nur um die Formatangabe, ohne inhaltliche Widersprüche",
+        "Beide Felder beziehen sich erkennbar auf denselben Datensatz"
+      ],
+      "reasoning": "Titel und Beschreibung sind kohärent und widerspruchsfrei. Die Beschreibung wiederholt den Titel und fügt lediglich eine technische Spezifikation hinzu. Es gibt keine inhaltlichen Diskrepanzen bezüglich Thema, Ort oder Zeitraum.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "keyword_quality": {
+      "findings": [
+        "Viele Schlagwörter sind rein technisch/formal: 'inspireidentifiziert', 'pminspireharvestlkhe', 'opendata'",
+        "Geografische Schlagwörter sind redundant und zu detailliert (mehrere Gemeinden, Landkreis, Samtgemeinde)",
+        "Das Schlagwort 'b-plan' ist eine Abkürzung statt des ausgeschriebenen Begriffs 'Bebauungsplan'"
+      ],
+      "reasoning": "Die Schlagwörter sind überwiegend technisch-formal und wenig nutzerfreundlich. Technische Tags wie 'pminspireharvestlkhe' sind für Laien unverständlich. Die geografischen Schlagwörter sind redundant und gehören eher in eigene Metadatenfelder. Die Abkürzung 'b-plan' sollte ausgeschrieben werden. Insgesamt sind die Schlagwörter nicht optimal gewählt.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Die Themen REGI (Regionen/Städte) und GOVE (Regierung/öffentlicher Sektor) passen zu einem Bebauungsplan",
+        "Die Schlagwörter (b-plan, Gemeinden, Landkreis) unterstützen das Thema Raumplanung",
+        "Titel und Beschreibung deuten auf einen Bebauungsplan hin, was mit den Themen konsistent ist"
+      ],
+      "reasoning": "Thema, Schlagwörter, Titel und Beschreibung bilden ein konsistentes Bild: Es handelt sich um einen Bebauungsplan (Raumplanung/öffentliche Verwaltung). Die zugeordneten DCAT-Themen REGI und GOVE sind passend. Trotz der Qualitätsmängel in den Einzelfeldern gibt es keine thematischen Widersprüche.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Es fehlt jede zeitliche Einordnung: Wann wurde der Plan beschlossen? Welcher Zeitraum ist relevant?",
+        "Die Felder 'modified' und 'issued' zeigen ein Datum in der Zukunft (2026-04-01), was unrealistisch wirkt",
+        "Keine Angabe, ob es sich um einen rechtskräftigen, im Verfahren befindlichen oder Entwurfs-Plan handelt"
+      ],
+      "reasoning": "Für einen Bebauungsplan sind zeitliche Qualifizierer (Beschlussdatum, Rechtskraft, Verfahrensstatus) essentiell. Diese fehlen vollständig. Die Zukunftsdaten bei 'modified'/'issued' wirken fehlerhaft. Der Status des Plans (Entwurf, rechtskräftig, in Änderung) ist nicht gekennzeichnet, obwohl dies für die Nutzbarkeit entscheidend ist.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "overall_summary": "Die Metadaten weisen erhebliche Mängel in der Aussagekraft auf: Titel und Beschreibung sind kryptisch und wenig informativ, kontextuelle Qualifizierer (Zeitbezug, Status) fehlen weitgehend, und die Schlagwörter sind überwiegend technisch-formal statt nutzerfreundlich. Positiv ist lediglich die thematische Konsistenz und die Kohärenz zwischen Titel und Beschreibung."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6167,
+      "output_tokens": 1748,
+      "total_tokens": 7915,
+      "cost_usd": 0.044721,
+      "latency_seconds": 26.378
+    }
+  ],
+  "distribution_count": 2
+}
+2026-07-13 13:35:41 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_gdi-de_04/result.json
+2026-07-13 13:35:41 - __main__ - INFO -   ✓ Completed | score=0.61 grade=C

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881">
+    <dct:title>Hochwasserkarten 2019 - Flusshochwasser</dct:title>
+    <dct:description>Seit dem 26. November 2007 ist die „Richtlinie über die Bewertung und das Management von Hochwasserrisiken“ (HWRL) der EU in Kraft. Ziel der HWRL ist es, einen Rahmen für die Bewertung und das Management von Hochwasserrisiken zur Verringerung der hochwasserbedingten nachteiligen Folgen auf die menschliche Gesundheit, die Umwelt, das Kulturerbe und wirtschaftliche Tätigkeiten in der Gemeinschaft zu schaffen.&#13;
+&#13;
+Die HWRL verfolgt damit den Zweck, durch einen grenzübergreifend abgestimmten Hochwasserschutz in den Flussgebietseinheiten, inklusive der Küstengebiete, die Hochwasserrisiken zu reduzieren und die Hochwasservorsorge und das Risikomanagement zu verbessern. Durch die Umsetzung soll die Verbesserung der Eigenvorsorge der Kommunen und der betroffenen Bürger erreicht werden. &#13;
+&#13;
+Der erste Berichtszyklus wurde mit der vorläufigen Bewertung des Hochwasserrisikos und Bestimmung der Gebiete, bei denen davon auszugehen ist, „dass ein potenziell signifikantes Hochwasserrisiko besteht oder für wahrscheinlich gehalten werden kann“ (Art. 4 und 5) bis 22.12.2011, der Erstellung der Hochwassergefahren- und Hochwasserrisikokarten (Art. 6) bis 22.12.2013 und der Erarbeitung der Hochwasserrisikomanagementpläne (Art.7) bis zum 22.12.2015 abgeschlossen. &#13;
+&#13;
+Nach Artikel 14 der HWRL werden im zweiten Berichtszyklus&#13;
+&#13;
+- die vorläufige Bewertung des Hochwasserrisikos oder die Bewertung und Beschlüsse nach Artikel 13 Abs. 1 bis zum 22.12.2018,&#13;
+- die Hochwassergefahrenkarten und die Hochwasserrisikokarten bis zum 22.12.2019 und &#13;
+- die Hochwasserrisikomanagementpläne, einschließlich der in Teil B des Anhangs beschriebenen Bestandteile, bis zum 22.12.2021 &#13;
+&#13;
+und danach alle sechs Jahre überprüft und erforderlichenfalls aktualisiert.&#13;
+&#13;
+Bei den Überprüfungen wird den voraussichtlichen Auswirkungen des Klimawandels auf das Auftreten von Hochwasser Rechnung getragen.&#13;
+&#13;
+Die Ergebnisse sind der EU-Kommission innerhalb von drei Monaten nach den genannten Terminen jeweils bis zum 22.03. des Folgejahres zur Verfügung zu stellen. &#13;
+&#13;
+Die **Hochwassergefahrenkarten** gemäß Art. 6 Abs. 3 HWRL erfassen die geografischen Gebiete, die nach folgenden Szenarien überflutet werden könnten: &#13;
+&#13;
+1. Hochwasser mit niedriger Wahrscheinlichkeit oder Szenarien für Extremereignisse;&#13;
+2. Hochwasser mit mittlerer Wahrscheinlichkeit;&#13;
+3. gegebenenfalls Hochwasser mit hoher Wahrscheinlichkeit.&#13;
+&#13;
+In den Hochwassergefahrenkarten werden für die einzelnen Szenarien angegeben (Abs. 4): &#13;
+&#13;
+1. Ausmaß der Überflutung;&#13;
+2. Wassertiefe bzw. gegebenenfalls Wasserstand.&#13;
+&#13;
+Für bereits ausreichend geschützte Küstengebiete (Abs. 6) kann die Erstellung von Hochwassergefahrenkarten auf ein Extremereignis beschränkt werden. In SH werden darüber hinaus zusätzlich die oben genannten drei Hochwasserszenarien in allen anderen nicht ausreichend geschützten Gebieten dargestellt.&#13;
+&#13;
+**Hochwasserrisikokarten** werden auf der Grundlage der Hochwassergefahrenkarten für die gleichen Hochwasserszenarien erstellt. In ihnen sollen über die Hochwassergefahren (Überflutungsausdehnung und -tiefe) hinaus die hochwasserbedingten nachteiligen Auswirkungen (Signifikanzkriterien) dargestellt werden. In Artikel 6 Abs. 5 der HWRL sind die erforderlichen Angaben aufgeführt: &#13;
+&#13;
+1. Anzahl der potenziell betroffenen Einwohner,&#13;
+2. Art der wirtschaftlichen Tätigkeiten in dem potenziell betroffenen Gebiet,&#13;
+3. Anlagen der Richtlinie 2010/75/EU über Industrieemissionen (IED) und potenziell betroffene Schutzgebiete gemäß Anhang IV Nummer 1 Ziffern i, iii und v der Richtlinie 2000/60/EG&#13;
+4. weitere Informationen, die der Mitgliedstaat als nützlich betrachtet, etwa die Angabe von Gebieten, in denen Hochwasser mit einem hohen Gehalt an mitgeführten Sedimenten sowie Schutt mitführende Hochwasser auftreten können, und Informationen über andere bedeutende Verschmutzungsquellen.&#13;
+&#13;
+**Hinweis zu den Daten**&#13;
+&#13;
+Für ein vollständiges Bild über Hochwasserrisiken sollten diese beiden Datensätze berücksichtigt werden:&#13;
+&#13;
+- [Küstenhochwasser](/dataset/hochwasserkarten-2019-kustenhochwasser) &#13;
+- Flusshochwasser - dieser Datensatz&#13;
+&#13;
+Die ArcMap Projekte (mxd-Dateien) werden in der Version 10.2  bereitgestellt.&#13;
+&#13;
+**Bitte beachten Sie die [Nutzungshinweise und Beschreibung der Daten](https://opendata.schleswig-holstein.de/data/melund_wasser/nutzungshinweise_hochwasserkarten.pdf).**</dct:description>
+    <dct:identifier>e9e01a74-9ebc-417b-a4ea-20b3b7486881</dct:identifier>
+    <dcat:keyword>flusshochwasser</dcat:keyword>
+    <dcat:keyword>gefahrenkarten</dcat:keyword>
+    <dcat:keyword>hochwasser</dcat:keyword>
+    <dcat:keyword>risikokarten</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-12-22T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-02-03T06:37:12.867173</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.schleswig-holstein.de/organization/melund">
+        <foaf:name>Ministerium für Energiewende, Landwirtschaft, Umwelt, Natur und Digitalisierung</foaf:name>
+        <foaf:homepage rdf:resource="https://www.schleswig-holstein.de/DE/Landesregierung/V/v_node.html"/>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N07b2530142df46d18a56fa9adb415dc6">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-12-22T00:00:00</dcat:startDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/01">
+        <skos:prefLabel>Bundesland Schleswig-Holstein</skos:prefLabel>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b">
+        <dct:title>Flusshochwasser - Dienste (WMS in QGIS)</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/x-qgis"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/QGS"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-11T06:46:10.396445</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-02-03T06:35:53.605644</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45452</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nc41d8e51036a4e58ab0df52970c613c4">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">270cb023a53569f90be76230f2e97da7</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Ministerium für Energiewende, Landwirtschaft, Umwelt, Natur und Digitalisierung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8">
+        <dct:title>Flusshochwasser - Dienste (WMS in ESRI mxd)</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/MXD"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-11T06:45:35.586969</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-02-03T06:36:11.769589</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">54784</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nf8b884919d444915bae694114713dab3">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">915b1f1748205b79dac0e4a88ceb9f32</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Ministerium für Energiewende, Landwirtschaft, Umwelt, Natur und Digitalisierung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/49c559f0-75c9-4029-9be8-d66c01c91bb2">
+        <dct:title>Flusshochwasser - Daten (ESRI File GDB) [1,0 GB]</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/data/melund_wasser/HWGK_HWRK_2019_Flusshochwasser.zip"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/data/melund_wasser/HWGK_HWRK_2019_Flusshochwasser.zip"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/zip"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/GDB"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-11T06:43:40.590703</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-11T06:43:40.590703</dct:modified>
+        <dcatde:licenseAttributionByText>Ministerium für Energiewende, Landwirtschaft, Umwelt, Natur und Digitalisierung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/schleswigHolstein"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/data/melund_wasser/HWGK_HWRK_2019_Flusshochwasser.zip"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/x-qgis"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/GDB"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/QGS"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/MXD"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd"/>
+  <spdx:ChecksumAlgorithm rdf:about="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/zip"/>
+</rdf:RDF>

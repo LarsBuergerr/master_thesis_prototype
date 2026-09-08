@@ -1,0 +1,65 @@
+// Farb-Tokens, wörtlich übernommen aus dem GovData-Frontend
+// (webapp/src/css/_color-tokens.scss; dort aus dem GOVDATA-Figma-Styleguide
+// abgeleitet). Namen und Hex-Werte unverändert lassen, damit die Anwendung
+// beim Einbetten in GovData exakt dieselbe Farbwelt nutzt.
+
+// primary colors
+$clr-primary-500: #004565;
+$clr-primary-400: #0073a8;
+$clr-primary-300: #4d9dc2;
+$clr-primary-200: #99c7dc;
+$clr-primary-100: #e6f1f6;
+
+// media type colors
+$clr-media-grey-500: #3d3d3d;
+
+// metadaten (Farbwelt der GovData-Metadatenqualitäts-Seite)
+$clr-metadaten-magenta-400: #80004b;
+$clr-metadaten-magenta-200: #e6cbda;
+
+// neutral colors
+$clr-neutral-grey-900: #030d18;
+$clr-neutral-grey-800: #192738;
+$clr-neutral-grey-700: #24384d;
+$clr-neutral-grey-600: #3d4f66;
+$clr-neutral-grey-500: #5d728b;
+$clr-neutral-grey-400: #93a5bb;
+$clr-neutral-grey-300: #cdd8e1;
+$clr-neutral-grey-200: #e3e8ef;
+$clr-neutral-grey-100: #f3f6fb;
+$clr-neutral-grey-50: #f8fafe;
+$clr-neutral-grey-0: #f5f5f5;
+
+// success colors
+$clr-success-green-500: #206d5c;
+$clr-success-green-400: #2d9880;
+$clr-success-green-300: #40d9b7;
+$clr-success-green-200: #d9f7f1;
+
+// warning colors
+$clr-warning-yellow-500: #7b7301;
+$clr-warning-yellow-400: #938a01;
+$clr-warning-yellow-300: #f5e601;
+$clr-warning-yellow-200: #fdfacc;
+
+// error colors
+$clr-error-red-500: #b33030;
+$clr-error-red-400: #e63e3e;
+$clr-error-red-300: #ff4545;
+$clr-error-red-200: #ffdada;
+
+// shades
+$clr-shades-black-500: #000000;
+$clr-shades-white-0: #ffffff;
+
+$clr-body-background: #f5f5f5;
+
+$white: #fff;
+$black: #000;
+
+$disabled-text: #737373;
+
+$focus-outline-color: #0073a8;
+
+$alert-info-bg: #e6f1f6;
+$alert-info-clr: #0073a8;

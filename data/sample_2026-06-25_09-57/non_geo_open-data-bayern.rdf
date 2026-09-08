@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://open.bydata.de/api/hub/repo/datasets/12411-001-09175">
+    <dct:title>Ebersberg (Lkr): Bevölkerung</dct:title>
+    <dct:description>Gemeinden, Bevölkerung, Stichtage</dct:description>
+    <dct:identifier>12411-001-09175</dct:identifier>
+    <dcat:keyword>bevoelkerungsumfang</dcat:keyword>
+    <dcat:keyword>bevölkerung</dcat:keyword>
+    <dcat:keyword>ebersberg-lkr</dcat:keyword>
+    <dcat:keyword>einwohner</dcat:keyword>
+    <dcat:keyword>einwohnerzahl</dcat:keyword>
+    <dcat:keyword>einwohnerzahlen</dcat:keyword>
+    <dcat:keyword>fortschreibung-des-bevölkerungsstandes</dcat:keyword>
+    <dcat:keyword>gemeinden-bayerns-einschl.-gemeindefreie-gebiete</dcat:keyword>
+    <dcat:keyword>stichtag</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-06T14:12:22</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-10-31T13:35:24</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/SOCI"/>
+    <dct:relation>
+      <rdfs:Resource rdf:about="https://open.bydata.de/datasets/12411-001-d"/>
+    </dct:relation>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N15e8c82bb6c74e6a998a7c91878598a4">
+        <vcard:fn>Bayerisches Landesamt für Statistik</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:info@statistik.bayern.de"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="Nbf21f073bfa545b8988c5aadb817a312">
+        <foaf:name>Bayerisches Landesamt für Statistik</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.bydata.de/api/hub/repo/distributions/a05cee76-2cba-4a87-bca7-27aa33a82f08">
+        <dct:title>Bevölkerung - XLSX</dct:title>
+        <dct:description>Bevölkerung: Gemeinden, Bevölkerung, Stichtage</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://www.statistikdaten.bayern.de/genesis/online?operation=download&amp;code=12411-001&amp;option=xlsx&amp;regionalschluessel=09175%2A"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/xlsx"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLS"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-03-29T09:44:51.718282</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-09T05:00:04</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.bydata.de/api/hub/repo/distributions/4c0ecdf0-31e1-445a-b8a0-ba85503dd30d">
+        <dct:title>Bevölkerung - XML</dct:title>
+        <dct:description>Bevölkerung: Gemeinden, Bevölkerung, Stichtage</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://www.statistikdaten.bayern.de/genesis/online?operation=download&amp;code=12411-001&amp;option=xml&amp;regionalschluessel=09175%2A"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/xml"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XML"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-03-29T09:44:51.718287</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-09T05:00:04</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.bydata.de/api/hub/repo/distributions/fcdf3133-1754-4cde-8fb5-d5392557778b">
+        <dct:title>Bevölkerung - CSV</dct:title>
+        <dct:description>Bevölkerung: Gemeinden, Bevölkerung, Stichtage</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://www.statistikdaten.bayern.de/genesis/online?operation=download&amp;code=12411-001&amp;option=csv&amp;regionalschluessel=09175%2A"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-03-29T09:44:51.718290</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-09T05:00:04</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.bydata.de/api/hub/repo/distributions/b23152c0-768f-422e-b116-9bd16b280d26">
+        <dct:title>Bevölkerung - Flat CSV</dct:title>
+        <dct:description>Bevölkerung: Gemeinden, Bevölkerung, Stichtage</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/cc-by/4.0"/>
+        <dcat:accessURL rdf:resource="https://www.statistikdaten.bayern.de/genesis/online?operation=download&amp;code=12411-001&amp;option=ffcsv&amp;regionalschluessel=09175%2A"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-03-29T09:44:51.718291</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-09T05:00:04</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/municipality"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/GenesisDestatis"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openDataBayern"/>
+  </dcat:Dataset>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/text/csv"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/XLS"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/text/xml"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/cc-by/4.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://www.statistikdaten.bayern.de/genesis/online?operation=download&amp;code=12411-001&amp;option=csv&amp;regionalschluessel=09175%2A"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+  <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+  <rdfs:Resource rdf:about="https://www.statistikdaten.bayern.de/genesis/online?operation=download&amp;code=12411-001&amp;option=ffcsv&amp;regionalschluessel=09175%2A"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/text/xlsx"/>
+  <rdfs:Resource rdf:about="https://www.statistikdaten.bayern.de/genesis/online?operation=download&amp;code=12411-001&amp;option=xlsx&amp;regionalschluessel=09175%2A"/>
+  <rdfs:Resource rdf:about="https://www.statistikdaten.bayern.de/genesis/online?operation=download&amp;code=12411-001&amp;option=xml&amp;regionalschluessel=09175%2A"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/XML"/>
+</rdf:RDF>

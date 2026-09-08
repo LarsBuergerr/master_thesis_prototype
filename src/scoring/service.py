@@ -17,6 +17,8 @@ from extraction.semantic_assessment import (
     attach_semantic_assessment,
 )
 from extraction.rdf_parser import RDFMetadataParser
+from scoring.findings import attach_finding
+from scoring.score_policy import ScorePolicy
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -35,6 +37,7 @@ class QualityMetricsService:
         indicator_whitelist: Optional[list] = None,
         llm: Optional[Any] = None,
         language: str = "de",
+        score_policy: Optional[ScorePolicy] = None,
     ):
         """Initialize the service.
 
@@ -53,10 +56,15 @@ class QualityMetricsService:
                 assessment. When ``None``, expressiveness indicators report
                 NOT_APPLICABLE and no LLM call is made.
             language: Output language for the LLM assessment ("de" | "en").
+            score_policy: Optional :class:`ScorePolicy` remapping each
+                indicator's status to a configurable score (tunable PASS /
+                PARTIAL / FAIL points, optional negative fails). When ``None``
+                the indicators' raw scores are used unchanged.
         """
         self.max_workers = max_workers
         self.llm = llm
         self.language = language
+        self.score_policy = score_policy
         self.dimension_weights = dimension_weights or {}
         self.indicator_weights = indicator_weights or {}
         self.dimension_whitelist = (
@@ -330,15 +338,59 @@ class QualityMetricsService:
                 effective_weight = self.indicator_weights.get(
                     indicator_id, indicator.weight
                 )
-                total_score += result.score * effective_weight
-                total_indicator_weight += effective_weight
+                # Remap the raw status+score through the configured policy
+                # (tunable PASS/PARTIAL/FAIL points; strict mode turns PARTIAL
+                # into FAIL). Without a policy the raw values are used unchanged.
+                if self.score_policy is not None:
+                    eff_status, effective_score = self.score_policy.evaluate(
+                        indicator_id=indicator_id,
+                        status=result.status,
+                        raw_score=result.score,
+                        graded=type(indicator).GRADED,
+                    )
+                else:
+                    eff_status, effective_score = result.status, result.score
+
+                # NOT_APPLICABLE / ERROR are neutral: a criterion that does not
+                # apply (or could not be evaluated) must neither raise nor lower
+                # the dimension mean. Skip both accumulators so it drops out of
+                # the weighted average entirely instead of counting as a 0.
+                if eff_status not in (
+                    IndicatorStatus.NOT_APPLICABLE,
+                    IndicatorStatus.ERROR,
+                ):
+                    total_score += effective_score * effective_weight
+                    total_indicator_weight += effective_weight
 
                 result_dict = result.to_dict()
                 result_dict["default_weight"] = indicator.weight
                 result_dict["effective_weight"] = effective_weight
+                # The output shows the *effective* (policy-applied) status and
+                # score; the indicator's untouched values are preserved as
+                # ``raw_status`` / ``raw_score`` for transparency.
+                result_dict["raw_status"] = result.status.value
+                result_dict["raw_score"] = result.score
+                result_dict["status"] = eff_status.value
+                result_dict["score"] = effective_score
+                result_dict["effective_score"] = effective_score
+
+                if (
+                    self.score_policy is not None
+                    and (eff_status != result.status or effective_score != result.score)
+                ):
+                    logger.info(
+                        "[%s] policy remap: %s/%.2f -> %s/%.2f (weight %.2f)",
+                        indicator_id,
+                        result.status.value,
+                        result.score,
+                        eff_status.value,
+                        effective_score,
+                        effective_weight,
+                    )
+
                 indicator_results.append(result_dict)
 
-                if result.status == IndicatorStatus.PASS:
+                if eff_status == IndicatorStatus.PASS:
                     pass_count += 1
 
             except Exception as e:
@@ -358,6 +410,9 @@ class QualityMetricsService:
         avg_score = (
             total_score / total_indicator_weight if total_indicator_weight > 0 else 0.0
         )
+        # Negative fail_score penalties can push a dimension below zero. Floor it
+        # at 0 so no dimension — and therefore no overall score — can go negative.
+        avg_score = max(0.0, avg_score)
         dimension_weight = self.dimension_weights.get(dimension.value, 1.0)
 
         return {
@@ -382,22 +437,41 @@ class QualityMetricsService:
         Returns:
             Summary statistics
         """
+        by_dimension = results.get("by_dimension", {})
         dimension_scores = {}
+        dimension_indicator_weights = {}
         total_indicators = 0
         total_pass = 0
 
-        for dim_value, dim_results in results.get("by_dimension", {}).items():
+        for dim_value, dim_results in by_dimension.items():
             dimension_scores[dim_value] = dim_results.get("score", 0.0)
+            dimension_indicator_weights[dim_value] = dim_results.get(
+                "total_indicator_weight", 0.0
+            )
             total_indicators += dim_results.get("indicator_count", 0)
             total_pass += dim_results.get("pass_count", 0)
 
-        weighted_score_sum = 0.0
-        total_dimension_weight = 0.0
+        # Effective dimension weights. When no *custom* dimension weights are set
+        # (block missing, or every value left at the default 1.0), each dimension
+        # is weighted by the total weight of its own indicators. The overall score
+        # then reduces to a single weighted mean over ALL indicators, so the
+        # dimension level needs no separate justification. Any non-default
+        # dimension weight switches back to explicit dimension weighting.
+        auto_dim_weight = not self.dimension_weights or all(
+            float(w) == 1.0 for w in self.dimension_weights.values()
+        )
+        if auto_dim_weight:
+            effective_dim_weights = dict(dimension_indicator_weights)
+        else:
+            effective_dim_weights = {
+                dim: self.dimension_weights.get(dim, 1.0) for dim in dimension_scores
+            }
 
-        for dim_value, dim_score in dimension_scores.items():
-            dim_weight = self.dimension_weights.get(dim_value, 1.0)
-            weighted_score_sum += dim_score * dim_weight
-            total_dimension_weight += dim_weight
+        weighted_score_sum = sum(
+            dimension_scores[dim] * effective_dim_weights[dim]
+            for dim in dimension_scores
+        )
+        total_dimension_weight = sum(effective_dim_weights.values())
 
         overall_score = (
             weighted_score_sum / total_dimension_weight
@@ -417,6 +491,10 @@ class QualityMetricsService:
                 dim: self.dimension_weights.get(dim, 1.0)
                 for dim in dimension_scores.keys()
             },
+            "effective_dimension_weights": effective_dim_weights,
+            "dimension_weight_mode": (
+                "auto_indicator_weight" if auto_dim_weight else "explicit"
+            ),
             "total_dimension_weight": total_dimension_weight,
             "total_indicators": total_indicators,
             "total_pass": total_pass,
@@ -515,15 +593,25 @@ class QualityMetricsService:
         """Call ``indicator.validate``, passing ``context`` only when the
         indicator's signature accepts it. Indicators opt in by declaring a
         ``context`` keyword argument.
+
+        FAIL/PARTIAL/ERROR results additionally get a ``finding`` attached
+        (see ``scoring.findings``), which only reads the indicator's own
+        ``details`` and therefore always runs, unabhängig davon, ob für
+        diesen Aufruf ein ``context`` gebaut wurde.
         """
+        result = None
         if context is not None:
             try:
                 sig = inspect.signature(indicator.validate)
                 if "context" in sig.parameters:
-                    return indicator.validate(metadata, context=context)
+                    result = indicator.validate(metadata, context=context)
             except (TypeError, ValueError):
                 pass
-        return indicator.validate(metadata)
+        if result is None:
+            result = indicator.validate(metadata)
+
+        attach_finding(result)
+        return result
 
     @staticmethod
     def _score_to_grade(score: float) -> str:

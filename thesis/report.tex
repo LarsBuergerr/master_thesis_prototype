@@ -1,0 +1,126 @@
+\documentclass[german]{htwg-report}
+
+\addbibresource{./bib/report.bib}
+\backgroundsetup{contents={}}
+
+\input{acronyms}
+
+\begin{document}
+
+%% Use Roman numerals for the page numbers of the title pages and table of
+%% contents.
+%\frontmatter
+%% 'reporttype' add background elements to the cover / front page
+%% possible values are:
+%% bachelor	--> B S C
+%% master	--> M S C
+%% other		--> none
+\reporttype{master}
+
+\reporttypetext{Master-Thesis}
+
+\title[Qualitätsmessung von Metadaten nach DCAT-AP.de Standard]{Qualitätsmessung von Metadaten nach DCAT-AP.de Standard}
+
+\author{Lars Bürger}
+\studentnumber{301662}
+\studentemail{lars.buerger@htwg-konstanz.de}
+
+\doclocation{Konstanz}
+\docdate{30.09.2026}
+
+% \makecover[]
+%          
+%% Include an optional title page.
+\input{title}
+
+\input{erklaerung}
+
+\input{ki_werkzeuge}
+
+\tableofcontents
+
+%% Use Arabic numerals for the page numbers of the chapters.
+%\mainmatter
+\pagebreak
+
+\input{contents.tex}
+
+%% Use letters for the chapter numbers of the appendices.
+\appendix
+
+%\input{appendix-a}
+
+\glsaddall
+\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis, nonumberlist]
+\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\clearpage
+\listoffigures
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoftables
+\addcontentsline{toc}{chapter}{\listtablename}
+\clearpage
+\printbibliography[heading=bibintoc]
+
+\newpage
+
+\appendix
+
+\chapter{Interviewleitfaden}
+\label{app:interviewleitfaden}
+\includepdf[pages=-]{appendix/interviewleitfaden.pdf}
+
+\chapter{Induktiv entwicklete Unterkategorien}
+\label{app:unterkategorien}
+\input{appendix/unterkategorien_interviews}
+
+\chapter{Vollständige Longlist gebündelter Kandidatendimensionen}
+\label{app:longlist_kandidatendimensionen}
+\input{appendix/longlist_kandidatendimensionen}
+
+\chapter{ISO-19157-Qualitätselemente nach Nogueras-Iso et al.}
+\label{app:iso19157_qualitaetselemente}
+\input{appendix/iso19157_qualitaetselemente}
+
+\chapter{Codierleitfaden der Interviewauswertung}
+\label{app:kodierleitfaden}
+\input{appendix/kodierleitfaden}
+
+\chapter{Transkript Interview I1}
+\label{app:transkript_i1}
+\includepdf[pages=-]{appendix/I1_transkript_bereinigt.pdf}
+
+\chapter{Transkript Interview 2}
+\label{app:transkript_i2}
+\includepdf[pages=-]{appendix/I2_transkript_bereinigt.pdf}
+
+\chapter{Transkript Interview 3}
+\label{app:transkript_i3}
+\includepdf[pages=-]{appendix/I3_transkript_bereinigt.pdf}
+
+\chapter{Codierte Auswertungsmatrix der Interviews}
+\label{app:kodierte_auswertungsmatrix}
+\input{appendix/auswertungsmatrix_interviews}
+
+\chapter{Referenzdatensatz in RDF/XML}
+\label{app:referenzdatensatz}
+\input{appendix/referenzdatensatz}
+
+\chapter{Prompts der semantischen Anreicherung für die Aussagekraft}
+\label{app:prompts_semantische_anreicherung}
+\input{appendix/prompts_semantische_anreicherung}
+
+\chapter{Abbildungen zur MQA-Extremfallanalyse}
+\label{app:mqa_extremfaelle_abbildungen}
+\input{appendix/mqa_extremfaelle_abbildungen}
+
+\chapter{A/B/C-Zuordnung der Prototyp-Indikatoren zur MQA}
+\label{app:mqa_abc_mapping}
+
+Vollständige Zuordnung der 27 in \texttt{state\_evaluation\_final.yaml} aktiven
+Prototyp-Indikatoren zu den entsprechenden MQA-Metriken, wie sie dem
+A/B/C-Vergleich in Abschnitt~5.3 zugrunde liegt (Quelle:
+\texttt{src/evaluation/indicator\_map.py}).
+
+\input{appendix/mqa_abc_mapping}
+
+\end{document}
