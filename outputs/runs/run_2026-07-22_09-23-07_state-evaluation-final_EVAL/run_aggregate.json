@@ -1,0 +1,489 @@
+{
+  "timestamp": "2026-07-22_09-23-07",
+  "run_directory": "outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL",
+  "files": {
+    "bad_01.rdf": {
+      "overall_score": 0.4087402737613264,
+      "overall_pass_rate": 0.2962962962962963,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.4375,
+        "accessibility": 0.31203684210526317,
+        "reusability": 0.2857142857142857,
+        "expressiveness": 0.5833333333333334
+      },
+      "total_indicators": 27,
+      "total_pass": 8,
+      "total_fail": 19
+    },
+    "bad_02.rdf": {
+      "overall_score": 0.3655826874879506,
+      "overall_pass_rate": 0.2962962962962963,
+      "quality_grade": "F",
+      "dimension_scores": {
+        "findability": 0.3125,
+        "accessibility": 0.23308421052631575,
+        "reusability": 0.14285714285714285,
+        "expressiveness": 0.6916666666666665
+      },
+      "total_indicators": 27,
+      "total_pass": 8,
+      "total_fail": 19
+    },
+    "bad_03.rdf": {
+      "overall_score": 0.3967187198766146,
+      "overall_pass_rate": 0.3333333333333333,
+      "quality_grade": "F",
+      "dimension_scores": {
+        "findability": 0.5,
+        "accessibility": 0.21052631578947367,
+        "reusability": 0.14285714285714285,
+        "expressiveness": 0.7216666666666667
+      },
+      "total_indicators": 27,
+      "total_pass": 9,
+      "total_fail": 18
+    },
+    "bad_04.rdf": {
+      "overall_score": 0.47804607673028726,
+      "overall_pass_rate": 0.37037037037037035,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.4375,
+        "accessibility": 0.32894736842105265,
+        "reusability": 0.2857142857142857,
+        "expressiveness": 0.7916666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 10,
+      "total_fail": 17
+    },
+    "bad_05.rdf": {
+      "overall_score": 0.42472816657027185,
+      "overall_pass_rate": 0.37037037037037035,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.4375,
+        "accessibility": 0.2894736842105263,
+        "reusability": 0.14285714285714285,
+        "expressiveness": 0.765
+      },
+      "total_indicators": 27,
+      "total_pass": 10,
+      "total_fail": 17
+    },
+    "bad_06.rdf": {
+      "overall_score": 0.47068633121264697,
+      "overall_pass_rate": 0.4444444444444444,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.375,
+        "accessibility": 0.3684210526315789,
+        "reusability": 0.14285714285714285,
+        "expressiveness": 0.8666666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 12,
+      "total_fail": 15
+    },
+    "bad_07.rdf": {
+      "overall_score": 0.4558817042606516,
+      "overall_pass_rate": 0.3333333333333333,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.375,
+        "accessibility": 0.2631631578947368,
+        "reusability": 0.2857142857142857,
+        "expressiveness": 0.8166666666666665
+      },
+      "total_indicators": 27,
+      "total_pass": 9,
+      "total_fail": 18
+    },
+    "bad_08.rdf": {
+      "overall_score": 0.4357721226142279,
+      "overall_pass_rate": 0.3333333333333333,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.375,
+        "accessibility": 0.2894736842105263,
+        "reusability": 0.2857142857142857,
+        "expressiveness": 0.7250000000000001
+      },
+      "total_indicators": 27,
+      "total_pass": 9,
+      "total_fail": 18
+    },
+    "bad_09.rdf": {
+      "overall_score": 0.45995758627337574,
+      "overall_pass_rate": 0.4444444444444444,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.5,
+        "accessibility": 0.42105263157894735,
+        "reusability": 0.14285714285714285,
+        "expressiveness": 0.7166666666666667
+      },
+      "total_indicators": 27,
+      "total_pass": 12,
+      "total_fail": 15
+    },
+    "bad_10.rdf": {
+      "overall_score": 0.4813068054752265,
+      "overall_pass_rate": 0.4074074074074074,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.375,
+        "accessibility": 0.31579473684210524,
+        "reusability": 0.2857142857142857,
+        "expressiveness": 0.8466666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 11,
+      "total_fail": 16
+    },
+    "good_01.rdf": {
+      "overall_score": 0.8970326585695007,
+      "overall_pass_rate": 0.7037037037037037,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 1.0,
+        "accessibility": 0.8736894736842106,
+        "reusability": 1.0,
+        "expressiveness": 0.7916666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 19,
+      "total_fail": 8
+    },
+    "good_02.rdf": {
+      "overall_score": 0.8624156545209177,
+      "overall_pass_rate": 0.7037037037037037,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.875,
+        "accessibility": 0.8486842105263158,
+        "reusability": 1.0,
+        "expressiveness": 0.7666666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 19,
+      "total_fail": 8
+    },
+    "good_03.rdf": {
+      "overall_score": 0.8698275689223057,
+      "overall_pass_rate": 0.7777777777777778,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.875,
+        "accessibility": 0.9649157894736843,
+        "reusability": 0.8571428571428571,
+        "expressiveness": 0.7816666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 21,
+      "total_fail": 6
+    },
+    "good_04.rdf": {
+      "overall_score": 0.8574175824175825,
+      "overall_pass_rate": 0.7777777777777778,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.6875,
+        "accessibility": 1.0,
+        "reusability": 0.8571428571428571,
+        "expressiveness": 0.8000000000000002
+      },
+      "total_indicators": 27,
+      "total_pass": 21,
+      "total_fail": 6
+    },
+    "good_05.rdf": {
+      "overall_score": 0.803021978021978,
+      "overall_pass_rate": 0.7407407407407407,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.8125,
+        "accessibility": 1.0,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.7749999999999999
+      },
+      "total_indicators": 27,
+      "total_pass": 20,
+      "total_fail": 7
+    },
+    "good_06.rdf": {
+      "overall_score": 0.7702014652014652,
+      "overall_pass_rate": 0.6296296296296297,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.8125,
+        "accessibility": 1.0,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.6683333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 17,
+      "total_fail": 10
+    },
+    "good_07.rdf": {
+      "overall_score": 0.7481974166184693,
+      "overall_pass_rate": 0.6666666666666666,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.75,
+        "accessibility": 0.8947368421052632,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.7333333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 18,
+      "total_fail": 9
+    },
+    "good_08.rdf": {
+      "overall_score": 0.8123514941199151,
+      "overall_pass_rate": 0.7037037037037037,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.9385947368421054,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.8533333333333334
+      },
+      "total_indicators": 27,
+      "total_pass": 19,
+      "total_fail": 8
+    },
+    "good_09.rdf": {
+      "overall_score": 0.8164540582224793,
+      "overall_pass_rate": 0.7407407407407407,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.9385947368421054,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.8666666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 20,
+      "total_fail": 7
+    },
+    "good_10.rdf": {
+      "overall_score": 0.7675197609408136,
+      "overall_pass_rate": 0.6296296296296297,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.6875,
+        "accessibility": 0.8947368421052632,
+        "reusability": 0.7857142857142857,
+        "expressiveness": 0.6666666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 17,
+      "total_fail": 10
+    }
+  },
+  "aggregate": {
+    "file_count": 20,
+    "overall_score_mean": 0.6291,
+    "overall_score_min": 0.3655826874879506,
+    "overall_score_max": 0.8970326585695007,
+    "dimension_score_means": {
+      "findability": 0.5938,
+      "accessibility": 0.6193,
+      "reusability": 0.4893,
+      "expressiveness": 0.7614
+    },
+    "indicator_status_counts": {
+      "find_keywords_count": {
+        "dimension": "findability",
+        "pass": 15,
+        "partial": 5,
+        "fail": 0,
+        "error": 0
+      },
+      "find_theme_valid": {
+        "dimension": "findability",
+        "pass": 14,
+        "partial": 1,
+        "fail": 5,
+        "error": 0
+      },
+      "find_locn_geometry": {
+        "dimension": "findability",
+        "pass": 4,
+        "partial": 0,
+        "fail": 16,
+        "error": 0
+      },
+      "find_political_geocoding": {
+        "dimension": "findability",
+        "pass": 5,
+        "partial": 2,
+        "fail": 13,
+        "error": 0
+      },
+      "find_geocoding_level": {
+        "dimension": "findability",
+        "pass": 7,
+        "partial": 0,
+        "fail": 13,
+        "error": 0
+      },
+      "find_temporal_coverage": {
+        "dimension": "findability",
+        "pass": 6,
+        "partial": 0,
+        "fail": 14,
+        "error": 0
+      },
+      "find_issued_datetime": {
+        "dimension": "findability",
+        "pass": 20,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "find_modified_datetime": {
+        "dimension": "findability",
+        "pass": 20,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "acc_download_url": {
+        "dimension": "accessibility",
+        "pass": 8,
+        "partial": 2,
+        "fail": 10,
+        "error": 0
+      },
+      "acc_format": {
+        "dimension": "accessibility",
+        "pass": 10,
+        "partial": 2,
+        "fail": 8,
+        "error": 0
+      },
+      "acc_media_type": {
+        "dimension": "accessibility",
+        "pass": 7,
+        "partial": 2,
+        "fail": 11,
+        "error": 0
+      },
+      "acc_download_url_response": {
+        "dimension": "accessibility",
+        "pass": 10,
+        "partial": 0,
+        "fail": 10,
+        "error": 0
+      },
+      "acc_access_url_response": {
+        "dimension": "accessibility",
+        "pass": 19,
+        "partial": 1,
+        "fail": 0,
+        "error": 0
+      },
+      "acc_machine_readable_access": {
+        "dimension": "accessibility",
+        "pass": 10,
+        "partial": 7,
+        "fail": 3,
+        "error": 0
+      },
+      "acc_format_non_proprietary": {
+        "dimension": "accessibility",
+        "pass": 5,
+        "partial": 5,
+        "fail": 10,
+        "error": 0
+      },
+      "reuse_license": {
+        "dimension": "reusability",
+        "pass": 10,
+        "partial": 0,
+        "fail": 10,
+        "error": 0
+      },
+      "reuse_publisher": {
+        "dimension": "reusability",
+        "pass": 20,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "reuse_contact": {
+        "dimension": "reusability",
+        "pass": 12,
+        "partial": 1,
+        "fail": 7,
+        "error": 0
+      },
+      "reuse_contributor_id": {
+        "dimension": "reusability",
+        "pass": 17,
+        "partial": 0,
+        "fail": 3,
+        "error": 0
+      },
+      "reuse_dcat_ap_de_compliance": {
+        "dimension": "reusability",
+        "pass": 6,
+        "partial": 0,
+        "fail": 14,
+        "error": 0
+      },
+      "reuse_availability": {
+        "dimension": "reusability",
+        "pass": 3,
+        "partial": 0,
+        "fail": 17,
+        "error": 0
+      },
+      "expr_title_quality": {
+        "dimension": "expressiveness",
+        "pass": 13,
+        "partial": 6,
+        "fail": 1,
+        "error": 0
+      },
+      "expr_description_quality": {
+        "dimension": "expressiveness",
+        "pass": 3,
+        "partial": 12,
+        "fail": 5,
+        "error": 0
+      },
+      "expr_title_description_coherence": {
+        "dimension": "expressiveness",
+        "pass": 19,
+        "partial": 1,
+        "fail": 0,
+        "error": 0
+      },
+      "expr_keyword_quality": {
+        "dimension": "expressiveness",
+        "pass": 0,
+        "partial": 18,
+        "fail": 2,
+        "error": 0
+      },
+      "expr_thematic_consistency": {
+        "dimension": "expressiveness",
+        "pass": 17,
+        "partial": 3,
+        "fail": 0,
+        "error": 0
+      },
+      "expr_contextual_qualifiers": {
+        "dimension": "expressiveness",
+        "pass": 9,
+        "partial": 9,
+        "fail": 2,
+        "error": 0
+      }
+    }
+  }
+}

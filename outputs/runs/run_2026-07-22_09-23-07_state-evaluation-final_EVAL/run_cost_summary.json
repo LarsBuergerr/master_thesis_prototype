@@ -1,0 +1,179 @@
+{
+  "timestamp": "2026-07-22_09-23-07",
+  "run_directory": "outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL",
+  "models": [
+    "openai/gpt-5.5"
+  ],
+  "files_processed": 20,
+  "files_with_llm_call": 20,
+  "total_llm_calls": 20,
+  "total_input_tokens": 71588,
+  "total_output_tokens": 18229,
+  "total_tokens": 89817,
+  "total_cost_usd": 0.748138,
+  "cost_is_complete": true,
+  "avg_cost_per_file_usd": 0.037407,
+  "avg_tokens_per_call": 4490.9,
+  "per_file": {
+    "bad_01.rdf": {
+      "calls": 1,
+      "input_tokens": 3549,
+      "output_tokens": 974,
+      "total_tokens": 4523,
+      "cost_usd": 0.046965,
+      "latency_seconds": 16.679
+    },
+    "bad_02.rdf": {
+      "calls": 1,
+      "input_tokens": 3390,
+      "output_tokens": 858,
+      "total_tokens": 4248,
+      "cost_usd": 0.04269,
+      "latency_seconds": 15.328
+    },
+    "bad_03.rdf": {
+      "calls": 1,
+      "input_tokens": 3423,
+      "output_tokens": 952,
+      "total_tokens": 4375,
+      "cost_usd": 0.035883,
+      "latency_seconds": 16.891
+    },
+    "bad_04.rdf": {
+      "calls": 1,
+      "input_tokens": 3407,
+      "output_tokens": 860,
+      "total_tokens": 4267,
+      "cost_usd": 0.033043,
+      "latency_seconds": 14.881
+    },
+    "bad_05.rdf": {
+      "calls": 1,
+      "input_tokens": 3366,
+      "output_tokens": 940,
+      "total_tokens": 4306,
+      "cost_usd": 0.035238,
+      "latency_seconds": 16.257
+    },
+    "bad_06.rdf": {
+      "calls": 1,
+      "input_tokens": 3642,
+      "output_tokens": 978,
+      "total_tokens": 4620,
+      "cost_usd": 0.037758,
+      "latency_seconds": 17.573
+    },
+    "bad_07.rdf": {
+      "calls": 1,
+      "input_tokens": 3404,
+      "output_tokens": 856,
+      "total_tokens": 4260,
+      "cost_usd": 0.032908,
+      "latency_seconds": 14.734
+    },
+    "bad_08.rdf": {
+      "calls": 1,
+      "input_tokens": 3628,
+      "output_tokens": 918,
+      "total_tokens": 4546,
+      "cost_usd": 0.04568,
+      "latency_seconds": 15.176
+    },
+    "bad_09.rdf": {
+      "calls": 1,
+      "input_tokens": 3333,
+      "output_tokens": 746,
+      "total_tokens": 4079,
+      "cost_usd": 0.029253,
+      "latency_seconds": 12.757
+    },
+    "bad_10.rdf": {
+      "calls": 1,
+      "input_tokens": 3785,
+      "output_tokens": 947,
+      "total_tokens": 4732,
+      "cost_usd": 0.037543,
+      "latency_seconds": 15.564
+    },
+    "good_01.rdf": {
+      "calls": 1,
+      "input_tokens": 3607,
+      "output_tokens": 816,
+      "total_tokens": 4423,
+      "cost_usd": 0.032723,
+      "latency_seconds": 14.327
+    },
+    "good_02.rdf": {
+      "calls": 1,
+      "input_tokens": 3556,
+      "output_tokens": 885,
+      "total_tokens": 4441,
+      "cost_usd": 0.034538,
+      "latency_seconds": 16.098
+    },
+    "good_03.rdf": {
+      "calls": 1,
+      "input_tokens": 3585,
+      "output_tokens": 973,
+      "total_tokens": 4558,
+      "cost_usd": 0.037323,
+      "latency_seconds": 17.656
+    },
+    "good_04.rdf": {
+      "calls": 1,
+      "input_tokens": 3408,
+      "output_tokens": 798,
+      "total_tokens": 4206,
+      "cost_usd": 0.031188,
+      "latency_seconds": 13.353
+    },
+    "good_05.rdf": {
+      "calls": 1,
+      "input_tokens": 3606,
+      "output_tokens": 947,
+      "total_tokens": 4553,
+      "cost_usd": 0.04644,
+      "latency_seconds": 16.165
+    },
+    "good_06.rdf": {
+      "calls": 1,
+      "input_tokens": 3615,
+      "output_tokens": 997,
+      "total_tokens": 4612,
+      "cost_usd": 0.038193,
+      "latency_seconds": 16.159
+    },
+    "good_07.rdf": {
+      "calls": 1,
+      "input_tokens": 3613,
+      "output_tokens": 938,
+      "total_tokens": 4551,
+      "cost_usd": 0.036413,
+      "latency_seconds": 14.226
+    },
+    "good_08.rdf": {
+      "calls": 1,
+      "input_tokens": 4057,
+      "output_tokens": 999,
+      "total_tokens": 5056,
+      "cost_usd": 0.040463,
+      "latency_seconds": 16.407
+    },
+    "good_09.rdf": {
+      "calls": 1,
+      "input_tokens": 4169,
+      "output_tokens": 987,
+      "total_tokens": 5156,
+      "cost_usd": 0.040663,
+      "latency_seconds": 17.272
+    },
+    "good_10.rdf": {
+      "calls": 1,
+      "input_tokens": 3445,
+      "output_tokens": 860,
+      "total_tokens": 4305,
+      "cost_usd": 0.033233,
+      "latency_seconds": 14.962
+    }
+  }
+}

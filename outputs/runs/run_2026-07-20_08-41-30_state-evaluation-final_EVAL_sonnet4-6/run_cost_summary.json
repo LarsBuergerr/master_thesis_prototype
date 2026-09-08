@@ -1,0 +1,259 @@
+{
+  "timestamp": "2026-07-20_08-41-30",
+  "run_directory": "run_outputs/run_2026-07-20_08-41-30_state-evaluation-final_EVAL",
+  "models": [
+    "anthropic/claude-sonnet-4.6"
+  ],
+  "files_processed": 30,
+  "files_with_llm_call": 30,
+  "total_llm_calls": 30,
+  "total_input_tokens": 170275,
+  "total_output_tokens": 45810,
+  "total_tokens": 216085,
+  "total_cost_usd": 1.197975,
+  "cost_is_complete": true,
+  "avg_cost_per_file_usd": 0.039933,
+  "avg_tokens_per_call": 7202.8,
+  "per_file": {
+    "geo_gdi-de_02.rdf": {
+      "calls": 1,
+      "input_tokens": 5710,
+      "output_tokens": 1465,
+      "total_tokens": 7175,
+      "cost_usd": 0.039105,
+      "latency_seconds": 28.022
+    },
+    "geo_gdi-de_03.rdf": {
+      "calls": 1,
+      "input_tokens": 5878,
+      "output_tokens": 1638,
+      "total_tokens": 7516,
+      "cost_usd": 0.042204,
+      "latency_seconds": 28.9
+    },
+    "geo_gdi-de_04.rdf": {
+      "calls": 1,
+      "input_tokens": 5666,
+      "output_tokens": 1560,
+      "total_tokens": 7226,
+      "cost_usd": 0.040398,
+      "latency_seconds": 29.679
+    },
+    "geo_open-data-brandenburg_02.rdf": {
+      "calls": 1,
+      "input_tokens": 5659,
+      "output_tokens": 1587,
+      "total_tokens": 7246,
+      "cost_usd": 0.040782,
+      "latency_seconds": 30.59
+    },
+    "geo_open-data-brandenburg_03.rdf": {
+      "calls": 1,
+      "input_tokens": 5680,
+      "output_tokens": 1443,
+      "total_tokens": 7123,
+      "cost_usd": 0.038685,
+      "latency_seconds": 26.141
+    },
+    "geo_open-data-brandenburg_04.rdf": {
+      "calls": 1,
+      "input_tokens": 5674,
+      "output_tokens": 1472,
+      "total_tokens": 7146,
+      "cost_usd": 0.039102,
+      "latency_seconds": 26.921
+    },
+    "geo_open-data-portal-rheinland-pfalz_02.rdf": {
+      "calls": 1,
+      "input_tokens": 5706,
+      "output_tokens": 1784,
+      "total_tokens": 7490,
+      "cost_usd": 0.043878,
+      "latency_seconds": 42.547
+    },
+    "geo_open-data-portal-rheinland-pfalz_03.rdf": {
+      "calls": 1,
+      "input_tokens": 5421,
+      "output_tokens": 1590,
+      "total_tokens": 7011,
+      "cost_usd": 0.040113,
+      "latency_seconds": 29.386
+    },
+    "geo_open-data-portal-rheinland-pfalz_04.rdf": {
+      "calls": 1,
+      "input_tokens": 5425,
+      "output_tokens": 1587,
+      "total_tokens": 7012,
+      "cost_usd": 0.04008,
+      "latency_seconds": 28.138
+    },
+    "geo_rest_02.rdf": {
+      "calls": 1,
+      "input_tokens": 5314,
+      "output_tokens": 1238,
+      "total_tokens": 6552,
+      "cost_usd": 0.034512,
+      "latency_seconds": 22.18
+    },
+    "geo_rest_03.rdf": {
+      "calls": 1,
+      "input_tokens": 5720,
+      "output_tokens": 1717,
+      "total_tokens": 7437,
+      "cost_usd": 0.042915,
+      "latency_seconds": 29.105
+    },
+    "geo_rest_04.rdf": {
+      "calls": 1,
+      "input_tokens": 5772,
+      "output_tokens": 1702,
+      "total_tokens": 7474,
+      "cost_usd": 0.042846,
+      "latency_seconds": 28.44
+    },
+    "geo_transparenzportal-hamburg_02.rdf": {
+      "calls": 1,
+      "input_tokens": 5696,
+      "output_tokens": 1475,
+      "total_tokens": 7171,
+      "cost_usd": 0.039213,
+      "latency_seconds": 27.174
+    },
+    "geo_transparenzportal-hamburg_03.rdf": {
+      "calls": 1,
+      "input_tokens": 5689,
+      "output_tokens": 1545,
+      "total_tokens": 7234,
+      "cost_usd": 0.040242,
+      "latency_seconds": 29.074
+    },
+    "geo_transparenzportal-hamburg_04.rdf": {
+      "calls": 1,
+      "input_tokens": 5929,
+      "output_tokens": 1536,
+      "total_tokens": 7465,
+      "cost_usd": 0.040827,
+      "latency_seconds": 28.509
+    },
+    "non_geo_gdi-de_02.rdf": {
+      "calls": 1,
+      "input_tokens": 5846,
+      "output_tokens": 1542,
+      "total_tokens": 7388,
+      "cost_usd": 0.040668,
+      "latency_seconds": 31.378
+    },
+    "non_geo_gdi-de_03.rdf": {
+      "calls": 1,
+      "input_tokens": 5606,
+      "output_tokens": 1499,
+      "total_tokens": 7105,
+      "cost_usd": 0.039303,
+      "latency_seconds": 27.074
+    },
+    "non_geo_gdi-de_04.rdf": {
+      "calls": 1,
+      "input_tokens": 5670,
+      "output_tokens": 1620,
+      "total_tokens": 7290,
+      "cost_usd": 0.04131,
+      "latency_seconds": 29.758
+    },
+    "non_geo_land-schleswig-holstein_02.rdf": {
+      "calls": 1,
+      "input_tokens": 5704,
+      "output_tokens": 1321,
+      "total_tokens": 7025,
+      "cost_usd": 0.036927,
+      "latency_seconds": 24.743
+    },
+    "non_geo_land-schleswig-holstein_03.rdf": {
+      "calls": 1,
+      "input_tokens": 5701,
+      "output_tokens": 1550,
+      "total_tokens": 7251,
+      "cost_usd": 0.040353,
+      "latency_seconds": 26.592
+    },
+    "non_geo_land-schleswig-holstein_04.rdf": {
+      "calls": 1,
+      "input_tokens": 5690,
+      "output_tokens": 1452,
+      "total_tokens": 7142,
+      "cost_usd": 0.03885,
+      "latency_seconds": 26.579
+    },
+    "non_geo_open-data-bayern_02.rdf": {
+      "calls": 1,
+      "input_tokens": 5790,
+      "output_tokens": 1571,
+      "total_tokens": 7361,
+      "cost_usd": 0.040935,
+      "latency_seconds": 35.589
+    },
+    "non_geo_open-data-bayern_03.rdf": {
+      "calls": 1,
+      "input_tokens": 5429,
+      "output_tokens": 1416,
+      "total_tokens": 6845,
+      "cost_usd": 0.037527,
+      "latency_seconds": 24.989
+    },
+    "non_geo_open-data-bayern_04.rdf": {
+      "calls": 1,
+      "input_tokens": 5896,
+      "output_tokens": 1439,
+      "total_tokens": 7335,
+      "cost_usd": 0.039273,
+      "latency_seconds": 26.528
+    },
+    "non_geo_open-data-brandenburg_02.rdf": {
+      "calls": 1,
+      "input_tokens": 5601,
+      "output_tokens": 1502,
+      "total_tokens": 7103,
+      "cost_usd": 0.039333,
+      "latency_seconds": 28.229
+    },
+    "non_geo_open-data-brandenburg_03.rdf": {
+      "calls": 1,
+      "input_tokens": 5978,
+      "output_tokens": 1576,
+      "total_tokens": 7554,
+      "cost_usd": 0.041574,
+      "latency_seconds": 27.975
+    },
+    "non_geo_open-data-brandenburg_04.rdf": {
+      "calls": 1,
+      "input_tokens": 5956,
+      "output_tokens": 1646,
+      "total_tokens": 7602,
+      "cost_usd": 0.042558,
+      "latency_seconds": 33.438
+    },
+    "non_geo_rest_02.rdf": {
+      "calls": 1,
+      "input_tokens": 5597,
+      "output_tokens": 1568,
+      "total_tokens": 7165,
+      "cost_usd": 0.040311,
+      "latency_seconds": 28.654
+    },
+    "non_geo_rest_03.rdf": {
+      "calls": 1,
+      "input_tokens": 5456,
+      "output_tokens": 1362,
+      "total_tokens": 6818,
+      "cost_usd": 0.036798,
+      "latency_seconds": 29.203
+    },
+    "non_geo_rest_04.rdf": {
+      "calls": 1,
+      "input_tokens": 5416,
+      "output_tokens": 1407,
+      "total_tokens": 6823,
+      "cost_usd": 0.037353,
+      "latency_seconds": 25.089
+    }
+  }
+}

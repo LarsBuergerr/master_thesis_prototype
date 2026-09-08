@@ -14,6 +14,65 @@ outputs/runs/*
 !outputs/runs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL_opus4-8
 !outputs/runs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL_sonnet4-6
 
+# Die uebrigen Datenquellen von Notebook 18 (Wiederholungslaeufe 5.6.2 und
+# Extremfall-Lauf 5.7.2/5.8.2). Bewusst nur die Dateien, die das Notebook
+# liest -- session.log, logs.log, openai.log und die run_*.png bleiben lokal.
+
+!outputs/runs/run_2026-07-20_11-43-12_state-evaluation-final_EVAL_gpt5-5/
+outputs/runs/run_2026-07-20_11-43-12_state-evaluation-final_EVAL_gpt5-5/*
+!outputs/runs/run_2026-07-20_11-43-12_state-evaluation-final_EVAL_gpt5-5/metadata.json
+!outputs/runs/run_2026-07-20_11-43-12_state-evaluation-final_EVAL_gpt5-5/run_aggregate.json
+!outputs/runs/run_2026-07-20_11-43-12_state-evaluation-final_EVAL_gpt5-5/run_cost_summary.json
+!outputs/runs/run_2026-07-20_11-43-12_state-evaluation-final_EVAL_gpt5-5/*/
+outputs/runs/run_2026-07-20_11-43-12_state-evaluation-final_EVAL_gpt5-5/*/*
+!outputs/runs/run_2026-07-20_11-43-12_state-evaluation-final_EVAL_gpt5-5/*/result.json
+
+!outputs/runs/run_2026-07-20_11-55-49_state-evaluation-final_EVAL_gpt5-5/
+outputs/runs/run_2026-07-20_11-55-49_state-evaluation-final_EVAL_gpt5-5/*
+!outputs/runs/run_2026-07-20_11-55-49_state-evaluation-final_EVAL_gpt5-5/metadata.json
+!outputs/runs/run_2026-07-20_11-55-49_state-evaluation-final_EVAL_gpt5-5/run_aggregate.json
+!outputs/runs/run_2026-07-20_11-55-49_state-evaluation-final_EVAL_gpt5-5/run_cost_summary.json
+!outputs/runs/run_2026-07-20_11-55-49_state-evaluation-final_EVAL_gpt5-5/*/
+outputs/runs/run_2026-07-20_11-55-49_state-evaluation-final_EVAL_gpt5-5/*/*
+!outputs/runs/run_2026-07-20_11-55-49_state-evaluation-final_EVAL_gpt5-5/*/result.json
+
+!outputs/runs/run_2026-07-20_08-41-30_state-evaluation-final_EVAL_sonnet4-6/
+outputs/runs/run_2026-07-20_08-41-30_state-evaluation-final_EVAL_sonnet4-6/*
+!outputs/runs/run_2026-07-20_08-41-30_state-evaluation-final_EVAL_sonnet4-6/metadata.json
+!outputs/runs/run_2026-07-20_08-41-30_state-evaluation-final_EVAL_sonnet4-6/run_aggregate.json
+!outputs/runs/run_2026-07-20_08-41-30_state-evaluation-final_EVAL_sonnet4-6/run_cost_summary.json
+!outputs/runs/run_2026-07-20_08-41-30_state-evaluation-final_EVAL_sonnet4-6/*/
+outputs/runs/run_2026-07-20_08-41-30_state-evaluation-final_EVAL_sonnet4-6/*/*
+!outputs/runs/run_2026-07-20_08-41-30_state-evaluation-final_EVAL_sonnet4-6/*/result.json
+
+!outputs/runs/run_2026-07-20_09-01-17_state-evaluation-final_EVAL_sonnet4-6/
+outputs/runs/run_2026-07-20_09-01-17_state-evaluation-final_EVAL_sonnet4-6/*
+!outputs/runs/run_2026-07-20_09-01-17_state-evaluation-final_EVAL_sonnet4-6/metadata.json
+!outputs/runs/run_2026-07-20_09-01-17_state-evaluation-final_EVAL_sonnet4-6/run_aggregate.json
+!outputs/runs/run_2026-07-20_09-01-17_state-evaluation-final_EVAL_sonnet4-6/run_cost_summary.json
+!outputs/runs/run_2026-07-20_09-01-17_state-evaluation-final_EVAL_sonnet4-6/*/
+outputs/runs/run_2026-07-20_09-01-17_state-evaluation-final_EVAL_sonnet4-6/*/*
+!outputs/runs/run_2026-07-20_09-01-17_state-evaluation-final_EVAL_sonnet4-6/*/result.json
+
+!outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL/
+outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL/*
+!outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL/metadata.json
+!outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL/run_aggregate.json
+!outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL/run_cost_summary.json
+!outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL/*/
+outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL/*/*
+!outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL/*/result.json
+
+# Gecachte MQA-Metriken (Abschnitt 5.8) -- nur die CSV, die das Notebook liest.
+!outputs/mqa_comparison/
+outputs/mqa_comparison/*
+!outputs/mqa_comparison/comparison_sample_2026-06-25_09-57_20260720_103043/
+outputs/mqa_comparison/comparison_sample_2026-06-25_09-57_20260720_103043/*
+!outputs/mqa_comparison/comparison_sample_2026-06-25_09-57_20260720_103043/mqa_metrics.csv
+!outputs/mqa_comparison/comparison_extreme_cases_05_gpt5-5_final/
+outputs/mqa_comparison/comparison_extreme_cases_05_gpt5-5_final/*
+!outputs/mqa_comparison/comparison_extreme_cases_05_gpt5-5_final/mqa_metrics.csv
+
 !outputs/ground_truth/
 
 .env
@@ -35,3 +94,8 @@ data/sample_small*
 playground/scripts/data/*
 # LaTeX build output
 thesis/build/
+
+# Laufzeit-Datenbank des Backends (Schema legt jobs.py selbst an)
+backend/analyzer.db
+backend/analyzer.db-shm
+backend/analyzer.db-wal
