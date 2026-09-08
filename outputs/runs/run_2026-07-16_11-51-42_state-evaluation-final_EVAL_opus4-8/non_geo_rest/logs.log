@@ -1,0 +1,594 @@
+2026-07-16 12:13:47 - reporting.output_manager - INFO - Created file log handler for non_geo_rest.rdf at run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_rest/logs.log
+2026-07-16 12:13:47 - __main__ - INFO - Started processing: non_geo_rest.rdf
+2026-07-16 12:13:47 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_rest.rdf
+2026-07-16 12:13:47 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_rest.rdf using format: xml
+2026-07-16 12:13:47 - extraction.rdf_parser - INFO - Successfully parsed 100 triples
+2026-07-16 12:13:47 - scoring.service - INFO - Parsed 100 triples
+2026-07-16 12:13:47 - scoring.service - DEBUG - DatasetContext built: 4 distribution(s)
+2026-07-16 12:13:47 - scoring.service - DEBUG - attach_probes: 4/4 unique fetch keys, 4 distribution(s) covered
+2026-07-16 12:13:48 - scoring.service - DEBUG - [OK   ] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution — XLS - Ressource
+  downloadURL : https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls
+  HTTP        : 200
+  final URL   : https://www.datenportal.bmftr.bund.de/portal/docs/Tabelle-2.5.121.xls
+  attachment  : Tabelle-2.5.121.xls
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/vnd.ms-excel
+    dcat:mediaType       raw=application/vnd.ms-excel                 mime=application/vnd.ms-excel
+    url_extension        raw=Tabelle-2.5.121.xls                      mime=application/vnd.ms-excel
+    http_content_type    raw=application/vnd.ms-excel                 mime=application/vnd.ms-excel
+    attachment_filename  raw=Tabelle-2.5.121.xls                      mime=application/vnd.ms-excel
+  coalesced   : application/vnd.ms-excel
+2026-07-16 12:13:48 - scoring.service - DEBUG - [OK   ] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution — PDF - Ressource (Tabelle)
+  downloadURL : https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf
+  HTTP        : 200
+  final URL   : https://www.datenportal.bmftr.bund.de/portal/docs/Tabelle-2.5.121.pdf
+  attachment  : Tabelle-2.5.121.pdf
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=Tabelle-2.5.121.pdf                      mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=Tabelle-2.5.121.pdf                      mime=application/pdf
+  coalesced   : application/pdf
+2026-07-16 12:13:48 - scoring.service - DEBUG - [OK   ] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution — HTML - Ressource
+  downloadURL : https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html
+  HTTP        : 200
+  final URL   : https://www.datenportal.bmftr.bund.de/portal/de/Tabelle-2.5.121.html
+  attachment  : Tabelle-2.5.121.html
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=text/html                                mime=text/html
+    url_extension        raw=Tabelle-2.5.121.html                     mime=text/html
+    http_content_type    raw=text/html                                mime=text/html
+    attachment_filename  raw=Tabelle-2.5.121.html (from final URL)    mime=text/html
+  coalesced   : text/html
+2026-07-16 12:13:48 - scoring.service - DEBUG - [OK   ] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution — CSV - Ressource
+  downloadURL : https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv
+  HTTP        : 200
+  final URL   : https://www.datenportal.bmftr.bund.de/portal/docs/Tabelle-2.5.121.csv
+  attachment  : Tabelle-2.5.121.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=text/csv                                 mime=text/csv
+    url_extension        raw=Tabelle-2.5.121.csv                      mime=text/csv
+    http_content_type    raw=text/plain                               mime=text/plain
+    attachment_filename  raw=Tabelle-2.5.121.csv                      mime=text/csv
+  coalesced   : text/csv
+  warning     : HTTP Content-Type 'text/plain' disagrees with attachment filename ('Tabelle-2.5.121.csv' → 'text/csv'); treating as advisory
+2026-07-16 12:13:48 - scoring.service - DEBUG - Attached probes to 4/4 distribution(s)
+2026-07-16 12:14:11 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Der Datensatz hat einen klaren, thematisch stimmigen Titel, leidet aber unter einer rein den Titel wiederholenden Beschr')
+2026-07-16 12:14:11 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 12:14:11 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] fail score=0.00 keywords=28
+2026-07-16 12:14:11 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['anzahl', 'art-des-studiums', 'baden-württemberg', 'bayern', 'berlin', 'brandenburg', 'bremen', 'bundesländer', 'frauen', 'geschlecht', 'hamburg', 'hessen', 'hochschulwechselquote', 'mecklenburg-vorpommern', 'männer', 'niedersachsen', 'nordrhein-westfalen', 'rheinland-pfalz', 'saarland', 'sachsen', 'sachsen-anhalt', 'schleswig-holstein', 'studienanfänger', 'studienanfängerinnen', 'studienart', 'studienverlauf', 'thüringen', 'weiblich']
+2026-07-16 12:14:11 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/EDUC']
+2026-07-16 12:14:11 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 12:14:11 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 12:14:11 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 12:14:11 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 12:14:11 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 12:14:11 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 12:14:11 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/issued
+2026-07-16 12:14:11 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://www.datenportal.bmftr.bund.de/portal/2.5.121 = 2025-11-26T17:13:12.181493
+2026-07-16 12:14:11 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution = 2025-11-26T17:13:12.185115
+2026-07-16 12:14:11 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution = 2025-11-26T17:13:12.185120
+2026-07-16 12:14:11 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution = 2025-11-26T17:13:12.185123
+2026-07-16 12:14:11 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution = 2025-11-26T17:13:12.185125
+2026-07-16 12:14:11 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/modified
+2026-07-16 12:14:11 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://www.datenportal.bmftr.bund.de/portal/2.5.121 = 2026-06-23T22:14:23.547505
+2026-07-16 12:14:11 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution = 2025-07-16T00:00:00
+2026-07-16 12:14:11 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution = 2025-07-16T00:00:00
+2026-07-16 12:14:11 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution = 2025-07-16T00:00:00
+2026-07-16 12:14:11 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution = 2025-07-16T00:00:00
+2026-07-16 12:14:11 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 12:14:11 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 12:14:11 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=4/4
+2026-07-16 12:14:11 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 12:14:11 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 12:14:11 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=4/4
+2026-07-16 12:14:11 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 12:14:11 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/4
+2026-07-16 12:14:11 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 12:14:11 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=4/4 relevant=4/4
+2026-07-16 12:14:11 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=4/4 relevant=4/4
+2026-07-16 12:14:11 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.50 high=1 mid=2 none=1 total=4
+2026-07-16 12:14:11 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] partial score=0.50 passing=2/4
+2026-07-16 12:14:11 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 12:14:11 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=4/4
+2026-07-16 12:14:11 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 12:14:11 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 12:14:11 - scoring.indicator.reuse_contact - INFO - [reuse_contact] partial score=0.50 contacts=1 with_channel=0
+2026-07-16 12:14:11 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 12:14:11 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 12:14:13 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=5
+2026-07-16 12:14:13 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/4
+2026-07-16 12:14:13 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.85 | Der Titel benennt das Sujet klar und unterscheidbar, ist prägnant und frei von technischen Artefakten. Nur ein fehlender
+2026-07-16 12:14:13 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.15 | Die Beschreibung liefert keinerlei substanzielle Zusatzinformation gegenüber dem Titel und beantwortet keine der Leitfra
+2026-07-16 12:14:13 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.90 | Titel und Beschreibung sind vollständig konsistent, da inhaltlich identisch; kein Widerspruch feststellbar. Die Kohärenz
+2026-07-16 12:14:13 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.40 | Die Schlagwortliste ist aufgebläht durch die Auflistung aller einzelnen Bundesländer und enthält mehrere redundante Gesc
+2026-07-16 12:14:13 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.95 | Alle Felder zeichnen widerspruchsfrei dasselbe Bild eines bildungsstatistischen Datensatzes; das Thema EDUC ist stimmig.
+2026-07-16 12:14:13 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.20 | Als Statistik verlangt dieser Datentyp einen Bezugszeitraum. Dieser fehlt vollständig in allen inhaltlichen Feldern und 
+2026-07-16 12:14:13 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 12:14:13 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 12:14:13 - scoring.service - DEBUG - {
+  "dataset_uri": "https://www.datenportal.bmftr.bund.de/portal/2.5.121",
+  "titles": [
+    "Hochschulwechslerquoten zum Masterstudium nach Bundesländern"
+  ],
+  "descriptions": [
+    "Tabelle 2.5.121: Hochschulwechslerquoten zum Masterstudium nach Bundesländern"
+  ],
+  "keywords": [
+    "anzahl",
+    "art-des-studiums",
+    "baden-württemberg",
+    "bayern",
+    "berlin",
+    "brandenburg",
+    "bremen",
+    "bundesländer",
+    "frauen",
+    "geschlecht",
+    "hamburg",
+    "hessen",
+    "hochschulwechselquote",
+    "mecklenburg-vorpommern",
+    "männer",
+    "niedersachsen",
+    "nordrhein-westfalen",
+    "rheinland-pfalz",
+    "saarland",
+    "sachsen",
+    "sachsen-anhalt",
+    "schleswig-holstein",
+    "studienanfänger",
+    "studienanfängerinnen",
+    "studienart",
+    "studienverlauf",
+    "thüringen",
+    "weiblich"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/EDUC"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2026-06-23T22:14:23.547505"
+  ],
+  "issued": [
+    "2025-11-26T17:13:12.181493"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "https://www.datenportal.bmftr.bund.de/portal/de/imprint.html#publisher",
+  "contact_points": [
+    "Nd770bf80e9924c4a8271b0776f1178e1"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/bundesministeriumFuerBildungUndForschung"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution",
+      "titles": [
+        "HTML - Ressource"
+      ],
+      "descriptions": [],
+      "download_url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html",
+      "access_url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "text/html"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2025-07-16T00:00:00"
+      ],
+      "issued": [
+        "2025-11-26T17:13:12.185115"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "text/html",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "Tabelle-2.5.121.html",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "Tabelle-2.5.121.html (from final URL)",
+            "mime_type": "text/html"
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.datenportal.bmftr.bund.de/portal/de/Tabelle-2.5.121.html",
+        "content_disposition": null,
+        "attachment_filename": "Tabelle-2.5.121.html",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution",
+      "titles": [
+        "XLS - Ressource"
+      ],
+      "descriptions": [],
+      "download_url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls",
+      "access_url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/XLS"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "application/vnd.ms-excel"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2025-07-16T00:00:00"
+      ],
+      "issued": [
+        "2025-11-26T17:13:12.185120"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/XLS",
+            "mime_type": "application/vnd.ms-excel"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/vnd.ms-excel",
+            "mime_type": "application/vnd.ms-excel"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "Tabelle-2.5.121.xls",
+            "mime_type": "application/vnd.ms-excel"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/vnd.ms-excel",
+            "mime_type": "application/vnd.ms-excel"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "Tabelle-2.5.121.xls",
+            "mime_type": "application/vnd.ms-excel"
+          }
+        ],
+        "coalesced_mime": "application/vnd.ms-excel",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.datenportal.bmftr.bund.de/portal/docs/Tabelle-2.5.121.xls",
+        "content_disposition": "attachment ; filename=Tabelle-2.5.121.xls;",
+        "attachment_filename": "Tabelle-2.5.121.xls",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution",
+      "titles": [
+        "CSV - Ressource"
+      ],
+      "descriptions": [],
+      "download_url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv",
+      "access_url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "text/csv"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2025-07-16T00:00:00"
+      ],
+      "issued": [
+        "2025-11-26T17:13:12.185123"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "Tabelle-2.5.121.csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/plain",
+            "mime_type": "text/plain"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "Tabelle-2.5.121.csv",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [
+          "HTTP Content-Type 'text/plain' disagrees with attachment filename ('Tabelle-2.5.121.csv' → 'text/csv'); treating as advisory"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.datenportal.bmftr.bund.de/portal/docs/Tabelle-2.5.121.csv",
+        "content_disposition": "attachment ; filename=Tabelle-2.5.121.csv;",
+        "attachment_filename": "Tabelle-2.5.121.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution",
+      "titles": [
+        "PDF - Ressource (Tabelle)"
+      ],
+      "descriptions": [],
+      "download_url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf",
+      "access_url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/PDF"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2025-07-16T00:00:00"
+      ],
+      "issued": [
+        "2025-11-26T17:13:12.185125"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "Tabelle-2.5.121.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "Tabelle-2.5.121.pdf",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.datenportal.bmftr.bund.de/portal/docs/Tabelle-2.5.121.pdf",
+        "content_disposition": "attachment ; filename=Tabelle-2.5.121.pdf;",
+        "attachment_filename": "Tabelle-2.5.121.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Titel ist spezifisch: nennt Kennzahl (Hochschulwechslerquoten zum Masterstudium) und Gliederungsebene (nach Bundesländern)",
+        "Reiner Fließtext ohne Sonderzeichen, Codes oder Formatierungsreste",
+        "Kein Zeitbezug im Titel, was bei einer Datenreihe hilfreich wäre, aber nicht zwingend"
+      ],
+      "reasoning": "Der Titel benennt das Sujet klar und unterscheidbar, ist prägnant und frei von technischen Artefakten. Nur ein fehlender Zeitbezug ist als kleine Schwäche zu nennen.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "description_quality": {
+      "findings": [
+        "Beschreibung wiederholt praktisch nur den Titel mit vorangestellter Tabellennummer '2.5.121'",
+        "Keine Angaben zu Struktur, Erhebungsmethode, Quelle, Definition der Wechslerquote oder Zweck",
+        "Kryptische Tabellennummer ohne erklärenden Mehrwert"
+      ],
+      "reasoning": "Die Beschreibung liefert keinerlei substanzielle Zusatzinformation gegenüber dem Titel und beantwortet keine der Leitfragen (Was, Wie strukturiert, Methode, Zweck). Das ist ein deutlicher Mangel.",
+      "applicable": true,
+      "score": 0.15
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Beschreibung und Titel behandeln dieselbe Sache ohne Widerspruch",
+        "Beschreibung ist wörtlich der Titel mit vorangestellter Tabellennummer"
+      ],
+      "reasoning": "Titel und Beschreibung sind vollständig konsistent, da inhaltlich identisch; kein Widerspruch feststellbar. Die Kohärenz an sich ist somit gegeben.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "keyword_quality": {
+      "findings": [
+        "Viele Schlagwörter sind reine Aufzählung aller Bundesländer (Baden-Württemberg, Bayern, ...), was redundant zum Titel-Bezug 'nach Bundesländern' ist",
+        "Uneinheitliche Formen und Redundanzen: 'studienart' vs 'art-des-studivums', 'geschlecht'/'frauen'/'männer'/'weiblich', 'studienanfänger'/'studienanfängerinnen'",
+        "Einige inhaltlich passende Begriffe vorhanden ('hochschulwechselquote', 'studienverlauf'), aber viele mit Bindestrich-Kompositum-Formatierung"
+      ],
+      "reasoning": "Die Schlagwortliste ist aufgebläht durch die Auflistung aller einzelnen Bundesländer und enthält mehrere redundante Geschlechtervarianten sowie uneinheitliche Formen. Zwar sind einige spezifische Fachbegriffe enthalten, insgesamt überwiegt jedoch die Redundanz und Uneinheitlichkeit.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Thema EDUC (Bildung) passt zu Hochschulwechslerquoten und Masterstudium",
+        "Titel, Beschreibung und Schlagwörter zeigen einheitlich das Sujet Hochschulbildung/Studienstatistik",
+        "Keine Off-topic-Signale"
+      ],
+      "reasoning": "Alle Felder zeichnen widerspruchsfrei dasselbe Bild eines bildungsstatistischen Datensatzes; das Thema EDUC ist stimmig.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Statistische Zeitreihen-/Quotendaten erfordern einen Bezugszeitraum bzw. ein Berichtsjahr",
+        "Weder im Titel noch in der Beschreibung noch in temporal-Feldern ist ein Jahr/Bezugszeitraum angegeben",
+        "accrual_periodicity ist null, kein Aktualisierungszyklus angegeben"
+      ],
+      "reasoning": "Als Statistik verlangt dieser Datentyp einen Bezugszeitraum. Dieser fehlt vollständig in allen inhaltlichen Feldern und in den temporal-Angaben, was eine klare Abwertung rechtfertigt.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "overall_summary": "Der Datensatz hat einen klaren, thematisch stimmigen Titel, leidet aber unter einer rein den Titel wiederholenden Beschreibung, einer aufgeblähten und redundanten Schlagwortliste sowie einem fehlenden Bezugszeitraum, der für eine Statistik unverzichtbar wäre."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-opus-4.8",
+      "input_tokens": 7213,
+      "output_tokens": 1751,
+      "total_tokens": 8964,
+      "cost_usd": 0.07984,
+      "latency_seconds": 23.893
+    }
+  ],
+  "distribution_count": 4
+}
+2026-07-16 12:14:13 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_rest/result.json
+2026-07-16 12:14:13 - __main__ - INFO -   ✓ Completed | score=0.62 grade=C

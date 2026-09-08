@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://open.rlp.de/dataset/9079d4f5-a9f2-41ee-bbb2-13f4fccfad28">
+    <dct:title>Justizblatt Nr. 10 vom 10.11.2025</dct:title>
+    <dct:description>Justizblatt</dct:description>
+    <dct:identifier>6355dafd-353b-4629-b8a9-8074be47ebee</dct:identifier>
+    <dcat:keyword>amtsblatt</dcat:keyword>
+    <dcat:keyword>justizblatt</dcat:keyword>
+    <dcat:keyword>ministerium</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-12T11:34:50+01:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-12T12:02:53+01:00</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/JUST"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="Nf57909896f10446fb2fd8ac21896972d">
+        <foaf:name>Ministerium der Justiz</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://open.rlp.de/dataset/9079d4f5-a9f2-41ee-bbb2-13f4fccfad28/resource/82df6cb6-cf2d-411f-9a38-88d09614cbd3">
+        <dct:title>JBl_10-79.pdf</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://upload.open.rlp.de/eakte/6355dafd-353b-4629-b8a9-8074be47ebee/resource/a2dcfc5c-2332-4dca-bf46-aaea801292e2/download/jbl_10-79.pdf"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/pdf"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-15T03:56:53.952579</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-06-15T03:56:53.942008</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">689541</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>
+      <adms:Identifier rdf:about="https://eakte.rlp.de/coo-2298-104-5-3269424"/>
+    </adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"/>
+    <dcatde:legalBasis>§ 7 Abs. 1 Nr. 6 Landestransparenzgesetz
+Verwaltungsvorschriften und allgemeine Veröffentlichungen</dcatde:legalBasis>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/pdf"/>
+  <rdfs:Resource rdf:about="https://upload.open.rlp.de/eakte/6355dafd-353b-4629-b8a9-8074be47ebee/resource/a2dcfc5c-2332-4dca-bf46-aaea801292e2/download/jbl_10-79.pdf"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+</rdf:RDF>

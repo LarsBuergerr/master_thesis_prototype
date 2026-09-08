@@ -1,0 +1,930 @@
+{
+  "by_dimension": {
+    "findability": {
+      "dimension": "findability",
+      "indicators": [
+        {
+          "indicator_id": "find_keywords_count",
+          "name_de": "Angemessene Anzahl Schlagwörter",
+          "name_en": "Appropriate number of keywords",
+          "dimension": "findability",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "Suboptimale Anzahl Keywords: 17",
+          "message_en": "Suboptimal number of keywords: 17",
+          "details": {
+            "keyword_count": 17,
+            "keywords": [
+              "außenbereichssatzung",
+              "b-plan",
+              "bauleitplanung",
+              "bebauungsplan",
+              "bodennutzung",
+              "einfacher-b-plan",
+              "entwicklungssatzung",
+              "ergänzungssatzung",
+              "innenbereichssatzung",
+              "klarstellungssatzung",
+              "opendata",
+              "qualifizierter-b-plan",
+              "sanierungssatzung",
+              "satzungen",
+              "thüringen",
+              "vorhaben--und-erschließungsplan",
+              "vorhabenbezogener-b-plan"
+            ],
+            "expected_range": "3–15 keywords (PASS), 1–2 or 16–25 (PARTIAL)"
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.623617",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "find_theme_valid",
+          "name_de": "Theme aus kontrolliertem Vokabular",
+          "name_en": "Theme from controlled vocabulary",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle Themes sind aus dem kontrollierten Vokabular",
+          "message_en": "All themes are from controlled vocabulary",
+          "details": {
+            "valid_themes": [
+              "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+              "http://publications.europa.eu/resource/authority/data-theme/REGI"
+            ],
+            "invalid_themes": [],
+            "valid_count": 2,
+            "total_count": 2
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.623767",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_locn_geometry",
+          "name_de": "Räumliche Suchangabe (Geometrie)",
+          "name_en": "Spatial search term (geometry)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1 geometrische Angabe(n) gefunden",
+          "message_en": "1 geometry value(s) found",
+          "details": {
+            "geometries": [
+              "POLYGON ((11.3540 50.7110, 11.5210 50.7110, 11.5210 50.6080, 11.3540 50.6080, 11.3540 50.7110))"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.624072",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_political_geocoding",
+          "name_de": "Politische Geokodierung aus kontrolliertem Vokabular",
+          "name_en": "Political geocoding from controlled vocabulary",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine politische Geokodierung angegeben",
+          "message_en": "No political geocoding specified",
+          "details": {
+            "geocoding_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.624173",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_geocoding_level",
+          "name_de": "Geokodierungs-Ebene aus kontrolliertem Vokabular",
+          "name_en": "Geocoding level from controlled vocabulary",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine politische Geokodierungs-Ebene angegeben",
+          "message_en": "No political geocoding level specified",
+          "details": {
+            "level_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.624241",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_temporal_coverage",
+          "name_de": "Zeitliche Abdeckung angegeben",
+          "name_en": "Temporal coverage specified",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine zeitliche Abdeckung gefunden oder ungültiges Datumsformat",
+          "message_en": "No temporal coverage found or invalid date format",
+          "details": {
+            "start_count": 0,
+            "end_count": 0,
+            "start_format": null,
+            "end_format": null,
+            "start_valid": false,
+            "end_valid": false
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.624331",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_issued_datetime",
+          "name_de": "Issued Datum (xs:dateTime)",
+          "name_en": "Issued date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 2 Werte gültig (Dataset: 1, Distribution: 1)",
+          "message_en": "All 2 values valid (Dataset: 1, Distribution: 1)",
+          "details": {
+            "valid": [
+              {
+                "value": "2025-07-23T13:46:14.438124",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=73111fcb-2db2-4452-a0ce-b121079a8f29"
+              },
+              {
+                "value": "2025-07-23T13:46:14.440502",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution"
+              }
+            ],
+            "invalid": [],
+            "total": 2,
+            "dataset_count": 1,
+            "distribution_count": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.624484",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_modified_datetime",
+          "name_de": "Modified Datum (xs:dateTime)",
+          "name_en": "Modified date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 2 Werte gültig (Dataset: 1, Distribution: 1)",
+          "message_en": "All 2 values valid (Dataset: 1, Distribution: 1)",
+          "details": {
+            "valid": [
+              {
+                "value": "2025-11-13T08:16:59",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=73111fcb-2db2-4452-a0ce-b121079a8f29"
+              },
+              {
+                "value": "2025-12-03T03:21:42.041913",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution"
+              }
+            ],
+            "invalid": [],
+            "total": 2,
+            "dataset_count": 1,
+            "distribution_count": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.624607",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        }
+      ],
+      "score": 0.5625,
+      "dimension_weight": 1,
+      "total_indicator_weight": 8.0,
+      "indicator_count": 8,
+      "pass_count": 4,
+      "pass_rate": 0.5
+    },
+    "accessibility": {
+      "dimension": "accessibility",
+      "indicators": [
+        {
+          "indicator_id": "acc_download_url",
+          "name_de": "Download-URL je Distribution",
+          "name_en": "Download URL per distribution",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Distribution(en) mit Download-URL",
+          "message_en": "1/1 distribution(s) with a download URL",
+          "details": {
+            "total_distributions": 1,
+            "distributions_with_download_url": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.625095",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_format",
+          "name_de": "Format aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Format from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit Format aus dem Vokabular",
+          "message_en": "0/1 distribution(s) with a format from the vocabulary",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution",
+                "formats": [
+                  "SHP"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.625270",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_media_type",
+          "name_de": "Media Type aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Media type from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit gültigem Media Type",
+          "message_en": "0/1 distribution(s) with a valid media type",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution",
+                "media_types": [
+                  "application/zip"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.625401",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_download_url_response",
+          "name_de": "Download-URL Antwortcode",
+          "name_en": "Download URL response code",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Download-URL(s) mit gültigem HTTP-Statuscode",
+          "message_en": "1/1 download URL(s) with valid HTTP status code",
+          "details": {
+            "total_distributions": 1,
+            "relevant_distributions": 1,
+            "sampled_distributions": 1,
+            "valid_count": 1,
+            "invalid_count": 0,
+            "dead_url_malus": -0.5,
+            "valid": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution",
+                "url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip",
+                "status_code": 200,
+                "fetch_error": null
+              }
+            ],
+            "invalid": []
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.625528",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_access_url_response",
+          "name_de": "Access-URL Antwortcode",
+          "name_en": "Access URL response code",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Access-URL(s) mit gültigem HTTP-Statuscode",
+          "message_en": "1/1 access URL(s) with valid HTTP status code",
+          "details": {
+            "total_distributions": 1,
+            "relevant_distributions": 1,
+            "sampled_distributions": 1,
+            "valid_count": 1,
+            "invalid_count": 0,
+            "dead_url_malus": -0.5,
+            "valid": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution",
+                "url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip",
+                "status_code": 200,
+                "fetch_error": null
+              }
+            ],
+            "invalid": []
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.625608",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_machine_readable_access",
+          "name_de": "Maschinenlesbarer Zugang (alle Distributionen)",
+          "name_en": "Machine-readable access (all distributions)",
+          "dimension": "accessibility",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "0/1 hoch maschinenlesbar, 1/1 mittel, 0/1 keine (Score 0.50)",
+          "message_en": "0/1 high machine-readable, 1/1 mid, 0/1 none (score 0.50)",
+          "details": {
+            "total_distributions": 1,
+            "high_count": 0,
+            "mid_count": 1,
+            "none_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution",
+                "effective_mime": "x-gis/x-shapefile",
+                "tier": 0.5,
+                "tier_label": "mid"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.625694",
+          "default_weight": 1.0,
+          "effective_weight": 1.5,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "acc_format_non_proprietary",
+          "name_de": "Nicht-proprietäres Format (alle Distributionen)",
+          "name_en": "Non-proprietary format (all distributions)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit nicht-proprietärem Format",
+          "message_en": "0/1 distribution(s) with non-proprietary format",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution",
+                "formats": [
+                  "SHP"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.625773",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.6052631578947368,
+      "dimension_weight": 2,
+      "total_indicator_weight": 9.5,
+      "indicator_count": 7,
+      "pass_count": 3,
+      "pass_rate": 0.42857142857142855
+    },
+    "reusability": {
+      "dimension": "reusability",
+      "indicators": [
+        {
+          "indicator_id": "reuse_license",
+          "name_de": "Freie Lizenz je Distribution",
+          "name_en": "Free-use license per distribution",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Distribution(en) mit freier Lizenz (Score 1.00)",
+          "message_en": "1/1 distribution(s) with a free-use license (score 1.00)",
+          "details": {
+            "total_distributions": 1,
+            "free_count": 1,
+            "no_free_license_malus": -0.5,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.626064",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_publisher",
+          "name_de": "Herausgeber als strukturierter Agent",
+          "name_en": "Publisher modelled as structured agent",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Herausgeber als foaf:Agent mit foaf:name modelliert",
+          "message_en": "Publisher modelled as foaf:Agent with foaf:name",
+          "details": {
+            "publisher_count": 1,
+            "publishers": [
+              {
+                "value": "Nf0cdd084be8044dd8ea39722d6f0ec86",
+                "typed_as_agent": true,
+                "names": [
+                  "Gemeinde Unterwellenborn"
+                ],
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.626244",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_contact",
+          "name_de": "Kontaktpunkt mit E-Mail oder URL",
+          "name_en": "Contact point with email or URL",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Kontaktpunkt mit E-Mail oder URL vorhanden",
+          "message_en": "Contact point with email or URL present",
+          "details": {
+            "contact_count": 1,
+            "contacts_with_channel": 1,
+            "contacts": [
+              {
+                "value": "N9a603bc2398d44dbaf72286ca11c540f",
+                "emails": [
+                  "mailto:s.taenzer@unterwellenborn.de"
+                ],
+                "valid_emails": [
+                  "mailto:s.taenzer@unterwellenborn.de"
+                ],
+                "urls": [
+                  "https://unterwellenborn.de"
+                ],
+                "valid_urls": [
+                  "https://unterwellenborn.de"
+                ],
+                "has_channel": true
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.626371",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_contributor_id",
+          "name_de": "contributorID aus kontrolliertem Vokabular",
+          "name_en": "contributorID from controlled vocabulary",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Genau eine contributorID aus dem Vokabular",
+          "message_en": "Exactly one contributorID from the vocabulary",
+          "details": {
+            "contributor_id_count": 1,
+            "valid": [
+              "http://dcat-ap.de/def/contributors/gdiDE"
+            ],
+            "invalid": [],
+            "values": [
+              "http://dcat-ap.de/def/contributors/gdiDE"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:08.626449",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_dcat_ap_de_compliance",
+          "name_de": "DCAT-AP.de Schema-Konformität (SHACL)",
+          "name_en": "DCAT-AP.de schema compliance (SHACL)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "5 SHACL-Verletzung(en) gefunden",
+          "message_en": "5 SHACL violation(s) found",
+          "details": {
+            "conforms": false,
+            "violation_count": 5,
+            "violations": [
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "focus": "SHP",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+                "focus": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution",
+                "path": "http://www.w3.org/ns/dcat#mediaType"
+              },
+              {
+                "severity": "Warning",
+                "message": "Deprecated: dcat:Dataset: dct:type soll nicht mehr fÃ¼r Collections verwendet werden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#sammlungen-und-reihen-von-datensatzen ",
+                "focus": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=73111fcb-2db2-4452-a0ce-b121079a8f29",
+                "path": "http://purl.org/dc/terms/type"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Dataset: dct:accrualPeriodicity MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-frequency",
+                "focus": "http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Dataset: adms:identifier MUSS auf einen adms:Identifier verweisen.",
+                "focus": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=73111fcb-2db2-4452-a0ce-b121079a8f29",
+                "path": "http://www.w3.org/ns/adms#identifier"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:10.124001",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "reuse_availability",
+          "name_de": "Verfügbarkeit aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Availability from controlled vocabulary (per distribution)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit gültiger Verfügbarkeit",
+          "message_en": "0/1 distribution(s) with a valid availability value",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution",
+                "availability": [],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:10.124226",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.7142857142857143,
+      "dimension_weight": 1.5,
+      "total_indicator_weight": 7.0,
+      "indicator_count": 6,
+      "pass_count": 4,
+      "pass_rate": 0.6666666666666666
+    },
+    "expressiveness": {
+      "dimension": "expressiveness",
+      "indicators": [
+        {
+          "indicator_id": "expr_title_quality",
+          "name_de": "Titel-Qualität",
+          "name_en": "Title quality",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Der Titel erfüllt alle Anforderungen: Er ist spezifisch, verständlich, enthält den notwendigen Ortsbezug und ist frei von technischen Artefakten oder unnötigen Wiederholungen. Die Kombination aus Datentyp und Gemeindename macht den Datensatz eindeutig identifizierbar.",
+          "message_en": "Der Titel erfüllt alle Anforderungen: Er ist spezifisch, verständlich, enthält den notwendigen Ortsbezug und ist frei von technischen Artefakten oder unnötigen Wiederholungen. Die Kombination aus Datentyp und Gemeindename macht den Datensatz eindeutig identifizierbar.",
+          "details": {
+            "criterion": "title_quality",
+            "llm_status": "pass",
+            "findings": [
+              "Der Titel ist spezifisch und nennt sowohl den Datentyp (Bebauungspläne und Satzungen) als auch den räumlichen Bezug (Gemeinde Unterwellenborn).",
+              "Der Titel ist prägnant und verständlich formuliert, ohne Abkürzungen oder Sonderzeichen.",
+              "Der Titel unterscheidet sich klar von ähnlichen Datensätzen anderer Gemeinden durch die Ortsangabe."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut aussagekräftig: Titel und thematische Konsistenz sind vorbildlich, die Beschreibung enthält wichtige Hinweise, bleibt aber strukturell knapp. Schlagwörter sind fachlich präzise, weisen jedoch formale Schwächen auf (Komposita, redundante Tags)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:10.124355",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "expr_description_quality",
+          "name_de": "Beschreibungs-Qualität",
+          "name_en": "Description quality",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.6,
+          "message_de": "Die Beschreibung beantwortet teilweise die Fragen 'Was?' und 'Wozu?' (Vorinformation) und enthält einen wichtigen rechtlichen Hinweis. Allerdings fehlen wesentliche strukturelle Informationen (Format, Aufbau, Anzahl) und methodische Details (Datenquelle, Aktualisierungsverfahren), die für Geodaten und Planungsdaten relevant wären.",
+          "message_en": "Die Beschreibung beantwortet teilweise die Fragen 'Was?' und 'Wozu?' (Vorinformation) und enthält einen wichtigen rechtlichen Hinweis. Allerdings fehlen wesentliche strukturelle Informationen (Format, Aufbau, Anzahl) und methodische Details (Datenquelle, Aktualisierungsverfahren), die für Geodaten und Planungsdaten relevant wären.",
+          "details": {
+            "criterion": "description_quality",
+            "llm_status": "partial",
+            "findings": [
+              "Die Beschreibung erklärt klar, was enthalten ist (Geltungsbereiche mit Verlinkung auf Planunterlagen) und dass es sich um Sekundärdaten handelt.",
+              "Ein wichtiger Qualitäts-Disclaimer ist vorhanden: Hinweis auf fehlende Gewähr und Verweis auf rechtsverbindliche Originaldokumente.",
+              "Es fehlen strukturelle Details wie Format, Tabellenaufbau, Anzahl der Pläne, Erhebungsmethode oder technische Spezifikationen (z.B. Koordinatensystem bei Geodaten)."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut aussagekräftig: Titel und thematische Konsistenz sind vorbildlich, die Beschreibung enthält wichtige Hinweise, bleibt aber strukturell knapp. Schlagwörter sind fachlich präzise, weisen jedoch formale Schwächen auf (Komposita, redundante Tags)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:10.124424",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.6,
+          "effective_score": 0.6
+        },
+        {
+          "indicator_id": "expr_title_description_coherence",
+          "name_de": "Kohärenz von Titel und Beschreibung",
+          "name_en": "Title–description coherence",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Titel und Beschreibung passen inhaltlich perfekt zusammen. Die Beschreibung erweitert und präzisiert den Titel, ohne davon abzuweichen oder Widersprüche zu erzeugen.",
+          "message_en": "Titel und Beschreibung passen inhaltlich perfekt zusammen. Die Beschreibung erweitert und präzisiert den Titel, ohne davon abzuweichen oder Widersprüche zu erzeugen.",
+          "details": {
+            "criterion": "title_description_coherence",
+            "llm_status": "pass",
+            "findings": [
+              "Titel und Beschreibung behandeln dasselbe Thema: Bebauungspläne und Satzungen der Gemeinde Unterwellenborn.",
+              "Die Beschreibung konkretisiert den Titel durch Angabe der enthaltenen Elemente (Geltungsbereiche, Verlinkungen).",
+              "Kein Widerspruch zwischen Titel und Beschreibung erkennbar, beide beziehen sich auf denselben räumlichen und thematischen Kontext."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut aussagekräftig: Titel und thematische Konsistenz sind vorbildlich, die Beschreibung enthält wichtige Hinweise, bleibt aber strukturell knapp. Schlagwörter sind fachlich präzise, weisen jedoch formale Schwächen auf (Komposita, redundante Tags)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:10.124487",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "expr_keyword_quality",
+          "name_de": "Schlagwort-Qualität",
+          "name_en": "Keyword quality",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.7,
+          "message_de": "Die Schlagwörter sind inhaltlich sehr spezifisch und ergänzen den Titel gut durch fachliche Differenzierung. Allerdings sind viele als Komposita statt atomarer Begriffe formuliert, was gegen die Best Practices verstößt. Zudem gibt es formale/redundante Tags ('thüringen', 'opendata'), die abgewertet werden sollten. Insgesamt überwiegt die fachliche Qualität, aber die formalen Mängel verhindern eine Höchstbewertung.",
+          "message_en": "Die Schlagwörter sind inhaltlich sehr spezifisch und ergänzen den Titel gut durch fachliche Differenzierung. Allerdings sind viele als Komposita statt atomarer Begriffe formuliert, was gegen die Best Practices verstößt. Zudem gibt es formale/redundante Tags ('thüringen', 'opendata'), die abgewertet werden sollten. Insgesamt überwiegt die fachliche Qualität, aber die formalen Mängel verhindern eine Höchstbewertung.",
+          "details": {
+            "criterion": "keyword_quality",
+            "llm_status": "partial",
+            "findings": [
+              "Die Schlagwörter sind fachlich präzise und spezifisch (z.B. 'außenbereichssatzung', 'qualifizierter-b-plan', 'vorhabenbezogener-b-plan').",
+              "Viele Schlagwörter sind als Komposita mit Bindestrichen formuliert statt atomarer Begriffe (z.B. 'vorhaben--und-erschließungsplan' mit doppeltem Bindestrich, 'einfacher-b-plan').",
+              "Das Schlagwort 'thüringen' ist geografisch und redundant zum Ortsbezug, der bereits im Titel steht; 'opendata' ist ein formales Tag ohne inhaltlichen Mehrwert."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut aussagekräftig: Titel und thematische Konsistenz sind vorbildlich, die Beschreibung enthält wichtige Hinweise, bleibt aber strukturell knapp. Schlagwörter sind fachlich präzise, weisen jedoch formale Schwächen auf (Komposita, redundante Tags)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:10.124549",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.7,
+          "effective_score": 0.7
+        },
+        {
+          "indicator_id": "expr_thematic_consistency",
+          "name_de": "Thematische Konsistenz",
+          "name_en": "Thematic consistency",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Thema, Schlagwörter, Titel und Beschreibung sind vollständig konsistent und ergeben ein widerspruchsfreies Themenbild im Bereich Bauleitplanung und kommunale Verwaltung.",
+          "message_en": "Thema, Schlagwörter, Titel und Beschreibung sind vollständig konsistent und ergeben ein widerspruchsfreies Themenbild im Bereich Bauleitplanung und kommunale Verwaltung.",
+          "details": {
+            "criterion": "thematic_consistency",
+            "llm_status": "pass",
+            "findings": [
+              "Die Themen GOVE (Regierung/öffentlicher Sektor) und REGI (Regionen/Städte) passen gut zu Bebauungsplänen und Bauleitplanung.",
+              "Titel, Beschreibung und Schlagwörter bilden ein konsistentes Bild: alle beziehen sich auf Bauleitplanung und kommunale Satzungen.",
+              "Keine Off-topic-Signale erkennbar, alle Felder unterstützen dasselbe thematische Profil."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut aussagekräftig: Titel und thematische Konsistenz sind vorbildlich, die Beschreibung enthält wichtige Hinweise, bleibt aber strukturell knapp. Schlagwörter sind fachlich präzise, weisen jedoch formale Schwächen auf (Komposita, redundante Tags)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:10.124605",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "expr_contextual_qualifiers",
+          "name_de": "Kontextuelle Qualifizierer",
+          "name_en": "Contextual qualifiers",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.75,
+          "message_de": "Für diesen Datentyp (Geodaten zu Bebauungsplänen, regelm. aktualisiert) sind Aktualisierungszyklus und Änderungsdatum vorhanden. Der Hinweis auf Sekundärdaten ist gegeben, aber Details zur Datenquelle und zum genauen Stichtag fehlen. Die wichtigsten Qualifizierer sind vorhanden, aber nicht vollständig.",
+          "message_en": "Für diesen Datentyp (Geodaten zu Bebauungsplänen, regelm. aktualisiert) sind Aktualisierungszyklus und Änderungsdatum vorhanden. Der Hinweis auf Sekundärdaten ist gegeben, aber Details zur Datenquelle und zum genauen Stichtag fehlen. Die wichtigsten Qualifizierer sind vorhanden, aber nicht vollständig.",
+          "details": {
+            "criterion": "contextual_qualifiers",
+            "llm_status": "partial",
+            "findings": [
+              "Der Aktualisierungszyklus ist angegeben ('asNeeded' = bei Bedarf), was für regelm. aktualisierte Planungsdaten angemessen ist.",
+              "Das Änderungsdatum (modified: 2025-11-13) zeigt den Stand der Daten an.",
+              "Es fehlt ein expliziter Hinweis auf den Stichtag oder Datenstand in der Beschreibung, obwohl dies bei Planungsdaten hilfreich wäre; der Sekundärdaten-Hinweis ist vorhanden, aber keine Angabe zur Aggregations-/Erhebungsmethode."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut aussagekräftig: Titel und thematische Konsistenz sind vorbildlich, die Beschreibung enthält wichtige Hinweise, bleibt aber strukturell knapp. Schlagwörter sind fachlich präzise, weisen jedoch formale Schwächen auf (Komposita, redundante Tags)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:23:10.124665",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.75,
+          "effective_score": 0.75
+        }
+      ],
+      "score": 0.8416666666666667,
+      "dimension_weight": 2.0,
+      "total_indicator_weight": 6.0,
+      "indicator_count": 6,
+      "pass_count": 3,
+      "pass_rate": 0.5
+    }
+  },
+  "summary": {
+    "overall_score": 0.6965828031617505,
+    "overall_pass_rate": 0.5185185185185185,
+    "dimension_scores": {
+      "findability": 0.5625,
+      "accessibility": 0.6052631578947368,
+      "reusability": 0.7142857142857143,
+      "expressiveness": 0.8416666666666667
+    },
+    "dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "effective_dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "dimension_weight_mode": "explicit",
+    "total_dimension_weight": 6.5,
+    "total_indicators": 27,
+    "total_pass": 14,
+    "total_fail": 13,
+    "quality_grade": "C"
+  },
+  "errors": [],
+  "weights": {
+    "dimension_weights": {
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0,
+      "findability": 1
+    },
+    "indicator_weights": {
+      "find_keywords_count": 1.0,
+      "find_theme_valid": 1.0,
+      "find_temporal_coverage": 1.0,
+      "find_locn_geometry": 1.0,
+      "find_political_geocoding": 1.0,
+      "find_geocoding_level": 1.0,
+      "find_issued_datetime": 1.0,
+      "find_modified_datetime": 1.0,
+      "acc_download_url": 1.0,
+      "acc_machine_readable_access": 1.5,
+      "acc_download_url_response": 2.0,
+      "acc_access_url_response": 2.0,
+      "acc_format": 1.0,
+      "acc_media_type": 1.0,
+      "reuse_license": 2.0,
+      "reuse_contact": 1.0,
+      "reuse_contributor_id": 1.0,
+      "reuse_publisher": 1.0,
+      "reuse_availability": 1.0,
+      "expr_description_quality": 1.0,
+      "expr_title_quality": 1.0,
+      "expr_title_description_coherence": 1.0,
+      "expr_keyword_quality": 1.0,
+      "expr_thematic_consistency": 1.0,
+      "expr_contextual_qualifiers": 1.0
+    }
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6376,
+      "output_tokens": 1818,
+      "total_tokens": 8194,
+      "cost_usd": 0.046398,
+      "latency_seconds": 29.585
+    }
+  ]
+}

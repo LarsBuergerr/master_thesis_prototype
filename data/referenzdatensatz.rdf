@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <dcat:Dataset rdf:about="https://opendata.schleswig-holstein.de/dataset/39054cb0-a82a-4cfe-99d7-63c2b365b111">
+    <dct:title>Feinstaub (PM2,5) in Lübeck, Messstation Moislinger Allee: Tagesmittelwerte 2023</dct:title>
+    <dct:description>Der Datensatz enthält die Tagesmittelwerte der Feinstaubkonzentration PM2,5 des Jahres 2023 für die Luftmessstation Lübeck Moislinger Allee, eine verkehrsnahe Station im städtischen Gebiet mit dem Stationscode DESH053. Für jeden Tag des Jahres liegt ein Messwert in Mikrogramm je Kubikmeter vor; je Eintrag werden zusätzlich Messnetz, Stationscode, Stationsname, Stationsumgebung, Art der Station, Schadstoff, Art der Auswertung und Datum ausgewiesen. Erhoben werden die Werte im Rahmen der gesetzlich vorgeschriebenen laufenden Überwachung der Luftqualität durch das Landesamt für Umwelt Schleswig-Holstein und an das Umweltbundesamt weitergeleitet, über dessen Messwertschnittstelle beide Distributionen ausgeliefert werden. Die beiden Distributionen enthalten denselben Datenbestand in zwei Formaten: die CSV-Datei semikolongetrennt und UTF-8-kodiert, die JSON-Datei als Antwort derselben Schnittstelle. Die Messwerte sind als vorläufig einzustufen, da sie zunächst nur automatisch auf Gültigkeit geprüft werden und die abschließende mehrstufige Prüfung nach gesetzlichen Vorgaben erst später erfolgt. Der Bezugszeitraum ist mit dem Jahr 2023 abgeschlossen und wird nicht fortgeschrieben. Der Datensatz eignet sich für Auswertungen der Belastungssituation an verkehrsnahen Standorten, für den Abgleich mit den Grenz- und Zielwerten der Luftqualitätsrichtlinie und für Zeitreihenanalysen über mehrere Jahrgänge.</dct:description>
+    <dcat:landingPage>
+      <foaf:Document rdf:about="https://opendata.schleswig-holstein.de/dataset/39054cb0-a82a-4cfe-99d7-63c2b365b111"/>
+    </dcat:landingPage>
+    <dct:identifier>DESH053_PM25_1TMW_2023</dct:identifier>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/NEVER"/>
+    </dct:accrualPeriodicity>
+    <dcat:keyword xml:lang="de">Feinstaub</dcat:keyword>
+    <dcat:keyword xml:lang="de">Luft</dcat:keyword>
+    <dcat:keyword xml:lang="de">Schadstoff</dcat:keyword>
+    <dcat:keyword xml:lang="de">Immission</dcat:keyword>
+    <dcat:keyword xml:lang="de">Messstation</dcat:keyword>
+    <dcat:keyword xml:lang="de">Tagesmittel</dcat:keyword>
+    <dcat:keyword xml:lang="de">Gesundheit</dcat:keyword>
+    <dcat:keyword xml:lang="en">particulate matter</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-16T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-16T00:00:00</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dct:relation>
+      <rdfs:Resource rdf:about="https://www.schleswig-holstein.de/DE/Fachinhalte/L/luftqualitaet/Messstationen/LuebeckMoislAl.html"/>
+    </dct:relation>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="contact-lfu-sh">
+        <vcard:fn>Landesamt für Umwelt Schleswig-Holstein, Open Data</vcard:fn>
+        <vcard:hasURL rdf:resource="https://opendata.schleswig-holstein.de/organization/lfu"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.schleswig-holstein.de/organization/lfu">
+        <foaf:name>Landesamt für Umwelt Schleswig-Holstein</foaf:name>
+        <foaf:homepage rdf:resource="https://opendata.schleswig-holstein.de/organization/lfu"/>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="temporal-2023">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-01-01</dcat:startDate>
+        <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-12-31</dcat:endDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="location-luebeck-moislinger-allee">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POINT (10.6733 53.8622)</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://lfu.landsh.de/DESH053_PM25_1TMW_2023/data">
+        <dct:title xml:lang="de">Tagesmittelwerte PM2,5 2023, Station Lübeck Moislinger Allee – CSV</dct:title>
+        <dct:description xml:lang="de">Semikolongetrennte, UTF-8-kodierte CSV-Datei mit einer Zeile je Tag des Jahres 2023. Die Spalten führen Messnetz, Stationscode, Stationsname, Stationsumgebung, Art der Station, Schadstoff, Art der Auswertung, Datum, Uhrzeit, Messwert und Einheit.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.umweltbundesamt.de/api/air_data/v2/measures/csv?data%5B0%5D%5Bst%5D=1580&amp;data%5B0%5D%5Bco%5D=9&amp;data%5B0%5D%5Bsc%5D=1&amp;date_from=2023-01-01&amp;time_from=1&amp;date_to=2023-12-31&amp;time_to=24&amp;lang=de"/>
+        <dcat:downloadURL rdf:resource="https://www.umweltbundesamt.de/api/air_data/v2/measures/csv?data%5B0%5D%5Bst%5D=1580&amp;data%5B0%5D%5Bco%5D=9&amp;data%5B0%5D%5Bsc%5D=1&amp;date_from=2023-01-01&amp;time_from=1&amp;date_to=2023-12-31&amp;time_to=24&amp;lang=de"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-16T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-16T00:00:00</dct:modified>
+        <dcatde:licenseAttributionByText>Landesamt für Umwelt Schleswig-Holstein</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://lfu.landsh.de/DESH053_PM25_1TMW_2023/data.json">
+        <dct:title xml:lang="de">Tagesmittelwerte PM2,5 2023, Station Lübeck Moislinger Allee – JSON</dct:title>
+        <dct:description xml:lang="de">Derselbe Datenbestand als JSON-Antwort der Messwertschnittstelle des Umweltbundesamtes. Unter dem Schlüssel der Station steht je Messzeitpunkt ein Eintrag mit Schadstoff, Art der Auswertung, Messwert und Ende des Bezugsintervalls; die Zeitangaben sind durchgängig in Normalzeit geführt.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.umweltbundesamt.de/api/air_data/v2/measures/json?station=1580&amp;component=9&amp;scope=1&amp;date_from=2023-01-01&amp;time_from=1&amp;date_to=2023-12-31&amp;time_to=24&amp;lang=de"/>
+        <dcat:downloadURL rdf:resource="https://www.umweltbundesamt.de/api/air_data/v2/measures/json?station=1580&amp;component=9&amp;scope=1&amp;date_from=2023-01-01&amp;time_from=1&amp;date_to=2023-12-31&amp;time_to=24&amp;lang=de"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/json"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+        <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/STABLE"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-16T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-16T00:00:00</dct:modified>
+        <dcatde:licenseAttributionByText>Landesamt für Umwelt Schleswig-Holstein</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/Level/municipality"/>
+    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/municipalityKey/01003000"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/schleswigHolstein"/>
+  </dcat:Dataset>
+</rdf:RDF>

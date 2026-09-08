@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+>
+  <dcat:Dataset rdf:about="https://opendata.ruhr/dataset/b3249296-dffc-46f0-b239-c7cf11d6e4b2">
+    <dct:title>Ratsinformationssystem RVR</dct:title>
+    <dct:description>Das Ratsinformationssystem www.ruhrparlament.de ist der öffentlich zugängliche Teil des Ratsinformationssystems des Regionalverbandes Ruhr. Die tagesaktuellen Daten werden über die OParl-Schnittstelle als JSON bereit gestellt.&#13;
+&#13;
+https://rvr-online.gremien.info/oparl&#13;
+</dct:description>
+    <dct:identifier>b3249296-dffc-46f0-b239-c7cf11d6e4b2</dct:identifier>
+    <dcat:keyword>politik-und-wahlen</dcat:keyword>
+    <dcat:keyword>ratsinformationssystem</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-12-19T08:40:04.420218</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-28T13:16:38.341024</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N8f30ff686d92482892e668dfd1864022">
+        <vcard:fn>opendata@rvr.ruhr</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:opendata@rvr.ruhr"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.ruhr/organization/a2b9608a-6fbe-4c58-9f68-d3f849fd397f">
+        <foaf:name>RVR</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:creator>
+      <foaf:Agent rdf:nodeID="Nd08297184944418bbf596bb990ddf24d">
+        <foaf:name>opendata@rvr.ruhr</foaf:name>
+        <foaf:mbox>opendata@rvr.ruhr</foaf:mbox>
+      </foaf:Agent>
+    </dct:creator>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="N4bfdf292c0264666ae276746e65147c0">
+        <foaf:name>opendata@rvr.ruhr</foaf:name>
+      </foaf:Organization>
+    </dct:creator>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.ruhr/dataset/b3249296-dffc-46f0-b239-c7cf11d6e4b2/resource/e3bb7ecb-be58-4be5-864f-5d5c54707225">
+        <dct:title>Startpunkt der JSON-SChnittstelle</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://rvr-online.gremien.info/oparl"/>
+        <dct:format>JSON</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-12-19T08:46:08.876485</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-12-19T08:46:08.876485</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.ruhr/dataset/b3249296-dffc-46f0-b239-c7cf11d6e4b2/resource/d85660f4-407c-4a02-bad5-14417a9991be">
+        <dct:title>All resource data</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://opendata.ruhr/dataset/b3249296-dffc-46f0-b239-c7cf11d6e4b2/resource/d85660f4-407c-4a02-bad5-14417a9991be/download/ratsinformationssystem-rvr-30emuvk_.zip"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format>ZIP</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-08-11T15:02:07.800675</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-08-11T15:02:07.775730</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1001</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openNRW"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://opendata.ruhr/dataset/b3249296-dffc-46f0-b239-c7cf11d6e4b2/resource/d85660f4-407c-4a02-bad5-14417a9991be/download/ratsinformationssystem-rvr-30emuvk_.zip"/>
+  <rdfs:Resource rdf:about="https://rvr-online.gremien.info/oparl"/>
+</rdf:RDF>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=61018e8a-9db9-4a0f-9d83-fe21e1806d5d">
+    <dct:title>Feuerwehren der Verwaltungsgemeinschaft Lindenberg/Eichsfeld</dct:title>
+    <dct:description>Der Datensatz enthält die Feuerwehrstandorte der Verwaltungsgemeinschaft Lindenberg/Eichsfeld. Es handelt sich um einen Sekundärdatenbestand.</dct:description>
+    <dct:identifier>61018e8a-9db9-4a0f-9d83-fe21e1806d5d</dct:identifier>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded"/>
+    </dct:accrualPeriodicity>
+    <dct:type rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset"/>
+    <dcat:keyword>feuerwehren</dcat:keyword>
+    <dcat:keyword>feuerwehrstandorte</dcat:keyword>
+    <dcat:keyword>feuerwehrstützpunkte</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>thüringen</dcat:keyword>
+    <dcat:keyword>versorgungswirtschaft-und-staatliche-dienste</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-17</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-06-17T15:24:08</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/SOCI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/EDUC"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N50e691540de7469f864e8e326f90f8b9">
+        <vcard:fn>Verwaltungsgemeinschaft Lindenberg/Eichsfeld</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:info@lindenberg-eichsfeld.de"/>
+        <vcard:hasURL rdf:resource="https://www.lindenberg-eichsfeld.de"/>
+        <vcard:hasTelephone rdf:resource="tel:+4936071845"/>
+        <vcard:hasStreetAddress>Hauptstrasse 17</vcard:hasStreetAddress>
+        <vcard:hasLocality>Teistungen</vcard:hasLocality>
+        <vcard:hasPostalCode>37339</vcard:hasPostalCode>
+        <vcard:hasCountryName>Deutschland</vcard:hasCountryName>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N1fe7a7acc02a40af9e5e82319a7a06f8">
+        <foaf:name>Verwaltungsgemeinschaft Lindenberg/Eichsfeld</foaf:name>
+        <foaf:mbox>info@lindenberg-eichsfeld.de</foaf:mbox>
+        <foaf:homepage rdf:resource="https://www.lindenberg-eichsfeld.de"/>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N9fc9b2e5f7f14dd09ae111f7aeb88f63">
+        <skos:prefLabel>Verwaltungsgemeinschaft Lindenberg/Eichsfeld</skos:prefLabel>
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((10.1600 51.5220, 10.3840 51.5220, 10.3840 51.4230, 10.1600 51.4230, 10.1600 51.5220))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:nodeID="Ne20892c2837549318ef10508699b8ba8">
+        <rdfs:label>Nutzungsbedingungen: Datenlizenz Deutschland-Namensnennung 2.0 in JSON Syntax</rdfs:label>
+      </dct:RightsStatement>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs#distribution">
+        <dct:title>Downloaddienst für kommunale Geodaten</dct:title>
+        <dct:description>Web Feature Service (WFS) - Downloaddienst für die in der GDI-Th veröffentlichten kommunalen Geodaten</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs"/>
+        <dcat:downloadURL rdf:resource="https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs"/>
+        <foaf:page rdf:resource="https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wms"/>
+        <dct:format>SHP</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-11T01:02:34.233651</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-11T01:02:34.214634</dct:modified>
+        <dcatde:licenseAttributionByText>© GDI-Th</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip#distribution">
+        <dct:title>Direktdownload Feuerwehren</dct:title>
+        <dct:description>Direktdownload - Feuerwehren der Verwaltungsgemeinschaft Lindenberg/Eichsfeld. (Format: Shapefile)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip"/>
+        <dcat:downloadURL rdf:resource="https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip"/>
+        <foaf:page rdf:resource="https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wms"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format>SHP</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-11T01:02:34.233656</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-15T00:25:49.845538</dct:modified>
+        <dcatde:licenseAttributionByText>© GDI-Th</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>61018e8a-9db9-4a0f-9d83-fe21e1806d5d</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/gdiDE"/>
+  </dcat:Dataset>
+  <rdfs:Resource rdf:about="https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip"/>
+  <rdfs:Resource rdf:about="https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <foaf:Document rdf:about="https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wms"/>
+</rdf:RDF>

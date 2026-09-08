@@ -23,6 +23,7 @@ from extraction.vocabularies import (
     VALID_ACCESS_RIGHT_URIS,
     VALID_CONTRIBUTOR_ID_URIS,
     VALID_LIMITATIONS_ON_PUBLIC_ACCESS_URIS,
+    VALID_PLANNED_AVAILABILITY_URIS,
 )
 
 VCARD = Namespace("http://www.w3.org/2006/vcard/ns#")
@@ -33,20 +34,6 @@ DCT_RIGHTS_STATEMENT = DCTERMS.RightsStatement
 # ``mailto:`` prefix has been stripped.
 _EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 _MAILTO_PREFIX = "mailto:"
-
-# vcard properties that aren't part of the core "must-have" set — each
-# present property adds a small bonus to the contact-point score so richer
-# metadata is rewarded.
-_VCARD_BONUS_PROPERTIES = (
-    VCARD.fn,
-    VCARD["organization-name"],
-    VCARD.hasTelephone,
-    VCARD.hasAddress,
-    VCARD.hasUID,
-    VCARD.role,
-    VCARD.title,
-    VCARD.note,
-)
 
 
 # ---------------------------------------------------------------------------
@@ -89,36 +76,44 @@ def _objects(graph: Graph, predicate: URIRef) -> Iterable:
 
 
 class LicenseIndicator(Indicator):
-    """Validates ``dct:license`` against the DCAT-AP-DE controlled vocabulary.
+    """Scores ``dct:license`` **per distribution** against the DCAT-AP-DE vocab.
 
-    Scores:
+    DCAT-AP-DE (Konvention 32) requires every distribution to carry a license,
+    and only free-use licenses earn credit. Each distribution scores:
 
-    * 1.0 — at least one license URI is in the vocab AND classified as
-      ``Freie Nutzung`` (free use)
-    * 0.5 — at least one license URI is in the vocab but only as
-      ``Eingeschränkte Nutzung`` (restricted use)
-    * 0.0 — license set but no URI matches the vocab, or no license at all
+    * +1.0 — has a free-use (``Freie Nutzung``) license URI from the vocabulary
+    * ``NO_FREE_LICENSE_MALUS`` (−0.5) — has a restricted / unknown license, or
+      no license at all
 
-    Match is against ``skos:exactMatch`` URIs from ``licenses.rdf``. Best
-    license across all dataset / distribution declarations wins (the
-    indicator is "at least one acceptable license").
+    The indicator score is the mean over all distributions, so a restricted or
+    unlicensed distribution drags the score down proportionally — consistent
+    with the other per-distribution indicators (no "best-wins" leniency).
+    PASS ≥ 0.9, PARTIAL ≥ 0.5, FAIL below.
     """
+
+    GRADED = True  # per-distribution +1 / malus, averaged — continuous
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
+    #: Penalty per distribution without a free-use license (restricted /
+    #: unknown / missing), applied before averaging.
+    NO_FREE_LICENSE_MALUS = -0.5
 
     def __init__(self):
         super().__init__(
             indicator_id="reuse_license",
-            name_de="Lizenz aus kontrolliertem Vokabular",
-            name_en="License from controlled vocabulary",
+            name_de="Freie Lizenz je Distribution",
+            name_en="Free-use license per distribution",
             dimension=QualityDimension.REUSABILITY,
             description_de=(
-                "Prüft ob dct:license eine URI aus dem DCAT-AP-DE-Lizenz-Vokabular "
-                "(skos:exactMatch) ist; volle Punkte bei freier Nutzung, halbe bei "
-                "eingeschränkter Nutzung"
+                "Bewertet je Distribution ob dct:license eine freie Lizenz aus dem "
+                "DCAT-AP-DE-Vokabular ist (frei = +1.0; eingeschränkt/unbekannt/fehlt "
+                "= Malus) und mittelt über alle Distributionen (Konvention 32)"
             ),
             description_en=(
-                "Checks that dct:license is a URI from the DCAT-AP-DE licenses vocab "
-                "(via skos:exactMatch); full credit for free use, half credit for "
-                "restricted use"
+                "Scores each distribution on whether dct:license is a free-use "
+                "license from the DCAT-AP-DE vocab (free = +1.0; restricted/unknown/"
+                "missing = malus) and averages over all distributions (Konvention 32)"
             ),
             weight=1.0,
         )
@@ -130,13 +125,10 @@ class LicenseIndicator(Indicator):
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            sourced = context.collect_licenses()
-            dataset_count = sum(1 for sv in sourced if sv.source_kind == "dataset")
-            dist_count = sum(1 for sv in sourced if sv.source_kind == "distribution")
-
-            if not sourced:
+            total = context.distribution_count
+            if total == 0:
                 self.logger.info(
-                    f"[{self.indicator_id}] FAIL score=0.00 no license set"
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -145,60 +137,56 @@ class LicenseIndicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Keine Lizenz angegeben",
-                    message_en="No license specified",
-                    details={
-                        "license_count": 0,
-                        "dataset_count": 0,
-                        "distribution_count": 0,
-                    },
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"total_distributions": 0},
                 )
 
-            classified = []
-            for sv in sourced:
-                if sv.value in OPEN_LICENSE_URIS:
-                    tier = "free"
-                    score = 1.0
-                elif sv.value in RESTRICTED_LICENSE_URIS:
-                    tier = "restricted"
-                    score = 0.5
+            per_distribution: list[dict[str, Any]] = []
+            for dist in context.distributions:
+                free = any(lic in OPEN_LICENSE_URIS for lic in dist.licenses)
+                restricted = any(
+                    lic in RESTRICTED_LICENSE_URIS for lic in dist.licenses
+                )
+                if free:
+                    score, tier = 1.0, "free"
+                elif not dist.licenses:
+                    score, tier = self.NO_FREE_LICENSE_MALUS, "missing"
+                elif restricted:
+                    score, tier = self.NO_FREE_LICENSE_MALUS, "restricted"
                 else:
-                    tier = "unknown"
-                    score = 0.0
-                classified.append(
+                    score, tier = self.NO_FREE_LICENSE_MALUS, "unknown"
+                per_distribution.append(
                     {
-                        "value": sv.value,
-                        "source_kind": sv.source_kind,
-                        "source_uri": sv.source_uri,
+                        "uri": dist.distribution_uri,
+                        "licenses": list(dist.licenses),
                         "tier": tier,
                         "score": score,
                     }
                 )
 
-            best = max(c["score"] for c in classified)
-            best_tier = next(c["tier"] for c in classified if c["score"] == best)
+            overall = sum(d["score"] for d in per_distribution) / total
+            free_count = sum(1 for d in per_distribution if d["tier"] == "free")
 
-            if best >= 1.0:
+            if overall >= self.PASS_THRESHOLD:
                 status = IndicatorStatus.PASS
-                message_de = "Freie Lizenz aus dem Vokabular gefunden"
-                message_en = "Free-use license from the vocabulary found"
-            elif best >= 0.5:
+            elif overall >= self.PARTIAL_THRESHOLD:
                 status = IndicatorStatus.PARTIAL
-                message_de = "Lizenz aus dem Vokabular, aber Nutzung eingeschränkt"
-                message_en = "License from the vocabulary but use is restricted"
             else:
                 status = IndicatorStatus.FAIL
-                message_de = (
-                    "Lizenz angegeben, aber URI nicht im kontrollierten Vokabular"
-                )
-                message_en = (
-                    "License specified but URI is not in the controlled vocabulary"
-                )
+
+            message_de = (
+                f"{free_count}/{total} Distribution(en) mit freier Lizenz "
+                f"(Score {overall:.2f})"
+            )
+            message_en = (
+                f"{free_count}/{total} distribution(s) with a free-use license "
+                f"(score {overall:.2f})"
+            )
 
             self.logger.info(
-                f"[{self.indicator_id}] {status.value} score={best:.2f} "
-                f"best_tier={best_tier} licenses={len(sourced)} "
-                f"(dataset={dataset_count} distribution={dist_count})"
+                f"[{self.indicator_id}] {status.value} score={overall:.2f} "
+                f"free={free_count}/{total}"
             )
 
             return IndicatorResult(
@@ -207,15 +195,14 @@ class LicenseIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=best,
+                score=round(overall, 4),
                 message_de=message_de,
                 message_en=message_en,
                 details={
-                    "license_count": len(sourced),
-                    "dataset_count": dataset_count,
-                    "distribution_count": dist_count,
-                    "best_tier": best_tier,
-                    "licenses": classified,
+                    "total_distributions": total,
+                    "free_count": free_count,
+                    "no_free_license_malus": self.NO_FREE_LICENSE_MALUS,
+                    "per_distribution": per_distribution,
                 },
             )
 
@@ -504,44 +491,34 @@ class PublisherIndicator(Indicator):
 
 
 class ContactPointIndicator(Indicator):
-    """Validates ``dcat:contactPoint`` is a structured ``vcard:Organization``
-    with a valid ``vcard:hasEmail`` (``mailto:``) and ``vcard:hasURL``.
+    """Validates ``dcat:contactPoint`` carries at least one usable contact
+    channel — ``vcard:hasEmail`` or ``vcard:hasURL`` — per DCAT-AP.de
+    Konvention 01 (contactPoint MUST contain hasEmail OR hasURL).
 
-    Score composition per contact point:
+    Ternary scoring:
 
-    * 0.25 — typed as ``vcard:Organization`` (or any ``vcard:Kind`` subclass)
-    * 0.25 — at least one ``vcard:hasEmail`` is a valid ``mailto:`` address
-    * 0.25 — at least one ``vcard:hasURL`` is a valid http(s) URL
-    * up to +0.25 — bonus 0.05 per additional vcard property present
-      (``fn``, ``organization-name``, ``hasTelephone``, ``hasAddress``,
-      ``hasUID``, ``role``, ``title``, ``note``)
+    * PASS    — a contactPoint is present and carries at least one valid
+      ``vcard:hasEmail`` (``mailto:``) or ``vcard:hasURL`` (http/https)
+    * PARTIAL — a contactPoint is present but carries neither a valid email
+      nor a valid URL
+    * FAIL    — no contactPoint at all
 
     Best contact point across all declarations wins.
     """
 
-    BASE_TYPE = 0.25
-    BASE_EMAIL = 0.25
-    BASE_URL = 0.25
-    BONUS_PER_FIELD = 0.05
-    BONUS_CAP = 0.25
-    PASS_THRESHOLD = 0.85
-    PARTIAL_THRESHOLD = 0.5
-
     def __init__(self):
         super().__init__(
             indicator_id="reuse_contact",
-            name_de="Kontaktpunkt als vcard:Organization",
-            name_en="Contact point as vcard:Organization",
+            name_de="Kontaktpunkt mit E-Mail oder URL",
+            name_en="Contact point with email or URL",
             dimension=QualityDimension.REUSABILITY,
             description_de=(
-                "Prüft ob dcat:contactPoint als vcard:Organization mit "
-                "vcard:hasEmail (mailto:) und vcard:hasURL modelliert ist; "
-                "zusätzliche vcard-Felder erhöhen den Score"
+                "Prüft ob dcat:contactPoint mindestens eine vcard:hasEmail "
+                "(mailto:) oder vcard:hasURL trägt (DCAT-AP.de Konvention 01)"
             ),
             description_en=(
-                "Checks that dcat:contactPoint is modelled as a vcard:Organization "
-                "with vcard:hasEmail (mailto:) and vcard:hasURL; extra vcard "
-                "properties increase the score"
+                "Checks that dcat:contactPoint carries at least one "
+                "vcard:hasEmail (mailto:) or vcard:hasURL (DCAT-AP.de Konvention 01)"
             ),
             weight=1.0,
         )
@@ -556,41 +533,18 @@ class ContactPointIndicator(Indicator):
             graph = context.graph
             entries: list[dict[str, Any]] = []
             for obj in _objects(graph, DCAT.contactPoint):
-                typed = (obj, RDF.type, VCARD.Organization) in graph or (
-                    obj,
-                    RDF.type,
-                    VCARD.Kind,
-                ) in graph
                 emails = [str(e) for e in graph.objects(obj, VCARD.hasEmail)]
                 urls = [str(u) for u in graph.objects(obj, VCARD.hasURL)]
                 valid_emails = [e for e in emails if _is_valid_email(e)]
                 valid_urls = [u for u in urls if _is_valid_url(u)]
-                bonus_fields = [
-                    str(prop).rsplit("#", 1)[-1]
-                    for prop in _VCARD_BONUS_PROPERTIES
-                    if (obj, prop, None) in graph
-                ]
-
-                score = 0.0
-                if typed:
-                    score += self.BASE_TYPE
-                if valid_emails:
-                    score += self.BASE_EMAIL
-                if valid_urls:
-                    score += self.BASE_URL
-                bonus = min(self.BONUS_CAP, self.BONUS_PER_FIELD * len(bonus_fields))
-                score = min(1.0, score + bonus)
-
                 entries.append(
                     {
                         "value": str(obj),
-                        "typed_as_vcard": typed,
                         "emails": emails,
                         "valid_emails": valid_emails,
                         "urls": urls,
                         "valid_urls": valid_urls,
-                        "bonus_fields": bonus_fields,
-                        "score": round(score, 4),
+                        "has_channel": bool(valid_emails or valid_urls),
                     }
                 )
 
@@ -610,27 +564,22 @@ class ContactPointIndicator(Indicator):
                     details={"contact_count": 0},
                 )
 
-            best = max(e["score"] for e in entries)
+            with_channel = sum(1 for e in entries if e["has_channel"])
 
-            if best >= self.PASS_THRESHOLD:
+            if with_channel:
                 status = IndicatorStatus.PASS
-            elif best >= self.PARTIAL_THRESHOLD:
-                status = IndicatorStatus.PARTIAL
+                score = 1.0
+                message_de = "Kontaktpunkt mit E-Mail oder URL vorhanden"
+                message_en = "Contact point with email or URL present"
             else:
-                status = IndicatorStatus.FAIL
-
-            message_de = (
-                f"Bester Kontaktpunkt: Score {best:.2f} "
-                f"über {len(entries)} Kontakt(e)"
-            )
-            message_en = (
-                f"Best contact point: score {best:.2f} "
-                f"across {len(entries)} contact(s)"
-            )
+                status = IndicatorStatus.PARTIAL
+                score = 0.5
+                message_de = "Kontaktpunkt vorhanden, aber ohne valide E-Mail oder URL"
+                message_en = "Contact point present but without a valid email or URL"
 
             self.logger.info(
-                f"[{self.indicator_id}] {status.value} score={best:.2f} "
-                f"contacts={len(entries)}"
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"contacts={len(entries)} with_channel={with_channel}"
             )
 
             return IndicatorResult(
@@ -639,11 +588,12 @@ class ContactPointIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=best,
+                score=score,
                 message_de=message_de,
                 message_en=message_en,
                 details={
                     "contact_count": len(entries),
+                    "contacts_with_channel": with_channel,
                     "contacts": entries,
                 },
             )
@@ -824,9 +774,216 @@ class ContributorIDIndicator(Indicator):
             )
 
 
+class DcatApDeValidationIndicator(Indicator):
+    """Validates metadata against DCAT-AP.de SHACL rules via the ITB API.
+
+    Binary scoring only — no partial:
+      PASS  — sh:conforms true  (zero violations of any severity)
+      FAIL  — at least one sh:ValidationResult
+    """
+
+    def __init__(self):
+        super().__init__(
+            indicator_id="reuse_dcat_ap_de_compliance",
+            name_de="DCAT-AP.de Schema-Konformität (SHACL)",
+            name_en="DCAT-AP.de schema compliance (SHACL)",
+            dimension=QualityDimension.REUSABILITY,
+            description_de=(
+                "Validiert die Metadaten via ITB SHACL-API gegen DCAT-AP.de v2.0; "
+                "PASS bei null Verletzungen, FAIL bei mindestens einer"
+            ),
+            description_en=(
+                "Validates metadata via ITB SHACL API against DCAT-AP.de v2.0; "
+                "PASS for zero violations, FAIL for at least one"
+            ),
+            weight=1.0,
+        )
+
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            from utils.shacl_client import validate_graph
+
+            result = validate_graph(metadata)
+            conforms = result["conforms"]
+            violations = result["violations"]
+
+            if conforms:
+                status = IndicatorStatus.PASS
+                score = 1.0
+                message_de = "Keine SHACL-Verletzungen — DCAT-AP.de konform"
+                message_en = "No SHACL violations — DCAT-AP.de compliant"
+            else:
+                status = IndicatorStatus.FAIL
+                score = 0.0
+                message_de = f"{len(violations)} SHACL-Verletzung(en) gefunden"
+                message_en = f"{len(violations)} SHACL violation(s) found"
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"conforms={conforms} violations={len(violations)}"
+            )
+
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=status,
+                score=score,
+                message_de=message_de,
+                message_en=message_en,
+                details={
+                    "conforms": conforms,
+                    "violation_count": len(violations),
+                    "violations": violations[:20],
+                },
+            )
+
+        except Exception as e:
+            self.logger.exception(f"[{self.indicator_id}] SHACL validation failed")
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.ERROR,
+                score=0.0,
+                message_de="Fehler bei der SHACL-Validierung",
+                message_en="SHACL validation error",
+                error=str(e),
+            )
+
+
+class AvailabilityIndicator(Indicator):
+    """Fraction of distributions with a valid ``dcatap:availability`` value.
+
+    Per distribution: has ≥1 ``dcatap:availability`` value from the DCAT-AP
+    Planned Availability vocabulary (``planned-availability.rdf``) → +1.0, else
+    0.0 (no malus). Score is the mean over all distributions — consistent with
+    the other per-distribution indicators. PASS ≥ 0.9, PARTIAL ≥ 0.5.
+    """
+
+    GRADED = True
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
+
+    def __init__(self):
+        super().__init__(
+            indicator_id="reuse_availability",
+            name_de="Verfügbarkeit aus kontrolliertem Vokabular (je Distribution)",
+            name_en="Availability from controlled vocabulary (per distribution)",
+            dimension=QualityDimension.REUSABILITY,
+            description_de=(
+                "Anteil der Distributionen mit dcatap:availability aus dem "
+                "Planned-Availability-Vokabular"
+            ),
+            description_en=(
+                "Fraction of distributions with a dcatap:availability value from "
+                "the Planned Availability vocabulary"
+            ),
+            weight=1.0,
+        )
+
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+
+            total = context.distribution_count
+            if total == 0:
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
+                )
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=IndicatorStatus.FAIL,
+                    score=0.0,
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"total_distributions": 0},
+                )
+
+            per_distribution: list[dict[str, Any]] = []
+            for dist in context.distributions:
+                passes = any(
+                    v in VALID_PLANNED_AVAILABILITY_URIS for v in dist.availability
+                )
+                per_distribution.append(
+                    {
+                        "uri": dist.distribution_uri,
+                        "availability": list(dist.availability),
+                        "passes": passes,
+                    }
+                )
+
+            passing = sum(1 for d in per_distribution if d["passes"])
+            score = passing / total
+
+            if score >= self.PASS_THRESHOLD:
+                status = IndicatorStatus.PASS
+            elif score >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
+            else:
+                status = IndicatorStatus.FAIL
+
+            message_de = (
+                f"{passing}/{total} Distribution(en) mit gültiger Verfügbarkeit"
+            )
+            message_en = (
+                f"{passing}/{total} distribution(s) with a valid availability value"
+            )
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"passing={passing}/{total}"
+            )
+
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=status,
+                score=round(score, 4),
+                message_de=message_de,
+                message_en=message_en,
+                details={
+                    "total_distributions": total,
+                    "passing_count": passing,
+                    "per_distribution": per_distribution,
+                },
+            )
+
+        except Exception as e:
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.ERROR,
+                score=0.0,
+                message_de="Fehler bei der Validierung",
+                message_en="Validation error",
+                error=str(e),
+            )
+
+
 # Auto-register indicators when imported
 _license_indicator = LicenseIndicator()
 _access_rights_indicator = AccessRightsIndicator()
 _publisher_indicator = PublisherIndicator()
 _contact_point_indicator = ContactPointIndicator()
 _contributor_id_indicator = ContributorIDIndicator()
+_dcat_ap_de_validation = DcatApDeValidationIndicator()
+_availability_indicator = AvailabilityIndicator()

@@ -1,0 +1,445 @@
+2026-07-16 13:37:57 - reporting.output_manager - INFO - Created file log handler for non_geo_gdi-de_03.rdf at run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/non_geo_gdi-de_03/logs.log
+2026-07-16 13:37:57 - __main__ - INFO - Started processing: non_geo_gdi-de_03.rdf
+2026-07-16 13:37:57 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_gdi-de_03.rdf
+2026-07-16 13:37:57 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_gdi-de_03.rdf using format: xml
+2026-07-16 13:37:57 - extraction.rdf_parser - INFO - Successfully parsed 69 triples
+2026-07-16 13:37:57 - scoring.service - INFO - Parsed 69 triples
+2026-07-16 13:37:57 - scoring.service - DEBUG - DatasetContext built: 2 distribution(s)
+2026-07-16 13:37:57 - scoring.service - DEBUG - attach_probes: 2/2 unique fetch keys, 2 distribution(s) covered
+2026-07-16 13:37:58 - scoring.service - DEBUG - [OK   ] https://inspire.govconnect.de/services/bsp/org.74.9fc37046-3b77-4282-8331-fe5ab40b4496/service/atom/id_predefined_dataset#distribution — Hauptstraße (Leeste) (Ursprungsplan)
+  downloadURL : https://inspire.govconnect.de/services/bsp/org.74.9fc37046-3b77-4282-8331-fe5ab40b4496/service/atom/id_predefined_dataset
+  HTTP        : 200
+  signals     :
+    dct:format           raw=onLine                                   mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=id_predefined_dataset                    mime=-
+    http_content_type    raw=application/atom+xml; charset=UTF-8      mime=application/atom+xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/atom+xml
+  warning     : dct:format='onLine' has no known MIME mapping; not comparable
+2026-07-16 13:37:58 - scoring.service - DEBUG - [OK   ] https://inspire.govconnect.de/store/data/buckets/org/74/9fc37046-3b77-4282-8331-fe5ab40b4496/zip#distribution — Hauptstraße (Leeste) (Ursprungsplan)
+  downloadURL : https://inspire.govconnect.de/store/data/buckets/org/74/9fc37046-3b77-4282-8331-fe5ab40b4496/zip
+  HTTP        : 200
+  attachment  : archive.zip
+  signals     :
+    dct:format           raw=onLine                                   mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=zip                                      mime=-
+    http_content_type    raw=application/zip                          mime=application/zip
+    attachment_filename  raw=archive.zip                              mime=application/zip
+  coalesced   : application/zip
+  warning     : dct:format='onLine' has no known MIME mapping; not comparable
+2026-07-16 13:37:58 - scoring.service - DEBUG - Attached probes to 2/2 distribution(s)
+2026-07-16 13:38:29 - scoring.service - DEBUG - Attached expressiveness assessment (summary: '{"overall_summary": "Der Datensatz ist durch Titel und Themen grundsätzlich identifizierbar, leidet jedoch erheblich unt')
+2026-07-16 13:38:29 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 13:38:29 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=6
+2026-07-16 13:38:29 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['b-plan', 'gemeinde-weyhe', 'inspireidentifiziert', 'landkreis-diepholz', 'opendata', 'pminspireharvestlkdh']
+2026-07-16 13:38:29 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/GOVE']
+2026-07-16 13:38:29 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 13:38:29 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 13:38:29 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 13:38:29 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 13:38:29 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 13:38:29 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 13:38:29 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/issued
+2026-07-16 13:38:29 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=768951b1-c287-4fad-bf79-787a7c7f6f61 = 2022-08-31
+2026-07-16 13:38:29 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://inspire.govconnect.de/services/bsp/org.74.9fc37046-3b77-4282-8331-fe5ab40b4496/service/atom/id_predefined_dataset#distribution = 2025-07-23T13:52:37.658573
+2026-07-16 13:38:29 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://inspire.govconnect.de/store/data/buckets/org/74/9fc37046-3b77-4282-8331-fe5ab40b4496/zip#distribution = 2025-12-03T03:38:25.513041
+2026-07-16 13:38:29 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/modified
+2026-07-16 13:38:29 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=768951b1-c287-4fad-bf79-787a7c7f6f61 = 2025-11-11
+2026-07-16 13:38:29 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://inspire.govconnect.de/services/bsp/org.74.9fc37046-3b77-4282-8331-fe5ab40b4496/service/atom/id_predefined_dataset#distribution = 2026-04-17T04:22:51.175410
+2026-07-16 13:38:29 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://inspire.govconnect.de/store/data/buckets/org/74/9fc37046-3b77-4282-8331-fe5ab40b4496/zip#distribution = 2025-12-03T03:38:25.486683
+2026-07-16 13:38:29 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 13:38:29 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 13:38:29 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=2/2
+2026-07-16 13:38:29 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 13:38:29 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 13:38:29 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/2
+2026-07-16 13:38:29 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 13:38:29 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/2
+2026-07-16 13:38:29 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 13:38:29 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 13:38:29 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 13:38:29 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.75 high=1 mid=1 none=0 total=2
+2026-07-16 13:38:29 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/2
+2026-07-16 13:38:29 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 13:38:29 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=2/2
+2026-07-16 13:38:29 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 13:38:29 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 13:38:29 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 13:38:29 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 13:38:29 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 13:38:31 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=4
+2026-07-16 13:38:31 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/2
+2026-07-16 13:38:31 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] partial | score=0.75 | Der Titel ist spezifisch und prägnant, benennt den Straßennamen, den Ort und den Plantyp. Er ist von ähnlichen Datensätz
+2026-07-16 13:38:31 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.10 | Die Beschreibung ist inhaltlich nahezu leer und wiederholt im Wesentlichen nur den Titel. Der einzige Mehrwert ist die N
+2026-07-16 13:38:31 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 13:38:31 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.70 | Titel und Beschreibung sind kohärent – sie beziehen sich auf dasselbe Objekt. Da die Beschreibung den Titel fast nur wie
+2026-07-16 13:38:31 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.20 | Die Schlagwörter enthalten zwar thematisch relevante Begriffe (b-plan, Gemeinde, Landkreis), sind aber überwiegend als t
+2026-07-16 13:38:31 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.80 | Die thematische Konsistenz ist gegeben: Bebauungsplan, Gemeinde, Landkreis und die gewählten DCAT-Themes REGI/GOVE bilde
+2026-07-16 13:38:31 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.65 | Für einen Bauleitplan (statischer Verwaltungsdatensatz) ist ein Stichtag/Ausgabedatum vorhanden. Der Planstatus ('Urspru
+2026-07-16 13:38:31 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 13:38:31 - scoring.service - DEBUG - {
+  "dataset_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=768951b1-c287-4fad-bf79-787a7c7f6f61",
+  "titles": [
+    "Hauptstraße (Leeste) (Ursprungsplan)"
+  ],
+  "descriptions": [
+    "Hauptstraße (Leeste) (Ursprungsplan) im Datenformat INSPIRE PLU Version 4.0.1"
+  ],
+  "keywords": [
+    "b-plan",
+    "gemeinde-weyhe",
+    "inspireidentifiziert",
+    "landkreis-diepholz",
+    "opendata",
+    "pminspireharvestlkdh"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2025-11-11"
+  ],
+  "issued": [
+    "2022-08-31"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((8.8125 52.9979, 8.8163 52.9979, 8.8163 52.9945, 8.8125 52.9945, 8.8125 52.9979))"
+  ],
+  "spatial_resources": [
+    "N57a81213ceb5404f8e1018a39114ee62"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations",
+  "publisher": "N143cc45e88f04d7097c262e1b44ad729",
+  "contact_points": [
+    "N2f701bf65bbe44a0b039fd4e5b025f95"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/gdiDE"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://inspire.govconnect.de/services/bsp/org.74.9fc37046-3b77-4282-8331-fe5ab40b4496/service/atom/id_predefined_dataset#distribution",
+      "titles": [
+        "Hauptstraße (Leeste) (Ursprungsplan)"
+      ],
+      "descriptions": [
+        "Hauptstraße (Leeste) (Ursprungsplan)"
+      ],
+      "download_url": "https://inspire.govconnect.de/services/bsp/org.74.9fc37046-3b77-4282-8331-fe5ab40b4496/service/atom/id_predefined_dataset",
+      "access_url": "https://inspire.govconnect.de/services/bsp/org.74.9fc37046-3b77-4282-8331-fe5ab40b4496/service/atom/id_predefined_dataset",
+      "formats": [
+        "onLine"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-04-17T04:22:51.175410"
+      ],
+      "issued": [
+        "2025-07-23T13:52:37.658573"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "onLine",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "id_predefined_dataset",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/atom+xml; charset=UTF-8",
+            "mime_type": "application/atom+xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/atom+xml",
+        "issues": [],
+        "warnings": [
+          "dct:format='onLine' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://inspire.govconnect.de/services/bsp/org.74.9fc37046-3b77-4282-8331-fe5ab40b4496/service/atom/id_predefined_dataset",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://inspire.govconnect.de/store/data/buckets/org/74/9fc37046-3b77-4282-8331-fe5ab40b4496/zip#distribution",
+      "titles": [
+        "Hauptstraße (Leeste) (Ursprungsplan)"
+      ],
+      "descriptions": [
+        "Hauptstraße (Leeste) (Ursprungsplan)"
+      ],
+      "download_url": "https://inspire.govconnect.de/store/data/buckets/org/74/9fc37046-3b77-4282-8331-fe5ab40b4496/zip",
+      "access_url": "https://inspire.govconnect.de/store/data/buckets/org/74/9fc37046-3b77-4282-8331-fe5ab40b4496/zip",
+      "formats": [
+        "onLine"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-12-03T03:38:25.486683"
+      ],
+      "issued": [
+        "2025-12-03T03:38:25.513041"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "onLine",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "zip",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "archive.zip",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "application/zip",
+        "issues": [],
+        "warnings": [
+          "dct:format='onLine' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://inspire.govconnect.de/store/data/buckets/org/74/9fc37046-3b77-4282-8331-fe5ab40b4496/zip",
+        "content_disposition": "inline; filename=\"archive.zip\"; filename*=utf-8''archive.zip",
+        "attachment_filename": "archive.zip",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel 'Hauptstraße (Leeste) (Ursprungsplan)' benennt einen konkreten Bebauungsplan mit Ortsangabe (Leeste) und Plantyp (Ursprungsplan)",
+        "Ohne Kenntnis des Kontexts ist 'Leeste' als Ortsteil von Weyhe nicht allgemein bekannt, aber der Titel ist dennoch spezifisch genug",
+        "Kein Zeitbezug im Titel, was bei Bauleitplänen aber üblich ist"
+      ],
+      "reasoning": "Der Titel ist spezifisch und prägnant, benennt den Straßennamen, den Ort und den Plantyp. Er ist von ähnlichen Datensätzen unterscheidbar und enthält keine Sonderzeichen oder Abkürzungen. Leichte Abwertung, da kein Zeitbezug vorhanden und der Ortsteil Leeste ohne Gemeindezuordnung im Titel nicht allgemein verständlich ist.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung wiederholt nahezu wortgleich den Titel und ergänzt lediglich das Datenformat 'INSPIRE PLU Version 4.0.1'",
+        "Es fehlen Angaben zum Inhalt (z. B. Geltungsbereich, Planungsart, Festsetzungen), zur Erhebungsmethode, zum Zweck und zur Struktur der Daten",
+        "Keine Informationen zu Besonderheiten, Qualitätsdisclaimern oder weiterführenden Dokumentationslinks"
+      ],
+      "reasoning": "Die Beschreibung ist inhaltlich nahezu leer und wiederholt im Wesentlichen nur den Titel. Der einzige Mehrwert ist die Nennung des Datenformats (INSPIRE PLU 4.0.1). Alle wesentlichen Aspekte einer guten Beschreibung (Inhalt, Struktur, Methode, Zweck) fehlen vollständig.",
+      "applicable": true,
+      "score": 0.1
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich auf denselben Datensatz (Hauptstraße Leeste, Ursprungsplan)",
+        "Die Beschreibung widerspricht dem Titel nicht, sie ergänzt ihn aber auch kaum",
+        "Kein inhaltlicher Widerspruch erkennbar"
+      ],
+      "reasoning": "Titel und Beschreibung sind kohärent – sie beziehen sich auf dasselbe Objekt. Da die Beschreibung den Titel fast nur wiederholt, gibt es zwar keine Widersprüche, aber auch keine echte inhaltliche Ergänzung. Die Kohärenz selbst ist gegeben.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "keyword_quality": {
+      "findings": [
+        "Schlagwörter wie 'b-plan', 'gemeinde-weyhe', 'landkreis-diepholz' sind inhaltlich relevant, aber als Komposita oder Bindestrich-Konstrukte formuliert statt als atomare Begriffe",
+        "'inspireidentifiziert', 'opendata' und 'pminspireharvestlkdh' sind technische/administrative Tags ohne inhaltlichen Mehrwert für Nutzer",
+        "Pluralformen und Jargon ('pminspireharvestlkdh') sind nicht laienverständlich; Herausgeberbezüge ('gemeinde-weyhe', 'landkreis-diepholz') stehen bereits in anderen Feldern"
+      ],
+      "reasoning": "Die Schlagwörter enthalten zwar thematisch relevante Begriffe (b-plan, Gemeinde, Landkreis), sind aber überwiegend als technische Harvesting-Tags, Bindestrich-Komposita oder redundante Verwaltungsangaben formuliert. Laienverständliche, atomare Inhaltsbegriffe fehlen weitgehend.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Die Themes REGI (Regionen) und GOVE (Regierung/öffentlicher Sektor) passen grundsätzlich zu einem kommunalen Bebauungsplan",
+        "Schlagwörter wie 'b-plan' und 'gemeinde-weyhe' stützen den Raum- und Verwaltungsbezug",
+        "Kein offensichtlicher Widerspruch zwischen Titel, Beschreibung, Schlagwörtern und Themen"
+      ],
+      "reasoning": "Die thematische Konsistenz ist gegeben: Bebauungsplan, Gemeinde, Landkreis und die gewählten DCAT-Themes REGI/GOVE bilden ein stimmiges Bild. Keine Off-topic-Signale erkennbar.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Das Ausgabedatum (issued: 2022-08-31) ist vorhanden und gibt einen Zeitbezug",
+        "Es fehlt eine explizite Angabe, ob es sich um einen rechtskräftigen, vorläufigen oder aufgehobenen Plan handelt – 'Ursprungsplan' im Titel deutet auf den Planstatus hin, ist aber nicht formal qualifiziert",
+        "Kein Aktualisierungszyklus angegeben (accrual_periodicity: null), was bei einem statischen Bauleitplan aber vertretbar ist"
+      ],
+      "reasoning": "Für einen Bauleitplan (statischer Verwaltungsdatensatz) ist ein Stichtag/Ausgabedatum vorhanden. Der Planstatus ('Ursprungsplan') ist im Titel erkennbar, aber nicht formal als Qualifizierer ausgewiesen. Insgesamt sind die wesentlichen Qualifizierer für diesen Datentyp vorhanden, wenn auch nicht vollständig formal dokumentiert.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch Titel und Themen grundsätzlich identifizierbar, leidet jedoch erheblich unter einer nichtssagenden Beschreibung, die den Titel nahezu nur wiederholt, sowie unter technisch geprägten, wenig nutzerfreundlichen Schlagwörtern. Für eine aussagekräftige Metadatenbeschreibung fehlen substanzielle Angaben zu Inhalt, Struktur und Zweck des Bebauungsplans.\"}"
+  },
+  "semantic_assessment_raw": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "tool_args": {
+      "title_quality": {
+        "findings": [
+          "Der Titel 'Hauptstraße (Leeste) (Ursprungsplan)' benennt einen konkreten Bebauungsplan mit Ortsangabe (Leeste) und Plantyp (Ursprungsplan)",
+          "Ohne Kenntnis des Kontexts ist 'Leeste' als Ortsteil von Weyhe nicht allgemein bekannt, aber der Titel ist dennoch spezifisch genug",
+          "Kein Zeitbezug im Titel, was bei Bauleitplänen aber üblich ist"
+        ],
+        "reasoning": "Der Titel ist spezifisch und prägnant, benennt den Straßennamen, den Ort und den Plantyp. Er ist von ähnlichen Datensätzen unterscheidbar und enthält keine Sonderzeichen oder Abkürzungen. Leichte Abwertung, da kein Zeitbezug vorhanden und der Ortsteil Leeste ohne Gemeindezuordnung im Titel nicht allgemein verständlich ist.",
+        "score": 0.75
+      },
+      "description_quality": {
+        "findings": [
+          "Die Beschreibung wiederholt nahezu wortgleich den Titel und ergänzt lediglich das Datenformat 'INSPIRE PLU Version 4.0.1'",
+          "Es fehlen Angaben zum Inhalt (z. B. Geltungsbereich, Planungsart, Festsetzungen), zur Erhebungsmethode, zum Zweck und zur Struktur der Daten",
+          "Keine Informationen zu Besonderheiten, Qualitätsdisclaimern oder weiterführenden Dokumentationslinks"
+        ],
+        "reasoning": "Die Beschreibung ist inhaltlich nahezu leer und wiederholt im Wesentlichen nur den Titel. Der einzige Mehrwert ist die Nennung des Datenformats (INSPIRE PLU 4.0.1). Alle wesentlichen Aspekte einer guten Beschreibung (Inhalt, Struktur, Methode, Zweck) fehlen vollständig.",
+        "score": 0.1
+      },
+      "title_description_coherence": {
+        "findings": [
+          "Titel und Beschreibung beziehen sich auf denselben Datensatz (Hauptstraße Leeste, Ursprungsplan)",
+          "Die Beschreibung widerspricht dem Titel nicht, sie ergänzt ihn aber auch kaum",
+          "Kein inhaltlicher Widerspruch erkennbar"
+        ],
+        "reasoning": "Titel und Beschreibung sind kohärent – sie beziehen sich auf dasselbe Objekt. Da die Beschreibung den Titel fast nur wiederholt, gibt es zwar keine Widersprüche, aber auch keine echte inhaltliche Ergänzung. Die Kohärenz selbst ist gegeben.",
+        "score": 0.7
+      },
+      "keyword_quality": {
+        "findings": [
+          "Schlagwörter wie 'b-plan', 'gemeinde-weyhe', 'landkreis-diepholz' sind inhaltlich relevant, aber als Komposita oder Bindestrich-Konstrukte formuliert statt als atomare Begriffe",
+          "'inspireidentifiziert', 'opendata' und 'pminspireharvestlkdh' sind technische/administrative Tags ohne inhaltlichen Mehrwert für Nutzer",
+          "Pluralformen und Jargon ('pminspireharvestlkdh') sind nicht laienverständlich; Herausgeberbezüge ('gemeinde-weyhe', 'landkreis-diepholz') stehen bereits in anderen Feldern"
+        ],
+        "reasoning": "Die Schlagwörter enthalten zwar thematisch relevante Begriffe (b-plan, Gemeinde, Landkreis), sind aber überwiegend als technische Harvesting-Tags, Bindestrich-Komposita oder redundante Verwaltungsangaben formuliert. Laienverständliche, atomare Inhaltsbegriffe fehlen weitgehend.",
+        "score": 0.2
+      },
+      "thematic_consistency": {
+        "findings": [
+          "Die Themes REGI (Regionen) und GOVE (Regierung/öffentlicher Sektor) passen grundsätzlich zu einem kommunalen Bebauungsplan",
+          "Schlagwörter wie 'b-plan' und 'gemeinde-weyhe' stützen den Raum- und Verwaltungsbezug",
+          "Kein offensichtlicher Widerspruch zwischen Titel, Beschreibung, Schlagwörtern und Themen"
+        ],
+        "reasoning": "Die thematische Konsistenz ist gegeben: Bebauungsplan, Gemeinde, Landkreis und die gewählten DCAT-Themes REGI/GOVE bilden ein stimmiges Bild. Keine Off-topic-Signale erkennbar.",
+        "score": 0.8
+      },
+      "contextual_qualifiers": {
+        "findings": [
+          "Das Ausgabedatum (issued: 2022-08-31) ist vorhanden und gibt einen Zeitbezug",
+          "Es fehlt eine explizite Angabe, ob es sich um einen rechtskräftigen, vorläufigen oder aufgehobenen Plan handelt – 'Ursprungsplan' im Titel deutet auf den Planstatus hin, ist aber nicht formal qualifiziert",
+          "Kein Aktualisierungszyklus angegeben (accrual_periodicity: null), was bei einem statischen Bauleitplan aber vertretbar ist"
+        ],
+        "reasoning": "Für einen Bauleitplan (statischer Verwaltungsdatensatz) ist ein Stichtag/Ausgabedatum vorhanden. Der Planstatus ('Ursprungsplan') ist im Titel erkennbar, aber nicht formal als Qualifizierer ausgewiesen. Insgesamt sind die wesentlichen Qualifizierer für diesen Datentyp vorhanden, wenn auch nicht vollständig formal dokumentiert.",
+        "score": 0.65
+      },
+      "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch Titel und Themen grundsätzlich identifizierbar, leidet jedoch erheblich unter einer nichtssagenden Beschreibung, die den Titel nahezu nur wiederholt, sowie unter technisch geprägten, wenig nutzerfreundlichen Schlagwörtern. Für eine aussagekräftige Metadatenbeschreibung fehlen substanzielle Angaben zu Inhalt, Struktur und Zweck des Bebauungsplans.\"}"
+    },
+    "text_content": null,
+    "parsing_error": null,
+    "salvaged": false,
+    "repairs": []
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "input_tokens": 5604,
+      "output_tokens": 1680,
+      "total_tokens": 7284,
+      "cost_usd": 0.042012,
+      "latency_seconds": 31.213
+    }
+  ],
+  "distribution_count": 2
+}
+2026-07-16 13:38:31 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/non_geo_gdi-de_03/result.json
+2026-07-16 13:38:31 - __main__ - INFO -   ✓ Completed | score=0.62 grade=C

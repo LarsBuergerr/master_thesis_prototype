@@ -1,0 +1,732 @@
+2026-07-16 11:57:08 - reporting.output_manager - INFO - Created file log handler for geo_open-data-portal-rheinland-pfalz_03.rdf at run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/geo_open-data-portal-rheinland-pfalz_03/logs.log
+2026-07-16 11:57:08 - __main__ - INFO - Started processing: geo_open-data-portal-rheinland-pfalz_03.rdf
+2026-07-16 11:57:08 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_open-data-portal-rheinland-pfalz_03.rdf
+2026-07-16 11:57:08 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_open-data-portal-rheinland-pfalz_03.rdf using format: xml
+2026-07-16 11:57:08 - extraction.rdf_parser - INFO - Successfully parsed 95 triples
+2026-07-16 11:57:08 - scoring.service - INFO - Parsed 95 triples
+2026-07-16 11:57:08 - scoring.service - DEBUG - DatasetContext built: 6 distribution(s)
+2026-07-16 11:57:08 - scoring.service - DEBUG - attach_probes: 6/6 unique fetch keys, 6 distribution(s) covered
+2026-07-16 11:57:08 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_mapviewer_layer_81037 — Online Karte
+  accessURL   : https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=81037
+  HTTP        : 200
+  final URL   : https://www.geoportal.rlp.de/mapbender/extensions/mobilemap2/index.html?layerid=81037
+  attachment  : index.html
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=map.php                                  mime=-
+    http_content_type    raw=text/html                                mime=text/html
+    attachment_filename  raw=index.html (from final URL)              mime=text/html
+  coalesced   : text/html
+2026-07-16 11:57:09 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_layer_metadata_81037 — Originäre Metadaten für Kartenebene
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=81037
+  HTTP        : 200
+  attachment  : mod_showMetadata.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mod_showMetadata.php                     mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mod_showMetadata.php (from final URL)    mime=-
+  coalesced   : text/html
+2026-07-16 11:57:09 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_atom_feed_wms_81037 — Rasterdownload nach EU-Standard
+  accessURL   : https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3Db32300e9-42a5-dbe1-2e28-c76f2b754edd%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D81037
+  HTTP        : 200
+  attachment  : mb_downloadFeedClient.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mb_downloadFeedClient.php                mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mb_downloadFeedClient.php (from final U… mime=-
+  coalesced   : text/html
+2026-07-16 11:57:09 - scoring.service - DEBUG - [ERROR] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_wms_interface_81037 — WMS Schnittstelle
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=81037&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS
+  HTTP        : 200
+  attachment  : wms.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=wms.php                                  mime=-
+    http_content_type    raw=application/xhtml+xml; charset=UTF-8     mime=application/xhtml+xml
+    attachment_filename  raw=wms.php (from final URL)                 mime=-
+  coalesced   : application/xml
+  issue       : http_content_type='application/xhtml+xml' conflicts with previously coalesced 'application/xml'
+2026-07-16 11:57:09 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/html_metadata_b32300e9-42a5-dbe1-2e28-c76f2b754edd — Original Metadaten HTML
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3Db32300e9-42a5-dbe1-2e28-c76f2b754edd
+  HTTP        : 200
+  attachment  : mod_exportIso19139.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mod_exportIso19139.php                   mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mod_exportIso19139.php (from final URL)  mime=-
+  coalesced   : text/html
+2026-07-16 11:57:10 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_geoportal_layer_81037 — GeoPortal.rlp
+  accessURL   : https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=81037
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=map                                      mime=-
+    http_content_type    raw=text/html; charset=utf-8                 mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-16 11:57:10 - scoring.service - DEBUG - Attached probes to 6/6 distribution(s)
+2026-07-16 11:57:41 - scoring.service - DEBUG - Attached expressiveness assessment (summary: "Die Metadaten benennen einen Bebauungsplan ('Sägmühlweg'), sind aber durchweg sehr karg: die Beschreibung besteht nur au")
+2026-07-16 11:57:41 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:57:41 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] partial score=0.50 keywords=1
+2026-07-16 11:57:41 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['inspireidentifiziert']
+2026-07-16 11:57:41 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/ECON', 'http://publications.europa.eu/resource/authority/data-theme/ENVI']
+2026-07-16 11:57:41 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 11:57:41 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 11:57:41 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:57:41 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:57:41 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['1983-02-02'], endDate: ['1984-01-19']
+2026-07-16 11:57:41 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=date/True end=date/True
+2026-07-16 11:57:41 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=7/7 dataset=1 distribution=6 field=http://purl.org/dc/terms/issued
+2026-07-16 11:57:41 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd = 2026-06-19
+2026-07-16 11:57:41 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/html_metadata_b32300e9-42a5-dbe1-2e28-c76f2b754edd = 2024-10-05T21:56:54.089410
+2026-07-16 11:57:41 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_mapviewer_layer_81037 = 2024-10-05T21:56:54.089413
+2026-07-16 11:57:41 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_geoportal_layer_81037 = 2024-10-05T21:56:54.089415
+2026-07-16 11:57:41 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_layer_metadata_81037 = 2024-10-05T21:56:54.089416
+2026-07-16 11:57:41 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_wms_interface_81037 = 2024-10-05T21:56:54.089417
+2026-07-16 11:57:41 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_atom_feed_wms_81037 = 2024-10-05T21:56:54.089418
+2026-07-16 11:57:41 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=7/7 dataset=1 distribution=6 field=http://purl.org/dc/terms/modified
+2026-07-16 11:57:41 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd = 2026-06-19
+2026-07-16 11:57:41 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/html_metadata_b32300e9-42a5-dbe1-2e28-c76f2b754edd = 2024-10-05T21:56:54.071565
+2026-07-16 11:57:41 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_mapviewer_layer_81037 = 2024-10-05T21:56:54.071692
+2026-07-16 11:57:41 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_geoportal_layer_81037 = 2024-10-05T21:56:54.071781
+2026-07-16 11:57:41 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_layer_metadata_81037 = 2024-10-05T21:56:54.071894
+2026-07-16 11:57:41 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_wms_interface_81037 = 2024-10-05T21:56:54.071984
+2026-07-16 11:57:41 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_atom_feed_wms_81037 = 2024-10-05T21:56:54.072068
+2026-07-16 11:57:41 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:57:41 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:57:41 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:57:41 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/6
+2026-07-16 11:57:41 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:57:41 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=6/6
+2026-07-16 11:57:41 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:57:41 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/6
+2026-07-16 11:57:41 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:57:41 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-16 11:57:41 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=6/6 relevant=6/6
+2026-07-16 11:57:41 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.58 high=1 mid=5 none=0 total=6
+2026-07-16 11:57:41 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=6/6
+2026-07-16 11:57:41 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:57:41 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=6/6
+2026-07-16 11:57:41 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:57:41 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:57:41 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:57:41 - scoring.indicator.reuse_contact - INFO - [reuse_contact] FAIL score=0.00 no contactPoint set
+2026-07-16 11:57:41 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:57:43 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-16 11:57:43 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/6
+2026-07-16 11:57:43 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] fail | score=0.40 | Der Titel benennt einen Bebauungsplan ('Sägmühlweg') mit Änderungsangaben, ist aber durch die kryptische und doppelte Än
+2026-07-16 11:57:43 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:57:43 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.15 | Die Beschreibung ist extrem knapp und liefert außer der Gebietsart keinerlei substanzielle Information über Inhalt, Aufb
+2026-07-16 11:57:43 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.70 | Titel und Beschreibung widersprechen sich nicht; die Angabe 'Allgemeines Wohngebiet' passt plausibel zu einem Bebauungsp
+2026-07-16 11:57:43 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.10 | Das einzige Schlagwort ist ein technisches Pflicht-Tag ohne inhaltlichen Erschließungswert. Es fehlen thematisch aussage
+2026-07-16 11:57:43 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] fail | score=0.40 | Ein Bebauungsplan zu einem Wohngebiet wäre thematisch am ehesten der Raumplanung zuzuordnen. Die Kategorisierung als ECO
+2026-07-16 11:57:43 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.35 | Als Geodatensatz erfordert dieser Typ eine räumliche Abdeckung; diese fehlt vollständig (keine Geometrie, kein Verwaltun
+2026-07-16 11:57:43 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:57:43 - scoring.service - DEBUG - {
+  "dataset_uri": "https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd",
+  "titles": [
+    "Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung"
+  ],
+  "descriptions": [
+    "Allgemeines Wohngebiet"
+  ],
+  "keywords": [
+    "inspireidentifiziert"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/ECON",
+    "http://publications.europa.eu/resource/authority/data-theme/ENVI"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2026-06-19"
+  ],
+  "issued": [
+    "2026-06-19"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [
+    "1983-02-02"
+  ],
+  "end_dates": [
+    "1984-01-19"
+  ],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "https://www.geoportal.rlp.de/organization/f2aff40e-d2e4-23a5-3fe5-54f93c5debfe",
+  "contact_points": [],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/html_metadata_b32300e9-42a5-dbe1-2e28-c76f2b754edd",
+      "titles": [
+        "Original Metadaten HTML"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3Db32300e9-42a5-dbe1-2e28-c76f2b754edd",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-10-05T21:56:54.071565"
+      ],
+      "issued": [
+        "2024-10-05T21:56:54.089410"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-zero"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mod_exportIso19139.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mod_exportIso19139.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3Db32300e9-42a5-dbe1-2e28-c76f2b754edd",
+        "content_disposition": null,
+        "attachment_filename": "mod_exportIso19139.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_mapviewer_layer_81037",
+      "titles": [
+        "Online Karte"
+      ],
+      "descriptions": [
+        "Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung - Vorschau im integrierten Kartenviewer"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=81037",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-10-05T21:56:54.071692"
+      ],
+      "issued": [
+        "2024-10-05T21:56:54.089413"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "map.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "index.html (from final URL)",
+            "mime_type": "text/html"
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/extensions/mobilemap2/index.html?layerid=81037",
+        "content_disposition": null,
+        "attachment_filename": "index.html",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_geoportal_layer_81037",
+      "titles": [
+        "GeoPortal.rlp"
+      ],
+      "descriptions": [
+        "Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung - Anzeige im GeoPortal.rlp"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=81037",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-10-05T21:56:54.071781"
+      ],
+      "issued": [
+        "2024-10-05T21:56:54.089415"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "map",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=utf-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=81037",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_layer_metadata_81037",
+      "titles": [
+        "Originäre Metadaten für Kartenebene"
+      ],
+      "descriptions": [
+        "Kartenebene: Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung - Anzeige der originären Metadaten"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=81037",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-10-05T21:56:54.071894"
+      ],
+      "issued": [
+        "2024-10-05T21:56:54.089416"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-zero"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mod_showMetadata.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mod_showMetadata.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=81037",
+        "content_disposition": null,
+        "attachment_filename": "mod_showMetadata.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_wms_interface_81037",
+      "titles": [
+        "WMS Schnittstelle"
+      ],
+      "descriptions": [
+        "Ebene: Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=81037&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-10-05T21:56:54.071984"
+      ],
+      "issued": [
+        "2024-10-05T21:56:54.089417"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "wms.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/xhtml+xml; charset=UTF-8",
+            "mime_type": "application/xhtml+xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "wms.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [
+          "http_content_type='application/xhtml+xml' conflicts with previously coalesced 'application/xml'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=81037&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS",
+        "content_disposition": null,
+        "attachment_filename": "wms.php",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/b32300e9-42a5-dbe1-2e28-c76f2b754edd/resource/b32300e9-42a5-dbe1-2e28-c76f2b754edd_atom_feed_wms_81037",
+      "titles": [
+        "Rasterdownload nach EU-Standard"
+      ],
+      "descriptions": [
+        "INSPIRE Downloaddienst (predefined ATOM) für Datensatz: Sägmühlweg, VI.Änderung m. Erweiterung 6.Änderung - basierend auf WMS Datenquelle"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3Db32300e9-42a5-dbe1-2e28-c76f2b754edd%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D81037",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-10-05T21:56:54.072068"
+      ],
+      "issued": [
+        "2024-10-05T21:56:54.089418"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mb_downloadFeedClient.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mb_downloadFeedClient.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3Db32300e9-42a5-dbe1-2e28-c76f2b754edd%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D81037",
+        "content_disposition": null,
+        "attachment_filename": "mb_downloadFeedClient.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Titel enthält kryptische Kürzel wie 'VI.Änderung m. Erweiterung 6.Änderung' ohne Erläuterung",
+        "Ortsbezug 'Sägmühlweg' ist vorhanden, aber kein Ort/Gemeinde genannt",
+        "Doppelte, verwirrende Angabe von Änderungen (VI. und 6.) wirkt redundant/widersprüchlich"
+      ],
+      "reasoning": "Der Titel benennt einen Bebauungsplan ('Sägmühlweg') mit Änderungsangaben, ist aber durch die kryptische und doppelte Änderungsnennung schwer verständlich und ohne Gemeindebezug wenig unterscheidbar. Der Kern (Bebauungsplan) ist erkennbar, aber die Formulierung ist unklar.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "description_quality": {
+      "findings": [
+        "Beschreibung besteht nur aus zwei Wörtern: 'Allgemeines Wohngebiet'",
+        "Keine Angaben zu Struktur, Zweck, Methodik oder Format",
+        "Keine Erläuterung, was der Datensatz konkret enthält"
+      ],
+      "reasoning": "Die Beschreibung ist extrem knapp und liefert außer der Gebietsart keinerlei substanzielle Information über Inhalt, Aufbau oder Zweck des Datensatzes. Damit ist sie weitgehend unbrauchbar.",
+      "applicable": true,
+      "score": 0.15
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel deutet auf einen Bebauungsplan mit Änderungen hin",
+        "Beschreibung 'Allgemeines Wohngebiet' passt thematisch als Festsetzungsart eines Bebauungsplans",
+        "Kein Widerspruch, aber sehr geringe inhaltliche Verknüpfung"
+      ],
+      "reasoning": "Titel und Beschreibung widersprechen sich nicht; die Angabe 'Allgemeines Wohngebiet' passt plausibel zu einem Bebauungsplan namens Sägmühlweg. Die Kohärenz ist gegeben, wenn auch auf sehr niedrigem Informationsniveau.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "keyword_quality": {
+      "findings": [
+        "Einziges Schlagwort ist 'inspireidentifiziert', ein rein technisches/formales Tag",
+        "Kein inhaltlich beschreibendes Schlagwort (z.B. 'Bebauungsplan', 'Wohngebiet')",
+        "Kompositum statt atomarer, laienverständlicher Begriffe"
+      ],
+      "reasoning": "Das einzige Schlagwort ist ein technisches Pflicht-Tag ohne inhaltlichen Erschließungswert. Es fehlen thematisch aussagekräftige Begriffe, sodass die Schlagwortqualität sehr gering ist.",
+      "applicable": true,
+      "score": 0.1
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Themen sind ECON (Wirtschaft) und ENVI (Umwelt), Datensatz ist aber ein Bebauungsplan (eher REGI/Raumplanung)",
+        "Schlagwort 'inspireidentifiziert' hat keinen thematischen Bezug",
+        "Inhalt (Wohngebiet/Bauleitplanung) passt nur bedingt zu ECON, ENVI ist plausibler"
+      ],
+      "reasoning": "Ein Bebauungsplan zu einem Wohngebiet wäre thematisch am ehesten der Raumplanung zuzuordnen. Die Kategorisierung als ECON ist fragwürdig, ENVI teilweise nachvollziehbar. Das einzige Schlagwort trägt nichts zur thematischen Einordnung bei. Insgesamt ein uneinheitliches Themenbild.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Zeitraum ist mit 1983-02-02 bis 1984-01-19 angegeben (Bezugszeitraum des Plans)",
+        "Veröffentlichungs-/Änderungsdatum 2026-06-19 vorhanden",
+        "Räumliche Abdeckung (spatial) ist leer, obwohl es sich um einen ortsbezogenen Geodatensatz handelt"
+      ],
+      "reasoning": "Als Geodatensatz erfordert dieser Typ eine räumliche Abdeckung; diese fehlt vollständig (keine Geometrie, kein Verwaltungsbezug), was ein klar verlangter Qualifizierer ist. Ein Zeitbezug ist zwar vorhanden, doch die fehlende Ortsangabe wiegt bei einem Bebauungsplan schwer.",
+      "applicable": true,
+      "score": 0.35
+    },
+    "overall_summary": "Die Metadaten benennen einen Bebauungsplan ('Sägmühlweg'), sind aber durchweg sehr karg: die Beschreibung besteht nur aus zwei Wörtern, das einzige Schlagwort ist ein technisches Pflicht-Tag, die Themenzuordnung (ECON) ist fragwürdig und die räumliche Abdeckung fehlt trotz Geodatenbezug. Insgesamt geringe Aussagekraft."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-opus-4.8",
+      "input_tokens": 6974,
+      "output_tokens": 1923,
+      "total_tokens": 8897,
+      "cost_usd": 0.082945,
+      "latency_seconds": 31.1
+    }
+  ],
+  "distribution_count": 6
+}
+2026-07-16 11:57:43 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/geo_open-data-portal-rheinland-pfalz_03/result.json
+2026-07-16 11:57:43 - __main__ - INFO -   ✓ Completed | score=0.48 grade=D

@@ -1,118 +1,126 @@
-# AgentState configuration — Gewichtungs-Tuning
-# ---------------------------------------------------------------------------
-# Zweck: Testruns zur Verbesserung der Trennschärfe (gute Datensätze sollen
-# besser, schlechte schlechter bewertet werden). Läuft über data/extreme_cases
-# (bad_01..05 / good_01..05) mit aktivierter LLM-Expressiveness und custom
-# Gewichten für ALLE Indikatoren und alle 4 Dimensionen.
-#
-# Gewichtungslogik (Score = gewichteter Mittelwert, siehe service.py):
-#   - Indikatoren, an denen schlechte Datensätze typischerweise scheitern und
-#     die fundamental für Nutzbarkeit sind (Download-URL, Maschinenlesbarkeit,
-#     Lizenz), bekommen hohe Gewichte -> spreizen gut vs. schlecht.
-#   - "Hygiene"-Indikatoren, die in beiden Klassen oft gleich (vorhanden) sind
-#     (issued/modified-Datum, mediaType), bekommen niedrigere Gewichte.
-#   - Grobe Orientierung: data.europa.eu MQA-Punkteverteilung
-#     (Lizenz/Download/Keywords/Kategorien hoch gewichtet).
-# ---------------------------------------------------------------------------
+# AgentState configuration - weighting tuning
+# This file defines the initial state for the prototype
 
 defaults:
   - _self_
 
-# Disable Hydra output subdirectory (.hydra folder)
-hydra:
-  output_subdir: null
-  job:
-    chdir: false
-
-# Directory paths
-directory_path: "data/extreme_cases_02"
-
-# Files to process
+# Directory path for input data
+directory_path: "data/extreme_cases_04"
 # If empty: process all files matching extensions in directory_path
-# (hier leer -> alle bad_*/good_* werden verarbeitet)
+files: []
 
 # File filtering (only used if files list is empty)
 file_filter:
+  # Only process files with these extensions
   extensions: [".rdf"]
+  # Include patterns: process only files matching these (filename starts with) e.g. "geo_", "non_geo_"
   include_patterns: []
+  # Exclude patterns: skip files matching these (filename starts with)
   exclude_patterns: []
 
 # Output directory for results
-output_dir: "run_outputs/"
+output_dir: "outputs/runs/"
+# Optional custom suffix for the run output directory (overrides default naming based on directorypath or filename if only one file is processed)
 run_output_dir_suffix: ""
+# Master switch for creating run output directory and saving results there. If false no output is generated
 run_output_enabled: true
+# Language configuration. Options: "de", "en"
+language: "de"
 
-# Language configuration
-language: "de" # Options: "de", "en"
-
-# LLM Model configuration
 llm:
-  # Aktiviert für die expressiveness-Dimension (semantische Bewertung).
-  # Kostet OpenRouter-Tokens pro Datensatz.
+  # Master switch for the expressiveness LLM agent. Must be true to spend tokens; when false, expressiveness indicators report NOT_APPLICABLE.
   enabled: true
-  model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id
+  # LLM provider. Options: "local", "openrouter" (for local make sure to have the required model downloaded and running)
+  provider: "openrouter"
+  # model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id, for local use a supported model name e.g. qwen3.5
+  model: "anthropic/claude-sonnet-4.5"
+  # LLM response randomness (0.0 = deterministic, higher values = more random) default 0.0
   temperature: 0.0
+  # Maximum tokens for LLM responses (adjust based on expected response length and model limits) default 10000
   max_tokens: 10000
 
-# Logging configuration
 logging:
-  level: "INFO" # Options: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
+  # Logging level: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
+  level: "INFO"
+  # If true, log full details of processing; if false, log only summaries and key events
   verbose: true
 
-# Quality scoring configuration
 quality:
+  # Maximum workers for parallel dimension processing. (If higher than 1 it can and will fk up the logging output sequence, it doesnt affect the speed much)
   max_workers: 1
 
-  # Alle Dimensionen aktiv (leer = keine Einschränkung)
+  # Status -> points mapping (optional). If this block is missing, the raw
+  # indicator scores are used unchanged (backwards compatible).
+  #   - pass_score / partial_score / fail_score: points per status
+  #   - fail_score MAY be negative (active penalty for failures)
+  #   - allow_partial: false -> every PARTIAL is counted as FAIL (strict),
+  #     ternary indicators only
+  # Applies to ternary indicators (PASS/PARTIAL/FAIL). Graded/continuous
+  # indicators (GRADED=True: expr_*, acc_machine_readable_access,
+  # acc_format_non_proprietary, acc_*_url_response) always contribute their raw
+  # continuous score regardless of status (the label is presentational); only
+  # an explicit per-indicator fail_score override penalises a graded FAIL.
+  scoring:
+    pass_score: 1.0
+    partial_score: 0.5
+    fail_score: -0.5
+    allow_partial: true
+    # Per-indicator overrides (override the global values above)
+    overrides:
+      find_keywords_count: { partial_score: 0.7 }
+      # reuse_license: { fail_score: -0.5 }
+
+  # Optional dimension whitelist (default: all dimensions if list is empty or missing)
   dimension_whitelist:
     ["findability", "accessibility", "reusability", "expressiveness"]
-
-  # indicator_blacklist: []
+  # If specified, these indicators will be skipped.
+  # acc_format_congruence and acc_distribution_model are excluded from the
+  # model: both are hard to justify and their misjudgement rate is too high to
+  # be defensible (see docs/model_improvement_plan.md §6).
+  indicator_blacklist:
+    ["acc_format_congruence", "acc_distribution_model", "reuse_access_rights"]
+  # If specified, only these indicators will be processed (overrides blacklist)
   indicator_whitelist: []
 
-  # Custom Gewichte pro Dimension
-  # accessibility/reusability höher: hier scheitern schlechte Datensätze am
-  # klarsten (kein Zugang / keine Lizenz). expressiveness als starker
-  # semantischer Trenner darüber gewichtet als findability (strukturelle Basis).
+  # Optional custom weights per dimension (default for all: 1.0)
+  # accessibility/reusability higher: this is where bad datasets fail most
+  # clearly (no access / no license). expressiveness as a strong semantic
+  # differentiator weighted above findability (structural basis).
   dimension_weights:
     accessibility: 2
     reusability: 1.4
     expressiveness: 2
     findability: 1.0
 
-  # Custom Gewichte pro Indikator
+  # Optional custom weights per indicator id (default: indicator.weight)
   indicator_weights:
-    # --- Findability ---------------------------------------------------------
-    find_keywords_count: 1.5 # Schlagwörter: zentral für Auffindbarkeit (MQA hoch)
-    find_theme_valid: 1.5 # Kategorie/Theme: zentral für Auffindbarkeit (MQA hoch)
-    find_temporal_coverage: 1.0 # Zeitliche Abdeckung
-    find_locn_geometry: 1.0 # Räumliche Geometrie
-    find_adminunitl2: 1.0 # Räumliche Einheit aus Vokabular
-    find_accrual_periodicity: 0.75 # Aktualisierungsfrequenz: nice-to-have
-    find_issued_datetime: 0.5 # Hygiene: in gut/schlecht oft gleich vorhanden
-    find_modified_datetime: 0.5 # Hygiene: in gut/schlecht oft gleich vorhanden
+    find_keywords_count: 1.5 # Keywords: central for findability (MQA high)
+    find_theme_valid: 1.5 # Category/theme: central for findability (MQA high)
+    find_temporal_coverage: 1.0 # Temporal coverage
+    find_locn_geometry: 1.0 # Spatial geometry
+    find_political_geocoding: 1.0 # Political geocoding URI from vocabulary
+    find_geocoding_level: 0.75 # Spatial admin level (SOLL, complementary)
+    find_accrual_periodicity: 0.75 # Update frequency: nice-to-have
+    find_issued_datetime: 0.5 # Hygiene: often equally present in good/bad
+    find_modified_datetime: 0.5 # Hygiene: often equally present in good/bad
 
-    # --- Accessibility -------------------------------------------------------
-    acc_download_url: 2.0 # Ohne Download-URL ist der Datensatz wertlos
-    acc_machine_readable_access: 2.0 # Maschinenlesbarkeit: Kern-Qualitätstrenner (FAIR)
-    acc_download_url_response: 1.5 # Löst die URL tatsächlich auf (HTTP<400)?
-    acc_format: 1.0 # Format aus kontrolliertem Vokabular
-    acc_format_congruence: 1.0 # Format/MIME-Kongruenz
-    acc_access_url_response: 1.0 # Access-URL erreichbar
-    acc_media_type: 0.75 # MediaType aus Vokabular: feiner, weniger trennscharf
-    acc_distribution_model: 0.5 # Modellierungs-Kohärenz: fortgeschritten/nuanciert
+    acc_download_url: 2.0 # Without a download URL the dataset is worthless
+    acc_machine_readable_access: 2.0 # Machine readability: core quality differentiator (FAIR)
+    acc_download_url_response: 1.5 # Does the URL actually resolve (HTTP<400)?
+    acc_format: 1.0 # Format from controlled vocabulary
+    acc_access_url_response: 1.0 # Access URL reachable
+    acc_media_type: 0.75 # MediaType from vocabulary: finer, less discriminating
 
-    # --- Reusability ---------------------------------------------------------
-    reuse_license: 2.0 # Lizenz: make-or-break für Nachnutzung (MQA hoch)
-    reuse_contact: 1.25 # Kontaktpunkt: Vertrauen/Support (MQA mittel-hoch)
-    reuse_contributor_id: 1.25 # contributorID: MUSS-Anforderung (DCAT-AP-DE K12/K13)
-    reuse_publisher: 1.0 # Herausgeber/Provenienz
-    reuse_access_rights: 1.0 # Zugriffsrechte
+    reuse_license: 2.0 # License: make-or-break for reuse (MQA high)
+    reuse_contact: 1.25 # Contact point: trust/support (MQA medium-high)
+    reuse_contributor_id: 1.25 # contributorID: MUST requirement (DCAT-AP-DE K12/K13)
+    reuse_publisher: 1.0 # Publisher/provenance
+    reuse_access_rights: 1.0 # Access rights
+    reuse_availability: 0.75 # Availability: soft signal (planned availability)
 
-    # --- Expressiveness (LLM) ------------------------------------------------
-    expr_description_quality: 1.5 # Beschreibung: informationsreichstes Feld
-    expr_title_quality: 1.5 # Titel: erstes Qualitätssignal
-    expr_title_description_coherence: 1.0 # Kohärenz Titel/Beschreibung
-    expr_keyword_quality: 1.0 # Schlagwort-Qualität (semantisch)
-    expr_thematic_consistency: 1.0 # Thematische Konsistenz
-    expr_contextual_qualifiers: 0.75 # Kontext-Qualifizierer: situativ
+    expr_description_quality: 1.5 # Description: most information-rich field
+    expr_title_quality: 1.5 # Title: first quality signal
+    expr_title_description_coherence: 1.0 # Coherence title/description
+    expr_keyword_quality: 1.0 # Keyword quality (semantic)
+    expr_thematic_consistency: 1.0 # Thematic consistency
+    expr_contextual_qualifiers: 0.75 # Contextual qualifiers: situational

@@ -1,0 +1,59 @@
+// Übernommen aus GovData-Frontend webapp/src/css/components/_gd-button.scss
+// (Auszug ohne Icon-Filter): Primär-Button Primary-400 mit Invertierung bei
+// Hover, Sekundär-Button als Umkehrung, 5-px-Radius, 12/24-px-Padding.
+.gd-button {
+  @include outline-base();
+  @include transparent-border();
+  @extend .button-reset;
+  @extend .paragraph;
+  @extend .bold;
+
+  display: inline-flex;
+  text-wrap: nowrap;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+
+  --transitionTime: 0.1s;
+  transition:
+    color var(--transitionTime) ease-in-out,
+    background-color var(--transitionTime) ease-in-out,
+    border-color var(--transitionTime) ease-in-out,
+    box-shadow var(--transitionTime) ease-in-out;
+
+  &.gd-button-primary {
+    @extend .bold;
+    background: $clr-primary-400;
+    color: $clr-shades-white-0;
+
+    &:hover {
+      border: 1px solid $clr-primary-400;
+      background: $clr-shades-white-0;
+      color: $clr-primary-400;
+    }
+  }
+
+  &.gd-button-secondary {
+    @extend .bold;
+    color: $clr-primary-400;
+    background: $clr-shades-white-0;
+    border: 1px solid $clr-primary-400;
+
+    &:hover {
+      color: $clr-shades-white-0;
+      background: $clr-primary-400;
+    }
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+
+    // disabled: Hover-Invertierung unterdrücken
+    &.gd-button-primary:hover {
+      background: $clr-primary-400;
+      color: $clr-shades-white-0;
+      border-color: transparent;
+    }
+  }
+}

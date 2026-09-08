@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/d536b57c-a2bc-4fa3-820d-7d5608933b97">
+    <dct:title>Vorhabenbezogener Bebauungsplan Einzelarztpraxis Schemel - Amt Brück Stadt Brück (WMS)</dct:title>
+    <dct:description>Der Vorhabenbezogene Bebauungsplan setzt als verbindlicher Bauleitplan eine objektbezogene Vorhabensplanung in unmittelbar geltendes Recht um. Für ihn gelten dieselben Regelungen, die auch für den Bebauungsplan maßgeblich sind.</dct:description>
+    <dct:identifier>d536b57c-a2bc-4fa3-820d-7d5608933b97</dct:identifier>
+    <dcat:keyword>bauleitplanung</dcat:keyword>
+    <dcat:keyword>infomapaccessservice</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>planung</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-08-12T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-02-13T10:10:55</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N3c564bf93db74b698200de4c649723af">
+        <vcard:fn>Brück</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:baurecht@amt-brueck.de"/>
+        <vcard:hasURL rdf:resource="https://www.amt-brueck.de"/>
+        <vcard:hasTelephone rdf:resource="tel:+033844/62462"/>
+        <vcard:hasStreetAddress>Ernst-Thälmann-Straße 59</vcard:hasStreetAddress>
+        <vcard:hasLocality>Brück</vcard:hasLocality>
+        <vcard:hasPostalCode>14822</vcard:hasPostalCode>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N5466f418251b4129a5f768b7f26ab408">
+        <foaf:name>Amt Brück</foaf:name>
+        <foaf:mbox>baurecht@amt-brueck.de</foaf:mbox>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Ne548a77d2570463e87af821e6a35ced4">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((12.7271 52.1664, 12.7289 52.1664, 12.7289 52.1650, 12.7271 52.1650, 12.7271 52.1664))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:nodeID="N6e0d717a787c45f08b82348305028f2c">
+        <rdfs:label>Keine Zugriffsbeschränkungen. Bereitgestellte Daten dienen ausschließlich der Information und besitzen keine Rechtsverbindlichkeit.</rdfs:label>
+      </dct:RightsStatement>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/34c79215-f5e5-4c04-ba64-4b4872ed6b7f">
+        <dct:title>Vorhabenbezogener Bebauungsplan Einzelarztpraxis Schemel - Amt Brück Stadt Brück (WMS)</dct:title>
+        <dct:description>Vorhabenbezogener Bebauungsplan Einzelarztpraxis Schemel - Amt Brück Stadt Brück (WMS)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoportal-amt-brueck.de/isk/bp20a?"/>
+        <dcat:downloadURL rdf:resource="https://www.geoportal-amt-brueck.de/isk/bp20a?"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-01T05:48:11.503006</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-01T05:48:11.488303</dct:modified>
+        <dcatde:licenseAttributionByText>Quelle: © Amt Brück dl-de/by-2-0</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>d536b57c-a2bc-4fa3-820d-7d5608933b97</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openDataBrandenburg"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://www.geoportal-amt-brueck.de/isk/bp20a?"/>
+</rdf:RDF>

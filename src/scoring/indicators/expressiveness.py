@@ -30,6 +30,10 @@ _STATUS_MAP = {
     "pass": IndicatorStatus.PASS,
     "partial": IndicatorStatus.PARTIAL,
     "fail": IndicatorStatus.FAIL,
+    # A conditionally-applicable criterion (contextual qualifiers) the LLM
+    # judged not to apply to this dataset — surfaced as NOT_APPLICABLE, distinct
+    # from a genuine low score.
+    "not_applicable": IndicatorStatus.NOT_APPLICABLE,
 }
 
 
@@ -41,6 +45,9 @@ class LLMBackedExpressivenessIndicator(Indicator):
     context, the not-attached fallback, and mapping the criterion to an
     :class:`IndicatorResult`.
     """
+
+    # LLM criteria return continuous scores — keep them under a ScorePolicy.
+    GRADED = True
 
     #: Field name on ``ExpressivenessAssessment`` this indicator surfaces.
     criterion: str = ""

@@ -1,0 +1,100 @@
+// Basiselemente nach GovData-Frontend webapp/src/css/_global.scss und
+// _reset.scss (Auszug): grauer Seitenhintergrund, Grey-800-Fließtext,
+// Primary-400-Links (fett, Underline nur bei Hover), globaler Fokus-Stil.
+
+// aus _reset.scss: neutraler Ausgangszustand für Buttons/Links
+.link-reset,
+.button-reset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+  text-decoration: none;
+}
+
+* {
+  @include outline-base();
+
+  box-sizing: border-box;
+}
+
+html,
+body {
+  @extend .normal;
+
+  min-height: 100vh;
+  color: $clr-neutral-grey-800;
+  font-size: 16px;
+  background: $clr-body-background;
+  margin: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+details {
+  summary {
+    cursor: pointer;
+  }
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+a {
+  @include outline-base();
+  @extend .paragraph;
+  @extend .font-bold;
+  color: $clr-primary-400;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+strong {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+
+  @extend .bold;
+}
+
+th,
+.th {
+  @extend .paragraph;
+  @extend .bold;
+}
+
+td,
+.td {
+  @extend .paragraph;
+}
+
+li {
+  @extend .paragraph;
+}
+
+button {
+  cursor: pointer;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}

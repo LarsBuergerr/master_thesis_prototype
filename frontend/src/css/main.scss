@@ -1,0 +1,34 @@
+/*
+ * GovData-Styling für den DCAT-AP-DE Quality Analyzer.
+ *
+ * Struktur, Importreihenfolge, Token-Namen und Komponentenklassen sind aus
+ * dem offiziellen GovData-Frontend übernommen
+ * (https://github.com/GovDataOfficial/GovData-Frontend,
+ * webapp/src/css/main.scss), damit sich diese Anwendung ohne Stilbruch in
+ * das GovData-Portal einbetten lässt: gleiche Klassennamen (design-box,
+ * gd-button, gd-tag, gd-table, alert, gd-input), gleiche Farb-Tokens,
+ * gleiche Typografie (Noto Sans). Siehe Abschnitt 5.8.2 der Thesis.
+ */
+
+@import "normalize.css";
+
+@import "function";
+@import "color-tokens";
+@import "mixins";
+@import "variables";
+
+@import "bootstrap/scss/bootstrap-grid";
+
+@import "fonts";
+@import "global";
+
+@import "components/gd-design-box";
+@import "components/gd-button";
+@import "components/gd-tag";
+@import "components/gd-table";
+@import "components/gd-alert";
+@import "components/gd-input";
+
+@import "components/analyzer";
+@import "components/findings";
+@import "components/portal";

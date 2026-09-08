@@ -1,10 +1,37 @@
 .venv
-outputs
-run_outputs
+
+# --- Generierte Artefakte -------------------------------------------------
+# Alles unter outputs/ ist generiert und bleibt lokal. Ausgenommen sind die
+# Referenz-Runs und Ground-Truth-Ergebnisse, die in der Arbeit zitiert werden:
+# fuer sie muss erst der Elternordner wieder sichtbar gemacht werden, sonst
+# greift die Ausnahme nicht (git schaut in ignorierte Verzeichnisse nicht hinein).
+outputs/*
+
+!outputs/runs/
+outputs/runs/*
+!outputs/runs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL_sonnet4-5
+!outputs/runs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL_gpt5-5
+!outputs/runs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL_opus4-8
+!outputs/runs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL_sonnet4-6
+
+!outputs/ground_truth/
+
 .env
 
 **/**/catalog_distributions.csv
 __pycache__/
 **/**/**/**/govdata_ckan_snapshot*.jsonl
 
-data/
+data/extreme_cases
+data/extreme_cases_02
+# data/extreme_cases_05
+
+data/sample_2026-05*
+data/sample_2026-06-03*
+data/sample_2026-06-18*
+
+data/sample_small*
+
+playground/scripts/data/*
+# LaTeX build output
+thesis/build/

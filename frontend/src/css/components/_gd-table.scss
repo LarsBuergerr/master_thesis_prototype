@@ -1,0 +1,48 @@
+// Übernommen aus GovData-Frontend webapp/src/css/components/_gd-table.scss
+// (Auszug): Tabellenkopf mit grauem Grund (#f5f5f5) und abgerundeten Ecken,
+// Zeilentrennung mit Grey-300-Linien, horizontales Scrollen im Wrapper.
+.gd-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.gd-table {
+  @extend .paragraph;
+  border-collapse: collapse;
+  width: 100%;
+
+  caption {
+    @extend .paragraph-extra-small;
+    text-align: left;
+    color: $clr-neutral-grey-600;
+    padding-bottom: 4px;
+  }
+
+  .gd-table-head {
+    th {
+      background: #f5f5f5;
+      padding: map-get($spacers, 1);
+      text-align: left;
+
+      &:first-child {
+        border-radius: 5px 0 0 5px;
+      }
+
+      &:last-child {
+        border-radius: 0 5px 5px 0;
+      }
+    }
+  }
+
+  th,
+  td {
+    font-size: $fnt-paragraph-small;
+    text-align: left;
+    padding: map-get($spacers, 1);
+    vertical-align: top;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid $clr-neutral-grey-300;
+  }
+}

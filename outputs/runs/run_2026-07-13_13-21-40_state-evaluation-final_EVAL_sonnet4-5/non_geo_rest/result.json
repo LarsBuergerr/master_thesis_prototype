@@ -1,0 +1,1122 @@
+{
+  "by_dimension": {
+    "findability": {
+      "dimension": "findability",
+      "indicators": [
+        {
+          "indicator_id": "find_keywords_count",
+          "name_de": "Angemessene Anzahl Schlagwörter",
+          "name_en": "Appropriate number of keywords",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Ungeeignete Anzahl Keywords: 28",
+          "message_en": "Inappropriate number of keywords: 28",
+          "details": {
+            "keyword_count": 28,
+            "keywords": [
+              "anzahl",
+              "art-des-studiums",
+              "baden-württemberg",
+              "bayern",
+              "berlin",
+              "brandenburg",
+              "bremen",
+              "bundesländer",
+              "frauen",
+              "geschlecht",
+              "hamburg",
+              "hessen",
+              "hochschulwechselquote",
+              "mecklenburg-vorpommern",
+              "männer",
+              "niedersachsen",
+              "nordrhein-westfalen",
+              "rheinland-pfalz",
+              "saarland",
+              "sachsen",
+              "sachsen-anhalt",
+              "schleswig-holstein",
+              "studienanfänger",
+              "studienanfängerinnen",
+              "studienart",
+              "studienverlauf",
+              "thüringen",
+              "weiblich"
+            ],
+            "expected_range": "3–15 keywords (PASS), 1–2 or 16–25 (PARTIAL)"
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.977990",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_theme_valid",
+          "name_de": "Theme aus kontrolliertem Vokabular",
+          "name_en": "Theme from controlled vocabulary",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle Themes sind aus dem kontrollierten Vokabular",
+          "message_en": "All themes are from controlled vocabulary",
+          "details": {
+            "valid_themes": [
+              "http://publications.europa.eu/resource/authority/data-theme/EDUC"
+            ],
+            "invalid_themes": [],
+            "valid_count": 1,
+            "total_count": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.978124",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_locn_geometry",
+          "name_de": "Räumliche Suchangabe (Geometrie)",
+          "name_en": "Spatial search term (geometry)",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine locn:geometry gefunden",
+          "message_en": "No locn:geometry found",
+          "details": {
+            "geometry_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.978186",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_political_geocoding",
+          "name_de": "Politische Geokodierung aus kontrolliertem Vokabular",
+          "name_en": "Political geocoding from controlled vocabulary",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine politische Geokodierung angegeben",
+          "message_en": "No political geocoding specified",
+          "details": {
+            "geocoding_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.978252",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_geocoding_level",
+          "name_de": "Geokodierungs-Ebene aus kontrolliertem Vokabular",
+          "name_en": "Geocoding level from controlled vocabulary",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine politische Geokodierungs-Ebene angegeben",
+          "message_en": "No political geocoding level specified",
+          "details": {
+            "level_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.978310",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_temporal_coverage",
+          "name_de": "Zeitliche Abdeckung angegeben",
+          "name_en": "Temporal coverage specified",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine zeitliche Abdeckung gefunden oder ungültiges Datumsformat",
+          "message_en": "No temporal coverage found or invalid date format",
+          "details": {
+            "start_count": 0,
+            "end_count": 0,
+            "start_format": null,
+            "end_format": null,
+            "start_valid": false,
+            "end_valid": false
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.978397",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_issued_datetime",
+          "name_de": "Issued Datum (xs:dateTime)",
+          "name_en": "Issued date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 5 Werte gültig (Dataset: 1, Distribution: 4)",
+          "message_en": "All 5 values valid (Dataset: 1, Distribution: 4)",
+          "details": {
+            "valid": [
+              {
+                "value": "2025-11-26T17:13:12.181493",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "https://www.datenportal.bmftr.bund.de/portal/2.5.121"
+              },
+              {
+                "value": "2025-11-26T17:13:12.185115",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution"
+              },
+              {
+                "value": "2025-11-26T17:13:12.185120",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution"
+              },
+              {
+                "value": "2025-11-26T17:13:12.185123",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution"
+              },
+              {
+                "value": "2025-11-26T17:13:12.185125",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution"
+              }
+            ],
+            "invalid": [],
+            "total": 5,
+            "dataset_count": 1,
+            "distribution_count": 4
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.979120",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_modified_datetime",
+          "name_de": "Modified Datum (xs:dateTime)",
+          "name_en": "Modified date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 5 Werte gültig (Dataset: 1, Distribution: 4)",
+          "message_en": "All 5 values valid (Dataset: 1, Distribution: 4)",
+          "details": {
+            "valid": [
+              {
+                "value": "2026-06-23T22:14:23.547505",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "https://www.datenportal.bmftr.bund.de/portal/2.5.121"
+              },
+              {
+                "value": "2025-07-16T00:00:00",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution"
+              },
+              {
+                "value": "2025-07-16T00:00:00",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution"
+              },
+              {
+                "value": "2025-07-16T00:00:00",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution"
+              },
+              {
+                "value": "2025-07-16T00:00:00",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution"
+              }
+            ],
+            "invalid": [],
+            "total": 5,
+            "dataset_count": 1,
+            "distribution_count": 4
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.979371",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        }
+      ],
+      "score": 0.375,
+      "dimension_weight": 1,
+      "total_indicator_weight": 8.0,
+      "indicator_count": 8,
+      "pass_count": 3,
+      "pass_rate": 0.375
+    },
+    "accessibility": {
+      "dimension": "accessibility",
+      "indicators": [
+        {
+          "indicator_id": "acc_download_url",
+          "name_de": "Download-URL je Distribution",
+          "name_en": "Download URL per distribution",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "4/4 Distribution(en) mit Download-URL",
+          "message_en": "4/4 distribution(s) with a download URL",
+          "details": {
+            "total_distributions": 4,
+            "distributions_with_download_url": 4
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.979522",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_format",
+          "name_de": "Format aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Format from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "4/4 Distribution(en) mit Format aus dem Vokabular",
+          "message_en": "4/4 distribution(s) with a format from the vocabulary",
+          "details": {
+            "total_distributions": 4,
+            "passing_count": 4,
+            "per_distribution": [
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/HTML"
+                ],
+                "passes": true
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/XLS"
+                ],
+                "passes": true
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/CSV"
+                ],
+                "passes": true
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/PDF"
+                ],
+                "passes": true
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.979617",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_media_type",
+          "name_de": "Media Type aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Media type from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/4 Distribution(en) mit gültigem Media Type",
+          "message_en": "0/4 distribution(s) with a valid media type",
+          "details": {
+            "total_distributions": 4,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution",
+                "media_types": [
+                  "text/html"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution",
+                "media_types": [
+                  "application/vnd.ms-excel"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution",
+                "media_types": [
+                  "text/csv"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution",
+                "media_types": [
+                  "application/pdf"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.979709",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_download_url_response",
+          "name_de": "Download-URL Antwortcode",
+          "name_en": "Download URL response code",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "4/4 Download-URL(s) mit gültigem HTTP-Statuscode",
+          "message_en": "4/4 download URL(s) with valid HTTP status code",
+          "details": {
+            "total_distributions": 4,
+            "relevant_distributions": 4,
+            "sampled_distributions": 4,
+            "valid_count": 4,
+            "invalid_count": 0,
+            "dead_url_malus": -0.5,
+            "valid": [
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution",
+                "url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html",
+                "status_code": 200,
+                "fetch_error": null
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution",
+                "url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls",
+                "status_code": 200,
+                "fetch_error": null
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution",
+                "url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv",
+                "status_code": 200,
+                "fetch_error": null
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution",
+                "url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf",
+                "status_code": 200,
+                "fetch_error": null
+              }
+            ],
+            "invalid": []
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.979810",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_access_url_response",
+          "name_de": "Access-URL Antwortcode",
+          "name_en": "Access URL response code",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "4/4 Access-URL(s) mit gültigem HTTP-Statuscode",
+          "message_en": "4/4 access URL(s) with valid HTTP status code",
+          "details": {
+            "total_distributions": 4,
+            "relevant_distributions": 4,
+            "sampled_distributions": 4,
+            "valid_count": 4,
+            "invalid_count": 0,
+            "dead_url_malus": -0.5,
+            "valid": [
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution",
+                "url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html",
+                "status_code": 200,
+                "fetch_error": null
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution",
+                "url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls",
+                "status_code": 200,
+                "fetch_error": null
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution",
+                "url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv",
+                "status_code": 200,
+                "fetch_error": null
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution",
+                "url": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf",
+                "status_code": 200,
+                "fetch_error": null
+              }
+            ],
+            "invalid": []
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.979871",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_machine_readable_access",
+          "name_de": "Maschinenlesbarer Zugang (alle Distributionen)",
+          "name_en": "Machine-readable access (all distributions)",
+          "dimension": "accessibility",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "1/4 hoch maschinenlesbar, 2/4 mittel, 1/4 keine (Score 0.50)",
+          "message_en": "1/4 high machine-readable, 2/4 mid, 1/4 none (score 0.50)",
+          "details": {
+            "total_distributions": 4,
+            "high_count": 1,
+            "mid_count": 2,
+            "none_count": 1,
+            "per_distribution": [
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution",
+                "effective_mime": "text/html",
+                "tier": 0.5,
+                "tier_label": "mid"
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution",
+                "effective_mime": "application/vnd.ms-excel",
+                "tier": 0.5,
+                "tier_label": "mid"
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution",
+                "effective_mime": "text/csv",
+                "tier": 1.0,
+                "tier_label": "high"
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution",
+                "effective_mime": "application/pdf",
+                "tier": 0,
+                "tier_label": "none"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.979937",
+          "default_weight": 1.0,
+          "effective_weight": 1.5,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "acc_format_non_proprietary",
+          "name_de": "Nicht-proprietäres Format (alle Distributionen)",
+          "name_en": "Non-proprietary format (all distributions)",
+          "dimension": "accessibility",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "2/4 Distribution(en) mit nicht-proprietärem Format",
+          "message_en": "2/4 distribution(s) with non-proprietary format",
+          "details": {
+            "total_distributions": 4,
+            "passing_count": 2,
+            "per_distribution": [
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/HTML"
+                ],
+                "passes": true
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/XLS"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/CSV"
+                ],
+                "passes": true
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/PDF"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.979996",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        }
+      ],
+      "score": 0.7631578947368421,
+      "dimension_weight": 2,
+      "total_indicator_weight": 9.5,
+      "indicator_count": 7,
+      "pass_count": 4,
+      "pass_rate": 0.5714285714285714
+    },
+    "reusability": {
+      "dimension": "reusability",
+      "indicators": [
+        {
+          "indicator_id": "reuse_license",
+          "name_de": "Freie Lizenz je Distribution",
+          "name_en": "Free-use license per distribution",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "4/4 Distribution(en) mit freier Lizenz (Score 1.00)",
+          "message_en": "4/4 distribution(s) with a free-use license (score 1.00)",
+          "details": {
+            "total_distributions": 4,
+            "free_count": 4,
+            "no_free_license_malus": -0.5,
+            "per_distribution": [
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.980339",
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_publisher",
+          "name_de": "Herausgeber als strukturierter Agent",
+          "name_en": "Publisher modelled as structured agent",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Herausgeber als foaf:Agent mit foaf:name modelliert",
+          "message_en": "Publisher modelled as foaf:Agent with foaf:name",
+          "details": {
+            "publisher_count": 1,
+            "publishers": [
+              {
+                "value": "https://www.datenportal.bmftr.bund.de/portal/de/imprint.html#publisher",
+                "typed_as_agent": true,
+                "names": [
+                  "Bundesministerium für Forschung, Technologie und Raumfahrt"
+                ],
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.981108",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_contact",
+          "name_de": "Kontaktpunkt mit E-Mail oder URL",
+          "name_en": "Contact point with email or URL",
+          "dimension": "reusability",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "Kontaktpunkt vorhanden, aber ohne valide E-Mail oder URL",
+          "message_en": "Contact point present but without a valid email or URL",
+          "details": {
+            "contact_count": 1,
+            "contacts_with_channel": 0,
+            "contacts": [
+              {
+                "value": "Nfe4f5f88b2fd43e5b41c60755e3bd46d",
+                "emails": [],
+                "valid_emails": [],
+                "urls": [],
+                "valid_urls": [],
+                "has_channel": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.981209",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "reuse_contributor_id",
+          "name_de": "contributorID aus kontrolliertem Vokabular",
+          "name_en": "contributorID from controlled vocabulary",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Genau eine contributorID aus dem Vokabular",
+          "message_en": "Exactly one contributorID from the vocabulary",
+          "details": {
+            "contributor_id_count": 1,
+            "valid": [
+              "http://dcat-ap.de/def/contributors/bundesministeriumFuerBildungUndForschung"
+            ],
+            "invalid": [],
+            "values": [
+              "http://dcat-ap.de/def/contributors/bundesministeriumFuerBildungUndForschung"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:34.981275",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_dcat_ap_de_compliance",
+          "name_de": "DCAT-AP.de Schema-Konformität (SHACL)",
+          "name_en": "DCAT-AP.de schema compliance (SHACL)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "5 SHACL-Verletzung(en) gefunden",
+          "message_en": "5 SHACL violation(s) found",
+          "details": {
+            "conforms": false,
+            "violation_count": 5,
+            "violations": [
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+                "focus": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution",
+                "path": "http://www.w3.org/ns/dcat#mediaType"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+                "focus": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution",
+                "path": "http://www.w3.org/ns/dcat#mediaType"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+                "focus": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution",
+                "path": "http://www.w3.org/ns/dcat#mediaType"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+                "focus": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution",
+                "path": "http://www.w3.org/ns/dcat#mediaType"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Dataset: dct:identifier MUSS ein Literal sein.",
+                "focus": "https://www.datenportal.bmftr.bund.de/portal/2.5.121",
+                "path": "http://purl.org/dc/terms/identifier"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:36.611798",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "reuse_availability",
+          "name_de": "Verfügbarkeit aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Availability from controlled vocabulary (per distribution)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/4 Distribution(en) mit gültiger Verfügbarkeit",
+          "message_en": "0/4 distribution(s) with a valid availability value",
+          "details": {
+            "total_distributions": 4,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.html#distribution",
+                "availability": [],
+                "passes": false
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.xls#distribution",
+                "availability": [],
+                "passes": false
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.csv#distribution",
+                "availability": [],
+                "passes": false
+              },
+              {
+                "uri": "https://www.datenportal.bmftr.bund.de/portal/Tabelle-2.5.121.pdf#distribution",
+                "availability": [],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:36.612031",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.6428571428571429,
+      "dimension_weight": 1.5,
+      "total_indicator_weight": 7.0,
+      "indicator_count": 6,
+      "pass_count": 3,
+      "pass_rate": 0.5
+    },
+    "expressiveness": {
+      "dimension": "expressiveness",
+      "indicators": [
+        {
+          "indicator_id": "expr_title_quality",
+          "name_de": "Titel-Qualität",
+          "name_en": "Title quality",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Der Titel ist prägnant, spezifisch und verständlich. Er kennzeichnet den Datensatz eindeutig und ermöglicht eine klare Abgrenzung zu anderen Datensätzen. Es gibt keine formalen oder inhaltlichen Mängel.",
+          "message_en": "Der Titel ist prägnant, spezifisch und verständlich. Er kennzeichnet den Datensatz eindeutig und ermöglicht eine klare Abgrenzung zu anderen Datensätzen. Es gibt keine formalen oder inhaltlichen Mängel.",
+          "details": {
+            "criterion": "title_quality",
+            "llm_status": "pass",
+            "findings": [
+              "Der Titel ist spezifisch und nennt klar den Inhalt: Hochschulwechslerquoten zum Masterstudium nach Bundesländern.",
+              "Der Titel ist verständlich und unterscheidet sich durch die Kombination aus Thema (Hochschulwechslerquoten), Studienphase (Masterstudium) und räumlicher Gliederung (Bundesländer) von ähnlichen Datensätzen.",
+              "Keine Sonderzeichen, Codes oder Markdown-Reste vorhanden; der Titel ist reiner, normaler Text."
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, und die thematische Konsistenz ist gegeben. Allerdings ist die Beschreibung nicht substanziell (wiederholt nur den Titel), die Schlagwörter sind durch die redundante Auflistung aller Bundesländer aufgebläht, und es fehlen vollständig die für eine Statistik erforderlichen Zeitangaben (Bezugszeitraum, Jahr)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:36.612150",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "expr_description_quality",
+          "name_de": "Beschreibungs-Qualität",
+          "name_en": "Description quality",
+          "dimension": "expressiveness",
+          "status": "fail",
+          "score": 0.1,
+          "message_de": "Die Beschreibung ist nicht substanziell und bietet keine über den Titel hinausgehenden Informationen. Sie beantwortet weder, was enthalten ist, noch wie die Daten strukturiert sind oder woher sie stammen. Dies ist ein deutlicher Mangel.",
+          "message_en": "Die Beschreibung ist nicht substanziell und bietet keine über den Titel hinausgehenden Informationen. Sie beantwortet weder, was enthalten ist, noch wie die Daten strukturiert sind oder woher sie stammen. Dies ist ein deutlicher Mangel.",
+          "details": {
+            "criterion": "description_quality",
+            "llm_status": "fail",
+            "findings": [
+              "Die Beschreibung wiederholt lediglich den Titel mit dem Zusatz 'Tabelle 2.5.121'.",
+              "Es fehlen substanzielle Informationen: Was genau ist eine Hochschulwechslerquote? Wie ist die Tabelle strukturiert? Welche Zeiträume werden abgedeckt? Welche Datenquelle liegt zugrunde?",
+              "Keine Angaben zu Methodik, Erhebungszweck, Format, Kodierung oder Besonderheiten."
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, und die thematische Konsistenz ist gegeben. Allerdings ist die Beschreibung nicht substanziell (wiederholt nur den Titel), die Schlagwörter sind durch die redundante Auflistung aller Bundesländer aufgebläht, und es fehlen vollständig die für eine Statistik erforderlichen Zeitangaben (Bezugszeitraum, Jahr)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:36.612216",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.1,
+          "effective_score": 0.1
+        },
+        {
+          "indicator_id": "expr_title_description_coherence",
+          "name_de": "Kohärenz von Titel und Beschreibung",
+          "name_en": "Title–description coherence",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Titel und Beschreibung sind inhaltlich kohärent und widerspruchsfrei. Obwohl die Beschreibung wenig informativ ist, passt sie zum Titel und zeigt keine Diskrepanzen.",
+          "message_en": "Titel und Beschreibung sind inhaltlich kohärent und widerspruchsfrei. Obwohl die Beschreibung wenig informativ ist, passt sie zum Titel und zeigt keine Diskrepanzen.",
+          "details": {
+            "criterion": "title_description_coherence",
+            "llm_status": "pass",
+            "findings": [
+              "Die Beschreibung wiederholt den Titel nahezu wortgleich.",
+              "Es gibt keine inhaltlichen Widersprüche zwischen Titel und Beschreibung.",
+              "Beide Felder beziehen sich auf denselben Gegenstand (Hochschulwechslerquoten zum Masterstudium nach Bundesländern)."
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, und die thematische Konsistenz ist gegeben. Allerdings ist die Beschreibung nicht substanziell (wiederholt nur den Titel), die Schlagwörter sind durch die redundante Auflistung aller Bundesländer aufgebläht, und es fehlen vollständig die für eine Statistik erforderlichen Zeitangaben (Bezugszeitraum, Jahr)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:36.612384",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "expr_keyword_quality",
+          "name_de": "Schlagwort-Qualität",
+          "name_en": "Keyword quality",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.6,
+          "message_de": "Die Schlagwörter sind formal überwiegend gut gewählt (singularisch, verständlich), jedoch ist die Auflistung aller Bundesländer redundant und bläht die Liste unnötig auf. Dies mindert die Qualität, da die Schlagwörter weniger fokussiert sind.",
+          "message_en": "Die Schlagwörter sind formal überwiegend gut gewählt (singularisch, verständlich), jedoch ist die Auflistung aller Bundesländer redundant und bläht die Liste unnötig auf. Dies mindert die Qualität, da die Schlagwörter weniger fokussiert sind.",
+          "details": {
+            "criterion": "keyword_quality",
+            "llm_status": "partial",
+            "findings": [
+              "Die Schlagwörter sind überwiegend singularisch und laienverständlich (z. B. 'anzahl', 'geschlecht', 'studienart').",
+              "Alle 16 Bundesländer sind einzeln aufgeführt, was redundant und wenig informativ ist, da 'bundesländer' bereits als Schlagwort vorhanden ist und die räumliche Gliederung aus dem Titel hervorgeht.",
+              "Einige Schlagwörter sind inhaltlich spezifisch und ergänzen den Titel gut (z. B. 'hochschulwechselquote', 'studienverlauf', 'studienanfänger')."
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, und die thematische Konsistenz ist gegeben. Allerdings ist die Beschreibung nicht substanziell (wiederholt nur den Titel), die Schlagwörter sind durch die redundante Auflistung aller Bundesländer aufgebläht, und es fehlen vollständig die für eine Statistik erforderlichen Zeitangaben (Bezugszeitraum, Jahr)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:36.612542",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.6,
+          "effective_score": 0.6
+        },
+        {
+          "indicator_id": "expr_thematic_consistency",
+          "name_de": "Thematische Konsistenz",
+          "name_en": "Thematic consistency",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Thema, Schlagwörter, Titel und Beschreibung bilden ein widerspruchsfreies, konsistentes Themenbild im Bereich Bildung. Es gibt keine Off-topic-Signale.",
+          "message_en": "Thema, Schlagwörter, Titel und Beschreibung bilden ein widerspruchsfreies, konsistentes Themenbild im Bereich Bildung. Es gibt keine Off-topic-Signale.",
+          "details": {
+            "criterion": "thematic_consistency",
+            "llm_status": "pass",
+            "findings": [
+              "Das Thema ist 'EDUC' (Bildung), was zu Hochschulwechslerquoten und Masterstudium passt.",
+              "Die Schlagwörter (z. B. 'studienanfänger', 'studienverlauf', 'hochschulwechselquote') sind konsistent mit dem Bildungsthema.",
+              "Titel und Beschreibung beziehen sich ebenfalls klar auf den Bildungsbereich (Hochschulwesen)."
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, und die thematische Konsistenz ist gegeben. Allerdings ist die Beschreibung nicht substanziell (wiederholt nur den Titel), die Schlagwörter sind durch die redundante Auflistung aller Bundesländer aufgebläht, und es fehlen vollständig die für eine Statistik erforderlichen Zeitangaben (Bezugszeitraum, Jahr)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:36.612614",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "expr_contextual_qualifiers",
+          "name_de": "Kontextuelle Qualifizierer",
+          "name_en": "Contextual qualifiers",
+          "dimension": "expressiveness",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Für eine Statistik zu Hochschulwechslerquoten ist die Angabe des Bezugszeitraums oder Jahres zwingend erforderlich, um die Daten einordnen zu können. Diese Information fehlt vollständig, was einen klaren Mangel darstellt.",
+          "message_en": "Für eine Statistik zu Hochschulwechslerquoten ist die Angabe des Bezugszeitraums oder Jahres zwingend erforderlich, um die Daten einordnen zu können. Diese Information fehlt vollständig, was einen klaren Mangel darstellt.",
+          "details": {
+            "criterion": "contextual_qualifiers",
+            "llm_status": "fail",
+            "findings": [
+              "Es handelt sich um eine Statistik/Zeitreihe (Hochschulwechslerquoten), daher wäre ein Bezugszeitraum oder Jahr erforderlich.",
+              "Weder in Titel noch in Beschreibung ist ein Zeitraum, Stichtag oder Aktualisierungszyklus angegeben.",
+              "Das Feld 'temporal' ist leer (start_dates und end_dates sind leer), und 'accrual_periodicity' ist null."
+            ],
+            "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich, und die thematische Konsistenz ist gegeben. Allerdings ist die Beschreibung nicht substanziell (wiederholt nur den Titel), die Schlagwörter sind durch die redundante Auflistung aller Bundesländer aufgebläht, und es fehlen vollständig die für eine Statistik erforderlichen Zeitangaben (Bezugszeitraum, Jahr)."
+          },
+          "error": null,
+          "timestamp": "2026-07-13T13:44:36.612688",
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.6166666666666667,
+      "dimension_weight": 2.0,
+      "total_indicator_weight": 6.0,
+      "indicator_count": 6,
+      "pass_count": 3,
+      "pass_rate": 0.5
+    }
+  },
+  "summary": {
+    "overall_score": 0.630605359552728,
+    "overall_pass_rate": 0.48148148148148145,
+    "dimension_scores": {
+      "findability": 0.375,
+      "accessibility": 0.7631578947368421,
+      "reusability": 0.6428571428571429,
+      "expressiveness": 0.6166666666666667
+    },
+    "dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "effective_dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "dimension_weight_mode": "explicit",
+    "total_dimension_weight": 6.5,
+    "total_indicators": 27,
+    "total_pass": 13,
+    "total_fail": 14,
+    "quality_grade": "C"
+  },
+  "errors": [],
+  "weights": {
+    "dimension_weights": {
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0,
+      "findability": 1
+    },
+    "indicator_weights": {
+      "find_keywords_count": 1.0,
+      "find_theme_valid": 1.0,
+      "find_temporal_coverage": 1.0,
+      "find_locn_geometry": 1.0,
+      "find_political_geocoding": 1.0,
+      "find_geocoding_level": 1.0,
+      "find_issued_datetime": 1.0,
+      "find_modified_datetime": 1.0,
+      "acc_download_url": 1.0,
+      "acc_machine_readable_access": 1.5,
+      "acc_download_url_response": 2.0,
+      "acc_access_url_response": 2.0,
+      "acc_format": 1.0,
+      "acc_media_type": 1.0,
+      "reuse_license": 2.0,
+      "reuse_contact": 1.0,
+      "reuse_contributor_id": 1.0,
+      "reuse_publisher": 1.0,
+      "reuse_availability": 1.0,
+      "expr_description_quality": 1.0,
+      "expr_title_quality": 1.0,
+      "expr_title_description_coherence": 1.0,
+      "expr_keyword_quality": 1.0,
+      "expr_thematic_consistency": 1.0,
+      "expr_contextual_qualifiers": 1.0
+    }
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6097,
+      "output_tokens": 1593,
+      "total_tokens": 7690,
+      "cost_usd": 0.042186,
+      "latency_seconds": 23.827
+    }
+  ]
+}

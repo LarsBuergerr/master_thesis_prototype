@@ -1,0 +1,476 @@
+2026-07-16 11:17:22 - reporting.output_manager - INFO - Created file log handler for geo_rest_05.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_rest_05/logs.log
+2026-07-16 11:17:22 - __main__ - INFO - Started processing: geo_rest_05.rdf
+2026-07-16 11:17:22 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_rest_05.rdf
+2026-07-16 11:17:22 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_rest_05.rdf using format: xml
+2026-07-16 11:17:22 - extraction.rdf_parser - INFO - Successfully parsed 83 triples
+2026-07-16 11:17:22 - scoring.service - INFO - Parsed 83 triples
+2026-07-16 11:17:22 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-16 11:17:22 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-16 11:17:22 - scoring.service - DEBUG - [OK   ] https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/49c559f0-75c9-4029-9be8-d66c01c91bb2 — Flusshochwasser - Daten (ESRI File GDB) [1,0 GB]
+  downloadURL : https://opendata.schleswig-holstein.de/data/melund_wasser/HWGK_HWRK_2019_Flusshochwasser.zip
+  HTTP        : 200
+  attachment  : HWGK_HWRK_2019_Flusshochwasser.zip
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=-
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=application/zip
+    url_extension        raw=HWGK_HWRK_2019_Flusshochwasser.zip       mime=application/zip
+    http_content_type    raw=application/zip                          mime=application/zip
+    attachment_filename  raw=HWGK_HWRK_2019_Flusshochwasser.zip (fro… mime=application/zip
+  coalesced   : application/zip
+  warning     : dct:format='http://publications.europa.eu/resource/authority/file-type/GDB' has no known MIME mapping; not comparable
+2026-07-16 11:17:22 - scoring.service - DEBUG - [OK   ] https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8 — Flusshochwasser - Dienste (WMS in ESRI mxd)
+  downloadURL : https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd
+  HTTP        : 200
+  attachment  : hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=hwgk_hwrk_2019_flusshochwasser_webmapse… mime=-
+    http_content_type    raw=application/octet-stream                 mime=application/octet-stream
+    attachment_filename  raw=hwgk_hwrk_2019_flusshochwasser_webmapse… mime=-
+  coalesced   : application/octet-stream
+  warning     : dct:format='http://publications.europa.eu/resource/authority/file-type/MXD' has no known MIME mapping; not comparable
+2026-07-16 11:17:22 - scoring.service - DEBUG - [OK   ] https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b — Flusshochwasser - Dienste (WMS in QGIS)
+  downloadURL : https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz
+  HTTP        : 200
+  attachment  : hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=-
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=application/x-qgis
+    url_extension        raw=hwgk_hwrk_2019_flusshochwasser_webmapse… mime=-
+    http_content_type    raw=application/x-qgis                       mime=application/x-qgis
+    attachment_filename  raw=hwgk_hwrk_2019_flusshochwasser_webmapse… mime=-
+  coalesced   : application/x-qgis
+  warning     : dct:format='http://publications.europa.eu/resource/authority/file-type/QGS' has no known MIME mapping; not comparable
+2026-07-16 11:17:22 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-16 11:17:40 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind insgesamt sehr aussagekräftig: Titel, Beschreibung, Thema und Schlagwörter vermitteln klar, dass es u')
+2026-07-16 11:17:40 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:17:40 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=4
+2026-07-16 11:17:40 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['flusshochwasser', 'gefahrenkarten', 'hochwasser', 'risikokarten']
+2026-07-16 11:17:40 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/ENVI']
+2026-07-16 11:17:40 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 11:17:40 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 11:17:40 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:17:40 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:17:40 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['2019-12-22T00:00:00'], endDate: []
+2026-07-16 11:17:40 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=None/False
+2026-07-16 11:17:40 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-16 11:17:40 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881 = 2019-12-22T00:00:00
+2026-07-16 11:17:40 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b = 2021-05-11T06:46:10.396445
+2026-07-16 11:17:40 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8 = 2021-05-11T06:45:35.586969
+2026-07-16 11:17:40 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/49c559f0-75c9-4029-9be8-d66c01c91bb2 = 2021-05-11T06:43:40.590703
+2026-07-16 11:17:40 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-16 11:17:40 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881 = 2023-02-03T06:37:12.867173
+2026-07-16 11:17:40 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b = 2023-02-03T06:35:53.605644
+2026-07-16 11:17:40 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8 = 2023-02-03T06:36:11.769589
+2026-07-16 11:17:40 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/49c559f0-75c9-4029-9be8-d66c01c91bb2 = 2021-05-11T06:43:40.590703
+2026-07-16 11:17:40 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:17:40 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:17:40 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=3/3
+2026-07-16 11:17:40 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:17:40 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=3/3
+2026-07-16 11:17:40 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:17:40 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.33 passing=1/3
+2026-07-16 11:17:40 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:17:40 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-16 11:17:40 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-16 11:17:40 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] fail score=0.17 high=0 mid=1 none=2 total=3
+2026-07-16 11:17:40 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/3
+2026-07-16 11:17:40 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:17:40 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-16 11:17:40 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:17:40 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:17:40 - scoring.indicator.reuse_contact - INFO - [reuse_contact] FAIL score=0.00 no contactPoint set
+2026-07-16 11:17:40 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:17:40 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:17:40 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:17:41 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] pass score=1.00 conforms=True violations=1
+2026-07-16 11:17:41 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-16 11:17:41 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.95 | Der Titel ist prägnant, spezifisch und enthält sinnvolle Zeit- und Themenqualifizierer. Er ist für sich genommen gut ver
+2026-07-16 11:17:41 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] pass | score=0.82 | Die Beschreibung ist inhaltlich sehr substanziell und erklärt Zweck, Kontext und wesentliche Inhalte des Datensatzes gut
+2026-07-16 11:17:41 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.98 | Titel und Beschreibung beziehen sich konsistent auf denselben Gegenstand. Die Beschreibung konkretisiert den Titel und g
+2026-07-16 11:17:41 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.72 | Die Schlagwörter sind inhaltlich brauchbar und spezifisch, weisen aber formale Schwächen durch Pluralformen und teils zu
+2026-07-16 11:17:41 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=1.00 | Alle thematischen Angaben sind widerspruchsfrei und stützen ein klares Umwelt-/Hochwasser-Thema. Die Einordnung in ENVI 
+2026-07-16 11:17:41 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=0.88 | Für diesen Datentyp sind räumliche und zeitliche Kontextangaben erforderlich und weitgehend vorhanden. Der regelmäßige Ü
+2026-07-16 11:17:41 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:17:41 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:17:41 - scoring.service - DEBUG - {
+  "dataset_uri": "https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881",
+  "titles": [
+    "Hochwasserkarten 2019 - Flusshochwasser"
+  ],
+  "descriptions": [
+    "Seit dem 26. November 2007 ist die „Richtlinie über die Bewertung und das Management von Hochwasserrisiken“ (HWRL) der EU in Kraft. Ziel der HWRL ist es, einen Rahmen für die Bewertung und das Management von Hochwasserrisiken zur Verringerung der hochwasserbedingten nachteiligen Folgen auf die menschliche Gesundheit, die Umwelt, das Kulturerbe und wirtschaftliche Tätigkeiten in der Gemeinschaft zu schaffen.\r\n\r\nDie HWRL verfolgt damit den Zweck, durch einen grenzübergreifend abgestimmten Hochwasserschutz in den Flussgebietseinheiten, inklusive der Küstengebiete, die Hochwasserrisiken zu reduzieren und die Hochwasservorsorge und das Risikomanagement zu verbessern. Durch die Umsetzung soll die Verbesserung der Eigenvorsorge der Kommunen und der betroffenen Bürger erreicht werden. \r\n\r\nDer erste Berichtszyklus wurde mit der vorläufigen Bewertung des Hochwasserrisikos und Bestimmung der Gebiete, bei denen davon auszugehen ist, „dass ein potenziell signifikantes Hochwasserrisiko besteht oder für wahrscheinlich gehalten werden kann“ (Art. 4 und 5) bis 22.12.2011, der Erstellung der Hochwassergefahren- und Hochwasserrisikokarten (Art. 6) bis 22.12.2013 und der Erarbeitung der Hochwasserrisikomanagementpläne (Art.7) bis zum 22.12.2015 abgeschlossen. \r\n\r\nNach Artikel 14 der HWRL werden im zweiten Berichtszyklus\r\n\r\n- die vorläufige Bewertung des Hochwasserrisikos oder die Bewertung und Beschlüsse nach Artikel 13 Abs. 1 bis zum 22.12.2018,\r\n- die Hochwassergefahrenkarten und die Hochwasserrisikokarten bis zum 22.12.2019 und \r\n- die Hochwasserrisikomanagementpläne, einschließlich der in Teil B des Anhangs beschriebenen Bestandteile, bis zum 22.12.2021 \r\n\r\nund danach alle sechs Jahre überprüft und erforderlichenfalls aktualisiert.\r\n\r\nBei den Überprüfungen wird den voraussichtlichen Auswirkungen des Klimawandels auf das Auftreten von Hochwasser Rechnung getragen.\r\n\r\nDie Ergebnisse sind der EU-Kommission innerhalb von drei Monaten nach den genannten Terminen jeweils bis zum 22.03. des Folgejahres zur Verfügung zu stellen. \r\n\r\nDie **Hochwassergefahrenkarten** gemäß Art. 6 Abs. 3 HWRL erfassen die geografischen Gebiete, die nach folgenden Szenarien überflutet werden könnten: \r\n\r\n1. Hochwasser mit niedriger Wahrscheinlichkeit oder Szenarien für Extremereignisse;\r\n2. Hochwasser mit mittlerer Wahrscheinlichkeit;\r\n3. gegebenenfalls Hochwasser mit hoher Wahrscheinlichkeit.\r\n\r\nIn den Hochwassergefahrenkarten werden für die einzelnen Szenarien angegeben (Abs. 4): \r\n\r\n1. Ausmaß der Überflutung;\r\n2. Wassertiefe bzw. gegebenenfalls Wasserstand.\r\n\r\nFür bereits ausreichend geschützte Küstengebiete (Abs. 6) kann die Erstellung von Hochwassergefahrenkarten auf ein Extremereignis beschränkt werden. In SH werden darüber hinaus zusätzlich die oben genannten drei Hochwasserszenarien in allen anderen nicht ausreichend geschützten Gebieten dargestellt.\r\n\r\n**Hochwasserrisikokarten** werden auf der Grundlage der Hochwassergefahrenkarten für die gleichen Hochwasserszenarien erstellt. In ihnen sollen über die Hochwassergefahren (Überflutungsausdehnung und -tiefe) hinaus die hochwasserbedingten nachteiligen Auswirkungen (Signifikanzkriterien) dargestellt werden. In Artikel 6 Abs. 5 der HWRL sind die erforderlichen Angaben aufgeführt: \r\n\r\n1. Anzahl der potenziell betroffenen Einwohner,\r\n2. Art der wirtschaftlichen Tätigkeiten in dem potenziell betroffenen Gebiet,\r\n3. Anlagen der Richtlinie 2010/75/EU über Industrieemissionen (IED) und potenziell betroffene Schutzgebiete gemäß Anhang IV Nummer 1 Ziffern i, iii und v der Richtlinie 2000/60/EG\r\n4. weitere Informationen, die der Mitgliedstaat als nützlich betrachtet, etwa die Angabe von Gebieten, in denen Hochwasser mit einem hohen Gehalt an mitgeführten Sedimenten sowie Schutt mitführende Hochwasser auftreten können, und Informationen über andere bedeutende Verschmutzungsquellen.\r\n\r\n**Hinweis zu den Daten**\r\n\r\nFür ein vollständiges Bild über Hochwasserrisiken sollten diese beiden Datensätze berücksichtigt werden:\r\n\r\n- [Küstenhochwasser](/dataset/hochwasserkarten-2019-kustenhochwasser) \r\n- Flusshochwasser - dieser Datensatz\r\n\r\nDie ArcMap Projekte (mxd-Dateien) werden in der Version 10.2  bereitgestellt.\r\n\r\n**Bitte beachten Sie die [Nutzungshinweise und Beschreibung der Daten](https://opendata.schleswig-holstein.de/data/melund_wasser/nutzungshinweise_hochwasserkarten.pdf).**"
+  ],
+  "keywords": [
+    "flusshochwasser",
+    "gefahrenkarten",
+    "hochwasser",
+    "risikokarten"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/ENVI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2023-02-03T06:37:12.867173"
+  ],
+  "issued": [
+    "2019-12-22T00:00:00"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [
+    "2019-12-22T00:00:00"
+  ],
+  "end_dates": [],
+  "geometries": [],
+  "spatial_resources": [
+    "http://dcat-ap.de/def/politicalGeocoding/stateKey/01"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+  "publisher": "https://opendata.schleswig-holstein.de/organization/melund",
+  "contact_points": [],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/schleswigHolstein"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b",
+      "titles": [
+        "Flusshochwasser - Dienste (WMS in QGIS)"
+      ],
+      "descriptions": [],
+      "download_url": "https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz",
+      "access_url": "https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/QGS"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/application/x-qgis"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2023-02-03T06:35:53.605644"
+      ],
+      "issued": [
+        "2021-05-11T06:46:10.396445"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "45452",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/QGS",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/application/x-qgis",
+            "mime_type": "application/x-qgis"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/x-qgis",
+            "mime_type": "application/x-qgis"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/x-qgis",
+        "issues": [],
+        "warnings": [
+          "dct:format='http://publications.europa.eu/resource/authority/file-type/QGS' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/55a9f1ac-d7d9-4ca0-b058-a25ed475c95b/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz",
+        "content_disposition": "inline; filename=hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz",
+        "attachment_filename": "hwgk_hwrk_2019_flusshochwasser_webmapservice.qgz",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8",
+      "titles": [
+        "Flusshochwasser - Dienste (WMS in ESRI mxd)"
+      ],
+      "descriptions": [],
+      "download_url": "https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd",
+      "access_url": "https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/MXD"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2023-02-03T06:36:11.769589"
+      ],
+      "issued": [
+        "2021-05-11T06:45:35.586969"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "54784",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/MXD",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/octet-stream",
+            "mime_type": "application/octet-stream"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/octet-stream",
+        "issues": [],
+        "warnings": [
+          "dct:format='http://publications.europa.eu/resource/authority/file-type/MXD' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/fa022ccc-f0b1-4d6d-b7c3-d71761666ee8/download/hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd",
+        "content_disposition": "inline; filename=hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd",
+        "attachment_filename": "hwgk_hwrk_2019_flusshochwasser_webmapservice.mxd",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://opendata.schleswig-holstein.de/dataset/e9e01a74-9ebc-417b-a4ea-20b3b7486881/resource/49c559f0-75c9-4029-9be8-d66c01c91bb2",
+      "titles": [
+        "Flusshochwasser - Daten (ESRI File GDB) [1,0 GB]"
+      ],
+      "descriptions": [],
+      "download_url": "https://opendata.schleswig-holstein.de/data/melund_wasser/HWGK_HWRK_2019_Flusshochwasser.zip",
+      "access_url": "https://opendata.schleswig-holstein.de/data/melund_wasser/HWGK_HWRK_2019_Flusshochwasser.zip",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/GDB"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/application/zip"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2021-05-11T06:43:40.590703"
+      ],
+      "issued": [
+        "2021-05-11T06:43:40.590703"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/GDB",
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "HWGK_HWRK_2019_Flusshochwasser.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "HWGK_HWRK_2019_Flusshochwasser.zip (from final URL)",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "application/zip",
+        "issues": [],
+        "warnings": [
+          "dct:format='http://publications.europa.eu/resource/authority/file-type/GDB' has no known MIME mapping; not comparable"
+        ],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://opendata.schleswig-holstein.de/data/melund_wasser/HWGK_HWRK_2019_Flusshochwasser.zip",
+        "content_disposition": null,
+        "attachment_filename": "HWGK_HWRK_2019_Flusshochwasser.zip",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel benennt spezifisch den Datentyp („Hochwasserkarten“), das Jahr 2019 und die thematische Eingrenzung „Flusshochwasser“.",
+        "Der Titel ist verständlich und von verwandten Datensätzen wie Küstenhochwasser unterscheidbar.",
+        "Keine kryptischen Codes oder unnötigen Sonderzeichen; der Bindestrich dient der klaren Abgrenzung."
+      ],
+      "reasoning": "Der Titel ist prägnant, spezifisch und enthält sinnvolle Zeit- und Themenqualifizierer. Er ist für sich genommen gut verständlich und weist keine relevanten formalen Mängel auf.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erläutert ausführlich rechtlichen Hintergrund, Zweck der HWRL sowie Berichtszyklen und Aktualisierungspflichten.",
+        "Sie beschreibt Inhalte der Hochwassergefahren- und Hochwasserrisikokarten, einschließlich Szenarien und dargestellter Merkmale wie Überflutungsausmaß, Wassertiefe und betroffene Einwohner.",
+        "Die Beschreibung enthält Markdown-Formatierung, Listen und Links; konkrete technische Struktur der bereitgestellten Dateien wird nur knapp erwähnt („ArcMap Projekte“, Version 10.2)."
+      ],
+      "reasoning": "Die Beschreibung ist inhaltlich sehr substanziell und erklärt Zweck, Kontext und wesentliche Inhalte des Datensatzes gut. Leichte Abwertung erfolgt wegen Markdown-Formatierung und weil die konkrete Datenstruktur/Formate der Ressourcen nur begrenzt beschrieben werden.",
+      "applicable": true,
+      "score": 0.82
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Der Titel nennt Hochwasserkarten 2019 zu Flusshochwasser; die Beschreibung behandelt Hochwassergefahren- und Hochwasserrisikokarten nach HWRL.",
+        "Die Beschreibung stellt klar, dass dieser Datensatz Flusshochwasser betrifft und verweist getrennt auf Küstenhochwasser.",
+        "Der Zeitraum 2019 passt zum zweiten Berichtszyklus und zur Erstellung der Karten bis 22.12.2019."
+      ],
+      "reasoning": "Titel und Beschreibung beziehen sich konsistent auf denselben Gegenstand. Die Beschreibung konkretisiert den Titel und grenzt den Datensatz gegenüber Küstenhochwasser nachvollziehbar ab.",
+      "applicable": true,
+      "score": 0.98
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter sind thematisch spezifisch und passen zu Hochwasser-, Gefahren- und Risikokarten.",
+        "Mehrere Schlagwörter stehen im Plural („gefahrenkarten“, „risikokarten“) statt als atomare Singularbegriffe.",
+        "Die Begriffe sind klein geschrieben, aber laienverständlich; keine kryptischen Abkürzungen."
+      ],
+      "reasoning": "Die Schlagwörter sind inhaltlich brauchbar und spezifisch, weisen aber formale Schwächen durch Pluralformen und teils zusammengesetzte Begriffe auf. Insgesamt ergänzen sie den Titel sinnvoll.",
+      "applicable": true,
+      "score": 0.72
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das Thema ENVI passt zu Hochwasser, Risiken, Umwelt und Gewässern.",
+        "Titel, Beschreibung und Schlagwörter zeigen durchgehend dasselbe Sujet: Hochwasserkarten für Flusshochwasser.",
+        "Es sind keine off-topic-Signale oder thematischen Widersprüche erkennbar."
+      ],
+      "reasoning": "Alle thematischen Angaben sind widerspruchsfrei und stützen ein klares Umwelt-/Hochwasser-Thema. Die Einordnung in ENVI ist plausibel.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Für den Karten-/Geodatensatz sind zeitliche Qualifizierer vorhanden: Titel und Metadaten nennen 2019 bzw. den Stichtag 22.12.2019.",
+        "Die räumliche Abdeckung ist über Schleswig-Holstein angegeben und in der Beschreibung wird „SH“ genannt.",
+        "Der Aktualisierungs-/Überprüfungsrhythmus nach HWRL wird als alle sechs Jahre beschrieben; eine konkrete Accrual-Periodicity im Metadatenfeld fehlt jedoch."
+      ],
+      "reasoning": "Für diesen Datentyp sind räumliche und zeitliche Kontextangaben erforderlich und weitgehend vorhanden. Der regelmäßige Überprüfungszyklus wird textlich erläutert, auch wenn er nicht strukturiert als Aktualisierungsfrequenz erfasst ist; daher nur geringe Abwertung.",
+      "applicable": true,
+      "score": 0.88
+    },
+    "overall_summary": "Die Metadaten sind insgesamt sehr aussagekräftig: Titel, Beschreibung, Thema und Schlagwörter vermitteln klar, dass es um Hochwasserkarten 2019 für Flusshochwasser in Schleswig-Holstein geht. Kleinere Schwächen liegen in Markdown-Formatierung, begrenzten Strukturangaben zu den bereitgestellten Dateien und formalen Schwächen einzelner Schlagwörter."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 4553,
+      "output_tokens": 1007,
+      "total_tokens": 5560,
+      "cost_usd": 0.043183,
+      "latency_seconds": 17.699
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-16 11:17:41 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/geo_rest_05/result.json
+2026-07-16 11:17:41 - __main__ - INFO -   ✓ Completed | score=0.75 grade=C

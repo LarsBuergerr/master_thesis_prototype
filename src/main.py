@@ -19,6 +19,8 @@ from langchain_openai import ChatOpenAI
 from utils.logger import get_logger
 from utils.enums.language import Language
 from scoring.service import QualityMetricsService
+from scoring.score_policy import ScorePolicy
+from llm_factory import build_llm_from_params
 from reporting.output_manager import OutputManager
 from reporting.run_visualizer import generate_run_charts_from_file
 
@@ -32,41 +34,22 @@ logging.basicConfig(
 logger = get_logger(__name__)
 
 
-def create_llm(cfg: DictConfig) -> ChatOpenAI:
-    """Create an LLM client from the config.
+def build_llm(cfg: DictConfig) -> ChatOpenAI:
+    """Build the LLM client selected by ``llm.provider`` from the Hydra config.
 
-    Args:
-        cfg: Hydra configuration
-
-    Returns:
-        Configured ChatOpenAI instance for OpenRouter
+    Thin adapter over :func:`llm_factory.build_llm_from_params` — reads the
+    ``llm`` block and delegates so the CLI and the web backend share one
+    construction path. ``provider: "local"`` → local llama.cpp server; anything
+    else (default ``"openrouter"``) → OpenRouter.
     """
-    model = cfg.state.llm.model
-    temperature = cfg.state.llm.get("temperature", 0.0) if cfg.state.llm else 0.0
-    max_tokens = cfg.state.llm.get("max_tokens", 4096) if cfg.state.llm else 4096
-    base_url = "https://openrouter.ai/api/v1"
-
-    api_key = os.environ.get("OPENROUTER_API_KEY")
-    if not api_key:
-        raise ValueError(
-            "OPENROUTER_API_KEY environment variable must be set. "
-            "Create a .env file in the project root with: "
-            "OPENROUTER_API_KEY=your-key"
-        )
-
-    return ChatOpenAI(
-        model=model,
-        temperature=temperature,
-        max_tokens=max_tokens,
-        api_key=api_key,
-        base_url=base_url,
-        default_headers={
-            "HTTP-Referer": "https://github.com/lbuerger/master_thesis_prototype",
-            "X-Title": "Master Thesis Prototype",
-        },
-        # Ask OpenRouter to include real cost accounting in each response's
-        # usage block so the run cost summary reports actual USD spend.
-        extra_body={"usage": {"include": True}},
+    llm_cfg = cfg.state.llm
+    provider = llm_cfg.get("provider", "openrouter") if llm_cfg else "openrouter"
+    return build_llm_from_params(
+        provider=provider,
+        model=llm_cfg.get("model") if llm_cfg else None,
+        base_url=llm_cfg.get("base_url") if llm_cfg else None,
+        temperature=llm_cfg.get("temperature", 0.0) if llm_cfg else 0.0,
+        max_tokens=llm_cfg.get("max_tokens", 4096) if llm_cfg else 4096,
     )
 
 
@@ -106,16 +89,12 @@ def resolve_files_to_process(cfg: DictConfig) -> List[Path]:
 
     # Apply include patterns
     if include_patterns:
-        all_files = [
-            f for f in all_files if any(f.name.startswith(p) for p in include_patterns)
-        ]
+        all_files = [f for f in all_files if any(p in f.name for p in include_patterns)]
 
     # Apply exclude patterns
     if exclude_patterns:
         all_files = [
-            f
-            for f in all_files
-            if not any(f.name.startswith(p) for p in exclude_patterns)
+            f for f in all_files if not any(p in f.name for p in exclude_patterns)
         ]
 
     return sorted(all_files)
@@ -206,7 +185,7 @@ def main(cfg: DictConfig) -> None:
     llm = None
     if llm_enabled and expressiveness_active:
         try:
-            llm = create_llm(cfg)
+            llm = build_llm(cfg)
         except ValueError as e:
             logger.warning(
                 f"Expressiveness enabled but LLM unavailable ({e}); "
@@ -218,6 +197,24 @@ def main(cfg: DictConfig) -> None:
             "skipping the LLM call (indicators report NOT_APPLICABLE)"
         )
 
+    # Optional configurable status→score mapping (tunable PASS/PARTIAL/FAIL
+    # points, optional negative fails). Absent ``quality.scoring`` block →
+    # None → indicators' raw scores are used unchanged.
+    scoring_cfg = quality_cfg.get("scoring")
+    if scoring_cfg is not None:
+        scoring_cfg = OmegaConf.to_container(scoring_cfg, resolve=True)
+    score_policy = ScorePolicy.from_config(scoring_cfg)
+    if score_policy is not None:
+        logger.info(
+            "Score policy active: pass=%.2f partial=%.2f fail=%.2f "
+            "allow_partial=%s overrides=%d",
+            score_policy.pass_score,
+            score_policy.partial_score,
+            score_policy.fail_score,
+            score_policy.allow_partial,
+            len(score_policy.overrides),
+        )
+
     service = QualityMetricsService(
         max_workers=quality_cfg.get("max_workers", 4),
         dimension_weights=quality_cfg.get("dimension_weights", {}),
@@ -227,6 +224,7 @@ def main(cfg: DictConfig) -> None:
         indicator_whitelist=quality_cfg.get("indicator_whitelist"),
         llm=llm,
         language=language,
+        score_policy=score_policy,
     )
 
     # Process each file
@@ -311,5 +309,36 @@ def main(cfg: DictConfig) -> None:
         session_handler.close()
 
 
+# Hydra darf nichts ins Dateisystem schreiben, damit outputs/ komplett uns
+# gehoert. Diese Einstellungen koennen NICHT in conf/state/*.yaml stehen: die
+# Primary Config liegt in der Gruppe state/, wird deshalb unter das Paket
+# ``state`` gehaengt, und ein dortiger ``hydra:``-Block landet als
+# ``state.hydra`` im Baum, wo Hydra ihn nie liest. Als CLI-Overrides gesetzt
+# greifen sie dagegen global.
+HYDRA_NO_OUTPUT = {
+    "hydra.run.dir": ".",           # kein outputs/<datum>/<zeit>/ Runverzeichnis
+    "hydra.sweep.dir": ".",         # dito fuer --multirun
+    "hydra.sweep.subdir": ".",
+    "hydra.output_subdir": "null",  # kein .hydra/ Unterordner
+    "hydra/job_logging": "none",    # keine main.log - Konsole via basicConfig oben
+    "hydra/hydra_logging": "none",  # keine Hydra-eigenen Startmeldungen
+}
+
+
+def _silence_hydra_output() -> None:
+    """Haenge die Hydra-Overrides an sys.argv, sofern nicht schon gesetzt.
+
+    Eigene Angaben auf der Kommandozeile gewinnen: ein Wert wird nur ergaenzt,
+    wenn derselbe Schluessel nicht ohnehin schon uebergeben wurde.
+    """
+    import sys
+
+    gesetzt = {a.split("=", 1)[0] for a in sys.argv[1:] if "=" in a}
+    for schluessel, wert in HYDRA_NO_OUTPUT.items():
+        if schluessel not in gesetzt:
+            sys.argv.append(f"{schluessel}={wert}")
+
+
 if __name__ == "__main__":
+    _silence_hydra_output()
     main()

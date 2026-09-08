@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=73111fcb-2db2-4452-a0ce-b121079a8f29">
+    <dct:title>Bebauungspläne und Satzungen der Gemeinde Unterwellenborn</dct:title>
+    <dct:description>Der Datensatz enthält die Geltungsbereiche der Bebauungspläne und Satzungen der Gemeinde Unterwellenborn mit Verlinkung auf die Planunterlagen. Es handelt sich um einen Sekundärdatenbestand.
+					Hinweis: Die im Datensatz verlinkten Unterlagen dienen lediglich als Vorinformation. Aus organisatorischen Gründen kann für die Vollständigkeit und Richtigkeit keine Gewähr übernommen werden. Rechtsverbindlich sind nur die Originaldokumente, die beim Urheber eingesehen werden können.</dct:description>
+    <dct:identifier>73111fcb-2db2-4452-a0ce-b121079a8f29</dct:identifier>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded"/>
+    </dct:accrualPeriodicity>
+    <dct:type rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset"/>
+    <dcat:keyword>außenbereichssatzung</dcat:keyword>
+    <dcat:keyword>b-plan</dcat:keyword>
+    <dcat:keyword>bauleitplanung</dcat:keyword>
+    <dcat:keyword>bebauungsplan</dcat:keyword>
+    <dcat:keyword>bodennutzung</dcat:keyword>
+    <dcat:keyword>einfacher-b-plan</dcat:keyword>
+    <dcat:keyword>entwicklungssatzung</dcat:keyword>
+    <dcat:keyword>ergänzungssatzung</dcat:keyword>
+    <dcat:keyword>innenbereichssatzung</dcat:keyword>
+    <dcat:keyword>klarstellungssatzung</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>qualifizierter-b-plan</dcat:keyword>
+    <dcat:keyword>sanierungssatzung</dcat:keyword>
+    <dcat:keyword>satzungen</dcat:keyword>
+    <dcat:keyword>thüringen</dcat:keyword>
+    <dcat:keyword>vorhaben--und-erschließungsplan</dcat:keyword>
+    <dcat:keyword>vorhabenbezogener-b-plan</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-23T13:46:14.438124</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-11-13T08:16:59</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N96b2055dac9f49218fd7d7fa552dd787">
+        <vcard:fn>Gemeinde Unterwellenborn</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:s.taenzer@unterwellenborn.de"/>
+        <vcard:hasURL rdf:resource="https://unterwellenborn.de"/>
+        <vcard:hasTelephone rdf:resource="tel:+493671673132"/>
+        <vcard:hasStreetAddress>Ernst-Thälmann-Str. 19</vcard:hasStreetAddress>
+        <vcard:hasLocality>Unterwellenborn</vcard:hasLocality>
+        <vcard:hasPostalCode>07333</vcard:hasPostalCode>
+        <vcard:hasCountryName>Deutschland</vcard:hasCountryName>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N9e5ae66d2e8f4fefac28edffbbb305f2">
+        <foaf:name>Gemeinde Unterwellenborn</foaf:name>
+        <foaf:mbox>s.taenzer@unterwellenborn.de</foaf:mbox>
+        <foaf:homepage rdf:resource="https://unterwellenborn.de"/>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N0c804a9d3f494dcb9e7a684410b80f24">
+        <skos:prefLabel>Gemeinde Unterwellenborn</skos:prefLabel>
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((11.3540 50.7110, 11.5210 50.7110, 11.5210 50.6080, 11.3540 50.6080, 11.3540 50.7110))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:nodeID="N53fe6d985498426986248c7e22173b1c">
+        <rdfs:label>Nutzungsbedingungen: Datenlizenz Deutschland-Namensnennung 2.0 in JSON Syntax</rdfs:label>
+      </dct:RightsStatement>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip#distribution">
+        <dct:title>Direktdownload Bebauungspläne und Satzungen</dct:title>
+        <dct:description>Direktdownload Bebauungspläne und Satzungen der Gemeinde Unterwellenborn. (Format: Shapefile)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip"/>
+        <dcat:downloadURL rdf:resource="https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip"/>
+        <foaf:page rdf:resource="https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wms"/>
+        <foaf:page rdf:resource="https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format>SHP</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-23T13:46:14.440502</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-12-03T03:21:42.041913</dct:modified>
+        <dcatde:licenseAttributionByText>© GDI-Th</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>73111fcb-2db2-4452-a0ce-b121079a8f29</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/gdiDE"/>
+  </dcat:Dataset>
+  <foaf:Document rdf:about="https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs"/>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <foaf:Document rdf:about="https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wms"/>
+  <rdfs:Resource rdf:about="https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_uwb_bp.zip"/>
+</rdf:RDF>

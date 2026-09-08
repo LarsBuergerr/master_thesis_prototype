@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+>
+  <dcat:Dataset rdf:about="http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756">
+    <dct:title>Teilbebauungsplan TB 913 Hamburg</dct:title>
+    <dct:description>Bezirk: Eimsbüttel, Stadtteil: Stellingen, Ortsteil: 321, 
+Planbezirk: Schulfläche an der Gutenbergstraße</dct:description>
+    <dcat:landingPage>
+      <foaf:Document rdf:about="http://www.hamburg.de/bebauungsplaene-online.de"/>
+    </dcat:landingPage>
+    <dct:identifier>49BD6FE5-1C7E-4478-A039-8A8518959B45</dct:identifier>
+    <owl:versionInfo>17.0</owl:versionInfo>
+    <adms:versionNotes>Änderungen innerhalb einer Ressource</adms:versionNotes>
+    <dct:accrualPeriodicity>
+      <dct:Frequency rdf:about="http://publications.europa.eu/resource/authority/frequency/NEVER"/>
+    </dct:accrualPeriodicity>
+    <dcat:keyword>hamburgisches-bebauungsplangesetz-vom-31.10.1923--bplang</dcat:keyword>
+    <dcat:keyword>plis</dcat:keyword>
+    <dcat:keyword>teilbebauungsplan</dcat:keyword>
+    <dcat:keyword>öffentliche-pläne</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-28T00:00:00</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T22:36:25.360227</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dct:conformsTo>
+      <dct:Standard rdf:about="http://dcat-ap.de/def/dcatde/1.0/"/>
+    </dct:conformsTo>
+    <foaf:page>
+      <foaf:Document rdf:about="http://suche.transparenz.hamburg.de/dataset/teilbebauungsplan-tb-913-hamburg16"/>
+    </foaf:page>
+    <dct:isVersionOf rdf:resource="http://suche.transparenz.hamburg.de/dataset/teilbebauungsplan-tb-913-hamburg15"/>
+    <dct:source rdf:resource="https://metaver.de/cswhh"/>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N51cdc5652560482ea277aafeb34ec480">
+        <vcard:fn>Bezirksämter</vcard:fn>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N7e04164f17ff4d38bca35e9cd92db638">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:creator>
+      <foaf:Agent rdf:nodeID="N66bda5a65ede44d59c91340e9523f0ed">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Agent>
+    </dct:creator>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="Ne47cd45e9b1c4b1da86737623d9774aa">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Organization>
+    </dct:creator>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N7349eb4daff24db98daa2797ac9bbff3">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1961-06-05T00:00:00</dcat:startDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Ncd07469d6ce241e9aade84c97a4c98ec">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((10.3263 53.3950, 10.3263 53.9642, 8.4206 53.9642, 8.4206 53.3950, 10.3263 53.3950))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="Ndeac2870dff64344b9b89ca66356e470">
+        <locn:adminUnitL2 rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="https://www.govdata.de/dl-de/by-2-0"/>
+    </dct:accessRights>
+    <dct:provenance>
+      <dct:ProvenanceStatement rdf:nodeID="Ne409906efd574d1fa771e973b083407a">
+        <rdfs:label>Der Datensatz wurde geharvestet. Ursprung: Metaverbund Katalog</rdfs:label>
+      </dct:ProvenanceStatement>
+    </dct:provenance>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/2ce24eab-6ad8-401b-8fe3-ae904636e297">
+        <dct:title>Download WFS Bebauungsplan (XPlanGML)</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&amp;request=GetFeature&amp;version=2.0.0&amp;resolvedepth=%252A&amp;StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&amp;planName=TB913"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dct:format>GML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-28T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T22:36:25.360227</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">219505</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N39b6daf3c9f34233b938c7a0b5d0141f">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">536cfb150cba2902d2561255bbe751786481f2fc0cc6adf5d97c7bde07b80950</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Eimsbüttel, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/7b571c8f-ff05-420f-a066-00e27c9e823f">
+        <dct:title>Festsetzungen (Planzeichnung / Verordnung) als PDF Datei</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/TB913.pdf"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format>PDF</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-28T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T22:36:25.360227</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5463896</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="Nb5672ef8176845d4a85c9803bfd7f8ca">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">5463896</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Eimsbüttel, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="http://suche.transparenz.hamburg.de/dataset/3a984fe6-6f12-4017-9c23-2d675079b756/resource/3ddea85e-bd7a-4518-ac30-976e0b485034">
+        <dct:title>Metadatenbeschreibung aus dem MetaVer</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="http://metaver.de/trefferanzeige?docuuid=49BD6FE5-1C7E-4478-A039-8A8518959B45"/>
+        <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+        <dct:conformsTo rdf:resource="http://dcat-ap.de/def/dcatde/1.0/"/>
+        <dct:format>HTML</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-28T00:00:00</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-08T22:36:25.360227</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">104927</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N32444a1344f747f3bae588a2d9c22678">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">02edb00325e150f9ef468f0a139b2fe6a68eda6da3c42a27398659695be7bd58</spdx:checksumValue>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Freie und Hansestadt Hamburg, Bezirksamt Eimsbüttel, Fachamt Stadt- und Landschaftsplanung</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:politicalGeocodingLevelURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/level/state"/>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/transparenzportalHamburg"/>
+    <dcatde:politicalGeocodingURI rdf:resource="http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000"/>
+    <dcatde:legalBasis>Hamburgisches Transparenzgesetz (HmbTG). URL: http://transparenz.hamburg.de/das-hmbtg/ Gesetzestext: http://transparenz.hamburg.de/contentblob/4318588/c8600b2b27ea31a5de6a92dacc138894/data/gesetzestext-hmbtg.pdf</dcatde:legalBasis>
+    <dcatde:geocodingDescription>Freie und Hansestadt Hamburg</dcatde:geocodingDescription>
+    <dcatde:originator>
+      <foaf:Organization rdf:nodeID="N568dad00d4014d049d2c3792112d1b7e">
+        <foaf:name>Landesbetrieb Geoinformation und Vermessung</foaf:name>
+      </foaf:Organization>
+    </dcatde:originator>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="N60e31ff8882b474fa88597e123288ea4">
+        <foaf:name>Bezirksämter</foaf:name>
+      </foaf:Organization>
+    </dcatde:maintainer>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/TB913.pdf"/>
+  <rdfs:Resource rdf:about="https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&amp;request=GetFeature&amp;version=2.0.0&amp;resolvedepth=%252A&amp;StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&amp;planName=TB913"/>
+  <rdfs:Resource rdf:about="http://metaver.de/trefferanzeige?docuuid=49BD6FE5-1C7E-4478-A039-8A8518959B45"/>
+</rdf:RDF>

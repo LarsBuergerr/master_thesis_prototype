@@ -1,0 +1,295 @@
+2026-07-16 11:27:38 - reporting.output_manager - INFO - Created file log handler for non_geo_rest_03.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_rest_03/logs.log
+2026-07-16 11:27:38 - __main__ - INFO - Started processing: non_geo_rest_03.rdf
+2026-07-16 11:27:38 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_rest_03.rdf
+2026-07-16 11:27:38 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_rest_03.rdf using format: xml
+2026-07-16 11:27:38 - extraction.rdf_parser - INFO - Successfully parsed 45 triples
+2026-07-16 11:27:38 - scoring.service - INFO - Parsed 45 triples
+2026-07-16 11:27:38 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-16 11:27:38 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-16 11:27:38 - scoring.service - DEBUG - [OK   ] https://ckan.open.nrw.de/dataset/0e0f348e-41b5-468a-acf9-133bd24f11d4/resource/a55b5291-3439-4997-83c4-c5d0468ccdae
+  downloadURL : https://www.arnsberg-daten.de/open-data/haushalt/bilanzen/bilanz-20081231.csv
+  HTTP        : 200
+  attachment  : bilanz-20081231.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/csv
+    url_extension        raw=bilanz-20081231.csv                      mime=text/csv
+    http_content_type    raw=text/csv                                 mime=text/csv
+    attachment_filename  raw=bilanz-20081231.csv (from final URL)     mime=text/csv
+  coalesced   : text/csv
+2026-07-16 11:27:38 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-16 11:27:51 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind insgesamt gut verständlich und in sich konsistent: Gegenstand, Ort, Jahr und Finanzthema sind klar er')
+2026-07-16 11:27:51 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:27:51 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=3
+2026-07-16 11:27:51 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['arnsberg', 'bilanz', 'finanzen']
+2026-07-16 11:27:51 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/ECON']
+2026-07-16 11:27:51 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 11:27:51 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 11:27:51 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] pass score=1.00 source=dcatde:politicalGeocodingURI uri=http://dcat-ap.de/def/politicalGeocoding/regionalKey/059580004004 segment=regionalKey
+2026-07-16 11:27:51 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] pass score=1.00 valid=1/1
+2026-07-16 11:27:51 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:27:51 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:27:51 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-16 11:27:51 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://ckan.open.nrw.de/dataset/0e0f348e-41b5-468a-acf9-133bd24f11d4 = 2014-10-22
+2026-07-16 11:27:51 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://ckan.open.nrw.de/dataset/0e0f348e-41b5-468a-acf9-133bd24f11d4/resource/a55b5291-3439-4997-83c4-c5d0468ccdae = 2026-05-27T12:28:01.478060
+2026-07-16 11:27:51 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-16 11:27:51 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://ckan.open.nrw.de/dataset/0e0f348e-41b5-468a-acf9-133bd24f11d4 = 2023-09-18
+2026-07-16 11:27:51 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://ckan.open.nrw.de/dataset/0e0f348e-41b5-468a-acf9-133bd24f11d4/resource/a55b5291-3439-4997-83c4-c5d0468ccdae = 2023-09-18
+2026-07-16 11:27:51 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:27:51 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:27:51 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=1/1
+2026-07-16 11:27:51 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:27:51 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=1/1
+2026-07-16 11:27:51 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:27:51 - scoring.indicator.acc_media_type - INFO - [acc_media_type] pass score=1.00 passing=1/1
+2026-07-16 11:27:51 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:27:51 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:27:51 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 11:27:51 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] FAIL score=0.00 no distribution declares a access URL
+2026-07-16 11:27:51 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=1 mid=0 none=0 total=1
+2026-07-16 11:27:51 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=1/1
+2026-07-16 11:27:51 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:27:51 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=1/1
+2026-07-16 11:27:51 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:27:51 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:27:51 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:27:51 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:27:51 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:27:53 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-16 11:27:53 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-16 11:27:53 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.95 | Der Titel ist spezifisch und gut unterscheidbar, da er sowohl den fachlichen Gegenstand als auch Ort und Jahr nennt. Rel
+2026-07-16 11:27:53 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] partial | score=0.55 | Die Beschreibung ist verständlich und bestätigt den Kerninhalt, bleibt aber sehr knapp. Für Finanz-/Bilanzdaten wären st
+2026-07-16 11:27:53 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.95 | Beschreibung und Titel passen in Thema, Ort und Zeitraum vollständig zusammen; die Beschreibung konkretisiert den Titel 
+2026-07-16 11:27:53 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.75 | Die Schlagwörter sind überwiegend passend und verständlich, enthalten aber mit dem Ortsnamen eine eher redundante formal
+2026-07-16 11:27:53 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.95 | Alle thematischen Angaben ergeben ein konsistentes Bild eines wirtschafts-/finanzbezogenen kommunalen Bilanzdatensatzes.
+2026-07-16 11:27:53 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=0.80 | Für einen jahresbezogenen kommunalen Bilanzdatensatz sind Jahr und Ort die zentralen Kontextangaben; beide sind vorhande
+2026-07-16 11:27:53 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:27:53 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:27:53 - scoring.service - DEBUG - {
+  "dataset_uri": "https://ckan.open.nrw.de/dataset/0e0f348e-41b5-468a-acf9-133bd24f11d4",
+  "titles": [
+    "Bilanz der Stadt Arnsberg für 2008"
+  ],
+  "descriptions": [
+    "Der Datensatz enthält die Bilanz der Stadt Arnsberg für das Jahr 2008. Für jedes Jahr wird ein neuer Datensatz angelegt."
+  ],
+  "keywords": [
+    "arnsberg",
+    "bilanz",
+    "finanzen"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/ECON"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2023-09-18"
+  ],
+  "issued": [
+    "2014-10-22"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [],
+  "spatial_resources": [
+    "N3d5628ea99294a2a8a54b9ba82f2e1fa"
+  ],
+  "admin_units": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/059580004004",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/059580004004",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/Level/municipality"
+  ],
+  "political_geocoding_level_in_vocab": [
+    true
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "N9962bfa0a97d4d7cad831ba4801609bc",
+  "contact_points": [
+    "Nbb283154b2144d73935c115bf49119f8"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openNRW"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://ckan.open.nrw.de/dataset/0e0f348e-41b5-468a-acf9-133bd24f11d4/resource/a55b5291-3439-4997-83c4-c5d0468ccdae",
+      "titles": [],
+      "descriptions": [
+        "-"
+      ],
+      "download_url": "https://www.arnsberg-daten.de/open-data/haushalt/bilanzen/bilanz-20081231.csv",
+      "access_url": null,
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/csv"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2023-09-18"
+      ],
+      "issued": [
+        "2026-05-27T12:28:01.478060"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "bilanz-20081231.csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "bilanz-20081231.csv (from final URL)",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": null,
+        "access_fetch_error": null,
+        "final_url": "https://www.arnsberg-daten.de/open-data/haushalt/bilanzen/bilanz-20081231.csv",
+        "content_disposition": null,
+        "attachment_filename": "bilanz-20081231.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel benennt Inhalt, Kommune und Bezugsjahr konkret: „Bilanz der Stadt Arnsberg für 2008“.",
+        "Der Titel ist kurz, verständlich und enthält keine technischen Zeichen oder Formatierungsreste."
+      ],
+      "reasoning": "Der Titel ist spezifisch und gut unterscheidbar, da er sowohl den fachlichen Gegenstand als auch Ort und Jahr nennt. Relevante formale Mängel sind nicht erkennbar.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung sagt, dass der Datensatz die Bilanz der Stadt Arnsberg für das Jahr 2008 enthält.",
+        "Sie erwähnt, dass für jedes Jahr ein neuer Datensatz angelegt wird.",
+        "Es fehlen nähere Angaben zur Struktur der Daten, zu enthaltenen Bilanzpositionen, Format/Tabellenaufbau oder Quelle/Methode."
+      ],
+      "reasoning": "Die Beschreibung ist verständlich und bestätigt den Kerninhalt, bleibt aber sehr knapp. Für Finanz-/Bilanzdaten wären strukturelle Informationen und Erläuterungen zum Inhalt hilfreich; diese fehlen weitgehend.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung nennen denselben Gegenstand: die Bilanz der Stadt Arnsberg.",
+        "Beide beziehen sich eindeutig auf das Jahr 2008.",
+        "Es gibt keine erkennbaren Widersprüche zwischen Titel und Beschreibung."
+      ],
+      "reasoning": "Beschreibung und Titel passen in Thema, Ort und Zeitraum vollständig zusammen; die Beschreibung konkretisiert den Titel zumindest grundlegend.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter „bilanz“ und „finanzen“ sind inhaltlich passend und laienverständlich.",
+        "„arnsberg“ ist ein Orts-/Formaltag, dessen Information bereits im Titel bzw. räumlichen Bezug enthalten ist.",
+        "Die Schlagwörter sind kleingeschrieben und knapp, aber nicht als mehrsprachige oder besonders differenzierte Begriffe ausgearbeitet."
+      ],
+      "reasoning": "Die Schlagwörter sind überwiegend passend und verständlich, enthalten aber mit dem Ortsnamen eine eher redundante formale Angabe. Insgesamt unterstützen sie das Verständnis, ohne besonders reichhaltig zu sein.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Thema ECON passt zu Bilanz- und Finanzdaten.",
+        "Titel, Beschreibung und Schlagwörter verweisen einheitlich auf kommunale Finanzen bzw. Bilanz.",
+        "Keine Off-topic-Signale sind erkennbar."
+      ],
+      "reasoning": "Alle thematischen Angaben ergeben ein konsistentes Bild eines wirtschafts-/finanzbezogenen kommunalen Bilanzdatensatzes.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Der notwendige Bezugszeitraum für die Bilanz ist mit dem Jahr 2008 in Titel und Beschreibung vorhanden.",
+        "Der räumliche Bezug ist durch „Stadt Arnsberg“ sowie eine administrative Einheit erkennbar.",
+        "Ein regelmäßiger Aktualisierungszyklus fehlt zwar, die Beschreibung erklärt aber, dass je Jahr ein neuer Datensatz angelegt wird."
+      ],
+      "reasoning": "Für einen jahresbezogenen kommunalen Bilanzdatensatz sind Jahr und Ort die zentralen Kontextangaben; beide sind vorhanden. Weitere Angaben wie Stichtag oder genaue Bilanzierungsbasis wären nützlich, sind aus den Metadaten aber nicht ersichtlich.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "overall_summary": "Die Metadaten sind insgesamt gut verständlich und in sich konsistent: Gegenstand, Ort, Jahr und Finanzthema sind klar erkennbar. Schwächen liegen vor allem in der knappen Beschreibung, die kaum Struktur- oder Detailinformationen zur Bilanz selbst liefert."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3398,
+      "output_tokens": 786,
+      "total_tokens": 4184,
+      "cost_usd": 0.030778,
+      "latency_seconds": 13.074
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-16 11:27:53 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_rest_03/result.json
+2026-07-16 11:27:53 - __main__ - INFO -   ✓ Completed | score=0.78 grade=B

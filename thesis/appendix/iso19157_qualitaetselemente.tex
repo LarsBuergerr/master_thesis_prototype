@@ -1,0 +1,195 @@
+\captionsetup[table]{justification=centering}
+
+{
+\renewcommand{\arraystretch}{0.9}
+\rowcolors{1}{white}{white}
+\centering
+\begin{table}[h!]
+\tiny
+\centering
+\begin{tabular}{|p{3.4cm}|p{5.5cm}|p{2.1cm}|p{1.4cm}|}
+\hline
+\textbf{Qualitätselement} & \textbf{Scope} & \textbf{Measure} & \textbf{Evaluation} \\
+\hline
+
+DQ\_ThematicClassificationCorrectness
+& Dataset (\texttt{theme})
+& D.63 (ISO 19157)
+& SI / AD \\
+\hline
+
+DQ\_NonQuantitativeAttributeCorrectness
+& Dataset (\texttt{references})
+& D.68 (ISO 19157)
+& SI / AD \\ \cline{2-4}
+& Dataset (\texttt{conformsTo})
+& D.68 (ISO 19157)
+& SI / AD \\ \cline{2-4}
+& Distribution (\texttt{accessURL})
+& D.68 (ISO 19157)
+& SI / AD \\ \cline{2-4}
+& Distribution (\texttt{license})
+& D.68 (ISO 19157)
+& SI / AD \\
+\hline
+
+DQ\_QualityOfFreeText
+& Dataset (\texttt{title})
+& Overall quality of free text
+& SI / AD \\ \cline{2-4}
+& Dataset (\texttt{description})
+& Overall quality of free text
+& SI / AD \\
+\hline
+
+DQ\_CompletenessCommission
+& Dataset (\texttt{identifier}, \texttt{modified}, \texttt{issued}, \texttt{accrualPeriodicity}, \texttt{license}, \texttt{valid}, \texttt{publisher})
+& D.3 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution (\texttt{identifier}, \texttt{accessURL}, \texttt{mediaType}, \texttt{byteSize})
+& D.3 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_CompletenessOmission
+& Dataset (\texttt{title}, \texttt{publisher}, \texttt{description}, \texttt{theme}, \texttt{distribution})
+& D.7 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution (\texttt{accessURL}, \texttt{mediaType})
+& D.7 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_ConceptualConsistency
+& Dataset
+& D.13 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution
+& D.13 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution (\texttt{format} gegenüber \texttt{accessURL})
+& D.13 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_DomainConsistency
+& Dataset.\texttt{title} (string domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{description} (string domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{theme} (\texttt{skos:Concept} domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{keyword} (string domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{identifier} (URI domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{issued} (date-time domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{modified} (date-time domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{accrualPeriodicity} (frequency domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{language} (linguistic system domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{publisher} (\texttt{foaf:Agent} domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{spatial} (resource URI from predefined province list)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{temporal} (period of time domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{valid} (date-time domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{references} (URI domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{conformsTo} (URI domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{distribution} (Distribution domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{identifier} (URI domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{title} (string domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{accessURL} (URL domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{format} (IMT domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{byteSize} (decimal number domain)
+& D.17 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{license} (URI domain)
+& D.17 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_TemporalConsistency
+& Dataset (\texttt{issued}, \texttt{modified}, \texttt{valid})
+& Similar to D.62 using a rate
+& FI / AD \\
+\hline
+
+DQ\_TemporalValidity
+& Dataset (harvest date gegenüber \texttt{issued}, \texttt{modified}, \texttt{valid})
+& D.18 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_NonQuantitativeAttributeCorrectness
+& Dataset.\texttt{references}
+& D.69 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Dataset.\texttt{conformsTo}
+& D.69 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{accessURL}
+& D.69 (ISO 19157)
+& FI / AD \\ \cline{2-4}
+& Distribution.\texttt{license}
+& D.69 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_PositionalCorrectness
+& Dataset (\texttt{spatial})
+& Similar to D.33 (ISO 19157)
+& FI / AD \\
+\hline
+
+DQ\_QualityOfFreeText
+& Dataset (\texttt{title} gegenüber \texttt{language})
+& Readability of free text
+& FI / AD \\ \cline{2-4}
+& Dataset (\texttt{description} gegenüber \texttt{language})
+& Readability of free text
+& FI / AD \\
+\hline
+
+\end{tabular}
+\caption[Kombinierte Übersicht der ISO-19157-Qualitätselemente, Scopes, Measures und Evaluationsarten nach Nogueras-Iso et al. ]{Kombinierte Übersicht der ISO-19157-Qualitätselemente, Scopes, Measures und Evaluationsarten nach Nogueras-Iso et al. \cite{noguerasiso_quality_metadata}}
+\label{tab:nogueras_iso_quality_elements}
+\end{table}
+\normalsize
+}
+
+\noindent\footnotesize{\textit{Anmerkung:} SI = \texttt{DQ\_SampleBasedInspection}; FI = \texttt{DQ\_FullInspection}; AD = \texttt{DQ\_AggregationDerivation}.}
+\normalsize
+

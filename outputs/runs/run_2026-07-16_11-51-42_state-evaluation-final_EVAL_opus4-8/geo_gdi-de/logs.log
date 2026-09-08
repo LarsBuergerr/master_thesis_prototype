@@ -1,0 +1,293 @@
+2026-07-16 11:51:42 - reporting.output_manager - INFO - Created file log handler for geo_gdi-de.rdf at run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/geo_gdi-de/logs.log
+2026-07-16 11:51:42 - __main__ - INFO - Started processing: geo_gdi-de.rdf
+2026-07-16 11:51:42 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_gdi-de.rdf
+2026-07-16 11:51:42 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_gdi-de.rdf using format: xml
+2026-07-16 11:51:42 - extraction.rdf_parser - INFO - Successfully parsed 70 triples
+2026-07-16 11:51:42 - scoring.service - INFO - Parsed 70 triples
+2026-07-16 11:51:42 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-16 11:51:42 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-16 11:51:43 - scoring.service - DEBUG - [ERROR] https://testportal-plandigital.de/kvwmap/index.php?go=xplankonverter_download_uploaded_xplan_gml&konvertierung_id=20980#distribution — Download der XPlan-GML Dateien
+  downloadURL : https://testportal-plandigital.de/kvwmap/index.php?go=xplankonverter_download_uploaded_xplan_gml&konvertierung_id=20980
+  HTTP        : 200
+  attachment  : index.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/gml+xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=index.php                                mime=-
+    http_content_type    raw=text/html; charset=utf-8                 mime=text/html
+    attachment_filename  raw=index.php (from final URL)               mime=-
+  coalesced   : application/gml+xml
+  issue       : http_content_type='text/html' conflicts with previously coalesced 'application/gml+xml'
+2026-07-16 11:51:43 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-16 11:52:05 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Sehr aussagekräftige Metadaten mit spezifischem Titel, ausführlicher und kontextreicher Beschreibung sowie konsistentem ')
+2026-07-16 11:52:05 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:52:05 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=12
+2026-07-16 11:52:05 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['bodennutzung', 'f-plan', 'flächennutzung', 'flächennutzungsplan', 'flächennutzungsplanung', 'fnp', 'inspireidentifiziert', 'opendata', 'plandigital', 'vorbereitender-bauleitplan', 'xplanung', 'zusammenzeichnung']
+2026-07-16 11:52:05 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/GOVE']
+2026-07-16 11:52:05 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 11:52:05 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 11:52:05 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:52:05 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 11:52:05 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:52:05 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:52:05 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-16 11:52:05 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=d7da645a-0362-4e55-8127-3aceb8ad06d8 = 2021-03-16T00:00:00+00:00
+2026-07-16 11:52:05 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://testportal-plandigital.de/kvwmap/index.php?go=xplankonverter_download_uploaded_xplan_gml&konvertierung_id=20980#distribution = 2026-02-09T04:02:32.164086
+2026-07-16 11:52:05 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-16 11:52:05 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=d7da645a-0362-4e55-8127-3aceb8ad06d8 = 2026-02-19
+2026-07-16 11:52:05 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://testportal-plandigital.de/kvwmap/index.php?go=xplankonverter_download_uploaded_xplan_gml&konvertierung_id=20980#distribution = 2026-02-09T04:02:32.138007
+2026-07-16 11:52:05 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:52:05 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:52:05 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=1/1
+2026-07-16 11:52:05 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:52:05 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:52:05 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=1/1
+2026-07-16 11:52:05 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:52:05 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/1
+2026-07-16 11:52:05 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:52:05 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 11:52:05 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 11:52:05 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=1 mid=0 none=0 total=1
+2026-07-16 11:52:05 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=1/1
+2026-07-16 11:52:05 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:52:05 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=1/1
+2026-07-16 11:52:05 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:52:05 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:52:05 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:52:05 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:52:05 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 11:52:07 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=3
+2026-07-16 11:52:07 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-16 11:52:07 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.90 | Der Titel ist spezifisch, ortsbezogen und von ähnlichen Datensätzen unterscheidbar; er enthält reinen Text ohne Sonderze
+2026-07-16 11:52:07 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] pass | score=0.95 | Die Beschreibung ist substanziell: Sie erklärt Was, Struktur, Herkunft/Methode, Zweck und Besonderheiten inklusive Discl
+2026-07-16 11:52:07 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=1.00 | Titel und Beschreibung passen widerspruchsfrei zusammen; die Beschreibung stützt und erweitert den Titel konsistent.
+2026-07-16 11:52:07 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.60 | Die Schlagwörter treffen das Thema gut und enthalten hilfreiche Synonyme, jedoch mit vielen Komposita, Redundanz zum Tit
+2026-07-16 11:52:07 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.95 | Alle Felder ergeben ein widerspruchsfreies Themenbild rund um kommunale Flächennutzungsplanung; die gewählten Themen sin
+2026-07-16 11:52:07 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=0.95 | Als regelmäßig aktualisierter Geodatensatz sind Stichtag, Bezugsdatum und Aktualisierungszyklus klar angegeben und sogar
+2026-07-16 11:52:07 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:52:07 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:52:07 - scoring.service - DEBUG - {
+  "dataset_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=d7da645a-0362-4e55-8127-3aceb8ad06d8",
+  "titles": [
+    "Geodatensatz Flächennutzungsplan Stadt Hameln (Zusammenzeichnung)"
+  ],
+  "descriptions": [
+    "Dieser Geodatensatz beinhaltet den Flächennutzungsplan der in der Überschrift angegebenen Kommune des Landes Niedersachsen in einem standardisierten Format. Eine rechtlich verbindliche Auskunft zur Flächennutzungsplanung erteilt jedoch ausschließlich die zuständige Einheits- oder Samtgemeinde als Trägerin der Flächennutzungsplanung. Die Daten beinhalten mindestens einen Layer pro XPlanung-Klasse, basierend auf dem Datenaustauschformat XPlanGML. \n\nDie hier vorliegende Zusammenzeichnung beinhaltet den aktuellen Stand der rechtswirksamen Flächennutzungsplanung, der gegebenenfalls in den ursprünglich aufgestellten Flächennutzungsplan alle inzwischen rechtswirksam erfolgten Änderungen und Berichtigungen einarbeitet, so dass es ein Gesamtplanwerk ergibt. Die XPlanGML-Dateien wurden im Rahmen des Projektes PlanDigital erstellt bzw. veröffentlicht und werden über die Plattform PlanDigital (https://testportal-plandigital.de/kvwmap/index.php) für die Träger der Flächennutzungsplanung zugangsbeschränkt bereitgestellt. Das angegebene Datum der kontinuierlichen Aktualisierung bezieht sich auf die letzte technische Aktualisierung des Geodatensatzes bzw. der Dienste, die möglicherweise keine Änderung der Inhalte bedeutet. Die Veröffentlichung aktualisierter Daten sollte mindestens einmal jährlich erfolgen. \nIn der Plattform/Testportal PlanDigital wurde in den Dienstmetadaten von der zuständigen Kommune folgende Aktualität angegeben: Flächennutzungsplan Stadt Hameln inkl. Änderungen und Berichtigungen bis 16.03.2021. Das angegebene Veröffentlichungsdatum soll das Datum der Rechtskraft des Plans oder der letzten Änderung sein; diese Information wird der XPlanGML entnommen."
+  ],
+  "keywords": [
+    "bodennutzung",
+    "f-plan",
+    "flächennutzung",
+    "flächennutzungsplan",
+    "flächennutzungsplanung",
+    "fnp",
+    "inspireidentifiziert",
+    "opendata",
+    "plandigital",
+    "vorbereitender-bauleitplan",
+    "xplanung",
+    "zusammenzeichnung"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-02-19"
+  ],
+  "issued": [
+    "2021-03-16T00:00:00+00:00"
+  ],
+  "accrual_periodicity": "http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded",
+  "accrual_periodicity_in_vocab": false,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((9.2591 52.1676, 9.4618 52.1676, 9.4618 52.0455, 9.2591 52.0455, 9.2591 52.1676))"
+  ],
+  "spatial_resources": [
+    "N4413a151e6e849e4b0627004d7f23048"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "Nc966459f41ce400ab98143c5d6326ca1",
+  "publisher": "N68ffd3a85a104fa1842adc3539f1dbfa",
+  "contact_points": [
+    "N111eaa40c75e4bcda31d92da230a3edb"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/gdiDE"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://testportal-plandigital.de/kvwmap/index.php?go=xplankonverter_download_uploaded_xplan_gml&konvertierung_id=20980#distribution",
+      "titles": [
+        "Download der XPlan-GML Dateien"
+      ],
+      "descriptions": [
+        "Download der XPlan-GML Dateien"
+      ],
+      "download_url": "https://testportal-plandigital.de/kvwmap/index.php?go=xplankonverter_download_uploaded_xplan_gml&konvertierung_id=20980",
+      "access_url": "https://testportal-plandigital.de/kvwmap/index.php?go=xplankonverter_download_uploaded_xplan_gml&konvertierung_id=20980",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/GML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-02-09T04:02:32.138007"
+      ],
+      "issued": [
+        "2026-02-09T04:02:32.164086"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-zero-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/GML",
+            "mime_type": "application/gml+xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "index.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=utf-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "index.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/gml+xml",
+        "issues": [
+          "http_content_type='text/html' conflicts with previously coalesced 'application/gml+xml'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://testportal-plandigital.de/kvwmap/index.php?go=xplankonverter_download_uploaded_xplan_gml&konvertierung_id=20980",
+        "content_disposition": null,
+        "attachment_filename": "index.php",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Spezifischer Titel mit Ortsbezug (Stadt Hameln) und Sachbezug (Flächennutzungsplan)",
+        "Der Zusatz '(Zusammenzeichnung)' präzisiert die Art des Planwerks",
+        "'Geodatensatz' als Präfix ist leicht redundant, aber unschädlich"
+      ],
+      "reasoning": "Der Titel ist spezifisch, ortsbezogen und von ähnlichen Datensätzen unterscheidbar; er enthält reinen Text ohne Sonderzeichen oder Codes. Der qualifizierende Zusatz zur Zusammenzeichnung ist hilfreich.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "description_quality": {
+      "findings": [
+        "Beschreibt Inhalt (Flächennutzungsplan als Zusammenzeichnung), Format (XPlanGML), Entstehungskontext (Projekt PlanDigital) und Zweck",
+        "Erläutert die Bedeutung des Aktualisierungsdatums sowie die rechtliche Verbindlichkeit (Disclaimer)",
+        "Nennt konkreten Aktualitätsstand (bis 16.03.2021) und Layer-Struktur pro XPlanung-Klasse"
+      ],
+      "reasoning": "Die Beschreibung ist substanziell: Sie erklärt Was, Struktur, Herkunft/Methode, Zweck und Besonderheiten inklusive Disclaimer zur Rechtsverbindlichkeit. Reiner Fließtext ohne Formatierungsreste. Sehr informativ.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Beschreibung konkretisiert exakt den Titel: Flächennutzungsplan, Stadt Hameln, Zusammenzeichnung",
+        "Gleicher Ort und gleiche Datenart in beiden Feldern, keine Widersprüche"
+      ],
+      "reasoning": "Titel und Beschreibung passen widerspruchsfrei zusammen; die Beschreibung stützt und erweitert den Titel konsistent.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "keyword_quality": {
+      "findings": [
+        "Viele Schlagwörter sind starke Komposita (Flächennutzungsplan, Flächennutzungsplanung, vorbereitender-bauleitplan) und teils redundant zum Titel",
+        "Formale/technische Tags wie 'inspireidentifiziert', 'opendata' liefern wenig inhaltlichen Mehrwert",
+        "Positiv: atomare Begriffe wie 'Bodennutzung', 'Flächennutzung' vorhanden; sinnvolle Synonyme/Abkürzungen (fnp, f-plan)"
+      ],
+      "reasoning": "Die Schlagwörter treffen das Thema gut und enthalten hilfreiche Synonyme, jedoch mit vielen Komposita, Redundanz zum Titel sowie formalen Tags ('opendata', 'inspireidentifiziert'), was die Qualität mindert.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Titel, Beschreibung und Schlagwörter zeigen einheitlich das Sujet Flächennutzungsplanung/Bauleitplanung",
+        "Themen REGI (Regionen/Städte) und GOVE (Regierung/öffentlicher Sektor) passen zur kommunalen Bauleitplanung",
+        "Keine Off-topic-Signale in den Feldern"
+      ],
+      "reasoning": "Alle Felder ergeben ein widerspruchsfreies Themenbild rund um kommunale Flächennutzungsplanung; die gewählten Themen sind passend.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Aktualitätsstand explizit genannt: Änderungen und Berichtigungen bis 16.03.2021",
+        "Aktualisierungszyklus beschrieben (mindestens jährlich; accrual_periodicity 'asNeeded')",
+        "Erläuterung, worauf sich das Aktualisierungs- und Veröffentlichungsdatum bezieht"
+      ],
+      "reasoning": "Als regelmäßig aktualisierter Geodatensatz sind Stichtag, Bezugsdatum und Aktualisierungszyklus klar angegeben und sogar erläutert. Alle geforderten Qualifizierer sind vorhanden.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "overall_summary": "Sehr aussagekräftige Metadaten mit spezifischem Titel, ausführlicher und kontextreicher Beschreibung sowie konsistentem Themenbild; einzige Schwäche sind teils redundante bzw. formale Schlagwörter."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-opus-4.8",
+      "input_tokens": 8054,
+      "output_tokens": 1737,
+      "total_tokens": 9791,
+      "cost_usd": 0.083695,
+      "latency_seconds": 22.383
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-16 11:52:07 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/geo_gdi-de/result.json
+2026-07-16 11:52:07 - __main__ - INFO -   ✓ Completed | score=0.81 grade=B

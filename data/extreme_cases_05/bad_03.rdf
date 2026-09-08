@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+>
+  <dcat:Dataset rdf:about="https://opendata.leipzig.de/dataset/fcb2b034-10ef-44e9-8c0a-dfa315ed16f8">
+    <dct:title>Digitale Stadtkarte 1:5.000, Stadt Leipzig</dct:title>
+    <dct:description>Die Digitale Stadtkarte im Maßstab 1:5.000 dient als Kartengrundlage zur Erfassung zahlreicher Fachdaten. Sie beinhaltet Objekte der Deutschen Grundkarte, bestehend aus Gebäuden, Straßen, Straßennamen, Wege, Gewässer und Topographie. Die Abgabe der Daten ist in den Formaten DXF, PDF (mit Schreibschutz), TIF (georeferenziert), JPG oder als Shape-File möglich.</dct:description>
+    <dct:identifier rdf:resource="https://registry.gdi-de.org/id/de.sn.stlp/e00d4667-f773-4e8f-8fb0-8d0b1d30b69d"/>
+    <dcat:keyword>deutsche-grundkarte</dcat:keyword>
+    <dcat:keyword>dsk5</dcat:keyword>
+    <dcat:keyword>geobasisdaten</dcat:keyword>
+    <dcat:keyword>geosn</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>planung</dcat:keyword>
+    <dcat:keyword>stadtkarte</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-10-27</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-19</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TRAN"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://www.leipzig.de/">
+        <foaf:name>Stadt Leipzig</foaf:name>
+        <foaf:homepage rdf:resource="https://www.leipzig.de/"/>
+      </foaf:Agent>
+    </dct:publisher>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://geodienste.leipzig.de/l4/Stadtplan_farbig/service?REQUEST=GetCapabilities&amp;SERVICE=WMS#distribution">
+        <dct:title>Stadtplan (WMS), Stadt Leipzig</dct:title>
+        <dct:description>Stadtplan der Stadt Leipzig. Die zugrundeliegenden Geodaten werden laufend aktualisiert.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/other-closed"/>
+        <dcat:accessURL rdf:resource="https://geodienste.leipzig.de/l4/Stadtplan_farbig/service?REQUEST=GetCapabilities&amp;SERVICE=WMS"/>
+        <dcat:mediaType>application/vnd.ogc.wms_xml</dcat:mediaType>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-20T22:37:36.886269</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-18</dct:modified>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <adms:identifier>["e00d4667-f773-4e8f-8fb0-8d0b1d30b69d"]</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/freistaatSachsen"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/other-closed">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <rdfs:Resource rdf:about="https://geodienste.leipzig.de/l4/Stadtplan_farbig/service?REQUEST=GetCapabilities&amp;SERVICE=WMS"/>
+</rdf:RDF>

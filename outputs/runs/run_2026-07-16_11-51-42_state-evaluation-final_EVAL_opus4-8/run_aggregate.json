@@ -1,0 +1,915 @@
+{
+  "timestamp": "2026-07-16_11-51-42",
+  "run_directory": "run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL",
+  "files": {
+    "geo_gdi-de.rdf": {
+      "overall_score": 0.8106516290726817,
+      "overall_pass_rate": 0.7407407407407407,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.8947368421052632,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.8916666666666667
+      },
+      "total_indicators": 27,
+      "total_pass": 20,
+      "total_fail": 7
+    },
+    "geo_gdi-de_02.rdf": {
+      "overall_score": 0.6549161364950838,
+      "overall_pass_rate": 0.5555555555555556,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.6052631578947368,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.6749999999999999
+      },
+      "total_indicators": 27,
+      "total_pass": 15,
+      "total_fail": 12
+    },
+    "geo_gdi-de_03.rdf": {
+      "overall_score": 0.6863263929053403,
+      "overall_pass_rate": 0.5555555555555556,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.5625,
+        "accessibility": 0.6052631578947368,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.8083333333333332
+      },
+      "total_indicators": 27,
+      "total_pass": 15,
+      "total_fail": 12
+    },
+    "geo_gdi-de_04.rdf": {
+      "overall_score": 0.6754289570079043,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.6052631578947368,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.7416666666666667
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "geo_gdi-de_05.rdf": {
+      "overall_score": 0.6375747059957586,
+      "overall_pass_rate": 0.5555555555555556,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.75,
+        "accessibility": 0.39473684210526316,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.7666666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 15,
+      "total_fail": 12
+    },
+    "geo_open-data-brandenburg.rdf": {
+      "overall_score": 0.7117285521496048,
+      "overall_pass_rate": 0.5925925925925926,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.7982368421052631,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.6666666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 16,
+      "total_fail": 11
+    },
+    "geo_open-data-brandenburg_02.rdf": {
+      "overall_score": 0.7161857721226141,
+      "overall_pass_rate": 0.5555555555555556,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.7543894736842105,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.725
+      },
+      "total_indicators": 27,
+      "total_pass": 15,
+      "total_fail": 12
+    },
+    "geo_open-data-brandenburg_03.rdf": {
+      "overall_score": 0.7091644495855023,
+      "overall_pass_rate": 0.5925925925925926,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.7982368421052631,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.6583333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 16,
+      "total_fail": 11
+    },
+    "geo_open-data-brandenburg_04.rdf": {
+      "overall_score": 0.7033652593021014,
+      "overall_pass_rate": 0.5555555555555556,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.7543894736842105,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.6833333333333332
+      },
+      "total_indicators": 27,
+      "total_pass": 15,
+      "total_fail": 12
+    },
+    "geo_open-data-brandenburg_05.rdf": {
+      "overall_score": 0.7296772700983228,
+      "overall_pass_rate": 0.6666666666666666,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.7982368421052631,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.7250000000000001
+      },
+      "total_indicators": 27,
+      "total_pass": 18,
+      "total_fail": 9
+    },
+    "geo_open-data-portal-rheinland-pfalz.rdf": {
+      "overall_score": 0.4865561210719106,
+      "overall_pass_rate": 0.37037037037037035,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.5625,
+        "accessibility": 0.5131526315789474,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.3583333333333334
+      },
+      "total_indicators": 27,
+      "total_pass": 10,
+      "total_fail": 17
+    },
+    "geo_open-data-portal-rheinland-pfalz_02.rdf": {
+      "overall_score": 0.5700770387507229,
+      "overall_pass_rate": 0.4444444444444444,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.536678947368421,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.575
+      },
+      "total_indicators": 27,
+      "total_pass": 12,
+      "total_fail": 15
+    },
+    "geo_open-data-portal-rheinland-pfalz_03.rdf": {
+      "overall_score": 0.48399201850780804,
+      "overall_pass_rate": 0.37037037037037035,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.5625,
+        "accessibility": 0.5131526315789474,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.35000000000000003
+      },
+      "total_indicators": 27,
+      "total_pass": 10,
+      "total_fail": 17
+    },
+    "geo_open-data-portal-rheinland-pfalz_04.rdf": {
+      "overall_score": 0.5224535569693465,
+      "overall_pass_rate": 0.4074074074074074,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.5625,
+        "accessibility": 0.5131526315789474,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.47500000000000003
+      },
+      "total_indicators": 27,
+      "total_pass": 11,
+      "total_fail": 16
+    },
+    "geo_open-data-portal-rheinland-pfalz_05.rdf": {
+      "overall_score": 0.5212743396953923,
+      "overall_pass_rate": 0.4074074074074074,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.5197368421052632,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.43333333333333335
+      },
+      "total_indicators": 27,
+      "total_pass": 11,
+      "total_fail": 16
+    },
+    "geo_rest.rdf": {
+      "overall_score": 0.7379410063620591,
+      "overall_pass_rate": 0.6666666666666666,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.75,
+        "accessibility": 0.8947368421052632,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.7000000000000001
+      },
+      "total_indicators": 27,
+      "total_pass": 18,
+      "total_fail": 9
+    },
+    "geo_rest_02.rdf": {
+      "overall_score": 0.5469153653364179,
+      "overall_pass_rate": 0.4444444444444444,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.375,
+        "accessibility": 0.8947368421052632,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.26666666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 12,
+      "total_fail": 15
+    },
+    "geo_rest_03.rdf": {
+      "overall_score": 0.5235588972431078,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.5,
+        "accessibility": 0.5789473684210527,
+        "reusability": 0.2857142857142857,
+        "expressiveness": 0.6583333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "geo_rest_04.rdf": {
+      "overall_score": 0.6709571621361096,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.6240631578947369,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.7083333333333334
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "geo_rest_05.rdf": {
+      "overall_score": 0.7383174860227493,
+      "overall_pass_rate": 0.6666666666666666,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.6929842105263158,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.8583333333333334
+      },
+      "total_indicators": 27,
+      "total_pass": 18,
+      "total_fail": 9
+    },
+    "geo_transparenzportal-hamburg.rdf": {
+      "overall_score": 0.5774677077308656,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.9375,
+        "accessibility": 0.18421052631578946,
+        "reusability": 0.6428571428571429,
+        "expressiveness": 0.7416666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "geo_transparenzportal-hamburg_02.rdf": {
+      "overall_score": 0.5769278966647389,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.9375,
+        "accessibility": 0.19078947368421054,
+        "reusability": 0.6428571428571429,
+        "expressiveness": 0.7333333333333334
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "geo_transparenzportal-hamburg_03.rdf": {
+      "overall_score": 0.5769278966647388,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.9375,
+        "accessibility": 0.19078947368421054,
+        "reusability": 0.6428571428571429,
+        "expressiveness": 0.7333333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "geo_transparenzportal-hamburg_04.rdf": {
+      "overall_score": 0.5923125120493542,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.9375,
+        "accessibility": 0.19078947368421054,
+        "reusability": 0.6428571428571429,
+        "expressiveness": 0.7833333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "geo_transparenzportal-hamburg_05.rdf": {
+      "overall_score": 0.55182668208984,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.9375,
+        "accessibility": 0.18421052631578946,
+        "reusability": 0.6428571428571429,
+        "expressiveness": 0.6583333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "non_geo_gdi-de.rdf": {
+      "overall_score": 0.63885675727781,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.6447368421052632,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.5833333333333334
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "non_geo_gdi-de_02.rdf": {
+      "overall_score": 0.6734721418931945,
+      "overall_pass_rate": 0.5925925925925926,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.75,
+        "accessibility": 0.6447368421052632,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.6333333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 16,
+      "total_fail": 11
+    },
+    "non_geo_gdi-de_03.rdf": {
+      "overall_score": 0.6542413726624253,
+      "overall_pass_rate": 0.5555555555555556,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.6447368421052632,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.6333333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 15,
+      "total_fail": 12
+    },
+    "non_geo_gdi-de_04.rdf": {
+      "overall_score": 0.626036244457297,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.6447368421052632,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.5416666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "non_geo_gdi-de_05.rdf": {
+      "overall_score": 0.6407460960092539,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.6842105263157895,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.5499999999999999
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "non_geo_land-schleswig-holstein.rdf": {
+      "overall_score": 0.8004578754578754,
+      "overall_pass_rate": 0.7407407407407407,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.8125,
+        "accessibility": 1.0,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.7666666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 20,
+      "total_fail": 7
+    },
+    "non_geo_land-schleswig-holstein_02.rdf": {
+      "overall_score": 0.7568681318681318,
+      "overall_pass_rate": 0.7037037037037037,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.8125,
+        "accessibility": 1.0,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.625
+      },
+      "total_indicators": 27,
+      "total_pass": 19,
+      "total_fail": 8
+    },
+    "non_geo_land-schleswig-holstein_03.rdf": {
+      "overall_score": 0.7613553113553113,
+      "overall_pass_rate": 0.7407407407407407,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.875,
+        "accessibility": 1.0,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.6083333333333334
+      },
+      "total_indicators": 27,
+      "total_pass": 20,
+      "total_fail": 7
+    },
+    "non_geo_land-schleswig-holstein_04.rdf": {
+      "overall_score": 0.7825091575091575,
+      "overall_pass_rate": 0.7407407407407407,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.8125,
+        "accessibility": 1.0,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.7083333333333334
+      },
+      "total_indicators": 27,
+      "total_pass": 20,
+      "total_fail": 7
+    },
+    "non_geo_land-schleswig-holstein_05.rdf": {
+      "overall_score": 0.7885675727780991,
+      "overall_pass_rate": 0.6666666666666666,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.75,
+        "accessibility": 0.9473684210526315,
+        "reusability": 0.6428571428571429,
+        "expressiveness": 0.7583333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 18,
+      "total_fail": 9
+    },
+    "non_geo_open-data-bayern.rdf": {
+      "overall_score": 0.5366975130133025,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.29605263157894735,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.6
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "non_geo_open-data-bayern_02.rdf": {
+      "overall_score": 0.7716888374783112,
+      "overall_pass_rate": 0.6666666666666666,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.8026315789473685,
+        "reusability": 0.8571428571428571,
+        "expressiveness": 0.75
+      },
+      "total_indicators": 27,
+      "total_pass": 18,
+      "total_fail": 9
+    },
+    "non_geo_open-data-bayern_03.rdf": {
+      "overall_score": 0.6199440909967227,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.6118421052631579,
+        "reusability": 0.6428571428571429,
+        "expressiveness": 0.6083333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "non_geo_open-data-bayern_04.rdf": {
+      "overall_score": 0.7636070946597262,
+      "overall_pass_rate": 0.6666666666666666,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.7368421052631579,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.8966666666666665
+      },
+      "total_indicators": 27,
+      "total_pass": 18,
+      "total_fail": 9
+    },
+    "non_geo_open-data-bayern_05.rdf": {
+      "overall_score": 0.5986070946597262,
+      "overall_pass_rate": 0.48148148148148145,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.5625,
+        "accessibility": 0.6118421052631579,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.5166666666666667
+      },
+      "total_indicators": 27,
+      "total_pass": 13,
+      "total_fail": 14
+    },
+    "non_geo_open-data-brandenburg.rdf": {
+      "overall_score": 0.7376421823790245,
+      "overall_pass_rate": 0.6296296296296297,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.8157894736842105,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.7333333333333334
+      },
+      "total_indicators": 27,
+      "total_pass": 17,
+      "total_fail": 10
+    },
+    "non_geo_open-data-brandenburg_02.rdf": {
+      "overall_score": 0.649720454983613,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.5,
+        "accessibility": 0.6842105263157895,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.6416666666666667
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "non_geo_open-data-brandenburg_03.rdf": {
+      "overall_score": 0.7238764603817235,
+      "overall_pass_rate": 0.6296296296296297,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.7543842105263158,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.75
+      },
+      "total_indicators": 27,
+      "total_pass": 17,
+      "total_fail": 10
+    },
+    "non_geo_open-data-brandenburg_04.rdf": {
+      "overall_score": 0.7290046655099286,
+      "overall_pass_rate": 0.6296296296296297,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.625,
+        "accessibility": 0.7543842105263158,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.7666666666666666
+      },
+      "total_indicators": 27,
+      "total_pass": 17,
+      "total_fail": 10
+    },
+    "non_geo_open-data-brandenburg_05.rdf": {
+      "overall_score": 0.6420281472913053,
+      "overall_pass_rate": 0.5185185185185185,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.5,
+        "accessibility": 0.6842105263157895,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.6166666666666667
+      },
+      "total_indicators": 27,
+      "total_pass": 14,
+      "total_fail": 13
+    },
+    "non_geo_rest.rdf": {
+      "overall_score": 0.6177848467322152,
+      "overall_pass_rate": 0.48148148148148145,
+      "quality_grade": "C",
+      "dimension_scores": {
+        "findability": 0.375,
+        "accessibility": 0.7631578947368421,
+        "reusability": 0.6428571428571429,
+        "expressiveness": 0.5750000000000001
+      },
+      "total_indicators": 27,
+      "total_pass": 13,
+      "total_fail": 14
+    },
+    "non_geo_rest_02.rdf": {
+      "overall_score": 0.4857319452477347,
+      "overall_pass_rate": 0.4074074074074074,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.75,
+        "accessibility": 0.26315263157894736,
+        "reusability": 0.6428571428571429,
+        "expressiveness": 0.4583333333333333
+      },
+      "total_indicators": 27,
+      "total_pass": 11,
+      "total_fail": 16
+    },
+    "non_geo_rest_03.rdf": {
+      "overall_score": 0.7718527086948139,
+      "overall_pass_rate": 0.7407407407407407,
+      "quality_grade": "B",
+      "dimension_scores": {
+        "findability": 0.75,
+        "accessibility": 0.7894736842105263,
+        "reusability": 0.7142857142857143,
+        "expressiveness": 0.8083333333333332
+      },
+      "total_indicators": 27,
+      "total_pass": 20,
+      "total_fail": 7
+    },
+    "non_geo_rest_04.rdf": {
+      "overall_score": 0.4691150954308849,
+      "overall_pass_rate": 0.4074074074074074,
+      "quality_grade": "D",
+      "dimension_scores": {
+        "findability": 0.5,
+        "accessibility": 0.42105263157894735,
+        "reusability": 0.5714285714285714,
+        "expressiveness": 0.425
+      },
+      "total_indicators": 27,
+      "total_pass": 11,
+      "total_fail": 16
+    },
+    "non_geo_rest_05.rdf": {
+      "overall_score": 0.38559861191440137,
+      "overall_pass_rate": 0.37037037037037035,
+      "quality_grade": "F",
+      "dimension_scores": {
+        "findability": 0.5,
+        "accessibility": 0.42105263157894735,
+        "reusability": 0.14285714285714285,
+        "expressiveness": 0.4749999999999999
+      },
+      "total_indicators": 27,
+      "total_pass": 10,
+      "total_fail": 17
+    }
+  },
+  "aggregate": {
+    "file_count": 50,
+    "overall_score_mean": 0.6423,
+    "overall_score_min": 0.38559861191440137,
+    "overall_score_max": 0.8106516290726817,
+    "dimension_score_means": {
+      "findability": 0.6587,
+      "accessibility": 0.637,
+      "reusability": 0.65,
+      "expressiveness": 0.6336
+    },
+    "indicator_status_counts": {
+      "find_keywords_count": {
+        "dimension": "findability",
+        "pass": 41,
+        "partial": 6,
+        "fail": 3,
+        "error": 0
+      },
+      "find_theme_valid": {
+        "dimension": "findability",
+        "pass": 47,
+        "partial": 0,
+        "fail": 3,
+        "error": 0
+      },
+      "find_locn_geometry": {
+        "dimension": "findability",
+        "pass": 29,
+        "partial": 0,
+        "fail": 21,
+        "error": 0
+      },
+      "find_political_geocoding": {
+        "dimension": "findability",
+        "pass": 8,
+        "partial": 3,
+        "fail": 39,
+        "error": 0
+      },
+      "find_geocoding_level": {
+        "dimension": "findability",
+        "pass": 9,
+        "partial": 6,
+        "fail": 35,
+        "error": 0
+      },
+      "find_temporal_coverage": {
+        "dimension": "findability",
+        "pass": 22,
+        "partial": 0,
+        "fail": 28,
+        "error": 0
+      },
+      "find_issued_datetime": {
+        "dimension": "findability",
+        "pass": 50,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "find_modified_datetime": {
+        "dimension": "findability",
+        "pass": 50,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "acc_download_url": {
+        "dimension": "accessibility",
+        "pass": 27,
+        "partial": 1,
+        "fail": 22,
+        "error": 0
+      },
+      "acc_format": {
+        "dimension": "accessibility",
+        "pass": 30,
+        "partial": 2,
+        "fail": 18,
+        "error": 0
+      },
+      "acc_media_type": {
+        "dimension": "accessibility",
+        "pass": 6,
+        "partial": 4,
+        "fail": 40,
+        "error": 0
+      },
+      "acc_download_url_response": {
+        "dimension": "accessibility",
+        "pass": 31,
+        "partial": 2,
+        "fail": 17,
+        "error": 0
+      },
+      "acc_access_url_response": {
+        "dimension": "accessibility",
+        "pass": 40,
+        "partial": 7,
+        "fail": 3,
+        "error": 0
+      },
+      "acc_machine_readable_access": {
+        "dimension": "accessibility",
+        "pass": 23,
+        "partial": 19,
+        "fail": 8,
+        "error": 0
+      },
+      "acc_format_non_proprietary": {
+        "dimension": "accessibility",
+        "pass": 21,
+        "partial": 9,
+        "fail": 20,
+        "error": 0
+      },
+      "reuse_license": {
+        "dimension": "reusability",
+        "pass": 48,
+        "partial": 0,
+        "fail": 2,
+        "error": 0
+      },
+      "reuse_publisher": {
+        "dimension": "reusability",
+        "pass": 50,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "reuse_contact": {
+        "dimension": "reusability",
+        "pass": 29,
+        "partial": 9,
+        "fail": 12,
+        "error": 0
+      },
+      "reuse_contributor_id": {
+        "dimension": "reusability",
+        "pass": 45,
+        "partial": 0,
+        "fail": 5,
+        "error": 0
+      },
+      "reuse_dcat_ap_de_compliance": {
+        "dimension": "reusability",
+        "pass": 5,
+        "partial": 0,
+        "fail": 45,
+        "error": 0
+      },
+      "reuse_availability": {
+        "dimension": "reusability",
+        "pass": 0,
+        "partial": 0,
+        "fail": 50,
+        "error": 0
+      },
+      "expr_title_quality": {
+        "dimension": "expressiveness",
+        "pass": 35,
+        "partial": 6,
+        "fail": 8,
+        "error": 0,
+        "not_applicable": 1
+      },
+      "expr_description_quality": {
+        "dimension": "expressiveness",
+        "pass": 7,
+        "partial": 11,
+        "fail": 31,
+        "error": 0,
+        "not_applicable": 1
+      },
+      "expr_title_description_coherence": {
+        "dimension": "expressiveness",
+        "pass": 35,
+        "partial": 12,
+        "fail": 2,
+        "error": 0,
+        "not_applicable": 1
+      },
+      "expr_keyword_quality": {
+        "dimension": "expressiveness",
+        "pass": 0,
+        "partial": 19,
+        "fail": 30,
+        "error": 0,
+        "not_applicable": 1
+      },
+      "expr_thematic_consistency": {
+        "dimension": "expressiveness",
+        "pass": 35,
+        "partial": 10,
+        "fail": 4,
+        "error": 0,
+        "not_applicable": 1
+      },
+      "expr_contextual_qualifiers": {
+        "dimension": "expressiveness",
+        "pass": 24,
+        "partial": 16,
+        "fail": 9,
+        "error": 0,
+        "not_applicable": 1
+      }
+    }
+  }
+}

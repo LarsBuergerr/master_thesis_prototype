@@ -1,0 +1,377 @@
+2026-07-16 12:14:58 - reporting.output_manager - INFO - Created file log handler for non_geo_rest_04.rdf at run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_rest_04/logs.log
+2026-07-16 12:14:58 - __main__ - INFO - Started processing: non_geo_rest_04.rdf
+2026-07-16 12:14:58 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_rest_04.rdf
+2026-07-16 12:14:58 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_rest_04.rdf using format: xml
+2026-07-16 12:14:58 - extraction.rdf_parser - INFO - Successfully parsed 49 triples
+2026-07-16 12:14:58 - scoring.service - INFO - Parsed 49 triples
+2026-07-16 12:14:58 - scoring.service - DEBUG - DatasetContext built: 2 distribution(s)
+2026-07-16 12:14:58 - scoring.service - DEBUG - attach_probes: 2/2 unique fetch keys, 2 distribution(s) covered
+2026-07-16 12:14:58 - scoring.service - DEBUG - [OK   ] https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.csv#distribution
+  accessURL   : https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.csv
+  HTTP        : 200
+  attachment  : 44231-9k45_00.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=text/csv                                 mime=text/csv
+    url_extension        raw=44231-9k45_00.csv                        mime=text/csv
+    http_content_type    raw=text/csv                                 mime=text/csv
+    attachment_filename  raw=44231-9k45_00.csv (from final URL)       mime=text/csv
+  coalesced   : text/csv
+2026-07-16 12:14:58 - scoring.service - DEBUG - [OK   ] https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.xml#distribution
+  accessURL   : https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.xml
+  HTTP        : 404
+  attachment  : 44231-9k45_00.xml
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=text/xml                                 mime=text/xml
+    url_extension        raw=44231-9k45_00.xml                        mime=application/xml
+    http_content_type    raw=text/html;charset=utf-8                  mime=text/html
+    attachment_filename  raw=44231-9k45_00.xml (from final URL)       mime=application/xml
+  coalesced   : application/xml
+  warning     : accessURL returned HTTP 404; remaining checks rely on declared metadata only
+  warning     : HTTP Content-Type 'text/html' disagrees with attachment filename ('44231-9k45_00.xml' → 'application/xml'); treating as advisory
+2026-07-16 12:14:58 - scoring.service - DEBUG - Attached probes to 2/2 distribution(s)
+2026-07-16 12:15:19 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Der Datensatz ist thematisch konsistent und im Titel grundsätzlich spezifisch, leidet aber unter einer substanzlosen, de')
+2026-07-16 12:15:19 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 12:15:19 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] fail score=0.00 keywords=0
+2026-07-16 12:15:19 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=[]
+2026-07-16 12:15:19 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/ECON']
+2026-07-16 12:15:19 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 12:15:19 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 12:15:19 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 12:15:19 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] pass score=1.00 valid=1/1
+2026-07-16 12:15:19 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 12:15:19 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 12:15:19 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/issued
+2026-07-16 12:15:19 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.csv#dataset = 2011-10-21T14:37:39
+2026-07-16 12:15:19 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.csv#distribution = 2026-05-27T10:51:51.232451
+2026-07-16 12:15:19 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.xml#distribution = 2026-06-03T23:08:21.394062
+2026-07-16 12:15:19 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/modified
+2026-07-16 12:15:19 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.csv#dataset = 2026-01-14T09:55:27
+2026-07-16 12:15:19 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.csv#distribution = 2026-05-27T23:04:34.131472
+2026-07-16 12:15:19 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.xml#distribution = 2026-06-03T23:08:21.390593
+2026-07-16 12:15:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 12:15:19 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 12:15:19 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/2
+2026-07-16 12:15:19 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 12:15:19 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=2/2
+2026-07-16 12:15:19 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 12:15:19 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 12:15:19 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/2
+2026-07-16 12:15:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 12:15:19 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-16 12:15:19 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] fail score=0.25 valid=1/2 relevant=2/2
+2026-07-16 12:15:19 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=2 mid=0 none=0 total=2
+2026-07-16 12:15:19 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=2/2
+2026-07-16 12:15:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 12:15:19 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=2/2
+2026-07-16 12:15:19 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 12:15:19 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 12:15:19 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 12:15:19 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 12:15:19 - scoring.indicator.reuse_contributor_id - DEBUG - [reuse_contributor_id] contributorID cardinality violated: 2 values found
+2026-07-16 12:15:21 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=3
+2026-07-16 12:15:21 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/2
+2026-07-16 12:15:21 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] partial | score=0.55 | Der Titel ist inhaltlich spezifisch und benennt Thema und Zeitbezug klar. Allerdings enthält er einen Tippfehler ('imBau
+2026-07-16 12:15:21 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 12:15:21 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.10 | Die Beschreibung ist eine reine Kopie des Titels und liefert keinerlei zusätzliche Information zu Inhalt, Struktur, Meth
+2026-07-16 12:15:21 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.60 | Da Titel und Beschreibung wortgleich sind, besteht kein Widerspruch, jedoch auch kein Mehrwert. Die Kohärenz ist trivial
+2026-07-16 12:15:21 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.10 | Da keine Schlagwörter vorliegen, lässt sich deren inhaltliche Qualität nicht positiv bewerten. Fehlende Schlagwörter bie
+2026-07-16 12:15:21 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.90 | Das gewählte Thema ECON stimmt klar mit dem wirtschaftlichen Inhalt (Betriebe, Beschäftigte, Umsatz) von Titel und Besch
+2026-07-16 12:15:21 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.30 | Als Zeitreihe verlangt dieser Datentyp klar einen Bezugszeitraum. Zwar wird '4 Jahre' erwähnt, aber die konkreten Jahre 
+2026-07-16 12:15:21 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 12:15:21 - scoring.service - DEBUG - {
+  "dataset_uri": "https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.csv#dataset",
+  "titles": [
+    "Kommunalprofil: Betriebe, Beschäftigte und Umsatz imBauhauptgewerbe - Zeitreihe (4 Jahre)"
+  ],
+  "descriptions": [
+    "Kommunalprofil: Betriebe, Beschäftigte und Umsatz imBauhauptgewerbe - Zeitreihe (4 Jahre)"
+  ],
+  "keywords": [],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/ECON"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2026-01-14T09:55:27"
+  ],
+  "issued": [
+    "2011-10-21T14:37:39"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/Level/federal"
+  ],
+  "political_geocoding_level_in_vocab": [
+    true
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "Nee46e82d93814649ab9c6fff7e32ae7e",
+  "contact_points": [
+    "Ndf37c8d7c6b14616adde761ffd3251e8"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/genesisDestatis",
+    "http://dcat-ap.de/def/contributors/openNRW"
+  ],
+  "contributor_ids_in_vocab": [
+    true,
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.csv#distribution",
+      "titles": [],
+      "descriptions": [
+        "Kommunalprofil: Betriebe, Beschäftigte und Umsatz imBauhauptgewerbe - Zeitreihe (4 Jahre)"
+      ],
+      "download_url": null,
+      "access_url": "https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.csv",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "text/csv"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-05-27T23:04:34.131472"
+      ],
+      "issued": [
+        "2026-05-27T10:51:51.232451"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "44231-9k45_00.csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "44231-9k45_00.csv (from final URL)",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.csv",
+        "content_disposition": null,
+        "attachment_filename": "44231-9k45_00.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.xml#distribution",
+      "titles": [],
+      "descriptions": [
+        "Kommunalprofil: Betriebe, Beschäftigte und Umsatz imBauhauptgewerbe - Zeitreihe (4 Jahre)"
+      ],
+      "download_url": null,
+      "access_url": "https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.xml",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/XML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "text/xml"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-06-03T23:08:21.390593"
+      ],
+      "issued": [
+        "2026-06-03T23:08:21.394062"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/XML",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "44231-9k45_00.xml",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html;charset=utf-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "44231-9k45_00.xml (from final URL)",
+            "mime_type": "application/xml"
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [
+          "accessURL returned HTTP 404; remaining checks rely on declared metadata only",
+          "HTTP Content-Type 'text/html' disagrees with attachment filename ('44231-9k45_00.xml' → 'application/xml'); treating as advisory"
+        ],
+        "fetched": true,
+        "status_code": 404,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 404,
+        "access_fetch_error": null,
+        "final_url": "https://www.landesdatenbank.nrw.de/ldbnrwws/downloader/00/tables/44231-9k45_00.xml",
+        "content_disposition": null,
+        "attachment_filename": "44231-9k45_00.xml",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Titel benennt Inhalt spezifisch: Betriebe, Beschäftigte und Umsatz im Bauhauptgewerbe als Zeitreihe über 4 Jahre",
+        "Fehlender Leerzeichen-Fehler: 'imBauhauptgewerbe' ist zusammengeschrieben",
+        "Kein Ortsbezug im Titel, obwohl es sich um ein Kommunalprofil (NRW) handelt"
+      ],
+      "reasoning": "Der Titel ist inhaltlich spezifisch und benennt Thema und Zeitbezug klar. Allerdings enthält er einen Tippfehler ('imBauhauptgewerbe'), der auf mangelnde Sorgfalt hinweist, und es fehlt ein konkreter Ortsbezug (welche Kommune?), was bei einem 'Kommunalprofil' erwartbar wäre.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "description_quality": {
+      "findings": [
+        "Beschreibung wiederholt wortwörtlich den Titel",
+        "Keine Angaben zu Struktur, Format (CSV), Erhebungsmethode, Quelle oder Zweck",
+        "Keine Erläuterung, welche Kommune und welche Jahre abgedeckt sind"
+      ],
+      "reasoning": "Die Beschreibung ist eine reine Kopie des Titels und liefert keinerlei zusätzliche Information zu Inhalt, Struktur, Methode oder Zweck. Damit ist sie inhaltlich substanzlos.",
+      "applicable": true,
+      "score": 0.1
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Beschreibung ist identisch mit dem Titel",
+        "Kein inhaltlicher Widerspruch, aber auch keine Konkretisierung"
+      ],
+      "reasoning": "Da Titel und Beschreibung wortgleich sind, besteht kein Widerspruch, jedoch auch kein Mehrwert. Die Kohärenz ist trivial gegeben, weshalb ein mittlerer Wert angemessen ist.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "keyword_quality": {
+      "findings": [
+        "Es sind keine Schlagwörter vorhanden"
+      ],
+      "reasoning": "Da keine Schlagwörter vorliegen, lässt sich deren inhaltliche Qualität nicht positiv bewerten. Fehlende Schlagwörter bieten keine ergänzenden Suchbegriffe.",
+      "applicable": true,
+      "score": 0.1
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Thema ECON (Wirtschaft/Finanzen) passt zu Betrieben, Beschäftigten und Umsatz im Bauhauptgewerbe",
+        "Titel und Beschreibung stützen dieses Wirtschaftsthema",
+        "Keine Schlagwörter zur weiteren Prüfung vorhanden"
+      ],
+      "reasoning": "Das gewählte Thema ECON stimmt klar mit dem wirtschaftlichen Inhalt (Betriebe, Beschäftigte, Umsatz) von Titel und Beschreibung überein. Es liegen keine widersprüchlichen Signale vor.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Es handelt sich um eine Zeitreihe über 4 Jahre, jedoch werden im temporal-Feld keine konkreten Jahre/Zeiträume angegeben",
+        "Der Titel nennt '4 Jahre', aber nicht welche",
+        "Kein Aktualisierungszyklus (accrual_periodicity) angegeben, obwohl eine Zeitreihe regelmäßige Fortschreibung nahelegt"
+      ],
+      "reasoning": "Als Zeitreihe verlangt dieser Datentyp klar einen Bezugszeitraum. Zwar wird '4 Jahre' erwähnt, aber die konkreten Jahre fehlen sowohl im Titel/Beschreibung als auch im temporal-Feld. Damit fehlt ein klar verlangter kontextueller Qualifizierer.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "overall_summary": "Der Datensatz ist thematisch konsistent und im Titel grundsätzlich spezifisch, leidet aber unter einer substanzlosen, den Titel nur wiederholenden Beschreibung, fehlenden Schlagwörtern, einem Tippfehler im Titel und fehlenden konkreten Zeitangaben trotz Zeitreihencharakter."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-opus-4.8",
+      "input_tokens": 6992,
+      "output_tokens": 1641,
+      "total_tokens": 8633,
+      "cost_usd": 0.075985,
+      "latency_seconds": 20.61
+    }
+  ],
+  "distribution_count": 2
+}
+2026-07-16 12:15:21 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-51-42_state-evaluation-final_EVAL/non_geo_rest_04/result.json
+2026-07-16 12:15:21 - __main__ - INFO -   ✓ Completed | score=0.47 grade=D

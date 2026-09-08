@@ -1,78 +1,82 @@
-# AgentState configuration
-# This file defines the initial state for the agent pipeline
+# AgentState configuration - only findability indicators
+# This file defines the initial state for the prototype
 
 defaults:
   - _self_
 
-# Disable Hydra output subdirectory (.hydra folder)
-hydra:
-  output_subdir: null
-  job:
-    chdir: false
-
-# Directory paths
+# Directory path for input data
 directory_path: "data/sample_2026-05-21_08-57"
-
-# Files to process
 # If empty: process all files matching extensions in directory_path
-# If filled: process only these specific files
-# files: ["non_geo_land-schleswig-holstein.rdf"]
-
 files: ["geo_transparenzportal-hamburg_03.rdf"]
-# Examples:
-# - "geo_open-data-brandenburg.rdf"
 
 # File filtering (only used if files list is empty)
 file_filter:
+  # Only process files with these extensions
   extensions: [".rdf"]
-
-  # Include patterns: process only files matching these (filename starts with)
+  # Include patterns: process only files matching these (filename starts with) e.g. "geo_", "non_geo_"
   include_patterns: []
-    # - "geo_"
-    # - "non_geo_"
-
   # Exclude patterns: skip files matching these (filename starts with)
   exclude_patterns: []
-    # - "test_"
 
 # Output directory for results
-output_dir: "run_outputs/"
+output_dir: "outputs/runs/"
+# Optional custom suffix for the run output directory (overrides default naming based on directorypath or filename if only one file is processed)
 run_output_dir_suffix: ""
+# Master switch for creating run output directory and saving results there. If false no output is generated
 run_output_enabled: true
+# Language configuration. Options: "de", "en"
+language: "de"
 
-# Language configuration
-language: "de" # Options: "de", "en"
-
-# LLM Model configuration
 llm:
-  # Master switch for the expressiveness LLM agent. Must be true to spend
-  # tokens; when false, expressiveness indicators report NOT_APPLICABLE.
+  # Master switch for the expressiveness LLM agent. Must be true to spend tokens; when false, expressiveness indicators report NOT_APPLICABLE.
   enabled: false
-  model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id
+  # LLM provider. Options: "local", "openrouter" (for local make sure to have the required model downloaded and running)
+  provider: "openrouter"
+  # model: "anthropic/claude-sonnet-4.5" # Any OpenRouter model id, for local use a supported model name e.g. qwen3.5
+  model: "anthropic/claude-sonnet-4.5"
+  # LLM response randomness (0.0 = deterministic, higher values = more random) default 0.0
   temperature: 0.0
+  # Maximum tokens for LLM responses (adjust based on expected response length and model limits) default 10000
   max_tokens: 10000
 
-# Logging configuration
 logging:
-  level: "DEBUG" # Options: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
+  # Logging level: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
+  level: "DEBUG"
+  # If true, log full details of processing; if false, log only summaries and key events
   verbose: true
 
-# Quality scoring configuration
 quality:
+  # Maximum workers for parallel dimension processing. (If higher than 1 it can and will fk up the logging output sequence, it doesnt affect the speed much)
   max_workers: 1
 
-  # Optional dimension whitelist (default: all dimensions)
-  # If specified, only these dimensions will be validated
+  # Status -> points mapping (optional). If this block is missing, the raw
+  # indicator scores are used unchanged (backwards compatible).
+  #   - pass_score / partial_score / fail_score: points per status
+  #   - fail_score MAY be negative (active penalty for failures)
+  #   - allow_partial: false -> every PARTIAL is counted as FAIL (strict)
+  # Applies fully only to ternary indicators (PASS/PARTIAL/FAIL). Graded/
+  # continuous indicators (GRADED=True: expr_*, acc_machine_readable_access,
+  # acc_format_congruence, acc_*_url_response, acc_distribution_model,
+  # reuse_contact) keep their raw score for PASS/PARTIAL; fail_score applies
+  # to them only on status FAIL.
+  scoring:
+    pass_score: 1.0
+    partial_score: 0.5
+    fail_score: 0.0
+    allow_partial: true
+    # Per-indicator overrides (override the global values above)
+    overrides:
+      # find_keywords_count: { partial_score: 0.7 }
+      # reuse_license: { fail_score: -0.5 }
+
+  # Optional dimension whitelist (default: all dimensions if list is empty or missing)
   dimension_whitelist: ["findability"]
-
-  # Optional indicator blacklist (default: no indicators excluded)
   # If specified, these indicators will be skipped
-  # indicator_blacklist: ["find_keywords_count"]
-
+  indicator_blacklist: []
+  # If specified, only these indicators will be processed (overrides blacklist)
   indicator_whitelist: []
 
   # Optional custom weights per dimension (default for all: 1.0)
-  # Example: expressiveness=30%, findability=10%
   dimension_weights:
     findability: 1
     accessibility: 1
@@ -81,5 +85,33 @@ quality:
 
   # Optional custom weights per indicator id (default: indicator.weight)
   # indicator_weights:
-  #   find_keywords_count: 1.5
-  #   find_theme_valid: 1.0
+  #   find_keywords_count: 1.5 # Keywords: central for findability (MQA high)
+  #   find_theme_valid: 1.5 # Category/theme: central for findability (MQA high)
+  #   find_temporal_coverage: 1.0 # Temporal coverage
+  #   find_locn_geometry: 1.0 # Spatial geometry
+  #   find_political_geocoding: 1.0 # Political geocoding URI from vocabulary
+  #   find_accrual_periodicity: 0.75 # Update frequency: nice-to-have
+  #   find_issued_datetime: 0.5 # Hygiene: often equally present in good/bad
+  #   find_modified_datetime: 0.5 # Hygiene: often equally present in good/bad
+
+  #   acc_download_url: 2.0 # Without a download URL the dataset is worthless
+  #   acc_machine_readable_access: 2.0 # Machine readability: core quality differentiator (FAIR)
+  #   acc_download_url_response: 1.5 # Does the URL actually resolve (HTTP<400)?
+  #   acc_format: 1.0 # Format from controlled vocabulary
+  #   acc_format_congruence: 1.0 # Format/MIME congruence
+  #   acc_access_url_response: 1.0 # Access URL reachable
+  #   acc_media_type: 0.75 # MediaType from vocabulary: finer, less discriminating
+  #   acc_distribution_model: 0.5 # Modelling coherence: advanced/nuanced
+
+  #   reuse_license: 2.0 # License: make-or-break for reuse (MQA high)
+  #   reuse_contact: 1.25 # Contact point: trust/support (MQA medium-high)
+  #   reuse_contributor_id: 1.25 # contributorID: MUST requirement (DCAT-AP-DE K12/K13)
+  #   reuse_publisher: 1.0 # Publisher/provenance
+  #   reuse_access_rights: 1.0 # Access rights
+
+  #   expr_description_quality: 1.5 # Description: most information-rich field
+  #   expr_title_quality: 1.5 # Title: first quality signal
+  #   expr_title_description_coherence: 1.0 # Coherence title/description
+  #   expr_keyword_quality: 1.0 # Keyword quality (semantic)
+  #   expr_thematic_consistency: 1.0 # Thematic consistency
+  #   expr_contextual_qualifiers: 0.75 # Contextual qualifiers: situational

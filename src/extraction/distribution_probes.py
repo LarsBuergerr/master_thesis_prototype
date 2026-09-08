@@ -3,10 +3,11 @@
 mediaType is consistent with the actual file behind its ``dcat:downloadURL``.
 
 This is an adaptation of CKAN's ``ckanext-resource-validation``
-(``resource_type_validation.py``) for **RDF-based** input. Declared signals
-are read from the pre-computed :class:`DistributionContext`; probe signals
-are obtained by HTTPing the distribution URL. The validator coalesces up to
-five MIME-type signals:
+(``resource_type_validation.py``) for **RDF-based** input.
+Source: https://github.com/qld-gov-au/ckanext-resource-type-validation/tree/main
+Declared signals are read from the pre-computed :class:`DistributionContext`;
+probe signals are obtained by HTTPing the distribution URL. The validator
+coalesces up to five MIME-type signals:
 
 1. ``dct:format`` — EU file-type vocabulary URI, normalised to a MIME type
 2. ``dcat:mediaType`` — IANA media-type URI (or literal) → MIME type
@@ -17,19 +18,6 @@ five MIME-type signals:
 The coalescing / override / equality logic is ported from the CKAN module.
 Output is attached to the context as :class:`DistributionProbe` — this tool
 is for *auditing* DCAT records, not for blocking uploads.
-
-Usage::
-
-    context = DatasetContext.from_graph(graph)
-    attach_probes(context, max_probes=20, parallel=4)
-    for dist in context.distributions:
-        if dist.probe and dist.probe.is_consistent:
-            ...
-
-CLI::
-
-    python -m extraction.distribution_probes \\
-        data/perfect_example_01_updated.rdf
 """
 
 from __future__ import annotations
@@ -57,10 +45,6 @@ from extraction.dataset_context import (
     DistributionProbe,
     TypeSignal,
 )
-
-# ---------------------------------------------------------------------------
-# Configuration — inline replacement for CKAN's resources/resource_types.json
-# ---------------------------------------------------------------------------
 
 EQUAL_TYPES: list[list[str]] = [
     ["text/xml", "application/xml"],
@@ -124,11 +108,6 @@ ALLOWED_OVERRIDES: dict[str, list[str]] = {
         "application/vnd.google-earth.kml+xml",
         "application/xhtml+xml",
     ],
-    # ``application/json`` is the parent of the ``*+json`` family. Servers
-    # often serve a more specific type as plain ``application/json``
-    # (especially OGC WFS GetFeature with outputFormat=application/json
-    # returns GeoJSON), and ``mimetypes`` resolves ``.json`` filenames the
-    # same way.
     "application/json": [
         "application/geo+json",
         "application/ld+json",
@@ -204,8 +183,6 @@ EU_FILE_TYPE_TO_MIME: dict[str, str] = {
     "http://publications.europa.eu/resource/authority/file-type/NETCDF": "application/x-netcdf",
     "http://publications.europa.eu/resource/authority/file-type/SPARQLQ": "application/sparql-query",
     "http://publications.europa.eu/resource/authority/file-type/SHP": "x-gis/x-shapefile",
-    # OGC service formats — the endpoint typically returns XML
-    # (e.g. ?REQUEST=GetCapabilities), so map them to application/xml.
     "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC": SERVICE_XML_MIMETYPE,
     "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC": SERVICE_XML_MIMETYPE,
     "http://publications.europa.eu/resource/authority/file-type/WCS_SRVC": SERVICE_XML_MIMETYPE,
@@ -219,6 +196,185 @@ EU_FILE_TYPE_TO_MIME: dict[str, str] = {
 
 IANA_MEDIA_PREFIX = "https://www.iana.org/assignments/media-types/"
 
+# ---------------------------------------------------------------------------
+# Format-quality classification sets
+# ---------------------------------------------------------------------------
+
+_FT = "http://publications.europa.eu/resource/authority/file-type/"
+
+#: EU file-type URIs for OGC / INSPIRE service endpoints.
+_SERVICE_FORMAT_URIS: frozenset[str] = frozenset(
+    _FT + code
+    for code in (
+        "WFS_SRVC",
+        "WMS_SRVC",
+        "WCS_SRVC",
+        "WMTS_SRVC",
+        "SOS_SRVC",
+        "OGC_WFS",
+        "OGC_WMS",
+        "OGC_WCS",
+        "OGC_WMTS",
+    )
+)
+
+#: Non-proprietary EU file-type URIs — open standard or de-facto open format.
+NON_PROPRIETARY_FORMAT_URIS: frozenset[str] = frozenset(
+    _FT + code
+    for code in (
+        "BMP",
+        "CSV",
+        "DBF",
+        "GEOJSON",
+        "GML",
+        "GPKG",
+        "GPX",
+        "GZIP",
+        "HTML",
+        "ICS",
+        "JSON",
+        "KML",
+        "KMZ",
+        "NETCDF",
+        "N3",
+        "ODS",
+        "PNG",
+        "RDF_N_QUADS",
+        "RDF_N_TRIPLES",
+        "RDF_TRIG",
+        "RDF_TURTLE",
+        "RDF_XML",
+        "RSS",
+        "RTF",
+        "SPARQLQ",
+        "TAR",
+        "TIFF",
+        "TSV",
+        "TXT",
+        "XML",
+        "ZIP",
+        "WFS_SRVC",
+        "WMS_SRVC",
+        "WCS_SRVC",
+        "WMTS_SRVC",
+        "SOS_SRVC",
+        "OGC_WFS",
+        "OGC_WMS",
+        "OGC_WCS",
+        "OGC_WMTS",
+        "ATOM",
+    )
+)
+
+#: Machine-readable AND open (tier high = 1.0).
+#: Fully machine-readable (tier high = 1.0). Base formats mirror the "Machine
+#: readable = Yes" row of the data.europa.eu Data Quality Guidelines (Table 5:
+#: RDF, XML, JSON, CSV) plus their structured-data variants; the geo formats are
+#: an addition for geospecific data types not covered by that table.
+_HIGH_MIMES: frozenset[str] = frozenset(
+    {
+        "application/xml",
+        "text/xml",
+        "application/json",
+        "application/ld+json",
+        "application/hal+json",
+        "application/vnd.api+json",
+        "text/csv",
+        "application/csv",
+        "text/tab-separated-values",
+        "application/rdf+xml",
+        "text/turtle",
+        "text/n3",
+        "application/sparql-query",
+        "application/vnd.apache.parquet",
+        # Geo open standards (addition, not in Table 5)
+        "application/geo+json",
+        "application/gml+xml",
+        "application/vnd.google-earth.kml+xml",
+        "application/vnd.google-earth.kmz",
+        "application/x-gpkg",
+        "application/geopackage+sqlite3",
+        "application/x-netcdf",
+        "application/x-cdf",
+        "application/gpx+xml",
+        "application/atom+xml",
+        "application/topojson",
+    }
+)
+
+#: Predominantly machine-readable (tier mid = 0.5). Base formats mirror the
+#: "Machine readable = Predominantly" row of the Data Quality Guidelines (Table 5:
+#: ODS, XLSX, XLS, TXT, HTML); the geo formats are an addition for geospecific
+#: data types not covered by that table.
+_MID_MIMES: frozenset[str] = frozenset(
+    {
+        "application/vnd.oasis.opendocument.spreadsheet",  # ODS
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",  # XLSX
+        "application/vnd.ms-excel",
+        "application/excel",  # XLS
+        "text/plain",  # TXT
+        "text/html",
+        "application/xhtml+xml",  # HTML
+        # Geo formats (addition, not in Table 5)
+        "x-gis/x-shapefile",
+        "application/x-esri-shape",
+        "application/x-filegdb",
+    }
+)
+
+#: Not usefully machine-readable (tier none = 0.0). Mirrors the "Machine
+#: readable = No" row of the Data Quality Guidelines (Table 5: PDF, DOCX, ODT,
+#: DOC, PNG, GIF, JPG/JPEG, TIFF). Not consulted by the classifier (anything not
+#: in high/mid falls through to "none") — kept for documentation.
+_LOW_MIMES: frozenset[str] = frozenset(
+    {
+        "application/pdf",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",  # DOCX
+        "application/vnd.oasis.opendocument.text",  # ODT
+        "application/msword",  # DOC
+        "image/png",
+        "image/gif",
+        "image/jpeg",
+        "image/tiff",
+    }
+)
+
+
+def _classify_machine_readable_tier(mime: Optional[str], formats: list[str]) -> str:
+    """Return 'high' / 'mid' / 'none' for a distribution's format quality."""
+    if any(f in _SERVICE_FORMAT_URIS for f in formats):
+        return "high"
+    if mime in ARCHIVE_MIMETYPES:
+        return "mid"
+    if mime in _HIGH_MIMES:
+        return "high"
+    if mime in _MID_MIMES:
+        return "mid"
+    return "none"
+
+
+def format_tier_for_dist(dist: "DistributionContext") -> str:
+    """Machine-readable tier for a distribution — probe-first, declared fallback.
+
+    Returns ``'high'`` / ``'mid'`` / ``'none'``.  Uses ``dist.probe`` when
+    available (populated by :func:`attach_probes`), otherwise classifies from
+    declared signals via :func:`declared_mime`.
+    """
+    if dist.probe is not None:
+        return dist.probe.machine_readable_tier
+    return _classify_machine_readable_tier(declared_mime(dist), dist.formats)
+
+
+def is_non_proprietary_for_dist(dist: "DistributionContext") -> bool:
+    """Return True when the distribution declares a non-proprietary format URI.
+
+    Uses ``dist.probe`` when available; falls back to ``dist.formats``.
+    """
+    if dist.probe is not None:
+        return dist.probe.is_non_proprietary
+    return any(f in NON_PROPRIETARY_FORMAT_URIS for f in dist.formats)
+
+
 # Make sure mimetypes knows about the formats we care about even on minimal systems.
 for ext, mime in {
     ".geojson": "application/geo+json",
@@ -230,7 +386,6 @@ for ext, mime in {
     ".rdf": "application/rdf+xml",
     ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     ".parquet": "application/vnd.apache.parquet",
-    # additions from CKAN's resource_types.json
     ".accdb": "application/msaccess",
     ".asc": "application/x-ascii-grid",
     ".ecw": "application/octet-stream",
@@ -252,14 +407,10 @@ for ext, mime in {
 }.items():
     mimetypes.add_type(mime, ext)
 
-# ---------------------------------------------------------------------------
-# Internal probe payload
-# ---------------------------------------------------------------------------
-
 
 @dataclass
 class _ProbeResult:
-    """Everything we extract from one HTTP probe."""
+    """Everything to extract from one HTTP probe."""
 
     content_type: Optional[str]
     content_disposition: Optional[str]
@@ -267,11 +418,6 @@ class _ProbeResult:
     final_url: Optional[str]
     status: Optional[int]
     error: Optional[str]
-
-
-# ---------------------------------------------------------------------------
-# Validator
-# ---------------------------------------------------------------------------
 
 
 class DistributionTypeValidator:
@@ -308,8 +454,6 @@ class DistributionTypeValidator:
         self.fetch_enabled = fetch_enabled
         self.logger = logger
 
-    # ---- public entry point ---------------------------------------------------
-
     def probe_distribution(self, dist: DistributionContext) -> DistributionProbe:
         """Build a :class:`DistributionProbe` for one distribution.
 
@@ -325,7 +469,6 @@ class DistributionTypeValidator:
             else "accessURL" if dist.access_url else None
         )
 
-        # ---- declared signals (cheap, from context)
         format_signal = self._signal_from_declared_format(dist)
         media_signal = self._signal_from_declared_media_type(dist)
         probe.signals.append(format_signal)
@@ -341,10 +484,6 @@ class DistributionTypeValidator:
 
         probe.signals.append(self._signal_from_url(fetch_url))
 
-        # ---- HTTP
-        # Probe downloadURL and accessURL independently so the report can
-        # show reachability for each. The MIME coalescing below still uses
-        # whichever URL ``fetch_url`` points at (downloadURL preferred).
         download_result: Optional[_ProbeResult] = None
         access_result: Optional[_ProbeResult] = None
         if self.fetch_enabled:
@@ -401,14 +540,14 @@ class DistributionTypeValidator:
             probe.signals.append(TypeSignal("http_content_type", None, None))
             probe.signals.append(TypeSignal("attachment_filename", None, None))
 
-        # ---- coalesce
         probe.coalesced_mime, probe.issues = self._coalesce(probe.signals)
+        probe.machine_readable_tier = _classify_machine_readable_tier(
+            probe.coalesced_mime, dist.formats
+        )
+        probe.is_non_proprietary = any(
+            f in NON_PROPRIETARY_FORMAT_URIS for f in dist.formats
+        )
 
-        # Surface the attachment-based body-signal demotion (in
-        # ``_coalesce``) as a warning so it remains visible in the report
-        # even though it doesn't count as a hard conflict. The
-        # ``http_content_type`` branch typically fires when the response was
-        # an HTTP error page or a download-portal HTML wrapper.
         attachment_mime = _signal_value(probe.signals, "attachment_filename")
         if (
             probe.coalesced_mime
@@ -426,8 +565,6 @@ class DistributionTypeValidator:
 
         self.logger.debug(_format_probe(dist, probe))
         return probe
-
-    # ---- declared-signal helpers ---------------------------------------------
 
     def _signal_from_declared_format(self, dist: DistributionContext) -> TypeSignal:
         if not dist.formats:
@@ -471,8 +608,6 @@ class DistributionTypeValidator:
             raw = f"{attachment_filename} (from final URL)"
         return TypeSignal("attachment_filename", raw, guess)
 
-    # ---- HTTP probe -----------------------------------------------------------
-
     def _probe(self, url: str) -> "_ProbeResult":
         content_type: Optional[str] = None
         content_disposition: Optional[str] = None
@@ -495,9 +630,6 @@ class DistributionTypeValidator:
             ) as resp:
                 status = resp.status_code
                 final_url = resp.url
-                # Prefer GET headers — some servers omit Content-Disposition
-                # / Content-Type on HEAD or compute them differently from
-                # the actual GET response.
                 if resp.headers.get("Content-Type"):
                     content_type = resp.headers.get("Content-Type")
                 if resp.headers.get("Content-Disposition"):
@@ -523,17 +655,11 @@ class DistributionTypeValidator:
             error=error,
         )
 
-    # ---- coalesce + equality (ported from CKAN's ResourceTypeValidator) ------
-
-    # ``attachment_filename`` sits ahead of ``http_content_type`` because the
-    # server's ``Content-Disposition: attachment; filename=...`` is a stronger
-    # assertion about the body than the ``Content-Type`` header (which servers
-    # often leave generic / wrong on download endpoints).
     _SIGNAL_PRIORITY = (
         "dct:format",
         "dcat:mediaType",
-        "url_extension",
         "attachment_filename",
+        "url_extension",
         "http_content_type",
     )
 
@@ -650,11 +776,6 @@ class DistributionTypeValidator:
         return False, None
 
 
-# ---------------------------------------------------------------------------
-# Orchestration: attach probes to a DatasetContext
-# ---------------------------------------------------------------------------
-
-
 def attach_probes(
     context: DatasetContext,
     *,
@@ -721,11 +842,6 @@ def attach_probes(
     for key, probe in results:
         for dist in groups[key]:
             dist.probe = probe
-
-
-# ---------------------------------------------------------------------------
-# Module-level helpers
-# ---------------------------------------------------------------------------
 
 
 _CONTENT_DISPOSITION_FILENAME_RE = re.compile(
@@ -810,11 +926,6 @@ def effective_mime(dist: DistributionContext) -> Optional[str]:
     return declared_mime(dist)
 
 
-# ---------------------------------------------------------------------------
-# CLI
-# ---------------------------------------------------------------------------
-
-
 def _format_probe(dist: DistributionContext, probe: DistributionProbe) -> str:
     lines: list[str] = []
     status = "OK   " if probe.is_consistent else "ERROR"
@@ -851,78 +962,3 @@ def _short(value: Optional[str], width: int = 40) -> str:
     if len(value) <= width:
         return value
     return value[: width - 1] + "…"
-
-
-def _probe_to_dict(
-    dist: DistributionContext, probe: DistributionProbe
-) -> dict[str, Any]:
-    data = {
-        "distribution_uri": dist.distribution_uri,
-        "title": dist.title,
-        "download_url": dist.download_url,
-        "access_url": dist.access_url,
-    }
-    data.update(asdict(probe))
-    return data
-
-
-def main(argv: Optional[list[str]] = None) -> int:
-    parser = argparse.ArgumentParser(
-        description="Validate DCAT distribution type signals in RDF files."
-    )
-    parser.add_argument("rdf_files", nargs="+", help="One or more RDF/XML files.")
-    parser.add_argument(
-        "--no-fetch",
-        action="store_true",
-        help="Skip HTTP fetching; only compare declared signals.",
-    )
-    parser.add_argument(
-        "--json",
-        action="store_true",
-        help="Output a JSON report instead of the human-readable one.",
-    )
-    parser.add_argument(
-        "--timeout",
-        type=float,
-        default=10.0,
-        help="HTTP timeout (seconds, applied to connect and read).",
-    )
-    args = parser.parse_args(argv)
-
-    validator = DistributionTypeValidator(
-        timeout=(args.timeout, args.timeout),
-        fetch_enabled=not args.no_fetch,
-        logger=logging.getLogger(__name__),
-    )
-
-    all_reports: dict[str, list[dict[str, Any]]] = {}
-    exit_code = 0
-    for rdf_file in args.rdf_files:
-        graph = Graph()
-        graph.parse(str(Path(rdf_file)))
-        context = DatasetContext.from_graph(graph)
-        attach_probes(context, validator=validator)
-        if args.json:
-            all_reports[rdf_file] = [
-                _probe_to_dict(d, d.probe) for d in context.distributions if d.probe
-            ]
-        else:
-            print(f"=== {rdf_file} — {len(context.distributions)} distribution(s) ===")
-            for dist in context.distributions:
-                if dist.probe is None:
-                    print(f"[SKIP ] {dist.distribution_uri} (not probed)")
-                    continue
-                print(_format_probe(dist, dist.probe))
-                print()
-        if any(d.probe and not d.probe.is_consistent for d in context.distributions):
-            exit_code = 1
-
-    if args.json:
-        json.dump(all_reports, sys.stdout, indent=2, ensure_ascii=False)
-        sys.stdout.write("\n")
-
-    return exit_code
-
-
-if __name__ == "__main__":  # pragma: no cover
-    sys.exit(main())

@@ -1,0 +1,590 @@
+2026-07-16 11:23:03 - reporting.output_manager - INFO - Created file log handler for non_geo_open-data-bayern.rdf at run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_open-data-bayern/logs.log
+2026-07-16 11:23:03 - __main__ - INFO - Started processing: non_geo_open-data-bayern.rdf
+2026-07-16 11:23:03 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_open-data-bayern.rdf
+2026-07-16 11:23:03 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_open-data-bayern.rdf using format: xml
+2026-07-16 11:23:03 - extraction.rdf_parser - INFO - Successfully parsed 85 triples
+2026-07-16 11:23:03 - scoring.service - INFO - Parsed 85 triples
+2026-07-16 11:23:03 - scoring.service - DEBUG - DatasetContext built: 4 distribution(s)
+2026-07-16 11:23:03 - scoring.service - DEBUG - attach_probes: 4/4 unique fetch keys, 4 distribution(s) covered
+2026-07-16 11:23:19 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/b23152c0-768f-422e-b116-9bd16b280d26 — Bevölkerung - Flat CSV
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12411-001&option=ffcsv&regionalschluessel=09175%2A
+  HTTP error  : HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/csv
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=-                                        mime=-
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/csv
+  warning     : accessURL could not be fetched (HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)); content-based checks skipped
+2026-07-16 11:23:19 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/4c0ecdf0-31e1-445a-b8a0-ba85503dd30d — Bevölkerung - XML
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12411-001&option=xml&regionalschluessel=09175%2A
+  HTTP error  : HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/xml
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=-                                        mime=-
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+  warning     : accessURL could not be fetched (HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)); content-based checks skipped
+2026-07-16 11:23:19 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/a05cee76-2cba-4a87-bca7-27aa33a82f08 — Bevölkerung - XLSX
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12411-001&option=xlsx&regionalschluessel=09175%2A
+  HTTP error  : HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/vnd.ms-excel
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/xlsx
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=-                                        mime=-
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/vnd.ms-excel
+  warning     : accessURL could not be fetched (HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)); content-based checks skipped
+2026-07-16 11:23:19 - scoring.service - DEBUG - [OK   ] https://open.bydata.de/api/hub/repo/distributions/fcdf3133-1754-4cde-8fb5-d5392557778b — Bevölkerung - CSV
+  accessURL   : https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12411-001&option=csv&regionalschluessel=09175%2A
+  HTTP error  : HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/csv
+    url_extension        raw=online                                   mime=-
+    http_content_type    raw=-                                        mime=-
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/csv
+  warning     : accessURL could not be fetched (HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)); content-based checks skipped
+2026-07-16 11:23:19 - scoring.service - DEBUG - Attached probes to 4/4 distribution(s)
+2026-07-16 11:23:34 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten machen grundsätzlich erkennbar, dass es um Bevölkerungsdaten für Ebersberg bzw. Gemeinden geht, und sind t')
+2026-07-16 11:23:34 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 11:23:34 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=9
+2026-07-16 11:23:34 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['bevoelkerungsumfang', 'bevölkerung', 'ebersberg-lkr', 'einwohner', 'einwohnerzahl', 'einwohnerzahlen', 'fortschreibung-des-bevölkerungsstandes', 'gemeinden-bayerns-einschl.-gemeindefreie-gebiete', 'stichtag']
+2026-07-16 11:23:34 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/SOCI']
+2026-07-16 11:23:34 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 11:23:34 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 11:23:34 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 11:23:34 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] pass score=1.00 valid=1/1
+2026-07-16 11:23:34 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 11:23:34 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 11:23:34 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/issued
+2026-07-16 11:23:34 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://open.bydata.de/api/hub/repo/datasets/12411-001-09175 = 2023-11-06T14:12:22
+2026-07-16 11:23:34 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/a05cee76-2cba-4a87-bca7-27aa33a82f08 = 2026-03-29T09:44:51.718282
+2026-07-16 11:23:34 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/4c0ecdf0-31e1-445a-b8a0-ba85503dd30d = 2026-03-29T09:44:51.718287
+2026-07-16 11:23:34 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/fcdf3133-1754-4cde-8fb5-d5392557778b = 2026-03-29T09:44:51.718290
+2026-07-16 11:23:34 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/b23152c0-768f-422e-b116-9bd16b280d26 = 2026-03-29T09:44:51.718291
+2026-07-16 11:23:34 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=5/5 dataset=1 distribution=4 field=http://purl.org/dc/terms/modified
+2026-07-16 11:23:34 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://open.bydata.de/api/hub/repo/datasets/12411-001-09175 = 2025-10-31T13:35:24
+2026-07-16 11:23:34 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/a05cee76-2cba-4a87-bca7-27aa33a82f08 = 2026-06-09T05:00:04
+2026-07-16 11:23:34 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/4c0ecdf0-31e1-445a-b8a0-ba85503dd30d = 2026-06-09T05:00:04
+2026-07-16 11:23:34 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/fcdf3133-1754-4cde-8fb5-d5392557778b = 2026-06-09T05:00:04
+2026-07-16 11:23:34 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://open.bydata.de/api/hub/repo/distributions/b23152c0-768f-422e-b116-9bd16b280d26 = 2026-06-09T05:00:04
+2026-07-16 11:23:34 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 11:23:34 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 11:23:34 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/4
+2026-07-16 11:23:34 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 11:23:34 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=4/4
+2026-07-16 11:23:34 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 11:23:34 - scoring.indicator.acc_media_type - INFO - [acc_media_type] partial score=0.75 passing=3/4
+2026-07-16 11:23:34 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 11:23:34 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-16 11:23:34 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 11:23:34 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] fail score=-0.50 valid=0/4 relevant=4/4
+2026-07-16 11:23:34 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=0.88 high=3 mid=1 none=0 total=4
+2026-07-16 11:23:34 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] partial score=0.75 passing=3/4
+2026-07-16 11:23:34 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 11:23:34 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=4/4
+2026-07-16 11:23:34 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 11:23:34 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 11:23:34 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 11:23:34 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 11:23:34 - scoring.indicator.reuse_contributor_id - DEBUG - [reuse_contributor_id] contributorID cardinality violated: 2 values found
+2026-07-16 11:23:36 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] pass score=1.00 conforms=True violations=0
+2026-07-16 11:23:36 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/4
+2026-07-16 11:23:36 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.85 | Der Titel ist spezifisch genug, um den Datensatz als Bevölkerungsdaten für den Landkreis Ebersberg zu erkennen. Die leic
+2026-07-16 11:23:36 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.30 | Die Beschreibung wiederholt im Wesentlichen nur Thema und grobe Dimensionen und liefert kaum substanzielle Information d
+2026-07-16 11:23:36 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.90 | Titel und Beschreibung sind inhaltlich konsistent: Es geht um Bevölkerungsdaten im Kontext von Gemeinden und Stichtagen.
+2026-07-16 11:23:36 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 11:23:36 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.55 | Die Schlagwörter decken das Thema grundsätzlich ab, sind aber teilweise nicht atomar, redundant, mit Bindestrich-Komposi
+2026-07-16 11:23:36 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.95 | Die thematischen Angaben bilden ein konsistentes Bild im Bereich Bevölkerung/Gesellschaft. Alle Felder stützen dasselbe 
+2026-07-16 11:23:36 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.20 | Für Bevölkerungsstatistiken sind Stichtag bzw. Bezugszeitraum zentrale Kontextangaben. Diese fehlen in konkreter Form, s
+2026-07-16 11:23:36 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 11:23:36 - scoring.service - DEBUG - {
+  "dataset_uri": "https://open.bydata.de/api/hub/repo/datasets/12411-001-09175",
+  "titles": [
+    "Ebersberg (Lkr): Bevölkerung"
+  ],
+  "descriptions": [
+    "Gemeinden, Bevölkerung, Stichtage"
+  ],
+  "keywords": [
+    "bevoelkerungsumfang",
+    "bevölkerung",
+    "ebersberg-lkr",
+    "einwohner",
+    "einwohnerzahl",
+    "einwohnerzahlen",
+    "fortschreibung-des-bevölkerungsstandes",
+    "gemeinden-bayerns-einschl.-gemeindefreie-gebiete",
+    "stichtag"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2025-10-31T13:35:24"
+  ],
+  "issued": [
+    "2023-11-06T14:12:22"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/Level/municipality"
+  ],
+  "political_geocoding_level_in_vocab": [
+    true
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "Ne93fa8ac23ba462598c898edd1a0a9b5",
+  "contact_points": [
+    "Na886a87623244a36b6819ec5761b57e5"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/GenesisDestatis",
+    "http://dcat-ap.de/def/contributors/openDataBayern"
+  ],
+  "contributor_ids_in_vocab": [
+    false,
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/a05cee76-2cba-4a87-bca7-27aa33a82f08",
+      "titles": [
+        "Bevölkerung - XLSX"
+      ],
+      "descriptions": [
+        "Bevölkerung: Gemeinden, Bevölkerung, Stichtage"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12411-001&option=xlsx&regionalschluessel=09175%2A",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/XLS"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/xlsx"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-06-09T05:00:04"
+      ],
+      "issued": [
+        "2026-03-29T09:44:51.718282"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/XLS",
+            "mime_type": "application/vnd.ms-excel"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/xlsx",
+            "mime_type": "text/xlsx"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/vnd.ms-excel",
+        "issues": [],
+        "warnings": [
+          "accessURL could not be fetched (HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)); content-based checks skipped"
+        ],
+        "fetched": false,
+        "status_code": null,
+        "fetch_error": "HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)",
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": null,
+        "access_fetch_error": "HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)",
+        "final_url": null,
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/4c0ecdf0-31e1-445a-b8a0-ba85503dd30d",
+      "titles": [
+        "Bevölkerung - XML"
+      ],
+      "descriptions": [
+        "Bevölkerung: Gemeinden, Bevölkerung, Stichtage"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12411-001&option=xml&regionalschluessel=09175%2A",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/XML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/xml"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2026-06-09T05:00:04"
+      ],
+      "issued": [
+        "2026-03-29T09:44:51.718287"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/XML",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [
+          "accessURL could not be fetched (HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)); content-based checks skipped"
+        ],
+        "fetched": false,
+        "status_code": null,
+        "fetch_error": "HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)",
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": null,
+        "access_fetch_error": "HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)",
+        "final_url": null,
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/fcdf3133-1754-4cde-8fb5-d5392557778b",
+      "titles": [
+        "Bevölkerung - CSV"
+      ],
+      "descriptions": [
+        "Bevölkerung: Gemeinden, Bevölkerung, Stichtage"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12411-001&option=csv&regionalschluessel=09175%2A",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/csv"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2026-06-09T05:00:04"
+      ],
+      "issued": [
+        "2026-03-29T09:44:51.718290"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [
+          "accessURL could not be fetched (HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)); content-based checks skipped"
+        ],
+        "fetched": false,
+        "status_code": null,
+        "fetch_error": "HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)",
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": null,
+        "access_fetch_error": "HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)",
+        "final_url": null,
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://open.bydata.de/api/hub/repo/distributions/b23152c0-768f-422e-b116-9bd16b280d26",
+      "titles": [
+        "Bevölkerung - Flat CSV"
+      ],
+      "descriptions": [
+        "Bevölkerung: Gemeinden, Bevölkerung, Stichtage"
+      ],
+      "download_url": null,
+      "access_url": "https://www.statistikdaten.bayern.de/genesis/online?operation=download&code=12411-001&option=ffcsv&regionalschluessel=09175%2A",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/csv"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2026-06-09T05:00:04"
+      ],
+      "issued": [
+        "2026-03-29T09:44:51.718291"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-by/4.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "online",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [
+          "accessURL could not be fetched (HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)); content-based checks skipped"
+        ],
+        "fetched": false,
+        "status_code": null,
+        "fetch_error": "HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)",
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": null,
+        "access_fetch_error": "HEAD failed: ReadTimeout | GET failed: HTTPSConnectionPool(host='www.statistikdaten.bayern.de', port=443): Read timed out. (read timeout=8.0)",
+        "final_url": null,
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel benennt Ort/Bezirk („Ebersberg (Lkr)“) und Thema („Bevölkerung“) knapp und verständlich.",
+        "Die Abkürzung „Lkr“ ist zwar verbreitet, aber nicht vollständig ausgeschrieben."
+      ],
+      "reasoning": "Der Titel ist spezifisch genug, um den Datensatz als Bevölkerungsdaten für den Landkreis Ebersberg zu erkennen. Die leichte Abwertung ergibt sich aus der Abkürzung, die für Laien nicht vollständig selbsterklärend ist.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung besteht nur aus den Stichworten „Gemeinden, Bevölkerung, Stichtage“.",
+        "Es fehlen Angaben zu Struktur, Datenquelle/Erhebungsmethode, Zweck sowie konkretem Tabellenaufbau oder enthaltenen Merkmalen.",
+        "Der Begriff „Stichtage“ deutet einen relevanten Bezug an, nennt aber keine konkreten Stichtage oder Zeiträume."
+      ],
+      "reasoning": "Die Beschreibung wiederholt im Wesentlichen nur Thema und grobe Dimensionen und liefert kaum substanzielle Information darüber, was genau enthalten ist und wie die Daten aufgebaut oder erhoben wurden. Der Kern ist erkennbar, aber die Aussagekraft ist deutlich eingeschränkt.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf Bevölkerung.",
+        "Die Beschreibung ergänzt den Titel um Gemeinden und Stichtage.",
+        "Es gibt keinen erkennbaren Widerspruch bei Ort oder Thema."
+      ],
+      "reasoning": "Titel und Beschreibung sind inhaltlich konsistent: Es geht um Bevölkerungsdaten im Kontext von Gemeinden und Stichtagen. Die Beschreibung ist zwar knapp, widerspricht dem Titel aber nicht.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "keyword_quality": {
+      "findings": [
+        "Mehrere Schlagwörter sind thematisch passend, z. B. „bevölkerung“, „einwohner“ und „stichtag“.",
+        "Einige Schlagwörter sind technisch oder schwer lesbar formuliert, z. B. „fortschreibung-des-bevölkerungsstandes“ und „gemeinden-bayerns-einschl.-gemeindefreie-gebiete“.",
+        "Es gibt Redundanzen und Varianten wie „einwohnerzahl“/„einwohnerzahlen“ sowie formale Ortsangabe „ebersberg-lkr“."
+      ],
+      "reasoning": "Die Schlagwörter decken das Thema grundsätzlich ab, sind aber teilweise nicht atomar, redundant, mit Bindestrich-Komposita oder technischen Schreibweisen versehen. Dadurch sind sie brauchbar, aber sprachlich und konzeptionell nicht optimal gewählt.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das Thema SOCI passt zu Bevölkerungs- und Einwohnerdaten.",
+        "Titel, Beschreibung und Schlagwörter weisen alle auf Bevölkerung/Einwohner in Ebersberg bzw. Gemeinden hin.",
+        "Keine Off-topic-Signale erkennbar."
+      ],
+      "reasoning": "Die thematischen Angaben bilden ein konsistentes Bild im Bereich Bevölkerung/Gesellschaft. Alle Felder stützen dasselbe Sujet.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Bei Bevölkerungsdaten nach Stichtagen sind konkrete Stichtage oder ein Bezugszeitraum erforderlich.",
+        "Die Beschreibung erwähnt nur allgemein „Stichtage“, ohne konkrete Daten oder Zeitraum.",
+        "Es ist keine zeitliche Abdeckung in den Metadaten angegeben; auch ein Aktualisierungszyklus fehlt trotz offenbar stichtagsbezogener Verwaltungs-/Statistikdaten."
+      ],
+      "reasoning": "Für Bevölkerungsstatistiken sind Stichtag bzw. Bezugszeitraum zentrale Kontextangaben. Diese fehlen in konkreter Form, sodass die zeitliche Aussagekraft deutlich mangelhaft ist.",
+      "applicable": true,
+      "score": 0.2
+    },
+    "overall_summary": "Die Metadaten machen grundsätzlich erkennbar, dass es um Bevölkerungsdaten für Ebersberg bzw. Gemeinden geht, und sind thematisch konsistent. Deutliche Schwächen bestehen jedoch in der sehr knappen Beschreibung, den uneinheitlichen Schlagwörtern und vor allem fehlenden konkreten Stichtags- bzw. Zeitraumangaben."
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3381,
+      "output_tokens": 878,
+      "total_tokens": 4259,
+      "cost_usd": 0.031149,
+      "latency_seconds": 15.153
+    }
+  ],
+  "distribution_count": 4
+}
+2026-07-16 11:23:36 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_11-10-53_state-evaluation-final_EVAL/non_geo_open-data-bayern/result.json
+2026-07-16 11:23:36 - __main__ - INFO -   ✓ Completed | score=0.54 grade=D

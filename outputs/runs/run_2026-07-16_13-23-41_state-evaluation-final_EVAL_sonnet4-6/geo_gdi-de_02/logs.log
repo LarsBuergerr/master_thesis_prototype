@@ -1,0 +1,460 @@
+2026-07-16 13:24:16 - reporting.output_manager - INFO - Created file log handler for geo_gdi-de_02.rdf at run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_gdi-de_02/logs.log
+2026-07-16 13:24:16 - __main__ - INFO - Started processing: geo_gdi-de_02.rdf
+2026-07-16 13:24:16 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_gdi-de_02.rdf
+2026-07-16 13:24:16 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_gdi-de_02.rdf using format: xml
+2026-07-16 13:24:16 - extraction.rdf_parser - INFO - Successfully parsed 75 triples
+2026-07-16 13:24:16 - scoring.service - INFO - Parsed 75 triples
+2026-07-16 13:24:16 - scoring.service - DEBUG - DatasetContext built: 2 distribution(s)
+2026-07-16 13:24:16 - scoring.service - DEBUG - attach_probes: 2/2 unique fetch keys, 2 distribution(s) covered
+2026-07-16 13:24:16 - scoring.service - DEBUG - [ERROR] https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs#distribution — Downloaddienst für kommunale Geodaten
+  downloadURL : https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs
+  HTTP        : 200
+  signals     :
+    dct:format           raw=SHP                                      mime=x-gis/x-shapefile
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=komm_wfs                                 mime=-
+    http_content_type    raw=application/vnd.ogc.se_xml               mime=application/vnd.ogc.se_xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : x-gis/x-shapefile
+  issue       : http_content_type='application/vnd.ogc.se_xml' conflicts with previously coalesced 'x-gis/x-shapefile'
+2026-07-16 13:24:16 - scoring.service - DEBUG - [ERROR] https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip#distribution — Direktdownload Feuerwehren
+  downloadURL : https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip
+  HTTP        : 200
+  attachment  : vg_lind_feuer.zip
+  signals     :
+    dct:format           raw=SHP                                      mime=x-gis/x-shapefile
+    dcat:mediaType       raw=application/zip                          mime=application/zip
+    url_extension        raw=vg_lind_feuer.zip                        mime=application/zip
+    http_content_type    raw=application/zip                          mime=application/zip
+    attachment_filename  raw=vg_lind_feuer.zip                        mime=application/zip
+  coalesced   : x-gis/x-shapefile
+  issue       : dcat:mediaType='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+  issue       : attachment_filename='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+  issue       : url_extension='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+  issue       : http_content_type='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'
+2026-07-16 13:24:16 - scoring.service - DEBUG - Attached probes to 2/2 distribution(s)
+2026-07-16 13:24:44 - scoring.service - DEBUG - Attached expressiveness assessment (summary: '{"overall_summary": "Der Datensatz ist durch einen präzisen Titel gut identifizierbar, leidet jedoch unter einer sehr kn')
+2026-07-16 13:24:44 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 13:24:44 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=6
+2026-07-16 13:24:44 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['feuerwehren', 'feuerwehrstandorte', 'feuerwehrstützpunkte', 'opendata', 'thüringen', 'versorgungswirtschaft-und-staatliche-dienste']
+2026-07-16 13:24:44 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/GOVE', 'http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/SOCI', 'http://publications.europa.eu/resource/authority/data-theme/EDUC']
+2026-07-16 13:24:44 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=4/4
+2026-07-16 13:24:44 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 13:24:44 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 13:24:44 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 13:24:44 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 13:24:44 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 13:24:44 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/issued
+2026-07-16 13:24:44 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=61018e8a-9db9-4a0f-9d83-fe21e1806d5d = 2025-06-17
+2026-07-16 13:24:44 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs#distribution = 2026-05-11T01:02:34.233651
+2026-07-16 13:24:44 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip#distribution = 2026-05-11T01:02:34.233656
+2026-07-16 13:24:44 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=3/3 dataset=1 distribution=2 field=http://purl.org/dc/terms/modified
+2026-07-16 13:24:44 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=61018e8a-9db9-4a0f-9d83-fe21e1806d5d = 2025-06-17T15:24:08
+2026-07-16 13:24:44 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs#distribution = 2026-05-11T01:02:34.214634
+2026-07-16 13:24:44 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip#distribution = 2026-05-15T00:25:49.845538
+2026-07-16 13:24:44 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 13:24:44 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 13:24:44 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 13:24:44 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=2/2
+2026-07-16 13:24:44 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 13:24:44 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/2
+2026-07-16 13:24:44 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 13:24:44 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/2
+2026-07-16 13:24:44 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 13:24:44 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 13:24:44 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=2/2 relevant=2/2
+2026-07-16 13:24:44 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.50 high=0 mid=2 none=0 total=2
+2026-07-16 13:24:44 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/2
+2026-07-16 13:24:44 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 13:24:44 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=2/2
+2026-07-16 13:24:44 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 13:24:44 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 13:24:44 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 13:24:44 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 13:24:44 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 13:24:46 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=6
+2026-07-16 13:24:46 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/2
+2026-07-16 13:24:46 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.95 | Der Titel ist prägnant, verständlich und unterscheidet den Datensatz klar von ähnlichen Datensätzen anderer Regionen. Ke
+2026-07-16 13:24:46 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.30 | Die Beschreibung beantwortet rudimentär 'Was ist enthalten?', bleibt aber bei zwei Sätzen stehen und liefert keinerlei s
+2026-07-16 13:24:46 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.85 | Titel und Beschreibung passen inhaltlich zusammen und widersprechen sich nicht. Die Kohärenz ist gegeben, auch wenn die 
+2026-07-16 13:24:46 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.25 | Die Schlagwörter sind überwiegend redundant zum Titel, enthalten Komposita und formale Tags. Nur 'feuerwehrstützpunkte' 
+2026-07-16 13:24:46 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] partial | score=0.55 | Drei der vier Themes sind zumindest vertretbar, aber EDUC (Bildung) ist klar off-topic für Feuerwehrstandorte. Dies stör
+2026-07-16 13:24:46 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.30 | Für einen Geodatensatz mit Standortinformationen fehlt ein Stichtag oder Bezugszeitraum. Der Sekundärdatencharakter wird
+2026-07-16 13:24:46 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 13:24:46 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 13:24:46 - scoring.service - DEBUG - {
+  "dataset_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=61018e8a-9db9-4a0f-9d83-fe21e1806d5d",
+  "titles": [
+    "Feuerwehren der Verwaltungsgemeinschaft Lindenberg/Eichsfeld"
+  ],
+  "descriptions": [
+    "Der Datensatz enthält die Feuerwehrstandorte der Verwaltungsgemeinschaft Lindenberg/Eichsfeld. Es handelt sich um einen Sekundärdatenbestand."
+  ],
+  "keywords": [
+    "feuerwehren",
+    "feuerwehrstandorte",
+    "feuerwehrstützpunkte",
+    "opendata",
+    "thüringen",
+    "versorgungswirtschaft-und-staatliche-dienste"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/SOCI",
+    "http://publications.europa.eu/resource/authority/data-theme/EDUC"
+  ],
+  "themes_in_vocab": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2025-06-17T15:24:08"
+  ],
+  "issued": [
+    "2025-06-17"
+  ],
+  "accrual_periodicity": "http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded",
+  "accrual_periodicity_in_vocab": false,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((10.1600 51.5220, 10.3840 51.5220, 10.3840 51.4230, 10.1600 51.4230, 10.1600 51.5220))"
+  ],
+  "spatial_resources": [
+    "N1c9b99a1ed9049c2bd1126f3b296c7f5"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "N8d1cf304273d44d5aa35a1db64f83ae4",
+  "publisher": "N0a481df0a4984891b46b1021f8df7814",
+  "contact_points": [
+    "N55edbe4d245e48258d6d36b3f1f4263e"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/gdiDE"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs#distribution",
+      "titles": [
+        "Downloaddienst für kommunale Geodaten"
+      ],
+      "descriptions": [
+        "Web Feature Service (WFS) - Downloaddienst für die in der GDI-Th veröffentlichten kommunalen Geodaten"
+      ],
+      "download_url": "https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs",
+      "access_url": "https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs",
+      "formats": [
+        "SHP"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-11T01:02:34.214634"
+      ],
+      "issued": [
+        "2026-05-11T01:02:34.233651"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "SHP",
+            "mime_type": "x-gis/x-shapefile"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "komm_wfs",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/vnd.ogc.se_xml",
+            "mime_type": "application/vnd.ogc.se_xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "x-gis/x-shapefile",
+        "issues": [
+          "http_content_type='application/vnd.ogc.se_xml' conflicts with previously coalesced 'x-gis/x-shapefile'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoproxy.geoportal-th.de/geoproxy/services/kommunal/komm_wfs",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip#distribution",
+      "titles": [
+        "Direktdownload Feuerwehren"
+      ],
+      "descriptions": [
+        "Direktdownload - Feuerwehren der Verwaltungsgemeinschaft Lindenberg/Eichsfeld. (Format: Shapefile)"
+      ],
+      "download_url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip",
+      "access_url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip",
+      "formats": [
+        "SHP"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/zip"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-05-15T00:25:49.845538"
+      ],
+      "issued": [
+        "2026-05-11T01:02:34.233656"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "SHP",
+            "mime_type": "x-gis/x-shapefile"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "vg_lind_feuer.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "vg_lind_feuer.zip",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "x-gis/x-shapefile",
+        "issues": [
+          "dcat:mediaType='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'",
+          "attachment_filename='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'",
+          "url_extension='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'",
+          "http_content_type='application/zip' conflicts with previously coalesced 'x-gis/x-shapefile'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/vg_lind_feuer.zip",
+        "content_disposition": "attachment;filename=\"vg_lind_feuer.zip\"",
+        "attachment_filename": "vg_lind_feuer.zip",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Titel 'Feuerwehren der Verwaltungsgemeinschaft Lindenberg/Eichsfeld' ist spezifisch und nennt klar den Gegenstand (Feuerwehren) sowie den räumlichen Bezug (VG Lindenberg/Eichsfeld)",
+        "Kein Zeitbezug im Titel, was bei einem statischen Geodatensatz vertretbar ist",
+        "Keine unerklärten Abkürzungen, kein Markdown oder Sonderzeichen"
+      ],
+      "reasoning": "Der Titel ist prägnant, verständlich und unterscheidet den Datensatz klar von ähnlichen Datensätzen anderer Regionen. Keine relevanten Mängel.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung nennt den Inhalt (Feuerwehrstandorte der VG Lindenberg/Eichsfeld) und gibt einen Hinweis auf die Datenherkunft ('Sekundärdatenbestand')",
+        "Es fehlen strukturelle Informationen: Format, Anzahl der Standorte, Attributbeschreibung, Koordinatensystem oder Geometrietyp werden nicht erwähnt",
+        "Erhebungsmethode, Zweck und Besonderheiten (z. B. Aktualität, Qualitätshinweise) werden nicht beschrieben; die Beschreibung ist sehr kurz und bleibt oberflächlich"
+      ],
+      "reasoning": "Die Beschreibung beantwortet rudimentär 'Was ist enthalten?', bleibt aber bei zwei Sätzen stehen und liefert keinerlei strukturelle, methodische oder zweckbezogene Information. Deutliche Mängel in der Tiefe.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf Feuerwehrstandorte der VG Lindenberg/Eichsfeld – kein Widerspruch",
+        "Die Beschreibung konkretisiert den Titel minimal (Standorte statt allgemein 'Feuerwehren'), was eine leichte inhaltliche Präzisierung darstellt"
+      ],
+      "reasoning": "Titel und Beschreibung passen inhaltlich zusammen und widersprechen sich nicht. Die Kohärenz ist gegeben, auch wenn die Beschreibung sehr knapp ist.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "keyword_quality": {
+      "findings": [
+        "'feuerwehren' und 'feuerwehrstandorte' sind inhaltlich redundant zueinander und wiederholen weitgehend den Titel",
+        "'opendata' ist ein formales/offensichtliches Tag ohne inhaltlichen Mehrwert",
+        "'versorgungswirtschaft-und-staatliche-dienste' ist ein Kompositum im Kebab-Case-Format, kein laienverständlicher atomarer Begriff; 'thüringen' ist ein reiner geografischer Kontext, der bereits im Spatial-Feld abgedeckt ist"
+      ],
+      "reasoning": "Die Schlagwörter sind überwiegend redundant zum Titel, enthalten Komposita und formale Tags. Nur 'feuerwehrstützpunkte' bietet einen leichten inhaltlichen Mehrwert. Insgesamt schwache Schlagwortqualität.",
+      "applicable": true,
+      "score": 0.25
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Die Themes umfassen GOVE (Regierung/öffentlicher Sektor) und REGI (Regionen), was für Feuerwehrstandorte einer Verwaltungsgemeinschaft plausibel ist",
+        "SOCI (Soziales) ist grenzwertig passend, aber vertretbar für Infrastruktur der öffentlichen Sicherheit",
+        "EDUC (Bildung) ist für einen Datensatz über Feuerwehrstandorte thematisch nicht nachvollziehbar und wirkt wie ein Fehler"
+      ],
+      "reasoning": "Drei der vier Themes sind zumindest vertretbar, aber EDUC (Bildung) ist klar off-topic für Feuerwehrstandorte. Dies stört die thematische Konsistenz.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Es handelt sich um einen Geodatensatz mit Standortinformationen; ein Stichtag oder Bezugszeitraum wäre sinnvoll, fehlt aber vollständig (temporal.start_dates und end_dates sind leer)",
+        "Das Feld 'modified' enthält ein aktuelles Datum (2025-06-17), gibt aber keinen Hinweis darauf, ob die Daten selbst aktuell sind oder wann sie erhoben wurden",
+        "Der Hinweis 'Sekundärdatenbestand' deutet auf abgeleitete Daten hin, ohne die Primärquelle oder Aggregationsmethode zu nennen"
+      ],
+      "reasoning": "Für einen Geodatensatz mit Standortinformationen fehlt ein Stichtag oder Bezugszeitraum. Der Sekundärdatencharakter wird erwähnt, aber ohne Quellenangabe. Relevante Qualifizierer sind unvollständig.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch einen präzisen Titel gut identifizierbar, leidet jedoch unter einer sehr knappen Beschreibung ohne strukturelle oder methodische Tiefe, schwachen und teils redundanten Schlagwörtern sowie einem thematisch nicht passenden EDUC-Theme. Fehlende kontextuelle Qualifizierer (Stichtag, Primärquelle) mindern die Aussagekraft zusätzlich.\"}"
+  },
+  "semantic_assessment_raw": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "tool_args": {
+      "title_quality": {
+        "findings": [
+          "Titel 'Feuerwehren der Verwaltungsgemeinschaft Lindenberg/Eichsfeld' ist spezifisch und nennt klar den Gegenstand (Feuerwehren) sowie den räumlichen Bezug (VG Lindenberg/Eichsfeld)",
+          "Kein Zeitbezug im Titel, was bei einem statischen Geodatensatz vertretbar ist",
+          "Keine unerklärten Abkürzungen, kein Markdown oder Sonderzeichen"
+        ],
+        "reasoning": "Der Titel ist prägnant, verständlich und unterscheidet den Datensatz klar von ähnlichen Datensätzen anderer Regionen. Keine relevanten Mängel.",
+        "score": 0.95
+      },
+      "description_quality": {
+        "findings": [
+          "Die Beschreibung nennt den Inhalt (Feuerwehrstandorte der VG Lindenberg/Eichsfeld) und gibt einen Hinweis auf die Datenherkunft ('Sekundärdatenbestand')",
+          "Es fehlen strukturelle Informationen: Format, Anzahl der Standorte, Attributbeschreibung, Koordinatensystem oder Geometrietyp werden nicht erwähnt",
+          "Erhebungsmethode, Zweck und Besonderheiten (z. B. Aktualität, Qualitätshinweise) werden nicht beschrieben; die Beschreibung ist sehr kurz und bleibt oberflächlich"
+        ],
+        "reasoning": "Die Beschreibung beantwortet rudimentär 'Was ist enthalten?', bleibt aber bei zwei Sätzen stehen und liefert keinerlei strukturelle, methodische oder zweckbezogene Information. Deutliche Mängel in der Tiefe.",
+        "score": 0.3
+      },
+      "title_description_coherence": {
+        "findings": [
+          "Titel und Beschreibung beziehen sich beide auf Feuerwehrstandorte der VG Lindenberg/Eichsfeld – kein Widerspruch",
+          "Die Beschreibung konkretisiert den Titel minimal (Standorte statt allgemein 'Feuerwehren'), was eine leichte inhaltliche Präzisierung darstellt"
+        ],
+        "reasoning": "Titel und Beschreibung passen inhaltlich zusammen und widersprechen sich nicht. Die Kohärenz ist gegeben, auch wenn die Beschreibung sehr knapp ist.",
+        "score": 0.85
+      },
+      "keyword_quality": {
+        "findings": [
+          "'feuerwehren' und 'feuerwehrstandorte' sind inhaltlich redundant zueinander und wiederholen weitgehend den Titel",
+          "'opendata' ist ein formales/offensichtliches Tag ohne inhaltlichen Mehrwert",
+          "'versorgungswirtschaft-und-staatliche-dienste' ist ein Kompositum im Kebab-Case-Format, kein laienverständlicher atomarer Begriff; 'thüringen' ist ein reiner geografischer Kontext, der bereits im Spatial-Feld abgedeckt ist"
+        ],
+        "reasoning": "Die Schlagwörter sind überwiegend redundant zum Titel, enthalten Komposita und formale Tags. Nur 'feuerwehrstützpunkte' bietet einen leichten inhaltlichen Mehrwert. Insgesamt schwache Schlagwortqualität.",
+        "score": 0.25
+      },
+      "thematic_consistency": {
+        "findings": [
+          "Die Themes umfassen GOVE (Regierung/öffentlicher Sektor) und REGI (Regionen), was für Feuerwehrstandorte einer Verwaltungsgemeinschaft plausibel ist",
+          "SOCI (Soziales) ist grenzwertig passend, aber vertretbar für Infrastruktur der öffentlichen Sicherheit",
+          "EDUC (Bildung) ist für einen Datensatz über Feuerwehrstandorte thematisch nicht nachvollziehbar und wirkt wie ein Fehler"
+        ],
+        "reasoning": "Drei der vier Themes sind zumindest vertretbar, aber EDUC (Bildung) ist klar off-topic für Feuerwehrstandorte. Dies stört die thematische Konsistenz.",
+        "score": 0.55
+      },
+      "contextual_qualifiers": {
+        "applicable": true,
+        "findings": [
+          "Es handelt sich um einen Geodatensatz mit Standortinformationen; ein Stichtag oder Bezugszeitraum wäre sinnvoll, fehlt aber vollständig (temporal.start_dates und end_dates sind leer)",
+          "Das Feld 'modified' enthält ein aktuelles Datum (2025-06-17), gibt aber keinen Hinweis darauf, ob die Daten selbst aktuell sind oder wann sie erhoben wurden",
+          "Der Hinweis 'Sekundärdatenbestand' deutet auf abgeleitete Daten hin, ohne die Primärquelle oder Aggregationsmethode zu nennen"
+        ],
+        "reasoning": "Für einen Geodatensatz mit Standortinformationen fehlt ein Stichtag oder Bezugszeitraum. Der Sekundärdatencharakter wird erwähnt, aber ohne Quellenangabe. Relevante Qualifizierer sind unvollständig.",
+        "score": 0.3
+      },
+      "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch einen präzisen Titel gut identifizierbar, leidet jedoch unter einer sehr knappen Beschreibung ohne strukturelle oder methodische Tiefe, schwachen und teils redundanten Schlagwörtern sowie einem thematisch nicht passenden EDUC-Theme. Fehlende kontextuelle Qualifizierer (Stichtag, Primärquelle) mindern die Aussagekraft zusätzlich.\"}"
+    },
+    "text_content": null,
+    "parsing_error": null,
+    "salvaged": false,
+    "repairs": []
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "input_tokens": 5716,
+      "output_tokens": 1507,
+      "total_tokens": 7223,
+      "cost_usd": 0.039753,
+      "latency_seconds": 27.958
+    }
+  ],
+  "distribution_count": 2
+}
+2026-07-16 13:24:46 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_gdi-de_02/result.json
+2026-07-16 13:24:46 - __main__ - INFO -   ✓ Completed | score=0.61 grade=C

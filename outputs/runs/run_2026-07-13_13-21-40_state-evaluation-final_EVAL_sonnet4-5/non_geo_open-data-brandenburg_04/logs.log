@@ -1,0 +1,477 @@
+2026-07-13 13:43:09 - reporting.output_manager - INFO - Created file log handler for non_geo_open-data-brandenburg_04.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_open-data-brandenburg_04/logs.log
+2026-07-13 13:43:09 - __main__ - INFO - Started processing: non_geo_open-data-brandenburg_04.rdf
+2026-07-13 13:43:09 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_open-data-brandenburg_04.rdf
+2026-07-13 13:43:09 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_open-data-brandenburg_04.rdf using format: xml
+2026-07-13 13:43:09 - extraction.rdf_parser - INFO - Successfully parsed 86 triples
+2026-07-13 13:43:09 - scoring.service - INFO - Parsed 86 triples
+2026-07-13 13:43:09 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-13 13:43:09 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-13 13:43:10 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/66ac807a-251f-4d4d-9ecf-45d4a3eff615 — statische Informationsseite
+  downloadURL : https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=-                                        mime=-
+    http_content_type    raw=text/html; charset=utf-8                 mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-13 13:43:10 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/175757f8-9b24-495e-93f1-e6a46e0b6478 — Downloadseite
+  downloadURL : https://data.geobasis-bb.de/geobasis/karten/topographische-karten/tk25/historisch/tk25_4245_1994.pdf
+  HTTP        : 200
+  attachment  : tk25_4245_1994.pdf
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=tk25_4245_1994.pdf                       mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=tk25_4245_1994.pdf                       mime=application/pdf
+  coalesced   : application/pdf
+2026-07-13 13:43:10 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/753cf4a1-4601-4439-b8fc-52fa7d3870c6 — Internetshop der LGB
+  downloadURL : https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=88663d82-41fa-4c4c-9c24-597594161a9d
+  HTTP        : 200
+  attachment  : gbss.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=gbss.php                                 mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=gbss.php (from final URL)                mime=-
+  coalesced   : text/html
+2026-07-13 13:43:10 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-13 13:43:39 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind insgesamt aussagekräftig und gut strukturiert: Titel und Beschreibung sind spezifisch, verständlich u')
+2026-07-13 13:43:39 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:43:39 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=5
+2026-07-13 13:43:39 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['125.000', 'historische-karte', 'karte', 'opendata', 'vermessung']
+2026-07-13 13:43:39 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/GOVE', 'http://publications.europa.eu/resource/authority/data-theme/AGRI', 'http://publications.europa.eu/resource/authority/data-theme/TECH', 'http://publications.europa.eu/resource/authority/data-theme/ENVI']
+2026-07-13 13:43:39 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=5/5
+2026-07-13 13:43:39 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-13 13:43:39 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-13 13:43:39 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-13 13:43:39 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-13 13:43:39 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-13 13:43:39 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-13 13:43:39 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/0c85745a-4d52-44b5-acc0-69d7bf11f2e2 = 1990-12-31T00:00:00
+2026-07-13 13:43:39 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/66ac807a-251f-4d4d-9ecf-45d4a3eff615 = 2026-06-21T02:23:51.823851
+2026-07-13 13:43:39 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/753cf4a1-4601-4439-b8fc-52fa7d3870c6 = 2026-06-21T02:23:51.823858
+2026-07-13 13:43:39 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/175757f8-9b24-495e-93f1-e6a46e0b6478 = 2024-12-11T18:59:28.646921
+2026-07-13 13:43:39 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-13 13:43:39 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/0c85745a-4d52-44b5-acc0-69d7bf11f2e2 = 2025-07-24T15:58:51
+2026-07-13 13:43:39 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/66ac807a-251f-4d4d-9ecf-45d4a3eff615 = 2026-06-21T02:23:51.797386
+2026-07-13 13:43:39 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/753cf4a1-4601-4439-b8fc-52fa7d3870c6 = 2026-06-21T02:23:51.797618
+2026-07-13 13:43:39 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/175757f8-9b24-495e-93f1-e6a46e0b6478 = 2025-02-23T02:07:21.941486
+2026-07-13 13:43:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:43:39 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:43:39 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=3/3
+2026-07-13 13:43:39 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:43:39 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=3/3
+2026-07-13 13:43:39 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:43:39 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/3
+2026-07-13 13:43:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:43:39 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-13 13:43:39 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-13 13:43:39 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:43:39 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] fail score=0.33 high=0 mid=2 none=1 total=3
+2026-07-13 13:43:39 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] partial score=0.67 passing=2/3
+2026-07-13 13:43:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:43:39 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-13 13:43:39 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:43:39 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:43:39 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-13 13:43:39 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-13 13:43:39 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:43:40 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-13 13:43:40 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-13 13:43:40 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=1.00 | Der Titel ist vorbildlich strukturiert: Er nennt den Kartentyp, den Maßstab, die Blattnummer, den Ort und das Jahr. Dami
+2026-07-13 13:43:40 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] pass | score=0.80 | Die Beschreibung ist substanziell und informativ: Sie beantwortet, was enthalten ist (generalisierte Erdoberfläche, Beba
+2026-07-13 13:43:40 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=1.00 | Titel und Beschreibung sind kohärent: Der Titel nennt ein konkretes Kartenblatt, die Beschreibung erläutert die Kartense
+2026-07-13 13:43:40 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.60 | Die Schlagwörter sind überwiegend gut gewählt und verständlich. Allerdings ist '125.000' ein klarer Fehler (vermutlich s
+2026-07-13 13:43:40 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] partial | score=0.75 | Titel, Beschreibung und Schlagwörter bilden ein klares, konsistentes Themenbild (topographische Karte). Die Zuordnung zu
+2026-07-13 13:43:40 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=1.00 | Alle für eine historische topographische Karte erforderlichen Qualifizierer sind vorhanden: Jahr (1994), räumliche Abdec
+2026-07-13 13:43:40 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:43:40 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:43:40 - scoring.service - DEBUG - {
+  "dataset_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/0c85745a-4d52-44b5-acc0-69d7bf11f2e2",
+  "titles": [
+    "Topographische Karte 1 : 25 000 - 4245 Kolochau (1994)"
+  ],
+  "descriptions": [
+    "Die Topographische Karte im Maßstab 1:25.000 ist eine aus dem Grundmaßstab (TK10) abgeleitete Karte. Die verschiedenen Erscheinungsformen der Erdoberfläche werden in maßstabsgerechter Generalisierung dargestellt. Zudem zeigt sie, neben vielen Einzelheiten wie Kirchen, Krankenhäusern und Bahnhöfen, auch die unterschiedliche Art der Bebauung. Die historischen Ausgaben der TK25 stehen aus verschiedenen Jahren ab 1991 (Grundaktualität einzelner Blätter älter) zur Verfügung. Ab dem Jahr 2004 entstand die TK25 (ATKIS) durch Ableitung aus dem Basis-Landschaftsmodell (Basis-DLM). In unterschiedlichen Kartenlayouts und -darstellungen bilden die historischen Kartenblätter ein Stück Zeitgeschichte Brandenburgs ab. Sie sind in analoger Plot-Ausgabe (Papier) verfügbar und stehen kostenfrei als Download zur Verfügung. Bei Nutzung der Daten sind die Lizenzbedingungen zu beachten."
+  ],
+  "keywords": [
+    "125.000",
+    "historische-karte",
+    "karte",
+    "opendata",
+    "vermessung"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+    "http://publications.europa.eu/resource/authority/data-theme/AGRI",
+    "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "http://publications.europa.eu/resource/authority/data-theme/ENVI"
+  ],
+  "themes_in_vocab": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2025-07-24T15:58:51"
+  ],
+  "issued": [
+    "1990-12-31T00:00:00"
+  ],
+  "accrual_periodicity": "http://publications.europa.eu/resource/authority/frequency/OTHER",
+  "accrual_periodicity_in_vocab": true,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((13.1650 51.7987, 13.3316 51.7987, 13.3316 51.6987, 13.1650 51.6987, 13.1650 51.7987))"
+  ],
+  "spatial_resources": [
+    "Ndcb64fbcbb354d9a82d4f470fd68c805"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "Nff17dda812474549825da5ee34c6fb28",
+  "publisher": "Nea261ae7143e410b8030dcc1ce97b51e",
+  "contact_points": [
+    "N548256869bf24f29b22b202b0bff98c3"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/66ac807a-251f-4d4d-9ecf-45d4a3eff615",
+      "titles": [
+        "statische Informationsseite"
+      ],
+      "descriptions": [
+        "statische Informationsseite"
+      ],
+      "download_url": "https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/",
+      "access_url": "https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-06-21T02:23:51.797386"
+      ],
+      "issued": [
+        "2026-06-21T02:23:51.823851"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=utf-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://geobasis-bb.de/lgb/de/geodaten/historische-karten/top-karten-ab-1991/",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/753cf4a1-4601-4439-b8fc-52fa7d3870c6",
+      "titles": [
+        "Internetshop der LGB"
+      ],
+      "descriptions": [
+        "Internetshop der LGB"
+      ],
+      "download_url": "https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=88663d82-41fa-4c4c-9c24-597594161a9d",
+      "access_url": "https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=88663d82-41fa-4c4c-9c24-597594161a9d",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-06-21T02:23:51.797618"
+      ],
+      "issued": [
+        "2026-06-21T02:23:51.823858"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "gbss.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "gbss.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=88663d82-41fa-4c4c-9c24-597594161a9d",
+        "content_disposition": null,
+        "attachment_filename": "gbss.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/175757f8-9b24-495e-93f1-e6a46e0b6478",
+      "titles": [
+        "Downloadseite"
+      ],
+      "descriptions": [
+        "Downloadseite"
+      ],
+      "download_url": "https://data.geobasis-bb.de/geobasis/karten/topographische-karten/tk25/historisch/tk25_4245_1994.pdf",
+      "access_url": "https://data.geobasis-bb.de/geobasis/karten/topographische-karten/tk25/historisch/tk25_4245_1994.pdf",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/PDF"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2025-02-23T02:07:21.941486"
+      ],
+      "issued": [
+        "2024-12-11T18:59:28.646921"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "tk25_4245_1994.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "tk25_4245_1994.pdf",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://data.geobasis-bb.de/geobasis/karten/topographische-karten/tk25/historisch/tk25_4245_1994.pdf",
+        "content_disposition": "attachment",
+        "attachment_filename": "tk25_4245_1994.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel ist spezifisch und enthält Maßstab (1:25.000), Blattnummer (4245), Ortsbezeichnung (Kolochau) und Jahr (1994).",
+        "Die Angaben ermöglichen eine eindeutige Identifikation des Kartenblatts.",
+        "Der Titel ist prägnant und folgt einer klaren Namenskonvention für topographische Karten."
+      ],
+      "reasoning": "Der Titel ist vorbildlich strukturiert: Er nennt den Kartentyp, den Maßstab, die Blattnummer, den Ort und das Jahr. Damit ist das Kartenblatt eindeutig identifizierbar und von anderen Blättern unterscheidbar. Keine Abkürzungen oder Sonderzeichen stören das Verständnis.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt ausführlich, was eine TK25 ist, wie sie entsteht (Ableitung aus TK10 bzw. Basis-DLM) und was sie darstellt.",
+        "Sie nennt den zeitlichen Kontext (historische Ausgaben ab 1991, ab 2004 ATKIS-Ableitung) und die Verfügbarkeit (analog und Download).",
+        "Format und Struktur der Daten werden nicht konkret beschrieben (z. B. Dateiformat, Projektion, Auflösung)."
+      ],
+      "reasoning": "Die Beschreibung ist substanziell und informativ: Sie beantwortet, was enthalten ist (generalisierte Erdoberfläche, Bebauung, Einzelheiten), wie die Daten entstanden sind (Ableitung, Generalisierung) und wozu sie dienen (Zeitgeschichte, Kartendarstellung). Der Hinweis auf Lizenzbedingungen und Verfügbarkeit ist hilfreich. Allerdings fehlen technische Details wie Dateiformat, Projektion oder Auflösung, die bei Geodaten üblich wären. Insgesamt aber eine gute, verständliche Beschreibung.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung passen inhaltlich zusammen: Beide beziehen sich auf topographische Karten im Maßstab 1:25.000.",
+        "Die Beschreibung konkretisiert den Titel durch Erläuterung der Kartenart und des historischen Kontexts.",
+        "Das im Titel genannte Jahr 1994 wird in der Beschreibung durch den Hinweis auf historische Ausgaben ab 1991 gestützt."
+      ],
+      "reasoning": "Titel und Beschreibung sind kohärent: Der Titel nennt ein konkretes Kartenblatt, die Beschreibung erläutert die Kartenserie und deren Eigenschaften. Keine Widersprüche erkennbar.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "keyword_quality": {
+      "findings": [
+        "Das Schlagwort '125.000' ist fehlerhaft (sollte '1:25.000' oder '25000' sein) und enthält einen Tippfehler.",
+        "Die Schlagwörter 'historische-karte', 'karte' und 'vermessung' sind inhaltlich passend und laienverständlich.",
+        "Das Schlagwort 'opendata' ist eher ein formaler Tag und wiederholt die Tatsache, dass der Datensatz offen ist (wird bereits durch Metadaten ausgedrückt)."
+      ],
+      "reasoning": "Die Schlagwörter sind überwiegend gut gewählt und verständlich. Allerdings ist '125.000' ein klarer Fehler (vermutlich sollte es '1:25.000' oder '25000' heißen), und 'opendata' ist redundant. 'karte' ist sehr generisch, aber akzeptabel. Insgesamt brauchbar, aber mit deutlichen Schwächen.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Die Themen REGI (Regionen), GOVE (Regierung), AGRI (Landwirtschaft), TECH (Technologie) und ENVI (Umwelt) sind sehr breit gefächert.",
+        "Topographische Karten passen primär zu REGI und ENVI, die anderen Themen (GOVE, AGRI, TECH) sind weniger offensichtlich passend.",
+        "Titel, Beschreibung und Schlagwörter sind konsistent auf topographische Kartographie fokussiert."
+      ],
+      "reasoning": "Titel, Beschreibung und Schlagwörter bilden ein klares, konsistentes Themenbild (topographische Karte). Die Zuordnung zu fünf verschiedenen EU-Themen ist jedoch sehr breit und teilweise nicht nachvollziehbar (z. B. AGRI, TECH). Dies deutet auf eine zu großzügige Themenvergabe hin, schwächt aber die interne Konsistenz nur leicht.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Das Jahr 1994 ist im Titel enthalten, der räumliche Bezug (Kolochau, Blattnummer 4245) ebenfalls.",
+        "Die Beschreibung nennt den zeitlichen Kontext (historische Ausgaben ab 1991, ab 2004 ATKIS) und die Verfügbarkeit.",
+        "Ein Polygon mit Koordinaten ist vorhanden, das die räumliche Abdeckung präzise beschreibt."
+      ],
+      "reasoning": "Alle für eine historische topographische Karte erforderlichen Qualifizierer sind vorhanden: Jahr (1994), räumliche Abdeckung (Blattnummer, Ort, Polygon), Hinweis auf historischen Charakter und Entstehungskontext. Vorbildlich.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "overall_summary": "Die Metadaten sind insgesamt aussagekräftig und gut strukturiert: Titel und Beschreibung sind spezifisch, verständlich und kohärent, alle notwendigen Kontextangaben (Jahr, Ort, räumliche Abdeckung) sind vorhanden. Kleinere Schwächen zeigen sich bei den Schlagwörtern (Tippfehler '125.000', redundantes 'opendata') und der sehr breiten Themenzuordnung."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6441,
+      "output_tokens": 1784,
+      "total_tokens": 8225,
+      "cost_usd": 0.046083,
+      "latency_seconds": 28.753
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-13 13:43:40 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_open-data-brandenburg_04/result.json
+2026-07-13 13:43:40 - __main__ - INFO -   ✓ Completed | score=0.76 grade=B

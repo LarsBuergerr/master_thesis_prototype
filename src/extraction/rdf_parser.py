@@ -9,7 +9,6 @@ from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-# Common namespaces
 DCAT = Namespace("http://www.w3.org/ns/dcat#")
 DCTERMS = Namespace("http://purl.org/dc/terms/")
 DCATDE = Namespace("http://dcat-ap.de/def/dcatde/")

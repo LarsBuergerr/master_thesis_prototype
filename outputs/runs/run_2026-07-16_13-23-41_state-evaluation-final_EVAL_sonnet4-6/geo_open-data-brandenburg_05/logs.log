@@ -1,0 +1,532 @@
+2026-07-16 13:28:19 - reporting.output_manager - INFO - Created file log handler for geo_open-data-brandenburg_05.rdf at run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_open-data-brandenburg_05/logs.log
+2026-07-16 13:28:19 - __main__ - INFO - Started processing: geo_open-data-brandenburg_05.rdf
+2026-07-16 13:28:19 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_open-data-brandenburg_05.rdf
+2026-07-16 13:28:19 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_open-data-brandenburg_05.rdf using format: xml
+2026-07-16 13:28:19 - extraction.rdf_parser - INFO - Successfully parsed 86 triples
+2026-07-16 13:28:19 - scoring.service - INFO - Parsed 86 triples
+2026-07-16 13:28:19 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-16 13:28:19 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-16 13:28:19 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/20e9a88d-4125-4b4d-89de-41358e7e1f84 — Geoportal des Amtes Odervorland
+  downloadURL : https://www.geoportal-amt-odervorland.de/
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=-                                        mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-16 13:28:19 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/02af1d22-4766-40d0-955b-36d5ddcf6f49 — Flächennutzungsplan Buchholz - Amt Odervorland Gemeinde Steinhöfel OT Buchholz (WFS)
+  accessURL   : https://www.geoportal-amt-odervorland.de/isk/fp098?REQUEST=GetCapabilities&SERVICE=WFS
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=fp098                                    mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+2026-07-16 13:28:19 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/53f07580-8b96-47aa-9666-96772835155b — Flächennutzungsplan Buchholz - Amt Odervorland Gemeinde Steinhöfel OT Buchholz (WMS)
+  accessURL   : https://www.geoportal-amt-odervorland.de/isk/fp098?REQUEST=GetCapabilities&SERVICE=WMS
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=fp098                                    mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+2026-07-16 13:28:19 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-16 13:28:47 - scoring.service - DEBUG - Attached expressiveness assessment (summary: '{"overall_summary": "Der Datensatz ist durch einen spezifischen, gut strukturierten Titel und konsistente Themenzuordnun')
+2026-07-16 13:28:47 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 13:28:47 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=9
+2026-07-16 13:28:47 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['amt-odervorland', 'bauleitplanung', 'erdbeobachtung-und-umwelt', 'flächennutzungsplan', 'fnp', 'opendata', 'ot-buchholz', 'planung', 'steinhöfel']
+2026-07-16 13:28:47 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/REGI', 'http://publications.europa.eu/resource/authority/data-theme/GOVE']
+2026-07-16 13:28:47 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-16 13:28:47 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 13:28:47 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 13:28:47 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 13:28:47 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 13:28:47 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 13:28:47 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-16 13:28:47 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/c28e2586-be45-4d64-9917-5b5db4c8d4c9 = 2000-07-01T00:00:00
+2026-07-16 13:28:47 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/20e9a88d-4125-4b4d-89de-41358e7e1f84 = 2026-05-21T11:11:34.305281
+2026-07-16 13:28:47 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/02af1d22-4766-40d0-955b-36d5ddcf6f49 = 2025-10-29T04:45:22.522484
+2026-07-16 13:28:47 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/53f07580-8b96-47aa-9666-96772835155b = 2025-10-29T04:45:22.522486
+2026-07-16 13:28:47 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-16 13:28:47 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/c28e2586-be45-4d64-9917-5b5db4c8d4c9 = 2025-10-27T12:11:08
+2026-07-16 13:28:47 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/20e9a88d-4125-4b4d-89de-41358e7e1f84 = 2026-05-21T11:11:34.273560
+2026-07-16 13:28:47 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/02af1d22-4766-40d0-955b-36d5ddcf6f49 = 2025-10-27T12:11:08
+2026-07-16 13:28:47 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/53f07580-8b96-47aa-9666-96772835155b = 2025-10-27T12:11:08
+2026-07-16 13:28:47 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 13:28:47 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 13:28:47 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.33 with_download=1/3
+2026-07-16 13:28:47 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 13:28:47 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 13:28:47 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=3/3
+2026-07-16 13:28:47 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 13:28:47 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/3
+2026-07-16 13:28:47 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 13:28:47 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/3
+2026-07-16 13:28:47 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-16 13:28:47 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=0.83 high=2 mid=1 none=0 total=3
+2026-07-16 13:28:47 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=3/3
+2026-07-16 13:28:47 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 13:28:47 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-16 13:28:47 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 13:28:47 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 13:28:47 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 13:28:47 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 13:28:47 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 13:28:48 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-16 13:28:48 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-16 13:28:48 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.85 | Der Titel ist prägnant, spezifisch und klar verständlich. Er unterscheidet den Datensatz eindeutig von ähnlichen Plänen 
+2026-07-16 13:28:48 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.30 | Die Beschreibung liefert eine knappe, aber generische Erklärung des Plantyps, die für jeden Flächennutzungsplan in Deuts
+2026-07-16 13:28:48 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.75 | Titel und Beschreibung passen thematisch zusammen – beide behandeln einen Flächennutzungsplan. Die Beschreibung ist zwar
+2026-07-16 13:28:48 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.55 | Die Schlagwörter decken das Thema gut ab, haben aber mehrere Schwächen: Bindestrich-Schreibweise statt normaler Begriffe
+2026-07-16 13:28:48 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] pass | score=0.90 | Alle Metadatenfelder zeigen ein konsistentes Bild: kommunale Raumplanung/Bauleitplanung in Brandenburg. Die gewählten DC
+2026-07-16 13:28:48 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 13:28:48 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.55 | Das Ausstellungsdatum ist vorhanden, was für einen statischen Plan grundlegend ist. Allerdings fehlt der Planungsstatus 
+2026-07-16 13:28:48 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 13:28:48 - scoring.service - DEBUG - {
+  "dataset_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/c28e2586-be45-4d64-9917-5b5db4c8d4c9",
+  "titles": [
+    "Flächennutzungsplan Buchholz - Amt Odervorland Gemeinde Steinhöfel OT Buchholz"
+  ],
+  "descriptions": [
+    "Der Flächennutzungsplan enthält als vorbereitender Bauleitplan ein Bodennutzungskonzept für das gesamte Gemeindegebiet, welches der Umsetzung durch Bebauungspläne bzw. durch Satzungen bedarf."
+  ],
+  "keywords": [
+    "amt-odervorland",
+    "bauleitplanung",
+    "erdbeobachtung-und-umwelt",
+    "flächennutzungsplan",
+    "fnp",
+    "opendata",
+    "ot-buchholz",
+    "planung",
+    "steinhöfel"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2025-10-27T12:11:08"
+  ],
+  "issued": [
+    "2000-07-01T00:00:00"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((14.0763 52.4418, 14.1398 52.4418, 14.1398 52.4088, 14.0763 52.4088, 14.0763 52.4418))"
+  ],
+  "spatial_resources": [
+    "Nbcf2c0f0ae8e47b2a8c4ee9d9c942699"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "N2f4f175c731847b799021d52b968daeb",
+  "publisher": "N30248db79af34f039cf44f599e31d9fc",
+  "contact_points": [
+    "N0802b09874864d43a87596c4de070730"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/20e9a88d-4125-4b4d-89de-41358e7e1f84",
+      "titles": [
+        "Geoportal des Amtes Odervorland"
+      ],
+      "descriptions": [
+        "Geoportal des Amtes Odervorland"
+      ],
+      "download_url": "https://www.geoportal-amt-odervorland.de/",
+      "access_url": "https://www.geoportal-amt-odervorland.de/",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2026-05-21T11:11:34.273560"
+      ],
+      "issued": [
+        "2026-05-21T11:11:34.305281"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-amt-odervorland.de/",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/02af1d22-4766-40d0-955b-36d5ddcf6f49",
+      "titles": [
+        "Flächennutzungsplan Buchholz - Amt Odervorland Gemeinde Steinhöfel OT Buchholz (WFS)"
+      ],
+      "descriptions": [
+        "Der Flächennutzungsplan enthält als vorbereitender Bauleitplan ein Bodennutzungskonzept für das gesamte Gemeindegebiet, welches der Umsetzung durch Bebauungspläne bzw. durch Satzungen bedarf."
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal-amt-odervorland.de/isk/fp098?REQUEST=GetCapabilities&SERVICE=WFS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-10-27T12:11:08"
+      ],
+      "issued": [
+        "2025-10-29T04:45:22.522484"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WFS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "fp098",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-amt-odervorland.de/isk/fp098?REQUEST=GetCapabilities&SERVICE=WFS",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/53f07580-8b96-47aa-9666-96772835155b",
+      "titles": [
+        "Flächennutzungsplan Buchholz - Amt Odervorland Gemeinde Steinhöfel OT Buchholz (WMS)"
+      ],
+      "descriptions": [
+        "Der Flächennutzungsplan enthält als vorbereitender Bauleitplan ein Bodennutzungskonzept für das gesamte Gemeindegebiet, welches der Umsetzung durch Bebauungspläne bzw. durch Satzungen bedarf."
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal-amt-odervorland.de/isk/fp098?REQUEST=GetCapabilities&SERVICE=WMS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-10-27T12:11:08"
+      ],
+      "issued": [
+        "2025-10-29T04:45:22.522486"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "fp098",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-amt-odervorland.de/isk/fp098?REQUEST=GetCapabilities&SERVICE=WMS",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Titel ist spezifisch und eindeutig: enthält Plantyp (Flächennutzungsplan), Ortsname (Buchholz), Verwaltungseinheit (Amt Odervorland), Gemeinde (Steinhöfel) und Ortsteil (OT Buchholz)",
+        "Kein Zeitbezug im Titel, obwohl Bauleitpläne typischerweise versioniert/datiert sind – jedoch kein zwingender Mangel",
+        "Keine Abkürzungen ohne Erklärung, kein Markdown, kein technischer Ballast"
+      ],
+      "reasoning": "Der Titel ist prägnant, spezifisch und klar verständlich. Er unterscheidet den Datensatz eindeutig von ähnlichen Plänen anderer Gemeinden. Kleinere Redundanz (Buchholz erscheint zweimal), aber kein wesentlicher Mangel.",
+      "applicable": true,
+      "score": 0.85
+    },
+    "description_quality": {
+      "findings": [
+        "Beschreibung erklärt den Plantyp (vorbereitender Bauleitplan) und seinen Zweck (Bodennutzungskonzept für das gesamte Gemeindegebiet)",
+        "Keine Angaben zur Struktur des Datensatzes (Format, Layeraufbau, Koordinatensystem, Dateityp)",
+        "Keine Angaben zur Erhebungsmethode, zum Geltungsbereich, zum Planungsstand oder zu Besonderheiten des Datensatzes"
+      ],
+      "reasoning": "Die Beschreibung liefert eine knappe, aber generische Erklärung des Plantyps, die für jeden Flächennutzungsplan in Deutschland zutreffen würde. Sie beantwortet nicht, was konkret im Datensatz enthalten ist (z. B. Geometrien, Nutzungskategorien, Dateiformate) und gibt keine datensatzspezifischen Informationen. Deutliche Mängel in der Substanz.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf einen Flächennutzungsplan",
+        "Die Beschreibung ist generisch, enthält aber keinen Widerspruch zum Titel",
+        "Kein inhaltlicher Konflikt zwischen den beiden Feldern erkennbar"
+      ],
+      "reasoning": "Titel und Beschreibung passen thematisch zusammen – beide behandeln einen Flächennutzungsplan. Die Beschreibung ist zwar sehr allgemein, widerspricht dem Titel aber nicht.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "keyword_quality": {
+      "findings": [
+        "Schlagwörter wie 'flächennutzungsplan', 'bauleitplanung', 'planung' sind inhaltlich relevant und spezifisch",
+        "Schlagwort 'opendata' ist ein formales/offensichtliches Tag ohne inhaltlichen Mehrwert",
+        "Schlagwörter 'amt-odervorland', 'ot-buchholz', 'steinhöfel' sind als Bindestriche-Komposita formuliert statt als atomare, lesbare Begriffe; 'fnp' ist eine unerklärte Abkürzung"
+      ],
+      "reasoning": "Die Schlagwörter decken das Thema gut ab, haben aber mehrere Schwächen: Bindestrich-Schreibweise statt normaler Begriffe, eine unerklärte Abkürzung (fnp) und ein inhaltsleeres 'opendata'-Tag. Insgesamt brauchbar, aber mit klaren Formalmängeln.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Themes REGI (Regionen) und GOVE (Regierung/öffentlicher Sektor) passen gut zu einem kommunalen Bauleitplan",
+        "Schlagwörter und Titel sind konsistent auf Bauleitplanung ausgerichtet",
+        "Kein thematischer Widerspruch zwischen den Feldern erkennbar"
+      ],
+      "reasoning": "Alle Metadatenfelder zeigen ein konsistentes Bild: kommunale Raumplanung/Bauleitplanung in Brandenburg. Die gewählten DCAT-Themes sind passend.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Das Ausstellungsdatum (issued: 2000-07-01) ist vorhanden und gibt einen wichtigen zeitlichen Bezug für den Planungsstand",
+        "Es fehlt eine Angabe zum Rechtsstatus des Plans (z. B. rechtskräftig, in Aufstellung, geändert) – bei Bauleitplänen ein wichtiger Qualifizierer",
+        "Kein Hinweis auf etwaige Änderungen oder Teilfortschreibungen des Plans"
+      ],
+      "reasoning": "Das Ausstellungsdatum ist vorhanden, was für einen statischen Plan grundlegend ist. Allerdings fehlt der Planungsstatus (Rechtskraft, Entwurf etc.), der bei Bauleitplänen ein klar erwarteter Qualifizierer ist. Leichte Abwertung.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch einen spezifischen, gut strukturierten Titel und konsistente Themenzuordnung erkennbar, leidet jedoch unter einer generischen Beschreibung, die keine datensatzspezifischen Informationen (Format, Struktur, Planungsstand) liefert. Schlagwörter und kontextuelle Qualifizierer weisen ebenfalls kleinere Mängel auf.\"}"
+  },
+  "semantic_assessment_raw": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "tool_args": {
+      "title_quality": {
+        "findings": [
+          "Titel ist spezifisch und eindeutig: enthält Plantyp (Flächennutzungsplan), Ortsname (Buchholz), Verwaltungseinheit (Amt Odervorland), Gemeinde (Steinhöfel) und Ortsteil (OT Buchholz)",
+          "Kein Zeitbezug im Titel, obwohl Bauleitpläne typischerweise versioniert/datiert sind – jedoch kein zwingender Mangel",
+          "Keine Abkürzungen ohne Erklärung, kein Markdown, kein technischer Ballast"
+        ],
+        "reasoning": "Der Titel ist prägnant, spezifisch und klar verständlich. Er unterscheidet den Datensatz eindeutig von ähnlichen Plänen anderer Gemeinden. Kleinere Redundanz (Buchholz erscheint zweimal), aber kein wesentlicher Mangel.",
+        "score": 0.85
+      },
+      "description_quality": {
+        "findings": [
+          "Beschreibung erklärt den Plantyp (vorbereitender Bauleitplan) und seinen Zweck (Bodennutzungskonzept für das gesamte Gemeindegebiet)",
+          "Keine Angaben zur Struktur des Datensatzes (Format, Layeraufbau, Koordinatensystem, Dateityp)",
+          "Keine Angaben zur Erhebungsmethode, zum Geltungsbereich, zum Planungsstand oder zu Besonderheiten des Datensatzes"
+        ],
+        "reasoning": "Die Beschreibung liefert eine knappe, aber generische Erklärung des Plantyps, die für jeden Flächennutzungsplan in Deutschland zutreffen würde. Sie beantwortet nicht, was konkret im Datensatz enthalten ist (z. B. Geometrien, Nutzungskategorien, Dateiformate) und gibt keine datensatzspezifischen Informationen. Deutliche Mängel in der Substanz.",
+        "score": 0.3
+      },
+      "title_description_coherence": {
+        "findings": [
+          "Titel und Beschreibung beziehen sich beide auf einen Flächennutzungsplan",
+          "Die Beschreibung ist generisch, enthält aber keinen Widerspruch zum Titel",
+          "Kein inhaltlicher Konflikt zwischen den beiden Feldern erkennbar"
+        ],
+        "reasoning": "Titel und Beschreibung passen thematisch zusammen – beide behandeln einen Flächennutzungsplan. Die Beschreibung ist zwar sehr allgemein, widerspricht dem Titel aber nicht.",
+        "score": 0.75
+      },
+      "keyword_quality": {
+        "findings": [
+          "Schlagwörter wie 'flächennutzungsplan', 'bauleitplanung', 'planung' sind inhaltlich relevant und spezifisch",
+          "Schlagwort 'opendata' ist ein formales/offensichtliches Tag ohne inhaltlichen Mehrwert",
+          "Schlagwörter 'amt-odervorland', 'ot-buchholz', 'steinhöfel' sind als Bindestriche-Komposita formuliert statt als atomare, lesbare Begriffe; 'fnp' ist eine unerklärte Abkürzung"
+        ],
+        "reasoning": "Die Schlagwörter decken das Thema gut ab, haben aber mehrere Schwächen: Bindestrich-Schreibweise statt normaler Begriffe, eine unerklärte Abkürzung (fnp) und ein inhaltsleeres 'opendata'-Tag. Insgesamt brauchbar, aber mit klaren Formalmängeln.",
+        "score": 0.55
+      },
+      "thematic_consistency": {
+        "findings": [
+          "Themes REGI (Regionen) und GOVE (Regierung/öffentlicher Sektor) passen gut zu einem kommunalen Bauleitplan",
+          "Schlagwörter und Titel sind konsistent auf Bauleitplanung ausgerichtet",
+          "Kein thematischer Widerspruch zwischen den Feldern erkennbar"
+        ],
+        "reasoning": "Alle Metadatenfelder zeigen ein konsistentes Bild: kommunale Raumplanung/Bauleitplanung in Brandenburg. Die gewählten DCAT-Themes sind passend.",
+        "score": 0.9
+      },
+      "contextual_qualifiers": {
+        "applicable": true,
+        "findings": [
+          "Das Ausstellungsdatum (issued: 2000-07-01) ist vorhanden und gibt einen wichtigen zeitlichen Bezug für den Planungsstand",
+          "Es fehlt eine Angabe zum Rechtsstatus des Plans (z. B. rechtskräftig, in Aufstellung, geändert) – bei Bauleitplänen ein wichtiger Qualifizierer",
+          "Kein Hinweis auf etwaige Änderungen oder Teilfortschreibungen des Plans"
+        ],
+        "reasoning": "Das Ausstellungsdatum ist vorhanden, was für einen statischen Plan grundlegend ist. Allerdings fehlt der Planungsstatus (Rechtskraft, Entwurf etc.), der bei Bauleitplänen ein klar erwarteter Qualifizierer ist. Leichte Abwertung.",
+        "score": 0.55
+      },
+      "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch einen spezifischen, gut strukturierten Titel und konsistente Themenzuordnung erkennbar, leidet jedoch unter einer generischen Beschreibung, die keine datensatzspezifischen Informationen (Format, Struktur, Planungsstand) liefert. Schlagwörter und kontextuelle Qualifizierer weisen ebenfalls kleinere Mängel auf.\"}"
+    },
+    "text_content": null,
+    "parsing_error": null,
+    "salvaged": false,
+    "repairs": []
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "input_tokens": 5687,
+      "output_tokens": 1490,
+      "total_tokens": 7177,
+      "cost_usd": 0.039411,
+      "latency_seconds": 27.371
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-16 13:28:48 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_open-data-brandenburg_05/result.json
+2026-07-16 13:28:48 - __main__ - INFO -   ✓ Completed | score=0.71 grade=C

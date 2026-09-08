@@ -1,0 +1,368 @@
+2026-07-16 13:40:07 - reporting.output_manager - INFO - Created file log handler for non_geo_land-schleswig-holstein_02.rdf at run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/non_geo_land-schleswig-holstein_02/logs.log
+2026-07-16 13:40:07 - __main__ - INFO - Started processing: non_geo_land-schleswig-holstein_02.rdf
+2026-07-16 13:40:07 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_land-schleswig-holstein_02.rdf
+2026-07-16 13:40:07 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_land-schleswig-holstein_02.rdf using format: xml
+2026-07-16 13:40:07 - extraction.rdf_parser - INFO - Successfully parsed 53 triples
+2026-07-16 13:40:07 - scoring.service - INFO - Parsed 53 triples
+2026-07-16 13:40:07 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-16 13:40:07 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-16 13:40:15 - scoring.service - DEBUG - [OK   ] https://region.statistik-nord.de/detail_timelineexport/12/1101/31/1/352/282667/ — 2025-09-08-22-01-Siedlungs-_und_Verkehrsflaechen_nach_Nutzungsartengruppen_in_Brodersby-Goltoft
+  downloadURL : https://region.statistik-nord.de/detail_timelineexport/12/1101/31/1/352/282667/
+  HTTP        : 200
+  attachment  : 2026-07-16-13-40-Zeitreihe_fuer_Brodersby-Goltoft.csv
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/csv
+    dcat:mediaType       raw=https://www.iana.org/assignments/media-… mime=text/csv
+    url_extension        raw=-                                        mime=-
+    http_content_type    raw=text/csv; charset=iso-8859-1             mime=text/csv
+    attachment_filename  raw=2026-07-16-13-40-Zeitreihe_fuer_Broders… mime=text/csv
+  coalesced   : text/csv
+2026-07-16 13:40:15 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-16 13:40:44 - scoring.service - DEBUG - Attached expressiveness assessment (summary: '{"overall_summary": "Der Datensatz ist durch Titel und kontextuelle Metadaten (Zeitraum, Ort, Aktualisierungsfrequenz) g')
+2026-07-16 13:40:44 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 13:40:44 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=7
+2026-07-16 13:40:44 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['brodersby-goltoft', 'davon-nach-nutzungsartengruppen', 'fläche', 'gebiet', 'nutzungsartengruppen', 'siedlungs-', 'verkehrsflächen']
+2026-07-16 13:40:44 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/SOCI']
+2026-07-16 13:40:44 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=1/1
+2026-07-16 13:40:44 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-16 13:40:44 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] partial score=0.50 source=dcatde:politicalGeocodingURI uri=http://dcat-ap.de/def/politicalGeocoding/regionalKey/01059189 segment=regionalKey
+2026-07-16 13:40:44 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] pass score=1.00 valid=1/1
+2026-07-16 13:40:44 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['2016-12-01T00:00:00'], endDate: ['2024-12-01T00:00:00']
+2026-07-16 13:40:44 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=dateTime/True
+2026-07-16 13:40:44 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-16 13:40:44 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://region.statistik-nord.de/detail_timeline/12/1101/31/1/352/282667/ = 2025-08-12T00:00:00
+2026-07-16 13:40:44 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://region.statistik-nord.de/detail_timelineexport/12/1101/31/1/352/282667/ = 2021-04-08T10:09:00.858696
+2026-07-16 13:40:44 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-16 13:40:44 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://region.statistik-nord.de/detail_timeline/12/1101/31/1/352/282667/ = 2025-08-12T00:00:00
+2026-07-16 13:40:44 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://region.statistik-nord.de/detail_timelineexport/12/1101/31/1/352/282667/ = 2025-09-08T20:07:12.187807
+2026-07-16 13:40:44 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 13:40:44 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 13:40:44 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=1/1
+2026-07-16 13:40:44 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 13:40:44 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=1/1
+2026-07-16 13:40:44 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 13:40:44 - scoring.indicator.acc_media_type - INFO - [acc_media_type] pass score=1.00 passing=1/1
+2026-07-16 13:40:44 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 13:40:44 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 13:40:44 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 13:40:44 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 13:40:44 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=1 mid=0 none=0 total=1
+2026-07-16 13:40:44 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=1/1
+2026-07-16 13:40:44 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 13:40:44 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=1/1
+2026-07-16 13:40:44 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 13:40:44 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 13:40:44 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 13:40:44 - scoring.indicator.reuse_contact - INFO - [reuse_contact] FAIL score=0.00 no contactPoint set
+2026-07-16 13:40:44 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 13:40:45 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=5
+2026-07-16 13:40:45 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-16 13:40:45 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=0.82 | Der Titel ist prägnant, spezifisch und verständlich. Thema und Ort sind eindeutig benannt. Der fehlende Zeitbezug ist ei
+2026-07-16 13:40:45 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.10 | Die Beschreibung liefert kaum substanzielle Informationen über den Datensatz: Sie wiederholt den Titel, enthält Markdown
+2026-07-16 13:40:45 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.65 | Titel und Beschreibung sind thematisch konsistent und widerspruchsfrei. Die Beschreibung konkretisiert den Titel jedoch 
+2026-07-16 13:40:45 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 13:40:45 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.25 | Die Schlagwörter weisen mehrere Mängel auf: Redundanz mit dem Titel (Ortsname), ein unvollständiges Schlagwort ('siedlun
+2026-07-16 13:40:45 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] fail | score=0.40 | Während Titel, Beschreibung und Schlagwörter thematisch konsistent auf Flächennutzung verweisen, ist die dcat:theme-Zuwe
+2026-07-16 13:40:45 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] pass | score=0.90 | Alle für eine Zeitreihe relevanten Qualifizierer sind vorhanden: Bezugszeitraum, Aktualisierungsfrequenz und räumliche A
+2026-07-16 13:40:45 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 13:40:45 - scoring.service - DEBUG - {
+  "dataset_uri": "https://region.statistik-nord.de/detail_timeline/12/1101/31/1/352/282667/",
+  "titles": [
+    "Siedlungs- und Verkehrsflächen nach Nutzungsartengruppen in Brodersby-Goltoft"
+  ],
+  "descriptions": [
+    "\nGebiet, Fläche - Gebiet - Siedlungs- und Verkehrsflächen nach Nutzungsartengruppen in Brodersby-Goltoft \n\n[Zum HTML-Angebot der Zeitreihe](https://region.statistik-nord.de/detail_timeline/12/1101/31/1/352/282667/)\n\n[Regionaldaten für Schleswig-Holstein](https://region.statistik-nord.de/main/1)\n\nStatistisches Amt für Hamburg und Schleswig-Holstein\n          "
+  ],
+  "keywords": [
+    "brodersby-goltoft",
+    "davon-nach-nutzungsartengruppen",
+    "fläche",
+    "gebiet",
+    "nutzungsartengruppen",
+    "siedlungs-",
+    "verkehrsflächen"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+  ],
+  "themes_in_vocab": [
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2025-08-12T00:00:00"
+  ],
+  "issued": [
+    "2025-08-12T00:00:00"
+  ],
+  "accrual_periodicity": "http://publications.europa.eu/resource/authority/frequency/YEARLY",
+  "accrual_periodicity_in_vocab": false,
+  "start_dates": [
+    "2016-12-01T00:00:00"
+  ],
+  "end_dates": [
+    "2024-12-01T00:00:00"
+  ],
+  "geometries": [],
+  "spatial_resources": [
+    "http://dcat-ap.de/def/politicalGeocoding/municipalityKey/01059189",
+    "N6d66b079dfdf48ceb0b6d430070f0c68"
+  ],
+  "admin_units": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/01059189",
+      "segment": "regionalKey",
+      "is_in_vocab": false
+    }
+  ],
+  "political_geocoding": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/01059189",
+      "segment": "regionalKey",
+      "is_in_vocab": false
+    }
+  ],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/Level/municipality"
+  ],
+  "political_geocoding_level_in_vocab": [
+    true
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+  "publisher": "https://opendata.schleswig-holstein.de/organization/statistikamt-nord",
+  "contact_points": [],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/schleswigHolstein"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://region.statistik-nord.de/detail_timelineexport/12/1101/31/1/352/282667/",
+      "titles": [
+        "2025-09-08-22-01-Siedlungs-_und_Verkehrsflaechen_nach_Nutzungsartengruppen_in_Brodersby-Goltoft"
+      ],
+      "descriptions": [],
+      "download_url": "https://region.statistik-nord.de/detail_timelineexport/12/1101/31/1/352/282667/",
+      "access_url": "https://region.statistik-nord.de/detail_timelineexport/12/1101/31/1/352/282667/",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/CSV"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [
+        "https://www.iana.org/assignments/media-types/text/csv"
+      ],
+      "media_types_form_valid": [
+        true
+      ],
+      "media_types_in_vocab": [
+        true
+      ],
+      "modified": [
+        "2025-09-08T20:07:12.187807"
+      ],
+      "issued": [
+        "2021-04-08T10:09:00.858696"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/CSV",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "https://www.iana.org/assignments/media-types/text/csv",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/csv; charset=iso-8859-1",
+            "mime_type": "text/csv"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "2026-07-16-13-40-Zeitreihe_fuer_Brodersby-Goltoft.csv",
+            "mime_type": "text/csv"
+          }
+        ],
+        "coalesced_mime": "text/csv",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://region.statistik-nord.de/detail_timelineexport/12/1101/31/1/352/282667/",
+        "content_disposition": "attachment; filename=2026-07-16-13-40-Zeitreihe_fuer_Brodersby-Goltoft.csv",
+        "attachment_filename": "2026-07-16-13-40-Zeitreihe_fuer_Brodersby-Goltoft.csv",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Titel ist spezifisch und nennt Thema (Siedlungs- und Verkehrsflächen nach Nutzungsartengruppen) sowie Ort (Brodersby-Goltoft) klar",
+        "Kein Zeitbezug im Titel, obwohl es sich um eine Zeitreihe handelt – wäre hilfreich, aber nicht zwingend",
+        "Keine Abkürzungen, kein Markdown, kein technischer Ballast"
+      ],
+      "reasoning": "Der Titel ist prägnant, spezifisch und verständlich. Thema und Ort sind eindeutig benannt. Der fehlende Zeitbezug ist ein kleiner Abzug, da es sich um eine Zeitreihe handelt.",
+      "applicable": true,
+      "score": 0.82
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung wiederholt im Wesentlichen nur den Titel ('Gebiet, Fläche - Gebiet - Siedlungs- und Verkehrsflächen nach Nutzungsartengruppen in Brodersby-Goltoft') ohne inhaltliche Mehrwertinformation",
+        "Enthält Markdown-Links ('[Zum HTML-Angebot der Zeitreihe](...)' und '[Regionaldaten für Schleswig-Holstein](...)'), die in einem Metadaten-Textfeld als Rohtext erscheinen und nicht als Fließtext geeignet sind",
+        "Keine Angaben zu Struktur, Methodik, Erhebungsgrundlage, Einheiten oder Kategorien der Nutzungsartengruppen"
+      ],
+      "reasoning": "Die Beschreibung liefert kaum substanzielle Informationen über den Datensatz: Sie wiederholt den Titel, enthält Markdown-Formatierung und nennt lediglich die Herausgeberorganisation. Wesentliche Aspekte wie Datenstruktur, Erhebungsmethode und Inhalt der Nutzungsartengruppen fehlen vollständig.",
+      "applicable": true,
+      "score": 0.1
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Beschreibung und Titel beziehen sich auf dasselbe Thema (Siedlungs- und Verkehrsflächen in Brodersby-Goltoft)",
+        "Kein inhaltlicher Widerspruch zwischen Titel und Beschreibung erkennbar",
+        "Die Beschreibung fügt dem Titel jedoch kaum neue Information hinzu – sie ist inhaltlich fast identisch"
+      ],
+      "reasoning": "Titel und Beschreibung sind thematisch konsistent und widerspruchsfrei. Die Beschreibung konkretisiert den Titel jedoch nicht, sondern wiederholt ihn nur. Kohärenz ist gegeben, aber die Beschreibung leistet keinen eigenständigen Beitrag.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "keyword_quality": {
+      "findings": [
+        "'brodersby-goltoft' ist redundant zum Titel und gehört eher in ein Ortsfeld",
+        "'davon-nach-nutzungsartengruppen' ist ein ungewöhnliches Kompositum mit Bindestrich, kein laienverständlicher atomarer Begriff",
+        "'siedlungs-' ist ein unvollständiges Schlagwort (abgeschnittenes Kompositum ohne zweiten Teil)"
+      ],
+      "reasoning": "Die Schlagwörter weisen mehrere Mängel auf: Redundanz mit dem Titel (Ortsname), ein unvollständiges Schlagwort ('siedlungs-'), ein kryptisches Kompositum ('davon-nach-nutzungsartengruppen'). Nur 'fläche', 'gebiet' und 'nutzungsartengruppen' sind brauchbar, aber teils zu generisch.",
+      "applicable": true,
+      "score": 0.25
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das zugewiesene Thema ist 'SOCI' (Bevölkerung und Gesellschaft), obwohl der Datensatz Flächennutzungsdaten (Siedlungs- und Verkehrsflächen) beschreibt – dies wäre eher 'ENVI' (Umwelt) oder 'REGI' (Regionen und Städte)'",
+        "Titel, Beschreibung und Schlagwörter sind untereinander thematisch konsistent (alle beziehen sich auf Flächennutzung)",
+        "Das SOCI-Thema passt nicht zum Inhalt und erzeugt ein Off-topic-Signal"
+      ],
+      "reasoning": "Während Titel, Beschreibung und Schlagwörter thematisch konsistent auf Flächennutzung verweisen, ist die dcat:theme-Zuweisung 'SOCI' (Bevölkerung/Gesellschaft) für Siedlungs- und Verkehrsflächendaten nicht passend. Dies stellt eine thematische Inkonsistenz dar.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Zeitreihe ist mit Start (2016-12-01) und Ende (2024-12-01) klar ausgewiesen",
+        "Aktualisierungsrhythmus ist als 'YEARLY' angegeben",
+        "Räumliche Abdeckung ist durch Gemeindeschlüssel (01059189 = Brodersby-Goltoft) präzise kodiert"
+      ],
+      "reasoning": "Alle für eine Zeitreihe relevanten Qualifizierer sind vorhanden: Bezugszeitraum, Aktualisierungsfrequenz und räumliche Abdeckung. Keine wesentlichen Lücken.",
+      "applicable": true,
+      "score": 0.9
+    },
+    "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch Titel und kontextuelle Metadaten (Zeitraum, Ort, Aktualisierungsfrequenz) grundsätzlich identifizierbar, leidet jedoch unter einer inhaltlich leeren Beschreibung mit Markdown-Resten, qualitativ schwachen Schlagwörtern und einer thematisch unpassenden SOCI-Kategorisierung für Flächennutzungsdaten.\"}"
+  },
+  "semantic_assessment_raw": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "tool_args": {
+      "title_quality": {
+        "findings": [
+          "Titel ist spezifisch und nennt Thema (Siedlungs- und Verkehrsflächen nach Nutzungsartengruppen) sowie Ort (Brodersby-Goltoft) klar",
+          "Kein Zeitbezug im Titel, obwohl es sich um eine Zeitreihe handelt – wäre hilfreich, aber nicht zwingend",
+          "Keine Abkürzungen, kein Markdown, kein technischer Ballast"
+        ],
+        "reasoning": "Der Titel ist prägnant, spezifisch und verständlich. Thema und Ort sind eindeutig benannt. Der fehlende Zeitbezug ist ein kleiner Abzug, da es sich um eine Zeitreihe handelt.",
+        "score": 0.82
+      },
+      "description_quality": {
+        "findings": [
+          "Die Beschreibung wiederholt im Wesentlichen nur den Titel ('Gebiet, Fläche - Gebiet - Siedlungs- und Verkehrsflächen nach Nutzungsartengruppen in Brodersby-Goltoft') ohne inhaltliche Mehrwertinformation",
+          "Enthält Markdown-Links ('[Zum HTML-Angebot der Zeitreihe](...)' und '[Regionaldaten für Schleswig-Holstein](...)'), die in einem Metadaten-Textfeld als Rohtext erscheinen und nicht als Fließtext geeignet sind",
+          "Keine Angaben zu Struktur, Methodik, Erhebungsgrundlage, Einheiten oder Kategorien der Nutzungsartengruppen"
+        ],
+        "reasoning": "Die Beschreibung liefert kaum substanzielle Informationen über den Datensatz: Sie wiederholt den Titel, enthält Markdown-Formatierung und nennt lediglich die Herausgeberorganisation. Wesentliche Aspekte wie Datenstruktur, Erhebungsmethode und Inhalt der Nutzungsartengruppen fehlen vollständig.",
+        "score": 0.1
+      },
+      "title_description_coherence": {
+        "findings": [
+          "Beschreibung und Titel beziehen sich auf dasselbe Thema (Siedlungs- und Verkehrsflächen in Brodersby-Goltoft)",
+          "Kein inhaltlicher Widerspruch zwischen Titel und Beschreibung erkennbar",
+          "Die Beschreibung fügt dem Titel jedoch kaum neue Information hinzu – sie ist inhaltlich fast identisch"
+        ],
+        "reasoning": "Titel und Beschreibung sind thematisch konsistent und widerspruchsfrei. Die Beschreibung konkretisiert den Titel jedoch nicht, sondern wiederholt ihn nur. Kohärenz ist gegeben, aber die Beschreibung leistet keinen eigenständigen Beitrag.",
+        "score": 0.65
+      },
+      "keyword_quality": {
+        "findings": [
+          "'brodersby-goltoft' ist redundant zum Titel und gehört eher in ein Ortsfeld",
+          "'davon-nach-nutzungsartengruppen' ist ein ungewöhnliches Kompositum mit Bindestrich, kein laienverständlicher atomarer Begriff",
+          "'siedlungs-' ist ein unvollständiges Schlagwort (abgeschnittenes Kompositum ohne zweiten Teil)"
+        ],
+        "reasoning": "Die Schlagwörter weisen mehrere Mängel auf: Redundanz mit dem Titel (Ortsname), ein unvollständiges Schlagwort ('siedlungs-'), ein kryptisches Kompositum ('davon-nach-nutzungsartengruppen'). Nur 'fläche', 'gebiet' und 'nutzungsartengruppen' sind brauchbar, aber teils zu generisch.",
+        "score": 0.25
+      },
+      "thematic_consistency": {
+        "findings": [
+          "Das zugewiesene Thema ist 'SOCI' (Bevölkerung und Gesellschaft), obwohl der Datensatz Flächennutzungsdaten (Siedlungs- und Verkehrsflächen) beschreibt – dies wäre eher 'ENVI' (Umwelt) oder 'REGI' (Regionen und Städte)'",
+          "Titel, Beschreibung und Schlagwörter sind untereinander thematisch konsistent (alle beziehen sich auf Flächennutzung)",
+          "Das SOCI-Thema passt nicht zum Inhalt und erzeugt ein Off-topic-Signal"
+        ],
+        "reasoning": "Während Titel, Beschreibung und Schlagwörter thematisch konsistent auf Flächennutzung verweisen, ist die dcat:theme-Zuweisung 'SOCI' (Bevölkerung/Gesellschaft) für Siedlungs- und Verkehrsflächendaten nicht passend. Dies stellt eine thematische Inkonsistenz dar.",
+        "score": 0.4
+      },
+      "contextual_qualifiers": {
+        "findings": [
+          "Zeitreihe ist mit Start (2016-12-01) und Ende (2024-12-01) klar ausgewiesen",
+          "Aktualisierungsrhythmus ist als 'YEARLY' angegeben",
+          "Räumliche Abdeckung ist durch Gemeindeschlüssel (01059189 = Brodersby-Goltoft) präzise kodiert"
+        ],
+        "reasoning": "Alle für eine Zeitreihe relevanten Qualifizierer sind vorhanden: Bezugszeitraum, Aktualisierungsfrequenz und räumliche Abdeckung. Keine wesentlichen Lücken.",
+        "applicable": true,
+        "score": 0.9
+      },
+      "overall_summary": "{\"overall_summary\": \"Der Datensatz ist durch Titel und kontextuelle Metadaten (Zeitraum, Ort, Aktualisierungsfrequenz) grundsätzlich identifizierbar, leidet jedoch unter einer inhaltlich leeren Beschreibung mit Markdown-Resten, qualitativ schwachen Schlagwörtern und einer thematisch unpassenden SOCI-Kategorisierung für Flächennutzungsdaten.\"}"
+    },
+    "text_content": null,
+    "parsing_error": null,
+    "salvaged": false,
+    "repairs": []
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "input_tokens": 5703,
+      "output_tokens": 1602,
+      "total_tokens": 7305,
+      "cost_usd": 0.041139,
+      "latency_seconds": 28.483
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-16 13:40:45 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/non_geo_land-schleswig-holstein_02/result.json
+2026-07-16 13:40:45 - __main__ - INFO -   ✓ Completed | score=0.72 grade=C

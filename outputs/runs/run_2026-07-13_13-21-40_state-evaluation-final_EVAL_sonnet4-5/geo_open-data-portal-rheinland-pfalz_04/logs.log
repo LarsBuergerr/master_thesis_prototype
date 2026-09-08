@@ -1,0 +1,732 @@
+2026-07-13 13:28:07 - reporting.output_manager - INFO - Created file log handler for geo_open-data-portal-rheinland-pfalz_04.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/geo_open-data-portal-rheinland-pfalz_04/logs.log
+2026-07-13 13:28:07 - __main__ - INFO - Started processing: geo_open-data-portal-rheinland-pfalz_04.rdf
+2026-07-13 13:28:07 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_open-data-portal-rheinland-pfalz_04.rdf
+2026-07-13 13:28:07 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_open-data-portal-rheinland-pfalz_04.rdf using format: xml
+2026-07-13 13:28:07 - extraction.rdf_parser - INFO - Successfully parsed 94 triples
+2026-07-13 13:28:07 - scoring.service - INFO - Parsed 94 triples
+2026-07-13 13:28:07 - scoring.service - DEBUG - DatasetContext built: 6 distribution(s)
+2026-07-13 13:28:07 - scoring.service - DEBUG - attach_probes: 6/6 unique fetch keys, 6 distribution(s) covered
+2026-07-13 13:28:07 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_mapviewer_layer_41880 — Online Karte
+  accessURL   : https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=41880
+  HTTP        : 200
+  final URL   : https://www.geoportal.rlp.de/mapbender/extensions/mobilemap2/index.html?layerid=41880
+  attachment  : index.html
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=map.php                                  mime=-
+    http_content_type    raw=text/html                                mime=text/html
+    attachment_filename  raw=index.html (from final URL)              mime=text/html
+  coalesced   : text/html
+2026-07-13 13:28:07 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_layer_metadata_41880 — Originäre Metadaten für Kartenebene
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=41880
+  HTTP        : 200
+  attachment  : mod_showMetadata.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mod_showMetadata.php                     mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mod_showMetadata.php (from final URL)    mime=-
+  coalesced   : text/html
+2026-07-13 13:28:08 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_atom_feed_wms_41880 — Rasterdownload nach EU-Standard
+  accessURL   : https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D6b71fc2b-b0a0-4379-8506-30a0c1ae7a67%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D41880
+  HTTP        : 200
+  attachment  : mb_downloadFeedClient.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mb_downloadFeedClient.php                mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mb_downloadFeedClient.php (from final U… mime=-
+  coalesced   : text/html
+2026-07-13 13:28:08 - scoring.service - DEBUG - [ERROR] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_wms_interface_41880 — WMS Schnittstelle
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=41880&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS
+  HTTP        : 200
+  attachment  : wms.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=wms.php                                  mime=-
+    http_content_type    raw=application/xhtml+xml; charset=UTF-8     mime=application/xhtml+xml
+    attachment_filename  raw=wms.php (from final URL)                 mime=-
+  coalesced   : application/xml
+  issue       : http_content_type='application/xhtml+xml' conflicts with previously coalesced 'application/xml'
+2026-07-13 13:28:08 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/html_metadata_6b71fc2b-b0a0-4379-8506-30a0c1ae7a67 — Original Metadaten HTML
+  accessURL   : https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D6b71fc2b-b0a0-4379-8506-30a0c1ae7a67
+  HTTP        : 200
+  attachment  : mod_exportIso19139.php
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=mod_exportIso19139.php                   mime=-
+    http_content_type    raw=text/html; charset=UTF-8                 mime=text/html
+    attachment_filename  raw=mod_exportIso19139.php (from final URL)  mime=-
+  coalesced   : text/html
+2026-07-13 13:28:12 - scoring.service - DEBUG - [OK   ] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_geoportal_layer_41880 — GeoPortal.rlp
+  accessURL   : https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=41880
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=text/html
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=map                                      mime=-
+    http_content_type    raw=text/html; charset=utf-8                 mime=text/html
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/html
+2026-07-13 13:28:12 - scoring.service - DEBUG - Attached probes to 6/6 distribution(s)
+2026-07-13 13:28:35 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten weisen erhebliche Schwächen in der Aussagekraft auf: Der Titel ist zu generisch ohne Ortsbezug, die Beschr')
+2026-07-13 13:28:35 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:28:35 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] partial score=0.50 keywords=1
+2026-07-13 13:28:35 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['inspireidentifiziert']
+2026-07-13 13:28:35 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/ECON', 'http://publications.europa.eu/resource/authority/data-theme/ENVI']
+2026-07-13 13:28:35 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-13 13:28:35 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-13 13:28:35 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-13 13:28:35 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-13 13:28:35 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['1986-12-17'], endDate: ['1987-08-14']
+2026-07-13 13:28:35 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=date/True end=date/True
+2026-07-13 13:28:35 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=7/7 dataset=1 distribution=6 field=http://purl.org/dc/terms/issued
+2026-07-13 13:28:35 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67 = 2026-06-18
+2026-07-13 13:28:35 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/html_metadata_6b71fc2b-b0a0-4379-8506-30a0c1ae7a67 = 2024-09-02T22:44:33.373690
+2026-07-13 13:28:35 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_mapviewer_layer_41880 = 2024-09-02T22:44:33.373693
+2026-07-13 13:28:35 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_geoportal_layer_41880 = 2024-09-02T22:44:33.373694
+2026-07-13 13:28:35 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_layer_metadata_41880 = 2024-09-02T22:44:33.373695
+2026-07-13 13:28:35 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_wms_interface_41880 = 2024-09-02T22:44:33.373697
+2026-07-13 13:28:35 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_atom_feed_wms_41880 = 2025-11-11T21:16:08.952349
+2026-07-13 13:28:35 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=7/7 dataset=1 distribution=6 field=http://purl.org/dc/terms/modified
+2026-07-13 13:28:35 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67 = 2026-06-18
+2026-07-13 13:28:35 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/html_metadata_6b71fc2b-b0a0-4379-8506-30a0c1ae7a67 = 2024-09-02T22:44:33.369177
+2026-07-13 13:28:35 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_mapviewer_layer_41880 = 2025-11-11T21:16:08.938560
+2026-07-13 13:28:35 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_geoportal_layer_41880 = 2025-11-11T21:16:08.938623
+2026-07-13 13:28:35 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_layer_metadata_41880 = 2025-11-11T21:16:08.938680
+2026-07-13 13:28:35 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_wms_interface_41880 = 2025-11-11T21:16:08.938734
+2026-07-13 13:28:35 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_atom_feed_wms_41880 = 2025-11-11T21:16:08.938874
+2026-07-13 13:28:35 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:28:35 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:28:35 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:28:35 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/6
+2026-07-13 13:28:35 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:28:35 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=6/6
+2026-07-13 13:28:35 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:28:35 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/6
+2026-07-13 13:28:35 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:28:35 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-13 13:28:35 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=6/6 relevant=6/6
+2026-07-13 13:28:35 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] partial score=0.58 high=1 mid=5 none=0 total=6
+2026-07-13 13:28:35 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=6/6
+2026-07-13 13:28:35 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:28:35 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=6/6
+2026-07-13 13:28:35 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:28:35 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:28:35 - scoring.indicator.reuse_contact - INFO - [reuse_contact] FAIL score=0.00 no contactPoint set
+2026-07-13 13:28:35 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-13 13:28:35 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:28:37 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=2
+2026-07-13 13:28:37 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/6
+2026-07-13 13:28:37 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] fail | score=0.30 | Der Titel ist zu generisch und nicht spezifisch genug. Bei einem Bebauungsplan einer konkreten Ortsgemeinde sollte der O
+2026-07-13 13:28:37 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.35 | Die Beschreibung ist sehr knapp und beantwortet nur die Frage 'Was ist enthalten?' rudimentär. Die Fragen nach Struktur,
+2026-07-13 13:28:37 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] pass | score=0.95 | Titel und Beschreibung sind kohärent und widerspruchsfrei. Die Beschreibung konkretisiert den Titel durch Nennung der Ge
+2026-07-13 13:28:37 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.10 | Das einzige vorhandene Schlagwort ist ein formaler, technischer Tag ohne inhaltlichen Mehrwert für die Auffindbarkeit od
+2026-07-13 13:28:37 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] fail | score=0.40 | Die thematische Kategorisierung als Wirtschaft und Umwelt passt nicht gut zu einem Bebauungsplan, der primär ein raumpla
+2026-07-13 13:28:37 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.65 | Für einen Bebauungsplan sind zeitlicher und räumlicher Bezug vorhanden. Allerdings fehlt ein wichtiger Qualifizierer: de
+2026-07-13 13:28:37 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:28:37 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:28:37 - scoring.service - DEBUG - {
+  "dataset_uri": "https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67",
+  "titles": [
+    "Dorf- und Festplatz"
+  ],
+  "descriptions": [
+    "Bebauungsplan \"Dorf- und Festplatz\" der Ortsgemeinde Ediger-Eller, Ortsteil Eller"
+  ],
+  "keywords": [
+    "inspireidentifiziert"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/ECON",
+    "http://publications.europa.eu/resource/authority/data-theme/ENVI"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [],
+  "modified": [
+    "2026-06-18"
+  ],
+  "issued": [
+    "2026-06-18"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [
+    "1986-12-17"
+  ],
+  "end_dates": [
+    "1987-08-14"
+  ],
+  "geometries": [],
+  "spatial_resources": [],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "https://www.geoportal.rlp.de/organization/9f7872a0-187b-6314-8f37-6452a911b51c",
+  "contact_points": [],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/html_metadata_6b71fc2b-b0a0-4379-8506-30a0c1ae7a67",
+      "titles": [
+        "Original Metadaten HTML"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D6b71fc2b-b0a0-4379-8506-30a0c1ae7a67",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2024-09-02T22:44:33.369177"
+      ],
+      "issued": [
+        "2024-09-02T22:44:33.373690"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-zero"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mod_exportIso19139.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mod_exportIso19139.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/mod_exportIso19139.php?url=https%3A%2F%2Fwww.geoportal.rlp.de%2Fmapbender%2Fphp%2Fmod_dataISOMetadata.php%3FoutputFormat%3Diso19139%26id%3D6b71fc2b-b0a0-4379-8506-30a0c1ae7a67",
+        "content_disposition": null,
+        "attachment_filename": "mod_exportIso19139.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_mapviewer_layer_41880",
+      "titles": [
+        "Online Karte"
+      ],
+      "descriptions": [
+        "Dorf- und Festplatz - Vorschau im integrierten Kartenviewer"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/extensions/mobilemap/map.php?layerid=41880",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-11-11T21:16:08.938560"
+      ],
+      "issued": [
+        "2024-09-02T22:44:33.373693"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "map.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "index.html (from final URL)",
+            "mime_type": "text/html"
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/extensions/mobilemap2/index.html?layerid=41880",
+        "content_disposition": null,
+        "attachment_filename": "index.html",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_geoportal_layer_41880",
+      "titles": [
+        "GeoPortal.rlp"
+      ],
+      "descriptions": [
+        "Dorf- und Festplatz - Anzeige im GeoPortal.rlp"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=41880",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-11-11T21:16:08.938623"
+      ],
+      "issued": [
+        "2024-09-02T22:44:33.373694"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "map",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=utf-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/map?LAYER%5Bzoom%5D=1&LAYER%5Bid%5D=41880",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_layer_metadata_41880",
+      "titles": [
+        "Originäre Metadaten für Kartenebene"
+      ],
+      "descriptions": [
+        "Kartenebene: Dorf- und Festplatz - Anzeige der originären Metadaten"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=41880",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-11-11T21:16:08.938680"
+      ],
+      "issued": [
+        "2024-09-02T22:44:33.373695"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/cc-zero"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mod_showMetadata.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mod_showMetadata.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/mod_showMetadata.php?languageCode=de&resource=layer&layout=tabs&id=41880",
+        "content_disposition": null,
+        "attachment_filename": "mod_showMetadata.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_wms_interface_41880",
+      "titles": [
+        "WMS Schnittstelle"
+      ],
+      "descriptions": [
+        "Ebene: Dorf- und Festplatz"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=41880&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-11-11T21:16:08.938734"
+      ],
+      "issued": [
+        "2024-09-02T22:44:33.373697"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "wms.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/xhtml+xml; charset=UTF-8",
+            "mime_type": "application/xhtml+xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "wms.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [
+          "http_content_type='application/xhtml+xml' conflicts with previously coalesced 'application/xml'"
+        ],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/php/wms.php?layer_id=41880&REQUEST=GetCapabilities&VERSION=1.1.1&SERVICE=WMS",
+        "content_disposition": null,
+        "attachment_filename": "wms.php",
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    },
+    {
+      "distribution_uri": "https://www.geoportal.rlp.de/dataset/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67/resource/6b71fc2b-b0a0-4379-8506-30a0c1ae7a67_atom_feed_wms_41880",
+      "titles": [
+        "Rasterdownload nach EU-Standard"
+      ],
+      "descriptions": [
+        "INSPIRE Downloaddienst (predefined ATOM) für Datensatz: Dorf- und Festplatz - basierend auf WMS Datenquelle"
+      ],
+      "download_url": null,
+      "access_url": "https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D6b71fc2b-b0a0-4379-8506-30a0c1ae7a67%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D41880",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/HTML"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-11-11T21:16:08.938874"
+      ],
+      "issued": [
+        "2025-11-11T21:16:08.952349"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/HTML",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "mb_downloadFeedClient.php",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/html; charset=UTF-8",
+            "mime_type": "text/html"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "mb_downloadFeedClient.php (from final URL)",
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/html",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal.rlp.de/mapbender/plugins/mb_downloadFeedClient.php?url=http%3A%2F%2Flocalhost%2Fmapbender%2Fphp%2Fmod_inspireDownloadFeed.php%3Fid%3D6b71fc2b-b0a0-4379-8506-30a0c1ae7a67%26type%3DSERVICE%26generateFrom%3Dwmslayer%26layerid%3D41880",
+        "content_disposition": null,
+        "attachment_filename": "mb_downloadFeedClient.php",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel 'Dorf- und Festplatz' ist sehr kurz und generisch.",
+        "Es fehlt jeglicher Ortsbezug im Titel, obwohl es sich um einen lokalen Bebauungsplan handelt.",
+        "Ohne Kontext ist der Titel nicht von ähnlichen Datensätzen anderer Gemeinden unterscheidbar."
+      ],
+      "reasoning": "Der Titel ist zu generisch und nicht spezifisch genug. Bei einem Bebauungsplan einer konkreten Ortsgemeinde sollte der Ortsbezug (Ediger-Eller, Ortsteil Eller) im Titel enthalten sein, um den Datensatz von ähnlichen Plänen anderer Gemeinden zu unterscheiden. Der Titel allein lässt nicht erkennen, um welchen Ort es sich handelt.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung nennt den Datentyp (Bebauungsplan), die Gemeinde (Ediger-Eller, Ortsteil Eller) und den Namen des Plans.",
+        "Es fehlen wesentliche Informationen: Was ist der Inhalt/Zweck des Plans? Welche Festsetzungen enthält er? In welchem Format liegen die Daten vor?",
+        "Keine Angaben zu Struktur, Erhebungsmethode oder Besonderheiten des Datensatzes."
+      ],
+      "reasoning": "Die Beschreibung ist sehr knapp und beantwortet nur die Frage 'Was ist enthalten?' rudimentär. Die Fragen nach Struktur, Format, Erhebungsmethode, Zweck und Besonderheiten bleiben unbeantwortet. Für einen Bebauungsplan wären Angaben zu Festsetzungen, Geltungsbereich, Planungszielen und Datenformat wichtig.",
+      "applicable": true,
+      "score": 0.35
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung passen inhaltlich zusammen: beide beziehen sich auf denselben Bebauungsplan 'Dorf- und Festplatz'.",
+        "Die Beschreibung ergänzt den Titel um den Ortsbezug (Ediger-Eller, Ortsteil Eller).",
+        "Keine erkennbaren Widersprüche zwischen Titel und Beschreibung."
+      ],
+      "reasoning": "Titel und Beschreibung sind kohärent und widerspruchsfrei. Die Beschreibung konkretisiert den Titel durch Nennung der Gemeinde und des Ortsteils. Es handelt sich erkennbar um denselben Datensatz.",
+      "applicable": true,
+      "score": 0.95
+    },
+    "keyword_quality": {
+      "findings": [
+        "Es existiert nur ein einziges Schlagwort: 'inspireidentifiziert'.",
+        "Das Schlagwort ist rein technisch-formal und beschreibt nicht den Inhalt des Datensatzes.",
+        "Inhaltlich relevante Begriffe wie 'Bebauungsplan', 'Bauleitplanung', 'Raumordnung', 'Eller' oder 'Ediger-Eller' fehlen völlig."
+      ],
+      "reasoning": "Das einzige vorhandene Schlagwort ist ein formaler, technischer Tag ohne inhaltlichen Mehrwert für die Auffindbarkeit oder das Verständnis des Datensatzes. Inhaltlich spezifische und laienverständliche Schlagwörter, die den Bebauungsplan charakterisieren würden, fehlen komplett.",
+      "applicable": true,
+      "score": 0.1
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Der Datensatz ist als ECON (Wirtschaft) und ENVI (Umwelt) kategorisiert.",
+        "Ein Bebauungsplan hat primär raumplanerischen/städtebaulichen Charakter und würde eher zu REGI (Regionen und Städte) passen.",
+        "Die Kategorisierung als ECON und ENVI ist für einen Bebauungsplan nicht naheliegend und wirkt inkonsistent."
+      ],
+      "reasoning": "Die thematische Kategorisierung als Wirtschaft und Umwelt passt nicht gut zu einem Bebauungsplan, der primär ein raumplanerisches Instrument ist. Die Zuordnung zu REGI wäre deutlich passender. Dies erzeugt eine thematische Inkonsistenz, auch wenn Bebauungspläne durchaus wirtschaftliche und umweltrelevante Aspekte haben können.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Der zeitliche Bezug ist vorhanden: temporal.start_dates (1986-12-17) und temporal.end_dates (1987-08-14) geben den Geltungszeitraum an.",
+        "Der räumliche Bezug (Ediger-Eller, Ortsteil Eller) ist in der Beschreibung genannt.",
+        "Es fehlt eine Kennzeichnung des Planungsstatus (rechtskräftig, im Verfahren, Entwurf etc.)."
+      ],
+      "reasoning": "Für einen Bebauungsplan sind zeitlicher und räumlicher Bezug vorhanden. Allerdings fehlt ein wichtiger Qualifizierer: der Planungsstatus (z.B. rechtskräftig, im Verfahren). Dies ist bei Bebauungsplänen essentiell, da der rechtliche Status die Verbindlichkeit bestimmt. Ein wichtiger Qualifizierer fehlt.",
+      "applicable": true,
+      "score": 0.65
+    },
+    "overall_summary": "Die Metadaten weisen erhebliche Schwächen in der Aussagekraft auf: Der Titel ist zu generisch ohne Ortsbezug, die Beschreibung sehr knapp ohne strukturelle Details, und es existiert nur ein technisches Schlagwort ohne inhaltlichen Mehrwert. Die thematische Kategorisierung als Wirtschaft/Umwelt passt nicht gut zu einem Bebauungsplan."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 5913,
+      "output_tokens": 1649,
+      "total_tokens": 7562,
+      "cost_usd": 0.042474,
+      "latency_seconds": 23.464
+    }
+  ],
+  "distribution_count": 6
+}
+2026-07-13 13:28:37 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/geo_open-data-portal-rheinland-pfalz_04/result.json
+2026-07-13 13:28:37 - __main__ - INFO -   ✓ Completed | score=0.52 grade=D

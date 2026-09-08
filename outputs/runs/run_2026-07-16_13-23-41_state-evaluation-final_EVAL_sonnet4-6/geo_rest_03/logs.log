@@ -1,0 +1,341 @@
+2026-07-16 13:32:23 - reporting.output_manager - INFO - Created file log handler for geo_rest_03.rdf at run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_rest_03/logs.log
+2026-07-16 13:32:23 - __main__ - INFO - Started processing: geo_rest_03.rdf
+2026-07-16 13:32:23 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/geo_rest_03.rdf
+2026-07-16 13:32:23 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/geo_rest_03.rdf using format: xml
+2026-07-16 13:32:23 - extraction.rdf_parser - INFO - Successfully parsed 41 triples
+2026-07-16 13:32:23 - scoring.service - INFO - Parsed 41 triples
+2026-07-16 13:32:23 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-16 13:32:23 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-16 13:32:23 - scoring.service - DEBUG - [OK   ] https://services.lgrb-bw.de/ms/lgrb_hw_hyd?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0 — WMS LGRB-BW HW_HYD: Natürliche Geogene Grundwasserbeschaffenheit in den hydrogeochemischen Einheiten von Baden-Württemberg 1 : 300.000
+  accessURL   : https://services.lgrb-bw.de/ms/lgrb_hw_hyd?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0
+  HTTP        : 200
+  signals     :
+    dct:format           raw=http://publications.europa.eu/resource/… mime=application/xml
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=lgrb_hw_hyd                              mime=-
+    http_content_type    raw=text/xml; charset=UTF-8                  mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : application/xml
+2026-07-16 13:32:23 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-16 13:32:57 - scoring.service - DEBUG - Attached expressiveness assessment (summary: '{"overall_summary": "Die Metadaten verfügen über eine substanzielle Beschreibung mit Methodik, Zweck und Dokumentationsl')
+2026-07-16 13:32:57 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-16 13:32:57 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=5
+2026-07-16 13:32:57 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['beschaffenheit', 'geodaten', 'geologie', 'grundwasser', 'opendata']
+2026-07-16 13:32:57 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: []
+2026-07-16 13:32:57 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] FAIL score=0.00 no themes
+2026-07-16 13:32:57 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-16 13:32:57 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-16 13:32:57 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-16 13:32:57 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-16 13:32:57 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-16 13:32:57 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-16 13:32:57 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://registry.gdi-de.org/id/de.bw/c9065fec-ab9c-44b5-bdef-14194b9626ae = 2025-12-19T08:15:13
+2026-07-16 13:32:57 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://services.lgrb-bw.de/ms/lgrb_hw_hyd?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0 = 2025-12-20T02:10:57.959639
+2026-07-16 13:32:57 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-16 13:32:57 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://registry.gdi-de.org/id/de.bw/c9065fec-ab9c-44b5-bdef-14194b9626ae = 2025-12-19T08:15:13
+2026-07-16 13:32:57 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://services.lgrb-bw.de/ms/lgrb_hw_hyd?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0 = 2025-12-20T02:10:57.950570
+2026-07-16 13:32:57 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-16 13:32:57 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-16 13:32:57 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/1
+2026-07-16 13:32:57 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-16 13:32:57 - scoring.indicator.acc_format - INFO - [acc_format] pass score=1.00 passing=1/1
+2026-07-16 13:32:57 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-16 13:32:57 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-16 13:32:57 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/1
+2026-07-16 13:32:57 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-16 13:32:57 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-16 13:32:57 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-16 13:32:57 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=1 mid=0 none=0 total=1
+2026-07-16 13:32:57 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] pass score=1.00 passing=1/1
+2026-07-16 13:32:57 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-16 13:32:57 - scoring.indicator.reuse_license - INFO - [reuse_license] fail score=-0.50 free=0/1
+2026-07-16 13:32:57 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-16 13:32:57 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-16 13:32:57 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-16 13:32:57 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-16 13:32:57 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-16 13:32:59 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=1
+2026-07-16 13:32:59 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-16 13:32:59 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] fail | score=0.30 | Der Titel enthält eine unerklärte Abkürzung ('HW_HYD') und ist ohne Kenntnis der LGRB-Systematik kaum verständlich. Der 
+2026-07-16 13:32:59 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] pass | score=0.80 | Die Beschreibung ist substanziell und informativ: Inhalt, Methodik, Zweck und eine Dokumentationsquelle sind vorhanden. 
+2026-07-16 13:32:59 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.75 | Titel und Beschreibung passen thematisch zusammen, auch wenn die Beschreibung eher die gesamte Datensatzreihe als den sp
+2026-07-16 13:32:59 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.45 | Die Schlagwörter sind teilweise gut gewählt (grundwasser, geologie, beschaffenheit), aber 'opendata' und 'geodaten' sind
+2026-07-16 13:32:59 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-16 13:32:59 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] partial | score=0.55 | Da kein dcat:theme vergeben wurde, ist eine vollständige thematische Konsistenzprüfung nicht möglich. Die vorhandenen Fe
+2026-07-16 13:32:59 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.30 | Für einen Datensatz mit Messdaten/Statistiken ist der Erhebungszeitraum ein klar verlangter Qualifizierer, der fehlt. Da
+2026-07-16 13:32:59 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-16 13:32:59 - scoring.service - DEBUG - {
+  "dataset_uri": "https://registry.gdi-de.org/id/de.bw/c9065fec-ab9c-44b5-bdef-14194b9626ae",
+  "titles": [
+    "LGRB-BW HW_HYD: Uran"
+  ],
+  "descriptions": [
+    "Die vorliegende Auswertung zeigt für Baden-Württemberg die geogenen Hintergrundkonzentrationen einer Vielzahl von Grundwasserinhaltsstoffen in Abhängigkeit von den durchflossenen Gesteinen. Sie liefert damit die Grundlage für die Definition von Warnwerten, Grenzwerten und Sanierungszielen in Regelwerken, in der Gesetzgebung und für die Praxis. Die Auswertung basiert auf Proben von oberflächennahen Grundwasseraufschlüssen mit extensiv genutzten, überwiegend bewaldeten oder als Weideland bewirtschafteten Einzugsgebieten. Die Methodik sowie die Ergebnisse der Auswertung sind in den LGRB-Informationen 23 (https://produkte.lgrb-bw.de/docPool/c621_data.pdf) ausführlich beschrieben."
+  ],
+  "keywords": [
+    "beschaffenheit",
+    "geodaten",
+    "geologie",
+    "grundwasser",
+    "opendata"
+  ],
+  "themes": [],
+  "themes_in_vocab": [],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2025-12-19T08:15:13"
+  ],
+  "issued": [
+    "2025-12-19T08:15:13"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((7.2000 50.0000, 10.7000 50.0000, 10.7000 47.4000, 7.2000 47.4000, 7.2000 50.0000))"
+  ],
+  "spatial_resources": [
+    "N13a5167765ee42a798b6966cd930681d"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": null,
+  "publisher": "N4912b8e99b414e138e25aab57cd0073f",
+  "contact_points": [
+    "N860781398b074a978369f67cdb4ff9e2"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/datenBW"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://services.lgrb-bw.de/ms/lgrb_hw_hyd?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0",
+      "titles": [
+        "WMS LGRB-BW HW_HYD: Natürliche Geogene Grundwasserbeschaffenheit in den hydrogeochemischen Einheiten von Baden-Württemberg 1 : 300.000"
+      ],
+      "descriptions": [
+        "Die Darstellung zeigt für Baden-Württemberg die geogenen Hintergrundkonzentrationen einer Vielzahl von Grundwasserinhaltsstoffen in Abhängigkeit von den durchflossenen Gesteinen (hydrogeochemische Einheiten). Sie liefert damit die Grundlage für die Definition von Warnwerten, Grenzwerten und Sanierungszielen in Regelwerken, in der Gesetzgebung und für die Praxis. Die Auswertung basiert auf Proben von oberflächennahen Grundwasseraufschlüssen mit extensiv genutzten, überwiegend bewaldeten oder als Weideland bewirtschafteten Einzugsgebieten. Die Methodik sowie die Ergebnisse der Auswertung sind in den LGRB-Informationen 23 (https://produkte.lgrb-bw.de/docPool/c621_data.pdf) ausführlich beschrieben."
+      ],
+      "download_url": null,
+      "access_url": "https://services.lgrb-bw.de/ms/lgrb_hw_hyd?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0",
+      "formats": [
+        "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"
+      ],
+      "formats_in_vocab": [
+        true
+      ],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-12-20T02:10:57.950570"
+      ],
+      "issued": [
+        "2025-12-20T02:10:57.959639"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/other-closed"
+      ],
+      "licenses_open": [
+        false
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "http://publications.europa.eu/resource/authority/file-type/WMS_SRVC",
+            "mime_type": "application/xml"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "lgrb_hw_hyd",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml; charset=UTF-8",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "application/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://services.lgrb-bw.de/ms/lgrb_hw_hyd?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": true
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel 'LGRB-BW HW_HYD: Uran' ist sehr knapp und enthält unerklärte Abkürzungen ('HW_HYD'), die für Laien nicht verständlich sind.",
+        "Der Stoff 'Uran' ist als Thema erkennbar, aber der Kontext (Grundwasser, geogene Hintergrundkonzentrationen) fehlt im Titel vollständig.",
+        "Der Titel ist kaum von ähnlichen Datensätzen derselben Reihe (z. B. für andere Stoffe) unterscheidbar, da nur der Stoffname variiert, ohne den Datensatztyp zu erläutern."
+      ],
+      "reasoning": "Der Titel enthält eine unerklärte Abkürzung ('HW_HYD') und ist ohne Kenntnis der LGRB-Systematik kaum verständlich. Der Sachinhalt (geogene Hintergrundkonzentrationen im Grundwasser) ist nicht erkennbar. Damit ist der Titel zwar nicht völlig nichtssagend, aber deutlich zu kryptisch.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt klar den Inhalt: geogene Hintergrundkonzentrationen von Grundwasserinhaltsstoffen in Abhängigkeit von durchflossenen Gesteinen in Baden-Württemberg.",
+        "Methodik und Erhebungsgrundlage werden erläutert (Proben aus oberflächennahen Grundwasseraufschlüssen, extensiv genutzte Einzugsgebiete) und ein Link zur ausführlichen Dokumentation (LGRB-Informationen 23) wird angegeben.",
+        "Der Zweck der Daten (Grundlage für Warnwerte, Grenzwerte, Sanierungsziele) wird explizit genannt; allerdings fehlen Angaben zu Format/Struktur der Daten (z. B. Tabelle, Shapefile, Anzahl Proben)."
+      ],
+      "reasoning": "Die Beschreibung ist substanziell und informativ: Inhalt, Methodik, Zweck und eine Dokumentationsquelle sind vorhanden. Kleinere Lücken bestehen bei der Datenstruktur und dem Format. Insgesamt eine gute Beschreibung mit leichten Abzügen.",
+      "applicable": true,
+      "score": 0.8
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Die Beschreibung bezieht sich auf geogene Hintergrundkonzentrationen von Grundwasserinhaltsstoffen in Baden-Württemberg – das passt zum Titel, der 'Uran' als Stoff und 'LGRB-BW' als Herausgeber nennt.",
+        "Der Stoff 'Uran' im Titel wird in der Beschreibung nicht explizit erwähnt, aber die Beschreibung spricht von 'einer Vielzahl von Grundwasserinhaltsstoffen', was Uran einschließt.",
+        "Kein inhaltlicher Widerspruch zwischen Titel und Beschreibung erkennbar."
+      ],
+      "reasoning": "Titel und Beschreibung passen thematisch zusammen, auch wenn die Beschreibung eher die gesamte Datensatzreihe als den spezifischen Stoff Uran beschreibt. Kein Widerspruch, aber die Spezifität des Titels (Uran) wird in der Beschreibung nicht aufgegriffen.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter 'grundwasser', 'geologie', 'beschaffenheit' sind inhaltlich relevant und laienverständlich.",
+        "'opendata' und 'geodaten' sind formale/technische Tags, die keinen inhaltlichen Mehrwert bieten und eher in andere Metadatenfelder gehören.",
+        "Der spezifische Stoff 'Uran' fehlt als Schlagwort, obwohl er das zentrale Thema des Datensatzes ist."
+      ],
+      "reasoning": "Die Schlagwörter sind teilweise gut gewählt (grundwasser, geologie, beschaffenheit), aber 'opendata' und 'geodaten' sind formale Tags ohne inhaltlichen Mehrwert. Das wichtigste inhaltliche Schlagwort 'Uran' fehlt vollständig.",
+      "applicable": true,
+      "score": 0.45
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das Feld 'themes' (dcat:theme) ist leer – es wurde kein DCAT-Thema zugewiesen.",
+        "Titel, Beschreibung und Schlagwörter zeigen ein konsistentes Bild: Grundwasser, Geologie, Stoffkonzentrationen in Baden-Württemberg.",
+        "Ohne dcat:theme kann keine Konsistenz zwischen Thema und den anderen Feldern geprüft werden; die übrigen Felder sind untereinander konsistent."
+      ],
+      "reasoning": "Da kein dcat:theme vergeben wurde, ist eine vollständige thematische Konsistenzprüfung nicht möglich. Die vorhandenen Felder (Titel, Beschreibung, Schlagwörter) sind untereinander konsistent. Die fehlende Themenzuweisung ist ein Mangel.",
+      "applicable": true,
+      "score": 0.55
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Es handelt sich um eine Auswertung von Grundwasserdaten (Messdaten/Statistik), für die ein Bezugszeitraum der Probennahmen relevant wäre – dieser fehlt vollständig.",
+        "Das Änderungs- und Ausgabedatum (2025-12-19) liegt in der Zukunft, was auf ein vorläufiges oder fehlerhaft erfasstes Datum hindeutet; eine 'vorläufig'-Kennzeichnung fehlt.",
+        "Die räumliche Abdeckung (Baden-Württemberg) ist durch die Geometrie implizit vorhanden, aber kein expliziter Bezugszeitraum der Erhebung ist angegeben."
+      ],
+      "reasoning": "Für einen Datensatz mit Messdaten/Statistiken ist der Erhebungszeitraum ein klar verlangter Qualifizierer, der fehlt. Das Datum liegt zudem in der Zukunft, ohne als vorläufig gekennzeichnet zu sein. Dies sind deutliche Mängel.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "overall_summary": "{\"overall_summary\": \"Die Metadaten verfügen über eine substanzielle Beschreibung mit Methodik, Zweck und Dokumentationslink, leiden jedoch unter einem kryptischen, abkürzungsreichen Titel, fehlenden kontextuellen Qualifizierern (insbesondere Erhebungszeitraum), einem leeren dcat:theme-Feld sowie Schlagwörtern, die den zentralen Stoff 'Uran' nicht nennen und formale Tags enthalten. Insgesamt ist die Aussagekraft mäßig – die Beschreibung rettet den Datensatz, während Titel und ergänzende Felder deutlichen Verbesserungsbedarf aufweisen.\"}"
+  },
+  "semantic_assessment_raw": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "tool_args": {
+      "title_quality": {
+        "findings": [
+          "Der Titel 'LGRB-BW HW_HYD: Uran' ist sehr knapp und enthält unerklärte Abkürzungen ('HW_HYD'), die für Laien nicht verständlich sind.",
+          "Der Stoff 'Uran' ist als Thema erkennbar, aber der Kontext (Grundwasser, geogene Hintergrundkonzentrationen) fehlt im Titel vollständig.",
+          "Der Titel ist kaum von ähnlichen Datensätzen derselben Reihe (z. B. für andere Stoffe) unterscheidbar, da nur der Stoffname variiert, ohne den Datensatztyp zu erläutern."
+        ],
+        "reasoning": "Der Titel enthält eine unerklärte Abkürzung ('HW_HYD') und ist ohne Kenntnis der LGRB-Systematik kaum verständlich. Der Sachinhalt (geogene Hintergrundkonzentrationen im Grundwasser) ist nicht erkennbar. Damit ist der Titel zwar nicht völlig nichtssagend, aber deutlich zu kryptisch.",
+        "score": 0.3
+      },
+      "description_quality": {
+        "findings": [
+          "Die Beschreibung erklärt klar den Inhalt: geogene Hintergrundkonzentrationen von Grundwasserinhaltsstoffen in Abhängigkeit von durchflossenen Gesteinen in Baden-Württemberg.",
+          "Methodik und Erhebungsgrundlage werden erläutert (Proben aus oberflächennahen Grundwasseraufschlüssen, extensiv genutzte Einzugsgebiete) und ein Link zur ausführlichen Dokumentation (LGRB-Informationen 23) wird angegeben.",
+          "Der Zweck der Daten (Grundlage für Warnwerte, Grenzwerte, Sanierungsziele) wird explizit genannt; allerdings fehlen Angaben zu Format/Struktur der Daten (z. B. Tabelle, Shapefile, Anzahl Proben)."
+        ],
+        "reasoning": "Die Beschreibung ist substanziell und informativ: Inhalt, Methodik, Zweck und eine Dokumentationsquelle sind vorhanden. Kleinere Lücken bestehen bei der Datenstruktur und dem Format. Insgesamt eine gute Beschreibung mit leichten Abzügen.",
+        "score": 0.8
+      },
+      "title_description_coherence": {
+        "findings": [
+          "Die Beschreibung bezieht sich auf geogene Hintergrundkonzentrationen von Grundwasserinhaltsstoffen in Baden-Württemberg – das passt zum Titel, der 'Uran' als Stoff und 'LGRB-BW' als Herausgeber nennt.",
+          "Der Stoff 'Uran' im Titel wird in der Beschreibung nicht explizit erwähnt, aber die Beschreibung spricht von 'einer Vielzahl von Grundwasserinhaltsstoffen', was Uran einschließt.",
+          "Kein inhaltlicher Widerspruch zwischen Titel und Beschreibung erkennbar."
+        ],
+        "reasoning": "Titel und Beschreibung passen thematisch zusammen, auch wenn die Beschreibung eher die gesamte Datensatzreihe als den spezifischen Stoff Uran beschreibt. Kein Widerspruch, aber die Spezifität des Titels (Uran) wird in der Beschreibung nicht aufgegriffen.",
+        "score": 0.75
+      },
+      "keyword_quality": {
+        "findings": [
+          "Die Schlagwörter 'grundwasser', 'geologie', 'beschaffenheit' sind inhaltlich relevant und laienverständlich.",
+          "'opendata' und 'geodaten' sind formale/technische Tags, die keinen inhaltlichen Mehrwert bieten und eher in andere Metadatenfelder gehören.",
+          "Der spezifische Stoff 'Uran' fehlt als Schlagwort, obwohl er das zentrale Thema des Datensatzes ist."
+        ],
+        "reasoning": "Die Schlagwörter sind teilweise gut gewählt (grundwasser, geologie, beschaffenheit), aber 'opendata' und 'geodaten' sind formale Tags ohne inhaltlichen Mehrwert. Das wichtigste inhaltliche Schlagwort 'Uran' fehlt vollständig.",
+        "score": 0.45
+      },
+      "thematic_consistency": {
+        "findings": [
+          "Das Feld 'themes' (dcat:theme) ist leer – es wurde kein DCAT-Thema zugewiesen.",
+          "Titel, Beschreibung und Schlagwörter zeigen ein konsistentes Bild: Grundwasser, Geologie, Stoffkonzentrationen in Baden-Württemberg.",
+          "Ohne dcat:theme kann keine Konsistenz zwischen Thema und den anderen Feldern geprüft werden; die übrigen Felder sind untereinander konsistent."
+        ],
+        "reasoning": "Da kein dcat:theme vergeben wurde, ist eine vollständige thematische Konsistenzprüfung nicht möglich. Die vorhandenen Felder (Titel, Beschreibung, Schlagwörter) sind untereinander konsistent. Die fehlende Themenzuweisung ist ein Mangel.",
+        "score": 0.55
+      },
+      "contextual_qualifiers": {
+        "findings": [
+          "Es handelt sich um eine Auswertung von Grundwasserdaten (Messdaten/Statistik), für die ein Bezugszeitraum der Probennahmen relevant wäre – dieser fehlt vollständig.",
+          "Das Änderungs- und Ausgabedatum (2025-12-19) liegt in der Zukunft, was auf ein vorläufiges oder fehlerhaft erfasstes Datum hindeutet; eine 'vorläufig'-Kennzeichnung fehlt.",
+          "Die räumliche Abdeckung (Baden-Württemberg) ist durch die Geometrie implizit vorhanden, aber kein expliziter Bezugszeitraum der Erhebung ist angegeben."
+        ],
+        "reasoning": "Für einen Datensatz mit Messdaten/Statistiken ist der Erhebungszeitraum ein klar verlangter Qualifizierer, der fehlt. Das Datum liegt zudem in der Zukunft, ohne als vorläufig gekennzeichnet zu sein. Dies sind deutliche Mängel.",
+        "score": 0.3
+      },
+      "overall_summary": "{\"overall_summary\": \"Die Metadaten verfügen über eine substanzielle Beschreibung mit Methodik, Zweck und Dokumentationslink, leiden jedoch unter einem kryptischen, abkürzungsreichen Titel, fehlenden kontextuellen Qualifizierern (insbesondere Erhebungszeitraum), einem leeren dcat:theme-Feld sowie Schlagwörtern, die den zentralen Stoff 'Uran' nicht nennen und formale Tags enthalten. Insgesamt ist die Aussagekraft mäßig – die Beschreibung rettet den Datensatz, während Titel und ergänzende Felder deutlichen Verbesserungsbedarf aufweisen.\"}"
+    },
+    "text_content": null,
+    "parsing_error": null,
+    "salvaged": false,
+    "repairs": []
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "input_tokens": 5712,
+      "output_tokens": 1890,
+      "total_tokens": 7602,
+      "cost_usd": 0.045486,
+      "latency_seconds": 33.739
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-16 13:32:59 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-16_13-23-41_state-evaluation-final_EVAL/geo_rest_03/result.json
+2026-07-16 13:32:59 - __main__ - INFO -   ✓ Completed | score=0.48 grade=D

@@ -1,0 +1,273 @@
+2026-07-13 13:43:40 - reporting.output_manager - INFO - Created file log handler for non_geo_open-data-brandenburg_05.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_open-data-brandenburg_05/logs.log
+2026-07-13 13:43:40 - __main__ - INFO - Started processing: non_geo_open-data-brandenburg_05.rdf
+2026-07-13 13:43:40 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_open-data-brandenburg_05.rdf
+2026-07-13 13:43:40 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_open-data-brandenburg_05.rdf using format: xml
+2026-07-13 13:43:40 - extraction.rdf_parser - INFO - Successfully parsed 46 triples
+2026-07-13 13:43:40 - scoring.service - INFO - Parsed 46 triples
+2026-07-13 13:43:40 - scoring.service - DEBUG - DatasetContext built: 1 distribution(s)
+2026-07-13 13:43:40 - scoring.service - DEBUG - attach_probes: 1/1 unique fetch keys, 1 distribution(s) covered
+2026-07-13 13:43:40 - scoring.service - DEBUG - [OK   ] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/a675922c-483d-4c2c-a804-5d1870bdce7a — Flächennutzungsplan Stadt Brück mit den Ortsteilen Baitz und Neuendorf, 1. Änderung - Amt Brück Stadt Brück (WFS)
+  downloadURL : https://www.geoportal-amt-brueck.de/isk/fp50?
+  HTTP        : 200
+  final URL   : https://www.geoportal-amt-brueck.de/isk/fp50
+  signals     :
+    dct:format           raw=-                                        mime=-
+    dcat:mediaType       raw=-                                        mime=-
+    url_extension        raw=fp50                                     mime=-
+    http_content_type    raw=text/xml                                 mime=text/xml
+    attachment_filename  raw=-                                        mime=-
+  coalesced   : text/xml
+2026-07-13 13:43:40 - scoring.service - DEBUG - Attached probes to 1/1 distribution(s)
+2026-07-13 13:44:09 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Die Metadaten sind thematisch erkennbar (Flächennutzungsplan, Bauleitplanung), aber wenig aussagekräftig: Die Beschreibu')
+2026-07-13 13:44:09 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:44:09 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] pass score=1.00 keywords=4
+2026-07-13 13:44:09 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['bauleitplanung', 'infofeatureaccessservice', 'opendata', 'planung']
+2026-07-13 13:44:09 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: []
+2026-07-13 13:44:09 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] FAIL score=0.00 no themes
+2026-07-13 13:44:09 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] PASS score=1.00 geometries=1
+2026-07-13 13:44:09 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] FAIL score=0.00 no politicalGeocodingURI / adminUnitL2
+2026-07-13 13:44:09 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] FAIL score=0.00 no politicalGeocodingLevelURI
+2026-07-13 13:44:09 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: [], endDate: []
+2026-07-13 13:44:09 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] FAIL score=0.00 no temporal coverage found or invalid date format
+2026-07-13 13:44:09 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/issued
+2026-07-13 13:44:09 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/9078bef8-de67-44bc-a875-c36b191869ea = 2014-08-14T00:00:00
+2026-07-13 13:44:09 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/a675922c-483d-4c2c-a804-5d1870bdce7a = 2025-12-04T07:19:56.684399
+2026-07-13 13:44:09 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=2/2 dataset=1 distribution=1 field=http://purl.org/dc/terms/modified
+2026-07-13 13:44:09 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/9078bef8-de67-44bc-a875-c36b191869ea = 2026-02-13T10:10:36
+2026-07-13 13:44:09 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/a675922c-483d-4c2c-a804-5d1870bdce7a = 2025-12-04T07:19:56.674587
+2026-07-13 13:44:09 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:44:09 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:44:09 - scoring.indicator.acc_download_url - INFO - [acc_download_url] pass score=1.00 with_download=1/1
+2026-07-13 13:44:09 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:44:09 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/1
+2026-07-13 13:44:09 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:44:09 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:44:09 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/1
+2026-07-13 13:44:09 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:44:09 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-13 13:44:09 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=1/1 relevant=1/1
+2026-07-13 13:44:09 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] pass score=1.00 high=1 mid=0 none=0 total=1
+2026-07-13 13:44:09 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/1
+2026-07-13 13:44:09 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:44:09 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=1/1
+2026-07-13 13:44:09 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:44:09 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:44:09 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:44:09 - scoring.indicator.reuse_contact - INFO - [reuse_contact] pass score=1.00 contacts=1 with_channel=1
+2026-07-13 13:44:09 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-13 13:44:10 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=1
+2026-07-13 13:44:10 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/1
+2026-07-13 13:44:10 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] partial | score=0.75 | Der Titel ist inhaltlich spezifisch und nennt Ort, Ortsteile und Änderungsnummer. Die Aufnahme des technischen Formats '
+2026-07-13 13:44:10 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.30 | Die Beschreibung liefert nur eine generische Definition des Plantyps, ohne auf den konkreten Datensatz einzugehen. Weder
+2026-07-13 13:44:10 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] partial | score=0.60 | Titel und Beschreibung sind thematisch kohärent (beide Flächennutzungsplanung), aber die Beschreibung konkretisiert den 
+2026-07-13 13:44:10 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] partial | score=0.55 | Zwei Schlagwörter sind gut gewählt, aber 'infofeatureaccessservice' ist Fachjargon und 'opendata' ein formales Tag ohne 
+2026-07-13 13:44:10 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] partial | score=0.50 | Titel, Beschreibung und Schlagwörter bilden ein konsistentes Bild (Bauleitplanung). Das leere 'themes'-Feld ist jedoch e
+2026-07-13 13:44:10 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] fail | score=0.40 | Flächennutzungspläne erfordern zeitliche Kontextangaben (Beschlussjahr, Gültigkeit). Diese fehlen in Titel und Beschreib
+2026-07-13 13:44:10 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:44:10 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:44:10 - scoring.service - DEBUG - {
+  "dataset_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/datasets/9078bef8-de67-44bc-a875-c36b191869ea",
+  "titles": [
+    "Flächennutzungsplan Stadt Brück mit den Ortsteilen Baitz und Neuendorf, 1. Änderung - Amt Brück Stadt Brück (WFS)"
+  ],
+  "descriptions": [
+    "Der Flächennutzungsplan enthält als vorbereitender Bauleitplan ein Bodennutzungskonzept für das gesamte Gemeindegebiet, welches der Umsetzung durch Bebauungspläne bzw. durch Satzungen bedarf."
+  ],
+  "keywords": [
+    "bauleitplanung",
+    "infofeatureaccessservice",
+    "opendata",
+    "planung"
+  ],
+  "themes": [],
+  "themes_in_vocab": [],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-02-13T10:10:36"
+  ],
+  "issued": [
+    "2014-08-14T00:00:00"
+  ],
+  "accrual_periodicity": null,
+  "accrual_periodicity_in_vocab": null,
+  "start_dates": [],
+  "end_dates": [],
+  "geometries": [
+    "POLYGON ((12.7669 52.1759, 12.7719 52.1759, 12.7719 52.1689, 12.7669 52.1689, 12.7669 52.1759))"
+  ],
+  "spatial_resources": [
+    "N171c9488069c46e98df05234a8d20507"
+  ],
+  "admin_units": [],
+  "political_geocoding": [],
+  "political_geocoding_level": [],
+  "political_geocoding_level_in_vocab": [],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "N9d965062e732470ebed58aa41cf59c82",
+  "publisher": "N091c416a0f1f4734a62188bc4a8816a4",
+  "contact_points": [
+    "Nb8793ff458f846aa8abcb83e2240dfee"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/openDataBrandenburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "https://piveau.offene.daten-brandenburg.de/api/hub/repo/distributions/a675922c-483d-4c2c-a804-5d1870bdce7a",
+      "titles": [
+        "Flächennutzungsplan Stadt Brück mit den Ortsteilen Baitz und Neuendorf, 1. Änderung - Amt Brück Stadt Brück (WFS)"
+      ],
+      "descriptions": [
+        "Flächennutzungsplan Stadt Brück mit den Ortsteilen Baitz und Neuendorf, 1. Änderung - Amt Brück Stadt Brück (WFS)"
+      ],
+      "download_url": "https://www.geoportal-amt-brueck.de/isk/fp50?",
+      "access_url": "https://www.geoportal-amt-brueck.de/isk/fp50?",
+      "formats": [],
+      "formats_in_vocab": [],
+      "media_types": [],
+      "media_types_form_valid": [],
+      "media_types_in_vocab": [],
+      "modified": [
+        "2025-12-04T07:19:56.674587"
+      ],
+      "issued": [
+        "2025-12-04T07:19:56.684399"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": null,
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": null,
+            "mime_type": null
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "fp50",
+            "mime_type": null
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "text/xml",
+            "mime_type": "text/xml"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": null,
+            "mime_type": null
+          }
+        ],
+        "coalesced_mime": "text/xml",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": 200,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.geoportal-amt-brueck.de/isk/fp50",
+        "content_disposition": null,
+        "attachment_filename": null,
+        "machine_readable_tier": "high",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel ist sehr lang und enthält mehrere Informationsebenen: Plantyp, Gemeinde, Ortsteile, Änderungsnummer und technisches Format (WFS).",
+        "Technische Angaben wie '(WFS)' gehören nicht in den Titel, sondern in die Beschreibung oder Distribution-Metadaten.",
+        "Der Titel ist dennoch spezifisch und unterscheidet sich klar von anderen Flächennutzungsplänen durch Orts- und Änderungsangabe."
+      ],
+      "reasoning": "Der Titel ist inhaltlich spezifisch und nennt Ort, Ortsteile und Änderungsnummer. Die Aufnahme des technischen Formats '(WFS)' im Titel ist jedoch nicht konventionsgemäß und sollte in der Beschreibung stehen. Insgesamt bleibt der Titel verständlich und unterscheidbar, daher nur leichte Abwertung.",
+      "applicable": true,
+      "score": 0.75
+    },
+    "description_quality": {
+      "findings": [
+        "Die Beschreibung erklärt allgemein, was ein Flächennutzungsplan ist (vorbereitender Bauleitplan, Bodennutzungskonzept).",
+        "Es fehlen konkrete Informationen zu diesem spezifischen Datensatz: Was enthält die 1. Änderung? Welche Flächen/Nutzungen sind betroffen?",
+        "Strukturelle Angaben (Format, Datenstruktur, Attributbeschreibung) und methodische Details (Erstellungsjahr, Maßstab, Datenquelle) fehlen vollständig."
+      ],
+      "reasoning": "Die Beschreibung liefert nur eine generische Definition des Plantyps, ohne auf den konkreten Datensatz einzugehen. Weder Inhalt der Änderung, noch Format, Struktur oder Erhebungsmethode werden erläutert. Dies ist für die Nutzbarkeit unzureichend.",
+      "applicable": true,
+      "score": 0.3
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Titel und Beschreibung beziehen sich beide auf Flächennutzungspläne und Bauleitplanung.",
+        "Die Beschreibung geht nicht auf die im Titel genannten Spezifika (Stadt Brück, Ortsteile, 1. Änderung) ein.",
+        "Es gibt keine inhaltlichen Widersprüche, aber die Beschreibung bleibt zu allgemein, um den Titel zu stützen."
+      ],
+      "reasoning": "Titel und Beschreibung sind thematisch kohärent (beide Flächennutzungsplanung), aber die Beschreibung konkretisiert den Titel nicht. Sie könnte zu jedem Flächennutzungsplan passen. Keine Widersprüche, aber mangelnde Vertiefung.",
+      "applicable": true,
+      "score": 0.6
+    },
+    "keyword_quality": {
+      "findings": [
+        "Die Schlagwörter 'bauleitplanung' und 'planung' sind inhaltlich relevant und laienverständlich.",
+        "'infofeatureaccessservice' ist ein technischer INSPIRE-Begriff und für Laien kryptisch.",
+        "'opendata' ist ein formales Tag, das die Lizenzierung beschreibt und nicht den Inhalt; zudem fehlt eine Lizenzangabe im Feld 'licenses'."
+      ],
+      "reasoning": "Zwei Schlagwörter sind gut gewählt, aber 'infofeatureaccessservice' ist Fachjargon und 'opendata' ein formales Tag ohne inhaltlichen Mehrwert. Die Schlagwörter ergänzen den Titel nur teilweise (z. B. fehlt 'Flächennutzungsplan' als atomares Schlagwort).",
+      "applicable": true,
+      "score": 0.55
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Das Feld 'themes' ist leer, obwohl der Datensatz klar dem Thema Raumplanung/Landnutzung zuzuordnen wäre.",
+        "Titel, Beschreibung und Schlagwörter sind thematisch konsistent (Bauleitplanung, Flächennutzung).",
+        "Das Fehlen eines dcat:theme erschwert die thematische Einordnung und Auffindbarkeit erheblich."
+      ],
+      "reasoning": "Titel, Beschreibung und Schlagwörter bilden ein konsistentes Bild (Bauleitplanung). Das leere 'themes'-Feld ist jedoch ein gravierender Mangel, da die thematische Kategorisierung fehlt. Dies beeinträchtigt die Konsistenz des Gesamtbildes.",
+      "applicable": true,
+      "score": 0.5
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Der Titel nennt '1. Änderung', aber weder Titel noch Beschreibung geben das Jahr der Änderung oder den Bezugszeitraum an.",
+        "Das Feld 'issued' (2014-08-14) könnte das Veröffentlichungsdatum sein, aber es ist unklar, ob dies das Datum der Planänderung oder der Datenbereitstellung ist.",
+        "Für einen Flächennutzungsplan wären Angaben zu Gültigkeit, Beschlussdatum und räumlicher Abdeckung (hier nur Koordinaten, keine textliche Erläuterung) wichtig."
+      ],
+      "reasoning": "Flächennutzungspläne erfordern zeitliche Kontextangaben (Beschlussjahr, Gültigkeit). Diese fehlen in Titel und Beschreibung. Das 'issued'-Datum ist vorhanden, aber nicht erläutert. Die räumliche Abdeckung ist nur als Polygon angegeben, nicht textlich qualifiziert.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "overall_summary": "Die Metadaten sind thematisch erkennbar (Flächennutzungsplan, Bauleitplanung), aber wenig aussagekräftig: Die Beschreibung bleibt generisch, kontextuelle Qualifizierer (Bezugsjahr, Beschlussdatum) fehlen, und das Themenfeld ist leer. Titel und Schlagwörter sind brauchbar, aber technische und formale Tags mindern die Qualität."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6080,
+      "output_tokens": 1733,
+      "total_tokens": 7813,
+      "cost_usd": 0.044235,
+      "latency_seconds": 28.35
+    }
+  ],
+  "distribution_count": 1
+}
+2026-07-13 13:44:10 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_open-data-brandenburg_05/result.json
+2026-07-13 13:44:10 - __main__ - INFO -   ✓ Completed | score=0.61 grade=C

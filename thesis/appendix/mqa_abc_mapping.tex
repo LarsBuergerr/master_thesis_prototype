@@ -1,0 +1,103 @@
+% Automatisch aus src/evaluation/indicator_map.py (MAPPING) generiert.
+% Bei Aenderungen an der Zuordnung: Skript erneut laufen lassen, nicht von Hand nachpflegen.
+% Zeigt nur die in state_evaluation_final.yaml aktiven Indikatoren (Blacklist ausgenommen).
+\begingroup
+\tiny
+\renewcommand{\arraystretch}{1.15}
+
+\setlength{\LTleft}{\fill}
+\setlength{\LTright}{\fill}
+
+\begin{longtable}{p{3.1cm} p{0.7cm} p{3.6cm} p{6.8cm}}
+\label{tab:mqa_abc_mapping}\\
+
+\toprule
+\textbf{Indikator} & \textbf{Klasse} & \textbf{MQA-Metrik(en)} & \textbf{Begründung} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Indikator} & \textbf{Klasse} & \textbf{MQA-Metrik(en)} & \textbf{Begründung} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{4}{r}{\textit{Fortsetzung auf der nächsten Seite}} \\
+\midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\multicolumn{4}{l}{\textbf{Auffindbarkeit}} \\
+\midrule
+
+find\_keywords\_count & B & keyword\_availability & MQA: Presence dcat:keyword; Prototyp: Anzahl im Band 3$\leq$k$\leq$15 (ternär, Handreichung). \\
+
+find\_theme\_valid & B & category\_availability & MQA: Presence dcat:theme; Prototyp: Wert aus kontrolliertem Vokabular. \\
+
+find\_temporal\_coverage & A & temporal\_availability & Beide: zeitliche Abdeckung (start/end). Prototyp prüft zusätzlich Datentyp. \\
+
+find\_locn\_geometry & B & spatial\_availability & MQA: dct:spatial Presence; Prototyp: tatsächliche locn:geometry (nicht leer). \\
+
+find\_political\_geocoding & B & spatial\_availability & MQA: dct:spatial Presence; Prototyp: dcatde:politicalGeocodingURI aus Vokabular (Fallback locn:adminUnitL2 $\rightarrow$ nur PARTIAL). \\
+
+find\_geocoding\_level & C & --- & MQA: keine Metrik für die administrative Ebene (dcatde:politicalGeocodingLevelURI, Konvention 09). \\
+
+find\_issued\_datetime & A & date\_issued\_availability & Beide: Vorhandensein dct:issued. Prototyp prüft zusätzlich xs:date/dateTime-Typ. \\
+
+find\_modified\_datetime & A & date\_modified\_availability & Beide: Vorhandensein dct:modified. Prototyp prüft zusätzlich xs:date/dateTime-Typ. \\
+
+
+\multicolumn{4}{l}{\textbf{Zugänglichkeit}} \\
+\midrule
+
+acc\_download\_url & B & download\_url\_availability & MQA: Presence dcat:downloadURL ($\geq$1 Distribution). Prototyp: Anteil ALLER Distributionen mit downloadURL (graded) — strenger, PASS erst wenn nahezu alle eine haben. \\
+
+acc\_download\_url\_response & A & download\_url\_status\_code & Beide: HTTP-Auflösbarkeit der downloadURL ($<$400). \\
+
+acc\_access\_url\_response & A & access\_url\_status\_code & Beide: HTTP-Auflösbarkeit der accessURL ($<$400). \\
+
+acc\_format & A & format\_availability \textsc{und} format\_media\_type\_vocabulary & MQA: Format vorhanden + format\_media\_type\_vocabulary (Format OR MediaType im Vokabular, kombiniert).  \\
+
+acc\_media\_type & B & media\_type\_availability \textsc{und} format\_media\_type\_vocabulary & MQA: MediaType vorhanden + format\_media\_type\_vocabulary (Format OR MediaType im Vokabular, kombiniert). Prototyp: Anteil der Distributionen mit MediaType als IANA-URI im IANA-Vokabular (graded) — strenger, da MQA keine IANA-URI-Form prüft und der Vocab-Check via Format-Treffer auch ohne MediaType-Eintrag PASS gibt. \\
+
+acc\_machine\_readable\_access & B & format\_machine\_readable & MQA: Listen-Lookup beste Distribution; Prototyp: Mittelwert aller Distributionen (high +1 / mid +0.5 / none 0, kein Malus). \\
+
+acc\_format\_non\_proprietary & A & format\_non\_proprietary & Beide: nicht-proprietäres Format-URI aus EU-Vokabular. Prototyp: Anteil aller Distributionen. \\
+
+
+\multicolumn{4}{l}{\textbf{Wiederverwendbarkeit}} \\
+\midrule
+
+reuse\_dcat\_ap\_de\_compliance & A & dcat\_ap\_compliance & Beide: DCAT-AP SHACL-Konformität via ITB-API (wenn MQA shacl\_validation=True). FAIL bei mindestens einer Verletzung. \\
+
+reuse\_license & B & license\_availability, known\_license & MQA: Lizenz vorhanden (license\_availability) + EU-Autoritäts-URI (known\_license). Prototyp: je Distribution nur freie DCAT-AP-DE-Lizenz = +1, eingeschränkt/unbekannt/fehlt = -0.5 Malus, dann Mittel (graded, distributionsebene) $\rightarrow$ strenger. \\
+
+reuse\_publisher & A & publisher\_availability & Beide prüfen auf Präsenz des dct:publisher \\
+
+reuse\_contact & B & contact\_point\_availability & MQA: Presence dcat:contactPoint; Prototyp: valide vcard:hasEmail ODER vcard:hasURL (Konvention 01), sonst PARTIAL. \\
+
+reuse\_availability & C & --- & MQA: keine Verfügbarkeits-Metrik; Prototyp: Anteil der Distributionen mit dcatap:availability aus dem Planned-Availability-Vokabular. \\
+
+reuse\_contributor\_id & C & --- & MQA: keine Metrik (DCAT-AP-DE dcatde:contributorID). \\
+
+
+\multicolumn{4}{l}{\textbf{Aussagekraft}} \\
+\midrule
+
+expr\_title\_quality & C & --- & MQA: keine Titel-Inhaltsprüfung. \\
+
+expr\_description\_quality & C & --- & MQA: keine Beschreibungs-Inhaltsprüfung. \\
+
+expr\_keyword\_quality & C & --- & MQA: zählt Keywords, prüft keine Bedeutung. \\
+
+expr\_title\_description\_coherence & C & --- & MQA: keine Kohärenzprüfung Titel$\leftrightarrow$Beschreibung. \\
+
+expr\_thematic\_consistency & C & --- & MQA: keine thematische Konsistenzprüfung. \\
+
+expr\_contextual\_qualifiers & C & --- & MQA: keine Prüfung kontextueller Qualifizierer. \\
+
+
+\end{longtable}
+\endgroup

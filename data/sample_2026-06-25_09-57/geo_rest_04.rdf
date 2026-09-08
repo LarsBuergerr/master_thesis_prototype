@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:ns1="http://data.europa.eu/eli/ontology#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dcatap="http://data.europa.eu/r5r/"
+>
+  <dcat:Dataset rdf:about="https://registry.gdi-de.org/id/de.bw/Gml_9AA30770-29F0-4376-ADBC-7DDD31341A02">
+    <dct:title>S - Dickenhardt Teilbereich Schubert-, Sieder- und Salinenstraße ÄNDERUNG / S_M_II_3_2005_1</dct:title>
+    <dct:description>Bebauungsplan der Stadt Villingen-Schwenningen. Nicht selbständige Änderung von S_M_II_3_1983, textl. Änderung GE/GI-Gebiet. Der Bebauungsplan enthält die rechtsverbindlichen Festsetzungen für die städtebauliche Ordnung. Grundsätzlich gilt, dass der Bebauungsplan aus dem Flächennutzungsplan zu entwickeln ist.</dct:description>
+    <dct:identifier>Gml_9AA30770-29F0-4376-ADBC-7DDD31341A02</dct:identifier>
+    <dct:type rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset"/>
+    <dcat:keyword>bauleitplanung</dcat:keyword>
+    <dcat:keyword>bauwesen-und-gebaute-umwelt-bauen</dcat:keyword>
+    <dcat:keyword>bebauung</dcat:keyword>
+    <dcat:keyword>bebauungsplan</dcat:keyword>
+    <dcat:keyword>bodennutzung</dcat:keyword>
+    <dcat:keyword>gdb-gdi-bw</dcat:keyword>
+    <dcat:keyword>gewerbe</dcat:keyword>
+    <dcat:keyword>inspireidentifiziert</dcat:keyword>
+    <dcat:keyword>landschaftsplanung</dcat:keyword>
+    <dcat:keyword>lokal</dcat:keyword>
+    <dcat:keyword>ngdb-gdi-de</dcat:keyword>
+    <dcat:keyword>opendata</dcat:keyword>
+    <dcat:keyword>raumordnung</dcat:keyword>
+    <dcat:keyword>verkehr</dcat:keyword>
+    <dcat:keyword>villingen-schwenningen</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2005-12-16</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-13T14:47:15</dct:modified>
+    <dct:language>
+      <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/DEU"/>
+    </dct:language>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dct:conformsTo>
+      <dct:Standard rdf:about="http://data.europa.eu/eli/reg/2010/1089/oj"/>
+    </dct:conformsTo>
+    <foaf:page>
+      <foaf:Document rdf:about="https://apps.villingen-schwenningen.de/portal/apps/webappviewer/index.html?id=4c8e9eebd0de4772bc976d2066c18127"/>
+    </foaf:page>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N0a1e73ed5033467792aa45dfaf4df76d">
+        <vcard:fn>Stadt Villingen-Schwenningen - Vermessungsamt</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:staedtisches.vermessungsamt@villingen-schwenningen.de"/>
+        <vcard:hasURL rdf:resource="https://www.villingen-schwenningen.de/"/>
+        <vcard:hasTelephone rdf:resource="tel:+49-7720-82-2861"/>
+        <vcard:hasStreetAddress>Winkelstraße 9</vcard:hasStreetAddress>
+        <vcard:hasLocality>Villingen-Schwenningen</vcard:hasLocality>
+        <vcard:hasPostalCode>78056</vcard:hasPostalCode>
+        <vcard:hasCountryName>Bundesrepublik Deutschland</vcard:hasCountryName>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Agent rdf:nodeID="N73f3d7be65814c52a505e3696f90ab43">
+        <foaf:name>Stadt Villingen-Schwenningen - Vermessungsamt</foaf:name>
+        <foaf:mbox>staedtisches.vermessungsamt@villingen-schwenningen.de</foaf:mbox>
+        <foaf:homepage rdf:resource="https://www.villingen-schwenningen.de/"/>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:spatial>
+      <dct:Location rdf:nodeID="N5c83009ebe0a4ee7b28aa80b71636bf5">
+        <locn:geometry rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((8.5259 48.0540, 8.5288 48.0540, 8.5288 48.0520, 8.5259 48.0520, 8.5259 48.0540))</locn:geometry>
+      </dct:Location>
+    </dct:spatial>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://apps.villingen-schwenningen.de/linkdata/BPlan/L/S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <dct:title>Legende als PDF Dokument</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://apps.villingen-schwenningen.de/linkdata/BPlan/L/S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf"/>
+        <dcat:downloadURL rdf:resource="https://apps.villingen-schwenningen.de/linkdata/BPlan/L/S_M_II_3_2005_1_LEGENDE-PLANKOPF.pdf"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format>PDF</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-31T05:45:22.467786</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-03T01:07:57.755148</dct:modified>
+        <dcatde:licenseAttributionByText>Datengrundlage: Stadt Villingen-Schwenningen.de.</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/S_M_II_3_2005_1/S_M_II_3_2005_1_RECHTSPLAN.pdf">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <dct:title>Rechtsplan als PDF</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/S_M_II_3_2005_1/S_M_II_3_2005_1_RECHTSPLAN.pdf"/>
+        <dcat:downloadURL rdf:resource="https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/S_M_II_3_2005_1/S_M_II_3_2005_1_RECHTSPLAN.pdf"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format>PDF</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-31T05:45:22.467785</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-03T01:07:57.755075</dct:modified>
+        <dcatde:licenseAttributionByText>Datengrundlage: Stadt Villingen-Schwenningen.de.</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=WFS_S_M_II_3_2005_1.map&amp;SERVICE=WFS&amp;VERSION=2.0&amp;REQUEST=GetCapabilities">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <dct:title>S - Dickenhardt Teilbereich Schubert-, Sieder- und Salinenstraße ÄNDERUNG / S_M_II_3_2005_1(WFS)</dct:title>
+        <dct:description>Umringe der Bebauungspläne der Stadt Villingen-Schwenningen als Web Feature Service (WFS)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=WFS_S_M_II_3_2005_1.map&amp;SERVICE=WFS&amp;VERSION=2.0&amp;REQUEST=GetCapabilities"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-31T05:45:22.467782</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-07T08:53:05.926269</dct:modified>
+        <dcatde:licenseAttributionByText>Datengrundlage: Stadt Villingen-Schwenningen.de.</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://apps.villingen-schwenningen.de/linkdata/BPlan/T/S_M_II_3_2005_1_TEXTTEIL.pdf">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <dct:title>Textliche Ausfertigung zum Bebauungsplan als PDF</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://apps.villingen-schwenningen.de/linkdata/BPlan/T/S_M_II_3_2005_1_TEXTTEIL.pdf"/>
+        <dcat:downloadURL rdf:resource="https://apps.villingen-schwenningen.de/linkdata/BPlan/T/S_M_II_3_2005_1_TEXTTEIL.pdf"/>
+        <dcat:mediaType>application/pdf</dcat:mediaType>
+        <dct:format>PDF</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-31T05:45:22.467787</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-03T01:07:57.755218</dct:modified>
+        <dcatde:licenseAttributionByText>Datengrundlage: Stadt Villingen-Schwenningen.de.</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=S_M_II_3_2005_1.map&amp;SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetCapabilities">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <dct:title>S - Dickenhardt Teilbereich Schubert-, Sieder- und Salinenstraße ÄNDERUNG / S_M_II_3_2005_1(WMS)</dct:title>
+        <dct:description>Bebauungspläne der Stadt Villingen-Schwenningen als Web Map Service (WMS)</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://apps.villingen-schwenningen.de/mapservervs/getcapbplan.php?map=S_M_II_3_2005_1.map&amp;SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetCapabilities"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-31T05:45:22.467789</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-08-07T08:53:05.926354</dct:modified>
+        <dcatde:licenseAttributionByText>Datengrundlage: Stadt Villingen-Schwenningen.de.</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/index.aspx?id=S_M_II_3_2005_1">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <dct:title>Sonstige Daten zum Bebauungsplan</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/index.aspx?id=S_M_II_3_2005_1"/>
+        <dcat:downloadURL rdf:resource="https://apps.villingen-schwenningen.de/linkdata/BPLAN/S/index.aspx?id=S_M_II_3_2005_1"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-31T05:45:22.467783</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-31T05:45:22.434225</dct:modified>
+        <dcatde:licenseAttributionByText>Datengrundlage: Stadt Villingen-Schwenningen.de.</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://apps.villingen-schwenningen.de/linkdata/BPlan/G/S_M_II_3_2005_1.zip">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <dct:title>Georeferenziertes Rasterbild als ZIP Datei</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://apps.villingen-schwenningen.de/linkdata/BPlan/G/S_M_II_3_2005_1.zip"/>
+        <dcat:downloadURL rdf:resource="https://apps.villingen-schwenningen.de/linkdata/BPlan/G/S_M_II_3_2005_1.zip"/>
+        <dcat:mediaType>application/zip</dcat:mediaType>
+        <dct:format>ZIP</dct:format>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-07-31T05:45:22.467777</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-03T01:07:57.754812</dct:modified>
+        <dcatde:licenseAttributionByText>Datengrundlage: Stadt Villingen-Schwenningen.de.</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatap:applicableLegislation>
+      <ns1:LegalResource rdf:about="http://data.europa.eu/eli/dir/2007/2/2019-06-26"/>
+    </dcatap:applicableLegislation>
+    <adms:identifier>Gml_9AA30770-29F0-4376-ADBC-7DDD31341A02</adms:identifier>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/datenBW"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC"/>
+</rdf:RDF>

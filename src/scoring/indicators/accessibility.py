@@ -11,11 +11,6 @@ from core.indicator import (
     IndicatorStatus,
 )
 from core.dimension import QualityDimension
-from extraction.vocabularies import (
-    IANA_MEDIA_TYPE_PREFIX,
-    VALID_FILE_TYPE_URIS,
-    VALID_MEDIA_TYPE_TEMPLATES,
-)
 from extraction.dataset_context import (
     DatasetContext,
     DistributionContext,
@@ -30,55 +25,47 @@ from extraction.distribution_model import (
 from extraction.distribution_probes import (
     attach_probes,
     effective_mime,
+    format_tier_for_dist,
+    is_non_proprietary_for_dist,
 )
 
 
 class DownloadURLIndicator(Indicator):
-    """Validates if dcat:downloadURL is set and not empty."""
+    """Fraction of distributions that declare a ``dcat:downloadURL``.
+
+    Per distribution: has a downloadURL → +1.0, else 0.0 (no malus). Score is
+    the mean over all distributions — consistent with the other per-distribution
+    indicators. PASS ≥ 0.9, PARTIAL ≥ 0.5, FAIL below.
+    """
+
+    GRADED = True
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
 
     def __init__(self):
         super().__init__(
             indicator_id="acc_download_url",
-            name_de="Download-URL angegeben",
-            name_en="Download URL specified",
+            name_de="Download-URL je Distribution",
+            name_en="Download URL per distribution",
             dimension=QualityDimension.ACCESSIBILITY,
-            description_de="Prüft ob dcat:downloadURL gesetzt und nicht leer ist",
-            description_en="Checks if dcat:downloadURL is set and not empty",
+            description_de="Anteil der Distributionen mit dcat:downloadURL",
+            description_en="Fraction of distributions declaring a dcat:downloadURL",
             weight=1.0,
         )
 
     def validate(
         self, metadata: Any, context: Optional[DatasetContext] = None
     ) -> IndicatorResult:
-        """Validate download URL presence.
-
-        Per-distribution coverage is reported in ``details`` so downstream
-        consumers can tell ``"at least one"`` from ``"all of them"``.
-
-        Args:
-            metadata: rdflib Graph with DCAT metadata
-            context: Optional pre-computed dataset facts shared across
-                indicators.
-
-        Returns:
-            IndicatorResult with score based on URL presence
-        """
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            download_urls = context.all_download_urls
-            total_distributions = context.distribution_count
-            with_download = context.distributions_with_download_url
-            self.logger.debug(
-                f"[{self.indicator_id}] {with_download}/{total_distributions} "
-                f"distribution(s) have a downloadURL"
-            )
-
-            if not download_urls:
+            total = context.distribution_count
+            if total == 0:
                 self.logger.info(
-                    f"[{self.indicator_id}] Result: FAIL | No download URLs"
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -87,18 +74,27 @@ class DownloadURLIndicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Keine Download-URL angegeben",
-                    message_en="No download URL specified",
-                    details={
-                        "url_count": 0,
-                        "distributions_with_download_url": 0,
-                        "total_distributions": total_distributions,
-                    },
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"total_distributions": 0},
                 )
 
+            with_download = context.distributions_with_download_url
+            score = with_download / total
+
+            if score >= self.PASS_THRESHOLD:
+                status = IndicatorStatus.PASS
+            elif score >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
+            else:
+                status = IndicatorStatus.FAIL
+
+            message_de = f"{with_download}/{total} Distribution(en) mit Download-URL"
+            message_en = f"{with_download}/{total} distribution(s) with a download URL"
+
             self.logger.info(
-                f"[{self.indicator_id}] Result: PASS | Score: 1.00 | "
-                f"{len(download_urls)} URL(s), {with_download}/{total_distributions} distribution(s) covered"
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"with_download={with_download}/{total}"
             )
 
             return IndicatorResult(
@@ -106,15 +102,13 @@ class DownloadURLIndicator(Indicator):
                 name_de=self.name_de,
                 name_en=self.name_en,
                 dimension=self.dimension,
-                status=IndicatorStatus.PASS,
-                score=1.0,
-                message_de=f"Download-URL vorhanden: {len(download_urls)} URL(s)",
-                message_en=f"Download URL present: {len(download_urls)} URL(s)",
+                status=status,
+                score=round(score, 4),
+                message_de=message_de,
+                message_en=message_en,
                 details={
-                    "url_count": len(download_urls),
-                    "urls": download_urls,
+                    "total_distributions": total,
                     "distributions_with_download_url": with_download,
-                    "total_distributions": total_distributions,
                 },
             )
 
@@ -136,36 +130,41 @@ class DownloadURLIndicator(Indicator):
 
 
 class FormatIndicator(Indicator):
-    """Validates dct:format presence and membership in the EU file-type vocabulary."""
+    """Fraction of distributions with a ``dct:format`` from the EU file-type vocab.
+
+    Per distribution: has ≥1 format URI in the EU file-type vocabulary → +1.0,
+    else 0.0 (no malus). Score is the mean over all distributions — consistent
+    with the other per-distribution indicators. PASS ≥ 0.9, PARTIAL ≥ 0.5.
+    """
+
+    GRADED = True
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
 
     def __init__(self):
         super().__init__(
             indicator_id="acc_format",
-            name_de="Format aus kontrolliertem Vokabular",
-            name_en="Format from controlled vocabulary",
+            name_de="Format aus kontrolliertem Vokabular (je Distribution)",
+            name_en="Format from controlled vocabulary (per distribution)",
             dimension=QualityDimension.ACCESSIBILITY,
-            description_de="Prüft ob dct:format gesetzt und aus dem EU-File-Type-Vokabular ist",
-            description_en="Checks if dct:format is set and from the EU file-type vocabulary",
+            description_de="Anteil der Distributionen mit dct:format aus dem EU-File-Type-Vokabular",
+            description_en="Fraction of distributions with a dct:format from the EU file-type vocabulary",
             weight=1.0,
         )
 
     def validate(
         self, metadata: Any, context: Optional[DatasetContext] = None
     ) -> IndicatorResult:
-        """Validate format specification against the EU file-type vocabulary."""
         try:
             self.logger.debug(f"[{self.indicator_id}] Starting validation")
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            formats = context.all_distribution_formats
-            self.logger.debug(
-                f"[{self.indicator_id}] Found {len(formats)} format(s): {formats}"
-            )
-
-            if not formats:
+            total = context.distribution_count
+            if total == 0:
                 self.logger.info(
-                    f"[{self.indicator_id}] Result: FAIL | No formats specified"
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -174,27 +173,42 @@ class FormatIndicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Kein Format angegeben",
-                    message_en="No format specified",
-                    details={"format_count": 0},
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"total_distributions": 0},
                 )
 
-            valid = [f for f in formats if f in VALID_FILE_TYPE_URIS]
-            invalid = [f for f in formats if f not in VALID_FILE_TYPE_URIS]
+            per_distribution: list[dict[str, Any]] = []
+            for dist in context.distributions:
+                passes = any(dist.formats_in_vocab)
+                per_distribution.append(
+                    {
+                        "uri": dist.distribution_uri,
+                        "formats": list(dist.formats),
+                        "passes": passes,
+                    }
+                )
 
-            if invalid:
-                status = IndicatorStatus.PARTIAL if valid else IndicatorStatus.FAIL
-                score = 0.5 if valid else 0.0
-                message_de = "Nicht alle Formate aus dem kontrollierten Vokabular"
-                message_en = "Not all formats are from the controlled vocabulary"
-            else:
+            passing = sum(1 for d in per_distribution if d["passes"])
+            score = passing / total
+
+            if score >= self.PASS_THRESHOLD:
                 status = IndicatorStatus.PASS
-                score = 1.0
-                message_de = "Alle Formate aus dem kontrollierten Vokabular"
-                message_en = "All formats are from the controlled vocabulary"
+            elif score >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
+            else:
+                status = IndicatorStatus.FAIL
+
+            message_de = (
+                f"{passing}/{total} Distribution(en) mit Format aus dem Vokabular"
+            )
+            message_en = (
+                f"{passing}/{total} distribution(s) with a format from the vocabulary"
+            )
 
             self.logger.info(
-                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"passing={passing}/{total}"
             )
 
             return IndicatorResult(
@@ -203,13 +217,13 @@ class FormatIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=score,
+                score=round(score, 4),
                 message_de=message_de,
                 message_en=message_en,
                 details={
-                    "valid": valid,
-                    "invalid": invalid,
-                    "total": len(formats),
+                    "total_distributions": total,
+                    "passing_count": passing,
+                    "per_distribution": per_distribution,
                 },
             )
 
@@ -231,16 +245,27 @@ class FormatIndicator(Indicator):
 
 
 class MediaTypeIndicator(Indicator):
-    """Validates dcat:mediaType against the IANA media-types vocabulary."""
+    """Fraction of distributions with a valid ``dcat:mediaType`` (IANA URI + vocab).
+
+    Per distribution: has ≥1 mediaType that is an IANA URI *and* in the IANA
+    media-types vocabulary → +1.0, else 0.0 (no malus). Score is the mean over
+    all distributions — consistent with the other per-distribution indicators.
+    PASS ≥ 0.9, PARTIAL ≥ 0.5.
+    """
+
+    GRADED = True
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
 
     def __init__(self):
         super().__init__(
             indicator_id="acc_media_type",
-            name_de="Media Type aus kontrolliertem Vokabular",
-            name_en="Media type from controlled vocabulary",
+            name_de="Media Type aus kontrolliertem Vokabular (je Distribution)",
+            name_en="Media type from controlled vocabulary (per distribution)",
             dimension=QualityDimension.ACCESSIBILITY,
-            description_de="Prüft ob dcat:mediaType aus dem IANA Media-Types-Vokabular ist",
-            description_en="Checks if dcat:mediaType is from the IANA media-types vocabulary",
+            description_de="Anteil der Distributionen mit dcat:mediaType als IANA-URI aus dem Vokabular",
+            description_en="Fraction of distributions with a dcat:mediaType as an IANA URI from the vocabulary",
             weight=1.0,
         )
 
@@ -252,15 +277,10 @@ class MediaTypeIndicator(Indicator):
             if context is None:
                 context = DatasetContext.from_graph(metadata)
 
-            media_types = context.all_distribution_media_types
-
-            self.logger.debug(
-                f"[{self.indicator_id}] Found {len(media_types)} mediaType(s): {media_types}"
-            )
-
-            if not media_types:
+            total = context.distribution_count
+            if total == 0:
                 self.logger.info(
-                    f"[{self.indicator_id}] Result: FAIL | No mediaType specified"
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
                 )
                 return IndicatorResult(
                     indicator_id=self.indicator_id,
@@ -269,52 +289,41 @@ class MediaTypeIndicator(Indicator):
                     dimension=self.dimension,
                     status=IndicatorStatus.FAIL,
                     score=0.0,
-                    message_de="Kein Media Type angegeben",
-                    message_en="No media type specified",
-                    details={"media_type_count": 0},
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"total_distributions": 0},
                 )
 
-            # Two-step check per DCAT-AP-DE:
-            #   1) form — the value must be an IANA URI
-            #      (starts with https://www.iana.org/assignments/media-types/)
-            #   2) vocab — the suffix after the prefix must be a known
-            #      IANA media-type template (e.g. application/gml+xml)
-            valid: list[str] = []
-            invalid_form: list[str] = []
-            invalid_vocab: list[str] = []
-            for value in media_types:
-                if not value.startswith(IANA_MEDIA_TYPE_PREFIX):
-                    invalid_form.append(value)
-                    continue
-                template = value[len(IANA_MEDIA_TYPE_PREFIX) :]
-                print(template)
-                if template in VALID_MEDIA_TYPE_TEMPLATES:
-                    valid.append(value)
-                else:
-                    invalid_vocab.append(value)
+            # A distribution passes if any of its mediaTypes is an IANA URI AND
+            # in the IANA media-type vocabulary (DistributionContext precomputes
+            # ``media_types_in_vocab`` with exactly this two-step check).
+            per_distribution: list[dict[str, Any]] = []
+            for dist in context.distributions:
+                passes = any(dist.media_types_in_vocab)
+                per_distribution.append(
+                    {
+                        "uri": dist.distribution_uri,
+                        "media_types": list(dist.media_types),
+                        "passes": passes,
+                    }
+                )
 
-            invalid_total = len(invalid_form) + len(invalid_vocab)
-            if invalid_total:
-                status = IndicatorStatus.PARTIAL if valid else IndicatorStatus.FAIL
-                score = 0.5 if valid else 0.0
-                parts_de: list[str] = []
-                parts_en: list[str] = []
-                if invalid_form:
-                    parts_de.append(f"{len(invalid_form)} ohne IANA-URI-Form")
-                    parts_en.append(f"{len(invalid_form)} not in IANA URI form")
-                if invalid_vocab:
-                    parts_de.append(f"{len(invalid_vocab)} nicht im IANA-Vokabular")
-                    parts_en.append(f"{len(invalid_vocab)} not in IANA vocabulary")
-                message_de = ", ".join(parts_de)
-                message_en = ", ".join(parts_en)
-            else:
+            passing = sum(1 for d in per_distribution if d["passes"])
+            score = passing / total
+
+            if score >= self.PASS_THRESHOLD:
                 status = IndicatorStatus.PASS
-                score = 1.0
-                message_de = "Alle Media Types als IANA-URI und im Vokabular"
-                message_en = "All media types are valid IANA URIs and in the vocabulary"
+            elif score >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
+            else:
+                status = IndicatorStatus.FAIL
+
+            message_de = f"{passing}/{total} Distribution(en) mit gültigem Media Type"
+            message_en = f"{passing}/{total} distribution(s) with a valid media type"
 
             self.logger.info(
-                f"[{self.indicator_id}] Result: {status.value} | Score: {score:.2f} | {message_de}"
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"passing={passing}/{total}"
             )
 
             return IndicatorResult(
@@ -323,14 +332,13 @@ class MediaTypeIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=score,
+                score=round(score, 4),
                 message_de=message_de,
                 message_en=message_en,
                 details={
-                    "valid": valid,
-                    "invalid_form": invalid_form,
-                    "invalid_vocab": invalid_vocab,
-                    "total": len(media_types),
+                    "total_distributions": total,
+                    "passing_count": passing,
+                    "per_distribution": per_distribution,
                 },
             )
 
@@ -368,6 +376,8 @@ class FormatCongruenceIndicator(Indicator):
     Distributions whose ``probe is None`` (skipped by the per-dataset cap,
     or no fetchable URL) are not counted.
     """
+
+    GRADED = True  # per-distribution scores averaged into a continuous value
 
     MAX_DISTRIBUTIONS = 20
     PARALLEL_WORKERS = 4
@@ -542,19 +552,31 @@ class ResponseCodeIndicator(Indicator):
     """Generic per-URL HTTP response-code validator.
 
     Reads ``probe.download_status_code`` / ``probe.access_status_code``
-    (populated by ``attach_probes``) and scores the fraction of probed
-    distributions whose URL returned ``HTTP < 400``. Falls back to
-    attaching probes itself when run standalone, mirroring
-    ``FormatCongruenceIndicator``.
+    (populated by ``attach_probes``) and scores per probed distribution:
+    a reachable URL (``HTTP < 400``) contributes ``+1.0``, a dead one
+    (``>= 400`` or fetch error) contributes ``DEAD_URL_MALUS`` (a negative
+    penalty). The indicator score is the mean over all probed distributions,
+    so a dead link actively drags the score down proportionally instead of
+    just scoring low. Falls back to attaching probes itself when run
+    standalone, mirroring ``FormatCongruenceIndicator``.
 
     Instantiated once per URL kind (``download`` and ``access``); the
     ``url_kind`` argument selects which probe field to evaluate.
     Distributions that don't declare the relevant URL are excluded — they
     contribute nothing to the score either way.
+
+    Note: the malus lives here (pre-``/dist_count``) rather than in the
+    ``ScorePolicy`` because the policy only sees the aggregated result — a
+    proportional per-distribution penalty must be applied before averaging.
     """
+
+    GRADED = True  # per-distribution +1 / malus, averaged — continuous
 
     PASS_THRESHOLD = 0.9
     PARTIAL_THRESHOLD = 0.5
+    #: Penalty per dead URL (HTTP >= 400 or unreachable), applied per
+    #: distribution before averaging. Reachable URLs score +1.0.
+    DEAD_URL_MALUS = -0.5
 
     def __init__(self, url_kind: str, indicator_id: str, name_de: str, name_en: str):
         url_label_de = "Download-URL" if url_kind == "download" else "Access-URL"
@@ -671,7 +693,11 @@ class ResponseCodeIndicator(Indicator):
                 else:
                     invalid.append(entry)
 
-            overall = len(valid) / sampled_count
+            # Reachable URLs score +1.0, dead ones the (negative) malus, then
+            # average — so dead links pull the score below 0 proportionally.
+            overall = (
+                len(valid) * 1.0 + len(invalid) * self.DEAD_URL_MALUS
+            ) / sampled_count
 
             if overall >= self.PASS_THRESHOLD:
                 status = IndicatorStatus.PASS
@@ -716,6 +742,7 @@ class ResponseCodeIndicator(Indicator):
                     "sampled_distributions": sampled_count,
                     "valid_count": len(valid),
                     "invalid_count": len(invalid),
+                    "dead_url_malus": self.DEAD_URL_MALUS,
                     "valid": valid,
                     "invalid": invalid,
                 },
@@ -738,143 +765,49 @@ class ResponseCodeIndicator(Indicator):
             )
 
 
-# MIME → format-rating tables for ``MachineReadableAccessIndicator``,
-# anchored on the data.europa.eu "format ratings" table (1–3) where
-#
-#   3 = machine-readable AND open    → tier 1.0
-#   2 = mixed (open-ish OR machine-readable, but not both convincingly)
-#                                    → tier 0.67
-#   1 = neither / low                → tier 0.33
-#
-# Service endpoints and archives aren't in the source table; we score
-# them by structural role rather than MIME (see ``_tier_for``).
-#
-# Geo formats follow the table's spirit: GeoJSON / GML / KML / KMZ / GPKG /
-# NetCDF / GPX / TopoJSON / Atom are open machine-readable standards →
-# rating 3. SHP is rating 2 (Esri-controlled, but de-facto open and widely
-# parseable). GeoTIFF inherits TIFF's rating 1 since we can't distinguish
-# them at the MIME level (both ``image/tiff``).
-_RATING_3_MIMES: frozenset[str] = frozenset(
-    {
-        # Tabular & serialisation (from the source table)
-        "application/xml",
-        "text/xml",
-        "application/json",
-        "application/ld+json",
-        "application/hal+json",
-        "application/vnd.api+json",
-        "text/csv",
-        "application/csv",
-        "text/tab-separated-values",
-        "application/vnd.oasis.opendocument.spreadsheet",  # ODS
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",  # XLSX
-        # RDF / SPARQL / Parquet — extension of the table's "structured
-        # open" spirit
-        "application/rdf+xml",
-        "text/turtle",
-        "text/n3",
-        "application/sparql-query",
-        "application/vnd.apache.parquet",
-        # Geo machine-readable open standards (user request: GeoJSON at
-        # the same level as JSON/XML/CSV; others by analogy)
-        "application/geo+json",
-        "application/gml+xml",
-        "application/vnd.google-earth.kml+xml",
-        "application/vnd.google-earth.kmz",
-        "application/x-gpkg",
-        "application/geopackage+sqlite3",
-        "application/x-netcdf",
-        "application/x-cdf",
-        "application/gpx+xml",
-        "application/atom+xml",
-        "application/topojson",
-    }
-)
-_RATING_2_MIMES: frozenset[str] = frozenset(
-    {
-        "application/vnd.ms-excel",  # XLS
-        "application/excel",
-        # Shapefile family — machine-readable but Esri-controlled spec
-        "x-gis/x-shapefile",
-        "application/x-esri-shape",
-        "application/x-filegdb",
-    }
-)
-_RATING_1_MIMES: frozenset[str] = frozenset(
-    {
-        "text/plain",
-        "text/html",
-        "application/xhtml+xml",
-        "application/pdf",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",  # DOCX
-        "application/vnd.oasis.opendocument.text",  # ODT
-        "application/msword",  # DOC
-        "image/png",
-        "image/gif",
-        "image/jpeg",
-        "image/tiff",  # TIFF and GeoTIFF — table rates as 1
-    }
-)
-
-
 class MachineReadableAccessIndicator(Indicator):
-    """Score whether the dataset offers direct machine-readable access.
+    """Score machine-readable access across ALL distributions (mean tier).
 
-    Iterates every distribution, assigns each one a tier based on its
-    role (from ``classify_distribution_role``) and effective MIME (probe-
-    coalesced when available, declared otherwise), and reports the
-    **maximum** tier — the requirement is that *at least one* distribution
-    provides direct access, so the strongest distribution wins.
+    Each distribution receives a flat 3-level tier from its role and
+    effective MIME type, then the indicator score is the mean over all
+    distributions — every distribution counts, not just the best one.
 
-    Tiers (anchored on the data.europa.eu format-rating table 1–3):
+    Tiers (anchored on the data.europa.eu format-rating table 1–3, with a malus
+    for non-machine-readable distributions so they drag the mean down — like the
+    other per-distribution indicators):
 
-    * 1.0 — rating 3: machine-readable AND open (XML, JSON, CSV, ODS, XLSX,
-      GeoJSON, GML, KML/KMZ, GPKG, NetCDF, GPX, TTL, RDF/XML, Parquet, …)
-    * 0.8 — OGC service endpoint (WFS/WMS/WCS/WMTS/SOS): rating-3-quality
-      data accessed indirectly
-    * 0.67 — rating 2: open-ish but not machine-readable, or vice versa
-      (XLS, SHP and the Esri-shapefile family)
-    * 0.5 — archive (ZIP / TAR / gzip / 7z): contents may be high-tier but
-      require extraction
-    * 0.33 — rating 1: HTML, PDF, TXT, DOCX, ODT, DOC, PNG, GIF, JPG/JPEG,
-      TIFF / GeoTIFF
-    * 0.0 — no distributions, unknown role, or MIME not in any tier table
+    * +1.0 (high) — machine-readable AND open: XML/JSON/CSV/ODS/XLSX, RDF,
+      Parquet, GeoJSON/GML/KML/KMZ/GPKG/NetCDF/GPX/TopoJSON,
+      OGC service endpoints (WFS/WMS/WCS/…)
+    * +0.5 (mid)  — partially ok: XLS, SHP/Esri family, archives (ZIP/TAR/…)
+    * −0.5 (none) — HTML, PDF, images, TIFF/GeoTIFF, unknown MIME (malus)
+
+    Score = mean(tier_i for all distributions).
+    PASS ≥ 0.8, PARTIAL ≥ 0.4, FAIL below.
     """
 
-    TIER_RATING_3 = 1.0
-    TIER_SERVICE = 0.8
-    TIER_RATING_2 = 0.67
-    TIER_ARCHIVE = 0.5
-    TIER_RATING_1 = 0.33
-    TIER_NONE = 0.0
+    GRADED = True
+
+    TIER_HIGH = 1.0
+    TIER_MID = 0.5
+    TIER_NONE = 0
 
     PASS_THRESHOLD = 0.8
-    PARTIAL_THRESHOLD = 0.5
-
-    # Probe-based penalties — applied to the base tier before sorting, so
-    # that a rating-3 distribution with conflicting MIME signals can lose
-    # to a clean rating-2 distribution. HTTP errors are a hard zero; the
-    # next best distribution wins.
-    PENALTY_ISSUES = 0.3
-    PENALTY_WARNINGS = 0.15
+    PARTIAL_THRESHOLD = 0.4
 
     def __init__(self):
         super().__init__(
             indicator_id="acc_machine_readable_access",
-            name_de="Direkter Zugang zu maschinenlesbarem Format",
-            name_en="Direct access to machine-readable format",
+            name_de="Maschinenlesbarer Zugang (alle Distributionen)",
+            name_en="Machine-readable access (all distributions)",
             dimension=QualityDimension.ACCESSIBILITY,
             description_de=(
-                "Prüft, ob mindestens eine Distribution direkten Zugriff auf "
-                "ein maschinenlesbares Format bietet (CSV/JSON/XML/XLSX bzw. "
-                "GeoJSON/GPKG/SHP/GeoTIFF), abgestuft über Service-Endpunkte "
-                "und Archive"
+                "Bewertet jede Distribution anhand ihres Formats (hoch/mittel/keine "
+                "Maschinenlesbarkeit) und bildet den Mittelwert über alle Distributionen"
             ),
             description_en=(
-                "Checks whether at least one distribution offers direct "
-                "access to a machine-readable format (CSV/JSON/XML/XLSX or "
-                "GeoJSON/GPKG/SHP/GeoTIFF), with graduated credit for service "
-                "endpoints and archives"
+                "Rates each distribution by its format (high/mid/none machine-readability) "
+                "and reports the mean across all distributions"
             ),
             weight=1.0,
         )
@@ -905,62 +838,45 @@ class MachineReadableAccessIndicator(Indicator):
 
             per_distribution: list[dict[str, Any]] = []
             for dist in context.distributions:
-                role = classify_distribution_role(dist)
-                mime = effective_mime(dist)
-                base_tier = self._tier_for(role, mime)
-                effective_tier, penalty_reasons = self._apply_probe_penalties(
-                    base_tier, dist.probe
+                tier_label = format_tier_for_dist(dist)
+                tier = (
+                    self.TIER_HIGH
+                    if tier_label == "high"
+                    else (self.TIER_MID if tier_label == "mid" else self.TIER_NONE)
                 )
                 per_distribution.append(
                     {
                         "uri": dist.distribution_uri,
-                        "url": dist.fetch_url,
-                        "role": role.value,
-                        "effective_mime": mime,
-                        "base_tier": base_tier,
-                        "base_tier_label": self._tier_label(base_tier),
-                        "effective_tier": effective_tier,
-                        "status_code": (dist.probe.status_code if dist.probe else None),
-                        "fetch_error": (dist.probe.fetch_error if dist.probe else None),
-                        "issues_count": (len(dist.probe.issues) if dist.probe else 0),
-                        "warnings_count": (
-                            len(dist.probe.warnings) if dist.probe else 0
-                        ),
-                        "penalties": penalty_reasons,
+                        "effective_mime": effective_mime(dist),
+                        "tier": tier,
+                        "tier_label": tier_label,
                     }
                 )
 
-            # Sort descending by post-penalty score so the head is the
-            # winning distribution. Stable sort preserves the original
-            # iteration order for tied scores.
-            per_distribution.sort(key=lambda d: d["effective_tier"], reverse=True)
-            winner = per_distribution[0]
-            best_tier = winner["effective_tier"]
-            tier_label = winner["base_tier_label"]
+            score = sum(d["tier"] for d in per_distribution) / total
+            high = sum(1 for d in per_distribution if d["tier"] >= self.TIER_HIGH)
+            mid = sum(1 for d in per_distribution if d["tier"] == self.TIER_MID)
+            none_ = total - high - mid
 
-            if best_tier >= self.PASS_THRESHOLD:
+            if score >= self.PASS_THRESHOLD:
                 status = IndicatorStatus.PASS
-            elif best_tier >= self.PARTIAL_THRESHOLD:
+            elif score >= self.PARTIAL_THRESHOLD:
                 status = IndicatorStatus.PARTIAL
             else:
                 status = IndicatorStatus.FAIL
 
-            penalty_suffix = (
-                f" [{'; '.join(winner['penalties'])}]" if winner["penalties"] else ""
-            )
             message_de = (
-                f"Bester Zugang: {tier_label} (Score {best_tier:.2f}) "
-                f"über {total} Distribution(en){penalty_suffix}"
+                f"{high}/{total} hoch maschinenlesbar, {mid}/{total} mittel, "
+                f"{none_}/{total} keine (Score {score:.2f})"
             )
             message_en = (
-                f"Best access: {tier_label} (score {best_tier:.2f}) "
-                f"across {total} distribution(s){penalty_suffix}"
+                f"{high}/{total} high machine-readable, {mid}/{total} mid, "
+                f"{none_}/{total} none (score {score:.2f})"
             )
 
             self.logger.info(
-                f"[{self.indicator_id}] {status.value} score={best_tier:.2f} "
-                f"best_tier={tier_label} distributions={total} "
-                f"penalties={winner['penalties']}"
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"high={high} mid={mid} none={none_} total={total}"
             )
 
             return IndicatorResult(
@@ -969,14 +885,14 @@ class MachineReadableAccessIndicator(Indicator):
                 name_en=self.name_en,
                 dimension=self.dimension,
                 status=status,
-                score=round(best_tier, 4),
+                score=round(score, 4),
                 message_de=message_de,
                 message_en=message_en,
                 details={
                     "total_distributions": total,
-                    "best_tier": best_tier,
-                    "best_tier_label": tier_label,
-                    "winner_penalties": winner["penalties"],
+                    "high_count": high,
+                    "mid_count": mid,
+                    "none_count": none_,
                     "per_distribution": per_distribution,
                 },
             )
@@ -996,72 +912,6 @@ class MachineReadableAccessIndicator(Indicator):
                 message_en="Validation error",
                 error=str(e),
             )
-
-    @classmethod
-    def _apply_probe_penalties(
-        cls, tier: float, probe: Optional[DistributionProbe]
-    ) -> tuple[float, list[str]]:
-        """Reduce ``tier`` according to probe quality signals.
-
-        Returns ``(effective_tier, reasons)``. ``reasons`` is empty when
-        no probe is attached or the tier is already zero — there's nothing
-        to reduce. HTTP ≥ 400 and unrecovered fetch errors zero the tier
-        outright; issues / warnings apply additive soft penalties.
-        """
-        if probe is None or tier <= 0.0:
-            return tier, []
-
-        reasons: list[str] = []
-        if probe.status_code is not None and probe.status_code >= 400:
-            reasons.append(f"HTTP {probe.status_code}")
-            return 0.0, reasons
-        if probe.fetch_error and not probe.fetched:
-            reasons.append(f"fetch error: {probe.fetch_error}")
-            return 0.0, reasons
-
-        effective = tier
-        if probe.issues:
-            effective -= cls.PENALTY_ISSUES
-            reasons.append(
-                f"-{cls.PENALTY_ISSUES:.2f} for {len(probe.issues)} issue(s)"
-            )
-        if probe.warnings:
-            effective -= cls.PENALTY_WARNINGS
-            reasons.append(
-                f"-{cls.PENALTY_WARNINGS:.2f} for {len(probe.warnings)} warning(s)"
-            )
-        return max(effective, 0.0), reasons
-
-    @classmethod
-    def _tier_for(cls, role: DistributionRole, mime: Optional[str]) -> float:
-        # SERVICE and ARCHIVE are scored by role because they're not in the
-        # source rating table. Everything else (including LANDING_PAGE,
-        # whose MIME is text/html → rating 1) is scored by the MIME tables.
-        if role == DistributionRole.SERVICE_ENDPOINT:
-            return cls.TIER_SERVICE
-        if role == DistributionRole.ARCHIVE:
-            return cls.TIER_ARCHIVE
-        if mime in _RATING_3_MIMES:
-            return cls.TIER_RATING_3
-        if mime in _RATING_2_MIMES:
-            return cls.TIER_RATING_2
-        if mime in _RATING_1_MIMES:
-            return cls.TIER_RATING_1
-        return cls.TIER_NONE
-
-    @classmethod
-    def _tier_label(cls, tier: float) -> str:
-        if tier >= cls.TIER_RATING_3:
-            return "rating-3"
-        if tier >= cls.TIER_SERVICE:
-            return "service"
-        if tier >= cls.TIER_RATING_2:
-            return "rating-2"
-        if tier >= cls.TIER_ARCHIVE:
-            return "archive"
-        if tier >= cls.TIER_RATING_1:
-            return "rating-1"
-        return "none"
 
 
 class DistributionModelIndicator(Indicator):
@@ -1089,6 +939,8 @@ class DistributionModelIndicator(Indicator):
     * 0.4 — ``split-data`` (anti-pattern; should be a dataset series)
     * 0.0 — ``no-data`` (no recognisable data distributions)
     """
+
+    GRADED = True  # multi-tier (1.0/0.6/0.4/0.0)
 
     SCORES: dict[str, float] = {
         "format-variants": 1.0,
@@ -1272,6 +1124,128 @@ class DistributionModelIndicator(Indicator):
         }
 
 
+class FormatNonProprietaryIndicator(Indicator):
+    """Checks what fraction of distributions declare a non-proprietary format.
+
+    Uses the same non-proprietary EU file-type URI set as the MQA baseline
+    (``format_non_proprietary`` metric). Score = distributions with ≥ 1
+    non-proprietary format URI / total distributions.
+
+    PASS ≥ 0.9, PARTIAL ≥ 0.5, FAIL < 0.5.
+    """
+
+    GRADED = True
+
+    PASS_THRESHOLD = 0.9
+    PARTIAL_THRESHOLD = 0.5
+
+    def __init__(self):
+        super().__init__(
+            indicator_id="acc_format_non_proprietary",
+            name_de="Nicht-proprietäres Format (alle Distributionen)",
+            name_en="Non-proprietary format (all distributions)",
+            dimension=QualityDimension.ACCESSIBILITY,
+            description_de=(
+                "Prüft, welcher Anteil der Distributionen ein nicht-proprietäres "
+                "Format-URI aus dem EU-File-Type-Vokabular deklariert"
+            ),
+            description_en=(
+                "Checks what fraction of distributions declare a non-proprietary "
+                "format URI from the EU file-type vocabulary"
+            ),
+            weight=1.0,
+        )
+
+    def validate(
+        self, metadata: Any, context: Optional[DatasetContext] = None
+    ) -> IndicatorResult:
+        try:
+            if context is None:
+                context = DatasetContext.from_graph(metadata)
+
+            total = context.distribution_count
+            if total == 0:
+                self.logger.info(
+                    f"[{self.indicator_id}] FAIL score=0.00 no distributions"
+                )
+                return IndicatorResult(
+                    indicator_id=self.indicator_id,
+                    name_de=self.name_de,
+                    name_en=self.name_en,
+                    dimension=self.dimension,
+                    status=IndicatorStatus.FAIL,
+                    score=0.0,
+                    message_de="Keine Distributionen vorhanden",
+                    message_en="No distributions present",
+                    details={"total_distributions": 0},
+                )
+
+            per_distribution: list[dict[str, Any]] = []
+            for dist in context.distributions:
+                passes = is_non_proprietary_for_dist(dist)
+                per_distribution.append(
+                    {
+                        "uri": dist.distribution_uri,
+                        "formats": dist.formats,
+                        "passes": passes,
+                    }
+                )
+
+            passing = sum(1 for d in per_distribution if d["passes"])
+            score = passing / total
+
+            if score >= self.PASS_THRESHOLD:
+                status = IndicatorStatus.PASS
+            elif score >= self.PARTIAL_THRESHOLD:
+                status = IndicatorStatus.PARTIAL
+            else:
+                status = IndicatorStatus.FAIL
+
+            message_de = (
+                f"{passing}/{total} Distribution(en) mit nicht-proprietärem Format"
+            )
+            message_en = (
+                f"{passing}/{total} distribution(s) with non-proprietary format"
+            )
+
+            self.logger.info(
+                f"[{self.indicator_id}] {status.value} score={score:.2f} "
+                f"passing={passing}/{total}"
+            )
+
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=status,
+                score=round(score, 4),
+                message_de=message_de,
+                message_en=message_en,
+                details={
+                    "total_distributions": total,
+                    "passing_count": passing,
+                    "per_distribution": per_distribution,
+                },
+            )
+
+        except Exception as e:
+            self.logger.exception(
+                f"[{self.indicator_id}] Validation failed with exception"
+            )
+            return IndicatorResult(
+                indicator_id=self.indicator_id,
+                name_de=self.name_de,
+                name_en=self.name_en,
+                dimension=self.dimension,
+                status=IndicatorStatus.ERROR,
+                score=0.0,
+                message_de="Fehler bei der Validierung",
+                message_en="Validation error",
+                error=str(e),
+            )
+
+
 # Auto-register indicators when imported
 _download_url_indicator = DownloadURLIndicator()
 _format_indicator = FormatIndicator()
@@ -1290,4 +1264,5 @@ _access_url_response = ResponseCodeIndicator(
     "Access URL response code",
 )
 _machine_readable_access_indicator = MachineReadableAccessIndicator()
+_format_non_proprietary_indicator = FormatNonProprietaryIndicator()
 _distribution_model_indicator = DistributionModelIndicator()

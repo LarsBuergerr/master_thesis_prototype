@@ -1,0 +1,492 @@
+2026-07-13 13:44:36 - reporting.output_manager - INFO - Created file log handler for non_geo_rest_02.rdf at run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_rest_02/logs.log
+2026-07-13 13:44:36 - __main__ - INFO - Started processing: non_geo_rest_02.rdf
+2026-07-13 13:44:36 - scoring.service - INFO - Validating metadata: data/sample_2026-06-25_09-57/non_geo_rest_02.rdf
+2026-07-13 13:44:36 - extraction.rdf_parser - INFO - Parsing RDF metadata from data/sample_2026-06-25_09-57/non_geo_rest_02.rdf using format: xml
+2026-07-13 13:44:36 - extraction.rdf_parser - INFO - Successfully parsed 110 triples
+2026-07-13 13:44:36 - scoring.service - INFO - Parsed 110 triples
+2026-07-13 13:44:36 - scoring.service - DEBUG - DatasetContext built: 3 distribution(s)
+2026-07-13 13:44:36 - scoring.service - DEBUG - attach_probes: 3/3 unique fetch keys, 3 distribution(s) covered
+2026-07-13 13:44:36 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/63a7a51d-3c68-4d35-9095-261e1b9142d0 — Umsatz und Beschäftigte in ausgewählten Dienstleistungsbereichen Hamburgs - Veränderung gegenüber dem Vorjahresquartal
+  accessURL   : https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/industrie__handel_und_dienstl/J_I_vj_H/J_I_vj094_H.xls
+  HTTP        : 200
+  attachment  : J_I_vj094_H.xls
+  signals     :
+    dct:format           raw=XLS                                      mime=application/vnd.ms-excel
+    dcat:mediaType       raw=application/vnd.ms-excel                 mime=application/vnd.ms-excel
+    url_extension        raw=J_I_vj094_H.xls                          mime=application/vnd.ms-excel
+    http_content_type    raw=application/vnd.ms-excel                 mime=application/vnd.ms-excel
+    attachment_filename  raw=J_I_vj094_H.xls (from final URL)         mime=application/vnd.ms-excel
+  coalesced   : application/vnd.ms-excel
+2026-07-13 13:44:36 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/a4d80cc2-5e2e-4644-bf9c-dc6ec914d793 — Umsatz und Beschäftigte in ausgewählten Dienstleistungsbereichen Hamburgs - Veränderung gegenüber dem Vorjahresquartal
+  accessURL   : https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/industrie__handel_und_dienstl/J_I_vj_H/J_I_vj094_H.pdf
+  HTTP        : 200
+  attachment  : J_I_vj094_H.pdf
+  signals     :
+    dct:format           raw=PDF                                      mime=application/pdf
+    dcat:mediaType       raw=application/pdf                          mime=application/pdf
+    url_extension        raw=J_I_vj094_H.pdf                          mime=application/pdf
+    http_content_type    raw=application/pdf                          mime=application/pdf
+    attachment_filename  raw=J_I_vj094_H.pdf (from final URL)         mime=application/pdf
+  coalesced   : application/pdf
+2026-07-13 13:44:36 - scoring.service - DEBUG - [OK   ] http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/994e2989-ac2f-4a80-9ae2-f761dd0187ba — Umsatz und Beschäftigte in ausgewählten Dienstleistungsbereichen Hamburgs - Veränderung gegenüber dem Vorjahresquartal (CSV-Version in einer ZIP-Datei)
+  accessURL   : http://suche.transparenz.hamburg.de/localresources/StaNord_CMS/StaNord_CMS52790/J_I_vj094_H.zip
+  HTTP        : 200
+  final URL   : https://suche.transparenz.hamburg.de/localresources/StaNord_CMS/StaNord_CMS52790/J_I_vj094_H.zip
+  attachment  : J_I_vj094_H.zip
+  signals     :
+    dct:format           raw=ZIP                                      mime=application/zip
+    dcat:mediaType       raw=application/zip                          mime=application/zip
+    url_extension        raw=J_I_vj094_H.zip                          mime=application/zip
+    http_content_type    raw=application/zip                          mime=application/zip
+    attachment_filename  raw=J_I_vj094_H.zip (from final URL)         mime=application/zip
+  coalesced   : application/zip
+2026-07-13 13:44:36 - scoring.service - DEBUG - Attached probes to 3/3 distribution(s)
+2026-07-13 13:44:59 - scoring.service - DEBUG - Attached expressiveness assessment (summary: 'Der Titel ist vorbildlich spezifisch und verständlich. Schwerwiegende Mängel bestehen jedoch durch die fehlende Beschrei')
+2026-07-13 13:44:59 - scoring.service - DEBUG - Expressiveness assessment attached
+2026-07-13 13:44:59 - scoring.indicator.find_keywords_count - INFO - [find_keywords_count] partial score=0.50 keywords=2
+2026-07-13 13:44:59 - scoring.indicator.find_keywords_count - DEBUG - [find_keywords_count] values=['dienstleistungen', 'umsatz-und-beschäftigte-in-ausgewählten-dienstleistungsbereichen-hamburgs']
+2026-07-13 13:44:59 - scoring.indicator.find_theme_valid - DEBUG - [find_theme_valid] Found themes: ['http://publications.europa.eu/resource/authority/data-theme/AGRI', 'http://publications.europa.eu/resource/authority/data-theme/ECON']
+2026-07-13 13:44:59 - scoring.indicator.find_theme_valid - INFO - [find_theme_valid] pass score=1.00 valid=2/2
+2026-07-13 13:44:59 - scoring.indicator.find_locn_geometry - INFO - [find_locn_geometry] FAIL score=0.00 no locn:geometry
+2026-07-13 13:44:59 - scoring.indicator.find_political_geocoding - INFO - [find_political_geocoding] pass score=1.00 source=dcatde:politicalGeocodingURI uri=http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000 segment=regionalKey
+2026-07-13 13:44:59 - scoring.indicator.find_geocoding_level - INFO - [find_geocoding_level] partial score=0.50 valid=0/1
+2026-07-13 13:44:59 - scoring.indicator.find_geocoding_level - DEBUG - [find_geocoding_level] invalid_levels=['http://dcat-ap.de/def/politicalGeocoding/level/state']
+2026-07-13 13:44:59 - scoring.indicator.find_temporal_coverage - DEBUG - [find_temporal_coverage] Found startDate: ['2009-10-01T00:00:00'], endDate: ['2009-12-31T00:00:00']
+2026-07-13 13:44:59 - scoring.indicator.find_temporal_coverage - INFO - [find_temporal_coverage] PASS score=1.00 start=dateTime/True end=dateTime/True
+2026-07-13 13:44:59 - scoring.indicator.find_issued_datetime - INFO - [find_issued_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/issued
+2026-07-13 13:44:59 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [dataset] http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2 = 2014-09-26T00:00:00
+2026-07-13 13:44:59 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/a4d80cc2-5e2e-4644-bf9c-dc6ec914d793 = 2014-09-26T00:00:00
+2026-07-13 13:44:59 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/63a7a51d-3c68-4d35-9095-261e1b9142d0 = 2014-09-26T00:00:00
+2026-07-13 13:44:59 - scoring.indicator.find_issued_datetime - DEBUG - [find_issued_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/994e2989-ac2f-4a80-9ae2-f761dd0187ba = 2014-09-26T00:00:00
+2026-07-13 13:44:59 - scoring.indicator.find_modified_datetime - INFO - [find_modified_datetime] pass score=1.00 valid=4/4 dataset=1 distribution=3 field=http://purl.org/dc/terms/modified
+2026-07-13 13:44:59 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [dataset] http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2 = 2026-06-23T05:32:07.323020
+2026-07-13 13:44:59 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/a4d80cc2-5e2e-4644-bf9c-dc6ec914d793 = 2026-06-23T05:32:07.323020
+2026-07-13 13:44:59 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/63a7a51d-3c68-4d35-9095-261e1b9142d0 = 2026-06-23T05:32:07.323020
+2026-07-13 13:44:59 - scoring.indicator.find_modified_datetime - DEBUG - [find_modified_datetime]   [distribution] http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/994e2989-ac2f-4a80-9ae2-f761dd0187ba = 2026-06-23T05:32:07.323020
+2026-07-13 13:44:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): find_accrual_periodicity
+2026-07-13 13:44:59 - scoring.indicator.acc_download_url - DEBUG - [acc_download_url] Starting validation
+2026-07-13 13:44:59 - scoring.indicator.acc_download_url - INFO - [acc_download_url] fail score=0.00 with_download=0/3
+2026-07-13 13:44:59 - scoring.indicator.acc_format - DEBUG - [acc_format] Starting validation
+2026-07-13 13:44:59 - scoring.service - INFO - ✓ findability: 8 indicators
+2026-07-13 13:44:59 - scoring.indicator.acc_format - INFO - [acc_format] fail score=0.00 passing=0/3
+2026-07-13 13:44:59 - scoring.indicator.acc_media_type - DEBUG - [acc_media_type] Starting validation
+2026-07-13 13:44:59 - scoring.indicator.acc_media_type - INFO - [acc_media_type] fail score=0.00 passing=0/3
+2026-07-13 13:44:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_format_congruence
+2026-07-13 13:44:59 - scoring.indicator.acc_download_url_response - INFO - [acc_download_url_response] FAIL score=0.00 no distribution declares a download URL
+2026-07-13 13:44:59 - scoring.indicator.acc_access_url_response - INFO - [acc_access_url_response] pass score=1.00 valid=3/3 relevant=3/3
+2026-07-13 13:44:59 - scoring.indicator.acc_machine_readable_access - INFO - [acc_machine_readable_access] fail score=0.33 high=0 mid=2 none=1 total=3
+2026-07-13 13:44:59 - scoring.indicator.acc_format_non_proprietary - INFO - [acc_format_non_proprietary] fail score=0.00 passing=0/3
+2026-07-13 13:44:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): acc_distribution_model
+2026-07-13 13:44:59 - scoring.indicator.reuse_license - INFO - [reuse_license] pass score=1.00 free=3/3
+2026-07-13 13:44:59 - scoring.service - DEBUG - Skipping indicator (blacklisted): reuse_access_rights
+2026-07-13 13:44:59 - scoring.service - INFO - ✓ accessibility: 7 indicators
+2026-07-13 13:44:59 - scoring.indicator.reuse_publisher - INFO - [reuse_publisher] pass score=1.00 publishers=1
+2026-07-13 13:44:59 - scoring.indicator.reuse_contact - INFO - [reuse_contact] partial score=0.50 contacts=1 with_channel=0
+2026-07-13 13:44:59 - scoring.indicator.reuse_contributor_id - INFO - [reuse_contributor_id] pass score=1.00 count=1 valid=1/1
+2026-07-13 13:45:01 - scoring.indicator.reuse_dcat_ap_de_compliance - INFO - [reuse_dcat_ap_de_compliance] fail score=0.00 conforms=False violations=14
+2026-07-13 13:45:01 - scoring.indicator.reuse_availability - INFO - [reuse_availability] fail score=0.00 passing=0/3
+2026-07-13 13:45:01 - scoring.indicator.expr_title_quality - INFO - [expr_title_quality] pass | score=1.00 | Der Titel erfüllt alle Anforderungen: Er ist spezifisch, prägnant, verständlich und unterscheidbar. Die Angabe der Verän
+2026-07-13 13:45:01 - scoring.indicator.expr_description_quality - INFO - [expr_description_quality] fail | score=0.00 | Eine Beschreibung fehlt vollständig. Damit ist das Kriterium nicht erfüllt; der Datensatz bleibt ohne jede inhaltliche E
+2026-07-13 13:45:01 - scoring.indicator.expr_title_description_coherence - INFO - [expr_title_description_coherence] fail | score=0.00 | Ohne vorhandene Beschreibung ist eine Bewertung der Kohärenz zwischen Titel und Beschreibung nicht möglich. Das Kriteriu
+2026-07-13 13:45:01 - scoring.indicator.expr_keyword_quality - INFO - [expr_keyword_quality] fail | score=0.40 | Ein Schlagwort ist gut, das andere ist ein langes, redundantes Kompositum, das den Titel wiederholt statt ihn zu ergänze
+2026-07-13 13:45:01 - scoring.service - INFO - ✓ reusability: 6 indicators
+2026-07-13 13:45:01 - scoring.indicator.expr_thematic_consistency - INFO - [expr_thematic_consistency] partial | score=0.50 | Die Zuordnung zu ECON passt, die Zuordnung zu AGRI ist jedoch ein klares Off-topic-Signal. Dienstleistungen, Umsatz und 
+2026-07-13 13:45:01 - scoring.indicator.expr_contextual_qualifiers - INFO - [expr_contextual_qualifiers] partial | score=0.70 | Die wichtigsten Qualifizierer (Bezugszeitraum, Aktualisierungszyklus) sind vorhanden. Die zeitliche Abdeckung erscheint 
+2026-07-13 13:45:01 - scoring.service - INFO - ✓ expressiveness: 6 indicators
+2026-07-13 13:45:01 - scoring.service - DEBUG - {
+  "dataset_uri": "http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2",
+  "titles": [
+    "Umsatz und Beschäftigte in ausgewählten Dienstleistungsbereichen Hamburgs - Veränderung gegenüber dem Vorjahresquartal"
+  ],
+  "descriptions": [],
+  "keywords": [
+    "dienstleistungen",
+    "umsatz-und-beschäftigte-in-ausgewählten-dienstleistungsbereichen-hamburgs"
+  ],
+  "themes": [
+    "http://publications.europa.eu/resource/authority/data-theme/AGRI",
+    "http://publications.europa.eu/resource/authority/data-theme/ECON"
+  ],
+  "themes_in_vocab": [
+    true,
+    true
+  ],
+  "languages": [
+    "http://publications.europa.eu/resource/authority/language/DEU"
+  ],
+  "modified": [
+    "2026-06-23T05:32:07.323020"
+  ],
+  "issued": [
+    "2014-09-26T00:00:00"
+  ],
+  "accrual_periodicity": "http://publications.europa.eu/resource/authority/frequency/QUARTERLY",
+  "accrual_periodicity_in_vocab": true,
+  "start_dates": [
+    "2009-10-01T00:00:00"
+  ],
+  "end_dates": [
+    "2009-12-31T00:00:00"
+  ],
+  "geometries": [],
+  "spatial_resources": [
+    "N85924b58d60f4859865dcafef77fa048"
+  ],
+  "admin_units": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding": [
+    {
+      "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+      "segment": "regionalKey",
+      "is_in_vocab": true
+    }
+  ],
+  "political_geocoding_level": [
+    "http://dcat-ap.de/def/politicalGeocoding/level/state"
+  ],
+  "political_geocoding_level_in_vocab": [
+    false
+  ],
+  "availability": [],
+  "licenses": [],
+  "licenses_open": [],
+  "access_rights": "http://www.govdata.de/dl-de/by-2-0",
+  "publisher": "N56e085abc4ba42ee9b1f66cba8b7d471",
+  "contact_points": [
+    "N68196d8a488b4a9f89459a19af03fc11"
+  ],
+  "contributor_ids": [
+    "http://dcat-ap.de/def/contributors/transparenzportalHamburg"
+  ],
+  "contributor_ids_in_vocab": [
+    true
+  ],
+  "distributions": [
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/a4d80cc2-5e2e-4644-bf9c-dc6ec914d793",
+      "titles": [
+        "Umsatz und Beschäftigte in ausgewählten Dienstleistungsbereichen Hamburgs - Veränderung gegenüber dem Vorjahresquartal"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/industrie__handel_und_dienstl/J_I_vj_H/J_I_vj094_H.pdf",
+      "formats": [
+        "PDF"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/pdf"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-06-23T05:32:07.323020"
+      ],
+      "issued": [
+        "2014-09-26T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "80982",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "PDF",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "J_I_vj094_H.pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/pdf",
+            "mime_type": "application/pdf"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "J_I_vj094_H.pdf (from final URL)",
+            "mime_type": "application/pdf"
+          }
+        ],
+        "coalesced_mime": "application/pdf",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/industrie__handel_und_dienstl/J_I_vj_H/J_I_vj094_H.pdf",
+        "content_disposition": null,
+        "attachment_filename": "J_I_vj094_H.pdf",
+        "machine_readable_tier": "none",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/63a7a51d-3c68-4d35-9095-261e1b9142d0",
+      "titles": [
+        "Umsatz und Beschäftigte in ausgewählten Dienstleistungsbereichen Hamburgs - Veränderung gegenüber dem Vorjahresquartal"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/industrie__handel_und_dienstl/J_I_vj_H/J_I_vj094_H.xls",
+      "formats": [
+        "XLS"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/vnd.ms-excel"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-06-23T05:32:07.323020"
+      ],
+      "issued": [
+        "2014-09-26T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "117676",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "XLS",
+            "mime_type": "application/vnd.ms-excel"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/vnd.ms-excel",
+            "mime_type": "application/vnd.ms-excel"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "J_I_vj094_H.xls",
+            "mime_type": "application/vnd.ms-excel"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/vnd.ms-excel",
+            "mime_type": "application/vnd.ms-excel"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "J_I_vj094_H.xls (from final URL)",
+            "mime_type": "application/vnd.ms-excel"
+          }
+        ],
+        "coalesced_mime": "application/vnd.ms-excel",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/industrie__handel_und_dienstl/J_I_vj_H/J_I_vj094_H.xls",
+        "content_disposition": null,
+        "attachment_filename": "J_I_vj094_H.xls",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    },
+    {
+      "distribution_uri": "http://suche.transparenz.hamburg.de/dataset/29df3abc-6a84-48e8-b288-2d757a4200d2/resource/994e2989-ac2f-4a80-9ae2-f761dd0187ba",
+      "titles": [
+        "Umsatz und Beschäftigte in ausgewählten Dienstleistungsbereichen Hamburgs - Veränderung gegenüber dem Vorjahresquartal (CSV-Version in einer ZIP-Datei)"
+      ],
+      "descriptions": [],
+      "download_url": null,
+      "access_url": "http://suche.transparenz.hamburg.de/localresources/StaNord_CMS/StaNord_CMS52790/J_I_vj094_H.zip",
+      "formats": [
+        "ZIP"
+      ],
+      "formats_in_vocab": [
+        false
+      ],
+      "media_types": [
+        "application/zip"
+      ],
+      "media_types_form_valid": [
+        false
+      ],
+      "media_types_in_vocab": [
+        false
+      ],
+      "modified": [
+        "2026-06-23T05:32:07.323020"
+      ],
+      "issued": [
+        "2014-09-26T00:00:00"
+      ],
+      "licenses": [
+        "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+      ],
+      "licenses_open": [
+        true
+      ],
+      "byte_size": "132880",
+      "availability": [],
+      "probe": {
+        "signals": [
+          {
+            "source": "dct:format",
+            "raw_value": "ZIP",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "dcat:mediaType",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "url_extension",
+            "raw_value": "J_I_vj094_H.zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "http_content_type",
+            "raw_value": "application/zip",
+            "mime_type": "application/zip"
+          },
+          {
+            "source": "attachment_filename",
+            "raw_value": "J_I_vj094_H.zip (from final URL)",
+            "mime_type": "application/zip"
+          }
+        ],
+        "coalesced_mime": "application/zip",
+        "issues": [],
+        "warnings": [],
+        "fetched": true,
+        "status_code": 200,
+        "fetch_error": null,
+        "download_status_code": null,
+        "download_fetch_error": null,
+        "access_status_code": 200,
+        "access_fetch_error": null,
+        "final_url": "https://suche.transparenz.hamburg.de/localresources/StaNord_CMS/StaNord_CMS52790/J_I_vj094_H.zip",
+        "content_disposition": null,
+        "attachment_filename": "J_I_vj094_H.zip",
+        "machine_readable_tier": "mid",
+        "is_non_proprietary": false
+      }
+    }
+  ],
+  "semantic_assessment": {
+    "title_quality": {
+      "findings": [
+        "Der Titel ist spezifisch und nennt klar Gegenstand (Umsatz und Beschäftigte), Ort (Hamburg) und Art der Darstellung (Veränderung gegenüber Vorjahresquartal).",
+        "Der Titel ist verständlich formuliert und unterscheidet sich durch die Angabe 'Veränderung gegenüber dem Vorjahresquartal' von ähnlichen Datensätzen.",
+        "Keine Sonderzeichen, Codes oder Markdown-Reste vorhanden; der Titel ist reiner, normaler Text."
+      ],
+      "reasoning": "Der Titel erfüllt alle Anforderungen: Er ist spezifisch, prägnant, verständlich und unterscheidbar. Die Angabe der Veränderungsart (gegenüber Vorjahresquartal) ist für Zeitreihen sinnvoll und hilft beim Verständnis. Keine Abwertungsgründe erkennbar.",
+      "applicable": true,
+      "score": 1.0
+    },
+    "description_quality": {
+      "findings": [
+        "Das Feld 'descriptions' ist leer – es gibt keine Beschreibung.",
+        "Zentrale Fragen (Was ist enthalten? Wie strukturiert? Erhebungsmethode? Zweck?) bleiben vollständig unbeantwortet.",
+        "Ohne Beschreibung fehlen Informationen zu Format, Kategorien, Datenquelle und Besonderheiten."
+      ],
+      "reasoning": "Eine Beschreibung fehlt vollständig. Damit ist das Kriterium nicht erfüllt; der Datensatz bleibt ohne jede inhaltliche Erläuterung. Dies ist ein schwerwiegender Mangel.",
+      "applicable": true,
+      "score": 0.0
+    },
+    "title_description_coherence": {
+      "findings": [
+        "Es existiert keine Beschreibung, daher kann keine Kohärenz zwischen Titel und Beschreibung geprüft werden.",
+        "Der Titel steht isoliert ohne erläuternden Text."
+      ],
+      "reasoning": "Ohne vorhandene Beschreibung ist eine Bewertung der Kohärenz zwischen Titel und Beschreibung nicht möglich. Das Kriterium kann nicht erfüllt werden.",
+      "applicable": true,
+      "score": 0.0
+    },
+    "keyword_quality": {
+      "findings": [
+        "Das Schlagwort 'dienstleistungen' ist kurz, singularisch und laienverständlich – gut gewählt.",
+        "Das zweite Schlagwort 'umsatz-und-beschäftigte-in-ausgewählten-dienstleistungsbereichen-hamburgs' ist ein langes Kompositum mit Bindestrichen, das den Titel nahezu vollständig wiederholt.",
+        "Das zweite Schlagwort ist nicht atomar und redundant zum Titel, was gegen Best Practices verstößt."
+      ],
+      "reasoning": "Ein Schlagwort ist gut, das andere ist ein langes, redundantes Kompositum, das den Titel wiederholt statt ihn zu ergänzen. Dies führt zu einer deutlichen Abwertung.",
+      "applicable": true,
+      "score": 0.4
+    },
+    "thematic_consistency": {
+      "findings": [
+        "Der Datensatz ist den Themen AGRI (Landwirtschaft) und ECON (Wirtschaft) zugeordnet.",
+        "Titel und Schlagwörter beziehen sich auf Dienstleistungen, Umsatz und Beschäftigte – klar wirtschaftliche Themen (ECON).",
+        "Die Zuordnung zu AGRI (Landwirtschaft) ist nicht nachvollziehbar und widerspricht dem erkennbaren Inhalt."
+      ],
+      "reasoning": "Die Zuordnung zu ECON passt, die Zuordnung zu AGRI ist jedoch ein klares Off-topic-Signal. Dienstleistungen, Umsatz und Beschäftigte haben keinen erkennbaren Bezug zur Landwirtschaft. Dies ist ein Widerspruch im Themenbild.",
+      "applicable": true,
+      "score": 0.5
+    },
+    "contextual_qualifiers": {
+      "findings": [
+        "Der Datensatz ist eine Zeitreihe mit vierteljährlicher Aktualisierung (accrual_periodicity: QUARTERLY).",
+        "Ein Bezugszeitraum ist angegeben (temporal: 2009-10-01 bis 2009-12-31), allerdings nur für ein einzelnes Quartal, obwohl der Titel auf eine Zeitreihe hindeutet.",
+        "Der Aktualisierungszyklus (vierteljährlich) ist vorhanden, aber die zeitliche Abdeckung wirkt unvollständig für eine Zeitreihe."
+      ],
+      "reasoning": "Die wichtigsten Qualifizierer (Bezugszeitraum, Aktualisierungszyklus) sind vorhanden. Die zeitliche Abdeckung erscheint jedoch unvollständig (nur ein Quartal 2009 angegeben, obwohl es sich um eine Zeitreihe handelt). Dies ist ein kleinerer Mangel, aber die Kernqualifizierer sind vorhanden.",
+      "applicable": true,
+      "score": 0.7
+    },
+    "overall_summary": "Der Titel ist vorbildlich spezifisch und verständlich. Schwerwiegende Mängel bestehen jedoch durch die fehlende Beschreibung, ein redundantes Schlagwort-Kompositum und die nicht nachvollziehbare Zuordnung zum Thema Landwirtschaft (AGRI). Die kontextuellen Qualifizierer sind größtenteils vorhanden, aber die zeitliche Abdeckung wirkt unvollständig."
+  },
+  "llm_usage": [
+    {
+      "model": "anthropic/claude-sonnet-4.5",
+      "input_tokens": 6084,
+      "output_tokens": 1549,
+      "total_tokens": 7633,
+      "cost_usd": 0.041487,
+      "latency_seconds": 22.75
+    }
+  ],
+  "distribution_count": 3
+}
+2026-07-13 13:45:01 - reporting.output_manager - DEBUG - Saved JSON: run_outputs/run_2026-07-13_13-21-40_state-evaluation-final_EVAL/non_geo_rest_02/result.json
+2026-07-13 13:45:01 - __main__ - INFO -   ✓ Completed | score=0.48 grade=D

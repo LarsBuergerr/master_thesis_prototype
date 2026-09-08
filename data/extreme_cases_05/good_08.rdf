@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dcat:Dataset rdf:about="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4">
+    <dct:title>Windkraftanlagen</dct:title>
+    <dct:description>Dieser Datensatz enthält Daten und Standorte von genehmigungspflichtigen Windkraftanlagen in Schleswig-Holstein. Im Landesportal sind weitere Informationen zum Thema [Windenergie](https://www.schleswig-holstein.de/DE/landesregierung/themen/energie/windenergie/windenergie_node.html) zu finden.&#13;
+&#13;
+## Hinweise zur Veröffentlichung der Winddaten Schleswig-Holstein&#13;
+&#13;
+Die Winddaten werden mindestens halbjährlich aktualisiert. &#13;
+&#13;
+Grundlage der Darstellung sind die Daten, die im Rahmen des erforderlichen Genehmigungsverfahrens auf der Grundlage des Bundesimmissionsschutzgesetzes dem Landesamt für Umwelt des Landes Schleswig-Holstein vorzulegen sind.&#13;
+&#13;
+Die Tabelle führt Anlagen und deren mögliche Leistungen auf und unterscheidet dabei zwischen drei Status&#13;
+&#13;
+- bereits in Betrieb&#13;
+- bereits genehmigt aber noch nicht in Betrieb genommen &#13;
+- noch im Genehmigungsverfahren&#13;
+&#13;
+Es wird darauf hingewiesen, dass die Anlagenanzahl Abweichungen zu weiteren, insbesondere bundesweiten Erhebungen, aufweisen kann. &#13;
+&#13;
+## Aufbau der Datei&#13;
+&#13;
+Folgende Spalten sind enthalten:&#13;
+&#13;
+- `Kreis` - Name des Kreises, auf dessen Gebiet sich die Anlage befindet&#13;
+- `Gemeinde` - Name der Gemeinde, auf deren Gebiet sich die Anlage befindet&#13;
+- `Typ` - Bezeichnung des Anlagentyps&#13;
+- `Hersteller` - Herstellerfirma&#13;
+- `Nabenhöhe` - Nabenhöhe in Metern – Dezimaltrenner ist Komma&#13;
+- `Rotordurchmesser` - Rotordurchmesser in Metern - Dezimaltrenner ist Komma&#13;
+ - `Schallleistungspegel` - keine Gewähr für die Richtigkeit der Daten, es handelt sich um genehmigte Werte, Feld enthält neben der Zahl auch den Einheitentext&#13;
+- `Leistung` - Leistungsangabe der Anlage (Dezimaltrennzeichen ist Punkt)&#13;
+- `Leistungsbezug` – Einheit und Einheitenbezug zur Leistungszahl&#13;
+- `Ostwert` - Ostwert bzw. Rechtswert der geographischen Position&#13;
+- `Nordwert` - Nordwert bzw. Hochwert der geographischen Position&#13;
+- `Genehmigungsdatum` – Datum der Genehmigung&#13;
+- `Inbetriebnahme` - Datum der Inbetriebnahme&#13;
+- `Status` - Status der Angabe. Hier sind folgende Werte möglich: `in Betrieb`, `vor Inbetriebnahme`, `im Gen.Verf.` = im Genehmigungsverfahren&#13;
+- `BST_Nr` - Identifizierungsangabe&#13;
+- `Anl_Nr` – Identifizierungsangabe&#13;
+- `AKTENZEICHEN` – Identifizierungsangabe &#13;
+- `Datendatum` - im Format `TT.MM.JJJJ`&#13;
+- `Datenquelle`&#13;
+&#13;
+Als Koordinatenbezugssystem (KBS bzw. CRS) wird EPSG:25832 verwendet.&#13;
+</dct:description>
+    <dct:identifier>7a039780-6395-424d-b935-6e1a2acd12f4</dct:identifier>
+    <dcat:keyword>energie</dcat:keyword>
+    <dcat:keyword>strom</dcat:keyword>
+    <dcat:keyword>stromerzeugung</dcat:keyword>
+    <dcat:keyword>wind</dcat:keyword>
+    <dcat:keyword>windenergie</dcat:keyword>
+    <dcat:keyword>windkraft</dcat:keyword>
+    <dcat:keyword>wka</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-08T11:17:21.465614</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-08T09:29:20.951666</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENVI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ENER"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
+    <dct:isVersionOf rdf:resource="https://opendata.schleswig-holstein.de/dataset/5de0b73c-2b48-477e-8726-4844326c9d1c"/>
+    <dct:publisher>
+      <foaf:Agent rdf:about="https://opendata.schleswig-holstein.de/organization/lfu">
+        <foaf:name>Landesamt für Umwelt</foaf:name>
+      </foaf:Agent>
+    </dct:publisher>
+    <dct:temporal>
+      <dct:PeriodOfTime rdf:nodeID="N8ad3702d2f2e41de87886c1adeed6e67">
+        <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-07T00:00:00</dcat:startDate>
+      </dct:PeriodOfTime>
+    </dct:temporal>
+    <dct:spatial>
+      <dct:Location rdf:about="http://dcat-ap.de/def/politicalGeocoding/stateKey/01">
+        <skos:prefLabel>Bundesland Schleswig-Holstein</skos:prefLabel>
+      </dct:Location>
+    </dct:spatial>
+    <dct:accessRights>
+      <dct:RightsStatement rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+    </dct:accessRights>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/8f666206-0a68-40e9-a56b-9eff3bba831d">
+        <dct:title>opendata_WKA_ib_gv_vb_SH_202500707.xlsx</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/8f666206-0a68-40e9-a56b-9eff3bba831d/download/opendata_wka_ib_gv_vb_sh_202500707.xlsx"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/8f666206-0a68-40e9-a56b-9eff3bba831d/download/opendata_wka_ib_gv_vb_sh_202500707.xlsx"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-08T09:19:09.543093</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-08T09:19:09.500604</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">516625</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N5320e7d6f5f5404eaff5e246029ff408">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">8b0c505fc4ae7169ceac366abe27160a</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Landesamt für Umwelt</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/3f43f662-3821-40e1-b798-19d73d37efb3">
+        <dct:title> Frictionless Tabular Data Resource</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/3f43f662-3821-40e1-b798-19d73d37efb3/download/windkraftanlagen-2025-07-07.json"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/3f43f662-3821-40e1-b798-19d73d37efb3/download/windkraftanlagen-2025-07-07.json"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/json"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-08T09:23:21.547543</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-08T09:23:21.502064</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">463</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N046b985f1d9c4766b5284db19b5697d4">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">e38b2cb1cfc31956a2695cc87782d5e5</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Landesamt für Umwelt</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/8a97f610-fca8-441d-b244-ac2ea6f979f5">
+        <dct:title>opendata_WKA_ib_gv_vb_SH_202500707.csv</dct:title>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/8a97f610-fca8-441d-b244-ac2ea6f979f5/download/opendata_wka_ib_gv_vb_sh_202500707.csv"/>
+        <dcat:downloadURL rdf:resource="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/8a97f610-fca8-441d-b244-ac2ea6f979f5/download/opendata_wka_ib_gv_vb_sh_202500707.csv"/>
+        <dct:rights rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-08T09:19:01.545917</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-08T09:29:20.566269</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1019545</dcat:byteSize>
+        <spdx:checksum>
+          <spdx:Checksum rdf:nodeID="N4ba1c42087b547488326322edafc45c9">
+            <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">74da6eb71b51012d6e3c87dbcf9e553e</spdx:checksumValue>
+            <spdx:algorithm rdf:resource="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+          </spdx:Checksum>
+        </spdx:checksum>
+        <dcatde:licenseAttributionByText>Landesamt für Umwelt</dcatde:licenseAttributionByText>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/schleswigHolstein"/>
+  </dcat:Dataset>
+  <dct:LicenseDocument rdf:about="http://dcat-ap.de/def/licenses/dl-by-de/2.0">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <dct:type rdf:resource="http://purl.org/adms/licencetype/UnknownIPR"/>
+  </dct:LicenseDocument>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/json"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/3f43f662-3821-40e1-b798-19d73d37efb3/download/windkraftanlagen-2025-07-07.json"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/text/csv"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/8a97f610-fca8-441d-b244-ac2ea6f979f5/download/opendata_wka_ib_gv_vb_sh_202500707.csv"/>
+  <rdfs:Resource rdf:about="https://opendata.schleswig-holstein.de/dataset/7a039780-6395-424d-b935-6e1a2acd12f4/resource/8f666206-0a68-40e9-a56b-9eff3bba831d/download/opendata_wka_ib_gv_vb_sh_202500707.xlsx"/>
+  <dct:MediaType rdf:about="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+  <dct:MediaTypeOrExtent rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+  <spdx:ChecksumAlgorithm rdf:about="http://dcat-ap.de/def/hashAlgorithms/md/5"/>
+</rdf:RDF>

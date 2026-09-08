@@ -1,0 +1,810 @@
+// Erklärende Elemente der Indikator-Tabelle: Info-Icons mit Tooltip, die
+// Indikatorzeile mit Klarnamen und Prüfmeldung, der aufklappbare Befund
+// (Ist-Zustand / Soll-Zustand / Änderungsvorschlag / Fundstelle im RDF) und
+// die Leiste für den Live-Lauf.
+//
+// Farben und Abstände stammen aus den GovData-Tokens, damit sich die
+// Erweiterung nicht vom übrigen Portal absetzt.
+
+// ---------------------------------------------------------------------------
+// Info-Icon mit Tooltip
+// ---------------------------------------------------------------------------
+.info-tip {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.info-tip-btn {
+  @extend .button-reset;
+
+  width: 16px;
+  height: 16px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid $clr-primary-300;
+  background: $clr-primary-100;
+  color: $clr-primary-500;
+  font-size: 11px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+
+  &:hover,
+  &:focus-visible {
+    background: $clr-primary-400;
+    border-color: $clr-primary-400;
+    color: $clr-shades-white-0;
+  }
+}
+
+.info-tip-bubble {
+  // Position kommt aus InfoTip.tsx (fest zum Viewport, per Portal an <body>),
+  // damit die Blase nicht den Scrollbereich der Tabelle aufspannt.
+  position: fixed;
+  z-index: 60;
+  width: max-content;
+  max-width: 280px;
+  padding: 8px 10px;
+  background: $clr-neutral-grey-800;
+  color: $clr-shades-white-0;
+  border-radius: 5px;
+  box-shadow: 0 4px 14px rgba(3, 13, 24, 0.28);
+  font-size: $fnt-paragraph-extra-small;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.45;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: normal;
+  pointer-events: none;
+
+  strong {
+    display: block;
+    margin-bottom: 2px;
+    color: $clr-primary-200;
+  }
+
+  // Mehrzeiliger Inhalt (Kurzfassung einer Bewertung). Die Breite muss zu
+  // SIZES.rich in InfoTip.tsx passen — dort wird die Position gerechnet.
+  &.rich {
+    max-width: 300px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Dimensions-Panel
+// ---------------------------------------------------------------------------
+// Behälter der Dimensionspanels. Der Deckel hält Indikatorname und Kennzahlen
+// beieinander, statt sie über die ganze Spaltenbreite auseinanderzuziehen
+// (Wert und Begründung: $ind-content-width in _variables.scss).
+.dim-panels {
+  margin-top: 8px;
+  max-width: $ind-content-width;
+}
+
+// Die Box, die die Dimensionspanels umschließt, endet dort, wo die Tabelle
+// endet: Inhaltsbreite plus die beidseitige Polsterung von
+// `.design-box-padding`. Beide Ansichten der Bewertung tragen die Klasse — die
+// Portalseite (.gd-quality) und die Analyzer-Ergebnisliste —, damit die
+// Kantenberechnung nur an einer Stelle steht. `box-sizing: border-box` gilt
+// global (_global.scss), die Polsterung steckt also mit im Wert.
+.ind-box {
+  max-width: $ind-content-width + $spacer * 4;
+
+  @include media-breakpoint-up(md) {
+    max-width: $ind-content-width + $spacer * 6;
+  }
+}
+
+.dim-panel {
+  summary {
+    cursor: pointer;
+  }
+}
+
+// Feste Spaltenbreite für den Namen: Die vier Dimensionen heißen unterschiedlich
+// lang („Aussagekraft" gegen „Nachnutzbarkeit"), und ohne feste Breite begänne
+// die Chipreihe jedes Panels an einer anderen Stelle. Untereinander gelesen
+// wirkte das wie eine Treppe.
+.dim-name {
+  display: inline-block;
+  min-width: 11rem;
+  font-weight: 700;
+}
+
+// Kennzahlen im Deckel des Panels. Bezeichnung normal, Wert fett — so trennt
+// sich innerhalb eines Chips, was benannt wird, von dem, was gilt.
+.dim-chips {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  vertical-align: middle;
+}
+.dim-chip {
+  // Ebenfalls fest bemessen, damit auch die zweite, dritte und vierte Kante
+  // über die Panels hinweg fluchten. Die Werte sind an ihrem breitesten Fall
+  // ausgelegt („Score 100 / 100"); längerer Inhalt sprengt den Chip nicht,
+  // sondern schiebt die Reihe nach rechts.
+  &.dim-chip-score {
+    min-width: 7rem;
+  }
+  &.dim-chip-weight {
+    min-width: 5.5rem;
+  }
+  &.dim-chip-count {
+    min-width: 11.5rem;
+  }
+
+  padding: 1px 8px;
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 20px;
+  background: $clr-neutral-grey-100;
+  font-size: $fnt-paragraph-extra-small;
+  font-weight: 400;
+  color: $clr-neutral-grey-600;
+  white-space: nowrap;
+
+  b {
+    font-weight: 700;
+    color: $clr-neutral-grey-800;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // Handlungsbedarf ist kein Messwert, sondern eine Aufforderung — der einzige
+  // Chip, der die Farbe wechselt.
+  &.actionable {
+    border-color: $clr-error-red-500;
+    background: $clr-error-red-200;
+    color: $clr-error-red-500;
+
+    b {
+      color: $clr-error-red-500;
+    }
+  }
+}
+
+// Unterhalb der Tabellenbreite ist für eine ausgerichtete Reihe kein Platz —
+// dort zählt, dass die Angaben überhaupt lesbar umbrechen.
+@media (max-width: $small-breakpoint) {
+  .dim-name {
+    min-width: 0;
+  }
+  .dim-chip.dim-chip-score,
+  .dim-chip.dim-chip-weight,
+  .dim-chip.dim-chip-count {
+    min-width: 0;
+  }
+}
+
+.dim-what {
+  margin: 4px 0 0;
+  max-width: 70ch;
+}
+
+// ---------------------------------------------------------------------------
+// Indikatorzeile
+// ---------------------------------------------------------------------------
+.ind-table {
+  // Feste Spaltenbreiten: sonst zieht ein langer Befundtext in der
+  // aufgeklappten Zeile die Tabelle über die Seitenbreite hinaus.
+  table-layout: fixed;
+  width: 100%;
+
+  // Die erste Spalte trägt Name, Meldung und Aufklapper; die Kennzahlen
+  // bleiben schmal und rechtsbündig lesbar.
+  th.ind-cell {
+    font-weight: 400;
+    width: auto;
+  }
+
+  // Score und Gewicht haben wieder je eine Spalte. Bemessen an der Überschrift
+  // samt Info-Icon — die ist breiter als der Zellinhalt („✓ 0,50", „2,00").
+  .gd-table-head th.ind-col-metric {
+    width: 12ch;
+    text-align: right;
+  }
+
+  td.tnum,
+  td.ind-metrics {
+    white-space: nowrap;
+  }
+
+  .gd-table-head th {
+    white-space: nowrap;
+  }
+
+  // Etwas mehr Luft zwischen den Indikatoren: Name, Meldung und Aufklapper
+  // sind drei Zeilen, die als ein Block gelesen werden wollen. Bei der
+  // Grundpolsterung der Tabelle (8 px) stand der nächste Indikator näher an
+  // der Meldung des vorigen als dessen eigener Name.
+  tbody th,
+  tbody td {
+    padding-top: map-get($spacers, "1_5");
+    padding-bottom: map-get($spacers, "1_5");
+  }
+
+  // Ausgeklappt gehören Zeile und Befund zusammen — dazwischen bleibt es eng.
+  tbody tr.ind-row.open > * {
+    padding-bottom: map-get($spacers, 1);
+  }
+}
+
+// Kennzahlenzellen: je eine Spalte, rechtsbündig.
+//
+// Als `td.ind-metrics` geschrieben, damit die Regel `.gd-table td` mit ihrer
+// linksbündigen Vorgabe nicht durch höhere Spezifität gewinnt.
+td.ind-metrics {
+  text-align: right;
+
+  .ind-metrics-icon {
+    margin-right: 6px;
+    font-weight: 700;
+  }
+
+  // Der Messwert trägt das Gewicht der Zeile, die Meldung daneben nicht.
+  .ind-metrics-value {
+    font-weight: 700;
+    color: $clr-neutral-grey-800;
+  }
+}
+
+// Statustönung der Tabellenzeilen. Gesetzt wird auf den Zellen und nicht auf
+// `tr`, weil ein Hintergrund am Tabellenzeilenelement von Zellrändern
+// überlagert wird. Nur Zeilen mit Handlungsbedarf werden getönt; erfüllte
+// Indikatoren bleiben weiß. Deckkraft und Wirkung übernommen von der früheren
+// Tönung der aufklappbaren Zeilen. Die Texte behalten ihre Graustufen — die
+// Fläche signalisiert, sie soll nicht mitlesen.
+//
+// Der Mixin gilt für die Indikatorzeile *und* den darunter aufgeklappten
+// Befund: Beide gehören zusammen, ein Farbwechsel zwischen ihnen würde die
+// Fläche auseinanderreißen.
+@mixin ind-status-tint {
+  &.fail > * {
+    background-color: rgba($clr-error-red-200, 0.35);
+  }
+
+  // Höhere Deckkraft als bei Rot, weil das Gelb-200-Token deutlich heller ist
+  // und bei gleichem Wert von Weiß nicht zu unterscheiden wäre.
+  &.partial > * {
+    background-color: rgba($clr-warning-yellow-300, 0.14);
+  }
+
+  &.error > * {
+    background-color: rgba($clr-neutral-grey-200, 0.55);
+  }
+}
+
+.ind-row {
+  @include ind-status-tint;
+}
+
+// Statusglyph in der Kennzahlenzelle: trägt die Statusfarbe als einziges
+// farbiges Element der Zeile und hält damit die Statusinformation auch dort
+// sichtbar, wo die Fläche neutral bleibt (erfüllt, nicht anwendbar).
+.ind-row {
+  &.pass .ind-metrics-icon {
+    color: $clr-success-green-500;
+  }
+
+  &.partial .ind-metrics-icon {
+    color: $clr-warning-yellow-500;
+  }
+
+  &.fail .ind-metrics-icon {
+    color: $clr-error-red-500;
+  }
+
+  &.error .ind-metrics-icon,
+  &.not_applicable .ind-metrics-icon {
+    color: $clr-neutral-grey-600;
+  }
+}
+
+.ind-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ind-name {
+  font-weight: 700;
+  color: $clr-neutral-grey-800;
+}
+
+.ind-field {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: $fnt-paragraph-extra-small;
+  color: $clr-neutral-grey-500;
+  background: $clr-neutral-grey-100;
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+.ind-message {
+  margin: 3px 0 0;
+  color: $clr-neutral-grey-600;
+  font-size: $fnt-paragraph-small;
+  max-width: 60ch;
+}
+
+.ind-toggle {
+  @extend .button-reset;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  color: $clr-primary-400;
+  font-size: $fnt-paragraph-small;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: $clr-primary-500;
+  }
+}
+
+// Richtungspfeil: zeigt nach unten, solange etwas aufzuklappen ist, und nach
+// oben, sobald es offen steht.
+.ind-toggle-chevron {
+  font-size: 11px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+// Der frühere rosa Schleier für aufklappbare Zeilen entfällt: Die Zeile trägt
+// jetzt ihre Statusfarbe, und beides übereinander verfälschte den Ton.
+
+// Ausgeklappt gehören Indikatorzeile und Befund zusammen. Die Trennlinie aus
+// `.gd-table tbody tr` schnitte sie auseinander und läge dabei direkt auf der
+// Befundkarte auf, weil deren Zelle oben nicht polstert.
+.ind-row.open {
+  border-bottom: none;
+}
+
+.ind-finding-row {
+  @include ind-status-tint;
+
+  > td {
+    padding-top: 4px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Befund: Ist / Soll / Einzelhinweise / Fundstelle
+// ---------------------------------------------------------------------------
+.finding {
+  border: 1px solid $clr-neutral-grey-300;
+  border-left: 3px solid $clr-primary-400;
+  border-radius: 5px;
+  background: $clr-shades-white-0;
+  padding: map-get($spacers, "1_5");
+  margin-bottom: map-get($spacers, 1);
+}
+
+.finding-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: map-get($spacers, 2);
+  align-items: start;
+
+  @media (max-width: $medium-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+
+  // Ohne Ist-Block (LLM-Indikatoren) soll der Soll-Text die volle Breite nutzen.
+  &.single {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Abstand bekommen nur die Blöcke *unter* dem Raster. Im Raster selbst darf
+// die zweite Spalte keinen bekommen — sonst begänne „Hinweise" tiefer als
+// „So steht es im Metadatensatz", obwohl beide auf einer Höhe stehen sollen.
+.finding > .finding-block {
+  margin-top: map-get($spacers, 2);
+}
+
+// Die Fundstelle steht etwas weiter ab: sie verlässt die Ebene der Deutung
+// und zeigt den Quelltext selbst.
+.finding > .finding-block-source {
+  margin-top: map-get($spacers, 3);
+}
+
+.finding-h {
+  margin: 0 0 6px;
+  font-size: $fnt-paragraph-extra-small;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $clr-neutral-grey-500;
+}
+
+.finding-facts {
+  margin: 0;
+  display: grid;
+  gap: 4px;
+
+  // Lange Listen (v. a. SHACL-Verstöße) bekommen eine eigene Bildlaufleiste,
+  // statt den Befund über mehrere Bildschirmhöhen zu ziehen.
+  &.scroll {
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+}
+
+.finding-fact {
+  // Label über Wert: Feldnamen wie „dcatde:politicalGeocodingLevelURI" sind zu
+  // lang für eine eigene Spalte und würden mitten im Wort umbrechen.
+  display: block;
+  padding: 5px 7px;
+  border-radius: 3px;
+  background: $clr-neutral-grey-100;
+  font-size: $fnt-paragraph-small;
+
+  dt {
+    color: $clr-neutral-grey-600;
+    font-weight: 700;
+    font-size: $fnt-paragraph-extra-small;
+    overflow-wrap: anywhere;
+  }
+
+  dd {
+    margin: 0;
+    word-break: break-word;
+  }
+
+  &.bad {
+    background: $clr-error-red-200;
+    dt {
+      color: $clr-error-red-500;
+    }
+  }
+  &.warn {
+    background: $clr-warning-yellow-200;
+    dt {
+      color: $clr-warning-yellow-500;
+    }
+  }
+  &.good {
+    background: $clr-success-green-200;
+    dt {
+      color: $clr-success-green-500;
+    }
+  }
+}
+
+.finding-where {
+  display: block;
+  margin-top: 2px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: $fnt-paragraph-extra-small;
+  color: $clr-neutral-grey-500;
+  overflow-wrap: anywhere;
+}
+
+.finding-target {
+  margin: 0;
+  font-size: $fnt-paragraph-small;
+  overflow-wrap: anywhere;
+}
+
+.finding-fix {
+  margin: 6px 0 0;
+  font-size: $fnt-paragraph-small;
+  color: $clr-neutral-grey-700;
+}
+
+.finding-vocab {
+  margin: 6px 0 0;
+  font-size: $fnt-paragraph-extra-small;
+}
+
+.finding .findings li {
+  overflow-wrap: anywhere;
+}
+
+// ---------------------------------------------------------------------------
+// Vorlage („So sollte es aussehen")
+// ---------------------------------------------------------------------------
+// Bewusst mit waagerechter Bildlaufleiste statt Umbruch: die Beispiele sind
+// RDF/XML zum Übernehmen, und ein umbrochenes rdf:resource-Attribut liesse sich
+// nicht mehr sauber herauskopieren.
+.finding-template {
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 5px;
+  background: $clr-neutral-grey-100;
+  overflow-x: auto;
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: $fnt-paragraph-extra-small;
+    line-height: 1.5;
+    color: $clr-neutral-grey-800;
+    white-space: pre;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// RDF-Fundstelle
+// ---------------------------------------------------------------------------
+.rdf-excerpt {
+  // Etwas Luft oben und unten, damit die erste Zeile nicht am Rahmen klebt.
+  padding: 5px 0;
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 5px;
+  background: $clr-neutral-grey-100;
+  overflow-x: auto;
+}
+
+.rdf-line {
+  display: flex;
+  gap: 8px;
+  padding: 1px 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: $fnt-paragraph-extra-small;
+  white-space: pre;
+
+  code {
+    color: $clr-neutral-grey-800;
+  }
+}
+
+.rdf-line-no {
+  flex: none;
+  min-width: 32px;
+  text-align: right;
+  color: $clr-neutral-grey-400;
+  user-select: none;
+}
+
+// ---------------------------------------------------------------------------
+// Leiste für den Live-Lauf
+// ---------------------------------------------------------------------------
+.live-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: map-get($spacers, "1_5");
+  align-items: center;
+  justify-content: space-between;
+  padding: map-get($spacers, "1_5");
+  margin-bottom: map-get($spacers, 2);
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 5px;
+  background: $clr-neutral-grey-50;
+}
+
+.live-bar-main {
+  min-width: 240px;
+  flex: 1 1 320px;
+}
+
+.live-bar-state {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: $fnt-paragraph-small;
+
+  code {
+    font-size: $fnt-paragraph-extra-small;
+  }
+}
+
+.live-bar-progress {
+  margin: 4px 0 0;
+}
+
+.live-bar-error {
+  margin: 4px 0 0;
+  font-size: $fnt-paragraph-small;
+  color: $clr-error-red-500;
+}
+
+.live-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: map-get($spacers, 1);
+  flex-wrap: wrap;
+
+  .gd-button {
+    padding: 8px 16px;
+  }
+}
+
+.live-bar-llm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: $fnt-paragraph-small;
+  color: $clr-neutral-grey-700;
+  cursor: pointer;
+}
+
+// ---------------------------------------------------------------------------
+// Werkzeugleiste über den Ergebnistabellen: Handlungsbedarf-Filter, Spalten
+// ---------------------------------------------------------------------------
+// Linksbündig: Am rechten Rand, gegenüber dem Textanfang, wurde die Leiste
+// übersehen. Jetzt steht sie an derselben Kante wie die Panels darunter.
+.ind-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: map-get($spacers, "1_5");
+  margin-top: map-get($spacers, "1_5");
+  font-size: $fnt-paragraph-small;
+}
+
+.ind-toolbar-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: $fnt-paragraph-small;
+  white-space: nowrap;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+  }
+}
+
+.ind-toolbar-count {
+  color: $clr-neutral-grey-500;
+  font-variant-numeric: tabular-nums;
+}
+
+// „Alles ausklappen": gleiche Anmutung wie die Spaltenauswahl daneben, damit
+// die Leiste eine Reihe gleichrangiger Anzeigeschalter bleibt.
+.ind-toolbar-btn {
+  @extend .button-reset;
+
+  padding: 3px 8px;
+  border: 1px solid $clr-neutral-grey-300;
+  border-radius: 4px;
+  background: $white;
+  color: $clr-primary-400;
+  font-size: $fnt-paragraph-small;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background: $clr-neutral-grey-100;
+    color: $clr-primary-500;
+  }
+}
+
+// Spaltenauswahl als natives details/summary — Tastaturbedienung inklusive,
+// ohne eigene Popover-Logik.
+.ind-toolbar-menu {
+  position: relative;
+
+  > summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border: 1px solid $clr-neutral-grey-300;
+    border-radius: 4px;
+    background: $white;
+    color: $clr-primary-400;
+    cursor: pointer;
+    list-style: none;
+    white-space: nowrap;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: "▾";
+      font-size: 9px;
+    }
+
+    &:hover {
+      background: $clr-neutral-grey-100;
+    }
+  }
+}
+
+.ind-toolbar-popover {
+  position: absolute;
+  right: 0;
+  z-index: 20;
+  margin-top: 4px;
+  padding: 10px 12px;
+  min-width: 200px;
+  display: grid;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(25, 39, 56, 0.15);
+}
+
+.ind-toolbar-note {
+  margin: 4px 0 0;
+  font-size: $fnt-paragraph-extra-small;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+.dim-all-passed {
+  margin: 0;
+  font-size: $fnt-paragraph-small;
+}
+
+// ---------------------------------------------------------------------------
+// Gesamturteil: Ring mit Note, daneben das Dimensionsnetz
+// ---------------------------------------------------------------------------
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: map-get($spacers, 3);
+  flex-wrap: wrap;
+}
+
+.score-row-radar {
+  flex: 1 1 320px;
+  min-width: 260px;
+  // Das Netz ist quadratisch und an seine feste Höhe gebunden; jenseits von
+  // Polygon plus Achsenbeschriftung bringt zusätzliche Breite nichts mehr und
+  // ließe die Grafik im breiten Inhaltsbereich verloren wirken.
+  max-width: 460px;
+}
+
+.score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+
+.score-card-gauge {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.score-card-grade {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-card-figures {
+  text-align: center;
+}
+
+.score-card-value {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+// Bezugsgröße, wie in der Trefferliste: „80 / 100" statt „0.80".
+.score-card-max {
+  font-size: rem-calc(15);
+  font-weight: 400;
+  color: $clr-neutral-grey-600;
+}
+
+.score-card-note {
+  margin-top: 4px;
+  font-size: $fnt-paragraph-extra-small;
+}
