@@ -25,7 +25,7 @@ The repository holds three parts that build on each other:
 
 - [Quality model](#quality-model)
 - [Indicator catalogue](#indicator-catalogue)
-- [Findings and remediation](#findings-and-remediation)
+- [Findings](#findings)
 - [Project structure](#project-structure)
 - [How a run works](#how-a-run-works)
 - [Web application](#web-application)
@@ -215,14 +215,11 @@ DCAT-AP-DE political-geocoding key set (state/district/municipality/…).
 
 ---
 
-## Findings and remediation
+## Findings
 
 A score alone does not tell a data provider _what_ is wrong. Every `fail`,
-`partial` or `error` result therefore carries two extra payloads, both attached
-inside the scoring run so that CLI reports and the web frontend show exactly the
-same text.
-
-### Finding — what is wrong
+`partial` or `error` result therefore carries a **finding**, attached inside the
+scoring run so that CLI reports and the web frontend show exactly the same text.
 
 [`core/finding.py`](src/core/finding.py) defines a single shape that all 31
 indicators map onto, even though their raw `details` differ wildly:
@@ -239,27 +236,15 @@ Built by [`scoring/findings.py`](src/scoring/findings.py) via
 missing builder falls back to the check message plus the indicator's guidance.
 `pass` and `not_applicable` results get no finding — there is nothing to do.
 
-### Remediation — what to change
+Plain-language labels, field names and vocabulary links per indicator live in
+[`core/guidance.py`](src/core/guidance.py) and are served to the frontend
+through `GET /indicators`.
 
-[`core/remediation.py`](src/core/remediation.py) offers two shapes, and every
-failing indicator gets exactly one:
-
-- **`ChangePatch`** — a structured fix. `ready` holds triple-level operations
-  that can be applied as-is (e.g. _remove this invalid value_). `needs_input`
-  names a location that still requires a human-supplied value and describes the
-  **form** that value must take: the expected format (`expected_de`), one example
-  showing the notation (`example`), and a link to the authoritative vocabulary.
-  The set of permissible values is deliberately _not_ shipped — a controlled
-  vocabulary such as the IANA media types holds thousands of entries, and
-  carrying them inflates a single result to megabytes without helping anyone.
-- **`Recommendation`** — free-text guidance wherever no structural fix can be
-  derived (real content, LLM judgement, reachability).
-
-Attached by [`scoring/remediation/`](src/scoring/remediation/) via
-`attach_remediation()`, which needs the `DatasetContext` (subject URIs, the
-graph). Plain-language labels, field names and vocabulary links per indicator
-live in [`core/guidance.py`](src/core/guidance.py) and are served to the
-frontend through `GET /indicators`.
+> **Note on the reference runs.** An earlier version additionally produced a
+> structured `remediation` payload (`ChangePatch` / `Recommendation`); it was
+> removed in August 2026. The committed reference runs under `outputs/runs/`
+> were produced in July 2026 and therefore still carry a `remediation` key and
+> no `finding` — the current code is the other way round.
 
 ---
 
@@ -272,7 +257,6 @@ src/                           # The analyzer (no web, no UI)
     indicator.py               #   Indicator base class + registry, IndicatorResult, IndicatorStatus
     dimension.py               #   QualityDimension enum + Dimension metadata
     finding.py                 #   Finding / FactLine — the Ist/Soll shape of a failed check
-    remediation.py             #   ChangePatch / Recommendation / FieldSuggestion
     guidance.py                #   Plain-language text per indicator (label, field, fix, vocabulary)
   extraction/                  # RDF graph → typed facts (+ enrichment)
     rdf_parser.py              #   Load an RDF/XML file into an rdflib Graph
@@ -285,7 +269,7 @@ src/                           # The analyzer (no web, no UI)
     service.py                 #   QualityMetricsService — orchestrates parsing, enrichment, indicators
     indicators/                #   One module per dimension; indicators auto-register on import
     findings.py                #   Builds the Finding from an indicator's details
-    remediation/               #   Builds the ChangePatch / Recommendation
+    score_policy.py            #   Weighting + status/score policy applied on top of raw verdicts
   reporting/                   # Run output & visualisation
     output_manager.py          #   Per-file + run-level JSON, per-file logs, cost summary
     run_visualizer.py          #   matplotlib charts from the run aggregate
@@ -305,15 +289,17 @@ backend/                       # FastAPI wrapper around the analyzer
 frontend/                      # React portal mock (see Web application)
   src/api/                     # Typed HTTP client + types mirroring backend/schemas.py
   src/hooks/                   # react-query hooks (useAnalysis, usePortal)
+  src/lib/                     # Config, indicator labels, RDF helpers, status/theme mapping
   src/portal/                  # The GovData-style portal (source state, views)
-  src/components/results/      # Score card, radar, dimension tables, findings, remediation
+  src/components/results/      # Score card, radar, dimension tables, findings
   src/css/                     # GovData design tokens and components
 
 conf/state/                    # Hydra configs (mounted under the `state` group — see Running)
 data/                          # RDF/XML sample directories, one per catalogue
 outputs/runs/                  # Generated run reports (timestamped)
-scripts/                       # Sampling, MQA fetching/comparison, guidance export
-playground/notebooks/          # Evaluation notebooks (ground truth, MQA comparison, figures)
+scripts/                       # Sampling, ground-truth template, MQA fetching/comparison, guidance export
+playground/notebooks/          # Exploration + evaluation notebooks; 18 produces every
+                               #   figure and number of thesis chapter 5 (see Output)
 thesis/                        # LaTeX sources
 ```
 
@@ -348,7 +334,7 @@ For each input file, [QualityMetricsService](src/scoring/service.py) performs:
    ([semantic_assessment.py](src/extraction/semantic_assessment.py)).
 5. **Run dimensions in parallel** (`ThreadPoolExecutor`, `quality.max_workers`),
    each indicator producing an `IndicatorResult`. Every failing result is
-   immediately enriched with its **remediation** and **finding** — the same code
+   immediately enriched with its **finding** — the same code
    path the API uses, so a report and a live analysis never diverge.
 6. **Aggregate** into dimension scores, an overall weighted score and a grade.
 7. **Persist** per-file and run-level JSON, logs and charts via
@@ -434,17 +420,22 @@ with Recharts, styling with the GovData design tokens under `src/css/`.
 src/portal/source.tsx           # Catalogue + overlay state; the only place both layers meet
 src/portal/PortalApp.tsx        # Empty → SourcePicker; otherwise the portal views
 src/portal/components/
+  GovDataShell.tsx              #   GovData page chrome around every portal view
   SourcePicker.tsx              #   Start screen: pick a data directory (+ two demo shortcuts)
   OverlayBar.tsx                #   Choose a run, or recalculate (with / without expressiveness)
   DatasetSearch.tsx             #   Search, facets, result list
+  DatasetCard.tsx               #   One row of the result list
   DatasetDetail.tsx             #   Metadata sheet + optional quality section
   QualityDashboard.tsx          #   Distribution, dimension means, top deficits, trend
+  ScoreIndicator.tsx            #   Small score badge reused across the portal views
 src/components/results/         # Shared with the upload tool
+  ResultsView.tsx               #   Composes the result components for one dataset
+  ResultToolbar.tsx             #   Dataset switcher + export actions
   OverallScoreCard.tsx          #   Grade ring + overall score
   DimensionRadar.tsx            #   Dimension profile
   DimensionPanel.tsx            #   Indicator table per dimension
   IndicatorFinding.tsx          #   Finding (Ist/Soll) incl. the location in the RDF source
-  RemediationView.tsx           #   Change patch / recommendation
+  BatchComparison.tsx           #   Score comparison across the files of one run
 ```
 
 The result components take the backend's `AnalysisResult` unchanged — a run's
@@ -673,15 +664,22 @@ file_filter:
 
 All generated artifacts live under `outputs/`, one subdirectory per kind:
 
-| Directory                   | Written by                                     | Contents                                                               |
-| --------------------------- | ---------------------------------------------- | ---------------------------------------------------------------------- |
-| `outputs/runs/`             | `src/main.py`, backend jobs                    | One timestamped directory per validation run                           |
-| `outputs/runs_archive/`     | —                                              | Older runs, kept for reference                                         |
-| `outputs/mqa_comparison/`   | `scripts/build_indicator_join.py`, notebook 11 | MQA-vs-prototype indicator comparison                                  |
-| `outputs/ground_truth/`     | notebook 10                                    | Ground-truth evaluation figures & metrics                              |
-| `outputs/model_comparison/` | notebook 14                                    | Cross-run / cross-model consistency plots                              |
-| `outputs/mqa_reference/`    | `scripts/fetch_mqa_metrics.py`                 | Official data.europa.eu MQA reports used as reference                  |
-| `outputs/govdata_mockup/`   | —                                              | Early single-file HTML mockup of the portal, superseded by `frontend/` |
+| Directory / file                    | Written by                                     | Contents                                                            |
+| ----------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------- |
+| `outputs/runs/`                     | `src/main.py`, backend jobs                    | One timestamped directory per validation run                        |
+| `outputs/mqa_comparison/`           | `scripts/build_indicator_join.py`, notebook 11 | MQA-vs-prototype indicator comparison                               |
+| `outputs/ground_truth/`             | notebook 10                                    | Ground-truth evaluation figures & metrics                           |
+| `outputs/model_comparison/`         | notebook 13                                    | Cross-run / cross-model consistency plots                           |
+| `outputs/thesis_kennzahlen_final.json` | notebook 18                                 | Every number cited in chapter 5, in one file                        |
+
+Everything under `outputs/` is generated and stays local — with one deliberate
+exception. The inputs of [notebook 18](playground/notebooks/18_evaluation_kapitel5_final.ipynb),
+which produces all figures and numbers of thesis chapter 5, **are committed**, so
+the evaluation is reproducible from a clone alone: eight runs under
+`outputs/runs/` and two cached `mqa_metrics.csv`. Only the files the notebook
+actually reads are tracked (`metadata.json`, `run_aggregate.json`,
+`run_cost_summary.json`, `<dataset>/result.json`); the logs and the run charts
+stay local. The whitelist is in [.gitignore](.gitignore).
 
 **Hydra writes nothing to disk.** No `outputs/<date>/<time>/` run directory, no
 `.hydra/` subdir, no `main.log` — so `outputs/` belongs entirely to the artifacts
@@ -748,11 +746,6 @@ no conversion step in between.
             "current": [{ "label": "Aktuell 1 Schlagwort", "value": "…", "tone": "bad", "where": null }],
             "target": "3 bis 15 Schlagwörter, die Thema, Region und Datenart benennen.",
             "notes": []
-          },
-          "remediation": {              // fail / partial only
-            "kind": "recommendation",   // or "change_patch"
-            "message_de": "...", "message_en": "...",
-            "findings": [], "see_also": []
           },
           "error": null,
           "timestamp": "..."
