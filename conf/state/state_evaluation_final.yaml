@@ -78,7 +78,7 @@ quality:
 
   # Optional dimension whitelist (default: all dimensions if list is empty or missing)
   # dimension_whitelist: ["accessibility", "reusability", "findability", "expressiveness"]
-  dimension_whitelist: ["expressiveness"]
+  dimension_whitelist: []
   # If specified, these indicators will be skipped
   indicator_blacklist:
     [
