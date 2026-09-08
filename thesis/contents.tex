@@ -1457,7 +1457,7 @@ Die Schritte der Pipeline sind nicht unabhängig voneinander lauffähig, sondern
 
 Die Indikatoren registrieren sich bei ihrer Instanziierung selbst in einer zentralen Registrierung, aus der der Bewertungsschritt die auszuführenden Prüfungen bezieht. Ein neuer Indikator besteht damit aus einer einzelnen Klasse, die eine Prüfmethode implementiert, und wird von der Verarbeitungskette automatisch berücksichtigt. Dieses Erweiterungsprinzip setzt die im Bewertungsmodell angelegte Offenheit des Indikatorenkatalogs technisch um.
 
-Der Prototyp ist in Python implementiert und setzt Python~3.12 voraus. Die RDF-Verarbeitung erfolgt mit der Bibliothek rdflib\footnote{\url{https://rdflib.readthedocs.io/}}, die Erreichbarkeitsprüfungen nutzen requests\footnote{\url{https://requests.readthedocs.io/}}. Die strukturierte Ausgabe des Sprachmodells wird über Pydantic\footnote{\url{https://docs.pydantic.dev/}} schemavalidiert, die Anbindung des Modells erfolgt über LangChain\footnote{\url{https://www.langchain.com/}}. Die Konfiguration der Bewertungsläufe wird mit Hydra\footnote{\url{https://hydra.cc/}} verwaltet, die Visualisierungen werden mit matplotlib\footnote{\url{https://matplotlib.org/}} erzeugt. Die exakten Versionsstände aller Abhängigkeiten sind im Quellcode-Repository\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/tree/v3_prototype_freeze}} festgeschrieben. 
+Der Prototyp ist in Python implementiert und setzt Python~3.12 voraus. Die RDF-Verarbeitung erfolgt mit der Bibliothek rdflib\footnote{\url{https://rdflib.readthedocs.io/}}, die Erreichbarkeitsprüfungen nutzen requests\footnote{\url{https://requests.readthedocs.io/}}. Die strukturierte Ausgabe des Sprachmodells wird über Pydantic\footnote{\url{https://docs.pydantic.dev/}} schemavalidiert, die Anbindung des Modells erfolgt über LangChain\footnote{\url{https://www.langchain.com/}}. Die Konfiguration der Bewertungsläufe wird mit Hydra\footnote{\url{https://hydra.cc/}} verwaltet, die Visualisierungen werden mit matplotlib\footnote{\url{https://matplotlib.org/}} erzeugt. Die exakten Versionsstände aller Abhängigkeiten sind im Quellcode-Repository\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/tree/master}} festgeschrieben. 
 % @TODO github link am ende noch updaten falls nötig, und eventuell matplotlib entfernen da die visualisierungen ja dann im frontend erzeugt werden. und das mit den versionständen eventuell weg machen :sob: 
 
 \section{Extraktion und Anreicherung der Metadaten}
@@ -2279,7 +2279,7 @@ Service-Kennungen in 25.416 Geo-Datensätze und 124.370 Nicht-Geo-Datensätze un
 
 Aus dieser Grundgesamtheit wurde am 25.~Juni~2026 eine \textbf{stratifizierte
 Zufallsstichprobe} von $n = 50$ Datensätzen gezogen (Seed~67, reproduzierbar über
-Notebook~12\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/blob/v3_prototype_freeze/playground/notebooks/12_fetch_stratified_sample.ipynb}}). Die Gruppierung erfolgt zweistufig: primär nach der Unterscheidung
+Notebook~12\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/blob/master/playground/notebooks/12_fetch_stratified_sample.ipynb}}). Die Gruppierung erfolgt zweistufig: primär nach der Unterscheidung
 Geo/Nicht-Geo, sekundär innerhalb beider Gruppen nach den vier jeweils
 aufkommensstärksten Datenbereitstellern zuzüglich einer Restkategorie für alle übrigen
 Bereitsteller. Aus jedem der so entstehenden zehn Straten werden fünf Datensätze gezogen.
@@ -2667,7 +2667,7 @@ ausdrücklich nicht beabsichtigt. Die Auswahl deckt die in der Praxis dominieren
 Kandidaten ab.
 
 Verglichen werden die drei Kandidaten auf identischer Datenbasis: der Kernstichprobe
-($n = 50$) unter der Konfiguration \texttt{state\_evaluation\_final}\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/blob/v3_prototype_freeze/conf/state/state_evaluation_final.yaml}}, jeweils mit
+($n = 50$) unter der Konfiguration \texttt{state\_evaluation\_final}\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/blob/master/conf/state/state_evaluation_final.yaml}}, jeweils mit
 demselben Prompt und derselben Bewertungsrubrik. Abbildung~\ref{fig:modellauswahl_dimensionen}
 zeigt die Rangkorrelation zur Ground Truth je Dimension und Modell.
 
@@ -3041,7 +3041,7 @@ $0{,}942$ erreichen.
 Der Blick auf die Indikatorebene liefert die Erklärung. Die Aussagekraft wird als
 ungewichteter Mittelwert aus sechs vom Sprachmodell bewerteten Teilkriterien
 gebildet (Abschnitt~\ref{sec:llm_aussagekraft}). Bei dem Metadatensatz
-\texttt{bad\_09.rdf} etwa bewertet das Modell die 
+\texttt{bad\_09.rdf}\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype/blob/master/data/extreme_cases_05/bad_09.rdf} -- die übrigen neunzehn Extremfälle liegen im selben Verzeichnis \texttt{data/extreme\_cases\_05/}.} etwa bewertet das Modell die 
 Beschreibungsqualität als FAIL ($0{,}15$) mit der
 Begründung, die Beschreibung bestehe nur aus dem einzelnen Wort \enquote{Justizblatt}
 und erkläre weder Inhalt noch Struktur der Ressource. Die übrigen fünf Teilkriterien
