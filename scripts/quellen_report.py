@@ -197,20 +197,32 @@ for path in FILES:
             kind = 'Tabelle'
         rel    = m.start() - pstart
         # Position im bereinigten Text annaehern: vor+nach getrennt saeubern
-        before = clean(para[:rel]); 
+        before = clean(para[:rel]);
         flat   = clean(para)
         pos    = min(len(before), len(flat)-1) if flat else 0
         sent   = sentence_around(flat, pos) if flat else ''
+        # Feingranularer Einzelbeleg fuer die Longlist-Tabelle (C.1): pro Quelle
+        # nur den Ausdruck ausweisen, den genau diese Quelle belegen soll, statt
+        # die ganze Zeile mit allen Quellen zu wiederholen.
+        claim = ''
+        if path.endswith('longlist_kandidatendimensionen.tex'):
+            _fields = para.split('&')
+            _nr   = clean(_fields[0]).strip() if _fields else ''
+            _name = clean(_fields[1]).strip() if len(_fields) > 1 else ''
+            _sep  = max(para.rfind(';', 0, rel), para.rfind('&', 0, rel))
+            _term = clean(para[_sep + 1:rel]).strip(' ;,').strip()
+            if _nr and _name and _term:
+                claim = "Nr. %s (%s) — belegter Ausdruck: „%s“" % (_nr, _name, _term)
         sites.append({
             'file': path, 'fileno': _fileno.get(path, 99), 'pos': m.start(),
             'line': line_of[m.start()], 'ctx': context(m.start()),
-            'sent': sent, 'kind': kind, 'extra': extra, 'keys': keys,
+            'sent': sent, 'claim': claim, 'kind': kind, 'extra': extra, 'keys': keys,
         })
         for k in keys:
             if k not in hits: order.append(k)
             hits[k].append({
                 'file': path, 'line': line_of[m.start()],
-                'ctx': context(m.start()), 'sent': sent,
+                'ctx': context(m.start()), 'sent': sent, 'claim': claim,
                 'multi': len(keys) > 1, 'co': [x for x in keys if x != k],
                 'kind': kind,
                 'extra': extra,
@@ -323,7 +335,10 @@ w("Zu jeder Stelle stehen:")
 w("")
 w("- **Fundstelle** — Datei und Zeilennummer, dazu der Gliederungspfad bis zur Unterüberschrift")
 w("- **Aussage** — der Satz aus der Thesis, der die Zitation trägt. Das ist die Behauptung, "
-  "die die Quelle belegen soll.")
+  "die die Quelle belegen soll. In der Longlist der Kandidatendimensionen "
+  "(Tabelle~C.1, `longlist_kandidatendimensionen.tex`) trägt jede Zeile mehrere Quellen, "
+  "die jeweils für einen bestimmten Ausdruck stehen; dort steht deshalb pro Quelle nur "
+  "der isolierte Ausdruck, der genau in dieser Quelle nachzuweisen ist, statt der ganzen Zeile.")
 w("- **`- [ ]`** — Obsidian-Task; beim Durchgehen direkt abhakbar")
 w("- **Link** — `DOI` und `Web` führen direkt zur Quelle. `Suche` heißt, dass in der "
   "`.bib` weder DOI noch URL steht; der Link ist dann nur eine Google-Scholar-Suche "
@@ -403,7 +418,7 @@ for s in sorted(sites, key=lambda x: (x['fileno'], x['pos'])):
     if s['extra']:                tag += " · Locator: `%s`" % s['extra']
     w("- [ ] `%s:%d`%s — %s  " % (s['file'].replace('thesis/',''), s['line'], tag,
                                   ", ".join(_kl(k) for k in s['keys'])))
-    w("  > %s" % (s['sent'] if s['sent'] else "_(Satz nicht extrahierbar)_"))
+    w("  > %s" % (s.get('claim') or s['sent'] or "_(Satz nicht extrahierbar)_"))
     w("")
 
 w("## C. Quellen im Detail")
@@ -457,7 +472,7 @@ for k in by_count:
         _u, _kl = link_of(f)
         _lnk = " · [%s](%s)" % (_kl, _u) if _u else ""
         w("- [ ] `%s:%d` — %s%s%s  " % (path, h['line'], sub, extra, _lnk))
-        w("  > %s" % (h['sent'] if h['sent'] else "_(Satz nicht extrahierbar)_"))
+        w("  > %s" % (h.get('claim') or h['sent'] or "_(Satz nicht extrahierbar)_"))
         w("")
     w("---")
     w("")
