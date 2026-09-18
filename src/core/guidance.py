@@ -235,24 +235,6 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             "</dct:temporal>"
         ),
     ),
-    "find_accrual_periodicity": IndicatorGuidance(
-        label_de="Aktualisierungsfrequenz",
-        what_de=(
-            "Wie oft die Daten fortgeschrieben werden. Nutzende erkennen daran, "
-            "ob sich ein erneuter Abruf lohnt."
-        ),
-        field="dct:accrualPeriodicity",
-        fix_de=(
-            "Setzen Sie die Frequenz als URI aus dem EU-Vokabular (z. B. ANNUAL, "
-            "MONTHLY) statt als Freitext."
-        ),
-        vocabulary=_FREQUENCY,
-        detail="template",
-        template=(
-            '<dct:accrualPeriodicity rdf:resource="http://publications.europa.eu/'
-            'resource/authority/frequency/ANNUAL"/>'
-        ),
-    ),
     "find_issued_datetime": IndicatorGuidance(
         label_de="Veröffentlichungsdatum",
         what_de=(
@@ -428,18 +410,6 @@ GUIDANCE: Dict[str, IndicatorGuidance] = {
             '  <dct:license rdf:resource="http://dcat-ap.de/def/licenses/'
             'dl-zero-de/2.0"/>\n'
             "</dcat:Distribution>"
-        ),
-    ),
-    "reuse_access_rights": IndicatorGuidance(
-        label_de="Zugriffsrechte",
-        what_de="Gibt an, ob der Datensatz öffentlich, eingeschränkt oder nicht öffentlich ist.",
-        field="dct:accessRights",
-        fix_de="Setzen Sie die Zugriffsrechte als URI aus dem EU-Vokabular (in der Regel PUBLIC).",
-        vocabulary=_ACCESS_RIGHTS,
-        detail="template",
-        template=(
-            '<dct:accessRights rdf:resource="http://publications.europa.eu/'
-            'resource/authority/access-right/PUBLIC"/>'
         ),
     ),
     "reuse_publisher": IndicatorGuidance(

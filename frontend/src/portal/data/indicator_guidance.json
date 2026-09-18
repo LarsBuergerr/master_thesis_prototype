@@ -232,24 +232,6 @@
    }
   },
   {
-   "indicator_id": "find_accrual_periodicity",
-   "name_de": "Aktualisierungsfrequenz angegeben",
-   "dimension": "findability",
-   "default_weight": 1.0,
-   "guidance": {
-    "label_de": "Aktualisierungsfrequenz",
-    "what_de": "Wie oft die Daten fortgeschrieben werden. Nutzende erkennen daran, ob sich ein erneuter Abruf lohnt.",
-    "field": "dct:accrualPeriodicity",
-    "fix_de": "Setzen Sie die Frequenz als URI aus dem EU-Vokabular (z. B. ANNUAL, MONTHLY) statt als Freitext.",
-    "vocabulary": {
-     "label_de": "EU-Aktualisierungsfrequenzen",
-     "url": "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/frequency"
-    },
-    "detail": "template",
-    "template": "<dct:accrualPeriodicity rdf:resource=\"http://publications.europa.eu/resource/authority/frequency/ANNUAL\"/>"
-   }
-  },
-  {
    "indicator_id": "find_geocoding_level",
    "name_de": "Geokodierungs-Ebene aus kontrolliertem Vokabular",
    "dimension": "findability",
@@ -376,24 +358,6 @@
     },
     "detail": "template",
     "template": "<dcat:theme rdf:resource=\"http://publications.europa.eu/resource/authority/data-theme/ENVI\"/>"
-   }
-  },
-  {
-   "indicator_id": "reuse_access_rights",
-   "name_de": "accessRights mit RightsStatement aus Vokabular",
-   "dimension": "reusability",
-   "default_weight": 1.0,
-   "guidance": {
-    "label_de": "Zugriffsrechte",
-    "what_de": "Gibt an, ob der Datensatz öffentlich, eingeschränkt oder nicht öffentlich ist.",
-    "field": "dct:accessRights",
-    "fix_de": "Setzen Sie die Zugriffsrechte als URI aus dem EU-Vokabular (in der Regel PUBLIC).",
-    "vocabulary": {
-     "label_de": "EU-Zugriffsrechte",
-     "url": "https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/access-right"
-    },
-    "detail": "template",
-    "template": "<dct:accessRights rdf:resource=\"http://publications.europa.eu/resource/authority/access-right/PUBLIC\"/>"
    }
   },
   {

@@ -7,13 +7,13 @@
 defaults:
   - _self_
 
-# Directory path for input data
-# directory_path: "data/sample_2026-06-25_09-57"
-# directory_path: "data/"
-# directory_path: "data/sample_2026-06-25_09-57"
-directory_path: "data/extreme_cases_04"
+# Directory path for input data.
+# Kernstichprobe der Evaluation (n=50). Fuer die Extremfaelle (n=20) auf
+# "data/extreme_cases_05" umstellen; fuer die Deckenpruefung files auf
+# ["referenzdatensatz.rdf"] mit directory_path "data" setzen.
+directory_path: "data/sample_2026-06-25_09-57"
 # If empty: process all files matching extensions in directory_path
-files: ["good_01.rdf"]
+files: []
 
 # File filtering (only used if files list is empty)
 file_filter:
@@ -84,8 +84,6 @@ quality:
     [
       acc_distribution_model,
       acc_format_congruence,
-      find_accrual_periodicity,
-      reuse_access_rights,
     ]
   # If specified, only these indicators will be processed (overrides blacklist)
   indicator_whitelist: []
@@ -117,11 +115,11 @@ quality:
     find_modified_datetime: 1.0
 
     # --- Accessibility: the core data-breaking blockers live here ---
-    acc_download_url: 1.0 # DATA-BREAKING: no download URL = no data
+    acc_download_url: 1.0 # missing download URL is recoverable via accessURL -> standard
     acc_machine_readable_access: 1.5 # important but not data-breaking: non-readable distributions often supplement a machine-readable one (no malus, weight between default and data-breaking)
     acc_download_url_response: 2.0 # DATA-BREAKING: dead download link
     acc_access_url_response: 2.0 # DATA-BREAKING: dead access link (accessURL = MUSS)
-    acc_format: 1.0 # DATA-BREAKING: unknown format = cannot interpret data
+    acc_format: 1.0 # format can often be inferred from the delivered media type -> standard
     acc_media_type: 1.0 # secondary/optional -> standard
 
     # --- Reusability: license is the data-breaking (legal) blocker ---
@@ -131,7 +129,7 @@ quality:
     reuse_publisher: 1.0
     reuse_availability: 1.0
 
-    # --- Expressiveness: inactive in this eval (LLM off, not whitelisted) ---
+    # --- Expressiveness: LLM-gestuetzt, alle sechs Kriterien auf Standardgewicht ---
     expr_description_quality: 1.0
     expr_title_quality: 1.0
     expr_title_description_coherence: 1.0

@@ -99,7 +99,6 @@ quality:
     find_locn_geometry: 1.0 # Spatial geometry
     find_political_geocoding: 1.0 # Political geocoding URI from vocabulary
     find_geocoding_level: 0.75 # Spatial admin level (SOLL, complementary)
-    find_accrual_periodicity: 0.75 # Update frequency: nice-to-have
     find_issued_datetime: 0.5 # Hygiene: often equally present in good/bad
     find_modified_datetime: 0.5 # Hygiene: often equally present in good/bad
 
@@ -114,7 +113,6 @@ quality:
     reuse_contact: 1.25 # Contact point: trust/support (MQA medium-high)
     reuse_contributor_id: 1.25 # contributorID: MUST requirement (DCAT-AP-DE K12/K13)
     reuse_publisher: 1.0 # Publisher/provenance
-    reuse_access_rights: 1.0 # Access rights
     reuse_availability: 0.75 # Availability: soft signal (planned availability)
 
     expr_description_quality: 1.5 # Description: most information-rich field

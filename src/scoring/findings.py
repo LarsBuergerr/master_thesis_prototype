@@ -297,20 +297,6 @@ def _datetime_field(field: str) -> Builder:
     return build
 
 
-def _accrual_periodicity(details: Details, message: str) -> Finding:
-    value = _text(details, "value")
-    return Finding(
-        headline=(
-            "Die Aktualisierungsfrequenz steht nicht als URI aus dem kontrollierten Vokabular."
-            if value
-            else "Die Aktualisierungsfrequenz fehlt — Nutzende wissen nicht, ob sich ein erneuter Abruf lohnt."
-        ),
-        current=[FactLine("dct:accrualPeriodicity", value or "nicht gesetzt", "bad")],
-        target="Setzen Sie eine Frequenz-URI aus dem EU-Vokabular, z. B. "
-        "…/authority/frequency/ANNUAL.",
-    )
-
-
 def _download_url(details: Details, message: str) -> Finding:
     total = _num(details, "total_distributions")
     with_url = _num(details, "distributions_with_download_url")
@@ -472,32 +458,6 @@ def _distribution_model(details: Details, message: str) -> Finding:
     )
 
 
-def _access_rights(details: Details, message: str) -> Finding:
-    count = _num(details, "access_rights_count")
-    entries = _rows(details, "access_rights")
-    return Finding(
-        headline=(
-            "Es ist nicht angegeben, ob der Datensatz öffentlich zugänglich ist."
-            if count == 0
-            else "Die Angabe zu den Zugriffsrechten stammt nicht aus dem EU-Vokabular."
-        ),
-        current=(
-            [
-                FactLine(
-                    "dct:accessRights",
-                    str(entry.get("uri") or entry.get("value") or entry.get("tier") or ""),
-                    "bad",
-                )
-                for entry in entries
-            ]
-            if entries
-            else [FactLine("dct:accessRights", "nicht gesetzt", "bad")]
-        ),
-        target="Setzen Sie eine URI aus dem EU-Vokabular, in der Regel "
-        "…/authority/access-right/PUBLIC.",
-    )
-
-
 def _license(details: Details, message: str) -> Finding:
     total = _num(details, "total_distributions")
     free = _num(details, "free_count")
@@ -634,7 +594,6 @@ BUILDERS: Dict[str, Builder] = {
     "find_political_geocoding": _political_geocoding,
     "find_geocoding_level": _geocoding_level,
     "find_temporal_coverage": _temporal_coverage,
-    "find_accrual_periodicity": _accrual_periodicity,
     "find_issued_datetime": _datetime_field("dct:issued"),
     "find_modified_datetime": _datetime_field("dct:modified"),
     "acc_download_url": _download_url,
@@ -669,7 +628,6 @@ BUILDERS: Dict[str, Builder] = {
     "acc_machine_readable_access": _machine_readable,
     "acc_format_congruence": _format_congruence,
     "acc_distribution_model": _distribution_model,
-    "reuse_access_rights": _access_rights,
     "acc_download_url_response": _url_response("dcat:downloadURL"),
     "acc_access_url_response": _url_response("dcat:accessURL"),
     "reuse_license": _license,

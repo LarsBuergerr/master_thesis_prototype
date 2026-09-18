@@ -89,15 +89,6 @@ MAPPING: list[dict] = [
         review=False,
         rationale="MQA: keine Metrik für die administrative Ebene (dcatde:politicalGeocodingLevelURI, Konvention 09).",
     ),
-    dict(
-        indicator="find_accrual_periodicity",
-        dimension="findability",
-        abc="C",
-        mqa=[],
-        mqa_agg="any",
-        review=False,
-        rationale="MQA: keine Metrik für Aktualisierungsfrequenz.",
-    ),
     # dct:issued / dct:modified — MQA zählt sie in Contextuality (auf der besten
     # Distribution mit Dataset-Fallback), der Prototyp als Findability-Indikator.
     dict(
@@ -217,15 +208,6 @@ MAPPING: list[dict] = [
             "Prototyp: je Distribution nur freie DCAT-AP-DE-Lizenz = +1, eingeschränkt/unbekannt/"
             "fehlt = -0.5 Malus, dann Mittel (graded, distributionsebene) → strenger."
         ),
-    ),
-    dict(
-        indicator="reuse_access_rights",
-        dimension="reusability",
-        abc="A",
-        mqa=["access_rights_availability", "access_rights_vocabulary"],
-        mqa_agg="all",
-        review=True,
-        rationale="Beide: accessRights vorhanden + Vokabular.",
     ),
     dict(
         indicator="reuse_publisher",

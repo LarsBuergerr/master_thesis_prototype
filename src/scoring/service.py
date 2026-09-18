@@ -467,6 +467,20 @@ class QualityMetricsService:
                 dim: self.dimension_weights.get(dim, 1.0) for dim in dimension_scores
             }
 
+        # A dimension whose indicators are ALL not applicable (or errored) carries
+        # no measurement: its ``total_indicator_weight`` is 0 and its score fell
+        # back to 0.0 in ``_evaluate_dimension``. Such a dimension has to drop out
+        # of the overall score instead of entering it as a zero — otherwise the
+        # neutrality rule for NOT_APPLICABLE holds on the indicator level but is
+        # undone one level up. The auto-weight branch does this implicitly (the
+        # weight *is* the indicator weight, hence 0); with explicit dimension
+        # weights it must be enforced here. Case in point: expressiveness when the
+        # LLM is disabled or its call fails.
+        effective_dim_weights = {
+            dim: (w if dimension_indicator_weights.get(dim, 0.0) > 0 else 0.0)
+            for dim, w in effective_dim_weights.items()
+        }
+
         weighted_score_sum = sum(
             dimension_scores[dim] * effective_dim_weights[dim]
             for dim in dimension_scores

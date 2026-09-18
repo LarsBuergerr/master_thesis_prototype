@@ -741,90 +741,6 @@ class DateTimeFieldIndicator(Indicator):
             )
 
 
-class AccrualPeriodicityIndicator(Indicator):
-    """Checks for dct:accrualPeriodicity presence and (optionally) controlled vocabulary."""
-
-    def __init__(self):
-        super().__init__(
-            indicator_id="find_accrual_periodicity",
-            name_de="Aktualisierungsfrequenz angegeben",
-            name_en="Accrual periodicity specified",
-            dimension=QualityDimension.FINDABILITY,
-            description_de="Prüft ob dct:accrualPeriodicity gesetzt ist und ggf. aus kontrolliertem Vokabular stammt",
-            description_en="Checks if dct:accrualPeriodicity is set and optionally from controlled vocabulary",
-            weight=1.0,
-        )
-
-    def validate(
-        self, metadata: Graph, context: Optional[DatasetContext] = None
-    ) -> IndicatorResult:
-        try:
-            if context is None:
-                context = DatasetContext.from_graph(metadata)
-            value = context.accrual_periodicity
-            in_vocab = context.accrual_periodicity_in_vocab
-
-            if value is None:
-                self.logger.info(
-                    f"[{self.indicator_id}] FAIL score=0.00 dct:accrualPeriodicity not set"
-                )
-                return IndicatorResult(
-                    indicator_id=self.indicator_id,
-                    name_de=self.name_de,
-                    name_en=self.name_en,
-                    dimension=self.dimension,
-                    status=IndicatorStatus.FAIL,
-                    score=0.0,
-                    message_de="dct:accrualPeriodicity nicht angegeben",
-                    message_en="dct:accrualPeriodicity not specified",
-                    details={"count": 0},
-                )
-
-            status = IndicatorStatus.PASS if in_vocab else IndicatorStatus.PARTIAL
-            score = 1.0 if in_vocab else 0.5
-
-            self.logger.info(
-                f"[{self.indicator_id}] {status.value} score={score:.2f} "
-                f"value={value} in_vocab={in_vocab}"
-            )
-            if not in_vocab:
-                self.logger.debug(f"[{self.indicator_id}] value not in vocab: {value}")
-
-            return IndicatorResult(
-                indicator_id=self.indicator_id,
-                name_de=self.name_de,
-                name_en=self.name_en,
-                dimension=self.dimension,
-                status=status,
-                score=score,
-                message_de=(
-                    "Wert aus kontrolliertem Vokabular"
-                    if in_vocab
-                    else "Wert nicht aus kontrolliertem Vokabular"
-                ),
-                message_en=(
-                    "Value from controlled vocabulary"
-                    if in_vocab
-                    else "Value not from controlled vocabulary"
-                ),
-                details={"value": value, "in_vocab": in_vocab},
-            )
-
-        except Exception as e:
-            self.logger.exception(f"[{self.indicator_id}] Indicator validation failed")
-            return IndicatorResult(
-                indicator_id=self.indicator_id,
-                name_de=self.name_de,
-                name_en=self.name_en,
-                dimension=self.dimension,
-                status=IndicatorStatus.ERROR,
-                score=0.0,
-                message_de="Fehler bei der Validierung",
-                message_en="Validation error",
-                error=str(e),
-            )
-
-
 # Instantiate indicators
 _keywords_indicator = KeywordsCountIndicator()
 _theme_indicator = ThemeIndicator()
@@ -844,4 +760,3 @@ _modified = DateTimeFieldIndicator(
     "Modified Datum (xs:dateTime)",
     "Modified date (xs:dateTime)",
 )
-_accrual = AccrualPeriodicityIndicator()

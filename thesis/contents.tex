@@ -93,7 +93,7 @@ Die Relevanz von OGD begründet sich vor allem mit seinem Beitrag zu Transparenz
 
 In Deutschland bildet GovData das nationale Metadatenportal für offene Verwaltungsdaten. Das Portal fungiert als zentraler Zugangspunkt zu Datenangeboten von Bund, Ländern, und Kommunen, verwaltet jedoch nicht die physischen Datensätze selbst. Vielmehr werden Metadaten gebündelt, über die auf die dezentral in verschiedenen Fach- und Verwaltungsportalen veröffentlichten Daten verwiesen wird. GovData übernimmt damit vor allem eine Aggregations- und Sichtbarkeitsfunktion, indem verteilte Datenbestände über einen gemeinsamen Metadatenzugang auffindbar gemacht werden. \cite{BmdsOpenData}
 
-Im institutionellen Rahmen wird GovData von der Förderalen IT-Kooperation (FITKO) im Produktmanagement betreut.
+Im institutionellen Rahmen wird GovData von der Föderalen IT-Kooperation (FITKO) im Produktmanagement betreut.
 Die FITKO ordnet das Portal ihrem einheitlichen Produktmanagement-Modell für Produkte des IT-Planungsrats zu und verweist für GovData auf ein eigenes föderal besetztes Produktboard \cite{FitkoGovdata}.
 
 \section{Metadaten im Open-Data-Kontext}
@@ -830,7 +830,7 @@ K10 & KI-gestützte Analyseverfahren und Automatisierungsgrenzen & Forschungsfra
 \normalsize
 
 Ergänzend zu den deduktiven Hauptkategorien wurden in einem zweiten Schritt induktive Unterkategorien aus dem Interviewmaterial gebildet. Diese Unterkategorien konkretisieren die Hauptkategorien anhand wiederkehrender oder für das Bewertungsmodell besonders relevanter Aussagen der Expertinnen und Experten. Insgesamt wurden 52 Unterkategorien identifiziert und den zehn Hauptkategorien zugeordnet.
-Ein exemlarischer Auszug der Unterkategorien ist in Tabelle \ref{tab:unterkategorien_auszug} dargestellt.
+Ein exemplarischer Auszug der Unterkategorien ist in Tabelle \ref{tab:unterkategorien_auszug} dargestellt.
 Die vollständige Übersicht ist in Anhang \ref{app:unterkategorien} dokumentiert.
 Die Belegstellen verweisen auf die jeweiligen Interviewabsätze, in denen die Kategorien empirisch begründet oder besonders deutlich sichtbar werden.
 
@@ -1465,7 +1465,7 @@ Der Prototyp ist in Python implementiert und setzt Python~3.12 voraus. Die RDF-V
 
 Die in der Verarbeitungspipeline aufgebaute Faktenbasis hält je Datensatz alle bewertungsrelevanten Angaben, darunter Titel, Beschreibung, Schlagwörter, Themen sowie Datums- und Frequenzangaben, und für jede Distribution ein eigenes Faktenobjekt mit Format-, Medientyp-, Lizenz- und URL-Angaben. Häufig benötigte abgeleitete Größen wie die Anzahl der Distributionen mit Download-URL werden als berechnete Eigenschaften bereitgestellt.
 
-Ihre Einführung als eigene Zwischenstufe zwischen RDF-Graph und Indikatoren ist eine bewusste Entwurfsentscheidung. Sie stellt erstens Konsistenz sicher, da alle Indikatoren über dieselben, an genau einer Stelle extrahierten Fakten urteilen und Interpretationsfragen der RDF-Struktur nicht je Indikator unterschiedlich beantwortet werden können. Desweiteren wird redundante Arbeit vermieden, da der Graph nur einmal traversiert wird. Zudem wird die Prüflogik vom Datenmodell entkoppelt, denn die Indikatoren operieren auf typisierten Werten und enthalten keine RDF-spezifische Logik, was ihre Implementierung und Erweiterung wesentlich vereinfacht.
+Ihre Einführung als eigene Zwischenstufe zwischen RDF-Graph und Indikatoren ist eine bewusste Entwurfsentscheidung. Sie stellt erstens Konsistenz sicher, da alle Indikatoren über dieselben, an genau einer Stelle extrahierten Fakten urteilen und Interpretationsfragen der RDF-Struktur nicht je Indikator unterschiedlich beantwortet werden können. Des Weiteren wird redundante Arbeit vermieden, da der Graph nur einmal traversiert wird. Zudem wird die Prüflogik vom Datenmodell entkoppelt, denn die Indikatoren operieren auf typisierten Werten und enthalten keine RDF-spezifische Logik, was ihre Implementierung und Erweiterung wesentlich vereinfacht.
 
 \begin{listing}[H]
 \begin{minted}
@@ -1862,7 +1862,7 @@ Zwei Vorkehrungen erhöhen die Robustheit der Bewertung. Zum einen wird das Mode
 
 \subsection{Determinismus und Konfiguration}
 
-Der Aufruf erfolgt mit einer Temperatur von 0. Für ein Bewertungsinstrument ist Reproduzierbarkeit wichtiger als sprachliche Variation, und eine Temperatur von 0 maximiert die Bestimmtheit der Ausgabe, sodass identische Eingaben möglichst identische Bewertungen ergeben. Das stützt unmittelbar das Nachvollziehbarkeitsziel des Prototyps und die Anforderung einer reproduzierbaren Evaluation. Die Ausgabelänge ist auf 10.000 Tokens begrenzt. Diese Grenze lässt der strukturierten Antwort ausreichend Raum, sodass sie nicht abgeschnitten wird, und deckelt zugleich die Kosten eines einzelnen Aufrufs. Als Modell wird Claude Sonnet~4.5 verwendet, angebunden über den Dienst OpenRouter. 
+Der Aufruf erfolgt mit einer Temperatur von 0. Für ein Bewertungsinstrument ist Reproduzierbarkeit wichtiger als sprachliche Variation, und eine Temperatur von 0 maximiert die Bestimmtheit der Ausgabe, sodass identische Eingaben möglichst identische Bewertungen ergeben. Das stützt unmittelbar das Nachvollziehbarkeitsziel des Prototyps und die Anforderung einer reproduzierbaren Evaluation. Die Ausgabelänge ist auf 25.000 Tokens begrenzt. Diese Grenze lässt der strukturierten Antwort ausreichend Raum, sodass sie nicht abgeschnitten wird, und deckelt zugleich die Kosten eines einzelnen Aufrufs. Als Modell wird GPT-5.5 verwendet, angebunden über den Dienst OpenRouter; die Auswahl wird in Abschnitt~\ref{sec:eval_modellauswahl} begründet. 
 
 %@TODO eventuell noch ein satz verschwenden dass verglichen wurde gegen gpt4.5 und opus
 
@@ -2137,7 +2137,7 @@ Die Schnittstelle gliedert sich in vier Gruppen von Endpunkten: für die Datenbe
 
 Die Evidenz, die ein Indikator im Feld \texttt{details} des Reports hinterlegt, ist notwendigerweise indikatorspezifisch: Ein Erreichbarkeitsindikator hält Antwortstatus je Distribution fest, ein Konformitätsindikator die verletzten Regeln der Schemaprüfung, ein sprachmodellgestützter Indikator die Einzelbefunde und deren Begründung. Für die Darstellung ist diese Vielfalt hinderlich. Eine Oberfläche, die 27~unterschiedlich aufgebaute Evidenzstrukturen jeweils eigens darstellt, ist weder wartbar noch für den Leser erlernbar.
 
-Der Prototyp überträgt deshalb jedes negative Prüfergebnis in eine einheitliche Form, den \emph{Befund}. Er besteht aus einer Kernaussage, die das Problem benennt, aus Ist-Angaben, die den vorgefundenen Zustand belegen und jeweils eine Fundstelle tragen können, aus einem Hinweis, der den geforderderten Zustand beschreibt, sowie aus Einzelbefunden für den Fall mehrerer gleichartiger Verstöße. Diese Form ist über alle Indikatoren hinweg identisch. Der Leser lernt sie einmal und kann sie danach auf jeden Indikator anwenden, unabhängig davon, ob dessen Urteil aus einer Feldprüfung, einer Netzabfrage oder einer Sprachmodellbewertung stammt. Als Fundstelle dient je nach Indikator die betroffene Distribution, der verletzte Pfad der Schemaprüfung oder das Feld. Der Hinweis ist bewusst als Handlungsanweisung und nicht als Zustandsbeschreibung formuliert. Er benennt, was zu tun ist, statt zu wiederholen, wie das Ergebnis aussähe, wenn es richtig wäre. Die Auflistung der nicht bestandenen Prüfungen mit Fundstelle und, wo möglich, Quelltextbeleg orientiert sich damit an der Form, die die Konformitätsprüfdienste des W3C für Markup und Stylesheets etabliert haben \cite{w3c_nu_checker, w3c_css_validator}: Deren Meldungen bestehen ebenfalls aus einem Schweregrad, einer natürlichsprachlichen Kernaussage, der Position in der Quelle und einem Auszug des Quelltexts um diese Position. Der Befund überträgt dieses Muster von der Syntaxprüfung eines Dokuments auf die Qualitätsprüfung eines Metadatensatzes. Abbildung~\ref{fig:frontend_befund} zeigt einen aufgeklappten Befund am Beispiel des Indikators zum Dateiformat: links die vorgefundenen Werte mit der jeweils betroffenen Distribution als Fundstelle, rechts der Hinweis mit dem Verweis auf das maßgebliche Vokabular.
+Der Prototyp überträgt deshalb jedes negative Prüfergebnis in eine einheitliche Form, den \emph{Befund}. Er besteht aus einer Kernaussage, die das Problem benennt, aus Ist-Angaben, die den vorgefundenen Zustand belegen und jeweils eine Fundstelle tragen können, aus einem Hinweis, der den geforderten Zustand beschreibt, sowie aus Einzelbefunden für den Fall mehrerer gleichartiger Verstöße. Diese Form ist über alle Indikatoren hinweg identisch. Der Leser lernt sie einmal und kann sie danach auf jeden Indikator anwenden, unabhängig davon, ob dessen Urteil aus einer Feldprüfung, einer Netzabfrage oder einer Sprachmodellbewertung stammt. Als Fundstelle dient je nach Indikator die betroffene Distribution, der verletzte Pfad der Schemaprüfung oder das Feld. Der Hinweis ist bewusst als Handlungsanweisung und nicht als Zustandsbeschreibung formuliert. Er benennt, was zu tun ist, statt zu wiederholen, wie das Ergebnis aussähe, wenn es richtig wäre. Die Auflistung der nicht bestandenen Prüfungen mit Fundstelle und, wo möglich, Quelltextbeleg orientiert sich damit an der Form, die die Konformitätsprüfdienste des W3C für Markup und Stylesheets etabliert haben \cite{w3c_nu_checker, w3c_css_validator}: Deren Meldungen bestehen ebenfalls aus einem Schweregrad, einer natürlichsprachlichen Kernaussage, der Position in der Quelle und einem Auszug des Quelltexts um diese Position. Der Befund überträgt dieses Muster von der Syntaxprüfung eines Dokuments auf die Qualitätsprüfung eines Metadatensatzes. Abbildung~\ref{fig:frontend_befund} zeigt einen aufgeklappten Befund am Beispiel des Indikators zum Dateiformat: links die vorgefundenen Werte mit der jeweils betroffenen Distribution als Fundstelle, rechts der Hinweis mit dem Verweis auf das maßgebliche Vokabular.
 
 \begin{figure}[H]
     \centering
@@ -2158,7 +2158,7 @@ Der Befund entsteht im Bewertungskern und nicht in der Oberfläche. Die Überset
 
 Der Befund benennt das Problem und den Weg zu seiner Auflösung, beides jedoch in Prosa. Was er nicht leistet, ist die Übersetzung dieser Anweisung in die Schreibweise, die der Metadatensatz verlangt: Ein Datenbereitsteller ohne DCAT-Kenntnisse weiß nach dem Hinweis, dass eine Kategorie aus dem EU-Vokabular zu setzen ist, aber nicht, wie das im RDF/XML seines Datensatzes auszusehen hat. Die zweite Aufbereitungsstufe schließt diese Lücke.
 
-Der Prototyp zeigt dafür eine \textbf{Vorlage}: ein kurzes RDF/XML-Fragment, dass das betroffene Feld in korrekter Schreibweise mit einem Beispielwert enthält. Damit entfällt die Hürde, erst nachschlagen zu müssen, wie die geforderte Angabe zu notieren ist -- welches Feld, welche Verschachtelung, welche Schreibweise steht unmittelbar vor dem Adressaten. Geht es um ein Feld mit kontrolliertem Vokabular, stehen im Hinweis daneben zusätzlich die Bezeichnung des Vokabulars und der Verweis auf dessen Übersichtsseite, sodass sich der inhaltlich passende Wert dort auswählen lässt. Abbildung~\ref{fig:frontend_handlungsanweisung}\,(\subref{fig:frontend_detailblock_vorlage}) zeigt eine solche Vorlage für die politische Geokodierung eines Datensatzes.
+Der Prototyp zeigt dafür eine \textbf{Vorlage}: ein kurzes RDF/XML-Fragment, das das betroffene Feld in korrekter Schreibweise mit einem Beispielwert enthält. Damit entfällt die Hürde, erst nachschlagen zu müssen, wie die geforderte Angabe zu notieren ist -- welches Feld, welche Verschachtelung, welche Schreibweise steht unmittelbar vor dem Adressaten. Geht es um ein Feld mit kontrolliertem Vokabular, stehen im Hinweis daneben zusätzlich die Bezeichnung des Vokabulars und der Verweis auf dessen Übersichtsseite, sodass sich der inhaltlich passende Wert dort auswählen lässt. Abbildung~\ref{fig:frontend_handlungsanweisung}\,(\subref{fig:frontend_detailblock_vorlage}) zeigt eine solche Vorlage für die politische Geokodierung eines Datensatzes.
 
 \begin{figure}[H]
     \centering
@@ -2468,12 +2468,20 @@ Zuordnungstabelle findet sich in Anhang~\ref{app:mqa_abc_mapping}.
 % @TODO das mal noch etwas weniger belastend formulieren am ende wird man deswegen zerrissen.
 Damit der Vergleich nicht einseitig zugunsten des Prototyps ausfällt, sind umgekehrt auch
 die MQA-Metriken zu nennen, für die der Prototyp keine Entsprechung vorsieht:
-\texttt{rights\_availability} (\texttt{dct:rights}) und \texttt{byte\_size\_availability}
-(\texttt{dcat:byteSize}). Beide Felder sind nach DCAT-AP.de weder verpflichtend noch
-empfohlen. Bereits die Experteninterviews ordneten wenig aussagekräftige Zusatzfelder
-dieser Art unter dem Prinzip \enquote{Qualität statt Quantität} als für die Bewertung
-verzichtbar ein (Anhang~\ref{app:kodierleitfaden}, Kategorie K1.2), weshalb der Prototyp
-hierfür keinen eigenen Indikator vorsieht.
+\texttt{rights\_availability} (\texttt{dct:rights}), \texttt{byte\_size\_availability}
+(\texttt{dcat:byteSize}) sowie \texttt{access\_rights\_availability} und
+\texttt{access\_rights\_vocabulary} (\texttt{dct:accessRights}), die zusammen 25 der
+405 MQA-Punkte ausmachen. Die beiden erstgenannten Felder sind nach DCAT-AP.de weder
+verpflichtend noch empfohlen. Für \texttt{dct:accessRights} weist das
+Konventionenhandbuch die Angabe ausdrücklich als optionale Ergänzung zur Lizenz aus
+\cite{DCATAPDEImplRules2}; ein Indikator hierfür wäre zudem auf eine kombinierte
+Existenz- und Vokabularprüfung hinausgelaufen und hätte damit dieselbe Information
+geliefert, die die Lizenzprüfung N1 bereits trägt. Da das Bewertungsmodell bewusst
+zurückhaltend mit optionalen Angaben umgeht, um nicht durch eine große Zahl schwach
+trennender Indikatoren aufzublähen, wurde er nicht aufgenommen. Bereits die
+Experteninterviews ordneten wenig aussagekräftige Zusatzfelder dieser Art unter dem
+Prinzip \enquote{Qualität statt Quantität} als für die Bewertung verzichtbar ein
+(Anhang~\ref{app:kodierleitfaden}, Kategorie K1.2).
 
 \section{Auswertungsverfahren und Kennzahlen}
 \label{sec:eval_auswertungsverfahren}
@@ -2585,7 +2593,7 @@ Tabelle~\ref{tab:deckenpruefung} berichtet das Ergebnis.
     \hline
     Auffindbarkeit & 1,000 & 8 von 8 & 1,0 \\
     Zugänglichkeit & 1,000 & 7 von 7 & 2,0 \\
-    Wiederverwendbarkeit & 1,000 & 6 von 6 & 1,5 \\
+    Nachnutzbarkeit & 1,000 & 6 von 6 & 1,5 \\
     Aussagekraft & 0,972 & 6 von 6 & 2,0 \\
     \hline
     \textbf{Gesamtscore} & \textbf{0,991} & \textbf{27 von 27} & \\
@@ -2633,7 +2641,7 @@ die Aussage der Deckenprüfung nicht berührt.
 % ausschliesslich das gewaehlte Modell berichtet.
 %
 % Rahmung zuerst (traegt die ganze Section): Von den vier Dimensionen ist nur die
-% Aussagekraft LLM-gestuetzt. Auffindbarkeit, Zugaenglichkeit und Wiederverwendbarkeit
+% Aussagekraft LLM-gestuetzt. Auffindbarkeit, Zugaenglichkeit und Nachnutzbarkeit
 % werden deterministisch aus dem RDF berechnet und liefern ueber alle Modelle exakt
 % identische rho-Werte (0.5244 / 0.7119 / 0.7390). Die Modellwahl beruehrt also genau
 % eine von vier Dimensionen -- Gesamtmetriken mischen den identischen deterministischen
@@ -2680,7 +2688,7 @@ zeigt die Rangkorrelation zur Ground Truth je Dimension und Modell.
 \end{figure}
 
 Der Befund ist eindeutig: In den Dimensionen Auffindbarkeit, Zugänglichkeit und
-Wiederverwendbarkeit sind die Werte über alle drei Modelle bitgenau identisch
+Nachnutzbarkeit sind die Werte über alle drei Modelle bitgenau identisch
 ($\rho = 0{,}524$, $0{,}712$ und $0{,}739$). Die Modellwahl berührt ausschließlich die
 Aussagekraft. Für den Vergleich folgt daraus, dass die Aussagekraft die
 einzige Dimension ist, auf der die Kandidaten überhaupt sinnvoll gegeneinander zu bewerten
@@ -2934,7 +2942,7 @@ Dimension.
     \hline
     Auffindbarkeit & 0,524 & 0,768 & 68,3\,\% & 4 \\
     Zugänglichkeit & 0,712 & 0,952 & 74,8\,\% & 6 \\
-    Wiederverwendbarkeit & 0,739 & 0,928 & 79,6\,\% & 6 \\
+    Nachnutzbarkeit & 0,739 & 0,928 & 79,6\,\% & 6 \\
     Aussagekraft & 0,569 & 0,851 & 66,8\,\% & 4 \\
     \hline
     \end{tabular}
@@ -2947,7 +2955,7 @@ Dass Auffindbarkeit das niedrigste rohe $\rho$ aufweist, ist damit nur zur Hälf
 ein Skalenartefakt: Das Ceiling liegt mit $0{,}768$ selbst unter dem der übrigen drei
 Dimensionen, weil die Ground Truth hier nur vier der sechs Stufen tatsächlich
 nutzt. Die verbleibende Lücke zum Ceiling ($68{,}3\,\%$ ausgeschöpft) ist aber real
-und kleiner als bei Zugänglichkeit oder Wiederverwendbarkeit ($74{,}8\,\%$ bzw.
+und kleiner als bei Zugänglichkeit oder Nachnutzbarkeit ($74{,}8\,\%$ bzw.
 $79{,}6\,\%$). Aussagekraft liegt mit $66{,}8\,\%$ auf ähnlichem Niveau wie
 Auffindbarkeit -- ein erster Hinweis auf die in Abschnitt~\ref{subsec:eval_gt_extremfaelle} vertiefte Schwäche
 dieser Dimension, die auf den Extremfällen deutlich stärker hervortritt.
@@ -2996,7 +3004,7 @@ Qualitätsstufen.
 Auf den konstruierten Extremfällen liegt die Gesamtkorrelation mit
 $\rho = 0{,}827$ über der Kernstichprobe ($0{,}765$) -- erwartbar, da die Stichprobe
 bewusst auf maximale Trennschärfe zwischen guten und schlechten Datensätzen angelegt
-ist (Abschnitt~\ref{sec:eval_stichprobe}). Auffindbarkeit und Wiederverwendbarkeit erreichen hier
+ist (Abschnitt~\ref{sec:eval_stichprobe}). Auffindbarkeit und Nachnutzbarkeit erreichen hier
 $90{,}3\,\%$ bzw. $91{,}0\,\%$ ihres jeweiligen Ceilings -- praktisch das bei dieser
 Skalengranularität Erreichbare. Zugänglichkeit bleibt mit $\rho = 0{,}713$ nahezu
 identisch zur Kernstichprobe ($0{,}712$) und zeigt damit eine über beide Stichproben
@@ -3022,7 +3030,7 @@ Tabelle~\ref{tab:gt_extrem_ceiling}).
     \hline
     Auffindbarkeit & 0,874 & 0,967 & 90,3\,\% & 5 \\
     Zugänglichkeit & 0,713 & 0,978 & 72,9\,\% & 5 \\
-    Wiederverwendbarkeit & 0,872 & 0,957 & 91,0\,\% & 6 \\
+    Nachnutzbarkeit & 0,872 & 0,957 & 91,0\,\% & 6 \\
     Aussagekraft & 0,321 & 0,942 & 34,1\,\% & 4 \\
     \hline
     \end{tabular}
@@ -3204,7 +3212,7 @@ möglich ist.
 Auf der Kernstichprobe liegt der Prototyp-Gesamtscore
 bei fünf von sechs Zielen vorn: gesamt ($0{,}750$ vs. $0{,}704$), ohne Aussagekraft
 ($0{,}688$ vs. $0{,}655$), Zugänglichkeit ($0{,}588$ vs. $0{,}569$),
-Wiederverwendbarkeit ($0{,}441$ vs. $0{,}377$) und Aussagekraft ($0{,}651$ vs.
+Nachnutzbarkeit ($0{,}441$ vs. $0{,}377$) und Aussagekraft ($0{,}651$ vs.
 $0{,}571$) -- Abstände von durchweg $0{,}02$ bis $0{,}08$
 (Abbildung~\ref{fig:mqa_kern_triangulation}). Einzige Ausnahme ist die
 Auffindbarkeit, auf der die MQA vorn liegt ($0{,}288$ vs. $0{,}225$). Ein naheliegender
@@ -3351,7 +3359,7 @@ Zwei Beobachtungen stützen diese Erklärung. Der Wert bricht zum einen
 ausschließlich auf den konstruierten Extremfällen ein, während er auf der
 randomisierten Kernstichprobe bei 0{,}569 liegt, und zum anderen ausschließlich in
 derjenigen Dimension, die kein Selektionskriterium war. Auffindbarkeit und
-Wiederverwendbarkeit erreichen auf derselben Stichprobe 90{,}3 beziehungsweise
+Nachnutzbarkeit erreichen auf derselben Stichprobe 90{,}3 beziehungsweise
 91{,}0~Prozent ihres Ceilings. Damit ist der Befund zugleich ein Argument für das
 Stichprobendesign aus Abschnitt~\ref{sec:eval_stichprobe}. Dass die Extremfälle keine quantitativen Aussagen tragen und alle Kennzahlen
 dieser Arbeit auf der Kernstichprobe beruhen, ist damit nicht nur eine formale
@@ -3628,7 +3636,7 @@ Metadateneigenschaften benötigen. Der Beitrag dieser Arbeit liegt daher nicht i
 einer Absolutheit des Urteils, sondern in dessen Nachvollziehbarkeit und in einer
 geprüften relativen Güte gegenüber dem etablierten Verfahren.
 
-Desweiteren wird nicht die fachliche
+Des Weiteren wird nicht die fachliche
 Richtigkeit einer Angabe geprüft, sondern nur ihre Konsistenz mit
 anderen Angaben, sodass ein plausibel formulierter, sachlich falscher
 Bezugszeitraum jede Prüfung besteht.
