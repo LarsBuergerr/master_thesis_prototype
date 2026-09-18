@@ -3144,7 +3144,7 @@ es die MQA an dieser Stelle per Design ist.
     \label{fig:mqa_blindheit}
 \end{figure}
 
-Auf Ebene der Gesamtscores korrelieren beide Systeme mit $\rho = 0{,}829$ stark
+Auf Ebene der Gesamtscores korrelieren beide Systeme mit $\rho = 0{,}834$ stark
 (Abbildung~\ref{fig:mqa_kern_scatter}); die mittlere Differenz beträgt nur
 $-0{,}022$ Skalenpunkte zwischen Prototyp und MQA. Diese geringe Niveauverschiebung bei
 gleichzeitig hoher Rangkorrelation ist konsistent mit dem Befund aus Klasse~A und~B:
@@ -3176,7 +3176,7 @@ naheliegend, da unter den Extremfällen gezielt Datensätze mit unter anderem fe
 unklaren Lizenzangaben gewählt wurden (Abschnitt~\ref{sec:eval_stichprobe}). Die Klasse-C-Indikatoren
 zeigen auch hier durchgängige Streuung, etwa bei der Verfügbarkeitsangabe
 (Standardabweichung $0{,}36$) und der Geokodierungsstufe ($0{,}48$). Auf Ebene der
-Gesamtscores liegt die Rangkorrelation beider Verfahren bei $\rho = 0{,}820$ und
+Gesamtscores liegt die Rangkorrelation beider Verfahren bei $\rho = 0{,}818$ und
 die mittlere Differenz bei $-0{,}036$ Skalenpunkten -- beides nahe an den Werten der
 Kernstichprobe.
 
@@ -3202,12 +3202,12 @@ ein fairer Vergleich beider Systeme deshalb nur auf Ebene des jeweiligen Gesamts
 möglich ist.
 
 Auf der Kernstichprobe liegt der Prototyp-Gesamtscore
-bei fünf von sechs Zielen vorn: gesamt ($0{,}779$ vs. $0{,}740$), ohne Aussagekraft
-($0{,}695$ vs. $0{,}671$), Zugänglichkeit ($0{,}591$ vs. $0{,}569$),
-Wiederverwendbarkeit ($0{,}457$ vs. $0{,}426$) und Aussagekraft ($0{,}682$ vs.
-$0{,}611$) -- Abstände von durchweg $0{,}02$ bis $0{,}07$
+bei fünf von sechs Zielen vorn: gesamt ($0{,}750$ vs. $0{,}704$), ohne Aussagekraft
+($0{,}688$ vs. $0{,}655$), Zugänglichkeit ($0{,}588$ vs. $0{,}569$),
+Wiederverwendbarkeit ($0{,}441$ vs. $0{,}377$) und Aussagekraft ($0{,}651$ vs.
+$0{,}571$) -- Abstände von durchweg $0{,}02$ bis $0{,}08$
 (Abbildung~\ref{fig:mqa_kern_triangulation}). Einzige Ausnahme ist die
-Auffindbarkeit, auf der die MQA vorn liegt ($0{,}252$ vs. $0{,}134$). Ein naheliegender
+Auffindbarkeit, auf der die MQA vorn liegt ($0{,}288$ vs. $0{,}225$). Ein naheliegender
 Grund liegt in der Gewichtung des Gesamtscores (Abschnitt~\ref{subsec:gewichtung_indikatoren}, Tabelle~\ref{tab:impl_weights}):
 Auffindbarkeit geht mit dem niedrigsten Dimensionsgewicht ($1{,}0$ gegenüber $1{,}5$
 bis $2{,}0$ bei den übrigen drei Dimensionen) in den Gesamtscore ein und prägt ihn
@@ -3217,10 +3217,10 @@ Auffindbarkeitsindikatoren selbst. Diese liegt laut Abbildung~\ref{fig:gt_kern_d
 $\rho = 0{,}524$ im Mittelfeld der vier Dimensionen.
 
 Auf den Extremfällen fällt der Befund eindeutiger aus: Der Prototyp liegt hier auf
-\emph{allen sechs} Zielen vorn, mit deutlich größeren Abständen als auf der
-Kernstichprobe ($+0{,}08$ bis $+0{,}15$. Auch bei der Auffindbarkeit, wo die Kernstichprobe 
-die einzige Ausnahme zugunsten der
-MQA zeigte ($0{,}755$ vs. $0{,}671$). Das ist plausibel da die Extremfälle gezielt
+\emph{allen sechs} Zielen vorn, mit durchgängig größeren Abständen als auf der
+Kernstichprobe ($+0{,}06$ bis $+0{,}14$). Auch bei der Auffindbarkeit, wo die
+Kernstichprobe die einzige Ausnahme zugunsten der
+MQA zeigte ($0{,}783$ vs. $0{,}706$). Das ist plausibel da die Extremfälle gezielt
 so selektiert wurden, dass sich Feldpräsenz und tatsächliche Validität auseinanderentwickeln
 (Abschnitt~\ref{sec:eval_stichprobe}). Damit genau die Fälle, in denen sich der Vorteil vertiefender Prüfung am
 stärksten auszahlen sollte. Abbildung~\ref{fig:mqa_kern_triangulation} und
@@ -3430,7 +3430,7 @@ Deutlichkeit. Aussagekräftiger als die Bestätigung selbst sind zwei Befunde, d
 sich erst aus dem Zusammenspiel der drei Vergleichsebenen ergeben.
 
 Der erste Befund war in dieser Form nicht erwartet worden. Auf Ebene der Gesamtscores korrelieren beide
-Verfahren mit 0{,}829 sehr stark, und die mittlere Differenz beträgt lediglich
+Verfahren mit 0{,}834 sehr stark, und die mittlere Differenz beträgt lediglich
 0{,}022 Skalenpunkte. Angesichts einer nachgewiesenen Überschätzungsrate der
 Baseline von 15{,}8~Prozent wäre ein deutlich strengeres Gesamturteil zu erwarten
 gewesen. Erklären lässt sich das durch die Art der Abweichung. Der Prototyp bewertet
@@ -3500,7 +3500,7 @@ Metadata Quality Assessment von data.europa.eu als etablierter Baseline.
 Auf der Kernstichprobe stimmt der Prototyp mit dem Referenzurteil zu
 $\rho = 0{,}765$ überein und trifft in $92\,\%$ der Fälle dieselbe
 Gesamteinordnung. Gegenüber der Baseline korrelieren die Gesamtscores mit
-$0{,}829$, während auf Indikatorebene eine Überschätzung der Baseline von
+$0{,}834$, während auf Indikatorebene eine Überschätzung der Baseline von
 $15{,}8\,\%$ nachweisbar ist. In der Triangulation gegen das Referenzurteil liegt
 der Prototyp auf der Kernstichprobe bei fünf von sechs Zielgrößen und auf den
 Extremfällen bei allen sechs näher am menschlichen Urteil. Die Abstände sind auf
@@ -3714,7 +3714,7 @@ einer Messung kleiner bleiben als ihr Informationsbeitrag, sonst verschlechtert
 der Indikator das Gesamturteil, statt es zu verbessern
 (Abschnitt~\ref{subsec:kongruenzindikatoren}). Drittens ist ein Vergleich zweier Bewertungsverfahren allein auf Ebene der
 Gesamtscores nicht aussagekräftig. Beide Verfahren korrelieren hier mit
-$0{,}829$, obwohl auf Indikatorebene eine Überschätzung von $15{,}8\,\%$
+$0{,}834$, obwohl auf Indikatorebene eine Überschätzung von $15{,}8\,\%$
 nachweisbar ist (Abschnitt~\ref{subsec:eval_mehrwert}).
 
 \subsection{Weiterer Forschungs- und Entwicklungsbedarf}
