@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-08-06_15-42-18",
+  "run_directory": "outputs/runs/run_2026-08-06_15-42-18_state-evaluation-final_REF_UBA",
+  "models": [
+    "openai/gpt-5.5"
+  ],
+  "files_processed": 1,
+  "files_with_llm_call": 1,
+  "total_llm_calls": 1,
+  "total_input_tokens": 3808,
+  "total_output_tokens": 892,
+  "total_tokens": 4700,
+  "total_cost_usd": 0.0458,
+  "cost_is_complete": true,
+  "avg_cost_per_file_usd": 0.0458,
+  "avg_tokens_per_call": 4700.0,
+  "per_file": {
+    "perfect_example_01.rdf": {
+      "calls": 1,
+      "input_tokens": 3808,
+      "output_tokens": 892,
+      "total_tokens": 4700,
+      "cost_usd": 0.0458,
+      "latency_seconds": 18.354
+    }
+  }
+}

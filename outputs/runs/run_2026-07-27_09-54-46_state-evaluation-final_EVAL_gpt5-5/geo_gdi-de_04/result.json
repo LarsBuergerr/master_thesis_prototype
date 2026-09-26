@@ -1,0 +1,1295 @@
+{
+  "by_dimension": {
+    "findability": {
+      "dimension": "findability",
+      "indicators": [
+        {
+          "indicator_id": "find_keywords_count",
+          "name_de": "Angemessene Anzahl Schlagwörter",
+          "name_en": "Appropriate number of keywords",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Optimale Anzahl Keywords: 4",
+          "message_en": "Optimal number of keywords: 4",
+          "details": {
+            "keyword_count": 4,
+            "keywords": [
+              "bodennutzung",
+              "opendata",
+              "spielplatz",
+              "thüringen"
+            ],
+            "expected_range": "3–15 keywords (PASS), 1–2 or 16–25 (PARTIAL)"
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.034588",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_theme_valid",
+          "name_de": "Theme aus kontrolliertem Vokabular",
+          "name_en": "Theme from controlled vocabulary",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle Themes sind aus dem kontrollierten Vokabular",
+          "message_en": "All themes are from controlled vocabulary",
+          "details": {
+            "valid_themes": [
+              "http://publications.europa.eu/resource/authority/data-theme/GOVE",
+              "http://publications.europa.eu/resource/authority/data-theme/REGI",
+              "http://publications.europa.eu/resource/authority/data-theme/EDUC",
+              "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+            ],
+            "invalid_themes": [],
+            "valid_count": 4,
+            "total_count": 4
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.035007",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_locn_geometry",
+          "name_de": "Räumliche Suchangabe (Geometrie)",
+          "name_en": "Spatial search term (geometry)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1 geometrische Angabe(n) gefunden",
+          "message_en": "1 geometry value(s) found",
+          "details": {
+            "geometries": [
+              "POLYGON ((12.0950 50.7980, 12.2110 50.7980, 12.2110 50.7090, 12.0950 50.7090, 12.0950 50.7980))"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.035200",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_political_geocoding",
+          "name_de": "Politische Geokodierung aus kontrolliertem Vokabular",
+          "name_en": "Political geocoding from controlled vocabulary",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine politische Geokodierung angegeben",
+          "message_en": "No political geocoding specified",
+          "details": {
+            "geocoding_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.035387",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Keine politische Geokodierung angegeben",
+            "message_en": "No political geocoding specified",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Es ist kein Verwaltungsgebiet angegeben — eine Suche nach Ortsnamen findet den Datensatz nicht.",
+            "current": [
+              {
+                "label": "dcatde:politicalGeocodingURI",
+                "value": "nicht gesetzt",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Eine URI aus dem DCAT-AP.de-Geokodierungs-Vokabular, z. B. http://dcat-ap.de/def/politicalGeocoding/municipalityKey/07131038.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_geocoding_level",
+          "name_de": "Geokodierungs-Ebene aus kontrolliertem Vokabular",
+          "name_en": "Geocoding level from controlled vocabulary",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine politische Geokodierungs-Ebene angegeben",
+          "message_en": "No political geocoding level specified",
+          "details": {
+            "level_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.035627",
+          "remediation": {
+            "kind": "change_patch",
+            "ready": [],
+            "needs_input": [
+              {
+                "indicator_id": "find_geocoding_level",
+                "subject": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=760045f4-2db4-490a-9ef1-19169e126d6a",
+                "predicate": "http://dcat-ap.de/def/dcatde/politicalGeocodingLevelURI",
+                "reason": "find_geocoding_level: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „DCAT-AP.de Geokodierungs-Ebenen“",
+                "expected_en": "URI from the controlled vocabulary “DCAT-AP.de Geokodierungs-Ebenen”",
+                "example": "http://dcat-ap.de/def/politicalGeocoding/Level/state",
+                "vocabulary_label": "DCAT-AP.de Geokodierungs-Ebenen",
+                "vocabulary_url": "http://dcat-ap.de/def/politicalGeocoding/Level/"
+              }
+            ],
+            "summary_de": "0 ungueltige(r) Wert(e) entfernbar · gueltiger Wert erforderlich",
+            "summary_en": "0 invalid value(s) removable · a valid value is required"
+          },
+          "finding": {
+            "headline": "Die Ebene des Verwaltungsgebiets fehlt — Suchfilter können den Raumbezug nicht einordnen.",
+            "current": [
+              {
+                "label": "dcatde:politicalGeocodingLevelURI",
+                "value": "nicht gesetzt",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Eine Ebenen-URI, z. B. http://dcat-ap.de/def/politicalGeocoding/Level/municipality.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_temporal_coverage",
+          "name_de": "Zeitliche Abdeckung angegeben",
+          "name_en": "Temporal coverage specified",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine zeitliche Abdeckung gefunden oder ungültiges Datumsformat",
+          "message_en": "No temporal coverage found or invalid date format",
+          "details": {
+            "start_count": 0,
+            "end_count": 0,
+            "start_format": null,
+            "end_format": null,
+            "start_valid": false,
+            "end_valid": false
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.035928",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Keine zeitliche Abdeckung gefunden oder ungültiges Datumsformat",
+            "message_en": "No temporal coverage found or invalid date format",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Der Zeitraum der Daten ist nicht angegeben — Nutzende können die Aktualität nicht einschätzen.",
+            "current": [
+              {
+                "label": "dcat:startDate",
+                "value": "nicht gesetzt",
+                "tone": "bad",
+                "where": null
+              },
+              {
+                "label": "dcat:endDate",
+                "value": "nicht gesetzt",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Start- und Enddatum im Format JJJJ-MM-TT (oder als vollständiger Zeitstempel).",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_issued_datetime",
+          "name_de": "Issued Datum (xs:dateTime)",
+          "name_en": "Issued date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 2 Werte gültig (Dataset: 1, Distribution: 1)",
+          "message_en": "All 2 values valid (Dataset: 1, Distribution: 1)",
+          "details": {
+            "valid": [
+              {
+                "value": "2022-12-09",
+                "format": "date",
+                "source_kind": "dataset",
+                "source_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=760045f4-2db4-490a-9ef1-19169e126d6a"
+              },
+              {
+                "value": "2025-07-23T13:51:03.359320",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution"
+              }
+            ],
+            "invalid": [],
+            "total": 2,
+            "dataset_count": 1,
+            "distribution_count": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.036270",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_modified_datetime",
+          "name_de": "Modified Datum (xs:dateTime)",
+          "name_en": "Modified date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 2 Werte gültig (Dataset: 1, Distribution: 1)",
+          "message_en": "All 2 values valid (Dataset: 1, Distribution: 1)",
+          "details": {
+            "valid": [
+              {
+                "value": "2024-05-13T11:54:37",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=760045f4-2db4-490a-9ef1-19169e126d6a"
+              },
+              {
+                "value": "2025-07-26T10:34:05.323462",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution"
+              }
+            ],
+            "invalid": [],
+            "total": 2,
+            "dataset_count": 1,
+            "distribution_count": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.036533",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        }
+      ],
+      "score": 0.625,
+      "dimension_weight": 1,
+      "total_indicator_weight": 8.0,
+      "indicator_count": 8,
+      "pass_count": 5,
+      "pass_rate": 0.625
+    },
+    "accessibility": {
+      "dimension": "accessibility",
+      "indicators": [
+        {
+          "indicator_id": "acc_download_url",
+          "name_de": "Download-URL je Distribution",
+          "name_en": "Download URL per distribution",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Distribution(en) mit Download-URL",
+          "message_en": "1/1 distribution(s) with a download URL",
+          "details": {
+            "total_distributions": 1,
+            "distributions_with_download_url": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.037889",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_format",
+          "name_de": "Format aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Format from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit Format aus dem Vokabular",
+          "message_en": "0/1 distribution(s) with a format from the vocabulary",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "formats": [
+                  "SHP"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.038261",
+          "remediation": {
+            "kind": "change_patch",
+            "ready": [
+              {
+                "op": "remove",
+                "subject": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "predicate": "http://purl.org/dc/terms/format",
+                "object": {
+                  "type": "literal",
+                  "value": "SHP"
+                },
+                "reason": "acc_format: Wert nicht im kontrollierten Vokabular"
+              }
+            ],
+            "needs_input": [
+              {
+                "indicator_id": "acc_format",
+                "subject": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "predicate": "http://purl.org/dc/terms/format",
+                "reason": "acc_format: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „EU-Dateiformate“",
+                "expected_en": "URI from the controlled vocabulary “EU-Dateiformate”",
+                "example": "http://publications.europa.eu/resource/authority/file-type/AAB",
+                "vocabulary_label": "EU-Dateiformate",
+                "vocabulary_url": "http://publications.europa.eu/resource/authority/file-type"
+              }
+            ],
+            "summary_de": "1 ungueltige(r) Wert(e) entfernbar · 1 Distribution(en) brauchen einen Wert",
+            "summary_en": "1 invalid value(s) removable · 1 distribution(s) need a value"
+          },
+          "finding": {
+            "headline": "Keine der 1 Distribution hat ein Format aus dem EU-Vokabular.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "SHP",
+                "tone": "bad",
+                "where": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip"
+              }
+            ],
+            "target": "Je Distribution eine Format-URI, z. B. http://publications.europa.eu/resource/authority/file-type/CSV.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_media_type",
+          "name_de": "Media Type aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Media type from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit gültigem Media Type",
+          "message_en": "0/1 distribution(s) with a valid media type",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "media_types": [
+                  "application/zip"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.038819",
+          "remediation": {
+            "kind": "change_patch",
+            "ready": [
+              {
+                "op": "remove",
+                "subject": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "predicate": "http://www.w3.org/ns/dcat#mediaType",
+                "object": {
+                  "type": "literal",
+                  "value": "application/zip"
+                },
+                "reason": "acc_media_type: Wert nicht im kontrollierten Vokabular"
+              }
+            ],
+            "needs_input": [
+              {
+                "indicator_id": "acc_media_type",
+                "subject": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "predicate": "http://www.w3.org/ns/dcat#mediaType",
+                "reason": "acc_media_type: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „IANA Media Types“",
+                "expected_en": "URI from the controlled vocabulary “IANA Media Types”",
+                "example": "https://www.iana.org/assignments/media-types/application/A2L",
+                "vocabulary_label": "IANA Media Types",
+                "vocabulary_url": "https://www.iana.org/assignments/media-types/media-types.xhtml"
+              }
+            ],
+            "summary_de": "1 ungueltige(r) Wert(e) entfernbar · 1 Distribution(en) brauchen einen Wert",
+            "summary_en": "1 invalid value(s) removable · 1 distribution(s) need a value"
+          },
+          "finding": {
+            "headline": "Keine der 1 Distribution hat einen gültigen Media Type.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "application/zip",
+                "tone": "bad",
+                "where": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip"
+              }
+            ],
+            "target": "Je Distribution eine IANA-URI, z. B. https://www.iana.org/assignments/media-types/text/csv.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_download_url_response",
+          "name_de": "Download-URL Antwortcode",
+          "name_en": "Download URL response code",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Download-URL(s) mit gültigem HTTP-Statuscode",
+          "message_en": "1/1 download URL(s) with valid HTTP status code",
+          "details": {
+            "total_distributions": 1,
+            "relevant_distributions": 1,
+            "sampled_distributions": 1,
+            "valid_count": 1,
+            "invalid_count": 0,
+            "dead_url_malus": -0.5,
+            "valid": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip",
+                "status_code": 200,
+                "fetch_error": null
+              }
+            ],
+            "invalid": []
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.040611",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_access_url_response",
+          "name_de": "Access-URL Antwortcode",
+          "name_en": "Access URL response code",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Access-URL(s) mit gültigem HTTP-Statuscode",
+          "message_en": "1/1 access URL(s) with valid HTTP status code",
+          "details": {
+            "total_distributions": 1,
+            "relevant_distributions": 1,
+            "sampled_distributions": 1,
+            "valid_count": 1,
+            "invalid_count": 0,
+            "dead_url_malus": -0.5,
+            "valid": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "url": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip",
+                "status_code": 200,
+                "fetch_error": null
+              }
+            ],
+            "invalid": []
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.040759",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_machine_readable_access",
+          "name_de": "Maschinenlesbarer Zugang (alle Distributionen)",
+          "name_en": "Machine-readable access (all distributions)",
+          "dimension": "accessibility",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "0/1 hoch maschinenlesbar, 1/1 mittel, 0/1 keine (Score 0.50)",
+          "message_en": "0/1 high machine-readable, 1/1 mid, 0/1 none (score 0.50)",
+          "details": {
+            "total_distributions": 1,
+            "high_count": 0,
+            "mid_count": 1,
+            "none_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "effective_mime": "x-gis/x-shapefile",
+                "tier": 0.5,
+                "tier_label": "mid"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.040900",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "0/1 hoch maschinenlesbar, 1/1 mittel, 0/1 keine (Score 0.50)",
+            "message_en": "0/1 high machine-readable, 1/1 mid, 0/1 none (score 0.50)",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Keine der 1 Distribution liegt in einem gut maschinenlesbaren Format vor.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "x-gis/x-shapefile — eingeschränkt maschinenlesbar",
+                "tone": "warn",
+                "where": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip"
+              }
+            ],
+            "target": "Den Inhalt zusätzlich strukturiert anbieten (CSV, JSON, GeoJSON) statt nur als PDF, HTML oder Bilddienst.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.5,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "acc_format_non_proprietary",
+          "name_de": "Nicht-proprietäres Format (alle Distributionen)",
+          "name_en": "Non-proprietary format (all distributions)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit nicht-proprietärem Format",
+          "message_en": "0/1 distribution(s) with non-proprietary format",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "formats": [
+                  "SHP"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.040969",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "0/1 Distribution(en) mit nicht-proprietärem Format",
+            "message_en": "0/1 distribution(s) with non-proprietary format",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Keine der 1 Distribution hat ein offenes, herstellerunabhängiges Format.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "SHP",
+                "tone": "bad",
+                "where": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip"
+              }
+            ],
+            "target": "Mindestens eine Distribution in einem offenen Format (z. B. CSV, JSON, GeoJSON, XML).",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.6052631578947368,
+      "dimension_weight": 2,
+      "total_indicator_weight": 9.5,
+      "indicator_count": 7,
+      "pass_count": 3,
+      "pass_rate": 0.42857142857142855
+    },
+    "reusability": {
+      "dimension": "reusability",
+      "indicators": [
+        {
+          "indicator_id": "reuse_license",
+          "name_de": "Freie Lizenz je Distribution",
+          "name_en": "Free-use license per distribution",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Distribution(en) mit freier Lizenz (Score 1.00)",
+          "message_en": "1/1 distribution(s) with a free-use license (score 1.00)",
+          "details": {
+            "total_distributions": 1,
+            "free_count": 1,
+            "no_free_license_malus": -0.5,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.041169",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_publisher",
+          "name_de": "Herausgeber als strukturierter Agent",
+          "name_en": "Publisher modelled as structured agent",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Herausgeber als foaf:Agent mit foaf:name modelliert",
+          "message_en": "Publisher modelled as foaf:Agent with foaf:name",
+          "details": {
+            "publisher_count": 1,
+            "publishers": [
+              {
+                "value": "Nbdc318dd49a64e99a08e7c71e05ae3cc",
+                "typed_as_agent": true,
+                "names": [
+                  "Stadt Berga-Wünschendorf"
+                ],
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.041281",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_contact",
+          "name_de": "Kontaktpunkt mit E-Mail oder URL",
+          "name_en": "Contact point with email or URL",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Kontaktpunkt mit E-Mail oder URL vorhanden",
+          "message_en": "Contact point with email or URL present",
+          "details": {
+            "contact_count": 1,
+            "contacts_with_channel": 1,
+            "contacts": [
+              {
+                "value": "Nb62a612555ef451c8e0c560e78c250ce",
+                "emails": [
+                  "mailto:info@stadtbw.de"
+                ],
+                "valid_emails": [
+                  "mailto:info@stadtbw.de"
+                ],
+                "urls": [
+                  "file:///home/lbuerger/masterthesis/master_thesis_prototype/data/sample_2026-06-25_09-57/www.stadt-berga.de"
+                ],
+                "valid_urls": [],
+                "has_channel": true
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.041376",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_contributor_id",
+          "name_de": "contributorID aus kontrolliertem Vokabular",
+          "name_en": "contributorID from controlled vocabulary",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Genau eine contributorID aus dem Vokabular",
+          "message_en": "Exactly one contributorID from the vocabulary",
+          "details": {
+            "contributor_id_count": 1,
+            "valid": [
+              "http://dcat-ap.de/def/contributors/gdiDE"
+            ],
+            "invalid": [],
+            "values": [
+              "http://dcat-ap.de/def/contributors/gdiDE"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:00.041434",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_dcat_ap_de_compliance",
+          "name_de": "DCAT-AP.de Schema-Konformität (SHACL)",
+          "name_en": "DCAT-AP.de schema compliance (SHACL)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "5 SHACL-Verletzung(en) gefunden",
+          "message_en": "5 SHACL violation(s) found",
+          "details": {
+            "conforms": false,
+            "violation_count": 5,
+            "violations": [
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "focus": "SHP",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+                "focus": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "path": "http://www.w3.org/ns/dcat#mediaType"
+              },
+              {
+                "severity": "Warning",
+                "message": "Deprecated: dcat:Dataset: dct:type soll nicht mehr fÃ¼r Collections verwendet werden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#sammlungen-und-reihen-von-datensatzen ",
+                "focus": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=760045f4-2db4-490a-9ef1-19169e126d6a",
+                "path": "http://purl.org/dc/terms/type"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Dataset: dct:accrualPeriodicity MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-frequency",
+                "focus": "http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Dataset: adms:identifier MUSS auf einen adms:Identifier verweisen.",
+                "focus": "https://gdk.gdi-de.org/inspire/srv/eng/xml_iso19139?uuid=760045f4-2db4-490a-9ef1-19169e126d6a",
+                "path": "http://www.w3.org/ns/adms#identifier"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:01.729485",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "5 SHACL-Verletzung(en) gegen DCAT-AP.de gefunden",
+            "message_en": "5 SHACL violation(s) against DCAT-AP.de found",
+            "findings": [
+              "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+              "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+              "Deprecated: dcat:Dataset: dct:type soll nicht mehr fÃ¼r Collections verwendet werden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#sammlungen-und-reihen-von-datensatzen ",
+              "dcat:Dataset: dct:accrualPeriodicity MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-frequency",
+              "dcat:Dataset: adms:identifier MUSS auf einen adms:Identifier verweisen."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Der Metadatensatz verstößt an 5 Stellen gegen das DCAT-AP.de-Schema.",
+            "current": [
+              {
+                "label": "Verstoß",
+                "value": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "tone": "bad",
+                "where": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "label": "Verstoß",
+                "value": "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+                "tone": "bad",
+                "where": "http://www.w3.org/ns/dcat#mediaType"
+              },
+              {
+                "label": "Warnung",
+                "value": "Deprecated: dcat:Dataset: dct:type soll nicht mehr fÃ¼r Collections verwendet werden. Siehe: https://www.dcat-ap.de/def/dcatde/2.0/implRules/#sammlungen-und-reihen-von-datensatzen",
+                "tone": "warn",
+                "where": "http://purl.org/dc/terms/type"
+              },
+              {
+                "label": "Verstoß",
+                "value": "dcat:Dataset: dct:accrualPeriodicity MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-frequency",
+                "tone": "bad",
+                "where": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "label": "Verstoß",
+                "value": "dcat:Dataset: adms:identifier MUSS auf einen adms:Identifier verweisen.",
+                "tone": "bad",
+                "where": "http://www.w3.org/ns/adms#identifier"
+              }
+            ],
+            "target": "Keine Verstöße gegen DCAT-AP.de v2.0 — jede Meldung nennt das betroffene Feld.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "reuse_availability",
+          "name_de": "Verfügbarkeit aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Availability from controlled vocabulary (per distribution)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit gültiger Verfügbarkeit",
+          "message_en": "0/1 distribution(s) with a valid availability value",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "availability": [],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:01.729713",
+          "remediation": {
+            "kind": "change_patch",
+            "ready": [],
+            "needs_input": [
+              {
+                "indicator_id": "reuse_availability",
+                "subject": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip#distribution",
+                "predicate": "http://data.europa.eu/r5r/availability",
+                "reason": "reuse_availability: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „Planned Availability“",
+                "expected_en": "URI from the controlled vocabulary “Planned Availability”",
+                "example": "http://publications.europa.eu/resource/authority/planned-availability/STABLE",
+                "vocabulary_label": "Planned Availability",
+                "vocabulary_url": "http://publications.europa.eu/resource/authority/planned-availability"
+              }
+            ],
+            "summary_de": "0 ungueltige(r) Wert(e) entfernbar · 1 Distribution(en) brauchen einen Wert",
+            "summary_en": "0 invalid value(s) removable · 1 distribution(s) need a value"
+          },
+          "finding": {
+            "headline": "Keine der 1 Distribution hat eine Verfügbarkeitsangabe.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "keine Angabe",
+                "tone": "bad",
+                "where": "https://www.geoproxy.geoportal-th.de/download-service/opendata/kommunal/ko_berg_spiel.zip"
+              }
+            ],
+            "target": "Je Distribution eine Verfügbarkeits-URI, z. B. …/planned-availability/STABLE.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.7142857142857143,
+      "dimension_weight": 1.5,
+      "total_indicator_weight": 7.0,
+      "indicator_count": 6,
+      "pass_count": 4,
+      "pass_rate": 0.6666666666666666
+    },
+    "expressiveness": {
+      "dimension": "expressiveness",
+      "indicators": [
+        {
+          "indicator_id": "expr_title_quality",
+          "name_de": "Titel-Qualität",
+          "name_en": "Title quality",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 0.95,
+          "message_de": "Der Titel ist spezifisch, laienverständlich und unterscheidbar; Ortsbezug und Gegenstand sind klar erkennbar. Relevante formale Mängel sind nicht sichtbar.",
+          "message_en": "Der Titel ist spezifisch, laienverständlich und unterscheidbar; Ortsbezug und Gegenstand sind klar erkennbar. Relevante formale Mängel sind nicht sichtbar.",
+          "details": {
+            "criterion": "title_quality",
+            "llm_status": "pass",
+            "findings": [
+              "Der Titel benennt den Gegenstand konkret als Spielplätze und nennt die Stadt Berga-Wünschendorf.",
+              "Der Titel ist kurz, verständlich und ohne technische Zeichen oder unerklärte Abkürzungen."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut verständlich und in sich konsistent: Thema, Ort und Gegenstand des Datensatzes sind klar erkennbar. Schwächen liegen vor allem in der knappen Beschreibung, wenig aussagekräftigen Zusatzschlagwörtern und fehlenden genaueren Angaben zu Quelle, Datenstruktur und Datenstand."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:01.729859",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 0.95,
+          "effective_score": 0.95
+        },
+        {
+          "indicator_id": "expr_description_quality",
+          "name_de": "Beschreibungs-Qualität",
+          "name_en": "Description quality",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.62,
+          "message_de": "Die Beschreibung ist verständlich und beschreibt den Kern des Datensatzes, bleibt aber sehr knapp. Für Geodaten wären zusätzliche Informationen zu Datenstruktur, Quelle/Herleitung und enthaltenen Attributen hilfreich, daher ist sie nur brauchbar mit deutlichen Informationslücken.",
+          "message_en": "Die Beschreibung ist verständlich und beschreibt den Kern des Datensatzes, bleibt aber sehr knapp. Für Geodaten wären zusätzliche Informationen zu Datenstruktur, Quelle/Herleitung und enthaltenen Attributen hilfreich, daher ist sie nur brauchbar mit deutlichen Informationslücken.",
+          "details": {
+            "criterion": "description_quality",
+            "llm_status": "partial",
+            "findings": [
+              "Die Beschreibung nennt den Inhalt: Standorte frei zugänglicher Spielplätze der Stadt Berga-Wünschendorf.",
+              "Sie enthält den Hinweis, dass es sich um einen Sekundärdatenbestand handelt.",
+              "Es fehlen nähere Angaben zur Struktur der Daten, Erhebungs-/Quellenmethode, Attributen oder Qualitäts-/Aktualisierungshinweisen in der Beschreibung."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut verständlich und in sich konsistent: Thema, Ort und Gegenstand des Datensatzes sind klar erkennbar. Schwächen liegen vor allem in der knappen Beschreibung, wenig aussagekräftigen Zusatzschlagwörtern und fehlenden genaueren Angaben zu Quelle, Datenstruktur und Datenstand."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:01.730051",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Die Beschreibung ist verständlich und beschreibt den Kern des Datensatzes, bleibt aber sehr knapp. Für Geodaten wären zusätzliche Informationen zu Datenstruktur, Quelle/Herleitung und enthaltenen Attributen hilfreich, daher ist sie nur brauchbar mit deutlichen Informationslücken.",
+            "message_en": "Die Beschreibung ist verständlich und beschreibt den Kern des Datensatzes, bleibt aber sehr knapp. Für Geodaten wären zusätzliche Informationen zu Datenstruktur, Quelle/Herleitung und enthaltenen Attributen hilfreich, daher ist sie nur brauchbar mit deutlichen Informationslücken.",
+            "findings": [
+              "Die Beschreibung nennt den Inhalt: Standorte frei zugänglicher Spielplätze der Stadt Berga-Wünschendorf.",
+              "Sie enthält den Hinweis, dass es sich um einen Sekundärdatenbestand handelt.",
+              "Es fehlen nähere Angaben zur Struktur der Daten, Erhebungs-/Quellenmethode, Attributen oder Qualitäts-/Aktualisierungshinweisen in der Beschreibung."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Die Beschreibung ist verständlich und beschreibt den Kern des Datensatzes, bleibt aber sehr knapp. Für Geodaten wären zusätzliche Informationen zu Datenstruktur, Quelle/Herleitung und enthaltenen Attributen hilfreich, daher ist sie nur brauchbar mit deutlichen Informationslücken.",
+            "current": [],
+            "target": "Beschreiben Sie Inhalt, Erhebungsmethode, Struktur und Nutzungszweck in einigen vollständigen Sätzen.",
+            "notes": [
+              "Die Beschreibung nennt den Inhalt: Standorte frei zugänglicher Spielplätze der Stadt Berga-Wünschendorf.",
+              "Sie enthält den Hinweis, dass es sich um einen Sekundärdatenbestand handelt.",
+              "Es fehlen nähere Angaben zur Struktur der Daten, Erhebungs-/Quellenmethode, Attributen oder Qualitäts-/Aktualisierungshinweisen in der Beschreibung."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.62,
+          "effective_score": 0.62
+        },
+        {
+          "indicator_id": "expr_title_description_coherence",
+          "name_de": "Kohärenz von Titel und Beschreibung",
+          "name_en": "Title–description coherence",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 0.97,
+          "message_de": "Titel und Beschreibung passen inhaltlich sehr gut zusammen; die Beschreibung stützt und präzisiert den Titel ohne abweichende Angaben.",
+          "message_en": "Titel und Beschreibung passen inhaltlich sehr gut zusammen; die Beschreibung stützt und präzisiert den Titel ohne abweichende Angaben.",
+          "details": {
+            "criterion": "title_description_coherence",
+            "llm_status": "pass",
+            "findings": [
+              "Titel und Beschreibung beziehen sich beide auf Spielplätze der Stadt Berga-Wünschendorf.",
+              "Die Beschreibung konkretisiert den Titel durch den Hinweis auf Standorte und freie Zugänglichkeit.",
+              "Es gibt keinen erkennbaren Widerspruch bei Thema, Ort oder Gegenstand."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut verständlich und in sich konsistent: Thema, Ort und Gegenstand des Datensatzes sind klar erkennbar. Schwächen liegen vor allem in der knappen Beschreibung, wenig aussagekräftigen Zusatzschlagwörtern und fehlenden genaueren Angaben zu Quelle, Datenstruktur und Datenstand."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:01.730509",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 0.97,
+          "effective_score": 0.97
+        },
+        {
+          "indicator_id": "expr_keyword_quality",
+          "name_de": "Schlagwort-Qualität",
+          "name_en": "Keyword quality",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.65,
+          "message_de": "Die Schlagwörter enthalten einen passenden Kernbegriff, sind überwiegend kurz und verständlich. Allerdings sind mehrere Tags eher formal oder allgemein und ergänzen den Titel nur begrenzt inhaltlich.",
+          "message_en": "Die Schlagwörter enthalten einen passenden Kernbegriff, sind überwiegend kurz und verständlich. Allerdings sind mehrere Tags eher formal oder allgemein und ergänzen den Titel nur begrenzt inhaltlich.",
+          "details": {
+            "criterion": "keyword_quality",
+            "llm_status": "partial",
+            "findings": [
+              "„spielplatz“ ist ein spezifisches, verständliches Schlagwort zum Datensatz.",
+              "„bodennutzung“ passt nur indirekt und ist sehr allgemein für Spielplatzstandorte.",
+              "„opendata“ ist ein formales Tag; „thüringen“ ist ein geografischer Kontext, aber kein inhaltlich spezifisches Schlagwort."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut verständlich und in sich konsistent: Thema, Ort und Gegenstand des Datensatzes sind klar erkennbar. Schwächen liegen vor allem in der knappen Beschreibung, wenig aussagekräftigen Zusatzschlagwörtern und fehlenden genaueren Angaben zu Quelle, Datenstruktur und Datenstand."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:01.730610",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Die Schlagwörter enthalten einen passenden Kernbegriff, sind überwiegend kurz und verständlich. Allerdings sind mehrere Tags eher formal oder allgemein und ergänzen den Titel nur begrenzt inhaltlich.",
+            "message_en": "Die Schlagwörter enthalten einen passenden Kernbegriff, sind überwiegend kurz und verständlich. Allerdings sind mehrere Tags eher formal oder allgemein und ergänzen den Titel nur begrenzt inhaltlich.",
+            "findings": [
+              "„spielplatz“ ist ein spezifisches, verständliches Schlagwort zum Datensatz.",
+              "„bodennutzung“ passt nur indirekt und ist sehr allgemein für Spielplatzstandorte.",
+              "„opendata“ ist ein formales Tag; „thüringen“ ist ein geografischer Kontext, aber kein inhaltlich spezifisches Schlagwort."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Die Schlagwörter enthalten einen passenden Kernbegriff, sind überwiegend kurz und verständlich. Allerdings sind mehrere Tags eher formal oder allgemein und ergänzen den Titel nur begrenzt inhaltlich.",
+            "current": [],
+            "target": "Ersetzen Sie technische und formale Tags durch verständliche Fachbegriffe; ein Begriff je Schlagwort.",
+            "notes": [
+              "„spielplatz“ ist ein spezifisches, verständliches Schlagwort zum Datensatz.",
+              "„bodennutzung“ passt nur indirekt und ist sehr allgemein für Spielplatzstandorte.",
+              "„opendata“ ist ein formales Tag; „thüringen“ ist ein geografischer Kontext, aber kein inhaltlich spezifisches Schlagwort."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.65,
+          "effective_score": 0.65
+        },
+        {
+          "indicator_id": "expr_thematic_consistency",
+          "name_de": "Thematische Konsistenz",
+          "name_en": "Thematic consistency",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 0.82,
+          "message_de": "Das Gesamtbild ist überwiegend konsistent: Es geht erkennbar um kommunale Spielplatzstandorte. Einzelne Themen und Schlagwörter sind breit gewählt, erzeugen aber keinen klaren Off-topic-Widerspruch.",
+          "message_en": "Das Gesamtbild ist überwiegend konsistent: Es geht erkennbar um kommunale Spielplatzstandorte. Einzelne Themen und Schlagwörter sind breit gewählt, erzeugen aber keinen klaren Off-topic-Widerspruch.",
+          "details": {
+            "criterion": "thematic_consistency",
+            "llm_status": "pass",
+            "findings": [
+              "Titel, Beschreibung und das Schlagwort „spielplatz“ zeigen konsistent auf Spielplatzstandorte.",
+              "Die Themen EDUC und SOCI sind für Spielplätze plausibel, REGI/GOVE können für kommunale/raumbezogene Verwaltungsdaten noch nachvollziehbar sein.",
+              "Das Schlagwort „bodennutzung“ lenkt etwas in Richtung Flächennutzung, widerspricht dem Datensatz aber nicht klar."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut verständlich und in sich konsistent: Thema, Ort und Gegenstand des Datensatzes sind klar erkennbar. Schwächen liegen vor allem in der knappen Beschreibung, wenig aussagekräftigen Zusatzschlagwörtern und fehlenden genaueren Angaben zu Quelle, Datenstruktur und Datenstand."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:01.730685",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 0.82,
+          "effective_score": 0.82
+        },
+        {
+          "indicator_id": "expr_contextual_qualifiers",
+          "name_de": "Kontextuelle Qualifizierer",
+          "name_en": "Contextual qualifiers",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.72,
+          "message_de": "Für diesen Geodatensatz sind räumliche Abdeckung und Aktualisierungslogik grundsätzlich vorhanden. Da es sich um einen Sekundärdatenbestand zu realweltlichen Standorten handelt, wäre ein Datenstand bzw. Quellen-/Stichtagsbezug wichtig; dieser ist nicht klar ausgewiesen.",
+          "message_en": "Für diesen Geodatensatz sind räumliche Abdeckung und Aktualisierungslogik grundsätzlich vorhanden. Da es sich um einen Sekundärdatenbestand zu realweltlichen Standorten handelt, wäre ein Datenstand bzw. Quellen-/Stichtagsbezug wichtig; dieser ist nicht klar ausgewiesen.",
+          "details": {
+            "criterion": "contextual_qualifiers",
+            "llm_status": "partial",
+            "findings": [
+              "Es handelt sich um Geodaten zu Standorten; der Ort ist im Titel und in der Beschreibung als Stadt Berga-Wünschendorf genannt.",
+              "Eine räumliche Geometrie/BBOX ist in den Metadaten vorhanden.",
+              "Die Aktualisierung ist mit „asNeeded“ angegeben; ein konkreter Erhebungs- oder Datenstand der Spielplatzstandorte fehlt, abgesehen vom Änderungsdatum der Metadaten."
+            ],
+            "overall_summary": "Die Metadaten sind insgesamt gut verständlich und in sich konsistent: Thema, Ort und Gegenstand des Datensatzes sind klar erkennbar. Schwächen liegen vor allem in der knappen Beschreibung, wenig aussagekräftigen Zusatzschlagwörtern und fehlenden genaueren Angaben zu Quelle, Datenstruktur und Datenstand."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T09:56:01.730742",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Für diesen Geodatensatz sind räumliche Abdeckung und Aktualisierungslogik grundsätzlich vorhanden. Da es sich um einen Sekundärdatenbestand zu realweltlichen Standorten handelt, wäre ein Datenstand bzw. Quellen-/Stichtagsbezug wichtig; dieser ist nicht klar ausgewiesen.",
+            "message_en": "Für diesen Geodatensatz sind räumliche Abdeckung und Aktualisierungslogik grundsätzlich vorhanden. Da es sich um einen Sekundärdatenbestand zu realweltlichen Standorten handelt, wäre ein Datenstand bzw. Quellen-/Stichtagsbezug wichtig; dieser ist nicht klar ausgewiesen.",
+            "findings": [
+              "Es handelt sich um Geodaten zu Standorten; der Ort ist im Titel und in der Beschreibung als Stadt Berga-Wünschendorf genannt.",
+              "Eine räumliche Geometrie/BBOX ist in den Metadaten vorhanden.",
+              "Die Aktualisierung ist mit „asNeeded“ angegeben; ein konkreter Erhebungs- oder Datenstand der Spielplatzstandorte fehlt, abgesehen vom Änderungsdatum der Metadaten."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Für diesen Geodatensatz sind räumliche Abdeckung und Aktualisierungslogik grundsätzlich vorhanden. Da es sich um einen Sekundärdatenbestand zu realweltlichen Standorten handelt, wäre ein Datenstand bzw. Quellen-/Stichtagsbezug wichtig; dieser ist nicht klar ausgewiesen.",
+            "current": [],
+            "target": "Ergänzen Sie Stichtag bzw. Bezugszeitraum, Gebiets- oder Verfahrensstand und Hinweise auf vorläufige Werte.",
+            "notes": [
+              "Es handelt sich um Geodaten zu Standorten; der Ort ist im Titel und in der Beschreibung als Stadt Berga-Wünschendorf genannt.",
+              "Eine räumliche Geometrie/BBOX ist in den Metadaten vorhanden.",
+              "Die Aktualisierung ist mit „asNeeded“ angegeben; ein konkreter Erhebungs- oder Datenstand der Spielplatzstandorte fehlt, abgesehen vom Änderungsdatum der Metadaten."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.72,
+          "effective_score": 0.72
+        }
+      ],
+      "score": 0.7883333333333332,
+      "dimension_weight": 2.0,
+      "total_indicator_weight": 6.0,
+      "indicator_count": 6,
+      "pass_count": 3,
+      "pass_rate": 0.5
+    }
+  },
+  "summary": {
+    "overall_score": 0.6897879313668788,
+    "overall_pass_rate": 0.5555555555555556,
+    "dimension_scores": {
+      "findability": 0.625,
+      "accessibility": 0.6052631578947368,
+      "reusability": 0.7142857142857143,
+      "expressiveness": 0.7883333333333332
+    },
+    "dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "effective_dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "dimension_weight_mode": "explicit",
+    "total_dimension_weight": 6.5,
+    "total_indicators": 27,
+    "total_pass": 15,
+    "total_fail": 12,
+    "quality_grade": "C"
+  },
+  "errors": [],
+  "weights": {
+    "dimension_weights": {
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0,
+      "findability": 1
+    },
+    "indicator_weights": {
+      "find_keywords_count": 1.0,
+      "find_theme_valid": 1.0,
+      "find_temporal_coverage": 1.0,
+      "find_locn_geometry": 1.0,
+      "find_political_geocoding": 1.0,
+      "find_geocoding_level": 1.0,
+      "find_issued_datetime": 1.0,
+      "find_modified_datetime": 1.0,
+      "acc_download_url": 1.0,
+      "acc_machine_readable_access": 1.5,
+      "acc_download_url_response": 2.0,
+      "acc_access_url_response": 2.0,
+      "acc_format": 1.0,
+      "acc_media_type": 1.0,
+      "reuse_license": 2.0,
+      "reuse_contact": 1.0,
+      "reuse_contributor_id": 1.0,
+      "reuse_publisher": 1.0,
+      "reuse_availability": 1.0,
+      "expr_description_quality": 1.0,
+      "expr_title_quality": 1.0,
+      "expr_title_description_coherence": 1.0,
+      "expr_keyword_quality": 1.0,
+      "expr_thematic_consistency": 1.0,
+      "expr_contextual_qualifiers": 1.0
+    }
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3566,
+      "output_tokens": 885,
+      "total_tokens": 4451,
+      "cost_usd": 0.034588,
+      "latency_seconds": 16.249
+    }
+  ]
+}

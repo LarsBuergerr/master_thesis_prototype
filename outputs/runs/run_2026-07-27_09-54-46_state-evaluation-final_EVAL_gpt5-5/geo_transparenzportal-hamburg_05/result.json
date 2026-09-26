@@ -1,0 +1,1680 @@
+{
+  "by_dimension": {
+    "findability": {
+      "dimension": "findability",
+      "indicators": [
+        {
+          "indicator_id": "find_keywords_count",
+          "name_de": "Angemessene Anzahl Schlagwörter",
+          "name_en": "Appropriate number of keywords",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Optimale Anzahl Keywords: 5",
+          "message_en": "Optimal number of keywords: 5",
+          "details": {
+            "keyword_count": 5,
+            "keywords": [
+              "aufbaugesetz-vom-11.04.1949--aufbaug",
+              "baupolizeiverodnung-vom-08.06.1938--bpvo",
+              "durchführungsplan",
+              "plis",
+              "öffentliche-pläne"
+            ],
+            "expected_range": "3–15 keywords (PASS), 1–2 or 16–25 (PARTIAL)"
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.494042",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_theme_valid",
+          "name_de": "Theme aus kontrolliertem Vokabular",
+          "name_en": "Theme from controlled vocabulary",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle Themes sind aus dem kontrollierten Vokabular",
+          "message_en": "All themes are from controlled vocabulary",
+          "details": {
+            "valid_themes": [
+              "http://publications.europa.eu/resource/authority/data-theme/REGI"
+            ],
+            "invalid_themes": [],
+            "valid_count": 1,
+            "total_count": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.494246",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_locn_geometry",
+          "name_de": "Räumliche Suchangabe (Geometrie)",
+          "name_en": "Spatial search term (geometry)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1 geometrische Angabe(n) gefunden",
+          "message_en": "1 geometry value(s) found",
+          "details": {
+            "geometries": [
+              "POLYGON ((10.3263 53.3950, 10.3263 53.9642, 8.4206 53.9642, 8.4206 53.3950, 10.3263 53.3950))"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.494320",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_political_geocoding",
+          "name_de": "Politische Geokodierung aus kontrolliertem Vokabular",
+          "name_en": "Political geocoding from controlled vocabulary",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Geokodierung (dcatde:politicalGeocodingURI) verweist auf dcat-ap.de",
+          "message_en": "Geocoding (dcatde:politicalGeocodingURI) references dcat-ap.de",
+          "details": {
+            "source": "dcatde:politicalGeocodingURI",
+            "uri": "http://dcat-ap.de/def/politicalGeocoding/regionalKey/020000000000",
+            "segment": "regionalKey",
+            "is_valid": true,
+            "geocoding_count": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.494378",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_geocoding_level",
+          "name_de": "Geokodierungs-Ebene aus kontrolliertem Vokabular",
+          "name_en": "Geocoding level from controlled vocabulary",
+          "dimension": "findability",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "Nicht alle Ebenen aus dem kontrollierten Vokabular",
+          "message_en": "Not all levels are from the controlled vocabulary",
+          "details": {
+            "valid": [],
+            "invalid": [
+              "http://dcat-ap.de/def/politicalGeocoding/level/state"
+            ],
+            "total": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.494476",
+          "remediation": {
+            "kind": "change_patch",
+            "ready": [
+              {
+                "op": "remove",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717",
+                "predicate": "http://dcat-ap.de/def/dcatde/politicalGeocodingLevelURI",
+                "object": {
+                  "type": "uri",
+                  "value": "http://dcat-ap.de/def/politicalGeocoding/level/state"
+                },
+                "reason": "find_geocoding_level: Wert nicht im kontrollierten Vokabular"
+              }
+            ],
+            "needs_input": [
+              {
+                "indicator_id": "find_geocoding_level",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717",
+                "predicate": "http://dcat-ap.de/def/dcatde/politicalGeocodingLevelURI",
+                "reason": "find_geocoding_level: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „DCAT-AP.de Geokodierungs-Ebenen“",
+                "expected_en": "URI from the controlled vocabulary “DCAT-AP.de Geokodierungs-Ebenen”",
+                "example": "http://dcat-ap.de/def/politicalGeocoding/Level/state",
+                "vocabulary_label": "DCAT-AP.de Geokodierungs-Ebenen",
+                "vocabulary_url": "http://dcat-ap.de/def/politicalGeocoding/Level/"
+              }
+            ],
+            "summary_de": "1 ungueltige(r) Wert(e) entfernbar · gueltiger Wert erforderlich",
+            "summary_en": "1 invalid value(s) removable · a valid value is required"
+          },
+          "finding": {
+            "headline": "Die Ebene des Verwaltungsgebiets fehlt — Suchfilter können den Raumbezug nicht einordnen.",
+            "current": [
+              {
+                "label": "dcatde:politicalGeocodingLevelURI",
+                "value": "http://dcat-ap.de/def/politicalGeocoding/level/state",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Eine Ebenen-URI, z. B. http://dcat-ap.de/def/politicalGeocoding/Level/municipality.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "find_temporal_coverage",
+          "name_de": "Zeitliche Abdeckung angegeben",
+          "name_en": "Temporal coverage specified",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Zeitliche Abdeckung vorhanden",
+          "message_en": "Temporal coverage present",
+          "details": {
+            "start_count": 1,
+            "end_count": 0,
+            "start_format": "dateTime",
+            "end_format": null,
+            "start_valid": true,
+            "end_valid": false
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.494642",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_issued_datetime",
+          "name_de": "Issued Datum (xs:dateTime)",
+          "name_en": "Issued date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 4 Werte gültig (Dataset: 1, Distribution: 3)",
+          "message_en": "All 4 values valid (Dataset: 1, Distribution: 3)",
+          "details": {
+            "valid": [
+              {
+                "value": "2025-10-19T00:00:00",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717"
+              },
+              {
+                "value": "2025-10-19T00:00:00",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb"
+              },
+              {
+                "value": "2025-10-19T00:00:00",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508"
+              },
+              {
+                "value": "2025-10-19T00:00:00",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f"
+              }
+            ],
+            "invalid": [],
+            "total": 4,
+            "dataset_count": 1,
+            "distribution_count": 3
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.494851",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_modified_datetime",
+          "name_de": "Modified Datum (xs:dateTime)",
+          "name_en": "Modified date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 4 Werte gültig (Dataset: 1, Distribution: 3)",
+          "message_en": "All 4 values valid (Dataset: 1, Distribution: 3)",
+          "details": {
+            "valid": [
+              {
+                "value": "2026-05-08T23:32:08.220478",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717"
+              },
+              {
+                "value": "2026-05-08T23:32:08.220478",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb"
+              },
+              {
+                "value": "2026-05-08T23:32:08.220478",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508"
+              },
+              {
+                "value": "2026-05-08T23:32:08.220478",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f"
+              }
+            ],
+            "invalid": [],
+            "total": 4,
+            "dataset_count": 1,
+            "distribution_count": 3
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.495012",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        }
+      ],
+      "score": 0.9375,
+      "dimension_weight": 1,
+      "total_indicator_weight": 8.0,
+      "indicator_count": 8,
+      "pass_count": 7,
+      "pass_rate": 0.875
+    },
+    "accessibility": {
+      "dimension": "accessibility",
+      "indicators": [
+        {
+          "indicator_id": "acc_download_url",
+          "name_de": "Download-URL je Distribution",
+          "name_en": "Download URL per distribution",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit Download-URL",
+          "message_en": "0/3 distribution(s) with a download URL",
+          "details": {
+            "total_distributions": 3,
+            "distributions_with_download_url": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.495166",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "0/3 Distribution(en) mit Download-URL",
+            "message_en": "0/3 distribution(s) with a download URL",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Keine der 3 Distributionen hat einen direkten Download-Link.",
+            "current": [
+              {
+                "label": "Distributionen gesamt",
+                "value": "3",
+                "tone": "neutral",
+                "where": null
+              },
+              {
+                "label": "davon mit dcat:downloadURL",
+                "value": "0",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Je Distribution eine dcat:downloadURL, die direkt auf die Datei zeigt (nicht auf eine Webseite).",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_format",
+          "name_de": "Format aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Format from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit Format aus dem Vokabular",
+          "message_en": "0/3 distribution(s) with a format from the vocabulary",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+                "formats": [
+                  "GML"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "formats": [
+                  "PDF"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+                "formats": [
+                  "HTML"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.495730",
+          "remediation": {
+            "kind": "change_patch",
+            "ready": [
+              {
+                "op": "remove",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+                "predicate": "http://purl.org/dc/terms/format",
+                "object": {
+                  "type": "literal",
+                  "value": "GML"
+                },
+                "reason": "acc_format: Wert nicht im kontrollierten Vokabular"
+              },
+              {
+                "op": "remove",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "predicate": "http://purl.org/dc/terms/format",
+                "object": {
+                  "type": "literal",
+                  "value": "PDF"
+                },
+                "reason": "acc_format: Wert nicht im kontrollierten Vokabular"
+              },
+              {
+                "op": "remove",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+                "predicate": "http://purl.org/dc/terms/format",
+                "object": {
+                  "type": "literal",
+                  "value": "HTML"
+                },
+                "reason": "acc_format: Wert nicht im kontrollierten Vokabular"
+              }
+            ],
+            "needs_input": [
+              {
+                "indicator_id": "acc_format",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+                "predicate": "http://purl.org/dc/terms/format",
+                "reason": "acc_format: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „EU-Dateiformate“",
+                "expected_en": "URI from the controlled vocabulary “EU-Dateiformate”",
+                "example": "http://publications.europa.eu/resource/authority/file-type/AAB",
+                "vocabulary_label": "EU-Dateiformate",
+                "vocabulary_url": "http://publications.europa.eu/resource/authority/file-type"
+              },
+              {
+                "indicator_id": "acc_format",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "predicate": "http://purl.org/dc/terms/format",
+                "reason": "acc_format: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „EU-Dateiformate“",
+                "expected_en": "URI from the controlled vocabulary “EU-Dateiformate”",
+                "example": "http://publications.europa.eu/resource/authority/file-type/AAB",
+                "vocabulary_label": "EU-Dateiformate",
+                "vocabulary_url": "http://publications.europa.eu/resource/authority/file-type"
+              },
+              {
+                "indicator_id": "acc_format",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+                "predicate": "http://purl.org/dc/terms/format",
+                "reason": "acc_format: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „EU-Dateiformate“",
+                "expected_en": "URI from the controlled vocabulary “EU-Dateiformate”",
+                "example": "http://publications.europa.eu/resource/authority/file-type/AAB",
+                "vocabulary_label": "EU-Dateiformate",
+                "vocabulary_url": "http://publications.europa.eu/resource/authority/file-type"
+              }
+            ],
+            "summary_de": "3 ungueltige(r) Wert(e) entfernbar · 3 Distribution(en) brauchen einen Wert",
+            "summary_en": "3 invalid value(s) removable · 3 distribution(s) need a value"
+          },
+          "finding": {
+            "headline": "Keine der 3 Distributionen hat ein Format aus dem EU-Vokabular.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "GML",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb"
+              },
+              {
+                "label": "Distribution 2",
+                "value": "PDF",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508"
+              },
+              {
+                "label": "Distribution 3",
+                "value": "HTML",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f"
+              }
+            ],
+            "target": "Je Distribution eine Format-URI, z. B. http://publications.europa.eu/resource/authority/file-type/CSV.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_media_type",
+          "name_de": "Media Type aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Media type from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit gültigem Media Type",
+          "message_en": "0/3 distribution(s) with a valid media type",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+                "media_types": [],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "media_types": [
+                  "application/pdf"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+                "media_types": [],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.496755",
+          "remediation": {
+            "kind": "change_patch",
+            "ready": [
+              {
+                "op": "remove",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "predicate": "http://www.w3.org/ns/dcat#mediaType",
+                "object": {
+                  "type": "literal",
+                  "value": "application/pdf"
+                },
+                "reason": "acc_media_type: Wert nicht im kontrollierten Vokabular"
+              }
+            ],
+            "needs_input": [
+              {
+                "indicator_id": "acc_media_type",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+                "predicate": "http://www.w3.org/ns/dcat#mediaType",
+                "reason": "acc_media_type: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „IANA Media Types“",
+                "expected_en": "URI from the controlled vocabulary “IANA Media Types”",
+                "example": "https://www.iana.org/assignments/media-types/application/A2L",
+                "vocabulary_label": "IANA Media Types",
+                "vocabulary_url": "https://www.iana.org/assignments/media-types/media-types.xhtml"
+              },
+              {
+                "indicator_id": "acc_media_type",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "predicate": "http://www.w3.org/ns/dcat#mediaType",
+                "reason": "acc_media_type: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „IANA Media Types“",
+                "expected_en": "URI from the controlled vocabulary “IANA Media Types”",
+                "example": "https://www.iana.org/assignments/media-types/application/A2L",
+                "vocabulary_label": "IANA Media Types",
+                "vocabulary_url": "https://www.iana.org/assignments/media-types/media-types.xhtml"
+              },
+              {
+                "indicator_id": "acc_media_type",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+                "predicate": "http://www.w3.org/ns/dcat#mediaType",
+                "reason": "acc_media_type: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „IANA Media Types“",
+                "expected_en": "URI from the controlled vocabulary “IANA Media Types”",
+                "example": "https://www.iana.org/assignments/media-types/application/A2L",
+                "vocabulary_label": "IANA Media Types",
+                "vocabulary_url": "https://www.iana.org/assignments/media-types/media-types.xhtml"
+              }
+            ],
+            "summary_de": "1 ungueltige(r) Wert(e) entfernbar · 3 Distribution(en) brauchen einen Wert",
+            "summary_en": "1 invalid value(s) removable · 3 distribution(s) need a value"
+          },
+          "finding": {
+            "headline": "Keine der 3 Distributionen hat einen gültigen Media Type.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "kein Media Type angegeben",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb"
+              },
+              {
+                "label": "Distribution 2",
+                "value": "application/pdf",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508"
+              },
+              {
+                "label": "Distribution 3",
+                "value": "kein Media Type angegeben",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f"
+              }
+            ],
+            "target": "Je Distribution eine IANA-URI, z. B. https://www.iana.org/assignments/media-types/text/csv.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_download_url_response",
+          "name_de": "Download-URL Antwortcode",
+          "name_en": "Download URL response code",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine Distribution mit entsprechender URL",
+          "message_en": "No distribution declares the relevant URL",
+          "details": {
+            "total_distributions": 3,
+            "relevant_distributions": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.498825",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Keine Distribution mit entsprechender URL",
+            "message_en": "No distribution declares the relevant URL",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Es gibt keine dcat:downloadURL, die geprüft werden könnte.",
+            "current": [
+              {
+                "label": "dcat:downloadURL",
+                "value": "bei keiner Distribution gesetzt",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Je Distribution eine erreichbare dcat:downloadURL.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_access_url_response",
+          "name_de": "Access-URL Antwortcode",
+          "name_en": "Access URL response code",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "1/3 Access-URL(s) mit gültigem HTTP-Statuscode",
+          "message_en": "1/3 access URL(s) with valid HTTP status code",
+          "details": {
+            "total_distributions": 3,
+            "relevant_distributions": 3,
+            "sampled_distributions": 3,
+            "valid_count": 1,
+            "invalid_count": 2,
+            "dead_url_malus": -0.5,
+            "valid": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "url": "https://daten-hamburg.de/infrastruktur_bauen_wohnen/bebauungsplaene/pdfs/bplan/D112.pdf",
+                "status_code": 200,
+                "fetch_error": null
+              }
+            ],
+            "invalid": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+                "url": "https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=D112",
+                "status_code": 400,
+                "fetch_error": null
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+                "url": "http://metaver.de/trefferanzeige?docuuid=38969F5F-AC90-41A3-B408-C616B621B460",
+                "status_code": null,
+                "fetch_error": "HEAD failed: SSLError | GET failed: HTTPSConnectionPool(host='metaver.de', port=443): Max retries exceeded with url: /trefferanzeige?docuuid=38969F5F-AC90-41A3-B408-C616B621B460 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)')))"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.498906",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "1/3 Access-URL(s) mit gültigem HTTP-Statuscode",
+            "message_en": "1/3 access URL(s) with valid HTTP status code",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "2 von 3 Links antworten nicht korrekt — 1 ist erreichbar.",
+            "current": [
+              {
+                "label": "HTTP 400",
+                "value": "https://geodienste.hamburg.de/HH_WFS_xplan_dls?service=WFS&request=GetFeature&version=2.0.0&resolvedepth=%252A&StoredQuery_ID=urn:ogc:def:query:OGC-WFS::PlanName&planName=D112",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb"
+              },
+              {
+                "label": "HTTP keine Antwort",
+                "value": "http://metaver.de/trefferanzeige?docuuid=38969F5F-AC90-41A3-B408-C616B621B460",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f"
+              }
+            ],
+            "target": "Alle Links antworten mit einem Statuscode im Bereich 200–299.",
+            "notes": [
+              "http://metaver.de/trefferanzeige?docuuid=38969F5F-AC90-41A3-B408-C616B621B460: HEAD failed: SSLError | GET failed: HTTPSConnectionPool(host='metaver.de', port=443): Max retries exceeded with url: /trefferanzeige?docuuid=38969F5F-AC90-41A3-B408-C616B621B460 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)')))"
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_machine_readable_access",
+          "name_de": "Maschinenlesbarer Zugang (alle Distributionen)",
+          "name_en": "Machine-readable access (all distributions)",
+          "dimension": "accessibility",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "1/3 hoch maschinenlesbar, 1/3 mittel, 1/3 keine (Score 0.50)",
+          "message_en": "1/3 high machine-readable, 1/3 mid, 1/3 none (score 0.50)",
+          "details": {
+            "total_distributions": 3,
+            "high_count": 1,
+            "mid_count": 1,
+            "none_count": 1,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+                "effective_mime": "application/gml+xml",
+                "tier": 1.0,
+                "tier_label": "high"
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "effective_mime": "application/pdf",
+                "tier": 0,
+                "tier_label": "none"
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+                "effective_mime": "text/html",
+                "tier": 0.5,
+                "tier_label": "mid"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.498990",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "1/3 hoch maschinenlesbar, 1/3 mittel, 1/3 keine (Score 0.50)",
+            "message_en": "1/3 high machine-readable, 1/3 mid, 1/3 none (score 0.50)",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Nur 1 von 3 Distributionen ist gut maschinenlesbar, 1 ist gar nicht automatisiert verarbeitbar.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "application/gml+xml — gut maschinenlesbar",
+                "tone": "good",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb"
+              },
+              {
+                "label": "Distribution 2",
+                "value": "application/pdf — nicht maschinenlesbar",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508"
+              },
+              {
+                "label": "Distribution 3",
+                "value": "text/html — eingeschränkt maschinenlesbar",
+                "tone": "warn",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f"
+              }
+            ],
+            "target": "Den Inhalt zusätzlich strukturiert anbieten (CSV, JSON, GeoJSON) statt nur als PDF, HTML oder Bilddienst.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.5,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "acc_format_non_proprietary",
+          "name_de": "Nicht-proprietäres Format (alle Distributionen)",
+          "name_en": "Non-proprietary format (all distributions)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit nicht-proprietärem Format",
+          "message_en": "0/3 distribution(s) with non-proprietary format",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+                "formats": [
+                  "GML"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "formats": [
+                  "PDF"
+                ],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+                "formats": [
+                  "HTML"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.499063",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "0/3 Distribution(en) mit nicht-proprietärem Format",
+            "message_en": "0/3 distribution(s) with non-proprietary format",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Keine der 3 Distributionen hat ein offenes, herstellerunabhängiges Format.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "GML",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb"
+              },
+              {
+                "label": "Distribution 2",
+                "value": "PDF",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508"
+              },
+              {
+                "label": "Distribution 3",
+                "value": "HTML",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f"
+              }
+            ],
+            "target": "Mindestens eine Distribution in einem offenen Format (z. B. CSV, JSON, GeoJSON, XML).",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.07894736842105263,
+      "dimension_weight": 2,
+      "total_indicator_weight": 9.5,
+      "indicator_count": 7,
+      "pass_count": 0,
+      "pass_rate": 0.0
+    },
+    "reusability": {
+      "dimension": "reusability",
+      "indicators": [
+        {
+          "indicator_id": "reuse_license",
+          "name_de": "Freie Lizenz je Distribution",
+          "name_en": "Free-use license per distribution",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "3/3 Distribution(en) mit freier Lizenz (Score 1.00)",
+          "message_en": "3/3 distribution(s) with a free-use license (score 1.00)",
+          "details": {
+            "total_distributions": 3,
+            "free_count": 3,
+            "no_free_license_malus": -0.5,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+                ],
+                "tier": "free",
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.499273",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_publisher",
+          "name_de": "Herausgeber als strukturierter Agent",
+          "name_en": "Publisher modelled as structured agent",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Herausgeber als foaf:Agent mit foaf:name modelliert",
+          "message_en": "Publisher modelled as foaf:Agent with foaf:name",
+          "details": {
+            "publisher_count": 1,
+            "publishers": [
+              {
+                "value": "N30e73756f0db42868eea53d594bd891e",
+                "typed_as_agent": true,
+                "names": [
+                  "Landesbetrieb Geoinformation und Vermessung"
+                ],
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.499384",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_contact",
+          "name_de": "Kontaktpunkt mit E-Mail oder URL",
+          "name_en": "Contact point with email or URL",
+          "dimension": "reusability",
+          "status": "partial",
+          "score": 0.5,
+          "message_de": "Kontaktpunkt vorhanden, aber ohne valide E-Mail oder URL",
+          "message_en": "Contact point present but without a valid email or URL",
+          "details": {
+            "contact_count": 1,
+            "contacts_with_channel": 0,
+            "contacts": [
+              {
+                "value": "N1518ba7ba83c4620a8d0cdd09f7dd8e0",
+                "emails": [],
+                "valid_emails": [],
+                "urls": [],
+                "valid_urls": [],
+                "has_channel": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.499459",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Kontaktpunkt vorhanden, aber ohne valide E-Mail oder URL",
+            "message_en": "Contact point present but without a valid email or URL",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Der Kontaktpunkt enthält weder eine E-Mail-Adresse noch eine Kontakt-URL.",
+            "current": [
+              {
+                "label": "dcat:contactPoint",
+                "value": "1 Eintrag",
+                "tone": "warn",
+                "where": null
+              },
+              {
+                "label": "davon mit E-Mail oder URL",
+                "value": "0",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Ein vcard:Kind mit vcard:hasEmail (mailto:…) oder vcard:hasURL.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.5,
+          "effective_score": 0.5
+        },
+        {
+          "indicator_id": "reuse_contributor_id",
+          "name_de": "contributorID aus kontrolliertem Vokabular",
+          "name_en": "contributorID from controlled vocabulary",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Genau eine contributorID aus dem Vokabular",
+          "message_en": "Exactly one contributorID from the vocabulary",
+          "details": {
+            "contributor_id_count": 1,
+            "valid": [
+              "http://dcat-ap.de/def/contributors/transparenzportalHamburg"
+            ],
+            "invalid": [],
+            "values": [
+              "http://dcat-ap.de/def/contributors/transparenzportalHamburg"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:03.499526",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_dcat_ap_de_compliance",
+          "name_de": "DCAT-AP.de Schema-Konformität (SHACL)",
+          "name_en": "DCAT-AP.de schema compliance (SHACL)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "11 SHACL-Verletzung(en) gefunden",
+          "message_en": "11 SHACL violation(s) found",
+          "details": {
+            "conforms": false,
+            "violation_count": 11,
+            "violations": [
+              {
+                "severity": "Warning",
+                "message": "dct:Location: SOLL eine der folgenden Eigenschaften nutzen: dcat:bbox, dcat:centroid, locn:geometry. Wenn Sie eine davon abweichende Eigenschaften nutzen, kÃ¶nnen Sie den Fehler ignorieren.",
+                "focus": "ndc93f3a0ded44dd6801ba476555b60bab3",
+                "path": "ndc93f3a0ded44dd6801ba476555b60bab4"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "focus": "HTML",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "focus": "PDF",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "focus": "GML",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "severity": "Violation",
+                "message": "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+                "focus": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "path": "http://www.w3.org/ns/dcat#mediaType"
+              },
+              {
+                "severity": "Violation",
+                "message": "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+                "focus": "ndc93f3a0ded44dd6801ba476555b60bab14",
+                "path": "http://spdx.org/rdf/terms#algorithm"
+              },
+              {
+                "severity": "Violation",
+                "message": "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+                "focus": "ndc93f3a0ded44dd6801ba476555b60bab16",
+                "path": "http://spdx.org/rdf/terms#algorithm"
+              },
+              {
+                "severity": "Violation",
+                "message": "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+                "focus": "ndc93f3a0ded44dd6801ba476555b60bab18",
+                "path": "http://spdx.org/rdf/terms#algorithm"
+              },
+              {
+                "severity": "Warning",
+                "message": "dcat:Dataset: dct:source MUSS auf ein dcat:Dataset verweisen. (LÃ¶st auch aus, wenn nur eine IRI angegeben wird, die verlinkte Ressource aber nicht mit validiert wird.)",
+                "focus": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717",
+                "path": "http://purl.org/dc/terms/source"
+              },
+              {
+                "severity": "Warning",
+                "message": "dcat:Dataset: dct:isVersionOf MUSS auf ein dcat:Dataset verweisen. (LÃ¶st auch aus, wenn nur eine IRI angegeben wird, die verlinkte Ressource aber nicht mit validiert wird.)",
+                "focus": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717",
+                "path": "http://purl.org/dc/terms/isVersionOf"
+              },
+              {
+                "severity": "Warning",
+                "message": "dcat:Dataset: dcatde:politicalGeocodingLevelURI SOLL folgendes Vokabular benutzten: http://dcat-ap.de/def/politicalGeocoding/Level/",
+                "focus": "http://dcat-ap.de/def/politicalGeocoding/level/state",
+                "path": "http://www.w3.org/2004/02/skos/core#inScheme"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:05.228605",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "11 SHACL-Verletzung(en) gegen DCAT-AP.de gefunden",
+            "message_en": "11 SHACL violation(s) against DCAT-AP.de found",
+            "findings": [
+              "dct:Location: SOLL eine der folgenden Eigenschaften nutzen: dcat:bbox, dcat:centroid, locn:geometry. Wenn Sie eine davon abweichende Eigenschaften nutzen, kÃ¶nnen Sie den Fehler ignorieren.",
+              "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+              "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+              "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+              "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+              "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+              "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+              "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+              "dcat:Dataset: dct:source MUSS auf ein dcat:Dataset verweisen. (LÃ¶st auch aus, wenn nur eine IRI angegeben wird, die verlinkte Ressource aber nicht mit validiert wird.)",
+              "dcat:Dataset: dct:isVersionOf MUSS auf ein dcat:Dataset verweisen. (LÃ¶st auch aus, wenn nur eine IRI angegeben wird, die verlinkte Ressource aber nicht mit validiert wird.)"
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Der Metadatensatz verstößt an 11 Stellen gegen das DCAT-AP.de-Schema.",
+            "current": [
+              {
+                "label": "Warnung",
+                "value": "dct:Location: SOLL eine der folgenden Eigenschaften nutzen: dcat:bbox, dcat:centroid, locn:geometry. Wenn Sie eine davon abweichende Eigenschaften nutzen, kÃ¶nnen Sie den Fehler ignorieren.",
+                "tone": "warn",
+                "where": "ndc93f3a0ded44dd6801ba476555b60bab4"
+              },
+              {
+                "label": "Verstoß",
+                "value": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "tone": "bad",
+                "where": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "label": "Verstoß",
+                "value": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "tone": "bad",
+                "where": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "label": "Verstoß",
+                "value": "dcat:Distribution: dct:format MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-file-type",
+                "tone": "bad",
+                "where": "http://www.w3.org/2004/02/skos/core#inScheme"
+              },
+              {
+                "label": "Verstoß",
+                "value": "dcat:Distribution: dcat:mediaType MUSS eine IRI aus diesem Vokabular verwenden: https://www.dcat-ap.de/def/dcatde/2.0/spec/#kv-iana-media-types (Getestet wird in diesem Fall lediglich, ob die verwendete IRI mit https://www.iana.org/assignments/media-types/ beginnt.)",
+                "tone": "bad",
+                "where": "http://www.w3.org/ns/dcat#mediaType"
+              },
+              {
+                "label": "Verstoß",
+                "value": "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+                "tone": "bad",
+                "where": "http://spdx.org/rdf/terms#algorithm"
+              },
+              {
+                "label": "Verstoß",
+                "value": "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+                "tone": "bad",
+                "where": "http://spdx.org/rdf/terms#algorithm"
+              },
+              {
+                "label": "Verstoß",
+                "value": "spdx:Checksum: MUSS genaue einen spdx:algorithm haben.",
+                "tone": "bad",
+                "where": "http://spdx.org/rdf/terms#algorithm"
+              },
+              {
+                "label": "Warnung",
+                "value": "dcat:Dataset: dct:source MUSS auf ein dcat:Dataset verweisen. (LÃ¶st auch aus, wenn nur eine IRI angegeben wird, die verlinkte Ressource aber nicht mit validiert wird.)",
+                "tone": "warn",
+                "where": "http://purl.org/dc/terms/source"
+              },
+              {
+                "label": "Warnung",
+                "value": "dcat:Dataset: dct:isVersionOf MUSS auf ein dcat:Dataset verweisen. (LÃ¶st auch aus, wenn nur eine IRI angegeben wird, die verlinkte Ressource aber nicht mit validiert wird.)",
+                "tone": "warn",
+                "where": "http://purl.org/dc/terms/isVersionOf"
+              },
+              {
+                "label": "Warnung",
+                "value": "dcat:Dataset: dcatde:politicalGeocodingLevelURI SOLL folgendes Vokabular benutzten: http://dcat-ap.de/def/politicalGeocoding/Level/",
+                "tone": "warn",
+                "where": "http://www.w3.org/2004/02/skos/core#inScheme"
+              }
+            ],
+            "target": "Keine Verstöße gegen DCAT-AP.de v2.0 — jede Meldung nennt das betroffene Feld.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "reuse_availability",
+          "name_de": "Verfügbarkeit aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Availability from controlled vocabulary (per distribution)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/3 Distribution(en) mit gültiger Verfügbarkeit",
+          "message_en": "0/3 distribution(s) with a valid availability value",
+          "details": {
+            "total_distributions": 3,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+                "availability": [],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "availability": [],
+                "passes": false
+              },
+              {
+                "uri": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+                "availability": [],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:05.228808",
+          "remediation": {
+            "kind": "change_patch",
+            "ready": [],
+            "needs_input": [
+              {
+                "indicator_id": "reuse_availability",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb",
+                "predicate": "http://data.europa.eu/r5r/availability",
+                "reason": "reuse_availability: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „Planned Availability“",
+                "expected_en": "URI from the controlled vocabulary “Planned Availability”",
+                "example": "http://publications.europa.eu/resource/authority/planned-availability/STABLE",
+                "vocabulary_label": "Planned Availability",
+                "vocabulary_url": "http://publications.europa.eu/resource/authority/planned-availability"
+              },
+              {
+                "indicator_id": "reuse_availability",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508",
+                "predicate": "http://data.europa.eu/r5r/availability",
+                "reason": "reuse_availability: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „Planned Availability“",
+                "expected_en": "URI from the controlled vocabulary “Planned Availability”",
+                "example": "http://publications.europa.eu/resource/authority/planned-availability/STABLE",
+                "vocabulary_label": "Planned Availability",
+                "vocabulary_url": "http://publications.europa.eu/resource/authority/planned-availability"
+              },
+              {
+                "indicator_id": "reuse_availability",
+                "subject": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f",
+                "predicate": "http://data.europa.eu/r5r/availability",
+                "reason": "reuse_availability: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „Planned Availability“",
+                "expected_en": "URI from the controlled vocabulary “Planned Availability”",
+                "example": "http://publications.europa.eu/resource/authority/planned-availability/STABLE",
+                "vocabulary_label": "Planned Availability",
+                "vocabulary_url": "http://publications.europa.eu/resource/authority/planned-availability"
+              }
+            ],
+            "summary_de": "0 ungueltige(r) Wert(e) entfernbar · 3 Distribution(en) brauchen einen Wert",
+            "summary_en": "0 invalid value(s) removable · 3 distribution(s) need a value"
+          },
+          "finding": {
+            "headline": "Keine der 3 Distributionen hat eine Verfügbarkeitsangabe.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "keine Angabe",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/b3679897-c4e1-4ab4-ada6-df8149e2dddb"
+              },
+              {
+                "label": "Distribution 2",
+                "value": "keine Angabe",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/8650bb06-74cf-487d-a07f-75517ff26508"
+              },
+              {
+                "label": "Distribution 3",
+                "value": "keine Angabe",
+                "tone": "bad",
+                "where": "http://suche.transparenz.hamburg.de/dataset/7472c800-ec18-4e48-a7b4-59e2e9bc4717/resource/2c0673fb-a36e-4034-8cc0-f5813f56484f"
+              }
+            ],
+            "target": "Je Distribution eine Verfügbarkeits-URI, z. B. …/planned-availability/STABLE.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.6428571428571429,
+      "dimension_weight": 1.5,
+      "total_indicator_weight": 7.0,
+      "indicator_count": 6,
+      "pass_count": 3,
+      "pass_rate": 0.5
+    },
+    "expressiveness": {
+      "dimension": "expressiveness",
+      "indicators": [
+        {
+          "indicator_id": "expr_title_quality",
+          "name_de": "Titel-Qualität",
+          "name_en": "Title quality",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 0.82,
+          "message_de": "Der Titel ist spezifisch und unterscheidbar, weil Plantyp, Kennnummer und räumlicher Bezug genannt werden. Die Kennung ist für Laien nicht vollständig erklärend, aber bei Planwerken als Identifikator akzeptabel.",
+          "message_en": "Der Titel ist spezifisch und unterscheidbar, weil Plantyp, Kennnummer und räumlicher Bezug genannt werden. Die Kennung ist für Laien nicht vollständig erklärend, aber bei Planwerken als Identifikator akzeptabel.",
+          "details": {
+            "criterion": "title_quality",
+            "llm_status": "pass",
+            "findings": [
+              "Der Titel benennt mit „Durchführungsplan D 112 Hamburg“ den Plantyp, eine konkrete Plannummer und den Ort Hamburg.",
+              "Die Abkürzung/Bezeichnung „D 112“ ist ohne Kontext nur teilweise selbsterklärend, wirkt aber als Plan-Kennung plausibel.",
+              "Der Titel ist normaler Fließtext ohne technische oder Formatierungsreste."
+            ],
+            "overall_summary": "Die Metadaten machen den Kern des Datensatzes – ein konkreter Durchführungsplan in Hamburg-Horn – gut erkennbar und sind thematisch konsistent. Deutliche Schwächen liegen in der knappen Beschreibung und in technisch/jargonhaft formulierten Schlagwörtern."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:05.228951",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 0.82,
+          "effective_score": 0.82
+        },
+        {
+          "indicator_id": "expr_description_quality",
+          "name_de": "Beschreibungs-Qualität",
+          "name_en": "Description quality",
+          "dimension": "expressiveness",
+          "status": "fail",
+          "score": 0.45,
+          "message_de": "Die Beschreibung liefert nützliche Lageinformationen, bleibt aber sehr knapp und beschränkt sich auf Verwaltungs- und Ortsangaben. Wesentliche Informationen zum Inhalt und zur Struktur des Plan-Datensatzes fehlen.",
+          "message_en": "Die Beschreibung liefert nützliche Lageinformationen, bleibt aber sehr knapp und beschränkt sich auf Verwaltungs- und Ortsangaben. Wesentliche Informationen zum Inhalt und zur Struktur des Plan-Datensatzes fehlen.",
+          "details": {
+            "criterion": "description_quality",
+            "llm_status": "fail",
+            "findings": [
+              "Die Beschreibung enthält konkrete räumliche Angaben: Bezirk Hamburg-Mitte, Stadtteil Horn, Ortsteil 129 und betroffene Straßen/Planbezirk.",
+              "Sie beschreibt nicht, was im Durchführungsplan inhaltlich geregelt ist oder welche Unterlagen/Attribute enthalten sind.",
+              "Methode, Quelle, Struktur des Datensatzes oder Zweck werden nicht erläutert."
+            ],
+            "overall_summary": "Die Metadaten machen den Kern des Datensatzes – ein konkreter Durchführungsplan in Hamburg-Horn – gut erkennbar und sind thematisch konsistent. Deutliche Schwächen liegen in der knappen Beschreibung und in technisch/jargonhaft formulierten Schlagwörtern."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:05.229136",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Die Beschreibung liefert nützliche Lageinformationen, bleibt aber sehr knapp und beschränkt sich auf Verwaltungs- und Ortsangaben. Wesentliche Informationen zum Inhalt und zur Struktur des Plan-Datensatzes fehlen.",
+            "message_en": "Die Beschreibung liefert nützliche Lageinformationen, bleibt aber sehr knapp und beschränkt sich auf Verwaltungs- und Ortsangaben. Wesentliche Informationen zum Inhalt und zur Struktur des Plan-Datensatzes fehlen.",
+            "findings": [
+              "Die Beschreibung enthält konkrete räumliche Angaben: Bezirk Hamburg-Mitte, Stadtteil Horn, Ortsteil 129 und betroffene Straßen/Planbezirk.",
+              "Sie beschreibt nicht, was im Durchführungsplan inhaltlich geregelt ist oder welche Unterlagen/Attribute enthalten sind.",
+              "Methode, Quelle, Struktur des Datensatzes oder Zweck werden nicht erläutert."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Die Beschreibung liefert nützliche Lageinformationen, bleibt aber sehr knapp und beschränkt sich auf Verwaltungs- und Ortsangaben. Wesentliche Informationen zum Inhalt und zur Struktur des Plan-Datensatzes fehlen.",
+            "current": [],
+            "target": "Beschreiben Sie Inhalt, Erhebungsmethode, Struktur und Nutzungszweck in einigen vollständigen Sätzen.",
+            "notes": [
+              "Die Beschreibung enthält konkrete räumliche Angaben: Bezirk Hamburg-Mitte, Stadtteil Horn, Ortsteil 129 und betroffene Straßen/Planbezirk.",
+              "Sie beschreibt nicht, was im Durchführungsplan inhaltlich geregelt ist oder welche Unterlagen/Attribute enthalten sind.",
+              "Methode, Quelle, Struktur des Datensatzes oder Zweck werden nicht erläutert."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.45,
+          "effective_score": 0.45
+        },
+        {
+          "indicator_id": "expr_title_description_coherence",
+          "name_de": "Kohärenz von Titel und Beschreibung",
+          "name_en": "Title–description coherence",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 0.9,
+          "message_de": "Die Beschreibung passt inhaltlich zum Titel und ergänzt ihn um den räumlichen Geltungsbereich. Zeitraum oder Plannummer werden in der Beschreibung zwar nicht wiederholt, aber es besteht keine Inkohärenz.",
+          "message_en": "Die Beschreibung passt inhaltlich zum Titel und ergänzt ihn um den räumlichen Geltungsbereich. Zeitraum oder Plannummer werden in der Beschreibung zwar nicht wiederholt, aber es besteht keine Inkohärenz.",
+          "details": {
+            "criterion": "title_description_coherence",
+            "llm_status": "pass",
+            "findings": [
+              "Titel und Beschreibung beziehen sich beide auf einen Durchführungsplan in Hamburg.",
+              "Die Beschreibung konkretisiert den räumlichen Bezug des Titels auf Hamburg-Mitte/Horn und einzelne Straßen.",
+              "Es gibt keinen erkennbaren Widerspruch zwischen Titel und Beschreibung."
+            ],
+            "overall_summary": "Die Metadaten machen den Kern des Datensatzes – ein konkreter Durchführungsplan in Hamburg-Horn – gut erkennbar und sind thematisch konsistent. Deutliche Schwächen liegen in der knappen Beschreibung und in technisch/jargonhaft formulierten Schlagwörtern."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:05.229485",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 0.9,
+          "effective_score": 0.9
+        },
+        {
+          "indicator_id": "expr_keyword_quality",
+          "name_de": "Schlagwort-Qualität",
+          "name_en": "Keyword quality",
+          "dimension": "expressiveness",
+          "status": "fail",
+          "score": 0.38,
+          "message_de": "Die Schlagwörter haben einen erkennbaren Bezug zum Planungsdatensatz, sind aber überwiegend technisch bzw. jargonhaft formuliert. Besonders die Gesetzes-Slugs und die Abkürzung mindern Verständlichkeit und Qualität deutlich.",
+          "message_en": "Die Schlagwörter haben einen erkennbaren Bezug zum Planungsdatensatz, sind aber überwiegend technisch bzw. jargonhaft formuliert. Besonders die Gesetzes-Slugs und die Abkürzung mindern Verständlichkeit und Qualität deutlich.",
+          "details": {
+            "criterion": "keyword_quality",
+            "llm_status": "fail",
+            "findings": [
+              "„durchführungsplan“ und „öffentliche-pläne“ sind thematisch passend, aber kleingeschrieben und mit Bindestrich-/Slug-Form formuliert.",
+              "Zwei Schlagwörter sind lange Rechtsnorm-Zeichenketten mit Datum, Abkürzung und doppeltem Bindestrich, dadurch wenig laienverständlich und nicht atomar.",
+              "„plis“ ist eine unerklärte Abkürzung."
+            ],
+            "overall_summary": "Die Metadaten machen den Kern des Datensatzes – ein konkreter Durchführungsplan in Hamburg-Horn – gut erkennbar und sind thematisch konsistent. Deutliche Schwächen liegen in der knappen Beschreibung und in technisch/jargonhaft formulierten Schlagwörtern."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:05.229576",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Die Schlagwörter haben einen erkennbaren Bezug zum Planungsdatensatz, sind aber überwiegend technisch bzw. jargonhaft formuliert. Besonders die Gesetzes-Slugs und die Abkürzung mindern Verständlichkeit und Qualität deutlich.",
+            "message_en": "Die Schlagwörter haben einen erkennbaren Bezug zum Planungsdatensatz, sind aber überwiegend technisch bzw. jargonhaft formuliert. Besonders die Gesetzes-Slugs und die Abkürzung mindern Verständlichkeit und Qualität deutlich.",
+            "findings": [
+              "„durchführungsplan“ und „öffentliche-pläne“ sind thematisch passend, aber kleingeschrieben und mit Bindestrich-/Slug-Form formuliert.",
+              "Zwei Schlagwörter sind lange Rechtsnorm-Zeichenketten mit Datum, Abkürzung und doppeltem Bindestrich, dadurch wenig laienverständlich und nicht atomar.",
+              "„plis“ ist eine unerklärte Abkürzung."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Die Schlagwörter haben einen erkennbaren Bezug zum Planungsdatensatz, sind aber überwiegend technisch bzw. jargonhaft formuliert. Besonders die Gesetzes-Slugs und die Abkürzung mindern Verständlichkeit und Qualität deutlich.",
+            "current": [],
+            "target": "Ersetzen Sie technische und formale Tags durch verständliche Fachbegriffe; ein Begriff je Schlagwort.",
+            "notes": [
+              "„durchführungsplan“ und „öffentliche-pläne“ sind thematisch passend, aber kleingeschrieben und mit Bindestrich-/Slug-Form formuliert.",
+              "Zwei Schlagwörter sind lange Rechtsnorm-Zeichenketten mit Datum, Abkürzung und doppeltem Bindestrich, dadurch wenig laienverständlich und nicht atomar.",
+              "„plis“ ist eine unerklärte Abkürzung."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.38,
+          "effective_score": 0.38
+        },
+        {
+          "indicator_id": "expr_thematic_consistency",
+          "name_de": "Thematische Konsistenz",
+          "name_en": "Thematic consistency",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 0.86,
+          "message_de": "Die Metadaten bilden ein stimmiges Themenbild zu einem lokalen Planwerk mit räumlichem Bezug. Trotz sprachlicher Schwächen der Schlagwörter ist die thematische Richtung konsistent.",
+          "message_en": "Die Metadaten bilden ein stimmiges Themenbild zu einem lokalen Planwerk mit räumlichem Bezug. Trotz sprachlicher Schwächen der Schlagwörter ist die thematische Richtung konsistent.",
+          "details": {
+            "criterion": "thematic_consistency",
+            "llm_status": "pass",
+            "findings": [
+              "Das Thema REGI (Regionen/Städte) passt grundsätzlich zu einem räumlichen Planwerk in Hamburg.",
+              "Titel, Beschreibung und die meisten Schlagwörter weisen konsistent auf öffentliche Bau-/Planungsunterlagen hin.",
+              "Keine off-topic-Signale oder thematischen Widersprüche erkennbar."
+            ],
+            "overall_summary": "Die Metadaten machen den Kern des Datensatzes – ein konkreter Durchführungsplan in Hamburg-Horn – gut erkennbar und sind thematisch konsistent. Deutliche Schwächen liegen in der knappen Beschreibung und in technisch/jargonhaft formulierten Schlagwörtern."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:05.229647",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 0.86,
+          "effective_score": 0.86
+        },
+        {
+          "indicator_id": "expr_contextual_qualifiers",
+          "name_de": "Kontextuelle Qualifizierer",
+          "name_en": "Contextual qualifiers",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.78,
+          "message_de": "Die wichtigsten Kontextangaben für ein statisches räumliches Planwerk sind vorhanden: Ort/Planbereich, Geometrie und ein Datumsbezug. Etwas schwächer ist, dass die zeitliche Einordnung nicht in der Beschreibung erläutert wird und unklar bleibt, ob es sich um Inkrafttreten, Erlassdatum oder anderen Bezugszeitpunkt handelt.",
+          "message_en": "Die wichtigsten Kontextangaben für ein statisches räumliches Planwerk sind vorhanden: Ort/Planbereich, Geometrie und ein Datumsbezug. Etwas schwächer ist, dass die zeitliche Einordnung nicht in der Beschreibung erläutert wird und unklar bleibt, ob es sich um Inkrafttreten, Erlassdatum oder anderen Bezugszeitpunkt handelt.",
+          "details": {
+            "criterion": "contextual_qualifiers",
+            "llm_status": "partial",
+            "findings": [
+              "Für ein Planwerk sind räumliche Abdeckung und Planbereich erforderlich; diese sind in Beschreibung und Spatial-Feldern vorhanden.",
+              "Ein zeitlicher Bezug ist mit dem Startdatum 1954-12-28 vorhanden; die Beschreibung selbst nennt den Zeitpunkt allerdings nicht.",
+              "Die Aktualisierungsfrequenz ist als „NEVER“ angegeben, passend zu einem statischen Plan."
+            ],
+            "overall_summary": "Die Metadaten machen den Kern des Datensatzes – ein konkreter Durchführungsplan in Hamburg-Horn – gut erkennbar und sind thematisch konsistent. Deutliche Schwächen liegen in der knappen Beschreibung und in technisch/jargonhaft formulierten Schlagwörtern."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:04:05.229696",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Die wichtigsten Kontextangaben für ein statisches räumliches Planwerk sind vorhanden: Ort/Planbereich, Geometrie und ein Datumsbezug. Etwas schwächer ist, dass die zeitliche Einordnung nicht in der Beschreibung erläutert wird und unklar bleibt, ob es sich um Inkrafttreten, Erlassdatum oder anderen Bezugszeitpunkt handelt.",
+            "message_en": "Die wichtigsten Kontextangaben für ein statisches räumliches Planwerk sind vorhanden: Ort/Planbereich, Geometrie und ein Datumsbezug. Etwas schwächer ist, dass die zeitliche Einordnung nicht in der Beschreibung erläutert wird und unklar bleibt, ob es sich um Inkrafttreten, Erlassdatum oder anderen Bezugszeitpunkt handelt.",
+            "findings": [
+              "Für ein Planwerk sind räumliche Abdeckung und Planbereich erforderlich; diese sind in Beschreibung und Spatial-Feldern vorhanden.",
+              "Ein zeitlicher Bezug ist mit dem Startdatum 1954-12-28 vorhanden; die Beschreibung selbst nennt den Zeitpunkt allerdings nicht.",
+              "Die Aktualisierungsfrequenz ist als „NEVER“ angegeben, passend zu einem statischen Plan."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Die wichtigsten Kontextangaben für ein statisches räumliches Planwerk sind vorhanden: Ort/Planbereich, Geometrie und ein Datumsbezug. Etwas schwächer ist, dass die zeitliche Einordnung nicht in der Beschreibung erläutert wird und unklar bleibt, ob es sich um Inkrafttreten, Erlassdatum oder anderen Bezugszeitpunkt handelt.",
+            "current": [],
+            "target": "Ergänzen Sie Stichtag bzw. Bezugszeitraum, Gebiets- oder Verfahrensstand und Hinweise auf vorläufige Werte.",
+            "notes": [
+              "Für ein Planwerk sind räumliche Abdeckung und Planbereich erforderlich; diese sind in Beschreibung und Spatial-Feldern vorhanden.",
+              "Ein zeitlicher Bezug ist mit dem Startdatum 1954-12-28 vorhanden; die Beschreibung selbst nennt den Zeitpunkt allerdings nicht.",
+              "Die Aktualisierungsfrequenz ist als „NEVER“ angegeben, passend zu einem statischen Plan."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.78,
+          "effective_score": 0.78
+        }
+      ],
+      "score": 0.6983333333333333,
+      "dimension_weight": 2.0,
+      "total_indicator_weight": 6.0,
+      "indicator_count": 6,
+      "pass_count": 3,
+      "pass_rate": 0.5
+    }
+  },
+  "summary": {
+    "overall_score": 0.5317457104299209,
+    "overall_pass_rate": 0.48148148148148145,
+    "dimension_scores": {
+      "findability": 0.9375,
+      "accessibility": 0.07894736842105263,
+      "reusability": 0.6428571428571429,
+      "expressiveness": 0.6983333333333333
+    },
+    "dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "effective_dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "dimension_weight_mode": "explicit",
+    "total_dimension_weight": 6.5,
+    "total_indicators": 27,
+    "total_pass": 13,
+    "total_fail": 14,
+    "quality_grade": "D"
+  },
+  "errors": [],
+  "weights": {
+    "dimension_weights": {
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0,
+      "findability": 1
+    },
+    "indicator_weights": {
+      "find_keywords_count": 1.0,
+      "find_theme_valid": 1.0,
+      "find_temporal_coverage": 1.0,
+      "find_locn_geometry": 1.0,
+      "find_political_geocoding": 1.0,
+      "find_geocoding_level": 1.0,
+      "find_issued_datetime": 1.0,
+      "find_modified_datetime": 1.0,
+      "acc_download_url": 1.0,
+      "acc_machine_readable_access": 1.5,
+      "acc_download_url_response": 2.0,
+      "acc_access_url_response": 2.0,
+      "acc_format": 1.0,
+      "acc_media_type": 1.0,
+      "reuse_license": 2.0,
+      "reuse_contact": 1.0,
+      "reuse_contributor_id": 1.0,
+      "reuse_publisher": 1.0,
+      "reuse_availability": 1.0,
+      "expr_description_quality": 1.0,
+      "expr_title_quality": 1.0,
+      "expr_title_description_coherence": 1.0,
+      "expr_keyword_quality": 1.0,
+      "expr_thematic_consistency": 1.0,
+      "expr_contextual_qualifiers": 1.0
+    }
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3616,
+      "output_tokens": 935,
+      "total_tokens": 4551,
+      "cost_usd": 0.04613,
+      "latency_seconds": 16.206
+    }
+  ]
+}

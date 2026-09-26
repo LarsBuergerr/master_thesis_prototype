@@ -63,6 +63,24 @@ outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL/*
 outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL/*/*
 !outputs/runs/run_2026-07-22_09-23-07_state-evaluation-final_EVAL/*/result.json
 
+!outputs/runs/run_2026-07-27_09-54-46_state-evaluation-final_EVAL_gpt5-5/
+outputs/runs/run_2026-07-27_09-54-46_state-evaluation-final_EVAL_gpt5-5/*
+!outputs/runs/run_2026-07-27_09-54-46_state-evaluation-final_EVAL_gpt5-5/metadata.json
+!outputs/runs/run_2026-07-27_09-54-46_state-evaluation-final_EVAL_gpt5-5/run_aggregate.json
+!outputs/runs/run_2026-07-27_09-54-46_state-evaluation-final_EVAL_gpt5-5/run_cost_summary.json
+!outputs/runs/run_2026-07-27_09-54-46_state-evaluation-final_EVAL_gpt5-5/*/
+outputs/runs/run_2026-07-27_09-54-46_state-evaluation-final_EVAL_gpt5-5/*/*
+!outputs/runs/run_2026-07-27_09-54-46_state-evaluation-final_EVAL_gpt5-5/*/result.json
+
+!outputs/runs/run_2026-08-06_15-42-18_state-evaluation-final_REF_UBA
+outputs/runs/run_2026-08-06_15-42-18_state-evaluation-final_REF_UBA/*
+!outputs/runs/run_2026-08-06_15-42-18_state-evaluation-final_REF_UBA/metadata.json
+!outputs/runs/run_2026-08-06_15-42-18_state-evaluation-final_REF_UBA/run_aggregate.json
+!outputs/runs/run_2026-08-06_15-42-18_state-evaluation-final_REF_UBA/run_cost_summary.json
+!outputs/runs/run_2026-08-06_15-42-18_state-evaluation-final_REF_UBA/*/
+outputs/runs/run_2026-08-06_15-42-18_state-evaluation-final_REF_UBA/*/*
+!outputs/runs/run_2026-08-06_15-42-18_state-evaluation-final_REF_UBA/*/result.json
+
 # Gecachte MQA-Metriken (Abschnitt 5.8) -- nur die CSV, die das Notebook liest.
 !outputs/mqa_comparison/
 outputs/mqa_comparison/*

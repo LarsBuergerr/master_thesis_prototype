@@ -1,0 +1,1271 @@
+{
+  "by_dimension": {
+    "findability": {
+      "dimension": "findability",
+      "indicators": [
+        {
+          "indicator_id": "find_keywords_count",
+          "name_de": "Angemessene Anzahl Schlagwörter",
+          "name_en": "Appropriate number of keywords",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Optimale Anzahl Keywords: 5",
+          "message_en": "Optimal number of keywords: 5",
+          "details": {
+            "keyword_count": 5,
+            "keywords": [
+              "landtag",
+              "ministerrat",
+              "plenum",
+              "staatsvertrag",
+              "swr"
+            ],
+            "expected_range": "3–15 keywords (PASS), 1–2 or 16–25 (PARTIAL)"
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.867171",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_theme_valid",
+          "name_de": "Theme aus kontrolliertem Vokabular",
+          "name_en": "Theme from controlled vocabulary",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle Themes sind aus dem kontrollierten Vokabular",
+          "message_en": "All themes are from controlled vocabulary",
+          "details": {
+            "valid_themes": [
+              "http://publications.europa.eu/resource/authority/data-theme/SOCI",
+              "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+            ],
+            "invalid_themes": [],
+            "valid_count": 2,
+            "total_count": 2
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.867748",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_locn_geometry",
+          "name_de": "Räumliche Suchangabe (Geometrie)",
+          "name_en": "Spatial search term (geometry)",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine locn:geometry gefunden",
+          "message_en": "No locn:geometry found",
+          "details": {
+            "geometry_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.867886",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Keine locn:geometry gefunden",
+            "message_en": "No locn:geometry found",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Es ist kein Gebiet hinterlegt — der Datensatz taucht in Kartensuchen nicht auf.",
+            "current": [
+              {
+                "label": "locn:geometry",
+                "value": "nicht gesetzt",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Eine Bounding Box oder ein Polygon als WKT oder GeoJSON, z. B. POLYGON ((9.25 52.16, …)).",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_political_geocoding",
+          "name_de": "Politische Geokodierung aus kontrolliertem Vokabular",
+          "name_en": "Political geocoding from controlled vocabulary",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine politische Geokodierung angegeben",
+          "message_en": "No political geocoding specified",
+          "details": {
+            "geocoding_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.867992",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Keine politische Geokodierung angegeben",
+            "message_en": "No political geocoding specified",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Es ist kein Verwaltungsgebiet angegeben — eine Suche nach Ortsnamen findet den Datensatz nicht.",
+            "current": [
+              {
+                "label": "dcatde:politicalGeocodingURI",
+                "value": "nicht gesetzt",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Eine URI aus dem DCAT-AP.de-Geokodierungs-Vokabular, z. B. http://dcat-ap.de/def/politicalGeocoding/municipalityKey/07131038.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_geocoding_level",
+          "name_de": "Geokodierungs-Ebene aus kontrolliertem Vokabular",
+          "name_en": "Geocoding level from controlled vocabulary",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine politische Geokodierungs-Ebene angegeben",
+          "message_en": "No political geocoding level specified",
+          "details": {
+            "level_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.868097",
+          "remediation": {
+            "kind": "change_patch",
+            "ready": [],
+            "needs_input": [
+              {
+                "indicator_id": "find_geocoding_level",
+                "subject": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd",
+                "predicate": "http://dcat-ap.de/def/dcatde/politicalGeocodingLevelURI",
+                "reason": "find_geocoding_level: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „DCAT-AP.de Geokodierungs-Ebenen“",
+                "expected_en": "URI from the controlled vocabulary “DCAT-AP.de Geokodierungs-Ebenen”",
+                "example": "http://dcat-ap.de/def/politicalGeocoding/Level/state",
+                "vocabulary_label": "DCAT-AP.de Geokodierungs-Ebenen",
+                "vocabulary_url": "http://dcat-ap.de/def/politicalGeocoding/Level/"
+              }
+            ],
+            "summary_de": "0 ungueltige(r) Wert(e) entfernbar · gueltiger Wert erforderlich",
+            "summary_en": "0 invalid value(s) removable · a valid value is required"
+          },
+          "finding": {
+            "headline": "Die Ebene des Verwaltungsgebiets fehlt — Suchfilter können den Raumbezug nicht einordnen.",
+            "current": [
+              {
+                "label": "dcatde:politicalGeocodingLevelURI",
+                "value": "nicht gesetzt",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Eine Ebenen-URI, z. B. http://dcat-ap.de/def/politicalGeocoding/Level/municipality.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_temporal_coverage",
+          "name_de": "Zeitliche Abdeckung angegeben",
+          "name_en": "Temporal coverage specified",
+          "dimension": "findability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine zeitliche Abdeckung gefunden oder ungültiges Datumsformat",
+          "message_en": "No temporal coverage found or invalid date format",
+          "details": {
+            "start_count": 0,
+            "end_count": 0,
+            "start_format": null,
+            "end_format": null,
+            "start_valid": false,
+            "end_valid": false
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.868227",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Keine zeitliche Abdeckung gefunden oder ungültiges Datumsformat",
+            "message_en": "No temporal coverage found or invalid date format",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Der Zeitraum der Daten ist nicht angegeben — Nutzende können die Aktualität nicht einschätzen.",
+            "current": [
+              {
+                "label": "dcat:startDate",
+                "value": "nicht gesetzt",
+                "tone": "bad",
+                "where": null
+              },
+              {
+                "label": "dcat:endDate",
+                "value": "nicht gesetzt",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Start- und Enddatum im Format JJJJ-MM-TT (oder als vollständiger Zeitstempel).",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "find_issued_datetime",
+          "name_de": "Issued Datum (xs:dateTime)",
+          "name_en": "Issued date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 2 Werte gültig (Dataset: 1, Distribution: 1)",
+          "message_en": "All 2 values valid (Dataset: 1, Distribution: 1)",
+          "details": {
+            "valid": [
+              {
+                "value": "2025-01-29T14:42:59+01:00",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd"
+              },
+              {
+                "value": "2026-06-23T06:03:54.514330",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72"
+              }
+            ],
+            "invalid": [],
+            "total": 2,
+            "dataset_count": 1,
+            "distribution_count": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.868385",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "find_modified_datetime",
+          "name_de": "Modified Datum (xs:dateTime)",
+          "name_en": "Modified date (xs:dateTime)",
+          "dimension": "findability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Alle 2 Werte gültig (Dataset: 1, Distribution: 1)",
+          "message_en": "All 2 values valid (Dataset: 1, Distribution: 1)",
+          "details": {
+            "valid": [
+              {
+                "value": "2025-01-29T14:43:00+01:00",
+                "format": "dateTime",
+                "source_kind": "dataset",
+                "source_uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd"
+              },
+              {
+                "value": "2025-01-29T14:43:00+01:00",
+                "format": "dateTime",
+                "source_kind": "distribution",
+                "source_uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72"
+              }
+            ],
+            "invalid": [],
+            "total": 2,
+            "dataset_count": 1,
+            "distribution_count": 1
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.868523",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        }
+      ],
+      "score": 0.5,
+      "dimension_weight": 1,
+      "total_indicator_weight": 8.0,
+      "indicator_count": 8,
+      "pass_count": 4,
+      "pass_rate": 0.5
+    },
+    "accessibility": {
+      "dimension": "accessibility",
+      "indicators": [
+        {
+          "indicator_id": "acc_download_url",
+          "name_de": "Download-URL je Distribution",
+          "name_en": "Download URL per distribution",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit Download-URL",
+          "message_en": "0/1 distribution(s) with a download URL",
+          "details": {
+            "total_distributions": 1,
+            "distributions_with_download_url": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.868678",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "0/1 Distribution(en) mit Download-URL",
+            "message_en": "0/1 distribution(s) with a download URL",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Keine der 1 Distribution hat einen direkten Download-Link.",
+            "current": [
+              {
+                "label": "Distributionen gesamt",
+                "value": "1",
+                "tone": "neutral",
+                "where": null
+              },
+              {
+                "label": "davon mit dcat:downloadURL",
+                "value": "0",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Je Distribution eine dcat:downloadURL, die direkt auf die Datei zeigt (nicht auf eine Webseite).",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_format",
+          "name_de": "Format aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Format from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Distribution(en) mit Format aus dem Vokabular",
+          "message_en": "1/1 distribution(s) with a format from the vocabulary",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 1,
+            "per_distribution": [
+              {
+                "uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/PDF"
+                ],
+                "passes": true
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.868790",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_media_type",
+          "name_de": "Media Type aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Media type from controlled vocabulary (per distribution)",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Distribution(en) mit gültigem Media Type",
+          "message_en": "1/1 distribution(s) with a valid media type",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 1,
+            "per_distribution": [
+              {
+                "uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72",
+                "media_types": [
+                  "https://www.iana.org/assignments/media-types/application/pdf"
+                ],
+                "passes": true
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.869170",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_download_url_response",
+          "name_de": "Download-URL Antwortcode",
+          "name_en": "Download URL response code",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Keine Distribution mit entsprechender URL",
+          "message_en": "No distribution declares the relevant URL",
+          "details": {
+            "total_distributions": 1,
+            "relevant_distributions": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.869292",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Keine Distribution mit entsprechender URL",
+            "message_en": "No distribution declares the relevant URL",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Es gibt keine dcat:downloadURL, die geprüft werden könnte.",
+            "current": [
+              {
+                "label": "dcat:downloadURL",
+                "value": "bei keiner Distribution gesetzt",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Je Distribution eine erreichbare dcat:downloadURL.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_access_url_response",
+          "name_de": "Access-URL Antwortcode",
+          "name_en": "Access URL response code",
+          "dimension": "accessibility",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "1/1 Access-URL(s) mit gültigem HTTP-Statuscode",
+          "message_en": "1/1 access URL(s) with valid HTTP status code",
+          "details": {
+            "total_distributions": 1,
+            "relevant_distributions": 1,
+            "sampled_distributions": 1,
+            "valid_count": 1,
+            "invalid_count": 0,
+            "dead_url_malus": -0.5,
+            "valid": [
+              {
+                "uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72",
+                "url": "https://upload.open.rlp.de/eakte/65838316-b695-4400-8fdc-6b088b45f141/resource/c06b7319-c198-4bb4-8388-14345f6e5569/download/top-08-mundliche-berichte-05.11.2024.pdf",
+                "status_code": 200,
+                "fetch_error": null
+              }
+            ],
+            "invalid": []
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.870175",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "acc_machine_readable_access",
+          "name_de": "Maschinenlesbarer Zugang (alle Distributionen)",
+          "name_en": "Machine-readable access (all distributions)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 hoch maschinenlesbar, 0/1 mittel, 1/1 keine (Score 0.00)",
+          "message_en": "0/1 high machine-readable, 0/1 mid, 1/1 none (score 0.00)",
+          "details": {
+            "total_distributions": 1,
+            "high_count": 0,
+            "mid_count": 0,
+            "none_count": 1,
+            "per_distribution": [
+              {
+                "uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72",
+                "effective_mime": "application/pdf",
+                "tier": 0,
+                "tier_label": "none"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.870320",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "0/1 hoch maschinenlesbar, 0/1 mittel, 1/1 keine (Score 0.00)",
+            "message_en": "0/1 high machine-readable, 0/1 mid, 1/1 none (score 0.00)",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Keine der 1 Distribution liegt in einem gut maschinenlesbaren Format vor.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "application/pdf — nicht maschinenlesbar",
+                "tone": "bad",
+                "where": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72"
+              }
+            ],
+            "target": "Den Inhalt zusätzlich strukturiert anbieten (CSV, JSON, GeoJSON) statt nur als PDF, HTML oder Bilddienst.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.5,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "acc_format_non_proprietary",
+          "name_de": "Nicht-proprietäres Format (alle Distributionen)",
+          "name_en": "Non-proprietary format (all distributions)",
+          "dimension": "accessibility",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit nicht-proprietärem Format",
+          "message_en": "0/1 distribution(s) with non-proprietary format",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72",
+                "formats": [
+                  "http://publications.europa.eu/resource/authority/file-type/PDF"
+                ],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.870425",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "0/1 Distribution(en) mit nicht-proprietärem Format",
+            "message_en": "0/1 distribution(s) with non-proprietary format",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Keine der 1 Distribution hat ein offenes, herstellerunabhängiges Format.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "http://publications.europa.eu/resource/authority/file-type/PDF",
+                "tone": "bad",
+                "where": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72"
+              }
+            ],
+            "target": "Mindestens eine Distribution in einem offenen Format (z. B. CSV, JSON, GeoJSON, XML).",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.42105263157894735,
+      "dimension_weight": 2,
+      "total_indicator_weight": 9.5,
+      "indicator_count": 7,
+      "pass_count": 3,
+      "pass_rate": 0.42857142857142855
+    },
+    "reusability": {
+      "dimension": "reusability",
+      "indicators": [
+        {
+          "indicator_id": "reuse_license",
+          "name_de": "Freie Lizenz je Distribution",
+          "name_en": "Free-use license per distribution",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": -0.5,
+          "message_de": "0/1 Distribution(en) mit freier Lizenz (Score -0.50)",
+          "message_en": "0/1 distribution(s) with a free-use license (score -0.50)",
+          "details": {
+            "total_distributions": 1,
+            "free_count": 0,
+            "no_free_license_malus": -0.5,
+            "per_distribution": [
+              {
+                "uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72",
+                "licenses": [
+                  "http://dcat-ap.de/def/licenses/other-closed"
+                ],
+                "tier": "restricted",
+                "score": -0.5
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.870649",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "0/1 Distribution(en) mit freier Lizenz (Score -0.50)",
+            "message_en": "0/1 distribution(s) with a free-use license (score -0.50)",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Keine der 1 Distribution hat eine freie Lizenz — eine Weiterverwendung ist rechtlich nicht gedeckt.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "http://dcat-ap.de/def/licenses/other-closed",
+                "tone": "bad",
+                "where": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72"
+              }
+            ],
+            "target": "Je Distribution eine freie Lizenz als URI, z. B. http://dcat-ap.de/def/licenses/dl-zero-de/2.0.",
+            "notes": [
+              "Wegen fehlender freier Lizenz wurde ein Malus von -0.5 auf den Score verrechnet."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 2.0,
+          "raw_status": "fail",
+          "raw_score": -0.5,
+          "effective_score": -0.5
+        },
+        {
+          "indicator_id": "reuse_publisher",
+          "name_de": "Herausgeber als strukturierter Agent",
+          "name_en": "Publisher modelled as structured agent",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Herausgeber als foaf:Agent mit foaf:name modelliert",
+          "message_en": "Publisher modelled as foaf:Agent with foaf:name",
+          "details": {
+            "publisher_count": 1,
+            "publishers": [
+              {
+                "value": "N71d50b3869854114bc8547266c224ae0",
+                "typed_as_agent": true,
+                "names": [
+                  "Staatskanzlei"
+                ],
+                "score": 1.0
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.871010",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_contact",
+          "name_de": "Kontaktpunkt mit E-Mail oder URL",
+          "name_en": "Contact point with email or URL",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "Kein Kontaktpunkt angegeben",
+          "message_en": "No contact point specified",
+          "details": {
+            "contact_count": 0
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.871486",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Kein Kontaktpunkt angegeben",
+            "message_en": "No contact point specified",
+            "findings": [],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Es ist kein Kontaktpunkt hinterlegt — Nutzende können Fehler nicht melden.",
+            "current": [
+              {
+                "label": "dcat:contactPoint",
+                "value": "nicht gesetzt",
+                "tone": "bad",
+                "where": null
+              },
+              {
+                "label": "davon mit E-Mail oder URL",
+                "value": "0",
+                "tone": "bad",
+                "where": null
+              }
+            ],
+            "target": "Ein vcard:Kind mit vcard:hasEmail (mailto:…) oder vcard:hasURL.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "reuse_contributor_id",
+          "name_de": "contributorID aus kontrolliertem Vokabular",
+          "name_en": "contributorID from controlled vocabulary",
+          "dimension": "reusability",
+          "status": "pass",
+          "score": 1.0,
+          "message_de": "Genau eine contributorID aus dem Vokabular",
+          "message_en": "Exactly one contributorID from the vocabulary",
+          "details": {
+            "contributor_id_count": 1,
+            "valid": [
+              "http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"
+            ],
+            "invalid": [],
+            "values": [
+              "http://dcat-ap.de/def/contributors/openGovernmentDataPortalRheinlandPfalz"
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:54.871615",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 1.0,
+          "effective_score": 1.0
+        },
+        {
+          "indicator_id": "reuse_dcat_ap_de_compliance",
+          "name_de": "DCAT-AP.de Schema-Konformität (SHACL)",
+          "name_en": "DCAT-AP.de schema compliance (SHACL)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "1 SHACL-Verletzung(en) gefunden",
+          "message_en": "1 SHACL violation(s) found",
+          "details": {
+            "conforms": false,
+            "violation_count": 1,
+            "violations": [
+              {
+                "severity": "Violation",
+                "message": "adms:Identifier: MUSS genaue eine skos:notation haben.",
+                "focus": "https://eakte.rlp.de/coo-2298-102-5-2416634",
+                "path": "http://www.w3.org/2004/02/skos/core#notation"
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:56.208969",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "1 SHACL-Verletzung(en) gegen DCAT-AP.de gefunden",
+            "message_en": "1 SHACL violation(s) against DCAT-AP.de found",
+            "findings": [
+              "adms:Identifier: MUSS genaue eine skos:notation haben."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Der Metadatensatz verstößt an 1 Stelle gegen das DCAT-AP.de-Schema.",
+            "current": [
+              {
+                "label": "Verstoß",
+                "value": "adms:Identifier: MUSS genaue eine skos:notation haben.",
+                "tone": "bad",
+                "where": "http://www.w3.org/2004/02/skos/core#notation"
+              }
+            ],
+            "target": "Keine Verstöße gegen DCAT-AP.de v2.0 — jede Meldung nennt das betroffene Feld.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        },
+        {
+          "indicator_id": "reuse_availability",
+          "name_de": "Verfügbarkeit aus kontrolliertem Vokabular (je Distribution)",
+          "name_en": "Availability from controlled vocabulary (per distribution)",
+          "dimension": "reusability",
+          "status": "fail",
+          "score": 0.0,
+          "message_de": "0/1 Distribution(en) mit gültiger Verfügbarkeit",
+          "message_en": "0/1 distribution(s) with a valid availability value",
+          "details": {
+            "total_distributions": 1,
+            "passing_count": 0,
+            "per_distribution": [
+              {
+                "uri": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72",
+                "availability": [],
+                "passes": false
+              }
+            ]
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:56.209220",
+          "remediation": {
+            "kind": "change_patch",
+            "ready": [],
+            "needs_input": [
+              {
+                "indicator_id": "reuse_availability",
+                "subject": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72",
+                "predicate": "http://data.europa.eu/r5r/availability",
+                "reason": "reuse_availability: gueltigen Wert aus dem Vokabular eintragen",
+                "expected_de": "URI aus dem kontrollierten Vokabular „Planned Availability“",
+                "expected_en": "URI from the controlled vocabulary “Planned Availability”",
+                "example": "http://publications.europa.eu/resource/authority/planned-availability/STABLE",
+                "vocabulary_label": "Planned Availability",
+                "vocabulary_url": "http://publications.europa.eu/resource/authority/planned-availability"
+              }
+            ],
+            "summary_de": "0 ungueltige(r) Wert(e) entfernbar · 1 Distribution(en) brauchen einen Wert",
+            "summary_en": "0 invalid value(s) removable · 1 distribution(s) need a value"
+          },
+          "finding": {
+            "headline": "Keine der 1 Distribution hat eine Verfügbarkeitsangabe.",
+            "current": [
+              {
+                "label": "Distribution 1",
+                "value": "keine Angabe",
+                "tone": "bad",
+                "where": "https://open.rlp.de/dataset/ab8f07e8-c917-4f54-a804-a7bfdcc4e9cd/resource/851fbc43-c401-42cc-9a54-abe385f67b72"
+              }
+            ],
+            "target": "Je Distribution eine Verfügbarkeits-URI, z. B. …/planned-availability/STABLE.",
+            "notes": []
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.0,
+          "effective_score": 0.0
+        }
+      ],
+      "score": 0.14285714285714285,
+      "dimension_weight": 1.5,
+      "total_indicator_weight": 7.0,
+      "indicator_count": 6,
+      "pass_count": 2,
+      "pass_rate": 0.3333333333333333
+    },
+    "expressiveness": {
+      "dimension": "expressiveness",
+      "indicators": [
+        {
+          "indicator_id": "expr_title_quality",
+          "name_de": "Titel-Qualität",
+          "name_en": "Title quality",
+          "dimension": "expressiveness",
+          "status": "fail",
+          "score": 0.45,
+          "message_de": "Der Titel ist zwar lesbar und frei von technischen Artefakten, bezeichnet den Inhalt aber nur sehr allgemein. Ohne weiteren Kontext bleibt unklar, welche mündlichen Berichte gemeint sind.",
+          "message_en": "Der Titel ist zwar lesbar und frei von technischen Artefakten, bezeichnet den Inhalt aber nur sehr allgemein. Ohne weiteren Kontext bleibt unklar, welche mündlichen Berichte gemeint sind.",
+          "details": {
+            "criterion": "title_quality",
+            "llm_status": "fail",
+            "findings": [
+              "Der Titel „Mündliche Berichte“ ist kurz und als normaler Text formuliert.",
+              "Er ist sehr generisch und enthält keinen Orts-, Zeit-, Institutionen- oder Sachkontext.",
+              "Der Titel unterscheidet den Datensatz kaum von möglichen anderen Berichten."
+            ],
+            "overall_summary": "Die Metadaten lassen grob erkennen, dass es um mündliche Berichte im Kontext des Ministerrats geht, bleiben aber insgesamt sehr knapp und generisch. Besonders Beschreibung, Titelkontext und zeitliche Einordnung sind zu wenig aussagekräftig; Widersprüche sind jedoch nicht erkennbar."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:56.209375",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Der Titel ist zwar lesbar und frei von technischen Artefakten, bezeichnet den Inhalt aber nur sehr allgemein. Ohne weiteren Kontext bleibt unklar, welche mündlichen Berichte gemeint sind.",
+            "message_en": "Der Titel ist zwar lesbar und frei von technischen Artefakten, bezeichnet den Inhalt aber nur sehr allgemein. Ohne weiteren Kontext bleibt unklar, welche mündlichen Berichte gemeint sind.",
+            "findings": [
+              "Der Titel „Mündliche Berichte“ ist kurz und als normaler Text formuliert.",
+              "Er ist sehr generisch und enthält keinen Orts-, Zeit-, Institutionen- oder Sachkontext.",
+              "Der Titel unterscheidet den Datensatz kaum von möglichen anderen Berichten."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Der Titel ist zwar lesbar und frei von technischen Artefakten, bezeichnet den Inhalt aber nur sehr allgemein. Ohne weiteren Kontext bleibt unklar, welche mündlichen Berichte gemeint sind.",
+            "current": [],
+            "target": "Nennen Sie im Titel Datenart, Gegenstand und ggf. Ort oder Zeitraum; schreiben Sie Abkürzungen aus.",
+            "notes": [
+              "Der Titel „Mündliche Berichte“ ist kurz und als normaler Text formuliert.",
+              "Er ist sehr generisch und enthält keinen Orts-, Zeit-, Institutionen- oder Sachkontext.",
+              "Der Titel unterscheidet den Datensatz kaum von möglichen anderen Berichten."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.45,
+          "effective_score": 0.45
+        },
+        {
+          "indicator_id": "expr_description_quality",
+          "name_de": "Beschreibungs-Qualität",
+          "name_en": "Description quality",
+          "dimension": "expressiveness",
+          "status": "fail",
+          "score": 0.25,
+          "message_de": "Die Beschreibung wiederholt bzw. paraphrasiert den Titel nur knapp und liefert kaum eigenständige inhaltliche oder strukturelle Informationen. Der Kern ist angedeutet, aber die Aussagekraft ist deutlich eingeschränkt.",
+          "message_en": "Die Beschreibung wiederholt bzw. paraphrasiert den Titel nur knapp und liefert kaum eigenständige inhaltliche oder strukturelle Informationen. Der Kern ist angedeutet, aber die Aussagekraft ist deutlich eingeschränkt.",
+          "details": {
+            "criterion": "description_quality",
+            "llm_status": "fail",
+            "findings": [
+              "Die Beschreibung besteht nur aus einem Satz.",
+              "Sie sagt lediglich, dass der Ministerrat die mündlichen Berichte zur Kenntnis nimmt.",
+              "Es fehlen Angaben dazu, welche Daten/Dokumente enthalten sind, wie sie strukturiert sind, aus welcher Quelle sie stammen oder welchem Zweck der Datensatz dient."
+            ],
+            "overall_summary": "Die Metadaten lassen grob erkennen, dass es um mündliche Berichte im Kontext des Ministerrats geht, bleiben aber insgesamt sehr knapp und generisch. Besonders Beschreibung, Titelkontext und zeitliche Einordnung sind zu wenig aussagekräftig; Widersprüche sind jedoch nicht erkennbar."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:56.209443",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Die Beschreibung wiederholt bzw. paraphrasiert den Titel nur knapp und liefert kaum eigenständige inhaltliche oder strukturelle Informationen. Der Kern ist angedeutet, aber die Aussagekraft ist deutlich eingeschränkt.",
+            "message_en": "Die Beschreibung wiederholt bzw. paraphrasiert den Titel nur knapp und liefert kaum eigenständige inhaltliche oder strukturelle Informationen. Der Kern ist angedeutet, aber die Aussagekraft ist deutlich eingeschränkt.",
+            "findings": [
+              "Die Beschreibung besteht nur aus einem Satz.",
+              "Sie sagt lediglich, dass der Ministerrat die mündlichen Berichte zur Kenntnis nimmt.",
+              "Es fehlen Angaben dazu, welche Daten/Dokumente enthalten sind, wie sie strukturiert sind, aus welcher Quelle sie stammen oder welchem Zweck der Datensatz dient."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Die Beschreibung wiederholt bzw. paraphrasiert den Titel nur knapp und liefert kaum eigenständige inhaltliche oder strukturelle Informationen. Der Kern ist angedeutet, aber die Aussagekraft ist deutlich eingeschränkt.",
+            "current": [],
+            "target": "Beschreiben Sie Inhalt, Erhebungsmethode, Struktur und Nutzungszweck in einigen vollständigen Sätzen.",
+            "notes": [
+              "Die Beschreibung besteht nur aus einem Satz.",
+              "Sie sagt lediglich, dass der Ministerrat die mündlichen Berichte zur Kenntnis nimmt.",
+              "Es fehlen Angaben dazu, welche Daten/Dokumente enthalten sind, wie sie strukturiert sind, aus welcher Quelle sie stammen oder welchem Zweck der Datensatz dient."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.25,
+          "effective_score": 0.25
+        },
+        {
+          "indicator_id": "expr_title_description_coherence",
+          "name_de": "Kohärenz von Titel und Beschreibung",
+          "name_en": "Title–description coherence",
+          "dimension": "expressiveness",
+          "status": "pass",
+          "score": 0.85,
+          "message_de": "Titel und Beschreibung passen inhaltlich zusammen; die Beschreibung konkretisiert den Titel geringfügig durch den Bezug zum Ministerrat. Trotz geringer Informationstiefe ist die Kohärenz gegeben.",
+          "message_en": "Titel und Beschreibung passen inhaltlich zusammen; die Beschreibung konkretisiert den Titel geringfügig durch den Bezug zum Ministerrat. Trotz geringer Informationstiefe ist die Kohärenz gegeben.",
+          "details": {
+            "criterion": "title_description_coherence",
+            "llm_status": "pass",
+            "findings": [
+              "Titel und Beschreibung beziehen sich beide auf mündliche Berichte.",
+              "Die Beschreibung nennt zusätzlich den Ministerrat als Kontext.",
+              "Es gibt keinen erkennbaren Widerspruch zwischen Titel und Beschreibung."
+            ],
+            "overall_summary": "Die Metadaten lassen grob erkennen, dass es um mündliche Berichte im Kontext des Ministerrats geht, bleiben aber insgesamt sehr knapp und generisch. Besonders Beschreibung, Titelkontext und zeitliche Einordnung sind zu wenig aussagekräftig; Widersprüche sind jedoch nicht erkennbar."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:56.209505",
+          "remediation": null,
+          "finding": null,
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "pass",
+          "raw_score": 0.85,
+          "effective_score": 0.85
+        },
+        {
+          "indicator_id": "expr_keyword_quality",
+          "name_de": "Schlagwort-Qualität",
+          "name_en": "Keyword quality",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.55,
+          "message_de": "Die Schlagwörter sind teilweise passend und atomar, enthalten aber eine unerklärte Abkürzung und Begriffe, deren Bezug zum beschriebenen Datensatz aus den übrigen Metadaten nicht nachvollziehbar wird. Dadurch ist ihre Aussagekraft nur eingeschränkt brauchbar.",
+          "message_en": "Die Schlagwörter sind teilweise passend und atomar, enthalten aber eine unerklärte Abkürzung und Begriffe, deren Bezug zum beschriebenen Datensatz aus den übrigen Metadaten nicht nachvollziehbar wird. Dadurch ist ihre Aussagekraft nur eingeschränkt brauchbar.",
+          "details": {
+            "criterion": "keyword_quality",
+            "llm_status": "partial",
+            "findings": [
+              "Die Schlagwörter sind kurz und überwiegend verständliche Einzelbegriffe wie „landtag“, „ministerrat“ und „plenum“.",
+              "Die Begriffe sind durchgehend kleingeschrieben, aber inhaltlich grundsätzlich erkennbar.",
+              "Einige Schlagwörter wie „staatsvertrag“ und „swr“ werden im Titel oder in der Beschreibung nicht erklärt; „swr“ ist eine Abkürzung."
+            ],
+            "overall_summary": "Die Metadaten lassen grob erkennen, dass es um mündliche Berichte im Kontext des Ministerrats geht, bleiben aber insgesamt sehr knapp und generisch. Besonders Beschreibung, Titelkontext und zeitliche Einordnung sind zu wenig aussagekräftig; Widersprüche sind jedoch nicht erkennbar."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:56.209571",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Die Schlagwörter sind teilweise passend und atomar, enthalten aber eine unerklärte Abkürzung und Begriffe, deren Bezug zum beschriebenen Datensatz aus den übrigen Metadaten nicht nachvollziehbar wird. Dadurch ist ihre Aussagekraft nur eingeschränkt brauchbar.",
+            "message_en": "Die Schlagwörter sind teilweise passend und atomar, enthalten aber eine unerklärte Abkürzung und Begriffe, deren Bezug zum beschriebenen Datensatz aus den übrigen Metadaten nicht nachvollziehbar wird. Dadurch ist ihre Aussagekraft nur eingeschränkt brauchbar.",
+            "findings": [
+              "Die Schlagwörter sind kurz und überwiegend verständliche Einzelbegriffe wie „landtag“, „ministerrat“ und „plenum“.",
+              "Die Begriffe sind durchgehend kleingeschrieben, aber inhaltlich grundsätzlich erkennbar.",
+              "Einige Schlagwörter wie „staatsvertrag“ und „swr“ werden im Titel oder in der Beschreibung nicht erklärt; „swr“ ist eine Abkürzung."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Die Schlagwörter sind teilweise passend und atomar, enthalten aber eine unerklärte Abkürzung und Begriffe, deren Bezug zum beschriebenen Datensatz aus den übrigen Metadaten nicht nachvollziehbar wird. Dadurch ist ihre Aussagekraft nur eingeschränkt brauchbar.",
+            "current": [],
+            "target": "Ersetzen Sie technische und formale Tags durch verständliche Fachbegriffe; ein Begriff je Schlagwort.",
+            "notes": [
+              "Die Schlagwörter sind kurz und überwiegend verständliche Einzelbegriffe wie „landtag“, „ministerrat“ und „plenum“.",
+              "Die Begriffe sind durchgehend kleingeschrieben, aber inhaltlich grundsätzlich erkennbar.",
+              "Einige Schlagwörter wie „staatsvertrag“ und „swr“ werden im Titel oder in der Beschreibung nicht erklärt; „swr“ ist eine Abkürzung."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.55,
+          "effective_score": 0.55
+        },
+        {
+          "indicator_id": "expr_thematic_consistency",
+          "name_de": "Thematische Konsistenz",
+          "name_en": "Thematic consistency",
+          "dimension": "expressiveness",
+          "status": "partial",
+          "score": 0.65,
+          "message_de": "Ein Regierungs-/Verwaltungskontext ist konsistent erkennbar. Teile der thematischen Einordnung und einzelne Schlagwörter bleiben mangels Beschreibung jedoch nicht ausreichend nachvollziehbar, ohne klar widersprüchlich zu sein.",
+          "message_en": "Ein Regierungs-/Verwaltungskontext ist konsistent erkennbar. Teile der thematischen Einordnung und einzelne Schlagwörter bleiben mangels Beschreibung jedoch nicht ausreichend nachvollziehbar, ohne klar widersprüchlich zu sein.",
+          "details": {
+            "criterion": "thematic_consistency",
+            "llm_status": "partial",
+            "findings": [
+              "Das Thema GOVE passt grundsätzlich zu Ministerrat, Landtag und Plenum.",
+              "Das Thema SOCI könnte durch „swr“ bzw. Rundfunk/gesellschaftliche Bezüge erklärbar sein, wird aber nicht beschrieben.",
+              "Schlagwörter wie „staatsvertrag“ und „swr“ erscheinen gegenüber Titel und Beschreibung nur schwach eingebettet."
+            ],
+            "overall_summary": "Die Metadaten lassen grob erkennen, dass es um mündliche Berichte im Kontext des Ministerrats geht, bleiben aber insgesamt sehr knapp und generisch. Besonders Beschreibung, Titelkontext und zeitliche Einordnung sind zu wenig aussagekräftig; Widersprüche sind jedoch nicht erkennbar."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:56.209856",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Ein Regierungs-/Verwaltungskontext ist konsistent erkennbar. Teile der thematischen Einordnung und einzelne Schlagwörter bleiben mangels Beschreibung jedoch nicht ausreichend nachvollziehbar, ohne klar widersprüchlich zu sein.",
+            "message_en": "Ein Regierungs-/Verwaltungskontext ist konsistent erkennbar. Teile der thematischen Einordnung und einzelne Schlagwörter bleiben mangels Beschreibung jedoch nicht ausreichend nachvollziehbar, ohne klar widersprüchlich zu sein.",
+            "findings": [
+              "Das Thema GOVE passt grundsätzlich zu Ministerrat, Landtag und Plenum.",
+              "Das Thema SOCI könnte durch „swr“ bzw. Rundfunk/gesellschaftliche Bezüge erklärbar sein, wird aber nicht beschrieben.",
+              "Schlagwörter wie „staatsvertrag“ und „swr“ erscheinen gegenüber Titel und Beschreibung nur schwach eingebettet."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Ein Regierungs-/Verwaltungskontext ist konsistent erkennbar. Teile der thematischen Einordnung und einzelne Schlagwörter bleiben mangels Beschreibung jedoch nicht ausreichend nachvollziehbar, ohne klar widersprüchlich zu sein.",
+            "current": [],
+            "target": "Entfernen Sie thematisch unpassende Kategorien und Schlagwörter.",
+            "notes": [
+              "Das Thema GOVE passt grundsätzlich zu Ministerrat, Landtag und Plenum.",
+              "Das Thema SOCI könnte durch „swr“ bzw. Rundfunk/gesellschaftliche Bezüge erklärbar sein, wird aber nicht beschrieben.",
+              "Schlagwörter wie „staatsvertrag“ und „swr“ erscheinen gegenüber Titel und Beschreibung nur schwach eingebettet."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "partial",
+          "raw_score": 0.65,
+          "effective_score": 0.65
+        },
+        {
+          "indicator_id": "expr_contextual_qualifiers",
+          "name_de": "Kontextuelle Qualifizierer",
+          "name_en": "Contextual qualifiers",
+          "dimension": "expressiveness",
+          "status": "fail",
+          "score": 0.25,
+          "message_de": "Für Verwaltungs- oder Sitzungsdaten wäre ein Stichtag, Sitzungsdatum oder Bezugszeitraum erforderlich, um die Berichte einordnen zu können. Dieser kontextuelle Qualifizierer fehlt in den inhaltlichen Metadaten.",
+          "message_en": "Für Verwaltungs- oder Sitzungsdaten wäre ein Stichtag, Sitzungsdatum oder Bezugszeitraum erforderlich, um die Berichte einordnen zu können. Dieser kontextuelle Qualifizierer fehlt in den inhaltlichen Metadaten.",
+          "details": {
+            "criterion": "contextual_qualifiers",
+            "llm_status": "fail",
+            "findings": [
+              "Der Datensatz wirkt wie ein Verwaltungs-/Beschluss- oder Sitzungsinhalt des Ministerrats.",
+              "Es fehlt ein fachlicher Bezugszeitpunkt bzw. Sitzungsdatum oder Zeitraum der mündlichen Berichte.",
+              "Die vorhandenen issued/modified-Zeitstempel beschreiben nur Metadatenzeitpunkte und ersetzen keinen inhaltlichen Kontext."
+            ],
+            "overall_summary": "Die Metadaten lassen grob erkennen, dass es um mündliche Berichte im Kontext des Ministerrats geht, bleiben aber insgesamt sehr knapp und generisch. Besonders Beschreibung, Titelkontext und zeitliche Einordnung sind zu wenig aussagekräftig; Widersprüche sind jedoch nicht erkennbar."
+          },
+          "error": null,
+          "timestamp": "2026-07-27T10:13:56.209955",
+          "remediation": {
+            "kind": "recommendation",
+            "message_de": "Für Verwaltungs- oder Sitzungsdaten wäre ein Stichtag, Sitzungsdatum oder Bezugszeitraum erforderlich, um die Berichte einordnen zu können. Dieser kontextuelle Qualifizierer fehlt in den inhaltlichen Metadaten.",
+            "message_en": "Für Verwaltungs- oder Sitzungsdaten wäre ein Stichtag, Sitzungsdatum oder Bezugszeitraum erforderlich, um die Berichte einordnen zu können. Dieser kontextuelle Qualifizierer fehlt in den inhaltlichen Metadaten.",
+            "findings": [
+              "Der Datensatz wirkt wie ein Verwaltungs-/Beschluss- oder Sitzungsinhalt des Ministerrats.",
+              "Es fehlt ein fachlicher Bezugszeitpunkt bzw. Sitzungsdatum oder Zeitraum der mündlichen Berichte.",
+              "Die vorhandenen issued/modified-Zeitstempel beschreiben nur Metadatenzeitpunkte und ersetzen keinen inhaltlichen Kontext."
+            ],
+            "see_also": []
+          },
+          "finding": {
+            "headline": "Für Verwaltungs- oder Sitzungsdaten wäre ein Stichtag, Sitzungsdatum oder Bezugszeitraum erforderlich, um die Berichte einordnen zu können. Dieser kontextuelle Qualifizierer fehlt in den inhaltlichen Metadaten.",
+            "current": [],
+            "target": "Ergänzen Sie Stichtag bzw. Bezugszeitraum, Gebiets- oder Verfahrensstand und Hinweise auf vorläufige Werte.",
+            "notes": [
+              "Der Datensatz wirkt wie ein Verwaltungs-/Beschluss- oder Sitzungsinhalt des Ministerrats.",
+              "Es fehlt ein fachlicher Bezugszeitpunkt bzw. Sitzungsdatum oder Zeitraum der mündlichen Berichte.",
+              "Die vorhandenen issued/modified-Zeitstempel beschreiben nur Metadatenzeitpunkte und ersetzen keinen inhaltlichen Kontext."
+            ]
+          },
+          "default_weight": 1.0,
+          "effective_weight": 1.0,
+          "raw_status": "fail",
+          "raw_score": 0.25,
+          "effective_score": 0.25
+        }
+      ],
+      "score": 0.49999999999999994,
+      "dimension_weight": 2.0,
+      "total_indicator_weight": 6.0,
+      "indicator_count": 6,
+      "pass_count": 1,
+      "pass_rate": 0.16666666666666666
+    }
+  },
+  "summary": {
+    "overall_score": 0.39329091960670903,
+    "overall_pass_rate": 0.37037037037037035,
+    "dimension_scores": {
+      "findability": 0.5,
+      "accessibility": 0.42105263157894735,
+      "reusability": 0.14285714285714285,
+      "expressiveness": 0.49999999999999994
+    },
+    "dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "effective_dimension_weights": {
+      "findability": 1,
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0
+    },
+    "dimension_weight_mode": "explicit",
+    "total_dimension_weight": 6.5,
+    "total_indicators": 27,
+    "total_pass": 10,
+    "total_fail": 17,
+    "quality_grade": "F"
+  },
+  "errors": [],
+  "weights": {
+    "dimension_weights": {
+      "accessibility": 2,
+      "reusability": 1.5,
+      "expressiveness": 2.0,
+      "findability": 1
+    },
+    "indicator_weights": {
+      "find_keywords_count": 1.0,
+      "find_theme_valid": 1.0,
+      "find_temporal_coverage": 1.0,
+      "find_locn_geometry": 1.0,
+      "find_political_geocoding": 1.0,
+      "find_geocoding_level": 1.0,
+      "find_issued_datetime": 1.0,
+      "find_modified_datetime": 1.0,
+      "acc_download_url": 1.0,
+      "acc_machine_readable_access": 1.5,
+      "acc_download_url_response": 2.0,
+      "acc_access_url_response": 2.0,
+      "acc_format": 1.0,
+      "acc_media_type": 1.0,
+      "reuse_license": 2.0,
+      "reuse_contact": 1.0,
+      "reuse_contributor_id": 1.0,
+      "reuse_publisher": 1.0,
+      "reuse_availability": 1.0,
+      "expr_description_quality": 1.0,
+      "expr_title_quality": 1.0,
+      "expr_title_description_coherence": 1.0,
+      "expr_keyword_quality": 1.0,
+      "expr_thematic_consistency": 1.0,
+      "expr_contextual_qualifiers": 1.0
+    }
+  },
+  "llm_usage": [
+    {
+      "model": "openai/gpt-5.5",
+      "input_tokens": 3341,
+      "output_tokens": 866,
+      "total_tokens": 4207,
+      "cost_usd": 0.032893,
+      "latency_seconds": 14.852
+    }
+  ]
+}

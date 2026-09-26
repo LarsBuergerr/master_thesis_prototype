@@ -1,0 +1,223 @@
+{
+  "timestamp": "2026-08-06_15-42-18",
+  "run_directory": "outputs/runs/run_2026-08-06_15-42-18_state-evaluation-final_REF_UBA",
+  "files": {
+    "perfect_example_01.rdf": {
+      "overall_score": 0.9912820512820513,
+      "overall_pass_rate": 1.0,
+      "quality_grade": "A",
+      "dimension_scores": {
+        "findability": 1.0,
+        "accessibility": 1.0,
+        "reusability": 1.0,
+        "expressiveness": 0.9716666666666667
+      },
+      "total_indicators": 27,
+      "total_pass": 27,
+      "total_fail": 0
+    }
+  },
+  "aggregate": {
+    "file_count": 1,
+    "overall_score_mean": 0.9913,
+    "overall_score_min": 0.9912820512820513,
+    "overall_score_max": 0.9912820512820513,
+    "dimension_score_means": {
+      "findability": 1.0,
+      "accessibility": 1.0,
+      "reusability": 1.0,
+      "expressiveness": 0.9717
+    },
+    "indicator_status_counts": {
+      "find_keywords_count": {
+        "dimension": "findability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "find_theme_valid": {
+        "dimension": "findability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "find_locn_geometry": {
+        "dimension": "findability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "find_political_geocoding": {
+        "dimension": "findability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "find_geocoding_level": {
+        "dimension": "findability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "find_temporal_coverage": {
+        "dimension": "findability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "find_issued_datetime": {
+        "dimension": "findability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "find_modified_datetime": {
+        "dimension": "findability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "acc_download_url": {
+        "dimension": "accessibility",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "acc_format": {
+        "dimension": "accessibility",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "acc_media_type": {
+        "dimension": "accessibility",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "acc_download_url_response": {
+        "dimension": "accessibility",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "acc_access_url_response": {
+        "dimension": "accessibility",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "acc_machine_readable_access": {
+        "dimension": "accessibility",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "acc_format_non_proprietary": {
+        "dimension": "accessibility",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "reuse_license": {
+        "dimension": "reusability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "reuse_publisher": {
+        "dimension": "reusability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "reuse_contact": {
+        "dimension": "reusability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "reuse_contributor_id": {
+        "dimension": "reusability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "reuse_dcat_ap_de_compliance": {
+        "dimension": "reusability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "reuse_availability": {
+        "dimension": "reusability",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "expr_title_quality": {
+        "dimension": "expressiveness",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "expr_description_quality": {
+        "dimension": "expressiveness",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "expr_title_description_coherence": {
+        "dimension": "expressiveness",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "expr_keyword_quality": {
+        "dimension": "expressiveness",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "expr_thematic_consistency": {
+        "dimension": "expressiveness",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      },
+      "expr_contextual_qualifiers": {
+        "dimension": "expressiveness",
+        "pass": 1,
+        "partial": 0,
+        "fail": 0,
+        "error": 0
+      }
+    }
+  }
+}
