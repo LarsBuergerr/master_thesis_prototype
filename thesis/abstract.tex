@@ -1,0 +1,43 @@
+% ===========================================================================
+% Abstract.
+% Aufbau und Position (nach "Verwendung von KI-Werkzeugen", vor dem
+% Inhaltsverzeichnis) nach der Vorlage in
+% ../master_thesis_obsidian/literature/jonas_master_thesis.pdf (S. v).
+% Alle Kennzahlen entsprechen Kapitel 6 (Kernstichprobe, GPT-5.5).
+% ===========================================================================
+\clearpage
+\thispagestyle{plain}
+\setheader{Abstract}
+
+\chapter*{Abstract}
+
+\noindent
+Das nationale Metadatenportal GovData macht offene Verwaltungsdaten von Bund, Ländern
+und Kommunen über Metadaten nach dem Standard DCAT-AP.de auffindbar. Deren Qualität
+wird bislang vor allem formal über eine SHACL-Validierung geprüft. Eine solche Prüfung
+sagt aus, ob ein Metadatensatz standardkonform ist, nicht aber, ob er für Nutzende
+verständlich, erreichbar und nachnutzbar ist.
+
+Die vorliegende Arbeit entwickelt ein Bewertungsmodell, das formale Prüfungen um
+technische sowie kontext- und semantikbezogene Indikatoren ergänzt, setzt es
+prototypisch um und evaluiert es. Aus einer Literaturanalyse und drei
+Experteninterviews werden fünfzehn Kandidatendimensionen abgeleitet und zu den vier
+Dimensionen Auffindbarkeit, Zugänglichkeit, Nachnutzbarkeit und Aussagekraft
+verdichtet, die über 27 Einzelindikatoren operationalisiert sind. Sechs davon bewerten
+die Aussagekraft der Freitextfelder mithilfe eines Sprachmodells. Ein menschenlesbares
+Reporting überführt jedes negative Prüfergebnis in einen Befund mit Fundstelle und
+Handlungsanweisung.
+
+Evaluiert wird auf einer stratifizierten Zufallsstichprobe von 50 GovData-Datensätzen
+sowie auf 20 konstruierten Extremfällen, jeweils gegen ein manuelles Referenzurteil
+und gegen eine Reimplementierung des Metadata Quality Assessment (MQA) von
+data.europa.eu. Auf der Stichprobe erreicht der Prototyp eine Rangkorrelation von
+$\rho = 0{,}765$ mit dem Referenzurteil und trifft in 92\,\% der Fälle dieselbe
+Gesamteinordnung. Die MQA nimmt auf tiefer geprüften Indikatoren in 15,8\,\% der Fälle
+eine nicht gegebene Qualität an, und gegen das Referenzurteil liegt der Prototyp auf
+der Stichprobe bei fünf von sechs Zielgrößen vorn. Schwächste Dimension ist die
+sprachmodellgestützte Aussagekraft. Einschränkend stammt das Referenzurteil von einer
+einzelnen Person, und die Gewichte des Modells sind nicht empirisch validiert.
+Quellcode und Auswertungen sind öffentlich verfügbar.\footnote{\url{https://github.com/LarsBuergerr/master_thesis_prototype}}
+
+\pagebreak
