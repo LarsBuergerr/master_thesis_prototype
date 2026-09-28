@@ -1,5 +1,14 @@
 \documentclass[german]{htwg-report}
 
+% T1-Kodierung: korrekte Umlaute im PDF-Text (Suche/Kopieren) und korrekte
+% Gedankenstriche in Code-Listings. Latin Modern Typewriter als vektorielle
+% T1-Schreibmaschinenschrift; die Grundschrift (Helvetica) bleibt unverändert.
+\usepackage[T1]{fontenc}
+\renewcommand{\ttdefault}{lmtt}
+% Erlaubt in Absätzen mit langen Code-Bezeichnern etwas mehr Wortabstand,
+% statt Zeilen über den rechten Rand laufen zu lassen.
+\setlength{\emergencystretch}{2em}
+
 \addbibresource{./bib/report.bib}
 \backgroundsetup{contents={}}
 
@@ -9,7 +18,7 @@
 
 %% Use Roman numerals for the page numbers of the title pages and table of
 %% contents.
-%\frontmatter
+\pagenumbering{roman}
 %% 'reporttype' add background elements to the cover / front page
 %% possible values are:
 %% bachelor	--> B S C
@@ -42,8 +51,8 @@
 \tableofcontents
 
 %% Use Arabic numerals for the page numbers of the chapters.
-%\mainmatter
-\pagebreak
+\clearpage
+\pagenumbering{arabic}
 
 \input{contents.tex}
 
