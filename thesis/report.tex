@@ -42,7 +42,9 @@
 %% Include an optional title page.
 \input{title}
 
-\input{erklaerung}
+% Unterschriebene Erklärung als PDF (Seitenzahl "i" ist bereits enthalten).
+% Die LaTeX-Quelle liegt weiterhin in erklaerung.tex.
+\includepdf[pages=1]{erklaerung.pdf}
 
 \input{ki_werkzeuge}
 
